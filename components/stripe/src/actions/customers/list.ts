@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { listCustomersExamplePayload } from "../../examplePayloads/customers";
 import { connectionInput, limit, startingAfter, timeout } from "../../inputs";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",

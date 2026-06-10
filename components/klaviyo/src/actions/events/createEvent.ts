@@ -8,7 +8,6 @@ import {
 } from "klaviyo-api";
 import { createEventExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const createEvent = action({
   display: {
     label: "Create Event",

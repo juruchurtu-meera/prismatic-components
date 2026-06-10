@@ -4,7 +4,6 @@ import { accountId, connection } from "../inputs";
 import { fetchAllData } from "../util";
 import type { Workspace } from "../interfaces/workspace";
 import { selectWorkspaceExample as selectWorkspaceAccountExample } from "../examplePayloads/datasources";
-
 export const selectAccountWorkspaces = dataSource({
   display: {
     label: "Select Account Workspaces",

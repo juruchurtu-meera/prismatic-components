@@ -1,5 +1,4 @@
 import { createClient } from "./client";
-
 describe("createAuthorizedClient", () => {
   test("returns Oauth Client", async () => {
     const drive = createClient({

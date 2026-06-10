@@ -9,7 +9,6 @@ import {
 } from "../inputs";
 import { fetchSubscriptions } from "../utils";
 import { listSubscriptionsExamplePayload } from "../examplePayloads";
-
 export const listSubscriptions = action({
   display: {
     label: "List Subscriptions",
@@ -31,7 +30,6 @@ export const listSubscriptions = action({
       fetchAllSubscriptions,
       nextToken,
     );
-
     return {
       data: response,
     };
@@ -45,5 +43,4 @@ export const listSubscriptions = action({
   },
   examplePayload: listSubscriptionsExamplePayload,
 });
-
 export default listSubscriptions;

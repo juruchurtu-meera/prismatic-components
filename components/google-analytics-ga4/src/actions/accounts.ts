@@ -4,7 +4,6 @@ import { listAccountsExamplePayload } from "../examplePayloads";
 import { listAccountsInputs } from "../inputs";
 import type { Account } from "../types";
 import { paginateRecords } from "../util";
-
 const listAccounts = action({
   display: {
     label: "List Accounts",
@@ -31,5 +30,4 @@ const listAccounts = action({
   },
   examplePayload: listAccountsExamplePayload,
 });
-
 export default { listAccounts };

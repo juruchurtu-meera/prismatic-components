@@ -4,7 +4,6 @@ export const getWorksheetExamplePayload = {
   name: "name-value",
   visibility: "visibility-value",
 };
-
 export const listWorksheetsExamplePayload = {
   value: [getWorksheetExamplePayload],
 };

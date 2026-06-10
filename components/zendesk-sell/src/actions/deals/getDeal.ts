@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { getDealExamplePayload } from "../../examplePayloads";
 import { getDealInputs } from "../../inputs";
-
 export const getDeal = action({
   display: {
     label: "Get Deal",
@@ -19,7 +18,6 @@ export const getDeal = action({
         params,
         headers: { Accept: "application/json" },
       });
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

@@ -7,7 +7,6 @@ import {
   defaultWebhookTriggerMessageBody,
   fetchTriggers,
 } from "./utils";
-
 export const createWebhookTrigger = action({
   display: {
     label: "Create Webhook Trigger",

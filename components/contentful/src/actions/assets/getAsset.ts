@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { getAssetExamplePayload } from "../../examplePayloads";
 import { getAssetInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const getAsset = action({
   display: {
     label: "Get Asset",
@@ -17,12 +16,11 @@ export const getAsset = action({
       spaceId,
       environmentId,
     );
-
     const data: AssetProps = (
       await environment.getAsset(assetId)
     ).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: getAssetInputs,

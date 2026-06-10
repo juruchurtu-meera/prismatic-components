@@ -83,7 +83,6 @@ export const getWorkersExamplePayload = {
     total: 0,
   },
 };
-
 export const getWorkerByIdExamplePayload = {
   data: {
     primaryJob: {
@@ -164,7 +163,6 @@ export const getWorkerByIdExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const postWorkerTimeBlockExamplePayload = {
   data: {
     customWorktag07: {
@@ -454,12 +452,9 @@ export const postWorkerTimeBlockExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const updateWorkerTimeBlockExamplePayload =
   postWorkerTimeBlockExamplePayload;
-
 export const deleteWorkerTimeBlockExamplePayload = { data: {} };
-
 export const getTimeClockEventsExamplePayload = {
   data: {
     data: [
@@ -698,7 +693,6 @@ export const getTimeClockEventsExamplePayload = {
     total: 0,
   },
 };
-
 export const getTimeClockEventsByIdExamplePayload = {
   data: {
     dateTime: "2024-06-08T07:00:00.000Z",
@@ -932,7 +926,6 @@ export const getTimeClockEventsByIdExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const updateTimeClockEventsByIdExamplePayload = {
   data: {
     dateTime: "2024-06-08T07:00:00.000Z",
@@ -1166,5 +1159,4 @@ export const updateTimeClockEventsByIdExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const deleteTimeClockEventsByIdExamplePayload = { data: {} };

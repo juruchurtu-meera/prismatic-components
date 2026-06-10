@@ -10,7 +10,6 @@ import {
   newPageTitle,
   storeHash,
 } from "../../inputs";
-
 export const updateBrand = action({
   display: {
     label: "Update Brand",
@@ -32,18 +31,14 @@ export const updateBrand = action({
       bigCommerceConnection,
       context.debug.enabled,
     );
-
     const endpoint = `/stores/${storeHash}/v3/catalog/brands/${brandIdToUpdate}`;
-
     const body = {
       name: newBrandName,
       page_title: newPageTitle,
       image_url: newImageUrl,
     };
-
     try {
       const response = await client.put(endpoint, body);
-
       return {
         data: response.data,
       };

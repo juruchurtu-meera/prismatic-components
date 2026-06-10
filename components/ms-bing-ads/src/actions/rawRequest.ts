@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   accountIdInput,
   connectionInput,
@@ -10,7 +9,6 @@ import {
 } from "../inputs";
 import { getClient, sendAsync } from "../client";
 import { BING_API, WEB_SERVICE } from "../util";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -37,7 +35,6 @@ export const rawRequest = action({
         BING_API?.[webService as WEB_SERVICE].WSDL ??
         BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<unknown>({
       debug,
       args: { CustomerId: customerId },
@@ -45,7 +42,6 @@ export const rawRequest = action({
       rawXml: soapBodyRequest,
       soapAction: soapAction,
     });
-
     return {
       data: response,
     };

@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createAlgoliaClient } from "../client";
 import { connectionInput } from "../inputs";
-
 export const selectIndex = dataSource({
   display: {
     label: "Select Index",
@@ -16,11 +15,13 @@ export const selectIndex = dataSource({
       isGoingToRead: true,
       debug: false,
     });
-
     const { data } = await client.get("/1/indexes");
-
     return {
-      result: (data.items as { name: string }[])
+      result: (
+        data.items as {
+          name: string;
+        }[]
+      )
         .map<Element>((item) => ({
           label: item.name,
           key: item.name,

@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Payment } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listPayments = action({
   display: {
     label: "List Payments",

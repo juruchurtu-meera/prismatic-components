@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const unitPrice = input({
   label: "Unit Price",
   type: "string",
@@ -10,7 +9,6 @@ export const unitPrice = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const nickname = input({
   label: "Nickname",
   type: "string",
@@ -20,7 +18,6 @@ export const nickname = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const recurringInterval = input({
   label: "Recurring Interval",
   type: "string",

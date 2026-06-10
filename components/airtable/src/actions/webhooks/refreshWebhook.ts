@@ -3,7 +3,6 @@ import { createAirtableClient } from "../../client";
 import { refreshWebhookExamplePayload } from "../../examplePayloads";
 import { refreshWebhookInputs } from "../../inputs";
 import { getBaseId } from "../../util";
-
 export const refreshWebhook = action({
   display: {
     label: "Refresh Webhook",
@@ -15,11 +14,9 @@ export const refreshWebhook = action({
       context.debug.enabled,
     );
     const baseId = getBaseId(params.airtableConnection, params.baseId);
-
     const { data } = await client.post(
       `/v0/bases/${baseId}/webhooks/${params.webhookId}/refresh`,
     );
-
     return { data };
   },
   inputs: refreshWebhookInputs,

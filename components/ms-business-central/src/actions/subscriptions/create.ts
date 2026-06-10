@@ -3,16 +3,21 @@ import { getMsBusinessCentralClient } from "../../client";
 import { createSubscriptionExamplePayload } from "../../examplePayloads";
 import { createSubscriptionInputs } from "../../inputs/subscriptions";
 import { createSubscriptionFn, listSubscriptionsFn } from "../../utils";
-
 export const createEventSubscription = action({
   display: {
     label: "Create Event Subscription",
     description: "Create an Event subscription for Microsoft Business Central.",
   },
   inputs: createSubscriptionInputs,
-  perform: async (context, { allowDuplicates, connection, notificationUrl, resource }) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
-
+  perform: async (
+    context,
+    { allowDuplicates, connection, notificationUrl, resource },
+  ) => {
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     if (!allowDuplicates) {
       const instanceWebhooks = new Set([notificationUrl]);
       const {
@@ -25,7 +30,6 @@ export const createEventSubscription = action({
         return { data: existingSubscription };
       }
     }
-
     const data = await createSubscriptionFn(client, notificationUrl, resource);
     return { data };
   },

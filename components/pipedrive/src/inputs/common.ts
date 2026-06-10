@@ -1,14 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanNumber, cleanString } from "../util";
 export { debugRequest } from "@prismatic-io/spectral/dist/clients/http/inputs";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Pipedrive connection to use.",
 });
-
 export const activityIdInput = input({
   label: "Activity ID",
   type: "string",
@@ -19,7 +17,6 @@ export const activityIdInput = input({
   example: "123",
   placeholder: "Enter Activity ID",
 });
-
 export const callLogIdInput = input({
   label: "Call Log ID",
   type: "string",
@@ -29,7 +26,6 @@ export const callLogIdInput = input({
   clean: util.types.toString,
   comments: "The unique identifier returned when the call log was created.",
 });
-
 export const dealIdInput = input({
   label: "Deal ID",
   type: "string",
@@ -40,7 +36,6 @@ export const dealIdInput = input({
   dataSource: "selectDeal",
   clean: util.types.toNumber,
 });
-
 export const dealFieldIdInput = input({
   label: "Deal Field ID",
   type: "string",
@@ -50,7 +45,6 @@ export const dealFieldIdInput = input({
   example: "123",
   placeholder: "Enter Deal Field ID",
 });
-
 export const fileIdInput = input({
   label: "File ID",
   type: "string",
@@ -61,7 +55,6 @@ export const fileIdInput = input({
   example: "123",
   placeholder: "Enter File ID",
 });
-
 export const filterIdInput = input({
   label: "Filter ID",
   type: "string",
@@ -72,7 +65,6 @@ export const filterIdInput = input({
   example: "123",
   placeholder: "Enter Filter ID",
 });
-
 export const leadIdInput = input({
   label: "Lead ID",
   type: "string",
@@ -83,7 +75,6 @@ export const leadIdInput = input({
   example: "3cde3b05-035c-ae14-dcfc-172bd8000d08",
   placeholder: "Enter Lead ID",
 });
-
 export const leadLabelIdInput = input({
   label: "Lead Label ID",
   type: "string",
@@ -93,7 +84,6 @@ export const leadLabelIdInput = input({
   example: "3cde3b05-035c-ae14-dcfc-172bd8000d08",
   placeholder: "Enter Lead Label ID",
 });
-
 export const mailThreadIdInput = input({
   label: "Mail Thread ID",
   type: "string",
@@ -103,7 +93,6 @@ export const mailThreadIdInput = input({
   example: "123",
   placeholder: "Enter Mail Thread ID",
 });
-
 export const organizationIdInput = input({
   label: "Organization ID",
   type: "string",
@@ -114,7 +103,6 @@ export const organizationIdInput = input({
   clean: util.types.toNumber,
   dataSource: "selectOrganization",
 });
-
 export const permissionSetIdInput = input({
   label: "Permission Set ID",
   type: "string",
@@ -124,7 +112,6 @@ export const permissionSetIdInput = input({
   example: "123",
   placeholder: "Enter Permission Set ID",
 });
-
 export const personFieldIdInput = input({
   label: "Person Field ID",
   type: "string",
@@ -134,7 +121,6 @@ export const personFieldIdInput = input({
   placeholder: "Enter Person Field ID",
   clean: util.types.toNumber,
 });
-
 export const paginationStartInput = input({
   label: "Start",
   type: "string",
@@ -144,7 +130,6 @@ export const paginationStartInput = input({
   example: "0",
   placeholder: "Enter start index",
 });
-
 export const cursor = input({
   label: "Cursor",
   type: "string",
@@ -153,7 +138,6 @@ export const cursor = input({
   placeholder: "Enter cursor value",
   clean: cleanString,
 });
-
 export const paginationLimitInput = input({
   label: "Limit",
   type: "string",
@@ -162,7 +146,6 @@ export const paginationLimitInput = input({
   example: "100",
   placeholder: "Enter limit",
 });
-
 export const personIdInput = input({
   label: "Person ID",
   type: "string",
@@ -173,7 +156,6 @@ export const personIdInput = input({
   dataSource: "selectPerson",
   clean: util.types.toNumber,
 });
-
 export const pipelineIdInput = input({
   label: "Pipeline ID",
   type: "string",
@@ -184,7 +166,6 @@ export const pipelineIdInput = input({
   clean: util.types.toNumber,
   dataSource: "selectPipeline",
 });
-
 export const productIdInput = input({
   label: "Product ID",
   type: "string",
@@ -195,7 +176,6 @@ export const productIdInput = input({
   clean: util.types.toNumber,
   dataSource: "selectProduct",
 });
-
 export const sortInput = input({
   label: "Sort",
   type: "string",
@@ -205,7 +185,6 @@ export const sortInput = input({
   example: "title ASC, id DESC",
   placeholder: "Enter sort parameters",
 });
-
 export const sortBy = input({
   label: "Sort By",
   type: "string",
@@ -214,7 +193,6 @@ export const sortBy = input({
   placeholder: "Enter field name",
   clean: cleanString,
 });
-
 export const sortDirection = input({
   label: "Sort Direction",
   type: "string",
@@ -227,7 +205,6 @@ export const sortDirection = input({
   ],
   clean: cleanString,
 });
-
 export const stageIdInput = input({
   label: "Stage ID",
   type: "string",
@@ -238,7 +215,6 @@ export const stageIdInput = input({
   example: "123",
   placeholder: "Enter Stage ID",
 });
-
 export const subscriptionIdInput = input({
   label: "Subscription ID",
   type: "string",
@@ -248,7 +224,6 @@ export const subscriptionIdInput = input({
   example: "123",
   placeholder: "Enter Subscription ID",
 });
-
 export const userIdInput = input({
   label: "User ID",
   type: "string",
@@ -259,7 +234,6 @@ export const userIdInput = input({
   example: "123",
   placeholder: "Enter User ID",
 });
-
 export const webhookVersion = input({
   label: "Version",
   type: "string",
@@ -274,7 +248,6 @@ export const webhookVersion = input({
   default: "2.0",
   clean: util.types.toString,
 });
-
 export const apiVersion = input({
   label: "API Version",
   type: "string",
@@ -289,7 +262,6 @@ export const apiVersion = input({
   default: "v1",
   clean: util.types.toString,
 });
-
 export const firstChar = input({
   label: "First Char",
   type: "string",
@@ -299,7 +271,6 @@ export const firstChar = input({
   example: "A",
   placeholder: "Enter first character",
 });
-
 export const filterId = input({
   label: "Filter ID",
   type: "string",
@@ -308,17 +279,16 @@ export const filterId = input({
   example: "123",
   placeholder: "Enter Filter ID",
 });
-
 export const userId = input({
   label: "User ID",
   type: "string",
   clean: cleanNumber,
-  comments: "If supplied, only persons owned by the specified user are returned.",
+  comments:
+    "If supplied, only persons owned by the specified user are returned.",
   required: false,
   example: "123",
   placeholder: "Enter User ID",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -327,7 +297,6 @@ export const fetchAll = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const stageId = input({
   label: "Stage ID",
   type: "string",
@@ -336,7 +305,6 @@ export const stageId = input({
   example: "123",
   placeholder: "Enter Stage ID",
 });
-
 export const dealStatus = input({
   label: "Status",
   type: "string",
@@ -347,11 +315,11 @@ export const dealStatus = input({
     { label: "Deleted", value: "deleted" },
   ],
   clean: cleanString,
-  comments: "Filter the response to only include deals matching the selected status.",
+  comments:
+    "Filter the response to only include deals matching the selected status.",
   example: "open",
   placeholder: "Select deal status",
 });
-
 export const ownedByYou = input({
   label: "Owned By You",
   type: "string",
@@ -360,11 +328,11 @@ export const ownedByYou = input({
     { label: "1", value: "1" },
   ],
   clean: cleanNumber,
-  comments: "When set to 1, only deals owned by the authenticated user are returned.",
+  comments:
+    "When set to 1, only deals owned by the authenticated user are returned.",
   example: "1",
   placeholder: "Select option",
 });
-
 export const subscriptionUrl = input({
   label: "Subscription URL",
   type: "string",
@@ -374,7 +342,6 @@ export const subscriptionUrl = input({
   placeholder: "Enter webhook URL",
   clean: util.types.toString,
 });
-
 export const eventAction = input({
   label: "Event Action",
   type: "string",
@@ -390,7 +357,6 @@ export const eventAction = input({
   ],
   clean: util.types.toString,
 });
-
 export const eventObject = input({
   label: "Event Object",
   type: "string",
@@ -413,26 +379,25 @@ export const eventObject = input({
   ],
   clean: util.types.toString,
 });
-
 export const httpAuthUser = input({
   label: "HTTP Auth User",
   type: "string",
   required: false,
-  comments: "The username used for HTTP Basic Auth when Pipedrive calls the subscription URL.",
+  comments:
+    "The username used for HTTP Basic Auth when Pipedrive calls the subscription URL.",
   example: "admin",
   placeholder: "Enter username",
   clean: cleanString,
 });
-
 export const httpAuthPassword = input({
   label: "HTTP Auth Password",
   type: "password",
   required: false,
-  comments: "The password used for HTTP Basic Auth when Pipedrive calls the subscription URL.",
+  comments:
+    "The password used for HTTP Basic Auth when Pipedrive calls the subscription URL.",
   placeholder: "Enter password",
   clean: cleanString,
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -442,14 +407,12 @@ export const webhookId = input({
   placeholder: "Enter Webhook ID",
   clean: util.types.toString,
 });
-
 export const webhookUserId = {
   ...userId,
   required: false,
   comments:
     "The ID of the user that this webhook will be authorized with. A different user's user_id may be used. If not set, the authenticated user's user_id is used. Each webhook event is checked against the user's permissions, so the webhook is only sent if the user has access to the affected object(s). To receive notifications for all events, use a top-level admin user's user_id.",
 };
-
 export const createWebhookInputs = {
   connection: connectionInput,
   subscriptionUrl,
@@ -465,16 +428,13 @@ export const createWebhookInputs = {
   httpAuthUser,
   httpAuthPassword,
 };
-
 export const deleteWebhookInputs = {
   connection: connectionInput,
   webhookId,
 };
-
 export const listWebhooksInputs = {
   connection: connectionInput,
 };
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -496,7 +456,6 @@ export const pollResourceType = input({
   clean: util.types.toString,
   comments: "The Pipedrive item type to monitor for new and updated records.",
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -506,7 +465,6 @@ export const showNewRecords = input({
   comments:
     "When enabled, records created since the last poll are returned in the trigger payload.",
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",

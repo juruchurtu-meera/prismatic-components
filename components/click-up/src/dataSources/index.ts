@@ -1,8 +1,6 @@
 import { dataSource, type Element, input, util } from "@prismatic-io/spectral";
 import { createClickUpClient as createClient } from "../client";
 import { connectionInput } from "../inputs";
-
-
 const listIdInput = input({
   label: "List ID",
   type: "string",
@@ -11,7 +9,6 @@ const listIdInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 const folderIdInput = input({
   label: "Folder ID",
   type: "string",
@@ -20,7 +17,6 @@ const folderIdInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 const spaceIdInput = input({
   label: "Space ID",
   type: "string",
@@ -29,7 +25,6 @@ const spaceIdInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 const teamIdInput = input({
   label: "Team ID",
   type: "string",
@@ -38,21 +33,21 @@ const teamIdInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 interface TypeConfig {
-  options: { id: string; name: string }[];
+  options: {
+    id: string;
+    name: string;
+  }[];
 }
 interface CustomField {
   id: string;
   name: string;
   type_config?: TypeConfig;
 }
-
 interface Task {
   id: string;
   name: string;
 }
-
 interface Calendar {
   id: string;
   name: string;
@@ -65,14 +60,18 @@ export const customFieldOptions = dataSource({
   },
   perform: async (_context, { listId, connection, fieldName }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ fields: CustomField[] }>(`/list/${listId}/field`);
+    const { data } = await client.get<{
+      fields: CustomField[];
+    }>(`/list/${listId}/field`);
     const field = data.fields.find((field) => field.name === fieldName);
     if (!field) {
       throw new Error("Unable to find custom field options");
     }
-    const options = (field?.type_config?.options || []).map<Element>((option) => {
-      return { label: option.name, key: option.id };
-    });
+    const options = (field?.type_config?.options || []).map<Element>(
+      (option) => {
+        return { label: option.name, key: option.id };
+      },
+    );
     return { result: options };
   },
   inputs: {
@@ -83,7 +82,8 @@ export const customFieldOptions = dataSource({
       type: "string",
       placeholder: "Enter field name",
       example: "Sales Stage",
-      comments: "The name of the custom field whose options should be returned.",
+      comments:
+        "The name of the custom field whose options should be returned.",
       required: true,
       default: "Sales Stage",
       clean: util.types.toString,
@@ -98,7 +98,9 @@ export const folders = dataSource({
   },
   perform: async (_context, { connection, spaceId }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ folders: Record<string, string>[] }>(`/space/${spaceId}/folder`);
+    const { data } = await client.get<{
+      folders: Record<string, string>[];
+    }>(`/space/${spaceId}/folder`);
     const options = data.folders.map<Element>((folder) => {
       return { label: folder.name, key: folder.id };
     });
@@ -117,7 +119,9 @@ export const teams = dataSource({
   },
   perform: async (_context, { connection }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ teams: Record<string, string>[] }>("/team");
+    const { data } = await client.get<{
+      teams: Record<string, string>[];
+    }>("/team");
     const options = data.teams.map<Element>((field) => {
       return { label: field.name, key: field.id };
     });
@@ -133,7 +137,9 @@ export const spaces = dataSource({
   },
   perform: async (_context, { connection, teamId }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ spaces: Record<string, string>[] }>(`/team/${teamId}/space`);
+    const { data } = await client.get<{
+      spaces: Record<string, string>[];
+    }>(`/team/${teamId}/space`);
     const options = data.spaces.map<Element>((space) => {
       return { label: space.name, key: space.id };
     });
@@ -152,7 +158,9 @@ export const lists = dataSource({
   },
   perform: async (_context, { folderId, connection }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ lists: Record<string, string>[] }>(`/folder/${folderId}/list`);
+    const { data } = await client.get<{
+      lists: Record<string, string>[];
+    }>(`/folder/${folderId}/list`);
     const options = data.lists.map<Element>((list) => {
       return { label: list.name, key: list.id };
     });
@@ -161,7 +169,6 @@ export const lists = dataSource({
   inputs: { folderId: folderIdInput, connection: connectionInput },
   dataSourceType: "picklist",
 });
-
 export const customFields = dataSource({
   display: {
     label: "Select Custom Field",
@@ -169,7 +176,9 @@ export const customFields = dataSource({
   },
   perform: async (_context, { listId, connection }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ fields: Record<string, string>[] }>(`/list/${listId}/field`);
+    const { data } = await client.get<{
+      fields: Record<string, string>[];
+    }>(`/list/${listId}/field`);
     const options = data.fields.map<Element>((field) => {
       return { label: field.name, key: field.id };
     });
@@ -178,7 +187,6 @@ export const customFields = dataSource({
   inputs: { listId: listIdInput, connection: connectionInput },
   dataSourceType: "picklist",
 });
-
 export const tasks = dataSource({
   display: {
     label: "Select Task",
@@ -186,7 +194,9 @@ export const tasks = dataSource({
   },
   perform: async (_context, { listId, connection }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ tasks: Task[] }>(`/list/${listId}/task`, {
+    const { data } = await client.get<{
+      tasks: Task[];
+    }>(`/list/${listId}/task`, {
       params: {
         archived: false,
         include_closed: false,
@@ -201,7 +211,6 @@ export const tasks = dataSource({
   inputs: { listId: listIdInput, connection: connectionInput },
   dataSourceType: "picklist",
 });
-
 export const calendars = dataSource({
   display: {
     label: "Select Calendar View",
@@ -209,14 +218,17 @@ export const calendars = dataSource({
   },
   perform: async (_context, { spaceId, connection }) => {
     const client = createClient(connection);
-    const { data } = await client.get<{ views: Calendar[] }>(`/space/${spaceId}/view`, {
+    const { data } = await client.get<{
+      views: Calendar[];
+    }>(`/space/${spaceId}/view`, {
       params: {
         include_closed: false,
       },
     });
-    
     const calendarViews = data.views.filter(
-      (view) => view.type === "calendar" || view.name.toLowerCase().includes("calendar")
+      (view) =>
+        view.type === "calendar" ||
+        view.name.toLowerCase().includes("calendar"),
     );
     const options = calendarViews.map<Element>((view) => {
       return { label: view.name, key: view.id };
@@ -226,7 +238,6 @@ export const calendars = dataSource({
   inputs: { spaceId: spaceIdInput, connection: connectionInput },
   dataSourceType: "picklist",
 });
-
 export default {
   customFieldOptions,
   customFields,

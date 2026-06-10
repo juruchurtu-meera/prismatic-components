@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const fluentCommerceOAuthPassword = connection({
   key: "fluent-password-grant",
   display: {
@@ -43,5 +42,4 @@ export const fluentCommerceOAuthPassword = connection({
     },
   },
 });
-
 export default [fluentCommerceOAuthPassword];

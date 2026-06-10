@@ -1,13 +1,11 @@
 import { action, input } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, workspaceId } from "../../inputs";
-
 interface Workspace {
   gid: string;
   name: string;
   resource_type: string;
 }
-
 interface User {
   gid: string;
   name: string;
@@ -15,7 +13,6 @@ interface User {
   resource_type: string;
   workspaces: Workspace[];
 }
-
 interface UserReturn {
   data: {
     data: User[];
@@ -26,7 +23,6 @@ interface UserReturn {
     };
   };
 }
-
 export const findUserByNameOrEmail = action({
   display: {
     label: "Find User by Name or Email",

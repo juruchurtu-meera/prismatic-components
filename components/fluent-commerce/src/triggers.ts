@@ -3,7 +3,6 @@ import { pollChangesExamplePayload } from "./examplePayloads";
 import { pollChangesInputs } from "./inputs";
 import type { FluentOrder, PollingState } from "./types";
 import { fetchFluentOrdersSince } from "./util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -16,22 +15,15 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     const { records, truncated } = await fetchFluentOrdersSince(
       params.connection,
       lastPolledAt,
       params.retailerId,
       context.debug.enabled,
     );
-
-    
-    
-    
-    
     const lastPolledAtDate = new Date(lastPolledAt);
     const created: FluentOrder[] = [];
     const updated: FluentOrder[] = [];
-
     for (const record of records) {
       const createValue = record.createdOn;
       const createdAtDate =
@@ -41,13 +33,6 @@ export const pollChangesTrigger = pollingTrigger({
       else if (!isNew && params.showUpdatedRecords !== false)
         updated.push(record);
     }
-
-    
-    
-    
-    
-    
-    
     let nextCursor = now;
     if (truncated) {
       const minUpdatedOn = records
@@ -61,13 +46,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled Fluent orders: ${records.length} fetched, ${created.length} created, ${updated.length} updated, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },
@@ -75,5 +58,4 @@ export const pollChangesTrigger = pollingTrigger({
     };
   },
 });
-
 export default { pollChangesTrigger };

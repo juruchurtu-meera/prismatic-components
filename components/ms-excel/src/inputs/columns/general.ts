@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const columnId = input({
   label: "Column ID",
   comments: "The ID or name of the column to retrieve.",
@@ -10,7 +9,6 @@ export const columnId = input({
   dataSource: "selectColumn",
   clean: util.types.toString,
 });
-
 export const values = input({
   label: "Values",
   comments: "A 2D array of values for the column cells.",

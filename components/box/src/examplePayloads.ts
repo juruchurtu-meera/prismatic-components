@@ -1,52 +1,19 @@
-
-
-
-
-
-
-
-
 export const pathDetailsExamplePayload = {
   data: [{ id: "12345", type: "file", name: "Quarterly Report.pdf" }],
 };
-
-
-
-
-
 export const moveObjectExamplePayload = {
   data: [{ id: "67890", type: "folder", name: "Archive" }],
 };
-
-
-
-
-
 export const downloadFileExamplePayload = {
   data: Buffer.from("example"),
   contentType: "application/octet",
 };
-
-
-
-
-
 export const uploadFileExamplePayload = {
   data: [{ id: "54321", type: "folder", name: "Uploads" }],
 };
-
-
-
-
-
 export const copyObjectExamplePayload = {
   data: [{ id: "98765", type: "folder", name: "Documents Backup" }],
 };
-
-
-
-
-
 export const listWebhooksExamplePayload = {
   data: {
     next_marker: "ZmlQZS0xLTE%3D",
@@ -61,11 +28,6 @@ export const listWebhooksExamplePayload = {
     limit: 2,
   },
 };
-
-
-
-
-
 export const createWebhookExamplePayload = {
   data: {
     id: "1234",
@@ -83,17 +45,7 @@ export const createWebhookExamplePayload = {
   },
   crossFlowState: { primarySignatureKey: "3T2eTfOvJbAIRoBpXsXPmq0gn8CmF5Q7" },
 };
-
-
-
-
-
 export const deleteWebhookExamplePayload = { data: null };
-
-
-
-
-
 export const findFileForSharedLinkExamplePayload = {
   data: {
     type: "file",
@@ -101,21 +53,11 @@ export const findFileForSharedLinkExamplePayload = {
     name: "Contract_2024.pdf",
   },
 };
-
-
-
-
-
 export const getSharedLinkForFileExamplePayload = {
   data: {
     sharedLink: "https://app.box.com/s/abbvr71aw8a4gb7u2541hlv45l806u5h",
   },
 };
-
-
-
-
-
 export const findFolderForSharedLinkExamplePayload = {
   data: {
     type: "folder",
@@ -123,29 +65,14 @@ export const findFolderForSharedLinkExamplePayload = {
     name: "Shared Documents",
   },
 };
-
-
-
-
-
 export const getSharedLinkForFolderExamplePayload = {
   data: {
     sharedLink: "https://app.box.com/s/abbvr71aw8a4gb7u2541hlv45l806u5h",
   },
 };
-
-
-
-
-
 export const listFolderExamplePayload = {
   data: [{ id: "29384756102", type: "folder", name: "Project Files" }],
 };
-
-
-
-
-
 export const listFolderWithPaginationExamplePayload = {
   data: {
     entries: [{ id: "29384756102", type: "folder", name: "Project Files" }],
@@ -155,11 +82,6 @@ export const listFolderWithPaginationExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const createFolderExamplePayload = {
   data: {
     id: "47892301654",
@@ -170,11 +92,6 @@ export const createFolderExamplePayload = {
     folder: "All Files",
   },
 };
-
-
-
-
-
 export const getCurrentUserExamplePayload = {
   data: {
     type: "user",
@@ -194,11 +111,6 @@ export const getCurrentUserExamplePayload = {
     avatar_url: "https://app.box.com/api/avatar/deprecated",
   },
 };
-
-
-
-
-
 export const getFileDownloadUrlExamplePayload = {
   data: "https://dl.boxcloud.com/d/1/b1!abc123-example-download-url/download",
 };

@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getTableByIdExamplePayload } from "../../examplePayloads";
 import { getTableByIdInputs } from "../../inputs";
-
 export const getTableById = action({
   display: {
     label: "Get Table by ID",

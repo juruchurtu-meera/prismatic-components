@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, cursor, paginationLimitInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const searchDeals = action({
   display: {
     label: "Search Deals",
@@ -24,7 +23,11 @@ export const searchDeals = action({
       cursor,
     },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/deals/search", {
       params: {
         term,
@@ -64,7 +67,8 @@ export const searchDeals = action({
       label: "Exact Match",
       type: "boolean",
       clean: util.types.toBool,
-      comments: "When true, only full exact matches against the given term are returned",
+      comments:
+        "When true, only full exact matches against the given term are returned",
     }),
     personId: input({
       label: "Person ID",

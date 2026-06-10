@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const deleteOrderInputs = {
   connection,
   id: input({

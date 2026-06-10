@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, userIds, deleteParam } from "../inputs";
-
 export const deleteUser = action({
   display: {
     label: "Delete User",

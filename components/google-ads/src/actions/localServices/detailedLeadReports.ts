@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createLocalServicesClient } from "../../client";
 import { detailedLeadReportsExamplePayload } from "../../examplePayloads";
 import { detailedLeadReportsInputs } from "../../inputs";
-
 export const detailedLeadReports = action({
   display: {
     label: "Get Detailed Lead Reports",
@@ -31,9 +30,7 @@ export const detailedLeadReports = action({
     const endDateDay = endDate.getDate();
     const endDateMonth = endDate.getMonth() + 1;
     const endDateYear = endDate.getFullYear();
-    const query = `manager_customer_id:${managerCustomerIdInput}${
-      customerIds && customerIds !== "" ? `;${customerIds}` : ""
-    }`;
+    const query = `manager_customer_id:${managerCustomerIdInput}${customerIds && customerIds !== "" ? `;${customerIds}` : ""}`;
     const { data } = await client.get("/detailedLeadReports:search", {
       params: {
         query,

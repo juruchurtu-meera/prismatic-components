@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
 import { createEmployeeExamplePayload } from "../../examplePayloads";
 import { createEmployeeInputs } from "../../inputs";
-
 export const createEmployee = action({
   display: {
     label: "Create Employee",
@@ -13,7 +12,6 @@ export const createEmployee = action({
     { connection, firstName, surname, email, site, startDate },
   ) => {
     const client = getClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/people`, {
       work: {
         site,

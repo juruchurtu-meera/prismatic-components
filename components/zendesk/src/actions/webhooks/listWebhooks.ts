@@ -3,7 +3,6 @@ import { rawHttpClient } from "../../auth";
 import { listWebhooksPayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs";
 import { fetchWebhooks } from "./utils";
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",

@@ -1,6 +1,5 @@
 import { connection } from "../general";
 import { input, util } from "@prismatic-io/spectral";
-
 export const userSubscriptionKeys = input({
   label: "User Subscription Keys",
   comments: "The subscription keys to act upon.",
@@ -14,7 +13,6 @@ export const userSubscriptionKeys = input({
     });
   },
 });
-
 export const deleteWebhook = input({
   label: "Delete Webhooks",
   comments:
@@ -26,7 +24,6 @@ export const deleteWebhook = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const deleteUserSubscriptionInputs = {
   connection,
   userSubscriptionKeys,

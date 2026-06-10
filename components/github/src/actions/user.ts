@@ -2,7 +2,6 @@ import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, owner, page, perPage, repo } from "../inputs";
 import { orgsListForAuthenticatedUserExamplePayload } from "../examplePayloads";
-
 const usersGetAuthenticated = action({
   display: {
     label: "Users Get Authenticated",
@@ -21,7 +20,6 @@ const usersGetAuthenticated = action({
     },
   },
 });
-
 const usersUpdateAuthenticated = action({
   display: {
     label: "Users Update Authenticated",
@@ -39,9 +37,12 @@ const usersUpdateAuthenticated = action({
       location,
       hireable,
       bio,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/user`, {
       name,
       email,
@@ -124,7 +125,6 @@ const usersUpdateAuthenticated = action({
     },
   },
 });
-
 const usersListBlockedByAuthenticatedUser = action({
   display: {
     label: "Users List Blocked By Authenticated User",
@@ -143,14 +143,16 @@ const usersListBlockedByAuthenticatedUser = action({
     },
   },
 });
-
 const usersCheckBlocked = action({
   display: {
     label: "Users Check Blocked",
     description: "Check if a user is blocked by the authenticated user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/blocks/${username}`);
     return { data };
   },
@@ -169,14 +171,16 @@ const usersCheckBlocked = action({
     },
   },
 });
-
 const usersBlock = action({
   display: {
     label: "Users Block",
     description: "Block a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/user/blocks/${username}`, {});
     return { data };
   },
@@ -195,14 +199,16 @@ const usersBlock = action({
     },
   },
 });
-
 const usersUnblock = action({
   display: {
     label: "Users Unblock",
     description: "Unblock a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/user/blocks/${username}`);
     return { data };
   },
@@ -221,14 +227,16 @@ const usersUnblock = action({
     },
   },
 });
-
 const codespacesListForAuthenticatedUser = action({
   display: {
     label: "Codespaces List For Authenticated User",
     description: "List codespaces for the authenticated user",
   },
   perform: async (context, { connection, perPage, page, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/codespaces`, {
       params: { per_page: perPage, page, repository_id: repositoryId },
     });
@@ -262,7 +270,6 @@ const codespacesListForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesCreateForAuthenticatedUser = action({
   display: {
     label: "Codespaces Create For Authenticated User",
@@ -281,14 +288,16 @@ const codespacesCreateForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesListSecretsForAuthenticatedUser = action({
   display: {
     label: "Codespaces List Secrets For Authenticated User",
     description: "List secrets for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/codespaces/secrets`, {
       params: { per_page: perPage, page },
     });
@@ -316,7 +325,6 @@ const codespacesListSecretsForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesGetPublicKeyForAuthenticatedUser = action({
   display: {
     label: "Codespaces Get Public Key For Authenticated User",
@@ -335,14 +343,16 @@ const codespacesGetPublicKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesGetSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces Get Secret For Authenticated User",
     description: "Get a secret for the authenticated user",
   },
   perform: async (context, { connection, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/codespaces/secrets/${secretName}`);
     return { data };
   },
@@ -361,7 +371,6 @@ const codespacesGetSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesCreateOrUpdateSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces Create Or Update Secret For Authenticated User",
@@ -369,16 +378,19 @@ const codespacesCreateOrUpdateSecretForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, secretName, encryptedValue, keyId, selectedRepositoryIds }
+    { connection, secretName, encryptedValue, keyId, selectedRepositoryIds },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/user/codespaces/secrets/${secretName}`,
       {
         encrypted_value: encryptedValue,
         key_id: keyId,
         selected_repository_ids: selectedRepositoryIds,
-      }
+      },
     );
     return { data };
   },
@@ -419,16 +431,18 @@ const codespacesCreateOrUpdateSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesDeleteSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces Delete Secret For Authenticated User",
     description: "Delete a secret for the authenticated user",
   },
   perform: async (context, { connection, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/codespaces/secrets/${secretName}`
+      `/user/codespaces/secrets/${secretName}`,
     );
     return { data };
   },
@@ -447,16 +461,18 @@ const codespacesDeleteSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesListRepositoriesForSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces List Repositories For Secret For Authenticated User",
     description: "List selected repositories for a user secret",
   },
   perform: async (context, { connection, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/user/codespaces/secrets/${secretName}/repositories`
+      `/user/codespaces/secrets/${secretName}/repositories`,
     );
     return { data };
   },
@@ -475,7 +491,6 @@ const codespacesListRepositoriesForSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesSetRepositoriesForSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces Set Repositories For Secret For Authenticated User",
@@ -483,12 +498,15 @@ const codespacesSetRepositoriesForSecretForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, secretName, selectedRepositoryIds }
+    { connection, secretName, selectedRepositoryIds },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/user/codespaces/secrets/${secretName}/repositories`,
-      { selected_repository_ids: selectedRepositoryIds }
+      { selected_repository_ids: selectedRepositoryIds },
     );
     return { data };
   },
@@ -515,17 +533,19 @@ const codespacesSetRepositoriesForSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesAddRepositoryForSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces Add Repository For Secret For Authenticated User",
     description: "Add a selected repository to a user secret",
   },
   perform: async (context, { connection, secretName, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/user/codespaces/secrets/${secretName}/repositories/${repositoryId}`,
-      {}
+      {},
     );
     return { data };
   },
@@ -550,16 +570,18 @@ const codespacesAddRepositoryForSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesRemoveRepositoryForSecretForAuthenticatedUser = action({
   display: {
     label: "Codespaces Remove Repository For Secret For Authenticated User",
     description: "Remove a selected repository from a user secret",
   },
   perform: async (context, { connection, secretName, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/codespaces/secrets/${secretName}/repositories/${repositoryId}`
+      `/user/codespaces/secrets/${secretName}/repositories/${repositoryId}`,
     );
     return { data };
   },
@@ -584,14 +606,16 @@ const codespacesRemoveRepositoryForSecretForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesGetForAuthenticatedUser = action({
   display: {
     label: "Codespaces Get For Authenticated User",
     description: "Get a codespace for the authenticated user",
   },
   perform: async (context, { connection, codespaceName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/codespaces/${codespaceName}`);
     return { data };
   },
@@ -610,7 +634,6 @@ const codespacesGetForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesUpdateForAuthenticatedUser = action({
   display: {
     label: "Codespaces Update For Authenticated User",
@@ -618,9 +641,12 @@ const codespacesUpdateForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, codespaceName, machine, displayName, recentFolders }
+    { connection, codespaceName, machine, displayName, recentFolders },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/user/codespaces/${codespaceName}`, {
       machine,
       display_name: displayName,
@@ -664,14 +690,16 @@ const codespacesUpdateForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesDeleteForAuthenticatedUser = action({
   display: {
     label: "Codespaces Delete For Authenticated User",
     description: "Delete a codespace for the authenticated user",
   },
   perform: async (context, { connection, codespaceName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/user/codespaces/${codespaceName}`);
     return { data };
   },
@@ -690,17 +718,19 @@ const codespacesDeleteForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesExportForAuthenticatedUser = action({
   display: {
     label: "Codespaces Export For Authenticated User",
     description: "Export a codespace for the authenticated user",
   },
   perform: async (context, { connection, codespaceName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/user/codespaces/${codespaceName}/exports`,
-      {}
+      {},
     );
     return { data };
   },
@@ -719,16 +749,18 @@ const codespacesExportForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesGetExportDetailsForAuthenticatedUser = action({
   display: {
     label: "Codespaces Get Export Details For Authenticated User",
     description: "Get details about a codespace export",
   },
   perform: async (context, { connection, codespaceName, exportId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/user/codespaces/${codespaceName}/exports/${exportId}`
+      `/user/codespaces/${codespaceName}/exports/${exportId}`,
     );
     return { data };
   },
@@ -754,16 +786,18 @@ const codespacesGetExportDetailsForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesCodespaceMachinesForAuthenticatedUser = action({
   display: {
     label: "Codespaces Codespace Machines For Authenticated User",
     description: "List machine types for a codespace",
   },
   perform: async (context, { connection, codespaceName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/user/codespaces/${codespaceName}/machines`
+      `/user/codespaces/${codespaceName}/machines`,
     );
     return { data };
   },
@@ -782,17 +816,19 @@ const codespacesCodespaceMachinesForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesStartForAuthenticatedUser = action({
   display: {
     label: "Codespaces Start For Authenticated User",
     description: "Start a codespace for the authenticated user",
   },
   perform: async (context, { connection, codespaceName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/user/codespaces/${codespaceName}/start`,
-      {}
+      {},
     );
     return { data };
   },
@@ -811,17 +847,19 @@ const codespacesStartForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesStopForAuthenticatedUser = action({
   display: {
     label: "Codespaces Stop For Authenticated User",
     description: "Stop a codespace for the authenticated user",
   },
   perform: async (context, { connection, codespaceName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/user/codespaces/${codespaceName}/stop`,
-      {}
+      {},
     );
     return { data };
   },
@@ -840,14 +878,16 @@ const codespacesStopForAuthenticatedUser = action({
     },
   },
 });
-
 const usersSetPrimaryEmailVisibilityForAuthenticatedUser = action({
   display: {
     label: "Users Set Primary Email Visibility For Authenticated User",
     description: "Set primary email visibility for the authenticated user",
   },
   perform: async (context, { connection, visibility }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/user/email/visibility`, {
       visibility,
     });
@@ -872,14 +912,16 @@ const usersSetPrimaryEmailVisibilityForAuthenticatedUser = action({
     },
   },
 });
-
 const usersListEmailsForAuthenticatedUser = action({
   display: {
     label: "Users List Emails For Authenticated User",
     description: "List email addresses for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/emails`, {
       params: { per_page: perPage, page },
     });
@@ -907,7 +949,6 @@ const usersListEmailsForAuthenticatedUser = action({
     },
   },
 });
-
 const usersAddEmailForAuthenticatedUser = action({
   display: {
     label: "Users Add Email For Authenticated User",
@@ -926,7 +967,6 @@ const usersAddEmailForAuthenticatedUser = action({
     },
   },
 });
-
 const usersDeleteEmailForAuthenticatedUser = action({
   display: {
     label: "Users Delete Email For Authenticated User",
@@ -945,14 +985,16 @@ const usersDeleteEmailForAuthenticatedUser = action({
     },
   },
 });
-
 const usersListFollowersForAuthenticatedUser = action({
   display: {
     label: "Users List Followers For Authenticated User",
     description: "List followers of the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/followers`, {
       params: { per_page: perPage, page },
     });
@@ -980,14 +1022,16 @@ const usersListFollowersForAuthenticatedUser = action({
     },
   },
 });
-
 const usersListFollowedByAuthenticatedUser = action({
   display: {
     label: "Users List Followed By Authenticated User",
     description: "List the people the authenticated user follows",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/following`, {
       params: { per_page: perPage, page },
     });
@@ -1015,14 +1059,16 @@ const usersListFollowedByAuthenticatedUser = action({
     },
   },
 });
-
 const usersCheckPersonIsFollowedByAuthenticated = action({
   display: {
     label: "Users Check Person Is Followed By Authenticated",
     description: "Check if a person is followed by the authenticated user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/following/${username}`);
     return { data };
   },
@@ -1041,14 +1087,16 @@ const usersCheckPersonIsFollowedByAuthenticated = action({
     },
   },
 });
-
 const usersFollow = action({
   display: {
     label: "Users Follow",
     description: "Follow a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/user/following/${username}`, {});
     return { data };
   },
@@ -1067,14 +1115,16 @@ const usersFollow = action({
     },
   },
 });
-
 const usersUnfollow = action({
   display: {
     label: "Users Unfollow",
     description: "Unfollow a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/user/following/${username}`);
     return { data };
   },
@@ -1093,14 +1143,16 @@ const usersUnfollow = action({
     },
   },
 });
-
 const usersListGpgKeysForAuthenticatedUser = action({
   display: {
     label: "Users List Gpg Keys For Authenticated User",
     description: "List GPG keys for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/gpg_keys`, {
       params: { per_page: perPage, page },
     });
@@ -1128,14 +1180,16 @@ const usersListGpgKeysForAuthenticatedUser = action({
     },
   },
 });
-
 const usersCreateGpgKeyForAuthenticatedUser = action({
   display: {
     label: "Users Create Gpg Key For Authenticated User",
     description: "Create a GPG key for the authenticated user",
   },
   perform: async (context, { connection, name, armoredPublicKey }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/user/gpg_keys`, {
       name,
       armored_public_key: armoredPublicKey,
@@ -1164,14 +1218,16 @@ const usersCreateGpgKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const usersGetGpgKeyForAuthenticatedUser = action({
   display: {
     label: "Users Get Gpg Key For Authenticated User",
     description: "Get a GPG key for the authenticated user",
   },
   perform: async (context, { connection, gpgKeyId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/gpg_keys/${gpgKeyId}`);
     return { data };
   },
@@ -1190,14 +1246,16 @@ const usersGetGpgKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const usersDeleteGpgKeyForAuthenticatedUser = action({
   display: {
     label: "Users Delete Gpg Key For Authenticated User",
     description: "Delete a GPG key for the authenticated user",
   },
   perform: async (context, { connection, gpgKeyId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/user/gpg_keys/${gpgKeyId}`);
     return { data };
   },
@@ -1216,14 +1274,16 @@ const usersDeleteGpgKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const appsListInstallationsForAuthenticatedUser = action({
   display: {
     label: "Apps List Installations For Authenticated User",
     description: "List app installations accessible to the user access token",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/installations`, {
       params: { per_page: perPage, page },
     });
@@ -1251,19 +1311,21 @@ const appsListInstallationsForAuthenticatedUser = action({
     },
   },
 });
-
 const appsListInstallationReposForAuthenticatedUser = action({
   display: {
     label: "Apps List Installation Repos For Authenticated User",
     description: "List repositories accessible to the user access token",
   },
   perform: async (context, { connection, installationId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/user/installations/${installationId}/repositories`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -1296,17 +1358,19 @@ const appsListInstallationReposForAuthenticatedUser = action({
     },
   },
 });
-
 const appsAddRepoToInstallationForAuthenticatedUser = action({
   display: {
     label: "Apps Add Repo To Installation For Authenticated User",
     description: "Add a repository to an app installation",
   },
   perform: async (context, { connection, installationId, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/user/installations/${installationId}/repositories/${repositoryId}`,
-      {}
+      {},
     );
     return { data };
   },
@@ -1332,16 +1396,18 @@ const appsAddRepoToInstallationForAuthenticatedUser = action({
     },
   },
 });
-
 const appsRemoveRepoFromInstallationForAuthenticatedUser = action({
   display: {
     label: "Apps Remove Repo From Installation For Authenticated User",
     description: "Remove a repository from an app installation",
   },
   perform: async (context, { connection, installationId, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/installations/${installationId}/repositories/${repositoryId}`
+      `/user/installations/${installationId}/repositories/${repositoryId}`,
     );
     return { data };
   },
@@ -1367,7 +1433,6 @@ const appsRemoveRepoFromInstallationForAuthenticatedUser = action({
     },
   },
 });
-
 const interactionsGetRestrictionsForAuthenticatedUser = action({
   display: {
     label: "Interactions Get Restrictions For Authenticated User",
@@ -1386,14 +1451,16 @@ const interactionsGetRestrictionsForAuthenticatedUser = action({
     },
   },
 });
-
 const interactionsSetRestrictionsForAuthenticatedUser = action({
   display: {
     label: "Interactions Set Restrictions For Authenticated User",
     description: "Set interaction restrictions for your public repositories",
   },
   perform: async (context, { connection, limit, expiry }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/user/interaction-limits`, {
       limit,
       expiry,
@@ -1437,7 +1504,6 @@ const interactionsSetRestrictionsForAuthenticatedUser = action({
     },
   },
 });
-
 const interactionsRemoveRestrictionsForAuthenticatedUser = action({
   display: {
     label: "Interactions Remove Restrictions For Authenticated User",
@@ -1457,7 +1523,6 @@ const interactionsRemoveRestrictionsForAuthenticatedUser = action({
     },
   },
 });
-
 const issuesListForAuthenticatedUser = action({
   display: {
     label: "Issues List For Authenticated User",
@@ -1465,9 +1530,22 @@ const issuesListForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, filter, state, labels, sort, direction, since, perPage, page }
+    {
+      connection,
+      filter,
+      state,
+      labels,
+      sort,
+      direction,
+      since,
+      perPage,
+      page,
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/issues`, {
       params: {
         filter,
@@ -1572,14 +1650,16 @@ const issuesListForAuthenticatedUser = action({
     },
   },
 });
-
 const usersListPublicSshKeysForAuthenticatedUser = action({
   display: {
     label: "Users List Public Ssh Keys For Authenticated User",
     description: "List public SSH keys for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/keys`, {
       params: { per_page: perPage, page },
     });
@@ -1607,14 +1687,16 @@ const usersListPublicSshKeysForAuthenticatedUser = action({
     },
   },
 });
-
 const usersCreatePublicSshKeyForAuthenticatedUser = action({
   display: {
     label: "Users Create Public Ssh Key For Authenticated User",
     description: "Create a public SSH key for the authenticated user",
   },
   perform: async (context, { connection, title, key }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/user/keys`, { title, key });
     return { data };
   },
@@ -1641,14 +1723,16 @@ const usersCreatePublicSshKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const usersGetPublicSshKeyForAuthenticatedUser = action({
   display: {
     label: "Users Get Public Ssh Key For Authenticated User",
     description: "Get a public SSH key for the authenticated user",
   },
   perform: async (context, { connection, keyId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/keys/${keyId}`);
     return { data };
   },
@@ -1667,14 +1751,16 @@ const usersGetPublicSshKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const usersDeletePublicSshKeyForAuthenticatedUser = action({
   display: {
     label: "Users Delete Public Ssh Key For Authenticated User",
     description: "Delete a public SSH key for the authenticated user",
   },
   perform: async (context, { connection, keyId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/user/keys/${keyId}`);
     return { data };
   },
@@ -1693,14 +1779,16 @@ const usersDeletePublicSshKeyForAuthenticatedUser = action({
     },
   },
 });
-
 const appsListSubscriptionsForAuthenticatedUser = action({
   display: {
     label: "Apps List Subscriptions For Authenticated User",
     description: "List subscriptions for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/marketplace_purchases`, {
       params: { per_page: perPage, page },
     });
@@ -1728,14 +1816,16 @@ const appsListSubscriptionsForAuthenticatedUser = action({
     },
   },
 });
-
 const appsListSubscriptionsForAuthenticatedUserStubbed = action({
   display: {
     label: "Apps List Subscriptions For Authenticated User Stubbed",
     description: "List subscriptions for the authenticated user (stubbed)",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/marketplace_purchases/stubbed`, {
       params: { per_page: perPage, page },
     });
@@ -1763,14 +1853,16 @@ const appsListSubscriptionsForAuthenticatedUserStubbed = action({
     },
   },
 });
-
 const orgsListMembershipsForAuthenticatedUser = action({
   display: {
     label: "Orgs List Memberships For Authenticated User",
     description: "List organization memberships for the authenticated user",
   },
   perform: async (context, { connection, state, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/memberships/orgs`, {
       params: { state, per_page: perPage, page },
     });
@@ -1809,14 +1901,16 @@ const orgsListMembershipsForAuthenticatedUser = action({
     },
   },
 });
-
 const orgsGetMembershipForAuthenticatedUser = action({
   display: {
     label: "Orgs Get Membership For Authenticated User",
     description: "Get an organization membership for the authenticated user",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/memberships/orgs/${org}`);
     return { data };
   },
@@ -1835,14 +1929,16 @@ const orgsGetMembershipForAuthenticatedUser = action({
     },
   },
 });
-
 const orgsUpdateMembershipForAuthenticatedUser = action({
   display: {
     label: "Orgs Update Membership For Authenticated User",
     description: "Update an organization membership for the authenticated user",
   },
   perform: async (context, { connection, org, state }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/user/memberships/orgs/${org}`, {
       state,
     });
@@ -1871,14 +1967,16 @@ const orgsUpdateMembershipForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsListForAuthenticatedUser = action({
   display: {
     label: "Migrations List For Authenticated User",
     description: "List user migrations",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/migrations`, {
       params: { per_page: perPage, page },
     });
@@ -1906,7 +2004,6 @@ const migrationsListForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsStartForAuthenticatedUser = action({
   display: {
     label: "Migrations Start For Authenticated User",
@@ -1925,9 +2022,12 @@ const migrationsStartForAuthenticatedUser = action({
       orgMetadataOnly,
       exclude,
       repositories,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/user/migrations`, {
       lock_repositories: lockRepositories,
       exclude_metadata: excludeMetadata,
@@ -2026,14 +2126,16 @@ const migrationsStartForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsGetStatusForAuthenticatedUser = action({
   display: {
     label: "Migrations Get Status For Authenticated User",
     description: "Get a user migration status",
   },
   perform: async (context, { connection, migrationId, exclude }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/migrations/${migrationId}`, {
       params: { exclude },
     });
@@ -2060,16 +2162,18 @@ const migrationsGetStatusForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsGetArchiveForAuthenticatedUser = action({
   display: {
     label: "Migrations Get Archive For Authenticated User",
     description: "Download a user migration archive",
   },
   perform: async (context, { connection, migrationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/user/migrations/${migrationId}/archive`
+      `/user/migrations/${migrationId}/archive`,
     );
     return { data };
   },
@@ -2088,16 +2192,18 @@ const migrationsGetArchiveForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsDeleteArchiveForAuthenticatedUser = action({
   display: {
     label: "Migrations Delete Archive For Authenticated User",
     description: "Delete a user migration archive",
   },
   perform: async (context, { connection, migrationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/migrations/${migrationId}/archive`
+      `/user/migrations/${migrationId}/archive`,
     );
     return { data };
   },
@@ -2116,16 +2222,18 @@ const migrationsDeleteArchiveForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsUnlockRepoForAuthenticatedUser = action({
   display: {
     label: "Migrations Unlock Repo For Authenticated User",
     description: "Unlock a user repository",
   },
   perform: async (context, { connection, migrationId, repoName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/migrations/${migrationId}/repos/${repoName}/lock`
+      `/user/migrations/${migrationId}/repos/${repoName}/lock`,
     );
     return { data };
   },
@@ -2151,19 +2259,21 @@ const migrationsUnlockRepoForAuthenticatedUser = action({
     },
   },
 });
-
 const migrationsListReposForAuthenticatedUser = action({
   display: {
     label: "Migrations List Repos For Authenticated User",
     description: "List repositories for a user migration",
   },
   perform: async (context, { connection, migrationId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/user/migrations/${migrationId}/repositories`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -2196,7 +2306,6 @@ const migrationsListReposForAuthenticatedUser = action({
     },
   },
 });
-
 const orgsListForAuthenticatedUser = action({
   display: {
     label: "Orgs List For Authenticated User",
@@ -2204,7 +2313,10 @@ const orgsListForAuthenticatedUser = action({
   },
   examplePayload: orgsListForAuthenticatedUserExamplePayload,
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/orgs`, {
       params: { per_page: perPage, page },
     });
@@ -2216,14 +2328,16 @@ const orgsListForAuthenticatedUser = action({
     page,
   },
 });
-
 const packagesListPackagesForAuthenticatedUser = action({
   display: {
     label: "Packages List Packages For Authenticated User",
     description: 'List packages for the authenticated user"s namespace',
   },
   perform: async (context, { connection, packageType, visibility }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/packages`, {
       params: { package_type: packageType, visibility },
     });
@@ -2264,16 +2378,18 @@ const packagesListPackagesForAuthenticatedUser = action({
     },
   },
 });
-
 const packagesGetPackageForAuthenticatedUser = action({
   display: {
     label: "Packages Get Package For Authenticated User",
     description: "Get a package for the authenticated user",
   },
   perform: async (context, { connection, packageType, packageName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/user/packages/${packageType}/${packageName}`
+      `/user/packages/${packageType}/${packageName}`,
     );
     return { data };
   },
@@ -2307,16 +2423,18 @@ const packagesGetPackageForAuthenticatedUser = action({
     },
   },
 });
-
 const packagesDeletePackageForAuthenticatedUser = action({
   display: {
     label: "Packages Delete Package For Authenticated User",
     description: "Delete a package for the authenticated user",
   },
   perform: async (context, { connection, packageType, packageName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/packages/${packageType}/${packageName}`
+      `/user/packages/${packageType}/${packageName}`,
     );
     return { data };
   },
@@ -2350,18 +2468,20 @@ const packagesDeletePackageForAuthenticatedUser = action({
     },
   },
 });
-
 const packagesRestorePackageForAuthenticatedUser = action({
   display: {
     label: "Packages Restore Package For Authenticated User",
     description: "Restore a package for the authenticated user",
   },
   perform: async (context, { connection, packageType, packageName, token }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/user/packages/${packageType}/${packageName}/restore`,
       {},
-      { params: { token } }
+      { params: { token } },
     );
     return { data };
   },
@@ -2402,7 +2522,6 @@ const packagesRestorePackageForAuthenticatedUser = action({
     },
   },
 });
-
 const packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser = action({
   display: {
     label:
@@ -2412,12 +2531,15 @@ const packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, page, perPage, state }
+    { connection, packageType, packageName, page, perPage, state },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/user/packages/${packageType}/${packageName}/versions`,
-      { params: { page, per_page: perPage, state } }
+      { params: { page, per_page: perPage, state } },
     );
     return { data };
   },
@@ -2477,7 +2599,6 @@ const packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser = action({
     },
   },
 });
-
 const packagesGetPackageVersionForAuthenticatedUser = action({
   display: {
     label: "Packages Get Package Version For Authenticated User",
@@ -2485,11 +2606,14 @@ const packagesGetPackageVersionForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, packageVersionId }
+    { connection, packageType, packageName, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/user/packages/${packageType}/${packageName}/versions/${packageVersionId}`
+      `/user/packages/${packageType}/${packageName}/versions/${packageVersionId}`,
     );
     return { data };
   },
@@ -2530,7 +2654,6 @@ const packagesGetPackageVersionForAuthenticatedUser = action({
     },
   },
 });
-
 const packagesDeletePackageVersionForAuthenticatedUser = action({
   display: {
     label: "Packages Delete Package Version For Authenticated User",
@@ -2538,11 +2661,14 @@ const packagesDeletePackageVersionForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, packageVersionId }
+    { connection, packageType, packageName, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/packages/${packageType}/${packageName}/versions/${packageVersionId}`
+      `/user/packages/${packageType}/${packageName}/versions/${packageVersionId}`,
     );
     return { data };
   },
@@ -2583,7 +2709,6 @@ const packagesDeletePackageVersionForAuthenticatedUser = action({
     },
   },
 });
-
 const packagesRestorePackageVersionForAuthenticatedUser = action({
   display: {
     label: "Packages Restore Package Version For Authenticated User",
@@ -2591,12 +2716,15 @@ const packagesRestorePackageVersionForAuthenticatedUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, packageVersionId }
+    { connection, packageType, packageName, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/user/packages/${packageType}/${packageName}/versions/${packageVersionId}/restore`,
-      {}
+      {},
     );
     return { data };
   },
@@ -2637,14 +2765,16 @@ const packagesRestorePackageVersionForAuthenticatedUser = action({
     },
   },
 });
-
 const projectsCreateForAuthenticatedUser = action({
   display: {
     label: "Projects Create For Authenticated User",
     description: "Create a user project",
   },
   perform: async (context, { connection, name, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/user/projects`, { name, body });
     return { data };
   },
@@ -2673,14 +2803,16 @@ const projectsCreateForAuthenticatedUser = action({
     },
   },
 });
-
 const usersListPublicEmailsForAuthenticatedUser = action({
   display: {
     label: "Users List Public Emails For Authenticated User",
     description: "List public email addresses for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/public_emails`, {
       params: { per_page: perPage, page },
     });
@@ -2708,7 +2840,6 @@ const usersListPublicEmailsForAuthenticatedUser = action({
     },
   },
 });
-
 const reposListForAuthenticatedUser = action({
   display: {
     label: "Repos List For Authenticated User",
@@ -2727,9 +2858,12 @@ const reposListForAuthenticatedUser = action({
       page,
       since,
       before,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/repos`, {
       params: {
         visibility,
@@ -2842,7 +2976,6 @@ const reposListForAuthenticatedUser = action({
     },
   },
 });
-
 const reposCreateForAuthenticatedUser = action({
   display: {
     label: "Repos Create For Authenticated User",
@@ -2870,9 +3003,12 @@ const reposCreateForAuthenticatedUser = action({
       deleteBranchOnMerge,
       hasDownloads,
       isTemplate,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/user/repos`, {
       name,
       description,
@@ -3057,14 +3193,16 @@ const reposCreateForAuthenticatedUser = action({
     },
   },
 });
-
 const reposListInvitationsForAuthenticatedUser = action({
   display: {
     label: "Repos List Invitations For Authenticated User",
     description: "List repository invitations for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/repository_invitations`, {
       params: { per_page: perPage, page },
     });
@@ -3092,17 +3230,19 @@ const reposListInvitationsForAuthenticatedUser = action({
     },
   },
 });
-
 const reposAcceptInvitationForAuthenticatedUser = action({
   display: {
     label: "Repos Accept Invitation For Authenticated User",
     description: "Accept a repository invitation",
   },
   perform: async (context, { connection, invitationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/user/repository_invitations/${invitationId}`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3121,16 +3261,18 @@ const reposAcceptInvitationForAuthenticatedUser = action({
     },
   },
 });
-
 const reposDeclineInvitationForAuthenticatedUser = action({
   display: {
     label: "Repos Decline Invitation For Authenticated User",
     description: "Decline a repository invitation",
   },
   perform: async (context, { connection, invitationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/user/repository_invitations/${invitationId}`
+      `/user/repository_invitations/${invitationId}`,
     );
     return { data };
   },
@@ -3149,14 +3291,16 @@ const reposDeclineInvitationForAuthenticatedUser = action({
     },
   },
 });
-
 const activityListReposStarredByAuthenticatedUser = action({
   display: {
     label: "Activity List Repos Starred By Authenticated User",
     description: "List repositories starred by the authenticated user",
   },
   perform: async (context, { connection, sort, direction, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/starred`, {
       params: { sort, direction, per_page: perPage, page },
     });
@@ -3208,7 +3352,6 @@ const activityListReposStarredByAuthenticatedUser = action({
     },
   },
 });
-
 const activityCheckRepoIsStarredByAuthenticatedUser = action({
   display: {
     label: "Activity Check Repo Is Starred By Authenticated User",
@@ -3229,7 +3372,6 @@ const activityCheckRepoIsStarredByAuthenticatedUser = action({
     repo,
   },
 });
-
 const activityStarRepoForAuthenticatedUser = action({
   display: {
     label: "Activity Star Repo For Authenticated User",
@@ -3250,7 +3392,6 @@ const activityStarRepoForAuthenticatedUser = action({
     repo,
   },
 });
-
 const activityUnstarRepoForAuthenticatedUser = action({
   display: {
     label: "Activity Unstar Repo For Authenticated User",
@@ -3271,14 +3412,16 @@ const activityUnstarRepoForAuthenticatedUser = action({
     repo,
   },
 });
-
 const activityListWatchedReposForAuthenticatedUser = action({
   display: {
     label: "Activity List Watched Repos For Authenticated User",
     description: "List repositories watched by the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/subscriptions`, {
       params: { per_page: perPage, page },
     });
@@ -3306,14 +3449,16 @@ const activityListWatchedReposForAuthenticatedUser = action({
     },
   },
 });
-
 const teamsListForAuthenticatedUser = action({
   display: {
     label: "Teams List For Authenticated User",
     description: "List teams for the authenticated user",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/user/teams`, {
       params: { per_page: perPage, page },
     });
@@ -3341,7 +3486,6 @@ const teamsListForAuthenticatedUser = action({
     },
   },
 });
-
 export default {
   usersGetAuthenticated,
   usersUpdateAuthenticated,

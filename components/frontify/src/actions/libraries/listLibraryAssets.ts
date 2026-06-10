@@ -135,7 +135,6 @@ export const listLibraryAssetsQuery = gql`
     }
   }
 `;
-
 export const listLibraryAssets = action({
   display: {
     label: "List Library Assets",
@@ -152,11 +151,11 @@ export const listLibraryAssets = action({
       assetExternalId,
       assetSearch,
     },
-  ): Promise<{ data: ListLibraryAssetsResponse }> => {
+  ): Promise<{
+    data: ListLibraryAssetsResponse;
+  }> => {
     const query = { externalId: assetExternalId, search: assetSearch };
-
     const client = createClient({ connection, debug: context.debug.enabled });
-
     if (fetchAll) {
       const hasNextPath = ["library", "assets", "hasNextPage"];
       const responses: ListLibraryAssetsResponse[] = await graphqlFetchAll({
@@ -165,17 +164,16 @@ export const listLibraryAssets = action({
         params: { libraryId, query },
         hasNextPath,
       });
-
       if (responses.length === 1) {
         return { data: responses[0] };
       }
-
       const baseResponse = responses.slice(-1)[0];
       const combinedAssets = responses.reduce((combined, response) => {
         return combined.concat(response.library.assets.items);
       }, []);
-
-      const formattedResponse: { data: ListLibraryAssetsResponse } = {
+      const formattedResponse: {
+        data: ListLibraryAssetsResponse;
+      } = {
         data: {
           library: {
             ...baseResponse.library,
@@ -186,15 +184,12 @@ export const listLibraryAssets = action({
           },
         },
       };
-
       return formattedResponse;
     }
-
     const response: ListLibraryAssetsResponse = await client.request(
       listLibraryAssetsQuery,
       { libraryId, page, limit, query },
     );
-
     return {
       data: response,
     };

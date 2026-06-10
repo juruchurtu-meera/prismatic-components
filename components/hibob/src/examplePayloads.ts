@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const createEmployeeExamplePayload = {
   data: {
     fullName: "Jane Olivia Smith",
@@ -53,12 +42,6 @@ export const createEmployeeExamplePayload = {
     firstName: "Jane",
   },
 };
-
-
-
-
-
-
 export const searchEmployeeExamplePayload = {
   data: {
     employees: [
@@ -107,12 +90,6 @@ export const searchEmployeeExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const readEmployeeFieldsExamplePayload = {
   data: {
     employees: [
@@ -161,12 +138,6 @@ export const readEmployeeFieldsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const downloadEmployeeDocumentsExamplePayload = {
   data: {
     documents: [
@@ -178,12 +149,6 @@ export const downloadEmployeeDocumentsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const uploadFileFromUrlExamplePayload = {
   data: {
     id: 48291,
@@ -204,35 +169,17 @@ export const uploadFileFromUrlExamplePayload = {
     actionCompleteDate: "2026-03-15T10:30:02.000Z",
   },
 };
-
-
-
-
-
-
 export const uploadFileToFolderExamplePayload = {
   data: {
     id: 48292,
   },
 };
-
-
-
-
-
-
 export const deleteFileFromFolderExamplePayload = {
   data: {
     success: true,
     message: "Document doc_123 deleted successfully",
   },
 };
-
-
-
-
-
-
 export const listOpenTasksExamplePayload = {
   data: {
     tasks: [
@@ -267,12 +214,6 @@ export const listOpenTasksExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const getEmployeeTasksExamplePayload = {
   data: {
     tasks: [
@@ -307,23 +248,11 @@ export const getEmployeeTasksExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const completeTaskExamplePayload = {
   data: {
     toDosUpdated: 1,
   },
 };
-
-
-
-
-
-
 export const getCompanyListExamplePayload = {
   data: {
     name: "Department",
@@ -353,12 +282,6 @@ export const getCompanyListExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const listCompanyListsExamplePayload = {
   data: [
     {
@@ -390,28 +313,12 @@ export const listCompanyListsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const updateFieldExamplePayload = {
   data: {
     success: true,
     message: "Field updated successfully",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const createCustomTableEntryExamplePayload = {
   data: {
     id: "entry_a1b2c3d4e5",
@@ -427,55 +334,23 @@ export const createCustomTableEntryExamplePayload = {
     updatedAt: "2026-03-15T10:00:00.000Z",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const addListItemExamplePayload = {
   data: {
     id: "102941",
   },
 };
-
-
-
-
-
-
 export const updateListItemExamplePayload = {
   data: {
     success: true,
     message: "List item updated successfully",
   },
 };
-
-
-
-
-
-
 export const updateCustomTableEntryExamplePayload = {
   data: {
     success: true,
     message: "Custom table entry updated successfully",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const getCustomTableMetadataExamplePayload = {
   data: {
     id: "category_1710000000__table_1710000001",
@@ -496,67 +371,29 @@ export const getCustomTableMetadataExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const deleteCustomTableEntryExamplePayload = {
   data: {
     success: true,
     message: "Custom table entry entry_a1b2c3d4e5 deleted successfully",
   },
 };
-
-
-
-
-
-
 export const deleteFieldExamplePayload = {
   data: {
     success: true,
     message: "Field custom_field_123 deleted successfully",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const createNewFieldExamplePayload = {
   data: {
     id: "root.custom.custom_field_certification_level",
   },
 };
-
-
-
-
-
-
 export const deleteListItemExamplePayload = {
   data: {
     success: true,
     message: "List item item_123 deleted successfully",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const listEmployeeFieldsExamplePayload = {
   data: [
     {
@@ -575,12 +412,6 @@ export const listEmployeeFieldsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const listFoldersExamplePayload = {
   data: [
     {
@@ -596,48 +427,24 @@ export const listFoldersExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const revokeEmployeeAccessExamplePayload = {
   data: {
     success: true,
     message: "Employee access revoked successfully",
   },
 };
-
-
-
-
-
-
 export const terminateEmployeeExamplePayload = {
   data: {
     success: true,
     message: "Employee terminated successfully",
   },
 };
-
-
-
-
-
-
 export const updateEmployeeExamplePayload = {
   data: {
     success: true,
     message: "Employee updated successfully",
   },
 };
-
-
-
-
-
-
 export const updateEmployeeEmailExamplePayload = {
   data: {
     success: true,

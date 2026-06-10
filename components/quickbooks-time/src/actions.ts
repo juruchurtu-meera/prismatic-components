@@ -28,7 +28,6 @@ import {
   userName,
   userNameReq,
 } from "./inputs";
-
 interface RequestProps {
   object: string;
 }
@@ -44,19 +43,28 @@ interface PutRequestProps extends RequestProps {
 interface PostRequestProps extends RequestProps {
   data: Record<string, unknown>;
 }
-
-const filterQueryParams = (params: Record<string, string>): Record<string, string> => {
-  return Object.fromEntries(Object.entries(params).filter(([, v]) => Boolean(v)));
+const filterQueryParams = (
+  params: Record<string, string>,
+): Record<string, string> => {
+  return Object.fromEntries(
+    Object.entries(params).filter(([, v]) => Boolean(v)),
+  );
 };
 const buildPayload = (
-  fieldValuesInput: { key: string; value: unknown }[],
+  fieldValuesInput: {
+    key: string;
+    value: unknown;
+  }[],
 ): Record<string, unknown> => {
   return (fieldValuesInput || []).reduce(
     (results, { key, value }) => ({ ...results, [key]: value }),
     {},
   );
 };
-const constructFullUrl = (object: string, queryParams?: Record<string, string>): string => {
+const constructFullUrl = (
+  object: string,
+  queryParams?: Record<string, string>,
+): string => {
   let url = object;
   if (queryParams) {
     const filteredParams = filterQueryParams(queryParams);
@@ -64,52 +72,63 @@ const constructFullUrl = (object: string, queryParams?: Record<string, string>):
       url = urljoin(url, `?${stringify(filteredParams)}`);
     }
   }
-
   return url;
 };
-const createRequest = async (client: HttpClient, requestConfig: PostRequestProps) => {
+const createRequest = async (
+  client: HttpClient,
+  requestConfig: PostRequestProps,
+) => {
   const { object, data } = requestConfig;
   const url = constructFullUrl(object);
   const response = await client.post(url, { data: [data] });
   const { results } = await response.data;
   return results;
 };
-const deleteRequest = async (client: HttpClient, requestConfig: DeleteRequestProps) => {
+const deleteRequest = async (
+  client: HttpClient,
+  requestConfig: DeleteRequestProps,
+) => {
   const { object, queryParams } = requestConfig;
   const url = constructFullUrl(object, queryParams);
   const response = await client.delete(url);
   const { results } = await response.data;
   return results;
 };
-const updateRequest = async (client: HttpClient, requestConfig: PutRequestProps) => {
+const updateRequest = async (
+  client: HttpClient,
+  requestConfig: PutRequestProps,
+) => {
   const { object, data } = requestConfig;
   const url = constructFullUrl(object);
   const response = await client.put(url, { data: [data] });
   const { results } = await response.data;
   return results;
 };
-
-const getRequest = async (client: HttpClient, requestConfig: GetRequestProps) => {
+const getRequest = async (
+  client: HttpClient,
+  requestConfig: GetRequestProps,
+) => {
   const { object, queryParams } = requestConfig;
   const url = constructFullUrl(object, queryParams);
   const response = await client.get(url);
   const { results } = await response.data;
   return results;
 };
-
 export const getUsers = action({
   display: {
     label: "Get Users",
     description: "Gets a list of Users with optional filters",
   },
-  perform: async (context, { connection, active, perPage, page, additionalParams }) => {
+  perform: async (
+    context,
+    { connection, active, perPage, page, additionalParams },
+  ) => {
     const queryParams = {
       active: util.types.toString(active),
       per_page: util.types.toString(perPage),
       page: util.types.toString(page),
       ...buildPayload(additionalParams),
     };
-
     const client = createClient(connection, context.debug.enabled);
     const results = await getRequest(client, {
       object: "users",
@@ -121,7 +140,6 @@ export const getUsers = action({
   },
   inputs: { connection, active, perPage, page, additionalParams },
 });
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -130,12 +148,13 @@ export const updateUser = action({
   perform: async (context, { connection, id, userName, additionalParams }) => {
     if (!util.types.isInt(id) && !util.types.toString(userName))
       throw new Error("Id or Username must be supplied.");
-
     const client = createClient(connection, context.debug.enabled);
     const results = await updateRequest(client, {
       object: "users",
       data: {
-        [`${util.types.isInt(id) ? "id" : "username"}`]: util.types.isInt(id) ? id : userName,
+        [`${util.types.isInt(id) ? "id" : "username"}`]: util.types.isInt(id)
+          ? id
+          : userName,
         ...buildPayload(additionalParams),
       },
     });
@@ -145,7 +164,6 @@ export const updateUser = action({
   },
   inputs: { connection, id, userName, additionalParams },
 });
-
 export const createUser = action({
   display: {
     label: "Create User",
@@ -153,13 +171,21 @@ export const createUser = action({
   },
   perform: async (
     context,
-    { connection, userNameReq: userName, firstName, lastName, additionalParams },
+    {
+      connection,
+      userNameReq: userName,
+      firstName,
+      lastName,
+      additionalParams,
+    },
   ) => {
     const client = createClient(connection, context.debug.enabled);
     const results = await createRequest(client, {
       object: "users",
       data: {
-        [`${util.types.isInt(id) ? "id" : "username"}`]: util.types.isInt(id) ? id : userName,
+        [`${util.types.isInt(id) ? "id" : "username"}`]: util.types.isInt(id)
+          ? id
+          : userName,
         first_name: firstName,
         last_name: lastName,
         ...buildPayload(additionalParams),
@@ -171,20 +197,21 @@ export const createUser = action({
   },
   inputs: { connection, userNameReq, firstName, lastName, additionalParams },
 });
-
 export const getJobCodes = action({
   display: {
     label: "Get Job Codes",
     description: "Gets a list of Job Codes",
   },
-  perform: async (context, { connection, active, perPage, page, additionalParams }) => {
+  perform: async (
+    context,
+    { connection, active, perPage, page, additionalParams },
+  ) => {
     const queryParams = {
       active: util.types.toString(active),
       per_page: util.types.toString(perPage),
       page: util.types.toString(page),
       ...buildPayload(additionalParams),
     };
-
     const client = createClient(connection, context.debug.enabled);
     const results = await getRequest(client, {
       object: "jobcodes",
@@ -201,15 +228,19 @@ export const getJobCodeAssignments = action({
     label: "Get Job Code Assignments",
     description: "Gets a list of Job Codes and their associated Users",
   },
-  perform: async (context, { connection, active, perPage, page, userIds, additionalParams }) => {
+  perform: async (
+    context,
+    { connection, active, perPage, page, userIds, additionalParams },
+  ) => {
     const queryParams = {
       active: util.types.toString(active),
       per_page: util.types.toString(perPage),
       page: util.types.toString(page),
-      user_ids: util.types.toString(userIds) ? util.types.toString(userIds) : "",
+      user_ids: util.types.toString(userIds)
+        ? util.types.toString(userIds)
+        : "",
       ...buildPayload(additionalParams),
     };
-
     const client = createClient(connection, context.debug.enabled);
     const results = await getRequest(client, {
       object: "jobcode_assignments",
@@ -221,7 +252,6 @@ export const getJobCodeAssignments = action({
   },
   inputs: { connection, active, perPage, page, userIds, additionalParams },
 });
-
 export const getTimeSheets = action({
   display: {
     label: "Get Time Sheets",
@@ -245,13 +275,16 @@ export const getTimeSheets = action({
       active: util.types.toString(active),
       per_page: util.types.toString(perPage),
       page: util.types.toString(page),
-      user_ids: util.types.toString(userIds) ? util.types.toString(userIds) : "",
-      jobcode_ids: util.types.toString(jobCodeIds) ? util.types.toString(jobCodeIds) : "",
+      user_ids: util.types.toString(userIds)
+        ? util.types.toString(userIds)
+        : "",
+      jobcode_ids: util.types.toString(jobCodeIds)
+        ? util.types.toString(jobCodeIds)
+        : "",
       start_date: util.types.toString(startDate),
       end_date: util.types.toString(endDate),
       ...buildPayload(additionalParams),
     };
-
     const client = createClient(connection, context.debug.enabled);
     const results = await getRequest(client, {
       object: "timesheets",
@@ -273,7 +306,6 @@ export const getTimeSheets = action({
     additionalParams,
   },
 });
-
 export const createTimesheet = action({
   display: {
     label: "Create Timesheet",
@@ -315,7 +347,6 @@ export const createTimesheet = action({
     additionalParams,
   },
 });
-
 export const updateTimesheet = action({
   display: {
     label: "Update Timesheet",
@@ -323,7 +354,14 @@ export const updateTimesheet = action({
   },
   perform: async (
     context,
-    { connection, timesheetId: id, jobcodeId, startDateISO, endDateISO, additionalParams },
+    {
+      connection,
+      timesheetId: id,
+      jobcodeId,
+      startDateISO,
+      endDateISO,
+      additionalParams,
+    },
   ) => {
     const client = createClient(connection, context.debug.enabled);
     const results = await updateRequest(client, {
@@ -349,7 +387,6 @@ export const updateTimesheet = action({
     additionalParams,
   },
 });
-
 export const deleteTimeSheet = action({
   display: {
     label: "Delete Timesheet",
@@ -369,7 +406,6 @@ export const deleteTimeSheet = action({
   },
   inputs: { connection, jobCodeIdsReq },
 });
-
 export default {
   getUsers,
   updateUser,

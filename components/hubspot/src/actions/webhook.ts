@@ -15,12 +15,15 @@ import {
   subscriptionId,
   timeout,
 } from "../inputs";
-import { checkDeveloperApiKeyAndAppId, deleteAllAppSubscriptions } from "../util";
-
+import {
+  checkDeveloperApiKeyAndAppId,
+  deleteAllAppSubscriptions,
+} from "../util";
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",
-    description: "Retrieve a list of all webhook subscriptions for the HubSpot app.",
+    description:
+      "Retrieve a list of all webhook subscriptions for the HubSpot app.",
   },
   perform: async (context, { hubspotConnection, timeout }) => {
     const debugRequest = context.debug.enabled;
@@ -32,12 +35,11 @@ export const listWebhooks = action({
       },
       false,
     );
-    const { developerApiKey, appId } = checkDeveloperApiKeyAndAppId(hubspotConnection);
-    
+    const { developerApiKey, appId } =
+      checkDeveloperApiKeyAndAppId(hubspotConnection);
     const { data } = await client.get(`/webhooks/v3/${appId}/subscriptions`, {
       params: { hapikey: developerApiKey },
     });
-
     return { data };
   },
   inputs: {
@@ -46,7 +48,6 @@ export const listWebhooks = action({
   },
   examplePayload: listWebhooksPayload,
 });
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
@@ -66,8 +67,8 @@ export const createWebhook = action({
       },
       false,
     );
-    const { developerApiKey, appId } = checkDeveloperApiKeyAndAppId(hubspotConnection);
-
+    const { developerApiKey, appId } =
+      checkDeveloperApiKeyAndAppId(hubspotConnection);
     const { data } = await client.post(
       `/webhooks/v3/${appId}/subscriptions`,
       {
@@ -79,7 +80,6 @@ export const createWebhook = action({
         params: { hapikey: developerApiKey },
       },
     );
-
     return { data };
   },
   inputs: {
@@ -91,7 +91,6 @@ export const createWebhook = action({
   },
   examplePayload: createWebhookPayload,
 });
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",
@@ -107,12 +106,14 @@ export const deleteWebhook = action({
       },
       false,
     );
-    const { developerApiKey, appId } = checkDeveloperApiKeyAndAppId(hubspotConnection);
-
-    const { data } = await client.delete(`/webhooks/v3/${appId}/subscriptions/${subscriptionId}`, {
-      params: { hapikey: developerApiKey },
-    });
-
+    const { developerApiKey, appId } =
+      checkDeveloperApiKeyAndAppId(hubspotConnection);
+    const { data } = await client.delete(
+      `/webhooks/v3/${appId}/subscriptions/${subscriptionId}`,
+      {
+        params: { hapikey: developerApiKey },
+      },
+    );
     return { data };
   },
   inputs: {
@@ -122,7 +123,6 @@ export const deleteWebhook = action({
   },
   examplePayload: deleteWebhookPayload,
 });
-
 export const deleteAllWebhooks = action({
   display: {
     label: "Delete All Instanced Webhooks",
@@ -138,11 +138,9 @@ export const deleteAllWebhooks = action({
       },
       false,
     );
-
-    const { developerApiKey, appId } = checkDeveloperApiKeyAndAppId(hubspotConnection);
-
+    const { developerApiKey, appId } =
+      checkDeveloperApiKeyAndAppId(hubspotConnection);
     await deleteAllAppSubscriptions(client, appId, developerApiKey);
-
     return {
       data: {
         message: SUCCESS_MESSAGE,
@@ -155,7 +153,6 @@ export const deleteAllWebhooks = action({
   },
   examplePayload: deleteAllWebhooksPayload,
 });
-
 export default {
   listWebhooks,
   createWebhook,

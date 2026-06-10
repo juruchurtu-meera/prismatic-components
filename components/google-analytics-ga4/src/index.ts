@@ -4,10 +4,10 @@ import actions from "./actions";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "google-analytics-ga4",
-  documentationUrl: "https://prismatic.io/docs/components/google-analytics-ga4/",
+  documentationUrl:
+    "https://prismatic.io/docs/components/google-analytics-ga4/",
   public: true,
   display: {
     label: "Google Analytics - GA4",

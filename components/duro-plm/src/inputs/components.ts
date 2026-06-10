@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { connection, first } from "./common";
 import { cleanStringInput } from "../util";
-
 const libraryType = input({
   label: "Library Type",
   comments:
@@ -22,7 +21,6 @@ const libraryType = input({
     },
   ],
 });
-
 const componentId = input({
   label: "Component ID",
   comments: "The unique identifier for the component to retrieve.",
@@ -33,9 +31,7 @@ const componentId = input({
   clean: cleanStringInput,
   dataSource: "selectComponent",
 });
-
 export const listComponentsInputs = { connection, libraryType, first };
-
 export const getComponentByIdInputs = {
   connection,
   componentId,

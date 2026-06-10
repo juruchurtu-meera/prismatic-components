@@ -15,7 +15,6 @@ import {
   secondaryEmails,
   workPhoneNumber,
 } from "./common";
-
 export const updateRequesterInputs = {
   connection,
   requesterId: input({

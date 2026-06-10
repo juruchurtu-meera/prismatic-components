@@ -1,8 +1,3 @@
-
-
-
-
-
 import { input } from "@prismatic-io/spectral";
 import {
   activityIdInput,
@@ -13,7 +8,6 @@ import {
   sortDirection,
 } from "./common";
 import { cleanNumber, cleanString } from "../util";
-
 const filterIdOptional = input({
   label: "Filter ID",
   type: "string",
@@ -24,7 +18,6 @@ const filterIdOptional = input({
   example: "123",
   placeholder: "Enter Filter ID",
 });
-
 const updatedSince = input({
   label: "Updated Since",
   type: "string",
@@ -35,7 +28,6 @@ const updatedSince = input({
   example: "2024-01-01T10:00:00Z",
   placeholder: "Enter date (ISO 8601 format)",
 });
-
 const updatedUntil = input({
   label: "Updated Until",
   type: "string",
@@ -46,7 +38,6 @@ const updatedUntil = input({
   example: "2024-12-31T23:59:59Z",
   placeholder: "Enter date (ISO 8601 format)",
 });
-
 export const getActivitiesInputs = {
   connection: connectionInput,
   limit: paginationLimitInput,
@@ -57,12 +48,10 @@ export const getActivitiesInputs = {
   sortBy,
   sortDirection: { ...sortDirection, default: "desc" },
 };
-
 export const deleteActivityInputs = {
   connection: connectionInput,
   id: activityIdInput,
 };
-
 export const getActivityInputs = {
   connection: connectionInput,
   id: activityIdInput,

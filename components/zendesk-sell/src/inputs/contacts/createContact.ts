@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const createContactInputs = {
   connection,
   name: input({
@@ -13,7 +12,6 @@ export const createContactInputs = {
     required: true,
     clean: util.types.toString,
   }),
-
   firstName: input({
     label: "First Name",
     comments:
@@ -24,7 +22,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   lastName: input({
     label: "Last Name",
     comments:
@@ -35,7 +32,6 @@ export const createContactInputs = {
     required: true,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     comments:
@@ -46,7 +42,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   isOrganization: input({
     label: "Is Organization",
     comments:
@@ -62,7 +57,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   contactId: input({
     label: "Contact ID",
     comments:
@@ -74,7 +68,6 @@ export const createContactInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   parentOrganizationId: input({
     label: "Parent Organization ID",
     comments:
@@ -86,7 +79,6 @@ export const createContactInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   customerStatus: input({
     label: "Customer Status",
     comments:
@@ -97,7 +89,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   prospectStatus: input({
     label: "Prospect Status",
     comments:
@@ -108,7 +99,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   title: input({
     label: "Title",
     comments: "Job title of the contact.",
@@ -118,7 +108,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   description: input({
     label: "Description",
     comments: "Additional notes or details about the contact.",
@@ -128,7 +117,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   industry: input({
     label: "Industry",
     comments: "Industry classification of the contact.",
@@ -138,7 +126,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   website: input({
     label: "Website",
     comments: "Website URL of the contact.",
@@ -148,7 +135,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   email: input({
     label: "Email",
     comments: "Email address of the contact.",
@@ -158,7 +144,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   phone: input({
     label: "Phone",
     comments: "Phone number of the contact.",
@@ -168,7 +153,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   mobile: input({
     label: "Mobile",
     comments: "Mobile phone number of the contact.",
@@ -178,7 +162,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   fax: input({
     label: "Fax",
     comments: "Fax number of the contact.",
@@ -188,7 +171,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   twitter: input({
     label: "Twitter",
     comments: "Twitter username of the contact.",
@@ -198,7 +180,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   facebook: input({
     label: "Facebook",
     comments: "Facebook username of the contact.",
@@ -208,7 +189,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   linkedin: input({
     label: "LinkedIn",
     comments: "LinkedIn username of the contact.",
@@ -218,7 +198,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   skype: input({
     label: "Skype",
     comments: "Skype username of the contact.",
@@ -228,7 +207,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   address: input({
     label: "Address",
     comments: "Physical address of the contact.",
@@ -248,7 +226,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   billingAddress: input({
     label: "Billing Address",
     comments:
@@ -269,7 +246,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   shippingAddress: input({
     label: "Shipping Address",
     comments:
@@ -290,7 +266,6 @@ export const createContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   tags: input({
     label: "Tag",
     comments:
@@ -301,7 +276,6 @@ export const createContactInputs = {
     example: '["contractor", "vip"]',
     required: false,
   }),
-
   customFields: input({
     label: "Custom Field",
     type: "string",

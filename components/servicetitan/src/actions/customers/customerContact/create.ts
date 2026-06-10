@@ -8,7 +8,6 @@ import {
   customerId,
   memo,
 } from "../../../inputs";
-
 export const createCustomerContact = action({
   display: {
     label: "Create Customer Contact",

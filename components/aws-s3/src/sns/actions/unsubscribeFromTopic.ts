@@ -4,11 +4,11 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createSNSClient } from "../../auth";
 import { unsubscribeFromTopicPayload } from "../../examplePayloads";
 import { accessKeyInput, subscriptionArn } from "../../inputs";
-
 export const unsubscribeFromTopic = action({
   display: {
     label: "Unsubscribe from a SNS Topic",
-    description: "Unsubscribe from an Amazon SNS Topic for S3 Event Notifications",
+    description:
+      "Unsubscribe from an Amazon SNS Topic for S3 Event Notifications",
   },
   perform: async (
     context,

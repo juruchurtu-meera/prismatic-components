@@ -9,7 +9,6 @@ import {
   stringifyResult,
 } from "../inputs";
 import { getApiKeyManager } from "../utils";
-
 export const searchItems = action({
   display: {
     label: "Search Items",

@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { connection, instanceUrlInput, sysparmQuery } from "../inputs";
 import { getAllTables } from "../util";
-
 export const selectTable = dataSource({
   display: {
     label: "Select Table",
@@ -24,7 +23,6 @@ export const selectTable = dataSource({
         },
         debug: false,
       })) || [];
-
     const result = allTables.map(({ sys_id, label }) => ({
       label,
       key: sys_id,

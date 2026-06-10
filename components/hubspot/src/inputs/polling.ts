@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -8,7 +7,6 @@ export const showNewRecords = input({
   comments: "When true, includes new records in the results.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",

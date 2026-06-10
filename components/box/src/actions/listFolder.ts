@@ -14,7 +14,6 @@ import {
   listFolderExamplePayload,
   listFolderWithPaginationExamplePayload,
 } from "../examplePayloads";
-
 export const listFolder = action({
   display: {
     label: "List Folder (Deprecated)",
@@ -30,14 +29,10 @@ export const listFolder = action({
       client,
       util.types.toString(params.path),
     );
-
-    
     const { id, type, name } = pathEntries.slice(-1)[0];
-
     if (type !== "folder") {
       throw Error(`'${name}' is not a folder`);
     }
-
     const allEntries = await getFolderEntries({
       client,
       id,
@@ -45,7 +40,6 @@ export const listFolder = action({
       marker: util.types.toString(params.marker) || undefined,
       offset: util.types.toInt(params.offset) || undefined,
     });
-
     return {
       data: allEntries,
     };
@@ -53,7 +47,6 @@ export const listFolder = action({
   inputs: { path, limit, marker, offset, boxConnection: connectionInput },
   examplePayload: listFolderExamplePayload,
 });
-
 export const listFolderWithPagination = action({
   display: {
     label: "List Folder",
@@ -67,13 +60,10 @@ export const listFolderWithPagination = action({
       client,
       util.types.toString(params.path),
     );
-
     const { id, type, name } = pathEntries.slice(-1)[0];
-
     if (type !== "folder") {
       throw Error(`'${name}' is not a folder`);
     }
-
     if (params.fetchAll) {
       const allEntries = await getFolderEntries({
         client,
@@ -83,7 +73,6 @@ export const listFolderWithPagination = action({
         offset: 0,
         fields: params.fields,
       });
-
       return {
         data: {
           entries: allEntries,
@@ -91,7 +80,6 @@ export const listFolderWithPagination = action({
         },
       };
     }
-
     const { limit, next_marker, entries } = await client.folders.getItems(id, {
       usemarker: "true",
       marker: util.types.toString(params.marker) || undefined,
@@ -99,7 +87,6 @@ export const listFolderWithPagination = action({
       offset: util.types.toInt(params.offset) || undefined,
       fields: params.fields,
     });
-
     return {
       data: {
         entries,

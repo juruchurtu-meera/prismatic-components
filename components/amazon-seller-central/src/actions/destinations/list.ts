@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listDestinationsExamplePayload } from "../../examplePayloads/notifications";
 import { connectionInput } from "../../inputs";
-
 export const listDestinations = action({
   display: {
     label: "List Destinations",

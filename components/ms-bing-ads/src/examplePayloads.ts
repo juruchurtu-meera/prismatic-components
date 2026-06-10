@@ -10,7 +10,6 @@ import type { SearchAccountsResponse } from "./actions/searchAccounts";
 import type { GetCustomerResponse } from "./actions/getCustomer";
 import type { SendUserInvitationResponse } from "./actions/sendUserInvitation";
 import type { AddClientLinksResponse } from "./actions/addClientLinks";
-
 export const getAccountsInfoExamplePayload: GetAccountsInfoResponse = {
   AccountsInfo: {
     AccountInfo: [
@@ -29,7 +28,6 @@ export const getAccountsInfoExamplePayload: GetAccountsInfoResponse = {
     ],
   },
 };
-
 export const getCustomersInfoExamplePayload: GetCustomersInfoResponse = {
   CustomersInfo: {
     CustomerInfo: [
@@ -44,7 +42,6 @@ export const getCustomersInfoExamplePayload: GetCustomersInfoResponse = {
     ],
   },
 };
-
 export const searchClientLinksExamplePayload: SearchClientLinksResponse = {
   ClientLinks: {
     ClientLink: [
@@ -93,7 +90,6 @@ export const searchClientLinksExamplePayload: SearchClientLinksResponse = {
     ],
   },
 };
-
 export const addClientLinksExamplePayload: AddClientLinksResponse = {
   OperationErrors: {
     OperationError: [
@@ -116,7 +112,6 @@ export const addClientLinksExamplePayload: AddClientLinksResponse = {
     },
   },
 };
-
 export const updateClientLinksExamplePayload: AddClientLinksResponse = {
   OperationErrors: {
     OperationError: [
@@ -139,7 +134,6 @@ export const updateClientLinksExamplePayload: AddClientLinksResponse = {
     },
   },
 };
-
 export const addOfflineConversionGoalExamplePayload: AddClientLinksResponse = {
   OperationErrors: {
     OperationError: [
@@ -163,7 +157,6 @@ export const addOfflineConversionGoalExamplePayload: AddClientLinksResponse = {
     },
   },
 };
-
 export const applyOfflineConversionsExamplePayload: AddClientLinksResponse = {
   OperationErrors: {
     OperationError: [
@@ -187,11 +180,9 @@ export const applyOfflineConversionsExamplePayload: AddClientLinksResponse = {
     },
   },
 };
-
 export const sendUserInvitationExamplePayload: SendUserInvitationResponse = {
   UserInvitationId: 134015178,
 };
-
 export const searchAccountsExamplePayload: SearchAccountsResponse = {
   Accounts: {
     AdvertiserAccount: [
@@ -247,7 +238,6 @@ export const searchAccountsExamplePayload: SearchAccountsResponse = {
     ],
   },
 };
-
 export const getCustomerExamplePayload: GetCustomerResponse = {
   Customer: {
     CustomerFinancialStatus: "ClearFinancialStatus",
@@ -282,7 +272,6 @@ export const getCustomerExamplePayload: GetCustomerResponse = {
     },
   },
 };
-
 export const getLinkedAccountsAndCustomersInfoExamplePayload: GetLinkedAccountsAndCustomersInfoResponse =
   {
     AccountsInfo: {
@@ -310,13 +299,11 @@ export const getLinkedAccountsAndCustomersInfoExamplePayload: GetLinkedAccountsA
       ],
     },
   };
-
 export const selectCustomerIdExamplePayload: Element[] = [
   { key: "169592807", label: "Contoso Ltd (id: 169592807)" },
   { key: "169593041", label: "Fabrikam Inc (id: 169593041)" },
   { key: "169594112", label: "Northwind Traders (id: 169594112)" },
 ];
-
 export const selectAccountIdExamplePayload: Element[] = [
   { key: "156089854", label: "Contoso Advertising (id: 156089854)" },
   { key: "156089912", label: "Fabrikam Marketing (id: 156089912)" },

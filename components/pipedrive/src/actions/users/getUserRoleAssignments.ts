@@ -6,7 +6,6 @@ import {
   paginationStartInput,
   userIdInput,
 } from "../../inputs";
-
 export const getUserRoleAssignments = action({
   display: {
     label: "Get User Role Assignments",

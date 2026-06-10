@@ -6,7 +6,6 @@ import { listTicketCustomFields } from "./listTicketCustomFields";
 import { listTickets } from "./listTickets";
 import { updateTicket } from "./updateTicket";
 import { updateTicketCustomFields } from "./updateTicketCustomFields";
-
 export default {
   createTicket,
   deleteTicket,

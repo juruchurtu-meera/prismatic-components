@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { deletePendingMessageExamplePayload } from "../../examplePayloads";
 import { deletePendingMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const deletePendingMessage = action({
   display: {
     label: "Delete Pending Scheduled Message",
@@ -12,7 +11,7 @@ export const deletePendingMessage = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, messageId, channelId }
+    { connection, messageId, channelId },
   ) => {
     debugLogger({ messageId, channelId, debug });
     const client = await createOauthClient({

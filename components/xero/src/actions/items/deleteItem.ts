@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { itemId, connectionInput } from "../../inputs";
 import { deleteItemExamplePayload } from "../../examplePayloads";
-
 export const deleteItem = action({
   display: {
     label: "Delete Item",

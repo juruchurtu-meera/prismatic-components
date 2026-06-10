@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, dealIdInput, productIdInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const addDealProduct = action({
   display: {
     label: "Add Deal Product",
@@ -26,7 +25,11 @@ export const addDealProduct = action({
       productId,
     },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post(`/deals/${id}/products`, {
       item_price: itemPrice,
       quantity,
@@ -43,7 +46,10 @@ export const addDealProduct = action({
   inputs: {
     connection: connectionInput,
     id: dealIdInput,
-    productId: { ...productIdInput, comments: "The ID of the product to add to the deal" },
+    productId: {
+      ...productIdInput,
+      comments: "The ID of the product to add to the deal",
+    },
     itemPrice: input({
       label: "Item Price",
       type: "string",
@@ -89,7 +95,8 @@ export const addDealProduct = action({
       type: "string",
       required: false,
       clean: cleanString,
-      comments: "Any textual comment associated with this product-deal attachment",
+      comments:
+        "Any textual comment associated with this product-deal attachment",
     }),
     tax: input({
       label: "Tax",

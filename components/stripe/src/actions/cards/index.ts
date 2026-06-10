@@ -4,7 +4,6 @@ import { detachCard } from "./detach";
 import { getCard } from "./get";
 import { listCards } from "./list";
 import { updateCard } from "./update";
-
 export default {
   attachCard,
   createCard,

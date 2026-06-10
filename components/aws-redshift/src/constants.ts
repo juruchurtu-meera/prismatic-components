@@ -2,7 +2,6 @@ export const RESULT_FORMAT_OPTIONS = [
   { label: "JSON", value: "JSON" },
   { label: "CSV", value: "CSV" },
 ];
-
 export const STATUS_OPTIONS = [
   { label: "ALL", value: "ALL" },
   { label: "ABORTED", value: "ABORTED" },
@@ -12,9 +11,11 @@ export const STATUS_OPTIONS = [
   { label: "STARTED", value: "STARTED" },
   { label: "SUBMITTED", value: "SUBMITTED" },
 ];
-
 export const RAW_REQUEST_ACTION_OPTIONS = [
-  { label: "BatchExecuteStatement", value: "RedshiftData.BatchExecuteStatement" },
+  {
+    label: "BatchExecuteStatement",
+    value: "RedshiftData.BatchExecuteStatement",
+  },
   { label: "CancelStatement", value: "RedshiftData.CancelStatement" },
   { label: "DescribeStatement", value: "RedshiftData.DescribeStatement" },
   { label: "DescribeTable", value: "RedshiftData.DescribeTable" },

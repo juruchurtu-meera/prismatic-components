@@ -4,7 +4,6 @@ import { connection, odataParams, fetchAll } from "../../../inputs/general";
 import { listMobileAppAssignmentsExamplePayload } from "../../../examplePayloads";
 import { paginateResults } from "../../../util";
 import { mobileAppId } from "../../../inputs/mobileApps/general";
-
 export const listMobileAppAssignments = action({
   display: {
     label: "List Mobile App Assignments",
@@ -29,7 +28,6 @@ export const listMobileAppAssignments = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const params = {
       $filter,
       $select,
@@ -42,14 +40,12 @@ export const listMobileAppAssignments = action({
       $format,
       $skipToken,
     };
-
     const data = await paginateResults(
       client,
       `/deviceAppManagement/mobileApps/${mobileAppId}/assignments`,
       fetchAll,
       params,
     );
-
     return {
       data,
     };

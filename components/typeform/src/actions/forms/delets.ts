@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection, formId } from "../../inputs";
 import { genericDeleteResponse } from "../../examplePayloads/general";
 import { DELETED_RESOURCE } from "../../constants";
-
 export const deleteForm = action({
   display: {
     label: "Delete Form",
@@ -15,7 +14,6 @@ export const deleteForm = action({
   },
   perform: async (context, { connection, id }) => {
     const client = createClient(connection, context.debug.enabled);
-
     await client.delete(`/forms/${id}`);
     return {
       data: {

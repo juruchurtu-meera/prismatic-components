@@ -13,7 +13,6 @@ import {
   total,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const listUsers = action({
   display: {
     label: "List Users",
@@ -32,7 +31,6 @@ export const listUsers = action({
       total,
       "include[]": include,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({
@@ -43,7 +41,6 @@ export const listUsers = action({
         }),
       };
     }
-
     const { data } = await client.get(ENDPOINTS.USERS, {
       params,
     });

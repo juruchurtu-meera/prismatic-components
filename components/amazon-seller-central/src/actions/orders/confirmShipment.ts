@@ -15,7 +15,6 @@ import {
   shippingMethod,
   trackingNumber,
 } from "../../inputs";
-
 export const confirmOrderShipment = action({
   display: {
     label: "Confirm Order Shipment",

@@ -3,14 +3,20 @@ import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const addOrganization = action({
   display: {
     label: "Add Organization",
     description: "Adds an organization.",
   },
-  perform: async (context, { connection, name, ownerId, visibleTo, addTime }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, name, ownerId, visibleTo, addTime },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post("/organizations", {
       name,
       owner_id: ownerId,
@@ -35,7 +41,8 @@ export const addOrganization = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The ID of the user who will be marked as the owner of this organization",
+      comments:
+        "The ID of the user who will be marked as the owner of this organization",
       example: "123",
       placeholder: "Enter User ID",
     }),

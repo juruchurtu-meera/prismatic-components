@@ -4,7 +4,6 @@ import { awsRegion } from "aws-utils";
 import { message, phoneNumber, connectionInput } from "../inputs";
 import { PublishCommand } from "@aws-sdk/client-sns";
 import { publishSmsExamplePayload } from "../examplePayloads";
-
 export const publishSms = action({
   display: {
     label: "Publish SMS",
@@ -38,5 +37,4 @@ export const publishSms = action({
   },
   examplePayload: publishSmsExamplePayload,
 });
-
 export default publishSms;

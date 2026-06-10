@@ -4,7 +4,6 @@ import { listBusinessEntitiesResponse } from "../../examplePayloads/businessEnti
 import { defaultListInputs } from "../../inputs";
 import type { BusinessEntity } from "../../interfaces/businessEntities";
 import { fetchAllData } from "../../util";
-
 export const listBusinessEntities = action({
   display: {
     label: "List Business Entities",
@@ -13,9 +12,11 @@ export const listBusinessEntities = action({
   inputs: {
     ...defaultListInputs,
   },
-  perform: async (context, { connection, customQueryParams, fetchAll, pageSize, start }) => {
+  perform: async (
+    context,
+    { connection, customQueryParams, fetchAll, pageSize, start },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchAllData<BusinessEntity>(
       client,
       "entities",

@@ -1,22 +1,4 @@
-
-
-
-
-
-
-
-
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
 export const getEmployeeExamplePayload = {
   data: {
     id: "5",
@@ -69,40 +51,15 @@ export const getEmployeeExamplePayload = {
     zipcode: "84042",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const addEmployeeExamplePayload = {
   data: {
     id: "234",
     location: "/v1/employees/234",
   },
 };
-
-
-
-
-
-
-
-
-
 export const updateEmployeeExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
 export const listEmployeesExamplePayload = {
   data: {
     fields: [
@@ -132,16 +89,6 @@ export const listEmployeesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const listCompanyFilesExamplePayload = {
   data: {
     categories: [
@@ -196,65 +143,19 @@ export const listCompanyFilesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const getCompanyFileExamplePayload = {
   data: Buffer.from("BambooHR file contents", "utf8"),
   contentType: "application/pdf",
 };
-
-
-
-
-
-
-
-
-
 export const addCompanyFileCategoryExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
 export const uploadCompanyFileExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
 export const deleteCompanyFileExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const listEmployeeFilesExamplePayload = {
   data: {
     employee: { id: 4 },
@@ -305,63 +206,19 @@ export const listEmployeeFilesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
 export const getEmployeeFileExamplePayload = {
   data: Buffer.from("Employee file contents", "utf8"),
   contentType: "application/pdf",
 };
-
-
-
-
-
-
-
-
 export const addEmployeeFileCategoryExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
 export const uploadEmployeeFileExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
 export const deleteEmployeeFileExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const getEmployeeTableExamplePayload = {
   data: [
     {
@@ -374,12 +231,6 @@ export const getEmployeeTableExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const getTabularFieldsExamplePayload = {
   data: [
     {
@@ -400,39 +251,17 @@ export const getTabularFieldsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const addEmployeeTableRowExamplePayload = {
   data: {
     id: "15",
   },
 };
-
-
-
-
-
-
 export const updateEmployeeTableRowExamplePayload = {
   data: {
     id: "15",
     employeeId: "42",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const getTimeOffRequestsExamplePayload = {
   data: [
     {
@@ -462,12 +291,6 @@ export const getTimeOffRequestsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const whosOutExamplePayload = {
   data: [
     {
@@ -480,16 +303,6 @@ export const whosOutExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
-
 export const createWebhookExamplePayload = {
   data: {
     id: 472,
@@ -510,15 +323,6 @@ export const createWebhookExamplePayload = {
     includeCompanyDomain: false,
   },
 };
-
-
-
-
-
-
-
-
-
 export const listWebhooksExamplePayload = {
   data: [
     {
@@ -552,40 +356,12 @@ export const listWebhooksExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
 export const deleteWebhookByIdExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
 export const deleteInstanceWebhooksExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     fields: [
@@ -603,25 +379,6 @@ export const rawRequestExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const bamboohrTriggerExamplePayload = {
   payload: {
     headers: {
@@ -682,20 +439,6 @@ export const bamboohrTriggerExamplePayload = {
     },
   } as unknown as TriggerPayload,
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},
@@ -755,12 +498,6 @@ export const pollChangesTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   polledNoChanges: false,
 };
-
-
-
-
-
-
 export const pollChangesExamplePayload = {
   body: pollChangesTriggerExamplePayload.payload.body,
 };

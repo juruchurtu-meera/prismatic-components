@@ -7,7 +7,6 @@ import {
   templateId,
   updateMessage,
 } from "../../inputs";
-
 export const renderTemplate = action({
   display: {
     label: "Render Template",
@@ -15,7 +14,6 @@ export const renderTemplate = action({
   },
   perform: async (context, { connection, id, incidentId, updateMessage }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/templates/${id}/render`, {
       incident_id: incidentId,
       status_update: updateMessage,

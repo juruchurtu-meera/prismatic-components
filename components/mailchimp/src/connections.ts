@@ -3,7 +3,6 @@ import {
   oauth2Connection,
   OAuth2Type,
 } from "@prismatic-io/spectral";
-
 export const mailchimpOAuthConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -68,7 +67,6 @@ export const mailchimpOAuthConnection = oauth2Connection({
     },
   },
 });
-
 export const mailchimpConnection = connection({
   key: "apiKey",
   display: {
@@ -95,5 +93,4 @@ export const mailchimpConnection = connection({
     },
   },
 });
-
 export default [mailchimpOAuthConnection, mailchimpConnection];

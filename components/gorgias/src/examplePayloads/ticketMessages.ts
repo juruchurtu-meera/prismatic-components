@@ -1,14 +1,8 @@
-
-
-
-
-
 import type {
   CreateTicketMessageResponse,
   GetTicketMessageResponse,
   ListMessagesResponse,
 } from "../interfaces/ticketMessages";
-
 export const createTicketMessageExamplePayload: {
   data: CreateTicketMessageResponse;
 } = {
@@ -78,7 +72,6 @@ export const createTicketMessageExamplePayload: {
     uri: "https://www.example.com/tickets/4003",
   },
 };
-
 export const getTicketMessageExamplePayload: {
   data: GetTicketMessageResponse;
 } = {
@@ -148,8 +141,9 @@ export const getTicketMessageExamplePayload: {
     uri: "https://www.example.com/tickets/4005",
   },
 };
-
-export const listMessagesExamplePayload: { data: ListMessagesResponse } = {
+export const listMessagesExamplePayload: {
+  data: ListMessagesResponse;
+} = {
   data: {
     data: [getTicketMessageExamplePayload.data],
     object: "list",

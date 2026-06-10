@@ -8,8 +8,5 @@ export { leaveConversation } from "./leaveConversation";
 export { listConversationMembers } from "./listConversationMembers";
 export { listConversations } from "./listConversations";
 export { renameConversation } from "./renameConversation";
-
-
-
 export { setConversationPurpose } from "./setConversationPurpose";
 export { setConversationTopic } from "./setConversationTopic";

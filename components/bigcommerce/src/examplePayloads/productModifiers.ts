@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 const modifierObject = {
   id: 206,
   product_id: 158,
@@ -48,7 +35,6 @@ const modifierObject = {
     },
   ],
 };
-
 const paginationMeta = {
   pagination: {
     total: 1,
@@ -61,39 +47,33 @@ const paginationMeta = {
     },
   },
 };
-
 export const getAllProductModifiersExamplePayload = {
   data: {
     data: [modifierObject],
     meta: paginationMeta,
   },
 };
-
 export const getModifierExamplePayload = {
   data: {
     data: modifierObject,
     meta: {},
   },
 };
-
 export const createProductModifierExamplePayload = {
   data: {
     data: modifierObject,
     meta: {},
   },
 };
-
 export const updateProductModifierExamplePayload = {
   data: {
     data: modifierObject,
     meta: {},
   },
 };
-
 export const deleteProductModifierExamplePayload = {
   data: null,
 };
-
 export const createModifierImageExamplePayload = {
   data: {
     data: {

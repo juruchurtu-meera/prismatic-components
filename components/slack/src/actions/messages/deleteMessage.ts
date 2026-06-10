@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { deleteMessageExamplePayload } from "../../examplePayloads";
 import { deleteMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const deleteMessage = action({
   display: {
     label: "Delete Message",
@@ -11,7 +10,7 @@ export const deleteMessage = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, messageId, channelId }
+    { connection, messageId, channelId },
   ) => {
     debugLogger({ messageId, channelId, debug });
     const client = await createOauthClient({

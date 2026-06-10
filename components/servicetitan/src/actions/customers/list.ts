@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Customer } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",
@@ -40,7 +39,6 @@ export const listCustomers = action({
     },
   ) => {
     const client = createClient(connection, "crm", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<Customer>(client, "/customers", {
         includeTotal,

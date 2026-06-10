@@ -13,7 +13,6 @@ import {
   createModifierType,
   storeHash,
 } from "../../inputs";
-
 export const createProductModifierAction = action({
   display: {
     label: "Create Product Modifier",
@@ -47,7 +46,6 @@ export const createProductModifierAction = action({
       option_values,
       display_name,
     };
-
     try {
       const response = await client.post(endpoint, requestBody);
       return {
@@ -59,7 +57,6 @@ export const createProductModifierAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

@@ -8,7 +8,6 @@ import { createClient } from "../../client";
 import { createEntryExamplePayload } from "../../examplePayloads";
 import { createEntryInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const createEntry = action({
   display: {
     label: "Create Entry",
@@ -31,7 +30,7 @@ export const createEntry = action({
       )
     ).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: createEntryInputs,

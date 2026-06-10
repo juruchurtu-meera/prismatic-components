@@ -9,7 +9,6 @@ import {
   recipientId,
   sharedUserId,
 } from "../inputs";
-
 export const listEnvelopeDocuments = action({
   display: {
     label: "List Envelope Documents",

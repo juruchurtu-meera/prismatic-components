@@ -1,24 +1,8 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const categoryTreeObject = {
   id: 1,
   name: "Default Category Tree",
   channels: [1],
 };
-
 const categoryNodeObject = {
   id: 19,
   parent_id: 0,
@@ -28,7 +12,6 @@ const categoryNodeObject = {
   is_visible: true,
   children: [],
 };
-
 const simplifiedCategoryObject = {
   id: 19,
   parent_id: 0,
@@ -49,7 +32,6 @@ const simplifiedCategoryObject = {
     is_customized: false,
   },
 };
-
 const paginationMeta = {
   pagination: {
     total: 1,
@@ -62,44 +44,33 @@ const paginationMeta = {
     },
   },
 };
-
 export const getAllCategoryTreesExamplePayload = {
   data: {
     data: [categoryTreeObject],
     meta: paginationMeta,
   },
 };
-
 export const getCategoryTreeExamplePayload = {
   data: {
     data: [categoryNodeObject],
     meta: {},
   },
 };
-
 export const upsertCategoryTreesExamplePayload = {
   data: {
     data: [categoryTreeObject],
     meta: {},
   },
 };
-
 export const deleteCategoryTreesExamplePayload = {
   data: null,
 };
-
 export const getAllCategoriesSimpleExamplePayload = {
   data: {
     data: [simplifiedCategoryObject],
     meta: paginationMeta,
   },
 };
-
-
-
-
-
-
 export const createCategoryTreeExamplePayload = {
   data: {
     data: {
@@ -125,11 +96,9 @@ export const createCategoryTreeExamplePayload = {
     meta: {},
   },
 };
-
 export const updateCategoriesExamplePayload = {
   data: null,
 };
-
 export const deleteCategoriesTreeExamplePayload = {
   data: null,
 };

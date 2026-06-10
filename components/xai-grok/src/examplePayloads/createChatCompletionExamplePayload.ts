@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const createChatCompletionExamplePayload = {
   data: {
     id: "a733959b-03c4-4944-b53a-af900075ba57",

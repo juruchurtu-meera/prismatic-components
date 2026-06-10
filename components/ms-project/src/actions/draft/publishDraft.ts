@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createProjectsClient } from "../../client";
 import { connection, guId } from "../../inputs";
-
 export const publishDraftProject = action({
   display: {
     label: "Publish Draft Project",
@@ -14,13 +13,13 @@ export const publishDraftProject = action({
       },
       context.debug.enabled,
     );
-    const { data } = await client.post(`/Projects('${params.guId}')/Draft/publish()`);
-
+    const { data } = await client.post(
+      `/Projects('${params.guId}')/Draft/publish()`,
+    );
     return {
       data,
     };
   },
   inputs: { connection, guId },
 });
-
 export default publishDraftProject;

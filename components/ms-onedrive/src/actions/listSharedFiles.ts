@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, pageLimit, pageToken } from "../inputs";
 import { handleErrors } from "../errors";
 import { listSharedFilesExamplePayload } from "../examplePayloads";
-
 export const listSharedFiles = action({
   display: {
     label: "List Files Shared With Me",

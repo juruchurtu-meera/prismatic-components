@@ -18,7 +18,6 @@ import {
   summary,
   tagTypeIds,
 } from "../../inputs";
-
 export const updateJob = action({
   display: {
     label: "Update Job",

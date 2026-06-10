@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const appsCreateFromManifest = action({
   display: {
     label: "Apps Create From Manifest",
     description: "Create a GitHub App from a manifest",
   },
   perform: async (context, { connection, code }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/app-manifests/${code}/conversions`,
       {},
@@ -28,7 +30,6 @@ const appsCreateFromManifest = action({
     },
   },
 });
-
 export default {
   appsCreateFromManifest,
 };

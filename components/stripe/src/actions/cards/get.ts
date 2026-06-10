@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { getCardExamplePayload } from "../../examplePayloads/cards";
 import { connectionInput, customerId, paymentId, timeout } from "../../inputs";
-
 export const getCard = action({
   display: {
     label: "Get Card",
@@ -14,7 +13,9 @@ export const getCard = action({
       timeout: util.types.toInt(timeout),
     });
     return {
-      data: await client.paymentMethods.retrieve(util.types.toString(paymentId)),
+      data: await client.paymentMethods.retrieve(
+        util.types.toString(paymentId),
+      ),
     };
   },
   inputs: {

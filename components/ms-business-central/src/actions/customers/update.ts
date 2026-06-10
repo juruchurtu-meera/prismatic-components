@@ -9,11 +9,11 @@ import updateCustomerInputs from "../../inputs/customers/updateCustomerInputs";
 import { connectionInput } from "../../inputs/general";
 import type { Customer } from "../../interfaces";
 import { cleanBooleanInput } from "../../utils";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",
-    description: "Update a customer object in your Business Central organization.",
+    description:
+      "Update a customer object in your Business Central organization.",
   },
   perform: async (
     context,
@@ -31,7 +31,6 @@ export const updateCustomer = action({
       taxAreaId,
       customerId,
       companyId,
-
       connection,
       displayName,
       currencyCode,
@@ -44,8 +43,11 @@ export const updateCustomer = action({
       taxRegistrationNumber,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
-
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const { data } = await client.patch<Customer>(
       `/companies(${companyId})/customers(${customerId})`,
       {
@@ -76,12 +78,10 @@ export const updateCustomer = action({
         },
       },
     );
-
     return { data };
   },
   inputs: {
     connection: connectionInput,
-
     companyId: {
       ...companyId,
       comments: "The ID of the company to which the customer belongs.",

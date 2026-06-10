@@ -11,7 +11,6 @@ import {
   instanceUrlInput,
 } from "../../../inputs";
 import { createNowApiClient } from "../../../util";
-
 export const createConfigurationItem = action({
   display: {
     label: "Create Configuration Item",
@@ -37,16 +36,13 @@ export const createConfigurationItem = action({
       apiVersionInput,
       context.debug.enabled,
     );
-
     const payload = {
       attributes: configurationItemAttributes,
       inbound_relations: configurationItemInboundRelations,
       outbound_relations: configurationItemOutboundRelations,
       source: configurationItemSource,
     };
-
     const { data } = await client.post(`/cmdb/instance/${className}`, payload);
-
     return {
       data,
     };

@@ -11,35 +11,30 @@ import {
   cleanNumberInput,
   cleanStringInput,
 } from "../utils";
-
 const fieldsEvent = input({
   ...fields,
   label: "Event Fields",
   comments: "Event fields to include in the response.",
   model: FIELDS_EVENT_MODEL,
 });
-
 const fieldsMetric = input({
   ...fields,
   label: "Metric Fields",
   comments: "Metric fields to include in the response.",
   model: FIELDS_METRIC_MODEL,
 });
-
 const fieldsProfile = input({
   ...fields,
   label: "Profile Fields",
   comments: "Profile fields to include in the response.",
   model: FIELDS_PROFILE_EVENT_MODEL,
 });
-
 export const listEventsInputs = {
   connection,
   fieldsEvent,
   fieldsMetric,
   fieldsProfile,
 };
-
 const eventProperties = input({
   label: "Event Properties",
   comments: "The properties of the event.",
@@ -55,7 +50,6 @@ const eventProperties = input({
   ),
   clean: (value) => cleanCodeInput(value, "Event Properties"),
 });
-
 const eventTime = input({
   label: "Event Time",
   comments:
@@ -66,7 +60,6 @@ const eventTime = input({
   placeholder: "2024-07-10T14:48:00.000Z",
   clean: (value) => cleanDate(value, "Event Time"),
 });
-
 const eventValue = input({
   label: "Event Value",
   comments: "A numeric, monetary value to associate with this event.",
@@ -76,7 +69,6 @@ const eventValue = input({
   placeholder: "10",
   clean: cleanNumberInput,
 });
-
 const eventValueCurrency = input({
   label: "Event Value Currency",
   comments:
@@ -87,7 +79,6 @@ const eventValueCurrency = input({
   placeholder: "USD",
   clean: cleanStringInput,
 });
-
 const eventUniqueId = input({
   label: "Event Unique ID",
   comments: "A unique identifier for this event.",
@@ -97,7 +88,6 @@ const eventUniqueId = input({
   placeholder: "123",
   clean: cleanStringInput,
 });
-
 const eventName = input({
   label: "Event Name",
   comments: "Name of the event.",
@@ -107,7 +97,6 @@ const eventName = input({
   placeholder: "Viewed Product",
   clean: cleanStringInput,
 });
-
 const eventProfile = input({
   label: "Event Profile",
   comments: "The profile associated with this event.",
@@ -154,7 +143,6 @@ const eventProfile = input({
   ),
   clean: (value) => cleanCodeInput(value, "Event Profile"),
 });
-
 export const createEventInputs = {
   connection,
   eventName,
@@ -165,7 +153,6 @@ export const createEventInputs = {
   eventValueCurrency,
   eventUniqueId,
 };
-
 const eventId = input({
   label: "Event ID",
   comments: "The ID of the event.",
@@ -176,7 +163,6 @@ const eventId = input({
   dataSource: "selectEvent",
   clean: cleanStringInput,
 });
-
 export const getEventInputs = {
   connection,
   eventId,
@@ -184,7 +170,6 @@ export const getEventInputs = {
   fieldsMetric,
   fieldsProfile,
 };
-
 const eventsArray = input({
   label: "Events Array",
   comments: "An array of events to create.",
@@ -260,7 +245,6 @@ const eventsArray = input({
   ),
   clean: (value) => cleanCodeInput(value, "Events Array"),
 });
-
 export const bulkCreateEventsInputs = {
   connection,
   eventsArray,

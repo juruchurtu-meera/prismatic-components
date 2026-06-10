@@ -4,7 +4,6 @@ import { updateUserInputs } from "../../inputs";
 import type { UpdateUserBody } from "../types/UpdateUserBody";
 import type { UpdateUserQueryParams } from "../types/UpdateUserQueryParams";
 import { updateUserExamplePayload } from "../../examplePayloads";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -43,11 +42,9 @@ export const updateUser = action({
     if (roled.length) queryParams.roled = util.types.toNumber(roled);
     if (timezone.length) queryParams.timezone = timezone;
     if (title.length) queryParams.title = title;
-
     let body = {};
     if (updateUserBody.length)
       body = JSON.parse(updateUserBody) as UpdateUserBody;
-
     const { data } = await client.put(`/users/${userId}`, body, {
       params: queryParams,
       headers: { "Content-Type": "application/json" },
@@ -56,5 +53,4 @@ export const updateUser = action({
   },
   inputs: updateUserInputs,
 });
-
 export default { updateUser };

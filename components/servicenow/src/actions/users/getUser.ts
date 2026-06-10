@@ -6,7 +6,6 @@ import {
   sysId,
 } from "../../inputs";
 import { getTableRecord } from "../tables/records/getTableRecord";
-
 export const getUser = action({
   display: {
     label: "Get User by Id",

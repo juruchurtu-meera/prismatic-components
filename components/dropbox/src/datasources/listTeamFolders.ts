@@ -2,7 +2,6 @@ import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../auth";
 import { connectionInput, cursor, directoryPath, limit } from "../inputs";
 import { handleDropboxError } from "../util";
-
 export const listTeamFolders = dataSource({
   display: {
     label: "List Team Folders",
@@ -30,7 +29,6 @@ export const listTeamFolders = dataSource({
           : await dbx.teamTeamFolderList({
               limit: util.types.toInt(params.limit) || undefined,
             });
-
       const result = team_folders.map<Element>((folder) => ({
         label: folder.name,
         key: folder.team_folder_id,

@@ -1,0 +1,67 @@
+The New and Updated Messages trigger polls SendGrid's [Email Activity Feed](https://www.twilio.com/docs/sendgrid/api-reference/e-mail-activity/filter-all-messages) (`GET /v3/messages`) on a configured schedule and emits messages whose `last_event_time` falls within the polling window.
+
+#### When To Use This Trigger vs The Event Webhook Trigger
+
+Webhooks are the recommended primary mechanism for receiving SendGrid email events. The Managed Webhook Events trigger (`eventWebhook`) handles subscription lifecycle and signature verification automatically.
+
+This polling trigger is a **fallback for historical or backfill ingestion** scenarios:
+
+- When a flow needs to catch up on events that occurred before a webhook subscription existed.
+- When integrating with environments where outbound webhooks from SendGrid cannot reach the flow (firewalled, on-premise, etc.).
+- When verifying or reconciling webhook-delivered events against the authoritative Email Activity Feed.
+
+For new event-driven flows, prefer the Event Webhook trigger.
+
+#### Requirements
+
+- An API key with the **Email Activity** permission.
+- The paid **Email Activity History** add-on enabled on the SendGrid account. Without it, the endpoint returns a `403`/`401` and the trigger surfaces a clear runtime error.
+
+#### How It Works
+
+The trigger maintains a single ISO 8601 cursor (`lastPolledAt`) in polling state. Each run sends a SQL-like query:
+
+`last_event_time BETWEEN "<fromIso>" AND "<toIso>"`
+
+The window is constructed using three safeguards:
+
+- **30-day retention clamp**: SendGrid retains Email Activity for 30 days. On bootstrap (no prior cursor), or when the persisted cursor is older than 30 days, the lower bound is clamped to `now - 30d`. Older events are not available from the feed.
+- **60-second eventual-consistency overlap**: events surface in the feed a few minutes after the underlying send. The upper bound is set to `now - 60s` to avoid tail-cutting events that are still propagating. The next poll re-scans the overlap, providing at-least-once delivery.
+- **6-hour window-walking step on truncation**: the feed caps responses at 1000 records per request and the SendGrid query DSL does not expose `ORDER BY`. When a response is truncated (1000 records returned), the cursor advances by a fixed 6-hour step instead of jumping to `now`. This deterministically drains a backlog without dropping records in the un-fetched tail of the window.
+
+#### Returned Data
+
+The trigger returns separate arrays for created and updated records. Because of the feed limitation described above, `created` is always empty and all matching records are placed in `updated`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Response (Polling)</summary>
+
+```json
+{
+  "payload": {
+    "body": {
+      "data": {
+        "created": [],
+        "updated": [
+          {
+            "msg_id": "abc12345.recvd-67890-XYZ-1-1234567-1.0",
+            "from_email": "sender@example.com",
+            "to_email": "user@example.com",
+            "subject": "Hello from Acme!",
+            "status": "delivered",
+            "last_event_time": "2026-05-27T14:30:00Z",
+            "opens_count": 0,
+            "clicks_count": 0,
+            "api_key_id": "abc12345defg67890hijkXYZ",
+            "template_id": "d-exampletemplateid1234567890abcdef"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+For the full message schema, see the [SendGrid Email Activity Feed reference](https://www.twilio.com/docs/sendgrid/api-reference/e-mail-activity/filter-all-messages).

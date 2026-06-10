@@ -1,6 +1,5 @@
 import { connection } from "../common";
 import { itemName, listName, parentId } from "./common";
-
 export const addListItemInputs = {
   connection,
   listName: {

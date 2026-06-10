@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { removeUserFromGroupExamplePayload } from "../../examplePayloads/groups";
 import { removeUserFromGroupInputs } from "../../inputs/groups";
-
 export const removeUserFromGroup = action({
   display: {
     label: "Remove User from Group",
@@ -11,11 +10,9 @@ export const removeUserFromGroup = action({
   inputs: removeUserFromGroupInputs,
   perform: async (context, { groupId, userId, connection }) => {
     const client = await createClient(connection, context.debug.enabled);
-
     await client.delete(
       `/groups/${encodeURIComponent(groupId)}/users/${encodeURIComponent(userId)}`,
     );
-
     return {
       data: {
         success: true,

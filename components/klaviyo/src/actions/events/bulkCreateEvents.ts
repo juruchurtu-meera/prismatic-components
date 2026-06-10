@@ -8,7 +8,6 @@ import {
 } from "klaviyo-api";
 import { bulkCreateEventsExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const bulkCreateEvents = action({
   display: {
     label: "Bulk Create Events",

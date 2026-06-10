@@ -9,7 +9,6 @@ import {
   storeHash,
   variantImageURL,
 } from "../../inputs";
-
 export const createVariantImageAction = action({
   display: {
     label: "Create Variant Image",
@@ -25,11 +24,9 @@ export const createVariantImageAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${product_id}/variants/${variant_id}/image`;
-
     const data = {
       image_url,
     };
-
     try {
       const response = await client.post(endpoint, data);
       return {
@@ -41,7 +38,6 @@ export const createVariantImageAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { updateEnvironmentExamplePayload } from "../../examplePayloads";
 import { updateEnvironmentInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const updateEnvironment = action({
   display: {
     label: "Update Environment",
@@ -17,10 +16,8 @@ export const updateEnvironment = action({
       spaceId,
       environmentId,
     );
-
     environment.name = name;
     const data: EnvironmentProps = (await environment.update()).toPlainObject();
-
     return {
       data,
     };

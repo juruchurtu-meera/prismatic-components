@@ -3,7 +3,6 @@ import { rawHttpClient } from "../../../auth";
 import type { PaginatedResponse, Subscription } from "../../../types";
 import { action } from "@prismatic-io/spectral";
 import { paginatedSubscriptionPayload } from "../../../examplePayloads";
-
 export const listTopicSubscriptions = action({
   display: {
     label: "List Topic Subscriptions",
@@ -18,14 +17,16 @@ export const listTopicSubscriptions = action({
       "page[size]": pageLimit || undefined,
       "page[after]": cursor || undefined,
     };
-
     const { data } = await client.get<
-      | PaginatedResponse<{ subscriptions: Subscription[] }>
-      | { subscriptions: Subscription[] }
+      | PaginatedResponse<{
+          subscriptions: Subscription[];
+        }>
+      | {
+          subscriptions: Subscription[];
+        }
     >(`/community/topics/${topicId}/subscriptions`, {
       params,
     });
-
     return {
       data,
     };

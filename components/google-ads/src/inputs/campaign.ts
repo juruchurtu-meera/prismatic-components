@@ -6,7 +6,6 @@ import {
   managerCustomerIdInput,
   validateOnly,
 } from "./common";
-
 export const partialFailure = input({
   label: "Partial Failure",
   type: "boolean",
@@ -16,7 +15,6 @@ export const partialFailure = input({
   comments:
     "When true, successful operations will be carried out and invalid operations will return errors. When false, all operations will be carried out in one transaction if and only if they are all valid. This should always be set to true. See [Partial failure documentation](https://developers.google.com/google-ads/api/docs/best-practices/partial-failures).",
 });
-
 export const operations = input({
   label: "Operations",
   type: "code",
@@ -27,7 +25,6 @@ export const operations = input({
     "The list of operations to perform on individual campaigns. See [Campaign operations documentation](https://developers.google.com/google-ads/api/reference/rpc/latest/CampaignOperation).",
   clean: util.types.toObject,
 });
-
 export const mutateCampaignInputs = {
   connection: connectionInput,
   customerId: customerIdInput,
@@ -36,7 +33,6 @@ export const mutateCampaignInputs = {
   managerCustomerId: { ...managerCustomerIdInput, required: false },
   validateOnly,
 };
-
 export const mutateCampaignCriteriaInputs = {
   connection: connectionInput,
   customerId: customerIdInput,

@@ -15,7 +15,6 @@ import {
   variantWeight,
   variantWidth,
 } from "../../inputs";
-
 export const updateProductVariantAction = action({
   display: {
     label: "Update Product Variant",
@@ -43,7 +42,6 @@ export const updateProductVariantAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${product_id}/variants/${variant_id}`;
-
     const data = {
       sku,
       option_values,
@@ -53,7 +51,6 @@ export const updateProductVariantAction = action({
       height,
       depth,
     };
-
     try {
       const response = await client.put(endpoint, data);
       return {
@@ -65,7 +62,6 @@ export const updateProductVariantAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

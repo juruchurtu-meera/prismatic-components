@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { registerUploadedChunkResponse } from "../../examplePayloads";
 import { chunk, connection, id, name, targetid } from "../../inputs";
-
 export const registerUploadedChunk = action({
   display: {
     label: "Register Uploaded Chunk",

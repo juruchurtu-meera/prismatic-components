@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const workspaceId = input({
   label: "Workspace ID",
   type: "string",

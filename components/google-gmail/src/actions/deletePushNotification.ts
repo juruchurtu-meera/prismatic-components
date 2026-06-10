@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, userIdInput } from "../inputs";
 import { deletePushNotificationExamplePayload } from "../examplePayloads";
-
 const deletePushNotification = action({
   display: {
     label: "Delete Push Notification (Stop Mailbox Updates)",
@@ -21,5 +20,4 @@ const deletePushNotification = action({
   },
   examplePayload: deletePushNotificationExamplePayload,
 });
-
 export default deletePushNotification;

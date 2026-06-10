@@ -1,8 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanString } from "../util";
 import { connection, odataQueryInputs, paginationInputs } from "./common";
-
-
 export const aoid = input({
   label: "Associate OID",
   type: "string",
@@ -13,7 +11,6 @@ export const aoid = input({
   clean: cleanString,
   dataSource: "selectWorker",
 });
-
 export const badgeID = input({
   label: "Badge ID",
   type: "string",
@@ -24,7 +21,6 @@ export const badgeID = input({
   example: "123456",
   clean: cleanString,
 });
-
 export const eventID = input({
   label: "Event ID",
   type: "string",
@@ -34,7 +30,6 @@ export const eventID = input({
   example: "123456",
   clean: cleanString,
 });
-
 export const clockingType = input({
   label: "Clocking Type",
   type: "string",
@@ -63,14 +58,11 @@ export const clockingType = input({
   placeholder: "Select clocking type",
   clean: cleanString,
 });
-
-
 export const getWorkerInputs = {
   connection,
   aoid,
   ...odataQueryInputs,
 };
-
 export const listWorkersInputs = {
   connection,
   ...paginationInputs,

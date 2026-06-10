@@ -25,7 +25,6 @@ import {
   userAgent,
   workspaceId,
 } from "../../inputs";
-
 export const customActionEvent = action({
   display: {
     label: "Custom Action Event",

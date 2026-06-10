@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const googleConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -16,7 +15,8 @@ export const googleConnection = oauth2Connection({
       required: true,
       shown: false,
       comments: "The OAuth 2.0 Authorization URL for Google Calendar",
-      default: "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent",
+      default:
+        "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent",
     },
     tokenUrl: {
       label: "Token URL",
@@ -43,18 +43,19 @@ export const googleConnection = oauth2Connection({
       placeholder: "Client ID",
       type: "string",
       required: true,
-      comments: "Provide a string value for the client Id of your OAuth 2.0 application.",
+      comments:
+        "Provide a string value for the client Id of your OAuth 2.0 application.",
       shown: true,
     },
     clientSecret: {
       label: "Client Secret",
       placeholder: "Client Secret",
       type: "password",
-      comments: "Provide a string value for the client secret of your OAuth 2.0 application.",
+      comments:
+        "Provide a string value for the client secret of your OAuth 2.0 application.",
       required: true,
       shown: true,
     },
   },
 });
-
 export default [googleConnection];

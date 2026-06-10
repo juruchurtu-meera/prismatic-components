@@ -4,7 +4,6 @@ import { listWebhookSubscriptionsInputs } from "../../inputs";
 import { fetchGuruResults } from "../../util";
 import type { GuruWebhookSubscription } from "../../types";
 import { listWebhookSubscriptionsPayload } from "../../examplePayloads";
-
 export const listWebhookSubscriptions = action({
   display: {
     label: "List Webhook Subscriptions",
@@ -12,14 +11,12 @@ export const listWebhookSubscriptions = action({
   },
   perform: async (context, { connection }) => {
     const client = getGuruClient(connection, context.debug.enabled);
-    
     const data = await fetchGuruResults<GuruWebhookSubscription>(
       client,
       "/webhooks",
       true,
       {},
     );
-
     return { data };
   },
   inputs: listWebhookSubscriptionsInputs,

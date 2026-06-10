@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { fetchAllData } from "../../../util";
 import { defaultPaginationInputs, connection } from "../../../inputs/general";
 import { listWarehouseLocationsExamplePayload } from "../../../examplePayloads/warehouseLocations";
-
 export const listWarehouseLocations = action({
   display: {
     label: "List Warehouse Locations",
@@ -16,10 +15,22 @@ export const listWarehouseLocations = action({
   },
   perform: async (
     context,
-    { connection, customQueryParams, $filter, $orderby, $select, $skip, $top, fetchAll },
+    {
+      connection,
+      customQueryParams,
+      $filter,
+      $orderby,
+      $select,
+      $skip,
+      $top,
+      fetchAll,
+    },
   ) => {
-    const client = await createClient(connection, context, context.debug.enabled);
-
+    const client = await createClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const data = await fetchAllData(
       client,
       "WarehouseLocations",

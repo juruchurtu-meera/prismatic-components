@@ -2,18 +2,13 @@ import { util } from "@prismatic-io/spectral";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import type { Pages } from "./interfaces";
 import type { IntercomRecord } from "./types";
-
 export const cleanTimestamp = (value: unknown): string => {
-  
   return util.types.toString(value);
 };
-
 export const cleanObject = (value: unknown) =>
   value ? util.types.toObject(value) : undefined;
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 const fetchData = async <T>(
   client: HttpClient,
   url: string,
@@ -33,7 +28,6 @@ const fetchData = async <T>(
     pages,
   };
 };
-
 export const paginateRecords = async <T>(
   client: HttpClient,
   params: Record<string, unknown> | undefined = undefined,
@@ -50,13 +44,11 @@ export const paginateRecords = async <T>(
       pages,
     };
   }
-
   let records: T[] = [];
   const per_page = 50;
   const keepFetching = true;
   let starting_after: string | undefined;
   let pagesObject: Pages | null = null;
-
   while (keepFetching) {
     const {
       data,
@@ -68,7 +60,6 @@ export const paginateRecords = async <T>(
       per_page,
       starting_after: starting_after,
     });
-
     records = records.concat(data);
     starting_after = pages.next?.starting_after;
     if (!starting_after) {
@@ -76,13 +67,11 @@ export const paginateRecords = async <T>(
       break;
     }
   }
-
   return {
     data: records,
     pages: pagesObject,
   };
 };
-
 export const searchContactsSince = async (
   client: HttpClient,
   lastPolledUnix: number,
@@ -91,11 +80,9 @@ export const searchContactsSince = async (
     operator: "AND",
     value: [{ field: "updated_at", operator: ">", value: lastPolledUnix }],
   };
-
   const allContacts: IntercomRecord[] = [];
   let startingAfter: string | undefined;
   let hasMore = true;
-
   while (hasMore) {
     const { data } = await client.post<{
       data: IntercomRecord[];
@@ -111,10 +98,8 @@ export const searchContactsSince = async (
     startingAfter = data.pages?.next?.starting_after;
     hasMore = !!startingAfter;
   }
-
   return allContacts;
 };
-
 export const fetchAllCompanies = async (
   client: HttpClient,
 ): Promise<IntercomRecord[]> => {
@@ -126,14 +111,15 @@ export const fetchAllCompanies = async (
   );
   return data;
 };
-
 export const filterByUnixTimestamp = (
   records: IntercomRecord[],
   lastPolledUnix: number,
-): { created: IntercomRecord[]; updated: IntercomRecord[] } => {
+): {
+  created: IntercomRecord[];
+  updated: IntercomRecord[];
+} => {
   const created: IntercomRecord[] = [];
   const updated: IntercomRecord[] = [];
-
   for (const record of records) {
     if (record.created_at > lastPolledUnix) {
       created.push(record);
@@ -141,6 +127,5 @@ export const filterByUnixTimestamp = (
       updated.push(record);
     }
   }
-
   return { created, updated };
 };

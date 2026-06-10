@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGeminiClient } from "../../client";
 import { listFilesExamplePayload as examplePayload } from "../../examplePayloads/files";
 import { listFilesInputs } from "../../inputs/files";
-
 export const listFiles = action({
   display: {
     label: "List Files",
@@ -17,7 +16,6 @@ export const listFiles = action({
         pageToken,
       },
     });
-
     let fileArray = listedFiles.page;
     const files = [];
     if (fetchAll) {
@@ -35,7 +33,6 @@ export const listFiles = action({
         files.push(file);
       }
     }
-
     return {
       data: files,
     };

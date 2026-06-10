@@ -1,5 +1,4 @@
 import type { TrackEvents } from "../../types";
-
 export const eventsBuilder = (events: string[]): TrackEvents => {
   const trackEvents: TrackEvents = {
     delivered: false,

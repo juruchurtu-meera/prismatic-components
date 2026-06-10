@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createEntryExamplePayload } from "../../examplePayloads";
 import { createEntryInputs } from "../../inputs";
-
 export const createEntry = action({
   display: {
     label: "Create Changelog Entry",

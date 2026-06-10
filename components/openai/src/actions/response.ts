@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { createResponseExamplePayload } from "../examplePayloads";
 import { connectionInput, modelInput, timeout } from "../inputs";
-
 const createFunctionCallingResponse = action({
   display: {
     label: "Create Response",
@@ -33,5 +32,4 @@ const createFunctionCallingResponse = action({
   },
   examplePayload: createResponseExamplePayload,
 });
-
 export default { createFunctionCallingResponse };

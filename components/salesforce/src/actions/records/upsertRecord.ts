@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { upsertRecordInputs } from "../../inputs";
 import { genericUpsertExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const upsertRecord = action({
   display: {
     label: "Upsert Record",
@@ -11,9 +10,11 @@ export const upsertRecord = action({
       "Update a Salesforce record if it exists, otherwise create a new Salesforce record.",
   },
   inputs: upsertRecordInputs,
-  perform: async (context, { version, recordType, externalIdFieldName, connection, records }) => {
+  perform: async (
+    context,
+    { version, recordType, externalIdFieldName, connection, records },
+  ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", {
         recordType,
@@ -21,8 +22,9 @@ export const upsertRecord = action({
         records,
       });
     }
-
-    const command = salesforceClient.sobject(recordType).upsert(records, externalIdFieldName);
+    const command = salesforceClient
+      .sobject(recordType)
+      .upsert(records, externalIdFieldName);
     const response = await executeSFAction(context, command);
     return {
       data: response,

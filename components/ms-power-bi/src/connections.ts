@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {
@@ -38,8 +37,10 @@ export const oauth = oauth2Connection({
       shown: true,
       comments:
         "Space-separated list of Power BI OAuth scopes. Must include 'offline_access' for refresh tokens. See [Microsoft Graph permissions reference](https://docs.microsoft.com/en-us/graph/permissions-reference) for available scopes.",
-      default: "https://analysis.windows.net/powerbi/api/Dataset.ReadWrite.All offline_access",
-      example: "https://analysis.windows.net/powerbi/api/Dataset.ReadWrite.All offline_access",
+      default:
+        "https://analysis.windows.net/powerbi/api/Dataset.ReadWrite.All offline_access",
+      example:
+        "https://analysis.windows.net/powerbi/api/Dataset.ReadWrite.All offline_access",
     },
     clientId: {
       label: "Client ID",
@@ -62,5 +63,4 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export default [oauth];

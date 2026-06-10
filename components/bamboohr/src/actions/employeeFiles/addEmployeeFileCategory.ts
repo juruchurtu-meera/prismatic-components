@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createBambooClient } from "../../client";
 import { addEmployeeFileCategoryExamplePayload } from "../../examplePayloads";
 import { addEmployeeFileCategoryInputs } from "../../inputs";
-
 export const addEmployeeFileCategory = action({
   display: {
     label: "Create Employee File Category",

@@ -11,9 +11,7 @@ import {
   startingAfter,
   timeout,
 } from "../../inputs";
-
 import type Stripe from "stripe";
-
 export const listDisputes = action({
   display: {
     label: "List Disputes",
@@ -36,7 +34,6 @@ export const listDisputes = action({
       stripeConnection: stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
     const params: Stripe.DisputeListParams = {
       charge: chargeId || undefined,
       payment_intent: paymentIntent || undefined,
@@ -58,7 +55,8 @@ export const listDisputes = action({
       ...chargeId,
       label: "Charge",
       required: false,
-      comments: "Only return disputes associated to the charge specified by this charge ID.",
+      comments:
+        "Only return disputes associated to the charge specified by this charge ID.",
       clean: util.types.toString,
     },
     paymentIntent,

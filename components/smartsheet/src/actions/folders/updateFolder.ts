@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { updateFolderExamplePayload } from "../../examplePayloads";
 import { updateFolderInputs } from "../../inputs";
-
 export const updateFolder = action({
   display: {
     label: "Update Folder",

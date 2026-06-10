@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 export const getDocumentExamplePayload = {
   data: {
     data: {
@@ -24,33 +12,15 @@ export const getDocumentExamplePayload = {
     readTime: new Date("2025-03-10T11:45:09.789Z"),
   },
 };
-
-
-
-
-
-
 export const createDocumentExamplePayload = {
   data: {
     id: "aBcDeFgHiJkLmNoPqRsT",
     path: "users/aBcDeFgHiJkLmNoPqRsT",
   },
 };
-
-
-
-
-
-
 export const removeFieldExamplePayload = {
   data: null as unknown,
 };
-
-
-
-
-
-
 export const listDocumentsExamplePayload = {
   data: [
     {
@@ -63,12 +33,6 @@ export const listDocumentsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const listCollectionsExamplePayload = {
   data: [
     {
@@ -77,30 +41,12 @@ export const listCollectionsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const updateDocumentExamplePayload = {
   data: null as unknown,
 };
-
-
-
-
-
-
 export const bulkCreateDocumentsExamplePayload = {
   data: "Documents created successfully.",
 };
-
-
-
-
-
-
 export const deleteDocumentExamplePayload = {
   data: null as unknown,
 };

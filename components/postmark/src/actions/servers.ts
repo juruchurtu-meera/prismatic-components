@@ -19,7 +19,6 @@ import {
   listServersExamplePayload,
 } from "../examplePayloads";
 import { fetchAllServers } from "../util";
-
 export const getServers = action({
   display: {
     label: "Get Server",
@@ -39,7 +38,6 @@ export const getServers = action({
   },
   inputs: { serverId, postmarkConnection: connectionInput },
 });
-
 export const editServers = action({
   display: {
     label: "Edit Server",
@@ -50,7 +48,6 @@ export const editServers = action({
     if (!params.serverId) {
       throw new Error("serverId is required.");
     }
-
     const serverConfig = {
       Name: params.serverName,
       Color: params.serverColor,
@@ -59,7 +56,6 @@ export const editServers = action({
       InboundHookUrl: params.inboundHookUrl,
       EnableSmtpApiErrorHooks: params.enableSmtpApiErrorHooks,
     };
-
     const client = createHttpClient(
       params.postmarkConnection,
       context.debug.enabled,
@@ -102,7 +98,6 @@ export const listServers = action({
       });
       return { data };
     }
-
     const { data } = await client.get(`/servers`, {
       params: {
         count: util.types.toNumber(params.count) || 50,
@@ -110,7 +105,6 @@ export const listServers = action({
         name: params.serverName || undefined,
       },
     });
-
     return {
       data: data.Servers,
     };

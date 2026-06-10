@@ -15,7 +15,6 @@ import { rawHttpClient } from "../../auth";
 import type { Article, PaginatedResponse } from "../../types";
 import { listArticlesPayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listArticles = action({
   display: {
     label: "List Articles",
@@ -37,10 +36,8 @@ export const listArticles = action({
   ) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
     const url = `/help_center/${locale}/articles`;
-
     if (fetchAll) {
       const articles: Article[] = [];
-
       return {
         data: {
           articles: await paginateResults<Article>(
@@ -53,9 +50,13 @@ export const listArticles = action({
         },
       };
     }
-
     const { data } = await client.get<
-      PaginatedResponse<{ articles: Article[] }> | { articles: Article[] }
+      | PaginatedResponse<{
+          articles: Article[];
+        }>
+      | {
+          articles: Article[];
+        }
     >(url, {
       params: {
         "page[size]": pageLimit || undefined,
@@ -66,7 +67,6 @@ export const listArticles = action({
         startTime: startTime || undefined,
       },
     });
-
     return {
       data,
     };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { countCollectsInputs } from "../../inputs";
 import { countCollectExamplePayload } from "../../payloadExamples";
-
 export const countCollects = action({
   display: {
     label: "Count Collects (Deprecated)",

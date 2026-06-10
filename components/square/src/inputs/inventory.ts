@@ -1,7 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
-import { cursor, idempotencyKey, limit, squareConnection, validateJSON } from "./common";
-
+import {
+  cursor,
+  idempotencyKey,
+  limit,
+  squareConnection,
+  validateJSON,
+} from "./common";
 const changes = input({
   type: "code",
   label: "Inventory Changes",
@@ -46,7 +51,6 @@ const changes = input({
     "An array of inventory changes in JSON format. See [Square Inventory Changes](https://developer.squareup.com/reference/square/objects/InventoryChange) for change types.",
   clean: (input) => validateJSON(input),
 });
-
 const ignoreUnchangedCounts = input({
   type: "boolean",
   label: "Ignore Unchanged Counts",
@@ -54,27 +58,30 @@ const ignoreUnchangedCounts = input({
   comments: "When true, unchanged inventory counts are ignored.",
   clean: util.types.toBool,
 });
-
 const catalogObjectIds = input({
   type: "code",
   label: "Catalog Object IDs",
   language: "json",
   required: true,
-  default: JSON.stringify(["W62UWFY35CWMYGVWK6TWJDNI", "X73VXGZ46DXNZHXWL7UXKENJ"], null, 2),
-  comments: "An array of catalog object IDs in JSON format used to filter inventory results.",
+  default: JSON.stringify(
+    ["W62UWFY35CWMYGVWK6TWJDNI", "X73VXGZ46DXNZHXWL7UXKENJ"],
+    null,
+    2,
+  ),
+  comments:
+    "An array of catalog object IDs in JSON format used to filter inventory results.",
   clean: (input) => validateJSON(input),
 });
-
 const locationIds = input({
   label: "Location IDs",
   type: "code",
   language: "json",
   default: JSON.stringify(["LH2G9VFHJRWKR", "LK3H8WGIKSMLA"], null, 2),
   required: true,
-  comments: "An array of location IDs in JSON format used to filter results to specific locations.",
+  comments:
+    "An array of location IDs in JSON format used to filter results to specific locations.",
   clean: (locationIdsInput) => validateJSON(locationIdsInput),
 });
-
 const updatedAfter = input({
   type: "string",
   label: "Updated After",
@@ -85,7 +92,6 @@ const updatedAfter = input({
     "The timestamp filter used to return results whose calculated_at value is after the given time. Format: RFC 3339.",
   clean: toOptionalString,
 });
-
 const states = input({
   type: "code",
   label: "States",
@@ -96,14 +102,12 @@ const states = input({
     "An array of inventory states in JSON format used to filter results. Options: IN_STOCK, SOLD, RETURNED_BY_CUSTOMER.",
   clean: (input) => validateJSON(input),
 });
-
 export const batchChangeInventoryInputs = {
   squareConnection,
   idempotencyKey,
   changes,
   ignoreUnchangedCounts,
 };
-
 export const batchRetrieveInventoryCountsInputs = {
   squareConnection,
   catalogObjectIds,

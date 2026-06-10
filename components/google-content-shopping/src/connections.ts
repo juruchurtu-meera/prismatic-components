@@ -1,5 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
 export const googleConnection = oauth2Connection({
   key: "oauth2",
   display: {
@@ -15,7 +14,8 @@ export const googleConnection = oauth2Connection({
       type: "string",
       required: true,
       shown: false,
-      comments: "OAuth 2.0 authorization endpoint for Google Content API authentication.",
+      comments:
+        "OAuth 2.0 authorization endpoint for Google Content API authentication.",
       default:
         "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent",
     },
@@ -25,7 +25,8 @@ export const googleConnection = oauth2Connection({
       type: "string",
       required: true,
       shown: false,
-      comments: "OAuth 2.0 token endpoint for exchanging authorization codes for access tokens.",
+      comments:
+        "OAuth 2.0 token endpoint for exchanging authorization codes for access tokens.",
       default: "https://oauth2.googleapis.com/token",
     },
     scopes: {
@@ -34,7 +35,7 @@ export const googleConnection = oauth2Connection({
       type: "string",
       required: true,
       comments:
-        "Space-separated OAuth permission scopes. See <a href=\"https://developers.google.com/identity/protocols/oauth2/scopes#content\">Google Content API scopes documentation</a> for available scopes.",
+        'Space-separated OAuth permission scopes. See <a href="https://developers.google.com/identity/protocols/oauth2/scopes#content">Google Content API scopes documentation</a> for available scopes.',
       default: "https://www.googleapis.com/auth/content",
     },
     clientId: {
@@ -42,15 +43,18 @@ export const googleConnection = oauth2Connection({
       placeholder: "Enter Client ID",
       type: "string",
       required: true,
-      comments: "The Client ID from your Google Cloud Console OAuth 2.0 credentials. Navigate to APIs & Services > Credentials to find this value.",
-      example: "123456789012-abc123def456ghi789jkl012mno345pq.apps.googleusercontent.com",
+      comments:
+        "The Client ID from your Google Cloud Console OAuth 2.0 credentials. Navigate to APIs & Services > Credentials to find this value.",
+      example:
+        "123456789012-abc123def456ghi789jkl012mno345pq.apps.googleusercontent.com",
     },
     clientSecret: {
       label: "Client Secret",
       placeholder: "Enter Client Secret",
       type: "password",
       required: true,
-      comments: "The Client Secret from your Google Cloud Console OAuth 2.0 credentials. Keep this value secure.",
+      comments:
+        "The Client Secret from your Google Cloud Console OAuth 2.0 credentials. Keep this value secure.",
     },
   },
 });

@@ -9,7 +9,6 @@ import section from "./section";
 import topic from "./topic";
 import post from "./posts";
 import subscriptions from "./subscriptions";
-
 export default {
   ...tickets,
   ...users,

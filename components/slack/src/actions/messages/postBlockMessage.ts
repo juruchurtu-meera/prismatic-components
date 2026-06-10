@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { postBlockMessageExamplePayload } from "../../examplePayloads";
 import { postBlockMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const postBlockMessage = action({
   display: {
     label: "Post Block Message",
@@ -11,7 +10,7 @@ export const postBlockMessage = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, blocks, message, channelName, username, messageId }
+    { connection, blocks, message, channelName, username, messageId },
   ) => {
     debugLogger({ blocks, message, channelName, username, messageId, debug });
     const client = await createOauthClient({

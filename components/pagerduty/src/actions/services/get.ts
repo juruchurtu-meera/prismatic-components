@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getServiceExamplePayload } from "../../examplePayloads";
 import { connectionInput, serviceId, servicesInclude } from "../../inputs";
-
 export const getService = action({
   display: {
     label: "Get Service",

@@ -5,7 +5,6 @@ import {
   worksheetId,
 } from "../general";
 import { tableId } from "../tables/general";
-
 export const listRowsInputs = {
   driveOrSiteId,
   workbookId: {

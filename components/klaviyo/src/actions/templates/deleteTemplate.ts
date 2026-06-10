@@ -3,7 +3,6 @@ import { getApi } from "../../api";
 import { deleteTemplateInputs as inputs } from "../../inputs/templates";
 import { deleteTemplateExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const deleteTemplate = action({
   display: {
     label: "Delete Template",

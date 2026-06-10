@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { getAssetsByIdsExamplePayload as examplePayload } from "../../examplePayloads";
 import { getAssetsByIdsInputs as inputs } from "../../inputs/assets";
-
 export const getAssetsByIds = action({
   display: {
     label: "Get Assets by IDs",
@@ -125,14 +124,12 @@ export const getAssetsByIds = action({
         }
       }
     `;
-
     const response = await createClient({
       connection,
       debug: context.debug.enabled,
     }).request(query, {
       assetIds,
     });
-
     return {
       data: response,
     };

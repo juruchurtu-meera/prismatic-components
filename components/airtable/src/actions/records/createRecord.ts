@@ -4,7 +4,6 @@ import { createRecordExamplePayload } from "../../examplePayloads";
 import { createRecordInputs } from "../../inputs";
 import type { AirtableRecord } from "../../types";
 import { getBaseId } from "../../util";
-
 export const createRecord = action({
   display: {
     label: "Create Record",
@@ -24,7 +23,6 @@ export const createRecord = action({
       Object.keys(dynamicFields)?.length > NO_RECORDS
         ? dynamicFields
         : recordFields;
-
     const { data } = await client.post<AirtableRecord>(
       `/v0/${retrievedBaseId}/${tableName}`,
       {

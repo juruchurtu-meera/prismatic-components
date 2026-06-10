@@ -9,14 +9,12 @@ import {
   valueListInputClean,
   valueListStringInputClean,
 } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Amazon Seller Central connection to use.",
 });
-
 export const CreatedAfter = input({
   label: "Created After",
   type: "string",
@@ -27,7 +25,6 @@ export const CreatedAfter = input({
   example: "2024-01-15T10:30:00.000Z",
   clean: util.types.toString,
 });
-
 export const CreatedBefore = input({
   label: "Created Before",
   type: "string",
@@ -38,7 +35,6 @@ export const CreatedBefore = input({
   example: "2024-12-31T23:59:59.999Z",
   clean: util.types.toString,
 });
-
 export const LastUpdatedAfter = input({
   label: "Last Updated After",
   type: "string",
@@ -49,7 +45,6 @@ export const LastUpdatedAfter = input({
   example: "2024-01-15T10:30:00.000Z",
   clean: util.types.toString,
 });
-
 export const LastUpdatedBefore = input({
   label: "Last Updated Before",
   type: "string",
@@ -60,7 +55,6 @@ export const LastUpdatedBefore = input({
   example: "2024-12-31T23:59:59.999Z",
   clean: util.types.toString,
 });
-
 export const OrderStatuses = input({
   label: "Order Statuses",
   type: "string",
@@ -81,7 +75,6 @@ export const OrderStatuses = input({
   ],
   clean: valueListStringInputClean,
 });
-
 export const spAPIEndpoints = input({
   label: "SP-API Endpoint",
   type: "string",
@@ -107,7 +100,6 @@ export const spAPIEndpoints = input({
   default: "sellingpartnerapi-na.amazon.com",
   clean: util.types.toString,
 });
-
 export const marketplaceId = input({
   label: "Marketplace Id",
   type: "string",
@@ -122,7 +114,6 @@ export const marketplaceId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const MarketplaceIds = input({
   label: "Marketplace Ids",
   type: "string",
@@ -137,7 +128,6 @@ export const MarketplaceIds = input({
   required: true,
   clean: valueListStringInputClean,
 });
-
 export const MarketplaceIdsBody = input({
   label: "Marketplace Ids",
   type: "string",
@@ -152,7 +142,6 @@ export const MarketplaceIdsBody = input({
   required: true,
   clean: valueListInputClean,
 });
-
 export const FulfillmentChannels = input({
   label: "Fulfillment Channels",
   type: "string",
@@ -176,7 +165,6 @@ export const FulfillmentChannels = input({
   ],
   clean: valueListStringInputClean,
 });
-
 export const PaymentMethods = input({
   label: "Payment Methods",
   type: "string",
@@ -204,7 +192,6 @@ export const PaymentMethods = input({
   ],
   clean: valueListStringInputClean,
 });
-
 export const BuyerEmail = input({
   label: "Buyer Email",
   type: "string",
@@ -215,7 +202,6 @@ export const BuyerEmail = input({
   example: "buyer@example.com",
   clean: util.types.toString,
 });
-
 export const SellerOrderId = input({
   label: "Seller Order Id",
   type: "string",
@@ -226,7 +212,6 @@ export const SellerOrderId = input({
   example: "ORDER-12345",
   clean: util.types.toString,
 });
-
 export const MaxResultsPerPage = input({
   label: "Max Results Per Page",
   type: "string",
@@ -238,7 +223,6 @@ export const MaxResultsPerPage = input({
   default: "100",
   clean: util.types.toString,
 });
-
 export const EasyShipShipmentStatuses = input({
   label: "Easy Ship Shipment Statuses",
   type: "string",
@@ -318,7 +302,6 @@ export const EasyShipShipmentStatuses = input({
   ],
   clean: valueListStringInputClean,
 });
-
 export const ElectronicInvoiceStatuses = input({
   label: "Electronic Invoice Statuses",
   type: "string",
@@ -354,7 +337,6 @@ export const ElectronicInvoiceStatuses = input({
   ],
   clean: valueListStringInputClean,
 });
-
 export const NextToken = input({
   label: "Next Token",
   type: "string",
@@ -365,7 +347,6 @@ export const NextToken = input({
   example: "amzn1.aos.4e9ba8a1-1234-5678-90ab-cdef12345678",
   clean: util.types.toString,
 });
-
 export const AmazonOrderId = input({
   label: "Amazon Order Id",
   type: "string",
@@ -375,7 +356,6 @@ export const AmazonOrderId = input({
   example: "123-1234567-1234567",
   clean: util.types.toString,
 });
-
 export const AmazonOrderIds = input({
   label: "Amazon Order Ids",
   type: "string",
@@ -386,7 +366,6 @@ export const AmazonOrderIds = input({
   example: "123-1234567-1234567",
   clean: valueListStringInputClean,
 });
-
 export const ActualFulfillmentSupplySourceId = input({
   label: "Actual Fulfillment Supply Source Id",
   type: "string",
@@ -397,7 +376,6 @@ export const ActualFulfillmentSupplySourceId = input({
   example: "SOURCE-12345",
   clean: util.types.toString,
 });
-
 export const IsISPU = input({
   label: "Is ISPU",
   type: "boolean",
@@ -406,7 +384,6 @@ export const IsISPU = input({
     "When true, this order is marked to be picked up from a store rather than delivered.",
   clean: util.types.toBool,
 });
-
 export const StoreChainStoreId = input({
   label: "Store Chain Store Id",
   type: "string",
@@ -417,7 +394,6 @@ export const StoreChainStoreId = input({
   example: "STORE-12345",
   clean: util.types.toString,
 });
-
 export const orderId = input({
   label: "Order Id",
   type: "string",
@@ -428,7 +404,6 @@ export const orderId = input({
   clean: util.types.toString,
   dataSource: "selectOrder",
 });
-
 export const codCollectionMethod = input({
   label: "COD Collection Method",
   type: "string",
@@ -447,7 +422,6 @@ export const codCollectionMethod = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -456,7 +430,6 @@ export const pollResourceType = input({
   model: pollResourceModel,
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -465,7 +438,6 @@ export const showNewRecords = input({
   comments: "Include newly created records in trigger results.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -474,7 +446,6 @@ export const showUpdatedRecords = input({
   comments: "Include updated records in trigger results.",
   clean: util.types.toBool,
 });
-
 export const packageReferenceId = input({
   label: "Package Reference Id",
   type: "string",
@@ -485,7 +456,6 @@ export const packageReferenceId = input({
   example: "12345",
   clean: util.types.toString,
 });
-
 export const carrierCode = input({
   label: "Carrier Code",
   type: "string",
@@ -495,7 +465,6 @@ export const carrierCode = input({
   example: "USPS",
   clean: util.types.toString,
 });
-
 export const carrierName = input({
   label: "Carrier Name",
   type: "string",
@@ -506,7 +475,6 @@ export const carrierName = input({
   example: "Amazon Logistics",
   clean: util.types.toString,
 });
-
 export const shippingMethod = input({
   label: "Shipping Method",
   type: "string",
@@ -516,7 +484,6 @@ export const shippingMethod = input({
   example: "Standard",
   clean: util.types.toString,
 });
-
 export const trackingNumber = input({
   label: "Tracking Number",
   type: "string",
@@ -527,7 +494,6 @@ export const trackingNumber = input({
   example: "1Z999AA10123456784",
   clean: util.types.toString,
 });
-
 export const ShipDate = input({
   label: "Ship Date",
   type: "string",
@@ -537,7 +503,6 @@ export const ShipDate = input({
   example: "2024-03-15T14:30:00.000Z",
   clean: util.types.toString,
 });
-
 export const shipFromSupplySourceId = input({
   label: "Ship From Supply Source Id",
   type: "string",
@@ -547,7 +512,6 @@ export const shipFromSupplySourceId = input({
   example: "SUPPLY-12345",
   clean: util.types.toString,
 });
-
 export const orderItems = input({
   label: "Order Items",
   type: "code",
@@ -567,7 +531,6 @@ export const orderItems = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const feedType = input({
   label: "Feed Type",
   type: "string",
@@ -578,7 +541,6 @@ export const feedType = input({
   example: "POST_PRODUCT_DATA",
   clean: util.types.toString,
 });
-
 export const feedTypes = input({
   label: "Feed Types",
   type: "string",
@@ -589,7 +551,6 @@ export const feedTypes = input({
   example: "POST_PRODUCT_DATA",
   clean: valueListStringInputClean,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -600,7 +561,6 @@ export const pageSize = input({
   default: "10",
   clean: util.types.toString,
 });
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
@@ -611,7 +571,6 @@ export const pageToken = input({
   example: "amzn1.page.12345678-90ab-cdef-1234-567890abcdef",
   clean: util.types.toString,
 });
-
 export const processingStatuses = input({
   label: "Processing Statuses",
   type: "string",
@@ -646,7 +605,6 @@ export const processingStatuses = input({
   ],
   clean: util.types.toString,
 });
-
 export const createdSince = input({
   label: "Created Since",
   type: "string",
@@ -655,10 +613,9 @@ export const createdSince = input({
   comments:
     "The earliest feed creation date and time for feeds included in the response in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days.",
   example: "2024-01-01T00:00:00.000Z",
-  default: new Date(Date.now() - 90 * (24 * 60 * 60 * 1000)).toISOString(), 
+  default: new Date(Date.now() - 90 * (24 * 60 * 60 * 1000)).toISOString(),
   clean: util.types.toString,
 });
-
 export const createdUntil = input({
   label: "Created Until",
   type: "string",
@@ -670,7 +627,6 @@ export const createdUntil = input({
   default: new Date().toISOString(),
   clean: util.types.toString,
 });
-
 export const feedId = input({
   label: "Feed Id",
   type: "string",
@@ -682,7 +638,6 @@ export const feedId = input({
   clean: util.types.toString,
   dataSource: "selectFeed",
 });
-
 export const inputFeedDocumentId = input({
   label: "Input Feed Document Id",
   type: "string",
@@ -693,7 +648,6 @@ export const inputFeedDocumentId = input({
   example: "amzn1.tortuga.3.edbcd0d8-3434-8222-ac6f-bac123456789.T1URXX1LHU1Q",
   clean: util.types.toString,
 });
-
 export const feedDocumentId = input({
   label: "Feed Document Id",
   type: "string",
@@ -703,7 +657,6 @@ export const feedDocumentId = input({
   example: "amzn1.tortuga.3.edbcd0d8-3434-8222-ac6f-bac123456789.T1URXX1LHU1Q",
   clean: util.types.toString,
 });
-
 export const feedOptions = input({
   label: "Feed Options",
   type: "code",
@@ -712,7 +665,6 @@ export const feedOptions = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const contentType = input({
   label: "Content Type",
   type: "string",
@@ -722,7 +674,6 @@ export const contentType = input({
   required: true,
   example: "text/xml; charset=UTF-8",
 });
-
 export const identifiers = input({
   label: "Identifiers",
   type: "string",
@@ -734,7 +685,6 @@ export const identifiers = input({
   clean: valueListStringInputClean,
   example: "B07H65KP63",
 });
-
 export const identifiersType = input({
   label: "Identifiers Type",
   type: "string",
@@ -782,7 +732,6 @@ export const identifiersType = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const includedData = input({
   label: "Included Data",
   type: "string",
@@ -829,7 +778,6 @@ export const includedData = input({
   ],
   clean: util.types.toString,
 });
-
 export const locale = input({
   label: "Locale",
   type: "string",
@@ -840,7 +788,6 @@ export const locale = input({
   clean: util.types.toString,
   example: "en_US",
 });
-
 export const sellerId = input({
   label: "Seller Id",
   type: "string",
@@ -851,7 +798,6 @@ export const sellerId = input({
   clean: util.types.toString,
   example: "A2EXAMPLE123456",
 });
-
 export const keywords = input({
   label: "Keywords",
   type: "string",
@@ -863,7 +809,6 @@ export const keywords = input({
   clean: valueListStringInputClean,
   example: "laptop",
 });
-
 export const brandNames = input({
   label: "Brand Names",
   type: "string",
@@ -875,7 +820,6 @@ export const brandNames = input({
   clean: valueListStringInputClean,
   example: "Samsung",
 });
-
 export const classificationsIds = input({
   label: "Classification Ids",
   type: "string",
@@ -887,7 +831,6 @@ export const classificationsIds = input({
   clean: valueListStringInputClean,
   example: "12345678",
 });
-
 export const keywordsLocale = input({
   label: "Keywords Locale",
   type: "string",
@@ -898,7 +841,6 @@ export const keywordsLocale = input({
   example: "en_US",
   clean: util.types.toString,
 });
-
 export const asin = input({
   label: "Amazon Standard Identification Number (ASIN)",
   type: "string",
@@ -908,7 +850,6 @@ export const asin = input({
   clean: util.types.toString,
   example: "B07H65KP63",
 });
-
 export const sku = input({
   label: "Stock Keeping Unit (SKU)",
   type: "string",
@@ -918,7 +859,6 @@ export const sku = input({
   clean: util.types.toString,
   example: "MY-PRODUCT-SKU-001",
 });
-
 export const issueLocale = input({
   label: "Issue Locale",
   type: "string",
@@ -929,7 +869,6 @@ export const issueLocale = input({
   clean: util.types.toString,
   example: "en_US",
 });
-
 export const productType = input({
   label: "Product Type",
   type: "string",
@@ -939,7 +878,6 @@ export const productType = input({
   example: "LUGGAGE",
   clean: util.types.toString,
 });
-
 export const requirements = input({
   label: "Requirements",
   type: "string",
@@ -966,7 +904,6 @@ export const requirements = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const attributes = input({
   label: "Attributes",
   type: "code",
@@ -986,7 +923,6 @@ export const attributes = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const patches = input({
   label: "Patches",
   type: "code",
@@ -1007,7 +943,6 @@ export const patches = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const shipmentId = input({
   label: "Shipment Id",
   type: "string",
@@ -1017,7 +952,6 @@ export const shipmentId = input({
   clean: util.types.toString,
   required: true,
 });
-
 export const ShippingServiceId = input({
   label: "Shipping Service Id",
   type: "string",
@@ -1027,7 +961,6 @@ export const ShippingServiceId = input({
   clean: util.types.toString,
   required: true,
 });
-
 export const ShippingServiceOfferId = input({
   label: "Shipping Service Offer Id",
   type: "string",
@@ -1037,7 +970,6 @@ export const ShippingServiceOfferId = input({
   clean: util.types.toString,
   required: false,
 });
-
 export const HazmatType = input({
   label: "Hazmat Type",
   type: "string",
@@ -1061,7 +993,6 @@ export const HazmatType = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const IncludePackingSlipWithLabel = input({
   label: "Include Packing Slip With Label",
   type: "boolean",
@@ -1069,7 +1000,6 @@ export const IncludePackingSlipWithLabel = input({
   clean: util.types.toBool,
   required: false,
 });
-
 export const ItemList = input({
   label: "Item List",
   type: "code",
@@ -1103,7 +1033,6 @@ export const ItemList = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const ShipFromAddress = input({
   label: "Ship From Address",
   type: "code",
@@ -1129,7 +1058,6 @@ export const ShipFromAddress = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const PackageDimensions = input({
   label: "Package Dimensions",
   type: "code",
@@ -1149,7 +1077,6 @@ export const PackageDimensions = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const Weight = input({
   label: "Weight",
   type: "string",
@@ -1168,7 +1095,6 @@ export const Weight = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const MustArriveByDate = input({
   label: "Must Arrive By Date",
   type: "string",
@@ -1179,7 +1105,6 @@ export const MustArriveByDate = input({
   clean: util.types.toString,
   required: false,
 });
-
 export const ShippingServiceOptions = input({
   label: "Shipping Service Options",
   type: "code",
@@ -1202,7 +1127,6 @@ export const ShippingServiceOptions = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const LabelCustomization = input({
   label: "Label Customization",
   type: "code",
@@ -1219,7 +1143,6 @@ export const LabelCustomization = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const ShipmentLevelSellerInputsList = input({
   label: "Shipment Level Seller Inputs List",
   type: "code",
@@ -1241,7 +1164,6 @@ export const ShipmentLevelSellerInputsList = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const subscriptionId = input({
   label: "Subscription Id",
   type: "string",
@@ -1252,7 +1174,6 @@ export const subscriptionId = input({
   required: true,
   dataSource: "selectSubscription",
 });
-
 export const notificationType = input({
   label: "Notification Type",
   type: "string",
@@ -1266,7 +1187,6 @@ export const notificationType = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const payloadVersion = input({
   label: "Payload Version",
   type: "string",
@@ -1276,7 +1196,6 @@ export const payloadVersion = input({
   example: "1.0",
   clean: util.types.toString,
 });
-
 export const destinationId = input({
   label: "Destination Id",
   type: "string",
@@ -1288,7 +1207,6 @@ export const destinationId = input({
   clean: util.types.toString,
   dataSource: "selectDestinations",
 });
-
 export const aggregationTimePeriod = input({
   label: "Aggregation Time Period",
   type: "string",
@@ -1313,7 +1231,6 @@ export const aggregationTimePeriod = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const orderChangeTypes = input({
   label: "Order Change Types",
   type: "string",
@@ -1338,7 +1255,6 @@ export const orderChangeTypes = input({
   required: false,
   clean: valueListInputClean,
 });
-
 export const eventFilterType = input({
   label: "Event Filter Type",
   type: "string",
@@ -1363,7 +1279,6 @@ export const eventFilterType = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const destinationName = input({
   label: "Name",
   type: "string",
@@ -1373,7 +1288,6 @@ export const destinationName = input({
   example: "MyNotificationDestination",
   clean: util.types.toString,
 });
-
 export const arn = input({
   label: "ARN",
   type: "string",
@@ -1383,9 +1297,7 @@ export const arn = input({
   example: "arn:aws:sqs:us-east-1:123456789012:my-notification-queue",
   clean: util.types.toString,
 });
-
 export const awsRegion = awsRegionInput;
-
 export const accountId = input({
   label: "Account Id",
   type: "string",

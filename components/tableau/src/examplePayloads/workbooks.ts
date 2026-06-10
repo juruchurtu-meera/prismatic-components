@@ -22,7 +22,6 @@ const workbookObject = {
     tag: [],
   },
 };
-
 export const listWorkbooksExamplePayload = {
   data: {
     pagination: {
@@ -35,27 +34,22 @@ export const listWorkbooksExamplePayload = {
     },
   },
 };
-
 export const searchWorkbooksExamplePayload = listWorkbooksExamplePayload;
-
 export const getWorkbookExamplePayload = {
   data: {
     workbook: workbookObject,
   },
 };
-
 export const publishWorkbookExamplePayload = {
   data: {
     workbook: workbookObject,
   },
 };
-
 export const updateWorkbookExamplePayload = {
   data: {
     workbook: workbookObject,
   },
 };
-
 export const deleteWorkbookExamplePayload = {
   data: null,
 };

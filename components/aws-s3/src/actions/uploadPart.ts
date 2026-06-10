@@ -3,8 +3,14 @@ import { action } from "@prismatic-io/spectral";
 import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { uploadPartPayload } from "../examplePayloads";
-import { accessKeyInput, bucket, fileChunk, objectKey, partNumber, uploadId } from "../inputs";
-
+import {
+  accessKeyInput,
+  bucket,
+  fileChunk,
+  objectKey,
+  partNumber,
+  uploadId,
+} from "../inputs";
 export const uploadPart = action({
   display: {
     label: "Upload Part",

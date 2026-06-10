@@ -21,7 +21,6 @@ import { createFolder } from "./folder/createFolder";
 import { deleteFolder } from "./folder/deleteFolder";
 import { getFilesList } from "./folder/getFilesList";
 import { moveFolder } from "./folder/moveFolder";
-
 export default {
   createFolder,
   copyFolder,

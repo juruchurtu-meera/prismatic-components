@@ -7,7 +7,6 @@ import {
   totalTax,
   useCustomerAddress,
 } from "./common";
-
 export const createDraftOrderInputs = {
   customerId: { ...customerId, required: false },
   lineItems,

@@ -3,7 +3,6 @@ import { connectionInput, queryFilter } from "../inputs";
 import { createClient } from "../client";
 import type { ErrorWithMessage } from "../types";
 import { deleteManyExamplePayload } from "../examplePayloads";
-
 const deleteMany = action({
   display: {
     label: "Delete Many",
@@ -28,10 +27,9 @@ const deleteMany = action({
     }
   },
   inputs: {
-    document: queryFilter, 
+    document: queryFilter,
     mongoConnection: connectionInput,
   },
   examplePayload: deleteManyExamplePayload,
 });
-
 export default deleteMany;

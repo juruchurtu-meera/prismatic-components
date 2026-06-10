@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../../client";
 import { oneDriveConnection, subscriptionId } from "../../inputs";
 import { deleteSubscriptionExamplePayload } from "../../examplePayloads";
-
 export const deleteSubscription = action({
   display: {
     label: "Delete a Subscription",

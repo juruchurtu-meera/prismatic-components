@@ -4,7 +4,6 @@ import { listCustomAccountingFieldsResponse } from "../../examplePayloads/custom
 import { defaultListInputs } from "../../inputs";
 import type { CustomAccountingField } from "../../interfaces/customAccountingField";
 import { fetchAllData } from "../../util";
-
 export const listCustomAccountingField = action({
   display: {
     label: "List Custom Accounting Field",
@@ -13,9 +12,11 @@ export const listCustomAccountingField = action({
   inputs: {
     ...defaultListInputs,
   },
-  perform: async (context, { connection, customQueryParams, fetchAll, pageSize, start }) => {
+  perform: async (
+    context,
+    { connection, customQueryParams, fetchAll, pageSize, start },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchAllData<CustomAccountingField>(
       client,
       "/accounting/fields",

@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const sendSingleEmailExamplePayload = {
   data: {
     ErrorCode: 0,
@@ -17,9 +7,6 @@ export const sendSingleEmailExamplePayload = {
     To: "john.doe@example.com",
   },
 };
-
-
-
 export const sendEmailWithTemplateExamplePayload = {
   data: {
     ErrorCode: 0,
@@ -29,9 +16,6 @@ export const sendEmailWithTemplateExamplePayload = {
     To: "jane.smith@example.com",
   },
 };
-
-
-
 export const sendBatchEmailExamplePayload = {
   data: [
     {
@@ -50,9 +34,6 @@ export const sendBatchEmailExamplePayload = {
     },
   ],
 };
-
-
-
 export const sendBatchEmailWithTemplateExamplePayload = {
   data: [
     {
@@ -71,13 +52,6 @@ export const sendBatchEmailWithTemplateExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
 export const getServerExamplePayload = {
   data: {
     ID: 1234567,
@@ -104,9 +78,6 @@ export const getServerExamplePayload = {
     EnableSmtpApiErrorHooks: false,
   },
 };
-
-
-
 export const createServerExamplePayload = {
   data: {
     ID: 1234568,
@@ -133,8 +104,6 @@ export const createServerExamplePayload = {
     EnableSmtpApiErrorHooks: false,
   },
 };
-
-
 export const editServerExamplePayload = {
   data: {
     ...getServerExamplePayload.data,
@@ -142,18 +111,12 @@ export const editServerExamplePayload = {
     Color: "purple",
   },
 };
-
-
-
 export const deleteServerExamplePayload = {
   data: {
     ErrorCode: 0,
     Message: "Server Production Mail Server removed.",
   },
 };
-
-
-
 export const listServersExamplePayload = {
   data: [
     {
@@ -206,19 +169,8 @@ export const listServersExamplePayload = {
     },
   ],
 };
-
-
 export const getServersExamplePayload = getServerExamplePayload;
-
-
 export const editServersExamplePayload = editServerExamplePayload;
-
-
-
-
-
-
-
 export const getWebhookExamplePayload = {
   data: {
     ID: 9876543,
@@ -259,9 +211,6 @@ export const getWebhookExamplePayload = {
     },
   },
 };
-
-
-
 export const createWebhookExamplePayload = {
   data: {
     ID: 9876544,
@@ -297,9 +246,6 @@ export const createWebhookExamplePayload = {
     },
   },
 };
-
-
-
 export const editWebhookExamplePayload = {
   data: {
     ...getWebhookExamplePayload.data,
@@ -312,18 +258,12 @@ export const editWebhookExamplePayload = {
     },
   },
 };
-
-
-
 export const deleteWebhookExamplePayload = {
   data: {
     ErrorCode: 0,
     Message: "Webhook 9876543 removed",
   },
 };
-
-
-
 export const listWebhooksExamplePayload = {
   data: {
     Webhooks: [
@@ -401,8 +341,6 @@ export const listWebhooksExamplePayload = {
     ],
   },
 };
-
-
 export const deleteInstancedWebhooksExamplePayload = {
   data: {
     message: "All listed webhooks deleted successfully.",

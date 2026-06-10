@@ -1,23 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getAuthorizedTeamsExamplePayload = {
   data: {
     teams: [
@@ -33,7 +13,8 @@ export const getAuthorizedTeamsExamplePayload = {
               username: "John Doe",
               email: "john.doe@example.com",
               color: "#7b68ee",
-              profilePicture: "https://attachments.clickup.com/profilePictures/81942673_abc.jpg",
+              profilePicture:
+                "https://attachments.clickup.com/profilePictures/81942673_abc.jpg",
               initials: "JD",
               role: 1,
               custom_role: null,
@@ -55,7 +36,6 @@ export const getAuthorizedTeamsExamplePayload = {
     ],
   },
 };
-
 export const getWorkspaceSeatsExamplePayload = {
   data: {
     members: {
@@ -70,14 +50,12 @@ export const getWorkspaceSeatsExamplePayload = {
     },
   },
 };
-
 export const getWorkspacePlanExamplePayload = {
   data: {
     plan_id: 3,
     plan_name: "Business",
   },
 };
-
 const teamGroupObject = {
   id: "2b4dc017-deb0-4cff-8675-3a4a492e13e4",
   team_id: "9012345",
@@ -102,21 +80,17 @@ const teamGroupObject = {
     icon: null,
   },
 };
-
 export const getTeamExamplePayload = {
   data: {
     groups: [teamGroupObject],
   },
 };
-
 export const createTeamExamplePayload = {
   data: teamGroupObject,
 };
-
 export const updateTeamExamplePayload = {
   data: teamGroupObject,
 };
-
 export const deleteTeamExamplePayload = {
   data: null,
 };

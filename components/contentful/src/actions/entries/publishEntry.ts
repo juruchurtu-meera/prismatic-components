@@ -9,7 +9,6 @@ import { createClient } from "../../client";
 import { publishEntryExamplePayload } from "../../examplePayloads";
 import { publishEntryInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const publishEntry = action({
   display: {
     label: "Publish Entry",
@@ -27,7 +26,7 @@ export const publishEntry = action({
       await entry.publish()
     ).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: publishEntryInputs,

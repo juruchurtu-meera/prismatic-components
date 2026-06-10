@@ -1,6 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
 import type { BodyType } from "@microsoft/microsoft-graph-types";
-import { cleanAttachments, cleanFunctionForBccAndCcInputs, cleanStringInput } from "../util";
+import {
+  cleanAttachments,
+  cleanFunctionForBccAndCcInputs,
+  cleanStringInput,
+} from "../util";
 import { ATTACHMENTS_DATA_INPUT_EXAMPLE } from "../constants";
 import {
   connectionInput,
@@ -9,7 +13,6 @@ import {
   pageLimitInput,
   pageSkipInput,
 } from "./common";
-
 export const messageIdInput = input({
   label: "Message ID",
   type: "string",
@@ -20,7 +23,6 @@ export const messageIdInput = input({
   example: "AAMkAGUAAAwTW09AAA=",
   placeholder: "Enter Message ID",
 });
-
 export const dynamicAttachments = input({
   label: "Dynamic Attachments",
   type: "data",
@@ -29,7 +31,6 @@ export const dynamicAttachments = input({
   example: JSON.stringify(ATTACHMENTS_DATA_INPUT_EXAMPLE, null, 2),
   clean: (value: unknown) => cleanAttachments(value, "Dynamic Attachments"),
 });
-
 export const attachments = input({
   label: "Attachments",
   type: "string",
@@ -46,7 +47,6 @@ export const attachments = input({
   placeholder: "Enter file attachments",
   clean: (value: unknown) => cleanAttachments(value, "Attachments"),
 });
-
 export const searchInput = input({
   label: "Search",
   type: "string",
@@ -57,7 +57,6 @@ export const searchInput = input({
   placeholder: "Enter search query",
   clean: cleanStringInput,
 });
-
 export const filterInput = input({
   label: "Filter",
   type: "string",
@@ -68,7 +67,6 @@ export const filterInput = input({
   placeholder: "Enter filter expression",
   clean: cleanStringInput,
 });
-
 const sendToInput = input({
   label: "To",
   type: "string",
@@ -80,7 +78,6 @@ const sendToInput = input({
   example: '["john.doe@example.com", "jane.smith@example.com"]',
   placeholder: "Enter recipient email addresses",
 });
-
 const sendCcInput = input({
   label: "CC",
   type: "string",
@@ -92,7 +89,6 @@ const sendCcInput = input({
   example: '["cc.recipient@example.com"]',
   placeholder: "Enter CC email addresses",
 });
-
 const sendBccInput = input({
   label: "BCC",
   type: "string",
@@ -104,7 +100,6 @@ const sendBccInput = input({
   example: '["bcc.recipient@example.com"]',
   placeholder: "Enter BCC email addresses",
 });
-
 const sendSubjectInput = input({
   label: "Subject",
   type: "string",
@@ -114,7 +109,6 @@ const sendSubjectInput = input({
   example: "Quarterly Report",
   placeholder: "Enter message subject",
 });
-
 const sendBodyInput = input({
   label: "Message Body",
   type: "string",
@@ -124,7 +118,6 @@ const sendBodyInput = input({
   example: "<p>Hello, this is the email body.</p>",
   placeholder: "Enter message body",
 });
-
 const sendBodyContentTypeInput = input({
   label: "Body Content Type",
   type: "string",
@@ -143,7 +136,6 @@ const sendBodyContentTypeInput = input({
     return util.types.toString(value) as BodyType;
   },
 });
-
 export const listMessagesInputs = {
   connection: connectionInput,
   fetchAll: fetchAllInput,
@@ -153,17 +145,14 @@ export const listMessagesInputs = {
   search: searchInput,
   filter: filterInput,
 };
-
 export const getMessageByIdInputs = {
   connection: connectionInput,
   messageId: messageIdInput,
 };
-
 export const deleteMessageInputs = {
   connection: connectionInput,
   messageId: messageIdInput,
 };
-
 export const sendMessageInputs = {
   connection: connectionInput,
   to: sendToInput,

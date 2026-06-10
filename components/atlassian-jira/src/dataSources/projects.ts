@@ -1,7 +1,10 @@
-import { type Connection, dataSource, type Element } from "@prismatic-io/spectral";
+import {
+  type Connection,
+  dataSource,
+  type Element,
+} from "@prismatic-io/spectral";
 import { createV3Client } from "../connections/auth";
 import { connectionInput } from "../inputs";
-
 const getProjects = async (connection: Connection) => {
   const client = await createV3Client(connection);
   let nextPage = 0;
@@ -28,7 +31,6 @@ const getProjects = async (connection: Connection) => {
     nextPage = maxResults + startAt;
     shouldFinish = !isLast;
   } while (shouldFinish);
-
   return projects
     .map<Element>(({ id, key, name }) => ({
       label: `${key} - ${name}`,
@@ -36,7 +38,6 @@ const getProjects = async (connection: Connection) => {
     }))
     .sort((a, b) => (a.label < b.label ? -1 : 1));
 };
-
 const selectProject = dataSource({
   display: {
     label: "Select Project",
@@ -51,7 +52,6 @@ const selectProject = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const selectProjects = dataSource({
   display: {
     label: "Select Projects",
@@ -70,7 +70,6 @@ const selectProjects = dataSource({
   },
   dataSourceType: "objectSelection",
 });
-
 export default {
   selectProject,
   selectProjects,

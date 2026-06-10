@@ -15,7 +15,6 @@ import {
 import { rawHttpClient } from "../../auth";
 import { searchPostsPayload } from "../../examplePayloads";
 import type { PaginatedResponse } from "../../types";
-
 export const searchPosts = action({
   display: {
     label: "Search Posts",
@@ -50,12 +49,11 @@ export const searchPosts = action({
       created_after: filterCreatedAfter || undefined,
       created_at: filterCreatedAt || undefined,
     };
-
-    const { data } = await client.get<PaginatedResponse<{ results: unknown }>>(
-      "/help_center/community_posts/search",
-      { params },
-    );
-
+    const { data } = await client.get<
+      PaginatedResponse<{
+        results: unknown;
+      }>
+    >("/help_center/community_posts/search", { params });
     return { data };
   },
   inputs: {

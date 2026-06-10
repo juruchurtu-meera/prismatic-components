@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { retrieveVoteExamplePayload } from "../../examplePayloads";
 import { retrieveVoteInputs } from "../../inputs";
-
 export const retrieveVote = action({
   display: {
     label: "Retrieve Vote",

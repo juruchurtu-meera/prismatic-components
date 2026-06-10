@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { bulkCreateVendorInputs } from "../../inputs/vendor";
 import { bulkCreateVendorExamplePayload } from "../../examplePayloads";
-
 export const bulkCreateVendor = action({
   display: {
     label: "Bulk Create Vendor",
@@ -15,7 +14,6 @@ export const bulkCreateVendor = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       bulk: vendorCreateBulk,
     };
@@ -24,12 +22,10 @@ export const bulkCreateVendor = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Bulk/Crud/Create/Vendor.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

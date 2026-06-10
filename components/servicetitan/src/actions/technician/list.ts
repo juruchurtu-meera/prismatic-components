@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Technician } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listTechnicians = action({
   display: {
     label: "List Technicians",
@@ -40,7 +39,6 @@ export const listTechnicians = action({
     },
   ) => {
     const client = createClient(connection, "settings", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<Technician>(client, "/technicians", {
         includeTotal,

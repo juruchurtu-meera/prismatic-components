@@ -17,7 +17,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const createSubscription = action({
   display: {
     label: "Create Subscription",

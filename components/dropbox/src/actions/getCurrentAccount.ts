@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { getCurrentAccountExamplePayload } from "../example-payloads";
 import { connectionInput } from "../inputs";
 import { handleDropboxError } from "../util";
-
 export const getCurrentAccount = action({
   display: {
     label: "Get Current Account",

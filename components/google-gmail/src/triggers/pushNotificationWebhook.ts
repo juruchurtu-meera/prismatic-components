@@ -1,8 +1,6 @@
 import { type TriggerPayload, trigger } from "@prismatic-io/spectral";
-
 import type { GmailNotificationBody } from "../interfaces";
 import { pushNotificationWebhookExamplePayload } from "../examplePayloads";
-
 export const pushNotificationWebhook = trigger({
   display: {
     label: "Manual Push Notifications",
@@ -13,13 +11,18 @@ export const pushNotificationWebhook = trigger({
     const finalPayload: TriggerPayload = { ...payload };
     try {
       const message = (finalPayload.body.data as GmailNotificationBody).message;
-      message.decodedData = JSON.parse(Buffer.from(message.data, "base64").toString("utf-8"));
+      message.decodedData = JSON.parse(
+        Buffer.from(message.data, "base64").toString("utf-8"),
+      );
       finalPayload.body.data = {
         ...(finalPayload.body.data as object),
         message,
       };
     } catch (error) {
-      throw new Error("Error parsing data. Was this message sent from Gmail?", error);
+      throw new Error(
+        "Error parsing data. Was this message sent from Gmail?",
+        error,
+      );
     }
     return Promise.resolve({
       payload,

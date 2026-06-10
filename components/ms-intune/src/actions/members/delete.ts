@@ -2,7 +2,6 @@ import { deleteMemberInputs } from "../../inputs/members/delete";
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { DELETE_MEMBERS_RESPONSE_MESSAGE } from "../../constants";
-
 export const deleteMemberFromGroup = action({
   display: {
     label: "Delete Group Member",
@@ -12,7 +11,6 @@ export const deleteMemberFromGroup = action({
   perform: async (context, { groupId, memberId, connection }) => {
     const client = createClient(connection, context.debug.enabled);
     await client.delete(`/groups/${groupId}/members/${memberId}/$ref`);
-
     return {
       data: DELETE_MEMBERS_RESPONSE_MESSAGE,
     };

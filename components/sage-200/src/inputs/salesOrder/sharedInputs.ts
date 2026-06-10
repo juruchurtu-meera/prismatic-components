@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanNumberInput, cleanStringInput } from "../../util";
-
 const isEditing = input({
   label: "Is Editing",
   comments:
@@ -10,7 +9,6 @@ const isEditing = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const isToSequenceLines = input({
   label: "Is To Sequence Lines",
   comments:
@@ -20,7 +18,6 @@ const isToSequenceLines = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const overrideOnHold = input({
   label: "Override On Hold",
   comments:
@@ -30,16 +27,15 @@ const overrideOnHold = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const recalculatePrices = input({
   label: "Recalculate Prices",
-  comments: "Allows recalculation of the prices for the order when the exchange rate has changed.",
+  comments:
+    "Allows recalculation of the prices for the order when the exchange rate has changed.",
   type: "boolean",
   required: false,
   default: "false",
   clean: util.types.toBool,
 });
-
 const applyAvailableDocumentDiscountPercent = input({
   label: "Apply Available Document Discount Percent",
   comments:
@@ -49,7 +45,6 @@ const applyAvailableDocumentDiscountPercent = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const customerDeliveryAddressId = input({
   label: "Customer Delivery Address ID",
   comments:
@@ -61,7 +56,6 @@ const customerDeliveryAddressId = input({
   dataSource: "selectCustomerDeliveryAddress",
   clean: cleanNumberInput,
 });
-
 const suppressWarnings = input({
   label: "Suppress Warnings",
   comments:
@@ -71,7 +65,6 @@ const suppressWarnings = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const customerType = input({
   label: "Customer Type",
   comments:
@@ -82,7 +75,6 @@ const customerType = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const documentDate = input({
   label: "Document Date",
   comments: "Sales order document date.",
@@ -92,7 +84,6 @@ const documentDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const exchangeRate = input({
   label: "Exchange Rate",
   comments: "Exchange rate.",
@@ -102,7 +93,6 @@ const exchangeRate = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const customerDocumentNo = input({
   label: "Customer Document Number",
   comments: "Customer document number.",
@@ -112,7 +102,6 @@ const customerDocumentNo = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const useInvoiceAddress = input({
   label: "Use Invoice Address",
   comments: "True if this order uses the customer invoice address, else False.",
@@ -121,7 +110,6 @@ const useInvoiceAddress = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const isTriangulated = input({
   label: "Is Triangulated",
   comments:
@@ -131,7 +119,6 @@ const isTriangulated = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const settlementDiscountDays = input({
   label: "Settlement Discount Days",
   comments: "Settlement discount days.",
@@ -141,7 +128,6 @@ const settlementDiscountDays = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const settlementDiscountPercent = input({
   label: "Settlement Discount Percent",
   comments: "Settlement discount percent.",
@@ -151,7 +137,6 @@ const settlementDiscountPercent = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const documentDiscountPercent = input({
   label: "Document Discount Percent",
   comments:
@@ -162,7 +147,6 @@ const documentDiscountPercent = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const documentCreatedBy = input({
   label: "Document Created By",
   comments: "The person who created the sales order.",
@@ -172,7 +156,6 @@ const documentCreatedBy = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const requestedDeliveryDate = input({
   label: "Requested Delivery Date",
   comments: "Requested delivery date.",
@@ -182,7 +165,6 @@ const requestedDeliveryDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const promisedDeliveryDate = input({
   label: "Promised Delivery Date",
   comments: "Promised delivery date.",
@@ -192,7 +174,6 @@ const promisedDeliveryDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const quotationExpiryDate = input({
   label: "Quotation Expiry Date",
   comments: "Quotation expiry date (only used for quotations).",
@@ -202,7 +183,6 @@ const quotationExpiryDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const orderPriority = input({
   label: "Order Priority",
   comments: "Order priority.",
@@ -212,7 +192,6 @@ const orderPriority = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -223,7 +202,6 @@ const additionalFields = input({
   example: JSON.stringify({ available_document_discount_percent: 20 }, null, 2),
   clean: cleanCodeInput,
 });
-
 export default {
   isEditing,
   isToSequenceLines,

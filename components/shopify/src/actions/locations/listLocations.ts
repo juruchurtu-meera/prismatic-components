@@ -3,7 +3,6 @@ import { getShopifyClient } from "../../client";
 import { listLocationsInputs } from "../../inputs";
 import { listLocationsExamplePayload } from "../../payloadExamples";
 import { computePageInformation } from "../../util";
-
 export const listLocations = action({
   display: {
     label: "List Locations (Deprecated)",
@@ -11,7 +10,11 @@ export const listLocations = action({
       "List all locations enabled on your platform. This version of the action is being deprecated. Please replace action with List Locations.",
   },
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const result = await computePageInformation(
       client,
       "/locations.json",

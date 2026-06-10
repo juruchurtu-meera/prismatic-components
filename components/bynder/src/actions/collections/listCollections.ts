@@ -11,7 +11,6 @@ import {
 } from "../../inputs";
 import type { Collection, Collections } from "../../types";
 import { fetchCollections } from "../../util";
-
 export const listCollections = action({
   display: {
     label: "List Collections",

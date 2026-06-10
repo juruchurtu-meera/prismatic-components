@@ -2,7 +2,6 @@ export const createDatabaseParent = {
   type: "page_id",
   page_id: "d9824bdc84454327be8b5b47500af6ce",
 };
-
 export const createDatabasePayload = {
   Name: {
     title: {},
@@ -82,7 +81,6 @@ export const createDatabasePayload = {
     files: {},
   },
 };
-
 export const createDatabaseResponse = {
   data: {
     object: "database",
@@ -246,7 +244,6 @@ export const createDatabaseResponse = {
     archived: false,
   },
 };
-
 export const listPagesResponse = {
   data: {
     object: "list",
@@ -293,7 +290,6 @@ export const listPagesResponse = {
     type: "page",
   },
 };
-
 export const createPageResponse = {
   data: {
     object: "page",
@@ -364,7 +360,6 @@ export const createPageResponse = {
     url: "https://www.notion.so/Tuscan-Kale-598337872cf94fdf8782e53db20768a5",
   },
 };
-
 export const propertiesInputsExample = {
   Name: {
     title: {},
@@ -373,14 +368,12 @@ export const propertiesInputsExample = {
     rich_text: {},
   },
 };
-
 export const sortInputExample = [
   {
     property: "Last ordered",
     direction: "ascending",
   },
 ];
-
 export const descriptionInputExample = [
   {
     annotations: {
@@ -393,9 +386,6 @@ export const descriptionInputExample = [
     },
   },
 ];
-
-
-
 export const getUserResponse = {
   data: {
     object: "user",
@@ -408,9 +398,7 @@ export const getUserResponse = {
     avatar_url: "https://secure.notion-static.com/avatar.jpg",
   },
 };
-
 export const getCurrentUserResponse = getUserResponse;
-
 export const listUsersResponse = {
   data: {
     object: "list",
@@ -445,8 +433,6 @@ export const listUsersResponse = {
     type: "user",
   },
 };
-
-
 export const rawRequestResponse = {
   data: {
     object: "user",
@@ -459,9 +445,6 @@ export const rawRequestResponse = {
     avatar_url: "https://secure.notion-static.com/avatar.jpg",
   },
 };
-
-
-
 export const getDatabaseResponse = {
   data: {
     object: "database",
@@ -498,7 +481,6 @@ export const getDatabaseResponse = {
     archived: false,
   },
 };
-
 export const listDatabasesResponse = {
   data: {
     object: "list",
@@ -538,7 +520,6 @@ export const listDatabasesResponse = {
     type: "database",
   },
 };
-
 export const queryDatabaseResponse = {
   data: {
     object: "list",
@@ -577,6 +558,4 @@ export const queryDatabaseResponse = {
     type: "page_or_database",
   },
 };
-
-
 export const createDatabaseItemResponse = createPageResponse;

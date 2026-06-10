@@ -15,7 +15,6 @@ import {
   version,
 } from "./common";
 import { records } from "./bulkJobs";
-
 export const createRecordInputs = {
   version,
   recordType,
@@ -23,7 +22,6 @@ export const createRecordInputs = {
   fieldValues,
   connection: connectionInput,
 };
-
 export const updateRecordInputs = {
   version,
   recordType,
@@ -32,21 +30,18 @@ export const updateRecordInputs = {
   fieldValues,
   connection: connectionInput,
 };
-
 export const deleteRecordInputs = {
   version,
   recordType,
   recordId,
   connection: connectionInput,
 };
-
 export const getRecordInputs = {
   version,
   recordType,
   recordId,
   connection: connectionInput,
 };
-
 export const findRecordInputs = {
   version,
   recordType,
@@ -55,7 +50,6 @@ export const findRecordInputs = {
   fieldValueTypes,
   connection: connectionInput,
 };
-
 export const findRecordsInputs = {
   version,
   recordType,
@@ -69,7 +63,6 @@ export const findRecordsInputs = {
   maxRecordsToFetch,
   connection: connectionInput,
 };
-
 export const upsertRecordInputs = {
   version,
   recordType,
@@ -77,7 +70,6 @@ export const upsertRecordInputs = {
   records,
   connection: connectionInput,
 };
-
 export const queryInputs = {
   version,
   queryString,

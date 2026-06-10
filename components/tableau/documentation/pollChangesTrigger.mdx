@@ -1,0 +1,68 @@
+This trigger checks for new and updated records in a selected [Tableau](https://www.tableau.com/) resource collection (workbooks, views, or data sources) on a configured schedule. Use it to drive a flow whenever a tracked resource is created or modified, without configuring a webhook subscription.
+
+On each poll, the trigger queries the selected resource collection for records whose `updatedAt` timestamp is at or after the previous poll time. Each matching record is then sorted into one of two branches: records that were also created during the window go to the `created` branch, and records that existed earlier but were modified go to the `updated` branch. Both branches are configurable and enabled by default.
+
+#### How It Works
+
+1. The trigger runs on the configured schedule and reads the stored timestamp of the previous poll. On the first run, the current time is used, so the initial poll establishes a baseline and returns no records.
+2. It queries the selected Tableau resource collection (workbooks, views, or data sources) for records whose `updatedAt` is at or after the previous poll time, sorted oldest to newest.
+3. Each returned record is classified by comparing its `createdAt` to the previous poll time:
+   - **created**: the `createdAt` is after the previous poll time, so the record was born during this window. Emitted on the `created` branch when **Show New Records** is enabled.
+   - **updated**: the `createdAt` is at or before the previous poll time, so the record existed earlier and was only modified. Emitted on the `updated` branch when **Show Updated Records** is enabled.
+4. The trigger stores a new cursor for the next poll. Normally this is the current poll time. If the result set is truncated at the page cap, the cursor is instead set to the newest `updatedAt` in the fetched records, so the remaining records are captured on the following poll.
+
+State is maintained automatically between executions. The stored cursor is the only state the trigger keeps, and it advances forward each poll so that records are not processed twice under normal conditions.
+
+#### Returned Data
+
+Fields shown are representative. The full response object includes additional properties.
+
+The trigger returns a `body.data` object containing two arrays, `created` and `updated`. Each holds the matching Tableau records for that branch, and either array may be empty depending on what changed and which branches are enabled.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "name": "Q2 Sales Dashboard",
+        "contentUrl": "Q2SalesDashboard",
+        "createdAt": "2026-05-26T14:30:00Z",
+        "updatedAt": "2026-05-26T14:30:00Z",
+        "project": {
+          "id": "1f2f3e4e-5d6d-7c8c-9b0b-1a2a3f4f5e6e",
+          "name": "Marketing Analytics"
+        },
+        "owner": { "id": "abc12e4e-5d6d-7c8c-9b0b-1a2a3f4f5e90" }
+      }
+    ],
+    "updated": [
+      {
+        "id": "f1e2d3c4-b5a6-9870-fedc-ba0987654321",
+        "name": "Pipeline Overview",
+        "contentUrl": "PipelineOverview",
+        "createdAt": "2026-04-12T09:00:00Z",
+        "updatedAt": "2026-05-26T15:45:00Z",
+        "project": {
+          "id": "1f2f3e4e-5d6d-7c8c-9b0b-1a2a3f4f5e6e",
+          "name": "Marketing Analytics"
+        },
+        "owner": { "id": "abc12e4e-5d6d-7c8c-9b0b-1a2a3f4f5e90" }
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+Refer to the [Tableau Workbooks and Views Methods](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_workbooks_and_views.htm) documentation for the full set of fields available on each record.
+
+#### Notes
+
+- The first poll returns no records. It only sets the baseline cursor that later polls compare against.
+- When a single poll returns more records than the page cap allows, the result is truncated and the cursor advances to the newest fetched `updatedAt`. The remaining records are picked up on the next poll, so no changes are lost.
+- Tableau REST API rate limits apply. Very frequent schedules may exhaust available API capacity.

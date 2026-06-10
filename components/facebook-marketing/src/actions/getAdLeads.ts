@@ -1,6 +1,5 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 import {
   adId,
   after,
@@ -10,7 +9,6 @@ import {
   myConnectionField,
   version,
 } from "../inputs";
-
 export const listAdLeads = action({
   display: {
     label: "List Ad Leads",
@@ -21,7 +19,6 @@ export const listAdLeads = action({
     { version, connection, adId, limit, before, after, fields },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.get(`/${adId}/leads`, {
       params: {
         limit,
@@ -30,7 +27,6 @@ export const listAdLeads = action({
         fields,
       },
     });
-
     return {
       data,
     };

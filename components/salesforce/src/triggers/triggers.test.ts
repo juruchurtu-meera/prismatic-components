@@ -1,12 +1,13 @@
 import { webhook } from ".";
-import { invokeTrigger, defaultTriggerPayload } from "@prismatic-io/spectral/dist/testing";
-
+import {
+  invokeTrigger,
+  defaultTriggerPayload,
+} from "@prismatic-io/spectral/dist/testing";
 describe("test salesforce webhook trigger", () => {
   test("verify the return value of salesforce webhook trigger", async () => {
     const payload = defaultTriggerPayload();
     payload.body.data = "<xml><foo>bar</foo></xml>";
     payload.body.contentType = "text/xml; charset=utf-8";
-
     const expectedData = { xml: { foo: "bar" } };
     const expectedResponse = {
       statusCode: 200,

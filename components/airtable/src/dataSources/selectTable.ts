@@ -3,7 +3,6 @@ import { createAirtableClient } from "../client";
 import { selectTableInputs } from "../inputs";
 import type { AirtableTable } from "../types";
 import { paginateData } from "../util";
-
 export const selectTable = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -13,7 +12,6 @@ export const selectTable = dataSource({
   inputs: selectTableInputs,
   perform: async (context, params) => {
     const client = createAirtableClient(params.airtableConnection);
-
     const data = await paginateData<AirtableTable>(
       client,
       `/v0/meta/bases/${params.baseId}/tables`,
@@ -21,7 +19,6 @@ export const selectTable = dataSource({
       {},
       true,
     );
-
     return {
       result: data.map((table) => ({
         key: table.id,

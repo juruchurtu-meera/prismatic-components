@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createApiClient } from "../../client";
 import { initialiseUploadResponse } from "../../examplePayloads";
 import { connection, name } from "../../inputs";
-
 export const initialiseUpload = action({
   display: {
     label: "Initialize Upload",

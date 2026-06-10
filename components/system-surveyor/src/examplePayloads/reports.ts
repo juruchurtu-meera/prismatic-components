@@ -1,7 +1,3 @@
-
-
-
-
 export const listReportsExamplePayload = {
   data: [
     {
@@ -17,7 +13,6 @@ export const listReportsExamplePayload = {
     },
   ],
 };
-
 export const scheduleReportExamplePayload = {
   data: {
     report_id: "f4b8e8d2-3c4b-4f7a-9f2d-1e2b3c4d5e6f",

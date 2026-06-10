@@ -9,7 +9,6 @@ import {
   providerId,
   workspaceId,
 } from "../inputs";
-
 export const deleteEventsProvider = action({
   display: {
     label: "Delete Events Provider",
@@ -21,7 +20,6 @@ export const deleteEventsProvider = action({
     { connection, consumerOrgId, projectId, workspaceId, providerId },
   ) => {
     const client = getClient(connection, context.debug.enabled);
-
     try {
       const { data } = await client.delete(
         `/${consumerOrgId}/${projectId}/${workspaceId}/providers/${providerId}`,

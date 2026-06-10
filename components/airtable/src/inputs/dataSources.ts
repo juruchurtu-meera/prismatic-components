@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { baseIdInput, connectionInput, tableName } from "./common";
-
 const includeIdInput = input({
   label: "Include ID in Dropdown",
   type: "boolean",
@@ -10,12 +9,10 @@ const includeIdInput = input({
   comments:
     "When true, the base or table ID is shown next to each dropdown menu option.",
 });
-
 export const selectBaseInputs = {
   airtableConnection: connectionInput,
   includeId: includeIdInput,
 };
-
 export const selectTableInputs = {
   airtableConnection: connectionInput,
   baseId: {
@@ -25,7 +22,6 @@ export const selectTableInputs = {
   },
   includeId: includeIdInput,
 };
-
 export const selectRecordInputs = {
   airtableConnection: connectionInput,
   baseId: {
@@ -38,7 +34,6 @@ export const selectRecordInputs = {
   },
   includeId: includeIdInput,
 };
-
 export const selectWebhookInputs = {
   airtableConnection: connectionInput,
   baseId: {

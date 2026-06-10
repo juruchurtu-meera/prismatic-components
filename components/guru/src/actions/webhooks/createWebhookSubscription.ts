@@ -5,7 +5,6 @@ import { getStatusValue } from "../../util/webhooks";
 import { arrayToCommaString } from "../../util";
 import type { GuruWebhookSubscription } from "../../types";
 import { createWebhookSubscriptionPayload } from "../../examplePayloads";
-
 export const createWebhookSubscription = action({
   display: {
     label: "Create Webhook Subscription",
@@ -17,19 +16,16 @@ export const createWebhookSubscription = action({
     { connection, targetUrl, webhookEventTypes, webhookActive, deliveryMode },
   ) => {
     const client = getGuruClient(connection, context.debug.enabled);
-
     const requestBody = {
       deliveryMode,
       targetUrl,
       status: getStatusValue(webhookActive),
       filter: arrayToCommaString(webhookEventTypes),
     };
-
     const { data } = await client.post<GuruWebhookSubscription>(
       "/webhooks",
       requestBody,
     );
-
     return { data };
   },
   inputs: createWebhookSubscriptionInputs,

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, cursor, paginationLimitInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const searchPersons = action({
   display: {
     label: "Search Persons",
@@ -11,9 +10,22 @@ export const searchPersons = action({
   },
   perform: async (
     context,
-    { connection, term, fields, exactMatch, organizationId, includeFields, limit, cursor },
+    {
+      connection,
+      term,
+      fields,
+      exactMatch,
+      organizationId,
+      includeFields,
+      limit,
+      cursor,
+    },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/persons/search", {
       params: {
         term,
@@ -51,7 +63,8 @@ export const searchPersons = action({
       label: "Exact Match",
       type: "boolean",
       clean: util.types.toBool,
-      comments: "When true, only full exact matches against the given term are returned",
+      comments:
+        "When true, only full exact matches against the given term are returned",
     }),
     organizationId: input({
       label: "Organization ID",

@@ -8,7 +8,6 @@ import {
   projectId,
 } from "../../inputs";
 import { SECTION_OPT_FIELDS } from "../../util";
-
 export const createSection = action({
   display: {
     label: "Create Section",

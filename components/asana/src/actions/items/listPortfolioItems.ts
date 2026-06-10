@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, portfolioId, offset, limit } from "../../inputs";
-
 export const listPortfolioItems = action({
   display: {
     label: "List Portfolio Items",

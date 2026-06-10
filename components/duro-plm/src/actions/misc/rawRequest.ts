@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createDuroClient } from "../../client";
 import { rawRequestInputs } from "../../inputs/misc";
 import { rawRequestExamplePayload } from "../../examplePayloads";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

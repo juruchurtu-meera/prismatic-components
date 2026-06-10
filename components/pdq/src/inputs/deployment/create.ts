@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const packageInput = input({
   label: "Package",
   type: "string",
@@ -10,7 +9,6 @@ export const packageInput = input({
   clean: util.types.toString,
   dataSource: "selectPackage",
 });
-
 export const targets = input({
   label: "Targets",
   type: "string",
@@ -20,7 +18,6 @@ export const targets = input({
   placeholder: "Enter device/group IDs (comma-separated)",
   clean: util.types.toString,
 });
-
 export const createDeploymentInputs = {
   packageInput,
   targets,

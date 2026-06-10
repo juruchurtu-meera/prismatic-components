@@ -7,7 +7,6 @@ import {
   requiresShippingMethod,
   trackingSupport,
 } from "./common";
-
 export const createFulfillmentServiceInputs = {
   shopifyConnection: connectionInput,
   callbackUrl,

@@ -8,7 +8,6 @@ import {
   shipDateStart,
   trackingNumber,
 } from "./common";
-
 export const listShipmentsInputs = {
   connectionInput,
   trackingNumber,

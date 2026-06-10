@@ -14,7 +14,6 @@ import {
   validateId,
   workspaceIdOptional,
 } from "./common";
-
 const commentId = input({
   label: "Comment ID",
   type: "string",
@@ -24,7 +23,6 @@ const commentId = input({
   example: "3888061631401860",
   placeholder: "Enter comment ID",
 });
-
 const text = input({
   label: "Text",
   type: "string",
@@ -33,7 +31,6 @@ const text = input({
   comments: "The text content of the comment.",
   placeholder: "Enter comment text",
 });
-
 const comment = input({
   label: "Comment",
   type: "string",
@@ -42,7 +39,6 @@ const comment = input({
   comments: "The text content to post as a new discussion comment.",
   placeholder: "Enter comment text",
 });
-
 const destinationId = input({
   label: "Destination ID",
   type: "string",
@@ -52,7 +48,6 @@ const destinationId = input({
     "The ID of the destination container (when copying or moving a sheet or a folder).",
   placeholder: "Enter destination ID",
 });
-
 const destinationType = input({
   label: "Destination Type",
   type: "string",
@@ -66,7 +61,6 @@ const destinationType = input({
   clean: util.types.toString,
   comments: "The type of container to copy or move the resource into.",
 });
-
 const newName = input({
   label: "New Name",
   type: "string",
@@ -75,7 +69,6 @@ const newName = input({
   comments: "The display name to assign to the copied resource.",
   placeholder: "Enter new name",
 });
-
 const sheetName = input({
   label: "Sheet Name",
   type: "string",
@@ -84,7 +77,6 @@ const sheetName = input({
   comments: "The display name for the new sheet.",
   placeholder: "Enter sheet name",
 });
-
 const columns = input({
   label: "Columns",
   type: "code",
@@ -102,7 +94,6 @@ const columns = input({
   comments:
     "See [Smartsheet API documentation](https://developers.smartsheet.com/api/smartsheet/openapi/columns) for additional information about column types.",
 });
-
 const columnTitle = input({
   label: "Title",
   type: "string",
@@ -111,7 +102,6 @@ const columnTitle = input({
   comments: "The display name for the column header.",
   placeholder: "Enter column title",
 });
-
 const columnType = input({
   label: "Type",
   type: "string",
@@ -133,7 +123,6 @@ const columnType = input({
   comments:
     "The data type for the column. Determines how cell values are displayed and validated.",
 });
-
 const formula = input({
   label: "Formula",
   type: "string",
@@ -142,7 +131,6 @@ const formula = input({
   comments: "The formula for a column.",
   placeholder: "Enter formula",
 });
-
 const hidden = input({
   label: "Hidden",
   type: "boolean",
@@ -150,7 +138,6 @@ const hidden = input({
   clean: util.types.toBool,
   comments: "When true, the column is hidden from view in the sheet.",
 });
-
 const columnIndex = input({
   label: "Position Index",
   type: "string",
@@ -161,7 +148,6 @@ const columnIndex = input({
     "The 0-based position where the column should be inserted in the sheet.",
   placeholder: "Enter position index",
 });
-
 const columnDescription = input({
   label: "Description",
   type: "string",
@@ -171,7 +157,6 @@ const columnDescription = input({
     "Additional context or instructions displayed below the column header.",
   placeholder: "Enter column description",
 });
-
 const locked = input({
   label: "Locked",
   type: "boolean",
@@ -180,7 +165,6 @@ const locked = input({
   comments:
     "When true, the column is locked and cannot be edited by users without appropriate permissions.",
 });
-
 const options = input({
   label: "Options",
   comments:
@@ -193,7 +177,6 @@ const options = input({
       : undefined,
   placeholder: "Enter picklist options as JSON array",
 });
-
 const columnValidation = input({
   label: "Validation",
   type: "boolean",
@@ -202,7 +185,6 @@ const columnValidation = input({
   comments:
     "When true, cell value validation rules are enforced for the column.",
 });
-
 const width = input({
   label: "Width",
   type: "string",
@@ -211,7 +193,6 @@ const width = input({
   comments: "Display width of the column in pixels.",
   placeholder: "Enter width in pixels",
 });
-
 const icalEnabled = input({
   label: "iCal Enabled",
   type: "boolean",
@@ -221,7 +202,6 @@ const icalEnabled = input({
   comments:
     "When true, a webcal feed is published for the calendar in the sheet.",
 });
-
 const readOnlyFullAccessibleBy = input({
   label: "Read Only Full Accessible By",
   type: "string",
@@ -235,7 +215,6 @@ const readOnlyFullAccessibleBy = input({
   comments:
     "The audience that can access the read-only full view of the published sheet. ALL allows anyone with the link; ORG restricts access to the organization.",
 });
-
 const readOnlyFullDefaultView = input({
   label: "Read Only Full Default View",
   type: "string",
@@ -250,7 +229,6 @@ const readOnlyFullDefaultView = input({
   comments:
     "The default layout shown when viewers open the read-only full published sheet.",
 });
-
 const readOnlyFullEnabled = input({
   label: "Read Only Full Enabled",
   type: "boolean",
@@ -260,7 +238,6 @@ const readOnlyFullEnabled = input({
   comments:
     "When true, publishes a rich read-only version of the sheet that allows viewers to download row attachments and discussions.",
 });
-
 const readOnlyLiteEnabled = input({
   label: "Read Only Lite Enabled",
   type: "boolean",
@@ -270,7 +247,6 @@ const readOnlyLiteEnabled = input({
   comments:
     "When true, publishes a lightweight read-only version of the sheet without row attachments or discussions.",
 });
-
 const readWriteAccessibleBy = input({
   label: "Read Write Accessible By",
   type: "string",
@@ -284,7 +260,6 @@ const readWriteAccessibleBy = input({
   comments:
     "The audience that can edit the published sheet. ALL allows anyone with the link; ORG restricts access to the organization.",
 });
-
 const readWriteDefaultView = input({
   label: "Read Write Default View",
   type: "string",
@@ -299,7 +274,6 @@ const readWriteDefaultView = input({
   comments:
     "The default layout shown when editors open the read-write published sheet.",
 });
-
 const readWriteEnabled = input({
   label: "Read Write Enabled",
   type: "boolean",
@@ -309,7 +283,6 @@ const readWriteEnabled = input({
   comments:
     "When true, publishes a rich version of the sheet that allows editors to modify cells and manage attachments and discussions.",
 });
-
 const format = input({
   label: "Format",
   type: "string",
@@ -323,7 +296,6 @@ const format = input({
   clean: util.types.toString,
   comments: "The file format to use when sending the sheet.",
 });
-
 const paperSize = input({
   label: "Paper Size",
   type: "string",
@@ -343,7 +315,6 @@ const paperSize = input({
   ],
   comments: "The paper size to use when generating the PDF.",
 });
-
 const emails = input({
   label: "Emails",
   type: "string",
@@ -352,7 +323,6 @@ const emails = input({
   comments: "The email addresses of recipients to send the document to.",
   placeholder: "Enter email address",
 });
-
 const sendGroups = input({
   label: "Group IDs",
   type: "string",
@@ -361,7 +331,6 @@ const sendGroups = input({
   comments: "The group IDs of recipients to send the document to.",
   placeholder: "Enter group ID",
 });
-
 const ccMe = input({
   label: "CC Me",
   type: "boolean",
@@ -369,7 +338,6 @@ const ccMe = input({
   clean: util.types.toBool,
   comments: "When true, sends a copy of the email to the sender.",
 });
-
 const message = input({
   label: "Message",
   type: "string",
@@ -378,7 +346,6 @@ const message = input({
   comments: "The message of the email.",
   placeholder: "Enter email message",
 });
-
 const emailSubject = input({
   label: "Subject",
   type: "string",
@@ -387,7 +354,6 @@ const emailSubject = input({
   comments: "The subject line of the email.",
   placeholder: "Enter email subject",
 });
-
 const updateSheetName = input({
   label: "New Name",
   type: "string",
@@ -396,13 +362,11 @@ const updateSheetName = input({
   comments: "The updated display name for the sheet.",
   placeholder: "Enter new sheet name",
 });
-
 export const attachmentsGetInputs = {
   connection: connectionInput,
   sheetId,
   attachmentId,
 };
-
 export const attachmentsListOnSheetInputs = {
   connection: connectionInput,
   sheetId,
@@ -410,19 +374,16 @@ export const attachmentsListOnSheetInputs = {
   page,
   pageSize,
 };
-
 export const columnDeleteInputs = {
   connection: connectionInput,
   sheetId,
   columnId,
 };
-
 export const columnGetInputs = {
   connection: connectionInput,
   sheetId,
   columnId,
 };
-
 export const columnsAddToSheetInputs = {
   connection: connectionInput,
   sheetId,
@@ -437,7 +398,6 @@ export const columnsAddToSheetInputs = {
   validation: columnValidation,
   width,
 };
-
 export const columnsListOnSheetInputs = {
   connection: connectionInput,
   sheetId,
@@ -445,33 +405,28 @@ export const columnsListOnSheetInputs = {
   page,
   pageSize,
 };
-
 export const commentDeleteInputs = {
   connection: connectionInput,
   sheetId,
   commentId,
 };
-
 export const commentEditInputs = {
   connection: connectionInput,
   sheetId,
   commentId,
   text,
 };
-
 export const commentGetInputs = {
   connection: connectionInput,
   sheetId,
   commentId,
 };
-
 export const commentsCreateInputs = {
   connection: connectionInput,
   sheetId,
   discussionId,
   text,
 };
-
 export const copySheetInputs = {
   connection: connectionInput,
   sheetId,
@@ -479,7 +434,6 @@ export const copySheetInputs = {
   destinationType,
   newName,
 };
-
 export const createSheetInputs = {
   connection: connectionInput,
   folderId: {
@@ -492,24 +446,20 @@ export const createSheetInputs = {
   name: sheetName,
   columns,
 };
-
 export const deleteSheetInputs = {
   connection: connectionInput,
   sheetId,
 };
-
 export const discussionDeleteInputs = {
   connection: connectionInput,
   sheetId,
   discussionId,
 };
-
 export const discussionGetInputs = {
   connection: connectionInput,
   sheetId,
   discussionId,
 };
-
 export const discussionListAttachmentsInputs = {
   connection: connectionInput,
   sheetId,
@@ -518,14 +468,12 @@ export const discussionListAttachmentsInputs = {
   page,
   pageSize,
 };
-
 export const discussionsCreateInputs = {
   connection: connectionInput,
   sheetId,
   rowId: rowIdOptional,
   comment,
 };
-
 export const discussionsListInputs = {
   connection: connectionInput,
   sheetId,
@@ -534,24 +482,20 @@ export const discussionsListInputs = {
   pageSize,
   rowId: rowIdOptional,
 };
-
 export const getSheetInputs = {
   connection: connectionInput,
   sheetId,
   page,
   pageSize,
 };
-
 export const getSheetPublishInputs = {
   connection: connectionInput,
   sheetId,
 };
-
 export const getSheetVersionInputs = {
   connection: connectionInput,
   sheetId,
 };
-
 export const listSheetsInputs = {
   connection: connectionInput,
   includeAll,
@@ -559,14 +503,12 @@ export const listSheetsInputs = {
   pageSize,
   modifiedSince,
 };
-
 export const moveSheetInputs = {
   connection: connectionInput,
   sheetId,
   destinationId,
   destinationType,
 };
-
 export const setSheetPublishInputs = {
   connection: connectionInput,
   sheetId,
@@ -579,7 +521,6 @@ export const setSheetPublishInputs = {
   readWriteDefaultView,
   readWriteEnabled,
 };
-
 export const sheetSendInputs = {
   connection: connectionInput,
   sheetId,
@@ -591,7 +532,6 @@ export const sheetSendInputs = {
   message,
   subject: emailSubject,
 };
-
 export const updateSheetInputs = {
   connection: connectionInput,
   sheetId,

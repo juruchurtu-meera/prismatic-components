@@ -4,7 +4,7 @@
     "href": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Files.Shares/CHANGELOG.md"
   }
 ]

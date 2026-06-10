@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { callLogIdInput, connectionInput } from "../../inputs";
-
 export const getCallLog = action({
   display: {
     label: "Get Call Log",

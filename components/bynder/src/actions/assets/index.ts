@@ -6,7 +6,6 @@ import { generateDynamicTransformation } from "./generateDynamicTransformation";
 import { getAsset } from "./getAsset";
 import { listAssets } from "./listAssets";
 import { updateAsset } from "./updateAsset";
-
 export default {
   addAssetMetapropertyOptions,
   deleteAsset,

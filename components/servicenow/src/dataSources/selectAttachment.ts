@@ -6,7 +6,6 @@ import {
   sysparmQuery,
 } from "../inputs";
 import { createNowApiClient } from "../util";
-
 export const selectAttachment = dataSource({
   display: {
     label: "Select Attachment",
@@ -36,14 +35,12 @@ export const selectAttachment = dataSource({
         sysparm_query: sysparmQuery,
       },
     });
-
     const result = attachments.map(
       ({ table_name, file_name, sys_id: key }) => ({
         label: `${table_name} - ${file_name}`,
         key,
       }),
     );
-
     return {
       result,
     };

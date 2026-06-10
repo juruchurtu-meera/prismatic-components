@@ -17,7 +17,6 @@ import rawRequests from "./actions/rawRequest";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "zoho",
   public: true,
@@ -25,7 +24,8 @@ export default component({
   display: {
     category: "Application Connectors",
     label: "Zoho",
-    description: "Manage records, contacts, and transactions in Zoho CRM and Books",
+    description:
+      "Manage records, contacts, and transactions in Zoho CRM and Books",
     iconPath: "icon.png",
   },
   actions: {

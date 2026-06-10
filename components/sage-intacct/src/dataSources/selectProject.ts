@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { connection, returnIdInput } from "../inputs";
 import { queryRecordsPaginated } from "../utils";
-
 export const selectProject = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -12,11 +11,9 @@ export const selectProject = dataSource({
     const projects = await queryRecordsPaginated(
       connection,
       "PROJECT",
-      
       ["*"],
       "",
     );
-
     return {
       result: projects.map(
         (project: {

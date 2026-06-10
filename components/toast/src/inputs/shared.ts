@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInputEmptyObject } from "../utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const restaurantExternalId = input({
   label: "Restaurant External ID",
   comments:
@@ -17,7 +15,6 @@ export const restaurantExternalId = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: util.types.toString,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",

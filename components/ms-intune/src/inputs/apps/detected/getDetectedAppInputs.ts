@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../../util";
-
 const detectedAppId = input({
   label: "Detected App Id",
   comments: "Unique Identifier for the detected app to retrieve.",
@@ -11,7 +10,6 @@ const detectedAppId = input({
   dataSource: "selectDetectedApp",
   clean: cleanStringInput,
 });
-
 export default {
   detectedAppId,
 };

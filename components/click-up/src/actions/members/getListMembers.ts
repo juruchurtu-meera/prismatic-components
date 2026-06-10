@@ -2,9 +2,7 @@ import { action } from "@prismatic-io/spectral";
 import { createClickUpClient } from "../../client";
 import { getListMembersExamplePayload } from "../../examplePayloads";
 import { connectionInput, getlistId } from "../../inputs";
-
 const listId = getlistId(true, "List ID");
-
 export const getListMembers = action({
   display: {
     label: "Get List Members",
@@ -12,10 +10,11 @@ export const getListMembers = action({
   },
   examplePayload: getListMembersExamplePayload,
   perform: async (context, { clickUpConnection, listId }) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
-
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/list/${listId}/member`);
-
     return {
       data,
     };

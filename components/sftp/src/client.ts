@@ -7,9 +7,7 @@ import {
   unsecureCipherAlgorithms,
   unsecureServerHostKeyAlgorithms,
 } from "./constants";
-
 import type { CipherAlgorithm, ServerHostKeyAlgorithm } from "ssh2";
-
 export const getAuthParams = (connection: Connection) => {
   switch (connection.key) {
     case basic.key:
@@ -31,10 +29,8 @@ export const getAuthParams = (connection: Connection) => {
       );
   }
 };
-
 export const getSftpClient = async (connection: Connection, debug: boolean) => {
   const sftp = new Client();
-
   sftp.on(
     "keyboard-interactive",
     (_name, _instructions, _instructionsLang, _prompts, finish) => {
@@ -46,7 +42,6 @@ export const getSftpClient = async (connection: Connection, debug: boolean) => {
       finish([connection.fields.password]);
     },
   );
-
   const {
     host,
     port,
@@ -56,34 +51,27 @@ export const getSftpClient = async (connection: Connection, debug: boolean) => {
     customServerHostKeyAlgorithms,
     customCiphers,
   } = connection.fields;
-
   try {
     let cipher = util.types.toBool(enableUnsecureCiphers)
       ? [...secureCipherAlgorithms, ...unsecureCipherAlgorithms]
       : secureCipherAlgorithms;
-
     let serverHostKey = util.types.toBool(enableUnsecureServerHostKeyAlgorithms)
       ? [...secureServerHostKeyAlgorithms, ...unsecureServerHostKeyAlgorithms]
       : secureServerHostKeyAlgorithms;
-
     const customServerHostKeyAlgorithmsString = util.types.toString(
       customServerHostKeyAlgorithms,
     );
-
     if (customServerHostKeyAlgorithmsString) {
       serverHostKey = customServerHostKeyAlgorithmsString
         .replace(/\s+/g, "")
         .split(",") as ServerHostKeyAlgorithm[];
     }
-
     const customCiphersString = util.types.toString(customCiphers);
-
     if (customCiphersString) {
       cipher = customCiphersString
         .replace(/\s+/g, "")
         .split(",") as CipherAlgorithm[];
     }
-
     await sftp.connect({
       host: util.types.toString(host),
       port: util.types.toInt(port),
@@ -106,6 +94,5 @@ export const getSftpClient = async (connection: Connection, debug: boolean) => {
       `Unable to connect to SFTP server. ${err}`,
     );
   }
-
   return sftp;
 };

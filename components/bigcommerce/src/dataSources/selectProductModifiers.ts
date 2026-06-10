@@ -5,7 +5,6 @@ import {
   getAllProductModifiersProductId,
   storeHash,
 } from "../inputs";
-
 export const selectProductModifiers = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -23,9 +22,7 @@ export const selectProductModifiers = dataSource({
       false,
     );
     const endpoint = `/stores/${params.storeHash}/v3/catalog/products/${params.product_id}/modifiers`;
-
     const { data } = await client.get(endpoint);
-
     return {
       result: data.map(
         (modifier: { id: string; display_name: string; name: string }) => ({

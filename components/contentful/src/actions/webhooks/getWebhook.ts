@@ -3,7 +3,6 @@ import type { Space, WebhookProps } from "contentful-management";
 import { createClient } from "../../client";
 import { getWebhookExamplePayload } from "../../examplePayloads";
 import { getWebhookInputs } from "../../inputs";
-
 export const getWebhook = action({
   display: {
     label: "Get Webhook",
@@ -15,7 +14,6 @@ export const getWebhook = action({
     const data: WebhookProps = (
       await space.getWebhook(webhookId)
     ).toPlainObject();
-
     return {
       data,
     };

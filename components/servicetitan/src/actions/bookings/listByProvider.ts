@@ -13,7 +13,6 @@ import {
 } from "../../inputs";
 import type { Booking } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listBookingByProvider = action({
   display: {
     label: "List Bookings by Provider",
@@ -43,7 +42,6 @@ export const listBookingByProvider = action({
     },
   ) => {
     const client = createClient(connection, "crm", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<Booking>(
         client,

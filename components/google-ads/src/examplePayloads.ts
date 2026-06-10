@@ -1,48 +1,19 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
 import { BUDGET_SEVERITY } from "./constants";
-
-
-
-
-
-
-
-
-
-
-
 export const externalAttributionDataPayload = {
   externalAttributionCredit: 0.75,
   externalAttributionModel: "LINEAR",
 };
-
-
-
-
-
-
 export const customVariablePayload = {
   conversionCustomVariable:
     "customers/1234567890/conversionCustomVariables/11111",
   value: "premium_tier",
 };
-
-
-
-
-
-
 export const itemPayload = {
   productId: "SKU-12345",
   quantity: 2,
   unitPrice: 49.99,
 };
-
-
-
-
-
-
 export const cartDataPayload = {
   merchantId: "1234567",
   feedCountryCode: "US",
@@ -50,12 +21,6 @@ export const cartDataPayload = {
   localTransactionCost: 5.99,
   items: [itemPayload],
 };
-
-
-
-
-
-
 export const offlineUserAddressInfo = {
   hashedFirstName:
     "a8cfcd74832004951b4408cdb0a5dbcd8c7e52d43f7fe244bf720582e05241da",
@@ -68,12 +33,6 @@ export const offlineUserAddressInfo = {
   hashedStreetAddress:
     "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
 };
-
-
-
-
-
-
 export const userIdentifierPayload = {
   userIdentifierSource: "FIRST_PARTY",
   hashedEmail:
@@ -84,22 +43,10 @@ export const userIdentifierPayload = {
   thirdPartyUserId: "ext-user-98765",
   addressInfo: offlineUserAddressInfo,
 };
-
-
-
-
-
-
 export const consentPayload = {
   adUserData: "GRANTED",
   adPersonalization: "GRANTED",
 };
-
-
-
-
-
-
 export const conversionsPayload = [
   {
     gbraid: "gbraid_identifier_string",
@@ -118,12 +65,6 @@ export const conversionsPayload = [
     orderId: "ORDER-2026-00123",
   },
 ];
-
-
-
-
-
-
 export const dataManagerEventsPayload = [
   {
     eventTimestamp: "2026-05-15T12:30:00Z",
@@ -139,24 +80,11 @@ export const dataManagerEventsPayload = [
     },
   },
 ];
-
-
-
-
-
-
-
 export const ingestOfflineConversionsExamplePayload = {
   data: {
     requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   },
 };
-
-
-
-
-
-
 export const operation = {
   updateMask: "status,name",
   create: {
@@ -171,14 +99,7 @@ export const operation = {
   },
   remove: "customers/1234567890/campaigns/1122334455",
 };
-
 export const operationPayload = [operation];
-
-
-
-
-
-
 export const operationCriteriaPayload = [
   {
     updateMask: "bidModifier",
@@ -196,14 +117,6 @@ export const operationCriteriaPayload = [
     remove: "customers/1234567890/campaignCriteria/1122334455~987654321",
   },
 ];
-
-
-
-
-
-
-
-
 export const uploadConversionGenericResponseExamplePayload = {
   data: {
     partialFailureError: {
@@ -242,18 +155,6 @@ export const uploadConversionGenericResponseExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const confirmClientLinkExamplePayload = {
   data: {
     results: [
@@ -264,13 +165,6 @@ export const confirmClientLinkExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
 export const getCustomerExamplePayload = {
   data: {
     results: [
@@ -290,13 +184,6 @@ export const getCustomerExamplePayload = {
     queryResourceConsumption: "80",
   },
 };
-
-
-
-
-
-
-
 export const getConversionActionExamplePayload = {
   data: {
     results: [
@@ -313,13 +200,6 @@ export const getConversionActionExamplePayload = {
     queryResourceConsumption: "702",
   },
 };
-
-
-
-
-
-
-
 export const mutateCampaignExamplePayload = {
   data: {
     results: [
@@ -329,13 +209,6 @@ export const mutateCampaignExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
 export const mutateCampaignCriteriaExamplePayload = {
   data: {
     results: [
@@ -345,14 +218,9 @@ export const mutateCampaignCriteriaExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-export const searchAdsExamplePayload: { data: unknown } = {
+export const searchAdsExamplePayload: {
+  data: unknown;
+} = {
   data: {
     results: [
       {
@@ -370,13 +238,6 @@ export const searchAdsExamplePayload: { data: unknown } = {
     queryResourceConsumption: "74",
   },
 };
-
-
-
-
-
-
-
 export const accountReportsExamplePayload = {
   data: {
     accountReports: [
@@ -404,13 +265,6 @@ export const accountReportsExamplePayload = {
     nextPageToken: "CJL5XLT2PWDmIpGNGciABRnu",
   },
 };
-
-
-
-
-
-
-
 export const detailedLeadReportsExamplePayload = {
   data: {
     detailedLeadReports: [
@@ -436,16 +290,6 @@ export const detailedLeadReportsExamplePayload = {
     nextPageToken: "CJL5XLT2PWDmIpGNGciABRnu",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const inviteUserExamplePayload = {
   data: {
     result: {
@@ -454,26 +298,14 @@ export const inviteUserExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const listAccessibleCustomersExamplePayload = {
   data: {
     resourceNames: ["customers/1234567890", "customers/5555555555"],
   },
 };
-
-
-
-
-
-
-
-export const listCustomersExamplePayload: { data: unknown } = {
+export const listCustomersExamplePayload: {
+  data: unknown;
+} = {
   data: {
     results: [
       {
@@ -500,12 +332,6 @@ export const listCustomersExamplePayload: { data: unknown } = {
       "customerClient.resourceName,customerClient.clientCustomer,customerClient.id,customerClient.level,customerClient.hidden,customerClient.level",
   },
 };
-
-
-
-
-
-
 export const createClientLinkExamplePayload = {
   data: {
     resourceName:
@@ -515,95 +341,74 @@ export const createClientLinkExamplePayload = {
     managerLinkId: "3333333333",
   },
 };
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     resourceNames: ["customers/1234567890", "customers/5555555555"],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-export const campaignChangesTriggerExamplePayload: { payload: TriggerPayload } =
-  {
-    payload: {
-      headers: {},
-      queryParameters: {},
-      rawBody: { data: null },
-      body: {
-        data: {
-          changes: [
-            {
-              changeType: "created",
-              campaignId: "12345678901",
-              campaignName: "Example-Campaign-1",
-              field: "campaign",
-              oldValue: null,
-              newValue: {
-                campaign: {
-                  resourceName: "customers/1234567890/campaigns/12345678901",
-                  status: "ENABLED",
-                  name: "Example-Campaign-1",
-                  id: "12345678901",
-                },
+export const campaignChangesTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
+  payload: {
+    headers: {},
+    queryParameters: {},
+    rawBody: { data: null },
+    body: {
+      data: {
+        changes: [
+          {
+            changeType: "created",
+            campaignId: "12345678901",
+            campaignName: "Example-Campaign-1",
+            field: "campaign",
+            oldValue: null,
+            newValue: {
+              campaign: {
+                resourceName: "customers/1234567890/campaigns/12345678901",
+                status: "ENABLED",
+                name: "Example-Campaign-1",
+                id: "12345678901",
               },
-              changedAt: "2026-01-01T12:00:00.000Z",
             },
-          ],
-          totalCampaigns: 1,
-          changesDetected: 1,
-          syncedAt: "2026-01-01",
-        },
+            changedAt: "2026-01-01T12:00:00.000Z",
+          },
+        ],
+        totalCampaigns: 1,
+        changesDetected: 1,
+        syncedAt: "2026-01-01",
       },
-      pathFragment: "",
-      webhookUrls: {},
-      webhookApiKeys: {},
-      invokeUrl: "",
-      executionId: "RXhhbXBsZUV4ZWN1dGlvblJlc3VsdElk",
-      customer: {
-        id: "testCustomerId",
-        name: "Test Customer",
-        externalId: "testExternalId",
-      },
-      instance: { id: "testInstanceId", name: "Test Instance" },
-      user: {
-        id: "testUserId",
-        email: "user@example.com",
-        name: "Test User",
-        externalId: "testUserExternalId",
-      },
-      integration: {
-        id: "testIntegrationId",
-        name: "Test Integration",
-        versionSequenceId: "1",
-        externalVersion: "",
-      },
-      flow: { id: "testFlowId", name: "Test Flow", stableId: "" },
-      startedAt: "2024-01-15T00:00:00.000Z",
-      globalDebug: false,
     },
-  };
-
-
-
-
-
-
-export const budgetAlertTriggerExamplePayload: { payload: TriggerPayload } = {
+    pathFragment: "",
+    webhookUrls: {},
+    webhookApiKeys: {},
+    invokeUrl: "",
+    executionId: "RXhhbXBsZUV4ZWN1dGlvblJlc3VsdElk",
+    customer: {
+      id: "testCustomerId",
+      name: "Test Customer",
+      externalId: "testExternalId",
+    },
+    instance: { id: "testInstanceId", name: "Test Instance" },
+    user: {
+      id: "testUserId",
+      email: "user@example.com",
+      name: "Test User",
+      externalId: "testUserExternalId",
+    },
+    integration: {
+      id: "testIntegrationId",
+      name: "Test Integration",
+      versionSequenceId: "1",
+      externalVersion: "",
+    },
+    flow: { id: "testFlowId", name: "Test Flow", stableId: "" },
+    startedAt: "2024-01-15T00:00:00.000Z",
+    globalDebug: false,
+  },
+};
+export const budgetAlertTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},
@@ -656,13 +461,9 @@ export const budgetAlertTriggerExamplePayload: { payload: TriggerPayload } = {
     globalDebug: false,
   },
 };
-
-
-
-
-
-
-export const changeHistoryTriggerExamplePayload: { payload: TriggerPayload } = {
+export const changeHistoryTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},

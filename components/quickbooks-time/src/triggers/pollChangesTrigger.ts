@@ -4,7 +4,6 @@ import { PollResource } from "../constants";
 import { connection, pollResourceType, showNewRecords } from "../inputs";
 import type { PollingState } from "../types";
 import { fetchRecords } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New Records",
@@ -16,24 +15,23 @@ export const pollChangesTrigger = pollingTrigger({
     resourceType: pollResourceType,
     showNewRecords,
   },
-  perform: async (context, payload, { connection, resourceType, showNewRecords }) => {
+  perform: async (
+    context,
+    payload,
+    { connection, resourceType, showNewRecords },
+  ) => {
     const now = new Date().toISOString();
     const lastState = context.polling.getState() as PollingState;
-
     const client = createClient(connection, context.debug.enabled);
     const queryParams: Record<string, string> = {};
-
     if (resourceType === PollResource.TIMESHEETS) {
       const lastPolledAt = lastState?.lastPolledAt ?? now;
       queryParams.start_date = lastPolledAt.split("T")[0];
     }
-
     const records = await fetchRecords(client, resourceType, queryParams);
-
     const currentIds = records.map((r) => util.types.toString(r.id));
     const isIdBased = resourceType !== PollResource.TIMESHEETS;
     const isFirstPoll = isIdBased && lastState?.knownIds === undefined;
-
     if (isFirstPoll) {
       context.polling.setState({
         lastPolledAt: now,
@@ -47,25 +45,22 @@ export const pollChangesTrigger = pollingTrigger({
         polledNoChanges: true,
       };
     }
-
     const knownIds = lastState?.knownIds ?? [];
     const knownSet = new Set(knownIds.map((id) => util.types.toString(id)));
-    const created = records.filter((r) => !knownSet.has(util.types.toString(r.id)));
-
+    const created = records.filter(
+      (r) => !knownSet.has(util.types.toString(r.id)),
+    );
     const newState: PollingState = {
       lastPolledAt: now,
       knownIds: currentIds,
     };
     context.polling.setState(newState as unknown as Record<string, unknown>);
-
     const filteredCreated = showNewRecords ? created : [];
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${resourceType}: ${records.length} total, ${filteredCreated.length} new`,
       );
     }
-
     return {
       payload: {
         ...payload,

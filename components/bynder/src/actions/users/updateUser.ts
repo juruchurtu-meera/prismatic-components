@@ -12,7 +12,6 @@ import {
   profileId,
   username,
 } from "../../inputs";
-
 export const updateUser = action({
   display: {
     label: "Update User",

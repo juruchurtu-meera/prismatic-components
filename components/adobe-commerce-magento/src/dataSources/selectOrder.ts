@@ -2,7 +2,6 @@ import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { connectionInput } from "../inputs";
-
 export const selectOrder = dataSource({
   display: {
     label: "Select Order",
@@ -32,7 +31,6 @@ export const selectOrder = dataSource({
           "searchCriteria[pageSize]": "100",
         },
       });
-
       return {
         result: (items || [])
           .map<Element>((item) => ({

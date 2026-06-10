@@ -6,7 +6,6 @@ import {
   perPage,
 } from "../common";
 import { filter } from "./common";
-
 export const listTicketsInputs = {
   connection,
   filter,

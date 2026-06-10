@@ -1,17 +1,4 @@
-
-
-
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
 export const squareWebhookTriggerExamplePayload = {
   payload: {
     headers: {
@@ -93,17 +80,6 @@ export const squareWebhookTriggerExamplePayload = {
   },
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},
@@ -136,7 +112,8 @@ export const pollChangesTriggerExamplePayload = {
               currency: "USD",
             },
             receipt_number: "NEWP",
-            receipt_url: "https://squareup.com/receipt/preview/NewPaymentId000000000000001",
+            receipt_url:
+              "https://squareup.com/receipt/preview/NewPaymentId000000000000001",
             version_token: "v1NewPaymentTokenAAA",
           },
         ],
@@ -162,7 +139,8 @@ export const pollChangesTriggerExamplePayload = {
               currency: "USD",
             },
             receipt_number: "KkAk",
-            receipt_url: "https://squareup.com/receipt/preview/KkAkhdMsgzn59SM8A89WgKwekxLZY",
+            receipt_url:
+              "https://squareup.com/receipt/preview/KkAkhdMsgzn59SM8A89WgKwekxLZY",
             version_token: "v2UpdatedPaymentTokenBBB",
           },
         ],

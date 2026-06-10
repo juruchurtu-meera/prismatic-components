@@ -1,21 +1,18 @@
 import { trigger, util } from "@prismatic-io/spectral";
-import { connectionInput } from "./inputs"; 
+import { connectionInput } from "./inputs";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { createWebhookClient } from "./client";
-
 async function listWebhookSubscriptions(client: HttpClient) {
   const endpoint = "/webhook_subscriptions";
   const { data } = await client.get(endpoint);
   return data;
 }
-
 async function verifyWebhookSubscription(
   client: HttpClient,
   webhookUuid: string,
   verificationToken: string,
 ) {
   const endpoint = `/webhook_subscriptions/${webhookUuid}/verify`;
-
   try {
     const response = await client.put(endpoint, {
       verification_token: verificationToken,
@@ -26,7 +23,6 @@ async function verifyWebhookSubscription(
     throw error;
   }
 }
-
 const gustoWebhookTrigger = trigger({
   display: {
     label: "Webhook",
@@ -46,13 +42,11 @@ const gustoWebhookTrigger = trigger({
       params.connection,
       context.debug.enabled,
     );
-
     const existingWebhooks = await listWebhookSubscriptions(client);
     const thisWebhookUrl = context.webhookUrls[context.flow.name];
     const filteredWebhook = existingWebhooks.find(
       (webhook: { url: string }) => webhook.url === thisWebhookUrl,
     );
-
     let verificationToken: string | undefined;
     if (typeof payload.body.data === "object" && payload.body.data !== null) {
       const data = payload.body.data as Record<string, unknown>;
@@ -60,7 +54,6 @@ const gustoWebhookTrigger = trigger({
         verificationToken = data.verification_token;
       }
     }
-
     if (verificationToken && filteredWebhook) {
       await verifyWebhookSubscription(
         client,
@@ -88,5 +81,4 @@ const gustoWebhookTrigger = trigger({
     });
   },
 });
-
 export default { gustoWebhookTrigger };

@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { getColumnExamplePayload as createColumnExamplePayload } from "../../examplePayloads/columns";
 import { createColumnInputs } from "../../inputs/columns/create";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const createColumn = action({
   display: {
     label: "Create Column",
@@ -24,7 +23,6 @@ export const createColumn = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.post(
       `${baseUrl}/worksheets/${worksheetId}/tables/${tableId}/columns/add`,
       {
@@ -32,7 +30,6 @@ export const createColumn = action({
         index: columnId,
       },
     );
-
     return {
       data,
     };

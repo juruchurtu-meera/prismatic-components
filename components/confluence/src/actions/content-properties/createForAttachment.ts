@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, attachmentId, bodyData } from "../../inputs";
 import { getContentPropertyExamplePayload as createContentPropertyForAttachmentExamplePayload } from "../../examplePayloads";
-
 export const createContentPropertyForAttachment = action({
   display: {
     label: "Create Content Property for Attachment",

@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { connectionInput } from "../inputs";
 import { computeEndpointBasedOnConnection, fetchAllData } from "../util";
 import type { Subscription } from "@microsoft/microsoft-graph-types";
-
 export const selectSubscription = dataSource({
   display: {
     label: "Select Subscription",
@@ -14,7 +13,6 @@ export const selectSubscription = dataSource({
   },
   perform: async (context, { connection }) => {
     const client = createClient(connection, false);
-
     const data = await fetchAllData<Subscription>(
       client,
       computeEndpointBasedOnConnection(connection, "/subscriptions"),

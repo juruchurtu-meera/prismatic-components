@@ -1,7 +1,6 @@
 export interface ChallengeRequest {
   challenge?: string;
 }
-
 export interface WebhookEvent {
   userId: number;
   boardId: number;
@@ -22,21 +21,18 @@ export interface WebhookEvent {
   previousValue?: Record<string, unknown>;
   changedAt?: string;
 }
-
 export interface CreateWebhookResponse {
   create_webhook: {
     id: string;
     board_id: string;
   };
 }
-
 export interface WebhookNode {
   id: string;
   board_id: string;
   config: string;
   event: string;
 }
-
 export interface ListWebhooksResponse {
   webhooks: WebhookNode[];
 }

@@ -3,13 +3,6 @@ import { createClient } from "../../client";
 import { submitMetricsExample } from "../../examplePayloads";
 import { submitSingleMetricInputs } from "../../inputs";
 import type { MetricSeries, SubmitMetricsResponse } from "../../types";
-
-
-
-
-
-
-
 export const submitSingleMetric = action({
   display: {
     label: "Submit Single Metric",
@@ -33,7 +26,6 @@ export const submitSingleMetric = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const series: MetricSeries = {
       metric: metricName,
       points: [{ timestamp: metricTimestamp, value: metricValue }],
@@ -43,12 +35,10 @@ export const submitSingleMetric = action({
       interval: metricInterval,
       resources: [{ name: resourceName, type: resourceType }],
     };
-
     const response = await client.post<SubmitMetricsResponse>(
       "/api/v2/series",
       { series: [series] },
     );
-
     return { data: response.data };
   },
   examplePayload: submitMetricsExample,

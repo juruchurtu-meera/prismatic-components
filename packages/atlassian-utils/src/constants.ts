@@ -1,3 +1,2 @@
 export const DEFAULT_WEBHOOK_EXPIRATION_DAYS = 30;
-
 export const REFRESH_THRESHOLD_DAYS = 7;

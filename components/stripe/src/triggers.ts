@@ -15,11 +15,11 @@ import {
   onInstanceDeploy,
   validateTrigger,
 } from "./util";
-
 export const webhook = trigger({
   display: {
     label: "Webhook (Deprecated)",
-    description: "Receive and validate webhook requests from Stripe for webhooks you configure.",
+    description:
+      "Receive and validate webhook requests from Stripe for webhooks you configure.",
   },
   perform: async (context, payload) => {
     return Promise.resolve({
@@ -30,15 +30,20 @@ export const webhook = trigger({
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });
-
 export const instanceDeployWebhook = trigger({
   display: {
     label: "Webhook Events",
     description:
       "Receive event notifications from Stripe. Automatically creates and manages a webhook subscription for the selected events when the instance is deployed, and removes the subscription when the instance is deleted. Incoming webhook signatures are validated by default.",
   },
-  perform: async (context, payload, { connection, disableWebhookValidation }) => {
-    const createdWebhook = context.crossFlowState[context.flow.name] as CreatedWebhook;
+  perform: async (
+    context,
+    payload,
+    { connection, disableWebhookValidation },
+  ) => {
+    const createdWebhook = context.crossFlowState[
+      context.flow.name
+    ] as CreatedWebhook;
     const sig = disableWebhookValidation
       ? undefined
       : getStripeHeaderSignature(util.types.lowerCaseHeaders(payload.headers));
@@ -47,9 +52,13 @@ export const instanceDeployWebhook = trigger({
       timeout: 5000,
     });
     if (!disableWebhookValidation && !context.isSimulatedTestExecution) {
-      validateTrigger(client, payload.rawBody.data as string, sig, createdWebhook.webhook.secret);
+      validateTrigger(
+        client,
+        payload.rawBody.data as string,
+        sig,
+        createdWebhook.webhook.secret,
+      );
     }
-
     return Promise.resolve({
       payload,
     });
@@ -66,7 +75,6 @@ export const instanceDeployWebhook = trigger({
     delete: onInstanceDelete,
   },
 });
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -80,26 +88,20 @@ export const pollChangesTrigger = pollingTrigger({
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
     const createdGte = Math.floor(new Date(lastPolledAt).getTime() / 1000);
-
     const { events, truncated } = await fetchEventsSince(
       params.connection,
       createdGte,
       params.pollEventTypes,
     );
-
     const created: StripeEvent[] = [];
     const updated: StripeEvent[] = [];
     for (const event of events) {
-      const isNew = typeof event.type === "string" && event.type.endsWith(".created");
+      const isNew =
+        typeof event.type === "string" && event.type.endsWith(".created");
       if (isNew && params.showNewRecords !== false) created.push(event);
-      else if (!isNew && params.showUpdatedRecords !== false) updated.push(event);
+      else if (!isNew && params.showUpdatedRecords !== false)
+        updated.push(event);
     }
-
-    
-    
-    
-    
-    
     let nextCursor = now;
     if (truncated) {
       const oldestFetched = events
@@ -114,13 +116,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled Stripe events: ${events.length} fetched, ${created.length} created, ${updated.length} updated, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },
@@ -128,5 +128,4 @@ export const pollChangesTrigger = pollingTrigger({
     };
   },
 });
-
 export default { instanceDeployWebhook, pollChangesTrigger, webhook };

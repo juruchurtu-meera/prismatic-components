@@ -7,7 +7,6 @@ import {
   documentId,
   pdfBuffer,
 } from "../inputs";
-
 export const updateEnvelopeDocument = action({
   display: {
     label: "Update Envelope Document",

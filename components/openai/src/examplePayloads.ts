@@ -18,7 +18,6 @@ export const createChatCompletionExamplePayload = {
     ],
   },
 };
-
 export const createImageExamplePayload = {
   data: {
     created: 1589478378,
@@ -32,7 +31,6 @@ export const createImageExamplePayload = {
     ],
   },
 };
-
 const exampleModelObject = {
   id: "davinci",
   object: "model",
@@ -57,18 +55,15 @@ const exampleModelObject = {
   root: "davinci",
   parent: null,
 };
-
 export const listModelsExamplePayload = {
   data: {
     object: "list",
     data: [exampleModelObject],
   },
 };
-
 export const getModelByIdExamplePayload = {
   data: exampleModelObject,
 };
-
 export const uploadFileExamplePayload = {
   data: {
     id: "file-abc123",
@@ -81,7 +76,6 @@ export const uploadFileExamplePayload = {
     status_details: null,
   },
 };
-
 export const listFilesExamplePayload = {
   data: {
     object: "list",
@@ -109,9 +103,7 @@ export const listFilesExamplePayload = {
     ],
   },
 };
-
 export const retrieveFileExamplePayload = uploadFileExamplePayload;
-
 export const deleteFileExamplePayload = {
   data: {
     id: "file-abc123",
@@ -119,7 +111,6 @@ export const deleteFileExamplePayload = {
     deleted: true,
   },
 };
-
 export const createResponseExamplePayload = {
   data: {
     id: "resp-123",

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, customContentId, propertyId } from "../../inputs";
-
 export const deleteContentPropertyForCustomContent = action({
   display: {
     label: "Delete Content Property for a Custom Content",

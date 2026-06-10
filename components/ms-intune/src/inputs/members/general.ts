@@ -1,7 +1,6 @@
 import { util, input } from "@prismatic-io/spectral";
 import { cleanOptionalArrayInput, cleanStringInput } from "../../util";
 import { groupId } from "../mobileApps/general";
-
 export const memberIdsString = input({
   label: "Member Ids",
   comments:
@@ -13,7 +12,6 @@ export const memberIdsString = input({
   placeholder: "Enter comma-separated member IDs",
   clean: cleanStringInput,
 });
-
 export const memberIds = input({
   label: "Dynamic Member Ids",
   comments:
@@ -31,7 +29,6 @@ export const memberIds = input({
   ),
   clean: cleanOptionalArrayInput,
 });
-
 export const memberId = input({
   label: "Member Id",
   comments: "The unique identifier of a member (UUID format).",
@@ -42,7 +39,6 @@ export const memberId = input({
   clean: util.types.toString,
   dataSource: "selectMember",
 });
-
 export const groupIdForMembers = input({
   ...groupId,
   comments: "The unique identifier of a MS365 or Security group.",

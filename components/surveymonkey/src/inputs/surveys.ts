@@ -1,11 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import { connectionInput, fetchAll, page, perPage, extraBody } from "./common";
-
-
-
-
-
 export const surveyId = input({
   label: "Survey ID",
   type: "string",
@@ -16,7 +11,6 @@ export const surveyId = input({
   dataSource: "selectSurvey",
   clean: util.types.toString,
 });
-
 export const surveyTitle = input({
   label: "Survey Title",
   type: "string",
@@ -27,7 +21,6 @@ export const surveyTitle = input({
   placeholder: "Enter survey title",
   clean: util.types.toString,
 });
-
 export const surveyNickname = input({
   label: "Nickname",
   type: "string",
@@ -37,7 +30,6 @@ export const surveyNickname = input({
   placeholder: "Enter survey nickname",
   clean: toOptionalString,
 });
-
 export const fromTemplateId = input({
   label: "Template ID",
   type: "string",
@@ -48,7 +40,6 @@ export const fromTemplateId = input({
   placeholder: "Enter template ID",
   clean: toOptionalString,
 });
-
 export const fromSurveyId = input({
   label: "From Survey ID",
   type: "string",
@@ -59,7 +50,6 @@ export const fromSurveyId = input({
   placeholder: "Enter survey ID",
   clean: toOptionalString,
 });
-
 export const surveyLanguage = input({
   label: "Language",
   type: "string",
@@ -70,23 +60,16 @@ export const surveyLanguage = input({
   placeholder: "Enter language code",
   clean: toOptionalString,
 });
-
-
-
-
-
 export const listSurveysInputs = {
   connection: connectionInput,
   fetchAll,
   page,
   perPage,
 };
-
 export const getSurveyInputs = {
   connection: connectionInput,
   surveyId,
 };
-
 export const createSurveyInputs = {
   connection: connectionInput,
   title: surveyTitle,
@@ -96,12 +79,10 @@ export const createSurveyInputs = {
   language: surveyLanguage,
   extraBody,
 };
-
 export const deleteSurveyInputs = {
   connection: connectionInput,
   surveyId,
 };
-
 export const selectSurveyInputs = {
   connection: connectionInput,
 };

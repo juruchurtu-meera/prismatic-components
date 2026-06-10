@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { createAliasExamplePayload } from "../../examplePayloads";
-
 export const createAlias = action({
   display: {
     label: "Create Alias",

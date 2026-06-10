@@ -16,17 +16,16 @@ import {
 import { salesInvoiceId } from "../../inputs/salesInvoice/updateSalesInvoiceInputs";
 import type { SalesInvoice } from "../../interfaces";
 import { cleanStringInput } from "../../utils";
-
 export const updateSalesInvoice = action({
   display: {
     label: "Update Sales Invoice",
-    description: "Updates a sales invoice object in your Business Central organization.",
+    description:
+      "Updates a sales invoice object in your Business Central organization.",
   },
   perform: async (
     context,
     {
       additionalProperties,
-
       email,
       sellToAddressLine1,
       shipToAddressLine1,
@@ -40,7 +39,11 @@ export const updateSalesInvoice = action({
       salesInvoiceId,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       ...additionalProperties,
       email,
@@ -52,7 +55,6 @@ export const updateSalesInvoice = action({
       currencyCode,
       customerId,
     };
-
     const { data } = await client.patch<SalesInvoice>(
       `/companies(${companyId})/salesInvoices(${salesInvoiceId})`,
       payload,
@@ -62,7 +64,6 @@ export const updateSalesInvoice = action({
         },
       },
     );
-
     return { data };
   },
   inputs: {

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, limit, offset, taskId } from "../../inputs";
-
 export const listAttachments = action({
   display: {
     label: "List Task Attachments",

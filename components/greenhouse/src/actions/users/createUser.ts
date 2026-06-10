@@ -17,7 +17,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../../util";
-
 export const createUser = action({
   display: {
     label: "Create User",
@@ -26,7 +25,6 @@ export const createUser = action({
   perform: async (context, { connection, user_id, version, ...params }) => {
     const client = createClient(connection, version, context.debug.enabled);
     const userPayload = generatePayload(params);
-
     const { data } = await client.post(`/users`, userPayload, {
       headers: {
         "On-Behalf-Of": user_id,

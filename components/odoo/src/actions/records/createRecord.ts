@@ -3,7 +3,6 @@ import { createOdooClient } from "../../client";
 import { createRecordExamplePayload } from "../../examplePayloads";
 import { createRecordInputs } from "../../inputs";
 import { createOdooAwaitClient, isLegacyConnection } from "../../legacy";
-
 export const createRecord = action({
   display: {
     label: "Create Record",

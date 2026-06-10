@@ -24,7 +24,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import subscriptions from "./actions/subscriptions";
 import triggers from "./triggers";
 import { listChanges } from "./actions/listChanges";
-
 export default component({
   key: "ms-onedrive",
   public: true,

@@ -15,7 +15,6 @@ import {
   name,
   usageType,
 } from "./common";
-
 export const updateAssetInputs = {
   connection,
   assetDisplayId,

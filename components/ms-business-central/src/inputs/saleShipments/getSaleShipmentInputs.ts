@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const saleShipmentId = input({
   label: "Sale Shipment ID",
   comments: "The ID of the sale shipment you want to retrieve.",

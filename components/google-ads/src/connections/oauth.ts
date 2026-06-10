@@ -1,6 +1,5 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
 import { GOOGLE_ADS_API_VERSION } from "../constants";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {

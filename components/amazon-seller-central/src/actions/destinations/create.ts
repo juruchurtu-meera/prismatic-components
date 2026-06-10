@@ -8,7 +8,6 @@ import {
   connectionInput,
   destinationName,
 } from "../../inputs";
-
 export const createDestination = action({
   display: {
     label: "Create Destination",

@@ -8,23 +8,28 @@ import {
 } from "../../constants";
 import { leadsPollingTriggerInputs } from "../../inputs";
 import type { CRMRecords } from "../../types";
-import { getCRMModifiedOrCreatedRecords, polledChanges } from "../../util/triggers";
-
+import {
+  getCRMModifiedOrCreatedRecords,
+  polledChanges,
+} from "../../util/triggers";
 export const contactsPollingTrigger = pollingTrigger({
   display: {
     label: "New and Updated CRM Contacts",
-    description: "Checks for new and updated contacts in Zoho CRM on a configured schedule.",
+    description:
+      "Checks for new and updated contacts in Zoho CRM on a configured schedule.",
   },
   inputs: leadsPollingTriggerInputs,
   perform: async (context, payload, { connection }) => {
     const now = new Date().toISOString();
-    const lastState = context.polling.getState() as { lastUpdated: string };
-
-    context.logger.debug(`Polling contacts from ${lastState.lastUpdated} to ${now}`);
+    const lastState = context.polling.getState() as {
+      lastUpdated: string;
+    };
+    context.logger.debug(
+      `Polling contacts from ${lastState.lastUpdated} to ${now}`,
+    );
     if (context.debug.enabled) {
       context.logger.debug(`Polling state: ${JSON.stringify(lastState)}`);
     }
-
     const { data: records } = await crmGetRecords.perform(context, {
       connection,
       recordType: "Contacts",
@@ -40,10 +45,8 @@ export const contactsPollingTrigger = pollingTrigger({
       (records as unknown as CRMRecords).data,
       lastState.lastUpdated,
     );
-
     const polledNoChanges = polledChanges(filteredRecords);
     context.polling.setState({ lastUpdated: now });
-
     return Promise.resolve({
       payload: { ...payload, body: { data: filteredRecords } },
       polledNoChanges,

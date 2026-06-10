@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ASSETS_PATH } from "../../constants";
 import { updateAssetExamplePayload } from "../../examplePayloads";
 import { updateAssetInputs } from "../../inputs";
-
 export const updateAsset = action({
   examplePayload: updateAssetExamplePayload,
   display: {
@@ -24,7 +23,6 @@ export const updateAsset = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       name: assetName,
       description: assetDescription,
@@ -32,12 +30,10 @@ export const updateAsset = action({
       content: assetContent,
       ...assetExtraBody,
     };
-
     const { data } = await client.patch(
       `${ASSETS_PATH}/${encodeURIComponent(assetId)}`,
       body,
     );
-
     return { data };
   },
 });

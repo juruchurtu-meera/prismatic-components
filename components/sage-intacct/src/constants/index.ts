@@ -1,7 +1,5 @@
 export const API_URL = "https://api.intacct.com/ia/xml/xmlgw.phtml";
-
 export const DEFAULT_CREATED_FIELD = "WHENCREATED";
-
 export const RAW_REQUEST_EXAMPLE = `<query>
 <object>CONTACT</object>
 <select>
@@ -9,7 +7,6 @@ export const RAW_REQUEST_EXAMPLE = `<query>
     <field>CONTACTNAME</field>
 </select>
 </query>`;
-
 export const ALL_DELETE_OBJECTS_MODEL = [
   {
     label: "AP Account Label",
@@ -137,10 +134,6 @@ export const ALL_DELETE_OBJECTS_MODEL = [
   { label: "Vendor Compliance Record", value: "compliancerecord" },
   { label: "Vendor Compliance Type", value: "COMPLIANCETYPE" },
 ].sort((a, b) => a.label.localeCompare(b.label));
-
-
-
-
 export const POLL_RESOURCE_CONFIG: Record<
   string,
   {
@@ -199,11 +192,8 @@ export const POLL_RESOURCE_CONFIG: Record<
     label: "AR Payments",
   },
 };
-
 export const TO_BE_CREATED_TEXT = "for the to-be-created object.";
-
 export const TO_BE_UPDATED_TEXT = "for the to-be-updated object.";
-
 export const CREATE_PROJECT_ADDITIONAL_FIELDS = {
   customerId: "cust001",
   projectManagerEmployeeId: "emp123",

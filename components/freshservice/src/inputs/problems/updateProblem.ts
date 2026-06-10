@@ -15,7 +15,6 @@ import {
   subCategory,
   subject,
 } from "./common";
-
 export const updateProblemInputs = {
   connection,
   problemId: input({ ...problemId, comments: "ID of the Problem to update." }),

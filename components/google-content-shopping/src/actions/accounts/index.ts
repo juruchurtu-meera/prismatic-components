@@ -3,7 +3,6 @@ import { createAccount } from "./create";
 import { deleteAccount } from "./delete";
 import { getAccount } from "./get";
 import { updateAccount } from "./update";
-
 export default {
   listAccounts,
   createAccount,

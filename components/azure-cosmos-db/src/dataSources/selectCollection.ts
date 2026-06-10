@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createCosmosDbClient } from "../client";
 import { selectCollectionInputs } from "../inputs";
 import { CosmosDbResourceType, HttpVerb } from "../constants";
-
 export const selectCollection = dataSource({
   display: {
     label: "Select Collection",
@@ -20,14 +19,13 @@ export const selectCollection = dataSource({
       debug: false,
     });
     const response = await client.get(`/${resourceLink}/colls`);
-    const collections: { id: string }[] =
-      response.data.DocumentCollections || [];
-
+    const collections: {
+      id: string;
+    }[] = response.data.DocumentCollections || [];
     const result = collections.map<Element>((collection) => ({
       label: collection.id,
       key: collection.id,
     }));
-
     return { result };
   },
   dataSourceType: "picklist",

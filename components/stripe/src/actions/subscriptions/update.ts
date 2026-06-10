@@ -16,7 +16,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updateSubscription = action({
   display: {
     label: "Update Subscription",
@@ -42,22 +41,25 @@ export const updateSubscription = action({
       timeout: util.types.toInt(timeout),
     });
     return {
-      data: await client.subscriptions.update(util.types.toString(subscriptionId), {
-        ...(util.types.keyValPairListToObject(fieldValues) || {}),
-        items: [
-          {
-            quantity: util.types.toInt(quantity) || undefined,
-            price: util.types.toString(subscriptionPriceId) || undefined,
-          },
-        ],
-        default_payment_method: util.types.toString(paymentId) || undefined,
-        cancel_at: util.types.toInt(cancelAt) || undefined,
-        metadata: keyValPairListToObject(metadata),
-        collection_method:
-          (util.types.toString(
-            collectionMethod,
-          ) as Stripe.SubscriptionUpdateParams.CollectionMethod) || undefined,
-      }),
+      data: await client.subscriptions.update(
+        util.types.toString(subscriptionId),
+        {
+          ...(util.types.keyValPairListToObject(fieldValues) || {}),
+          items: [
+            {
+              quantity: util.types.toInt(quantity) || undefined,
+              price: util.types.toString(subscriptionPriceId) || undefined,
+            },
+          ],
+          default_payment_method: util.types.toString(paymentId) || undefined,
+          cancel_at: util.types.toInt(cancelAt) || undefined,
+          metadata: keyValPairListToObject(metadata),
+          collection_method:
+            (util.types.toString(
+              collectionMethod,
+            ) as Stripe.SubscriptionUpdateParams.CollectionMethod) || undefined,
+        },
+      ),
     };
   },
   inputs: {

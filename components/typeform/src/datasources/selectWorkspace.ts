@@ -4,7 +4,6 @@ import { connection } from "../inputs";
 import { fetchAllData } from "../util";
 import type { Workspace } from "../interfaces/workspace";
 import { selectWorkspaceExample } from "../examplePayloads/datasources";
-
 export const selectWorkspaces = dataSource({
   display: {
     label: "Select Workspaces",

@@ -2,7 +2,6 @@ import { util } from "@prismatic-io/spectral";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import type { OdooRecord, Pagination } from "../types";
 import { MAX_POLL_PAGES, POLL_PAGE_SIZE } from "../constants";
-
 export const getFilters = (params: Record<string, unknown>) => {
   const filters = [];
   if (params.nameSearch) {
@@ -13,7 +12,6 @@ export const getFilters = (params: Record<string, unknown>) => {
   }
   return filters;
 };
-
 export const paginateSearch = async <T>({
   client,
   model,
@@ -51,37 +49,19 @@ export const paginateSearch = async <T>({
   }
   return records;
 };
-
-
-
-
-
-
-
-
-
-
-
 export const toOdooDate = (iso: string): string =>
   iso
     .replace("T", " ")
     .replace(/\.\d+Z$/, "")
     .replace(/Z$/, "");
-
-
-
-
-
-
-
-
-
-
 export const fetchOdooRecordsSince = async (
   client: HttpClient,
   model: string,
   lastPolledAt: string,
-): Promise<{ records: OdooRecord[]; truncated: boolean }> => {
+): Promise<{
+  records: OdooRecord[];
+  truncated: boolean;
+}> => {
   const domain = [["write_date", ">=", toOdooDate(lastPolledAt)]];
   const records: OdooRecord[] = [];
   for (let page = 0; page < MAX_POLL_PAGES; page++) {

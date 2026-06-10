@@ -8,7 +8,6 @@ import {
 } from "../../inputs";
 import { createClient } from "../../client";
 import { generatePayload } from "../../util";
-
 export const createExpenseRule = action({
   display: {
     description: "Create expense rules for a given employee on a given policy.",
@@ -40,7 +39,6 @@ export const createExpenseRule = action({
       },
     };
     const generatedJson = generatePayload(json, connectionInput);
-
     const { data } = await client.post("", generatedJson);
     return {
       data,

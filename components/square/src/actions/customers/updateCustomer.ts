@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAuthorizedClient, getVersionFromConnection } from "../../client";
 import { updateCustomerExamplePayload } from "../../examplePayloads";
 import { updateCustomerInputs } from "../../inputs";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",
@@ -26,7 +25,10 @@ export const updateCustomer = action({
       taxIds,
     },
   ) => {
-    const client = await createAuthorizedClient(squareConnection, context.debug.enabled);
+    const client = await createAuthorizedClient(
+      squareConnection,
+      context.debug.enabled,
+    );
     const version = getVersionFromConnection(squareConnection);
     const euCountries = [
       "BE",
@@ -58,11 +60,9 @@ export const updateCustomer = action({
       "SE",
       "UK",
     ];
-
     if (address?.country && !euCountries.includes(address.country)) {
       taxIds = null;
     }
-
     const updateBody = {
       address,
       birthday,
@@ -77,9 +77,10 @@ export const updateCustomer = action({
       tax_ids: taxIds,
       version,
     };
-
-    const response = await client.put(`/v2/customers/${customerId}`, updateBody);
-
+    const response = await client.put(
+      `/v2/customers/${customerId}`,
+      updateBody,
+    );
     return {
       data: response.data,
     };

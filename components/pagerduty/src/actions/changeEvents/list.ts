@@ -14,7 +14,6 @@ import {
   until,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const listChangeEvents = action({
   display: {
     label: "List Change Events",
@@ -44,7 +43,6 @@ export const listChangeEvents = action({
       since,
       until,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({
@@ -55,7 +53,6 @@ export const listChangeEvents = action({
         }),
       };
     }
-
     const { data } = await client.get(ENDPOINTS.CHANGE_EVENTS, {
       params,
     });

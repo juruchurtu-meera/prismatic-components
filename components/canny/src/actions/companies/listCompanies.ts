@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listCompaniesExamplePayload } from "../../examplePayloads";
 import { listCompaniesInputs } from "../../inputs";
 import { paginateCursor } from "../../util";
-
 export const listCompanies = action({
   display: {
     label: "List Companies",

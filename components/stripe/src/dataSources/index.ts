@@ -9,7 +9,6 @@ import { selectPaymentIntent } from "./selectPaymentIntent";
 import { selectPrice } from "./selectPrice";
 import { selectProduct } from "./selectProduct";
 import { selectSubscription } from "./selectSubscription";
-
 export default {
   selectBalanceTransaction,
   selectCard,

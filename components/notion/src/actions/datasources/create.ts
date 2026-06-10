@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createDataSourceInputs } from "../../inputs";
 import { createClient } from "../../client";
 import { createDataSourceResponse } from "../../examplePayloads";
-
 export const createDataSource = action({
   display: {
     label: "Create Data Source",
@@ -15,7 +14,6 @@ export const createDataSource = action({
     { connection, databaseId, title, properties, icon },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const payload = {
       parent: {
         database_id: databaseId,
@@ -25,7 +23,6 @@ export const createDataSource = action({
       title,
       icon,
     };
-
     const { data } = await client.post("/data_sources", payload);
     return { data };
   },

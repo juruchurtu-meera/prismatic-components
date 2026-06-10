@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
-
 export const getLeadSources = action({
   display: {
     label: "Get Lead Sources",

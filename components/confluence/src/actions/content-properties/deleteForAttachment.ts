@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, attachmentId, propertyId } from "../../inputs";
-
 export const deleteContentPropertyForAttachment = action({
   display: {
     label: "Delete Content Property for an Attachment",

@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { getWorksheetExamplePayload as updateWorksheetExamplePayload } from "../../examplePayloads/worksheets";
 import { updateWorksheetsInputs } from "../../inputs/worksheets/update";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const updateWorksheet = action({
   display: {
     label: "Update Worksheet",
@@ -24,7 +23,6 @@ export const updateWorksheet = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.patch(
       `${baseUrl}/worksheets/${worksheetId}`,
       {
@@ -33,7 +31,6 @@ export const updateWorksheet = action({
         visibility,
       },
     );
-
     return {
       data,
     };

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanObject, cleanStringInput } from "./util";
 import { pollResourceModel } from "./constants";
-
 export const contactId = input({
   label: "Contact ID",
   type: "string",
@@ -12,7 +11,6 @@ export const contactId = input({
   dataSource: "selectContact",
   clean: cleanStringInput,
 });
-
 export const invoiceId = input({
   label: "Invoice ID",
   type: "string",
@@ -22,7 +20,6 @@ export const invoiceId = input({
   placeholder: "Invoice ID",
   dataSource: "selectInvoice",
 });
-
 export const itemId = input({
   label: "Item ID",
   type: "string",
@@ -32,7 +29,6 @@ export const itemId = input({
   placeholder: "Item, ID",
   dataSource: "selectItem",
 });
-
 export const accountId = input({
   label: "Account ID",
   type: "string",
@@ -42,7 +38,6 @@ export const accountId = input({
   placeholder: "Account ID",
   dataSource: "selectAccount",
 });
-
 export const contactName = input({
   label: "Contact Name",
   type: "string",
@@ -52,7 +47,6 @@ export const contactName = input({
   placeholder: "Contact Name",
   clean: cleanStringInput,
 });
-
 export const firstName = input({
   label: "First Name",
   type: "string",
@@ -62,7 +56,6 @@ export const firstName = input({
   placeholder: "First Name",
   clean: cleanStringInput,
 });
-
 export const lastName = input({
   label: "Last Name",
   type: "string",
@@ -72,7 +65,6 @@ export const lastName = input({
   placeholder: "Last Name",
   clean: cleanStringInput,
 });
-
 export const email = input({
   label: "Email Address",
   type: "string",
@@ -82,7 +74,6 @@ export const email = input({
   placeholder: "Email Address",
   clean: cleanStringInput,
 });
-
 export const bankAccountDetails = input({
   label: "Bank Account Details",
   type: "string",
@@ -93,7 +84,6 @@ export const bankAccountDetails = input({
   placeholder: "Bank Account Details",
   clean: cleanStringInput,
 });
-
 export const taxNumber = input({
   label: "Tax Number",
   type: "string",
@@ -104,7 +94,6 @@ export const taxNumber = input({
   placeholder: "Tax Number",
   clean: cleanStringInput,
 });
-
 export const accountsReceivableTaxType = input({
   label: "Accounts Receivable Tax Type",
   type: "string",
@@ -115,7 +104,6 @@ export const accountsReceivableTaxType = input({
   placeholder: "Accounts Receivable Tax Type",
   clean: cleanStringInput,
 });
-
 export const accountsPayableTaxType = input({
   label: "Accounts Payable Tax Type",
   type: "string",
@@ -126,7 +114,6 @@ export const accountsPayableTaxType = input({
   placeholder: "Accounts Payable Tax Type",
   clean: cleanStringInput,
 });
-
 export const defaultCurrency = input({
   label: "Default Currency",
   type: "string",
@@ -136,7 +123,6 @@ export const defaultCurrency = input({
   placeholder: "Default Currency",
   clean: cleanStringInput,
 });
-
 export const contactNumber = input({
   label: "Contact Number",
   type: "string",
@@ -146,7 +132,6 @@ export const contactNumber = input({
   example: "IDexample01",
   placeholder: "Contact Number",
 });
-
 export const contactStatus = input({
   label: "Contact Status",
   type: "string",
@@ -160,7 +145,6 @@ export const contactStatus = input({
   placeholder: "Contact Status",
   clean: cleanStringInput,
 });
-
 export const city = input({
   label: "City",
   type: "string",
@@ -170,7 +154,6 @@ export const city = input({
   placeholder: "City",
   clean: cleanStringInput,
 });
-
 export const addressType = input({
   label: "Address Type",
   type: "string",
@@ -185,7 +168,6 @@ export const addressType = input({
   placeholder: "Address Type",
   clean: cleanStringInput,
 });
-
 export const address = input({
   label: "Address",
   type: "string",
@@ -195,7 +177,6 @@ export const address = input({
   placeholder: "Address",
   clean: cleanStringInput,
 });
-
 export const postalCode = input({
   label: "Postal Code",
   type: "string",
@@ -205,7 +186,6 @@ export const postalCode = input({
   placeholder: "Postal Code",
   clean: cleanStringInput,
 });
-
 export const itemCode = input({
   label: "Item Code",
   type: "string",
@@ -214,7 +194,6 @@ export const itemCode = input({
   example: "Untracked Item",
   placeholder: "Item Code",
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -223,7 +202,6 @@ export const description = input({
   example: "This is an example description",
   placeholder: "Description",
 });
-
 export const purchaseDescription = input({
   label: "Purchase Description",
   type: "string",
@@ -232,7 +210,6 @@ export const purchaseDescription = input({
   example: "This is an example description",
   placeholder: "Purchase Description",
 });
-
 export const purchaseUnitPrice = input({
   label: "Purchase Unit Price",
   type: "string",
@@ -241,7 +218,6 @@ export const purchaseUnitPrice = input({
   example: "800",
   placeholder: "Purchase Unit Price",
 });
-
 export const purchaseAccountCode = input({
   label: "Purchase Account Code",
   type: "string",
@@ -250,7 +226,6 @@ export const purchaseAccountCode = input({
   example: "200",
   placeholder: "Purchase Account Code",
 });
-
 export const purchaseTaxType = input({
   label: "Purchase Tax Type",
   type: "string",
@@ -260,7 +235,6 @@ export const purchaseTaxType = input({
   example: "NONE",
   placeholder: "Purchase Tax Type",
 });
-
 export const salesTaxType = input({
   label: "Sales Tax Type",
   type: "string",
@@ -270,7 +244,6 @@ export const salesTaxType = input({
   example: "NONE",
   placeholder: "Sale Tax Type",
 });
-
 export const salesUnitPrice = input({
   label: "Sales Unit Price",
   type: "string",
@@ -279,7 +252,6 @@ export const salesUnitPrice = input({
   example: "50.69",
   placeholder: "Sales Unit Price",
 });
-
 export const salesAccountCode = input({
   label: "Sales Account Code",
   type: "string",
@@ -288,7 +260,6 @@ export const salesAccountCode = input({
   example: "200",
   placeholder: "Sales Account Code",
 });
-
 export const itemName = input({
   label: "Item Name",
   type: "string",
@@ -297,7 +268,6 @@ export const itemName = input({
   example: "Example Name",
   placeholder: "Item Name",
 });
-
 export const inventoryAssetAccountCode = input({
   label: "Inventory Asset Account Code",
   type: "string",
@@ -306,7 +276,6 @@ export const inventoryAssetAccountCode = input({
   example: "200",
   placeholder: "Inventory Asset Account Code",
 });
-
 export const isSold = input({
   label: "Is Sold",
   type: "boolean",
@@ -315,7 +284,6 @@ export const isSold = input({
     "Provide a boolean value to determine if the item has been sold yet.",
   placeholder: "Is Sold",
 });
-
 export const isPurchased = input({
   label: "Is Purchased",
   type: "boolean",
@@ -324,7 +292,6 @@ export const isPurchased = input({
     "Provide a boolean value to determine if the item has been purchased yet.",
   placeholder: "Is Purchased",
 });
-
 export const notes = input({
   label: "Notes",
   type: "string",
@@ -333,7 +300,6 @@ export const notes = input({
   placeholder: "Notes",
   example: "These are example notes.",
 });
-
 export const invoiceType = input({
   label: "Invoice Type",
   type: "string",
@@ -346,7 +312,6 @@ export const invoiceType = input({
   ],
   clean: cleanStringInput,
 });
-
 export const date = input({
   label: "Date",
   type: "string",
@@ -357,7 +322,6 @@ export const date = input({
   example: "2024-10-01",
   clean: cleanStringInput,
 });
-
 export const dueDate = input({
   label: "Due Date",
   type: "string",
@@ -367,7 +331,6 @@ export const dueDate = input({
   example: "2024-10-01",
   clean: cleanStringInput,
 });
-
 export const dueDateString = input({
   label: "Due Date String",
   type: "string",
@@ -377,7 +340,6 @@ export const dueDateString = input({
   example: "2021-05-27T00:00:00",
   clean: cleanStringInput,
 });
-
 export const dateString = input({
   label: "Date String",
   type: "string",
@@ -388,7 +350,6 @@ export const dateString = input({
   example: "2021-05-27T00:00:00",
   clean: cleanStringInput,
 });
-
 export const lineAmountTypes = input({
   label: "Line Amount Type",
   type: "string",
@@ -402,7 +363,6 @@ export const lineAmountTypes = input({
   ],
   clean: cleanStringInput,
 });
-
 export const lineItems = input({
   label: "Line Items",
   type: "code",
@@ -432,7 +392,6 @@ export const lineItems = input({
   ),
   clean: cleanObject,
 });
-
 export const invoiceNumber = input({
   label: "Invoice Number",
   type: "string",
@@ -442,7 +401,6 @@ export const invoiceNumber = input({
   example: "INV01",
   clean: cleanStringInput,
 });
-
 export const accountCode = input({
   label: "Account Code",
   type: "string",
@@ -452,7 +410,6 @@ export const accountCode = input({
   placeholder: "Account Code",
   example: "200",
 });
-
 export const accountName = input({
   label: "Account Name",
   type: "string",
@@ -461,7 +418,6 @@ export const accountName = input({
   placeholder: "Account Name",
   example: "Example Account",
 });
-
 export const accountType = input({
   label: "Account Type",
   type: "string",
@@ -471,7 +427,6 @@ export const accountType = input({
   placeholder: "Account Type",
   example: "BANK",
 });
-
 export const objectType = input({
   label: "Object Type",
   type: "string",
@@ -492,7 +447,6 @@ export const objectType = input({
     { label: "Repeating Invoices", value: "repeatinginvoices" },
   ],
 });
-
 export const objectId = input({
   label: "Object ID",
   type: "string",
@@ -501,7 +455,6 @@ export const objectId = input({
   placeholder: "Object ID",
   example: "example-e40f-414a-8f95-ce6a63196e1a",
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -511,7 +464,6 @@ export const fileName = input({
   placeholder: "File Name",
   example: "My Example File",
 });
-
 export const file = input({
   label: "File Data",
   type: "data",
@@ -521,7 +473,6 @@ export const file = input({
   placeholder: "File Data",
   clean: util.types.toBufferDataPayload,
 });
-
 export const contentType = input({
   label: "Content Type",
   type: "string",
@@ -530,7 +481,6 @@ export const contentType = input({
   example: "image/png",
   clean: util.types.toString,
 });
-
 export const paymentId = input({
   label: "Payment ID",
   type: "string",
@@ -539,7 +489,6 @@ export const paymentId = input({
   placeholder: "Payment ID",
   dataSource: "selectPayment",
 });
-
 export const paymentAmount = input({
   label: "Payment Amount",
   type: "string",
@@ -548,7 +497,6 @@ export const paymentAmount = input({
     "Provide a string value for the amount of the payment. This value must be less than or equal to the outstanding amount owed on the invoice.",
   placeholder: "Payment Amount",
 });
-
 export const fieldValues = input({
   label: "Optional Values",
   type: "string",
@@ -559,7 +507,6 @@ export const fieldValues = input({
   placeholder: "Optional Values",
   example: "exampleValue",
 });
-
 export const bankAccountNumber = input({
   label: "Bank Account Number",
   type: "string",
@@ -569,7 +516,6 @@ export const bankAccountNumber = input({
   placeholder: "Bank Account Number",
   example: "121-121-1234567",
 });
-
 export const invoiceStatus = input({
   label: "Invoice Status",
   type: "string",
@@ -584,14 +530,12 @@ export const invoiceStatus = input({
   ],
   clean: cleanStringInput,
 });
-
 export const enablePaymentsToAccount = input({
   label: "Enable Payments To Account",
   type: "boolean",
   required: false,
   comments: "This flag will enable payments to be made to the given account.",
 });
-
 export const page = input({
   label: "Page Number",
   type: "string",
@@ -600,7 +544,6 @@ export const page = input({
   comments:
     "Provide the page of the results you would like to return. Pagination will only be enabled if over 100 elements are returned by your request. It is not possible to specify the page size.",
 });
-
 export const showInExpenseClaims = input({
   label: "Show In Expense Claims",
   type: "boolean",
@@ -608,14 +551,12 @@ export const showInExpenseClaims = input({
   comments:
     "This value will determine if your account will show in expense claims. This field is required for certain accounts.",
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The connection to use.",
 });
-
 export const modifiedAfter = input({
   label: "Modified After",
   type: "string",
@@ -624,7 +565,6 @@ export const modifiedAfter = input({
   comments:
     "Only contacts created or modified since this timestamp will be returned.",
 });
-
 export const where = input({
   label: "Where",
   type: "string",
@@ -633,7 +573,6 @@ export const where = input({
   comments:
     "The where parameter allows you to filter on endpoints and elements that don't have explicit parameters.",
 });
-
 export const reference = input({
   label: "Reference",
   type: "string",
@@ -643,7 +582,6 @@ export const reference = input({
   example: "REF01",
   clean: cleanStringInput,
 });
-
 export const url = input({
   label: "URL",
   type: "string",
@@ -653,7 +591,6 @@ export const url = input({
   example: "https://example.com",
   clean: cleanStringInput,
 });
-
 export const currencyCode = input({
   label: "Currency Code",
   type: "string",
@@ -663,7 +600,6 @@ export const currencyCode = input({
   example: "USD",
   clean: cleanStringInput,
 });
-
 export const sentToContact = input({
   label: "Sent To Contact",
   type: "boolean",
@@ -672,7 +608,6 @@ export const sentToContact = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -682,7 +617,6 @@ export const additionalFields = input({
   required: false,
   clean: (value: unknown) => cleanCodeInput(value, "Additional Fields"),
 });
-
 export const country = input({
   label: "Country",
   type: "string",
@@ -692,7 +626,6 @@ export const country = input({
   placeholder: "United States",
   clean: cleanStringInput,
 });
-
 export const region = input({
   label: "Region",
   type: "string",
@@ -702,7 +635,6 @@ export const region = input({
   placeholder: "California",
   clean: cleanStringInput,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -712,7 +644,6 @@ export const fetchAll = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -721,7 +652,6 @@ export const pollResourceType = input({
   model: pollResourceModel,
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -730,7 +660,6 @@ export const showNewRecords = input({
   comments: "Include newly created records in trigger results.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",

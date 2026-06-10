@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import getManagedAppInputs from "../../../inputs/apps/managed/getManagedAppInputs";
 import { connection } from "../../../inputs/general";
 import { getManagedAppExamplePayload } from "../../../examplePayloads";
-
 export const getManagedApp = action({
   display: {
     label: "Get Managed App",

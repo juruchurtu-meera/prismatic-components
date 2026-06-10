@@ -5,7 +5,6 @@ import { fetchAllCalls, fetchAllUsers } from "../util";
 import { pollResourceType, showNewRecords } from "../inputs";
 import { PollResource } from "../constants";
 import type { GongRecord, PollingState } from "../types";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New Records",
@@ -25,11 +24,8 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const lastState = context.polling.getState() as PollingState;
     const lastPolledAt = lastState?.lastPolledAt ?? now;
-
     const client = createClient(connection, context.debug.enabled);
-
     let created: GongRecord[];
-
     if (resourceType === PollResource.CALLS) {
       created = await fetchAllCalls(client, lastPolledAt, now);
     } else {
@@ -50,28 +46,23 @@ export const pollChangesTrigger = pollingTrigger({
       }
       const knownSet = new Set(lastState.knownIds);
       created = records.filter((r) => !knownSet.has(r.id));
-
       const newState: PollingState = {
         lastPolledAt: now,
         knownIds: records.map((r) => r.id),
       };
       context.polling.setState(newState as unknown as Record<string, unknown>);
     }
-
     if (resourceType === PollResource.CALLS) {
       context.polling.setState({
         lastPolledAt: now,
       } as unknown as Record<string, unknown>);
     }
-
     const filteredCreated = showNewRecords ? created : [];
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${resourceType}: ${filteredCreated.length} new`,
       );
     }
-
     return {
       payload: {
         ...payload,

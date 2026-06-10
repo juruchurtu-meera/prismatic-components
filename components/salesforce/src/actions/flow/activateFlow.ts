@@ -4,7 +4,6 @@ import { activateFlowInputs } from "../../inputs";
 import { activateFlowFunction, processMetadataResult } from "../../util";
 import { generateApiName } from "../../util";
 import { activateFlowExamplePayload } from "../../examplePayloads";
-
 export const activateFlow = action({
   display: {
     label: "Activate Flow",

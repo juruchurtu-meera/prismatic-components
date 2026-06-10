@@ -3,11 +3,6 @@ import { createClient } from "../../client";
 import { webhookExample } from "../../examplePayloads";
 import { updateWebhookInputs } from "../../inputs";
 import type { WebhooksIntegration } from "../../types";
-
-
-
-
-
 export const updateWebhook = action({
   display: {
     label: "Update Webhook",
@@ -27,7 +22,6 @@ export const updateWebhook = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const response = await client.put<WebhooksIntegration>(
       `/api/v1/integration/webhooks/configuration/webhooks/${encodeURIComponent(webhookName)}`,
       {
@@ -37,7 +31,6 @@ export const updateWebhook = action({
         payload: webhookPayload,
       },
     );
-
     return { data: response.data };
   },
   examplePayload: webhookExample,

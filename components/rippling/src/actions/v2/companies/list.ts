@@ -4,7 +4,6 @@ import { API_VERSION } from "../../../constants";
 import { listCompaniesV2ExamplePayload } from "../../../examplePayloads";
 import { listCompaniesInputs } from "../../../inputs";
 import { paginateV2Results } from "../../../utils/pagination";
-
 export const listCompanies = action({
   display: {
     label: "List Companies (V2)",

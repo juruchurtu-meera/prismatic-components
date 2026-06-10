@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceClient } from "../../client";
 import { uploadFileInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",
@@ -18,7 +17,6 @@ export const uploadFile = action({
       });
     }
     const { data } = file;
-
     const response = await salesforceClient.sobject("ContentVersion").create({
       PathOnClient: pathOnClient,
       VersionData: data.toString("base64"),

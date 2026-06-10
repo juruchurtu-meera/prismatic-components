@@ -12,7 +12,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, fetchAllFolderEntries, handleDropboxError } from "../util";
-
 export const listFolder = action({
   display: {
     label: "List Folder",
@@ -25,7 +24,6 @@ export const listFolder = action({
       params.userType,
       params.teamMemberId,
     );
-
     try {
       const data = await fetchAllFolderEntries(dbx, {
         path: params.path,

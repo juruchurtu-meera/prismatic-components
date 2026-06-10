@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { templatesListPublicExamplePayload } from "../../examplePayloads";
 import { templatesListPublicInputs } from "../../inputs";
-
 export const templatesListPublic = action({
   display: {
     label: "List Public Templates",

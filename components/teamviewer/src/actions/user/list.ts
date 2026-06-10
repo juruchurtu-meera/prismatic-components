@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { listUsersInputs } from "../../inputs/users";
 import { createClient } from "../../client";
 import { listUsersExamplePayload } from "../../examplePayloads/users";
-
 export const listUsers = action({
   display: {
     label: "List Users",
@@ -21,7 +20,6 @@ export const listUsers = action({
         permissions,
       },
     });
-
     return {
       data,
     };

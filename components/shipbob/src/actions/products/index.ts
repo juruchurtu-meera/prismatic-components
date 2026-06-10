@@ -4,7 +4,6 @@ import { listInventoryItems } from "./inventory/list";
 import { listByProductId } from "./inventory/listByProductId";
 import { listProduct } from "./list";
 import { updateProduct } from "./update";
-
 export default {
   getProduct,
   getInventoryItem,

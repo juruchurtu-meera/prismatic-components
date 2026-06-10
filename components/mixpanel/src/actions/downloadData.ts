@@ -13,7 +13,6 @@ import {
 } from "../inputs";
 import { Authorization } from "../enums/Authorization";
 import { downloadDataExamplePayload } from "../examplePayloads";
-
 export const downloadData = action({
   display: {
     label: "Download Data",

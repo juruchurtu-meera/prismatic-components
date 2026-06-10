@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export interface PollResourceConfig {
   query: string;
   dataPath: string[];

@@ -3,7 +3,6 @@ import { MAX_LIMIT } from "../../constants";
 import { listWebhooksInputs } from "../../inputs";
 import { listWebhooksExamplePayload } from "../../payloadExamples";
 import { listWebhooksGql } from "../graphql/webhooks/listWebhooks";
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",
@@ -19,7 +18,6 @@ export const listWebhooks = action({
       endCursor: undefined,
       callbackUrl: undefined,
     });
-
     return { data };
   },
   examplePayload: { data: listWebhooksExamplePayload },

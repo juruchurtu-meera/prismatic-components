@@ -12,7 +12,6 @@ import {
   DEFAULT_SUBSCRIPTION_EXPIRATION_MINUTES,
   MAX_SUBSCRIPTION_EXPIRATION_MINUTES,
 } from "../subscriptions/constants";
-
 export const calculateExpirationDateTime = (
   minutes: number = DEFAULT_SUBSCRIPTION_EXPIRATION_MINUTES,
 ): string => {
@@ -21,7 +20,6 @@ export const calculateExpirationDateTime = (
   expirationDate.setTime(expirationDate.getTime() + cappedMinutes * 60 * 1000);
   return expirationDate.toISOString();
 };
-
 export const listAllSubscriptionsFN = async (
   client: HttpClient,
 ): Promise<GraphSubscription[]> => {
@@ -33,7 +31,6 @@ export const listAllSubscriptionsFN = async (
   );
   return data.value || [];
 };
-
 export const getSubscriptionByIdFN = async (
   client: HttpClient,
   subscriptionId: string,
@@ -43,7 +40,6 @@ export const getSubscriptionByIdFN = async (
   );
   return data;
 };
-
 export const deleteSubscriptionByIdFN = async (
   client: HttpClient,
   subscriptionId: string,
@@ -51,14 +47,12 @@ export const deleteSubscriptionByIdFN = async (
   await client.delete(`/subscriptions/${subscriptionId}`);
   return { id: subscriptionId, deleted: true };
 };
-
 export const deleteAllSubscriptionsFN = async (
   client: HttpClient,
   notificationUrl?: string,
 ): Promise<SubscriptionDeletion[]> => {
   const subscriptions = await listAllSubscriptionsFN(client);
   const deletedSubscriptions: SubscriptionDeletion[] = [];
-
   await Promise.all(
     subscriptions.map(async (subscription) => {
       if (
@@ -70,10 +64,8 @@ export const deleteAllSubscriptionsFN = async (
       }
     }),
   );
-
   return deletedSubscriptions;
 };
-
 export const createSubscriptionFN = async (
   client: HttpClient,
   {
@@ -110,22 +102,18 @@ export const createSubscriptionFN = async (
   });
   return data;
 };
-
 export const renewSubscriptionFN = async (
   client: HttpClient,
   subscriptionId: string,
   expirationMinutes: number = DEFAULT_SUBSCRIPTION_EXPIRATION_MINUTES,
 ): Promise<GraphSubscription> => {
   const expirationDateTime = calculateExpirationDateTime(expirationMinutes);
-
   const { data } = await client.patch<GraphSubscription>(
     `/subscriptions/${subscriptionId}`,
     { expirationDateTime },
   );
-
   return data;
 };
-
 export const updateSubscriptionUrlFN = async (
   client: HttpClient,
   subscriptionId: string,
@@ -135,10 +123,8 @@ export const updateSubscriptionUrlFN = async (
     `/subscriptions/${subscriptionId}`,
     { notificationUrl },
   );
-
   return data;
 };
-
 export const fetchAllData = async <T>(
   client: HttpClient,
   url: string,
@@ -148,7 +134,6 @@ export const fetchAllData = async <T>(
   const results: T[] = [];
   let nextLink: string | undefined;
   let firstResponse: PaginatedResponse<T> | undefined;
-
   do {
     const { data } = await client.get<PaginatedResponse<T>>(
       nextLink || url,
@@ -164,42 +149,33 @@ export const fetchAllData = async <T>(
               : params,
           },
     );
-
     if (!firstResponse) {
       firstResponse = data;
     }
-
     results.push(...data.value);
     nextLink = data["@odata.nextLink"];
-
     if (!fetchAll) {
       break;
     }
   } while (nextLink);
-
   if (!firstResponse) {
     throw new Error("No response received from the API");
   }
-
   const response = {
     "@odata.context": firstResponse["@odata.context"],
     value: results,
   };
-
   if (fetchAll) {
     return response;
   }
-
   if (firstResponse["@odata.nextLink"]) {
     return {
       ...response,
       "@odata.nextLink": firstResponse["@odata.nextLink"],
     };
   }
-
   return response;
 };
-
 export const cleanExpirationDateTime = (input: unknown): string => {
   if (input) {
     const date = util.types.toDate(input);
@@ -215,7 +191,6 @@ export const cleanExpirationDateTime = (input: unknown): string => {
   );
   return expirationDate.toISOString();
 };
-
 export const renewAllSubscriptionsByUrlFN = async (
   client: HttpClient,
   notificationUrl: string,
@@ -225,9 +200,7 @@ export const renewAllSubscriptionsByUrlFN = async (
   const matchingSubscriptions = subscriptions.filter(
     (sub) => sub.notificationUrl === notificationUrl,
   );
-
   const renewedSubscriptions: GraphSubscription[] = [];
-
   await Promise.all(
     matchingSubscriptions.map(async (subscription) => {
       if (subscription.id) {
@@ -240,10 +213,8 @@ export const renewAllSubscriptionsByUrlFN = async (
       }
     }),
   );
-
   return renewedSubscriptions;
 };
-
 export const scheduledRenewalFN = async (
   client: HttpClient,
   storedSubscriptionId: string | undefined,
@@ -253,7 +224,6 @@ export const scheduledRenewalFN = async (
   let newSubscriptionId: string | undefined;
   let usedUrlFallback = !storedSubscriptionId;
   let renewedCount = 0;
-
   if (storedSubscriptionId) {
     try {
       await renewSubscriptionFN(
@@ -266,7 +236,6 @@ export const scheduledRenewalFN = async (
       usedUrlFallback = true;
     }
   }
-
   if (usedUrlFallback) {
     const renewedSubscriptions = await renewAllSubscriptionsByUrlFN(
       client,
@@ -274,12 +243,10 @@ export const scheduledRenewalFN = async (
       expirationMinutes,
     );
     renewedCount = renewedSubscriptions.length;
-
     if (renewedSubscriptions.length > 0 && renewedSubscriptions[0].id) {
       newSubscriptionId = renewedSubscriptions[0].id;
     }
   }
-
   return {
     newSubscriptionId,
     usedUrlFallback,

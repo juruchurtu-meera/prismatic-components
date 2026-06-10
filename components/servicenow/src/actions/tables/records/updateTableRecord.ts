@@ -8,7 +8,6 @@ import {
   tableNameInput,
 } from "../../../inputs";
 import { buildPayload, putTable } from "../../../util";
-
 export const updateTableRecord = action({
   display: {
     label: "Update Table Record",

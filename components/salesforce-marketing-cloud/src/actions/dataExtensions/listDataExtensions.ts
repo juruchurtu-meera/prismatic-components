@@ -4,7 +4,6 @@ import { DATA_EXTENSIONS_PATH } from "../../constants";
 import { listDataExtensionsExamplePayload } from "../../examplePayloads";
 import { listDataExtensionsInputs } from "../../inputs";
 import { paginateResults } from "../../util/pagination";
-
 export const listDataExtensions = action({
   examplePayload: listDataExtensionsExamplePayload,
   display: {
@@ -18,20 +17,17 @@ export const listDataExtensions = action({
     { connection, searchString, fetchAll, pageSize, page },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const params = {
       $search: searchString,
       $pageSize: pageSize,
       $page: page,
     };
-
     const data = await paginateResults(
       client,
       DATA_EXTENSIONS_PATH,
       fetchAll,
       params,
     );
-
     return { data };
   },
 });

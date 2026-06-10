@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listAccessibleCustomersExamplePayload } from "../../examplePayloads";
 import { listAccessibleCustomersInputs } from "../../inputs";
-
 export const listAccessibleCustomers = action({
   display: {
     label: "List Accessible Customers",

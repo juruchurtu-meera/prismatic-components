@@ -23,13 +23,12 @@ import {
   useStartDate,
 } from "../../inputs";
 import type { Body } from "./types/Body";
-
 const spaceId = getSpaceId(true);
-
 export const updateSpace = action({
   display: {
     label: "Update Space",
-    description: "Rename a space, set its color, and enable ClickApps for the space.",
+    description:
+      "Rename a space, set its color, and enable ClickApps for the space.",
   },
   examplePayload: updateSpaceExamplePayload,
   perform: async (
@@ -54,9 +53,12 @@ export const updateSpace = action({
       color,
       privateInput,
       adminCanManage,
-    }
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const body: Body = {
       name: spaceName,
       color,
@@ -96,9 +98,7 @@ export const updateSpace = action({
         },
       },
     };
-
     const { data } = await client.put(`/space/${spaceId}`, body);
-
     return {
       data,
     };

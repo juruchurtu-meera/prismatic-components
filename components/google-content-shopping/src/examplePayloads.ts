@@ -1,12 +1,4 @@
-
-
-
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-
-
-
 export const getProductExamplePayload: any = {
   data: {
     kind: "content#product",
@@ -144,9 +136,7 @@ export const getProductExamplePayload: any = {
     ],
   },
 };
-
 export const createProductExamplePayload: any = getProductExamplePayload;
-
 export const updateProductExamplePayload: any = {
   data: {
     ...getProductExamplePayload.data,
@@ -157,11 +147,9 @@ export const updateProductExamplePayload: any = {
     },
   },
 };
-
 export const deleteProductExamplePayload: any = {
   data: {},
 };
-
 export const listProductsExamplePayload: any = {
   data: {
     kind: "content#productsListResponse",
@@ -196,7 +184,6 @@ export const listProductsExamplePayload: any = {
     nextPageToken: "CgwI4MSB3QYQ",
   },
 };
-
 export const batchProductExamplePayload: any = {
   data: {
     kind: "content#productsCustomBatchResponse",
@@ -220,9 +207,6 @@ export const batchProductExamplePayload: any = {
     ],
   },
 };
-
-
-
 export const updateLocalInventoryExamplePayload: any = {
   data: {
     storeCode: "STORE_001",
@@ -242,7 +226,6 @@ export const updateLocalInventoryExamplePayload: any = {
     instoreProductLocation: "Aisle 5, Shelf 3",
   },
 };
-
 export const batchLocalInventoryExamplePayload: any = {
   data: {
     entries: [
@@ -268,9 +251,6 @@ export const batchLocalInventoryExamplePayload: any = {
     ],
   },
 };
-
-
-
 export const updateRegionalInventoryExamplePayload: any = {
   data: {
     regionId: "123456",
@@ -286,7 +266,6 @@ export const updateRegionalInventoryExamplePayload: any = {
     availability: "in stock",
   },
 };
-
 export const batchRegionalInventoryExamplePayload: any = {
   data: {
     entries: [
@@ -311,9 +290,6 @@ export const batchRegionalInventoryExamplePayload: any = {
     ],
   },
 };
-
-
-
 export const getAccountExamplePayload: any = {
   data: {
     kind: "content#account",
@@ -381,9 +357,7 @@ export const getAccountExamplePayload: any = {
     sellerId: "SELLER_001",
   },
 };
-
 export const createAccountExamplePayload: any = getAccountExamplePayload;
-
 export const updateAccountExamplePayload: any = {
   data: {
     ...getAccountExamplePayload.data,
@@ -391,11 +365,9 @@ export const updateAccountExamplePayload: any = {
     websiteUrl: "https://shop.example.com",
   },
 };
-
 export const deleteAccountExamplePayload: any = {
   data: {},
 };
-
 export const listAccountsExamplePayload: any = {
   data: {
     kind: "content#accountsListResponse",
@@ -412,10 +384,6 @@ export const listAccountsExamplePayload: any = {
     nextPageToken: "CgwI5MSB3QYQ",
   },
 };
-
-
-
-
 export const getOrderExamplePayload: any = {
   data: {
     kind: "content#order",
@@ -501,7 +469,6 @@ export const getOrderExamplePayload: any = {
     ],
   },
 };
-
 export const listOrdersExamplePayload: any = {
   data: {
     kind: "content#ordersListResponse",
@@ -523,17 +490,12 @@ export const listOrdersExamplePayload: any = {
     nextPageToken: "CgwI6MSB3QYQ",
   },
 };
-
 export const cancelOrderExamplePayload: any = {
   data: {
     kind: "content#ordersCancelResponse",
     executionStatus: "executed",
   },
 };
-
-
-
-
 export const getOrderReturnExamplePayload: any = {
   data: {
     kind: "content#orderReturn",
@@ -567,7 +529,6 @@ export const getOrderReturnExamplePayload: any = {
     ],
   },
 };
-
 export const listOrderReturnsExamplePayload: any = {
   data: {
     kind: "content#orderreturnsListResponse",
@@ -587,19 +548,14 @@ export const listOrderReturnsExamplePayload: any = {
     nextPageToken: "CgwI7MSB3QYQ",
   },
 };
-
 export const createOrderReturnExamplePayload: any =
   getOrderReturnExamplePayload;
-
 export const processOrderReturnExamplePayload: any = {
   data: {
     kind: "content#orderreturnsProcessResponse",
     executionStatus: "executed",
   },
 };
-
-
-
 export const getPubSubNotificationExamplePayload: any = {
   data: {
     kind: "content#pubsubnotificationsettings",
@@ -611,7 +567,6 @@ export const getPubSubNotificationExamplePayload: any = {
     ],
   },
 };
-
 export const updatePubSubNotificationExamplePayload: any = {
   data: {
     kind: "content#pubsubnotificationsettings",
@@ -625,9 +580,6 @@ export const updatePubSubNotificationExamplePayload: any = {
     ],
   },
 };
-
-
-
 export const rawRequestExamplePayload: any = {
   data: {
     kind: "content#productsListResponse",

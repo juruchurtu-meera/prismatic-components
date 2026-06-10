@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, leadLabelIdInput } from "../../inputs";
-
 export const deleteLeadLabel = action({
   display: {
     label: "Delete Lead Label",

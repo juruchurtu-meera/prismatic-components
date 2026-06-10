@@ -4,13 +4,10 @@ import {
   inputs as httpClientInputs,
   sendRawRequest,
 } from "@prismatic-io/spectral/dist/clients/http";
-
 import { connectionInput } from "../inputs";
 import { API_VERSION, BASE_URL } from "../constants";
 import { validateConnection } from "../util";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

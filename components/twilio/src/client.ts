@@ -1,6 +1,5 @@
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import Twilio from "twilio";
-
 export const createAuthorizedClient = (
   twilioConnection: Connection,
   debug: boolean,
@@ -17,7 +16,6 @@ export const createAuthorizedClient = (
         },
       );
     }
-
     case "basic": {
       return Twilio(
         util.types.toString(twilioConnection.fields?.username),
@@ -25,7 +23,6 @@ export const createAuthorizedClient = (
         { logLevel },
       );
     }
-
     default:
       throw new ConnectionError(
         twilioConnection,

@@ -10,7 +10,6 @@ import {
   jobId,
 } from "../inputs";
 import { API_VERSION } from "../constants";
-
 export const addOrUpdateContact = action({
   display: {
     label: "Add or Update Contact",
@@ -24,11 +23,8 @@ export const addOrUpdateContact = action({
   },
   perform: async (_context, { sendGridConnection, list_ids, contacts }) => {
     const client = createAuthorizedClient(sendGridConnection);
-
     let parsedContacts: unknown[];
     try {
-      
-      
       parsedContacts =
         typeof contacts === "string" ? JSON.parse(contacts) : contacts;
       if (!Array.isArray(parsedContacts)) {
@@ -38,18 +34,18 @@ export const addOrUpdateContact = action({
       const e = error as Error;
       throw new Error(`Invalid JSON format for Contacts: ${e.message}`);
     }
-
-    const payload: { list_ids?: string[]; contacts: unknown[] } = {
+    const payload: {
+      list_ids?: string[];
+      contacts: unknown[];
+    } = {
       contacts: parsedContacts,
     };
-
     if (list_ids && typeof list_ids === "string") {
       payload.list_ids = list_ids
         .split(",")
         .map((id) => id.trim())
         .filter((id) => id);
     }
-
     const [_response, body] = await client.request({
       method: "PUT",
       url: `/${API_VERSION}/marketing/contacts`,
@@ -66,7 +62,6 @@ export const addOrUpdateContact = action({
     },
   },
 });
-
 export const getContactsByEmails = action({
   display: {
     label: "Get Contacts by Emails",
@@ -78,7 +73,6 @@ export const getContactsByEmails = action({
   },
   perform: async (_context, { sendGridConnection, emails }) => {
     const client = createAuthorizedClient(sendGridConnection);
-
     let emailArray: string[];
     if (typeof emails === "string") {
       emailArray = emails
@@ -86,16 +80,12 @@ export const getContactsByEmails = action({
         .map((email) => email.trim())
         .filter((email) => email);
     } else {
-      
       throw new Error("Emails input must be a comma-separated string.");
     }
-
     if (!emailArray || emailArray.length === 0) {
       throw new Error("Please provide at least one email address.");
     }
-
     try {
-      
       const [_response, body] = await client.request({
         method: "POST",
         url: `/${API_VERSION}/marketing/contacts/search/emails`,
@@ -104,7 +94,12 @@ export const getContactsByEmails = action({
       return { data: body };
     } catch (err) {
       const error = err as {
-        response?: { body?: { errors: unknown }; statusCode?: number };
+        response?: {
+          body?: {
+            errors: unknown;
+          };
+          statusCode?: number;
+        };
         code?: string;
       };
       if (
@@ -118,15 +113,11 @@ export const getContactsByEmails = action({
           )
           .join(", ");
         throw new Error(
-          `Failed to get contacts by emails: ${messages} (Status: ${
-            error.code || error.response?.statusCode
-          })`,
+          `Failed to get contacts by emails: ${messages} (Status: ${error.code || error.response?.statusCode})`,
         );
       }
       throw new Error(
-        `Failed to get contacts by emails: ${util.types.toString(
-          error,
-        )} (Status: ${error.code || error.response?.statusCode})`,
+        `Failed to get contacts by emails: ${util.types.toString(error)} (Status: ${error.code || error.response?.statusCode})`,
       );
     }
   },
@@ -162,7 +153,6 @@ export const getContactsByEmails = action({
     },
   },
 });
-
 export const initiateContactsImport = action({
   display: {
     label: "Initiate Contacts Import",
@@ -180,7 +170,6 @@ export const initiateContactsImport = action({
     { sendGridConnection, list_ids, field_mappings, is_compressed },
   ) => {
     const client = createAuthorizedClient(sendGridConnection);
-
     let parsedFieldMappings: (string | null)[];
     try {
       parsedFieldMappings =
@@ -197,7 +186,6 @@ export const initiateContactsImport = action({
       const e = error as Error;
       throw new Error(`Invalid JSON format for Field Mappings: ${e.message}`);
     }
-
     const payload: {
       list_ids?: string[];
       file_type: "csv";
@@ -206,7 +194,6 @@ export const initiateContactsImport = action({
       file_type: "csv",
       field_mappings: parsedFieldMappings,
     };
-
     if (list_ids && typeof list_ids === "string") {
       payload.list_ids = list_ids
         .split(",")
@@ -214,7 +201,6 @@ export const initiateContactsImport = action({
         .filter((id) => id);
       if (payload.list_ids.length === 0) delete payload.list_ids;
     }
-
     const [_response, body] = await client.request({
       method: "PUT",
       url: `/${API_VERSION}/marketing/contacts/imports`,
@@ -243,7 +229,6 @@ export const initiateContactsImport = action({
     },
   },
 });
-
 export const getImportStatus = action({
   display: {
     label: "Get Import Status",

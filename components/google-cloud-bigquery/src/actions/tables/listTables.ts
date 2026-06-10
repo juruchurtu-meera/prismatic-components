@@ -9,7 +9,6 @@ import {
   projectId,
 } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
-
 export const listTables = action({
   display: {
     description: "Lists all tables in the specified dataset.",

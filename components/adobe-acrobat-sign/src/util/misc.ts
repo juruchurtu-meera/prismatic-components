@@ -1,5 +1,8 @@
 export const filterAndSort = (
-  items: { label: string; key: string }[],
+  items: {
+    label: string;
+    key: string;
+  }[],
   searchQuery: string | undefined,
 ) => {
   return items

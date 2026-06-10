@@ -3,7 +3,6 @@ import { connection } from "../inputs/shared";
 import { getApi } from "../api";
 import { fetchSegments } from "../utils";
 import { KlaviyoApi } from "../enums/KlaviyoApi";
-
 export const selectSegment = dataSource({
   display: {
     label: "Select Segment",
@@ -13,7 +12,6 @@ export const selectSegment = dataSource({
   dataSourceType: "picklist",
   perform: async (_context, { connection }) => {
     const segmentsApi = getApi(connection, KlaviyoApi.Segments);
-
     const data = await fetchSegments(segmentsApi, ["name"], [], undefined);
     const result = data.data
       .map<Element>((response) => ({
@@ -21,7 +19,6 @@ export const selectSegment = dataSource({
         label: response.attributes.name ?? response.id,
       }))
       .sort((a, b) => ((a.label ?? "") < (b.label ?? "") ? -1 : 1));
-
     return { result };
   },
   examplePayload: {

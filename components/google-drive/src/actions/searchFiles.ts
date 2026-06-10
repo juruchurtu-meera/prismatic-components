@@ -14,7 +14,6 @@ import {
 } from "../inputs";
 import { fetchFiles } from "../helpers/pagination";
 import { getDriveQueryParams } from "../util";
-
 export const searchFiles = action({
   display: {
     label: "Search Files",
@@ -23,24 +22,20 @@ export const searchFiles = action({
   perform: async (_context, params) => {
     const drive = createClient(params.connection);
     let finalQuery = "";
-
     const nameQuery = params.searchQuery
       ? params.filesContainingSearchQuery
         ? `name contains '${params.searchQuery}'`
         : `name = '${params.searchQuery}'`
       : null;
-
     if (params.folderId) {
       finalQuery += `'${params.folderId}' in parents`;
     }
-
     if (nameQuery) {
       if (params.folderId) {
         finalQuery += ` and `;
       }
       finalQuery += nameQuery;
     }
-
     const customQuery = util.types.toString(params.query);
     if (customQuery) {
       if (params.folderId || nameQuery) {
@@ -48,7 +43,6 @@ export const searchFiles = action({
       }
       finalQuery += customQuery;
     }
-
     const data = await fetchFiles({
       drive,
       initialParams: {
@@ -60,7 +54,6 @@ export const searchFiles = action({
       },
       fetchAll: params.fetchAll,
     });
-
     if (data.files.length === 0) {
       throw new Error(`No results found for query: ${finalQuery}`);
     }
@@ -81,5 +74,4 @@ export const searchFiles = action({
     fetchAll,
   },
 });
-
 export default searchFiles;

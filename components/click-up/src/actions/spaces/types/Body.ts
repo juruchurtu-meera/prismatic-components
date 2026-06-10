@@ -1,5 +1,4 @@
 import type { Features } from "./Features";
-
 export interface Body {
   name: string;
   multiple_assignees: boolean;

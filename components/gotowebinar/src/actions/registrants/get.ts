@@ -3,7 +3,6 @@ import { createGotoWebinarClient } from "../../client";
 import { GET_REGISTRANTS_EXAMPLE_PAYLOAD } from "../../examplePayloads";
 import { getRegistrantInputs } from "../../inputs/registrants/getRegistrantInputs";
 import { bigIntTransformerConfig, parseRegistrantKey } from "../../utils";
-
 export const getRegistrant = action({
   display: {
     label: "Get Registrant",
@@ -20,13 +19,11 @@ export const getRegistrant = action({
     const { data: payloadWithoutParsing } = await client.get(url, {
       transformResponse: bigIntTransformerConfig.transformResponse,
     });
-
     const registrantKeyFromPayload = payloadWithoutParsing.registrantKey.c;
     const data = {
       ...payloadWithoutParsing,
       registrantKey: parseRegistrantKey(registrantKeyFromPayload),
     };
-
     return {
       data,
     };

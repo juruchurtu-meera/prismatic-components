@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { revokePortalAccessExamplePayload } from "../../examplePayloads";
 import { revokePortalAccessInputs } from "../../inputs";
-
 export const revokePortalAccess = action({
   display: {
     label: "Revoke Portal-Only Access",

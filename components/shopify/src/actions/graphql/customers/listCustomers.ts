@@ -8,15 +8,20 @@ import type { Customer } from "../../interfaces/Customer";
 import { customerMapper } from "../mappers/customerMapper";
 import { paginationMapper } from "../mappers/paginationMapper";
 import listCustomersQuery from "../queries/customers/ListCustomers.gql";
-
 export const listCustomersGql = action({
   display: {
     label: "List Customers",
     description: "Lists all customers.",
   },
-  perform: async (context, { shopifyConnection, limit, getAlldata, endCursor }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+  perform: async (
+    context,
+    { shopifyConnection, limit, getAlldata, endCursor },
+  ) => {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const data = await fetchData<Customer>(
       client,
       ["customers"],
@@ -28,7 +33,6 @@ export const listCustomersGql = action({
         cursor: getAlldata ? undefined : endCursor,
       },
     );
-
     return {
       data: {
         data: {

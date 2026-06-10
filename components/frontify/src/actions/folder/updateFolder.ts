@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { updateFolderExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateFolderInputs as inputs } from "../../inputs/folder";
-
 export const updateFolder = action({
   display: {
     label: "Update Folder",
@@ -17,7 +16,6 @@ export const updateFolder = action({
         description,
       },
     };
-
     const mutation = gql`
       mutation updateFolder($input: UpdateFolderInput!) {
         updateFolder(input: $input) {
@@ -27,12 +25,10 @@ export const updateFolder = action({
         }
       }
     `;
-
     const response = await createClient({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

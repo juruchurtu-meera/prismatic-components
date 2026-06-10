@@ -5,7 +5,6 @@ import { listFoldersInputs } from "../../inputs";
 import { warnDeprecatedInputs } from "../../util/deprecation";
 import { CHILD_TYPE } from "../../util/mergeChildren";
 import { paginateByToken } from "../../util/pagination";
-
 export const listFolders = action({
   display: {
     label: "List Folders",
@@ -17,7 +16,6 @@ export const listFolders = action({
   ) => {
     warnDeprecatedInputs(context, "listFolders", includeAll);
     const client = createClient(connection, context.debug.enabled);
-
     if (workspaceId) {
       const items = await paginateByToken<Record<string, unknown>>(
         client,
@@ -25,7 +23,6 @@ export const listFolders = action({
       );
       return { data: items.filter((c) => c.type === CHILD_TYPE.FOLDER) };
     }
-
     if (folderId) {
       const items = await paginateByToken<Record<string, unknown>>(
         client,
@@ -33,8 +30,6 @@ export const listFolders = action({
       );
       return { data: items.filter((c) => c.type === CHILD_TYPE.FOLDER) };
     }
-
-    
     const { data } = await client.get("/home/folders");
     return { data };
   },

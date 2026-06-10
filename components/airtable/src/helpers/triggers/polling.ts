@@ -1,20 +1,8 @@
 import type { Connection } from "@prismatic-io/spectral";
 import { createAirtableClient } from "../../client";
 import type { AirtableRecord } from "../../types";
-
 const MAX_POLL_PAGES = 100;
 const PAGE_SIZE = 100;
-
-
-
-
-
-
-
-
-
-
-
 export const fetchAirtableRecordsSince = async (
   connection: Connection,
   baseId: string,
@@ -23,17 +11,15 @@ export const fetchAirtableRecordsSince = async (
   debug: boolean,
   view?: string,
   additionalFilter?: string,
-): Promise<{ records: AirtableRecord[]; truncated: boolean }> => {
+): Promise<{
+  records: AirtableRecord[];
+  truncated: boolean;
+}> => {
   const client = createAirtableClient(connection, debug);
-  
-  
-  
-  
   const modifiedFilter = `IS_AFTER(LAST_MODIFIED_TIME(), DATETIME_PARSE("${lastPolledAtIso}"))`;
   const filterByFormula = additionalFilter
     ? `AND(${additionalFilter}, ${modifiedFilter})`
     : modifiedFilter;
-
   const records: AirtableRecord[] = [];
   let offset: string | undefined;
   let pages = 0;
@@ -53,6 +39,5 @@ export const fetchAirtableRecordsSince = async (
     offset = data.offset;
     pages++;
   } while (offset && pages < MAX_POLL_PAGES);
-
   return { records, truncated: Boolean(offset) };
 };

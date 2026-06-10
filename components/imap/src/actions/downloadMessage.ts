@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { downloadMessageExamplePayload } from "../examplePayloads";
 import { downloadMessageInputs } from "../inputs/actions";
 import { simpleParser } from "mailparser";
-
 export const downloadMessage = action({
   display: {
     label: "Download Message",
@@ -15,16 +14,13 @@ export const downloadMessage = action({
     await client.connect();
     try {
       await client.getMailboxLock(util.types.toString(params.mailbox));
-
       const { content, meta } = await client.download(params.messageIndex, "", {
         uid: true,
       });
-
       const parsed = await simpleParser(content, {
         writableObjectMode: true,
         autoDestroy: true,
       });
-
       const message = {
         headers: Object.fromEntries(parsed.headers),
         attachments: parsed.attachments.map(({ contentType, content }) => ({
@@ -45,7 +41,6 @@ export const downloadMessage = action({
         text: parsed.text,
         html: parsed.html,
       };
-
       return {
         data: {
           meta,

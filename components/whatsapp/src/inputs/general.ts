@@ -1,12 +1,10 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanCodeInput } from "../utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",

@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, pipelineIdInput } from "../../inputs";
 import { cleanNumber } from "../../util";
-
 export const getPipelineMovementStatistics = action({
   display: {
     label: "Get Pipeline Movement Statistics",

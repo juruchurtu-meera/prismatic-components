@@ -30,7 +30,6 @@ import {
   work_phone,
   work_start_date,
 } from "../../inputs";
-
 export const updateEmployee = action({
   display: {
     label: "Update Employee",

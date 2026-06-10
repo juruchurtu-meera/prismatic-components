@@ -19,7 +19,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updateInvoice = action({
   display: {
     label: "Update Invoice",
@@ -50,14 +49,15 @@ export const updateInvoice = action({
     return {
       data: await client.invoices.update(util.types.toString(invoiceId), {
         collection_method:
-          (util.types.toString(collectionMethod) as Stripe.InvoiceCreateParams.CollectionMethod) ||
-          undefined,
+          (util.types.toString(
+            collectionMethod,
+          ) as Stripe.InvoiceCreateParams.CollectionMethod) || undefined,
         description: util.types.toString(description) || undefined,
         auto_advance: util.types.toBool(autoAdvance) || undefined,
-        application_fee_amount: util.types.toInt(applicationFeeAmount) || undefined,
+        application_fee_amount:
+          util.types.toInt(applicationFeeAmount) || undefined,
         default_payment_method: util.types.toString(paymentId) || undefined,
         due_date: util.types.toInt(dueDate) || undefined,
-
         discounts: [
           {
             coupon: util.types.toString(coupon) || undefined,

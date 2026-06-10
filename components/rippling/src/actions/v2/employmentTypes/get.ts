@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { getEmploymentTypeExamplePayload } from "../../../examplePayloads";
 import { getEmploymentTypeInputs } from "../../../inputs";
-
 export const getEmploymentType = action({
   display: {
     label: "Get Employment Type (V2)",

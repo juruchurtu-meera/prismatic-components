@@ -7,7 +7,6 @@ import {
   orderNumber,
   orderStatus,
 } from "./common";
-
 export const createOrUpdateOrderInputs = {
   connectionInput,
   orderNumber,

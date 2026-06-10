@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { emptyExamplePayload as examplePayload } from "../../examplePayloads";
 import { addMemberToGroupInputs as inputs } from "../../inputs/group";
-
 export const addMemberToGroup = action({
   display: {
     label: "Add Member to Group",

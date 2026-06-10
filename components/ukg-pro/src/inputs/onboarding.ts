@@ -1,10 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput, filterParameters, paginationInputs } from "./common";
-
-
-
-
-
 export const tenantIdentifier = input({
   label: "Tenant Identifier",
   type: "string",
@@ -14,7 +9,6 @@ export const tenantIdentifier = input({
   example: "ACME_CORP",
   clean: util.types.toString,
 });
-
 export const newHireId = input({
   label: "New Hire ID",
   type: "string",
@@ -24,7 +18,6 @@ export const newHireId = input({
   example: "NH-12345",
   clean: util.types.toString,
 });
-
 export const newHireData = input({
   label: "New Hire Data",
   type: "code",
@@ -46,39 +39,29 @@ export const newHireData = input({
   ),
   clean: util.types.toObject,
 });
-
-
-
-
-
 export const createNewHireInputs = {
   connection: connectionInput,
   newHireData,
 };
-
 export const deleteNewHireInputs = {
   connection: connectionInput,
   newHireId,
 };
-
 export const getCanceledNewHiresInputs = {
   connection: connectionInput,
   ...paginationInputs,
   filterParameters,
 };
-
 export const getCompletedNewHiresInputs = {
   connection: connectionInput,
   ...paginationInputs,
   filterParameters,
 };
-
 export const getInProgressNewHiresInputs = {
   connection: connectionInput,
   ...paginationInputs,
   filterParameters,
 };
-
 export const getNewHireByIdInputs = {
   connection: connectionInput,
   newHireId,

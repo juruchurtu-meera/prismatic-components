@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { productId, storeId, connectionInput } from "./../../../inputs";
-
 export const getProductInfo = action({
   display: {
     label: "Get Product",
@@ -20,5 +19,4 @@ export const getProductInfo = action({
     connection: connectionInput,
   },
 });
-
 export default getProductInfo;

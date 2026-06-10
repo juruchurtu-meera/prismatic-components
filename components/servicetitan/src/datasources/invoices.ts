@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { invoicesDatasource } from "../examplePayloads";
 import { connection } from "../inputs";
 import type { Invoice } from "../interfaces";
-
 export const selectInvoice = dataSource({
   display: {
     label: "Select Invoice",
@@ -18,7 +17,6 @@ export const selectInvoice = dataSource({
     let invoices: Invoice[] = [];
     let cursor = false;
     let page = 1;
-
     do {
       const { data } = await client.get(`/invoices`, {
         params: {
@@ -31,15 +29,12 @@ export const selectInvoice = dataSource({
       cursor = data.hasMore;
       page++;
     } while (cursor && page < 10);
-
-    
     const objects = invoices
       .sort((a, b) => (a.id < b.id ? -1 : 1))
       .map<Element>((invoice) => ({
         key: invoice.id.toString(),
         label: `#${invoice.referenceNumber}`,
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

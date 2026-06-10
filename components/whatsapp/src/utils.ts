@@ -1,6 +1,5 @@
 import { Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import connections from "./connections";
-
 export const validateConnection = (connection: Connection): void => {
   const connectionKeys = connections.map((c) => c.key);
   if (!connectionKeys.includes(connection.key)) {
@@ -10,14 +9,11 @@ export const validateConnection = (connection: Connection): void => {
     );
   }
 };
-
 export const cleanStringInput = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 const throwCodeInputError = (inputLabel: string) => {
   throw new Error(`Invalid code for ${inputLabel} input.`);
 };
-
 export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     try {
@@ -32,7 +28,6 @@ export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     let object;

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { assignTechniciansResponse } from "../../examplePayloads";
 import { connection, jobAppointmentId, technicianIds } from "../../inputs";
-
 export const assignTechnicians = action({
   display: {
     label: "Assign Technician to Appointment",

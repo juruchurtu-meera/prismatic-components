@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const searchCode = action({
   display: {
     label: "Search Code",
     description: "Search code",
   },
   perform: async (context, { connection, q, sort, order, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/code`, {
       params: { q, sort, order, per_page: perPage, page },
     });
@@ -26,7 +28,8 @@ const searchCode = action({
       placeholder: "Enter search query",
       example: "addClass in:file language:js repo:octocat/Spoon-Knife",
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
+      comments:
+        "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
     },
     sort: {
       label: "Sort",
@@ -48,8 +51,7 @@ const searchCode = action({
         { label: "Asc", value: "asc" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The sort order (descending or ascending).",
+      comments: "The sort order (descending or ascending).",
     },
     perPage: {
       label: "Per Page",
@@ -71,14 +73,16 @@ const searchCode = action({
     },
   },
 });
-
 const searchCommits = action({
   display: {
     label: "Search Commits",
     description: "Search commits",
   },
   perform: async (context, { connection, q, sort, order, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/commits`, {
       params: { q, sort, order, per_page: perPage, page },
     });
@@ -97,7 +101,8 @@ const searchCommits = action({
       placeholder: "Enter search query",
       example: "fix bug repo:octocat/Hello-World",
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
+      comments:
+        "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
     },
     sort: {
       label: "Sort",
@@ -109,8 +114,7 @@ const searchCommits = action({
         { label: "Committer Date", value: "committer-date" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The field to sort results by (author date or committer date).",
+      comments: "The field to sort results by (author date or committer date).",
     },
     order: {
       label: "Order",
@@ -123,8 +127,7 @@ const searchCommits = action({
         { label: "Asc", value: "asc" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The sort order (descending or ascending).",
+      comments: "The sort order (descending or ascending).",
     },
     perPage: {
       label: "Per Page",
@@ -146,14 +149,16 @@ const searchCommits = action({
     },
   },
 });
-
 const searchIssuesAndPullRequests = action({
   display: {
     label: "Search Issues And Pull Requests",
     description: "Search issues and pull requests",
   },
   perform: async (context, { connection, q, sort, order, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/issues`, {
       params: { q, sort, order, per_page: perPage, page },
     });
@@ -172,7 +177,8 @@ const searchIssuesAndPullRequests = action({
       placeholder: "Enter search query",
       example: "type:pr is:open repo:octocat/Hello-World",
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
+      comments:
+        "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
     },
     sort: {
       label: "Sort",
@@ -207,8 +213,7 @@ const searchIssuesAndPullRequests = action({
         { label: "Asc", value: "asc" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The sort order (descending or ascending).",
+      comments: "The sort order (descending or ascending).",
     },
     perPage: {
       label: "Per Page",
@@ -230,7 +235,6 @@ const searchIssuesAndPullRequests = action({
     },
   },
 });
-
 const searchLabels = action({
   display: {
     label: "Search Labels",
@@ -240,7 +244,10 @@ const searchLabels = action({
     context,
     { connection, repositoryId, q, sort, order, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/labels`, {
       params: {
         repository_id: repositoryId,
@@ -287,8 +294,7 @@ const searchLabels = action({
         { label: "Updated", value: "updated" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The field to sort results by (created or updated).",
+      comments: "The field to sort results by (created or updated).",
     },
     order: {
       label: "Order",
@@ -301,8 +307,7 @@ const searchLabels = action({
         { label: "Asc", value: "asc" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The sort order (descending or ascending).",
+      comments: "The sort order (descending or ascending).",
     },
     perPage: {
       label: "Per Page",
@@ -324,14 +329,16 @@ const searchLabels = action({
     },
   },
 });
-
 const searchRepos = action({
   display: {
     label: "Search Repos",
     description: "Search repositories",
   },
   perform: async (context, { connection, q, sort, order, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/repositories`, {
       params: { q, sort, order, per_page: perPage, page },
     });
@@ -350,7 +357,8 @@ const searchRepos = action({
       placeholder: "Enter search query",
       example: "tetris language:assembly",
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
+      comments:
+        "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
     },
     sort: {
       label: "Sort",
@@ -378,8 +386,7 @@ const searchRepos = action({
         { label: "Asc", value: "asc" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The sort order (descending or ascending).",
+      comments: "The sort order (descending or ascending).",
     },
     perPage: {
       label: "Per Page",
@@ -401,14 +408,16 @@ const searchRepos = action({
     },
   },
 });
-
 const searchTopics = action({
   display: {
     label: "Search Topics",
     description: "Search topics",
   },
   perform: async (context, { connection, q, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/topics`, {
       params: { q, per_page: perPage, page },
     });
@@ -449,14 +458,16 @@ const searchTopics = action({
     },
   },
 });
-
 const searchUsers = action({
   display: {
     label: "Search Users",
     description: "Search users",
   },
   perform: async (context, { connection, q, sort, order, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/search/users`, {
       params: { q, sort, order, per_page: perPage, page },
     });
@@ -475,7 +486,8 @@ const searchUsers = action({
       placeholder: "Enter search query",
       example: "tom location:San Francisco",
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
+      comments:
+        "The search query containing one or more search keywords and qualifiers. See [GitHub search syntax](https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax) for details.",
     },
     sort: {
       label: "Sort",
@@ -502,8 +514,7 @@ const searchUsers = action({
         { label: "Asc", value: "asc" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments:
-        "The sort order (descending or ascending).",
+      comments: "The sort order (descending or ascending).",
     },
     perPage: {
       label: "Per Page",
@@ -525,7 +536,6 @@ const searchUsers = action({
     },
   },
 });
-
 export default {
   searchCode,
   searchCommits,

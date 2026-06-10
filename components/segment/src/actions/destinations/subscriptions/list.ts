@@ -8,7 +8,6 @@ import {
   region,
 } from "../../../inputs";
 import { listDestinationSubscriptionsExamplePayload } from "../../../examplePayloads";
-
 export const listDestinationSubscriptions = action({
   display: {
     label: "List Destination Subscriptions",

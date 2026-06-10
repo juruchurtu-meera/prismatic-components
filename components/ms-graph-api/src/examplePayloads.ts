@@ -1,8 +1,3 @@
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#teams",

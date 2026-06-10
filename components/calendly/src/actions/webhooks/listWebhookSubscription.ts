@@ -3,7 +3,6 @@ import { getCalendlyClient } from "../../client";
 import { connection, organization, scope, sort, user } from "../../inputs";
 import { listWebhookSubscriptionExamplePayload } from "../../examplePayloads";
 import { paginator } from "../../util";
-
 export const listWebhookSubscription = action({
   display: {
     label: "List Webhook Subscription",

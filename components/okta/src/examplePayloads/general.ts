@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getSystemLogsExamplePayload = {
   data: [
     {
@@ -128,7 +121,6 @@ export const getSystemLogsExamplePayload = {
     },
   ],
 };
-
 export const listRealmsExamplePayload = {
   data: [
     {

@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { connection, returnIdInput } from "../inputs";
 import { queryRecordsPaginated } from "../utils";
-
 export const selectVendor = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -12,18 +11,18 @@ export const selectVendor = dataSource({
     const vendors = await queryRecordsPaginated(
       connection,
       "VENDOR",
-      
       ["*"],
       "",
     );
-
     return {
       result: vendors.map(
         (vendor: {
           RECORDNO: string;
           VENDORID: string;
           NAME: string;
-          DISPLAYCONTACT: { CONTACTNAME: string };
+          DISPLAYCONTACT: {
+            CONTACTNAME: string;
+          };
         }): Element => {
           const label = vendor?.DISPLAYCONTACT?.CONTACTNAME || vendor.NAME;
           return {

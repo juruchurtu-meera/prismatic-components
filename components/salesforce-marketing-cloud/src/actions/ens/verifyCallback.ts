@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ENS_VERIFY_PATH } from "../../constants";
 import { verifyCallbackExamplePayload } from "../../examplePayloads";
 import { verifyCallbackInputs } from "../../inputs";
-
 export const verifyCallback = action({
   examplePayload: verifyCallbackExamplePayload,
   display: {
@@ -14,14 +13,11 @@ export const verifyCallback = action({
   inputs: verifyCallbackInputs,
   perform: async (context, { connection, callbackId, verificationKey }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       callbackId,
       verificationKey,
     };
-
     const { data } = await client.post(ENS_VERIFY_PATH, body);
-
     return { data };
   },
 });

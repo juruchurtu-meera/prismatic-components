@@ -8,7 +8,6 @@ import {
   handleMultipleWorkspacesError,
 } from "../util";
 import type { DataSource } from "../types/Project";
-
 const selectProject = dataSource({
   display: {
     label: "Select Project",
@@ -44,7 +43,6 @@ const selectProject = dataSource({
           limit: canPaginate ? 100 : undefined,
         },
       );
-
       const result = mapToLabelKey(data);
       return { result };
     } catch (err) {
@@ -54,7 +52,6 @@ const selectProject = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default {
   selectProject,
 };

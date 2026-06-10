@@ -6,7 +6,6 @@ import {
 import { validateConnection } from "../client";
 import { connectionInput } from "../inputs";
 import { getAccessToken, getBaseUrl, getHeaders } from "../util";
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -34,5 +33,4 @@ const rawRequest = action({
     return { data };
   },
 });
-
 export default rawRequest;

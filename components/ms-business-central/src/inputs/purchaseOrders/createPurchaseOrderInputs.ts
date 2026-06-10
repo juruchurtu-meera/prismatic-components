@@ -7,7 +7,6 @@ import {
   shipToName,
 } from "../../inputs/salesOrders/createSalesOrderInputs";
 import { cleanNumberInput, cleanStringInput } from "../../utils";
-
 const orderDate = input({
   label: "Order Date",
   required: false,
@@ -17,7 +16,6 @@ const orderDate = input({
   placeholder: "Enter order date (YYYY-MM-DD)",
   clean: cleanStringInput,
 });
-
 const vendorNumber = input({
   label: "Vendor Number",
   required: true,
@@ -27,7 +25,6 @@ const vendorNumber = input({
   placeholder: "Enter vendor number",
   clean: cleanStringInput,
 });
-
 const payToVendorId = input({
   label: "Pay To Vendor ID",
   required: false,
@@ -38,7 +35,6 @@ const payToVendorId = input({
   dataSource: "selectVendor",
   clean: cleanStringInput,
 });
-
 const payToVendorNumber = input({
   label: "Pay To Vendor Number",
   required: false,
@@ -48,7 +44,6 @@ const payToVendorNumber = input({
   placeholder: "Enter pay to vendor number",
   clean: cleanStringInput,
 });
-
 const purchaser = input({
   label: "Purchaser",
   required: false,
@@ -58,7 +53,6 @@ const purchaser = input({
   placeholder: "Enter purchaser name",
   clean: cleanStringInput,
 });
-
 const discountAmount = input({
   label: "Discount Amount",
   required: false,
@@ -68,7 +62,6 @@ const discountAmount = input({
   placeholder: "Enter discount amount",
   clean: cleanNumberInput,
 });
-
 export const createPurchaseOrderInputs = {
   connection: connectionInput,
   companyId,

@@ -1,16 +1,13 @@
 import type { Connection } from "@prismatic-io/spectral";
-
 export interface CreateClientProps {
   zendeskConnection: Connection;
   username?: string;
   debug?: boolean | undefined;
 }
-
 export interface User {
   id: string;
   name: string;
 }
-
 export interface Ticket {
   assignee_id: number;
   collaborator_ids: number[];
@@ -42,22 +39,18 @@ export interface Ticket {
   url: string;
   via: Via;
 }
-
 export interface CustomField {
   id: number;
   value: string;
 }
-
 export interface SatisfactionRating {
   comment: string;
   id: number;
   score: string;
 }
-
 export interface Via {
   channel: string;
 }
-
 export interface Article {
   author_id: number;
   body: string;
@@ -83,28 +76,25 @@ export interface Article {
   vote_count?: number;
   vote_sum?: number;
 }
-
 interface Links {
   first: string;
   last: string;
   prev: string;
   next: string;
 }
-
 interface Meta {
   has_more: boolean;
   after_cursor: string;
   before_cursor: string;
 }
-
-export type PaginatedResponse<T> = Record<string, T[]> & { meta: Meta } & {
+export type PaginatedResponse<T> = Record<string, T[]> & {
+  meta: Meta;
+} & {
   links: Links;
 };
-
 export interface ArticleAttachments {
   article_attachments: ArticleAttachment[];
 }
-
 export interface ArticleAttachment {
   article_id: number;
   content_type: string;
@@ -114,7 +104,6 @@ export interface ArticleAttachment {
   inline: boolean;
   size: number;
 }
-
 export interface Section {
   id: number;
   description: string;
@@ -123,19 +112,16 @@ export interface Section {
   position?: number;
   category_id?: number;
 }
-
 export interface Category {
   description: string;
   id: number;
   locale: string;
   name: string;
 }
-
 export interface Tag {
   count: number;
   name: string;
 }
-
 export interface Topic {
   id: number;
   manageable_by?: string;
@@ -146,7 +132,6 @@ export interface Topic {
   html_url?: string;
   url?: string;
 }
-
 export interface Post {
   author_id?: number;
   closed?: boolean;
@@ -169,7 +154,6 @@ export interface Post {
   vote_count?: number;
   vote_sum?: number;
 }
-
 export interface Subscription {
   contet_id?: number;
   content_type?: string;
@@ -182,11 +166,9 @@ export interface Subscription {
   source_locale?: string;
   url?: string;
 }
-
 export interface SubscriptionResponse {
   subscription: Subscription;
 }
-
 export interface ZendeskConnectionProps {
   username: string;
   token: string;
@@ -194,7 +176,6 @@ export interface ZendeskConnectionProps {
   subdomain: string;
   oauth: boolean;
 }
-
 export interface UserSegment {
   id: string;
   name: string;
@@ -207,7 +188,6 @@ export interface UserSegment {
   updated_at: string;
   user_type: string;
 }
-
 export interface PermissionGroup {
   id: number;
   name: string;
@@ -217,12 +197,10 @@ export interface PermissionGroup {
   created_at: string;
   updated_at: string;
 }
-
 export interface PollingState extends Record<string, unknown> {
   afterCursor?: string;
   lastPolledAt?: string;
 }
-
 export interface IncrementalTicketsResponse {
   tickets: Ticket[];
   after_cursor: string;

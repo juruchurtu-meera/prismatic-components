@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const gistsList = action({
   display: {
     label: "Gists List",
     description: "List gists for the authenticated user",
   },
   perform: async (context, { connection, since, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists`, {
       params: { since, per_page: perPage, page },
     });
@@ -42,14 +44,16 @@ const gistsList = action({
     },
   },
 });
-
 const gistsCreate = action({
   display: {
     label: "Gists Create",
     description: "Create a gist",
   },
   perform: async (context, { connection, description, files, isPublic }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/gists`, {
       description,
       files,
@@ -87,14 +91,16 @@ const gistsCreate = action({
     },
   },
 });
-
 const gistsListPublic = action({
   display: {
     label: "Gists List Public",
     description: "List public gists",
   },
   perform: async (context, { connection, since, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/public`, {
       params: { since, per_page: perPage, page },
     });
@@ -129,14 +135,16 @@ const gistsListPublic = action({
     },
   },
 });
-
 const gistsListStarred = action({
   display: {
     label: "Gists List Starred",
     description: "List starred gists",
   },
   perform: async (context, { connection, since, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/starred`, {
       params: { since, per_page: perPage, page },
     });
@@ -171,14 +179,16 @@ const gistsListStarred = action({
     },
   },
 });
-
 const gistsGet = action({
   display: {
     label: "Gists Get",
     description: "Get a gist",
   },
   perform: async (context, { connection, gistId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}`);
     return { data };
   },
@@ -197,14 +207,16 @@ const gistsGet = action({
     },
   },
 });
-
 const gistsUpdate = action({
   display: {
     label: "Gists Update",
     description: "Update a gist",
   },
   perform: async (context, { connection, gistId, description, files }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/gists/${gistId}`, {
       description,
       files,
@@ -242,14 +254,16 @@ const gistsUpdate = action({
     },
   },
 });
-
 const gistsDelete = action({
   display: {
     label: "Gists Delete",
     description: "Delete a gist",
   },
   perform: async (context, { connection, gistId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/gists/${gistId}`);
     return { data };
   },
@@ -268,14 +282,16 @@ const gistsDelete = action({
     },
   },
 });
-
 const gistsListComments = action({
   display: {
     label: "Gists List Comments",
     description: "List gist comments",
   },
   perform: async (context, { connection, gistId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}/comments`, {
       params: { per_page: perPage, page },
     });
@@ -310,14 +326,16 @@ const gistsListComments = action({
     },
   },
 });
-
 const gistsCreateComment = action({
   display: {
     label: "Gists Create Comment",
     description: "Create a gist comment",
   },
   perform: async (context, { connection, gistId, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/gists/${gistId}/comments`, { body });
     return { data };
   },
@@ -344,14 +362,16 @@ const gistsCreateComment = action({
     },
   },
 });
-
 const gistsGetComment = action({
   display: {
     label: "Gists Get Comment",
     description: "Get a gist comment",
   },
   perform: async (context, { connection, gistId, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}/comments/${commentId}`);
     return { data };
   },
@@ -377,14 +397,16 @@ const gistsGetComment = action({
     },
   },
 });
-
 const gistsUpdateComment = action({
   display: {
     label: "Gists Update Comment",
     description: "Update a gist comment",
   },
   perform: async (context, { connection, gistId, commentId, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/gists/${gistId}/comments/${commentId}`,
       { body },
@@ -421,14 +443,16 @@ const gistsUpdateComment = action({
     },
   },
 });
-
 const gistsDeleteComment = action({
   display: {
     label: "Gists Delete Comment",
     description: "Delete a gist comment",
   },
   perform: async (context, { connection, gistId, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/gists/${gistId}/comments/${commentId}`,
     );
@@ -456,14 +480,16 @@ const gistsDeleteComment = action({
     },
   },
 });
-
 const gistsListCommits = action({
   display: {
     label: "Gists List Commits",
     description: "List gist commits",
   },
   perform: async (context, { connection, gistId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}/commits`, {
       params: { per_page: perPage, page },
     });
@@ -498,14 +524,16 @@ const gistsListCommits = action({
     },
   },
 });
-
 const gistsListForks = action({
   display: {
     label: "Gists List Forks",
     description: "List gist forks",
   },
   perform: async (context, { connection, gistId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}/forks`, {
       params: { per_page: perPage, page },
     });
@@ -540,14 +568,16 @@ const gistsListForks = action({
     },
   },
 });
-
 const gistsFork = action({
   display: {
     label: "Gists Fork",
     description: "Fork a gist",
   },
   perform: async (context, { connection, gistId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/gists/${gistId}/forks`, {});
     return { data };
   },
@@ -566,14 +596,16 @@ const gistsFork = action({
     },
   },
 });
-
 const gistsCheckIsStarred = action({
   display: {
     label: "Gists Check Is Starred",
     description: "Check if a gist is starred",
   },
   perform: async (context, { connection, gistId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}/star`);
     return { data };
   },
@@ -592,14 +624,16 @@ const gistsCheckIsStarred = action({
     },
   },
 });
-
 const gistsStar = action({
   display: {
     label: "Gists Star",
     description: "Star a gist",
   },
   perform: async (context, { connection, gistId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/gists/${gistId}/star`, {});
     return { data };
   },
@@ -618,14 +652,16 @@ const gistsStar = action({
     },
   },
 });
-
 const gistsUnstar = action({
   display: {
     label: "Gists Unstar",
     description: "Unstar a gist",
   },
   perform: async (context, { connection, gistId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/gists/${gistId}/star`);
     return { data };
   },
@@ -644,14 +680,16 @@ const gistsUnstar = action({
     },
   },
 });
-
 const gistsGetRevision = action({
   display: {
     label: "Gists Get Revision",
     description: "Get a gist revision",
   },
   perform: async (context, { connection, gistId, sha }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/gists/${gistId}/${sha}`);
     return { data };
   },
@@ -676,7 +714,6 @@ const gistsGetRevision = action({
     },
   },
 });
-
 export default {
   gistsList,
   gistsCreate,

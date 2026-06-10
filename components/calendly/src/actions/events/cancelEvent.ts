@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, organization, uuid, reason } from "../../inputs";
 import { cancelEventExamplePayload } from "../../examplePayloads";
-
 export const cancelEvent = action({
   display: {
     label: "Cancel Event",
@@ -10,7 +9,9 @@ export const cancelEvent = action({
   },
   perform: async (context, { connection, uuid, reason }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-    const body: { reason?: string } = {};
+    const body: {
+      reason?: string;
+    } = {};
     if (reason) {
       body.reason = reason;
     }

@@ -43,7 +43,6 @@ export const getWarehouseLocationExamplePayload = {
     U_UTL_ST_PAYIFSC: null,
   },
 };
-
 export const listWarehouseLocationsExamplePayload = {
   data: [getWarehouseLocationExamplePayload.data],
 };

@@ -1,7 +1,6 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, folderId, folderName } from "../inputs";
-
 export const createFolder = action({
   display: {
     label: "Create Folder",
@@ -10,7 +9,6 @@ export const createFolder = action({
   perform: async (_context, { connection, folderName, parentFolderId }) => {
     const drive = createClient(connection);
     const parent = util.types.toString(parentFolderId);
-
     const { data } = await drive.files.create({
       requestBody: {
         name: util.types.toString(folderName),
@@ -19,7 +17,6 @@ export const createFolder = action({
       },
       supportsAllDrives: true,
     });
-
     return {
       data,
     };
@@ -29,8 +26,6 @@ export const createFolder = action({
     folderName,
     parentFolderId: { ...folderId, label: "Parent Folder Id" },
   },
-
   examplePayload: { data: { name: "example", description: "example" } },
 });
-
 export default createFolder;

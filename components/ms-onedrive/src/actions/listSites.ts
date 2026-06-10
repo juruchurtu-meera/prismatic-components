@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, pageLimit, pageToken } from "../inputs";
 import { handleErrors } from "../errors";
 import { listSitesExamplePayload } from "../examplePayloads";
-
 export const listSites = action({
   display: {
     label: "List Sites",

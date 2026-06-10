@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { updateOpportunityInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const updateOpportunity = action({
   display: {
     label: "Update Opportunity",
@@ -30,7 +29,6 @@ export const updateOpportunity = action({
     },
   ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const command = salesforceClient.sobject("Opportunity").update({
       Id: recordId,
       Name: name,
@@ -47,7 +45,6 @@ export const updateOpportunity = action({
       ...fieldValues,
     });
     const response = await executeSFAction(context, command);
-
     return {
       data: response,
     };

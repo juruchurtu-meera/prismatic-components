@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const shareName = input({
   label: "Share Name",
   placeholder: "Share Name",
@@ -10,7 +9,6 @@ export const shareName = input({
   example: "my-file-share",
   clean: util.types.toString,
 });
-
 export const path = input({
   label: "Path",
   placeholder: "Object Path",
@@ -21,7 +19,6 @@ export const path = input({
   example: "path/to/file.txt",
   clean: util.types.toString,
 });
-
 export const fromPath = input({
   label: "From Path",
   placeholder: "From Path",
@@ -32,7 +29,6 @@ export const fromPath = input({
   example: "path/to/source/file.txt",
   clean: util.types.toString,
 });
-
 export const toPath = input({
   label: "To Path",
   placeholder: "To Path",
@@ -43,7 +39,6 @@ export const toPath = input({
   example: "path/to/destination/file.txt",
   clean: util.types.toString,
 });
-
 export const fileContents = input({
   label: "File Contents",
   placeholder: "Output data from previous step",
@@ -54,13 +49,11 @@ export const fileContents = input({
   example: "My File Contents",
   clean: util.types.toData,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const sourceUrlInput = input({
   label: "Source URL",
   type: "string",

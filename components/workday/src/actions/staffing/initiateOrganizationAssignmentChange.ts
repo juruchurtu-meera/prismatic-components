@@ -4,7 +4,6 @@ import { SERVICES } from "../../constants";
 import { initiateOrganizationAssignmentChangeExamplePayload } from "../../examplePayloads";
 import { initiateOrganizationAssignmentChangeInputs } from "../../inputs";
 import { getIdObject } from "../../util";
-
 export const initiateOrganizationAssignmentChange = action({
   display: {
     label: "Initiate Organization Assignment Change",

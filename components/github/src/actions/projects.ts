@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const projectsGetCard = action({
   display: {
     label: "Projects Get Card",
     description: "Get a project card",
   },
   perform: async (context, { connection, cardId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/projects/columns/cards/${cardId}`);
     return { data };
   },
@@ -26,14 +28,16 @@ const projectsGetCard = action({
     },
   },
 });
-
 const projectsUpdateCard = action({
   display: {
     label: "Projects Update Card",
     description: "Update an existing project card",
   },
   perform: async (context, { connection, cardId, note, archived }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/projects/columns/cards/${cardId}`, {
       note,
       archived,
@@ -71,14 +75,16 @@ const projectsUpdateCard = action({
     },
   },
 });
-
 const projectsDeleteCard = action({
   display: {
     label: "Projects Delete Card",
     description: "Delete a project card",
   },
   perform: async (context, { connection, cardId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/projects/columns/cards/${cardId}`);
     return { data };
   },
@@ -97,14 +103,16 @@ const projectsDeleteCard = action({
     },
   },
 });
-
 const projectsMoveCard = action({
   display: {
     label: "Projects Move Card",
     description: "Move a project card",
   },
   perform: async (context, { connection, cardId, position, columnId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/projects/columns/cards/${cardId}/moves`,
       {
@@ -146,14 +154,16 @@ const projectsMoveCard = action({
     },
   },
 });
-
 const projectsGetColumn = action({
   display: {
     label: "Projects Get Column",
     description: "Get a project column",
   },
   perform: async (context, { connection, columnId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/projects/columns/${columnId}`);
     return { data };
   },
@@ -172,14 +182,16 @@ const projectsGetColumn = action({
     },
   },
 });
-
 const projectsUpdateColumn = action({
   display: {
     label: "Projects Update Column",
     description: "Update an existing project column",
   },
   perform: async (context, { connection, columnId, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/projects/columns/${columnId}`, {
       name,
     });
@@ -208,14 +220,16 @@ const projectsUpdateColumn = action({
     },
   },
 });
-
 const projectsDeleteColumn = action({
   display: {
     label: "Projects Delete Column",
     description: "Delete a project column",
   },
   perform: async (context, { connection, columnId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/projects/columns/${columnId}`);
     return { data };
   },
@@ -234,7 +248,6 @@ const projectsDeleteColumn = action({
     },
   },
 });
-
 const projectsListCards = action({
   display: {
     label: "Projects List Cards",
@@ -244,7 +257,10 @@ const projectsListCards = action({
     context,
     { connection, columnId, archivedState, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/projects/columns/${columnId}/cards`, {
       params: { archived_state: archivedState, per_page: perPage, page },
     });
@@ -293,14 +309,16 @@ const projectsListCards = action({
     },
   },
 });
-
 const projectsCreateCard = action({
   display: {
     label: "Projects Create Card",
     description: "Create a project card",
   },
   perform: async (context, { connection, columnId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/projects/columns/${columnId}/cards`,
       {},
@@ -322,14 +340,16 @@ const projectsCreateCard = action({
     },
   },
 });
-
 const projectsMoveColumn = action({
   display: {
     label: "Projects Move Column",
     description: "Move a project column",
   },
   perform: async (context, { connection, columnId, position }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/projects/columns/${columnId}/moves`, {
       position,
     });
@@ -358,14 +378,16 @@ const projectsMoveColumn = action({
     },
   },
 });
-
 const projectsGet = action({
   display: {
     label: "Projects Get",
     description: "Get a project",
   },
   perform: async (context, { connection, projectId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/projects/${projectId}`);
     return { data };
   },
@@ -384,7 +406,6 @@ const projectsGet = action({
     },
   },
 });
-
 const projectsUpdate = action({
   display: {
     label: "Projects Update",
@@ -402,7 +423,10 @@ const projectsUpdate = action({
       isPrivate,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/projects/${projectId}`, {
       name,
       body,
@@ -473,14 +497,16 @@ const projectsUpdate = action({
     },
   },
 });
-
 const projectsDelete = action({
   display: {
     label: "Projects Delete",
     description: "Delete a project",
   },
   perform: async (context, { connection, projectId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/projects/${projectId}`);
     return { data };
   },
@@ -499,7 +525,6 @@ const projectsDelete = action({
     },
   },
 });
-
 const projectsListCollaborators = action({
   display: {
     label: "Projects List Collaborators",
@@ -509,7 +534,10 @@ const projectsListCollaborators = action({
     context,
     { connection, projectId, affiliation, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/projects/${projectId}/collaborators`, {
       params: { affiliation, per_page: perPage, page },
     });
@@ -557,14 +585,16 @@ const projectsListCollaborators = action({
     },
   },
 });
-
 const projectsAddCollaborator = action({
   display: {
     label: "Projects Add Collaborator",
     description: "Add project collaborator",
   },
   perform: async (context, { connection, projectId, username, permission }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/projects/${projectId}/collaborators/${username}`,
       {
@@ -609,14 +639,16 @@ const projectsAddCollaborator = action({
     },
   },
 });
-
 const projectsRemoveCollaborator = action({
   display: {
     label: "Projects Remove Collaborator",
     description: "Remove user as a collaborator",
   },
   perform: async (context, { connection, projectId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/projects/${projectId}/collaborators/${username}`,
     );
@@ -644,14 +676,16 @@ const projectsRemoveCollaborator = action({
     },
   },
 });
-
 const projectsGetPermissionForUser = action({
   display: {
     label: "Projects Get Permission For User",
     description: "Get project permission for a user",
   },
   perform: async (context, { connection, projectId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/projects/${projectId}/collaborators/${username}/permission`,
     );
@@ -679,14 +713,16 @@ const projectsGetPermissionForUser = action({
     },
   },
 });
-
 const projectsListColumns = action({
   display: {
     label: "Projects List Columns",
     description: "List project columns",
   },
   perform: async (context, { connection, projectId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/projects/${projectId}/columns`, {
       params: { per_page: perPage, page },
     });
@@ -721,14 +757,16 @@ const projectsListColumns = action({
     },
   },
 });
-
 const projectsCreateColumn = action({
   display: {
     label: "Projects Create Column",
     description: "Create a project column",
   },
   perform: async (context, { connection, projectId, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/projects/${projectId}/columns`, {
       name,
     });
@@ -757,7 +795,6 @@ const projectsCreateColumn = action({
     },
   },
 });
-
 export default {
   projectsGetCard,
   projectsUpdateCard,

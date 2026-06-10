@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, pageLimit, pageToken } from "../inputs";
 import { handleErrors } from "../errors";
 import { listGroupsExamplePayload } from "../examplePayloads";
-
 export const listGroups = action({
   display: {
     label: "List Groups",

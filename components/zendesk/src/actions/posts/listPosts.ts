@@ -13,7 +13,6 @@ import type { PaginatedResponse, Post } from "../../types";
 import { postSortByOptions } from "../../constants";
 import { listPostsPayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listPosts = action({
   display: {
     label: "List Posts",
@@ -35,7 +34,6 @@ export const listPosts = action({
     const url = topicId
       ? `/community/topics/${topicId}/posts`
       : "/community/posts";
-
     if (fetchAll) {
       const posts: Post[] = [];
       return {
@@ -50,20 +48,22 @@ export const listPosts = action({
         },
       };
     }
-
     const params = {
       "page[size]": pageLimit || undefined,
       "page[after]": cursor || undefined,
       sort_by: sortBy,
       filter_by: filterBy,
     };
-
     const { data } = await client.get<
-      PaginatedResponse<{ posts: Post[] }> | { posts: Post[] }
+      | PaginatedResponse<{
+          posts: Post[];
+        }>
+      | {
+          posts: Post[];
+        }
     >(url, {
       params,
     });
-
     return {
       data,
     };

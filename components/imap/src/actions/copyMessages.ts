@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { copyMessageExamplePayload } from "../examplePayloads";
 import { copyMessageInputs } from "../inputs/actions";
-
 export const copyMessage = action({
   display: {
     label: "Copy Message",
@@ -19,7 +18,6 @@ export const copyMessage = action({
         { uid: true },
       );
       if (data) {
-        
         return { data: { ...data, uidValidity: data.uidValidity?.toString() } };
       } else {
         throw new Error(

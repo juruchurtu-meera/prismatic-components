@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, functionId, region } from "../../inputs";
 import { getFunctionExamplePayload } from "../../examplePayloads";
-
 export const getFunction = action({
   display: {
     label: "Get Function",

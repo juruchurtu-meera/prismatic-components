@@ -1,5 +1,4 @@
 import type { CloudEventsWebhook, LegacyWebhook } from "./types";
-
 export const UPDATE_REQUEST_BODY_EXAMPLE = {
   SyncToken: "1",
   domain: "QBO",
@@ -20,7 +19,6 @@ export const UPDATE_REQUEST_BODY_EXAMPLE = {
     LastUpdatedTime: "2015-11-17T11:05:15-08:00",
   },
 };
-
 export const BATCH_REQUEST_BODY_EXAMPLE = [
   {
     bId: "bid1",
@@ -53,15 +51,13 @@ export const BATCH_REQUEST_BODY_EXAMPLE = [
     bId: "bid4",
   },
 ];
-
 export const MAX_RESULTS = 1000;
-
-
-
-
 export const POLL_RESOURCE_CONFIG: Record<
   string,
-  { entity: string; label: string }
+  {
+    entity: string;
+    label: string;
+  }
 > = {
   customer: { entity: "Customer", label: "Customers" },
   vendor: { entity: "Vendor", label: "Vendors" },
@@ -74,7 +70,6 @@ export const POLL_RESOURCE_CONFIG: Record<
   journalEntry: { entity: "JournalEntry", label: "Journal Entries" },
   account: { entity: "Account", label: "Accounts" },
 };
-
 export const WEBHOOK_TRIGGER_EXAMPLE_PAYLOAD = {
   payload: {
     headers: {},
@@ -146,7 +141,6 @@ export const WEBHOOK_TRIGGER_EXAMPLE_PAYLOAD = {
     },
   },
 };
-
 export const CLOUDEVENTS_EXAMPLE_PAYLOAD: CloudEventsWebhook = [
   {
     specversion: "1.0",
@@ -167,7 +161,6 @@ export const CLOUDEVENTS_EXAMPLE_PAYLOAD: CloudEventsWebhook = [
     intuitaccountid: "123456789",
   },
 ];
-
 export const LEGACY_EXAMPLE_PAYLOAD: LegacyWebhook = {
   eventNotifications: [
     {

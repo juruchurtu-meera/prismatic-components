@@ -6,11 +6,6 @@ import {
   baseChangesPerform,
 } from "../helpers";
 import { baseChangesTriggerExamplePayload } from "../examplePayloads";
-
-
-
-
-
 export const baseChanges = trigger({
   display: {
     label: "Base Change Notifications",

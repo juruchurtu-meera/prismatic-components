@@ -4,7 +4,6 @@ import { packageDatasource } from "../examplePayloads/dataSources";
 import { connection } from "../inputs/general";
 import type { Package } from "../interfaces";
 import { fetchAllData, TComparator } from "../util";
-
 export const selectPackage = dataSource({
   display: {
     label: "Select Package",
@@ -18,14 +17,12 @@ export const selectPackage = dataSource({
     const { data } = (await fetchAllData(client, "/packages", {}, true)) as {
       data: Package[];
     };
-
     const packages = data
       .sort(TComparator<Package>)
       .map<Element>(({ id, name }) => ({
         key: id,
         label: name,
       }));
-
     return { result: packages };
   },
   dataSourceType: "picklist",

@@ -24,7 +24,6 @@ import {
   tableView,
   timePartitioning,
 } from "../../inputs";
-
 export const updateTable = action({
   display: {
     description: "Updates information in an existing table.",

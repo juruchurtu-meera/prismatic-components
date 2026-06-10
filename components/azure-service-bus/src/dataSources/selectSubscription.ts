@@ -3,7 +3,6 @@ import { getAzureServiceBusClient } from "../client";
 import { connection } from "../inputs";
 import type { SubscriptionItem } from "../types/DataSources";
 import { toSortedPicklist } from "./helpers";
-
 export const selectSubscription = dataSource({
   display: {
     label: "Select Subscription",

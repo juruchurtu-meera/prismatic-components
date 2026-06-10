@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getFulfillmentOrderInputs } from "../../inputs";
 import { getFulfillmentOrderExamplePayload } from "../../payloadExamples";
 import { getFulfillmentOrderGql } from "../graphql/fulfillments/getFulfillmentOrder";
-
 export const getFulfillmentOrder = action({
   display: {
     label: "Get Fulfillment Order",

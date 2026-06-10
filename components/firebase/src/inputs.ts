@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 function validateJSON(json: unknown) {
   try {
     return JSON.parse(util.types.toString(json));
@@ -7,7 +6,6 @@ function validateJSON(json: unknown) {
     throw new Error("Invalid JSON format.");
   }
 }
-
 export const collection = input({
   label: "Collection",
   placeholder: "Collection Name",
@@ -17,7 +15,6 @@ export const collection = input({
   example: "Customers",
   dataSource: "selectCollection",
 });
-
 export const document = input({
   label: "Document",
   placeholder: "Document",
@@ -27,7 +24,6 @@ export const document = input({
   dataSource: "selectDocument",
   example: "/path/to/destination/file.txt",
 });
-
 export const data = input({
   label: "Data",
   placeholder: "Data",
@@ -36,7 +32,6 @@ export const data = input({
   collection: "keyvaluelist",
   comments: "Provide a key value pair that represents your data.",
 });
-
 export const fieldToRemove = input({
   label: "Field To Remove",
   placeholder: "firstName",
@@ -46,20 +41,17 @@ export const fieldToRemove = input({
   comments:
     "Provide a string value for the name of the field you would like to remove from the document.",
 });
-
 export const projectId = input({
   label: "Project Id",
   type: "string",
   required: true,
   comments: "Provide the value from your generated Firebase Admin credential.",
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const fieldFilter = input({
   label: "Field Filter",
   placeholder: "Field:Value",
@@ -69,7 +61,6 @@ export const fieldFilter = input({
     "Provide a string value for the field filter in the format 'Field:Value'.",
   example: "Name:John",
 });
-
 export const orderBy = input({
   label: "Order By",
   placeholder: "Field",
@@ -78,7 +69,6 @@ export const orderBy = input({
   comments: "Provide a string value for the field to order by.",
   example: "Name",
 });
-
 export const documents = input({
   type: "code",
   label: "Documents",
@@ -104,7 +94,6 @@ export const documents = input({
     return output;
   },
 });
-
 export const queryOperatorCode = input({
   label: "Query Operators",
   type: "code",
@@ -123,7 +112,6 @@ export const queryOperatorCode = input({
   ]),
   clean: util.types.toString,
 });
-
 export const queryOperator = input({
   label: "Query Operators",
   placeholder: "field:operator:value,field2:operator2:value2,...",
@@ -164,7 +152,6 @@ export const queryOperator = input({
     return value;
   },
 });
-
 export const selectDocumentInputs = {
   collection: {
     ...collection,
@@ -174,7 +161,6 @@ export const selectDocumentInputs = {
   queryOperatorCode,
   orderBy,
 };
-
 export const selectCollectionInputs = {
   firebaseConnection: connectionInput,
 };

@@ -4,7 +4,6 @@ import { createDuroClient } from "../../client";
 import { N_FIRST_RESULTS_FALLBACK } from "../../constants";
 import { getComponentsList } from "../../util";
 import { selectComponentInputs } from "../../inputs/dataSources";
-
 export const selectComponent = dataSource({
   display: {
     label: "Select Component",
@@ -28,19 +27,16 @@ export const selectComponent = dataSource({
         }
       }
     `;
-
     const componentsList = await getComponentsList(
       client,
       query,
       first ?? N_FIRST_RESULTS_FALLBACK,
       libraryType ?? "GENERAL",
     );
-
     const objects = componentsList.map<Element>((component) => ({
       key: component.id,
       label: component.name,
     }));
-
     return { result: objects };
   },
 });

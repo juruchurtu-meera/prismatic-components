@@ -8,7 +8,6 @@ import {
   connectionInput,
 } from "../../../inputs";
 import { paginatedRequest } from "../../../utils/pagination";
-
 export const listMembers = action({
   display: {
     label: "List Members",
@@ -16,7 +15,6 @@ export const listMembers = action({
   },
   perform: async (context, params) => {
     const client = await createClient(params.connection, context.debug.enabled);
-
     return paginatedRequest({
       client,
       endpoint: `/lists/${params.listId}/members`,
@@ -29,5 +27,4 @@ export const listMembers = action({
   inputs: { listId, count, offset, fetchAll, connection: connectionInput },
   examplePayload: { data: {} },
 });
-
 export default listMembers;

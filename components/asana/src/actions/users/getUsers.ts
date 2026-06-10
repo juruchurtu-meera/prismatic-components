@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { userId, connectionInput } from "../../inputs";
-
 const examplePayload = {
   data: {
     data: {
@@ -31,7 +30,6 @@ const examplePayload = {
     },
   },
 };
-
 export const getUsers = action({
   display: {
     label: "Get User",

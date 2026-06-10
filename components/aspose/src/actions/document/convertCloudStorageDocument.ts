@@ -9,7 +9,6 @@ import {
   loadEncoding,
   storageName,
 } from "../../inputs";
-
 export const convertCloudStorageDocument = action({
   display: {
     label: "Convert Cloud Storage Document",
@@ -67,7 +66,6 @@ export const convertCloudStorageDocument = action({
         OutPath: outPath || undefined,
       },
     });
-
     return { data };
   },
   examplePayload: { data: {} },

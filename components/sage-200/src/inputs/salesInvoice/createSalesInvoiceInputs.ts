@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanNumberInput, cleanStringInput } from "../../util";
-
 const customerId = input({
   label: "Customer ID",
   comments:
@@ -12,7 +11,6 @@ const customerId = input({
   dataSource: "selectCustomer",
   clean: cleanNumberInput,
 });
-
 const transactionDate = input({
   label: "Transaction Date",
   comments: "Transaction date. This defaults to the current system date.",
@@ -22,7 +20,6 @@ const transactionDate = input({
   example: "2023-01-02T00:00:00Z",
   clean: cleanStringInput,
 });
-
 const dueDate = input({
   label: "Due Date",
   comments: "Date the invoice is due to be paid.",
@@ -32,17 +29,16 @@ const dueDate = input({
   example: "2023-01-02T00:00:00Z",
   clean: cleanStringInput,
 });
-
 const exchangeRate = input({
   label: "Exchange Rate",
-  comments: "Exchange rate for the invoice. This defaults to the customer exchange rate.",
+  comments:
+    "Exchange rate for the invoice. This defaults to the customer exchange rate.",
   type: "string",
   required: false,
   placeholder: "ExchangeRateSingle",
   example: "ExchangeRateSingle",
   clean: cleanNumberInput,
 });
-
 const reference = input({
   label: "Reference",
   comments: "Invoice reference.",
@@ -52,7 +48,6 @@ const reference = input({
   example: "ABCDE",
   clean: cleanStringInput,
 });
-
 const secondReference = input({
   label: "Second Reference",
   comments: "Invoice second reference.",
@@ -62,7 +57,6 @@ const secondReference = input({
   example: "FGHIJ",
   clean: cleanStringInput,
 });
-
 const settledImmediately = input({
   label: "Settled Immediately",
   comments:
@@ -72,7 +66,6 @@ const settledImmediately = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const documentGoodsValue = input({
   label: "Document Goods Value",
   comments: "Value of goods.",
@@ -82,7 +75,6 @@ const documentGoodsValue = input({
   example: "10.00",
   clean: cleanNumberInput,
 });
-
 const documentTaxValue = input({
   label: "Document Tax Value",
   comments: "Tax value.",
@@ -92,7 +84,6 @@ const documentTaxValue = input({
   example: "2.00",
   clean: cleanNumberInput,
 });
-
 const documentDiscountValue = input({
   label: "Document Discount Value",
   comments: "Discount value.",
@@ -102,7 +93,6 @@ const documentDiscountValue = input({
   example: "4.00",
   clean: cleanNumberInput,
 });
-
 const documentTaxDiscountValue = input({
   label: "Document Tax Discount Value",
   comments: "Amount VAT is discounted when a settlement discount is applied.",
@@ -112,7 +102,6 @@ const documentTaxDiscountValue = input({
   example: "5.00",
   clean: cleanNumberInput,
 });
-
 const discountPercent = input({
   label: "Discount Percent",
   comments:
@@ -123,7 +112,6 @@ const discountPercent = input({
   example: "15.00",
   clean: cleanNumberInput,
 });
-
 const discountDays = input({
   label: "Discount Days",
   comments:
@@ -134,7 +122,6 @@ const discountDays = input({
   example: "3",
   clean: cleanNumberInput,
 });
-
 const triangularTransaction = input({
   label: "Triangular Transaction",
   comments: "Indicates whether the transaction is triangluted.",
@@ -143,7 +130,6 @@ const triangularTransaction = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const taxAnalysisItems = input({
   label: "Tax Analysis Items",
   comments:
@@ -154,7 +140,6 @@ const taxAnalysisItems = input({
   example: JSON.stringify([{ id: 1, goods_amount: 12.15 }], null, 2),
   clean: cleanCodeInput,
 });
-
 const nominalAnalysisItems = input({
   label: "Nominal Analysis Items",
   comments:
@@ -162,10 +147,13 @@ const nominalAnalysisItems = input({
   type: "code",
   language: "json",
   required: false,
-  example: JSON.stringify([{ code: "123", narrative: "Example narrative" }], null, 2),
+  example: JSON.stringify(
+    [{ code: "123", narrative: "Example narrative" }],
+    null,
+    2,
+  ),
   clean: cleanCodeInput,
 });
-
 export default {
   customerId,
   transactionDate,

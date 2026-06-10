@@ -6,7 +6,6 @@ import { getPipelineDeals } from "./getPipelineDeals";
 import { getPipelineMovementStatistics } from "./getPipelineMovementStatistics";
 import { getPipelines } from "./getPipelines";
 import { updatePipeline } from "./updatePipeline";
-
 export default {
   getPipelines,
   addPipeline,

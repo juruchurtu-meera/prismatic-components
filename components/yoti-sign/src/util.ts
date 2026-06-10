@@ -1,6 +1,6 @@
 import { type DataPayload, util } from "@prismatic-io/spectral";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
-
+import type { Envelope } from "./interfaces";
 export const cleanArrayListFileInput = (input: unknown): DataPayload[] => {
   if (Array.isArray(input)) {
     return input.map((file) => {
@@ -9,7 +9,6 @@ export const cleanArrayListFileInput = (input: unknown): DataPayload[] => {
   }
   throw new Error("Input must have at least one file");
 };
-
 export const cleanStringArrayInput = (input: unknown): string[] | undefined => {
   if (Array.isArray(input)) {
     return input.map((file) => {
@@ -18,30 +17,24 @@ export const cleanStringArrayInput = (input: unknown): string[] | undefined => {
   }
   return undefined;
 };
-
 export const cleanStringInput = (input: unknown) => {
   return input ? util.types.toString(input) : undefined;
 };
-
 export const cleanBooleanInput = (input: unknown) => {
   return input ? util.types.toBool(input) : undefined;
 };
-
 export const cleanNumberInput = (input: unknown) => {
   return input ? util.types.toNumber(input) : undefined;
 };
-
 export const cleanCodeInput = (input: unknown) => {
   return input ? util.types.toObject(input) : undefined;
 };
-
 export const cleanKeyValueListInput = (value: unknown) =>
   value
     ? util.types.keyValPairListToObject(
         value as Parameters<typeof util.types.keyValPairListToObject>[0],
       )
     : undefined;
-
 export const addPropertyToPayload = (payload: Record<string, unknown>) => {
   const obj: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(payload)) {
@@ -51,7 +44,6 @@ export const addPropertyToPayload = (payload: Record<string, unknown>) => {
   }
   return obj;
 };
-
 export const addNotificationsToObject = (
   payload: Record<string, unknown>,
   destination: string | undefined,
@@ -64,7 +56,6 @@ export const addNotificationsToObject = (
     };
   }
 };
-
 export async function fetchAllRecords<T>(
   client: HttpClient,
   url: string,
@@ -95,9 +86,21 @@ export async function fetchAllRecords<T>(
       offset += limit;
     }
   } while (hasMore);
-
   return {
     data: records,
     total: records.length,
   };
 }
+export const toYotiDate = (iso: string): string => iso.slice(0, 10);
+export const filterEnvelopesCreatedAfter = (
+  envelopes: Envelope[],
+  lastPolledAt: string,
+): Envelope[] => {
+  const lastPolledAtMs = new Date(lastPolledAt).getTime();
+  return envelopes.filter((envelope) => {
+    const createdMs = envelope.created_at
+      ? new Date(envelope.created_at).getTime()
+      : Number.NaN;
+    return !Number.isNaN(createdMs) && createdMs > lastPolledAtMs;
+  });
+};

@@ -1,0 +1,37 @@
+This trigger polls [PDQ](https://www.pdq.com/) on a configured schedule and emits Devices or Groups that were added since the previous run. It is a convenient alternative for reacting to newly inventoried resources without manual checks.
+
+#### How It Works
+
+PDQ's list endpoints expose an `insertedAt` (creation) timestamp on each record but no modification timestamp, and no confirmed server-side date filter. On each scheduled run the trigger fetches all records of the selected resource (sorted by `insertedAtDesc`) and keeps only those whose `insertedAt` is after the previous poll time. The current run time is stored as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical records on deploy.
+- **Subsequent runs**: only records added since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the newly added records under `data.created`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "id": "dvc_1bced782734040a581d",
+        "name": "LAB01",
+        "hostname": "LAB01",
+        "insertedAt": "2024-01-01T00:00:00.000000Z"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- This trigger detects **new records only**. PDQ exposes a creation timestamp (`insertedAt`) but no modification timestamp, so edits to existing devices or groups are not detected.
+- Because there is no confirmed server-side date filter, each run lists all records of the resource and filters them in memory.

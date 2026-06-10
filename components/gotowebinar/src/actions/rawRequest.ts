@@ -5,9 +5,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { getClientProps } from "../client";
 import { connection } from "../inputs/general";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -24,7 +22,6 @@ export const rawRequest = action({
         Accept: "Application/JSON",
       },
     );
-
     return {
       data: { data },
     };

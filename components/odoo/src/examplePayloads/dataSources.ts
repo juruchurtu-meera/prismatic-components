@@ -1,23 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const selectModelExamplePayload = {
   result: [
     {
@@ -30,7 +10,6 @@ export const selectModelExamplePayload = {
     },
   ],
 };
-
 export const selectRecordExamplePayload = {
   result: [
     {

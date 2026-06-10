@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGeminiClient } from "../../client";
 import { getModelInfoExamplePayload as examplePayload } from "../../examplePayloads/models";
 import { getModelInfoInputs } from "../../inputs/models";
-
 export const getModelInfo = action({
   display: {
     label: "Get Model Info",

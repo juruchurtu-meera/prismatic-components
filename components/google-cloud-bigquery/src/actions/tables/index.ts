@@ -4,7 +4,6 @@ import { getTable } from "./getTable";
 import { listTables } from "./listTables";
 import { patchTable } from "./patchTable";
 import { updateTable } from "./updateTable";
-
 export default {
   createTable,
   listTables,

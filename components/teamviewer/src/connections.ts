@@ -1,5 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
 export const teamviewerOauth = oauth2Connection({
   key: "teamviewer-oauth",
   display: {
@@ -52,5 +51,4 @@ export const teamviewerOauth = oauth2Connection({
     },
   },
 });
-
 export default [teamviewerOauth];

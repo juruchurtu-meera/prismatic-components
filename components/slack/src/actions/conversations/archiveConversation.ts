@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { archiveConversationExamplePayload } from "../../examplePayloads";
 import { archiveConversationInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const archiveConversation = action({
   display: {
     label: "Archive Conversation",
@@ -11,7 +10,7 @@ export const archiveConversation = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, channelName }
+    { connection, channelName },
   ) => {
     debugLogger({ debug, channelName });
     const client = await createOauthClient({

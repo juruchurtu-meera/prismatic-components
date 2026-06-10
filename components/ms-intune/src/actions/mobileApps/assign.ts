@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import assignMobileAppInputs from "../../inputs/mobileApps/assign";
 import { NO_RESPONSE_SUCCESSFULL_PAYLOAD } from "../../constants";
 import { getMobileAppObject } from "../../util";
-
 export const assignMobileApp = action({
   display: {
     label: "Assign Mobile App",

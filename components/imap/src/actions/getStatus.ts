@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { getStatusExamplePayload } from "../examplePayloads";
 import { getStatusInputs } from "../inputs/actions";
-
 export const getStatus = action({
   display: {
     label: "Get Mailbox Status",

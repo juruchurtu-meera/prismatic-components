@@ -1,8 +1,10 @@
 import { trigger } from "@prismatic-io/spectral";
-import { onInstanceDeleteFlowFunction, onInstanceDeployFlowFunction } from "../helpers";
+import {
+  onInstanceDeleteFlowFunction,
+  onInstanceDeployFlowFunction,
+} from "../helpers";
 import { flowOutboundMessageTriggerInputs } from "../inputs";
 import { performFlowOutboundMessageTriggerFunction } from "../util";
-
 export const flowOutboundMessageTrigger = trigger({
   display: {
     label: "Flow Outbound Message Webhook",

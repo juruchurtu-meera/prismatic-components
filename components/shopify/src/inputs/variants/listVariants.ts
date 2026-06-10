@@ -1,5 +1,10 @@
-import { connectionInput, getAlldata, limit, pageInfo, productId } from "../common";
-
+import {
+  connectionInput,
+  getAlldata,
+  limit,
+  pageInfo,
+  productId,
+} from "../common";
 export const listVariantsInputs = {
   productId,
   getAlldata,

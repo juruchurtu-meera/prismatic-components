@@ -35,9 +35,7 @@ import {
   value,
 } from "../inputs";
 import { getAllPaginatedData, getProps, toStringList } from "../util";
-
 const dealProps = ["dealname", "closedate", "dealstage"];
-
 export const listDeals = action({
   display: {
     label: "List Deals",
@@ -50,19 +48,28 @@ export const listDeals = action({
       timeout: params.timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(dealProps, params.additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      dealProps,
+      params.additionalProperties || [],
+    );
     return {
-      data: await getAllPaginatedData(client, "/crm/v3/objects/deals", params.fetchAll, false, {
-        params: {
-          ...parameterizedProperties,
-          limit: util.types.toInt(params.limit) || undefined,
-          after: util.types.toString(params.after) || undefined,
-          associations: toStringList(params.associationsList || []).join(",") || undefined,
-          archived: util.types.toBool(params.archived) || false,
+      data: await getAllPaginatedData(
+        client,
+        "/crm/v3/objects/deals",
+        params.fetchAll,
+        false,
+        {
+          params: {
+            ...parameterizedProperties,
+            limit: util.types.toInt(params.limit) || undefined,
+            after: util.types.toString(params.after) || undefined,
+            associations:
+              toStringList(params.associationsList || []).join(",") ||
+              undefined,
+            archived: util.types.toBool(params.archived) || false,
+          },
         },
-      }),
+      ),
     };
   },
   inputs: {
@@ -77,11 +84,11 @@ export const listDeals = action({
   },
   examplePayload: listDealsPayload,
 });
-
 export const getDealById = action({
   display: {
     label: "Get Deal",
-    description: "Retrieve information and metadata about a deal by its Id or name",
+    description:
+      "Retrieve information and metadata about a deal by its Id or name",
   },
   perform: async (
     context,
@@ -96,43 +103,40 @@ export const getDealById = action({
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const id = util.types.toString(dealId);
     const name = util.types.toString(dealName);
-
     if (!id && !name) {
-      throw new Error("You must supply an Id or deal name to retrieve a deal record.");
+      throw new Error(
+        "You must supply an Id or deal name to retrieve a deal record.",
+      );
     }
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(dealProps, additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      dealProps,
+      additionalProperties || [],
+    );
     const params = {
       ...parameterizedProperties,
       associations: toStringList(associationsList || []).join(",") || undefined,
       archived: util.types.toBool(archived) || false,
     };
-
     if (name) {
       const result = await client.get("/crm/v3/objects/deals", {
         params,
       });
       const { results: deals } = result.data;
-
       const filteredDeals = (deals || []).filter((deal) => {
         return deal?.properties?.dealname === name;
       });
-
       if (filteredDeals.length === 0) {
         throw new Error(`No deals found matching ${name}`);
       }
       return { data: filteredDeals };
     }
-
     return {
       data: (
         await client.get(`/crm/v3/objects/deals/${dealId}`, {
@@ -150,9 +154,7 @@ export const getDealById = action({
     timeout,
     hubspotConnection: connectionInput,
   },
-  
 });
-
 export const deleteDeal = action({
   display: {
     label: "Delete Deal",
@@ -160,13 +162,11 @@ export const deleteDeal = action({
   },
   perform: async (context, { dealId, timeout, hubspotConnection }) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (await client.delete(`/crm/v3/objects/deals/${dealId}`)).data,
     };
@@ -178,7 +178,6 @@ export const deleteDeal = action({
   },
   examplePayload: deleteDealPayload,
 });
-
 export const searchDeals = action({
   display: {
     label: "Search Deals",
@@ -191,7 +190,6 @@ export const searchDeals = action({
       timeout: params.timeout,
       debugRequest,
     });
-
     return {
       data: await (
         await client.post("/crm/v3/objects/deals/search", {
@@ -241,7 +239,6 @@ export const searchDeals = action({
   },
   examplePayload: searchDealsPayload,
 });
-
 export const createDeal = action({
   display: {
     label: "Create Deal",
@@ -265,13 +262,11 @@ export const createDeal = action({
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.post("/crm/v3/objects/deals", {
@@ -307,7 +302,6 @@ export const createDeal = action({
   },
   examplePayload: createDealPayload,
 });
-
 export const updateDeal = action({
   display: {
     label: "Update Deal",
@@ -326,20 +320,17 @@ export const updateDeal = action({
       priority,
       dealType,
       timeout,
-
       fieldValues,
       dynamicValues,
       hubspotConnection,
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.patch(`/crm/v3/objects/deals/${dealId}`, {

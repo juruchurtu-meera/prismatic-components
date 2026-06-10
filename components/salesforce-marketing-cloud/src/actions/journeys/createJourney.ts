@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { JOURNEYS_PATH } from "../../constants";
 import { createJourneyExamplePayload } from "../../examplePayloads";
 import { createJourneyInputs } from "../../inputs";
-
 export const createJourney = action({
   examplePayload: createJourneyExamplePayload,
   display: {
@@ -23,7 +22,6 @@ export const createJourney = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       key: journeyKey,
       name: journeyName,
@@ -31,9 +29,7 @@ export const createJourney = action({
       workflowApiVersion,
       ...journeyExtraBody,
     };
-
     const { data } = await client.post(JOURNEYS_PATH, body);
-
     return { data };
   },
 });

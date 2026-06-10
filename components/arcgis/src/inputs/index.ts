@@ -31,13 +31,11 @@ import {
   parseIntInput,
   parseStringInput,
 } from "../utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const featureServiceLayerId = input({
   label: "Feature Service Layer ID",
   type: "string",
@@ -47,7 +45,6 @@ export const featureServiceLayerId = input({
     "This is the ID of the layer in the hosted feature service. You can find this ID using the 'Get Layer ID' action.",
   clean: util.types.toString,
 });
-
 export const featureServiceUrl = input({
   label: "Feature Service URL",
   type: "string",
@@ -59,7 +56,6 @@ export const featureServiceUrl = input({
   clean: util.types.toString,
   dataSource: "selectFeatureServiceUrl",
 });
-
 export const featuresToAdd = input({
   label: "Features to Add",
   type: "code",
@@ -73,7 +69,6 @@ export const featuresToAdd = input({
   comments:
     "Add Attributes and Geometry Points, Multipoints, Polylines, Polygons and Envelopes. You can check more information about the feature JSON object here: https://developers.arcgis.com/rest/services-reference/enterprise/feature-object.htm https://developers.arcgis.com/rest/services-reference/enterprise/add-features.htm",
 });
-
 export const featureServiceCapabilities = input({
   label: "Feature Service Capabilities",
   type: "string",
@@ -83,7 +78,6 @@ export const featureServiceCapabilities = input({
   comments: "A comma-separated list of supported operations.",
   clean: util.types.toString,
 });
-
 export const featureServiceName = input({
   label: "Feature Service Name",
   type: "string",
@@ -92,7 +86,6 @@ export const featureServiceName = input({
   comments: "A hosted feature service name.",
   clean: util.types.toString,
 });
-
 export const featureLayerName = input({
   label: "Feature Layer Name",
   type: "string",
@@ -101,7 +94,6 @@ export const featureLayerName = input({
   example: "Acme_Layer",
   clean: util.types.toString,
 });
-
 export const webMapName = input({
   label: "Web Map Name",
   type: "string",
@@ -110,7 +102,6 @@ export const webMapName = input({
   example: "Acme_Web_Map",
   clean: util.types.toString,
 });
-
 export const ownerName = input({
   label: "Owner Name",
   type: "string",
@@ -119,7 +110,6 @@ export const ownerName = input({
   example: "Acme",
   clean: util.types.toString,
 });
-
 export const searchString = input({
   label: "Search String",
   type: "string",
@@ -128,7 +118,6 @@ export const searchString = input({
   example: "Water",
   clean: util.types.toString,
 });
-
 export const background = input({
   label: "Background",
   type: "code",
@@ -139,7 +128,6 @@ export const background = input({
   comments:
     "Defines the appearance for the background of the map, leave blank to use default values. You can check more information about the background JSON object here: https://developers.arcgis.com/web-map-specification/objects/background/",
 });
-
 export const authoringApp = input({
   label: "Authoring App",
   type: "string",
@@ -149,7 +137,6 @@ export const authoringApp = input({
   example: "Acme",
   clean: util.types.toString,
 });
-
 export const authoringAppVersion = input({
   label: "Authoring App Version",
   type: "string",
@@ -159,7 +146,6 @@ export const authoringAppVersion = input({
   example: "1.0",
   clean: util.types.toString,
 });
-
 export const baseMap = input({
   label: "Base Map",
   type: "code",
@@ -170,7 +156,6 @@ export const baseMap = input({
   comments:
     "Basemaps give the web map a geographic context. You can check more information about the basemap JSON object here: https://developers.arcgis.com/web-map-specification/objects/baseMap/",
 });
-
 export const bookmarks = input({
   label: "Bookmarks",
   type: "code",
@@ -181,7 +166,6 @@ export const bookmarks = input({
   comments:
     "A bookmark is a saved geographic extent that allows end users to quickly navigate to a particular area of interest, leave blank to use default values. You can check more information about the bookmarks JSON object here: https://developers.arcgis.com/web-map-specification/objects/bookmark/",
 });
-
 export const geotriggersInfo = input({
   label: "Geotriggers Info",
   type: "code",
@@ -192,7 +176,6 @@ export const geotriggersInfo = input({
   comments:
     "Information on any Geotrigger conditions defined for this map, leave blank to use default values. You can check more information about the geotriggers info JSON object here: https://developers.arcgis.com/web-map-specification/objects/geotriggersInfo/",
 });
-
 export const initialState = input({
   label: "Initial State",
   type: "code",
@@ -203,7 +186,6 @@ export const initialState = input({
     "The initial state at which to open the map, leave blank to use default values. You can check more information about the initial state JSON object here: https://developers.arcgis.com/web-map-specification/objects/initialState/",
   clean: checkAndParseJson,
 });
-
 export const mapFloorInfo = input({
   label: "Map Floor Info",
   type: "code",
@@ -214,7 +196,6 @@ export const mapFloorInfo = input({
     "Contains floor-awareness information for the map, leave blank to use default values. You can check more information about the map floor info JSON object here: https://developers.arcgis.com/web-map-specification/objects/mapFloorInfo/",
   clean: checkAndParseJson,
 });
-
 export const mapRangeInfo = input({
   label: "Map Range Info",
   type: "code",
@@ -225,7 +206,6 @@ export const mapRangeInfo = input({
     "Map range information, leave blank to use default values. You can check more information about the map range info JSON object here: https://developers.arcgis.com/web-map-specification/objects/mapRangeInfo/",
   clean: checkAndParseJson,
 });
-
 export const operationalLayers = input({
   label: "Operational Layers",
   type: "code",
@@ -236,7 +216,6 @@ export const operationalLayers = input({
     "Operational layers contain business data which are used to make thematic maps, leave blank to use default values. You can check more information about the operational layers JSON object here: https://developers.arcgis.com/web-map-specification/objects/operationalLayers/",
   clean: checkAndParseJson,
 });
-
 export const parcelFabric = input({
   label: "Parcel Fabric",
   type: "code",
@@ -247,7 +226,6 @@ export const parcelFabric = input({
     "A Parcel Fabric object that the map can use to access Parcel Fabric related functionality, such as managing parcel records, leave blank to use default values. You can check more information about the parcel fabric JSON object here: https://developers.arcgis.com/web-map-specification/objects/parcelFabric/",
   clean: checkAndParseJson,
 });
-
 export const presentation = input({
   label: "Presentation",
   type: "code",
@@ -258,7 +236,6 @@ export const presentation = input({
     "A presentation consists of multiple slides. Each slide has a different title, extent, basemap, layers, etc., leave blank to use default values. You can check more information about the presentation JSON object here: https://developers.arcgis.com/web-map-specification/objects/presentation/",
   clean: checkAndParseJson,
 });
-
 export const referenceScale = input({
   label: "Reference Scale",
   type: "string",
@@ -268,7 +245,6 @@ export const referenceScale = input({
     "A floating-point number representing the reference scale which map symbols are drawn relative to. The number is the scale's denominator. When the reference scale is 0, symbols are always drawn at the same size regardless of the map scale. The referenceScale is only used for Feature Layers that have scaleSymbols:true. Not all applications or layer types support referenceScale yet. In particular, ArcGISOnline will not use the referenceScale when drawing symbols in the browser.",
   clean: parseFloatInput,
 });
-
 export const spatialReference = input({
   label: "Spatial Reference",
   type: "code",
@@ -279,7 +255,6 @@ export const spatialReference = input({
     "An object used to specify the spatial reference of the given geometry, leave blank to use default values. You can check more information about the spatial reference JSON object here: https://developers.arcgis.com/web-map-specification/objects/spatialReference/",
   clean: checkAndParseJson,
 });
-
 export const tables = input({
   label: "Tables",
   type: "code",
@@ -290,7 +265,6 @@ export const tables = input({
     "An array of objects representing non-spatial datasets used in the web map, leave blank to use default values. You can check more information about the tables JSON object here: https://developers.arcgis.com/web-map-specification/objects/table/",
   clean: checkAndParseJson,
 });
-
 export const timeZone = input({
   label: "Time Zone",
   type: "string",
@@ -300,7 +274,6 @@ export const timeZone = input({
     "Time zone of the webmap. When applicable, dates and times will be displayed using this time zone. The time zone can be system, unknown or any named IANA time zone.",
   clean: parseStringInput,
 });
-
 export const utilityNetworks = input({
   label: "Utility Networks",
   type: "code",
@@ -311,7 +284,6 @@ export const utilityNetworks = input({
     "An array of utility network objects the map can use to access utility-related functionality, such as tracing and querying associations, leave blank to use default values. You can check more information about the utility networks JSON object here: https://developers.arcgis.com/web-map-specification/objects/utilityNetwork/",
   clean: checkAndParseJson,
 });
-
 export const version = input({
   label: "Version",
   type: "string",
@@ -321,7 +293,6 @@ export const version = input({
     "Root element in the web map specifying a string value indicating the web map version.",
   clean: parseStringInput,
 });
-
 export const widgets = input({
   label: "Widgets",
   type: "code",
@@ -331,7 +302,6 @@ export const widgets = input({
     "The widgets object contains widgets that should be exposed to the user, leave blank to use default values. You can check more information about the widgets JSON object here: https://developers.arcgis.com/web-map-specification/objects/widgets/",
   clean: checkAndParseJson,
 });
-
 export const addressSearch = input({
   label: "Address Search",
   type: "string",
@@ -341,7 +311,6 @@ export const addressSearch = input({
   example: "380 New York St, Redlands, CA 92373",
   clean: util.types.toString,
 });
-
 export const featureServiceId = input({
   label: "Feature Service ID",
   type: "string",
@@ -351,7 +320,6 @@ export const featureServiceId = input({
   clean: util.types.toString,
   dataSource: "selectFeatureService",
 });
-
 export const format = input({
   label: "Export Format",
   type: "string",
@@ -371,7 +339,6 @@ export const format = input({
   clean: (formatString: unknown) =>
     util.types.toString(formatString) as ExportFormat,
 });
-
 export const layersToExport = input({
   label: "Layers to Export",
   type: "code",
@@ -382,7 +349,6 @@ export const layersToExport = input({
   default: EXPORT_LAYERS_JSON_EXAMPLE,
   clean: checkAndParseJson,
 });
-
 export const serviceDescription = input({
   label: "Service Description",
   type: "string",
@@ -391,7 +357,6 @@ export const serviceDescription = input({
   example: "This is a feature service.",
   clean: util.types.toString,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -400,7 +365,6 @@ export const description = input({
   example: "A description of the dataset.",
   clean: util.types.toString,
 });
-
 export const start = input({
   label: "Start",
   type: "string",
@@ -409,7 +373,6 @@ export const start = input({
   example: "1",
   clean: parseIntInput,
 });
-
 export const number = input({
   label: "Number",
   type: "string",
@@ -419,7 +382,6 @@ export const number = input({
   example: "2",
   clean: parseIntInput,
 });
-
 export const stringifyResult = input({
   label: "Stringify Result",
   type: "boolean",
@@ -429,7 +391,6 @@ export const stringifyResult = input({
     "If true, the result will be stringified. Use this if the result is too large and is causing the action to crash.",
   clean: util.types.toBool,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -438,7 +399,6 @@ export const name = input({
   example: "Acme_Layer",
   clean: util.types.toString,
 });
-
 export const defaultVisibility = input({
   label: "Default Visibility",
   type: "boolean",
@@ -447,7 +407,6 @@ export const defaultVisibility = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const isDataVersioned = input({
   label: "Is Data Versioned",
   type: "boolean",
@@ -456,7 +415,6 @@ export const isDataVersioned = input({
   comments: "Indicates whether the data is versioned.",
   clean: util.types.toBool,
 });
-
 export const supportsRollbackOnFailureParameter = input({
   label: "Supports Rollback On Failure Parameter",
   type: "boolean",
@@ -466,7 +424,6 @@ export const supportsRollbackOnFailureParameter = input({
     "Indicates whether the edits should be applied only if all submitted edits succeed. If false, the server will apply the edits that succeed even if some of the submitted edits fail. If true, the server will apply the edits only if all edits succeed.",
   clean: util.types.toBool,
 });
-
 export const supportsAdvancedQueries = input({
   label: "Supports Advanced Queries",
   type: "boolean",
@@ -476,7 +433,6 @@ export const supportsAdvancedQueries = input({
     "Indicates whether the layer supports advanced queries. If true, the layer supports advanced queries.",
   clean: util.types.toBool,
 });
-
 export const geometryType = input({
   label: "Geometry Type",
   type: "string",
@@ -486,7 +442,6 @@ export const geometryType = input({
   default: "esriGeometryPoint",
   clean: util.types.toString,
 });
-
 export const minScale = input({
   label: "Min Scale",
   type: "string",
@@ -497,7 +452,6 @@ export const minScale = input({
   example: "0",
   clean: parseIntInput,
 });
-
 export const maxScale = input({
   label: "Max Scale",
   type: "string",
@@ -508,7 +462,6 @@ export const maxScale = input({
   example: "0",
   clean: parseIntInput,
 });
-
 export const extent = input({
   label: "Extent",
   type: "code",
@@ -519,7 +472,6 @@ export const extent = input({
     "The extent of the layer. If provided, the layer will only be visible within the extent.",
   clean: checkAndParseJson,
 });
-
 export const drawingInfo = input({
   label: "Drawing Info",
   type: "code",
@@ -530,7 +482,6 @@ export const drawingInfo = input({
     "The drawing information for the layer. This includes the renderer, labeling info, transparency, scale symbols, etc.",
   clean: checkAndParseJson,
 });
-
 export const allowGeometryUpdates = input({
   label: "Allow Geometry Updates",
   type: "boolean",
@@ -540,7 +491,6 @@ export const allowGeometryUpdates = input({
     "Allow geometry updates allows editors to edit the geometry of a feature in the feature service. This is enabled by default. If you disable this option, editors can update only the nonspatial attributes of features in the feature service.",
   clean: util.types.toBool,
 });
-
 export const hasAttachments = input({
   label: "Has Attachments",
   type: "boolean",
@@ -550,7 +500,6 @@ export const hasAttachments = input({
     "Indicates whether the layer has attachments. If true, the layer supports attachments.",
   clean: util.types.toBool,
 });
-
 export const htmlPopupType = input({
   label: "HTML Popup Type",
   type: "string",
@@ -560,7 +509,6 @@ export const htmlPopupType = input({
     "The type of pop-up window that is used for the layer. The default is esriServerHTMLPopupTypeNone.",
   clean: parseStringInput,
 });
-
 export const hasM = input({
   label: "Has M",
   type: "boolean",
@@ -570,7 +518,6 @@ export const hasM = input({
     "Indicates whether the client-side features in the layer have M (measurement) values.",
   clean: util.types.toBool,
 });
-
 export const hasZ = input({
   label: "Has Z",
   type: "boolean",
@@ -580,7 +527,6 @@ export const hasZ = input({
     "Indicates whether the client-side features in the layer have Z (elevation) values.",
   clean: util.types.toBool,
 });
-
 export const objectIdField = input({
   label: "Object ID Field",
   type: "string",
@@ -590,7 +536,6 @@ export const objectIdField = input({
   example: "OBJECTID",
   clean: parseStringInput,
 });
-
 export const fields = input({
   label: "Fields",
   type: "code",
@@ -600,7 +545,6 @@ export const fields = input({
   default: FIELDS_JSON_EXAMPLE,
   clean: checkAndParseJson,
 });
-
 export const templates = input({
   label: "Templates",
   type: "code",
@@ -610,7 +554,6 @@ export const templates = input({
   comments: "The templates of the layer.",
   clean: checkAndParseJson,
 });
-
 export const supportedQueryFormats = input({
   label: "Supported Query Formats",
   type: "string",
@@ -619,7 +562,6 @@ export const supportedQueryFormats = input({
   comments: "The supported query formats for the layer. The default is 'JSON'.",
   clean: parseStringInput,
 });
-
 export const hasStaticData = input({
   label: "Has Static Data",
   type: "boolean",
@@ -628,7 +570,6 @@ export const hasStaticData = input({
   comments: "Indicates whether the layer has static data.",
   clean: util.types.toBool,
 });
-
 export const maxRecordCount = input({
   label: "Max Record Count",
   type: "string",
@@ -638,7 +579,6 @@ export const maxRecordCount = input({
     "The maximum number of records that will be returned for a given query.",
   clean: parseIntInput,
 });
-
 export const capabilities = input({
   label: "Capabilities",
   type: "string",
@@ -648,7 +588,6 @@ export const capabilities = input({
     "A comma-separated list of supported operations. The default is 'Query,Extract'.",
   clean: parseStringInput,
 });
-
 export const viewingRoutingEnabled = input({
   label: "Enabled Routing On View",
   type: "boolean",
@@ -658,7 +597,6 @@ export const viewingRoutingEnabled = input({
     "Indicates whether the routing is enabled on the view. The default is true.",
   clean: util.types.toBool,
 });
-
 export const viewingMeasureEnabled = input({
   label: "Enabled Measure On View",
   type: "boolean",
@@ -668,7 +606,6 @@ export const viewingMeasureEnabled = input({
     "Indicates whether the measure is enabled on the view. The default is true.",
   clean: util.types.toBool,
 });
-
 export const viewingBasemapGalleryEnabled = input({
   label: "Enabled Basemap Gallery On View",
   type: "boolean",
@@ -678,7 +615,6 @@ export const viewingBasemapGalleryEnabled = input({
     "Indicates whether the basemap gallery is enabled on the view. The default is true.",
   clean: util.types.toBool,
 });
-
 export const searchEnabled = input({
   label: "Enabled Search",
   type: "boolean",
@@ -688,7 +624,6 @@ export const searchEnabled = input({
     "A boolean value indicating whether search (find) functionality is enabled in the web map.",
   clean: util.types.toBool,
 });
-
 export const searchDisablePlaceFinder = input({
   label: "Disable Place Finder",
   type: "boolean",
@@ -698,7 +633,6 @@ export const searchDisablePlaceFinder = input({
     "A boolean value indicating whether or not to disable the place finder.",
   clean: util.types.toBool,
 });
-
 export const searchHintText = input({
   label: "Search Hint Text",
   type: "string",
@@ -708,7 +642,6 @@ export const searchHintText = input({
     "A string value used to indicate the hint provided with the search dialog.",
   clean: parseStringInput,
 });
-
 export const searchLayers = input({
   label: "Search Layers",
   type: "code",
@@ -719,7 +652,6 @@ export const searchLayers = input({
   default: SEARCH_LAYERS_JSON_EXAMPLE,
   clean: checkAndParseJson,
 });
-
 export const searchTables = input({
   label: "Search Tables",
   type: "code",
@@ -730,7 +662,6 @@ export const searchTables = input({
   default: SEARCH_TABLES_JSON_EXAMPLE,
   clean: checkAndParseJson,
 });
-
 export const editingLocationTrackingEnabled = input({
   label: "Enabled Location Tracking",
   type: "boolean",
@@ -740,7 +671,6 @@ export const editingLocationTrackingEnabled = input({
     "A boolean value indicating whether or not location tracking is enabled on the webmap.",
   clean: util.types.toBool,
 });
-
 export const editingLocationTrackingInfo = input({
   label: "Location Tracking Info",
   type: "code",
@@ -751,7 +681,6 @@ export const editingLocationTrackingInfo = input({
   default: LOCATION_TRACKING_INFO_JSON_EXAMPLE,
   clean: checkAndParseJson,
 });
-
 export const baseUrl = input({
   label: "Base URL",
   type: "string",
@@ -761,7 +690,6 @@ export const baseUrl = input({
     "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer",
   clean: util.types.toString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",

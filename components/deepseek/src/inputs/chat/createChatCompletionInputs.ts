@@ -6,7 +6,6 @@ import {
   toOptionalString,
   toOptionalStringValueList,
 } from "../../utils";
-
 export const model = input({
   label: "Model",
   comments: "The model to use in order to generate the chat completion.",
@@ -15,7 +14,6 @@ export const model = input({
   clean: util.types.toString,
   dataSource: "selectModel",
 });
-
 export const messages = input({
   label: "Messages",
   comments: "A list of messages comprising the conversation so far.",
@@ -35,11 +33,10 @@ export const messages = input({
       },
     ],
     null,
-    2
+    2,
   ),
   clean: util.types.toObject,
 });
-
 export const frequencyPenalty = input({
   label: "Frequency Penalty",
   comments:
@@ -54,10 +51,9 @@ export const frequencyPenalty = input({
       value,
       -2,
       2,
-      "Frequency Penalty must be between -2.0 and 2.0"
+      "Frequency Penalty must be between -2.0 and 2.0",
     ),
 });
-
 export const maxTokens = input({
   label: "Max Tokens",
   comments:
@@ -72,10 +68,9 @@ export const maxTokens = input({
       value,
       1,
       8192,
-      "Max Tokens must be between 1 and 8192"
+      "Max Tokens must be between 1 and 8192",
     ),
 });
-
 export const presencePenalty = input({
   label: "Presence Penalty",
   comments:
@@ -89,10 +84,9 @@ export const presencePenalty = input({
       value,
       -2,
       2,
-      "Presence Penalty must be between -2.0 and 2.0"
+      "Presence Penalty must be between -2.0 and 2.0",
     ),
 });
-
 export const responseFormat = input({
   label: "Response Format",
   comments:
@@ -103,7 +97,6 @@ export const responseFormat = input({
   placeholder: "json_object",
   clean: toOptionalString,
 });
-
 export const stop = input({
   label: "Stop Sequence(s)",
   comments:
@@ -115,7 +108,6 @@ export const stop = input({
   collection: "valuelist",
   clean: toOptionalStringValueList,
 });
-
 export const stream = input({
   label: "Stream",
   comments:
@@ -124,7 +116,6 @@ export const stream = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const includeUsage = input({
   label: "Include Usage",
   comments:
@@ -133,7 +124,6 @@ export const includeUsage = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const temperature = input({
   label: "Temperature",
   comments:
@@ -143,16 +133,14 @@ export const temperature = input({
   required: false,
   example: "0.5",
   placeholder: "0.5",
-  
   clean: (value: unknown) =>
     cleanOptionalRangeNumber(
       value,
       0,
       2,
-      "Temperature must be between 0 and 2"
+      "Temperature must be between 0 and 2",
     ),
 });
-
 export const topP = input({
   label: "Top P",
   comments:
@@ -165,7 +153,6 @@ export const topP = input({
   clean: (value: unknown) =>
     cleanOptionalRangeNumber(value, 0, 1, "Top P must be between 0 and 1"),
 });
-
 export const tools = input({
   label: "Tools",
   comments: "The tools to use in order to generate the chat completion.",
@@ -198,11 +185,10 @@ export const tools = input({
       },
     ],
     null,
-    2
+    2,
   ),
   clean: toOptionalObject,
 });
-
 export const toolChoice = input({
   label: "Tool Choice",
   comments:
@@ -218,7 +204,6 @@ export const toolChoice = input({
   placeholder: "auto",
   clean: toOptionalString,
 });
-
 export const logProbs = input({
   label: "Should return Log Probabilities",
   comments:
@@ -227,7 +212,6 @@ export const logProbs = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const topLogProbs = input({
   label: "Top Log Probabilities",
   comments:
@@ -241,10 +225,9 @@ export const topLogProbs = input({
       value,
       0,
       20,
-      "Top Log Probabilities must be between 0 and 20"
+      "Top Log Probabilities must be between 0 and 20",
     ),
 });
-
 const createChatCompletionInputs = {
   connection,
   messages,
@@ -263,5 +246,4 @@ const createChatCompletionInputs = {
   log_probs: logProbs,
   top_logprobs: topLogProbs,
 };
-
 export default createChatCompletionInputs;

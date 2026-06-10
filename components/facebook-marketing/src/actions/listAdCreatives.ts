@@ -11,7 +11,6 @@ import {
   version,
 } from "../inputs";
 import { adCreativeDefaults, getPaginatedData } from "../util";
-
 export const listAdCreatives = action({
   display: {
     label: "List Ad Creatives",
@@ -31,7 +30,6 @@ export const listAdCreatives = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await getPaginatedData(
       client,
       `/${adAccountId}/adcreatives`,
@@ -43,7 +41,6 @@ export const listAdCreatives = action({
         fields,
       },
     );
-
     return {
       data,
     };

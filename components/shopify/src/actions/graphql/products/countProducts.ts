@@ -4,15 +4,20 @@ import { countProductsExamplePayload as examplePayload } from "../../../exampleP
 import { countProductsInputs as inputs } from "../../../inputsGql";
 import type { Count } from "../../interfaces/Count";
 import countProductsQuery from "../queries/products/CountProducts.gql";
-
 export const countProductsGql = action({
   display: {
     label: "Count Products",
     description: "Returns a count of all products.",
   },
   perform: async (context, { shopifyConnection }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-    const data: { productsCount: Count } = await client.request(countProductsQuery);
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
+    const data: {
+      productsCount: Count;
+    } = await client.request(countProductsQuery);
     return { data: { data: data.productsCount } };
   },
   inputs,

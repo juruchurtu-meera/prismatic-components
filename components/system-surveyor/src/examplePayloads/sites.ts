@@ -1,7 +1,3 @@
-
-
-
-
 export const listSitesExamplePayload = {
   data: [
     {
@@ -28,7 +24,6 @@ export const listSitesExamplePayload = {
     },
   ],
 };
-
 export const getSitesAndFoldersExamplePayload = {
   data: {
     sites: [
@@ -70,7 +65,6 @@ export const getSitesAndFoldersExamplePayload = {
     ],
   },
 };
-
 export const getSiteInfoExamplePayload = {
   data: {
     id: "6ac251fc-5763-4e21-aa82-0a9efac256e5",
@@ -90,7 +84,6 @@ export const getSiteInfoExamplePayload = {
     address: "Los Angeles, CA",
   },
 };
-
 export const getSiteContactsExamplePayload = {
   data: [
     {
@@ -103,7 +96,6 @@ export const getSiteContactsExamplePayload = {
     },
   ],
 };
-
 export const getBillOfMaterialsDataExamplePayload = {
   data: [
     { component_model: "RTX-4590", quantity: 10 },
@@ -111,7 +103,6 @@ export const getBillOfMaterialsDataExamplePayload = {
     { component_model: "SW-5678", quantity: 15 },
   ],
 };
-
 export const listSiteSurveysExamplePayload = {
   data: {
     surveys: [
@@ -126,7 +117,6 @@ export const listSiteSurveysExamplePayload = {
     ],
   },
 };
-
 export const listDeletedSitesExamplePayload = {
   data: [
     {

@@ -21,7 +21,6 @@ import {
   deleteWebhookSubscriptionExamplePayload,
   getWebhookEventsExamplePayload,
 } from "../examplePayloads";
-
 const listWebhookSubscriptions = action({
   display: {
     label: "List Webhook Subscriptions",
@@ -41,7 +40,6 @@ const listWebhookSubscriptions = action({
   },
   examplePayload: listWebhookSubscriptionsExamplePayload,
 });
-
 const getWebhookSubscription = action({
   display: {
     label: "Get Webhook Subscription",
@@ -58,13 +56,11 @@ const getWebhookSubscription = action({
       context.debug.enabled,
     );
     const endpoint = `/webhook_subscriptions/${params.webhookSubscriptionUuid}`;
-
     const { data, headers } = await client.get(endpoint);
     return { data: { data, headers } };
   },
   examplePayload: getWebhookSubscriptionExamplePayload,
 });
-
 const createWebhookSubscription = action({
   display: {
     label: "Create Webhook Subscription",
@@ -81,22 +77,18 @@ const createWebhookSubscription = action({
       params.connection,
       context.debug.enabled,
     );
-
     const cleanedSubscriptionTypes = params.subscriptionTypes
       .split(",")
       .map((str) => str.trim());
-
     const body = {
       url: params.webhookUrl,
       subscription_types: cleanedSubscriptionTypes,
     };
-
     const { data, headers } = await client.post(`/webhook_subscriptions`, body);
     return { data: { data, headers } };
   },
   examplePayload: createWebhookSubscriptionExamplePayload,
 });
-
 const updateWebhookSubscription = action({
   display: {
     label: "Update Webhook Subscription",
@@ -113,15 +105,12 @@ const updateWebhookSubscription = action({
       params.connection,
       context.debug.enabled,
     );
-
     const cleanedSubscriptionTypes = params.subscriptionTypes
       .split(",")
       .map((str) => str.trim());
-
     const body = {
       subscription_types: cleanedSubscriptionTypes,
     };
-
     const { data, headers } = await client.put(
       `/webhook_subscriptions/${params.webhookSubscriptionUuid}`,
       body,
@@ -130,7 +119,6 @@ const updateWebhookSubscription = action({
   },
   examplePayload: updateWebhookSubscriptionExamplePayload,
 });
-
 const deleteWebhookSubscription = action({
   display: {
     label: "Delete Webhook Subscription",
@@ -146,7 +134,6 @@ const deleteWebhookSubscription = action({
       params.connection,
       context.debug.enabled,
     );
-
     await client.delete(
       `/webhook_subscriptions/${params.webhookSubscriptionUuid}`,
     );
@@ -154,7 +141,6 @@ const deleteWebhookSubscription = action({
   },
   examplePayload: deleteWebhookSubscriptionExamplePayload,
 });
-
 const getWebhookEvents = action({
   display: {
     label: "Get Webhook Events",
@@ -175,7 +161,6 @@ const getWebhookEvents = action({
       params.connection,
       context.debug.enabled,
     );
-
     if (params.fetchAll) {
       const data = await fetchAllCursorEvents(client, "/events", {
         resource_uuid: params.resourceUuid,
@@ -184,7 +169,6 @@ const getWebhookEvents = action({
       });
       return { data: { data, headers: {} } };
     }
-
     const queryParams = {
       resource_uuid: params.resourceUuid,
       event_type: params.eventType,
@@ -192,7 +176,6 @@ const getWebhookEvents = action({
       limit: params.limit,
       sort_order: params.sortOrder,
     };
-
     const { data, headers } = await client.get(`/events`, {
       params: queryParams,
     });

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getProductInputs } from "../../inputs";
 import { getProductExamplePayload } from "../../payloadExamples";
 import { getProductGql } from "../graphql/products/getProduct";
-
 export const getProduct = action({
   display: {
     label: "Get Product",

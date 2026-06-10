@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanDate, cleanStringInput } from "../../utils";
 import { connectionInput } from "../general";
-
 export const showInstanceWebhooks = input({
   label: "Show Instance Webhooks",
   type: "boolean",
@@ -9,7 +8,6 @@ export const showInstanceWebhooks = input({
   comments: "When true, shows only subscriptions for this Instance's webhooks.",
   clean: util.types.toBool,
 });
-
 export const notificationUrl = input({
   label: "Notification URL",
   type: "string",
@@ -19,7 +17,6 @@ export const notificationUrl = input({
   placeholder: "Enter notification URL",
   clean: util.types.toString,
 });
-
 export const expirationDateTime = input({
   label: "Expiration Date/Time",
   type: "string",
@@ -30,7 +27,6 @@ export const expirationDateTime = input({
   placeholder: "Enter expiration date/time (ISO 8601)",
   clean: cleanDate,
 });
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -41,7 +37,6 @@ export const subscriptionId = input({
   dataSource: "selectSubscription",
   clean: util.types.toString,
 });
-
 export const allowDuplicates = input({
   label: "Allow Duplicates",
   type: "boolean",
@@ -50,17 +45,16 @@ export const allowDuplicates = input({
   comments: "When true, allows more than one webhook per endpoint.",
   clean: util.types.toBool,
 });
-
 export const resource = input({
   label: "Resource",
   type: "string",
   required: true,
   comments: "Resource to subscribe to.",
-  example: "/api/v1.0/companies(f64eba74-dacd-4854-a584-1834f68cfc3a)/customers",
+  example:
+    "/api/v1.0/companies(f64eba74-dacd-4854-a584-1834f68cfc3a)/customers",
   placeholder: "Enter resource path",
   clean: util.types.toString,
 });
-
 export const etag = input({
   label: "Etag",
   type: "string",
@@ -70,14 +64,12 @@ export const etag = input({
   placeholder: "Enter etag value",
   clean: util.types.toString,
 });
-
 export const createSubscriptionInputs = {
   connection: connectionInput,
   notificationUrl,
   resource,
   allowDuplicates,
 };
-
 export const updateSubscriptionInputs = {
   connection: connectionInput,
   subscriptionId,
@@ -93,13 +85,11 @@ export const updateSubscriptionInputs = {
     clean: cleanStringInput,
   },
 };
-
 export const deleteSubscriptionInputs = {
   connection: connectionInput,
   subscriptionId,
   etag,
 };
-
 export const deleteAllSubscriptionsInputs = {
   connection: connectionInput,
 };

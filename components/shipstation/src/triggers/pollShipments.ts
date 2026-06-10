@@ -7,7 +7,6 @@ import {
   getModifiedOrCreatedRecords,
   hasChanges,
 } from "./pollingUtils";
-
 export const pollShipments = pollingTrigger({
   display: {
     label: "New and Updated Shipments",
@@ -18,27 +17,21 @@ export const pollShipments = pollingTrigger({
   perform: async (context, payload, { connection }) => {
     const state = (context.polling.getState() as PollingState) || {};
     const lastPolledAt = state.lastPolledAt || new Date().toISOString();
-
     const client = createShipStationClient(connection);
-
     const records = await fetchAllPages<TimestampedRecord>(
       client,
       "/shipments",
       { createDateStart: lastPolledAt },
       "shipments",
     );
-
     const result = getModifiedOrCreatedRecords(records, lastPolledAt);
-
     context.polling.setState({ lastPolledAt: new Date().toISOString() });
-
     if (!hasChanges(result)) {
       return {
         payload,
         polledNoChanges: true,
       };
     }
-
     return {
       payload: {
         ...payload,

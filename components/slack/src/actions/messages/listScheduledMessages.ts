@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOauthClient } from "../../client";
 import { listScheduledMessagesExamplePayload } from "../../examplePayloads";
 import { listScheduledMessagesInputs } from "../../inputs";
-
 export const listScheduledMessages = action({
   display: {
     label: "List Scheduled Messages",

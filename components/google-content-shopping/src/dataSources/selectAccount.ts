@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, merchantId } from "../inputs";
-
 export const selectAccount = dataSource({
   display: {
     label: "Select Account",
@@ -17,23 +16,21 @@ export const selectAccount = dataSource({
   },
   perform: async (_context, { connection, merchantId }) => {
     const client = createClient(connection);
-
-    const allResources: { id?: string | null; name?: string | null }[] = [];
+    const allResources: {
+      id?: string | null;
+      name?: string | null;
+    }[] = [];
     let nextPageToken: string | null | undefined;
-
     do {
       const { data } = await client.accounts.list({
         merchantId,
         pageToken: nextPageToken || undefined,
       });
-
       if (data.resources) {
         allResources.push(...data.resources);
       }
-
       nextPageToken = data.nextPageToken;
     } while (nextPageToken);
-
     return {
       result: allResources
         .map<Element>((account) => ({

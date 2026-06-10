@@ -18,19 +18,16 @@ import {
   eventTimeClean,
   valueListInputClean,
 } from "./util";
-
 export const myConnectionField = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const webhookConnection = {
   ...myConnectionField,
   comments:
     "This connection must be a Meta Ads Client Credentials connection to be able to use webhooks APIs.",
 };
-
 export const version = input({
   label: "Graph Version",
   type: "string",
@@ -44,7 +41,6 @@ export const version = input({
     return version;
   },
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -54,7 +50,6 @@ export const fetchAll = input({
     "If true, it will fetch all records and ignore parameters like limit, after, and before.",
   clean: util.types.toBool,
 });
-
 export const userId = input({
   label: "User Id",
   type: "string",
@@ -62,7 +57,6 @@ export const userId = input({
   example: "587490763",
   comments: "Provide the Id of a user.",
 });
-
 export const pixelId = input({
   label: "Pixel Id",
   type: "string",
@@ -72,7 +66,6 @@ export const pixelId = input({
   placeholder: "587490763",
   clean: util.types.toString,
 });
-
 export const adAccountId = input({
   label: "Ad Account",
   type: "string",
@@ -83,7 +76,6 @@ export const adAccountId = input({
   clean: util.types.toString,
   dataSource: "selectAdAccount",
 });
-
 export const adId = input({
   label: "Ad Id",
   type: "string",
@@ -93,7 +85,6 @@ export const adId = input({
   clean: util.types.toString,
   dataSource: "selectAdsInAccount",
 });
-
 export const adName = input({
   label: "Ad Name",
   type: "string",
@@ -102,7 +93,6 @@ export const adName = input({
   comments: "Provide a name for the given ad.",
   clean: cleanString,
 });
-
 export const status = input({
   label: "Ad Status",
   type: "string",
@@ -117,7 +107,6 @@ export const status = input({
     "Provide a status for the ad. During testing, it is recommended to set ads to a PAUSED status so as to not incur accidental spend.",
   clean: cleanString,
 });
-
 export const adsetId = input({
   label: "Adset Id",
   type: "string",
@@ -125,7 +114,6 @@ export const adsetId = input({
   example: "58789326952",
   comments: "Provide the Id of the desired adset.",
 });
-
 export const campaignId = input({
   label: "Campaign Id",
   type: "string",
@@ -135,7 +123,6 @@ export const campaignId = input({
   clean: util.types.toString,
   dataSource: "selectCampaignInAccount",
 });
-
 export const creativeId = input({
   label: "Creative Id",
   type: "string",
@@ -145,7 +132,6 @@ export const creativeId = input({
   clean: cleanString,
   dataSource: "selectAdCreative",
 });
-
 export const tracking = input({
   label: "Tracking",
   type: "code",
@@ -174,7 +160,6 @@ export const tracking = input({
     "Provide a JSON array containing valid tracking specs. The shape of this field can change depending on the type of ad: https://developers.facebook.com/docs/marketing-api/tracking-specs#default_by_ad.",
   clean: (value) => cleanArrayCodeInput(value, "Tracking"),
 });
-
 export const optionalValues = input({
   label: "Optional Values",
   type: "string",
@@ -184,7 +169,6 @@ export const optionalValues = input({
   clean: (values) =>
     util.types.keyValPairListToObject(values as KeyValuePair<unknown>[]),
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -193,7 +177,6 @@ export const limit = input({
   example: "30",
   clean: cleanString,
 });
-
 export const after = input({
   label: "After",
   type: "string",
@@ -202,7 +185,6 @@ export const after = input({
   example: "xOTQ1MjAwNzI5NDE=",
   clean: cleanString,
 });
-
 export const before = input({
   label: "Before",
   type: "string",
@@ -211,7 +193,6 @@ export const before = input({
   example: "xOTQ1MjAwNzI5NDE=",
   clean: cleanString,
 });
-
 export const adFormat = input({
   label: "Ad Format",
   type: "string",
@@ -220,7 +201,6 @@ export const adFormat = input({
   model: PREVIEW_FORMATS,
   clean: util.types.toString,
 });
-
 export const objectStoryId = input({
   label: "Object Story Id",
   type: "string",
@@ -229,7 +209,6 @@ export const objectStoryId = input({
   example: "1051738543535_10636436633230",
   clean: cleanString,
 });
-
 export const urlTags = input({
   label: "URL Tags",
   type: "string",
@@ -238,7 +217,6 @@ export const urlTags = input({
   example: "key1=val1&key2=val2",
   clean: cleanString,
 });
-
 export const body = input({
   label: "Body",
   type: "string",
@@ -247,7 +225,6 @@ export const body = input({
   example: "This is an example description body.",
   clean: cleanString,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -256,7 +233,6 @@ export const name = input({
   example: "My Ad Creative",
   clean: cleanString,
 });
-
 export const fields = input({
   label: "Fields",
   type: "string",
@@ -264,7 +240,6 @@ export const fields = input({
   comments: "Provide a comma separated list of fields to be returned.",
   clean: cleanString,
 });
-
 export const adLabels = input({
   label: "Ad Labels",
   type: "code",
@@ -286,7 +261,6 @@ export const adLabels = input({
   ),
   clean: (value) => cleanArrayCodeInput(value, "Ad Labels"),
 });
-
 export const bid_strategy = input({
   label: "Bid Strategy",
   type: "string",
@@ -313,7 +287,6 @@ export const bid_strategy = input({
   ],
   clean: cleanString,
 });
-
 export const campaign_optimization_type = input({
   label: "Campaign Optimization Type",
   type: "string",
@@ -331,7 +304,6 @@ export const campaign_optimization_type = input({
   ],
   clean: cleanString,
 });
-
 export const buying_type = input({
   label: "Buying Type",
   type: "string",
@@ -350,7 +322,6 @@ export const buying_type = input({
   ],
   clean: cleanString,
 });
-
 export const daily_budget = input({
   label: "Daily Budget",
   type: "string",
@@ -359,7 +330,6 @@ export const daily_budget = input({
     "Daily budget of this campaign. All adsets under this campaign will share this budget. You can either set budget at the campaign level or at the adset level, not both.",
   clean: cleanString,
 });
-
 export const is_skadnetwork_attribution = input({
   label: "Is Skadnetwork Attribution",
   type: "boolean",
@@ -368,7 +338,6 @@ export const is_skadnetwork_attribution = input({
     "To create an iOS 14 campaign, enable SKAdNetwork attribution for this campaign.",
   clean: util.types.toBool,
 });
-
 export const is_using_l3_schedule = input({
   label: "Is Using L3 Schedule",
   type: "boolean",
@@ -376,7 +345,6 @@ export const is_using_l3_schedule = input({
   comments: "Is Using L3 Schedule.",
   clean: util.types.toBool,
 });
-
 export const iterative_split_test_configs = input({
   label: "Iterative Split Test Configs",
   type: "code",
@@ -386,7 +354,6 @@ export const iterative_split_test_configs = input({
     "Array of Iterative Split Test Configs created under this campaign.",
   clean: (value) => cleanArrayCodeInput(value, "Iterative Split Test Configs"),
 });
-
 export const lifetime_budget = input({
   label: "Lifetime Budget",
   type: "string",
@@ -395,7 +362,6 @@ export const lifetime_budget = input({
     "Lifetime budget of this campaign. All adsets under this campaign will share this budget. You can either set budget at the campaign level or at the adset level, not both.",
   clean: cleanString,
 });
-
 export const campaignName = input({
   label: "Campaign Name",
   type: "string",
@@ -403,7 +369,6 @@ export const campaignName = input({
   comments: "Name for this campaign.",
   clean: util.types.toString,
 });
-
 export const objective = input({
   label: "Objective",
   type: "string",
@@ -498,7 +463,6 @@ export const objective = input({
   ],
   clean: util.types.toString,
 });
-
 export const promoted_object = input({
   label: "Promoted Object",
   type: "code",
@@ -508,7 +472,6 @@ export const promoted_object = input({
     "The object this campaign is promoting across all its ads. It's required for SKAdNetwork or Aggregated Event Measurement campaign creation. Only product_catalog_id is used at the ad set level.",
   clean: (value) => cleanCodeInput(value, "Promoted Object"),
 });
-
 export const special_ad_categories = input({
   label: "Special Ad Categories",
   type: "string",
@@ -547,7 +510,6 @@ export const special_ad_categories = input({
   ],
   clean: valueListInputClean,
 });
-
 export const special_ad_category_country = input({
   label: "Special Ad Category Country",
   type: "string",
@@ -557,7 +519,6 @@ export const special_ad_category_country = input({
   comments: "Special Ad Category Country.",
   clean: valueListInputClean,
 });
-
 export const spend_cap = input({
   label: "Spend Cap",
   type: "string",
@@ -566,7 +527,6 @@ export const spend_cap = input({
     "A spend cap for the campaign, such that it will not spend more than this cap. Defined as integer value of subunit in your currency with a minimum value of $100 USD (or approximate local equivalent). Set the value to 922337203685478 to remove the spend cap. Not available for Reach and Frequency or Premium Self Serve campaigns.",
   clean: cleanString,
 });
-
 export const start_time = input({
   label: "Start Time",
   type: "string",
@@ -574,7 +534,6 @@ export const start_time = input({
   comments: "Start Time.",
   clean: cleanString,
 });
-
 export const stop_time = input({
   label: "Stop Time",
   type: "string",
@@ -582,7 +541,6 @@ export const stop_time = input({
   comments: "Stop Time.",
   clean: cleanString,
 });
-
 export const topline_id = input({
   label: "Topline Id",
   type: "string",
@@ -590,7 +548,6 @@ export const topline_id = input({
   comments: "Topline Id.",
   clean: cleanString,
 });
-
 export const source_campaign_id = input({
   label: "Source Campaign Id",
   type: "string",
@@ -600,7 +557,6 @@ export const source_campaign_id = input({
   clean: cleanString,
   dataSource: "selectCampaignInAccount",
 });
-
 export const ad_schedule_end_time = input({
   label: "Ad Schedule End Time",
   type: "string",
@@ -610,7 +566,6 @@ export const ad_schedule_end_time = input({
   example: "2022-10-10T00:00:00Z",
   clean: cleanString,
 });
-
 export const ad_schedule_start_time = input({
   label: "Ad Schedule Start Time",
   type: "string",
@@ -620,7 +575,6 @@ export const ad_schedule_start_time = input({
   example: "2022-10-10T00:00:00Z",
   clean: cleanString,
 });
-
 export const adset_id = input({
   label: "Adset Id",
   type: "string",
@@ -630,7 +584,6 @@ export const adset_id = input({
   clean: util.types.toString,
   dataSource: "selectAdSet",
 });
-
 export const adset_spec = input({
   label: "Adset Spec",
   type: "code",
@@ -640,7 +593,6 @@ export const adset_spec = input({
     "The ad set spec for this ad. When the spec is provided, Adset Id field is not required.",
   clean: (values) => cleanCodeInput(values, "Adset Spec"),
 });
-
 export const audience_id = input({
   label: "Audience Id",
   type: "string",
@@ -648,7 +600,6 @@ export const audience_id = input({
   comments: "The ID of the audience.",
   clean: cleanString,
 });
-
 export const conversion_domain = input({
   label: "Conversion Domain",
   type: "string",
@@ -658,7 +609,6 @@ export const conversion_domain = input({
   example: "facebook.com",
   clean: cleanString,
 });
-
 export const creative = input({
   label: "Creative",
   type: "code",
@@ -669,7 +619,6 @@ export const creative = input({
     "This field is required for create. The ID or creative spec of the ad creative to be used by this ad. You may supply the ID within an object as shown in the example.",
   clean: (value) => cleanCodeInput(value, "Creative"),
 });
-
 export const date_format = input({
   label: "Date Format",
   type: "string",
@@ -677,7 +626,6 @@ export const date_format = input({
   comments: "The format of the date.",
   clean: cleanString,
 });
-
 export const display_sequence = input({
   label: "Display Sequence",
   type: "string",
@@ -685,7 +633,6 @@ export const display_sequence = input({
   comments: "The sequence of the ad within the same campaign.",
   clean: cleanString,
 });
-
 export const engagement_audience = input({
   label: "Engagement Audience",
   type: "boolean",
@@ -694,7 +641,6 @@ export const engagement_audience = input({
     "Flag to create a new audience based on users who engage with this ad.",
   clean: util.types.toBool,
 });
-
 export const include_demolink_hashes = input({
   label: "Include Demolink Hashes",
   type: "boolean",
@@ -702,7 +648,6 @@ export const include_demolink_hashes = input({
   comments: "Include the demolink hashes.",
   clean: util.types.toBool,
 });
-
 export const priority = input({
   label: "Priority",
   type: "string",
@@ -710,7 +655,6 @@ export const priority = input({
   comments: "Priority of the ad.",
   clean: cleanString,
 });
-
 export const source_ad_id = input({
   label: "Source Ad Id",
   type: "string",
@@ -718,7 +662,6 @@ export const source_ad_id = input({
   comments: "ID of the source Ad, if applicable.",
   clean: cleanString,
 });
-
 export const eventName = input({
   label: "Event Name",
   type: "string",
@@ -728,7 +671,6 @@ export const eventName = input({
   placeholder: "Purchase",
   clean: util.types.toString,
 });
-
 export const eventTime = input({
   label: "Event Time",
   type: "string",
@@ -739,7 +681,6 @@ export const eventTime = input({
   placeholder: "1633552688",
   clean: eventTimeClean,
 });
-
 export const userData = input({
   label: "User Data",
   type: "code",
@@ -750,7 +691,6 @@ export const userData = input({
     "A map that contains customer information data. See [Facebook Marketing API documentation](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/customer-information-parameters) for details.",
   clean: (value) => cleanCodeInput(value, "User Data"),
 });
-
 export const customData = input({
   label: "Custom Data",
   type: "code",
@@ -761,7 +701,6 @@ export const customData = input({
     "A map that includes additional business data about the event. See [Facebook Marketing API documentation](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/custom-data) for details.",
   clean: (value) => cleanCodeInput(value, "Custom Data"),
 });
-
 export const eventSourceUrl = input({
   label: "Event Source Url",
   type: "string",
@@ -771,7 +710,6 @@ export const eventSourceUrl = input({
   placeholder: "http://jaspers-market.com/product/123",
   clean: cleanString,
 });
-
 export const actionSource = input({
   label: "Action Source",
   type: "string",
@@ -819,12 +757,10 @@ export const actionSource = input({
       value: "other",
     },
   ],
-
   example: "website",
   placeholder: "website",
   clean: util.types.toString,
 });
-
 export const moreData = input({
   label: "More Data",
   type: "code",
@@ -835,7 +771,6 @@ export const moreData = input({
     "Additional data to include with the event. See [Facebook Marketing API documentation](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event) for details.",
   clean: (value) => cleanCodeInput(value, "More Data") || {},
 });
-
 export const events = input({
   label: "Events",
   type: "code",
@@ -846,7 +781,6 @@ export const events = input({
     "An array of server event objects. See [Facebook Marketing API documentation](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event) for more information.",
   clean: (value) => cleanArrayCodeInput(value, "Events"),
 });
-
 export const targeting = input({
   label: "Targeting",
   type: "code",
@@ -865,7 +799,6 @@ export const targeting = input({
   comments: "The targeting specs for the ad set.",
   clean: (value) => cleanCodeInput(value, "Targeting"),
 });
-
 export const verifyToken = input({
   label: "Verify Token",
   type: "string",
@@ -875,7 +808,6 @@ export const verifyToken = input({
   placeholder: "test",
   clean: util.types.toString,
 });
-
 export const object = input({
   label: "Object",
   type: "string",
@@ -894,7 +826,6 @@ export const object = input({
   ],
   clean: util.types.toString,
 });
-
 export const webhookFields = input({
   label: "Fields",
   type: "string",
@@ -904,7 +835,6 @@ export const webhookFields = input({
   placeholder: "id,name",
   clean: cleanString,
 });
-
 export const includeValues = input({
   label: "Include Values",
   type: "boolean",
@@ -913,7 +843,6 @@ export const includeValues = input({
     "Include the names of the fields that have changed as well as their new values.",
   clean: util.types.toBool,
 });
-
 export const appId = input({
   label: "App Id",
   type: "string",
@@ -923,7 +852,6 @@ export const appId = input({
   placeholder: "1234567890",
   clean: util.types.toString,
 });
-
 export const callbackUrl = input({
   label: "Callback Url",
   type: "string",
@@ -933,7 +861,6 @@ export const callbackUrl = input({
   placeholder: "https://your-domain.com/webhook",
   clean: util.types.toString,
 });
-
 export const pageFields = input({
   label: "Page Fields",
   collection: "valuelist",
@@ -943,7 +870,6 @@ export const pageFields = input({
   example: "id,name",
   model: PAGE_FIELDS,
 });
-
 export const pageFieldsJSON = input({
   label: "Dynamic Page Fields",
   type: "code",
@@ -957,7 +883,6 @@ export const pageFieldsJSON = input({
   ),
   clean: (value) => cleanCodeInput(value, "Page Fields"),
 });
-
 export const adAccountFields = input({
   label: "Ad Account Fields",
   collection: "valuelist",
@@ -967,7 +892,6 @@ export const adAccountFields = input({
   example: "id,name",
   model: AD_ACCOUNT_FIELDS,
 });
-
 export const adAccountFieldsJSON = input({
   label: "Dynamic Ad Account Fields",
   type: "code",

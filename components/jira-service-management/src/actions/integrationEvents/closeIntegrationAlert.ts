@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOpsEventsClient } from "../../client";
 import { closeIntegrationAlertExamplePayload } from "../../examplePayloads";
 import { closeIntegrationAlertInputs } from "../../inputs";
-
 export const closeIntegrationAlert = action({
   display: {
     label: "Close Integration Alert",
@@ -27,7 +26,6 @@ export const closeIntegrationAlert = action({
       source: alertSource,
       note: alertNote,
     };
-
     const { data } = await client.post(
       `/alerts/${encodeURIComponent(alertIdentifier)}/close`,
       body,

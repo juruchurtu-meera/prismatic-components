@@ -19,7 +19,6 @@ import { listTransactions } from "./listTransactions";
 import { restRawRequest } from "./restRawRequest";
 import { searchCustomers } from "./searchCustomers";
 import { updateCustomer } from "./updateCustomer";
-
 export default {
   listProducts,
   createProducts,

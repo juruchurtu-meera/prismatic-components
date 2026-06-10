@@ -3,7 +3,6 @@ import { createDataClient } from "../../client";
 import { connectionInput, project_id, dataAndDomain } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { listPipelinesExamplePayload } from "../../examplePayloads";
-
 export const listPipelines = action({
   display: {
     label: "List Pipelines",

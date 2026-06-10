@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { connection, site, company } from "../../inputs/general";
 import deleteSalesOrderInputs from "../../inputs/salesOrder/deleteSalesOrderInputs";
 import { emptyPayload } from "../../examplePayloads";
-
 export const deleteSalesOrder = action({
   display: {
     label: "Delete Sales Order",

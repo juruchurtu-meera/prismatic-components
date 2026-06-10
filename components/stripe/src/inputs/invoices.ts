@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const collectionMethod = input({
   label: "Collection Method",
   type: "string",
@@ -13,15 +12,14 @@ export const collectionMethod = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const autoAdvance = input({
   label: "Auto Advance",
   type: "boolean",
-  comments: "When true, Stripe will automatically attempt collection of the invoice.",
+  comments:
+    "When true, Stripe will automatically attempt collection of the invoice.",
   required: false,
   clean: util.types.toBool,
 });
-
 export const dueDate = input({
   label: "Due Date",
   type: "string",
@@ -31,7 +29,6 @@ export const dueDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const coupon = input({
   label: "Coupon",
   type: "string",
@@ -41,7 +38,6 @@ export const coupon = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const discount = input({
   label: "Discount",
   type: "string",

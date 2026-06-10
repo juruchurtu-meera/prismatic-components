@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput, filterIdInput } from "./common";
 import { cleanString } from "../util";
-
 const type = input({
   label: "Type",
   type: "string",
@@ -18,17 +17,16 @@ const type = input({
   example: "deals",
   placeholder: "Select filter type",
 });
-
 const conditions = input({
   label: "Conditions",
   type: "string",
   required: true,
   clean: util.types.toString,
-  comments: "The filter conditions, expressed as a JSON object string. Format: JSON.",
+  comments:
+    "The filter conditions, expressed as a JSON object string. Format: JSON.",
   example: '{"glue":"and","conditions":[]}',
   placeholder: "Enter conditions JSON",
 });
-
 const name = input({
   label: "Name",
   type: "string",
@@ -38,17 +36,14 @@ const name = input({
   example: "Open Deals",
   placeholder: "Enter filter name",
 });
-
 export const getFiltersInputs = {
   connection: connectionInput,
   type,
 };
-
 export const getFilterInputs = {
   connection: connectionInput,
   id: filterIdInput,
 };
-
 export const updateFilterInputs = {
   connection: connectionInput,
   id: filterIdInput,

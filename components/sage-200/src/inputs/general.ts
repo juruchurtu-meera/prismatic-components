@@ -1,12 +1,10 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanDate, cleanOptionalBoolean, cleanStringInput } from "../util";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const site = input({
   label: "Site",
   type: "string",
@@ -27,17 +25,16 @@ export const company = input({
   placeholder: "14123",
   clean: cleanStringInput,
 });
-
 export const filterDataAfterDate = input({
   label: "Filter Data After Date",
   type: "string",
-  comments: "Filter data to only include items that have been updated after this date.",
+  comments:
+    "Filter data to only include items that have been updated after this date.",
   required: false,
   example: "2021-01-01T00:00:00Z",
   placeholder: "2021-01-01T00:00:00Z",
   clean: cleanDate,
 });
-
 export const optionalUpdateBoolean = input({
   label: "",
   type: "string",

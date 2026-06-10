@@ -3,11 +3,6 @@ import { createClient } from "../../client";
 import { webhookExample } from "../../examplePayloads";
 import { createWebhookInputs } from "../../inputs";
 import type { WebhooksIntegration } from "../../types";
-
-
-
-
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
@@ -27,7 +22,6 @@ export const createWebhook = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const response = await client.post<WebhooksIntegration>(
       "/api/v1/integration/webhooks/configuration/webhooks",
       {
@@ -38,7 +32,6 @@ export const createWebhook = action({
         payload: webhookPayload,
       },
     );
-
     return { data: response.data };
   },
   examplePayload: webhookExample,

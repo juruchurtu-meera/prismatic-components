@@ -15,11 +15,11 @@ import {
   transferGroup,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updateCharge = action({
   display: {
     label: "Update Charge",
-    description: "Update a specified charge by setting the values of the parameters passed.",
+    description:
+      "Update a specified charge by setting the values of the parameters passed.",
   },
   perform: async (
     context,
@@ -60,7 +60,8 @@ export const updateCharge = action({
     customerId: {
       ...customerId,
       label: "Customer",
-      comments: "The ID of an existing customer that will be associated with this request.",
+      comments:
+        "The ID of an existing customer that will be associated with this request.",
       clean: util.types.toString,
     },
     description: {

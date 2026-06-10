@@ -4,7 +4,6 @@ import { getCheckoutSession } from "./get";
 import { listCheckoutSessionLineItems } from "./listLineItems";
 import { listCheckoutSessions } from "./list";
 import { updateCheckoutSession } from "./update";
-
 export default {
   createCheckoutSession,
   expireCheckoutSession,

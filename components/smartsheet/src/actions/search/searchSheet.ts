@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { searchSheetExamplePayload } from "../../examplePayloads";
 import { searchSheetInputs } from "../../inputs";
-
 export const searchSheet = action({
   display: {
     label: "Search Sheets",

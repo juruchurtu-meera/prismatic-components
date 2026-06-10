@@ -13,7 +13,6 @@ import {
   usageType,
   workspaceId,
 } from "./common";
-
 export const createAssetInputs = {
   connection,
   name,

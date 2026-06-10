@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getAccountInformationResponse = {
   availableLanguages: [
     "nl_NL",
@@ -21,7 +14,6 @@ export const getAccountInformationResponse = {
   timeZone: "Europe/Amsterdam",
   isOpenImageBank: false,
 };
-
 export const listBrandsResponse = [
   {
     image:
@@ -53,7 +45,6 @@ export const listBrandsResponse = [
     subBrands: [],
   },
 ];
-
 export const listMetapropertiesResponse = {
   Colours: {
     isMultiselect: 0,

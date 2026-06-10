@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString, toStringList } from "../util";
 import { baseIdInput, connectionInput, tableName } from "./common";
-
 const dataTypes = input({
   label: "Data Types",
   type: "string",
@@ -16,7 +15,6 @@ const dataTypes = input({
   comments: "Types of changes to monitor.",
   clean: toStringList,
 });
-
 const recordChangeScope = input({
   label: "Record Change Scope",
   type: "string",
@@ -27,7 +25,6 @@ const recordChangeScope = input({
   placeholder: "Enter table ID or view ID",
   clean: toOptionalString,
 });
-
 const pollView = input({
   label: "View",
   type: "string",
@@ -38,7 +35,6 @@ const pollView = input({
     "Optional view (name or ID) to scope the poll to. When set, only records in that view are considered.",
   clean: toOptionalString,
 });
-
 const additionalFilter = input({
   label: "Additional Filter Formula",
   type: "string",
@@ -49,7 +45,6 @@ const additionalFilter = input({
     "Optional Airtable formula combined (AND) with the modification-time filter applied by the trigger.",
   clean: toOptionalString,
 });
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -59,7 +54,6 @@ const showNewRecords = input({
     "When true, records with a `createdTime` after the last poll are included in the trigger results.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -69,9 +63,7 @@ const showUpdatedRecords = input({
     "When true, records modified after the last poll (but created earlier) are included in the trigger results.",
   clean: util.types.toBool,
 });
-
 export const webhookInputs = {};
-
 export const baseChangesInputs = {
   airtableConnection: connectionInput,
   baseId: {
@@ -82,7 +74,6 @@ export const baseChangesInputs = {
   dataTypes,
   recordChangeScope,
 };
-
 export const pollChangesInputs = {
   airtableConnection: connectionInput,
   baseId: {

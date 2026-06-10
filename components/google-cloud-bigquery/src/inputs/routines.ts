@@ -12,7 +12,6 @@ import {
   pageToken,
   projectId,
 } from "./common";
-
 export const routineId = input({
   label: "Routine ID",
   type: "string",
@@ -23,7 +22,6 @@ export const routineId = input({
   required: true,
   dataSource: "selectRoutine",
 });
-
 export const readMask = input({
   label: "Read Mask",
   type: "string",
@@ -34,7 +32,6 @@ export const readMask = input({
   placeholder: "Enter read mask",
   required: false,
 });
-
 export const routineType = input({
   label: "Routine Type",
   type: "string",
@@ -45,7 +42,6 @@ export const routineType = input({
   placeholder: "Enter routine type",
   required: true,
 });
-
 export const definitionBody = input({
   label: "Definition Body",
   type: "string",
@@ -56,7 +52,6 @@ export const definitionBody = input({
   placeholder: "Enter definition body",
   required: true,
 });
-
 export const determinismLevel = input({
   label: "Determinism Level",
   type: "string",
@@ -67,7 +62,6 @@ export const determinismLevel = input({
   placeholder: "Enter determinism level",
   required: false,
 });
-
 export const language = input({
   label: "Language",
   type: "string",
@@ -78,7 +72,6 @@ export const language = input({
   placeholder: "Enter language",
   required: false,
 });
-
 export const importedLibraries = input({
   label: "Imported Libraries",
   type: "string",
@@ -90,7 +83,6 @@ export const importedLibraries = input({
   placeholder: "Enter library paths",
   clean: valueListInputClean,
 });
-
 export const routineReference = input({
   label: "Routine Reference",
   type: "code",
@@ -104,7 +96,6 @@ export const routineReference = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const argument = input({
   label: "Arguments",
   type: "code",
@@ -115,7 +106,6 @@ export const argument = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const returnType = input({
   label: "Return Type",
   type: "code",
@@ -127,7 +117,6 @@ export const returnType = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const returnTableType = input({
   label: "Return Table Type",
   type: "code",
@@ -139,7 +128,6 @@ export const returnTableType = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const remoteFunctionOptions = input({
   label: "Remote Function Options",
   type: "code",
@@ -158,7 +146,6 @@ export const remoteFunctionOptions = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const sparkOptions = input({
   label: "Spark Options",
   type: "code",
@@ -183,8 +170,6 @@ export const sparkOptions = input({
   clean: jsonInputClean,
   required: false,
 });
-
-
 export const createRoutineInputs = {
   connectionInput,
   datasetId,
@@ -208,14 +193,12 @@ export const createRoutineInputs = {
   remoteFunctionOptions,
   sparkOptions,
 };
-
 export const deleteRoutineInputs = {
   connectionInput,
   datasetId,
   projectId,
   routineId,
 };
-
 export const getRoutineInputs = {
   connectionInput,
   datasetId,
@@ -223,7 +206,6 @@ export const getRoutineInputs = {
   readMask,
   routineId,
 };
-
 export const listRoutinesInputs = {
   connectionInput,
   projectId,
@@ -233,7 +215,6 @@ export const listRoutinesInputs = {
   maxResults,
   readMask,
 };
-
 export const updateRoutineInputs = {
   connectionInput,
   datasetId,

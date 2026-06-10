@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { retrieveTagExamplePayload } from "../../examplePayloads";
 import { retrieveTagInputs } from "../../inputs";
-
 export const retrieveTag = action({
   display: {
     label: "Retrieve Tag",

@@ -3,10 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import updateDetectedAppInputs from "../../../inputs/apps/detected/updateDetectedAppInputs";
 import { updateDetectedAppExamplePayload } from "../../../examplePayloads";
-
-
-
-
 export const updateDetectedApp = action({
   display: {
     label: "Update Detected App",

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCommaSeparatedString, humanizeEnumLabel } from "./utils";
 import { WebhookTriggerType } from "./interfaces";
-
 export const path = input({
   label: "Path",
   placeholder: "Enter file or folder path",
@@ -11,7 +10,6 @@ export const path = input({
     "The full path to the file or folder. Must include a leading forward slash (/).",
   example: "/Marketing/Documents/Q4_Report.pdf",
 });
-
 export const fromPath = input({
   label: "From Path",
   placeholder: "Enter source path",
@@ -21,7 +19,6 @@ export const fromPath = input({
     "The full path to the source file or folder. Must include a leading forward slash (/).",
   example: "/Marketing/Documents/OldReport.pdf",
 });
-
 export const toPath = input({
   label: "To Path",
   placeholder: "Enter destination path",
@@ -31,7 +28,6 @@ export const toPath = input({
     "The full path to the destination location including the new filename. Must include a leading forward slash (/).",
   example: "/Archive/2024/OldReport.pdf",
 });
-
 export const fileContents = input({
   label: "File Contents",
   placeholder: "Select file data from previous step",
@@ -41,7 +37,6 @@ export const fileContents = input({
     "The file content to upload. Accepts text, binary data (images, PDFs), or output from a previous step.",
   example: "My File Contents",
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -51,7 +46,6 @@ export const limit = input({
   example: "100",
   clean: util.types.toNumber,
 });
-
 export const marker = input({
   label: "Marker",
   type: "string",
@@ -62,7 +56,6 @@ export const marker = input({
   example: "lslTXFcbLQKkb0vP9Kgh5hy0Y0OnC7Z9ZPHPwPmMnxSk3eiDRMkct7D8E",
   clean: util.types.toString,
 });
-
 export const offset = input({
   label: "Offset",
   type: "string",
@@ -72,7 +65,6 @@ export const offset = input({
   example: "0",
   clean: util.types.toNumber,
 });
-
 export const address = input({
   label: "Webhook URL",
   placeholder: "Enter webhook URL",
@@ -83,7 +75,6 @@ export const address = input({
   example: "https://hooks.example.com/box/abc123",
   clean: util.types.toString,
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   placeholder: "Enter webhook ID",
@@ -94,7 +85,6 @@ export const webhookId = input({
   dataSource: "selectWebhook",
   clean: util.types.toString,
 });
-
 export const targetId = input({
   label: "Target ID",
   placeholder: "Enter target file or folder ID",
@@ -106,7 +96,6 @@ export const targetId = input({
   dataSource: "selectContent",
   clean: util.types.toString,
 });
-
 export const targetType = input({
   label: "Target Type",
   placeholder: "Select target type",
@@ -126,7 +115,6 @@ export const targetType = input({
     throw new Error(`Invalid target type specified: ${value}`);
   },
 });
-
 export const triggerTypes = input({
   label: "Trigger Type",
   placeholder: "Select event types",
@@ -142,7 +130,6 @@ export const triggerTypes = input({
   clean: (values) =>
     ((values as string[]) || []).map((value) => util.types.toString(value)),
 });
-
 export const signatureKey = input({
   label: "Signature Key",
   placeholder: "Enter signature key",
@@ -153,14 +140,12 @@ export const signatureKey = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Box connection to use.",
 });
-
 export const sharedLinkInput = input({
   label: "Shared Link",
   placeholder: "Enter shared link URL",
@@ -170,7 +155,6 @@ export const sharedLinkInput = input({
   example: "https://app.box.com/s/abcd1234efgh5678ijkl",
   clean: util.types.toString,
 });
-
 export const fileIdInput = input({
   label: "File ID",
   placeholder: "Enter file ID",
@@ -181,7 +165,6 @@ export const fileIdInput = input({
   dataSource: "selectContent",
   clean: util.types.toString,
 });
-
 export const sharedLinkPasswordInput = input({
   label: "Shared Link Password",
   placeholder: "Enter shared link password",
@@ -190,7 +173,6 @@ export const sharedLinkPasswordInput = input({
   comments: "The password for the shared link, if one is set.",
   clean: util.types.toString,
 });
-
 export const fieldsInput = input({
   label: "Fields",
   placeholder: "Enter comma-separated field names",
@@ -201,7 +183,6 @@ export const fieldsInput = input({
   example: "type,id,name,size,created_at",
   clean: util.types.toString,
 });
-
 export const sharedLinkAccessInput = input({
   label: "Shared Link Access",
   placeholder: "Enter access level",
@@ -212,7 +193,6 @@ export const sharedLinkAccessInput = input({
   example: "open",
   clean: util.types.toString,
 });
-
 export const sharedLinkPermissionsInput = input({
   label: "Shared Link Permissions",
   type: "code",
@@ -231,7 +211,6 @@ export const sharedLinkPermissionsInput = input({
     "The permissions for the shared link (file). Specify which actions are allowed. See [Box Shared Link Permissions](https://developer.box.com/reference/put-files-id/#request-body) for details.",
   clean: util.types.toObject,
 });
-
 export const sharedLinkPermissionsFolderInput = input({
   label: "Shared Link Permissions Folder",
   type: "code",
@@ -253,7 +232,6 @@ export const sharedLinkPermissionsFolderInput = input({
       : permissionsInput;
   },
 });
-
 export const sharedLinkUnsharedAtInput = input({
   label: "Shared Link Unshared At",
   placeholder: "Enter expiration timestamp (ISO 8601)",
@@ -264,7 +242,6 @@ export const sharedLinkUnsharedAtInput = input({
   example: "2026-12-31T23:59:59Z",
   clean: util.types.toString,
 });
-
 export const sharedLinkVanityNameInput = input({
   label: "Shared Link Vanity Name",
   placeholder: "Enter custom vanity name",
@@ -275,7 +252,6 @@ export const sharedLinkVanityNameInput = input({
   example: "q4-financial-report",
   clean: util.types.toString,
 });
-
 export const folderIdInput = input({
   label: "Folder ID",
   placeholder: "Enter folder ID",
@@ -286,7 +262,6 @@ export const folderIdInput = input({
   dataSource: "selectContent",
   clean: util.types.toString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -294,7 +269,6 @@ export const fetchAll = input({
   comments: "When true, retrieves all results using automatic pagination.",
   clean: util.types.toBool,
 });
-
 export const fields = input({
   label: "Fields/Metadata",
   type: "string",
@@ -305,7 +279,6 @@ export const fields = input({
   example: "content_created_at,name,size,modified_at",
   clean: cleanCommaSeparatedString,
 });
-
 export const contentType = input({
   label: "Content Type",
   placeholder: "Select content type",

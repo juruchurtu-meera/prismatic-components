@@ -4,7 +4,6 @@ import { listModelsExamplePayload } from "../examplePayloads/listModelsExamplePa
 import { listModelsInputs } from "../inputs/listModelsInputs";
 import type { Model } from "../interfaces/Model";
 import { getPaginatedResponse } from "../utils";
-
 export const listModels = action({
   display: {
     label: "List Models",

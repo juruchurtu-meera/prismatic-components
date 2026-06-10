@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import { updateServiceExample } from "./examples";
-
 export const serviceId = input({
   label: "Service ID",
   type: "string",
@@ -11,7 +10,6 @@ export const serviceId = input({
   clean: util.types.toString,
   comments: "The unique identifier for the service.",
 });
-
 export const serviceObject = input({
   label: "Service",
   type: "code",
@@ -20,7 +18,6 @@ export const serviceObject = input({
   comments: "The JSON object body describing the service to create.",
   clean: util.types.toObject,
 });
-
 export const updateServiceObject = input({
   label: "Service",
   type: "code",
@@ -30,8 +27,6 @@ export const updateServiceObject = input({
   example: updateServiceExample,
   clean: util.types.toObject,
 });
-
-
 export const servicesSortBy = input({
   label: "Sort By",
   type: "string",
@@ -44,7 +39,6 @@ export const servicesSortBy = input({
   clean: toOptionalString,
   comments: "The field used to sort the results.",
 });
-
 export const servicesInclude = input({
   label: "Include",
   type: "string",
@@ -61,7 +55,6 @@ export const servicesInclude = input({
   clean: toOptionalString,
   comments: "The additional details to include in the response.",
 });
-
 export const servicesName = input({
   label: "Name",
   type: "string",

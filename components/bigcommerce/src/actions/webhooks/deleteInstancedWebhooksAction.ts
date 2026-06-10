@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import { deleteWebhookAction } from "./deleteWebhookAction";
 import { getWebhooksAction } from "./getWebhooksAction";
-
 export const deleteInstancedWebhooksAction = action({
   display: {
     label: "Delete Instanced Webhooks",
@@ -32,7 +31,6 @@ export const deleteInstancedWebhooksAction = action({
       destination,
     },
   ) => {
-    
     const allWebhooks = await getWebhooksAction.perform(context, {
       bigCommerceConnection,
       storeHash,
@@ -42,14 +40,10 @@ export const deleteInstancedWebhooksAction = action({
       scope,
       destination,
     });
-
-    
     const instancedWebhooks = allWebhooks.data.filter(
       (webhook: { destination: unknown[] }) =>
         webhook.destination.includes(instanceURLPattern),
     );
-
-    
     for (const webhook of instancedWebhooks) {
       await deleteWebhookAction.perform(context, {
         bigCommerceConnection,
@@ -57,14 +51,12 @@ export const deleteInstancedWebhooksAction = action({
         webhook_id: webhook.id,
       });
     }
-
     return {
       data: {
         message: `${instancedWebhooks.length} webhooks deleted.`,
       },
     };
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

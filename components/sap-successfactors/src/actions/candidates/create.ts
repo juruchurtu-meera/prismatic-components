@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createCandidateExamplePayload } from "../../examplePayloads/candidate";
 import { createCandidateInputs } from "../../inputs/candidates";
 import { cleanResultFromResponse } from "../../util";
-
 export const createCandidate = action({
   display: {
     label: "Create Candidate",
@@ -12,7 +11,14 @@ export const createCandidate = action({
   inputs: createCandidateInputs,
   perform: async (
     context,
-    { connection, additionalInputs, country, firstName, lastName, primaryEmail },
+    {
+      connection,
+      additionalInputs,
+      country,
+      firstName,
+      lastName,
+      primaryEmail,
+    },
   ) => {
     const client = await createClient(connection, context.debug.enabled);
     const { data } = await client.post(`/Candidate`, {

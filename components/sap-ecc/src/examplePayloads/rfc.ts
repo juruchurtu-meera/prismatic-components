@@ -7,7 +7,6 @@ export const readTableExamplePayload = {
     rowCount: 2,
   },
 };
-
 export const callBapiExamplePayload = {
   data: {
     bapiResponse: { RETURN: { TYPE: "", MESSAGE: "" } },

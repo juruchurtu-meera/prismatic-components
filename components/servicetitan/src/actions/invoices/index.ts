@@ -4,7 +4,6 @@ import { listInvoices } from "./list";
 import { updateInvoice } from "./update";
 import { updateInvoiceCustomFields } from "./updateCustomFields";
 import { updateInvoiceItems } from "./updateItems";
-
 export default {
   listInvoices,
   createInvoices,

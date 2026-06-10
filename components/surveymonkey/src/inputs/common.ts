@@ -1,34 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The SurveyMonkey connection to use.",
 });
-
-
-
-
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -38,7 +15,6 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results using pagination. The API returns up to 100 results per page.",
   clean: util.types.toBool,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -48,7 +24,6 @@ export const page = input({
   placeholder: "Enter page number",
   clean: util.types.toNumber,
 });
-
 export const perPage = input({
   label: "Per Page",
   type: "string",
@@ -58,7 +33,6 @@ export const perPage = input({
   placeholder: "Enter results per page",
   clean: util.types.toNumber,
 });
-
 export const extraBody = input({
   label: "Extra Body Fields",
   type: "code",
@@ -76,22 +50,10 @@ export const extraBody = input({
   ),
   clean: util.types.toObject,
 });
-
-
-
-
-
 export const getCurrentUserInputs = {
   connection: connectionInput,
 };
-
-
-
-
-
-
 const { debugRequest, ...httpRawRequestInputs } = httpClientInputs;
-
 export const rawRequestInputs = {
   connection: connectionInput,
   ...httpRawRequestInputs,

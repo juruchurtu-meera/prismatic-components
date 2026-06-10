@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import { updateSoftwareUpdateStatusSummaryExamplePayload } from "../../../examplePayloads";
 import { updateSoftwareUpdateStatusSummaryInputs } from "../../../inputs/devices/softwareUpdatesStatusSummary/update";
-
 export const updateSoftwareUpdateStatusSummary = action({
   display: {
     label: "Update Software Update Status Summary",
@@ -15,7 +14,6 @@ export const updateSoftwareUpdateStatusSummary = action({
       "/deviceManagement/softwareUpdateStatusSummary",
       body,
     );
-
     return {
       data,
     };

@@ -22,7 +22,6 @@ import {
   title,
   workspaceId,
 } from "../../inputs";
-
 export const createNewCall = action({
   display: {
     label: "Create New Call",
@@ -31,7 +30,6 @@ export const createNewCall = action({
   },
   perform: async (context, { connection, ...params }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/v2/calls/`, params);
     return { data };
   },

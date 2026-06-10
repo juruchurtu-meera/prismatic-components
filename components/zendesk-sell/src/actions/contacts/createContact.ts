@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { createContactExamplePayload } from "../../examplePayloads";
 import { createContactInputs } from "../../inputs";
-
 export const createContact = action({
   display: {
     label: "Create Contact",
@@ -84,7 +83,6 @@ export const createContact = action({
         ...(tags.length && { tags }),
         ...(customFields.length && { custom_fields: customFieldsObject }),
       };
-
       const { data } = await client.post(
         "/contacts",
         { data: body },
@@ -95,7 +93,6 @@ export const createContact = action({
           },
         },
       );
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

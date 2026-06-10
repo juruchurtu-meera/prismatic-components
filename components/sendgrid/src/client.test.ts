@@ -1,7 +1,6 @@
 import { createAuthorizedClient } from "./client";
 import { createConnection } from "@prismatic-io/spectral/dist/testing";
 import { sendGridConnection } from "./connections";
-
 describe("createAuthorizedClient", () => {
   test("returns client with valid connection", () => {
     const credential = createConnection(sendGridConnection, {
@@ -9,7 +8,6 @@ describe("createAuthorizedClient", () => {
     });
     expect(createAuthorizedClient(credential)).toBeDefined();
   });
-
   test("throws error for unknown connection types", () => {
     expect(() =>
       createAuthorizedClient(

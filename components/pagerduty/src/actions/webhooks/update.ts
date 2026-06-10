@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ENDPOINTS } from "../../constants";
 import { updateWebhookExamplePayload } from "../../examplePayloads";
 import { connectionInput, updateWebhookObject, webhookId } from "../../inputs";
-
 export const updateWebhookSubscription = action({
   display: {
     label: "Update Webhook Subscription",

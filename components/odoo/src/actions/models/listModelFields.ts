@@ -3,7 +3,6 @@ import { createOdooClient } from "../../client";
 import { listModelFieldsExamplePayload } from "../../examplePayloads";
 import { listModelFieldsInputs } from "../../inputs";
 import { createOdooAwaitClient, isLegacyConnection } from "../../legacy";
-
 export const listModelFields = action({
   display: {
     label: "List Model Fields",

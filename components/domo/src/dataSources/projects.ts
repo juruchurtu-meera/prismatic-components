@@ -2,7 +2,6 @@ import { dataSource, input } from "@prismatic-io/spectral";
 import type { ListProjectListTasksQueryParams } from "../actions/types/ListProjectListTasksQueryParams";
 import { getDomoClient } from "../client";
 import { connection, limit, listId, offset, projectId } from "../inputs";
-
 const projects = dataSource({
   display: {
     label: "Select Project",
@@ -25,7 +24,6 @@ const projects = dataSource({
     connection,
   },
 });
-
 const projectLists = dataSource({
   display: {
     label: "Select Project List",
@@ -52,7 +50,6 @@ const projectLists = dataSource({
     },
   },
 });
-
 const selectTask = dataSource({
   display: {
     label: "Select Task",
@@ -104,5 +101,4 @@ const selectTask = dataSource({
     }),
   },
 });
-
 export default { projects, projectLists, selectTask };

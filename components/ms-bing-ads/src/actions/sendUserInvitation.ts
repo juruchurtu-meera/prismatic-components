@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   accountIdsInput,
   connectionInput,
@@ -13,13 +12,10 @@ import {
 import { getClient, sendAsync } from "../client";
 import { BING_API } from "../util";
 import { sendUserInvitationExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "SendUserInvitation";
-
 export interface SendUserInvitationResponse {
   UserInvitationId: number;
 }
-
 export const sendUserInvitation = action({
   display: {
     label: "Send User Invitation",
@@ -43,7 +39,6 @@ export const sendUserInvitation = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<SendUserInvitationResponse>({
       debug,
       args: {
@@ -69,7 +64,6 @@ export const sendUserInvitation = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data: response,
     };

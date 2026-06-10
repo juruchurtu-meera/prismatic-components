@@ -14,7 +14,6 @@ export const retrieveTagExamplePayload = {
     url: "https://your-company.canny.io/admin/board/feature-requests?tag=example-tag-name",
   },
 };
-
 export const listTagsExamplePayload = {
   data: {
     hasMore: false,
@@ -36,7 +35,6 @@ export const listTagsExamplePayload = {
     ],
   },
 };
-
 export const createTagExamplePayload = {
   data: {
     id: "553c3ef8b8cdcd1501ba12bb",

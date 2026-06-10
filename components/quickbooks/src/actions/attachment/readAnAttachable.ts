@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { attachableId, connectionInput, minorVersion } from "../../inputs";
-
 export const readAnAttachable = action({
   display: {
     label: "Read Attachable",

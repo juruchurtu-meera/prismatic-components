@@ -5,7 +5,6 @@ import { createProductInputs as inputs } from "../../../inputsGql";
 import type { Product } from "../../interfaces/Product";
 import { productMapper } from "../mappers/productMapper";
 import createProductQuery from "../queries/products/CreateProduct.gql";
-
 export const createProductGql = action({
   display: {
     label: "Create Product",
@@ -26,8 +25,11 @@ export const createProductGql = action({
       additionalFields,
     },
   ) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const media = imageUrl
       ? [
           {
@@ -37,23 +39,24 @@ export const createProductGql = action({
           },
         ]
       : undefined;
-
-    const { productCreate }: { productCreate: { product: Product } } = await client.request(
-      createProductQuery,
-      {
-        input: {
-          title,
-          descriptionHtml,
-          vendor,
-          productType,
-          tags,
-          status: productStatus,
-          ...additionalFields,
-        },
-        media,
+    const {
+      productCreate,
+    }: {
+      productCreate: {
+        product: Product;
+      };
+    } = await client.request(createProductQuery, {
+      input: {
+        title,
+        descriptionHtml,
+        vendor,
+        productType,
+        tags,
+        status: productStatus,
+        ...additionalFields,
       },
-    );
-
+      media,
+    });
     return {
       data: {
         product: productMapper(productCreate.product),

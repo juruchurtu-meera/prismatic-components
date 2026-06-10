@@ -20,13 +20,11 @@ import {
   spaceName,
   useStartDate,
 } from "./common";
-
 const teamIdForCreate = getTeamId(true);
 const spaceIdForDelete = getSpaceId(true);
 const spaceIdForGet = getSpaceId(true);
 const teamIdForList = getTeamId(true);
 const spaceIdForUpdate = getSpaceId(true);
-
 export const createSpaceInputs = {
   clickUpConnection: connectionInput,
   teamId: teamIdForCreate,
@@ -45,22 +43,18 @@ export const createSpaceInputs = {
   enableDependencyWarning,
   enablePortfolios,
 };
-
 export const deleteSpaceInputs = {
   clickUpConnection: connectionInput,
   spaceId: spaceIdForDelete,
 };
-
 export const getSpaceInputs = {
   clickUpConnection: connectionInput,
   spaceId: spaceIdForGet,
 };
-
 export const listSpacesInputs = {
   clickUpConnection: connectionInput,
   teamId: teamIdForList,
 };
-
 export const updateSpaceInputs = {
   clickUpConnection: connectionInput,
   spaceId: spaceIdForUpdate,

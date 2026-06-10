@@ -4,7 +4,6 @@ import { deleteMetafieldExamplePayload as examplePayload } from "../../../exampl
 import { deleteMetafieldInputs as inputs } from "../../../inputsGql";
 import type { DeletedMetafield } from "../../interfaces/DeletedMetafield";
 import deleteMetafieldQuery from "../queries/metafields/DeleteMetafield.gql";
-
 export const deleteMetafieldGql = action({
   display: {
     label: "Delete Metafield",
@@ -12,10 +11,15 @@ export const deleteMetafieldGql = action({
       "Deletes a resource metafield. Note: This action currently utilizes an unstable version of the Shopify Admin GraphQL API and is subject to change.",
   },
   perform: async (context, { shopifyConnection, key, ownerId, namespace }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, "unstable", context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      "unstable",
+      context.debug.enabled,
+    );
     const data: {
-      metafieldsDelete: { deletedMetafields: DeletedMetafield[] };
+      metafieldsDelete: {
+        deletedMetafields: DeletedMetafield[];
+      };
     } = await client.request(deleteMetafieldQuery, {
       metafields: [
         {

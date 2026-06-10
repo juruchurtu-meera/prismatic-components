@@ -15,7 +15,6 @@ import { rawHttpClient } from "../../auth";
 import type { Post } from "../../types";
 import { createPostPayload } from "../../examplePayloads";
 import { convertBooleanInputIntoUpdateInput } from "../../util";
-
 export const updatePost = action({
   display: {
     label: "Update Post",
@@ -50,9 +49,9 @@ export const updatePost = action({
         closed: isPostClosed,
       },
     };
-
-    const { data } = await client.put<{ post: Post }>(url, payload);
-
+    const { data } = await client.put<{
+      post: Post;
+    }>(url, payload);
     return {
       data,
     };

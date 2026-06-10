@@ -5,9 +5,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -29,9 +27,7 @@ export const rawRequest = action({
       "base64",
     );
     const { data } = await sendRawRequest(
-      `https://api.bamboohr.com/api/gateway.php/${util.types.toString(
-        connection.fields.companyDomain,
-      )}/`,
+      `https://api.bamboohr.com/api/gateway.php/${util.types.toString(connection.fields.companyDomain)}/`,
       { ...rawRequestInputs, debugRequest: context.debug.enabled },
       {
         Authorization: `Basic ${encodedAuth}`,

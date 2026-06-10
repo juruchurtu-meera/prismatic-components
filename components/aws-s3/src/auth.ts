@@ -1,16 +1,18 @@
 import { S3Client } from "@aws-sdk/client-s3";
 import { SNSClient } from "@aws-sdk/client-sns";
-import { type ActionLogger, type Connection, ConnectionError } from "@prismatic-io/spectral";
+import {
+  type ActionLogger,
+  type Connection,
+  ConnectionError,
+} from "@prismatic-io/spectral";
 import { type ClientProps, getClientParams } from "aws-utils";
 import { accessKeySecretPair } from "./connections";
-
 const throwConnectionError = (connection: Connection, error: Error): void => {
   throw new ConnectionError(
     connection,
     `Invalid AWS Credentials have been configured. This is sometimes caused by missing characters from a copy/paste. Original AWS error message: ${error.message}`,
   );
 };
-
 export const createS3Client = async ({
   awsRegion,
   awsConnection,
@@ -19,7 +21,10 @@ export const createS3Client = async ({
   dynamicSessionToken,
   debug,
   logger,
-}: ClientProps & { debug?: boolean; logger?: ActionLogger }): Promise<S3Client> => {
+}: ClientProps & {
+  debug?: boolean;
+  logger?: ActionLogger;
+}): Promise<S3Client> => {
   const { region, credentials } = await getClientParams({
     awsRegion,
     awsConnection,
@@ -28,7 +33,6 @@ export const createS3Client = async ({
     dynamicSecretAccessKey,
     dynamicSessionToken,
   });
-
   try {
     return new S3Client({
       region,
@@ -39,7 +43,6 @@ export const createS3Client = async ({
     throwConnectionError(awsConnection, error as Error);
   }
 };
-
 export const createSNSClient = async ({
   awsRegion,
   awsConnection,
@@ -48,7 +51,10 @@ export const createSNSClient = async ({
   dynamicSessionToken,
   logger,
   debug,
-}: ClientProps & { debug?: boolean; logger?: ActionLogger }): Promise<SNSClient> => {
+}: ClientProps & {
+  debug?: boolean;
+  logger?: ActionLogger;
+}): Promise<SNSClient> => {
   const { region, credentials } = await getClientParams({
     awsRegion,
     awsConnection,
@@ -57,7 +63,6 @@ export const createSNSClient = async ({
     dynamicSecretAccessKey,
     dynamicSessionToken,
   });
-
   try {
     return new SNSClient({
       region,
@@ -68,5 +73,4 @@ export const createSNSClient = async ({
     throwConnectionError(awsConnection, error as Error);
   }
 };
-
 export default { createS3Client, createSNSClient };

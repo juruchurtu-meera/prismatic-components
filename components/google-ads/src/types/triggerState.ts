@@ -1,6 +1,5 @@
 import type { BUDGET_SEVERITY } from "../constants";
 import type { CampaignQueryRow } from "./CampaignQueryRow";
-
 export interface PollingState {
   lastSyncDate: string;
   lastChangeTime?: string;
@@ -10,7 +9,6 @@ export interface PollingState {
   consecutiveErrors?: number;
   changeCount?: number;
 }
-
 export interface CampaignChange {
   changeType: string;
   campaignId: string;
@@ -20,7 +18,6 @@ export interface CampaignChange {
   newValue: CampaignQueryRow | string | null | undefined;
   changedAt: string;
 }
-
 export interface BudgetStatus {
   campaignId: string;
   campaignName: string;

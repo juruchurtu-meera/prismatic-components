@@ -4,7 +4,6 @@ import {
   createConnection as mySqlCreateConnection,
 } from "mysql2/promise";
 import { mySQLConnection } from "./connections";
-
 export const createClient = async (
   connection: Connection,
   debug: boolean,
@@ -15,7 +14,6 @@ export const createClient = async (
       `Unsupported authorization method ${connection.key}.`,
     );
   }
-
   return await mySqlCreateConnection({
     host: util.types.toString(connection.fields.host),
     port: util.types.toNumber(connection.fields.port),

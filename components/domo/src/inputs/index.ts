@@ -8,7 +8,6 @@ export {
   offset,
   dueDate,
 } from "./common";
-
 export {
   accountId,
   accountTypeId,
@@ -25,7 +24,6 @@ export {
   shareAccountInputs,
   updateAccountInputs,
 } from "./accounts";
-
 export {
   datasetId,
   rows,
@@ -46,7 +44,6 @@ export {
   queryDataSetInputs,
   updateDataSetInputs,
 } from "./datasets";
-
 export {
   groupId,
   updateGroupBody,
@@ -59,7 +56,6 @@ export {
   removeUserFromGroupInputs,
   updateGroupInputs,
 } from "./groups";
-
 export {
   pageId,
   parentId,
@@ -74,7 +70,6 @@ export {
   listPagesInputs,
   updatePageInputs,
 } from "./pages";
-
 export {
   projectId,
   listId,
@@ -117,7 +112,6 @@ export {
   deleteAttachmentInputs,
   downloadAttachmentInputs,
 } from "./projects";
-
 export {
   streamId,
   executionId,
@@ -141,7 +135,6 @@ export {
   updateStreamInputs,
   uploadDataPartInputs,
 } from "./streams";
-
 export {
   userId,
   email,
@@ -163,17 +156,10 @@ export {
   listUsersInputs,
   updateUserInputs,
 } from "./users";
-
 export {
   resourceType,
   showNewRecords,
   showUpdatedRecords,
   pollChangesTriggerInputs,
 } from "./triggers";
-
-export {
-  start,
-  end,
-  user,
-  getActivityLogEntriesInputs,
-} from "./misc";
+export { start, end, user, getActivityLogEntriesInputs } from "./misc";

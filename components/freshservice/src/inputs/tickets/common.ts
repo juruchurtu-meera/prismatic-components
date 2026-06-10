@@ -7,15 +7,12 @@ import {
   cleanStringInput,
 } from "../../util";
 import { additionalFields } from "../common";
-
 const ticketsDocumentationComments =
   "See [Freshservice API documentation](https://api.freshservice.com/#ticket_attributes) for more information.";
-
 export const ticketsAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${ticketsDocumentationComments}`,
 });
-
 const sourceOptions = [
   { label: "Email", value: "1" },
   { label: "Portal", value: "2" },
@@ -28,28 +25,24 @@ const sourceOptions = [
   { label: "Walkup", value: "9" },
   { label: "Slack", value: "10" },
 ];
-
 const statusOptions = [
   { label: "Open", value: "2" },
   { label: "Pending", value: "3" },
   { label: "Resolved", value: "4" },
   { label: "Closed", value: "5" },
 ];
-
 const priorityOptions = [
   { label: "Low", value: "1" },
   { label: "Medium", value: "2" },
   { label: "High", value: "3" },
   { label: "Urgent", value: "4" },
 ];
-
 const filterOptions = [
   { label: "New and My Open", value: "new_and_my_open" },
   { label: "Watching", value: "watching" },
   { label: "Spam", value: "spam" },
   { label: "Deleted", value: "deleted" },
 ];
-
 export const description = input({
   label: "Description",
   type: "code",
@@ -60,7 +53,6 @@ export const description = input({
   placeholder: "Enter ticket description in HTML",
   clean: util.types.toString,
 });
-
 export const subject = input({
   label: "Subject",
   type: "string",
@@ -70,7 +62,6 @@ export const subject = input({
   placeholder: "Enter ticket subject",
   clean: util.types.toString,
 });
-
 export const email = input({
   label: "Email",
   type: "string",
@@ -80,7 +71,6 @@ export const email = input({
   placeholder: "Enter requester email",
   clean: util.types.toString,
 });
-
 export const priority = input({
   label: "Priority",
   type: "string",
@@ -91,7 +81,6 @@ export const priority = input({
   placeholder: "Enter priority level",
   clean: util.types.toNumber,
 });
-
 export const status = input({
   label: "Status",
   type: "string",
@@ -102,7 +91,6 @@ export const status = input({
   placeholder: "Enter status",
   clean: util.types.toNumber,
 });
-
 export const ccEmails = input({
   label: "CC Emails",
   type: "code",
@@ -113,7 +101,6 @@ export const ccEmails = input({
   example: JSON.stringify(["ex1@email.com", "ex2@email.com"], null, 2),
   clean: (value) => cleanArrayCodeInput(value, "CC Emails"),
 });
-
 export const workspaceId = input({
   label: "Workspace ID",
   type: "string",
@@ -124,7 +111,6 @@ export const workspaceId = input({
   dataSource: "selectWorkspace",
   clean: cleanNumberInput,
 });
-
 export const filter = input({
   label: "Filter",
   type: "string",
@@ -135,7 +121,6 @@ export const filter = input({
   model: filterOptions,
   clean: cleanStringInput,
 });
-
 export const ticketId = input({
   label: "Ticket ID",
   type: "string",
@@ -146,7 +131,6 @@ export const ticketId = input({
   dataSource: "selectTicket",
   clean: util.types.toNumber,
 });
-
 export const source = input({
   label: "Source",
   type: "string",
@@ -157,7 +141,6 @@ export const source = input({
   placeholder: "Enter source",
   clean: util.types.toNumber,
 });
-
 export const bypassMandatory = input({
   label: "Bypass Mandatory",
   type: "string",
@@ -168,7 +151,6 @@ export const bypassMandatory = input({
   model: BOOLEAN_INPUT_MODEL,
   clean: cleanBooleanInput,
 });
-
 export const groupId = input({
   label: "Group ID",
   type: "string",
@@ -179,7 +161,6 @@ export const groupId = input({
   placeholder: "Enter group ID",
   clean: cleanNumberInput,
 });
-
 export const responderId = input({
   label: "Responder ID",
   type: "string",

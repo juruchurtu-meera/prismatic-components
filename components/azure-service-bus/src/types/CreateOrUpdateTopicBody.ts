@@ -1,5 +1,4 @@
 import type { EntityStatus } from "./EntityStatus";
-
 export interface CreateOrUpdateTopicBody {
   properties?: {
     autoDeleteOnIdle?: string;

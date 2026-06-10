@@ -7,7 +7,6 @@ import {
   siteId,
   surveyIds,
 } from "./common";
-
 export const getSitesInputs = {
   ssvConnection: connectionInput,
   fetchAll,
@@ -15,7 +14,6 @@ export const getSitesInputs = {
   pageSize,
   modifiedAfter,
 };
-
 export const getSitesAndFoldersInputs = {
   ssvConnection: connectionInput,
   fetchAll,
@@ -23,17 +21,14 @@ export const getSitesAndFoldersInputs = {
   pageSize,
   modifiedAfter,
 };
-
 export const getSiteInfoInputs = {
   ssvConnection: connectionInput,
   siteId,
 };
-
 export const getSiteContactsInputs = {
   ssvConnection: connectionInput,
   siteId,
 };
-
 export const getBillOfMaterialsDataInputs = {
   ssvConnection: connectionInput,
   siteId,
@@ -42,7 +37,6 @@ export const getBillOfMaterialsDataInputs = {
     required: false,
   },
 };
-
 export const listSiteSurveysInputs = {
   ssvConnection: connectionInput,
   siteId,
@@ -50,7 +44,6 @@ export const listSiteSurveysInputs = {
   pageNumber,
   pageSize,
 };
-
 export const listDeletedSitesInputs = {
   ssvConnection: connectionInput,
   fetchAll,

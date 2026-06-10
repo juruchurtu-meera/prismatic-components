@@ -3,7 +3,6 @@ import { connection } from "../inputs/shared";
 import { getApi } from "../api";
 import { KlaviyoApi } from "../enums/KlaviyoApi";
 import { fetchEvents } from "../utils";
-
 export const selectEvent = dataSource({
   display: {
     label: "Select Event",
@@ -21,9 +20,7 @@ export const selectEvent = dataSource({
       [],
       [],
     );
-
     const includedData: Record<string, string> = {};
-
     if (included && included.length > 0) {
       included.forEach((item) => {
         if (item.type === "metric") {
@@ -36,7 +33,6 @@ export const selectEvent = dataSource({
     } else {
       throw new Error("No included data found");
     }
-
     const objects = data.map<Element>((event) => {
       const label = includedData[event.relationships?.metric?.data?.id ?? ""];
       return {
@@ -44,7 +40,6 @@ export const selectEvent = dataSource({
         label,
       };
     });
-
     return { result: objects };
   },
 });

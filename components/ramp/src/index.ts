@@ -4,7 +4,6 @@ import actions from "./actions/index";
 import connections from "./connections";
 import dataSources from "./dataSources/index";
 import triggers from "./triggers";
-
 export default component({
   key: "ramp",
   public: true,

@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getPaymentByIdExamplePayload } from "../../examplePayloads";
 import { getPaymentByIdInputs } from "../../inputs";
-
 export const getPaymentById = action({
   display: {
     label: "Get Payment by ID",

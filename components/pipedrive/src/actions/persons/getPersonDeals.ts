@@ -10,14 +10,20 @@ import {
 } from "../../inputs";
 import { cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getPersonDeals = action({
   display: {
     label: "Get Person Deals",
     description: "Lists deals associated with a person.",
   },
-  perform: async (context, { connection, id, limit, status, sortBy, sortDirection, cursor }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, id, limit, status, sortBy, sortDirection, cursor },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/deals", {
       params: {
         limit,

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { JOURNEY_CONTACT_EXIT_PATH } from "../../constants";
 import { exitContactFromJourneyExamplePayload } from "../../examplePayloads";
 import { exitContactFromJourneyInputs } from "../../inputs";
-
 export const exitContactFromJourney = action({
   examplePayload: exitContactFromJourneyExamplePayload,
   display: {
@@ -17,15 +16,12 @@ export const exitContactFromJourney = action({
     { connection, exitContactKey, exitDefinitionKey, exitVersions },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       ContactKey: exitContactKey,
       DefinitionKey: exitDefinitionKey,
       ...(exitVersions && { Versions: exitVersions }),
     };
-
     const { data } = await client.post(JOURNEY_CONTACT_EXIT_PATH, [body]);
-
     return { data };
   },
 });

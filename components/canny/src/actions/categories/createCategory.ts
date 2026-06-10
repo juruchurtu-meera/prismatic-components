@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createCategoryExamplePayload } from "../../examplePayloads";
 import { createCategoryInputs } from "../../inputs";
-
 export const createCategory = action({
   display: {
     label: "Create Category",

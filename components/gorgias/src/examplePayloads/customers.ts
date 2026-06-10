@@ -1,16 +1,12 @@
-
-
-
-
-
 import type {
   CreateCustomerResponse,
   GetCustomerResponse,
   ListCustomersResponse,
   UpdateCustomerResponse,
 } from "../interfaces/customers";
-
-export const createCustomerExamplePayload: { data: CreateCustomerResponse } = {
+export const createCustomerExamplePayload: {
+  data: CreateCustomerResponse;
+} = {
   data: {
     id: 3924,
     created_datetime: "2019-04-13T03:27:56.973873",
@@ -133,8 +129,9 @@ export const createCustomerExamplePayload: { data: CreateCustomerResponse } = {
     updated_datetime: "2019-09-25T06:18:22.839271",
   },
 };
-
-export const getCustomerExamplePayload: { data: GetCustomerResponse } = {
+export const getCustomerExamplePayload: {
+  data: GetCustomerResponse;
+} = {
   data: {
     id: 3924,
     channels: [
@@ -405,8 +402,9 @@ export const getCustomerExamplePayload: { data: GetCustomerResponse } = {
     },
   },
 };
-
-export const updateCustomerExamplePayload: { data: UpdateCustomerResponse } = {
+export const updateCustomerExamplePayload: {
+  data: UpdateCustomerResponse;
+} = {
   data: {
     id: 3924,
     created_datetime: "2019-04-13T03:27:56.973873",
@@ -529,8 +527,9 @@ export const updateCustomerExamplePayload: { data: UpdateCustomerResponse } = {
     updated_datetime: "2019-09-25T06:18:22.839271",
   },
 };
-
-export const listCustomersExamplePayload: { data: ListCustomersResponse } = {
+export const listCustomersExamplePayload: {
+  data: ListCustomersResponse;
+} = {
   data: {
     data: [
       {

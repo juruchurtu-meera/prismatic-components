@@ -17,7 +17,6 @@ import {
   type KeySchemaElement,
 } from "@aws-sdk/client-dynamodb";
 import { createTableExamplePayload } from "../examplePayloads";
-
 export const createTable = action({
   display: {
     label: "Create Table",

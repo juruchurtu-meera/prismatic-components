@@ -14,8 +14,6 @@ import { toInt } from "../utils/toInt";
 import { toStr } from "../utils/toStr";
 import { validateLimit } from "../utils/validateLimit";
 import { sharedInputs } from "./shared";
-
-
 const attachments = input({
   label: "Attachments",
   comments: "A list of files attached to the message.",
@@ -25,7 +23,6 @@ const attachments = input({
   example: JSON.stringify(ATTACHMENTS_EXAMPLE, null, 2),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Attachments"),
 });
-
 const body_html = input({
   label: "Body HTML",
   comments: "The full HTML version of the body of the message, if any.",
@@ -37,7 +34,6 @@ const body_html = input({
   example:
     "Hello,<br><br>        I can't place an order on your site, it says: I don't have enough credit.<br>        How can I add some credits?<br><br>        Cheers,<br>        John Doe        ",
 });
-
 const body_text = input({
   label: "Body Text",
   comments: "The full text version of the body of the message, if any.",
@@ -49,7 +45,6 @@ const body_text = input({
   example:
     "Hello,        I can't place an order on your site, it says: I don't have enough credit.        How can I add some credits?        Cheers,        John Doe        ",
 });
-
 const channel = input({
   label: "Channel",
   comments: "The channel where the message was sent.",
@@ -60,7 +55,6 @@ const channel = input({
   placeholder: "aircall",
   example: "aircall",
 });
-
 const created_datetime = input({
   label: "Created Date",
   comments: "When the message was created.",
@@ -70,7 +64,6 @@ const created_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const external_id = input({
   label: "External ID",
   comments:
@@ -81,7 +74,6 @@ const external_id = input({
   placeholder: "MSG-78545",
   example: "MSG-78545",
 });
-
 const failed_datetime = input({
   label: "Failed Date",
   comments: "When the message failed to be sent.",
@@ -91,7 +83,6 @@ const failed_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const from_agent = input({
   label: "From Agent",
   comments:
@@ -103,7 +94,6 @@ const from_agent = input({
   placeholder: "true",
   example: "true",
 });
-
 const message_id = input({
   label: "Message ID",
   comments:
@@ -114,7 +104,6 @@ const message_id = input({
   placeholder: "<123345676453.2445.234@web>",
   example: "<123345676453.2445.234@web>",
 });
-
 const receiver = input({
   label: "Receiver ID",
   comments:
@@ -125,7 +114,6 @@ const receiver = input({
   example: JSON.stringify(RECEIVER_EXAMPLE, null, 2),
   clean: (value: unknown) => cleanCodeInput(value, "Receiver"),
 });
-
 const sender = input({
   label: "Sender",
   comments: "The person who sent the message. It can be a user or a customer.",
@@ -135,7 +123,6 @@ const sender = input({
   example: JSON.stringify(SENDER_EXAMPLE, null, 2),
   clean: (value: unknown) => cleanCodeInput(value, "Sender"),
 });
-
 const sent_datetime = input({
   label: "Sent Date",
   comments:
@@ -146,8 +133,6 @@ const sent_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
-
 const source = input({
   label: "Source",
   comments:
@@ -158,7 +143,6 @@ const source = input({
   example: JSON.stringify(SOURCE_EXAMPLE, null, 2),
   clean: (value: unknown) => cleanCodeInput(value, "Source"),
 });
-
 const subject = input({
   label: "Subject",
   comments: "The subject of the message.",
@@ -168,7 +152,6 @@ const subject = input({
   example: "Order issue",
   placeholder: "Order issue",
 });
-
 const via = input({
   label: "Via",
   comments: "How the message has been received, or sent from Gorgias.",
@@ -179,7 +162,6 @@ const via = input({
   placeholder: "aircall",
   example: "aircall",
 });
-
 const action = input({
   label: "Action",
   comments:
@@ -195,7 +177,6 @@ const action = input({
     { value: "cancel", label: "Cancel" },
   ],
 });
-
 const ticket_id = input({
   label: "Ticket ID",
   comments: "The ID of the ticket associated with the message.",
@@ -205,7 +186,6 @@ const ticket_id = input({
   placeholder: "353768814",
   clean: toInt,
 });
-
 const id = input({
   label: "Message ID",
   comments: "The ID of the message.",
@@ -215,7 +195,6 @@ const id = input({
   example: "353768814",
   placeholder: "353768814",
 });
-
 export const createTicketMessageInputs = {
   ticket_id,
   channel,
@@ -236,13 +215,11 @@ export const createTicketMessageInputs = {
   subject,
   ...sharedInputs,
 };
-
 export const getTicketMessageInputs = {
   ticket_id,
   id,
   ...sharedInputs,
 };
-
 export const updateTicketMessageInputs = {
   ticket_id,
   id,
@@ -263,13 +240,11 @@ export const updateTicketMessageInputs = {
   via,
   ...sharedInputs,
 };
-
 export const deleteTicketMessageInputs = {
   ticket_id,
   id,
   ...sharedInputs,
 };
-
 export const listMessagesInputs = {
   fetchAll: input({
     label: "Fetch All",
@@ -330,7 +305,6 @@ export const listMessagesInputs = {
   }),
   ...sharedInputs,
 };
-
 export const selectMessageInputs = {
   ticket_id: listMessagesInputs.ticket_id,
   connection: sharedInputs.connection,

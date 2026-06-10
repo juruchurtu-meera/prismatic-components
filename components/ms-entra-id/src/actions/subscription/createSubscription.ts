@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createSubscriptionExamplePayload as examplePayload } from "../../examplePayloads";
 import { createSubscriptionInputs as inputs } from "../../inputs/subscription";
-
 export const createSubscription = action({
   display: {
     label: "Create Subscription",

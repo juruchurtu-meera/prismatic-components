@@ -3,7 +3,6 @@ import { connectionInput, locale, sectionId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { Section } from "../../types";
 import { getSectionPayload } from "../../examplePayloads";
-
 export const getSection = action({
   display: {
     label: "Get Section",
@@ -11,10 +10,9 @@ export const getSection = action({
   },
   perform: async (context, { locale, sectionId, zendeskConnection }) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
-    const { data } = await client.get<{ section: Section }>(
-      `/help_center/${locale}/sections/${sectionId}`,
-    );
-
+    const { data } = await client.get<{
+      section: Section;
+    }>(`/help_center/${locale}/sections/${sectionId}`);
     return { data };
   },
   inputs: {

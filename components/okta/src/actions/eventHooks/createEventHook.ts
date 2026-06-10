@@ -4,7 +4,6 @@ import { createEventHookExamplePayload } from "../../examplePayloads/webhook";
 import { createEventHookInputs } from "../../inputs/webhooks";
 import { createEventHookFN } from "../../util/eventHooks";
 import { verifyEventHook } from "./verifyEventHook";
-
 export const createEventHook = action({
   display: {
     label: "Create Event Hook",
@@ -26,7 +25,6 @@ export const createEventHook = action({
     },
   ) => {
     const client = await createClient(connection, context.debug.enabled);
-
     const data = await createEventHookFN(client, {
       eventHookDescription,
       eventHookFilter,
@@ -36,11 +34,9 @@ export const createEventHook = action({
       eventHookName,
       eventHookUrl,
     });
-
     if (doNotActivateOnCreate) {
       return { data };
     }
-
     const { data: verifiedEventHook } = await verifyEventHook.perform(context, {
       connection,
       eventHookId: data.id,

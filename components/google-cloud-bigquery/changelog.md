@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-09
+
+Added **New Jobs** polling trigger that surfaces BigQuery jobs created
+
 ### 2026-05-14
 
 Added bulk pagination support to list actions across **datasets**, **jobs**, **models**, **projects**, **routines**, and **tables**, allowing users to fetch all pages of results in a single action invocation

@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection, odataParams, fetchAll } from "../../../inputs/general";
 import { listDetectedAppsExamplePayload } from "../../../examplePayloads";
 import { paginateResults } from "../../../util";
-
 export const listDetectedApps = action({
   display: {
     label: "List Detected Apps",

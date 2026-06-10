@@ -1,11 +1,11 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../auth";
 import { connectionInput, customerId } from "../inputs";
-
 export const selectCard = dataSource({
   display: {
     label: "Select Card",
-    description: "Select a card payment method for the selected customer in your Stripe account.",
+    description:
+      "Select a card payment method for the selected customer in your Stripe account.",
   },
   dataSourceType: "picklist",
   inputs: {
@@ -20,13 +20,11 @@ export const selectCard = dataSource({
     const client = createStripeClient({
       stripeConnection,
     });
-
     const { data } = await client.paymentMethods.list({
       customer: util.types.toString(customerId),
       type: "card",
       limit: 100,
     });
-
     return {
       result: data
         .map<Element>((pm) => ({

@@ -4,7 +4,6 @@ import { getClient } from "../client";
 import { createProductOptionsExamplePayload } from "../examplePayloads";
 import { validateJSON } from "../helpers";
 import { connectionInput, option } from "../inputs";
-
 export const createProductOptions = action({
   display: {
     label: "Create Product Options",
@@ -12,11 +11,9 @@ export const createProductOptions = action({
   },
   perform: async (context, { connection, option }) => {
     const client = await getClient(connection, context.debug.enabled);
-
     if (!validateJSON(option)) {
       throw new Error("Option must be valid JSON.");
     }
-
     try {
       const { data } = await client.post("/products/options", option);
       return { data };
@@ -32,5 +29,4 @@ export const createProductOptions = action({
   },
   examplePayload: createProductOptionsExamplePayload,
 });
-
 export default { createProductOptions };

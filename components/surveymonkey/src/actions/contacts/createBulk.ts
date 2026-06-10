@@ -3,16 +3,6 @@ import { createClient } from "../../client";
 import { createContactsBulkInputs } from "../../inputs";
 import { createBulkContactsExamplePayload } from "../../examplePayloads";
 import type { Contact } from "../../types";
-
-
-
-
-
-
-
-
-
-
 export const createContactsBulk = action({
   display: {
     label: "Create Contacts Bulk",
@@ -24,12 +14,9 @@ export const createContactsBulk = action({
     { connection, contacts, updateExistingContacts },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     if (!Array.isArray(contacts)) {
       throw new Error("Contacts must be a JSON array of contact objects.");
     }
-
-    
     const { data } = await client.post<{
       succeeded: Contact[];
       failed: unknown[];
@@ -37,7 +24,6 @@ export const createContactsBulk = action({
       contacts,
       update_existing: updateExistingContacts,
     });
-
     return { data };
   },
   examplePayload: createBulkContactsExamplePayload,

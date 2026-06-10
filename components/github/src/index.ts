@@ -4,9 +4,6 @@ import allActions from "./actions";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
-
-
 const usedActions = [
   "actionsCreateWorkflowDispatch",
   "gitCreateBlob",
@@ -29,11 +26,9 @@ const usedActions = [
   "pullsList",
   "usersGetAuthenticated",
 ];
-
 const actions = Object.fromEntries(
-  Object.entries(allActions).filter(([key]) => usedActions.includes(key))
+  Object.entries(allActions).filter(([key]) => usedActions.includes(key)),
 );
-
 export default component({
   key: "github",
   public: true,

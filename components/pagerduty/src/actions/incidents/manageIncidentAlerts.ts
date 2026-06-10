@@ -9,7 +9,6 @@ import {
   offset,
   total,
 } from "../../inputs";
-
 export const updateIncidentAlerts = action({
   display: {
     label: "Manage Incident Alerts",

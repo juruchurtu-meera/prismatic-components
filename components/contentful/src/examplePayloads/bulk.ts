@@ -42,10 +42,8 @@ export const publishBulkActionExamplePayload = {
   },
   error: null,
 };
-
 export const unpublishBulkActionExamplePayload =
   publishBulkActionExamplePayload;
-
 export const getBulkActionExamplePayload = {
   sys: {
     id: "2OBWQpv6VaT1rZZXJ4nT3h",

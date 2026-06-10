@@ -3,7 +3,6 @@ import { updateUserInputs } from "../../inputs";
 import { getAdobeSignClient } from "../../client";
 import type { DetailedUserInfoPutPayload } from "../../types";
 import { updateUserExamplePayload } from "../../examplePayloads";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -38,7 +37,6 @@ export const updateUser = action({
       title,
       status: userStatus,
     };
-
     const { data } = await client.put(`/users/${userId}`, userPayload);
     return {
       data,

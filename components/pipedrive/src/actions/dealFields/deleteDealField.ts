@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, dealFieldIdInput } from "../../inputs";
-
 export const deleteDealField = action({
   display: {
     label: "Delete Deal Field",

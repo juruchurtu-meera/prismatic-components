@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const toastClientCredentials = connection({
   key: "toastClientCredentials",
   display: {
@@ -29,5 +28,4 @@ export const toastClientCredentials = connection({
     },
   },
 });
-
 export default [toastClientCredentials];

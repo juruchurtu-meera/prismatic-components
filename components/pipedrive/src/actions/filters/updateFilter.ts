@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, filterIdInput } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const updateFilter = action({
   display: {
     label: "Update Filter",

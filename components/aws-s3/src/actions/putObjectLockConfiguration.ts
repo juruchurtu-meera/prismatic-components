@@ -13,7 +13,6 @@ import {
   defaultRetentionMode,
   defaultRetentionYears,
 } from "../inputs";
-
 export const putObjectLockConfiguration = action({
   display: {
     label: "Put Object Lock Configuration",
@@ -45,46 +44,46 @@ export const putObjectLockConfiguration = action({
     const defaultRetentionDaysPresent = defaultRetentionDays > 0;
     const defaultRetentionYearsPresent = defaultRetentionYears > 0;
     const defaultRetentionModePresent = defaultRetentionMode.length > 0;
-
     if (defaultRetentionDaysPresent && defaultRetentionYearsPresent) {
       throw new Error(
         "You cannot specify both Default Retention Years and Default Retention Days. Please specify one or the other.",
       );
     }
-
     if (
       defaultRetentionModePresent &&
       !defaultRetentionDaysPresent &&
       !defaultRetentionYearsPresent
     ) {
-      throw new Error("You must specify either Default Retention Years or Default Retention Days.");
+      throw new Error(
+        "You must specify either Default Retention Years or Default Retention Days.",
+      );
     }
-
     if (
       !defaultRetentionModePresent &&
       (defaultRetentionDaysPresent || defaultRetentionYearsPresent)
     )
       throw new Error("You must specify a Default Retention Mode.");
-
     const objectLockConfiguration: ObjectLockConfiguration = {
       ObjectLockEnabled: "Enabled",
       Rule: defaultRetentionModePresent
         ? {
             DefaultRetention: {
-              Days: defaultRetentionDaysPresent ? defaultRetentionDays : undefined,
+              Days: defaultRetentionDaysPresent
+                ? defaultRetentionDays
+                : undefined,
               Mode: defaultRetentionMode,
-              Years: defaultRetentionYearsPresent ? defaultRetentionYears : undefined,
+              Years: defaultRetentionYearsPresent
+                ? defaultRetentionYears
+                : undefined,
             },
           }
         : undefined,
     };
-
     const command = new PutObjectLockConfigurationCommand({
       ObjectLockConfiguration: objectLockConfiguration,
       Bucket: bucket,
     });
     const data = await s3.send(command);
-
     return {
       data,
     };

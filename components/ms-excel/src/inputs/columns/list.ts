@@ -6,7 +6,6 @@ import {
   worksheetId,
 } from "../general";
 import { tableId } from "../tables/general";
-
 export const listColumnsInputs = {
   driveOrSiteId,
   workbookId: {
@@ -24,7 +23,6 @@ export const listColumnsInputs = {
   },
   ...oDataParams,
 };
-
 export const selectColumnInputs = {
   connection,
   driveOrSiteId: { ...driveOrSiteId, dataSource: undefined },

@@ -10,7 +10,6 @@ import {
 import { fetchAllData } from "../../util";
 import { type Invoice } from "../../interfaces/Invoice";
 import { listInvoicesExamplePayload } from "../../examplePayloads";
-
 export const listInvoices = action({
   display: {
     label: "List Invoices",
@@ -43,7 +42,6 @@ export const listInvoices = action({
     modifiedAfter,
     where,
   },
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   examplePayload: listInvoicesExamplePayload as any,
 });

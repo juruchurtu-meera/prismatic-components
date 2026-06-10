@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { uploadJobDataInputs } from "../../inputs";
 import { getQueryJobInformationExamplePayload } from "../../examplePayloads";
-
 export const uploadJobData = action({
   display: {
     label: "Upload Bulk Job Data",
@@ -15,11 +14,14 @@ export const uploadJobData = action({
       connection,
       context.debug.enabled,
     );
-
     const { data: fileData } = file;
-    const { data } = await salesforceClient.put(`/jobs/ingest/${bulkJobId}/batches`, fileData, {
-      headers: { "Content-Type": "text/csv" },
-    });
+    const { data } = await salesforceClient.put(
+      `/jobs/ingest/${bulkJobId}/batches`,
+      fileData,
+      {
+        headers: { "Content-Type": "text/csv" },
+      },
+    );
     return {
       data,
     };

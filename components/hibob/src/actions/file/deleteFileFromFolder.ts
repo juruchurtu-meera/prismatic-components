@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { deleteFileFromFolderExamplePayload } from "../../examplePayloads";
 import { deleteFileFromFolderInputs } from "../../inputs";
 import { FolderType } from "../../types/folderTypes";
-
 export const deleteFileFromFolder = action({
   display: {
     label: "Delete File From Folder",
@@ -14,7 +13,6 @@ export const deleteFileFromFolder = action({
     { connection, employeeId, documentId, folderType, folderId },
   ) => {
     const client = getClient(connection, context.debug.enabled);
-
     let endpoint: string;
     switch (folderType) {
       case FolderType.SHARED:
@@ -32,7 +30,6 @@ export const deleteFileFromFolder = action({
       default:
         throw new Error(`Invalid folder type: ${folderType}`);
     }
-
     await client.delete(endpoint);
     return {
       data: {

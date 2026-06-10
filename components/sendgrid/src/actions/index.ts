@@ -11,9 +11,7 @@ import {
   getImportStatus,
   getAllFieldDefinitions,
 } from "./emails";
-
 import { rawRequest } from "./rawRequest";
-
 import {
   createWebhook,
   updateWebhook,
@@ -23,7 +21,6 @@ import {
   testWebhook,
   toggleSignatureVerification,
 } from "./webhooks";
-
 export default {
   sendEmail,
   sendMultipleEmails,

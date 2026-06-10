@@ -25,7 +25,6 @@ import {
   topline_id,
   version,
 } from "../inputs";
-
 export const createCampaign = action({
   display: {
     label: "Create Campaign",
@@ -60,7 +59,6 @@ export const createCampaign = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.post(
       `/${adAccountId}/campaigns`,
       {},
@@ -91,7 +89,6 @@ export const createCampaign = action({
         },
       },
     );
-
     return {
       data,
     };
@@ -122,7 +119,6 @@ export const createCampaign = action({
     source_campaign_id,
     spend_cap,
     start_time,
-
     stop_time,
     topline_id,
     version,

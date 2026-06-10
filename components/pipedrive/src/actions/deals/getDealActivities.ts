@@ -9,16 +9,29 @@ import {
   sortDirection,
 } from "../../inputs";
 import { WebhookVersion } from "../../constants";
-
 export const getDealActivities = action({
   display: {
     label: "Get Deal Activities",
     description: "Lists activities associated with a deal.",
   },
-  perform: async (context, { connection, id, limit, done, sortBy, sortDirection, cursor }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, id, limit, done, sortBy, sortDirection, cursor },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/activities", {
-      params: { limit, done, deal_id: id, sort_by: sortBy, sort_direction: sortDirection, cursor },
+      params: {
+        limit,
+        done,
+        deal_id: id,
+        sort_by: sortBy,
+        sort_direction: sortDirection,
+        cursor,
+      },
     });
     return { data };
   },

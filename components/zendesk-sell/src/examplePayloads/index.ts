@@ -7,7 +7,6 @@ export {
   updateContactExamplePayload,
   upsertContactExamplePayload,
 } from "./contacts";
-
 export {
   createDealExamplePayload,
   deleteDealExamplePayload,
@@ -16,7 +15,6 @@ export {
   listDealsExamplePayload,
   updateDealExamplePayload,
 } from "./deals";
-
 export {
   createLeadExamplePayload,
   deleteLeadExamplePayload,
@@ -50,9 +48,7 @@ export {
   listOrderExamplePayload,
   updateOrderExamplePayload,
 } from "./orders";
-
 export { listPipelinesExamplePayload } from "./pipelines";
-
 export {
   getStagesStreamExamplePayload,
   listStagesExamplePayload,

@@ -8,7 +8,6 @@ import {
   productCustomFieldsProductId,
   storeHash,
 } from "../../inputs";
-
 export const deleteCustomField = action({
   display: {
     label: "Delete Custom Field",
@@ -29,7 +28,6 @@ export const deleteCustomField = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${productCustomFieldsProductId}/custom-fields/${customFieldIdToDelete}`;
-
     try {
       const response = await client.delete(endpoint);
       return {
@@ -41,7 +39,6 @@ export const deleteCustomField = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash,

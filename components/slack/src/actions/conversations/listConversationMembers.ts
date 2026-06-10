@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { listConversationMembersExamplePayload } from "../../examplePayloads";
 import { listConversationMembersInputs } from "../../inputs";
 import { debugLogger, paginateResults } from "../../util";
-
 export const listConversationMembers = action({
   display: {
     label: "List Conversation Members",
@@ -11,7 +10,7 @@ export const listConversationMembers = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { fetchAll, connection, channelName, cursor, limit }
+    { fetchAll, connection, channelName, cursor, limit },
   ) => {
     debugLogger({ debug, channelName, cursor, limit });
     const client = await createOauthClient({
@@ -22,17 +21,15 @@ export const listConversationMembers = action({
       limit: limit || undefined,
       channel: channelName,
     };
-
     if (fetchAll) {
       return paginateResults(
         client,
         "conversations",
         "members",
         "members",
-        params
+        params,
       );
     }
-
     const data = await client.conversations.members(params);
     return { data };
   },

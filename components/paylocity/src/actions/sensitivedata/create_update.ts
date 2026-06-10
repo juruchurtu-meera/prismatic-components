@@ -6,7 +6,6 @@ import {
   employeeId,
   sensitiveDataInput,
 } from "../../inputs";
-
 export const createUpdateSensitiveData = action({
   display: {
     label: "Create/Update Sensitive Data",
@@ -25,7 +24,6 @@ export const createUpdateSensitiveData = action({
   ) => {
     validateV2Connection(connectionInput);
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const { data } = await client.put(
       `/companies/${companyId}/employees/${employeeId}/sensitivedata`,
       {

@@ -12,7 +12,6 @@ import {
   marker,
   maxItems,
 } from "../inputs";
-
 export const listFunctions = action({
   display: {
     label: "List Function",
@@ -27,7 +26,6 @@ export const listFunctions = action({
       dynamicSecretAccessKey: params.dynamicSecretAccessKey,
       dynamicSessionToken: params.dynamicSessionToken,
     });
-
     const input: ListFunctionsCommandInput = {
       FunctionVersion: "ALL",
       Marker: util.types.toString(params.marker) || undefined,
@@ -35,7 +33,6 @@ export const listFunctions = action({
     };
     const command = new ListFunctionsCommand(input);
     const response = await client.send(command);
-
     return {
       data: response,
     };

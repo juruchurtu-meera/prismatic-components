@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { updateMessageExamplePayload } from "../../examplePayloads";
 import { updateMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const updateMessage = action({
   display: {
     label: "Update Message",
@@ -11,7 +10,7 @@ export const updateMessage = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, message, channelId, messageId }
+    { connection, message, channelId, messageId },
   ) => {
     debugLogger({ message, channelId, messageId, debug });
     const client = await createOauthClient({

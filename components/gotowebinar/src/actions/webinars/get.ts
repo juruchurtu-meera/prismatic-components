@@ -4,7 +4,6 @@ import { createGotoWebinarClient } from "../../client";
 import { GET_WEBINARS_EXAMPLE_PAYLOAD } from "../../examplePayloads";
 import { fetchAllResults } from "../../utils";
 import { GoToWebinarResponse, Webinar } from "../../interfaces";
-
 export const getWebinars = action({
   display: {
     label: "Get Webinars",
@@ -22,7 +21,6 @@ export const getWebinars = action({
     const url = accountKey
       ? `/accounts/${accountKey}/webinars`
       : `/organizers/${organizerKey}/webinars`;
-
     if (fetchAll) {
       return {
         data: await fetchAllResults<Webinar>(client, url, "webinars", {
@@ -31,18 +29,15 @@ export const getWebinars = action({
         }),
       };
     }
-
     const params = {
       fromTime,
       toTime,
       size,
       page,
     };
-
     const { data } = await client.get<GoToWebinarResponse<Webinar>>(url, {
       params,
     });
-
     return {
       data,
     };

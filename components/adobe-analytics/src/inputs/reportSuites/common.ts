@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const dimensionInput = input({
   label: "Dimension",
   type: "string",
@@ -10,7 +9,6 @@ export const dimensionInput = input({
   example: "variables/daterangeday",
   clean: util.types.toString,
 });
-
 export const reportRequestBodyInput = input({
   label: "Report Request Body",
   type: "code",

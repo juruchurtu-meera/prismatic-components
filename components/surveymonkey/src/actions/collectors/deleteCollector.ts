@@ -2,12 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteCollectorInputs } from "../../inputs";
 import { deleteCollectorExamplePayload } from "../../examplePayloads";
-
-
-
-
-
-
 export const deleteCollector = action({
   display: {
     label: "Delete Collector",
@@ -16,9 +10,7 @@ export const deleteCollector = action({
   inputs: deleteCollectorInputs,
   perform: async (context, { connection, collectorId }) => {
     const client = createClient(connection, context.debug.enabled);
-
     await client.delete(`/collectors/${collectorId}`);
-
     return {
       data: {
         success: true,

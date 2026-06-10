@@ -1,7 +1,6 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { connectionInput, queryParams } from "../../inputs";
-
 export const queryVendorExpenses = action({
   display: {
     label: "Get Vendor Expenses",
@@ -12,7 +11,6 @@ export const queryVendorExpenses = action({
       params.quickbooksConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.get("/reports/VendorExpenses", {
       params: util.types.keyValPairListToObject(params.queryParams),
     });

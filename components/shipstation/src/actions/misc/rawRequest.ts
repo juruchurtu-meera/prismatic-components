@@ -7,9 +7,7 @@ import { getAuthorization, validateConnection } from "../../client";
 import { BASE_URL } from "../../constants";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -28,7 +26,6 @@ export const rawRequest = action({
   perform: async (context, { connectionInput, ...httpClientInputs }) => {
     validateConnection(connectionInput);
     const authorization = getAuthorization(connectionInput);
-
     const { data } = await sendRawRequest(
       BASE_URL,
       { ...httpClientInputs, debugRequest: context.debug.enabled },

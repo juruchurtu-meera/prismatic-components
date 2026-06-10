@@ -3,7 +3,6 @@ import { createWebhookClient } from "../../client";
 import { webhookDefaultExamplePayload } from "../../examplePayloads";
 import { postSlackMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const postSlackMessage = action({
   display: {
     label: "Post Slack Message From Webhook",

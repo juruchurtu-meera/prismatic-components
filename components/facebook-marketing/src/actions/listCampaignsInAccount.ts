@@ -8,7 +8,6 @@ import {
   myConnectionField,
   version,
 } from "../inputs";
-
 export const listCampaignsInAccount = action({
   display: {
     label: "List Campaigns In Account",
@@ -19,7 +18,6 @@ export const listCampaignsInAccount = action({
     { version, connection, adAccountId, limit, before, after },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.get(`/${adAccountId}/campaigns`, {
       params: {
         limit,
@@ -27,7 +25,6 @@ export const listCampaignsInAccount = action({
         after,
       },
     });
-
     return {
       data,
     };

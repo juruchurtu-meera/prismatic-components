@@ -4,7 +4,6 @@ import {
   instanceDeleteFunctionality,
   instanceDeployFunctionality,
 } from "../util";
-
 export const eventsTrigger = trigger({
   display: {
     label: "Event Subscription",
@@ -12,7 +11,6 @@ export const eventsTrigger = trigger({
       "Receive event notifications from Contentful. Automatically creates and manages a webhook subscription for selected topics when the instance is deployed, and removes the subscription when the instance is deleted.",
   },
   perform: async (_context, payload) => {
-    
     return { payload };
   },
   inputs: eventsTriggerInputs,

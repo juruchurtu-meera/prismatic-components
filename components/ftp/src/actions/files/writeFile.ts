@@ -3,7 +3,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { connect } from "../../client";
 import { writeFileExamplePayload } from "../../examplePayloads";
 import { connection, verbose } from "../../inputs";
-
 const outputPath = input({
   label: "Path",
   placeholder: "Enter file path",
@@ -13,7 +12,6 @@ const outputPath = input({
   example: "/we/love/commas.csv",
   clean: util.types.toString,
 });
-
 const data = input({
   label: "Data",
   placeholder: "Enter data to write",
@@ -22,7 +20,6 @@ const data = input({
   comments: "The text or binary data to write to the file on the FTP server.",
   clean: (value) => util.types.toData(value).data,
 });
-
 const writeFile = action({
   display: {
     label: "Write File",
@@ -39,11 +36,9 @@ const writeFile = action({
     } finally {
       client.close();
     }
-
     return null;
   },
   inputs: { connection, verbose, outputPath, data },
   examplePayload: writeFileExamplePayload,
 });
-
 export default writeFile;

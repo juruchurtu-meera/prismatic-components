@@ -4,7 +4,6 @@ import { dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { getBucketLocationPayload } from "../examplePayloads";
 import { accessKeyInput, bucket } from "../inputs";
-
 export const getBucketLocation = action({
   display: {
     label: "Get Bucket Location",
@@ -12,7 +11,13 @@ export const getBucketLocation = action({
   },
   perform: async (
     context,
-    { accessKey, bucket, dynamicAccessKeyId, dynamicSecretAccessKey, dynamicSessionToken },
+    {
+      accessKey,
+      bucket,
+      dynamicAccessKeyId,
+      dynamicSecretAccessKey,
+      dynamicSessionToken,
+    },
   ) => {
     const s3 = await createS3Client({
       awsConnection: accessKey,
@@ -25,7 +30,7 @@ export const getBucketLocation = action({
     });
     const command = new GetBucketLocationCommand({ Bucket: bucket });
     const response = await s3.send(command);
-    return { data: response.LocationConstraint || "us-east-1" }; 
+    return { data: response.LocationConstraint || "us-east-1" };
   },
   inputs: { accessKey: accessKeyInput, ...dynamicAccessAllInputs, bucket },
   examplePayload: getBucketLocationPayload,

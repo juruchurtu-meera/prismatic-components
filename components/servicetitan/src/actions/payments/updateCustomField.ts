@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, operations } from "../../inputs";
-
 export const updatePaymentCustomFields = action({
   display: {
     label: "Update Payment Custom Fields",

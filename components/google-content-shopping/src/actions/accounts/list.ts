@@ -13,7 +13,6 @@ import {
 import { fetchAllAccounts } from "../../helpers/fetchAllAccounts";
 import type { content_v2_1 } from "googleapis";
 import { listAccountsExamplePayload } from "../../examplePayloads";
-
 export const listAccounts = action({
   display: {
     description: "Lists the sub-accounts in your Merchant Center account.",
@@ -43,7 +42,6 @@ export const listAccounts = action({
     },
   ) => {
     const client = createClient(connectionInput);
-
     const params: content_v2_1.Params$Resource$Accounts$List = {
       merchantId,
       maxResults: maxResults || undefined,
@@ -52,9 +50,7 @@ export const listAccounts = action({
       label: label || undefined,
       name: name || undefined,
     };
-
     const { data } = await fetchAllAccounts({ client, fetchAll, params });
-
     return {
       data,
     };

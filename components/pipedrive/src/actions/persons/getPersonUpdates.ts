@@ -7,13 +7,15 @@ import {
   personIdInput,
 } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const getPersonUpdates = action({
   display: {
     label: "Get Person Updates",
     description: "Lists updates about a person.",
   },
-  perform: async (context, { connection, id, start, limit, allChanges, items }) => {
+  perform: async (
+    context,
+    { connection, id, start, limit, allChanges, items },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(`/persons/${id}/flow`, {
       params: { start, limit, all_changes: allChanges, items },
@@ -35,7 +37,8 @@ export const getPersonUpdates = action({
       label: "Items",
       type: "string",
       clean: cleanString,
-      comments: "A comma-separated string for filtering out item specific updates",
+      comments:
+        "A comma-separated string for filtering out item specific updates",
     }),
   },
 });

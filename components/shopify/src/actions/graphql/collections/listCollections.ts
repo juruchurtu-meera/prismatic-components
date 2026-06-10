@@ -7,15 +7,20 @@ import { fetchData } from "../../../util";
 import type { Collection } from "../../interfaces/Collection";
 import type { PageInfo } from "../../interfaces/PageInfo";
 import listCollectionsQuery from "../queries/collections/ListCollections.gql";
-
 export const listCollectionsGql = action({
   display: {
     label: "List Collections",
     description: "Lists all collections.",
   },
-  perform: async (context, { shopifyConnection, limit, getAlldata, endCursor }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+  perform: async (
+    context,
+    { shopifyConnection, limit, getAlldata, endCursor },
+  ) => {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const data = await fetchData<Collection>(
       client,
       ["collections"],
@@ -27,7 +32,6 @@ export const listCollectionsGql = action({
         cursor: getAlldata ? undefined : endCursor,
       },
     );
-
     return {
       data: data as Record<"collections", Collection[]> & {
         pageInfo: PageInfo;

@@ -4,7 +4,6 @@ import { getZendeskClient } from "../../client";
 import { listLeadsExamplePayload } from "../../examplePayloads";
 import { listLeadsInputs } from "../../inputs";
 import { fetchAllPages } from "../../util";
-
 export const listLeads = action({
   display: {
     label: "List Leads",
@@ -68,7 +67,6 @@ export const listLeads = action({
         ...customFieldsObject,
         ...(inclusive.length && { inclusive }),
       };
-
       const data: unknown = await fetchAllPages(
         client,
         "/leads",

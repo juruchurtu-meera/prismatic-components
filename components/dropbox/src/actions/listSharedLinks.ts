@@ -11,7 +11,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, fetchAllSharedLinks, handleDropboxError } from "../util";
-
 export const listSharedLinks = action({
   display: {
     label: "List Shared Links",
@@ -24,7 +23,6 @@ export const listSharedLinks = action({
       params.userType,
       params.teamMemberId,
     );
-
     try {
       const data = await fetchAllSharedLinks(dbx, {
         path: params.path,

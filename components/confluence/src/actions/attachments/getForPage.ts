@@ -8,7 +8,6 @@ import {
   queryParameters,
 } from "../../inputs";
 import { listAttachmentsExamplePayload } from "../../examplePayloads";
-
 export const getPageAttachment = action({
   display: {
     label: "Get Attachments for Page",

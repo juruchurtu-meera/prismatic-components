@@ -7,15 +7,11 @@ import {
 } from "@prismatic-io/spectral";
 import { WORKBOOK_SOURCES } from "./constants";
 import { ConnectionKeys } from "ms-utils";
-
-
-
 const mapModel = (source: Record<string, string>): InputFieldChoice[] =>
   Object.keys(source).map((key) => ({
     label: key,
     value: source[key],
   }));
-
 const source = input({
   label: "Source",
   type: "string",
@@ -24,7 +20,6 @@ const source = input({
   model: mapModel(WORKBOOK_SOURCES),
   clean: util.types.toString,
 });
-
 export const msExcelOauth = oauth2Connection({
   key: ConnectionKeys.MsExcelOauth,
   display: {
@@ -84,5 +79,4 @@ export const msExcelOauth = oauth2Connection({
     source,
   },
 });
-
 export default [msExcelOauth];

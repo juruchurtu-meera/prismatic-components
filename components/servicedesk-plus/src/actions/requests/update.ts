@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { updateRequestResponse as examplePayload } from "../../examplePayloads";
 import { updateRequestInputs as inputs } from "../../inputs";
 import { createPayload } from "../../util";
-
 export const updateRequest = action({
   display: {
     label: "Update Request",

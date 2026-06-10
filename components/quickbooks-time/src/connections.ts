@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {
@@ -26,14 +25,14 @@ export const oauth = oauth2Connection({
       default: "https://rest.tsheets.com/api/v1/grant",
       comments: "The OAuth 2.0 Token URL for Quickbooks Time",
     },
-    
     scopes: {
       label: "Scopes",
       placeholder: "Scopes",
       type: "string",
       required: false,
       shown: false,
-      comments: "Space separated OAuth 2.0 permission scopes for Quickbooks Time",
+      comments:
+        "Space separated OAuth 2.0 permission scopes for Quickbooks Time",
       default: "",
     },
     clientId: {
@@ -54,5 +53,4 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export default [oauth];

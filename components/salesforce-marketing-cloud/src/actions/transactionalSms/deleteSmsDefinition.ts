@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SMS_DEFINITIONS_PATH } from "../../constants";
 import { deleteSmsDefinitionExamplePayload } from "../../examplePayloads";
 import { deleteSmsDefinitionInputs } from "../../inputs";
-
 export const deleteSmsDefinition = action({
   examplePayload: deleteSmsDefinitionExamplePayload,
   display: {
@@ -14,11 +13,9 @@ export const deleteSmsDefinition = action({
   inputs: deleteSmsDefinitionInputs,
   perform: async (context, { connection, smsDefinitionKey }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.delete(
       `${SMS_DEFINITIONS_PATH}/${smsDefinitionKey}`,
     );
-
     return { data };
   },
 });

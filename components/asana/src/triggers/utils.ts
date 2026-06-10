@@ -10,28 +10,21 @@ import type { WebhookFilterSettings } from "../types/WebhookFilterSettings";
 import type { Event } from "../types/Event";
 import type { CachedTasks } from "../types/CachedTasks";
 import type { CachedStories } from "../types/CachedStories";
-import type {
-  ResolvedWebhookSecret,
-  ResolvedWebhookSecrets,
-} from "../types";
+import type { ResolvedWebhookSecret, ResolvedWebhookSecrets } from "../types";
 import {
   WEBHOOK_SECRETS_STATE_KEY_PREFIX,
   WEBHOOK_SECRET_STATE_KEY_PREFIX,
   WEBHOOK_SECRETS_LEGACY_KEY,
   WEBHOOK_SECRET_LEGACY_KEY,
 } from "../constants";
-
 export const isHeartbeatData = (data: any): boolean =>
   typeof data === "object" &&
   Array.isArray(data.events) &&
   data.events.length === 0;
-
 export const webhookSecretsStateKey = (context: ActionContext): string =>
   `${WEBHOOK_SECRETS_STATE_KEY_PREFIX}:${context.flow.stableId}`;
-
 export const webhookSecretStateKey = (context: ActionContext): string =>
   `${WEBHOOK_SECRET_STATE_KEY_PREFIX}:${context.flow.stableId}`;
-
 export const resolveWebhookSecrets = (
   context: ActionContext,
 ): ResolvedWebhookSecrets => {
@@ -49,7 +42,6 @@ export const resolveWebhookSecrets = (
   }
   return { value: [], isLegacy: false };
 };
-
 export const resolveWebhookSecret = (
   context: ActionContext,
 ): ResolvedWebhookSecret => {
@@ -67,7 +59,6 @@ export const resolveWebhookSecret = (
   }
   return { value: "", isLegacy: false };
 };
-
 export const validateHmac = (
   payload: TriggerPayload,
   signature: string,
@@ -87,27 +78,23 @@ export const validateHmac = (
     "The included signing signature does not match a known Asana signing key. Rejecting.",
   );
 };
-
 interface AsanaFilter {
   resource_type?: string;
   resource_subtype?: string;
   action: string;
   fields?: string[];
 }
-
 interface CreateWebhookParams {
   endpoint: string;
   resourceId: string;
   filters?: AsanaFilter[];
   asanaConnection: Connection;
 }
-
 interface DeleteWebhookParams {
   endpoint: string;
   resourceId: string;
   asanaConnection: Connection;
 }
-
 interface AsanaWebhook {
   gid: string;
   resource: {
@@ -117,13 +104,6 @@ interface AsanaWebhook {
   target: string;
   active: boolean;
 }
-
-
-
-
-
-
-
 export const findWebhook = async ({
   asanaConnection,
   endpoint,
@@ -143,7 +123,9 @@ export const findWebhook = async ({
     do {
       const { data } = await client.get<{
         data: AsanaWebhook[];
-        next_page?: { offset: string };
+        next_page?: {
+          offset: string;
+        };
       }>("/webhooks", {
         params: {
           workspace: workspace.gid,
@@ -160,7 +142,6 @@ export const findWebhook = async ({
       webhook.target === endpoint && webhook.resource.gid === resourceId,
   );
 };
-
 export const createWebhook = async ({
   endpoint,
   resourceId,
@@ -177,7 +158,9 @@ export const createWebhook = async ({
     console.debug("Webhook already exists, skipping creation");
     return existingWebhook;
   } else {
-    const { data } = await client.post<{ data: AsanaWebhook }>("/webhooks", {
+    const { data } = await client.post<{
+      data: AsanaWebhook;
+    }>("/webhooks", {
       data: {
         resource: resourceId,
         target: endpoint,
@@ -187,7 +170,6 @@ export const createWebhook = async ({
     return data.data;
   }
 };
-
 export const deleteWebhook = async ({
   endpoint,
   resourceId,
@@ -204,13 +186,12 @@ export const deleteWebhook = async ({
     return;
   } else {
     console.debug(`Deleting webhook ${existingWebhook.gid}`);
-    await client.delete<{ data: AsanaWebhook }>(
-      `/webhooks/${existingWebhook.gid}`,
-    );
+    await client.delete<{
+      data: AsanaWebhook;
+    }>(`/webhooks/${existingWebhook.gid}`);
     return;
   }
 };
-
 export const getFilters = (
   filterSettings: WebhookFilterSettings,
   resourceType: string,
@@ -226,14 +207,17 @@ export const getFilters = (
     filters.push({ resource_type: resourceType, action: "removed" });
   if (filterSettings.triggerWhenUndeleted)
     filters.push({ resource_type: resourceType, action: "undeleted" });
-
   return filters;
 };
-
 const extractEvents = (data: unknown): Event[] => {
-  return (data as { events?: Event[] })?.events ?? [];
+  return (
+    (
+      data as {
+        events?: Event[];
+      }
+    )?.events ?? []
+  );
 };
-
 const processTask = async (
   taskEvent: Event,
   cachedTasks: CachedTasks,
@@ -253,14 +237,12 @@ const processTask = async (
     taskEvent.task = taskData;
     cachedTasks[taskEvent.resource.gid] = taskData;
   } catch {
-    
     context.logger.warn(
       `Task ${taskEvent.resource.gid} does not exist. This usually happens when a task is immediately deleted at the UI.`,
     );
     taskEvent.task = {};
   }
 };
-
 const processStory = async (
   storyEvent: Event,
   cachedStories: CachedStories,
@@ -283,29 +265,23 @@ const processStory = async (
     storyEvent.story = storyData;
     cachedStories[storyEvent.resource.gid] = storyData;
   } catch {
-    
     context.logger.warn(
       `Comment/Activity ${storyEvent.resource.gid} does not exist. This usually happens when a comment or activity is immediately deleted in the UI.`,
     );
     storyEvent.task = {};
   }
 };
-
 const getEventsAdditionalData = async (
   asanaConnection: Connection,
   payload: TriggerPayload,
   context: ActionContext,
 ): Promise<void> => {
-  
   const AVOID_ACTIONS = ["deleted", "removed"];
   const RESOURCE_TYPE_TASK = "task";
   const RESOURCE_TYPE_STORY = "story";
   const events = extractEvents(payload.body.data);
-
-  
   const cachedTasks: CachedTasks = {};
   const cachedStories: CachedStories = {};
-
   for (const event of events) {
     if (!AVOID_ACTIONS.includes(event.action)) {
       switch (event.resource.resource_type) {
@@ -321,15 +297,15 @@ const getEventsAdditionalData = async (
     }
   }
 };
-
 export const getAdditionalData = async (
   context: ActionContext,
   payload: TriggerPayload,
-  inputs: { asanaConnection: Connection },
+  inputs: {
+    asanaConnection: Connection;
+  },
 ): Promise<TriggerPayload> => {
   const events = extractEvents(payload.body.data);
   if (events.length === 0) return Promise.resolve(payload);
-
   await getEventsAdditionalData(inputs.asanaConnection, payload, context);
   return Promise.resolve(payload);
 };

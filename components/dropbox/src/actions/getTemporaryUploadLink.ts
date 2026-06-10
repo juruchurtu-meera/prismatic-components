@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { getTemporaryUploadLinkExamplePayload } from "../example-payloads";
 import { connectionInput, path } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const getTemporaryUploadLink = action({
   display: {
     label: "Get Temporary Upload Link",

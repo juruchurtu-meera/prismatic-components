@@ -4,7 +4,6 @@ import { createGotoWebinarClient } from "../../client";
 import { createRegistrantInputs } from "../../inputs/registrants/createRegistrantInputs";
 import { bigIntTransformerConfig, parseRegistrantKey } from "../../utils";
 import { Registrant } from "../../interfaces";
-
 export const createRegistrant = action({
   display: {
     label: "Create Registrant",
@@ -59,7 +58,6 @@ export const createRegistrant = action({
       purchasingRole,
       responses,
     };
-
     const { data: payloadWithoutParsing } = await client.post<Registrant>(
       url,
       payload,
@@ -67,12 +65,10 @@ export const createRegistrant = action({
         transformResponse: bigIntTransformerConfig.transformResponse,
       },
     );
-
     const data = {
       ...payloadWithoutParsing,
       registrantKey: parseRegistrantKey(payloadWithoutParsing.registrantKey.c),
     };
-
     return {
       data,
     };

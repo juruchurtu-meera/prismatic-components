@@ -17,7 +17,6 @@ import {
   sasPermissions,
   sasStartsOnDate,
 } from "./inputs";
-
 const fakeAzureResponse = {
   _response: {
     parsedHeaders: {},
@@ -36,11 +35,9 @@ const fakeAzureResponse = {
     },
   },
 };
-
 const exampleAzure = {
   data: fakeAzureResponse,
 };
-
 const listContainers = action({
   display: {
     label: "List Containers",
@@ -69,7 +66,6 @@ const listContainers = action({
     ],
   },
 });
-
 const createContainer = action({
   display: {
     label: "Create Container",
@@ -77,7 +73,8 @@ const createContainer = action({
   },
   perform: async (_context, { containerName, azureConnection }) => {
     const client = createAuthorizedClient(azureConnection);
-    const { containerCreateResponse } = await client.createContainer(containerName);
+    const { containerCreateResponse } =
+      await client.createContainer(containerName);
     return {
       data: containerCreateResponse,
     };
@@ -85,7 +82,6 @@ const createContainer = action({
   inputs: { containerName, azureConnection: connectionInput },
   examplePayload: exampleAzure,
 });
-
 const deleteContainer = action({
   display: {
     label: "Delete Container",
@@ -100,7 +96,6 @@ const deleteContainer = action({
   inputs: { containerName, azureConnection: connectionInput },
   examplePayload: exampleAzure,
 });
-
 const listBlobs = action({
   display: {
     label: "List Blobs",
@@ -134,16 +129,18 @@ const listBlobs = action({
     ],
   },
 });
-
 const createAppendBlob = action({
   display: {
     label: "Create Append Blob",
-    description: 'Create an empty append blob object (use "Append to Append Blob" to add blocks)',
+    description:
+      'Create an empty append blob object (use "Append to Append Blob" to add blocks)',
   },
   perform: async (_context, { containerName, blobName, azureConnection }) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getAppendBlobClient(util.types.toString(blobName));
+    const blobClient = containerClient.getAppendBlobClient(
+      util.types.toString(blobName),
+    );
     const result = await blobClient.create();
     return {
       data: result,
@@ -152,17 +149,20 @@ const createAppendBlob = action({
   inputs: { containerName, blobName, azureConnection: connectionInput },
   examplePayload: exampleAzure,
 });
-
 const appendToAppendBlob = action({
   display: {
     label: "Append to Append Blob",
     description: "Append blocks to an existing append blob",
   },
-  perform: async (_context, { containerName, blobName, fileContents, azureConnection }) => {
+  perform: async (
+    _context,
+    { containerName, blobName, fileContents, azureConnection },
+  ) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getAppendBlobClient(util.types.toString(blobName));
-
+    const blobClient = containerClient.getAppendBlobClient(
+      util.types.toString(blobName),
+    );
     const { data } = util.types.toData(fileContents);
     const result = await blobClient.appendBlock(data, Buffer.byteLength(data));
     return {
@@ -177,16 +177,21 @@ const appendToAppendBlob = action({
   },
   examplePayload: exampleAzure,
 });
-
 const createPageBlob = action({
   display: {
     label: "Create Page Blob",
-    description: "Create a page blob with a specific size (must be a multiple of 512 bytes)",
+    description:
+      "Create a page blob with a specific size (must be a multiple of 512 bytes)",
   },
-  perform: async (_context, { containerName, blobName, pageBlobSize, azureConnection }) => {
+  perform: async (
+    _context,
+    { containerName, blobName, pageBlobSize, azureConnection },
+  ) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getPageBlobClient(util.types.toString(blobName));
+    const blobClient = containerClient.getPageBlobClient(
+      util.types.toString(blobName),
+    );
     const result = await blobClient.create(Number(pageBlobSize));
     return {
       data: result,
@@ -200,16 +205,21 @@ const createPageBlob = action({
   },
   examplePayload: exampleAzure,
 });
-
 const resizePageBlob = action({
   display: {
     label: "Resize Page Blob",
-    description: "Resize an existing page blob (must be a multiple of 512 bytes)",
+    description:
+      "Resize an existing page blob (must be a multiple of 512 bytes)",
   },
-  perform: async (_context, { containerName, blobName, pageBlobSize, azureConnection }) => {
+  perform: async (
+    _context,
+    { containerName, blobName, pageBlobSize, azureConnection },
+  ) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getPageBlobClient(util.types.toString(blobName));
+    const blobClient = containerClient.getPageBlobClient(
+      util.types.toString(blobName),
+    );
     const result = await blobClient.resize(Number(pageBlobSize));
     return {
       data: result,
@@ -223,7 +233,6 @@ const resizePageBlob = action({
   },
   examplePayload: exampleAzure,
 });
-
 const uploadToPageBlob = action({
   display: {
     label: "Upload to Page Blob",
@@ -236,8 +245,9 @@ const uploadToPageBlob = action({
   ) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getPageBlobClient(util.types.toString(blobName));
-
+    const blobClient = containerClient.getPageBlobClient(
+      util.types.toString(blobName),
+    );
     const { data } = util.types.toData(fileContents);
     const result = await blobClient.uploadPages(
       data,
@@ -257,17 +267,20 @@ const uploadToPageBlob = action({
   },
   examplePayload: exampleAzure,
 });
-
 const uploadBlockBlob = action({
   display: {
     label: "Upload Block Blob",
     description: "Upload file data to a block blob object",
   },
-  perform: async (_context, { containerName, blobName, fileContents, azureConnection }) => {
+  perform: async (
+    _context,
+    { containerName, blobName, fileContents, azureConnection },
+  ) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getBlockBlobClient(util.types.toString(blobName));
-
+    const blobClient = containerClient.getBlockBlobClient(
+      util.types.toString(blobName),
+    );
     const { data } = util.types.toData(fileContents);
     const result = await blobClient.upload(data, Buffer.byteLength(data));
     return {
@@ -282,7 +295,6 @@ const uploadBlockBlob = action({
   },
   examplePayload: exampleAzure,
 });
-
 const downloadBlob = action({
   display: {
     label: "Download Blob",
@@ -291,7 +303,9 @@ const downloadBlob = action({
   perform: async (_context, { containerName, blobName, azureConnection }) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const blobClient = containerClient.getBlobClient(util.types.toString(blobName));
+    const blobClient = containerClient.getBlobClient(
+      util.types.toString(blobName),
+    );
     const { contentType } = await blobClient.getProperties();
     return {
       data: await blobClient.downloadToBuffer(),
@@ -304,7 +318,6 @@ const downloadBlob = action({
     contentType: "application/octet",
   },
 });
-
 const deleteBlob = action({
   display: {
     label: "Delete Blob",
@@ -313,7 +326,9 @@ const deleteBlob = action({
   perform: async (_context, { containerName, blobName, azureConnection }) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-    const response = await containerClient.deleteBlob(util.types.toString(blobName));
+    const response = await containerClient.deleteBlob(
+      util.types.toString(blobName),
+    );
     return {
       data: response,
     };
@@ -321,18 +336,19 @@ const deleteBlob = action({
   inputs: { containerName, blobName, azureConnection: connectionInput },
   examplePayload: exampleAzure,
 });
-
 const generateSasUrl = action({
   display: {
     label: "Generate Shared Access Signature URL",
-    description: "Generate a pre-signed URL (Shared Access Signature or SAS) for a blob",
+    description:
+      "Generate a pre-signed URL (Shared Access Signature or SAS) for a blob",
   },
   inputs: {
     azureConnection: connectionInput,
     containerName,
     blobName: {
       ...blobName,
-      comments: "A blob is a file that is saved in a 'container'. This represents the file's name.",
+      comments:
+        "A blob is a file that is saved in a 'container'. This represents the file's name.",
     },
     sasStartsOnDate,
     sasPermissions,
@@ -340,33 +356,40 @@ const generateSasUrl = action({
   },
   perform: async (
     _context,
-    { azureConnection, sasPermissions, sasExpiresOnDate, sasStartsOnDate, blobName, containerName },
+    {
+      azureConnection,
+      sasPermissions,
+      sasExpiresOnDate,
+      sasStartsOnDate,
+      blobName,
+      containerName,
+    },
   ) => {
     const client = createAuthorizedClient(azureConnection);
     const parsedBlobName = util.types.toString(blobName);
     const containerClient = client.getContainerClient(containerName);
-
     const sharedKeyCredential = new StorageSharedKeyCredential(
       util.types.toString(azureConnection.fields.accountName),
       util.types.toString(azureConnection.fields.accountKey),
     );
-
     const sasOptions = {
       containerName: containerClient.containerName,
       blobName: parsedBlobName,
       startsOn: new Date(util.types.toString(sasStartsOnDate)),
       expiresOn: new Date(util.types.toString(sasExpiresOnDate)),
-      permissions: BlobSASPermissions.parse(util.types.toString(sasPermissions)),
+      permissions: BlobSASPermissions.parse(
+        util.types.toString(sasPermissions),
+      ),
     };
-
-    const sasToken = generateBlobSASQueryParameters(sasOptions, sharedKeyCredential).toString();
-
+    const sasToken = generateBlobSASQueryParameters(
+      sasOptions,
+      sharedKeyCredential,
+    ).toString();
     return Promise.resolve({
       data: `${containerClient.getBlockBlobClient(parsedBlobName).url}?${sasToken}`,
     });
   },
 });
-
 export default {
   listContainers,
   createContainer,

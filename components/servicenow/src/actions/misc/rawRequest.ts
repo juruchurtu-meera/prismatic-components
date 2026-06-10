@@ -13,10 +13,8 @@ import {
   tableNameInput,
 } from "../../inputs";
 import { buildPayload, buildTableUrl } from "../../util";
-
 delete httpClientInputs.url;
 delete httpClientInputs.debugRequest;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

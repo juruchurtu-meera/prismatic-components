@@ -5,31 +5,25 @@ import {
 } from "@prismatic-io/spectral";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { pdqConnection } from "./connections";
-import { API_URL, INVALID_CONNECTION } from "./constants";
-
+import { API_URL, INVALID_CONNECTION, POLL_RESOURCE_CONFIG } from "./constants";
+import type { PollableRecord } from "./interfaces";
 export const cleanBoolean = (value: unknown) =>
   value ? util.types.toBool(value) : undefined;
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanCode = (value: unknown) =>
   value ? util.types.toObject(value) : undefined;
-
 export const cleanNumber = (value: unknown) =>
   value ? util.types.toNumber(value) : undefined;
-
 export const cleanKeyValueList = (value: unknown) =>
   value
     ? util.types.keyValPairListToObject(value as KeyValuePair[])
     : undefined;
-
 export const validateConnection = (connection: Connection) => {
   if (![pdqConnection.key].includes(connection.key)) {
     throw new Error(INVALID_CONNECTION);
   }
 };
-
 export const fetchAllData = async (
   client: HttpClient,
   path: string,
@@ -59,7 +53,6 @@ export const fetchAllData = async (
   } while (keepFetching);
   return { data: records, ...lastResponse };
 };
-
 export const fetchData = async (
   client: HttpClient,
   path: string,
@@ -68,12 +61,30 @@ export const fetchData = async (
   const { data } = await client.get(path, { params });
   return data;
 };
-
 export const getBaseUrl = (version = "v1") => `${API_URL}/${version}/api`;
-
 export const getAuthHeaders = (connection: Connection) => ({
   Authorization: `Bearer ${connection.fields.apiKey}`,
 });
-
-export const TComparator = <T extends { id: string }>(a: T, b: T) =>
-  a.id < b.id ? -1 : 1;
+export const TComparator = <
+  T extends {
+    id: string;
+  },
+>(
+  a: T,
+  b: T,
+) => (a.id < b.id ? -1 : 1);
+export const pollResourceModel = Object.keys(POLL_RESOURCE_CONFIG).map(
+  (value) => ({ label: value, value }),
+);
+export const filterRecordsInsertedAfter = (
+  records: PollableRecord[],
+  lastPolledAt: string,
+): PollableRecord[] => {
+  const lastPolledAtMs = new Date(lastPolledAt).getTime();
+  return records.filter((record) => {
+    const insertedMs = record.insertedAt
+      ? new Date(record.insertedAt).getTime()
+      : Number.NaN;
+    return !Number.isNaN(insertedMs) && insertedMs > lastPolledAtMs;
+  });
+};

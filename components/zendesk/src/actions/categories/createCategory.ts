@@ -9,7 +9,6 @@ import {
 import { rawHttpClient } from "../../auth";
 import type { Category } from "../../types";
 import { createCategoryPayload } from "../../examplePayloads";
-
 export const createCategory = action({
   display: {
     label: "Create Category",
@@ -28,12 +27,9 @@ export const createCategory = action({
         description: categoryDescription,
       },
     };
-
-    const { data } = await client.post<{ category: Category }>(
-      `/help_center/${locale}/categories`,
-      payload,
-    );
-
+    const { data } = await client.post<{
+      category: Category;
+    }>(`/help_center/${locale}/categories`, payload);
     return { data };
   },
   inputs: {

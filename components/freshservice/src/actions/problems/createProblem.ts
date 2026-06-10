@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { createProblemExamplePayload as examplePayload } from "../../examplePayloads";
 import { createProblemInputs as inputs } from "../../inputs/problems";
-
 export const createProblem = action({
   display: {
     label: "Create Problem",
@@ -26,7 +25,6 @@ export const createProblem = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       subject,
       email,
@@ -40,9 +38,7 @@ export const createProblem = action({
       item_category: itemCategory,
       ...problemsAdditionalFields,
     };
-
     const { data } = await client.post(`/problems`, payload);
-
     return {
       data,
     };

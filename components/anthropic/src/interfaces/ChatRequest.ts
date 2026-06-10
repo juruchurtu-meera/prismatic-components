@@ -1,5 +1,4 @@
 import type { Message } from "./Message";
-
 export interface ChatRequest {
   model: string;
   messages: Message[];

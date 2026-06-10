@@ -1,7 +1,3 @@
-
-
-
-
 export const registerWebhookExamplePayload = {
   data: {
     id: 4954,

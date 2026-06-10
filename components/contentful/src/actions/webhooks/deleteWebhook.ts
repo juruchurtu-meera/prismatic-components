@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import type { Space, WebHooks } from "contentful-management";
 import { createClient } from "../../client";
 import { deleteWebhookInputs } from "../../inputs";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",
@@ -13,7 +12,6 @@ export const deleteWebhook = action({
     const space: Space = await client.getSpace(spaceId);
     const webhook: WebHooks = await space.getWebhook(webhookId);
     await webhook.delete();
-
     return {
       data: {},
     };

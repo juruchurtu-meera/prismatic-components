@@ -1,4 +1,3 @@
-
 import bills from "./bills";
 import businessEntities from "./businessEntities";
 import customAccounting from "./customAccountingField";
@@ -10,9 +9,7 @@ import { rawRequest } from "./rawRequest";
 import reimbursements from "./reimbursements";
 import transactions from "./transactions";
 import vendors from "./vendors";
-
 export default {
-  
   ...bills,
   ...businessEntities,
   ...customAccounting,

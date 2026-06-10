@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createProjectsClient } from "../../client";
 import { connection, draftTaskId, guId } from "../../inputs";
-
 export const deleteDraftTask = action({
   display: {
     label: "Delete Draft Task",
@@ -17,12 +16,10 @@ export const deleteDraftTask = action({
     const { data } = await client.delete(
       `/Projects('${params.guId}')/Draft/Tasks('${params.draftTaskId}')`,
     );
-
     return {
       data,
     };
   },
   inputs: { connection, guId, draftTaskId },
 });
-
 export default deleteDraftTask;

@@ -2,7 +2,6 @@ import type { Connection } from "@prismatic-io/spectral";
 import { GraphQLClient } from "graphql-request";
 import { cleanUrl } from "./utils/cleanUrl";
 import { validateConnection } from "./utils/validateConnections";
-
 export const createClient = ({
   connection,
   debug = false,
@@ -12,7 +11,6 @@ export const createClient = ({
 }) => {
   try {
     validateConnection(connection);
-
     const url = cleanUrl(connection.fields.baseUrl);
     const client = new GraphQLClient(`${url}/graphql`, {
       headers: {
@@ -31,7 +29,6 @@ export const createClient = ({
         }
       },
     });
-
     return client;
   } catch (error) {
     console.log(error);

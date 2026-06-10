@@ -15,7 +15,6 @@ import {
   includeFavoritedByCurrentUserStatus,
 } from "../../inputs";
 import { getPageExamplePayload } from "../../examplePayloads";
-
 export const getPage = action({
   display: {
     label: "Get Page",

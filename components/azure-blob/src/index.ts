@@ -2,7 +2,6 @@ import { component } from "@prismatic-io/spectral";
 import actions from "./actions";
 import { connectionString, StorageSharedKey } from "./connections";
 import dataSources from "./dataSources";
-
 export default component({
   key: "azure-blob",
   documentationUrl: "https://prismatic.io/docs/components/azure-blob/",

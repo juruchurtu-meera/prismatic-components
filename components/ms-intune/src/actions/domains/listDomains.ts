@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { odataParams, connection } from "../../inputs/general";
 import { listDomainsExamplePayload } from "../../examplePayloads";
-
 export const listDomains = action({
   display: {
     label: "List Domains",

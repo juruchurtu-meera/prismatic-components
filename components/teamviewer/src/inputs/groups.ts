@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { defaultInputs } from "./general";
 import { cleanString } from "../util";
-
 const groupId = input({
   label: "Group ID",
   type: "string",
@@ -12,12 +11,10 @@ const groupId = input({
   dataSource: "selectGroup",
   clean: util.types.toString,
 });
-
 export const getGroupInputs = {
   groupId,
   ...defaultInputs,
 };
-
 export const deleteGroupInputs = {
   groupId: {
     ...groupId,
@@ -25,7 +22,6 @@ export const deleteGroupInputs = {
   },
   ...defaultInputs,
 };
-
 const name = input({
   label: "Name",
   type: "string",
@@ -35,7 +31,6 @@ const name = input({
   placeholder: "My Group",
   clean: util.types.toString,
 });
-
 const policyId = input({
   label: "Policy ID",
   type: "string",
@@ -46,13 +41,11 @@ const policyId = input({
   dataSource: "selectPolicy",
   clean: cleanString,
 });
-
 export const createGroupInputs = {
   name,
   policy_id: policyId,
   ...defaultInputs,
 };
-
 export const updateGroupInputs = {
   groupId: {
     ...groupId,

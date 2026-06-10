@@ -2,7 +2,6 @@ import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { getClient } from "../client";
 import { selectProductGroupPayload } from "../examplePayloads";
 import { company, connection, site } from "../inputs/general";
-
 export const selectProductGroup = dataSource({
   display: {
     label: "Select Product Group",
@@ -10,13 +9,17 @@ export const selectProductGroup = dataSource({
   },
   perform: async (_context, { connection, site, company }) => {
     const client = getClient(connection, false, site, company);
-    const { data } = await client.get<{ description: string; id: number }[]>("/product_groups");
-
+    const { data } =
+      await client.get<
+        {
+          description: string;
+          id: number;
+        }[]
+      >("/product_groups");
     const objects = data.map<Element>((productGroup) => ({
       key: util.types.toString(productGroup.id),
       label: productGroup.description,
     }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

@@ -1,6 +1,5 @@
 import { paginationInputs } from "./pagination";
 import { brandId, connection } from "./sharedInputs";
-
 export const getBrandInputs = {
   connection,
   brandId: {
@@ -8,7 +7,6 @@ export const getBrandInputs = {
     comments: "ID of the Brand to retrieve.",
   },
 };
-
 export const listBrandLibrariesInputs = {
   connection,
   ...paginationInputs,
@@ -17,11 +15,9 @@ export const listBrandLibrariesInputs = {
     comments: "ID of the Brand to retrieve Libraries for.",
   },
 };
-
 export const listBrandsInputs = {
   connection,
 };
-
 export const listBrandWorkspaceProjectsInputs = {
   connection,
   ...paginationInputs,

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ENS_SUBSCRIPTIONS_PATH } from "../../constants";
 import { getSubscriptionExamplePayload } from "../../examplePayloads";
 import { getSubscriptionInputs } from "../../inputs";
-
 export const getSubscription = action({
   examplePayload: getSubscriptionExamplePayload,
   display: {
@@ -17,7 +16,6 @@ export const getSubscription = action({
     const { data } = await client.get(
       `${ENS_SUBSCRIPTIONS_PATH}/${encodeURIComponent(subscriptionId)}`,
     );
-
     return { data };
   },
 });

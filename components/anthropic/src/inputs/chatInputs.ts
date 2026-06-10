@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { DEFAULT_MAX_TOKENS, DEFAULT_TEMPERATURE } from "../constants";
 import { cleanNumberInput, cleanStringInput } from "../utils";
 import { connectionInput, messageInput, modelInput } from "./general";
-
 const temperatureInput = input({
   label: "Temperature",
   type: "string",
@@ -13,7 +12,6 @@ const temperatureInput = input({
   placeholder: "Enter a value between 0 and 1",
   example: "0.7",
 });
-
 const systemPromptInput = input({
   label: "System Prompt",
   type: "string",
@@ -25,7 +23,6 @@ const systemPromptInput = input({
   example:
     "You are a helpful AI assistant that specializes in answering questions about science.",
 });
-
 const maxTokensInput = input({
   label: "Max Tokens",
   type: "string",
@@ -36,7 +33,6 @@ const maxTokensInput = input({
   placeholder: "Enter maximum number of tokens to generate",
   example: "1000",
 });
-
 export const chatInputs = {
   connection: connectionInput,
   model: modelInput,

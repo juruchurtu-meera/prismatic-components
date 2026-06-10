@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { modifiedEntryResponse } from "../../examplePayloads";
 import { connection, events } from "../../inputs";
-
 export const modifyTimeEntries = action({
   display: {
     label: "Modify Time Entries",

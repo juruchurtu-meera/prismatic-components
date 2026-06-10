@@ -4,7 +4,7 @@
     "href": "https://docs.snowflake.com/en/developer"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://docs.snowflake.com/en/release-notes/clients-drivers/nodejs-2026"
   }
 ]

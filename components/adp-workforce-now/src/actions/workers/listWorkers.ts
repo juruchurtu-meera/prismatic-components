@@ -13,7 +13,6 @@ import {
 } from "../../inputs";
 import type { Worker } from "../../types";
 import { fetchAllRecords } from "../../util";
-
 export const listWorkers = action({
   display: {
     label: "List Workers",

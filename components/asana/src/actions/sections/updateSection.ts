@@ -8,7 +8,6 @@ import {
   sectionName,
 } from "../../inputs";
 import { SECTION_OPT_FIELDS } from "../../util";
-
 export const updateSection = action({
   display: {
     label: "Update Section",

@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
 import { address } from "./general";
 import { cleanCode } from "../../helpers";
-
 const columnHidden = input({
   label: "Column Hidden",
   comments: "When true, all columns in the current range are hidden.",
@@ -10,7 +9,6 @@ const columnHidden = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const rowHidden = input({
   label: "Row Hidden",
   comments: "When true, all rows in the current range are hidden.",
@@ -18,7 +16,6 @@ const rowHidden = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const formulas = input({
   label: "Formulas",
   comments: "Represents the formula in A1-style notation.",
@@ -36,7 +33,6 @@ const formulas = input({
   ),
   clean: cleanCode,
 });
-
 const formulasLocal = input({
   label: "Formulas Local",
   comments:
@@ -55,7 +51,6 @@ const formulasLocal = input({
   ),
   clean: cleanCode,
 });
-
 const formulasR1C1 = input({
   label: "Formulas R1C1",
   comments: "Represents the formula in R1C1-style notation.",
@@ -73,7 +68,6 @@ const formulasR1C1 = input({
   ),
   clean: cleanCode,
 });
-
 const numberFormat = input({
   label: "Number Format",
   comments: "Represents Excel's number format code for the given cell.",
@@ -91,7 +85,6 @@ const numberFormat = input({
   ),
   clean: cleanCode,
 });
-
 const values = input({
   label: "Values",
   comments:
@@ -110,7 +103,6 @@ const values = input({
   ),
   clean: cleanCode,
 });
-
 export const updateCellInputs = {
   driveOrSiteId,
   workbookId: {

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { createAssetExamplePayload as examplePayload } from "../../examplePayloads";
 import { createAssetInputs as inputs } from "../../inputs/assets";
-
 export const createAsset = action({
   display: {
     label: "Create Asset",
@@ -27,7 +26,6 @@ export const createAsset = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       name,
       asset_type_id: assetTypeId,
@@ -42,9 +40,7 @@ export const createAsset = action({
       workspace_id: workspaceId,
       ...assetsAdditionalFields,
     };
-
     const { data } = await client.post(`/assets`, payload);
-
     return {
       data,
     };

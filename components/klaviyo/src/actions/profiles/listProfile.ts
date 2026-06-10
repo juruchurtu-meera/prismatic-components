@@ -6,7 +6,6 @@ import type { AdditionalFieldsProfile } from "../../types/AdditionalFieldsProfil
 import { fetchProfile } from "../../utils";
 import { listProfileExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const listProfile = action({
   display: {
     label: "List Profile",
@@ -26,7 +25,6 @@ export const listProfile = action({
         debug,
       });
     }
-
     const data = await fetchProfile(
       profilesApi,
       fieldsProfile as FieldsProfile[],

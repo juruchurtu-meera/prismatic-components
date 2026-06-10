@@ -12,7 +12,6 @@ import prices from "./prices";
 import products from "./products";
 import subscriptions from "./subscriptions";
 import webhooks from "./webhooks";
-
 export default {
   ...accounts,
   ...balanceTransactions,

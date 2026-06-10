@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     id: "9hx",

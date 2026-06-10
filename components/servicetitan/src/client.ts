@@ -6,13 +6,11 @@ import {
   getTokenFromConnection,
   getURLFromConnection,
 } from "./util";
-
 export const validateConnection = (connection: Connection) => {
   if (connection.key !== serviceTitanConnection.key) {
     throw new Error("Connection is not authorized");
   }
 };
-
 export const createClient = (
   connection: Connection,
   urlType: string,

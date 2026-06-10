@@ -6,7 +6,6 @@ import { toStr } from "../utils/toStr";
 import { validateId } from "../utils/validateId";
 import { validateLimit } from "../utils/validateLimit";
 import { sharedInputs } from "./shared";
-
 const channels = input({
   label: "Channels",
   comments:
@@ -27,7 +26,6 @@ const channels = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Channels"),
 });
-
 const id = input({
   label: "Customer ID",
   comments: "The ID of the customer.",
@@ -37,7 +35,6 @@ const id = input({
   required: true,
   clean: toInt,
 });
-
 const email = input({
   label: "Email",
   comments: "Primary email address of the customer.",
@@ -47,7 +44,6 @@ const email = input({
   placeholder: "john@example.com",
   example: "john@example.com",
 });
-
 const external_id = input({
   label: "External ID",
   comments:
@@ -58,7 +54,6 @@ const external_id = input({
   placeholder: "customer-84203241",
   example: "customer-84203241",
 });
-
 const language = input({
   label: "Language",
   comments: "The customer's preferred language (format: ISO_639-1).",
@@ -69,7 +64,6 @@ const language = input({
   placeholder: "en",
   example: "en",
 });
-
 const name = input({
   label: "Name",
   comments: "Full name of the customer.",
@@ -79,7 +73,6 @@ const name = input({
   placeholder: "John Smith",
   example: "John Smith",
 });
-
 const timezone = input({
   label: "Timezone",
   comments: "The customer's preferred timezone (format: IANA timezone name).",
@@ -90,7 +83,6 @@ const timezone = input({
   placeholder: "UTC",
   example: "UTC",
 });
-
 export const createCustomerInputs = {
   channels,
   email,
@@ -100,17 +92,14 @@ export const createCustomerInputs = {
   timezone,
   ...sharedInputs,
 };
-
 export const deleteCustomerInputs = {
   id: input({ ...id, comments: "ID of the customer to delete." }),
   ...sharedInputs,
 };
-
 export const getCustomerInputs = {
   id: input({ ...id, comments: "ID of the customer you're looking for." }),
   ...sharedInputs,
 };
-
 export const listCustomersInputs = {
   id: input({
     label: "Customer ID",
@@ -187,12 +176,10 @@ export const listCustomersInputs = {
   }),
   ...sharedInputs,
 };
-
 export const selectCustomerInputs = {
   view_id: listCustomersInputs.view_id,
   connection: sharedInputs.connection,
 };
-
 export const updateCustomerInputs = {
   id: input({ ...id, comments: "ID of the customer to update." }),
   channels: input({
@@ -208,7 +195,6 @@ export const updateCustomerInputs = {
   timezone,
   ...sharedInputs,
 };
-
 export const updateCustomerDataInputs = {
   id: updateCustomerInputs.id,
   data: input({

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createBambooClient } from "../../client";
 import { updateEmployeeTableRowExamplePayload } from "../../examplePayloads";
 import { updateEmployeeTableRowInputs } from "../../inputs";
-
 export const updateEmployeeTableRow = action({
   display: {
     label: "Update Employee Table Row",

@@ -8,7 +8,6 @@ import {
 import { createClient } from "../client";
 import { generatePayload } from "../util";
 import { createExpenseExamplePayload } from "../examplePayloads";
-
 export const createExpense = action({
   display: {
     description: "Allows you to create expenses in a user’s account.",
@@ -38,7 +37,6 @@ export const createExpense = action({
       },
     };
     const generatedJson = generatePayload(json, connectionInput);
-
     const { data } = await client.post("", generatedJson);
     return {
       data,

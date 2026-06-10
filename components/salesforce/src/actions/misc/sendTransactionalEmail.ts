@@ -2,11 +2,11 @@ import { action, util } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { sendTransactionalEmailInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
-
 export const sendTransactionalEmail = action({
   display: {
     label: "Send Transactional Email",
-    description: "Send a transactional email message to a single recipient via Salesforce.",
+    description:
+      "Send a transactional email message to a single recipient via Salesforce.",
   },
   inputs: sendTransactionalEmailInputs,
   perform: async (
@@ -26,7 +26,6 @@ export const sendTransactionalEmail = action({
       connection,
       context.debug.enabled,
     );
-
     const requestBody = {
       definitionKey,
       recipient: {
@@ -37,7 +36,6 @@ export const sendTransactionalEmail = action({
           : undefined,
       },
     };
-
     const response = await salesforceHttpClient.post(
       `/messaging/v1/email/messages/${messageKey}`,
       requestBody,

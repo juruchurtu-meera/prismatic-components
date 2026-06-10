@@ -19,13 +19,11 @@ export interface Fulfillment {
   } | null;
   name: string | null;
 }
-
 interface TrackingInfo {
   company: string | null;
   number: string | null;
   url: string | null;
 }
-
 interface Address {
   address1: string | null;
   address2: string | null;
@@ -34,12 +32,10 @@ interface Address {
   countryCode: string | null;
   provinceCode: string | null;
 }
-
 interface FulfillmentLineItem {
   id: string | null;
   lineItem: LineItem | null;
 }
-
 interface LineItem {
   title: string | null;
   quantity: number | null;
@@ -59,37 +55,31 @@ interface LineItem {
   isGiftCard: boolean | null;
   name: string | null;
 }
-
 interface MoneySet {
   shopMoney: Money | null;
   presentmentMoney: Money | null;
 }
-
 interface Money {
   amount: string | null;
   currencyCode: string | null;
 }
-
 interface DiscountAllocation {
   allocatedAmountSet: MoneySet | null;
   discountApplication: {
     index: number | null;
   } | null;
 }
-
 interface Duty {
   id: string | null;
   price: MoneySet | null;
   taxLines: TaxLine[] | null;
 }
-
 interface TaxLine {
   rate: number | null;
   title: string | null;
   priceSet: MoneySet | null;
   channelLiable: boolean | null;
 }
-
 interface Variant {
   title: string | null;
   id: string | null;

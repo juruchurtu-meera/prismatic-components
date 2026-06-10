@@ -9,7 +9,6 @@ import {
   AVAILABLE_EXPERIENCES_MODEL,
   MODEL_FOR_OPTIONAL_BOOLEAN_INPUTS,
 } from "../../constants";
-
 export const subject = input({
   label: "Subject",
   comments: "The subject of the webinar",
@@ -19,7 +18,6 @@ export const subject = input({
   placeholder: "Your Subject",
   clean: util.types.toString,
 });
-
 export const description = input({
   label: "Description",
   comments: "The description of the webinar",
@@ -29,7 +27,6 @@ export const description = input({
   placeholder: "Your Description",
   clean: toOptionalString,
 });
-
 export const times = input({
   label: "Time Range for Webinar",
   comments:
@@ -59,7 +56,6 @@ export const times = input({
   ]),
   clean: util.types.toObject,
 });
-
 export const isPasswordProtected = input({
   label: "Is Password Protected",
   comments: "Indicates if the webinar is password protected.",
@@ -69,7 +65,6 @@ export const isPasswordProtected = input({
   default: "false",
   clean: toOptionalBoolean,
 });
-
 export const recordingAssetKey = input({
   label: "Recording Asset Key",
   comments:
@@ -83,7 +78,6 @@ export const recordingAssetKey = input({
   placeholder: "your-recording-asset-key",
   clean: toOptionalString,
 });
-
 export const isOndemand = input({
   label: "Is On Demand",
   comments: "A boolean flag indicating if the webinar should be On-Demand.",
@@ -93,7 +87,6 @@ export const isOndemand = input({
   default: "false",
   clean: toOptionalBoolean,
 });
-
 export const isBreakout = input({
   label: "Is Breakout",
   comments: "A boolean flag indicating if the webinar should be breakout.",
@@ -103,7 +96,6 @@ export const isBreakout = input({
   default: "false",
   clean: toOptionalBoolean,
 });
-
 export const experienceType = input({
   label: "Experience Type",
   comments: "The experience type of the webinar.",
@@ -113,7 +105,6 @@ export const experienceType = input({
   model: AVAILABLE_EXPERIENCES_MODEL,
   clean: toOptionalString,
 });
-
 export const confirmationEmail = input({
   label: "Should Send Confirmation Email",
   comments: "Whether or not to send a confirmation email to the registrants.",
@@ -122,7 +113,6 @@ export const confirmationEmail = input({
   model: MODEL_FOR_OPTIONAL_BOOLEAN_INPUTS,
   clean: toOptionalEmailSetting,
 });
-
 export const reminderEmail = input({
   label: "Should Send Seminder Email",
   comments: "Whether or not to send a reminder email to the registrants.",
@@ -131,7 +121,6 @@ export const reminderEmail = input({
   model: MODEL_FOR_OPTIONAL_BOOLEAN_INPUTS,
   clean: toOptionalEmailSetting,
 });
-
 export const absenteeFollowUpEmail = input({
   label: "Should Send Absentee Follow Up Email",
   comments:
@@ -141,7 +130,6 @@ export const absenteeFollowUpEmail = input({
   model: MODEL_FOR_OPTIONAL_BOOLEAN_INPUTS,
   clean: toOptionalEmailSetting,
 });
-
 export const attendeeFollowUpEmail = input({
   label: "Should Send Attendee Follow Up Email",
   comments:
@@ -151,7 +139,6 @@ export const attendeeFollowUpEmail = input({
   model: MODEL_FOR_OPTIONAL_BOOLEAN_INPUTS,
   clean: toOptionalEmailSetting,
 });
-
 export const createWebinarInputs = {
   connection,
   subject,

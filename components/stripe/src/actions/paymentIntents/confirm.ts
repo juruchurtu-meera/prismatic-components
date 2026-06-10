@@ -20,7 +20,6 @@ import {
   useStripeSdk,
 } from "../../inputs";
 import type Stripe from "stripe";
-
 export const confirmPaymentIntent = action({
   display: {
     label: "Confirm Payment Intent",
@@ -56,19 +55,27 @@ export const confirmPaymentIntent = action({
       payment_method: paymentMethod || undefined,
       receipt_email: receiptEmail || undefined,
       setup_future_usage:
-        (setupFutureUsage as Stripe.PaymentIntentConfirmParams.SetupFutureUsage) || undefined,
-      capture_method: captureMethod as Stripe.PaymentIntentConfirmParams.CaptureMethod,
+        (setupFutureUsage as Stripe.PaymentIntentConfirmParams.SetupFutureUsage) ||
+        undefined,
+      capture_method:
+        captureMethod as Stripe.PaymentIntentConfirmParams.CaptureMethod,
       error_on_requires_action: errorOnRequiresAction
         ? util.types.toBool(errorOnRequiresAction)
         : undefined,
       mandate: mandate || undefined,
       mandate_data: mandateData ? JSON.parse(mandateData) : undefined,
       off_session: offSession ? util.types.toBool(offSession) : undefined,
-      payment_method_data: paymentMethodData ? JSON.parse(paymentMethodData) : undefined,
-      payment_method_options: paymentMethodOptions ? JSON.parse(paymentMethodOptions) : undefined,
+      payment_method_data: paymentMethodData
+        ? JSON.parse(paymentMethodData)
+        : undefined,
+      payment_method_options: paymentMethodOptions
+        ? JSON.parse(paymentMethodOptions)
+        : undefined,
       radar_options: radarOptions ? JSON.parse(radarOptions) : undefined,
       return_url: returnUrl || undefined,
-      use_stripe_sdk: useStripeSdk ? util.types.toBool(useStripeSdk) : undefined,
+      use_stripe_sdk: useStripeSdk
+        ? util.types.toBool(useStripeSdk)
+        : undefined,
     };
     return {
       data: await client.paymentIntents.confirm(paymentIntentId, params),

@@ -2,13 +2,16 @@ import { action, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
 import { requestBodyCode, connectionInput, projectId } from "../inputs";
-
 export const updateProject = action({
   display: {
     label: "Update Project",
-    description: "Updates the basic information for a customer or internal project.",
+    description:
+      "Updates the basic information for a customer or internal project.",
   },
-  perform: async (_context, { requestBodyCode, connectionInput, projectId }) => {
+  perform: async (
+    _context,
+    { requestBodyCode, connectionInput, projectId },
+  ) => {
     const headers = {
       Accept: "*/*",
       "Content-Type": "application/json",

@@ -10,7 +10,6 @@ import {
   getModifierProductId,
   storeHash,
 } from "../../inputs";
-
 export const getModifierAction = action({
   display: {
     label: "Get Product Modifier",
@@ -33,7 +32,6 @@ export const getModifierAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${product_id}/modifiers/${modifier_id}?include_fields=${include_fields}&exclude_fields=${exclude_fields}`;
-
     try {
       const response = await client.get(endpoint);
       return {
@@ -45,7 +43,6 @@ export const getModifierAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

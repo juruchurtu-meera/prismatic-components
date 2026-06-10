@@ -1,6 +1,5 @@
 export const GRAPH_API_VERSION = "v21.0";
 export const GRAPH_API_URL = `https://graph.facebook.com/${GRAPH_API_VERSION}`;
-
 export const COUNTRY_CODES_MODEL = [
   {
     label: "Australia",
@@ -59,7 +58,6 @@ export const COUNTRY_CODES_MODEL = [
     value: "CA",
   },
 ];
-
 export const CODE_METHODS_MODEL = [
   {
     label: "SMS",
@@ -70,7 +68,6 @@ export const CODE_METHODS_MODEL = [
     value: "VOICE",
   },
 ];
-
 export const LANGUAGES_MODEL = [
   {
     label: "Afrikaans",
@@ -469,7 +466,6 @@ export const LANGUAGES_MODEL = [
     value: "zu",
   },
 ];
-
 export const MESSAGE_TYPES_MODEL = [
   { label: "Text", value: "text" },
   { label: "Audio", value: "audio" },
@@ -482,13 +478,11 @@ export const MESSAGE_TYPES_MODEL = [
   { label: "Contacts", value: "contacts" },
   { label: "Interactive", value: "interactive" },
 ];
-
 export const AUDIO_JSON_EXAMPLE = JSON.stringify(
   { id: "ID", link: "LINK" },
   null,
   2,
 );
-
 export const CONTACTS_JSON_EXAMPLE = JSON.stringify(
   [
     {
@@ -562,19 +556,16 @@ export const CONTACTS_JSON_EXAMPLE = JSON.stringify(
   null,
   2,
 );
-
 export const CONTEXT_JSON_EXAMPLE = JSON.stringify(
   { message_id: "MESSAGE_ID" },
   null,
   2,
 );
-
 export const DOCUMENT_JSON_EXAMPLE = JSON.stringify(
   { id: "ID", link: "LINK", caption: "CAPTION", filename: "FILENAME" },
   null,
   2,
 );
-
 export const IMAGE_JSON_EXAMPLE = JSON.stringify(
   {
     id: "ID",
@@ -584,7 +575,6 @@ export const IMAGE_JSON_EXAMPLE = JSON.stringify(
   null,
   2,
 );
-
 export const INTERACTIVE_JSON_EXAMPLE = JSON.stringify(
   {
     type: "button",
@@ -613,7 +603,6 @@ export const INTERACTIVE_JSON_EXAMPLE = JSON.stringify(
   null,
   2,
 );
-
 export const LOCATION_JSON_EXAMPLE = JSON.stringify(
   {
     longitude: -122.4194,
@@ -624,7 +613,6 @@ export const LOCATION_JSON_EXAMPLE = JSON.stringify(
   null,
   2,
 );
-
 export const REACTION_JSON_EXAMPLE = JSON.stringify(
   {
     message_id: "wamid.HBgLM...",
@@ -633,13 +621,11 @@ export const REACTION_JSON_EXAMPLE = JSON.stringify(
   null,
   2,
 );
-
 export const STICKER_JSON_EXAMPLE = JSON.stringify(
   { id: "ID", link: "LINK" },
   null,
   2,
 );
-
 export const TEMPLATE_JSON_EXAMPLE = JSON.stringify(
   {
     name: "TEMPLATE_NAME",
@@ -708,7 +694,6 @@ export const TEMPLATE_JSON_EXAMPLE = JSON.stringify(
   null,
   2,
 );
-
 export const TEXT_JSON_EXAMPLE = JSON.stringify(
   {
     preview_url: false,

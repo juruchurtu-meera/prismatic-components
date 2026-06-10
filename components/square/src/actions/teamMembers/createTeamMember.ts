@@ -2,20 +2,24 @@ import { action } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../../client";
 import { createTeamMemberExamplePayload } from "../../examplePayloads";
 import { createTeamMemberInputs } from "../../inputs";
-
 export const createTeamMember = action({
   display: {
     label: "Create Team Member",
     description: "Creates a new team member.",
   },
-  perform: async (context, { teamMember, idempotencyKey, squareConnection }) => {
-    
+  perform: async (
+    context,
+    { teamMember, idempotencyKey, squareConnection },
+  ) => {
     if (!teamMember.given_name || !teamMember.family_name) {
-      throw new Error("`given_name` and `family_name` are required for a team member.");
+      throw new Error(
+        "`given_name` and `family_name` are required for a team member.",
+      );
     }
-
-    const client = await createAuthorizedClient(squareConnection, context.debug.enabled);
-
+    const client = await createAuthorizedClient(
+      squareConnection,
+      context.debug.enabled,
+    );
     const requestBody = {
       idempotency_key: idempotencyKey,
       team_member: {
@@ -33,13 +37,11 @@ export const createTeamMember = action({
           : undefined,
       },
     };
-
     const response = await client.request({
       url: "/v2/team-members",
       method: "POST",
       data: requestBody,
     });
-
     return {
       data: response.data,
     };

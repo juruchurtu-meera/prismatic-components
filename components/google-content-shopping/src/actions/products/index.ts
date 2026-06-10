@@ -6,7 +6,6 @@ import { updateProduct } from "./update";
 import { batchProduct } from "./batch";
 import localInventory from "./localInventory";
 import regionalInventory from "./regionalInventory";
-
 export default {
   listProducts,
   createProduct,

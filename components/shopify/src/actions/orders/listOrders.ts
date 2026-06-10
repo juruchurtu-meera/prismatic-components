@@ -3,7 +3,6 @@ import { getShopifyClient } from "../../client";
 import { listOrdersInputs } from "../../inputs";
 import { listOrdersExamplePayload } from "../../payloadExamples";
 import { computePageInformation } from "../../util";
-
 export const listOrders = action({
   display: {
     label: "List Orders (Deprecated)",
@@ -11,7 +10,11 @@ export const listOrders = action({
       "List all orders. This version of the action is being deprecated. Please replace action with List Orders.",
   },
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const result = await computePageInformation(
       client,
       "/orders",
@@ -34,7 +37,6 @@ export const listOrders = action({
       },
       params.getAlldata,
     );
-
     return {
       data: result as unknown,
     };

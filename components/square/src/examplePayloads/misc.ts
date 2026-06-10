@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     locations: [

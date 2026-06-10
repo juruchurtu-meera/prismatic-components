@@ -3,7 +3,6 @@ import { connectionInput, locale, articleId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { Article } from "../../types";
 import { getArticlePayload } from "../../examplePayloads";
-
 export const showArticle = action({
   display: {
     label: "Get Article",
@@ -11,10 +10,9 @@ export const showArticle = action({
   },
   perform: async (context, { zendeskConnection, locale, articleId }) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
-    const { data } = await client.get<{ article: Article }>(
-      `/help_center/${locale}/articles/${articleId}`,
-    );
-
+    const { data } = await client.get<{
+      article: Article;
+    }>(`/help_center/${locale}/articles/${articleId}`);
     return {
       data,
     };

@@ -4,7 +4,6 @@ import { connection, formId } from "../inputs";
 import { fetchAllData } from "../util";
 import type { Response } from "../interfaces/responses";
 import { selectResponseExample } from "../examplePayloads/datasources";
-
 export const selectResponse = dataSource({
   display: {
     label: "Select Response",

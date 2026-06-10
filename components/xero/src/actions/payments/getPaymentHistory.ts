@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { paymentId, connectionInput } from "../../inputs";
 import { getPaymentHistoryExamplePayload } from "../../examplePayloads";
-
 export const getPaymentHistory = action({
   display: {
     label: "Get Payment History",

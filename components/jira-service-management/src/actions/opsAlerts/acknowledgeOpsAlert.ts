@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOpsManagementClient } from "../../client";
 import { acknowledgeOpsAlertExamplePayload } from "../../examplePayloads";
 import { acknowledgeOpsAlertInputs } from "../../inputs";
-
 export const acknowledgeOpsAlert = action({
   display: {
     label: "Acknowledge Ops Alert",

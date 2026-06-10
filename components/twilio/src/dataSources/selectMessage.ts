@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../client";
 import { selectMessageInputs } from "../inputs";
-
 export const selectMessage = dataSource({
   display: {
     label: "Select Message",
@@ -11,7 +10,6 @@ export const selectMessage = dataSource({
   perform: async (_context, { connection }) => {
     const twilioClient = createAuthorizedClient(connection, false);
     const messages = await twilioClient.messages.list();
-
     const result = messages
       .map<Element>((message) => {
         const json = message.toJSON();
@@ -25,13 +23,15 @@ export const selectMessage = dataSource({
         };
       })
       .sort((a, b) => ((a.label || "") < (b.label || "") ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",
   examplePayload: {
     result: [
-      { label: "Hello from Acme! (+15551234567)", key: "SMbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+      {
+        label: "Hello from Acme! (+15551234567)",
+        key: "SMbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      },
     ],
   },
 });

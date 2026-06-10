@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listChangesExamplePayload as examplePayload } from "../../examplePayloads";
 import { listChangesInputs as inputs } from "../../inputs/change";
 import { getMinimalHeader } from "../../util";
-
 export const listChanges = action({
   display: {
     label: "List Changes",

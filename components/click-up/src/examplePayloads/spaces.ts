@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const spaceObject = {
   id: "790",
   name: "Engineering",
@@ -77,25 +61,20 @@ const spaceObject = {
   },
   archived: false,
 };
-
 export const getSpaceExamplePayload = {
   data: spaceObject,
 };
-
 export const listSpacesExamplePayload = {
   data: {
     spaces: [spaceObject],
   },
 };
-
 export const createSpaceExamplePayload = {
   data: spaceObject,
 };
-
 export const updateSpaceExamplePayload = {
   data: spaceObject,
 };
-
 export const deleteSpaceExamplePayload = {
   data: null,
 };

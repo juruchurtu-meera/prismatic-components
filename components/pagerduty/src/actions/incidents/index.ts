@@ -9,7 +9,6 @@ import { updateIncidents } from "./manage";
 import { updateIncidentAlerts } from "./manageIncidentAlerts";
 import { updateIncident } from "./update";
 import { updateIncidentAlert } from "./updateIncidentAlert";
-
 export default {
   listIncidents,
   createIncident,

@@ -8,7 +8,6 @@ import { getDocuments } from "./getDocuments";
 import { getEnvelopeStatus } from "./getStatus";
 import { listEnvelopes } from "./list";
 import { sendEnvelopeReminder } from "./sendReminder";
-
 export default {
   archiveEnvelope,
   createEmbeddedEnvelope,

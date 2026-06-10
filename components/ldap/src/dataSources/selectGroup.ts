@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getLdapClient } from "../client";
 import { connection } from "../inputs/common";
 import { getRootDn } from "../util";
-
 export const selectGroup = dataSource({
   display: {
     label: "Select Group",
@@ -14,14 +13,12 @@ export const selectGroup = dataSource({
   perform: async (_context, { connection }) => {
     const client = await getLdapClient(connection);
     const rootDn = await getRootDn(client);
-
     try {
       const { searchEntries } = await client.search(rootDn, {
         scope: "sub",
         filter: "(objectClass=group)",
         attributes: ["cn", "name", "dn"],
       });
-
       const result = searchEntries
         .map(
           (entry): Element => ({
@@ -30,7 +27,6 @@ export const selectGroup = dataSource({
           }),
         )
         .sort((a, b) => (a.label ?? "").localeCompare(b.label ?? ""));
-
       return { result };
     } finally {
       await client.unbind();

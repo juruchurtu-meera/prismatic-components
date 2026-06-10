@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput } from "../../util";
-
 const userId = input({
   label: "User Id",
   comments:
@@ -11,7 +10,6 @@ const userId = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const accountEnabled = input({
   label: "Account Enabled",
   type: "boolean",
@@ -21,7 +19,6 @@ const accountEnabled = input({
     "When true, enables the user account. When false, the account is disabled and the user cannot sign in.",
   clean: util.types.toBool,
 });
-
 const displayName = input({
   label: "Display Name",
   type: "string",
@@ -31,7 +28,6 @@ const displayName = input({
   example: "John Doe",
   clean: cleanStringInput,
 });
-
 const userPrincipalName = input({
   label: "User Principal Name",
   type: "string",
@@ -42,7 +38,6 @@ const userPrincipalName = input({
   placeholder: "Enter username",
   clean: cleanStringInput,
 });
-
 const domain = input({
   label: "Domain",
   type: "string",
@@ -53,7 +48,6 @@ const domain = input({
   placeholder: "Enter domain",
   clean: cleanStringInput,
 });
-
 const givenName = input({
   label: "First Name",
   type: "string",
@@ -63,7 +57,6 @@ const givenName = input({
   example: "John",
   clean: cleanStringInput,
 });
-
 const surname = input({
   label: "Last Name",
   type: "string",
@@ -73,7 +66,6 @@ const surname = input({
   example: "Doe",
   clean: cleanStringInput,
 });
-
 const jobTitle = input({
   label: "Job Title",
   type: "string",
@@ -83,7 +75,6 @@ const jobTitle = input({
   example: "Software Engineer",
   clean: cleanStringInput,
 });
-
 const additionalProperties = input({
   label: "Additional Properties",
   type: "code",
@@ -93,7 +84,6 @@ const additionalProperties = input({
     "Additional properties to update that are not covered by the other inputs. This should be a JSON object and will be merged with the other inputs. You can get additional properties from the Microsoft Graph API documentation https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#json-representation",
   clean: cleanCodeInput,
 });
-
 export default {
   userId,
   accountEnabled,

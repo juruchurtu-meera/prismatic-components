@@ -4,7 +4,6 @@ import { awsRegion } from "aws-utils";
 import { nextToken, connectionInput } from "../inputs";
 import { ListPhoneNumbersOptedOutCommand } from "@aws-sdk/client-sns";
 import { listOptOutNumbersExamplePayload } from "../examplePayloads";
-
 export const listOptOutNumbers = action({
   display: {
     label: "List Opt Out Numbers",
@@ -34,5 +33,4 @@ export const listOptOutNumbers = action({
   inputs: { awsRegion, nextToken, awsConnection: connectionInput },
   examplePayload: listOptOutNumbersExamplePayload,
 });
-
 export default listOptOutNumbers;

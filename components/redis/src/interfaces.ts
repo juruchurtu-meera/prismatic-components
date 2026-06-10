@@ -1,9 +1,7 @@
 import type { Connection } from "@prismatic-io/spectral";
-
 export interface CreateClientProps {
   redisConnection?: Connection;
 }
-
 export interface RedisOptions {
   host: string;
   port: number;

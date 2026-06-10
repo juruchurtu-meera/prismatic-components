@@ -1,5 +1,4 @@
 import { util, input } from "@prismatic-io/spectral";
-
 export const mobileAppId = input({
   label: "Mobile App Id",
   comments: "Unique identifier for the mobile app (UUID format).",
@@ -10,7 +9,6 @@ export const mobileAppId = input({
   clean: util.types.toString,
   dataSource: "selectMobileApp",
 });
-
 export const groupId = input({
   label: "Group Id",
   comments:
@@ -22,7 +20,6 @@ export const groupId = input({
   clean: util.types.toString,
   dataSource: "selectGroup",
 });
-
 export const intent = input({
   label: "Intent",
   comments:
@@ -41,7 +38,6 @@ export const intent = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const target = input({
   label: "Target",
   type: "string",
@@ -52,7 +48,6 @@ export const target = input({
   placeholder: "Enter target type",
   clean: util.types.toString,
 });
-
 export const settings = input({
   label: "Settings",
   type: "string",

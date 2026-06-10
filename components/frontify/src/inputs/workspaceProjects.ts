@@ -5,12 +5,10 @@ import {
   connection,
   projectId,
 } from "./sharedInputs";
-
 export const getWorkspaceProjectInputs = {
   connection,
   projectId,
 };
-
 export const listWorkspaceProjectAssetsInputs = {
   connection,
   ...paginationInputs,
@@ -18,7 +16,6 @@ export const listWorkspaceProjectAssetsInputs = {
   assetSearch,
   assetExternalId,
 };
-
 export const listWorkspaceProjectFoldersInputs = {
   connection,
   ...paginationInputs,

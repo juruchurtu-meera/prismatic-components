@@ -1,12 +1,9 @@
 import { action } from "@prismatic-io/spectral";
-
 import { connectionInput, customerIdInput } from "../inputs";
 import { getClient, sendAsync } from "../client";
 import { BING_API } from "../util";
 import { getCustomerExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "GetCustomer";
-
 export interface GetCustomerResponse {
   Customer: {
     CustomerFinancialStatus: string;
@@ -39,7 +36,6 @@ export interface GetCustomerResponse {
     };
   };
 }
-
 export const getCustomer = action({
   display: {
     label: "Get Customer",
@@ -53,7 +49,6 @@ export const getCustomer = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<GetCustomerResponse>({
       debug,
       args: { CustomerId: customerId },
@@ -61,7 +56,6 @@ export const getCustomer = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data: response,
     };

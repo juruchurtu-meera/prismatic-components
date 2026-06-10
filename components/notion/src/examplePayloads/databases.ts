@@ -58,7 +58,6 @@ export const retrieveDatabaseResponse = {
     ],
   },
 };
-
 export const createDatabaseExampleResponse = {
   data: {
     object: "database",
@@ -133,7 +132,6 @@ export const createDatabaseExampleResponse = {
     ],
   },
 };
-
 export const updateDatabaseResponse = {
   data: {
     object: "database",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
 import { downloadAttachmentInputs } from "../../inputs";
 import { downloadAttachmentExamplePayload } from "../../examplePayloads";
-
 export const downloadAttachment = action({
   display: {
     label: "Download Attachment",
@@ -21,5 +20,4 @@ export const downloadAttachment = action({
   },
   inputs: downloadAttachmentInputs,
 });
-
 export default { downloadAttachment };

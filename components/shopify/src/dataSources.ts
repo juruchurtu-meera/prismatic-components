@@ -12,7 +12,6 @@ import { selectProductImages } from "./datasources/selectProductImages";
 import { selectProducts } from "./datasources/selectProducts";
 import { selectVariants } from "./datasources/selectVariants";
 import { connectionInput, orderId, productId } from "./inputs";
-
 const listOrders = dataSource({
   display: {
     label: "Select Order",
@@ -27,11 +26,11 @@ const listOrders = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listFulfillmentOrders = dataSource({
   display: {
     label: "Select Fulfillment Order",
-    description: "Selects a fulfillment order from a list of all fulfillment orders.",
+    description:
+      "Selects a fulfillment order from a list of all fulfillment orders.",
   },
   perform: async (context, { shopifyConnection, orderId }) => {
     const { result } = await selectFulfillmentOrders.perform(context, {
@@ -49,7 +48,6 @@ const listFulfillmentOrders = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const listFulfillments = dataSource({
   display: {
     label: "Select Fulfillment",
@@ -71,7 +69,6 @@ const listFulfillments = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const listLocations = dataSource({
   display: {
     label: "Select Location",
@@ -84,7 +81,6 @@ const listLocations = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listCustomers = dataSource({
   display: {
     label: "Select Customer",
@@ -97,7 +93,6 @@ const listCustomers = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listProducts = dataSource({
   display: {
     label: "Select Product",
@@ -110,11 +105,11 @@ const listProducts = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listVariants = dataSource({
   display: {
     label: "Select Variant",
-    description: "Selects a product variant from a list of variants for the specified product.",
+    description:
+      "Selects a product variant from a list of variants for the specified product.",
   },
   perform: async (context, params) => {
     const { result } = await selectVariants.perform(context, params);
@@ -129,11 +124,11 @@ const listVariants = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const listProductImages = dataSource({
   display: {
     label: "Select Product Image",
-    description: "Selects a product image from a list of images for the specified product.",
+    description:
+      "Selects a product image from a list of images for the specified product.",
   },
   perform: async (context, params) => {
     const { result } = await selectProductImages.perform(context, params);
@@ -148,11 +143,11 @@ const listProductImages = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const listInventoryItems = dataSource({
   display: {
     label: "Select Inventory Item",
-    description: "Selects an inventory item from a list of all inventory items.",
+    description:
+      "Selects an inventory item from a list of all inventory items.",
   },
   perform: async (context, params) => {
     const { result } = await selectInventoryItems.perform(context, params);
@@ -161,7 +156,6 @@ const listInventoryItems = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listDraftOrders = dataSource({
   display: {
     label: "Select Draft Order",
@@ -174,7 +168,6 @@ const listDraftOrders = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listCollections = dataSource({
   display: {
     label: "Select Collection",
@@ -187,11 +180,11 @@ const listCollections = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 const listFulfillmentServices = dataSource({
   display: {
     label: "Select Fulfillment Service",
-    description: "Selects a fulfillment service from a list of all fulfillment services.",
+    description:
+      "Selects a fulfillment service from a list of all fulfillment services.",
   },
   perform: async (context, params) => {
     const { result } = await selectFulfillmentServices.perform(context, params);
@@ -200,7 +193,6 @@ const listFulfillmentServices = dataSource({
   inputs: { shopifyConnection: connectionInput },
   dataSourceType: "picklist",
 });
-
 export {
   listOrders,
   listFulfillmentOrders,

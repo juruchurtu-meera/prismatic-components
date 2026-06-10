@@ -82,7 +82,6 @@ export const retrieveDataSourceResponse = {
     in_trash: false,
   },
 };
-
 export const queryDataSourceResponse = {
   data: {
     object: "list",
@@ -129,7 +128,6 @@ export const queryDataSourceResponse = {
     type: "page_or_database",
   },
 };
-
 export const listDataSourcesResponse = {
   data: {
     object: "list",
@@ -179,7 +177,6 @@ export const listDataSourcesResponse = {
     type: "data_source",
   },
 };
-
 export const createDataSourceResponse = {
   data: {
     object: "data_source",
@@ -231,7 +228,6 @@ export const createDataSourceResponse = {
     in_trash: false,
   },
 };
-
 export const updateDataSourceResponse = {
   data: {
     object: "data_source",
@@ -316,7 +312,6 @@ export const updateDataSourceResponse = {
     in_trash: false,
   },
 };
-
 export const selectDataSourceResponse = {
   result: [
     {
@@ -329,7 +324,6 @@ export const selectDataSourceResponse = {
     },
   ],
 };
-
 export const selectPageResponse = {
   result: [
     {

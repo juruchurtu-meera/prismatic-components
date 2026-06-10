@@ -1,14 +1,12 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, workspaceId } from "../inputs";
-
 interface Call {
   calls: {
     id: string;
     title: string;
   }[];
 }
-
 export const calls = dataSource({
   display: {
     label: "Select Call",
@@ -28,7 +26,6 @@ export const calls = dataSource({
         workspaceId,
       },
     });
-
     const result = data.calls.map<Element>((call) => ({
       label: call.title,
       key: call.id.toString(),

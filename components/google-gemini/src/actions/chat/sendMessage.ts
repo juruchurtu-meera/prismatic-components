@@ -3,7 +3,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGeminiClient } from "../../client";
 import { sendMessageExamplePayload as examplePayload } from "../../examplePayloads/chat";
 import { sendMessageInputs } from "../../inputs/chat";
-
 export const sendMessage = action({
   display: {
     label: "Send Message",
@@ -39,11 +38,9 @@ export const sendMessage = action({
       },
       history: history as Content[],
     });
-
     const response = await data.sendMessage({
       message: prompt,
     });
-
     return {
       data: response,
     };

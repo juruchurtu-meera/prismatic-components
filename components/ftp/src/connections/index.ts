@@ -1,5 +1,4 @@
 import { onPremConnection } from "@prismatic-io/spectral";
-
 export const basic = onPremConnection({
   key: "basic",
   display: {
@@ -66,5 +65,4 @@ export const basic = onPremConnection({
     },
   },
 });
-
 export default [basic];

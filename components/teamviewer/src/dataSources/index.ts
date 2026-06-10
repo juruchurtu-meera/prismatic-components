@@ -6,7 +6,6 @@ import { selectPolicy } from "./selectPolicy";
 import { selectSession } from "./selectSession";
 import { selectUser } from "./selectUser";
 import { selectUserRole } from "./selectUserRole";
-
 export default {
   selectContact,
   selectDevice,

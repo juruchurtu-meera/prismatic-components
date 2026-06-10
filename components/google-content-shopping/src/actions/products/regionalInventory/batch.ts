@@ -5,7 +5,6 @@ import {
   entriesForBatchRegionalInventory,
 } from "../../../inputs";
 import { batchRegionalInventoryExamplePayload } from "../../../examplePayloads";
-
 export const batchRegionalInventory = action({
   display: {
     description:

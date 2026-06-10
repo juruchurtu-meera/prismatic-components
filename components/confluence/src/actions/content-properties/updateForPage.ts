@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, pageId, bodyData, propertyId } from "../../inputs";
 import { getContentPropertyExamplePayload as updateContentPropertyForPageExamplePayload } from "../../examplePayloads";
-
 export const updateContentPropertyForPage = action({
   display: {
     label: "Update Content Property for Page",

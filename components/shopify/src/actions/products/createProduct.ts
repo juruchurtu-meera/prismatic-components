@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { createProductInputs } from "../../inputs";
 import { createProductExamplePayload } from "../../payloadExamples";
-
 export const createProduct = action({
   display: {
     label: "Create Product (Deprecated)",
@@ -11,9 +10,22 @@ export const createProduct = action({
   },
   perform: async (
     context,
-    { title, body, productType, vendor, imageUrl, tags, fieldValues, shopifyConnection },
+    {
+      title,
+      body,
+      productType,
+      vendor,
+      imageUrl,
+      tags,
+      fieldValues,
+      shopifyConnection,
+    },
   ) => {
-    const client = getShopifyClient(shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     return {
       data: (
         await client.post("/products", {

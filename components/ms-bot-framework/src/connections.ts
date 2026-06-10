@@ -1,11 +1,15 @@
-import { connection, oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
+import {
+  connection,
+  oauth2Connection,
+  OAuth2Type,
+} from "@prismatic-io/spectral";
 export const clientCredentials = oauth2Connection({
   key: "clientCredentials",
   oauth2Type: OAuth2Type.ClientCredentials,
   display: {
     label: "OAuth 2.0 Client Credentials",
-    description: "OAuth 2.0 Client Credentials Connectivity for Microsoft Bot Framework",
+    description:
+      "OAuth 2.0 Client Credentials Connectivity for Microsoft Bot Framework",
   },
   inputs: {
     tokenUrl: {
@@ -16,7 +20,8 @@ export const clientCredentials = oauth2Connection({
       shown: true,
       comments:
         "The OAuth 2.0 Token URL for Microsoft Bot Framework. Use the default for Multi-Tenant bots and `https://login.microsoftonline.com/<tenant_id>/oauth2/v2.0/token` for Single-Tenant.",
-      default: "https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token",
+      default:
+        "https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token",
     },
     scopes: {
       label: "Scopes",
@@ -33,7 +38,8 @@ export const clientCredentials = oauth2Connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "The Client ID (Application ID) from your Azure Bot registration.",
+      comments:
+        "The Client ID (Application ID) from your Azure Bot registration.",
       example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
     },
     clientSecret: {
@@ -48,7 +54,6 @@ export const clientCredentials = oauth2Connection({
     },
   },
 });
-
 export const directLine = connection({
   key: "directLine",
   display: {
@@ -65,5 +70,4 @@ export const directLine = connection({
     },
   },
 });
-
 export default [clientCredentials, directLine];

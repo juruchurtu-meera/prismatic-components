@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll } from "../common";
-
 export const listStagesInputs = {
   connection,
   fetchAll,
@@ -12,7 +11,6 @@ export const listStagesInputs = {
     clean: util.types.toString,
     dataSource: "selectPipeline",
   }),
-
   sortBy: input({
     label: "Sort By",
     comments:
@@ -22,7 +20,6 @@ export const listStagesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ids: input({
     label: "IDs",
     comments: "Comma-separated list of stage IDs to be returned in a request.",
@@ -30,7 +27,6 @@ export const listStagesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   name: input({
     label: "Name",
     placeholder: "Enter name",
@@ -40,7 +36,6 @@ export const listStagesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   active: input({
     label: "Active",
     comments:
@@ -63,7 +58,6 @@ export const listStagesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   perPage: input({
     label: "Per Page",
     comments:

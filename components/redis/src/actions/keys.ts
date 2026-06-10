@@ -3,7 +3,6 @@ import { connectionInput, key } from "../inputs";
 import { createClient } from "../client";
 import closeConnection from "../closeConnection";
 import { keysExamplePayload } from "../examplePayloads";
-
 export const keys = action({
   display: {
     label: "Keys",
@@ -15,9 +14,7 @@ export const keys = action({
       context.debug.enabled,
     );
     const data = await client.keys(key);
-
     await closeConnection(client);
-
     return {
       data,
     };

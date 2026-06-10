@@ -25,7 +25,6 @@ export interface Reimbursement {
   user_full_name: string;
   user_id: string;
 }
-
 interface AccountingFieldSelection {
   category_info?: AccountingFieldSelection;
   external_id: string;
@@ -33,12 +32,10 @@ interface AccountingFieldSelection {
   name: string;
   type: string;
 }
-
 interface LineItem {
   accounting_field_selections: AccountingFieldSelection[];
   amount: Amount;
 }
-
 interface Amount {
   amount: number;
   currency_code: string;

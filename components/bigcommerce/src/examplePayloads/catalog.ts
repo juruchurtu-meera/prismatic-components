@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export const getCatalogSummaryExamplePayload = {
   data: {
     data: {

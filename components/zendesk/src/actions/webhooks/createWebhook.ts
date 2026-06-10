@@ -3,7 +3,6 @@ import { rawHttpClient } from "../../auth";
 import { createWebhookPayload } from "../../examplePayloads";
 import { connectionInput, webhookEventsInput } from "../../inputs";
 import { fetchWebhooks } from "./utils";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
@@ -37,24 +36,17 @@ export const createWebhook = action({
   },
   perform: async ({ logger }, params) => {
     const client = rawHttpClient(params.zendeskConnection);
-
-    
     const existingWebhooks = await fetchWebhooks({
       client,
       showOnlyInstanceWebhooks: true,
       instanceWebhookUrls: [params.callbackUrl],
     });
-
-    
-    
     if (existingWebhooks.length && !params.allowDuplicates) {
       logger.info(
         `A webhook targeting ${params.callbackUrl} already exists. Skipping creation.`,
       );
       return { data: { webhook: existingWebhooks[0] } };
     }
-
-    
     const { data } = await client.post("/webhooks", {
       webhook: {
         endpoint: params.callbackUrl,

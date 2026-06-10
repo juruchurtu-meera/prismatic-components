@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { createCustomerInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -24,7 +23,6 @@ export const createCustomer = action({
     },
   ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const payload = {
       CustomerStatusType: customerStatusType,
       LastReferenceDate: lastReferenceDate,
@@ -34,14 +32,11 @@ export const createCustomer = action({
       PartyId: partyId,
       TotalLifeTimeValue: totalLifeTimeValue,
     };
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", payload);
     }
-
     const command = salesforceClient.sobject("Customer").create(payload);
     const response = await executeSFAction(context, command);
-
     return {
       data: response,
     };

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { getGroupExamplePayload } from "../../examplePayloads";
 import { getGroupInputs } from "../../inputs/groups/get";
-
 export const getGroup = action({
   display: {
     label: "Get Group",
@@ -12,7 +11,6 @@ export const getGroup = action({
   perform: async (context, { connection, groupId }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(`/groups/${groupId}`);
-
     return {
       data,
     };

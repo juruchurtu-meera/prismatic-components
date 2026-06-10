@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { createConversationExamplePayload } from "../../examplePayloads";
 import { createConversationInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const createConversation = action({
   display: {
     label: "Create Conversation",
@@ -11,7 +10,7 @@ export const createConversation = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, isPrivate, conversationName, teamId }
+    { connection, isPrivate, conversationName, teamId },
   ) => {
     debugLogger({ debug, isPrivate, conversationName, teamId });
     const client = await createOauthClient({ slackConnection: connection });

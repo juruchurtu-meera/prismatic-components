@@ -1,8 +1,6 @@
 import type { PollResourceConfig } from "./types/polling";
 import { KlaviyoApi } from "./enums/KlaviyoApi";
-
 export const BASE_URL = "https://a.klaviyo.com";
-
 export const FIELDS_ACCOUNT_MODEL = [
   { label: "Test Account", value: "test_account" },
   { label: "Contact Information", value: "contact_information" },
@@ -56,7 +54,6 @@ export const FIELDS_ACCOUNT_MODEL = [
   { label: "Public API Key", value: "public_api_key" },
   { label: "Locale", value: "locale" },
 ];
-
 export const FIELDS_TEMPLATE_MODEL = [
   { label: "Name", value: "name" },
   { label: "Editor Type", value: "editor_type" },
@@ -65,12 +62,10 @@ export const FIELDS_TEMPLATE_MODEL = [
   { label: "Created", value: "created" },
   { label: "Updated", value: "updated" },
 ];
-
 export const ADDITIONAL_FIELDS_PROFILE_MODEL = [
   { label: "Subscriptions", value: "subscriptions" },
   { label: "Predictive Analytics", value: "predictive_analytics" },
 ];
-
 export const FIELDS_PROFILE_MODEL = [
   { label: "Email", value: "email" },
   { label: "Phone Number", value: "phone_number" },
@@ -218,7 +213,6 @@ export const FIELDS_PROFILE_MODEL = [
     value: "predictive_analytics.expected_date_of_next_order",
   },
 ];
-
 export const FIELDS_PROFILE_EVENT_MODEL = [
   { label: "Email", value: "email" },
   { label: "Phone Number", value: "phone_number" },
@@ -245,14 +239,12 @@ export const FIELDS_PROFILE_EVENT_MODEL = [
   { label: "Location IP", value: "location.ip" },
   { label: "Properties", value: "properties" },
 ];
-
 export const FIELDS_LIST_MODEL = [
   { label: "Name", value: "name" },
   { label: "Created", value: "created" },
   { label: "Updated", value: "updated" },
   { label: "Opt In Process", value: "opt_in_process" },
 ];
-
 export const FIELDS_IMAGE_MODEL = [
   { label: "Name", value: "name" },
   { label: "Image URL", value: "image_url" },
@@ -261,7 +253,6 @@ export const FIELDS_IMAGE_MODEL = [
   { label: "Hidden", value: "hidden" },
   { label: "Updated At", value: "updated_at" },
 ];
-
 export const FIELDS_CAMPAIGN_MODEL = [
   { label: "Name", value: "name" },
   { label: "Status", value: "status" },
@@ -311,21 +302,18 @@ export const FIELDS_CAMPAIGN_MODEL = [
   { label: "Updated At", value: "updated_at" },
   { label: "Send Time", value: "send_time" },
 ];
-
 export const FIELDS_EVENT_MODEL = [
   { label: "Timestamp", value: "timestamp" },
   { label: "Event Properties", value: "event_properties" },
   { label: "Datetime", value: "datetime" },
   { label: "UUID", value: "uuid" },
 ];
-
 export const FIELDS_METRIC_MODEL = [
   { label: "Name", value: "name" },
   { label: "Created", value: "created" },
   { label: "Updated", value: "updated" },
   { label: "Integration", value: "integration" },
 ];
-
 export const FIELDS_SEGMENT_MODEL = [
   { label: "Name", value: "name" },
   { label: "Definition", value: "definition" },
@@ -339,7 +327,6 @@ export const FIELDS_SEGMENT_MODEL = [
   { label: "Is Processing", value: "is_processing" },
   { label: "Is Starred", value: "is_starred" },
 ];
-
 export const PROFILE_OR_LIST_RESOURCE_CONFIG: Record<
   string,
   PollResourceConfig
@@ -357,26 +344,22 @@ export const PROFILE_OR_LIST_RESOURCE_CONFIG: Record<
     updatedAtField: "updated",
   },
 };
-
 export const CAMPAIGN_RESOURCE_CONFIG: PollResourceConfig = {
   label: "Campaigns",
   api: KlaviyoApi.Campaigns,
   createdAtField: "created_at",
   updatedAtField: "updated_at",
 };
-
 export const MESSAGE_CHANNEL_MODEL = [
   { label: "Email", value: "email" },
   { label: "SMS", value: "sms" },
   { label: "Mobile Push", value: "mobile_push" },
 ];
-
 export const KLAVIYO_FILTER_OPS = {
   AND: "and",
   EQUALS: "equals",
   GREATER_THAN: "greater-than",
 } as const;
-
 export const KLAVIYO_FILTER_FIELDS = {
   MESSAGES_CHANNEL: "messages.channel",
 } as const;

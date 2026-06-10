@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listMembersInputs } from "../../inputs/members/list";
 import { listMembersExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listMembersFromGroup = action({
   display: {
     label: "List Group Members",
@@ -33,14 +32,12 @@ export const listMembersFromGroup = action({
       $count,
       $top,
     };
-
     const data = await paginateResults(
       client,
       `/groups/${groupId}/members`,
       fetchAll,
       params,
     );
-
     return {
       data,
     };

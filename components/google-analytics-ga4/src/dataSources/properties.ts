@@ -3,7 +3,6 @@ import { createAnalyticsClient } from "../client";
 import { accountId, connectionInput } from "../inputs";
 import type { Property } from "../types";
 import { paginateRecords } from "../util";
-
 const listProperties = dataSource({
   display: {
     label: "List Properties",
@@ -22,7 +21,6 @@ const listProperties = dataSource({
       connection: params.connection,
       endpointType: "adminv1beta",
     });
-
     const data = await paginateRecords<Property, "properties">(
       client,
       "/properties",
@@ -40,5 +38,4 @@ const listProperties = dataSource({
     };
   },
 });
-
 export default { listProperties };

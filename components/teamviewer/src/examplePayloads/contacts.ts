@@ -1,7 +1,3 @@
-
-
-
-
 export const getContactExamplePayload = {
   data: {
     contact_id: "string",
@@ -15,9 +11,7 @@ export const getContactExamplePayload = {
     supported_features: "string",
   },
 };
-
 export const createContactExamplePayload = getContactExamplePayload;
-
 export const listContactsExamplePayload = {
   data: {
     contacts: [getContactExamplePayload.data],

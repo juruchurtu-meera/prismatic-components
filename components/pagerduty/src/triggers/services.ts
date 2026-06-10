@@ -10,7 +10,6 @@ import {
 import { onInstanceDelete } from "../util/onInstanceDelete";
 import { onInstanceDeploy } from "../util/onInstanceDeploy";
 import { perform } from "../util/perform";
-
 export const serviceTrigger = trigger({
   display: {
     label: "Service Webhook",

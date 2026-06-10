@@ -12,16 +12,13 @@ import {
   handlePollingError,
   searchGoogleAds,
 } from "../util";
-
 export const budgetAlertTrigger = pollingTrigger({
   display: {
     label: "Campaign Budget Alerts",
     description:
       "Checks for campaigns approaching or exceeding budget thresholds on a configured schedule.",
   },
-
   inputs: budgetAlertTriggerInputs,
-
   perform: async (context, payload, params) => {
     const client = createClient(
       params.connection,
@@ -39,9 +36,7 @@ export const budgetAlertTrigger = pollingTrigger({
             errorCount: 0,
             consecutiveErrors: 0,
           };
-
     const newSyncDate = getCurrentDate(timezone);
-
     try {
       const query = `
         SELECT
@@ -55,7 +50,6 @@ export const budgetAlertTrigger = pollingTrigger({
         WHERE segments.date >= '${pollState.lastSyncDate}' AND segments.date <= '${newSyncDate}'
           AND campaign.status = 'ENABLED'
       `;
-
       const data = await searchGoogleAds<CampaignQueryRow>(client, {
         customerId: params.customerId,
         params: {
@@ -63,10 +57,7 @@ export const budgetAlertTrigger = pollingTrigger({
         },
         fetchAll: true,
       });
-
       const results = data.results ?? [];
-
-      
       const budgetAlerts = results
         .map((campaign) =>
           calculateBudgetStatus(
@@ -75,14 +66,12 @@ export const budgetAlertTrigger = pollingTrigger({
           ),
         )
         .filter((status) => status.shouldAlert);
-
       context.polling.setState({
         lastSyncDate: newSyncDate,
         budgetAlerts,
         errorCount: 0,
         consecutiveErrors: 0,
       });
-
       return Promise.resolve({
         payload: {
           ...payload,
@@ -100,8 +89,6 @@ export const budgetAlertTrigger = pollingTrigger({
       handlePollingError(e as Error, pollState, context, "Google Ads budget");
     }
   },
-
   examplePayload: budgetAlertTriggerExamplePayload,
 });
-
 export default budgetAlertTrigger;

@@ -4,7 +4,7 @@
     "href": "https://redis.io/docs/latest/apis/"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://github.com/redis/node-redis/blob/master/CHANGELOG.md"
   }
 ]

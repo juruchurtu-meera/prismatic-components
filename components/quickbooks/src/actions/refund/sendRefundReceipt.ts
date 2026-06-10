@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { connectionInput, receiptId } from "../../inputs";
-
 export const sendRefundReceipt = action({
   display: {
     label: "Send Refund Receipt",

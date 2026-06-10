@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { boardId, connectionInput } from "./common";
-
 const columnId = input({
   label: "Column ID",
   type: "string",
@@ -11,7 +10,6 @@ const columnId = input({
   placeholder: "Enter Column ID",
   clean: util.types.toString,
 });
-
 const getAllItems = input({
   label: "Get All Items",
   type: "boolean",
@@ -21,7 +19,6 @@ const getAllItems = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const columnValue = input({
   label: "Column Value",
   type: "string",
@@ -32,14 +29,12 @@ const columnValue = input({
   example: "Done",
   clean: util.types.toString,
 });
-
 export const getItemsByColumnValueInputs = {
   connection: connectionInput,
   boardId,
   columnId,
   columnValue,
 };
-
 export const getItemsByColumnValueNewInputs = {
   connection: connectionInput,
   boardId,

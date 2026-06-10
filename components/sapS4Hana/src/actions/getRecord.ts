@@ -1,8 +1,15 @@
 import { action, input, util } from "@prismatic-io/spectral";
-import { connectionInput, filter, inlinecount, recordId, recordType, skip, top } from "../inputs";
+import {
+  connectionInput,
+  filter,
+  inlinecount,
+  recordId,
+  recordType,
+  skip,
+  top,
+} from "../inputs";
 import { getSapClient } from "../client";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export const getRecord = action({
   display: {
     label: "Get Record",
@@ -27,7 +34,6 @@ export const getRecord = action({
     const headers = {
       Accept: "application/json",
     };
-
     const params = {
       $expand: expand || undefined,
       $select: select || undefined,
@@ -37,19 +43,16 @@ export const getRecord = action({
       $filter: filter || undefined,
       $inlinecount: inlinecount || undefined,
     };
-
     const client = getSapClient(connectionInput, headers);
     try {
       const url = `/sap/opu/odata/sap/${recordType}('${recordId}')`;
       const { data } = await client.get(url, {
         params,
       });
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);
       const serialized = util.types.toJSON(handled);
-
       throw new Error(serialized);
     }
   },

@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { sendRawRequest } from "@prismatic-io/spectral/dist/clients/http";
 import { rawRequestV2ExamplePayload } from "../../examplePayloads";
 import { rawRequestV2Inputs } from "../../inputs";
-
 export const rawRequestV2 = action({
   display: {
     label: "Raw Request",
@@ -18,7 +17,7 @@ export const rawRequestV2 = action({
       { ...httpInputParams, debugRequest: context.debug.enabled },
       {
         Authorization: `Bearer ${token}`,
-      }
+      },
     );
     return { data };
   },

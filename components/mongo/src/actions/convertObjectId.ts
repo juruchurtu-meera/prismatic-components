@@ -1,7 +1,6 @@
 import { action, input } from "@prismatic-io/spectral";
 import { toMongoDBObjectId } from "../util";
 import { convertObjectIdExamplePayload } from "../examplePayloads";
-
 const convertObjectId = action({
   display: {
     label: "Convert Object ID",
@@ -25,5 +24,4 @@ const convertObjectId = action({
   },
   examplePayload: convertObjectIdExamplePayload,
 });
-
 export default convertObjectId;

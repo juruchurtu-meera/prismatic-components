@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, signatureId } from "../inputs";
-
 export const getAccountSignature = action({
   display: {
     label: "Get Account Signature",

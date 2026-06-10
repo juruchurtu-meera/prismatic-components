@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { copyObjectExamplePayload } from "../example-payloads";
 import { connectionInput, fromPath, toPath } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const copyObject = action({
   display: {
     label: "Copy Object",

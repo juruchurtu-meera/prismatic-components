@@ -1,7 +1,3 @@
-
-
-
-
 export const describeSalesPersonExamplePayload = {
   data: {
     requestId: "185d6#14b51985ff0",
@@ -52,7 +48,6 @@ export const describeSalesPersonExamplePayload = {
     ],
   },
 };
-
 export const getSalesPersonsByFilterExamplePayload = {
   data: {
     requestId: "e42b#14272d07d78",
@@ -75,7 +70,6 @@ export const getSalesPersonsByFilterExamplePayload = {
     ],
   },
 };
-
 export const syncSalesPersonsExamplePayload = {
   data: {
     requestId: "e42b#14272d07d78",
@@ -94,7 +88,6 @@ export const syncSalesPersonsExamplePayload = {
     ],
   },
 };
-
 export const deleteSalesPersonsExamplePayload = {
   data: {
     requestId: "e42b#14272d07d78",

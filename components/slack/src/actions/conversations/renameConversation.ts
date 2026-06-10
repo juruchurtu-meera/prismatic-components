@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { renameConversationExamplePayload } from "../../examplePayloads";
 import { renameConversationInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const renameConversation = action({
   display: {
     label: "Rename Conversation",
@@ -11,7 +10,7 @@ export const renameConversation = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, newConversationName, conversationName }
+    { connection, newConversationName, conversationName },
   ) => {
     debugLogger({ debug, newConversationName, conversationName });
     const client = await createOauthClient({

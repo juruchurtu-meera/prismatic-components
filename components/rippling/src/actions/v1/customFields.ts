@@ -4,7 +4,6 @@ import { API_VERSION } from "../../constants";
 import { getCustomFieldsExamplePayload } from "../../examplePayloads";
 import { getCustomFieldsInputs } from "../../inputs";
 import { paginateV1Results } from "../../utils/pagination";
-
 const getCustomFields = action({
   display: {
     label: "Get Custom Fields (V1)",
@@ -24,7 +23,6 @@ const getCustomFields = action({
     });
   },
 });
-
 export default {
   getCustomFields,
 };

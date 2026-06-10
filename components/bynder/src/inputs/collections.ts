@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanString } from "../util";
-
 export const hash = input({
   label: "Hash",
   type: "boolean",
@@ -8,7 +7,6 @@ export const hash = input({
   comments: "When true, treats the item ID as a hashed item ID.",
   clean: util.types.toBool,
 });
-
 export const isPublic = input({
   label: "Is Public",
   type: "boolean",
@@ -17,7 +15,6 @@ export const isPublic = input({
   clean: util.types.toBool,
   default: "true",
 });
-
 export const collectionOptions = input({
   label: "Collection Options",
   type: "string",
@@ -35,7 +32,6 @@ export const collectionOptions = input({
   ],
   clean: cleanString,
 });
-
 export const recipients = input({
   label: "Recipients",
   type: "string",
@@ -46,7 +42,6 @@ export const recipients = input({
   placeholder: "Enter email addresses (comma-separated)",
   clean: cleanString,
 });
-
 export const groups = input({
   label: "Groups",
   type: "string",
@@ -57,7 +52,6 @@ export const groups = input({
   placeholder: "Enter group IDs (comma-separated)",
   clean: cleanString,
 });
-
 export const profiles = input({
   label: "Profiles",
   type: "string",

@@ -1,8 +1,3 @@
-
-
-
-
-
 export const listPurchaseOrdersExamplePayload = {
   data: [
     {

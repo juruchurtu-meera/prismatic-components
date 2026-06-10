@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const licensesGetAllCommonlyUsed = action({
   display: {
     label: "Licenses Get All Commonly Used",
     description: "Get all commonly used licenses",
   },
   perform: async (context, { connection, featured, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/licenses`, {
       params: { featured, per_page: perPage, page },
     });
@@ -41,14 +43,16 @@ const licensesGetAllCommonlyUsed = action({
     },
   },
 });
-
 const licensesGet = action({
   display: {
     label: "Licenses Get",
     description: "Get a license",
   },
   perform: async (context, { connection, license }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/licenses/${license}`);
     return { data };
   },
@@ -66,7 +70,6 @@ const licensesGet = action({
     },
   },
 });
-
 export default {
   licensesGetAllCommonlyUsed,
   licensesGet,

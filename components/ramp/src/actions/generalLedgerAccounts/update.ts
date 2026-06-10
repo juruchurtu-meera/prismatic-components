@@ -9,7 +9,6 @@ import {
   reactivate,
   subsidiaries,
 } from "../../inputs";
-
 export const updateGeneralLedgerAccount = action({
   display: {
     label: "Update General Ledger Account",
@@ -42,16 +41,25 @@ export const updateGeneralLedgerAccount = action({
   },
   perform: async (
     context,
-    { connection, generalLedgerAccountId, code, name, reactivate, subsidiaries },
-  ) => {
-    const client = createClient(connection, context.debug.enabled);
-
-    const { data } = await client.patch(`/accounting/accounts/${generalLedgerAccountId}`, {
+    {
+      connection,
+      generalLedgerAccountId,
       code,
       name,
       reactivate,
       subsidiaries,
-    });
+    },
+  ) => {
+    const client = createClient(connection, context.debug.enabled);
+    const { data } = await client.patch(
+      `/accounting/accounts/${generalLedgerAccountId}`,
+      {
+        code,
+        name,
+        reactivate,
+        subsidiaries,
+      },
+    );
     return {
       data,
     };

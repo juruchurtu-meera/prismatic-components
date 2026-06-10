@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const number = input({
   label: "Number",
   example: "1896-S",
@@ -9,7 +8,6 @@ export const number = input({
   type: "string",
   clean: util.types.toString,
 });
-
 export const itemDisplayName = input({
   label: "Display Name",
   example: "ATHENS Desk",

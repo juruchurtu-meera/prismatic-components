@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { collection, document, connectionInput } from "../inputs";
 import { createClient } from "../client";
 import { getDocumentExamplePayload } from "../examplePayloads";
-
 export const getDocument = action({
   display: {
     label: "Get Document",
@@ -18,9 +17,7 @@ export const getDocument = action({
       .collection(util.types.toString(params.collection))
       .doc(util.types.toString(params.document))
       .get();
-
     await client.delete();
-
     return {
       data: {
         data: result.data(),

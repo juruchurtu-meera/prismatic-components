@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
 import { deleteStreamInputs } from "../../inputs";
 import { deleteStreamExamplePayload } from "../../examplePayloads";
-
 export const deleteStream = action({
   display: {
     label: "Delete Stream",
@@ -17,5 +16,4 @@ export const deleteStream = action({
   },
   inputs: deleteStreamInputs,
 });
-
 export default { deleteStream };

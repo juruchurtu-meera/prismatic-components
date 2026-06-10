@@ -5,7 +5,6 @@ import { createOrderGql } from "./createOrder";
 import { deleteOrderGql } from "./deleteOrder";
 import { getOrderGql } from "./getOrder";
 import { listOrdersGql } from "./listOrders";
-
 export default {
   cancelOrderGql,
   closeOrderGql,

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { listWebhooksInputs } from "../../inputs";
 import { listWebhooksExamplePayload } from "../../examplePayloads";
 import { listWebhooks } from "../../utils/webhooks";
-
 export default action({
   display: {
     label: "List Webhooks",

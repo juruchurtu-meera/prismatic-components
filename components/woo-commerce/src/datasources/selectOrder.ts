@@ -10,7 +10,6 @@ import {
 import type { Order } from "../interfaces/Order";
 import type { WooCommerceResponse } from "../interfaces/WooComerResponse";
 import { paginateRecords } from "../util";
-
 export const selectOrder = dataSource({
   display: {
     label: "Select Order",
@@ -33,7 +32,6 @@ export const selectOrder = dataSource({
       },
       true,
     );
-
     return {
       result: data.map(({ id, total, order_key }) => ({
         label: `${order_key} - ${total}`,

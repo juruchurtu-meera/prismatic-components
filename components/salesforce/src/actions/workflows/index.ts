@@ -5,7 +5,6 @@ import { listWorkflowOutboundMessages } from "./listWorkflowOutboundMessages";
 import { createWorkflowOutboundMessage } from "./createWorkflowOutboundMessage";
 import { deleteWorkflowOutboundMessage } from "./deleteWorkflowOutboundMessage";
 import { subscribeToRecordChange } from "./subscribeToRecordChange";
-
 export default {
   listWorkflowRules,
   createWorkflowRule,

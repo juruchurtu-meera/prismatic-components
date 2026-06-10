@@ -1,22 +1,20 @@
 import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { getDynamicValues, valueListInputClean } from "../util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The connection to use for authenticating requests to HubSpot.",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "When true, automatically fetches all pages of results using pagination.",
+  comments:
+    "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -25,7 +23,6 @@ export const limit = input({
   comments: "The maximum number of items that will be returned by the search.",
   clean: util.types.toNumber,
 });
-
 export const after = input({
   label: "Start After",
   type: "string",
@@ -34,7 +31,6 @@ export const after = input({
     "Specify the pagination token that's returned by a previous request to retrieve the next page of results",
   example: "lslTXFcbLQKkb0vP9Kgh5hy0Y0OnC7Z9ZPHPwPmMnxSk3eiDRMkct7D8E",
 });
-
 export const timeout = input({
   label: "Timeout",
   type: "string",
@@ -43,7 +39,6 @@ export const timeout = input({
   comments: "The maximum time a client will await a request",
   clean: util.types.toInt,
 });
-
 export const objectType = input({
   label: "Object Type",
   type: "string",
@@ -53,7 +48,6 @@ export const objectType = input({
   clean: util.types.toString,
   dataSource: "selectCustomObject",
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -61,7 +55,6 @@ export const description = input({
   comments: "The description of the object.",
   example: "This is an example description.",
 });
-
 export const hubspotOwnerId = input({
   label: "Owner ID",
   type: "string",
@@ -69,16 +62,15 @@ export const hubspotOwnerId = input({
   comments: "The owner ID of the resource.",
   example: "910901",
 });
-
 export const idProperty = input({
   label: "ID Property",
   type: "string",
   required: false,
-  comments: "The name of a property whose values are unique for this object type.",
+  comments:
+    "The name of a property whose values are unique for this object type.",
   dataSource: "selectProperty",
   clean: util.types.toString,
 });
-
 export const additionalProperties = input({
   label: "Additional Properties To Return",
   type: "string",
@@ -86,19 +78,19 @@ export const additionalProperties = input({
   placeholder: "Select properties",
   example: "phone",
   required: false,
-  comments: "For each item, provide a property you would like to be returned in the response.",
+  comments:
+    "For each item, provide a property you would like to be returned in the response.",
   dataSource: "selectProperty",
 });
-
 export const associationsList = input({
   label: "Associations List",
   type: "string",
   collection: "valuelist",
   example: "Contacts",
   required: false,
-  comments: "For each item, provide an object type to retrieve the associated Ids for.",
+  comments:
+    "For each item, provide an object type to retrieve the associated Ids for.",
 });
-
 export const archived = input({
   label: "Return Archived Results",
   type: "boolean",
@@ -107,7 +99,6 @@ export const archived = input({
   comments: "When true, returns only results that have been archived.",
   clean: util.types.toBool,
 });
-
 export const propertiesWithHistory = input({
   label: "Properties With History",
   type: "string",
@@ -116,19 +107,20 @@ export const propertiesWithHistory = input({
   comments: "A list of properties to read by.",
   clean: valueListInputClean,
 });
-
 export const fieldValues = input({
   label: "Values",
   placeholder: "Values",
   type: "string",
   collection: "keyvaluelist",
   required: false,
-  comments: "The names of the fields and their values to use when creating/updating a record.",
+  comments:
+    "The names of the fields and their values to use when creating/updating a record.",
   example: "name:My Example Account,phone:5551234567",
   clean: (dynamicFields: unknown) =>
-    Array.isArray(dynamicFields) ? util.types.keyValPairListToObject(dynamicFields) : {},
+    Array.isArray(dynamicFields)
+      ? util.types.keyValPairListToObject(dynamicFields)
+      : {},
 });
-
 export const dynamicValues = input({
   label: "Dynamic Fields",
   placeholder: "",
@@ -147,7 +139,6 @@ export const dynamicValues = input({
   ),
   clean: getDynamicValues,
 });
-
 export const value = input({
   label: "Value",
   type: "string",
@@ -155,7 +146,6 @@ export const value = input({
   example: "myDeal",
   comments: "The value corresponding to the given property name.",
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -164,7 +154,6 @@ export const name = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const properties = input({
   label: "Properties",
   type: "code",
@@ -187,7 +176,6 @@ export const properties = input({
   clean: util.types.toObject,
   required: true,
 });
-
 export const objectsToSelect = input({
   label: "Objects to Select",
   type: "string",
@@ -203,6 +191,8 @@ export const objectsToSelect = input({
   required: false,
   comments: "The objects to include in the selection list.",
   clean: (value: unknown): string[] => {
-    return util.types.isPicklist(value) ? (value as string[]).map((name) => name.trim()) : [];
+    return util.types.isPicklist(value)
+      ? (value as string[]).map((name) => name.trim())
+      : [];
   },
 });

@@ -1,14 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { jsonInputClean, valueListInputClean } from "./util";
 import gcsRegions from "./gcs_regions.json";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Mixpanel connection to use.",
 });
-
 export const events = input({
   label: "Events",
   type: "code",
@@ -35,7 +33,6 @@ export const events = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const ip = input({
   label: "IP",
   type: "string",
@@ -46,7 +43,6 @@ export const ip = input({
   required: false,
   example: "1",
 });
-
 export const verbose = input({
   label: "Verbose",
   type: "string",
@@ -57,7 +53,6 @@ export const verbose = input({
   required: false,
   example: "1",
 });
-
 export const redirect = input({
   label: "Redirect",
   type: "string",
@@ -68,7 +63,6 @@ export const redirect = input({
   required: false,
   example: "https://example.com/redirect",
 });
-
 export const img = input({
   label: "Img",
   type: "string",
@@ -79,7 +73,6 @@ export const img = input({
   required: false,
   example: "1",
 });
-
 export const properties = input({
   label: "Properties",
   type: "code",
@@ -104,7 +97,6 @@ export const properties = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const propertiesToUpdate = input({
   label: "Properties To Update",
   type: "code",
@@ -130,7 +122,6 @@ export const propertiesToUpdate = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const deleteProfiles = input({
   label: "Delete Profiles",
   type: "code",
@@ -152,7 +143,6 @@ export const deleteProfiles = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const strict = input({
   label: "Strict",
   type: "string",
@@ -163,7 +153,6 @@ export const strict = input({
   required: false,
   example: "1",
 });
-
 export const region = input({
   label: "Region",
   type: "string",
@@ -183,7 +172,6 @@ export const region = input({
   ],
   required: true,
 });
-
 export const regionAndDomain = input({
   label: "Region and Domain",
   type: "string",
@@ -203,7 +191,6 @@ export const regionAndDomain = input({
   ],
   required: true,
 });
-
 export const dataAndDomain = input({
   label: "Data and Domain",
   type: "string",
@@ -223,7 +210,6 @@ export const dataAndDomain = input({
   ],
   required: true,
 });
-
 export const script = input({
   label: "Script",
   type: "string",
@@ -235,7 +221,6 @@ export const script = input({
   example:
     "function main(){return Events(params).groupBy(['name'],mixpanel.reducer.count())}",
 });
-
 export const params = input({
   label: "Params",
   type: "code",
@@ -254,7 +239,6 @@ export const params = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const project_id = input({
   label: "Project ID",
   type: "string",
@@ -265,7 +249,6 @@ export const project_id = input({
   required: false,
   example: "2891273",
 });
-
 export const workspace_id = input({
   label: "Workspace ID",
   type: "string",
@@ -276,7 +259,6 @@ export const workspace_id = input({
   required: false,
   example: "3847562",
 });
-
 export const funnel_id = input({
   label: "Funnel ID",
   type: "string",
@@ -287,7 +269,6 @@ export const funnel_id = input({
   required: true,
   example: "7509",
 });
-
 export const from_date = input({
   label: "From Date",
   type: "string",
@@ -298,7 +279,6 @@ export const from_date = input({
   required: true,
   example: "2024-01-01",
 });
-
 export const to_date = input({
   label: "To Date",
   type: "string",
@@ -309,7 +289,6 @@ export const to_date = input({
   required: true,
   example: "2024-01-31",
 });
-
 export const length = input({
   label: "Length",
   type: "string",
@@ -320,7 +299,6 @@ export const length = input({
   required: true,
   example: "7",
 });
-
 export const length_unit = input({
   label: "Length Unit",
   type: "string",
@@ -349,7 +327,6 @@ export const length_unit = input({
   required: false,
   example: "day",
 });
-
 export const interval = input({
   label: "Interval",
   type: "string",
@@ -360,7 +337,6 @@ export const interval = input({
   required: false,
   example: "1",
 });
-
 export const unit = input({
   label: "Unit",
   type: "string",
@@ -385,7 +361,6 @@ export const unit = input({
   required: false,
   example: "week",
 });
-
 export const on = input({
   label: "On",
   type: "string",
@@ -396,7 +371,6 @@ export const on = input({
   required: false,
   example: "properties['account_id']",
 });
-
 export const where = input({
   label: "Where",
   type: "string",
@@ -407,7 +381,6 @@ export const where = input({
   required: false,
   example: "properties['account_id'] in [1,2,3,4]",
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -418,7 +391,6 @@ export const limit = input({
   required: false,
   example: "100",
 });
-
 export const bookmark_id = input({
   label: "Bookmark ID",
   type: "string",
@@ -429,7 +401,6 @@ export const bookmark_id = input({
   required: true,
   example: "8947562",
 });
-
 export const event = input({
   label: "Event Name",
   type: "string",
@@ -439,7 +410,6 @@ export const event = input({
   required: false,
   example: "Page View",
 });
-
 export const gzipEncoding = input({
   label: "Gzip Encoding",
   type: "boolean",
@@ -449,7 +419,6 @@ export const gzipEncoding = input({
   required: false,
   example: "false",
 });
-
 export const distinct_ids = input({
   label: "Distinct IDs",
   type: "string",
@@ -461,7 +430,6 @@ export const distinct_ids = input({
   clean: valueListInputClean,
   example: "user-12345, user-67890",
 });
-
 export const output_properties = input({
   label: "Output Properties",
   type: "string",
@@ -473,7 +441,6 @@ export const output_properties = input({
   clean: valueListInputClean,
   example: "$last_name, $email, Total Spent",
 });
-
 export const session_id = input({
   label: "Session ID",
   type: "string",
@@ -484,7 +451,6 @@ export const session_id = input({
   required: false,
   example: "1234567890-EXAMPL",
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -495,7 +461,6 @@ export const page = input({
   required: false,
   example: "0",
 });
-
 export const behaviors = input({
   label: "Behaviors",
   type: "string",
@@ -506,7 +471,6 @@ export const behaviors = input({
   required: false,
   example: 'event("Purchase").count() > 5',
 });
-
 export const as_of_timestamp = input({
   label: "As Of Timestamp",
   type: "string",
@@ -517,7 +481,6 @@ export const as_of_timestamp = input({
   required: false,
   example: "1609459200",
 });
-
 export const filter_by_cohort = input({
   label: "Filter By Cohort",
   type: "string",
@@ -528,7 +491,6 @@ export const filter_by_cohort = input({
   required: false,
   example: '{"id":12345}',
 });
-
 export const include_all_users = input({
   label: "Include All Users",
   type: "boolean",
@@ -539,7 +501,6 @@ export const include_all_users = input({
   example: "false",
   default: "true",
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -550,7 +511,6 @@ export const name = input({
   dataSource: "pipelines",
   example: "events-daily-export",
 });
-
 export const summary = input({
   label: "Summary",
   type: "boolean",
@@ -561,7 +521,6 @@ export const summary = input({
   example: "false",
   default: "false",
 });
-
 export const status = input({
   label: "Status",
   type: "string",
@@ -573,7 +532,6 @@ export const status = input({
   clean: valueListInputClean,
   example: "pending, running, retried",
 });
-
 export const trial = input({
   label: "Trial",
   type: "string",
@@ -598,7 +556,6 @@ export const trial = input({
   required: false,
   default: "",
 });
-
 export const data_source = input({
   label: "Data Source",
   type: "string",
@@ -619,7 +576,6 @@ export const data_source = input({
   required: false,
   default: "events",
 });
-
 export const frequency = input({
   label: "Frequency",
   type: "string",
@@ -644,7 +600,6 @@ export const frequency = input({
   required: false,
   default: "daily",
 });
-
 export const eventArray = input({
   label: "Events",
   type: "string",
@@ -656,7 +611,6 @@ export const eventArray = input({
   clean: valueListInputClean,
   example: "Signed Up, Purchase, Page View",
 });
-
 export const data_format = input({
   label: "Data Format",
   type: "string",
@@ -677,7 +631,6 @@ export const data_format = input({
   required: false,
   default: "json",
 });
-
 export const gcs_bucket = input({
   label: "GCS Bucket",
   type: "string",
@@ -688,7 +641,6 @@ export const gcs_bucket = input({
   required: true,
   example: "my-mixpanel-exports",
 });
-
 export const gcs_prefix = input({
   label: "GCS Prefix",
   type: "string",
@@ -699,7 +651,6 @@ export const gcs_prefix = input({
   required: false,
   example: "mixpanel/events",
 });
-
 export const gcs_region = input({
   label: "GCS Region",
   placeholder: "Select GCS region",
@@ -716,7 +667,6 @@ export const gcs_region = input({
   }),
   clean: util.types.toString,
 });
-
 export const distinct_id = input({
   label: "Distinct ID",
   type: "string",
@@ -727,7 +677,6 @@ export const distinct_id = input({
   required: false,
   example: "user-12345",
 });
-
 export const identified_id = input({
   label: "Identified ID",
   type: "string",
@@ -737,7 +686,6 @@ export const identified_id = input({
   required: true,
   example: "user-12345",
 });
-
 export const anon_id = input({
   label: "Anon ID",
   type: "string",
@@ -748,7 +696,6 @@ export const anon_id = input({
   required: true,
   example: "3e2a0d22-7465-4dc3-a2ab-56f8762e1a29",
 });
-
 export const project_token = input({
   label: "Project Token",
   type: "string",
@@ -759,7 +706,6 @@ export const project_token = input({
   required: true,
   example: "725a93138a7d12e00f16912848590ae7",
 });
-
 export const alias = input({
   label: "Alias",
   type: "string",
@@ -770,7 +716,6 @@ export const alias = input({
   required: true,
   example: "user-alias-67890",
 });
-
 export const useProjectToken = input({
   label: "Use Project Token",
   type: "boolean",

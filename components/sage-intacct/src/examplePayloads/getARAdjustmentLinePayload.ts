@@ -1,5 +1,3 @@
-
-
 export const getARAdjustmentLinePayload = {
   data: {
     _status: "success",

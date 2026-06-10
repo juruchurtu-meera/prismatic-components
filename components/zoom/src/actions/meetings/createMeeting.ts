@@ -38,7 +38,6 @@ import {
   trackingFields,
 } from "../../inputs";
 import { createMeetingExamplePayload } from "../../examplePayloads";
-
 export const createMeeting = action({
   display: {
     label: "Create Meeting",
@@ -88,7 +87,6 @@ export const createMeeting = action({
       connection,
       debug,
     });
-
     const meetingData = {
       agenda,
       default_password: defaultPassword,
@@ -130,12 +128,10 @@ export const createMeeting = action({
       tracking_fields: trackingFields,
       type: meetingType,
     };
-
     const { data } = await client.post(
       `/users/${userId}/meetings`,
       meetingData,
     );
-
     return {
       data,
     };

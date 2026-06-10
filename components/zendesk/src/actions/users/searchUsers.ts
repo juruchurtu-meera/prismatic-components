@@ -6,7 +6,6 @@ import {
   userExternalIdInput,
   userQueryInput,
 } from "../../inputs";
-
 export const searchUsers = action({
   display: {
     label: "Search Users",
@@ -20,14 +19,11 @@ export const searchUsers = action({
       zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const externalId = util.types.toString(externalIdBase);
-
     const result = await client.users.search({
       ...(externalId ? { external_id: externalId } : {}),
       query: util.types.toString(query) || undefined,
     });
-
     return {
       data: result,
     };

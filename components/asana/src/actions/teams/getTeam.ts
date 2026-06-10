@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { teamId, connectionInput } from "../../inputs";
-
 export const getTeam = action({
   display: {
     label: "Get Team",

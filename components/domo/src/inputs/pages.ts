@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, limit, name, offset } from "./common";
-
 export const pageId = input({
   label: "Page ID",
   type: "string",
@@ -11,7 +10,6 @@ export const pageId = input({
   dataSource: "pages",
   clean: util.types.toString,
 });
-
 export const parentId = input({
   label: "Parent ID",
   comments:
@@ -22,7 +20,6 @@ export const parentId = input({
   example: "123456",
   clean: util.types.toString,
 });
-
 export const locked = input({
   label: "Locked",
   comments:
@@ -44,7 +41,6 @@ export const locked = input({
   ],
   clean: util.types.toString,
 });
-
 export const cardIds = input({
   label: "Card ID",
   comments: "The ID of the card to add to the page.",
@@ -58,7 +54,6 @@ export const cardIds = input({
       util.types.toInt(string),
     ),
 });
-
 export const userIds = input({
   label: "User ID",
   comments: "The ID of the user that will be given access to view the page.",
@@ -72,7 +67,6 @@ export const userIds = input({
       util.types.toInt(string),
     ),
 });
-
 export const groupIds = input({
   label: "Group ID",
   comments: "The ID of the group that will be given access to view the page.",
@@ -86,7 +80,6 @@ export const groupIds = input({
       util.types.toInt(string),
     ),
 });
-
 export const updatePageBody = input({
   label: "Update Page Body",
   type: "code",
@@ -111,7 +104,6 @@ export const updatePageBody = input({
   ),
   clean: util.types.toString,
 });
-
 export const createPageInputs = {
   connection,
   name: input({ ...name, comments: "The name of the page." }),
@@ -121,17 +113,14 @@ export const createPageInputs = {
   userIds,
   groupIds,
 };
-
 export const deletePageInputs = {
   connection,
   pageId,
 };
-
 export const getPageInputs = {
   connection,
   pageId,
 };
-
 export const listPagesInputs = {
   connection,
   fetchAll,
@@ -148,7 +137,6 @@ export const listPagesInputs = {
       "The offset of the page ID to begin list of pages within the response.",
   }),
 };
-
 export const updatePageInputs = {
   connection,
   pageId,

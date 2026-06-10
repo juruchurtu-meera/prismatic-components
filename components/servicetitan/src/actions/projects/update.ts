@@ -16,7 +16,6 @@ import {
   summary,
   targetCompletionDate,
 } from "../../inputs";
-
 export const updateProject = action({
   display: {
     label: "Update Project",

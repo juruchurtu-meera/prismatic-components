@@ -9,7 +9,6 @@ import {
   properties,
   timeout,
 } from "../inputs";
-
 export const updateEngagement = action({
   display: {
     label: "Update Engagement",
@@ -18,7 +17,14 @@ export const updateEngagement = action({
   },
   perform: async (
     context,
-    { timeout, hubspotConnection, engagementObject, properties, engagementId, idProperty },
+    {
+      timeout,
+      hubspotConnection,
+      engagementObject,
+      properties,
+      engagementId,
+      idProperty,
+    },
   ) => {
     const debugRequest = context.debug.enabled;
     const client = getHubspotClient({
@@ -27,15 +33,12 @@ export const updateEngagement = action({
       debugRequest,
       headers: { "Content-Type": "application/json" },
     });
-
     const payload = { properties };
-
     const { data } = await client.patch(
       `/crm/v3/objects/${engagementObject}/${engagementId}`,
       payload,
       { params: { idProperty: idProperty || undefined } },
     );
-
     return {
       data,
     };

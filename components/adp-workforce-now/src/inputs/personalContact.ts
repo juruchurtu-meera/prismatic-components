@@ -3,8 +3,6 @@ import { personalContactPayload } from "../exampleInputs";
 import { cleanObject, cleanString } from "../util";
 import { connection } from "./common";
 import { aoid } from "./workers";
-
-
 export const personalContact = input({
   label: "Personal Contact",
   type: "code",
@@ -15,7 +13,6 @@ export const personalContact = input({
   example: JSON.stringify(personalContactPayload, null, 2),
   clean: cleanObject,
 });
-
 export const personalContactId = input({
   label: "Personal Contact ID",
   type: "string",
@@ -26,8 +23,6 @@ export const personalContactId = input({
   clean: cleanString,
   dataSource: "selectPersonalContact",
 });
-
-
 export const updatePersonalContactInputs = {
   connection,
   aoid,

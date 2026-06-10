@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     status: 200,

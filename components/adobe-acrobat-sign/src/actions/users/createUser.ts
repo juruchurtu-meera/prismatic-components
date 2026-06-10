@@ -3,7 +3,6 @@ import { createUserInputs } from "../../inputs";
 import { getAdobeSignClient } from "../../client";
 import type { DetailedUserInfoPayload } from "../../types";
 import { createUserExamplePayload } from "../../examplePayloads";
-
 export const createUser = action({
   display: {
     label: "Create User",
@@ -39,7 +38,6 @@ export const createUser = action({
       title,
       accountId,
     };
-
     const { data } = await client.post("/users", userPayload);
     return {
       data,

@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { listTablesExamplePayload } from "../../examplePayloads";
 import { listTablesInputs } from "../../inputs";
-
 export const listTables = action({
   display: {
     label: "List Tables",

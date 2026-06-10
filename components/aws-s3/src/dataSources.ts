@@ -1,11 +1,12 @@
-import { ListBucketsCommand } from "@aws-sdk/client-s3"; 
+import { ListBucketsCommand } from "@aws-sdk/client-s3";
 import { dataSource } from "@prismatic-io/spectral";
-import { dynamicAccessAllInputs, selectRegion as selectRegionUtils } from "aws-utils";
+import {
+  dynamicAccessAllInputs,
+  selectRegion as selectRegionUtils,
+} from "aws-utils";
 import { createS3Client } from "./auth";
 import { accessKeyInput } from "./inputs";
-
 const selectRegion = selectRegionUtils;
-
 const selectBucket = dataSource({
   display: {
     label: "Select Bucket",
@@ -31,5 +32,4 @@ const selectBucket = dataSource({
   },
   inputs: { accessKey: accessKeyInput, ...dynamicAccessAllInputs },
 });
-
 export default { selectBucket, selectRegion };

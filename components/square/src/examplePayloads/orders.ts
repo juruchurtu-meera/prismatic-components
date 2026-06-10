@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const searchOrdersExamplePayload = {
   data: {
     orders: [
@@ -86,12 +75,6 @@ export const searchOrdersExamplePayload = {
     cursor: "5Ekfj4JXW8dJxBSXVYEIWkOcW9h8PBDyQh...",
   },
 };
-
-
-
-
-
-
 export const retrieveOrderExamplePayload = {
   data: {
     order: {
@@ -174,12 +157,6 @@ export const retrieveOrderExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const batchRetrieveOrdersExamplePayload = {
   data: {
     orders: [
@@ -194,12 +171,6 @@ export const batchRetrieveOrdersExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const createOrderExamplePayload = {
   data: {
     order: {
@@ -243,12 +214,6 @@ export const createOrderExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const updateOrderExamplePayload = {
   data: {
     order: {
@@ -284,12 +249,6 @@ export const updateOrderExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const cloneOrderExamplePayload = {
   data: {
     order: {

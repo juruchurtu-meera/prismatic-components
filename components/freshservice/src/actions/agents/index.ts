@@ -4,7 +4,6 @@ import { forgetAgent } from "./forgetAgent";
 import { getAgent } from "./getAgent";
 import { listAgents } from "./listAgents";
 import { updateAgent } from "./updateAgent";
-
 export default {
   createAgent,
   deactivateAgent,

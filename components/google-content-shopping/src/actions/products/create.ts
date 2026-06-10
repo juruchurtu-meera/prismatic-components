@@ -97,7 +97,6 @@ import {
   pause,
 } from "../../inputs";
 import { createProductExamplePayload } from "../../examplePayloads";
-
 export const createProduct = action({
   display: {
     description:

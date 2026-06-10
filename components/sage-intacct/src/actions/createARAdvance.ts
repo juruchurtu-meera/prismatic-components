@@ -7,7 +7,6 @@ import {
   handleSageError,
 } from "../utils";
 import { createARAdvancePayload } from "../examplePayloads/createARAdvancePayload";
-
 export const createARAdvance = action({
   display: {
     label: "Create AR Advance",
@@ -41,15 +40,12 @@ export const createARAdvance = action({
     ${additionalXmlTagsInput}
   </ARADVANCE>
 </create>`;
-
     const responseFromSage = await executeXmlRequest(
       connection,
       action,
       context.debug.enabled,
     );
-
     handleSageError(responseFromSage);
-
     return {
       data: responseFromSage,
     };

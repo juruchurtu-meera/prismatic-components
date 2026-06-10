@@ -9,7 +9,6 @@ import {
 } from "../inputs";
 import { listQueuesFn } from "../utils";
 import { listQueuesExample } from "../examplePayloads";
-
 const listQueues = action({
   display: {
     label: "List Queues",
@@ -23,5 +22,4 @@ const listQueues = action({
   inputs: { prefix, maxResults, nextToken, fetchAll, ...connectionInputs },
   examplePayload: listQueuesExample,
 });
-
 export default listQueues;

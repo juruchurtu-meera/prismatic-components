@@ -1,24 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getStreamExamplePayload = {
   data: {
     id: 32,
@@ -41,7 +20,6 @@ export const getStreamExamplePayload = {
     modifiedAt: "2024-03-10T14:22:00.000Z",
   },
 };
-
 export const listStreamsExamplePayload = {
   data: [
     getStreamExamplePayload.data,
@@ -67,9 +45,7 @@ export const listStreamsExamplePayload = {
     },
   ],
 };
-
 export const createStreamExamplePayload = getStreamExamplePayload;
-
 export const updateStreamExamplePayload = {
   data: {
     ...getStreamExamplePayload.data,
@@ -77,11 +53,8 @@ export const updateStreamExamplePayload = {
     modifiedAt: "2024-04-01T10:00:00.000Z",
   },
 };
-
 export const deleteStreamExamplePayload = { data: null };
-
 export const searchStreamExamplePayload = listStreamsExamplePayload;
-
 export const getStreamExecutionExamplePayload = {
   data: {
     id: 1,
@@ -92,7 +65,6 @@ export const getStreamExecutionExamplePayload = {
     modifiedAt: "2024-03-10T14:05:32.000Z",
   },
 };
-
 export const listStreamExecutionExamplePayload = {
   data: [
     getStreamExecutionExamplePayload.data,
@@ -106,7 +78,6 @@ export const listStreamExecutionExamplePayload = {
     },
   ],
 };
-
 export const createStreamExecutionExamplePayload = {
   data: {
     id: 3,
@@ -117,7 +88,6 @@ export const createStreamExecutionExamplePayload = {
     modifiedAt: "2024-04-01T10:00:00.000Z",
   },
 };
-
 export const commitStreamExecutionExamplePayload = {
   data: {
     id: 3,
@@ -128,7 +98,5 @@ export const commitStreamExecutionExamplePayload = {
     modifiedAt: "2024-04-01T10:03:45.000Z",
   },
 };
-
 export const abortStreamExecutionExamplePayload = { data: null };
-
 export const uploadDataPartExamplePayload = { data: null };

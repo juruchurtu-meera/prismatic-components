@@ -12,7 +12,6 @@ export const selectCustomers = dataSource({
   },
   perform: async (_context, { shopifyConnection }) => {
     const client = getShopifyGraphQlClient(shopifyConnection, undefined, false);
-
     const { customers } = await fetchData<DataSourceRecord>(
       client,
       ["customers"],
@@ -23,7 +22,6 @@ export const selectCustomers = dataSource({
         first: MAX_LIMIT,
       },
     );
-
     const result = customers.map((record) => {
       const numericId = getNumericId(record.id);
       return {

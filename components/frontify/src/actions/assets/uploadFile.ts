@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { uploadFileExamplePayload as examplePayload } from "../../examplePayloads";
 import { uploadFileInputs as inputs } from "../../inputs/assets";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",
@@ -18,12 +17,10 @@ export const uploadFile = action({
         }
       }
     `;
-
     const response = await createClient({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input: { filename, size, chunkSize } });
-
     return {
       data: response,
     };

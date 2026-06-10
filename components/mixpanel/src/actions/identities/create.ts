@@ -11,7 +11,6 @@ import {
   project_token,
 } from "../../inputs";
 import { createIdentityExamplePayload } from "../../examplePayloads";
-
 export const createIdentity = action({
   display: {
     label: "Create Identity",

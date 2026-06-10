@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { listBrandsExamplePayload as examplePayload } from "../../examplePayloads";
 import { listBrandsInputs as inputs } from "../../inputs/brands";
 import type ListBrandsResponse from "../types/listBrands";
-
 export const listBrandsQuery = gql`
   query listBrands {
     brands {
@@ -42,11 +41,6 @@ export const listBrandsQuery = gql`
     }
   }
 `;
-
-
-
-
-
 export const listBrands = action({
   display: {
     label: "List Brands",
@@ -55,12 +49,13 @@ export const listBrands = action({
   perform: async (
     context,
     { connection },
-  ): Promise<{ data: ListBrandsResponse }> => {
+  ): Promise<{
+    data: ListBrandsResponse;
+  }> => {
     const response: ListBrandsResponse = await createClient({
       connection,
       debug: context.debug.enabled,
     }).request(listBrandsQuery);
-
     return {
       data: response,
     };

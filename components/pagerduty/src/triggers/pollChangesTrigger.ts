@@ -4,7 +4,6 @@ import { pollChangesTriggerExamplePayload } from "../examplePayloads";
 import { pollChangesInputs } from "../inputs";
 import type { PagerDutyIncident, PollingState } from "../types";
 import { fetchAllIncidentsSince } from "../util/fetchAllIncidentsSince";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New Incidents",
@@ -17,20 +16,16 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState | undefined;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     const client = createClient(connection, context.debug.enabled);
     const incidents: PagerDutyIncident[] = showNewIncidents
       ? await fetchAllIncidentsSince(client, lastPolledAt)
       : [];
-
     context.polling.setState({ lastPolledAt: now } as Record<string, unknown>);
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled PagerDuty incidents since ${lastPolledAt}: ${incidents.length} new`,
       );
     }
-
     return {
       payload: {
         ...payload,

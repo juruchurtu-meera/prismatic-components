@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const taskData = {
   id: 16238471,
   creator_id: 1290481,
@@ -20,8 +13,6 @@ const taskData = {
   created_at: "2025-01-10T11:30:55Z",
   updated_at: "2025-01-10T11:30:55Z",
 };
-
-
 export const createTaskExamplePayload = {
   data: {
     data: taskData,
@@ -30,8 +21,6 @@ export const createTaskExamplePayload = {
     },
   },
 };
-
-
 export const getTaskExamplePayload = {
   data: {
     data: taskData,
@@ -40,8 +29,6 @@ export const getTaskExamplePayload = {
     },
   },
 };
-
-
 export const updateTaskExamplePayload = {
   data: {
     data: taskData,
@@ -50,8 +37,6 @@ export const updateTaskExamplePayload = {
     },
   },
 };
-
-
 export const listTasksExamplePayload = {
   data: {
     items: [
@@ -73,18 +58,9 @@ export const listTasksExamplePayload = {
     },
   },
 };
-
-
 export const deleteTaskExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const getTasksStreamExamplePayload = {
   data: {
     items: [

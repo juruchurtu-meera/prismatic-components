@@ -13,7 +13,6 @@ import {
 } from "../../inputs";
 import { listActivityLogEntriesExamplePayload } from "../../examplePayloads";
 import { paginator } from "../../util";
-
 export const listActivityLogEntries = action({
   display: {
     label: "List Activity Log Entries",
@@ -44,7 +43,6 @@ export const listActivityLogEntries = action({
       search_term: searchTerm || undefined,
       sort: sortList.length ? sortList : undefined,
     });
-
     return { data };
   },
   inputs: {

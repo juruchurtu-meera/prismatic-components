@@ -1,6 +1,5 @@
 import { connection } from "../common";
 import { fieldDescription, fieldId, fieldName } from "./common";
-
 export const updateFieldInputs = {
   connection,
   fieldId: {

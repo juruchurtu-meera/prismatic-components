@@ -1,5 +1,3 @@
-
-
 export const updateARAdvancePayload = {
   data: {
     response: {

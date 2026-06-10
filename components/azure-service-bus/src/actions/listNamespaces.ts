@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getAzureServiceBusClient } from "../client";
 import { listNamespacesExamplePayload } from "../examplePayloads";
 import { connection, subscriptionId } from "../inputs";
-
 export const listNamespaces = action({
   display: {
     label: "List Namespaces",
@@ -29,5 +28,4 @@ export const listNamespaces = action({
     subscriptionId,
   },
 });
-
 export default { listNamespaces };

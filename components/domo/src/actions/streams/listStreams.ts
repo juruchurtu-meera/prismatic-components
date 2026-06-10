@@ -4,7 +4,6 @@ import { listStreamsInputs } from "../../inputs";
 import type { ListStreamsQueryParams } from "../types/ListStreamsQueryParams";
 import { listStreamsExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listStreams = action({
   display: {
     label: "List Streams",
@@ -17,9 +16,13 @@ export const listStreams = action({
     const queryParams: ListStreamsQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(client, "/streams", fetchAll, queryParams as Record<string, string>);
+    return paginateResults(
+      client,
+      "/streams",
+      fetchAll,
+      queryParams as Record<string, string>,
+    );
   },
   inputs: listStreamsInputs,
 });
-
 export default { listStreams };

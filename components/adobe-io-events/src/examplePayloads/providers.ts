@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const listEventsProvidersExamplePayload = {
   data: {
     _embedded: {
@@ -44,11 +34,6 @@ export const listEventsProvidersExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getEventsProviderExamplePayload = {
   data: {
     id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -73,11 +58,6 @@ export const getEventsProviderExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const createEventsProviderExamplePayload = {
   data: {
     id: "b2c3d4e5-f6a7-8901-bcde-f12345678901",
@@ -96,11 +76,6 @@ export const createEventsProviderExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const updateEventsProviderExamplePayload = {
   data: {
     id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -125,12 +100,6 @@ export const updateEventsProviderExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const deleteEventsProviderExamplePayload = {
   data: null,
 };

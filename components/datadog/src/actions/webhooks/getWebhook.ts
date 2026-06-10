@@ -3,11 +3,6 @@ import { createClient } from "../../client";
 import { webhookExample } from "../../examplePayloads";
 import { getWebhookInputs } from "../../inputs";
 import type { WebhooksIntegration } from "../../types";
-
-
-
-
-
 export const getWebhook = action({
   display: {
     label: "Get Webhook",
@@ -20,7 +15,6 @@ export const getWebhook = action({
     const response = await client.get<WebhooksIntegration>(
       `/api/v1/integration/webhooks/configuration/webhooks/${encodeURIComponent(webhookName)}`,
     );
-
     return { data: response.data };
   },
   examplePayload: webhookExample,

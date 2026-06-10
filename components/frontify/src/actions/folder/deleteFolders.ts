@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { deleteFoldersExamplePayload as examplePayload } from "../../examplePayloads";
 import { deleteFoldersInputs as inputs } from "../../inputs/folder";
-
 export const deleteFolders = action({
   display: {
     label: "Delete Folders",
@@ -21,7 +20,6 @@ export const deleteFolders = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input: { ids: folderIds } });
-
     return {
       data: response,
     };

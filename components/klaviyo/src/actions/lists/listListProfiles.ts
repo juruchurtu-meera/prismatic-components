@@ -34,7 +34,6 @@ export const listListProfiles = action({
       [],
       undefined,
     );
-
     return {
       data,
     };

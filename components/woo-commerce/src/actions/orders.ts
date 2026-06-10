@@ -33,7 +33,6 @@ import {
   values,
 } from "../inputs";
 import { paginateRecords } from "../util";
-
 export const createOrder = action({
   display: {
     label: "Create Order",
@@ -111,7 +110,6 @@ export const createOrder = action({
     };
   },
 });
-
 export const updateOrder = action({
   display: {
     label: "Update Order",
@@ -190,7 +188,6 @@ export const updateOrder = action({
     };
   },
 });
-
 export const listOrders = action({
   display: {
     label: "List Orders",
@@ -242,7 +239,6 @@ export const listOrders = action({
   },
   examplePayload: listOrdersExamplePayload,
 });
-
 export const getOrder = action({
   display: {
     label: "Get Order",
@@ -259,7 +255,6 @@ export const getOrder = action({
     };
   },
 });
-
 export const deleteOrder = action({
   display: {
     label: "Delete Order",

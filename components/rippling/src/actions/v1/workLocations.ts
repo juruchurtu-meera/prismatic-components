@@ -4,7 +4,6 @@ import { API_VERSION } from "../../constants";
 import { getWorkLocationsExamplePayload } from "../../examplePayloads";
 import { getWorkLocationsInputs } from "../../inputs";
 import { paginateV1Results } from "../../utils/pagination";
-
 const getWorkLocations = action({
   display: {
     label: "Get Work Locations (V1)",
@@ -24,7 +23,6 @@ const getWorkLocations = action({
     });
   },
 });
-
 export default {
   getWorkLocations,
 };

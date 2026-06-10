@@ -9,7 +9,6 @@ import {
   queryField,
   timeout,
 } from "../../inputs";
-
 export const query = action({
   display: {
     label: "Query",
@@ -21,16 +20,13 @@ export const query = action({
     { queryField, sqlConnection, params, paramsObject, timeout },
   ) => {
     const connectionPool = createConnectionPool(sqlConnection, timeout);
-
     try {
       const connection = await connectionPool.connect();
       const request = connection.request();
-
       const queryParams = merge(params, paramsObject);
       Object.entries(queryParams).forEach(([key, value]) => {
         request.input(key, value);
       });
-
       const result = await request.query(queryField);
       return { data: result };
     } catch (err) {

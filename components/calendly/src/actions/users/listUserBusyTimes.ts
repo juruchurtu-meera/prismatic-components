@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, endTime, startTime, user } from "../../inputs";
 import { listUserBusyTimesExamplePayload } from "../../examplePayloads";
-
 export const listUserBusyTimes = action({
   display: {
     label: "List User Busy Times",
@@ -11,7 +10,6 @@ export const listUserBusyTimes = action({
   },
   perform: async (context, { connection, endTime, startTime, user }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const { data } = await client.get("/user_busy_times", {
       params: {
         endTime,

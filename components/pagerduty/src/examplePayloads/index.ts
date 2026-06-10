@@ -1,9 +1,7 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
 export const NO_RESPONSE_SUCCESSFULL_PAYLOAD = {
   data: "Action successfully completed.",
 };
-
 export const updateChangeEventExamplePayload = {
   data: {
     summary: "Build Success - Increase snapshot create timeout to 30 seconds",
@@ -25,7 +23,6 @@ export const updateChangeEventExamplePayload = {
     ],
   },
 };
-
 export const createChangeEventExamplePayload = {
   data: {
     status: "success",
@@ -33,7 +30,6 @@ export const createChangeEventExamplePayload = {
     dedup_key: "srv01/HTTP",
   },
 };
-
 export const listChangeEventsExamplePayload = {
   data: {
     change_events: [
@@ -102,7 +98,6 @@ export const listChangeEventsExamplePayload = {
     more: false,
   },
 };
-
 export const sendEventExamplePayload = {
   data: {
     status: "success",
@@ -110,7 +105,6 @@ export const sendEventExamplePayload = {
     dedup_key: "srv01/HTTP",
   },
 };
-
 export const listNotificationsExamplePayload = {
   data: {
     notifications: [
@@ -146,7 +140,6 @@ export const listNotificationsExamplePayload = {
     total: null,
   },
 };
-
 export const createUserExamplePayload = {
   data: {
     user: {
@@ -194,7 +187,6 @@ export const createUserExamplePayload = {
     },
   },
 };
-
 export const updateUserExamplePayload = {
   data: {
     user: {
@@ -242,7 +234,6 @@ export const updateUserExamplePayload = {
     },
   },
 };
-
 export const getUserExamplePayload = {
   data: {
     user: {
@@ -290,7 +281,6 @@ export const getUserExamplePayload = {
     },
   },
 };
-
 export const listUsersExamplePayloads = {
   data: {
     users: [
@@ -387,7 +377,6 @@ export const listUsersExamplePayloads = {
     total: null,
   },
 };
-
 export const listPrioritiesExamplePayloads = {
   data: {
     priorities: [
@@ -443,7 +432,6 @@ export const listPrioritiesExamplePayloads = {
     total: null,
   },
 };
-
 export const listTemplatesExamplePayload = {
   data: {
     limit: 25,
@@ -474,7 +462,6 @@ export const listTemplatesExamplePayload = {
     total: null,
   },
 };
-
 export const getTemplateExamplePayload = {
   data: {
     template: {
@@ -504,7 +491,6 @@ export const getTemplateExamplePayload = {
     },
   },
 };
-
 export const updateTemplateExamplePayload = {
   data: {
     template: {
@@ -534,7 +520,6 @@ export const updateTemplateExamplePayload = {
     },
   },
 };
-
 export const createTemplateExamplePayload = {
   data: {
     template: {
@@ -564,7 +549,6 @@ export const createTemplateExamplePayload = {
     },
   },
 };
-
 export const renderTemplateExamplePayload = {
   data: {
     templated_fields: {
@@ -580,7 +564,6 @@ export const renderTemplateExamplePayload = {
     errors: [],
   },
 };
-
 export const listServicesExamplePayload = {
   data: {
     services: [
@@ -666,7 +649,6 @@ export const listServicesExamplePayload = {
     total: null,
   },
 };
-
 export const getServiceExamplePayload = {
   data: {
     service: {
@@ -742,7 +724,6 @@ export const getServiceExamplePayload = {
     },
   },
 };
-
 export const updateServiceExamplePayload = {
   data: {
     service: {
@@ -824,7 +805,6 @@ export const updateServiceExamplePayload = {
     },
   },
 };
-
 export const createServiceExamplePayload = {
   data: {
     service: {
@@ -900,7 +880,6 @@ export const createServiceExamplePayload = {
     },
   },
 };
-
 export const createIncidentExamplePayload = {
   data: {
     incident: {
@@ -981,7 +960,6 @@ export const createIncidentExamplePayload = {
     },
   },
 };
-
 export const listIncidentsExamplePayload = {
   data: {
     incidents: [
@@ -1078,7 +1056,6 @@ export const listIncidentsExamplePayload = {
     more: true,
   },
 };
-
 export const getIncidentExamplePayload = {
   data: {
     incident: {
@@ -1306,7 +1283,6 @@ export const getIncidentExamplePayload = {
     },
   },
 };
-
 export const updateIncidentExamplePayload = {
   data: {
     incident: {
@@ -1409,7 +1385,6 @@ export const updateIncidentExamplePayload = {
     },
   },
 };
-
 export const listIncidentsAlertsExamplePayload = {
   data: {
     alerts: [
@@ -1462,7 +1437,6 @@ export const listIncidentsAlertsExamplePayload = {
     more: true,
   },
 };
-
 export const manageIncidentsExamplePayload = {
   data: {
     incidents: [
@@ -1567,7 +1541,6 @@ export const manageIncidentsExamplePayload = {
     ],
   },
 };
-
 export const updateIncidentAlertsExamplePayload = {
   data: {
     alert: {
@@ -1592,7 +1565,6 @@ export const updateIncidentAlertsExamplePayload = {
     },
   },
 };
-
 export const getIncidentAlertExamplePayload = {
   data: {
     alert: {
@@ -1631,7 +1603,6 @@ export const getIncidentAlertExamplePayload = {
     },
   },
 };
-
 export const manageIncidentAlertsExamplePayload = {
   data: {
     alerts: [
@@ -1676,7 +1647,6 @@ export const manageIncidentAlertsExamplePayload = {
     more: true,
   },
 };
-
 export const updateIncidentAlertExamplePayload = {
   data: {
     alert: {
@@ -1701,7 +1671,6 @@ export const updateIncidentAlertExamplePayload = {
     },
   },
 };
-
 export const listIncidentNotesExamplePayload = {
   data: {
     notes: [
@@ -1744,7 +1713,6 @@ export const listIncidentNotesExamplePayload = {
     ],
   },
 };
-
 export const createIncidentNoteExamplePayload = {
   data: {
     note: {
@@ -1764,7 +1732,6 @@ export const createIncidentNoteExamplePayload = {
     },
   },
 };
-
 export const listWebhooksExamplePayload = {
   data: {
     webhook_subscriptions: [
@@ -1810,7 +1777,6 @@ export const listWebhooksExamplePayload = {
     more: false,
   },
 };
-
 export const createWebhookExamplePayload = {
   data: {
     webhook_subscription: {
@@ -1852,7 +1818,6 @@ export const createWebhookExamplePayload = {
     },
   },
 };
-
 export const getWebhookExamplePayload = {
   data: {
     webhook_subscription: {
@@ -1894,7 +1859,6 @@ export const getWebhookExamplePayload = {
     },
   },
 };
-
 export const updateWebhookExamplePayload = {
   data: {
     webhook_subscription: {
@@ -1936,7 +1900,6 @@ export const updateWebhookExamplePayload = {
     },
   },
 };
-
 export const enableWebhookExamplePayload = {
   data: {
     webhook_subscription: {
@@ -1978,7 +1941,6 @@ export const enableWebhookExamplePayload = {
     },
   },
 };
-
 export const getChangeEventExamplePayload = {
   data: {
     change_event: {
@@ -2010,19 +1972,6 @@ export const getChangeEventExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const incidentsTriggerExamplePayload = {
   payload: {
     headers: {
@@ -2137,15 +2086,6 @@ export const incidentsTriggerExamplePayload = {
     },
   } as unknown as TriggerPayload,
 };
-
-
-
-
-
-
-
-
-
 export const serviceTriggerExamplePayload = {
   payload: {
     headers: {
@@ -2236,14 +2176,6 @@ export const serviceTriggerExamplePayload = {
     },
   } as unknown as TriggerPayload,
 };
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},

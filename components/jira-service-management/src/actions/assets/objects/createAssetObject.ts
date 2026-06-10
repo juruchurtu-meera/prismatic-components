@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAssetsClient } from "../../../client";
 import { createAssetObjectExamplePayload } from "../../../examplePayloads";
 import { createAssetObjectInputs } from "../../../inputs";
-
 export const createAssetObject = action({
   display: {
     label: "Create Asset Object",
@@ -23,7 +22,6 @@ export const createAssetObject = action({
       objectTypeId: assetObjectTypeId,
       attributes: assetAttributes,
     };
-
     const { data } = await client.post("/object/create", body);
     return { data };
   },

@@ -9,7 +9,6 @@ import {
   reasonText,
 } from "../../inputs";
 import { cancelOrderExamplePayload } from "../../examplePayloads";
-
 export const cancelOrder = action({
   display: {
     label: "Cancel Order (Deprecated)",
@@ -32,7 +31,6 @@ export const cancelOrder = action({
     context.logger.warn(
       "'Cancel Order' is deprecated. Google is retiring the Orders endpoints in the Content API.",
     );
-
     const client = createClient(connectionInput);
     const { data } = await client.orders.cancel({
       orderId,

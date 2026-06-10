@@ -4,7 +4,6 @@ import {
   type HttpClient,
 } from "@prismatic-io/spectral/dist/clients/http";
 import { getBaseURL, getProtocol, getToken } from "./util";
-
 export const createClient = async (
   connection: Connection,
   debugRequest = false,
@@ -19,6 +18,5 @@ export const createClient = async (
       Authorization: `Bearer ${token}`,
     },
   });
-
   return client;
 };

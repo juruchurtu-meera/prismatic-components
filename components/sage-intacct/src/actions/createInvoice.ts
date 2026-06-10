@@ -24,7 +24,6 @@ import {
 } from "../inputs";
 import { executeXmlRequest, getDateXmlTags, handleSageError } from "../utils";
 import { createInvoicePayload } from "../examplePayloads/createInvoicePayload";
-
 export const createInvoice = action({
   display: {
     label: "Create Invoice",
@@ -95,15 +94,12 @@ export const createInvoice = action({
         ${invoiceLineItemsInput}
     </invoiceitems>
 </create_invoice>`;
-
     const responseFromSage = await executeXmlRequest(
       connection,
       action,
       context.debug.enabled,
     );
-
     handleSageError(responseFromSage);
-
     return {
       data: responseFromSage,
     };

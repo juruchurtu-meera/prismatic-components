@@ -4,11 +4,11 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { headBucketPayload } from "../examplePayloads";
 import { accessKeyInput, bucket } from "../inputs";
-
 export const headBucket = action({
   display: {
     label: "Head Bucket",
-    description: "Determine if a bucket exists and if you have permission to access it",
+    description:
+      "Determine if a bucket exists and if you have permission to access it",
   },
   perform: async (
     context,

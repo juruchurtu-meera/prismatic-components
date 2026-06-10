@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { columnsAddToSheetExamplePayload } from "../../examplePayloads";
 import { columnsAddToSheetInputs } from "../../inputs";
-
 export const columnsAddToSheet = action({
   display: {
     label: "Add Column to Sheet",
@@ -10,8 +9,6 @@ export const columnsAddToSheet = action({
   },
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = createClient(params.connection, debug);
-
-    
     const columnData: Record<string, unknown> = {
       title: params.title,
       type: params.type,
@@ -23,12 +20,9 @@ export const columnsAddToSheet = action({
       options: params.options,
       width: params.width,
     };
-
-    
     if (params.type !== "TEXT_NUMBER") {
       columnData.validation = params.validation;
     }
-
     const { data } = await client.post(
       `/sheets/${params.sheetId}/columns`,
       columnData,

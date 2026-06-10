@@ -3,7 +3,6 @@ import { DEFAULT_DELETE_RESPONSE } from "../../constants";
 import { deleteEventSubscriptionInputs as inputs } from "../../inputs/eventSubscriptions";
 import { action } from "@prismatic-io/spectral";
 import { getEventSubscriptionUrl } from "../../util";
-
 export const deleteEventSubscription = action({
   display: {
     label: "Delete Event Subscription",
@@ -30,7 +29,6 @@ export const deleteEventSubscription = action({
       topicName,
       eventSubscriptionName,
     );
-
     await managementClient.delete(eventSubscriptionURL);
     return { data: DEFAULT_DELETE_RESPONSE };
   },

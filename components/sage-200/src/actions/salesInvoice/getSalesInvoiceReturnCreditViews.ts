@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
 import { connection, site, company } from "../../inputs/general";
 import { getSalesInvoiceReturnCreditViewsPayload } from "../../examplePayloads";
-
 export const getSalesInvoiceReturnCreditViews = action({
   display: {
     label: "Get Sales Invoice, Return, and Credit Views",
@@ -11,7 +10,6 @@ export const getSalesInvoiceReturnCreditViews = action({
   },
   perform: async (context, { connection, site, company }) => {
     const client = getClient(connection, context.debug.enabled, site, company);
-
     const { data } = await client.get(
       "/customer_sop_invoice_credit_line_views",
     );
@@ -24,6 +22,5 @@ export const getSalesInvoiceReturnCreditViews = action({
     site,
     company,
   },
-
   examplePayload: getSalesInvoiceReturnCreditViewsPayload,
 });

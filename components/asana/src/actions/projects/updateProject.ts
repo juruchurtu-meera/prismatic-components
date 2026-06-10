@@ -16,7 +16,6 @@ import {
   htmlNotes,
   privacySetting,
 } from "../../inputs";
-
 export const updateProject = action({
   display: {
     label: "Update Project",

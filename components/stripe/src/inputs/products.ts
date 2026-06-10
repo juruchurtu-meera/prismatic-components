@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const productName = input({
   label: "Product Name",
   type: "string",
@@ -10,7 +9,6 @@ export const productName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const updateProductName = input({
   label: "Product Name",
   type: "string",
@@ -20,7 +18,6 @@ export const updateProductName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const productImages = input({
   label: "Product Images",
   type: "string",
@@ -30,7 +27,6 @@ export const productImages = input({
   placeholder: "Enter image URL",
   required: false,
 });
-
 export const productType = input({
   label: "Product Type",
   type: "string",
@@ -43,15 +39,14 @@ export const productType = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const active = input({
   label: "Active",
   type: "boolean",
-  comments: "When true, the object is currently active and available on the platform.",
+  comments:
+    "When true, the object is currently active and available on the platform.",
   required: true,
   clean: util.types.toBool,
 });
-
 export const productCaption = input({
   label: "Product Caption",
   type: "string",
@@ -62,7 +57,6 @@ export const productCaption = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const shippable = input({
   label: "Shippable",
   type: "boolean",
@@ -70,7 +64,6 @@ export const shippable = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const productUrl = input({
   label: "Product URL",
   type: "string",

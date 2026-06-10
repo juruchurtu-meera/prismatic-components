@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createApiClient } from "../../client";
 import { updateEntryExamplePayload } from "../../examplePayloads";
 import { patchEntryInputs } from "../../inputs";
-
 export const patchEntry = action({
   display: {
     label: "Patch Entry",
@@ -31,7 +30,6 @@ export const patchEntry = action({
         },
       },
     );
-
     return { data };
   },
   inputs: patchEntryInputs,

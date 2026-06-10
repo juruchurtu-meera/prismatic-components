@@ -8,7 +8,6 @@ import {
   eventId,
   updateChangeEventExample,
 } from "../../inputs";
-
 export const updateChangeEvent = action({
   display: {
     label: "Update Change Event",

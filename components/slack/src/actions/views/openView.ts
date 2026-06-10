@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { openViewExamplePayload } from "../../examplePayloads";
 import { openViewInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const openView = action({
   display: {
     label: "Open View",
@@ -11,7 +10,7 @@ export const openView = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, trigger_id, view }
+    { connection, trigger_id, view },
   ) => {
     debugLogger({ debug, connection, trigger_id, view });
     const client = await createOauthClient({

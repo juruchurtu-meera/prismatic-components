@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { invoiceId, connectionInput } from "../../inputs";
 import { voidInvoiceExamplePayload } from "../../examplePayloads";
-
 export const voidInvoice = action({
   display: {
     label: "Void Invoice",

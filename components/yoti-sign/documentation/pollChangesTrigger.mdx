@@ -1,0 +1,39 @@
+This trigger polls [Yoti Sign](https://www.yoti.com/business/sign/) on a configured schedule and emits envelopes that were created since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+It filters server-side using the envelope search endpoint's `from_date` parameter, which filters and sorts by each envelope's `created_at` timestamp.
+
+#### How It Works
+
+On each scheduled run, the trigger searches envelopes with `from_date` set to the date of the previous poll, then keeps only the envelopes whose `created_at` is strictly after the previous poll time. The current run time is stored as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical envelopes on deploy.
+- **Subsequent runs**: only envelopes created since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the newly created envelopes under `data.created`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "envelope_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "envelope": "Contract for Jane Smith",
+        "status": "ACTIVE",
+        "created_at": "2026-05-30T14:22:00Z"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- This trigger detects newly created envelopes only. The search endpoint filters by `created_at`, and envelope records do not expose a modification timestamp, so status changes to existing envelopes are not detected here. Use Yoti Sign's notifications/webhooks for envelope status updates.
+- The `from_date` filter has day granularity (`YYYY-MM-DD`); the trigger applies a precise client-side `created_at` high-water mark so envelopes are not re-emitted within the same day.

@@ -9,7 +9,6 @@ import {
   attributes,
   connectionInput,
 } from "../inputs";
-
 export const sendMetrics = action({
   display: {
     label: "Send Metric Data",
@@ -20,7 +19,6 @@ export const sendMetrics = action({
       params.newRelicConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.post(
       "https://metric-api.newrelic.com/metric/v1",
       [
@@ -40,7 +38,6 @@ export const sendMetrics = action({
         },
       ],
     );
-
     return {
       data,
     };
@@ -55,5 +52,4 @@ export const sendMetrics = action({
     newRelicConnection: connectionInput,
   },
 });
-
 export default sendMetrics;

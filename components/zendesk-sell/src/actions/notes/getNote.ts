@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { getNoteExamplePayload } from "../../examplePayloads";
 import { getNoteInputs } from "../../inputs";
-
 export const getNote = action({
   display: {
     label: "Get Note",
@@ -16,7 +15,6 @@ export const getNote = action({
       const { data } = await client.get(`/notes/${id}`, {
         headers: { Accept: "application/json" },
       });
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

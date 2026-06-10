@@ -12,7 +12,6 @@ import {
   supportedMechanismTypes,
 } from "./types/connection";
 import { normalizeLineBreaks } from "./utils";
-
 export const getPayload = ({
   clientId,
   brokers,
@@ -21,11 +20,9 @@ export const getPayload = ({
   if (!connection) {
     return { clientId, brokers };
   }
-
   if (connection.key !== basic.key) {
     throw new ConnectionError(connection, "Unknown Connection type provided.");
   }
-
   const mechanism = util.types.toString(
     connection.fields.authMechanism,
   ) as SupportedMechanismTypes;
@@ -35,29 +32,21 @@ export const getPayload = ({
       `Invalid Authentication Mechanism specified: '${mechanism}'.`,
     );
   }
-
   const config: KafkaConfig = {
     clientId,
     brokers,
   };
-
-  
   const sslEnabled = util.types.toBool(connection.fields.sslEnabled);
-
   if (sslEnabled) {
     config.ssl = {};
-
     if (connection.fields.caCert) {
       config.ssl.ca = normalizeLineBreaks(connection.fields.caCert);
     }
-
     if (connection.fields.clientCert && connection.fields.clientKey) {
       config.ssl.cert = normalizeLineBreaks(connection.fields.clientCert);
       config.ssl.key = normalizeLineBreaks(connection.fields.clientKey);
     }
   }
-
-  
   const username = connection.fields.username
     ? util.types.toString(connection.fields.username).trim()
     : "";
@@ -66,8 +55,6 @@ export const getPayload = ({
     : "";
   const hasClientCerts =
     connection.fields.clientCert && connection.fields.clientKey;
-
-  
   if (username && password && !hasClientCerts) {
     config.sasl = {
       mechanism,
@@ -75,10 +62,8 @@ export const getPayload = ({
       password,
     } as SASLOptions;
   }
-
   return config;
 };
-
 export const createClient = (props: CreateClientProps, debug: boolean) => {
   const payload = getPayload(props);
   if (debug) {

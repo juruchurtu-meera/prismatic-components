@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
 import { optionalUpdateBoolean } from "../general";
 import sharedInputs from "./sharedInputs";
-
 const salesOrderId = input({
   label: "Sales Order ID",
   comments: "Sales order ID to update",
@@ -13,7 +12,6 @@ const salesOrderId = input({
   dataSource: "selectSalesOrder",
   clean: cleanStringInput,
 });
-
 const isEditing = input({
   ...optionalUpdateBoolean,
   label: sharedInputs.isEditing.label,
@@ -54,7 +52,6 @@ const isTriangulated = input({
   label: sharedInputs.isTriangulated.label,
   comments: sharedInputs.isTriangulated.comments,
 });
-
 export default {
   salesOrderId,
   ...sharedInputs,

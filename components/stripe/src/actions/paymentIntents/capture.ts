@@ -14,7 +14,6 @@ import {
   transferData,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const capturePaymentIntent = action({
   display: {
     label: "Capture Payment Intent",
@@ -40,7 +39,9 @@ export const capturePaymentIntent = action({
       timeout: util.types.toInt(timeout),
     });
     const params: Stripe.PaymentIntentCaptureParams = {
-      amount_to_capture: amountToCapture ? util.types.toInt(amountToCapture) : undefined,
+      amount_to_capture: amountToCapture
+        ? util.types.toInt(amountToCapture)
+        : undefined,
       metadata: metadata.length ? keyValPairListToObject(metadata) : undefined,
       application_fee_amount: applicationFeeAmount
         ? util.types.toInt(applicationFeeAmount)

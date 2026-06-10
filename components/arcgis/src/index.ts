@@ -2,7 +2,6 @@ import { component } from "@prismatic-io/spectral";
 import actions from "./actions";
 import connections from "./connections";
 import dataSources from "./dataSources";
-
 export default component({
   key: "arcgis",
   public: true,

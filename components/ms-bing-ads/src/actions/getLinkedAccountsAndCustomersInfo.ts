@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   connectionInput,
   customerIdInput,
@@ -10,12 +9,9 @@ import { BING_API, toArray } from "../util";
 import { CustomerInfo, GetCustomersInfoResponse } from "./getCustomersInfo";
 import { AccountInfo, GetAccountsInfoResponse } from "./getAccountsInfo";
 import { getLinkedAccountsAndCustomersInfoExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "GetLinkedAccountsAndCustomersInfo";
-
 export type GetLinkedAccountsAndCustomersInfoResponse =
   GetAccountsInfoResponse & GetCustomersInfoResponse;
-
 export const getLinkedAccountsAndCustomersInfo = action({
   display: {
     label: "Get Linked Accounts And Customers Info",
@@ -30,7 +26,6 @@ export const getLinkedAccountsAndCustomersInfo = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<GetLinkedAccountsAndCustomersInfoResponse>(
       {
         debug,
@@ -43,7 +38,6 @@ export const getLinkedAccountsAndCustomersInfo = action({
         targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
       },
     );
-
     return {
       data:
         response?.AccountsInfo?.AccountInfo ||

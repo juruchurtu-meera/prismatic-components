@@ -13,7 +13,6 @@ import {
   selfLink,
   startIndex,
 } from "./common";
-
 export const jobId = input({
   label: "Job ID",
   type: "string",
@@ -24,7 +23,6 @@ export const jobId = input({
   required: true,
   dataSource: "selectJob",
 });
-
 export const allUsers = input({
   label: "All Users",
   type: "boolean",
@@ -33,7 +31,6 @@ export const allUsers = input({
     "When true, displays jobs owned by all users in the project. Default is false.",
   required: false,
 });
-
 export const minCreationTime = input({
   label: "Min Creation Time",
   type: "string",
@@ -44,7 +41,6 @@ export const minCreationTime = input({
   placeholder: "Enter minimum creation time (milliseconds)",
   required: false,
 });
-
 export const maxCreationTime = input({
   label: "Max Creation Time",
   type: "string",
@@ -55,7 +51,6 @@ export const maxCreationTime = input({
   placeholder: "Enter maximum creation time (milliseconds)",
   required: false,
 });
-
 export const parentJobId = input({
   label: "Parent Job ID",
   type: "string",
@@ -66,7 +61,6 @@ export const parentJobId = input({
   placeholder: "Enter parent job ID",
   required: false,
 });
-
 export const projection = input({
   label: "Projection",
   type: "string",
@@ -84,7 +78,6 @@ export const projection = input({
     },
   ],
 });
-
 export const stateFilter = input({
   label: "State Filter",
   type: "string",
@@ -96,7 +89,6 @@ export const stateFilter = input({
   placeholder: "Select job states",
   clean: valueListInputClean,
 });
-
 export const timeoutMs = input({
   label: "Timeout (ms)",
   type: "string",
@@ -107,7 +99,6 @@ export const timeoutMs = input({
   placeholder: "Enter timeout in milliseconds",
   required: false,
 });
-
 export const dryRun = input({
   label: "Dry Run",
   type: "boolean",
@@ -116,7 +107,6 @@ export const dryRun = input({
     "When true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery returns statistics about the job such as how many bytes would be processed. If the query is invalid, an error returns. The default value is false.",
   required: false,
 });
-
 export const useQueryCache = input({
   label: "Use Query Cache",
   type: "boolean",
@@ -126,7 +116,6 @@ export const useQueryCache = input({
     "When true, looks for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. The default value is true.",
   required: false,
 });
-
 export const useLegacySql = input({
   label: "Use Legacy SQL",
   type: "boolean",
@@ -136,7 +125,6 @@ export const useLegacySql = input({
     "Specifies whether to use BigQuery's legacy SQL dialect for this query. [BigQuery's GoogleSQL](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)",
   required: false,
 });
-
 export const parameterMode = input({
   label: "Parameter Mode",
   type: "string",
@@ -147,7 +135,6 @@ export const parameterMode = input({
   placeholder: "Enter parameter mode",
   required: false,
 });
-
 export const userEmail = input({
   label: "User Email",
   type: "string",
@@ -157,7 +144,6 @@ export const userEmail = input({
   placeholder: "Enter user email",
   required: false,
 });
-
 export const principalSubject = input({
   label: "Principal Subject",
   type: "string",
@@ -168,7 +154,6 @@ export const principalSubject = input({
   placeholder: "Enter principal subject",
   required: false,
 });
-
 export const maximumBytesBilled = input({
   label: "Maximum Bytes Billed",
   type: "string",
@@ -179,7 +164,6 @@ export const maximumBytesBilled = input({
   placeholder: "Enter maximum bytes billed",
   required: false,
 });
-
 export const requestId = input({
   label: "Request ID",
   type: "string",
@@ -190,7 +174,6 @@ export const requestId = input({
   placeholder: "Enter request ID",
   required: false,
 });
-
 export const createSession = input({
   label: "Create Session",
   type: "boolean",
@@ -199,7 +182,6 @@ export const createSession = input({
     "When true, creates a new session using a randomly generated sessionId. If false, runs query with an existing sessionId passed in ConnectionProperty, otherwise runs query in non-session mode. The session location will be set to QueryRequest.location if it is present, otherwise it's set to the default location based on existing routing logic.",
   required: false,
 });
-
 export const query = input({
   label: "Query",
   type: "string",
@@ -210,7 +192,6 @@ export const query = input({
   placeholder: "Enter SQL query",
   required: true,
 });
-
 export const configuration = input({
   label: "Configuration",
   type: "code",
@@ -221,7 +202,6 @@ export const configuration = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const jobReference = input({
   label: "Job Reference",
   type: "code",
@@ -236,7 +216,6 @@ export const jobReference = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const statistics = input({
   label: "Statistics",
   type: "code",
@@ -248,7 +227,6 @@ export const statistics = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const status = input({
   label: "Status",
   type: "code",
@@ -275,7 +253,6 @@ export const status = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const defaultDataset = input({
   label: "Default Dataset",
   type: "code",
@@ -289,7 +266,6 @@ export const defaultDataset = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const queryParameters = input({
   label: "Query Parameters",
   type: "code",
@@ -310,7 +286,6 @@ export const queryParameters = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const connectionProperties = input({
   label: "Connection Properties",
   type: "code",
@@ -326,15 +301,12 @@ export const connectionProperties = input({
   clean: jsonInputClean,
   required: false,
 });
-
-
 export const cancelJobInputs = {
   connectionInput,
   projectId,
   jobId,
   location,
 };
-
 export const createJobInputs = {
   connectionInput,
   projectId,
@@ -348,21 +320,18 @@ export const createJobInputs = {
   statistics,
   status,
 };
-
 export const deleteJobInputs = {
   connectionInput,
   projectId,
   jobId,
   location,
 };
-
 export const getJobInputs = {
   connectionInput,
   projectId,
   jobId,
   location,
 };
-
 export const getQueryJobResultInputs = {
   connectionInput,
   projectId,
@@ -373,7 +342,6 @@ export const getQueryJobResultInputs = {
   timeoutMs,
   location,
 };
-
 export const listJobsInputs = {
   connectionInput,
   projectId,
@@ -386,7 +354,6 @@ export const listJobsInputs = {
   stateFilter,
   parentJobId,
 };
-
 export const queryJobInputs = {
   connectionInput,
   projectId,

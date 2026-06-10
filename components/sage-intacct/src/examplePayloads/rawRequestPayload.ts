@@ -1,6 +1,3 @@
-
-
-
 export const rawRequestPayload = {
   data: {
     response: {

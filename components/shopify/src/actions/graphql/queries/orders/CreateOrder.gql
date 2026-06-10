@@ -1,5 +1,8 @@
 #import "../../fragments/OrderDetails.gql"
-mutation CreateOrder($order: OrderCreateOrderInput!, $options: OrderCreateOptionsInput) {
+mutation CreateOrder(
+  $order: OrderCreateOrderInput!
+  $options: OrderCreateOptionsInput
+) {
   orderCreate(order: $order, options: $options) {
     order {
       ...OrderDetails

@@ -9,7 +9,6 @@ import { createClient } from "../../client";
 import { unpublishEntryExamplePayload } from "../../examplePayloads";
 import { unpublishEntryInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const unpublishEntry = action({
   display: {
     label: "Unpublish Entry",
@@ -27,7 +26,7 @@ export const unpublishEntry = action({
       await entry.unpublish()
     ).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: unpublishEntryInputs,

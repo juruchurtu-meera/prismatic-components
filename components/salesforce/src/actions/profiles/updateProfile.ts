@@ -3,16 +3,17 @@ import { createSalesforceClient } from "../../client";
 import { updateProfileInputs, validatePermissions } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const updateProfile = action({
   display: {
     label: "Update Profile",
     description: "Update a Salesforce profile.",
   },
   inputs: updateProfileInputs,
-  perform: async (context, { version, recordId, name, description, permissions, connection }) => {
+  perform: async (
+    context,
+    { version, recordId, name, description, permissions, connection },
+  ) => {
     const client = await createSalesforceClient(connection, version);
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", {
         recordId,
@@ -21,7 +22,6 @@ export const updateProfile = action({
         permissions,
       });
     }
-
     const command = client.sobject("Profile").update({
       ...validatePermissions(permissions),
       Id: recordId,
@@ -29,7 +29,6 @@ export const updateProfile = action({
       Description: description,
     });
     const response = await executeSFAction(context, command);
-
     return { data: response };
   },
   examplePayload: genericCreateUpdateExamplePayload,

@@ -28,8 +28,9 @@ import type {
 } from "@aws-sdk/client-sns";
 import type { GetCallerIdentityCommandOutput } from "@aws-sdk/client-sts";
 import type { UploadPartPayload } from "../types/UploadPartPayload";
-
-export const headObjectPayload: { data: HeadObjectCommandOutput } = {
+export const headObjectPayload: {
+  data: HeadObjectCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
@@ -49,20 +50,21 @@ export const headObjectPayload: { data: HeadObjectCommandOutput } = {
     Metadata: {},
   },
 };
-
-export const headBucketPayload: { data: HeadBucketCommandOutput } = {
+export const headBucketPayload: {
+  data: HeadBucketCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
       requestId: "A6R8PTRGRVGVB123",
-      extendedRequestId: "O1lqC0pMNa1+juScFrJbqgtJDQgkqvkcWDvLPfmcZBQNbxe+Bl4JE0WeIuswg/123456==",
+      extendedRequestId:
+        "O1lqC0pMNa1+juScFrJbqgtJDQgkqvkcWDvLPfmcZBQNbxe+Bl4JE0WeIuswg/123456==",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,
     },
   },
 };
-
 export const listMultipartUploadsPayload: {
   data: ListMultipartUploadsCommandOutput;
 } = {
@@ -98,8 +100,9 @@ export const listMultipartUploadsPayload: {
     ],
   },
 };
-
-export const deleteObjectsPayload: { data: DeleteObjectsCommandOutput } = {
+export const deleteObjectsPayload: {
+  data: DeleteObjectsCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
@@ -119,20 +122,21 @@ export const deleteObjectsPayload: { data: DeleteObjectsCommandOutput } = {
     ],
   },
 };
-
-export const deleteBucketPayload: { data: DeleteBucketCommandOutput } = {
+export const deleteBucketPayload: {
+  data: DeleteBucketCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 204,
       requestId: "CBD415E7",
-      extendedRequestId: "WXvHrStedS7jFJZVw0Pt1LH3K3Nn99XFGuyELkK7UQANs3IOHs9GsR=",
+      extendedRequestId:
+        "WXvHrStedS7jFJZVw0Pt1LH3K3Nn99XFGuyELkK7UQANs3IOHs9GsR=",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,
     },
   },
 };
-
 export const putBucketNotificationConfigurationPayload: {
   data: PutBucketNotificationConfigurationCommandOutput;
 } = {
@@ -140,14 +144,14 @@ export const putBucketNotificationConfigurationPayload: {
     $metadata: {
       httpStatusCode: 200,
       requestId: "3G6FNXP71KGVQ",
-      extendedRequestId: "epeRYyT9tl3QOMTMck4AG+NqmGa5fRKv5nME7gRl8KMxfnCAKWZzKbWVKp4ED7RaZIGvVcS=",
+      extendedRequestId:
+        "epeRYyT9tl3QOMTMck4AG+NqmGa5fRKv5nME7gRl8KMxfnCAKWZzKbWVKp4ED7RaZIGvVcS=",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,
     },
   },
 };
-
 export const getBucketNotificationConfigurationPayload: {
   data: GetBucketNotificationConfigurationCommandOutput;
 } = {
@@ -155,7 +159,8 @@ export const getBucketNotificationConfigurationPayload: {
     $metadata: {
       httpStatusCode: 200,
       requestId: "2KMYXFM4GHPES",
-      extendedRequestId: "dLu9EloFaZ2UeACk5l4IovjfHXHTkM7kFLdThrbIJIjn05dgO7bdU3TUJ7/8DzZvcQ==",
+      extendedRequestId:
+        "dLu9EloFaZ2UeACk5l4IovjfHXHTkM7kFLdThrbIJIjn05dgO7bdU3TUJ7/8DzZvcQ==",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,
@@ -183,7 +188,6 @@ export const getBucketNotificationConfigurationPayload: {
     ],
   },
 };
-
 export const putObjectLockConfigurationPayload: {
   data: PutObjectLockConfigurationCommandOutput;
 } = {
@@ -198,7 +202,6 @@ export const putObjectLockConfigurationPayload: {
     },
   },
 };
-
 export const getObjectLockConfigurationPayload: {
   data: GetObjectLockConfigurationCommandOutput;
 } = {
@@ -206,7 +209,8 @@ export const getObjectLockConfigurationPayload: {
     $metadata: {
       httpStatusCode: 200,
       requestId: "J58R459KF4NH",
-      extendedRequestId: "YLfHsBUyeXU06tYjF7ZLX7f7JhBL1FFZhA/UZKUr4WNTy0OHDOjYN=",
+      extendedRequestId:
+        "YLfHsBUyeXU06tYjF7ZLX7f7JhBL1FFZhA/UZKUr4WNTy0OHDOjYN=",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,
@@ -222,7 +226,6 @@ export const getObjectLockConfigurationPayload: {
     },
   },
 };
-
 export const putObjectRetentionPayload: {
   data: PutObjectRetentionCommandOutput;
 } = {
@@ -238,7 +241,6 @@ export const putObjectRetentionPayload: {
     },
   },
 };
-
 export const getObjectRetentionPayload: {
   data: GetObjectRetentionCommandOutput;
 } = {
@@ -257,7 +259,6 @@ export const getObjectRetentionPayload: {
     },
   },
 };
-
 export const getObjectAttributesPayload: {
   data: GetObjectAttributesCommandOutput;
 } = {
@@ -276,8 +277,9 @@ export const getObjectAttributesPayload: {
     ObjectSize: 515400,
   },
 };
-
-export const listBucketsPayload: { data: Bucket[] } = {
+export const listBucketsPayload: {
+  data: Bucket[];
+} = {
   data: [
     {
       Name: "bucket-1",
@@ -285,40 +287,47 @@ export const listBucketsPayload: { data: Bucket[] } = {
     },
   ],
 };
-
-export const copyObjectPayload: { data: CopyObjectOutput } = {
+export const copyObjectPayload: {
+  data: CopyObjectOutput;
+} = {
   data: {
     CopyObjectResult: { ETag: "Example", LastModified: new Date("2020-01-01") },
   },
 };
-
-export const deleteObjectPayload: { data: DeleteObjectOutput } = {
+export const deleteObjectPayload: {
+  data: DeleteObjectOutput;
+} = {
   data: {
     DeleteMarker: true,
-    VersionId: "3/L4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo",
+    VersionId:
+      "3/L4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo",
     RequestCharged: "requester",
   },
 };
-
 export const getObjectPayload = {
   data: Buffer.from("Example File Contents"),
   contentType: "application/octet",
 };
-
-export const listObjectsPayload: { data: string[] } = {
+export const listObjectsPayload: {
+  data: string[];
+} = {
   data: ["Example Item 1", "Example Item 2", "Example Item 3"],
 };
-
-export const putObjectPayload: { data: PutObjectOutput } = {
+export const putObjectPayload: {
+  data: PutObjectOutput;
+} = {
   data: { ETag: "Example Tag", VersionId: "Example Version Id" },
 };
-
-export const generatePresignedUrlPayload: { data: string } = {
+export const generatePresignedUrlPayload: {
+  data: string;
+} = {
   data: "https://my-bucket.s3.us-east-2.amazonaws.com/my-file.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256...",
 };
-
 export const generatePresignedForMultiparUploadsPayload: {
-  data: { url: string; partNumber: number }[];
+  data: {
+    url: string;
+    partNumber: number;
+  }[];
 } = {
   data: [
     {
@@ -327,9 +336,9 @@ export const generatePresignedForMultiparUploadsPayload: {
     },
   ],
 };
-
-export const getBucketLocationPayload: { data: string } = { data: "us-east-1" };
-
+export const getBucketLocationPayload: {
+  data: string;
+} = { data: "us-east-1" };
 export const getCurrentAccountPayload: {
   data: GetCallerIdentityCommandOutput;
 } = {
@@ -340,7 +349,6 @@ export const getCurrentAccountPayload: {
     UserId: "ABCDEFGHIJKLMNOP:ABCDEFGHIJKLMNOP",
   },
 };
-
 export const createTopicPayload: {
   data: CreateTopicResponse;
 } = {
@@ -348,7 +356,6 @@ export const createTopicPayload: {
     TopicArn: "arn:aws:Example Topic Arn",
   },
 };
-
 export const subscribeToTopicPayload: {
   data: SubscribeResponse;
 } = {
@@ -357,7 +364,6 @@ export const subscribeToTopicPayload: {
       "arn:aws:sns:us-east-2:123456789012:MyExampleTopic:00000000-00000000-00000000-00000000",
   },
 };
-
 export const createMultipartUploadPayload: {
   data: CreateMultipartUploadCommandOutput;
 } = {
@@ -378,7 +384,6 @@ export const createMultipartUploadPayload: {
       "9DWJzLdFIcK05G2Yq.TNhJbCU57dDZyIRlO_tHcdFgYqWQgtu6XdASs7h.DJlcWk2M9vmEx72gXcS8q5SBu_12345ccg-",
   },
 };
-
 export const abortMultipartUploadPayload: {
   data: AbortMultipartUploadCommandOutput;
 } = {
@@ -386,14 +391,14 @@ export const abortMultipartUploadPayload: {
     $metadata: {
       httpStatusCode: 204,
       requestId: "DZ1ZJB3H2JB1234",
-      extendedRequestId: "0D9BDVoAGoHqu3dIW4WHmaO4kkiWecrbf0yLRMe/JmUfX7N/12345=",
+      extendedRequestId:
+        "0D9BDVoAGoHqu3dIW4WHmaO4kkiWecrbf0yLRMe/JmUfX7N/12345=",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,
     },
   },
 };
-
 export const updateTopicPolicyPayload: {
   data: SetTopicAttributesCommandOutput;
 } = {
@@ -408,7 +413,6 @@ export const updateTopicPolicyPayload: {
     },
   },
 };
-
 export const bucketEventTriggerConfigurationPayload: {
   data: PutBucketNotificationConfigurationCommandOutput;
 } = {
@@ -424,8 +428,9 @@ export const bucketEventTriggerConfigurationPayload: {
     },
   },
 };
-
-export const unsubscribeFromTopicPayload: { data: UnsubscribeCommandOutput } = {
+export const unsubscribeFromTopicPayload: {
+  data: UnsubscribeCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
@@ -437,8 +442,9 @@ export const unsubscribeFromTopicPayload: { data: UnsubscribeCommandOutput } = {
     },
   },
 };
-
-export const uploadPartPayload: { data: UploadPartPayload } = {
+export const uploadPartPayload: {
+  data: UploadPartPayload;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
@@ -457,8 +463,9 @@ export const uploadPartPayload: { data: UploadPartPayload } = {
     },
   },
 };
-
-export const listPartsPayload: { data: ListPartsCommandOutput } = {
+export const listPartsPayload: {
+  data: ListPartsCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
@@ -493,7 +500,6 @@ export const listPartsPayload: { data: ListPartsCommandOutput } = {
       "iHtFwRT6d6IAPwGTlT6tO1iBApulQGCA2sG7yn_BzUKItrnLrWykCbDheQBJrb1MUGHgGfihOY07XfnCeU2CWCZM0kD6VbyC46MJ4123456-",
   },
 };
-
 export const completeMultipartUploadPayload: {
   data: CompleteMultipartUploadCommandOutput;
 } = {
@@ -501,7 +507,8 @@ export const completeMultipartUploadPayload: {
     $metadata: {
       httpStatusCode: 200,
       requestId: "GD4Y1XMZ6MFV1234",
-      extendedRequestId: "Ego8CAUdYnt2THhZmBLnbfmTPY0HR8zA9rEMkSg+OB0t/uldGkuBlI6UF9X+123456=",
+      extendedRequestId:
+        "Ego8CAUdYnt2THhZmBLnbfmTPY0HR8zA9rEMkSg+OB0t/uldGkuBlI6UF9X+123456=",
       cfId: null,
       attempts: 1,
       totalRetryDelay: 0,

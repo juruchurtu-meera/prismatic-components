@@ -6,7 +6,6 @@ import { listGroupMembers } from "./listGroupMembers";
 import { listGroups } from "./listGroups";
 import { removeUserFromGroup } from "./removeUserFromGroup";
 import { updateGroup } from "./updateGroup";
-
 export default {
   addUserToGroup,
   createGroup,

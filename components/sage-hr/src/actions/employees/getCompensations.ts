@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getEmployeeCompensationsExamplePayload } from "../../examplePayloads";
 import { connectionInput, employee_id } from "../../inputs";
-
 export const getEmployeeCompensations = action({
   display: {
     label: "Get Employee Compensations",

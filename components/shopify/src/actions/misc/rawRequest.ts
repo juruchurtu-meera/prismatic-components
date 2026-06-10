@@ -5,7 +5,6 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { getShopifyHostname } from "../../client";
 import { apiVersion, connectionInput, returnHeaders } from "../../inputs";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request (Deprecated)",
@@ -24,23 +23,27 @@ export const rawRequest = action({
     apiVersion,
     returnHeaders,
   },
-  perform: async (_context, { connection, apiVersion, returnHeaders, ...httpClientInputs }) => {
-    const shopifyHostname = getShopifyHostname(util.types.toString(connection.fields.host));
+  perform: async (
+    _context,
+    { connection, apiVersion, returnHeaders, ...httpClientInputs },
+  ) => {
+    const shopifyHostname = getShopifyHostname(
+      util.types.toString(connection.fields.host),
+    );
     const { data, headers } = await sendRawRequest(
       `https://${shopifyHostname}/admin/api/${apiVersion}`,
       httpClientInputs,
       {
         "Content-type": "application/json",
         "X-Shopify-Access-Token": util.types.toString(
-          connection.token?.access_token || connection.fields.adminApiAccessToken,
+          connection.token?.access_token ||
+            connection.fields.adminApiAccessToken,
         ),
       },
     );
-
     if (returnHeaders) {
       return { data: { data, headers } };
     }
-
     return { data };
   },
 });

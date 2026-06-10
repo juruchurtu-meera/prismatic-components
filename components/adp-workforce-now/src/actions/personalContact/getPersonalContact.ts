@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getPersonalContactsResponse } from "../../examplePayloads";
 import { $select, aoid, connection, personalContactId } from "../../inputs";
-
 export const getPersonalContact = action({
   display: {
     label: "Get Personal Contact",

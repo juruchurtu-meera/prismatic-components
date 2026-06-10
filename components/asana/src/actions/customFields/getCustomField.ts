@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, fieldId } from "../../inputs";
 import { CUSTOM_FIELD_OPT_FIELDS } from "../../util";
-
 export const getCustomField = action({
   display: {
     label: "Get Custom Field",

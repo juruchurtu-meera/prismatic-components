@@ -5,7 +5,6 @@ import { paginateRecordsWithCursor, sortRecords } from "../util";
 import { dealsDatasource } from "../examplePayloads/datasources";
 import type { Deal } from "../types/deals";
 import { WebhookVersion } from "../constants";
-
 export const selectDeal = dataSource({
   display: {
     label: "Select Deal",
@@ -16,13 +15,16 @@ export const selectDeal = dataSource({
   },
   perform: async (_context, { connectionInput }) => {
     const client = createClient(connectionInput, false, WebhookVersion.V2);
-    const { data } = await paginateRecordsWithCursor<Deal>(client, "deals", {}, true);
-
+    const { data } = await paginateRecordsWithCursor<Deal>(
+      client,
+      "deals",
+      {},
+      true,
+    );
     const objects = sortRecords(data, "id").map<Element>((deal) => ({
       key: deal.id.toString(),
       label: `${deal.title} - ${deal.status}`,
     }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

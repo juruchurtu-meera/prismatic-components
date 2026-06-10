@@ -3,11 +3,11 @@ import { getMsBusinessCentralClient } from "../../client";
 import { createPurchaseInvoiceExamplePayload } from "../../examplePayloads";
 import { createPurchaseInvoiceInputs } from "../../inputs/purchaseInvoices";
 import type { PurchaseInvoice } from "../../interfaces";
-
 export const createPurchaseInvoice = action({
   display: {
     label: "Create Purchase Invoice",
-    description: "Creates a purchase invoice object in Microsoft Business Central.",
+    description:
+      "Creates a purchase invoice object in Microsoft Business Central.",
   },
   inputs: createPurchaseInvoiceInputs,
   perform: async (
@@ -37,7 +37,11 @@ export const createPurchaseInvoice = action({
       companyId,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       vendorId,
       vendorNumber,
@@ -64,7 +68,6 @@ export const createPurchaseInvoice = action({
       `/companies(${companyId})/purchaseInvoices`,
       payload,
     );
-
     return {
       data,
     };

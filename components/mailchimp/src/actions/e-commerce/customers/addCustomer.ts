@@ -18,7 +18,6 @@ import {
   country,
   connectionInput,
 } from "./../../../inputs";
-
 export const addCustomer = action({
   display: {
     label: "Add Customer",
@@ -36,7 +35,6 @@ export const addCustomer = action({
       ...(params.province && { province: params.province }),
       ...(params.country && { country: params.country }),
     };
-
     const { data } = await client.post(
       `/ecommerce/stores/${params.storeId}/customers`,
       {
@@ -70,5 +68,4 @@ export const addCustomer = action({
     connection: connectionInput,
   },
 });
-
 export default addCustomer;

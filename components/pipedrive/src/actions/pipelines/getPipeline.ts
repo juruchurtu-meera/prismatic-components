@@ -3,14 +3,17 @@ import { createClient } from "../../client";
 import { connectionInput, pipelineIdInput } from "../../inputs";
 import { cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getPipeline = action({
   display: {
     label: "Get Pipeline",
     description: "Gets one pipeline.",
   },
   perform: async (context, { connection, id, totalsConvertCurrency }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get(`/pipelines/${id}`, {
       params: { totals_convert_currency: totalsConvertCurrency },
     });

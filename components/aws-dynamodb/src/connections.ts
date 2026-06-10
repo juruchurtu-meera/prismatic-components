@@ -1,10 +1,10 @@
 import { connection } from "@prismatic-io/spectral";
 import { assumeRoleConnection } from "aws-utils";
-
 export const accessKeySecretPair = connection({
   key: "apiKeySecret",
   display: {
-    description: "Authenticates requests to Amazon DynamoDB using an API Key and API Secret.",
+    description:
+      "Authenticates requests to Amazon DynamoDB using an API Key and API Secret.",
     label: "Access Key and Secret",
   },
   inputs: {
@@ -30,5 +30,4 @@ export const accessKeySecretPair = connection({
     },
   },
 });
-
 export default [accessKeySecretPair, assumeRoleConnection];

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
-
 export const getUsers = action({
   display: {
     label: "Get Users",

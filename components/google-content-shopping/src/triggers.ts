@@ -1,5 +1,4 @@
 import { trigger } from "@prismatic-io/spectral";
-
 export const pubSubWebhook = trigger({
   display: {
     label: "Pub/Sub Webhook",
@@ -16,5 +15,4 @@ export const pubSubWebhook = trigger({
   synchronousResponseSupport: "valid",
   scheduleSupport: "valid",
 });
-
 export default { pubSubWebhook };

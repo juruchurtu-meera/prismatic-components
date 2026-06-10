@@ -4,29 +4,25 @@ export interface PartitionLag {
   currentOffset: string;
   lag: string;
 }
-
 export interface TopicLag {
   topic: string;
   partitions: PartitionLag[];
   totalLag: string;
 }
-
 export interface ConsumerGroupMember {
   memberId: string;
   clientId: string;
   clientHost: string;
 }
-
 export interface ConsumerGroupStatus {
   groupId: string;
   state: string;
   protocolType: string;
   protocol: string;
   members: ConsumerGroupMember[];
-  topicsWithOffsets: TopicLag[]; 
+  topicsWithOffsets: TopicLag[];
   totalLag: string;
 }
-
 export interface KafkaMessage {
   topic: string;
   partition: number;

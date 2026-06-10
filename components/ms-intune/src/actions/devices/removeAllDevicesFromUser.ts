@@ -2,10 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import removeAllDevicesFromUserInputs from "../../inputs/devices/removeAllDevicesFromUserInputs";
-
-
-
-
 export const removeAllDevicesFromUser = action({
   display: {
     label: "Remove All Devices From User",

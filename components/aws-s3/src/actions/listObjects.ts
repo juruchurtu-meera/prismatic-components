@@ -11,7 +11,6 @@ import {
   maxKeys,
   prefix,
 } from "../inputs";
-
 export const listObjects = action({
   display: {
     label: "List Objects",
@@ -27,7 +26,6 @@ export const listObjects = action({
       logger: context.logger,
       debug: context.debug.enabled,
     });
-
     const listObjectsV2Params = {
       Bucket: params.bucket,
       Prefix: params.prefix,
@@ -37,7 +35,9 @@ export const listObjects = action({
     const command = new ListObjectsV2Command(listObjectsV2Params);
     const response = await s3.send(command);
     return {
-      data: params.includeMetadata ? response : (response.Contents || []).map(({ Key }) => Key),
+      data: params.includeMetadata
+        ? response
+        : (response.Contents || []).map(({ Key }) => Key),
     };
   },
   inputs: {

@@ -2,7 +2,6 @@ import merge from "lodash.merge";
 import { action, input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { createOracleDbClient } from "./client";
 import { queryExamplePayload } from "./examplePayloads";
-
 const query = action({
   display: {
     label: "Query",
@@ -56,9 +55,7 @@ const query = action({
         }),
       );
     }
-
     const client = await createOracleDbClient(params.connection);
-
     try {
       const namedParameters = merge(
         params.namedParameters,
@@ -73,5 +70,4 @@ const query = action({
   },
   examplePayload: queryExamplePayload,
 });
-
 export default { query };

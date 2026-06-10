@@ -11,7 +11,6 @@ import {
   version,
 } from "../../inputs";
 import { getPageExamplePayload as updatePageExamplePayload } from "../../examplePayloads";
-
 export const updatePage = action({
   display: {
     label: "Update Page",

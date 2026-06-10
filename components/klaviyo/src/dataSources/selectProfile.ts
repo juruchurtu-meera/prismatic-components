@@ -3,7 +3,6 @@ import { connection } from "../inputs/shared";
 import { fetchProfile } from "../utils";
 import { getApi } from "../api";
 import { KlaviyoApi } from "../enums/KlaviyoApi";
-
 export const selectProfile = dataSource({
   display: {
     label: "Select Profile",
@@ -13,7 +12,6 @@ export const selectProfile = dataSource({
   dataSourceType: "picklist",
   perform: async (context, { connection }) => {
     const profilesApi = getApi(connection, KlaviyoApi.Profiles);
-
     const data = await fetchProfile(
       profilesApi,
       ["email"],
@@ -25,7 +23,6 @@ export const selectProfile = dataSource({
       key: response.id!,
       label: response.attributes.email!,
     }));
-
     return { result: objects };
   },
 });

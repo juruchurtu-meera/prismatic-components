@@ -1,5 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
 export enum WebhookTriggerType {
   FILE_UPLOADED = "FILE.UPLOADED",
   FILE_PREVIEWED = "FILE.PREVIEWED",
@@ -41,7 +40,6 @@ export enum WebhookTriggerType {
   SIGN_REQUEST_DECLINED = "SIGN_REQUEST.DECLINED",
   SIGN_REQUEST_EXPIRED = "SIGN_REQUEST.EXPIRED",
 }
-
 export interface Webhook {
   id: string;
   type: string;
@@ -59,13 +57,11 @@ export interface Webhook {
   };
   triggers: WebhookTriggerType[];
 }
-
 export interface StoreState {
   existingWebhookId?: string;
   primarySignatureKey: string;
   secondarySignatureKey: string;
 }
-
 export interface PollingState {
   lastPolledAt?: string;
 }

@@ -2,7 +2,6 @@ import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { connectionInput } from "../inputs";
-
 export const productAttributeTypes = dataSource({
   display: {
     label: "Product Attribute Types",
@@ -14,7 +13,11 @@ export const productAttributeTypes = dataSource({
       const {
         data: { data },
       } = await client.get<{
-        data: { value: string; label: string; extension_atributes: object }[];
+        data: {
+          value: string;
+          label: string;
+          extension_atributes: object;
+        }[];
       }>("/products/attributes/types");
       const result = data.map<Element>(({ value, label }) => ({
         label: value,

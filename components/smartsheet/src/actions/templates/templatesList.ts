@@ -6,7 +6,6 @@ import { warnDeprecatedInputs } from "../../util/deprecation";
 import { CHILD_TYPE } from "../../util/mergeChildren";
 import { paginateByToken } from "../../util/pagination";
 import { aggregateTemplatesAcrossWorkspaces } from "../../util/templates";
-
 export const templatesList = action({
   display: {
     label: "List User Templates",
@@ -18,7 +17,6 @@ export const templatesList = action({
   ) => {
     warnDeprecatedInputs(context, "templatesList", includeAll);
     const client = createClient(connection, context.debug.enabled);
-
     if (workspaceIdForTemplates) {
       const items = await paginateByToken<Record<string, unknown>>(
         client,
@@ -29,7 +27,6 @@ export const templatesList = action({
         data: items.filter((i) => i.type === CHILD_TYPE.TEMPLATE),
       };
     }
-
     const templates = await aggregateTemplatesAcrossWorkspaces(client);
     return { data: templates };
   },

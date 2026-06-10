@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { toStr } from "../utils/toStr";
 import { validateLimit } from "../utils/validateLimit";
 import { sharedInputs } from "./shared";
-
 export const searchInputs = {
   type: input({
     label: "Type",

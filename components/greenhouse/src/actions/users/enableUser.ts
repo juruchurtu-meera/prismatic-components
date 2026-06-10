@@ -7,7 +7,6 @@ import {
   on_behalf_of_user_id,
   version,
 } from "../../inputs";
-
 export const enableUser = action({
   display: {
     label: "Enable User",
@@ -15,7 +14,6 @@ export const enableUser = action({
   },
   perform: async (context, { connection, email, user_id, version }) => {
     const client = createClient(connection, version, context.debug.enabled);
-
     const newUser = {
       user: { email },
     };

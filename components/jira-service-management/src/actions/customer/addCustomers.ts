@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { addCustomersExamplePayload } from "../../examplePayloads";
 import { addCustomersInputs } from "../../inputs";
-
 export const addCustomers = action({
   display: {
     label: "Add Customers to Service Desk",

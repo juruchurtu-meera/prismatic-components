@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, fileIdInput } from "../../inputs";
-
 export const deleteFile = action({
   display: {
     label: "Delete File",

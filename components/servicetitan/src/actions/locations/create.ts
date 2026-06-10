@@ -11,7 +11,6 @@ import {
   name,
   tagTypeIds,
 } from "../../inputs";
-
 export const createLocation = action({
   display: {
     label: "Create Location",

@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../client";
 import { path, fileContents, connectionInput } from "../inputs";
 import { getPathEntries } from "../utils";
 import { uploadFileExamplePayload } from "../examplePayloads";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",
@@ -18,11 +17,9 @@ export const uploadFile = action({
     );
     const { id, type, name } = pathEntries.slice(-2)[0];
     const { name: fileName } = pathEntries.slice(-1)[0];
-
     if (type !== "folder") {
       throw Error(`'${name}' is not a folder`);
     }
-
     const { data } = util.types.toData(fileContents);
     const result = await client.files.uploadFile(id, fileName, data);
     return {

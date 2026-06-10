@@ -8,7 +8,6 @@ import { listAllRegistrations } from "./listAllRegistrations";
 import { listEventsProviders } from "./listEventsProviders";
 import { rawRequest } from "./rawRequest";
 import { updateEventsProvider } from "./updateEventsProvider";
-
 export default {
   listEventsProviders,
   getEventsProvider,

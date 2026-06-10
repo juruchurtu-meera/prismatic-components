@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { getObjectRetentionPayload } from "../examplePayloads";
 import { accessKeyInput, bucket, objectKey, versionId } from "../inputs";
-
 export const getObjectRetention = action({
   display: {
     label: "Get Object Retention",
@@ -38,7 +37,6 @@ export const getObjectRetention = action({
       VersionId: versionId || undefined,
     });
     const data = await s3.send(command);
-
     return {
       data,
     };
@@ -51,7 +49,8 @@ export const getObjectRetention = action({
     objectKey,
     versionId: {
       ...versionId,
-      comments: "The version ID for the object whose retention settings you want to retrieve.",
+      comments:
+        "The version ID for the object whose retention settings you want to retrieve.",
     },
   },
   examplePayload: getObjectRetentionPayload,

@@ -1,7 +1,6 @@
 import { component } from "@prismatic-io/spectral";
 import actions from "./actions";
 import { smtpConnection } from "./connections";
-
 export default component({
   key: "smtp",
   public: true,

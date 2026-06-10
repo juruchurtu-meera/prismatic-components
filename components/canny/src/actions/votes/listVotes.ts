@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listVotesExamplePayload } from "../../examplePayloads";
 import { listVotesInputs } from "../../inputs";
 import { paginateCursor } from "../../util";
-
 export const listVotes = action({
   display: {
     label: "List Votes",

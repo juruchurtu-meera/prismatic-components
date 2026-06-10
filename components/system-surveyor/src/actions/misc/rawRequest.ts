@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { sendRawRequest } from "@prismatic-io/spectral/dist/clients/http";
 import { rawRequestActionInputs } from "../../inputs";
 import { getBaseUrl, getToken } from "../../util";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -12,7 +11,6 @@ export const rawRequest = action({
   perform: async (context, { connection, ...httpClientInputs }) => {
     const baseUrl = getBaseUrl(connection);
     const token = await getToken(connection, context.crossFlowState);
-
     const { data, headers } = await sendRawRequest(
       baseUrl,
       { ...httpClientInputs, debugRequest: context.debug.enabled },

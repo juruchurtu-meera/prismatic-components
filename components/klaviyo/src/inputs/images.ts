@@ -2,14 +2,11 @@ import { input, util } from "@prismatic-io/spectral";
 import { connection, fields } from "./shared";
 import { FIELDS_IMAGE_MODEL } from "../constants";
 import { cleanBooleanInput, cleanStringInput } from "../utils";
-
 const fieldsImage = input({ ...fields, model: FIELDS_IMAGE_MODEL });
-
 export const listImagesInputs = {
   connection,
   fieldsImage,
 };
-
 const imageUrl = input({
   label: "Image URL",
   comments:
@@ -20,7 +17,6 @@ const imageUrl = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const imageName = input({
   label: "Image Name",
   comments:
@@ -31,7 +27,6 @@ const imageName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const fileData = input({
   label: "File Data",
   placeholder: "Output data from previous step. Use this field or Image URL.",
@@ -41,14 +36,12 @@ const fileData = input({
     "The contents to write to a file. Binary data generated from a previous step.",
   clean: util.types.toData,
 });
-
 export const uploadImageInputs = {
   connection,
   imageUrl,
   imageName,
   fileData,
 };
-
 const imageId = input({
   label: "Image ID",
   comments: "The ID of the image.",
@@ -59,13 +52,11 @@ const imageId = input({
   clean: cleanStringInput,
   dataSource: "selectImage",
 });
-
 export const getImageInputs = {
   connection,
   imageId,
   fieldsImage,
 };
-
 export const imageHidden = input({
   label: "Image Hidden",
   type: "string",
@@ -77,7 +68,6 @@ export const imageHidden = input({
   })),
   clean: cleanBooleanInput,
 });
-
 export const updateImageInputs = {
   connection,
   imageId,

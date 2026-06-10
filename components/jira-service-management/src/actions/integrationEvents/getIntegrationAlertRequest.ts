@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOpsEventsClient } from "../../client";
 import { getIntegrationAlertRequestExamplePayload } from "../../examplePayloads";
 import { getIntegrationAlertRequestInputs } from "../../inputs";
-
 export const getIntegrationAlertRequest = action({
   display: {
     label: "Get Integration Alert Request",

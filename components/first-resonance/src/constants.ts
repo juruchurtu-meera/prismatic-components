@@ -1,5 +1,4 @@
 import { gql } from "graphql-tag";
-
 export const AUTH_SERVERS = [
   {
     authEndpoint:
@@ -37,7 +36,6 @@ export const AUTH_SERVERS = [
     apiUrl: "https://api-dev-pub.buildwithion.com/graphql",
   },
 ];
-
 export const CREATE_PO = gql`
   mutation createPO($input: CreatePurchaseOrderInput!) {
     createPurchaseOrder(input: $input) {

@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const oauthAuthorizationsListAuthorizations = action({
   display: {
     label: "Oauth Authorizations List Authorizations",
     description: "List your authorizations",
   },
   perform: async (context, { connection, perPage, page, clientId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/authorizations`, {
       params: { per_page: perPage, page, client_id: clientId },
     });
@@ -42,7 +44,6 @@ const oauthAuthorizationsListAuthorizations = action({
     },
   },
 });
-
 const oauthAuthorizationsCreateAuthorization = action({
   display: {
     label: "Oauth Authorizations Create Authorization",
@@ -52,7 +53,10 @@ const oauthAuthorizationsCreateAuthorization = action({
     context,
     { connection, scopes, note, noteUrl, clientId, clientSecret, fingerprint },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/authorizations`, {
       scopes,
       note,
@@ -116,7 +120,6 @@ const oauthAuthorizationsCreateAuthorization = action({
     },
   },
 });
-
 const oauthAuthorizationsGetOrCreateAuthorizationForApp = action({
   display: {
     label: "Oauth Authorizations Get Or Create Authorization For App",
@@ -126,7 +129,10 @@ const oauthAuthorizationsGetOrCreateAuthorizationForApp = action({
     context,
     { connection, clientId, clientSecret, scopes, note, noteUrl, fingerprint },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/authorizations/clients/${clientId}`, {
       client_secret: clientSecret,
       scopes,
@@ -189,7 +195,6 @@ const oauthAuthorizationsGetOrCreateAuthorizationForApp = action({
     },
   },
 });
-
 const oauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint = action({
   display: {
     label:
@@ -201,7 +206,10 @@ const oauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint = action({
     context,
     { connection, clientId, fingerprint, clientSecret, scopes, note, noteUrl },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/authorizations/clients/${clientId}/${fingerprint}`,
       {
@@ -264,14 +272,16 @@ const oauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint = action({
     },
   },
 });
-
 const oauthAuthorizationsGetAuthorization = action({
   display: {
     label: "Oauth Authorizations Get Authorization",
     description: "Get a single authorization",
   },
   perform: async (context, { connection, authorizationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/authorizations/${authorizationId}`);
     return { data };
   },
@@ -290,7 +300,6 @@ const oauthAuthorizationsGetAuthorization = action({
     },
   },
 });
-
 const oauthAuthorizationsUpdateAuthorization = action({
   display: {
     label: "Oauth Authorizations Update Authorization",
@@ -309,7 +318,10 @@ const oauthAuthorizationsUpdateAuthorization = action({
       fingerprint,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/authorizations/${authorizationId}`, {
       scopes,
       add_scopes: addScopes,
@@ -380,14 +392,16 @@ const oauthAuthorizationsUpdateAuthorization = action({
     },
   },
 });
-
 const oauthAuthorizationsDeleteAuthorization = action({
   display: {
     label: "Oauth Authorizations Delete Authorization",
     description: "Delete an authorization",
   },
   perform: async (context, { connection, authorizationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/authorizations/${authorizationId}`);
     return { data };
   },
@@ -406,7 +420,6 @@ const oauthAuthorizationsDeleteAuthorization = action({
     },
   },
 });
-
 export default {
   oauthAuthorizationsListAuthorizations,
   oauthAuthorizationsCreateAuthorization,

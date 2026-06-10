@@ -9,7 +9,6 @@ import {
   ticketsAdditionalFields,
   workspaceId,
 } from "./common";
-
 export const createTicketInputs = {
   connection,
   description,

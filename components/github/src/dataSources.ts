@@ -26,7 +26,6 @@ import { PullRequest } from "./interfaces/PullRequest";
 import { paginateResults, sortBy } from "./utils";
 import { Repository } from "./interfaces/Respository";
 import { User } from "./interfaces/User";
-
 const listReposForAuthenticatedUser = dataSource({
   display: {
     label: "List Repos",
@@ -37,14 +36,12 @@ const listReposForAuthenticatedUser = dataSource({
     const repos = await paginateResults<Repository>(
       client,
       `/user/repos`,
-      true
+      true,
     );
-
     const objects = repos.sort(sortBy("name")).map<Element>((repo) => ({
       key: util.types.toString(repo.name),
       label: util.types.toString(repo.name),
     }));
-
     return { result: objects };
   },
   inputs: {
@@ -61,7 +58,6 @@ const listReposForAuthenticatedUser = dataSource({
     ],
   },
 });
-
 const selectOrganizationsForAuthenticatedUser = dataSource({
   display: {
     label: "Select Organization",
@@ -73,14 +69,12 @@ const selectOrganizationsForAuthenticatedUser = dataSource({
     const orgs = await paginateResults<Organization>(
       client,
       `/user/orgs`,
-      true
+      true,
     );
-
     const result = orgs.sort(sortBy("url")).map<Element>(({ id, url }) => ({
       key: util.types.toString(id),
       label: url,
     }));
-
     return { result };
   },
   inputs: {
@@ -88,7 +82,6 @@ const selectOrganizationsForAuthenticatedUser = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const selectIssueForAuthenticatedUser = dataSource({
   display: {
     label: "Select Issue",
@@ -96,23 +89,31 @@ const selectIssueForAuthenticatedUser = dataSource({
   },
   perform: async (
     context,
-    { connection, assignee, state, labels, sort, direction, since, owner, repo }
+    {
+      connection,
+      assignee,
+      state,
+      labels,
+      sort,
+      direction,
+      since,
+      owner,
+      repo,
+    },
   ) => {
     const client = createClient(connection as Connection, false);
     const issues = await paginateResults<Issue>(
       client,
       `/repos/${owner}/${repo}/issues`,
       true,
-      { assignee, state, labels, sort, direction, since }
+      { assignee, state, labels, sort, direction, since },
     );
-
     const result = issues
       .sort(sortBy("title"))
       .map<Element>(({ id, title }) => ({
         key: util.types.toString(id),
         label: title,
       }));
-
     return { result };
   },
   inputs: {
@@ -134,15 +135,13 @@ const selectIssueForAuthenticatedUser = dataSource({
         { label: "Updated", value: "updated" },
         { label: "Comments", value: "comments" },
       ],
-
-      "created"
+      "created",
     ),
     direction,
     since,
   },
   dataSourceType: "picklist",
 });
-
 export const selectPullRequestFromRepo = dataSource({
   display: {
     label: "Select Pull Request from Repo",
@@ -151,23 +150,21 @@ export const selectPullRequestFromRepo = dataSource({
   },
   perform: async (
     context,
-    { connection, owner, repo, state, head, base, sort, direction }
+    { connection, owner, repo, state, head, base, sort, direction },
   ) => {
     const client = createClient(connection as Connection, false);
     const pulls = await paginateResults<PullRequest>(
       client,
       `/repos/${owner}/${repo}/pulls`,
       true,
-      { state, head, base, sort, direction }
+      { state, head, base, sort, direction },
     );
-
     const result = pulls
       .sort(sortBy("title"))
       .map<Element>(({ id, title }) => ({
         key: util.types.toString(id),
         label: title,
       }));
-
     return { result };
   },
   inputs: {
@@ -190,13 +187,12 @@ export const selectPullRequestFromRepo = dataSource({
         { label: "Popularity", value: "popularity" },
         { label: "Long Running", value: "long-running" },
       ],
-      "created"
+      "created",
     ),
     direction,
   },
   dataSourceType: "picklist",
 });
-
 export const selectUserFromOrganization = dataSource({
   display: {
     label: "Select User from Organization",
@@ -207,13 +203,12 @@ export const selectUserFromOrganization = dataSource({
     const users = await paginateResults<User>(
       client,
       `/orgs/${organization}/members`,
-      true
+      true,
     );
-
     const result = users
       .sort(sortBy("login"))
       .map<Element>(({ login: label }) => ({
-        key: label, 
+        key: label,
         label,
       }));
     return { result };

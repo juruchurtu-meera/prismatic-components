@@ -1,5 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
 export const connection = oauth2Connection({
   key: "oauth2",
   display: {
@@ -16,7 +15,8 @@ export const connection = oauth2Connection({
       required: true,
       shown: false,
       comments: "The Authorization URL for Google Drive.",
-      default: "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent",
+      default:
+        "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent",
     },
     tokenUrl: {
       label: "Token URL",
@@ -44,7 +44,8 @@ export const connection = oauth2Connection({
       required: true,
       comments:
         "The Client ID from the Google Cloud Console. Navigate to APIs & Services > Credentials to find this value.",
-      example: "123456789012-abcdefghijklmnopqrstuvwxyz123456.apps.googleusercontent.com",
+      example:
+        "123456789012-abcdefghijklmnopqrstuvwxyz123456.apps.googleusercontent.com",
     },
     clientSecret: {
       label: "Client Secret",

@@ -1,6 +1,5 @@
 import { createTimezoneString, getNumericId } from "../../../util";
 import type { Shop } from "../../interfaces/Shop";
-
 export const shopMapper = (shop: Shop) => {
   return {
     id: shop ? getNumericId(shop.id) : null,
@@ -28,7 +27,8 @@ export const shopMapper = (shop: Shop) => {
     iana_timezone: shop.ianaTimezone,
     shop_owner: shop.shopOwnerName,
     money_format: shop.currencyFormats?.moneyFormat ?? null,
-    money_with_currency_format: shop.currencyFormats?.moneyWithCurrencyFormat ?? null,
+    money_with_currency_format:
+      shop.currencyFormats?.moneyWithCurrencyFormat ?? null,
     weight_unit: shop.weightUnit,
     province_code: shop.billingAddress?.provinceCode ?? null,
     taxes_included: shop.taxesIncluded,
@@ -41,7 +41,8 @@ export const shopMapper = (shop: Shop) => {
     checkout_api_supported: shop.checkoutApiSupported,
     setup_required: shop.setupRequired,
     enabled_presentment_currencies: shop.enabledPresentmentCurrencies,
-    marketing_sms_consent_enabled_at_checkout: shop.marketingSmsConsentEnabledAtCheckout,
+    marketing_sms_consent_enabled_at_checkout:
+      shop.marketingSmsConsentEnabledAtCheckout,
     transactional_sms_disabled: shop.transactionalSmsDisabled,
   };
 };

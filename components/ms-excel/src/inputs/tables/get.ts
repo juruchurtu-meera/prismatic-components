@@ -1,6 +1,5 @@
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
 import { tableId } from "./general";
-
 export const getWorksheetsTablesInputs = {
   driveOrSiteId,
   workbookId: {

@@ -21,24 +21,18 @@ import type {
   DeleteWebhook,
   Webhook,
 } from "./interfaces/webhook";
-
 export const cleanBoolean = (value: unknown) =>
   value ? util.types.toBool(value) : undefined;
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanCode = (value: unknown) =>
   value ? util.types.toObject(value) : undefined;
-
 export const cleanNumber = (value: unknown) =>
   value ? util.types.toNumber(value) : undefined;
-
 export const cleanKeyValueList = (value: unknown) =>
   value
     ? util.types.keyValPairListToObject(value as KeyValuePair[])
     : undefined;
-
 export const fetchAllData = async <T>(
   client: HttpClient,
   path: string,
@@ -68,7 +62,6 @@ export const fetchAllData = async <T>(
     },
   };
 };
-
 export const fetchData = async <T>(
   client: HttpClient,
   path: string,
@@ -79,13 +72,11 @@ export const fetchData = async <T>(
   });
   return data;
 };
-
 export const validateConnection = (connection: Connection) => {
   if (![oauth2.key, personalToken.key].includes(connection.key)) {
     throw new Error(INVALID_CONNECTION);
   }
 };
-
 export const getAuthorizationHeaders = (connection: Connection) => {
   validateConnection(connection);
   switch (connection.key) {
@@ -101,7 +92,6 @@ export const getAuthorizationHeaders = (connection: Connection) => {
       throw new Error(INVALID_CONNECTION);
   }
 };
-
 export const mapModel = (model: string[]) => {
   return model.map((item) => {
     return {
@@ -110,7 +100,6 @@ export const mapModel = (model: string[]) => {
     };
   });
 };
-
 export const mapObjectModel = (model: Record<string, string>) => {
   return Object.keys(model).map((key) => {
     return {
@@ -119,13 +108,10 @@ export const mapObjectModel = (model: Record<string, string>) => {
     };
   });
 };
-
 export const formatCode = (code: unknown) =>
   code ? JSON.stringify(code, null, 2) : undefined;
-
 export const setHrefObject = (href: string | undefined) =>
   href ? { href } : undefined;
-
 export const performFunction = (
   context: ActionContext,
   payload: TriggerPayload,
@@ -149,12 +135,10 @@ export const performFunction = (
       throw new Error("Invalid signature");
     }
   }
-
   return Promise.resolve({
     payload,
   });
 };
-
 const verifySignature = (
   receivedSignature: string,
   payload: string,
@@ -166,14 +150,12 @@ const verifySignature = (
     .digest("base64");
   return receivedSignature === `sha256=${hash}`;
 };
-
 export const onInstanceDeploy = async (
   context: ActionContext,
   { connection, formId, formResponse, formResponsePartial, secret }: Trigger,
 ) => {
   const url = context.webhookUrls[context.flow.name];
   const client = createClient(connection, false);
-
   await createWebhookFunction({
     client,
     formId,
@@ -185,7 +167,6 @@ export const onInstanceDeploy = async (
     url,
   });
 };
-
 export const onInstanceDelete = async (
   context: ActionContext,
   { connection, formId }: Trigger,
@@ -198,7 +179,6 @@ export const onInstanceDelete = async (
     tag: flowName,
   });
 };
-
 export const createWebhookFunction = async ({
   client,
   formId,
@@ -220,7 +200,6 @@ export const createWebhookFunction = async ({
     verify_ssl: true,
   });
 };
-
 export const deleteWebhookFunction = async ({
   client,
   formId,
@@ -228,7 +207,6 @@ export const deleteWebhookFunction = async ({
 }: DeleteWebhook) => {
   return client.delete(`/forms/${formId}/webhooks/${tag}`);
 };
-
 export const listAllWebhooks = async (
   client: HttpClient,
   formId: string,

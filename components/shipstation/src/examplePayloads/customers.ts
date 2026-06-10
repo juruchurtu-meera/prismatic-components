@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getCustomerExamplePayload = {
   data: {
     customerId: 12345678,
@@ -46,13 +40,6 @@ export const getCustomerExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
 export const listCustomersExamplePayload = {
   data: {
     customers: [getCustomerExamplePayload.data],

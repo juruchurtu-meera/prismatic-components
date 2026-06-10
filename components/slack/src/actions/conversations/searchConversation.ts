@@ -1,16 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { createOauthClient } from "../../client";
-
-
-
 import { closeConversationExamplePayload } from "../../examplePayloads";
 import { searchConversationInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
-
-
-
-
 export const searchConversation = action({
   display: {
     label: "Search Conversation",
@@ -30,7 +22,7 @@ export const searchConversation = action({
       sort_dir,
       team_ids,
       total_count_only,
-    }
+    },
   ) => {
     debugLogger({
       debug,

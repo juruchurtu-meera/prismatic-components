@@ -6,7 +6,6 @@ export {
   updateProjectExamplePayload,
   deleteProjectsExamplePayload,
 } from "./projects";
-
 export {
   listWorkbooksExamplePayload,
   searchWorkbooksExamplePayload,
@@ -15,7 +14,6 @@ export {
   updateWorkbookExamplePayload,
   deleteWorkbookExamplePayload,
 } from "./workbooks";
-
 export {
   listUsersExamplePayload,
   searchUsersExamplePayload,
@@ -24,13 +22,11 @@ export {
   updateUserExamplePayload,
   deleteUserExamplePayload,
 } from "./users";
-
 export {
   listConnectionsExamplePayload,
   searchConnectionsExamplePayload,
   updateConnectionExamplePayload,
 } from "./connections";
-
 export {
   listWebhooksExamplePayload,
   getWebhookExamplePayload,
@@ -38,6 +34,7 @@ export {
   updateWebhookExamplePayload,
   deleteWebhookExamplePayload,
   testWebhookExamplePayload,
+  tableauWebhookExamplePayload,
 } from "./webhooks";
-
 export { rawRequestExamplePayload } from "./general";
+export { pollChangesTriggerExamplePayload } from "./triggers";

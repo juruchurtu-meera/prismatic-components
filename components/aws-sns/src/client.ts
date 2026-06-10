@@ -8,7 +8,6 @@ import {
 } from "aws-utils";
 import { getCredentials } from "./helpers";
 import type { ClientProps } from "./interfaces/ClientProps";
-
 export const createSNSClient = async ({
   awsRegion,
   awsConnection,
@@ -20,7 +19,6 @@ export const createSNSClient = async ({
 }): Promise<SNSClient> => {
   const { accessKeyId, secretAccessKey } = getCredentials(awsConnection);
   const shouldAssumeRole = awsConnection.key === assumeRoleConnection.key;
-
   const credentials = shouldAssumeRole
     ? await assumeRole(
         awsRegion,
@@ -30,9 +28,7 @@ export const createSNSClient = async ({
         toOptionalString(awsConnection.fields?.externalId),
       )
     : { accessKeyId, secretAccessKey };
-
   const region = awsRegion.length > 0 ? awsRegion : undefined;
-
   try {
     return new SNSClient({
       region,
@@ -42,9 +38,7 @@ export const createSNSClient = async ({
   } catch (err) {
     throw new ConnectionError(
       awsConnection,
-      `Invalid AWS Credentials have been configured. This is sometimes caused by missing characters from a copy/paste. Original AWS error message: ${
-        (err as Error).message
-      }`,
+      `Invalid AWS Credentials have been configured. This is sometimes caused by missing characters from a copy/paste. Original AWS error message: ${(err as Error).message}`,
     );
   }
 };

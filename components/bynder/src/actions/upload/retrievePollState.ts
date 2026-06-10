@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { retrievePollStateResponse } from "../../examplePayloads";
 import { connection, items } from "../../inputs";
 import type { PollState } from "../../types";
-
 export const retrievePollState = action({
   display: {
     label: "Retrieve Poll State",
@@ -16,7 +15,6 @@ export const retrievePollState = action({
   perform: async (context, { connection, items }) => {
     const client = createClient(connection, context.debug.enabled);
     const keepExecuting = true;
-    
     do {
       const { data } = await client.get<PollState>(`/upload/poll`, {
         params: {

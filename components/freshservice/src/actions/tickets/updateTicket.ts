@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { updateTicketExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateTicketInputs as inputs } from "../../inputs/tickets";
-
 export const updateTicket = action({
   display: {
     label: "Update Ticket",
@@ -21,20 +20,17 @@ export const updateTicket = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       priority,
       status,
       source,
       ...ticketsAdditionalFields,
     };
-
     const { data } = await client.put(`/tickets/${ticketId}`, payload, {
       params: {
         bypass_mandatory: bypassMandatory,
       },
     });
-
     return {
       data,
     };

@@ -3,14 +3,17 @@ import { getShopifyClient } from "../../client";
 import { listMetafieldsInputs } from "../../inputs";
 import { listMetafieldsExamplePayload } from "../../payloadExamples";
 import { computePageInformation } from "../../util";
-
 export const listMetafields = action({
   display: {
     label: "List Metafields",
     description: "Lists all metafields for the specified resource.",
   },
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const result = await computePageInformation(
       client,
       "/metafields",

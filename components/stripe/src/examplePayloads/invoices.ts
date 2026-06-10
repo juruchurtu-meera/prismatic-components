@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getInvoiceExamplePayload = {
   data: {
     id: "in_1MtHbELkdIwHu7ixl4OzzPMv",
@@ -104,22 +98,8 @@ export const getInvoiceExamplePayload = {
     webhooks_delivered_at: null,
   } as unknown,
 };
-
-
-
-
 export const createInvoiceExamplePayload = getInvoiceExamplePayload;
-
-
-
-
 export const updateInvoiceExamplePayload = getInvoiceExamplePayload;
-
-
-
-
-
-
 export const deleteInvoiceExamplePayload = {
   data: {
     id: "in_1MtHbELkdIwHu7ixl4OzzPMv",
@@ -127,12 +107,6 @@ export const deleteInvoiceExamplePayload = {
     deleted: true,
   } as unknown,
 };
-
-
-
-
-
-
 export const listInvoicesExamplePayload = {
   data: {
     object: "list",

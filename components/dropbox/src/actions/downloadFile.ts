@@ -6,7 +6,6 @@ import { createAuthorizedClient } from "../auth";
 import { downloadFileExamplePayload } from "../example-payloads";
 import { connectionInput, download_as_zip, path } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const downloadFile = action({
   display: {
     label: "Download File",
@@ -36,15 +35,12 @@ export const downloadFile = action({
         const { result } = await dbx.filesDownload({
           path,
         });
-
         return {
-          
-          
-          
-          
-          
-          data: (result as files.FileMetadata & { fileBinary: Buffer })
-            .fileBinary,
+          data: (
+            result as files.FileMetadata & {
+              fileBinary: Buffer;
+            }
+          ).fileBinary,
           contentType:
             mime.lookup(basename(result.path_lower)) || mime.types.bin,
         };

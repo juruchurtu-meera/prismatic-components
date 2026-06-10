@@ -8,7 +8,7 @@ export default component({
   documentationUrl: "https://prismatic.io/docs/components/aws-glue/",
   display: {
     label: "AWS Glue",
-    description: "Manage AWS Glue crawlers, jobs and triggers",
+    description: "Manage AWS Glue crawlers, jobs, and triggers.",
     iconPath: "icon.png",
     category: "Data Platforms",
   },

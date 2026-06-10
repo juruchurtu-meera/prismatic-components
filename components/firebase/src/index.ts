@@ -1,5 +1,4 @@
 import { component } from "@prismatic-io/spectral";
-
 import createDocument from "./actions/createDocument";
 import listCollections from "./actions/listCollections";
 import listDocuments from "./actions/listDocuments";
@@ -10,7 +9,6 @@ import updateDocument from "./actions/updateDocument";
 import removeField from "./actions/removeField";
 import connections from "./connections";
 import dataSources from "./dataSources";
-
 export default component({
   key: "firebase",
   public: true,

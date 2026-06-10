@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "./utils";
-
 export const containerName = input({
   label: "Container Name",
   placeholder: "Enter container name",
@@ -12,7 +11,6 @@ export const containerName = input({
   example: "my-azure-container",
   clean: util.types.toString,
 });
-
 export const prefix = input({
   label: "Prefix",
   placeholder: "Enter blob prefix (e.g., documents/)",
@@ -23,7 +21,6 @@ export const prefix = input({
   example: "documents/invoices/",
   clean: toOptionalString,
 });
-
 export const blobName = input({
   label: "Blob Name",
   placeholder: "Enter blob name (file path)",
@@ -35,7 +32,6 @@ export const blobName = input({
   example: "documents/report.pdf",
   clean: util.types.toString,
 });
-
 export const fileContents = input({
   label: "File Contents",
   placeholder: "Output data from previous step",
@@ -46,7 +42,6 @@ export const fileContents = input({
   example: "My File Contents",
   clean: util.types.toData,
 });
-
 export const pageBlobSize = input({
   label: "Page Blob Size",
   placeholder: "Enter size in bytes (multiple of 512)",
@@ -57,7 +52,6 @@ export const pageBlobSize = input({
   example: "4096",
   clean: util.types.toString,
 });
-
 export const pageBlobOffset = input({
   label: "Page Blob Offset",
   placeholder: "Enter offset in bytes (multiple of 512)",
@@ -68,14 +62,12 @@ export const pageBlobOffset = input({
   example: "0",
   clean: util.types.toString,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Azure Blob Storage connection to use.",
 });
-
 export const sasStartsOnDate = input({
   label: "SAS Starts On",
   placeholder: "Enter start date (ISO 8601 format)",
@@ -86,7 +78,6 @@ export const sasStartsOnDate = input({
   example: "2026-01-27T00:00:00Z",
   clean: util.types.toString,
 });
-
 export const sasExpiresOnDate = input({
   label: "SAS Expires On",
   placeholder: "Enter expiry date (ISO 8601 format)",
@@ -97,7 +88,6 @@ export const sasExpiresOnDate = input({
   example: "2027-01-27T00:00:00Z",
   clean: util.types.toString,
 });
-
 export const sasPermissions = input({
   label: "SAS Permissions",
   placeholder: "Enter permissions (e.g., racwd)",

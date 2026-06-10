@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, portfolioId, fieldId } from "../../inputs";
-
 export const removeCustomFieldFromPortfolio = action({
   display: {
     label: "Remove Custom Field from Portfolio",

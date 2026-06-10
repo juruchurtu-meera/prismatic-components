@@ -1,5 +1,4 @@
 import type { CustomField } from "./CustomField";
-
 export interface CreateTaskBody {
   name: string;
   description?: string;

@@ -4,7 +4,6 @@ import { listOpsSchedulesExamplePayload } from "../../examplePayloads";
 import { listOpsSchedulesInputs } from "../../inputs";
 import type { OpsScheduleSummary } from "../../types";
 import { getOpsPaginatedData } from "../../util";
-
 export const listOpsSchedules = action({
   display: {
     label: "List Ops Schedules",

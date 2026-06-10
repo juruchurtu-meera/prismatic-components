@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, dir } from "../../inputs";
 import { sortArray } from "../../utils";
-
 export const listDrives = dataSource({
   display: {
     label: "List Drives from Source",
@@ -18,13 +17,11 @@ export const listDrives = dataSource({
     const files: Record<string, string>[] = [];
     let nextLink = `${client.defaults.baseURL}${path}`;
     client.defaults.baseURL = undefined;
-
     do {
       const { data } = await client.get(nextLink);
       files.push(...(data.value || []));
       nextLink = data?.["@odata.nextLink"];
     } while (nextLink);
-
     const result = sortArray(
       files.map((record) => {
         return {

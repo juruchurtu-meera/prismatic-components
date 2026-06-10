@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { connect } from "../../client";
 import { moveFileExamplePayload } from "../../examplePayloads";
 import { connection, verbose } from "../../inputs";
-
 const sourcePath = input({
   label: "Source Path",
   placeholder: "Enter source file path",
@@ -12,7 +11,6 @@ const sourcePath = input({
   example: "/my/starting/path.txt",
   clean: util.types.toString,
 });
-
 const destinationPath = input({
   label: "Destination Path",
   placeholder: "Enter destination file path",
@@ -22,7 +20,6 @@ const destinationPath = input({
   example: "/my/destination/path.txt",
   clean: util.types.toString,
 });
-
 export const moveFile = action({
   display: {
     label: "Move File",
@@ -38,7 +35,6 @@ export const moveFile = action({
     } finally {
       client.close();
     }
-
     return null;
   },
   inputs: {
@@ -49,5 +45,4 @@ export const moveFile = action({
   },
   examplePayload: moveFileExamplePayload,
 });
-
 export default moveFile;

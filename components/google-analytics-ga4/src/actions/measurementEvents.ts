@@ -3,18 +3,20 @@ import { createClient } from "@prismatic-io/spectral/dist/clients/http";
 import { GOOGLE_ANALYTICS_COLLECT_EVENTS_URL } from "../consts";
 import { sendMeasurementProtocolEventsExamplePayload } from "../examplePayloads";
 import { apiSecret, appInstanceId, events, firebaseAppId } from "../inputs";
-
 export const sendMeasurementProtocolEvents = action({
   display: {
     label: "Send Measurement Protocol Events",
-    description: "Sends Measurement Protocol Events to your Google Analytics G4 Account",
+    description:
+      "Sends Measurement Protocol Events to your Google Analytics G4 Account",
   },
-  perform: async (_context, { firebaseAppId, events, appInstanceId, apiSecret }) => {
+  perform: async (
+    _context,
+    { firebaseAppId, events, appInstanceId, apiSecret },
+  ) => {
     const params = {
       firebase_app_id: firebaseAppId,
       api_secret: apiSecret,
     };
-
     await createClient({
       baseUrl: GOOGLE_ANALYTICS_COLLECT_EVENTS_URL,
     }).post(
@@ -25,7 +27,6 @@ export const sendMeasurementProtocolEvents = action({
       },
       { params },
     );
-
     return { data: { message: "Event Sent Successfully" } };
   },
   inputs: {
@@ -36,5 +37,4 @@ export const sendMeasurementProtocolEvents = action({
   },
   examplePayload: sendMeasurementProtocolEventsExamplePayload,
 });
-
 export default { sendMeasurementProtocolEvents };

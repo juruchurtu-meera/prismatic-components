@@ -4,7 +4,6 @@ import { BASE_URL_V2 } from "../../../constants";
 import { rawRequestV2ExamplePayload } from "../../../examplePayloads";
 import { rawRequestV2Inputs } from "../../../inputs";
 import { toAuthorizationHeaders, validateConnection } from "../../../utils";
-
 export const rawRequestV2 = action({
   display: {
     label: "Raw Request (V2)",

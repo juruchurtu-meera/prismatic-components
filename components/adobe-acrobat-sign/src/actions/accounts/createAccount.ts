@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAccountInputs } from "../../inputs";
 import { getAdobeSignClient } from "../../client";
 import { createAccountExamplePayload } from "../../examplePayloads";
-
 export const createAccount = action({
   display: {
     label: "Create Account",
@@ -46,9 +45,7 @@ export const createAccount = action({
         title,
       },
     };
-
     const { data } = await client.post("/accounts", payload);
-
     return { data };
   },
   examplePayload: createAccountExamplePayload,

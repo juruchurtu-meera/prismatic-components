@@ -29,7 +29,6 @@ import {
   updateProductId,
 } from "../inputs";
 import { getAllPaginatedData, getProps, toStringList } from "../util";
-
 export const listLineItems = action({
   display: {
     label: "List Line Items",
@@ -42,9 +41,10 @@ export const listLineItems = action({
       timeout: params.timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(["name"], params.additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      ["name"],
+      params.additionalProperties || [],
+    );
     return {
       data: await getAllPaginatedData(
         client,
@@ -56,7 +56,9 @@ export const listLineItems = action({
             ...parameterizedProperties,
             limit: util.types.toInt(params.limit) || undefined,
             after: util.types.toString(params.after) || undefined,
-            associations: toStringList(params.associationsList || []).join(",") || undefined,
+            associations:
+              toStringList(params.associationsList || []).join(",") ||
+              undefined,
             archived: util.types.toBool(params.archived) || false,
           },
         },
@@ -75,7 +77,6 @@ export const listLineItems = action({
   },
   examplePayload: listLineItemsPayload,
 });
-
 export const getLineItem = action({
   display: {
     label: "Get Line Item",
@@ -96,40 +97,38 @@ export const getLineItem = action({
     const debugRequest = context.debug.enabled;
     const id = util.types.toString(lineItemId);
     const name = util.types.toString(lineItemName);
-
     if (!id && !name) {
-      throw new Error("You must supply an Id or name to retrieve a line item record.");
+      throw new Error(
+        "You must supply an Id or name to retrieve a line item record.",
+      );
     }
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(["name"], additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      ["name"],
+      additionalProperties || [],
+    );
     const params = {
       ...parameterizedProperties,
       associations: toStringList(associationsList || []).join(",") || undefined,
       archived: util.types.toBool(archived) || false,
     };
-
     if (name) {
       const result = await client.get("/crm/v3/objects/line_items", {
         params,
       });
       const { results: lineItems } = result.data;
-
       const filteredLineItems = (lineItems || []).filter((item) => {
         return item?.properties?.name === name;
       });
-
       if (filteredLineItems.length === 0) {
         throw new Error(`No line items found matching ${name}`);
       }
       return { data: filteredLineItems };
     }
-
     return {
       data: (
         await client.get(`/crm/v3/objects/line_items/${lineItemId}`, {
@@ -147,9 +146,7 @@ export const getLineItem = action({
     timeout,
     hubspotConnection: connectionInput,
   },
-  
 });
-
 export const deleteLineItem = action({
   display: {
     label: "Delete Line Item",
@@ -162,7 +159,6 @@ export const deleteLineItem = action({
       timeout,
       debugRequest,
     });
-
     return {
       data: (await client.get(`/crm/v3/objects/line_items/${lineItemId}`)).data,
     };
@@ -174,7 +170,6 @@ export const deleteLineItem = action({
   },
   examplePayload: deleteLineItemPayload,
 });
-
 export const createLineItem = action({
   display: {
     label: "Create Line Item",
@@ -200,7 +195,6 @@ export const createLineItem = action({
       timeout,
       debugRequest: context.debug.enabled,
     });
-
     return {
       data: (
         await client.post("/crm/v3/objects/line_items", {
@@ -232,11 +226,11 @@ export const createLineItem = action({
   },
   examplePayload: createLineItemPayload,
 });
-
 export const updateLineItem = action({
   display: {
     label: "Update Line Item",
-    description: "Update an the information and metadata of an existing line item",
+    description:
+      "Update an the information and metadata of an existing line item",
   },
   perform: async (
     context,
@@ -259,7 +253,6 @@ export const updateLineItem = action({
       timeout,
       debugRequest: context.debug.enabled,
     });
-
     return {
       data: (
         await client.patch(`/crm/v3/objects/line_items/${lineItemId}`, {

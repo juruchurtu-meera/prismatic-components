@@ -29,7 +29,6 @@ import {
   updateSku,
 } from "../inputs";
 import { getAllPaginatedData, getProps, toStringList } from "../util";
-
 export const listProducts = action({
   display: {
     label: "List Products",
@@ -42,19 +41,28 @@ export const listProducts = action({
       timeout: params.timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(["name"], params.additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      ["name"],
+      params.additionalProperties || [],
+    );
     return {
-      data: await getAllPaginatedData(client, "/crm/v3/objects/products", params.fetchAll, false, {
-        params: {
-          ...parameterizedProperties,
-          limit: util.types.toInt(params.limit) || undefined,
-          after: util.types.toString(params.after) || undefined,
-          associations: toStringList(params.associationsList || []).join(",") || undefined,
-          archived: util.types.toBool(params.archived) || false,
+      data: await getAllPaginatedData(
+        client,
+        "/crm/v3/objects/products",
+        params.fetchAll,
+        false,
+        {
+          params: {
+            ...parameterizedProperties,
+            limit: util.types.toInt(params.limit) || undefined,
+            after: util.types.toString(params.after) || undefined,
+            associations:
+              toStringList(params.associationsList || []).join(",") ||
+              undefined,
+            archived: util.types.toBool(params.archived) || false,
+          },
         },
-      }),
+      ),
     };
   },
   inputs: {
@@ -69,11 +77,11 @@ export const listProducts = action({
   },
   examplePayload: listProductsPayload,
 });
-
 export const getProduct = action({
   display: {
     label: "Get Product",
-    description: "Retrieve the information and metadata of a product by Id or name",
+    description:
+      "Retrieve the information and metadata of a product by Id or name",
   },
   perform: async (
     context,
@@ -89,43 +97,39 @@ export const getProduct = action({
   ) => {
     const id = util.types.toString(productId);
     const name = util.types.toString(productName);
-
     if (!id && !name) {
-      throw new Error("You must supply an Id or name to retrieve a product record");
+      throw new Error(
+        "You must supply an Id or name to retrieve a product record",
+      );
     }
-
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(["name"], additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      ["name"],
+      additionalProperties || [],
+    );
     const params = {
       ...parameterizedProperties,
       associations: toStringList(associationsList || []).join(",") || undefined,
       archived: util.types.toBool(archived) || false,
     };
-
     if (name) {
       const result = await client.get("/crm/v3/objects/products", {
         params,
       });
       const { results: products } = result.data;
-
       const filteredProducts = (products || []).filter((product) => {
         return product?.properties?.name === name;
       });
-
       if (filteredProducts.length === 0) {
         throw new Error(`No line items found matching ${name}`);
       }
       return { data: filteredProducts };
     }
-
     return {
       data: (
         await client.get(`/crm/v3/objects/products/${productId}`, {
@@ -143,9 +147,7 @@ export const getProduct = action({
     timeout,
     hubspotConnection: connectionInput,
   },
-  
 });
-
 export const deleteProduct = action({
   display: {
     label: "Delete Product",
@@ -158,7 +160,6 @@ export const deleteProduct = action({
       timeout,
       debugRequest,
     });
-
     return {
       data: (await client.delete(`/crm/v3/objects/products/${productId}`)).data,
     };
@@ -170,7 +171,6 @@ export const deleteProduct = action({
   },
   examplePayload: deleteProductPayload,
 });
-
 export const createProduct = action({
   display: {
     label: "Create Product",
@@ -192,13 +192,11 @@ export const createProduct = action({
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.post("/crm/v3/objects/products", {
@@ -230,7 +228,6 @@ export const createProduct = action({
   },
   examplePayload: createProductPayload,
 });
-
 export const updateProduct = action({
   display: {
     label: "Update Product",
@@ -253,13 +250,11 @@ export const updateProduct = action({
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.patch(`/crm/v3/objects/products/${productId}`, {

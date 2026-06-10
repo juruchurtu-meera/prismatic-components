@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 const shipmentData = {
   id: 33045821,
   order_id: 11587429,
@@ -86,15 +76,12 @@ const shipmentData = {
   parent_cartons: [],
   status_details: [],
 };
-
 export const getShipmentExamplePayload = {
   data: shipmentData,
 };
-
 export const getAllShipmentsForOrderExamplePayload = {
   data: [shipmentData],
 };
-
 export const cancelShipmentExamplePayload = {
   data: {
     results: [
@@ -107,7 +94,6 @@ export const cancelShipmentExamplePayload = {
     ],
   },
 };
-
 export const getLogsShipmentExamplePayload = {
   data: [
     {

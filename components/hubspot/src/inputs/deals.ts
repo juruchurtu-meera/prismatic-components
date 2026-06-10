@@ -1,5 +1,4 @@
 import { input } from "@prismatic-io/spectral";
-
 export const amount = input({
   label: "Amount",
   type: "string",
@@ -7,7 +6,6 @@ export const amount = input({
   comments: "The amount value for the deal.",
   example: "34,000",
 });
-
 export const closeDate = input({
   label: "Close Date",
   type: "string",
@@ -15,7 +13,6 @@ export const closeDate = input({
   comments: "The date when the sale will close.",
   example: "2019-12-07T16:50:06.678Z",
 });
-
 export const dealName = input({
   label: "Deal Name",
   type: "string",
@@ -23,7 +20,6 @@ export const dealName = input({
   comments: "The name of the deal.",
   example: "My Example Deal",
 });
-
 export const updateDealName = input({
   label: "Deal Name",
   type: "string",
@@ -31,7 +27,6 @@ export const updateDealName = input({
   comments: "The name of the deal.",
   example: "My Example Deal",
 });
-
 export const dealId = input({
   label: "Deal ID",
   type: "string",
@@ -41,7 +36,6 @@ export const dealId = input({
   dataSource: "selectDeal",
   example: "804874",
 });
-
 export const dealStage = input({
   label: "Deal Stage",
   type: "string",
@@ -50,7 +44,6 @@ export const dealStage = input({
     "The stage of the deal. Deal stages allow you to categorize and track the progress of the deals.",
   example: "presentationscheduled",
 });
-
 export const updateDealStage = input({
   label: "Deal Stage",
   type: "string",
@@ -59,7 +52,6 @@ export const updateDealStage = input({
     "The stage of the deal. Deal stages allow you to categorize and track the progress of the deals.",
   example: "presentationscheduled",
 });
-
 export const pipeline = input({
   label: "Pipeline",
   type: "string",
@@ -67,7 +59,6 @@ export const pipeline = input({
   example: "default",
   comments: "The pipeline to interact with.",
 });
-
 export const updatePipeline = input({
   label: "Pipeline",
   type: "string",
@@ -75,7 +66,6 @@ export const updatePipeline = input({
   example: "default",
   comments: "The pipeline to interact with.",
 });
-
 export const dealType = input({
   label: "Deal Type",
   type: "string",
@@ -84,7 +74,6 @@ export const dealType = input({
   comments:
     "The type of deal. By default, categorize your deal as either New Business or Existing Business. The picklist of values for this property is configurable through HubSpot.",
 });
-
 export const priority = input({
   label: "Priority",
   type: "string",

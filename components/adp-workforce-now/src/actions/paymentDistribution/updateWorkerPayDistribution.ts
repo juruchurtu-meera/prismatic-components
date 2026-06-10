@@ -7,7 +7,6 @@ import {
   paymentDistribution,
   workAssignmentId,
 } from "../../inputs";
-
 export const updateWorkerPayDistribution = action({
   display: {
     label: "Update Worker Pay Distribution",

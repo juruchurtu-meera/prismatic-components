@@ -98,7 +98,6 @@ import {
   updateMask,
 } from "../../inputs";
 import { updateProductExamplePayload } from "../../examplePayloads";
-
 export const updateProduct = action({
   display: {
     description:

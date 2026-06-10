@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
 import { cleanJsonInput, toOptionalNumber, toOptionalString } from "./utils";
-
 const connectionInput = input({
   label: "Connection",
   type: "connection",
@@ -9,7 +8,6 @@ const connectionInput = input({
   comments:
     "Azure Cosmos DB connection configured with endpoint URL and access key.",
 });
-
 const databaseIdInput = input({
   label: "Database ID",
   type: "string",
@@ -20,7 +18,6 @@ const databaseIdInput = input({
   dataSource: "selectDatabase",
   clean: util.types.toString,
 });
-
 const collectionIdInput = input({
   label: "Collection ID",
   type: "string",
@@ -31,7 +28,6 @@ const collectionIdInput = input({
   dataSource: "selectCollection",
   clean: util.types.toString,
 });
-
 const documentIdInput = input({
   label: "Document ID",
   type: "string",
@@ -42,7 +38,6 @@ const documentIdInput = input({
   dataSource: "selectDocument",
   clean: util.types.toString,
 });
-
 const partitionKeyPathInput = input({
   label: "Partition Key Path",
   type: "string",
@@ -53,7 +48,6 @@ const partitionKeyPathInput = input({
     "The path used as the partition key when creating the collection, e.g., `/category`.",
   clean: toOptionalString,
 });
-
 const partitionKeyValueInput = input({
   label: "Partition Key Value",
   type: "string",
@@ -64,7 +58,6 @@ const partitionKeyValueInput = input({
     "The value of the partition key for the document (required for partitioned collections).",
   clean: toOptionalString,
 });
-
 const documentInput = input({
   label: "Document",
   type: "code",
@@ -78,7 +71,6 @@ const documentInput = input({
   comments: "The document as JSON string.",
   clean: (value: unknown) => cleanJsonInput(value, "Document"),
 });
-
 const etagInput = input({
   label: "ETag",
   type: "string",
@@ -88,7 +80,6 @@ const etagInput = input({
   comments: "The ETag value for optimistic concurrency control.",
   clean: toOptionalString,
 });
-
 const maxItemCountInput = input({
   label: "Max Item Count",
   type: "string",
@@ -98,7 +89,6 @@ const maxItemCountInput = input({
   comments: "Maximum number of items to return.",
   clean: toOptionalNumber,
 });
-
 const continuationTokenInput = input({
   label: "Continuation Token",
   type: "string",
@@ -108,7 +98,6 @@ const continuationTokenInput = input({
   comments: "Token for pagination to get the next set of results.",
   clean: toOptionalString,
 });
-
 const fetchAllInput = input({
   label: "Fetch All",
   type: "boolean",
@@ -118,7 +107,6 @@ const fetchAllInput = input({
     "If enabled, retrieves all documents by automatically fetching every page of results. This overrides 'Max Item Count' and ignores any 'Continuation Token'.",
   clean: util.types.toBool,
 });
-
 const throughputInput = input({
   label: "Throughput (RU/s)",
   type: "string",
@@ -129,7 +117,6 @@ const throughputInput = input({
     "The provisioned throughput for the collection in Request Units per second. <strong>Note:</strong> Serverless collections do not support setting throughput.",
   clean: toOptionalString,
 });
-
 export const createCollectionInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -137,43 +124,35 @@ export const createCollectionInputs = {
   partitionKey: partitionKeyPathInput,
   throughput: throughputInput,
 };
-
 export const deleteCollectionInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
   collectionId: collectionIdInput,
 };
-
 export const getCollectionInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
   collectionId: collectionIdInput,
 };
-
 export const listCollectionsInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
 };
-
 export const createDatabaseInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
 };
-
 export const deleteDatabaseInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
 };
-
 export const getDatabaseInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
 };
-
 export const listDatabasesInputs = {
   connection: connectionInput,
 };
-
 export const createDocumentInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -181,7 +160,6 @@ export const createDocumentInputs = {
   document: documentInput,
   partitionKey: partitionKeyValueInput,
 };
-
 export const deleteDocumentInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -190,7 +168,6 @@ export const deleteDocumentInputs = {
   partitionKey: partitionKeyValueInput,
   etag: etagInput,
 };
-
 export const getDocumentInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -198,7 +175,6 @@ export const getDocumentInputs = {
   documentId: documentIdInput,
   partitionKey: partitionKeyValueInput,
 };
-
 export const listDocumentsInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -207,7 +183,6 @@ export const listDocumentsInputs = {
   continuationToken: continuationTokenInput,
   fetchAll: fetchAllInput,
 };
-
 export const updateDocumentInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -217,7 +192,6 @@ export const updateDocumentInputs = {
   partitionKey: partitionKeyValueInput,
   etag: etagInput,
 };
-
 const { debugRequest: _, ...rawRequestInputsFromHttp } = httpClientInputs;
 export const rawRequestInputs = {
   connection: connectionInput,
@@ -229,7 +203,6 @@ export const rawRequestInputs = {
     example: "/dbs/myDatabase/colls/myCollection",
   },
 };
-
 export const selectCollectionInputs = {
   connection: connectionInput,
   databaseId: {
@@ -237,11 +210,9 @@ export const selectCollectionInputs = {
     dataSource: undefined,
   },
 };
-
 export const selectDatabaseInputs = {
   connection: connectionInput,
 };
-
 export const selectDocumentInputs = {
   connection: connectionInput,
   databaseId: {

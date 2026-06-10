@@ -1,4 +1,3 @@
-
 import { archiveEntry } from "./archiveEntry";
 import { createEntry } from "./createEntry";
 import { deleteEntry } from "./deleteEntry";
@@ -10,9 +9,7 @@ import { publishEntry } from "./publishEntry";
 import { putEntry } from "./putEntry";
 import { unarchiveEntry } from "./unarchiveEntry";
 import { unpublishEntry } from "./unpublishEntry";
-
 export default {
-  
   archiveEntry,
   createEntry,
   deleteEntry,

@@ -14,7 +14,6 @@ import {
   toPage,
   zipOutput,
 } from "../../inputs";
-
 export const splitDocument = action({
   display: {
     label: "Split Document",
@@ -81,11 +80,9 @@ export const splitDocument = action({
       ZipOutput: zipOutput || undefined,
       DestFileName: destinationFileName || undefined,
     };
-
     const { data } = await client.put(`/words/${documentName}/split`, null, {
       params,
     });
-
     return { data };
   },
   examplePayload: splitDocumentExamplePayload,

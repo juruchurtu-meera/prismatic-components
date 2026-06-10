@@ -1,6 +1,5 @@
 import { trigger } from "@prismatic-io/spectral";
 import { webhookPerformFunction } from "../util";
-
 export const webhook = trigger({
   display: {
     label: " Webhook ",

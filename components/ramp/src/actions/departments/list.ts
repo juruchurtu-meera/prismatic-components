@@ -4,7 +4,6 @@ import { listDepartmentsResponse } from "../../examplePayloads/departments";
 import { defaultListInputs } from "../../inputs";
 import type { Department } from "../../interfaces/departments";
 import { fetchAllData } from "../../util";
-
 export const listDepartments = action({
   display: {
     label: "List Departments",
@@ -13,9 +12,11 @@ export const listDepartments = action({
   inputs: {
     ...defaultListInputs,
   },
-  perform: async (context, { connection, customQueryParams, fetchAll, pageSize, start }) => {
+  perform: async (
+    context,
+    { connection, customQueryParams, fetchAll, pageSize, start },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchAllData<Department>(
       client,
       "departments",

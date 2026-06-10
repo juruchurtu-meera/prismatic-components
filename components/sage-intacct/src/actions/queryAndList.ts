@@ -7,7 +7,6 @@ import {
 } from "../inputs";
 import { queryRecordsPaginated } from "../utils";
 import { queryAndListPayload } from "../examplePayloads/queryAndListPayload";
-
 export const queryAndList = action({
   display: {
     label: "Query and List Records",
@@ -23,7 +22,6 @@ export const queryAndList = action({
       fieldsInput,
       queryInput,
     );
-
     return {
       data,
     };

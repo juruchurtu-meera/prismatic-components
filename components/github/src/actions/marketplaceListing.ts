@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const appsGetSubscriptionPlanForAccount = action({
   display: {
     label: "Apps Get Subscription Plan For Account",
     description: "Get a subscription plan for an account",
   },
   perform: async (context, { connection, accountId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/marketplace_listing/accounts/${accountId}`,
     );
@@ -28,14 +30,16 @@ const appsGetSubscriptionPlanForAccount = action({
     },
   },
 });
-
 const appsListPlans = action({
   display: {
     label: "Apps List Plans",
     description: "List plans",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/marketplace_listing/plans`, {
       params: { per_page: perPage, page },
     });
@@ -63,7 +67,6 @@ const appsListPlans = action({
     },
   },
 });
-
 const appsListAccountsForPlan = action({
   display: {
     label: "Apps List Accounts For Plan",
@@ -73,7 +76,10 @@ const appsListAccountsForPlan = action({
     context,
     { connection, planId, sort, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/marketplace_listing/plans/${planId}/accounts`,
       {
@@ -134,14 +140,16 @@ const appsListAccountsForPlan = action({
     },
   },
 });
-
 const appsGetSubscriptionPlanForAccountStubbed = action({
   display: {
     label: "Apps Get Subscription Plan For Account Stubbed",
     description: "Get a subscription plan for an account (stubbed)",
   },
   perform: async (context, { connection, accountId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/marketplace_listing/stubbed/accounts/${accountId}`,
     );
@@ -162,14 +170,16 @@ const appsGetSubscriptionPlanForAccountStubbed = action({
     },
   },
 });
-
 const appsListPlansStubbed = action({
   display: {
     label: "Apps List Plans Stubbed",
     description: "List plans (stubbed)",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/marketplace_listing/stubbed/plans`, {
       params: { per_page: perPage, page },
     });
@@ -197,7 +207,6 @@ const appsListPlansStubbed = action({
     },
   },
 });
-
 const appsListAccountsForPlanStubbed = action({
   display: {
     label: "Apps List Accounts For Plan Stubbed",
@@ -207,7 +216,10 @@ const appsListAccountsForPlanStubbed = action({
     context,
     { connection, planId, sort, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/marketplace_listing/stubbed/plans/${planId}/accounts`,
       { params: { sort, direction, per_page: perPage, page } },
@@ -266,7 +278,6 @@ const appsListAccountsForPlanStubbed = action({
     },
   },
 });
-
 export default {
   appsGetSubscriptionPlanForAccount,
   appsListPlans,

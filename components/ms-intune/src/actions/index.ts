@@ -8,7 +8,6 @@ import reports from "./reports";
 import subscriptions from "./subscriptions";
 import users from "./users";
 import members from "./members";
-
 export default {
   ...apps,
   ...devices,

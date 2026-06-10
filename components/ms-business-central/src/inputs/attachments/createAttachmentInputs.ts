@@ -1,16 +1,15 @@
 import { input, util } from "@prismatic-io/spectral";
 import { ATTACHMENT_PARENT_TYPES } from "../../constants";
-
 export const parentId = input({
   label: "Parent ID",
   example: "0a077d18-45e3-ea11-bb43-000d3a2feca1",
   placeholder: "Enter parent ID",
-  comments: "The ID of the parent object that the attachment is associated with",
+  comments:
+    "The ID of the parent object that the attachment is associated with",
   type: "string",
   required: true,
   clean: util.types.toString,
 });
-
 export const fileName = input({
   label: "File Name",
   example: "example.pdf",
@@ -20,7 +19,6 @@ export const fileName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const parentType = input({
   label: "Parent Type",
   example: "contact",

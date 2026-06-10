@@ -100,7 +100,6 @@ export const listInvoicesExamplePayload = {
     total: 0,
   },
 };
-
 export const getInvoiceByIdExamplePayload = {
   data: {
     invoiceDate: "2024-06-08T07:00:00.000Z",
@@ -198,9 +197,7 @@ export const getInvoiceByIdExamplePayload = {
     href: "string",
   },
 };
-
 export const getInvoicePdfExamplePayload = { data: "PDF DATA" };
-
 export const postPaymentExamplePayload = {
   data: {
     memo: "Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.",
@@ -230,7 +227,6 @@ export const postPaymentExamplePayload = {
     id: "string",
   },
 };
-
 export const getPaymentByIdExamplePayload = {
   data: {
     descriptor: "Lorem ipsum dolor sit ame",

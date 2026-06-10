@@ -23,13 +23,14 @@ import {
   reverse,
 } from "../../inputs";
 import type { ListTasksQueryParams } from "./types/ListTasksQueryParams";
-
 const listId = getlistId(true, "Team ID (Workspace)");
-const subTasks = getSubTasks(true, "Include or exclude subtasks. By default, subtasks are excluded.");
+const subTasks = getSubTasks(
+  true,
+  "Include or exclude subtasks. By default, subtasks are excluded.",
+);
 const archived = getArchived(false, "Archived?", false);
 const assignees = getAssignees(false, "Filter by Assignees. Add Assingee");
 const tags = getTags(false, "Filter by tags. Add a tag to filter.");
-
 export const listTasks = action({
   display: {
     label: "List Tasks",
@@ -58,14 +59,13 @@ export const listTasks = action({
       dateDoneGt,
       dateDoneLt,
       customFieldsCode,
-    }
+    },
   ) => {
     const client = createClickUpClient(connection, context.debug.enabled);
     let customFields = [];
     if (customFieldsCode?.length) {
       customFields = JSON.parse(customFieldsCode).custom_fields || [];
     }
-
     const params: ListTasksQueryParams = {
       archived,
       ...(page !== undefined && { page }),
@@ -85,11 +85,9 @@ export const listTasks = action({
       ...(assignees?.length && { assignees }),
       ...(customFields.length && { custom_fields: customFields }),
     };
-
     const { data } = await client.get(`/list/${listId}/task`, {
       params,
     });
-
     return {
       data: data,
     };

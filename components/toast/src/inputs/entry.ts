@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput, cleanValueListInput } from "../utils";
 import { connection, restaurantExternalId } from "./shared";
-
 const timeEntryId = input({
   label: "Time Entry ID",
   type: "string",
@@ -12,7 +11,6 @@ const timeEntryId = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: util.types.toString,
 });
-
 const includeArchived = input({
   label: "Include Archived",
   type: "boolean",
@@ -21,7 +19,6 @@ const includeArchived = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const includeMissedBreaks = input({
   label: "Include Missed Breaks",
   type: "boolean",
@@ -31,7 +28,6 @@ const includeMissedBreaks = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const getTimeEntryInputs = {
   connection,
   restaurantExternalId,
@@ -39,7 +35,6 @@ export const getTimeEntryInputs = {
   includeArchived,
   includeMissedBreaks,
 };
-
 const businessDate = input({
   label: "Business Date",
   type: "string",
@@ -50,13 +45,11 @@ const businessDate = input({
   placeholder: "20180228",
   clean: util.types.toString,
 });
-
 export const listCashEntriesInputs = {
   connection,
   restaurantExternalId,
   businessDate,
 };
-
 const endDate = input({
   label: "End Date",
   type: "string",
@@ -67,7 +60,6 @@ const endDate = input({
   placeholder: "2018-02-28T23:59:59Z",
   clean: cleanStringInput,
 });
-
 const modifiedEndDate = input({
   label: "Modified End Date",
   type: "string",
@@ -78,7 +70,6 @@ const modifiedEndDate = input({
   placeholder: "2018-02-28T23:59:59Z",
   clean: cleanStringInput,
 });
-
 const modifiedStartDate = input({
   label: "Modified Start Date",
   type: "string",
@@ -89,7 +80,6 @@ const modifiedStartDate = input({
   placeholder: "2018-02-28T00:00:00Z",
   clean: cleanStringInput,
 });
-
 const startDate = input({
   label: "Start Date",
   type: "string",
@@ -100,7 +90,6 @@ const startDate = input({
   placeholder: "2018-02-28T00:00:00Z",
   clean: cleanStringInput,
 });
-
 const timeEntryIds = input({
   label: "Time Entry IDs",
   type: "string",
@@ -112,7 +101,6 @@ const timeEntryIds = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: cleanValueListInput,
 });
-
 export const listTimeEntriesInputs = {
   connection,
   restaurantExternalId,

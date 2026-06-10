@@ -17,7 +17,6 @@ import {
   connectionInput,
 } from "../../inputs";
 import { createItemExamplePayload } from "../../examplePayloads";
-
 export const createItem = action({
   display: {
     label: "Create Item",
@@ -74,6 +73,5 @@ export const createItem = action({
     isPurchased,
     xeroConnection: connectionInput,
   },
-
   examplePayload: createItemExamplePayload,
 });

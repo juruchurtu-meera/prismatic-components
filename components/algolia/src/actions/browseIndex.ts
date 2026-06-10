@@ -7,7 +7,6 @@ import {
   indexName,
   paramsInput,
 } from "../inputs";
-
 export const browseIndex = action({
   display: {
     label: "Browse Index",

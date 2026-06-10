@@ -3,7 +3,6 @@ import { getDomoClient } from "../../client";
 import { updatePageInputs } from "../../inputs";
 import type { UpdatePageBody } from "../types/UpdatePageBody";
 import { updatePageExamplePayload } from "../../examplePayloads";
-
 export const updatePage = action({
   display: {
     label: "Update Page",
@@ -20,5 +19,4 @@ export const updatePage = action({
   },
   inputs: updatePageInputs,
 });
-
 export default { updatePage };

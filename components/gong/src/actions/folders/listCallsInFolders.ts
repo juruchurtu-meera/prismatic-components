@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, folderId, workspaceId } from "../../inputs";
-
 export const listCallsInFolder = action({
   display: {
     label: "List Calls in Folder",

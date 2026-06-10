@@ -21,7 +21,6 @@ export interface User {
   verified: number;
   display_name: string;
 }
-
 interface CustomAttribute {
   key: string;
   name: string;

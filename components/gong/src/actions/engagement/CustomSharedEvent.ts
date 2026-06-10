@@ -25,7 +25,6 @@ import {
   userAgent,
   workspaceId,
 } from "../../inputs";
-
 export const customSharedEvent = action({
   display: {
     label: "Custom Shared Event",

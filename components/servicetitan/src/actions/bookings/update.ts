@@ -19,7 +19,6 @@ import {
   summary,
   uploadedImages,
 } from "../../inputs";
-
 export const updateBooking = action({
   display: {
     label: "Update Booking",

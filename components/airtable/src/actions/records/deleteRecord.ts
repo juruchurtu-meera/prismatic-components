@@ -3,7 +3,6 @@ import { createAirtableClient } from "../../client";
 import { deleteRecordExamplePayload } from "../../examplePayloads";
 import { deleteRecordInputs } from "../../inputs";
 import { getBaseId } from "../../util";
-
 export const deleteRecord = action({
   display: {
     label: "Delete Record",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { connectionInput, messagesInput } from "../inputs";
 import { createHttpClient } from "../client";
 import { sendBatchEmailWithTemplateExamplePayload } from "../examplePayloads";
-
 export const sendBatchEmailWithTemplate = action({
   display: {
     label: "Send Email Batch With Template",
@@ -10,13 +9,11 @@ export const sendBatchEmailWithTemplate = action({
   },
   examplePayload: sendBatchEmailWithTemplateExamplePayload,
   perform: async (context, params) => {
-    
     if (!Array.isArray(params.Messages)) {
       throw new Error(
         `Invalid messages input. Please provide a JSON array of message objects.`,
       );
     }
-
     const Messages = params.Messages.map((email) => ({
       From: email.From,
       To: email.To,
@@ -32,7 +29,6 @@ export const sendBatchEmailWithTemplate = action({
       Metadata: email.Metadata,
       Attachments: email.Attachments,
     }));
-
     const client = createHttpClient(
       params.postmarkConnection,
       context.debug.enabled,

@@ -4,7 +4,6 @@ import { getImageInputs as inputs } from "../../inputs/images";
 import type { FieldsImage } from "../../types/FieldsImage";
 import { getImageExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const getImage = action({
   display: {
     label: "Get Image",

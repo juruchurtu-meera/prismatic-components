@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, emailAddress } from "../../inputs";
-
 export const deleteEmailAddressAndAssociatedElements = action({
   display: {
     label: "Delete Email Address and Associated Elements",

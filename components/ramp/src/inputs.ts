@@ -20,13 +20,11 @@ import {
   mapModel,
   mapObjectModel,
 } from "./util";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const id = input({
   label: "ID",
   type: "string",
@@ -36,80 +34,67 @@ export const id = input({
   placeholder: "96bb7007-eec5-430f-8d09-e033cbc000c2",
   clean: util.types.toString,
 });
-
 export const billId = {
   ...id,
   label: "Bill ID",
   comments: "The ID of the bill to retrieve",
 };
-
 export const businessEntityId = {
   ...id,
   label: "Business Entity ID",
   comments: "The ID of the business entity to retrieve",
 };
-
 export const accountingConnectionId = {
   ...id,
   label: "Accounting Connection ID",
   comments: "The ID of the accounting connection to delete",
 };
-
 export const customAccountingFieldId = {
   ...id,
   label: "Custom Accounting Field ID",
   comments: "The ID of the custom accounting field to retrieve",
 };
-
 export const departmentId = {
   ...id,
   label: "Department ID",
   comments: "The ID of the department to retrieve",
 };
-
 export const generalLedgerAccountId = {
   ...id,
   label: "General Ledger Account ID",
   comments: "The ID of the general ledger account to retrieve",
 };
-
 export const locationId = {
   ...id,
   label: "Location ID",
   comments: "The ID of the location to retrieve",
 };
-
 export const entityId = {
   ...id,
   label: "Entity ID",
   comments: "The ID of the entity to create the location",
   required: false,
 };
-
 export const reimbursementId = {
   ...id,
   label: "Reimbursement ID",
   comments: "The ID of the reimbursement to retrieve",
 };
-
 export const transactionId = {
   ...id,
   label: "Transaction ID",
   comments: "The ID of the transaction to retrieve",
 };
-
 export const vendorId = {
   ...id,
   label: "Vendor ID",
   comments: "The ID of the vendor to retrieve",
 };
-
 export const customAccountingFieldOptionId = {
   ...id,
   label: "Custom Accounting Field Option ID",
   comments: "The ID of the custom field option to retrieve",
 };
-
 export const customQueryParams = input({
   label: "Custom Query Params",
   type: "string",
@@ -120,7 +105,6 @@ export const customQueryParams = input({
   placeholder: "key1=value1",
   clean: cleanKeyValueList,
 });
-
 export const start = input({
   label: "Start",
   type: "string",
@@ -131,7 +115,6 @@ export const start = input({
   placeholder: "2907e304-cac2-4abf-84c4-b3b454ae3b8c",
   clean: cleanString,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -142,7 +125,6 @@ export const pageSize = input({
   comments: "Number of results to retrieve per page. Default is 50",
   clean: cleanNumber,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -150,7 +132,6 @@ export const fetchAll = input({
   comments: "If true, will fetch all results",
   clean: cleanBoolean,
 });
-
 export const defaultListInputs = {
   connection,
   fetchAll,
@@ -158,17 +139,16 @@ export const defaultListInputs = {
   pageSize,
   customQueryParams,
 };
-
 export const code = input({
   label: "Code",
   type: "string",
   required: false,
-  comments: "Code of the vendor; you could provide an empty string to reset the remote code",
+  comments:
+    "Code of the vendor; you could provide an empty string to reset the remote code",
   example: "19566",
   placeholder: "19566",
   clean: cleanString,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -178,7 +158,6 @@ export const name = input({
   placeholder: "Amazon",
   clean: cleanString,
 });
-
 export const reactivate = input({
   label: "Reactivate",
   type: "string",
@@ -187,7 +166,6 @@ export const reactivate = input({
   model: mapObjectModel(BOOLEAN_VALUES),
   clean: cleanBoolean,
 });
-
 export const value = input({
   label: "Value",
   type: "string",
@@ -197,7 +175,6 @@ export const value = input({
   placeholder: "Sales & Marketing",
   clean: cleanString,
 });
-
 export const subsidiaries = input({
   label: "Subsidiaries",
   type: "code",
@@ -208,7 +185,6 @@ export const subsidiaries = input({
     "IDs of a list of subsidiaries associated with the vendor. The Ramp-assigned IDs should be used here. You could provide an empty list to reset the subsidiaries list",
   clean: cleanCode,
 });
-
 export const failedSyncs = input({
   label: "Failed Syncs",
   type: "code",
@@ -218,7 +194,6 @@ export const failedSyncs = input({
   comments: "A list of objects that failed to be synced",
   clean: cleanCode,
 });
-
 export const idempotencyKey = input({
   label: "Idempotency Key",
   type: "string",
@@ -229,7 +204,6 @@ export const idempotencyKey = input({
   placeholder: "d471d830-2e73-4082-8a75-68540f83e86e",
   clean: util.types.toString,
 });
-
 export const successfulSyncs = input({
   label: "Successful Syncs",
   type: "code",
@@ -239,7 +213,6 @@ export const successfulSyncs = input({
   comments: "A list of objects that failed to be synced",
   clean: cleanCode,
 });
-
 export const syncType = input({
   label: "Sync Type",
   type: "string",
@@ -250,7 +223,6 @@ export const syncType = input({
   model: mapObjectModel(SYNC_TYPE_VALUES),
   clean: util.types.toString,
 });
-
 export const remoteProviderName = input({
   label: "Remote Provider Name",
   type: "string",
@@ -260,16 +232,15 @@ export const remoteProviderName = input({
   placeholder: "ACCOUNTING_SEED",
   clean: util.types.toString,
 });
-
 export const isSplittable = input({
   label: "Is Splitable",
   type: "string",
   required: false,
-  comments: "If set to True, the accounting field can be used to annotate split line items",
+  comments:
+    "If set to True, the accounting field can be used to annotate split line items",
   model: mapObjectModel(BOOLEAN_VALUES),
   clean: cleanBoolean,
 });
-
 export const inputType = input({
   label: "Input Type",
   type: "string",
@@ -278,7 +249,6 @@ export const inputType = input({
   model: mapModel(INPUT_TYPE_VALUES),
   clean: cleanString,
 });
-
 export const options = input({
   label: "Options",
   type: "code",
@@ -288,7 +258,6 @@ export const options = input({
   comments: "A list of field options for a given custom accounting field",
   clean: cleanCode,
 });
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -297,7 +266,6 @@ export const pollResourceType = input({
   model: pollResourceModel,
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -306,7 +274,6 @@ export const showNewRecords = input({
   comments: "Include newly created records in trigger results.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",

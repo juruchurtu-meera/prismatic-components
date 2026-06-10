@@ -1,12 +1,6 @@
 import { type GraphQLClient, gql } from "graphql-request";
 import { MAX_LIMIT } from "../constants";
 import type { MondayItem } from "../types/PollingState";
-
-
-
-
-
-
 const POLL_ITEMS_QUERY = gql`
   query PollItemsByBoard($boardId: ID!, $compareValue: CompareValue!, $limit: Int!) {
     boards(ids: [$boardId]) {
@@ -35,7 +29,6 @@ const POLL_ITEMS_QUERY = gql`
     }
   }
 `;
-
 const NEXT_PAGE_QUERY = gql`
   query NextItemsPage($cursor: String!, $limit: Int!) {
     next_items_page(cursor: $cursor, limit: $limit) {
@@ -50,7 +43,6 @@ const NEXT_PAGE_QUERY = gql`
     }
   }
 `;
-
 interface ItemsPageResponse {
   boards?: Array<{
     items_page?: {
@@ -59,18 +51,12 @@ interface ItemsPageResponse {
     };
   }>;
 }
-
 interface NextItemsPageResponse {
   next_items_page?: {
     cursor: string | null;
     items: MondayItem[];
   };
 }
-
-
-
-
-
 export const fetchAllItemsSince = async (
   client: GraphQLClient,
   boardId: number,
@@ -79,7 +65,6 @@ export const fetchAllItemsSince = async (
   const datePart = sinceDateIso.split("T")[0];
   const compareValue = ["EXACT", datePart];
   const items: MondayItem[] = [];
-
   const firstPage = await client.request<ItemsPageResponse>(POLL_ITEMS_QUERY, {
     boardId,
     compareValue,
@@ -90,7 +75,6 @@ export const fetchAllItemsSince = async (
     items.push(...firstPageData.items);
   }
   let cursor: string | null = firstPageData?.cursor ?? null;
-
   while (cursor) {
     const nextPage: NextItemsPageResponse = await client.request(
       NEXT_PAGE_QUERY,
@@ -101,26 +85,20 @@ export const fetchAllItemsSince = async (
     }
     cursor = nextPage.next_items_page?.cursor ?? null;
   }
-
   return items;
 };
-
-
-
-
-
-
 export const partitionItemsByTimestamp = (
   items: MondayItem[],
   sinceDate: Date,
-): { created: MondayItem[]; updated: MondayItem[] } => {
+): {
+  created: MondayItem[];
+  updated: MondayItem[];
+} => {
   const created: MondayItem[] = [];
   const updated: MondayItem[] = [];
-
   for (const item of items) {
     const createdAt = item.created_at ? new Date(item.created_at) : null;
     const updatedAt = item.updated_at ? new Date(item.updated_at) : null;
-
     if (createdAt && createdAt > sinceDate) {
       created.push(item);
     } else if (updatedAt && updatedAt > sinceDate) {
@@ -129,6 +107,5 @@ export const partitionItemsByTimestamp = (
       updated.push(item);
     }
   }
-
   return { created, updated };
 };

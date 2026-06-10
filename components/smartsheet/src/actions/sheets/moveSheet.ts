@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { moveSheetExamplePayload } from "../../examplePayloads";
 import { moveSheetInputs } from "../../inputs";
-
 export const moveSheet = action({
   display: {
     label: "Move Sheet",

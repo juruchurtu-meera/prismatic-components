@@ -4,7 +4,6 @@ import { createWebhookSubscriptionExamplePayload } from "../../../examplePayload
 import { createWebhookInputs as inputs } from "../../../inputsGql";
 import { createWebhook } from "../../../util";
 import { webhookMapper } from "../mappers/webhookMapper";
-
 export const createWebhookGql = action({
   display: {
     label: "Create Webhook",
@@ -14,8 +13,11 @@ export const createWebhookGql = action({
     context,
     { shopifyConnection, webhookTopic, callbackWebhookUrl, webhookFormat },
   ) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const { webhookSubscriptionCreate } = await createWebhook(client, {
       topic: webhookTopic,
       webhookSubscription: {
@@ -23,7 +25,6 @@ export const createWebhookGql = action({
         format: webhookFormat,
       },
     });
-
     return {
       data: {
         webhook: webhookMapper(webhookSubscriptionCreate.webhookSubscription),

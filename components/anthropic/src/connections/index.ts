@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 const anthropicConnection = connection({
   key: "anthropic",
   display: {
@@ -16,5 +15,4 @@ const anthropicConnection = connection({
     },
   },
 });
-
 export default [anthropicConnection];

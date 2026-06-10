@@ -8,7 +8,6 @@ import {
 } from "../../inputs/general";
 import { listCustomerContactsPayload } from "../../examplePayloads";
 import { filterDataChangedAfter } from "../../util";
-
 export const listCustomerContacts = action({
   display: {
     label: "List Customer Contacts",

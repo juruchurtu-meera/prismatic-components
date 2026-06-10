@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createRequestExamplePayload } from "../../examplePayloads";
 import { createRequestInputs } from "../../inputs";
-
 export const createRequest = action({
   display: {
     label: "Create Request",
@@ -34,7 +33,6 @@ export const createRequest = action({
         ...requestFieldValues,
       },
     };
-
     const { data } = await client.post("/request", body);
     return { data };
   },

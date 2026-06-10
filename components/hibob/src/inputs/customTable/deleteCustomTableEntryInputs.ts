@@ -1,6 +1,5 @@
 import { connection, employeeId } from "../common";
 import { customTableId, entryId } from "./common";
-
 export const deleteCustomTableEntryInputs = {
   connection,
   employeeId: {

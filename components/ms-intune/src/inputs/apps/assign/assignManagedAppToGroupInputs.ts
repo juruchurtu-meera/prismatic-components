@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../../util";
-
 const appId = input({
   label: "App Id",
   comments:
@@ -11,7 +10,6 @@ const appId = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const groupId = input({
   label: "Group Id",
   comments:
@@ -23,7 +21,6 @@ const groupId = input({
   clean: cleanStringInput,
   dataSource: "selectGroup",
 });
-
 const intent = input({
   label: "Intent",
   comments:
@@ -42,7 +39,6 @@ const intent = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export default {
   appId,
   groupId,

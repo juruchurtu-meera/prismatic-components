@@ -3,11 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import createDetectedAppInputs from "../../../inputs/apps/detected/createDetectedAppInputs";
 import { createDetectedAppExamplePayload } from "../../../examplePayloads";
-
-
-
-
-
 export const createDetectedApp = action({
   display: {
     label: "Create Detected App",

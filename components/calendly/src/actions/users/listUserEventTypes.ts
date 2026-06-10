@@ -11,7 +11,6 @@ import {
 } from "../../inputs";
 import { listUserEventTypesExamplePayload } from "../../examplePayloads";
 import { getEventTypes } from "../../util";
-
 export const listUserEventTypes = action({
   display: {
     label: "List User's Event Types",
@@ -30,7 +29,6 @@ export const listUserEventTypes = action({
     },
   ) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const data = await getEventTypes(
       client,
       adminManaged,

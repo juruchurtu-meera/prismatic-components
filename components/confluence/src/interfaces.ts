@@ -5,20 +5,17 @@ export interface Version {
   minorEdit?: boolean;
   authorId?: string;
 }
-
 export interface Page {
   title: string;
   id: string;
   createdAt?: string;
   version?: Version;
 }
-
 export interface Space {
   name: string;
   id: string;
   createdAt?: string;
 }
-
 export interface Attachment {
   id: string;
   title: string;
@@ -26,13 +23,11 @@ export interface Attachment {
   createdAt?: string;
   version?: Version;
 }
-
 export interface ContentProperty {
   id: string;
   key: string;
   version?: Version;
 }
-
 export interface AccessibleResource {
   id: string;
   url: string;
@@ -40,11 +35,9 @@ export interface AccessibleResource {
   scopes: string[];
   avatarUrl: string;
 }
-
 export interface PaginationLinks {
   next?: string;
 }
-
 export interface Pageable<T> {
   results: T[];
   _links?: PaginationLinks;

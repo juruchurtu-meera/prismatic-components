@@ -6,7 +6,6 @@ import {
   pollResourceModel,
 } from "../utils";
 import { ALL_DELETE_OBJECTS_MODEL } from "../constants";
-
 export const vendorIdInput = input({
   label: "Vendor ID",
   type: "string",
@@ -18,7 +17,6 @@ export const vendorIdInput = input({
   clean: util.types.toString,
   dataSource: "selectVendor",
 });
-
 export const vendorNameInput = input({
   label: "Vendor Name",
   type: "string",
@@ -27,7 +25,6 @@ export const vendorNameInput = input({
   placeholder: "Enter vendor name",
   clean: util.types.toString,
 });
-
 export const vendorTypeIdInput = input({
   label: "Vendor Type ID",
   type: "string",
@@ -36,7 +33,6 @@ export const vendorTypeIdInput = input({
   placeholder: "Enter vendor type ID",
   clean: util.types.toString,
 });
-
 export const parentVendorIdInput = input({
   label: "Parent Vendor ID",
   type: "string",
@@ -45,7 +41,6 @@ export const parentVendorIdInput = input({
   placeholder: "Enter parent vendor ID",
   clean: util.types.toString,
 });
-
 export const form1099NameInput = input({
   label: "Form 1099 Name",
   type: "string",
@@ -54,7 +49,6 @@ export const form1099NameInput = input({
   placeholder: "Enter 1099 name",
   clean: util.types.toString,
 });
-
 export const form1099TypeInput = input({
   label: "Form 1099 Type",
   type: "string",
@@ -63,7 +57,6 @@ export const form1099TypeInput = input({
   placeholder: "Enter 1099 type",
   clean: util.types.toString,
 });
-
 export const form1099BoxInput = input({
   label: "Form 1099 Box",
   type: "string",
@@ -72,7 +65,6 @@ export const form1099BoxInput = input({
   placeholder: "Enter box number",
   clean: util.types.toString,
 });
-
 export const defaultExpenseGlAccountNoInput = input({
   label: "Default Expense GL Account No",
   type: "string",
@@ -81,7 +73,6 @@ export const defaultExpenseGlAccountNoInput = input({
   placeholder: "Enter GL account number",
   clean: util.types.toString,
 });
-
 export const offsetGlAccountNoInput = input({
   label: "Offset GL Account No",
   type: "string",
@@ -90,7 +81,6 @@ export const offsetGlAccountNoInput = input({
   placeholder: "Enter GL account number",
   clean: util.types.toString,
 });
-
 export const doNotPayInput = input({
   label: "Do Not Pay",
   type: "string",
@@ -112,7 +102,6 @@ export const doNotPayInput = input({
     },
   ],
 });
-
 export const payToContactNameInput = input({
   label: "Pay To Contact Name",
   type: "string",
@@ -121,7 +110,6 @@ export const payToContactNameInput = input({
   placeholder: "Enter contact name",
   clean: util.types.toString,
 });
-
 export const returnToContactNameInput = input({
   label: "Return To Contact Name",
   type: "string",
@@ -130,7 +118,6 @@ export const returnToContactNameInput = input({
   placeholder: "Enter contact name",
   clean: util.types.toString,
 });
-
 export const preferredPaymentMethodInput = input({
   label: "Preferred Payment Method",
   type: "string",
@@ -139,7 +126,6 @@ export const preferredPaymentMethodInput = input({
   placeholder: "Enter payment method",
   clean: util.types.toString,
 });
-
 export const sendAutomaticPaymentNotificationInput = input({
   label: "Send Automatic Payment Notification",
   type: "string",
@@ -161,7 +147,6 @@ export const sendAutomaticPaymentNotificationInput = input({
     },
   ],
 });
-
 export const mergePaymentRequestsInput = input({
   label: "Merge Payment Requests",
   type: "string",
@@ -183,7 +168,6 @@ export const mergePaymentRequestsInput = input({
     },
   ],
 });
-
 export const vendorBillingTypeInput = input({
   label: "Vendor Billing Type",
   type: "string",
@@ -192,7 +176,6 @@ export const vendorBillingTypeInput = input({
   placeholder: "Enter billing type",
   clean: util.types.toString,
 });
-
 export const paymentPriorityInput = input({
   label: "Payment Priority",
   type: "string",
@@ -201,7 +184,6 @@ export const paymentPriorityInput = input({
   placeholder: "Enter payment priority",
   clean: util.types.toString,
 });
-
 export const termDiscountDisplayedOnCheckStubInput = input({
   label: "Term Discount Displayed On Check Stub",
   type: "string",
@@ -223,7 +205,6 @@ export const termDiscountDisplayedOnCheckStubInput = input({
     },
   ],
 });
-
 export const achEnabledInput = input({
   label: "ACH Enabled",
   type: "string",
@@ -245,7 +226,6 @@ export const achEnabledInput = input({
     },
   ],
 });
-
 export const achBankRoutingNoInput = input({
   label: "ACH Bank Routing No",
   type: "string",
@@ -254,7 +234,6 @@ export const achBankRoutingNoInput = input({
   placeholder: "Enter routing number",
   clean: util.types.toString,
 });
-
 export const achBankAccountNoInput = input({
   label: "ACH Bank Account No",
   type: "string",
@@ -263,7 +242,6 @@ export const achBankAccountNoInput = input({
   placeholder: "Enter account number",
   clean: util.types.toString,
 });
-
 export const achBankAccountTypeInput = input({
   label: "ACH Bank Account Type",
   type: "string",
@@ -272,7 +250,6 @@ export const achBankAccountTypeInput = input({
   placeholder: "Enter account type",
   clean: util.types.toString,
 });
-
 export const achBankAccountClassInput = input({
   label: "ACH Bank Account Class",
   type: "string",
@@ -281,7 +258,6 @@ export const achBankAccountClassInput = input({
   placeholder: "Enter account class",
   clean: util.types.toString,
 });
-
 export const vendorAccountNoInput = input({
   label: "Vendor Account No",
   type: "string",
@@ -290,7 +266,6 @@ export const vendorAccountNoInput = input({
   placeholder: "Enter vendor account number",
   clean: util.types.toString,
 });
-
 export const locationAssignedAccountNoDisplayedOnCheckStubInput = input({
   label: "Location Assigned Account No Displayed On Check Stub",
   type: "string",
@@ -312,14 +287,12 @@ export const locationAssignedAccountNoDisplayedOnCheckStubInput = input({
     },
   ],
 });
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Sage Intacct connection to use.",
 });
-
 export const customerIdInput = input({
   label: "Customer ID",
   type: "string",
@@ -331,7 +304,6 @@ export const customerIdInput = input({
   clean: util.types.toString,
   dataSource: "selectCustomer",
 });
-
 export const customerNameInput = input({
   label: "Customer Name",
   type: "string",
@@ -341,7 +313,6 @@ export const customerNameInput = input({
   placeholder: "Enter customer name",
   clean: util.types.toString,
 });
-
 export const oneTimeCustomerInput = input({
   label: "One Time",
   comments:
@@ -365,7 +336,6 @@ export const oneTimeCustomerInput = input({
     },
   ],
 });
-
 export const oneTimeVendorInput = input({
   label: "One Time",
   comments:
@@ -389,7 +359,6 @@ export const oneTimeVendorInput = input({
     },
   ],
 });
-
 export const activeInput = input({
   label: "Active Status",
   comments:
@@ -413,7 +382,6 @@ export const activeInput = input({
     },
   ],
 });
-
 export const lastNameInput = input({
   label: "Last Name",
   type: "string",
@@ -423,7 +391,6 @@ export const lastNameInput = input({
   placeholder: "Enter last name",
   clean: util.types.toString,
 });
-
 export const firstNameInput = input({
   label: "First Name",
   type: "string",
@@ -433,7 +400,6 @@ export const firstNameInput = input({
   placeholder: "Enter first name",
   clean: util.types.toString,
 });
-
 export const middleNameInput = input({
   label: "Middle Name",
   type: "string",
@@ -443,7 +409,6 @@ export const middleNameInput = input({
   placeholder: "Enter middle name",
   clean: util.types.toString,
 });
-
 export const prefixInput = input({
   label: "Prefix",
   type: "string",
@@ -453,7 +418,6 @@ export const prefixInput = input({
   placeholder: "Enter prefix (e.g., Mr., Mrs., Dr.)",
   clean: util.types.toString,
 });
-
 export const companyNameInput = input({
   label: "Company Name",
   type: "string",
@@ -463,7 +427,6 @@ export const companyNameInput = input({
   placeholder: "Enter company name",
   clean: util.types.toString,
 });
-
 export const printAsInput = input({
   label: "Print Name As",
   type: "string",
@@ -473,7 +436,6 @@ export const printAsInput = input({
   placeholder: "Enter formatted name",
   clean: util.types.toString,
 });
-
 export const primaryPhoneNoInput = input({
   label: "Primary Phone Number",
   type: "string",
@@ -483,7 +445,6 @@ export const primaryPhoneNoInput = input({
   placeholder: "Enter phone number",
   clean: util.types.toString,
 });
-
 export const secondaryPhoneNoInput = input({
   label: "Secondary Phone Number",
   type: "string",
@@ -493,7 +454,6 @@ export const secondaryPhoneNoInput = input({
   placeholder: "Enter phone number",
   clean: util.types.toString,
 });
-
 export const cellularPhoneNoInput = input({
   label: "Cellular Phone Number",
   type: "string",
@@ -503,7 +463,6 @@ export const cellularPhoneNoInput = input({
   placeholder: "Enter cellular phone number",
   clean: util.types.toString,
 });
-
 export const pagerNoInput = input({
   label: "Pager Number",
   type: "string",
@@ -513,7 +472,6 @@ export const pagerNoInput = input({
   placeholder: "Enter pager number",
   clean: util.types.toString,
 });
-
 export const faxNoInput = input({
   label: "Fax Number",
   type: "string",
@@ -523,7 +481,6 @@ export const faxNoInput = input({
   placeholder: "Enter fax number",
   clean: util.types.toString,
 });
-
 export const primaryEmailAddressInput = input({
   label: "Primary Email Address",
   type: "string",
@@ -533,7 +490,6 @@ export const primaryEmailAddressInput = input({
   placeholder: "Enter email address",
   clean: util.types.toString,
 });
-
 export const secondaryEmailAddressInput = input({
   label: "Secondary Email Address",
   type: "string",
@@ -543,7 +499,6 @@ export const secondaryEmailAddressInput = input({
   placeholder: "Enter email address",
   clean: util.types.toString,
 });
-
 export const primaryUrlInput = input({
   label: "Primary URL",
   type: "string",
@@ -553,7 +508,6 @@ export const primaryUrlInput = input({
   placeholder: "Enter URL",
   clean: util.types.toString,
 });
-
 export const secondaryUrlInput = input({
   label: "Secondary URL",
   type: "string",
@@ -563,7 +517,6 @@ export const secondaryUrlInput = input({
   placeholder: "Enter URL",
   clean: util.types.toString,
 });
-
 export const addressLine1Input = input({
   label: "Address Line 1",
   type: "string",
@@ -573,7 +526,6 @@ export const addressLine1Input = input({
   placeholder: "Enter address line 1",
   clean: util.types.toString,
 });
-
 export const addressLine2Input = input({
   label: "Address Line 2",
   type: "string",
@@ -583,7 +535,6 @@ export const addressLine2Input = input({
   placeholder: "Enter address line 2",
   clean: util.types.toString,
 });
-
 export const cityInput = input({
   label: "City",
   type: "string",
@@ -593,7 +544,6 @@ export const cityInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const stateProvinceInput = input({
   label: "State/Province",
   type: "string",
@@ -603,7 +553,6 @@ export const stateProvinceInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const zipPostalCodeInput = input({
   label: "ZIP/Postal Code",
   type: "string",
@@ -613,7 +562,6 @@ export const zipPostalCodeInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const countryInput = input({
   label: "Country",
   type: "string",
@@ -623,7 +571,6 @@ export const countryInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const isoCountryCodeInput = input({
   label: "ISO Country Code",
   type: "string",
@@ -634,7 +581,6 @@ export const isoCountryCodeInput = input({
   placeholder: "Enter ISO country code",
   clean: util.types.toString,
 });
-
 export const excludedFromContactListInput = input({
   label: "Excluded From Contact List",
   comments:
@@ -658,7 +604,6 @@ export const excludedFromContactListInput = input({
     },
   ],
 });
-
 export const customerTypeIdInput = input({
   label: "Customer Type ID",
   type: "string",
@@ -668,7 +613,6 @@ export const customerTypeIdInput = input({
   placeholder: "Enter customer type ID",
   clean: util.types.toString,
 });
-
 export const salesRepEmployeeIdInput = input({
   label: "Sales Rep Employee ID",
   type: "string",
@@ -678,7 +622,6 @@ export const salesRepEmployeeIdInput = input({
   placeholder: "Enter employee ID",
   clean: util.types.toString,
 });
-
 export const parentCustomerIdInput = input({
   label: "Parent Customer ID",
   type: "string",
@@ -688,7 +631,6 @@ export const parentCustomerIdInput = input({
   placeholder: "Enter parent customer ID",
   clean: util.types.toString,
 });
-
 export const glGroupNameInput = input({
   label: "GL Group Name",
   type: "string",
@@ -698,7 +640,6 @@ export const glGroupNameInput = input({
   placeholder: "Enter GL group name",
   clean: util.types.toString,
 });
-
 export const territoryIdInput = input({
   label: "Territory ID",
   type: "string",
@@ -708,7 +649,6 @@ export const territoryIdInput = input({
   placeholder: "Enter territory ID",
   clean: util.types.toString,
 });
-
 export const attachmentsIdInput = input({
   label: "Attachments ID",
   type: "string",
@@ -718,7 +658,6 @@ export const attachmentsIdInput = input({
   placeholder: "Enter attachments ID",
   clean: util.types.toString,
 });
-
 export const paymentTermInput = input({
   label: "Payment Term",
   type: "string",
@@ -728,7 +667,6 @@ export const paymentTermInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const offsetArGlAccountNoInput = input({
   label: "Offset AR GL Account No",
   type: "string",
@@ -738,7 +676,6 @@ export const offsetArGlAccountNoInput = input({
   placeholder: "Enter GL account number",
   clean: util.types.toString,
 });
-
 export const defaultRevenueGlAccountNoInput = input({
   label: "Default Revenue GL Account No",
   type: "string",
@@ -748,7 +685,6 @@ export const defaultRevenueGlAccountNoInput = input({
   placeholder: "Enter GL account number",
   clean: util.types.toString,
 });
-
 export const shippingMethodInput = input({
   label: "Shipping Method",
   type: "string",
@@ -758,7 +694,6 @@ export const shippingMethodInput = input({
   placeholder: "Enter shipping method",
   clean: util.types.toString,
 });
-
 export const resaleNumberInput = input({
   label: "Resale Number",
   type: "string",
@@ -768,7 +703,6 @@ export const resaleNumberInput = input({
   placeholder: "Enter resale number",
   clean: util.types.toString,
 });
-
 export const taxableInput = input({
   label: "Taxable",
   comments:
@@ -792,7 +726,6 @@ export const taxableInput = input({
     },
   ],
 });
-
 export const contactTaxGroupNameInput = input({
   label: "Contact Tax Group Name",
   type: "string",
@@ -802,7 +735,6 @@ export const contactTaxGroupNameInput = input({
   placeholder: "Enter tax group name",
   clean: util.types.toString,
 });
-
 export const taxIdInput = input({
   label: "Tax ID",
   type: "string",
@@ -812,7 +744,6 @@ export const taxIdInput = input({
   placeholder: "Enter tax ID",
   clean: util.types.toString,
 });
-
 export const creditLimitInput = input({
   label: "Credit Limit",
   type: "string",
@@ -822,7 +753,6 @@ export const creditLimitInput = input({
   placeholder: "Enter credit limit",
   clean: util.types.toNumber,
 });
-
 export const onHoldInput = input({
   label: "On Hold",
   comments:
@@ -846,7 +776,6 @@ export const onHoldInput = input({
     },
   ],
 });
-
 export const deliveryMethodInput = input({
   label: "Delivery Method",
   type: "string",
@@ -855,7 +784,6 @@ export const deliveryMethodInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const defaultInvoiceMessageInput = input({
   label: "Default Invoice Message",
   type: "string",
@@ -863,7 +791,6 @@ export const defaultInvoiceMessageInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const commentsInput = input({
   label: "Comments",
   type: "string",
@@ -871,7 +798,6 @@ export const commentsInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const defaultCurrencyInput = input({
   label: "Default Currency",
   type: "string",
@@ -881,7 +807,6 @@ export const defaultCurrencyInput = input({
   placeholder: "USD",
   clean: util.types.toString,
 });
-
 export const currencyInput = input({
   label: "Currency",
   type: "string",
@@ -891,7 +816,6 @@ export const currencyInput = input({
   placeholder: "USD",
   clean: util.types.toString,
 });
-
 export const baseCurrencyInput = input({
   label: "Base Currency",
   type: "string",
@@ -901,7 +825,6 @@ export const baseCurrencyInput = input({
   placeholder: "USD",
   clean: util.types.toString,
 });
-
 export const apBillItemsInput = input({
   label: "AP Bill Items",
   type: "code",
@@ -927,7 +850,6 @@ export const apBillItemsInput = input({
     "https://developer.intacct.com/api/accounts-payable/bills/#create-bill",
   clean: cleanFunctionForXml,
 });
-
 export const invoiceLineItemsInput = input({
   label: "Invoice Line Items",
   type: "code",
@@ -953,7 +875,6 @@ export const invoiceLineItemsInput = input({
     "https://developer.intacct.com/api/accounts-receivable/invoices/#create-invoice-legacy",
   clean: cleanFunctionForXml,
 });
-
 export const printOptionArInvoiceTemplateNameInput = input({
   label: "Print Option AR Invoice Template Name",
   type: "string",
@@ -961,7 +882,6 @@ export const printOptionArInvoiceTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const printOptionOeQuoteTemplateNameInput = input({
   label: "Print Option OE Quote Template Name",
   type: "string",
@@ -969,7 +889,6 @@ export const printOptionOeQuoteTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const printOptionOeOrderTemplateNameInput = input({
   label: "Print Option OE Order Template Name",
   type: "string",
@@ -977,7 +896,6 @@ export const printOptionOeOrderTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const printOptionOeListTemplateNameInput = input({
   label: "Print Option OE List Template Name",
   type: "string",
@@ -985,7 +903,6 @@ export const printOptionOeListTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const printOptionOeInvoiceTemplateNameInput = input({
   label: "Print Option OE Invoice Template Name",
   type: "string",
@@ -993,7 +910,6 @@ export const printOptionOeInvoiceTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const printOptionOeAdjustmentTemplateNameInput = input({
   label: "Print Option OE Adjustment Template Name",
   type: "string",
@@ -1001,7 +917,6 @@ export const printOptionOeAdjustmentTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const printOptionOeOtherTemplateNameInput = input({
   label: "Print Option OE Other Template Name",
   type: "string",
@@ -1009,7 +924,6 @@ export const printOptionOeOtherTemplateNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const primaryContactNameInput = input({
   label: "Primary Contact Name",
   type: "string",
@@ -1019,7 +933,6 @@ export const primaryContactNameInput = input({
   placeholder: "Enter contact name",
   clean: util.types.toString,
 });
-
 export const billToContactNameInput = input({
   label: "Bill To Contact Name",
   type: "string",
@@ -1029,7 +942,6 @@ export const billToContactNameInput = input({
   placeholder: "Enter contact name",
   clean: util.types.toString,
 });
-
 export const shipToContactNameInput = input({
   label: "Ship To Contact Name",
   type: "string",
@@ -1039,7 +951,6 @@ export const shipToContactNameInput = input({
   placeholder: "Enter contact name",
   clean: util.types.toString,
 });
-
 export const restrictionTypeInput = input({
   label: "Restriction Type",
   type: "string",
@@ -1047,7 +958,6 @@ export const restrictionTypeInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const customFieldsInput = input({
   label: "Custom Fields",
   type: "code",
@@ -1073,7 +983,6 @@ export const customFieldsInput = input({
     } else return [];
   },
 });
-
 export const fieldsInput = input({
   label: "Field",
   type: "string",
@@ -1088,7 +997,6 @@ export const fieldsInput = input({
     return [];
   },
 });
-
 export const restrictedLocationsInput = input({
   label: "Restricted Location",
   type: "string",
@@ -1096,7 +1004,6 @@ export const restrictedLocationsInput = input({
   comments: "Restricted location ID. Use if OBJECTRESTRICTION is Restricted",
   required: false,
 });
-
 export const restrictedDepartmentsInput = input({
   label: "Restricted Department",
   type: "string",
@@ -1113,7 +1020,6 @@ export const recordNoInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const contactNameInput = input({
   label: "Contact Name",
   type: "string",
@@ -1124,7 +1030,6 @@ export const contactNameInput = input({
   clean: util.types.toString,
   dataSource: "selectContact",
 });
-
 export const objectNameInput = input({
   label: "Object Name",
   type: "string",
@@ -1135,7 +1040,6 @@ export const objectNameInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const queryInput = input({
   label: "Query",
   type: "string",
@@ -1145,7 +1049,6 @@ export const queryInput = input({
   placeholder: "Enter query filter",
   clean: util.types.toString,
 });
-
 export const billTransactionDateInput = input({
   label: "Bill Transaction Date",
   type: "string",
@@ -1155,7 +1058,6 @@ export const billTransactionDateInput = input({
   placeholder: "Enter date (MM/DD/YYYY)",
   clean: util.types.toString,
 });
-
 export const billTransactionGlPostingDateInput = input({
   label: "Bill GL Posting Date",
   type: "string",
@@ -1165,7 +1067,6 @@ export const billTransactionGlPostingDateInput = input({
   placeholder: "Enter date (MM/DD/YYYY)",
   clean: util.types.toString,
 });
-
 export const billNumberInput = input({
   label: "Bill Number",
   type: "string",
@@ -1175,7 +1076,6 @@ export const billNumberInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const docNumberInput = input({
   label: "Reference Number",
   type: "string",
@@ -1185,7 +1085,6 @@ export const docNumberInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const descriptionInput = input({
   label: "Description",
   type: "string",
@@ -1195,7 +1094,6 @@ export const descriptionInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const termNameInput = input({
   label: "Term Name",
   type: "string",
@@ -1205,7 +1103,6 @@ export const termNameInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const recPaymentDateInput = input({
   label: "Recommended to pay on",
   type: "string",
@@ -1215,7 +1112,6 @@ export const recPaymentDateInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const dueDateInput = input({
   label: "Due Date",
   type: "string",
@@ -1225,7 +1121,6 @@ export const dueDateInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const dateCreatedInput = input({
   label: "Date Created",
   type: "string",
@@ -1235,7 +1130,6 @@ export const dateCreatedInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const exchRateDateInput = input({
   label: "Exchange Rate Date",
   type: "string",
@@ -1245,7 +1139,6 @@ export const exchRateDateInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const exchRateTypeInput = input({
   label: "Exchange Rate Type",
   type: "string",
@@ -1255,7 +1148,6 @@ export const exchRateTypeInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const datePostedInput = input({
   label: "GL Date Posted",
   type: "string",
@@ -1265,7 +1157,6 @@ export const datePostedInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const invoiceNumberInput = input({
   label: "Invoice Number",
   type: "string",
@@ -1276,7 +1167,6 @@ export const invoiceNumberInput = input({
   clean: util.types.toString,
   dataSource: "selectInvoice",
 });
-
 export const ponumberInput = input({
   label: "Reference Number",
   type: "string",
@@ -1286,7 +1176,6 @@ export const ponumberInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const externalIdInput = input({
   label: "External ID",
   type: "string",
@@ -1296,7 +1185,6 @@ export const externalIdInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const noglInput = input({
   label: "No GL",
   comments: "Do not post to GL. Use false for No, true for Yes.",
@@ -1319,7 +1207,6 @@ export const noglInput = input({
     },
   ],
 });
-
 export const customFieldsXmlInput = input({
   label: "Custom Fields",
   type: "code",
@@ -1334,7 +1221,6 @@ export const customFieldsXmlInput = input({
   required: false,
   clean: cleanFunctionForXml,
 });
-
 export const object = input({
   label: "Object",
   type: "string",
@@ -1343,7 +1229,6 @@ export const object = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const keys = input({
   label: "Keys",
   type: "string",
@@ -1354,7 +1239,6 @@ export const keys = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const keyId = input({
   label: "Record Number",
   comments: "Invoice RECORDNO to update",
@@ -1364,7 +1248,6 @@ export const keyId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const dateDueInput = input({
   label: "Date Due",
   type: "string",
@@ -1374,7 +1257,6 @@ export const dateDueInput = input({
   placeholder: "12/06/2023",
   clean: util.types.toString,
 });
-
 export const exchRateInput = input({
   label: "Exchange Rate",
   type: "string",
@@ -1383,7 +1265,6 @@ export const exchRateInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const explicitArray = input({
   label: "Array JSON Nodes",
   type: "boolean",
@@ -1393,7 +1274,6 @@ export const explicitArray = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const projectIdInput = input({
   label: "Project ID",
   type: "string",
@@ -1405,7 +1285,6 @@ export const projectIdInput = input({
   clean: util.types.toString,
   dataSource: "selectProject",
 });
-
 export const projectNameInput = input({
   label: "Project Name",
   type: "string",
@@ -1415,7 +1294,6 @@ export const projectNameInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const projectCategoryInput = input({
   label: "Project Category",
   type: "string",
@@ -1425,7 +1303,6 @@ export const projectCategoryInput = input({
   placeholder: "Contract",
   clean: util.types.toString,
 });
-
 export const projectDescriptionInput = input({
   label: "Project Description",
   type: "string",
@@ -1435,7 +1312,6 @@ export const projectDescriptionInput = input({
   placeholder: "This is a sample project",
   clean: util.types.toString,
 });
-
 export const parentProjectIdInput = input({
   label: "Parent Project ID",
   type: "string",
@@ -1445,7 +1321,6 @@ export const parentProjectIdInput = input({
   placeholder: "21-1234",
   clean: util.types.toString,
 });
-
 export const invoiceWithParentInput = input({
   label: "Invoice with Parent",
   type: "boolean",
@@ -1454,7 +1329,6 @@ export const invoiceWithParentInput = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const projectTypeInput = input({
   label: "Project Type",
   type: "string",
@@ -1464,7 +1338,6 @@ export const projectTypeInput = input({
   placeholder: "Type 1",
   clean: util.types.toString,
 });
-
 export const projectStatusInput = input({
   label: "Project Status",
   type: "string",
@@ -1474,7 +1347,6 @@ export const projectStatusInput = input({
   placeholder: "In Progress",
   clean: util.types.toString,
 });
-
 export const statusInput = input({
   label: "Status",
   type: "boolean",
@@ -1482,7 +1354,6 @@ export const statusInput = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -1492,7 +1363,6 @@ export const additionalFields = input({
   example: JSON.stringify({}, null, 2),
   clean: cleanCodeInput,
 });
-
 export const modelBooleanUpdateInput = input({
   label: "",
   type: "string",
@@ -1504,7 +1374,6 @@ export const modelBooleanUpdateInput = input({
   })),
   clean: cleanBooleanInput,
 });
-
 const arAdjustmentLineItemsInput = input({
   label: "AR Adjustment Line Items",
   type: "code",
@@ -1527,7 +1396,6 @@ const arAdjustmentLineItemsInput = input({
   </lineitem>`,
   clean: cleanFunctionForXml,
 });
-
 const adjustmentNoInput = input({
   label: "Adjustment Number",
   type: "string",
@@ -1535,7 +1403,6 @@ const adjustmentNoInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 const actionInput = input({
   label: "Action",
   type: "string",
@@ -1553,7 +1420,6 @@ const actionInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 const additionalXmlTagsInput = input({
   label: "Additional XML Tags",
   type: "code",
@@ -1564,7 +1430,6 @@ const additionalXmlTagsInput = input({
   required: false,
   clean: cleanFunctionForXml,
 });
-
 export const updateARAdjustmentInputs = {
   connection,
   keyId: { ...keyId, comments: "AR Adjustment RECORDNO of bill to update." },
@@ -1621,7 +1486,6 @@ export const updateARAdjustmentInputs = {
     `,
   },
 };
-
 const paymentDateInput = input({
   label: "Payment Date",
   type: "string",
@@ -1631,7 +1495,6 @@ const paymentDateInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 const receiptDateInput = input({
   label: "Receipt Date",
   type: "string",
@@ -1642,7 +1505,6 @@ const receiptDateInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 const paymentMethodInput = input({
   label: "Payment Method",
   type: "string",
@@ -1669,7 +1531,6 @@ const paymentMethodInput = input({
   required: true,
   clean: util.types.toString,
 });
-
 const financialEntityInput = input({
   label: "Financial Entity",
   type: "string",
@@ -1680,7 +1541,6 @@ const financialEntityInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 const undepositedAccountNoInput = input({
   label: "Undeposited Account No",
   type: "string",
@@ -1691,7 +1551,6 @@ const undepositedAccountNoInput = input({
   required: false,
   clean: util.types.toString,
 });
-
 const arAdvanceItemsInput = input({
   label: "AR Advance Items",
   type: "code",
@@ -1707,7 +1566,6 @@ const arAdvanceItemsInput = input({
       </ARADVANCEITEM>`,
   clean: cleanFunctionForXml,
 });
-
 export const updateARAdvanceInputs = {
   connection,
   recordNoInput: {
@@ -1762,7 +1620,6 @@ export const updateARAdvanceInputs = {
               `,
   },
 };
-
 export const createARAdvanceInputs = {
   connection,
   paymentDateInput,
@@ -1779,7 +1636,6 @@ export const createARAdvanceInputs = {
       "<ACTION>Draft</ACTION>",
   },
 };
-
 export const returnIdInput = input({
   label: "Return ID",
   type: "boolean",
@@ -1789,7 +1645,6 @@ export const returnIdInput = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const returnContactNameInput = input({
   label: "Return Contact Name",
   type: "boolean",
@@ -1798,10 +1653,6 @@ export const returnContactNameInput = input({
   default: "false",
   clean: util.types.toBool,
 });
-
-
-
-
 const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -1810,7 +1661,6 @@ const pollResourceType = input({
   comments: "The Sage Intacct object to poll for new or updated records.",
   clean: util.types.toString,
 });
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -1820,7 +1670,6 @@ const showNewRecords = input({
     "When true, newly created records are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -1830,7 +1679,6 @@ const showUpdatedRecords = input({
     "When true, records updated since the last poll are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 export const pollChangesInputs = {
   connection,
   pollResourceType,

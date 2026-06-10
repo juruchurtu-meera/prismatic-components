@@ -5,7 +5,6 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import connections from "./connections";
 import type { CreateClientProps } from "./interfaces/CreateClientProps";
-
 export const getToken = ({ connection }: CreateClientProps): string => {
   const connectionKeys = connections.map((c) => c.key);
   if (connectionKeys.includes(connection.key)) {
@@ -15,14 +14,11 @@ export const getToken = ({ connection }: CreateClientProps): string => {
         "Received valid Connection but it did not contain an access token.",
       );
     }
-
     const token = util.types.toString(connection.token.access_token);
     return `Bearer ${token}`;
   }
-
   throw new ConnectionError(connection, "Unknown Connection type provided.");
 };
-
 export const createZoomClient = ({
   connection,
   debug,

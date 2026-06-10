@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { findRecordsInputs } from "../../inputs";
 import { findRecordsExamplePayload } from "../../examplePayloads";
 import { executeSFAction, getFindQuery } from "../../util";
-
 export const findRecords = action({
   display: {
     label: "Find Records",

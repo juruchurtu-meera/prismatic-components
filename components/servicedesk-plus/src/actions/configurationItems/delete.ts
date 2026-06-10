@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteResponse } from "../../examplePayloads";
 import { ciIds, ciTypeApiName, connectionInput } from "../../inputs";
-
 export const deleteConfigurationItem = action({
   display: {
     label: "Delete Configuration Item",

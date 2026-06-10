@@ -5,7 +5,6 @@ import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
 import { selectVariantsInputs } from "../inputs";
 import { fetchData, getNumericId } from "../util";
-
 export const selectVariants = dataSource({
   display: {
     label: "Select Variant",
@@ -14,9 +13,14 @@ export const selectVariants = dataSource({
   inputs: selectVariantsInputs,
   perform: async (_context, { shopifyConnection, productId }) => {
     const client = getShopifyGraphQlClient(shopifyConnection, undefined, false);
-    const numericProductId = productId.startsWith("gid://") ? getNumericId(productId) : productId;
-
-    const { productVariants } = (await fetchData<DataSourceRecord & { displayName?: string }>(
+    const numericProductId = productId.startsWith("gid://")
+      ? getNumericId(productId)
+      : productId;
+    const { productVariants } = (await fetchData<
+      DataSourceRecord & {
+        displayName?: string;
+      }
+    >(
       client,
       ["productVariants"],
       "productVariants",
@@ -26,8 +30,12 @@ export const selectVariants = dataSource({
         query: `product_id:${numericProductId}`,
         first: MAX_LIMIT,
       },
-    )) as unknown as Record<"productVariants", (DataSourceRecord & { displayName?: string })[]>;
-
+    )) as unknown as Record<
+      "productVariants",
+      (DataSourceRecord & {
+        displayName?: string;
+      })[]
+    >;
     const result = productVariants
       .map<Element>((variant) => {
         const numericId = getNumericId(variant.id);
@@ -37,7 +45,6 @@ export const selectVariants = dataSource({
         };
       })
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, version } from "../inputs";
-
 export interface FullfillmentCenter {
   id?: number;
   name?: string;
@@ -15,7 +14,6 @@ export interface FullfillmentCenter {
   phone_number?: string;
   email?: string;
 }
-
 export const fulfillmentCenters = dataSource({
   display: {
     label: "Fetch Fulfillment Centers",

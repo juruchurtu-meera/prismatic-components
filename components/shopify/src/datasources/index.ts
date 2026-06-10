@@ -10,7 +10,6 @@ import { selectOrders } from "./selectOrders";
 import { selectProductImages } from "./selectProductImages";
 import { selectProducts } from "./selectProducts";
 import { selectVariants } from "./selectVariants";
-
 export default {
   selectCollections,
   selectCustomers,

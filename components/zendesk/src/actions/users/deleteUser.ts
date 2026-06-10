@@ -3,7 +3,6 @@ import { createClient } from "../../auth";
 import { userId, connectionInput } from "../../inputs";
 import { SUCCESS_MESSAGE } from "../../constants";
 import { successMessagePayload } from "../../examplePayloads";
-
 export const deleteUser = action({
   display: {
     label: "Delete User",
@@ -14,9 +13,7 @@ export const deleteUser = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     await client.users.delete(util.types.toInt(params.userId));
-
     return {
       data: SUCCESS_MESSAGE,
     };

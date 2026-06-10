@@ -12,7 +12,6 @@ import {
   singularLabel,
   timeout,
 } from "../../inputs";
-
 export const updateCustomObject = action({
   display: {
     label: "Update Custom Object",
@@ -38,7 +37,6 @@ export const updateCustomObject = action({
       timeout,
       debugRequest,
     });
-
     const { data } = await client.patch(`/crm/v3/schemas/${objectType}`, {
       labels: {
         singular: singularLabel || undefined,
@@ -49,7 +47,6 @@ export const updateCustomObject = action({
       ...fieldValues,
       ...dynamicValues,
     });
-
     return {
       data,
     };

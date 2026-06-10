@@ -11,7 +11,6 @@ import {
   total,
 } from "../../inputs";
 import { fetchAllRecords } from "../../util";
-
 export const listAssets = action({
   display: {
     label: "List Assets",

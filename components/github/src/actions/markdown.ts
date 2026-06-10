@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const markdownRender = action({
   display: {
     label: "Markdown Render",
     description: "Render a Markdown document",
   },
   perform: async (context, { connection, text, mode, ctx }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/markdown`, {
       text,
       mode,
@@ -51,7 +53,6 @@ const markdownRender = action({
     },
   },
 });
-
 const markdownRenderRaw = action({
   display: {
     label: "Markdown Render Raw",
@@ -70,7 +71,6 @@ const markdownRenderRaw = action({
     },
   },
 });
-
 export default {
   markdownRender,
   markdownRenderRaw,

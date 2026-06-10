@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { collection, document, data, connectionInput } from "../inputs";
 import { createClient } from "../client";
 import { updateDocumentExamplePayload } from "../examplePayloads";
-
 export const updateDocument = action({
   display: {
     label: "Update Document",
@@ -20,9 +19,7 @@ export const updateDocument = action({
       .collection(util.types.toString(collection))
       .doc(util.types.toString(document))
       .update(util.types.keyValPairListToObject(data));
-
     await client.delete();
-
     return {
       data: result,
     };
@@ -35,5 +32,4 @@ export const updateDocument = action({
   },
   examplePayload: updateDocumentExamplePayload,
 });
-
 export default updateDocument;

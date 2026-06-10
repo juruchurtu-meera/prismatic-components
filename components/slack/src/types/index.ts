@@ -1,12 +1,6 @@
 import type { Connection } from "@prismatic-io/spectral";
-
-
-
-
-
 export type Sort = "relevant" | "name" | "member_count" | "created";
 export type SortDir = "desc" | "asc";
-
 type search_channel_types =
   | "private"
   | "private_exclude"
@@ -20,32 +14,18 @@ type search_channel_types =
   | "external_shared_private"
   | "external_shared_archived"
   | "exclude_org_shared";
-
 export type SearchChannelType = search_channel_types[];
-
 export type SearchAllSort = "timestamp" | "score";
-
-
-
-
-
 export interface AuthTestResponse {
   ok: boolean;
   error: string;
 }
-
 export interface CreateClientProps {
   slackConnection?: Connection;
 }
-
-
-
-
-
 export interface PollingState extends Record<string, unknown> {
   lastPolledAt?: string;
 }
-
 export interface SlackMessage extends Record<string, unknown> {
   ts?: string;
   type?: string;

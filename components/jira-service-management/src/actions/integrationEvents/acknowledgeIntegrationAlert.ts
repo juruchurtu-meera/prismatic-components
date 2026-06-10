@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOpsEventsClient } from "../../client";
 import { acknowledgeIntegrationAlertExamplePayload } from "../../examplePayloads";
 import { acknowledgeIntegrationAlertInputs } from "../../inputs";
-
 export const acknowledgeIntegrationAlert = action({
   display: {
     label: "Acknowledge Integration Alert",
@@ -27,7 +26,6 @@ export const acknowledgeIntegrationAlert = action({
       source: alertSource,
       note: alertNote,
     };
-
     const { data } = await client.post(
       `/alerts/${encodeURIComponent(alertIdentifier)}/acknowledge`,
       body,

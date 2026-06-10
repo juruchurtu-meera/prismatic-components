@@ -4,7 +4,6 @@ import { listServiceDeskOrganizationsExamplePayload } from "../../examplePayload
 import { listServiceDeskOrganizationsInputs } from "../../inputs";
 import type { Organization } from "../../types";
 import { getPaginatedData } from "../../util";
-
 export const listServiceDeskOrganizations = action({
   display: {
     label: "List Service Desk Organizations",

@@ -1,12 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { colorInputOptions } from "../util";
-
-
-
-
-
-
-
 export const validateId = (value: unknown) => {
   const strValue = util.types.toString(value).trim();
   if (/[0-9]*/.test(strValue)) {
@@ -17,23 +10,16 @@ export const validateId = (value: unknown) => {
     );
   }
 };
-
-
-
-
-
 const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Asana connection to use.",
 });
-
 export const workspaceId = input({
   label: "Workspace ID",
   type: "string",
@@ -45,7 +31,6 @@ export const workspaceId = input({
   dataSource: "selectWorkspace",
   clean: validateId,
 });
-
 export const userId = input({
   label: "User ID",
   type: "string",
@@ -56,7 +41,6 @@ export const userId = input({
   dataSource: "selectUser",
   clean: validateId,
 });
-
 export const projectColor = input({
   label: "Project Color",
   type: "string",
@@ -66,7 +50,6 @@ export const projectColor = input({
   required: false,
   clean: cleanString,
 });
-
 export const archived = input({
   label: "Archived",
   type: "boolean",
@@ -75,7 +58,6 @@ export const archived = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const statusId = input({
   label: "Status ID",
   type: "string",
@@ -85,7 +67,6 @@ export const statusId = input({
   required: true,
   clean: validateId,
 });
-
 export const statusParentIdInput = input({
   label: "Project, Portfolio, or Goal ID",
   comments:
@@ -96,7 +77,6 @@ export const statusParentIdInput = input({
   required: true,
   clean: validateId,
 });
-
 export const defaultView = input({
   label: "Default View",
   type: "string",
@@ -111,7 +91,6 @@ export const defaultView = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const dueOn = input({
   label: "Due On",
   type: "string",
@@ -122,7 +101,6 @@ export const dueOn = input({
   required: false,
   clean: (value) => (value ? util.types.toDate(value) : undefined),
 });
-
 export const followers = input({
   label: "Followers",
   type: "string",
@@ -133,7 +111,6 @@ export const followers = input({
   required: false,
   clean: cleanString,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -144,7 +121,6 @@ export const name = input({
   required: false,
   clean: cleanString,
 });
-
 export const notes = input({
   label: "Notes",
   type: "text",
@@ -155,7 +131,6 @@ export const notes = input({
   required: false,
   clean: cleanString,
 });
-
 export const isPublic = input({
   label: "Public",
   type: "boolean",
@@ -164,7 +139,6 @@ export const isPublic = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const owner = input({
   label: "Owner ID",
   type: "string",
@@ -175,7 +149,6 @@ export const owner = input({
   required: true,
   clean: validateId,
 });
-
 export const team = input({
   label: "Team ID",
   type: "string",
@@ -186,7 +159,6 @@ export const team = input({
   required: false,
   clean: validateId,
 });
-
 export const startOn = input({
   label: "Start On",
   type: "string",
@@ -197,7 +169,6 @@ export const startOn = input({
   required: false,
   clean: (value) => (value ? util.types.toDate(value) : undefined),
 });
-
 export const startAt = input({
   label: "Start At",
   type: "string",
@@ -208,7 +179,6 @@ export const startAt = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const htmlNotes = input({
   label: "HTML Notes",
   type: "code",
@@ -219,7 +189,6 @@ export const htmlNotes = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const author = input({
   label: "Author",
   type: "string",
@@ -230,7 +199,6 @@ export const author = input({
   required: false,
   clean: cleanString,
 });
-
 export const createdBy = input({
   label: "Created By",
   type: "string",
@@ -241,7 +209,6 @@ export const createdBy = input({
   required: false,
   clean: cleanString,
 });
-
 export const statusUpdateColor = input({
   label: "Status Update Color",
   type: "string",
@@ -251,7 +218,6 @@ export const statusUpdateColor = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const projectId = input({
   label: "Project ID",
   type: "string",
@@ -262,7 +228,6 @@ export const projectId = input({
   dataSource: "selectProject",
   clean: validateId,
 });
-
 export const taskId = input({
   label: "Task ID",
   type: "string",
@@ -273,7 +238,6 @@ export const taskId = input({
   dataSource: "selectTask",
   clean: validateId,
 });
-
 export const teamDescription = input({
   label: "Description",
   type: "string",
@@ -284,7 +248,6 @@ export const teamDescription = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const teamName = input({
   label: "Name",
   type: "string",
@@ -294,7 +257,6 @@ export const teamName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const organizationId = input({
   label: "Organization or Workspace ID",
   type: "string",
@@ -304,7 +266,6 @@ export const organizationId = input({
   required: true,
   clean: validateId,
 });
-
 export const teamId = input({
   label: "Team ID",
   type: "string",
@@ -315,7 +276,6 @@ export const teamId = input({
   dataSource: "selectTeam",
   clean: validateId,
 });
-
 export const approvalStatus = input({
   label: "Approval Status",
   type: "string",
@@ -330,7 +290,6 @@ export const approvalStatus = input({
   required: true,
   clean: cleanString,
 });
-
 export const assigneeId = input({
   label: "Assignee ID",
   type: "string",
@@ -340,7 +299,6 @@ export const assigneeId = input({
   required: false,
   clean: (value) => validateId(value) || undefined,
 });
-
 export const assigneeSectionId = input({
   label: "Assignee Section ID",
   type: "string",
@@ -351,7 +309,6 @@ export const assigneeSectionId = input({
   required: false,
   clean: (value) => validateId(value) || undefined,
 });
-
 export const assigneeStatus = input({
   label: "Assignee Status",
   type: "string",
@@ -362,7 +319,6 @@ export const assigneeStatus = input({
   required: false,
   clean: cleanString,
 });
-
 export const isCompleted = input({
   label: "Completed",
   type: "string",
@@ -377,7 +333,6 @@ export const isCompleted = input({
   required: false,
   clean: (value) => (value === "" ? undefined : util.types.toBool(value)),
 });
-
 export const completedBy = input({
   label: "Completed By",
   type: "string",
@@ -388,7 +343,6 @@ export const completedBy = input({
   required: false,
   clean: (value) => util.types.toString(value).trim() || undefined,
 });
-
 export const dueAt = input({
   label: "Due At",
   type: "string",
@@ -399,7 +353,6 @@ export const dueAt = input({
   required: false,
   clean: (value) => (value ? util.types.toDate(value) : undefined),
 });
-
 export const projectList = input({
   label: "Project List",
   type: "string",
@@ -410,7 +363,6 @@ export const projectList = input({
     "A list of project gids the task should belong to. Provide one project ID per entry.",
   required: false,
 });
-
 export const parentId = input({
   label: "Parent ID",
   type: "string",
@@ -420,7 +372,6 @@ export const parentId = input({
   required: false,
   clean: (value) => validateId(value) || undefined,
 });
-
 export const isLiked = input({
   label: "Is Liked",
   type: "string",
@@ -435,7 +386,6 @@ export const isLiked = input({
     "Whether the task is marked as 'liked' for the authenticated user. Select 'Do not change' to leave the existing value untouched.",
   clean: (value) => (value === "" ? undefined : util.types.toBool(value)),
 });
-
 export const followersList = input({
   label: "Followers List",
   type: "string",
@@ -446,7 +396,6 @@ export const followersList = input({
     "A list of user gids to add as followers. Provide one user ID per entry.",
   required: false,
 });
-
 export const resourceSubtype = input({
   label: "Resource Subtype",
   type: "string",
@@ -457,7 +406,6 @@ export const resourceSubtype = input({
   required: false,
   clean: cleanString,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -468,7 +416,6 @@ export const limit = input({
   required: false,
   clean: (value) => util.types.toInt(value) || undefined,
 });
-
 export const offset = input({
   label: "Offset",
   type: "string",
@@ -479,7 +426,6 @@ export const offset = input({
   required: false,
   clean: cleanString,
 });
-
 export const portfolioId = input({
   label: "Portfolio ID",
   type: "string",
@@ -490,7 +436,6 @@ export const portfolioId = input({
   dataSource: "selectPortfolio",
   clean: validateId,
 });
-
 export const color = input({
   label: "Color",
   type: "string",
@@ -500,7 +445,6 @@ export const color = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const members = input({
   label: "Members",
   type: "string",
@@ -511,7 +455,6 @@ export const members = input({
   required: false,
   collection: "valuelist",
 });
-
 export const portfolioName = input({
   label: "Portfolio Name",
   type: "string",
@@ -521,7 +464,6 @@ export const portfolioName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const itemId = input({
   label: "Item ID",
   type: "string",
@@ -531,7 +473,6 @@ export const itemId = input({
   required: true,
   clean: validateId,
 });
-
 export const fieldId = input({
   label: "Field ID",
   type: "string",
@@ -542,7 +483,6 @@ export const fieldId = input({
   dataSource: "selectCustomField",
   clean: validateId,
 });
-
 export const sectionId = input({
   label: "Section ID",
   type: "string",
@@ -553,7 +493,6 @@ export const sectionId = input({
   dataSource: "selectSection",
   clean: validateId,
 });
-
 export const tagId = input({
   label: "Tag ID",
   type: "string",
@@ -564,7 +503,6 @@ export const tagId = input({
   dataSource: "selectTag",
   clean: validateId,
 });
-
 export const insertAfter = input({
   label: "Insert After",
   type: "string",
@@ -575,7 +513,6 @@ export const insertAfter = input({
   required: false,
   clean: cleanString,
 });
-
 export const insertBefore = input({
   label: "Insert Before",
   type: "string",
@@ -586,7 +523,6 @@ export const insertBefore = input({
   required: false,
   clean: cleanString,
 });
-
 export const sectionName = input({
   label: "Section Name",
   type: "string",
@@ -596,7 +532,6 @@ export const sectionName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const attachmentId = input({
   label: "Attachment ID",
   type: "string",
@@ -607,7 +542,6 @@ export const attachmentId = input({
   dataSource: "selectAttachment",
   clean: validateId,
 });
-
 export const isImportant = input({
   label: "Is Important",
   type: "boolean",
@@ -617,7 +551,6 @@ export const isImportant = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const currencyCode = input({
   label: "Currency Code",
   type: "string",
@@ -628,7 +561,6 @@ export const currencyCode = input({
   required: false,
   clean: cleanString,
 });
-
 export const customLabel = input({
   label: "Custom Label",
   type: "string",
@@ -639,7 +571,6 @@ export const customLabel = input({
   required: false,
   clean: cleanString,
 });
-
 export const customLabelPosition = input({
   label: "Custom Label Position",
   type: "string",
@@ -650,7 +581,6 @@ export const customLabelPosition = input({
   required: false,
   clean: cleanString,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -660,7 +590,6 @@ export const description = input({
   required: false,
   clean: cleanString,
 });
-
 export const enabled = input({
   label: "Enabled",
   type: "boolean",
@@ -669,7 +598,6 @@ export const enabled = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const enumOptions = input({
   label: "Enum Options",
   type: "code",
@@ -694,7 +622,6 @@ export const enumOptions = input({
     return JSON.parse(str);
   },
 });
-
 export const enableNotifications = input({
   label: "Enable Notifications",
   type: "boolean",
@@ -702,7 +629,6 @@ export const enableNotifications = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const numberValue = input({
   label: "Number Value",
   type: "string",
@@ -712,7 +638,6 @@ export const numberValue = input({
   placeholder: "Enter numeric value",
   clean: util.types.toNumber,
 });
-
 export const precision = input({
   label: "Precision",
   type: "string",
@@ -723,7 +648,6 @@ export const precision = input({
   placeholder: "Enter precision (0-6)",
   clean: (value) => util.types.toInt(value) || undefined,
 });
-
 export const textValue = input({
   label: "Text Value",
   type: "string",
@@ -733,7 +657,6 @@ export const textValue = input({
   placeholder: "Enter text value",
   clean: cleanString,
 });
-
 export const fileData = input({
   label: "File Data",
   type: "data",
@@ -741,7 +664,6 @@ export const fileData = input({
   required: true,
   example: "These are my file contents.",
 });
-
 export const filter = input({
   label: "Filter",
   type: "code",
@@ -772,7 +694,6 @@ export const filter = input({
     return undefined;
   },
 });
-
 export const triggerWhenAdded = input({
   label: "Trigger When Added",
   type: "boolean",
@@ -781,7 +702,6 @@ export const triggerWhenAdded = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const triggerWhenRemoved = input({
   label: "Trigger When Removed",
   type: "boolean",
@@ -790,7 +710,6 @@ export const triggerWhenRemoved = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const triggerWhenChanged = input({
   label: "Trigger When Changed",
   type: "boolean",
@@ -799,7 +718,6 @@ export const triggerWhenChanged = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const triggerWhenDeleted = input({
   label: "Trigger When Deleted",
   type: "boolean",
@@ -808,7 +726,6 @@ export const triggerWhenDeleted = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const triggerWhenUndeleted = input({
   label: "Trigger When Undeleted",
   type: "boolean",
@@ -817,7 +734,6 @@ export const triggerWhenUndeleted = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const listAllNestedSubtasks = input({
   label: "List All Nested Subtasks",
   type: "boolean",
@@ -827,7 +743,6 @@ export const listAllNestedSubtasks = input({
     "When true, recursively lists subtasks of subtasks rather than only direct subtasks of the parent task.",
   clean: util.types.toBool,
 });
-
 export const privacySetting = input({
   label: "Privacy Setting",
   type: "string",
@@ -850,7 +765,6 @@ export const privacySetting = input({
   ],
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -860,7 +774,6 @@ export const showNewRecords = input({
   comments:
     "When true, tasks created since the last poll are returned in the trigger payload.",
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanString } from "./utils";
-
 export const owner = input({
   label: "Owner",
   type: "string",
@@ -12,7 +11,6 @@ export const owner = input({
     "The account owner of the repository. For example, in https://github.com/octocat/Hello-World, the owner is 'octocat'.",
   dataSource: "selectUserFromOrganization",
 });
-
 export const repo = input({
   label: "Repository Name",
   type: "string",
@@ -24,7 +22,6 @@ export const repo = input({
     "The name of the repository. For example, in https://github.com/octocat/Hello-World, the repository name is 'Hello-World'.",
   dataSource: "listReposForAuthenticatedUser",
 });
-
 const githubEvents = [
   "commit_comment",
   "create",
@@ -78,7 +75,6 @@ const githubEvents = [
   "workflow_job",
   "workflow_run",
 ];
-
 export const events = input({
   label: "Events",
   type: "string",
@@ -88,7 +84,6 @@ export const events = input({
   model: githubEvents.map((event) => ({ label: event, value: event })),
   comments: "The list of event types that will trigger the webhook.",
 });
-
 export const hookIdInput = input({
   label: "Hook ID",
   type: "string",
@@ -98,7 +93,6 @@ export const hookIdInput = input({
   clean: util.types.toNumber,
   comments: "The unique identifier of the webhook.",
 });
-
 export const webhookSecretInput = input({
   label: "Webhook Secret",
   type: "string",
@@ -107,13 +101,11 @@ export const webhookSecretInput = input({
   comments:
     "An optional secret used to verify webhook authenticity. See [GitHub's documentation](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) for details.",
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const state = (object: string) =>
   input({
     label: "State",
@@ -128,7 +120,6 @@ export const state = (object: string) =>
     clean: cleanString,
     comments: `Indicates the state of the ${object} to return`,
   });
-
 export const assignee = input({
   label: "Assignee",
   type: "string",
@@ -137,7 +128,6 @@ export const assignee = input({
   comments:
     "The user that is assigned to the issue, use 'none' for issues with no assignee, or '*' for issues assigned to any user",
 });
-
 export const labels = input({
   label: "Labels",
   type: "string",
@@ -145,10 +135,12 @@ export const labels = input({
   clean: cleanString,
   comments: `A list of comma separated label names`,
 });
-
 export const sort = (
-  model: { label: string; value: string }[],
-  defaultValue: string
+  model: {
+    label: string;
+    value: string;
+  }[],
+  defaultValue: string,
 ) =>
   input({
     label: "Sort",
@@ -159,7 +151,6 @@ export const sort = (
     clean: cleanString,
     comments: `What to sort results by`,
   });
-
 export const direction = input({
   label: "Direction",
   type: "string",
@@ -172,7 +163,6 @@ export const direction = input({
   clean: cleanString,
   comments: "The direction to sort the results by",
 });
-
 export const since = input({
   label: "Since",
   type: "string",
@@ -180,7 +170,6 @@ export const since = input({
   clean: cleanString,
   comments: "Only show notifications updated after the given time",
 });
-
 export const head = input({
   label: "Head",
   type: "string",
@@ -189,7 +178,6 @@ export const head = input({
   comments:
     "Filter pulls by head user or head organization and branch name in the format of 'user:ref-name' or 'organization:ref-name'",
 });
-
 export const base = input({
   label: "Base",
   type: "string",
@@ -197,7 +185,6 @@ export const base = input({
   clean: cleanString,
   comments: "Filter pulls by base branch name",
 });
-
 export const milestone = input({
   label: "Milestone",
   type: "string",
@@ -206,7 +193,6 @@ export const milestone = input({
   comments:
     'If an "integer" is passed, it should refer to a milestone by its "number" field',
 });
-
 export const creator = input({
   label: "Creator",
   type: "string",
@@ -214,7 +200,6 @@ export const creator = input({
   clean: cleanString,
   comments: "The user that created the issue",
 });
-
 export const mentioned = input({
   label: "Mentioned",
   type: "string",
@@ -222,7 +207,6 @@ export const mentioned = input({
   clean: cleanString,
   comments: 'A user that"s mentioned in the issue',
 });
-
 export const perPage = input({
   label: "Per Page",
   type: "string",
@@ -231,7 +215,6 @@ export const perPage = input({
   clean: util.types.toNumber,
   comments: "The number of results per page (max 100)",
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -240,7 +223,6 @@ export const page = input({
   clean: util.types.toNumber,
   comments: "Page number of the results to fetch",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -249,7 +231,6 @@ export const fetchAll = input({
   clean: util.types.toBool,
   comments: "Whether to fetch all results",
 });
-
 export const issueNumber = input({
   label: "Issue Number",
   type: "string",
@@ -258,7 +239,6 @@ export const issueNumber = input({
   comments: "The number that identifies the issue",
   dataSource: "selectIssueForAuthenticatedUser",
 });
-
 export const organization = input({
   label: "Organization",
   type: "string",
@@ -268,11 +248,6 @@ export const organization = input({
   placeholder: "Enter organization name",
   clean: util.types.toString,
 });
-
-
-
-
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -282,7 +257,6 @@ const showNewRecords = input({
     "When true, issues created after the last poll are emitted on the `created` branch.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -292,7 +266,6 @@ const showUpdatedRecords = input({
     "When true, issues updated since the last poll but created earlier are emitted on the `updated` branch.",
   clean: util.types.toBool,
 });
-
 export const pollChangesInputs = {
   connection: connectionInput,
   owner,

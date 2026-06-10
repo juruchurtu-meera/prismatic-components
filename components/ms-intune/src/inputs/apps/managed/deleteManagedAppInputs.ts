@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../../util";
-
 const mobileAppId = input({
   label: "Mobile App ID",
   comments: "The ID of the app to delete.",
@@ -10,7 +9,6 @@ const mobileAppId = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export default {
   mobileAppId,
 };

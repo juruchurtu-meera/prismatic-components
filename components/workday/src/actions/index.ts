@@ -9,7 +9,6 @@ import person from "./person";
 import prismAnalytics from "./prismAnalytics";
 import staffing from "./staffing";
 import timeTracking from "./timeTracking";
-
 export default {
   ...absenceManagement,
   ...accountsPayable,

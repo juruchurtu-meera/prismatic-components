@@ -6,7 +6,6 @@ import {
   userName,
 } from "../../inputs";
 import { listUsers } from "./listUsers";
-
 export const getUserByUsername = action({
   display: {
     label: "Get User by Username",

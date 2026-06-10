@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { connection, deltaURL, odataParams, returnMinimal } from "./common";
-
 export const listChangesInputs = {
   connection,
   deltaURL,

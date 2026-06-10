@@ -5,13 +5,6 @@ import {
   OAuth2Type,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
 export const sapApiKeyConnection = connection({
   key: "apiKey",
   display: {
@@ -43,12 +36,6 @@ export const sapApiKeyConnection = connection({
     },
   },
 });
-
-
-
-
-
-
 export const sapBasicAuthConnection = connection({
   key: "sapBasicAuth",
   display: {
@@ -63,7 +50,8 @@ export const sapBasicAuthConnection = connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "SAP S/4HANA Cloud API tenant URL (include -api in the hostname).",
+      comments:
+        "SAP S/4HANA Cloud API tenant URL (include -api in the hostname).",
       example: "https://my123456-api.s4hana.cloud.sap",
     },
     username: {
@@ -72,7 +60,8 @@ export const sapBasicAuthConnection = connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "Communication User name from the Communication Arrangement in SAP S/4HANA Cloud.",
+      comments:
+        "Communication User name from the Communication Arrangement in SAP S/4HANA Cloud.",
       example: "COMM_USER_001",
     },
     password: {
@@ -85,14 +74,6 @@ export const sapBasicAuthConnection = connection({
     },
   },
 });
-
-
-
-
-
-
-
-
 export const sapOAuthConnection = oauth2Connection({
   key: "sapOAuth",
   display: {
@@ -149,12 +130,14 @@ export const sapOAuthConnection = oauth2Connection({
       authorizeUrl: {
         label: "Authorize URL",
         placeholder: "Enter Authorize URL",
-        example: "https://my410414.s4hana.cloud.sap/sap/bc/sec/oauth2/authorize",
+        example:
+          "https://my410414.s4hana.cloud.sap/sap/bc/sec/oauth2/authorize",
         type: "template",
         required: true,
         shown: false,
         comments: "The OAuth 2.0 authorization endpoint for SAP S/4HANA.",
-        templateValue: "https://{{#tenantId}}.s4hana.cloud.sap/sap/bc/sec/oauth2/authorize",
+        templateValue:
+          "https://{{#tenantId}}.s4hana.cloud.sap/sap/bc/sec/oauth2/authorize",
       },
       tokenUrl: {
         label: "Token URL",
@@ -172,5 +155,8 @@ export const sapOAuthConnection = oauth2Connection({
     OAuth2Type.AuthorizationCode,
   ),
 });
-
-export default [sapOAuthConnection, sapBasicAuthConnection, sapApiKeyConnection];
+export default [
+  sapOAuthConnection,
+  sapBasicAuthConnection,
+  sapApiKeyConnection,
+];

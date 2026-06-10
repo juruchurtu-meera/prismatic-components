@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listEntriesExamplePayload } from "../../examplePayloads";
 import { listEntriesInputs } from "../../inputs";
 import { paginateOffset } from "../../util";
-
 export const listEntries = action({
   display: {
     label: "List Changelog Entries",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createGroupExamplePayload as examplePayload } from "../../examplePayloads";
 import { createGroupInputs as inputs } from "../../inputs/group";
-
 export const createGroup = action({
   display: {
     label: "Create Group",

@@ -7,7 +7,6 @@ import {
   logType,
   toDateTime,
 } from "../../inputs";
-
 export const getLogsDataByTypeAndTimeRange = action({
   display: {
     label: "Get Logs Data by Type and Time Range",

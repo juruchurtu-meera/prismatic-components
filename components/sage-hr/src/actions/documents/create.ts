@@ -20,7 +20,6 @@ import {
   status,
 } from "../../inputs";
 import { generateForm } from "../../util";
-
 export const createDocument = action({
   display: {
     label: "Create Document",

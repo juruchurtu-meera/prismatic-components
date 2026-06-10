@@ -1,5 +1,4 @@
 import type { UsersResponse } from "./shared";
-
 export default interface ListUserGroupsResponse {
   account: {
     id: string;
@@ -12,7 +11,6 @@ export default interface ListUserGroupsResponse {
     };
   };
 }
-
 interface UserGroup {
   id: string;
   name: string;

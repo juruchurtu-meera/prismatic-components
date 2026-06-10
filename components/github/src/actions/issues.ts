@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const issuesList = action({
   display: {
     label: "Issues List",
@@ -24,7 +23,10 @@ const issuesList = action({
       page,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/issues`, {
       params: {
         filter,
@@ -64,7 +66,8 @@ const issuesList = action({
         { label: "All", value: "all" },
       ],
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "Filters which issues to return based on the user's relationship to them.",
+      comments:
+        "Filters which issues to return based on the user's relationship to them.",
     },
     state: {
       label: "State",
@@ -123,27 +126,31 @@ const issuesList = action({
       placeholder: "Enter timestamp (ISO 8601 format)",
       example: "2024-01-15T10:30:00Z",
       clean: (value) => util.types.toString(value) || undefined,
-      comments: "Only show issues updated after the given timestamp in ISO 8601 format.",
+      comments:
+        "Only show issues updated after the given timestamp in ISO 8601 format.",
     },
     collab: {
       label: "Collab",
       type: "boolean",
       required: false,
-      comments: "When true, filters issues assigned to the authenticated user across all visible repositories including owned repositories, member repositories, and organization repositories.",
+      comments:
+        "When true, filters issues assigned to the authenticated user across all visible repositories including owned repositories, member repositories, and organization repositories.",
       clean: (value) => util.types.toBool(value) || undefined,
     },
     orgs: {
       label: "Orgs",
       type: "boolean",
       required: false,
-      comments: "When true, filters issues assigned to the authenticated user in organization repositories.",
+      comments:
+        "When true, filters issues assigned to the authenticated user in organization repositories.",
       clean: (value) => util.types.toBool(value) || undefined,
     },
     owned: {
       label: "Owned",
       type: "boolean",
       required: false,
-      comments: "When true, filters issues assigned to the authenticated user in repositories owned by the authenticated user.",
+      comments:
+        "When true, filters issues assigned to the authenticated user in repositories owned by the authenticated user.",
       clean: (value) => util.types.toBool(value) || undefined,
     },
     pulls: {
@@ -173,7 +180,6 @@ const issuesList = action({
     },
   },
 });
-
 export default {
   issuesList,
 };

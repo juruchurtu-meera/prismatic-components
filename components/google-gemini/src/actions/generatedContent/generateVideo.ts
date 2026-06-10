@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGeminiClient } from "../../client";
 import { generateVideoExamplePayload as examplePayload } from "../../examplePayloads/generatedContent";
 import { generateVideoInputs } from "../../inputs/generatedContent";
-
 export const generateVideo = action({
   display: {
     label: "Generate Video",
@@ -39,7 +38,6 @@ export const generateVideo = action({
         ...extraParameters,
       },
     });
-
     return {
       data,
     };

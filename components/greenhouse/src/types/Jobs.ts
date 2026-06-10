@@ -1,6 +1,5 @@
 import type { DepartmentDataSources } from "./Departments";
 import type { OfficeDataSources } from "./Offices";
-
 export interface JobDataSources {
   id: number;
   name: string;
@@ -21,26 +20,22 @@ export interface JobDataSources {
   hiring_team: HiringTeam;
   openings: Opening[];
 }
-
 export interface CustomFields {
   employment_type: string;
   maximum_budget: string;
   salary_range: ValueClass;
 }
-
 export interface ValueClass {
   min_value: number;
   max_value: number;
   unit: string;
 }
-
 export interface HiringTeam {
   hiring_managers: Coordinator[];
   recruiters: Coordinator[];
   coordinators: Coordinator[];
   sourcers: Coordinator[];
 }
-
 export interface Coordinator {
   id: number;
   first_name: string;
@@ -49,25 +44,21 @@ export interface Coordinator {
   employee_id: string;
   responsible?: boolean;
 }
-
 export interface KeyedCustomFields {
   employment_type: Budget;
   budget: Budget;
   salary_range: KeyedCustomFieldsSalaryRange;
 }
-
 export interface Budget {
   name: string;
   type: string;
   value: string;
 }
-
 export interface KeyedCustomFieldsSalaryRange {
   name: string;
   type: string;
   value: ValueClass;
 }
-
 export interface Opening {
   id: number;
   opening_id: null | string;
@@ -77,7 +68,6 @@ export interface Opening {
   application_id: number | null;
   close_reason?: CloseReason | null;
 }
-
 export interface CloseReason {
   id: number;
   name: string;

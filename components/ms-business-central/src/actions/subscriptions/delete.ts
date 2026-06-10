@@ -3,7 +3,6 @@ import { getMsBusinessCentralClient } from "../../client";
 import { NO_CONTENT_RESPONSE } from "../../constants";
 import { noContentExamplePayload } from "../../examplePayloads";
 import { deleteSubscriptionInputs } from "../../inputs/subscriptions";
-
 export const deleteSubscription = action({
   display: {
     label: "Delete Subscription",
@@ -11,7 +10,11 @@ export const deleteSubscription = action({
   },
   inputs: deleteSubscriptionInputs,
   perform: async (context, { connection, subscriptionId, etag }) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     await client.delete(`/subscriptions('${subscriptionId}')`, {
       headers: { "If-Match": etag },
     });

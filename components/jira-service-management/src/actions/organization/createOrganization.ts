@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createOrganizationExamplePayload } from "../../examplePayloads";
 import { createOrganizationInputs } from "../../inputs";
-
 export const createOrganization = action({
   display: {
     label: "Create Organization",

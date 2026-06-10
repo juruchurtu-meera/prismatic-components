@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listWorkersMetadataResponse } from "../../examplePayloads";
 import { $filter, connection } from "../../inputs";
-
 export const getWorkersMetadata = action({
   display: {
     label: "Get Worker Metadata",

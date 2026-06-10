@@ -9,7 +9,6 @@ import { getJobSuccessfulRecordResults } from "./getJobSuccessfulRecordResults";
 import { getBulkJob } from "./getBulkJob";
 import { listBulkJobs } from "./listBulkJobs";
 import { uploadJobData } from "./uploadJobData";
-
 export default {
   abortBulkJob,
   bulkInsertRecords,

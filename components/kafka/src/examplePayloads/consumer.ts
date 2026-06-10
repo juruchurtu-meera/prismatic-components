@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getConsumerGroupStatusExamplePayload = {
   data: {
     groupId: "order-processing-group",

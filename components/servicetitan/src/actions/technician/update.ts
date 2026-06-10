@@ -23,7 +23,6 @@ import {
   team,
   technicianId,
 } from "../../inputs";
-
 export const updateTechnician = action({
   display: {
     label: "Update Technician",

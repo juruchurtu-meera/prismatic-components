@@ -14,14 +14,16 @@ import {
 } from "../inputs";
 import type { Property } from "../types";
 import { paginateRecords } from "../util";
-
 const listProperties = action({
   display: {
     label: "List Properties",
     description: "List Google Analytics GA4 properties for an account",
   },
   inputs: listPropertiesInputs,
-  perform: async (context, { connection, accountId, pageSize, pageToken, fetchAll }) => {
+  perform: async (
+    context,
+    { connection, accountId, pageSize, pageToken, fetchAll },
+  ) => {
     const client = createAnalyticsClient({
       connection,
       endpointType: "adminv1beta",
@@ -42,7 +44,6 @@ const listProperties = action({
   },
   examplePayload: listPropertiesExamplePayload,
 });
-
 const getProperty = action({
   display: {
     label: "Get Property",
@@ -60,7 +61,6 @@ const getProperty = action({
   },
   examplePayload: getPropertyExamplePayload,
 });
-
 const runReport = action({
   display: {
     label: "Run Report",
@@ -118,10 +118,12 @@ const runReport = action({
       endpointType: "datav1beta",
       debug: context.debug.enabled,
     });
-    const { data } = await client.post(`${params.propertyId}:runReport`, params.requestBody);
+    const { data } = await client.post(
+      `${params.propertyId}:runReport`,
+      params.requestBody,
+    );
     return { data };
   },
   examplePayload: runReportExamplePayload,
 });
-
 export default { getProperty, listProperties, runReport };

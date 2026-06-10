@@ -3,7 +3,6 @@ import { getClient } from "../client";
 import { connectionInput, documentId, suggestionsViewMode } from "../inputs";
 import { getDocumentExamplePayload } from "../examplePayloads";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export const getDocument = action({
   display: {
     label: "Get Document",
@@ -12,7 +11,7 @@ export const getDocument = action({
   examplePayload: getDocumentExamplePayload,
   perform: async (
     context,
-    { googleConnection, documentId, suggestionsViewMode }
+    { googleConnection, documentId, suggestionsViewMode },
   ) => {
     const googleDocsClient = getClient(googleConnection);
     try {

@@ -4,7 +4,6 @@ import { API_VERSION } from "../../../constants";
 import { listCustomObjectsExamplePayload } from "../../../examplePayloads";
 import { listCustomObjectsInputs } from "../../../inputs";
 import { paginateV2Results } from "../../../utils/pagination";
-
 export const listCustomObjects = action({
   display: {
     label: "List Custom Objects (V2)",

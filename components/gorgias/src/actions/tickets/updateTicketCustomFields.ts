@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { updateTicketCustomFieldsInputs as inputs } from "../../inputs/tickets";
 import type { UpdateTicketCustomFieldsResponse } from "../../interfaces/tickets";
 import { updateTicketCustomFieldsExamplePayload as examplePayload } from "../../examplePayloads/tickets";
-
 export const updateTicketCustomFields = action({
   display: {
     label: "Update Ticket Custom Fields",
@@ -17,7 +16,6 @@ export const updateTicketCustomFields = action({
       `/tickets/${ticket_id}/custom-fields`,
       custom_fields,
     );
-
     return {
       data,
     };

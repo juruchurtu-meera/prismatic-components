@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deletePersonaContactResponse } from "../../examplePayloads";
 import { aoid, connection, personalContactId } from "../../inputs";
-
 export const deletePersonalContact = action({
   display: {
     label: "Delete Personal Contact",

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listUsersExamplePayload } from "../../examplePayloads";
 import { listUsersInputs } from "../../inputs";
 import { paginateCursor } from "../../util";
-
 export const listUsers = action({
   display: {
     label: "List Users",

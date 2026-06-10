@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { retrieveCategoryExamplePayload } from "../../examplePayloads";
 import { retrieveCategoryInputs } from "../../inputs";
-
 export const retrieveCategory = action({
   display: {
     label: "Retrieve Category",

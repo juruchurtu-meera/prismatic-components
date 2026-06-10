@@ -2,13 +2,16 @@ import { action, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
 import { requestBodyCode, connectionInput, changeRecordUuid } from "../inputs";
-
 export const updateChangeRecord = action({
   display: {
     label: "Update Change Record",
-    description: "Updates header attributes of the change record specified in the request.",
+    description:
+      "Updates header attributes of the change record specified in the request.",
   },
-  perform: async (_context, { requestBodyCode, connectionInput, changeRecordUuid }) => {
+  perform: async (
+    _context,
+    { requestBodyCode, connectionInput, changeRecordUuid },
+  ) => {
     const headers = {
       Accept: "*/*",
       "Content-Type": "application/json",

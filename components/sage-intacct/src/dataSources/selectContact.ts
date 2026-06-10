@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { connection, returnContactNameInput } from "../inputs";
 import { queryRecordsPaginated } from "../utils";
-
 export const selectContact = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -12,11 +11,9 @@ export const selectContact = dataSource({
     const contacts = await queryRecordsPaginated(
       connection,
       "CONTACT",
-      
       ["*"],
       "",
     );
-
     return {
       result: contacts.map(
         (contact: {

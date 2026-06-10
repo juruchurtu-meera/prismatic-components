@@ -5,9 +5,6 @@ import {
 } from "../constants";
 import { cleanCodeInput } from "../util";
 import { connection, environmentId, organizationId, spaceId } from "./common";
-
-
-
 const templateName = input({
   label: "Name",
   type: "string",
@@ -17,7 +14,6 @@ const templateName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const templateDescription = input({
   label: "Description",
   type: "string",
@@ -28,7 +24,6 @@ const templateDescription = input({
   required: true,
   clean: util.types.toString,
 });
-
 const templateVersionName = input({
   label: "Version Name",
   type: "string",
@@ -38,7 +33,6 @@ const templateVersionName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const templateVersionDescription = input({
   label: "Version Description",
   type: "string",
@@ -49,7 +43,6 @@ const templateVersionDescription = input({
   required: true,
   clean: util.types.toString,
 });
-
 const contentTypeTemplates = input({
   label: "Content Type Templates",
   type: "code",
@@ -61,7 +54,6 @@ const contentTypeTemplates = input({
   required: true,
   clean: cleanCodeInput,
 });
-
 const editorInterfaceTemplates = input({
   label: "Editor Interface Templates",
   type: "code",
@@ -73,7 +65,6 @@ const editorInterfaceTemplates = input({
   required: true,
   clean: cleanCodeInput,
 });
-
 const templateId = input({
   label: "Template ID",
   type: "string",
@@ -84,9 +75,6 @@ const templateId = input({
   clean: util.types.toString,
   dataSource: "selectEnvironmentTemplate",
 });
-
-
-
 export const createEnvironmentTemplateInputs = {
   connection,
   organizationId,
@@ -97,41 +85,26 @@ export const createEnvironmentTemplateInputs = {
   contentTypeTemplates,
   editorInterfaceTemplates,
 };
-
-
-
 export const deleteEnvironmentTemplateInputs = {
   connection,
   organizationId,
   templateId,
 };
-
-
-
 export const getEnvironmentTemplateInputs = {
   connection,
   organizationId,
   templateId,
 };
-
-
-
 export const installTemplateInputs = {
   connection,
   spaceId,
   environmentId,
   templateId,
 };
-
-
-
 export const listEnvironmentTemplatesInputs = {
   connection,
   organizationId,
 };
-
-
-
 export const updateEnvironmentTemplateInputs = {
   connection,
   organizationId,

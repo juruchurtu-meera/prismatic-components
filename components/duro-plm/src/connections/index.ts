@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 const duroApiKey = connection({
   key: "duroApiKey",
   display: {
@@ -51,5 +50,4 @@ const duroApiKey = connection({
     },
   },
 });
-
 export default [duroApiKey];

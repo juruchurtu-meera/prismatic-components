@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, stageIdInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const updateStage = action({
   display: {
     label: "Update Stage",
@@ -11,9 +10,21 @@ export const updateStage = action({
   },
   perform: async (
     context,
-    { connection, id, name, pipelineId, dealProbability, rottenFlag, rottenDays },
+    {
+      connection,
+      id,
+      name,
+      pipelineId,
+      dealProbability,
+      rottenFlag,
+      rottenDays,
+    },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.patch(`/stages/${id}`, {
       name,
       pipeline_id: pipelineId,
@@ -59,7 +70,8 @@ export const updateStage = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The number of days the deals not updated in this stage would become rotten",
+      comments:
+        "The number of days the deals not updated in this stage would become rotten",
     }),
   },
 });

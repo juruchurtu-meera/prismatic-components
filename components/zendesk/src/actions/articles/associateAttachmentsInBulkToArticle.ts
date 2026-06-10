@@ -7,7 +7,6 @@ import {
   attachmentIds,
 } from "../../inputs";
 import { associateAttachmentsInBulkToArticlePayload } from "../../examplePayloads";
-
 export const associateAttachmentsInBulkToArticle = action({
   display: {
     label: "Associate Attachments to Article",
@@ -25,7 +24,6 @@ export const associateAttachmentsInBulkToArticle = action({
         attachment_ids: attachmentIds,
       },
     );
-
     return {
       data,
     };

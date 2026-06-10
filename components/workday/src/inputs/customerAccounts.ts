@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanDate, cleanStringInput } from "../util";
 import { companyId, connection, memo, params } from "./shared";
-
 const invoiceId = input({
   label: "Invoice ID",
   comments: "Identifies the customer invoice to retrieve.",
@@ -12,7 +11,6 @@ const invoiceId = input({
   clean: util.types.toString,
   dataSource: "selectInvoice",
 });
-
 const paymentId = input({
   label: "Payment ID",
   comments: "Identifies the customer payment record.",
@@ -22,7 +20,6 @@ const paymentId = input({
   placeholder: "Enter payment ID",
   clean: util.types.toString,
 });
-
 const invoicePdfId = input({
   label: "Invoice PDF ID",
   comments: "Identifies the invoice PDF resource to retrieve.",
@@ -32,8 +29,6 @@ const invoicePdfId = input({
   required: true,
   clean: util.types.toString,
 });
-
-
 const remitFromCustomerId = input({
   label: "Remit From Customer ID",
   comments: "Identifies the customer remitting the payment.",
@@ -43,7 +38,6 @@ const remitFromCustomerId = input({
   placeholder: "Enter remit from customer ID",
   clean: cleanStringInput,
 });
-
 const readyToAutoApply = input({
   label: "Ready to Auto Apply",
   comments: "When true, flags the payment as ready for automatic application.",
@@ -52,7 +46,6 @@ const readyToAutoApply = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 const reference = input({
   label: "Reference",
   comments: "External reference string associated with the payment.",
@@ -62,7 +55,6 @@ const reference = input({
   placeholder: "Enter reference",
   clean: cleanStringInput,
 });
-
 const transactionNumber = input({
   label: "Transaction Number",
   comments: "Bank transaction number associated with the payment.",
@@ -72,7 +64,6 @@ const transactionNumber = input({
   placeholder: "Enter transaction number",
   clean: cleanStringInput,
 });
-
 const amount = input({
   label: "Amount",
   comments: "Monetary amount for the payment.",
@@ -82,7 +73,6 @@ const amount = input({
   placeholder: "Enter amount",
   clean: cleanStringInput,
 });
-
 const typeId = input({
   label: "Type ID",
   comments: "Identifies the payment type.",
@@ -92,7 +82,6 @@ const typeId = input({
   placeholder: "Enter type ID",
   clean: cleanStringInput,
 });
-
 const date = input({
   label: "Payment Date",
   comments: "Date the payment was made.",
@@ -102,7 +91,6 @@ const date = input({
   placeholder: "Enter payment date (YYYY-MM-DD)",
   clean: (value) => cleanDate(value, "Payment Date"),
 });
-
 const paymentDescriptor = input({
   label: "Payment Descriptor",
   comments: "Human-readable descriptor for the payment.",
@@ -112,7 +100,6 @@ const paymentDescriptor = input({
   placeholder: "Enter payment descriptor",
   clean: cleanStringInput,
 });
-
 const paymentIdOptional = input({
   label: "Payment ID",
   comments: "Optional identifier to assign to the payment on creation.",
@@ -122,21 +109,16 @@ const paymentIdOptional = input({
   placeholder: "Enter payment ID",
   clean: cleanStringInput,
 });
-
 export const getInvoiceByIdInputs = { connection, invoiceId };
-
 export const getInvoicePdfInputs = {
   connection,
   invoicePdfId,
 };
-
 export const getPaymentByIdInputs = {
   connection,
   paymentId,
 };
-
 export const listInvoicesInputs = { connection, params };
-
 export const postPaymentInputs = {
   connection,
   remitFromCustomerId,

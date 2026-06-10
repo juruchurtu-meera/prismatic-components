@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const enterpriseAdminGetServerStatistics = action({
   display: {
     label: "Enterprise Admin Get Server Statistics",
@@ -10,7 +9,10 @@ const enterpriseAdminGetServerStatistics = action({
     context,
     { connection, enterpriseOrOrg, dateStart, dateEnd },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/enterprise-installation/${enterpriseOrOrg}/server-statistics`,
       { params: { date_start: dateStart, date_end: dateEnd } },
@@ -47,7 +49,6 @@ const enterpriseAdminGetServerStatistics = action({
     },
   },
 });
-
 export default {
   enterpriseAdminGetServerStatistics,
 };

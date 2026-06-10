@@ -4,7 +4,6 @@ import { createObjectsFromMetadata } from "./createObjectsFromMetadata";
 import { createFieldsFromMetadata } from "./createFieldsFromMetadata";
 import { updateMetadata } from "./updateMetadata";
 import { deleteMetadata } from "./deleteMetadata";
-
 export default {
   createFieldsFromMetadata,
   createObjectsFromMetadata,

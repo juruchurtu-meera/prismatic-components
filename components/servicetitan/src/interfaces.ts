@@ -15,7 +15,6 @@ export interface Customer {
   mergedToId: number;
   externalData: ExternalData[];
 }
-
 export interface Booking {
   id: number;
   source: string;
@@ -39,7 +38,6 @@ export interface Booking {
   bookingProviderId: number;
   modifiedOn: string;
 }
-
 export interface Job {
   id: number;
   jobNumber: string;
@@ -72,7 +70,6 @@ export interface Job {
   externalData: ExternalData[];
   customerPo: string;
 }
-
 export interface Appointment {
   id: number;
   jobId: number;
@@ -88,7 +85,6 @@ export interface Appointment {
   customerId: number;
   unused: boolean;
 }
-
 export interface Project {
   id: number;
   number: string;
@@ -111,7 +107,6 @@ export interface Project {
   externalData: ExternalData[];
   jobIds: number[];
 }
-
 export interface InstalledEquipment {
   id: number;
   equipmentId: number;
@@ -133,7 +128,6 @@ export interface InstalledEquipment {
   serviceProviderWarrantyEnd: string;
   tags: Tag[];
 }
-
 export interface Location {
   id: number;
   customerId: number;
@@ -150,7 +144,6 @@ export interface Location {
   externalData: ExternalData[];
   taxZoneId: number;
 }
-
 export interface Technician {
   id: number;
   userId: number;
@@ -174,7 +167,6 @@ export interface Technician {
   team: string;
   jobFilter: string;
 }
-
 export interface Invoice {
   id: number;
   syncStatus: string;
@@ -211,7 +203,6 @@ export interface Invoice {
   items: Item[];
   customFields: CustomField[];
 }
-
 export interface Payment {
   id: number;
   syncStatus: string;
@@ -234,7 +225,6 @@ export interface Payment {
   modifiedOn: string;
   createdOn: string;
 }
-
 export interface JobCancel {
   id: number;
   name: string;
@@ -242,7 +232,6 @@ export interface JobCancel {
   createdOn: string;
   modifiedOn: string;
 }
-
 export interface BusinessUnits {
   id: number;
   active: boolean;
@@ -268,7 +257,6 @@ export interface BusinessUnits {
   modifiedOn: string;
   externalData: ExternalData[];
 }
-
 export interface UserRoles {
   id: number;
   active: boolean;
@@ -287,7 +275,6 @@ export interface AppointmentAssignment {
   jobId: number;
   appointmentId: number;
 }
-
 export interface ContactCustomer {
   id: number;
   type: string;
@@ -296,12 +283,10 @@ export interface ContactCustomer {
   modifiedOn: string;
   phoneSettings: PhoneSettings;
 }
-
 export interface PhoneSettings {
   phoneNumber: string;
   doNotText: boolean;
 }
-
 interface Address {
   street: string;
   unit: string;
@@ -312,23 +297,19 @@ interface Address {
   latitude: number;
   longitude: number;
 }
-
 interface CustomField {
   typeId: number;
   name: string;
   value: string;
 }
-
 interface ExternalData {
   key: string;
   value: string;
 }
-
 interface JobGeneratedLeadSource {
   jobId: number;
   employeeId: number;
 }
-
 type Status =
   | "Scheduled"
   | "Dispatched"
@@ -336,7 +317,6 @@ type Status =
   | "Hold"
   | "Done"
   | "Canceled";
-
 interface Tag {
   id: number;
   ownerId: number;
@@ -347,24 +327,20 @@ interface Tag {
   textColor: string;
   code: string;
 }
-
 interface AssignedTo {
   id: number;
   name: string;
 }
-
 interface Batch {
   id: number;
   number: string;
   name: string;
 }
-
 interface EmployeeInfo {
   id: number;
   name: string;
   modifiedOn: string;
 }
-
 interface Item {
   id: number;
   description: string;
@@ -391,7 +367,6 @@ interface Item {
   order: number;
   businessUnit: AssignedTo;
 }
-
 interface Account {
   id: number;
   name: string;
@@ -399,31 +374,26 @@ interface Account {
   type: string;
   detailType: string;
 }
-
 interface ItemGroup {
   rootId: number;
   name: string;
 }
-
 interface InvoiceJob {
   id: number;
   number: string;
   type: string;
 }
-
 interface Royalty {
   status: string;
   date: string;
   sentOn: string;
   memo: string;
 }
-
 interface SalesTaxCode {
   id: number;
   name: string;
   taxRate: number;
 }
-
 export interface ListGeneric<T> {
   page: number;
   pageSize: number;
@@ -431,7 +401,6 @@ export interface ListGeneric<T> {
   totalCount: number;
   data: T[];
 }
-
 export interface AppliedTo {
   appliedId: number;
   appliedTo: number;
@@ -440,12 +409,10 @@ export interface AppliedTo {
   appliedBy: string;
   appliedToReferenceNumber: string;
 }
-
 export interface BusinessUnit {
   id: number;
   name: string;
 }
-
 export interface GeneralLedgerAccount {
   id: number;
   name: string;
@@ -453,7 +420,6 @@ export interface GeneralLedgerAccount {
   type: string;
   detailType: string;
 }
-
 export interface Tenant {
   id: number;
   name: string;

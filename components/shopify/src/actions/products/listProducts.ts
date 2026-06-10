@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { listProductsInputs } from "../../inputs";
 import { listProductsExamplePayload } from "../../payloadExamples";
 import { listProductsGql } from "../graphql/products/listProducts";
-
 export const listProducts = action({
   display: {
     label: "List Products",
@@ -15,7 +14,6 @@ export const listProducts = action({
       getAlldata: params.getAlldata,
       endCursor: params.pageInfo || undefined,
     });
-
     return {
       data,
     };

@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Invoice } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listInvoices = action({
   display: {
     label: "List Invoices",
@@ -44,7 +43,6 @@ export const listInvoices = action({
       "accounting",
       context.debug.enabled,
     );
-
     if (fetchAll) {
       const data = await fetchAllRecords<Invoice>(client, "/invoices", {
         includeTotal,

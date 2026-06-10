@@ -3,7 +3,6 @@ import { createAsanaClient } from "../client";
 import { connectionInput, taskId } from "../inputs";
 import { fetchMoreData, mapToLabelKey } from "../util";
 import type { DataSource } from "../types/Project";
-
 const selectAttachment = dataSource({
   display: {
     label: "Select Attachment",
@@ -21,7 +20,6 @@ const selectAttachment = dataSource({
       [],
       true,
     );
-
     const result = mapToLabelKey(data);
     return { result };
   },
@@ -30,7 +28,6 @@ const selectAttachment = dataSource({
     result: [{ label: "Screenshot.png", key: "12345" }],
   },
 });
-
 export default {
   selectAttachment,
 };

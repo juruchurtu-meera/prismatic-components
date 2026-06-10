@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { companyId } from "../accounts/getAccountsInputs";
 import { connectionInput } from "../general";
-
 const purchaseReceiptId = input({
   label: "Purchase Receipt ID",
   comments: "The unique identifier of the purchase receipt.",
@@ -12,7 +11,6 @@ const purchaseReceiptId = input({
   dataSource: "selectPurchaseReceipt",
   clean: util.types.toString,
 });
-
 export const getPurchaseReceiptInputs = {
   connection: connectionInput,
   companyId,

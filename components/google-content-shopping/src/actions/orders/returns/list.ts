@@ -19,7 +19,6 @@ import {
 import { fetchAllOrderReturns } from "../../../helpers/fetchAllOrderReturns";
 import type { content_v2_1 } from "googleapis";
 import { listOrderReturnsExamplePayload } from "../../../examplePayloads";
-
 export const listReturnsOrders = action({
   display: {
     label: "List Orders Returns (Deprecated)",
@@ -65,9 +64,7 @@ export const listReturnsOrders = action({
     context.logger.warn(
       "'List Orders Returns' is deprecated. Google is retiring the Orders endpoints in the Content API.",
     );
-
     const client = createClient(connectionInput);
-
     const params: content_v2_1.Params$Resource$Orderreturns$List = {
       merchantId,
       maxResults: maxResults || undefined,
@@ -82,9 +79,7 @@ export const listReturnsOrders = action({
       googleOrderIds: googleOrderIds || undefined,
       shipmentTrackingNumbers: shipmentTrackingNumbers || undefined,
     };
-
     const { data } = await fetchAllOrderReturns({ client, fetchAll, params });
-
     return {
       data,
     };

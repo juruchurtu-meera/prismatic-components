@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection } from "../inputs/general";
-
 export const selectUser = dataSource({
   display: {
     label: "Select User",
@@ -15,14 +14,17 @@ export const selectUser = dataSource({
     const {
       data: { value },
     } = await client.get("/users");
-
-    const result = (value as { id: string; displayName: string }[])
+    const result = (
+      value as {
+        id: string;
+        displayName: string;
+      }[]
+    )
       .map<Element>((user) => ({
         label: user.displayName,
         key: user.id.toString(),
       }))
       .sort((a, b) => ((a.label ?? "") < (b.label ?? "") ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

@@ -3,7 +3,6 @@ import connections from "./connections";
 import actions from "./actions";
 import dataSources from "./dataSources";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export default component({
   key: "aws-redshift",
   public: true,

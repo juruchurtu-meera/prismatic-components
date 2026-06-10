@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createJobRequisitionInputs } from "../../inputs/jobRequisitions";
 import { cleanResultFromResponse } from "../../util";
-
 export const createJobRequisition = action({
   display: {
     label: "Create Job Requisition",

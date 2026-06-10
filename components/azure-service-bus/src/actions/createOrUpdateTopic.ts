@@ -22,7 +22,6 @@ import {
 } from "../inputs";
 import type { CreateOrUpdateTopicBody } from "../types/CreateOrUpdateTopicBody";
 import type { EntityStatus } from "../types/EntityStatus";
-
 export const createOrUpdateTopic = action({
   display: {
     label: "Create or Update Topic",
@@ -109,5 +108,4 @@ export const createOrUpdateTopic = action({
     supportOrdering,
   },
 });
-
 export default { createOrUpdateTopic };

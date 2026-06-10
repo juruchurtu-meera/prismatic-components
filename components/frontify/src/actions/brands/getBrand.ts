@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { getBrandExamplePayload as examplePayload } from "../../examplePayloads";
 import { getBrandInputs as inputs } from "../../inputs/brands";
-
 export const getBrand = action({
   display: {
     label: "Get Brand",
@@ -51,7 +50,6 @@ export const getBrand = action({
       connection,
       debug: context.debug.enabled,
     }).request(query, { brandId });
-
     return {
       data: response,
     };

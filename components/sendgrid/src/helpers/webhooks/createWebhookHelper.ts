@@ -4,7 +4,6 @@ import type {
   WebhookRequestBody,
   WebhookResponse,
 } from "../../types";
-
 export const createWebhookHelper = async (
   client: Client,
   params: CreateWebhookParams,
@@ -24,16 +23,13 @@ export const createWebhookHelper = async (
     group_unsubscribe: params.groupUnsubscribe,
     group_resubscribe: params.groupResubscribe,
   };
-
   if (params.friendlyName) {
     requestBody.friendly_name = params.friendlyName;
   }
-
   const [_response, body] = await client.request({
     url: "/v3/user/webhooks/event/settings",
     method: "POST",
     body: requestBody,
   });
-
   return body as WebhookResponse;
 };

@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { submitSupplierInvoiceRequestExamplePayload } from "../../examplePayloads";
 import { submitSupplierInvoiceRequestInputs } from "../../inputs";
-
 export const submitSupplierInvoiceRequest = action({
   display: {
     label: "Submit Supplier Invoice Request",

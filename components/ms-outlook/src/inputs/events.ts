@@ -11,7 +11,6 @@ import {
   startInput,
   startTimezoneInput,
 } from "./common";
-
 export const eventCalendarIdInput = input({
   label: "Calendar ID",
   type: "string",
@@ -23,7 +22,6 @@ export const eventCalendarIdInput = input({
   placeholder: "Select a calendar",
   clean: util.types.toString,
 });
-
 export const locationNameInput = input({
   label: "Location Name",
   type: "string",
@@ -33,7 +31,6 @@ export const locationNameInput = input({
   placeholder: "Enter location name",
   clean: util.types.toString,
 });
-
 export const subjectInput = input({
   label: "Subject",
   type: "string",
@@ -43,7 +40,6 @@ export const subjectInput = input({
   placeholder: "Enter event subject",
   clean: util.types.toString,
 });
-
 export const bodyInput = input({
   label: "Body (HTML)",
   type: "string",
@@ -53,7 +49,6 @@ export const bodyInput = input({
   placeholder: "Enter event body (HTML)",
   clean: util.types.toString,
 });
-
 export const attendeesDataInput = input({
   label: "Attendees Data Collection",
   type: "data",
@@ -63,7 +58,6 @@ export const attendeesDataInput = input({
   comments:
     "A reference to data structures representing attendees. Merged with Attendees if both are specified.",
 });
-
 export const attendeesInput = input({
   label: {
     key: "Email",
@@ -78,21 +72,22 @@ export const attendeesInput = input({
   ],
   comments:
     "The event attendees as key-value pairs. Specify the email address as the key and the attendee type (required, optional, or resource) as the value.",
-  example: '{"john.doe@example.com": "required", "jane.smith@example.com": "optional"}',
+  example:
+    '{"john.doe@example.com": "required", "jane.smith@example.com": "optional"}',
   placeholder: "Enter attendee email addresses",
   clean: (rawValue) => {
     if (!Array.isArray(rawValue)) {
       throw new Error("Unexpected format of attendees collection.");
     }
-
-    const payload = (rawValue as KeyValuePair<unknown>[]).map<Attendee>(({ key, value }) => ({
-      emailAddress: { address: util.types.toString(key) },
-      type: util.types.toString(value) as AttendeeType,
-    }));
+    const payload = (rawValue as KeyValuePair<unknown>[]).map<Attendee>(
+      ({ key, value }) => ({
+        emailAddress: { address: util.types.toString(key) },
+        type: util.types.toString(value) as AttendeeType,
+      }),
+    );
     return payload;
   },
 });
-
 const cancelCommentInput = input({
   label: "Comment",
   type: "string",
@@ -102,7 +97,6 @@ const cancelCommentInput = input({
   comments: "An optional comment about the cancellation sent to all attendees.",
   clean: util.types.toString,
 });
-
 export const listEventsInputs = {
   connection: connectionInput,
   fetchAll: fetchAllInput,
@@ -110,7 +104,6 @@ export const listEventsInputs = {
   pageSkip: pageSkipInput,
   calendarId: eventCalendarIdInput,
 };
-
 export const createEventInputs = {
   connection: connectionInput,
   locationName: locationNameInput,
@@ -124,7 +117,6 @@ export const createEventInputs = {
   attendeesData: attendeesDataInput,
   attendees: attendeesInput,
 };
-
 export const updateEventInputs = {
   connection: connectionInput,
   eventId: eventIdInput,
@@ -138,12 +130,10 @@ export const updateEventInputs = {
   attendeesData: { ...attendeesDataInput, required: false },
   attendees: { ...attendeesInput, required: false },
 };
-
 export const deleteEventInputs = {
   connection: connectionInput,
   eventId: eventIdInput,
 };
-
 export const cancelEventInputs = {
   connection: connectionInput,
   eventId: eventIdInput,

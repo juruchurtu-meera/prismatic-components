@@ -4,7 +4,6 @@ import connections from "./connections";
 import dataSources from "./dataSources";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import actions from "./actions";
-
 export default component({
   key: "guru",
   public: true,

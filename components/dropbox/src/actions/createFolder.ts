@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { createFolderExamplePayload } from "../example-payloads";
 import { connectionInput, path } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const createFolder = action({
   display: {
     label: "Create Folder",

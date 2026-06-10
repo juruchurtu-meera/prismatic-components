@@ -5,7 +5,6 @@ import {
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../auth";
 import { awsRegion, connectionInput, dynamicAccessAllInputs } from "../inputs";
-
 export const selectFunction = dataSource({
   display: {
     label: "Select Function",
@@ -24,10 +23,8 @@ export const selectFunction = dataSource({
       dynamicSecretAccessKey: params.dynamicSecretAccessKey,
       dynamicSessionToken: params.dynamicSessionToken,
     });
-
     const functions: FunctionConfiguration[] = [];
     let marker: string | undefined;
-
     do {
       const command = new ListFunctionsCommand({
         FunctionVersion: "ALL",
@@ -40,7 +37,6 @@ export const selectFunction = dataSource({
       }
       marker = response.NextMarker;
     } while (marker);
-
     return {
       result: functions
         .map<Element>((fn) => ({

@@ -3,7 +3,6 @@ import { getClient } from "../client";
 import { SERVICES } from "../constants";
 import { connection } from "../inputs/shared";
 import { toSortedPicklist } from "./helpers";
-
 export const selectPerson = dataSource({
   display: {
     label: "Select Person",
@@ -15,7 +14,6 @@ export const selectPerson = dataSource({
   perform: async (_context, { connection }) => {
     const client = getClient(connection, false);
     const { data } = await client.get(`${SERVICES.person}/people`);
-
     return {
       result: toSortedPicklist(data.data, (item: { id: string }) => ({
         key: item.id,

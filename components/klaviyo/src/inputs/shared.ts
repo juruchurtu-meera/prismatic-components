@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanValueListInput } from "../utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const fields = input({
   label: "Fields",
   comments: "The fields to include in the response.",
@@ -15,7 +13,6 @@ export const fields = input({
   required: false,
   clean: cleanValueListInput,
 });
-
 export const excludeAuthorization = input({
   label: "Exclude Authorization",
   comments:

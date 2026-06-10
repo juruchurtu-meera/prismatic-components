@@ -114,7 +114,6 @@ export const retrievePostExamplePayload = {
     url: "https://your-company.canny.io/admin/board/feature-requests/p/an-awesome-feature-request",
   },
 };
-
 export const listPostsExamplePayload = {
   data: {
     hasMore: true,
@@ -230,14 +229,18 @@ export const listPostsExamplePayload = {
     ],
   },
 };
-
+export const pollPostsExamplePayload = {
+  data: {
+    created: listPostsExamplePayload.data.posts,
+    updated: [],
+  },
+};
 export const createPostExamplePayload = {
   data: {
     id: "553c3ef8b8cdcd1501ba5678",
     url: "https://example.canny.io/admin/board/features/p/add-dark-mode-support",
   },
 };
-
 export const updatePostExamplePayload = { data: "success" };
 export const deletePostExamplePayload = { data: "success" };
 export const changePostStatusExamplePayload = {

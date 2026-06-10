@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../../auth";
 import { userId, connectionInput } from "../../inputs";
 import { listTicketsPayload } from "../../examplePayloads";
-
 export const listTicketsToUser = action({
   display: {
     label: "List Tickets Assigned To User",
@@ -14,7 +13,6 @@ export const listTicketsToUser = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const result = await client.tickets.listAssigned(params.userId);
     return {
       data: result,
@@ -28,7 +26,6 @@ export const listTicketsToUser = action({
     },
     zendeskConnection: connectionInput,
   },
-
   examplePayload: {
     data: listTicketsPayload as unknown,
   },

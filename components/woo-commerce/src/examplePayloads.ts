@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 export const listProductsExamplePayload = {
   data: {
     data: [
@@ -74,12 +62,6 @@ export const listProductsExamplePayload = {
     } as any,
   },
 };
-
-
-
-
-
-
 export const listOrdersExamplePayload = {
   data: {
     data: [
@@ -171,12 +153,6 @@ export const listOrdersExamplePayload = {
     } as any,
   },
 };
-
-
-
-
-
-
 export const listCustomersExamplePayload = {
   data: {
     data: [

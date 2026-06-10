@@ -5,7 +5,6 @@ import {
   entriesForBatchLocalInventory,
 } from "../../../inputs";
 import { batchLocalInventoryExamplePayload } from "../../../examplePayloads";
-
 export const batchLocalInventory = action({
   display: {
     description:

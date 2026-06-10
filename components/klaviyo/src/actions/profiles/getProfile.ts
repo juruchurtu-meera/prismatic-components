@@ -5,7 +5,6 @@ import type { AdditionalFieldsProfile } from "../../types/AdditionalFieldsProfil
 import type { FieldsProfile } from "../../types/FieldsProfile";
 import { getProfileExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const getProfile = action({
   display: {
     label: "Get Profile",

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, organizationIdInput } from "../../inputs";
-
 export const getOrganizationUsers = action({
   display: {
     label: "Get Organization Users",

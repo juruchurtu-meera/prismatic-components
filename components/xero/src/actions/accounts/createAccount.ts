@@ -10,7 +10,6 @@ import {
   connectionInput,
 } from "../../inputs";
 import { createAccountExamplePayload } from "../../examplePayloads";
-
 export const createAccount = action({
   display: {
     label: "Create Account",
@@ -44,6 +43,5 @@ export const createAccount = action({
     showInExpenseClaims,
     xeroConnection: connectionInput,
   },
-
   examplePayload: createAccountExamplePayload,
 });

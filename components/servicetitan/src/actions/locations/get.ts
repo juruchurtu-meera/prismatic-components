@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getLocationResponse } from "../../examplePayloads";
 import { connection, locationId } from "../../inputs";
-
 export const getLocation = action({
   display: {
     label: "Get Location",

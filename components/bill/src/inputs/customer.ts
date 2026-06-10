@@ -14,10 +14,8 @@ import {
 import { cleanArrayCodeInput } from "../util";
 const listCustomerComments =
   " See [Bill.com API documentation](https://developer.bill.com/reference/listcustomers) for more information.";
-
 const listCustomerBankAccountComments =
   " See [Bill.com API documentation](https://developer.bill.com/v2/reference/ar-customermgmt-listcustomerbankaccount) for more information.";
-
 const customerAdditionalFields = {
   isActive: "1",
   shortName: "John",
@@ -26,7 +24,6 @@ const customerAdditionalFields = {
   contactFirstName: "John",
   contactLastName: "Doe",
 };
-
 const customerBankAccountAdditionalFields = {
   isActive: "string",
   nickname: "string",
@@ -38,7 +35,6 @@ const customerBankAccountAdditionalFields = {
   phone: "string",
   cpUserId: "string",
 };
-
 export const listCustomerInputs = {
   connection,
   start,
@@ -50,7 +46,6 @@ export const listCustomerInputs = {
   }),
   nested,
 };
-
 const customerName = input({
   label: "Customer Name",
   type: "string",
@@ -60,7 +55,6 @@ const customerName = input({
   comments: "The name of the customer.",
   clean: util.types.toString,
 });
-
 export const createCustomerInputs = {
   connection,
   customerName,
@@ -70,7 +64,6 @@ export const createCustomerInputs = {
     comments: `${additionalFields.comments} See https://developer.bill.com/reference/createcustomer for more information.`,
   }),
 };
-
 const customersCreateBulk = input({
   label: "Customers to Create",
   type: "code",
@@ -96,17 +89,14 @@ const customersCreateBulk = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Customers to Create"),
 });
-
 export const bulkCreateCustomersInputs = {
   connection,
   customersCreateBulk,
 };
-
 export const getCustomerInputs = {
   connection,
   customerId,
 };
-
 export const updateCustomerInputs = {
   connection,
   customerId,
@@ -117,7 +107,6 @@ export const updateCustomerInputs = {
     comments: `${additionalFields.comments} See https://developer.bill.com/reference/updatecustomer for more information.`,
   }),
 };
-
 const customersUpdateBulk = input({
   label: "Customers to Update",
   type: "code",
@@ -144,17 +133,14 @@ const customersUpdateBulk = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Customers to Update"),
 });
-
 export const bulkUpdateCustomersInputs = {
   connection,
   customersUpdateBulk,
 };
-
 export const deleteCustomerInputs = {
   connection,
   customerId,
 };
-
 export const listCustomerBankAccountInputs = {
   connection,
   start,
@@ -169,7 +155,6 @@ export const listCustomerBankAccountInputs = {
   }),
   nested,
 };
-
 const customerBankAccountId = input({
   label: "Customer Bank Account ID",
   type: "string",
@@ -179,12 +164,10 @@ const customerBankAccountId = input({
   comments: "ID of the customer bank account.",
   clean: util.types.toString,
 });
-
 export const getCustomerBankAccountInputs = {
   connection,
   customerBankAccountId,
 };
-
 const nameOnAccount = input({
   label: "Name on Account",
   type: "string",
@@ -194,7 +177,6 @@ const nameOnAccount = input({
   comments: "Customer bank account name.",
   clean: util.types.toString,
 });
-
 const agreedWithTOS = input({
   label: "Agreed with TOS",
   type: "boolean",
@@ -203,7 +185,6 @@ const agreedWithTOS = input({
     "When true, indicates agreement with the BILL Payment Terms Of Service.",
   clean: util.types.toBool,
 });
-
 export const createCustomerBankAccountInputs = {
   connection,
   customerId,

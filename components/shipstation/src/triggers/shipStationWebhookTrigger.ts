@@ -1,7 +1,6 @@
 import { trigger } from "@prismatic-io/spectral";
 import { shipStationWebhookTriggerInputs } from "../inputs";
 import { webhookPerformFN } from "./utils";
-
 export const shipStationWebhookTrigger = trigger({
   display: {
     label: "Manual Webhook",

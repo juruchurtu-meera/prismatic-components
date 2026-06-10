@@ -3,13 +3,11 @@ export interface PartitionInfo {
   uncompressedSize: number;
   compressedSize: number;
 }
-
 export interface ResultSetMetadata {
   numRows: number;
   format: string;
   partitionInfo: Array<PartitionInfo>;
 }
-
 export interface ResultSet {
   code: string;
   statementHandle: string;
@@ -20,7 +18,6 @@ export interface ResultSet {
   resultSetMetadata: ResultSetMetadata;
   data: Array<Array<string>>;
 }
-
 export interface QueryStatus {
   code: string;
   sqlState: string;
@@ -28,7 +25,6 @@ export interface QueryStatus {
   statementHandle?: string;
   statementHandles?: Array<string>;
 }
-
 export type HeaderProps = {
   authorization: string;
   "X-Snowflake-Authorization-Token-Type": string;

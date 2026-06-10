@@ -16,18 +16,13 @@ export const deleteInstancedWebhooks = action({
   perform: async (context, { connection, spaceId }) => {
     const client = createClient(connection, context);
     const space: Space = await client.getSpace(spaceId);
-
-    
     const data: Collection<WebHooks, WebhookProps> = await space.getWebhooks();
     const items = data.items;
-
     const endpoint = context.webhookUrls[context.flow.name];
     const webhooks = items.filter((webhook) => webhook.url === endpoint);
-
     for (const webhook of webhooks) {
       await webhook.delete();
     }
-
     return {
       data: {
         webhooksDeleted: webhooks.length,

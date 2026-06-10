@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 export const allowExternalSenders = input({
   label: "Allow External Senders",
   type: "boolean",
@@ -8,7 +7,6 @@ export const allowExternalSenders = input({
     "When true, allows people external to the organization to send messages to the group.",
   clean: util.types.toBool,
 });
-
 export const assignedLabels = input({
   label: "Assigned Labels",
   type: "code",
@@ -25,7 +23,6 @@ export const assignedLabels = input({
   ),
   clean: cleanStringInput,
 });
-
 export const autoSubscribeNewMembers = input({
   label: "Auto Subscribe New Members",
   type: "boolean",
@@ -33,7 +30,6 @@ export const autoSubscribeNewMembers = input({
     "When true, new members added to the group will be auto-subscribed to receive email notifications.",
   clean: util.types.toBool,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -42,7 +38,6 @@ export const description = input({
   placeholder: "Enter group description",
   clean: cleanStringInput,
 });
-
 export const displayName = input({
   label: "Display Name",
   type: "string",
@@ -52,7 +47,6 @@ export const displayName = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export const mailNickname = input({
   label: "Mail Nickname",
   type: "string",
@@ -63,7 +57,6 @@ export const mailNickname = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export const uniqueName = input({
   label: "Unique Name",
   type: "string",
@@ -72,7 +65,6 @@ export const uniqueName = input({
   placeholder: "Enter unique group name",
   clean: cleanStringInput,
 });
-
 export const securityEnabled = input({
   label: "Security Enabled",
   type: "boolean",
@@ -81,7 +73,6 @@ export const securityEnabled = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const visibility = input({
   label: "Visibility",
   type: "string",
@@ -91,7 +82,6 @@ export const visibility = input({
   placeholder: "Enter visibility level",
   clean: cleanStringInput,
 });
-
 export const mailEnabled = input({
   label: "Mail Enabled",
   type: "boolean",

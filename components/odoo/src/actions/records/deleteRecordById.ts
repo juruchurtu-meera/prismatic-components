@@ -3,7 +3,6 @@ import { createOdooClient } from "../../client";
 import { deleteRecordByIdExamplePayload } from "../../examplePayloads";
 import { deleteRecordByIdInputs } from "../../inputs";
 import { createOdooAwaitClient, isLegacyConnection } from "../../legacy";
-
 export const deleteRecordById = action({
   display: {
     label: "Delete Record By ID",

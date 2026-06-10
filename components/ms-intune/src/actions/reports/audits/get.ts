@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import { getDirectoryAuditExamplePayload } from "../../../examplePayloads";
 import { getMicrosoftEntraInputs } from "../../../inputs/reports/audits/get";
-
 export const getDirectoyAudit = action({
   display: {
     label: "Get Directory Audit",
@@ -14,7 +13,6 @@ export const getDirectoyAudit = action({
     const { data } = await client.get(
       `/auditLogs/directoryAudits/${microsoftEntraId}`,
     );
-
     return {
       data,
     };

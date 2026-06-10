@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { unlockUserExamplePayload } from "../../examplePayloads/users";
 import { deactivateUserInputs as unlockUserInputs } from "../../inputs/users";
-
 export const unlockUser = action({
   display: {
     label: "Unlock User",
@@ -14,7 +13,6 @@ export const unlockUser = action({
     await client.post(`/users/${encodeURIComponent(id)}/lifecycle/unlock`, {
       sendEmail,
     });
-
     return {
       data: {
         id,

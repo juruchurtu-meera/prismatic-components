@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ENS_SUBSCRIPTIONS_PATH } from "../../constants";
 import { deleteSubscriptionExamplePayload } from "../../examplePayloads";
 import { deleteSubscriptionInputs } from "../../inputs";
-
 export const deleteSubscription = action({
   examplePayload: deleteSubscriptionExamplePayload,
   display: {
@@ -16,7 +15,6 @@ export const deleteSubscription = action({
     await client.delete(
       `${ENS_SUBSCRIPTIONS_PATH}/${encodeURIComponent(subscriptionId)}`,
     );
-
     return {
       data: {
         success: true,

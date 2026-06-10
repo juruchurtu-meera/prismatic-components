@@ -6,13 +6,11 @@ export {
   resolveAtlassianHost,
   validateAtlassianConnection,
 } from "./auth";
-
 export {
   getAtlassianBasicAuthConnection,
   getAtlassianOAuth2AuthorizationCodeConnection,
   getAtlassianOAuth2ClientCredentialsConnection,
 } from "./connections";
-
 export {
   DEFAULT_WEBHOOK_EXPIRATION_DAYS,
   REFRESH_THRESHOLD_DAYS,
@@ -42,7 +40,6 @@ export type {
   WebhookDeletion,
   WebhookRegistrationResult,
 } from "./interfaces/Webhooks";
-
 export {
   checkAndRefreshWebhook,
   createWebhookTrigger,
@@ -50,7 +47,6 @@ export {
   deleteWebhookTrigger,
   deleteWebhookTriggerBasic,
 } from "./webhooks/triggerFunctions";
-
 export {
   createAtlassianWebhook,
   createAtlassianWebhookBasic,

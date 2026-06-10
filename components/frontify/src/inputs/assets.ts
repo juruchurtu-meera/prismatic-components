@@ -5,7 +5,6 @@ import { cleanTagsInput } from "../utils/cleanTagsInput";
 import { cleanValueListInput } from "../utils/cleanValueListInput";
 import { paginationInputs } from "./pagination";
 import { connection } from "./sharedInputs";
-
 export const createAssetInputs = {
   connection,
   fileId: input({
@@ -114,7 +113,6 @@ export const createAssetInputs = {
     type: "string",
     clean: cleanValueListInput,
   }),
-
   expiresAt: input({
     label: "Expires At",
     comments: "Asset will expire once the defined date is reached.",
@@ -134,7 +132,6 @@ export const createAssetInputs = {
     clean: cleanStringInput,
   }),
 };
-
 export const uploadFileInputs = {
   connection,
   filename: input({
@@ -166,7 +163,6 @@ export const uploadFileInputs = {
     clean: cleanNumberInput,
   }),
 };
-
 export const createAttachmentInputs = {
   connection,
   parentId: input({
@@ -207,7 +203,6 @@ export const createAttachmentInputs = {
     clean: cleanStringInput,
   }),
 };
-
 export const deleteAssetInputs = {
   connection,
   assetId: input({
@@ -221,7 +216,6 @@ export const deleteAssetInputs = {
     dataSource: "libraryAssetDataSource",
   }),
 };
-
 export const getAssetInputs = {
   connection,
   assetId: input({
@@ -235,7 +229,6 @@ export const getAssetInputs = {
     dataSource: "libraryAssetDataSource",
   }),
 };
-
 export const deleteAttachmentInputs = {
   connection,
   attachmentId: input({
@@ -248,7 +241,6 @@ export const deleteAttachmentInputs = {
     clean: util.types.toString,
   }),
 };
-
 export const getAssetsByIdsInputs = {
   connection,
   assetIds: input({
@@ -263,7 +255,6 @@ export const getAssetsByIdsInputs = {
     dataSource: "libraryAssetDataSource",
   }),
 };
-
 export const listAssetCommentsInputs = {
   connection,
   ...paginationInputs,
@@ -288,7 +279,6 @@ export const listAssetCommentsInputs = {
     clean: util.types.toInt,
   }),
 };
-
 export const listRelatedAssetsInputs = {
   connection,
   ...paginationInputs,
@@ -303,7 +293,6 @@ export const listRelatedAssetsInputs = {
     dataSource: "libraryAssetDataSource",
   }),
 };
-
 export const moveAssetsInputs = {
   connection,
   assetIds: input({
@@ -327,7 +316,6 @@ export const moveAssetsInputs = {
     clean: util.types.toString,
   }),
 };
-
 export const updateAssetInputs = {
   connection,
   assetId: input({

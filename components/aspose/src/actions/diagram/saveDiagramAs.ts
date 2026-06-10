@@ -10,7 +10,6 @@ import {
   folderPath,
   overwrite,
 } from "../../inputs";
-
 export const saveDiagramAs = action({
   display: {
     label: "Save Diagram As",
@@ -48,7 +47,6 @@ export const saveDiagramAs = action({
     },
   ) => {
     const client = await getAsposeClient(connection, context.debug.enabled);
-
     const { data } = await client.post(
       `/diagram/${fileName}/saveAs`,
       {
@@ -68,7 +66,6 @@ export const saveDiagramAs = action({
         },
       },
     );
-
     return { data };
   },
   examplePayload: saveDiagramAsExamplePayload,

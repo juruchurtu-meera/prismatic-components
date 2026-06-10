@@ -14,7 +14,6 @@ import {
 } from "../util";
 import { updateManyExamplePayload } from "../examplePayloads";
 import type { ErrorWithMessage } from "../types";
-
 export const updateMany = action({
   display: {
     label: "Update Many",
@@ -36,10 +35,8 @@ export const updateMany = action({
       debug: context.debug.enabled,
       logger: context.logger,
     });
-
     try {
       if (convertValuesToNumbers) detectAndConvertValuesToNumbers(queryFilter);
-
       return {
         data: await client.updateMany(
           comparisonOperator

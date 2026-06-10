@@ -4,7 +4,6 @@ import { type ListCreateQuery, ListEnum } from "klaviyo-api";
 import { createListInputs as inputs } from "../../inputs/lists";
 import { createListExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const createList = action({
   display: {
     label: "Create List",

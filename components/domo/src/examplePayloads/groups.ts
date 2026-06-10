@@ -1,20 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getGroupExamplePayload = {
   data: {
     id: 400112,
@@ -26,7 +9,6 @@ export const getGroupExamplePayload = {
     memberCount: 8,
   },
 };
-
 export const listGroupsExamplePayload = {
   data: [
     getGroupExamplePayload.data,
@@ -41,22 +23,16 @@ export const listGroupsExamplePayload = {
     },
   ],
 };
-
 export const createGroupExamplePayload = getGroupExamplePayload;
-
 export const updateGroupExamplePayload = {
   data: {
     ...getGroupExamplePayload.data,
     name: "Analytics Team (Updated)",
   },
 };
-
 export const deleteGroupExamplePayload = { data: null };
-
 export const listUsersInGroupExamplePayload = {
   data: [87264918, 54320910, 66011234, 72980045],
 };
-
 export const addUserToGroupExamplePayload = { data: null };
-
 export const removeUserFromGroupExamplePayload = { data: null };

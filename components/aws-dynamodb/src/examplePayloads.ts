@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import type {
   CreateTableCommandOutput,
   DeleteItemCommandOutput,
@@ -17,13 +11,6 @@ import type {
   ExecuteStatementCommandOutput,
 } from "@aws-sdk/client-dynamodb";
 import type { ResponseMetadata } from "@aws-sdk/types";
-
-
-
-
-
-
-
 export const createItemExamplePayload = {
   data: {
     $metadata: {
@@ -40,9 +27,6 @@ export const createItemExamplePayload = {
     },
   } as PutItemCommandOutput,
 };
-
-
-
 export const getItemExamplePayload = {
   data: {
     result: {
@@ -81,9 +65,6 @@ export const getItemExamplePayload = {
     found: true,
   },
 };
-
-
-
 export const updateItemExamplePayload = {
   data: {
     $metadata: {
@@ -109,9 +90,6 @@ export const updateItemExamplePayload = {
     },
   } as UpdateItemCommandOutput,
 };
-
-
-
 export const deleteItemExamplePayload = {
   data: {
     $metadata: {
@@ -128,11 +106,6 @@ export const deleteItemExamplePayload = {
     },
   } as DeleteItemCommandOutput,
 };
-
-
-
-
-
 // biome-ignore lint/suspicious/noExplicitAny: Example payload needs flexible typing
 export const queryItemsExamplePayload: any = {
   data: {
@@ -182,13 +155,6 @@ export const queryItemsExamplePayload: any = {
     },
   },
 };
-
-
-
-
-
-
-
 export const createTableExamplePayload = {
   data: {
     $metadata: {
@@ -250,9 +216,6 @@ export const createTableExamplePayload = {
     },
   } as CreateTableCommandOutput,
 };
-
-
-
 export const describeTableExamplePayload = {
   data: {
     $metadata: {
@@ -318,9 +281,6 @@ export const describeTableExamplePayload = {
     },
   } as DescribeTableCommandOutput,
 };
-
-
-
 export const deleteTableExamplePayload = {
   data: {
     $metadata: {
@@ -358,9 +318,6 @@ export const deleteTableExamplePayload = {
     },
   } as DeleteTableCommandOutput,
 };
-
-
-
 export const listTablesExamplePayload = {
   data: {
     result: {
@@ -378,13 +335,6 @@ export const listTablesExamplePayload = {
     found: true,
   },
 };
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     $metadata: {

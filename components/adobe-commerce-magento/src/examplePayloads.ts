@@ -1,5 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
 export const createProductsExamplePayload = {
   data: {
     id: 0,
@@ -244,7 +243,6 @@ export const createProductsExamplePayload = {
     ],
   },
 };
-
 export const listProductsExamplePayload = {
   data: {
     items: [
@@ -515,7 +513,6 @@ export const listProductsExamplePayload = {
     total_count: 0,
   },
 };
-
 export const listProductAttributesExamplePayload = {
   data: {
     items: [
@@ -613,7 +610,6 @@ export const listProductAttributesExamplePayload = {
     total_count: 0,
   },
 };
-
 export const createProductAttributesExamplePayload = {
   data: {
     extension_attributes: {
@@ -685,7 +681,6 @@ export const createProductAttributesExamplePayload = {
     ],
   },
 };
-
 export const createProductOptionsExamplePayload = {
   data: {
     product_sku: "string",
@@ -714,7 +709,6 @@ export const createProductOptionsExamplePayload = {
     extension_attributes: {},
   },
 };
-
 export const listProductOptionTypesExamplePayload = {
   data: [
     {
@@ -725,7 +719,6 @@ export const listProductOptionTypesExamplePayload = {
     },
   ],
 };
-
 export const listProductTypesExamplePayload = {
   data: [
     {
@@ -735,7 +728,6 @@ export const listProductTypesExamplePayload = {
     },
   ],
 };
-
 export const listOrdersExamplePayload = {
   data: {
     items: [],
@@ -763,11 +755,9 @@ export const listOrdersExamplePayload = {
     total_count: 0,
   },
 };
-
 export const cancelOrderExampleResponse = {
   data: true,
 };
-
 export const createCustomerExampleResponse = {
   data: {
     id: 0,
@@ -845,7 +835,6 @@ export const createCustomerExampleResponse = {
     ],
   },
 };
-
 export const getCustomerExampleResponse = {
   data: {
     id: 0,
@@ -923,7 +912,6 @@ export const getCustomerExampleResponse = {
     ],
   },
 };
-
 export const updateCustomerExampleResponse = {
   data: {
     id: 0,
@@ -1001,11 +989,9 @@ export const updateCustomerExampleResponse = {
     ],
   },
 };
-
 export const deleteCustomerExampleResponse = {
   data: true,
 };
-
 export const searchCustomersExampleResponse = {
   data: {
     items: [
@@ -1109,7 +1095,6 @@ export const searchCustomersExampleResponse = {
     total_count: 0,
   },
 };
-
 export const listTransactionsExampleResponse = {
   data: {
     items: [
@@ -1152,7 +1137,6 @@ export const listTransactionsExampleResponse = {
     total_count: 0,
   },
 };
-
 export const getTransactionExampleResponse = {
   data: {
     transaction_id: 0,
@@ -1169,23 +1153,9 @@ export const getTransactionExampleResponse = {
     extension_attributes: {},
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const pollChangesExamplePayload: { payload: TriggerPayload } = {
+export const pollChangesExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},

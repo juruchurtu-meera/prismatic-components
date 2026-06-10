@@ -14,7 +14,6 @@ import {
   findFolderForSharedLinkExamplePayload,
   getSharedLinkForFolderExamplePayload,
 } from "../examplePayloads";
-
 export const findFolderForSharedLink = action({
   display: {
     label: "Find Folder For Shared Link",
@@ -24,12 +23,10 @@ export const findFolderForSharedLink = action({
     const sharedLink = params.sharedLink;
     const sharedLinkPassword = params.sharedLinkPassword || null;
     const fields = params.fields || null;
-
     const client = createBoxHttpClient(
       params.boxConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.get("/shared_items", {
       headers: {
         boxapi: `shared_link=${sharedLink}&shared_link_password=${sharedLinkPassword}`,
@@ -50,7 +47,6 @@ export const findFolderForSharedLink = action({
   },
   examplePayload: findFolderForSharedLinkExamplePayload,
 });
-
 export const getSharedLinkForFolder = action({
   display: {
     label: "Get Shared Link For Folder",
@@ -62,7 +58,6 @@ export const getSharedLinkForFolder = action({
       params.boxConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.get(`/folders/${folderId}`, {
       params: {
         fields: "shared_link",
@@ -80,7 +75,6 @@ export const getSharedLinkForFolder = action({
   },
   examplePayload: getSharedLinkForFolderExamplePayload,
 });
-
 export const addSharedLinkToFolder = action({
   display: {
     label: "Add Shared Link to Folder",
@@ -97,17 +91,14 @@ export const addSharedLinkToFolder = action({
       ? params.sharedLinkVanityName
       : null;
     let sharedLinkPermissions = params.sharedLinkPermissions || {};
-
     const client = createBoxHttpClient(
       params.boxConnection,
       context.debug.enabled,
     );
-
     sharedLinkPermissions = {
       ...sharedLinkPermissions,
       can_edit: false,
     };
-
     const { data } = await client.put(
       `/folders/${folderId}`,
       {
@@ -139,7 +130,6 @@ export const addSharedLinkToFolder = action({
     boxConnection: connectionInput,
   },
 });
-
 export const updateSharedLinkOnFolder = action({
   display: {
     label: "Update Shared Link on Folder",
@@ -152,17 +142,14 @@ export const updateSharedLinkOnFolder = action({
     const sharedLinkPassword = params.sharedLinkPassword || null;
     const sharedLinkVanityName = params.sharedLinkVanityName || null;
     let sharedLinkPermissions = params.sharedLinkPermissions || {};
-
     const client = createBoxHttpClient(
       params.boxConnection,
       context.debug.enabled,
     );
-
     sharedLinkPermissions = {
       ...sharedLinkPermissions,
       can_edit: false,
     };
-
     const { data } = await client.put(
       `/folders/${folderId}`,
       {
@@ -194,7 +181,6 @@ export const updateSharedLinkOnFolder = action({
     boxConnection: connectionInput,
   },
 });
-
 export const removeSharedLinkFromFolder = action({
   display: {
     label: "Remove Shared Link from Folder",

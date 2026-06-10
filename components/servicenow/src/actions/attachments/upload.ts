@@ -10,7 +10,6 @@ import {
   tableNameInput,
 } from "../../inputs";
 import { createNowApiClient } from "../../util";
-
 export const uploadAttachment = action({
   display: {
     label: "Upload Attachment",

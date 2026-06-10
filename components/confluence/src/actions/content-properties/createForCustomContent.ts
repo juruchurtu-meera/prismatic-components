@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, customContentId, bodyData } from "../../inputs";
 import { getContentPropertyExamplePayload as createContentPropertyForCustomContentExamplePayload } from "../../examplePayloads";
-
 export const createContentPropertyForCustomContent = action({
   display: {
     label: "Create Content Property for Custom Content",

@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 import { mapModel, WEB_SERVICE } from "../util";
 import {
   CONVERSION_GOALS_CATEGORIES,
@@ -8,19 +7,16 @@ import {
   COUNT_TYPE,
 } from "../constants";
 import { offlineConversionsArrayExample } from "../exampleInputs";
-
 const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Microsoft Bing Ads connection to use.",
 });
-
 export const customerIdInput = input({
   label: "Customer ID",
   placeholder: "Enter customer ID",
@@ -30,7 +26,6 @@ export const customerIdInput = input({
   clean: (value) => util.types.toString(value),
   dataSource: "selectCustomerId",
 });
-
 export const customerNameFilterInput = input({
   label: "Customer Name Filter",
   placeholder: "Enter customer name filter",
@@ -40,7 +35,6 @@ export const customerNameFilterInput = input({
     "A partial or full name of the customers to retrieve. The operation includes the customer in the result if the customer's name begins with the specified filter name. This element is optional. To skip filtering by customer name, set this element to an empty string.",
   clean: cleanString,
 });
-
 export const topNInput = input({
   label: "Top Number",
   type: "string",
@@ -51,7 +45,6 @@ export const topNInput = input({
   example: "5",
   clean: (value) => util.types.toNumber(value),
 });
-
 export const onlyParentAccountsInput = input({
   label: "Only Parent Accounts",
   type: "boolean",
@@ -61,12 +54,10 @@ export const onlyParentAccountsInput = input({
   required: false,
   clean: (value) => util.types.toBool(value),
 });
-
 const typeModel = [
   { label: "AccountLink", value: "AccountLink" },
   { label: "CustomerLink", value: "CustomerLink" },
 ];
-
 export const typeInput = input({
   label: "Type",
   comments:
@@ -77,15 +68,12 @@ export const typeInput = input({
   default: "AccountLink",
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (!typeModel.some(({ value }) => strValue === value)) {
       throw new Error(`Invalid type specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 export const clientEntityIdInput = input({
   label: "Client Entity ID",
   placeholder: "Enter client entity ID",
@@ -95,7 +83,6 @@ export const clientEntityIdInput = input({
     "The identifier of the client advertiser account or client customer to manage.",
   clean: cleanString,
 });
-
 export const managingCustomerIdInput = input({
   label: "Managing Customer ID",
   placeholder: "Enter managing customer ID",
@@ -105,7 +92,6 @@ export const managingCustomerIdInput = input({
     "The identifier of the customer who manages or is requesting to manage the client advertiser account.",
   clean: util.types.toString,
 });
-
 export const noteInput = input({
   label: "Note",
   placeholder: "Enter note",
@@ -115,7 +101,6 @@ export const noteInput = input({
     "Optional message from the requestor providing context and details about the client link invitation.",
   clean: cleanString,
 });
-
 export const nameInput = input({
   label: "Name",
   placeholder: "Enter name",
@@ -125,7 +110,6 @@ export const nameInput = input({
     "The friendly name that can be used to reference this client link. The name can contain a maximum of 40 characters.",
   clean: cleanString,
 });
-
 export const inviterEmailInput = input({
   label: "Inviter Email",
   placeholder: "Enter inviter email address",
@@ -136,7 +120,6 @@ export const inviterEmailInput = input({
   example: "john.doe@example.com",
   clean: cleanString,
 });
-
 export const inviterNameInput = input({
   label: "Inviter Name",
   placeholder: "Enter inviter name",
@@ -146,7 +129,6 @@ export const inviterNameInput = input({
     "The name of the parent customer of the user who created the client link request.",
   clean: cleanString,
 });
-
 export const inviterPhoneInput = input({
   label: "Inviter Phone",
   placeholder: "Enter inviter phone number",
@@ -155,7 +137,6 @@ export const inviterPhoneInput = input({
   comments: "The phone number of the user who created the client link request.",
   clean: cleanString,
 });
-
 export const isBillToClientInput = input({
   label: "Is Bill To Client",
   type: "boolean",
@@ -165,7 +146,6 @@ export const isBillToClientInput = input({
   required: false,
   clean: (value) => util.types.toBool(value),
 });
-
 export const suppressNotificationInput = input({
   label: "Suppress Notification",
   type: "boolean",
@@ -175,12 +155,10 @@ export const suppressNotificationInput = input({
   required: false,
   clean: (value) => util.types.toBool(value),
 });
-
 const customerLinkPermissionModel = [
   { label: "Administrative", value: "Administrative" },
   { label: "Standard", value: "Standard" },
 ];
-
 export const customerLinkPermissionInput = input({
   label: "Customer Link Permission",
   type: "string",
@@ -190,18 +168,15 @@ export const customerLinkPermissionInput = input({
     "Determines whether the user's access to the accounts is restricted by customer hierarchy i.e., customer level client linking. This element is only applicable if Type is set to CustomerLink. In that case, the possible values include Administrative and Standard. Otherwise this field should be nil or empty.",
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (
       strValue &&
       !customerLinkPermissionModel.some(({ value }) => strValue === value)
     ) {
       throw new Error(`Invalid customer link permission specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 const statusModel = [
   { label: "Link Pending", value: "LinkPending" },
   { label: "Link Canceled", value: "LinkCanceled" },
@@ -218,7 +193,6 @@ const statusModel = [
   { label: "Inactive", value: "Inactive" },
   { label: "Unlink Failed", value: "UnlinkFailed" },
 ];
-
 export const statusInput = input({
   label: "Status",
   type: "string",
@@ -228,21 +202,17 @@ export const statusInput = input({
     "Determines the life cycle status of the client link, for example whether the client link has been accepted or declined. If set to true the client will not receive an email and otherwise, since the default value is false, the client will receive an email notification.",
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (strValue && !statusModel.some(({ value }) => strValue === value)) {
       throw new Error(`Invalid status specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 const orderingModel = [
   { label: "Id", value: "Id" },
   { label: "Name", value: "Name" },
   { label: "Number", value: "Number" },
 ];
-
 export const orderingInput = input({
   label: "Ordering",
   comments:
@@ -252,15 +222,12 @@ export const orderingInput = input({
   required: false,
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (strValue && !orderingModel.some(({ value }) => strValue === value)) {
       throw new Error(`Invalid order specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 export const accountIdInput = input({
   label: "Account ID",
   placeholder: "Enter account ID",
@@ -270,7 +237,6 @@ export const accountIdInput = input({
   clean: (value) => util.types.toString(value),
   dataSource: "selectAccountId",
 });
-
 const accountLifeCycleStatusModel = [
   { label: "Active", value: "Active" },
   { label: "Draft", value: "Draft" },
@@ -279,7 +245,6 @@ const accountLifeCycleStatusModel = [
   { label: "Pending", value: "Pending" },
   { label: "Suspended", value: "Suspended" },
 ];
-
 export const accountLifeCycleStatusInput = input({
   label: "Account Life Cycle Status",
   comments:
@@ -289,18 +254,15 @@ export const accountLifeCycleStatusInput = input({
   required: false,
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (
       strValue &&
       !accountLifeCycleStatusModel.some(({ value }) => strValue === value)
     ) {
       throw new Error(`Invalid account life cycle status specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 export const accountNameInput = input({
   label: "Account Name",
   placeholder: "Enter account name",
@@ -310,7 +272,6 @@ export const accountNameInput = input({
     "The name to search for in the Name element of the AdvertiserAccount.",
   clean: cleanString,
 });
-
 export const accountNumberInput = input({
   label: "Account Number",
   placeholder: "Enter account number",
@@ -320,7 +281,6 @@ export const accountNumberInput = input({
     "The number to search for in the Number element of the AdvertiserAccount.",
   clean: cleanString,
 });
-
 export const userIdInput = input({
   label: "User ID",
   placeholder: "Enter user ID",
@@ -329,7 +289,6 @@ export const userIdInput = input({
   comments: "The unique identifier for the user to search for.",
   clean: cleanString,
 });
-
 export const clientAccountIdInput = input({
   label: "Client Account ID",
   placeholder: "Enter client account ID",
@@ -339,7 +298,6 @@ export const clientAccountIdInput = input({
     "Search for advertiser account ClientLink objects by the client advertiser account identifier.",
   clean: cleanString,
 });
-
 export const clientCustomerIdInput = input({
   label: "Client Customer ID",
   placeholder: "Enter client customer ID",
@@ -349,7 +307,6 @@ export const clientCustomerIdInput = input({
     "Search for customer ClientLink objects by the client customer identifier.",
   clean: cleanString,
 });
-
 export const directManagingCustomerIdInput = input({
   label: "Direct Managing Customer ID",
   placeholder: "Enter direct managing customer ID",
@@ -359,7 +316,6 @@ export const directManagingCustomerIdInput = input({
     "Search for both customer and advertiser account ClientLink objects by the agency's managing customer identifier. If other customers also link to the client customer, the results will not include those client links.",
   clean: cleanString,
 });
-
 export const accountIdsInput = input({
   label: "Account ID",
   type: "string",
@@ -372,7 +328,6 @@ export const accountIdsInput = input({
       ? values.map((field) => util.types.toString(field))
       : [],
 });
-
 export const emailInput = input({
   label: "Email",
   placeholder: "Enter email address",
@@ -383,7 +338,6 @@ export const emailInput = input({
   example: "john.doe@example.com",
   clean: util.types.toString,
 });
-
 export const firstNameInput = input({
   label: "First Name",
   placeholder: "Enter first name",
@@ -394,7 +348,6 @@ export const firstNameInput = input({
   example: "John",
   clean: util.types.toString,
 });
-
 export const lastNameInput = input({
   label: "Last Name",
   placeholder: "Enter last name",
@@ -405,7 +358,6 @@ export const lastNameInput = input({
   example: "Doe",
   clean: util.types.toString,
 });
-
 const lcidModel = [
   { label: "Arabic Algeria", value: "ArabicAlgeria" },
   { label: "Arabic Bahrain", value: "ArabicBahrain" },
@@ -461,7 +413,6 @@ const lcidModel = [
   { label: "Spanish Venezuela", value: "SpanishVenezuela" },
   { label: "Swedish Sweden", value: "SwedishSweden" },
 ];
-
 export const lcidInput = input({
   label: "LCID",
   type: "string",
@@ -472,15 +423,12 @@ export const lcidInput = input({
   model: lcidModel,
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (strValue && !lcidModel.some(({ value }) => strValue === value)) {
       throw new Error(`Invalid lcid specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 const roleIdModel = [
   { label: "Advertiser Campaign Manager", value: "16" },
   { label: "Aggregator", value: "33" },
@@ -488,7 +436,6 @@ const roleIdModel = [
   { label: "Viewer", value: "100" },
   { label: "Standard User", value: "203" },
 ];
-
 export const roleIdInput = input({
   label: "Role ID",
   comments: "The role that the user has for each customer or list of accounts.",
@@ -497,15 +444,12 @@ export const roleIdInput = input({
   required: true,
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (strValue && !roleIdModel.some(({ value }) => strValue === value)) {
       throw new Error(`Invalid role id specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 const webServicesModel = [
   {
     label: "Ad Insight API",
@@ -532,7 +476,6 @@ const webServicesModel = [
     value: WEB_SERVICE.REPORTING_API,
   },
 ];
-
 export const webServiceInput = input({
   label: "Web Service API",
   comments:
@@ -543,17 +486,14 @@ export const webServiceInput = input({
   default: WEB_SERVICE.CUSTOMER_MANAGEMENT_API,
   clean: (value) => {
     const strValue = util.types.toString(value);
-
     if (
       !webServicesModel.find(({ value }) => value === (strValue as WEB_SERVICE))
     ) {
       throw new Error(`Invalid web service specified: ${value}`);
     }
-
     return strValue;
   },
 });
-
 export const soapActionInput = input({
   label: "SOAP Action",
   placeholder: "Enter SOAP action",
@@ -564,7 +504,6 @@ export const soapActionInput = input({
   example: "GetCustomer",
   clean: util.types.toString,
 });
-
 export const soapBodyRequestInput = input({
   label: "SOAP Body Request",
   placeholder: "Enter SOAP body XML",
@@ -575,7 +514,6 @@ export const soapBodyRequestInput = input({
     "The required SOAP Body element contains the actual SOAP message intended for the ultimate endpoint of the message. Immediate child elements of the SOAP Body element may be namespace-qualified.",
   clean: util.types.toString,
 });
-
 export const conversionGoalName = input({
   label: "Conversion Goal Name",
   type: "string",
@@ -586,7 +524,6 @@ export const conversionGoalName = input({
   example: "My Conversion Goal",
   clean: util.types.toString,
 });
-
 export const conversionGoalCategory = input({
   label: "Conversion Goal Category",
   type: "string",
@@ -597,7 +534,6 @@ export const conversionGoalCategory = input({
   model: mapModel(CONVERSION_GOALS_CATEGORIES),
   clean: util.types.toString,
 });
-
 export const conversionWindowInMinutes = input({
   label: "Conversion Window In Minutes",
   type: "string",
@@ -608,7 +544,6 @@ export const conversionWindowInMinutes = input({
   example: "129600",
   clean: cleanString,
 });
-
 export const countType = input({
   label: "Count Type",
   type: "string",
@@ -619,7 +554,6 @@ export const countType = input({
   model: mapModel(COUNT_TYPE),
   clean: util.types.toString,
 });
-
 export const excludeFromBidding = input({
   label: "Exclude From Bidding",
   type: "boolean",
@@ -628,7 +562,6 @@ export const excludeFromBidding = input({
     "Determines whether or not to exclude data otherwise related to this conversion goal from a subset of performance report columns.",
   clean: util.types.toBool,
 });
-
 export const isEnhancedConversionsEnabled = input({
   label: "Is Enhanced Conversions Enabled",
   type: "boolean",
@@ -637,7 +570,6 @@ export const isEnhancedConversionsEnabled = input({
     "Determines whether enhanced conversions are enabled for a conversion goal.",
   clean: util.types.toBool,
 });
-
 export const conversionScope = input({
   label: "Scope",
   type: "string",
@@ -647,7 +579,6 @@ export const conversionScope = input({
   model: mapModel(CONVERSION_SCOPE),
   clean: util.types.toString,
 });
-
 export const conversionStatus = input({
   label: "Status",
   type: "string",
@@ -657,7 +588,6 @@ export const conversionStatus = input({
   model: mapModel(CONVERSION_STATUS),
   clean: util.types.toString,
 });
-
 export const isExternallyAttributed = input({
   label: "Is Externally Attributed",
   type: "boolean",
@@ -666,7 +596,6 @@ export const isExternallyAttributed = input({
     "When true, the offline conversion goal uses a custom attribution model and allows importing fractional credit for each MSCLKID.",
   clean: util.types.toBool,
 });
-
 export const offlineConversionsBody = input({
   label: "Offline Conversions Body",
   placeholder: "Enter offline conversions JSON",

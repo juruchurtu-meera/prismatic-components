@@ -1,6 +1,5 @@
 import type { getSageClient } from "./client";
 import type { SageRecord } from "./types";
-
 export const fetchAllSince = async (
   client: ReturnType<typeof getSageClient>,
   endpoint: string,
@@ -9,7 +8,6 @@ export const fetchAllSince = async (
   const allRecords: SageRecord[] = [];
   let page = 1;
   let hasMore = true;
-
   while (hasMore) {
     const { data } = await client.get(endpoint, {
       params: {
@@ -27,6 +25,5 @@ export const fetchAllSince = async (
     }
     page++;
   }
-
   return allRecords;
 };

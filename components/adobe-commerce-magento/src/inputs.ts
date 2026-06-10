@@ -1,12 +1,16 @@
 import { input, util } from "@prismatic-io/spectral";
-import { attributeJson, customerJson, entityJson, optionJson, productJson } from "./constants";
-
+import {
+  attributeJson,
+  customerJson,
+  entityJson,
+  optionJson,
+  productJson,
+} from "./constants";
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const searchCriteriaCurrentPage = input({
   label: "Current Page",
   type: "string",
@@ -14,7 +18,6 @@ export const searchCriteriaCurrentPage = input({
   comments: "Current page.",
   clean: util.types.toString,
 });
-
 export const searchCriteriaConditionType = input({
   label: "Condition Type",
   type: "string",
@@ -22,7 +25,6 @@ export const searchCriteriaConditionType = input({
   comments: "Condition type.",
   clean: util.types.toString,
 });
-
 export const searchCriteriaField = input({
   label: "Field",
   type: "string",
@@ -30,7 +32,6 @@ export const searchCriteriaField = input({
   comments: "Field.",
   clean: util.types.toString,
 });
-
 export const searchCriteriaValue = input({
   label: "Value",
   type: "string",
@@ -38,7 +39,6 @@ export const searchCriteriaValue = input({
   comments: "Value.",
   clean: util.types.toString,
 });
-
 export const searchCriteriaPageSize = input({
   label: "Page Size",
   type: "string",
@@ -46,7 +46,6 @@ export const searchCriteriaPageSize = input({
   comments: "Page size.",
   clean: util.types.toString,
 });
-
 export const searchCriteriaSortDirection = input({
   label: "Sorting Direction",
   type: "string",
@@ -54,7 +53,6 @@ export const searchCriteriaSortDirection = input({
   comments: "Sorting direction.",
   clean: util.types.toString,
 });
-
 export const searchCriteriaSortField = input({
   label: "Sorting Field",
   type: "string",
@@ -62,7 +60,6 @@ export const searchCriteriaSortField = input({
   comments: "Sorting field.",
   clean: util.types.toString,
 });
-
 export const product = input({
   label: "Product",
   type: "code",
@@ -72,7 +69,6 @@ export const product = input({
   default: JSON.stringify(productJson, null, 2),
   clean: util.types.toString,
 });
-
 export const attribute = input({
   label: "Attribute",
   type: "code",
@@ -82,7 +78,6 @@ export const attribute = input({
   default: JSON.stringify(attributeJson, null, 2),
   clean: util.types.toString,
 });
-
 export const option = input({
   label: "Option",
   type: "code",
@@ -92,7 +87,6 @@ export const option = input({
   default: JSON.stringify(optionJson, null, 2),
   clean: util.types.toString,
 });
-
 export const entity = input({
   label: "Entity",
   type: "code",
@@ -102,7 +96,6 @@ export const entity = input({
   default: JSON.stringify(entityJson, null, 2),
   clean: util.types.toString,
 });
-
 export const orderId = input({
   label: "Order ID",
   type: "string",
@@ -111,7 +104,6 @@ export const orderId = input({
   dataSource: "selectOrder",
   clean: util.types.toString,
 });
-
 export const customer = input({
   label: "Customer",
   type: "code",
@@ -121,7 +113,6 @@ export const customer = input({
   default: JSON.stringify(customerJson, null, 2),
   clean: util.types.toString,
 });
-
 export const password = input({
   label: "Password",
   type: "string",
@@ -129,7 +120,6 @@ export const password = input({
   comments: "Password.",
   clean: util.types.toString,
 });
-
 export const redirectUrl = input({
   label: "Redirect URL",
   type: "string",
@@ -137,7 +127,6 @@ export const redirectUrl = input({
   comments: "Redirect URL.",
   clean: util.types.toString,
 });
-
 export const customerId = input({
   label: "Customer ID",
   type: "string",
@@ -146,7 +135,6 @@ export const customerId = input({
   dataSource: "selectCustomer",
   clean: util.types.toString,
 });
-
 export const passwordHash = input({
   label: "Password Hash",
   type: "string",
@@ -154,7 +142,6 @@ export const passwordHash = input({
   comments: "Password hash.",
   clean: util.types.toString,
 });
-
 export const transactionId = input({
   label: "Transaction ID",
   type: "string",
@@ -163,7 +150,6 @@ export const transactionId = input({
   dataSource: "selectTransaction",
   clean: util.types.toString,
 });
-
 export const query = input({
   label: "GraphQL Query",
   type: "code",
@@ -174,20 +160,15 @@ export const query = input({
   }`,
   clean: util.types.toString,
 });
-
 export const store = input({
   label: "Store",
   type: "string",
   required: true,
-  comments: "Input your store name for the GraphQL endpoint (https://<your store>/graphql).",
+  comments:
+    "Input your store name for the GraphQL endpoint (https://<your store>/graphql).",
   example: "my-store",
   clean: util.types.toString,
 });
-
-
-
-
-
 const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -198,10 +179,10 @@ const pollResourceType = input({
     { label: "Customers", value: "customers" },
     { label: "Products", value: "products" },
   ],
-  comments: "The Magento resource collection to poll for new and updated records.",
+  comments:
+    "The Magento resource collection to poll for new and updated records.",
   clean: util.types.toString,
 });
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -211,7 +192,6 @@ const showNewRecords = input({
     "When enabled, records whose `created_at` falls after the last poll will be emitted on the `created` branch.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -221,7 +201,6 @@ const showUpdatedRecords = input({
     "When enabled, records whose `updated_at` falls after the last poll but were created earlier will be emitted on the `updated` branch.",
   clean: util.types.toBool,
 });
-
 export const pollChangesInputs = {
   connection: connectionInput,
   pollResourceType,

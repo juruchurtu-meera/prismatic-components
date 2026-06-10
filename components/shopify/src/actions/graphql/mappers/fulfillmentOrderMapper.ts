@@ -1,22 +1,24 @@
 import { getNumericId } from "../../../util";
 import type { FulfillmentOrder } from "../../interfaces/FulfillmentOrder";
-
 export const fulfillmentOrderMapper = (fulfillmentOrder: FulfillmentOrder) => {
-  const fulfillmentOrderId = fulfillmentOrder.id ? getNumericId(fulfillmentOrder.id) : null;
-  const orderId = fulfillmentOrder.orderId ? getNumericId(fulfillmentOrder.orderId) : null;
-
+  const fulfillmentOrderId = fulfillmentOrder.id
+    ? getNumericId(fulfillmentOrder.id)
+    : null;
+  const orderId = fulfillmentOrder.orderId
+    ? getNumericId(fulfillmentOrder.orderId)
+    : null;
   const destinationId = fulfillmentOrder.destination.id
     ? getNumericId(fulfillmentOrder.destination.id)
     : null;
   return {
     id: fulfillmentOrderId,
-
     order_id: orderId,
-
     request_status: fulfillmentOrder.requestStatus
       ? fulfillmentOrder.requestStatus.toLowerCase()
       : null,
-    status: fulfillmentOrder.status ? fulfillmentOrder.status.toLowerCase() : null,
+    status: fulfillmentOrder.status
+      ? fulfillmentOrder.status.toLowerCase()
+      : null,
     supported_actions: (fulfillmentOrder.supportedActions || []).map(
       (supportedAction) => supportedAction.action,
     ),
@@ -39,20 +41,29 @@ export const fulfillmentOrderMapper = (fulfillmentOrder: FulfillmentOrder) => {
     line_items: (fulfillmentOrder.lineItems.nodes || []).map((lineItem) => ({
       id: lineItem.id ? getNumericId(lineItem.id) : null,
       quantity: lineItem.totalQuantity,
-      line_item_id: lineItem.lineItem?.id ? getNumericId(lineItem.lineItem.id) : null,
-      inventory_item_id: lineItem.inventoryItemId ? getNumericId(lineItem.inventoryItemId) : null,
-      variant_id: lineItem.variant?.id ? getNumericId(lineItem.variant.id) : null,
+      line_item_id: lineItem.lineItem?.id
+        ? getNumericId(lineItem.lineItem.id)
+        : null,
+      inventory_item_id: lineItem.inventoryItemId
+        ? getNumericId(lineItem.inventoryItemId)
+        : null,
+      variant_id: lineItem.variant?.id
+        ? getNumericId(lineItem.variant.id)
+        : null,
     })),
-    international_duties: fulfillmentOrder.internationalDuties?.incoterm ?? null,
+    international_duties:
+      fulfillmentOrder.internationalDuties?.incoterm ?? null,
     fulfill_at: fulfillmentOrder.fulfillAt,
     fulfill_by: fulfillmentOrder.fulfillBy,
-    fulfillment_holds: (fulfillmentOrder.fulfillmentHolds || []).map((hold) => ({
-      reason: hold.reason,
-      reasonNotes: hold.reasonNotes,
-      displayReason: hold.displayReason,
-      id: hold.id ? getNumericId(hold.id) : null,
-      heldByRequestingApp: hold.heldByRequestingApp,
-    })),
+    fulfillment_holds: (fulfillmentOrder.fulfillmentHolds || []).map(
+      (hold) => ({
+        reason: hold.reason,
+        reasonNotes: hold.reasonNotes,
+        displayReason: hold.displayReason,
+        id: hold.id ? getNumericId(hold.id) : null,
+        heldByRequestingApp: hold.heldByRequestingApp,
+      }),
+    ),
     created_at: fulfillmentOrder.createdAt,
     updated_at: fulfillmentOrder.updatedAt,
     delivery_method: fulfillmentOrder.deliveryMethod
@@ -61,12 +72,18 @@ export const fulfillmentOrderMapper = (fulfillmentOrder: FulfillmentOrder) => {
             ? getNumericId(fulfillmentOrder.deliveryMethod.id)
             : null,
           method_type: fulfillmentOrder.deliveryMethod.methodType ?? null,
-          min_delivery_date_time: fulfillmentOrder.deliveryMethod.minDeliveryDateTime ?? null,
-          max_delivery_date_time: fulfillmentOrder.deliveryMethod.maxDeliveryDateTime ?? null,
-          additional_information: fulfillmentOrder.deliveryMethod.additionalInformation
+          min_delivery_date_time:
+            fulfillmentOrder.deliveryMethod.minDeliveryDateTime ?? null,
+          max_delivery_date_time:
+            fulfillmentOrder.deliveryMethod.maxDeliveryDateTime ?? null,
+          additional_information: fulfillmentOrder.deliveryMethod
+            .additionalInformation
             ? {
-                instructions: fulfillmentOrder.deliveryMethod.additionalInformation.instructions,
-                phone: fulfillmentOrder.deliveryMethod.additionalInformation.phone,
+                instructions:
+                  fulfillmentOrder.deliveryMethod.additionalInformation
+                    .instructions,
+                phone:
+                  fulfillmentOrder.deliveryMethod.additionalInformation.phone,
               }
             : null,
           service_code: fulfillmentOrder.deliveryMethod.serviceCode,
@@ -95,10 +112,12 @@ export const fulfillmentOrderMapper = (fulfillmentOrder: FulfillmentOrder) => {
           zip: fulfillmentOrder.assignedLocation.zip,
         }
       : null,
-    merchant_requests: (fulfillmentOrder.merchantRequests.nodes || []).map((merchantRequest) => ({
-      message: merchantRequest.message,
-      request_options: merchantRequest.requestOptions,
-      kind: merchantRequest.kind,
-    })),
+    merchant_requests: (fulfillmentOrder.merchantRequests.nodes || []).map(
+      (merchantRequest) => ({
+        message: merchantRequest.message,
+        request_options: merchantRequest.requestOptions,
+        kind: merchantRequest.kind,
+      }),
+    ),
   };
 };

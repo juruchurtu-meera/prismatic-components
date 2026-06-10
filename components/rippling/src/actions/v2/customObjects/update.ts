@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { updateCustomObjectExamplePayload } from "../../../examplePayloads";
 import { updateCustomObjectInputs } from "../../../inputs";
-
 export const updateCustomObject = action({
   display: {
     label: "Update Custom Object (V2)",

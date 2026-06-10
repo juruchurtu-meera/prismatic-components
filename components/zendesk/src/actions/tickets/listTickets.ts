@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../auth";
 import { connectionInput } from "../../inputs";
 import { listTicketsPayload } from "../../examplePayloads";
-
 export const listTickets = action({
   display: {
     label: "List Tickets",
@@ -13,7 +12,6 @@ export const listTickets = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const result = await client.tickets.list();
     return {
       data: result,

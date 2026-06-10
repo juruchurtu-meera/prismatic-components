@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getCollectionResponse = {
   userId: "A1B2C3D4-E5F6-7890-A1B2C3D4E5F67890",
   dateModified: "March, 08 2017 14:17:37 +0000",
@@ -31,7 +24,6 @@ export const getCollectionResponse = {
   description: "Collection 1 with various assets.",
   IsPublic: 1,
 };
-
 export const listCollectionsResponse = {
   collections: [
     getCollectionResponse,
@@ -64,7 +56,6 @@ export const listCollectionsResponse = {
   ],
   count: 151,
 };
-
 export const selectCollectionResponse = [
   {
     key: "B2C3D4E5-F6A7-8901-B2C3D4E5F6A78901",

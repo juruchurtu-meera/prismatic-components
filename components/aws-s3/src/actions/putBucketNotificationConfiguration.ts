@@ -12,11 +12,11 @@ import {
   topicConfigurations,
 } from "../inputs";
 import { putBucketNotificationConfiguration as putBucketNotificationConfigurationFn } from "../utils";
-
 export const putBucketNotificationConfiguration = action({
   display: {
     label: "Put Bucket Notification Configuration",
-    description: "Replace an existing bucket notification configuration with a new one",
+    description:
+      "Replace an existing bucket notification configuration with a new one",
   },
   perform: async (
     context,
@@ -48,8 +48,11 @@ export const putBucketNotificationConfiguration = action({
       LambdaFunctionConfigurations: lambdaFunctionConfigurations,
       EventBridgeConfiguration: eventBridgeConfiguration,
     };
-    const data = await putBucketNotificationConfigurationFn(s3, bucket, notificationConfiguration);
-
+    const data = await putBucketNotificationConfigurationFn(
+      s3,
+      bucket,
+      notificationConfiguration,
+    );
     return {
       data,
     };

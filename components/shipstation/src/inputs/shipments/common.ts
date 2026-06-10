@@ -4,7 +4,6 @@ import {
   cleanStringInput,
   validateJSON,
 } from "../../util";
-
 export const packageCodeInput = input({
   label: "Package Code",
   type: "string",
@@ -14,7 +13,6 @@ export const packageCodeInput = input({
   dataSource: "selectPackages",
   clean: util.types.toString,
 });
-
 export const trackingNumber = input({
   label: "Tracking Number",
   type: "string",
@@ -23,7 +21,6 @@ export const trackingNumber = input({
   placeholder: "Enter tracking number",
   clean: cleanStringInput,
 });
-
 export const createDateStart = input({
   label: "Create Date Start",
   type: "string",
@@ -34,7 +31,6 @@ export const createDateStart = input({
   placeholder: "Enter start date (YYYY-MM-DD)",
   clean: cleanStringInput,
 });
-
 export const createDateEnd = input({
   label: "Create Date End",
   type: "string",
@@ -45,7 +41,6 @@ export const createDateEnd = input({
   placeholder: "Enter end date (YYYY-MM-DD)",
   clean: cleanStringInput,
 });
-
 export const shipDateStart = input({
   label: "Ship Date Start",
   type: "string",
@@ -56,7 +51,6 @@ export const shipDateStart = input({
   placeholder: "Enter start date (YYYY-MM-DD)",
   clean: cleanStringInput,
 });
-
 export const shipDateEnd = input({
   label: "Ship Date End",
   type: "string",
@@ -67,7 +61,6 @@ export const shipDateEnd = input({
   placeholder: "Enter end date (YYYY-MM-DD)",
   clean: cleanStringInput,
 });
-
 export const recipientName = input({
   label: "Recipient Name",
   type: "string",
@@ -76,7 +69,6 @@ export const recipientName = input({
   placeholder: "Enter recipient name",
   clean: cleanStringInput,
 });
-
 export const recipientCountryCode = input({
   label: "Recipient Country Code",
   type: "string",
@@ -86,7 +78,6 @@ export const recipientCountryCode = input({
   placeholder: "Enter country code",
   clean: cleanStringInput,
 });
-
 export const weightInput = input({
   label: "Shipment's Weight",
   type: "code",
@@ -104,7 +95,6 @@ export const weightInput = input({
     "The weight of the shipment, following the Weight model. Note: WeightUnits is read-only.",
   clean: validateJSON,
 });
-
 export const shipFrom = input({
   label: "Origin Address",
   type: "code",
@@ -127,7 +117,6 @@ export const shipFrom = input({
   comments: "Provide the origin address in JSON format.",
   clean: validateJSON,
 });
-
 export const shipmentAdditionalFieldsInput = input({
   label: "Additional Fields",
   type: "string",

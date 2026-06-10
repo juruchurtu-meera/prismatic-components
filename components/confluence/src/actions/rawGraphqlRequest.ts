@@ -6,7 +6,6 @@ import {
   variablesInput,
 } from "../inputs";
 import { createGraphClient } from "../client";
-
 const graphqlRequest = action({
   display: {
     label: "Raw GraphQL Request",
@@ -28,5 +27,4 @@ const graphqlRequest = action({
     return { data };
   },
 });
-
 export default graphqlRequest;

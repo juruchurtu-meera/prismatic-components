@@ -3,7 +3,6 @@ import FormData from "form-data";
 import { createBambooClient } from "../../client";
 import { uploadCompanyFileExamplePayload } from "../../examplePayloads";
 import { uploadCompanyFileInputs } from "../../inputs";
-
 export const uploadCompanyFile = action({
   display: {
     label: "Upload Company File",

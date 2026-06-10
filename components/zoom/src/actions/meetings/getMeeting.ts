@@ -7,7 +7,6 @@ import {
   showPreviousOccurrences,
 } from "../../inputs";
 import { getMeetingExamplePayload } from "../../examplePayloads";
-
 export const getMeeting = action({
   display: {
     label: "Get Meeting",
@@ -18,14 +17,12 @@ export const getMeeting = action({
     { connection, meetingId, ocurrenceId, showPreviousOccurrences },
   ) => {
     const client = createZoomClient({ connection, debug });
-
     const { data } = await client.get(`/meetings/${meetingId}`, {
       params: {
         occurrence_id: ocurrenceId,
         show_previous_occurrences: showPreviousOccurrences,
       },
     });
-
     return {
       data,
     };

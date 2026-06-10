@@ -27,7 +27,6 @@ import {
   CREATE_PROJECT_ADDITIONAL_FIELDS,
   TO_BE_UPDATED_TEXT,
 } from "../constants";
-
 export const updateProject = action({
   display: {
     label: "Update Project",
@@ -61,18 +60,14 @@ export const updateProject = action({
       projectStatus: projectStatusInput,
       active: statusInput,
     } as unknown as AbstractProject);
-
     Object.assign(updateProject, additionalFields);
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(updateProject, null, 2));
     }
     const result = await executeAction(connection, updateProject);
     const { _data: projectsArray, _status } =
       convertResultToGenericObject(result);
-
     checkSuccess(_status, "Failed to update project");
-
     return {
       data: getObjectFromArray(projectsArray),
     };
@@ -103,7 +98,6 @@ export const updateProject = action({
       ...parentProjectIdInput,
       comments: `${parentProjectIdInput.comments} ${TO_BE_UPDATED_TEXT}`,
     },
-
     invoiceWithParentInput: {
       ...modelBooleanUpdateInput,
       label: invoiceWithParentInput.label,

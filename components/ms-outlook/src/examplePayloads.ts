@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import type {
   Calendar,
   Event,
@@ -16,16 +8,6 @@ import type {
 } from "@microsoft/microsoft-graph-types";
 import type { TriggerPayload } from "@prismatic-io/spectral";
 import type { ODataAttrs, PaginatedResponse } from "./types";
-
-
-
-
-
-
-
-
-
-
 export const listCalendarsExamplePayload = {
   data: {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#me/calendars",
@@ -53,15 +35,10 @@ export const listCalendarsExamplePayload = {
     ],
   } as PaginatedResponse<Calendar & ODataAttrs>,
 };
-
-
-
-
-
-
 export const createCalendarExamplePayload = {
   data: {
-    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#me/calendars/$entity",
+    "@odata.context":
+      "https://graph.microsoft.com/v1.0/$metadata#me/calendars/$entity",
     "@odata.id":
       "https://graph.microsoft.com/v1.0/users('266efe5a-0fd7-4edd-877b-b2d1e561f193@ae01a323-3934-4475-a32d-af1274312bb0')/calendars('AAMkADJmMVAAA=')",
     id: "AAMkADJmMVAAA=",
@@ -82,15 +59,10 @@ export const createCalendarExamplePayload = {
     },
   } as Calendar & ODataAttrs,
 };
-
-
-
-
-
-
 export const updateCalendarExamplePayload = {
   data: {
-    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#me/calendars/$entity",
+    "@odata.context":
+      "https://graph.microsoft.com/v1.0/$metadata#me/calendars/$entity",
     "@odata.id":
       "https://graph.microsoft.com/v1.0/users('266efe5a-0fd7-4edd-877b-b2d1e561f193@ae01a323-3934-4475-a32d-af1274312bb0')/calendars('AAMkADJmMVAAA=')",
     id: "AAMkADJmMVAAA=",
@@ -112,24 +84,11 @@ export const updateCalendarExamplePayload = {
     },
   } as Calendar & ODataAttrs,
 };
-
-
-
-
-
-
-
-
 export const deleteCalendarExamplePayload = { data: null };
-
-
-
-
-
-
 export const getCalendarEventExamplePayload = {
   data: {
-    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#me/calendars/$entity",
+    "@odata.context":
+      "https://graph.microsoft.com/v1.0/$metadata#me/calendars/$entity",
     "@odata.id":
       "https://graph.microsoft.com/v1.0/users('ddfcd489-628b-40d7-b48b-57002df800e5@1717622f-1d94-4d0c-9d74-709fad664b77')/calendars('AAMkAGI2TGuLAAA=')",
     id: "AAMkAGI2TGuLAAA=",
@@ -151,12 +110,6 @@ export const getCalendarEventExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const getScheduleExamplePayload = {
   data: {
     "@odata.context":
@@ -224,18 +177,10 @@ export const getScheduleExamplePayload = {
         },
       },
     ],
-  } as { value: ScheduleInformation[] } & ODataAttrs,
+  } as {
+    value: ScheduleInformation[];
+  } & ODataAttrs,
 };
-
-
-
-
-
-
-
-
-
-
 export const listEventsExamplePayload = {
   data: {
     "@odata.context":
@@ -245,7 +190,8 @@ export const listEventsExamplePayload = {
         "@odata.etag": 'W/"ZlnW4RIAV06KYYwlrfNZvQAAKGWwbw=="',
         id: "AAMkAGIAAAoZDOFAAA=",
         subject: "Orientation ",
-        bodyPreview: "Please join us for the team orientation. Bring any questions you may have.",
+        bodyPreview:
+          "Please join us for the team orientation. Bring any questions you may have.",
         body: {
           contentType: "html",
           content:
@@ -306,12 +252,6 @@ export const listEventsExamplePayload = {
     ],
   } as PaginatedResponse<Event & ODataAttrs>,
 };
-
-
-
-
-
-
 export const createEventExamplePayload = {
   data: {
     subject: "Let's go for lunch",
@@ -343,12 +283,6 @@ export const createEventExamplePayload = {
     transactionId: "7E163156-7762-4BEB-A1C6-729EA81755A7",
   } as Event,
 };
-
-
-
-
-
-
 export const updateEventExamplePayload = {
   data: {
     subject: "Let's go for lunch",
@@ -380,34 +314,8 @@ export const updateEventExamplePayload = {
     transactionId: "7E163156-7762-4BEB-A1C6-729EA81755A7",
   } as Event,
 };
-
-
-
-
-
-
-
-
 export const deleteEventExamplePayload = { data: null };
-
-
-
-
-
-
-
-
 export const cancelEventExamplePayload = { data: null };
-
-
-
-
-
-
-
-
-
-
 export const listMailFoldersExamplePayload = {
   data: {
     "@odata.context":
@@ -482,12 +390,6 @@ export const listMailFoldersExamplePayload = {
     ],
   } as PaginatedResponse<MailSearchFolder & ODataAttrs>,
 };
-
-
-
-
-
-
 export const createMailFolderExamplePayload = {
   data: {
     id: "AQMkADYAAAIBDAAAAA==",
@@ -499,25 +401,7 @@ export const createMailFolderExamplePayload = {
     isHidden: false,
   } as MailSearchFolder,
 };
-
-
-
-
-
-
-
-
 export const deleteMailFolderExamplePayload = { data: null };
-
-
-
-
-
-
-
-
-
-
 export const listMessagesExamplePayload = {
   data: {
     "@odata.context":
@@ -537,16 +421,6 @@ export const listMessagesExamplePayload = {
     ],
   } as PaginatedResponse<Message & ODataAttrs>,
 };
-
-
-
-
-
-
-
-
-
-
 export const getMessageByIdExamplePayload = {
   data: {
     message: {
@@ -570,41 +444,20 @@ export const getMessageByIdExamplePayload = {
           params: { boundary: "000000000000680fa005e90d488f" },
         },
       } as Record<string, unknown>,
-      attachments: [] as Array<{ contentType: string; data: unknown }>,
+      attachments: [] as Array<{
+        contentType: string;
+        data: unknown;
+      }>,
       text: "Example email body" as string | undefined,
-      html: '<div dir="ltr">Example email body<div><br></div></div>\n' as string | false,
+      html: '<div dir="ltr">Example email body<div><br></div></div>\n' as
+        | string
+        | false,
     },
     rawMessage: "Raw MIME message",
   },
 };
-
-
-
-
-
-
-
-
 export const sendMessageExamplePayload = { data: null };
-
-
-
-
-
-
-
-
 export const deleteMessageExamplePayload = { data: null };
-
-
-
-
-
-
-
-
-
-
 export const createEventSubscriptionExamplePayload = {
   data: {
     id: "e9d5b726-4478-4412-bfba-268530484566",
@@ -616,12 +469,6 @@ export const createEventSubscriptionExamplePayload = {
     latestSupportedTlsVersion: "v1_2",
   } as Subscription,
 };
-
-
-
-
-
-
 export const createMailFolderSubscriptionExamplePayload = {
   data: {
     id: "7f105c7d-2dc5-4530-97cd-4e7ae6534c07",
@@ -633,15 +480,10 @@ export const createMailFolderSubscriptionExamplePayload = {
     latestSupportedTlsVersion: "v1_2",
   } as Subscription,
 };
-
-
-
-
-
-
 export const listSubscriptionsExamplePayload = {
   data: {
-    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#subscriptions",
+    "@odata.context":
+      "https://graph.microsoft.com/v1.0/$metadata#subscriptions",
     value: [
       {
         id: "e9d5b726-4478-4412-bfba-268530484566",
@@ -662,12 +504,6 @@ export const listSubscriptionsExamplePayload = {
     ],
   } as PaginatedResponse<Subscription>,
 };
-
-
-
-
-
-
 export const updateEventSubscriptionExamplePayload = {
   data: {
     id: "e9d5b726-4478-4412-bfba-268530484566",
@@ -679,23 +515,7 @@ export const updateEventSubscriptionExamplePayload = {
     latestSupportedTlsVersion: "v1_2",
   } as Subscription,
 };
-
-
-
-
-
-
-
-
 export const deleteSubscriptionExamplePayload = { data: null };
-
-
-
-
-
-
-
-
 export const deleteAllInstanceSubscriptionsExamplePayload = {
   data: {
     subscriptionsRemoved: [
@@ -704,18 +524,6 @@ export const deleteAllInstanceSubscriptionsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const listSupportedLanguagesExamplePayload = {
   data: {
     "@odata.context":
@@ -732,14 +540,6 @@ export const listSupportedLanguagesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
 export const listSupportedTimezonesExamplePayload = {
   data: {
     "@odata.context":
@@ -756,16 +556,6 @@ export const listSupportedTimezonesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const getCurrentUserExamplePayload = {
   data: {
     businessPhones: ["+1 555 555 5555"],
@@ -780,19 +570,6 @@ export const getCurrentUserExamplePayload = {
     id: "3693-4789-a1c3-f4de565f",
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#me/calendars",
@@ -813,24 +590,6 @@ export const rawRequestExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const webhookTriggerExamplePayload = {
   payload: {
     headers: {
@@ -889,17 +648,6 @@ export const webhookTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
-
-
 export const webhookLifecycleTriggerExamplePayload = {
   payload: {
     headers: {
@@ -933,7 +681,8 @@ export const webhookLifecycleTriggerExamplePayload = {
     },
     pathFragment: "",
     webhookUrls: {
-      "Calendar Event Webhook Flow": "https://hooks.example.com/trigger/EXAMPLE",
+      "Calendar Event Webhook Flow":
+        "https://hooks.example.com/trigger/EXAMPLE",
     },
     webhookApiKeys: {
       "Calendar Event Webhook Flow": ["example-api-key"],
@@ -958,18 +707,6 @@ export const webhookLifecycleTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const mailFolderWebhookTriggerExamplePayload = {
   payload: {
     headers: {
@@ -990,7 +727,8 @@ export const mailFolderWebhookTriggerExamplePayload = {
             resource: "me/mailFolders('Inbox')/messages/AAMkAGUAAAwTW09AAA=",
             resourceData: {
               "@odata.type": "#Microsoft.Graph.Message",
-              "@odata.id": "me/mailFolders('Inbox')/messages/AAMkAGUAAAwTW09AAA=",
+              "@odata.id":
+                "me/mailFolders('Inbox')/messages/AAMkAGUAAAwTW09AAA=",
               "@odata.etag": 'W/"CQAAABYAAADHcgC8Hl9tRZ/hc1wEUs1TAAAwR4Hg"',
               id: "AAMkAGUAAAwTW09AAA=",
             },
@@ -1028,19 +766,6 @@ export const mailFolderWebhookTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},

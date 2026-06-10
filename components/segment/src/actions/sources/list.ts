@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, count, cursor, region } from "../../inputs";
 import { listSourcesExamplePayload } from "../../examplePayloads";
-
 export const listSources = action({
   display: {
     label: "List Sources",

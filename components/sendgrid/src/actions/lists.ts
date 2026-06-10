@@ -10,7 +10,6 @@ import {
 import { pageSize, pageToken } from "../inputs";
 import { API_VERSION } from "../constants";
 import { fetchPaginatedData } from "../helpers";
-
 export const createList = action({
   display: {
     label: "Create List",
@@ -40,7 +39,6 @@ export const createList = action({
     },
   },
 });
-
 export const getAllLists = action({
   display: {
     label: "Get All Lists",
@@ -57,14 +55,12 @@ export const getAllLists = action({
     { sendGridConnection, page_size, page_token, fetchAll },
   ) => {
     const client = createAuthorizedClient(sendGridConnection);
-
     const data = await fetchPaginatedData(
       client,
       `/${API_VERSION}/marketing/lists`,
       fetchAll,
       { page_size, page_token },
     );
-
     return {
       data,
     };
@@ -93,7 +89,6 @@ export const getAllLists = action({
     },
   },
 });
-
 export const getListById = action({
   display: {
     label: "Get List by ID",

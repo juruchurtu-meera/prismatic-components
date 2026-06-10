@@ -62,7 +62,6 @@ export const pollEventsTriggerPayload = {
   },
   polledNoChanges: false,
 };
-
 export const calendarChangeEventsPayload = {
   branch: "Push Notifications",
   payload: {

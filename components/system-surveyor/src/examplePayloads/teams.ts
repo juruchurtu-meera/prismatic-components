@@ -1,7 +1,3 @@
-
-
-
-
 export const listTeamsExamplePayload = {
   data: [
     {
@@ -12,7 +8,6 @@ export const listTeamsExamplePayload = {
     },
   ],
 };
-
 export const getTeamSystemTypesExamplePayload = {
   data: [
     {
@@ -24,7 +19,6 @@ export const getTeamSystemTypesExamplePayload = {
     },
   ],
 };
-
 export const getTeamMembersExamplePayload = {
   data: [
     {

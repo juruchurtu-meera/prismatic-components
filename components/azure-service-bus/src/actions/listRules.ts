@@ -12,7 +12,6 @@ import {
   subscriptionName,
   topicName,
 } from "../inputs";
-
 export const listRules = action({
   display: {
     label: "List Rules",
@@ -35,9 +34,7 @@ export const listRules = action({
     const client = getAzureServiceBusClient(connection, context.debug.enabled);
     try {
       const { data } = await client.get(
-        `/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/${namespaceName}/topics/${topicName}/subscriptions/${subscriptionName}/rules?api-version=2021-11-01${
-          $skip.length ? `&${$skip}` : ""
-        }${$top.length ? `&${$top}` : ""}`,
+        `/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/${namespaceName}/topics/${topicName}/subscriptions/${subscriptionName}/rules?api-version=2021-11-01${$skip.length ? `&${$skip}` : ""}${$top.length ? `&${$top}` : ""}`,
       );
       return { data };
     } catch (error) {
@@ -57,5 +54,4 @@ export const listRules = action({
     $top,
   },
 });
-
 export default { listRules };

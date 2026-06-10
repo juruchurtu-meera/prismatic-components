@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ATTACH_COMPANY_TO_CONTACT_EXAMPLE_PAYLOAD } from "../../examplePayloads/contacts";
 import { connectionInput, idInput } from "../../inputs";
 import { companyIdInput } from "../../inputs/general";
-
 export const attachCompany = action({
   display: {
     label: "Attach Company to Contact",

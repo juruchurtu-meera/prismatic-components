@@ -2,7 +2,6 @@ import { cleanCode } from "../../helpers";
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
 import { tableId } from "../tables/general";
 import { columnId, values } from "./general";
-
 export const updateColumnInputs = {
   driveOrSiteId,
   workbookId: {

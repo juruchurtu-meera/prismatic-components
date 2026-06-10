@@ -3,11 +3,11 @@ import { createSalesforceClient } from "../../client";
 import { createOpportunityInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const createOpportunity = action({
   display: {
     label: "Create Opportunity",
-    description: "Create a Salesforce opportunity record representing a sale or pending deal.",
+    description:
+      "Create a Salesforce opportunity record representing a sale or pending deal.",
   },
   perform: async (
     context,
@@ -29,7 +29,6 @@ export const createOpportunity = action({
     },
   ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const payload = {
       Name: name,
       description: description,
@@ -45,14 +44,13 @@ export const createOpportunity = action({
       ...dynamicValues,
       ...fieldValues,
     };
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", payload);
     }
-
-    const command = await salesforceClient.sobject("Opportunity").create(payload);
+    const command = await salesforceClient
+      .sobject("Opportunity")
+      .create(payload);
     const response = await executeSFAction(context, command);
-
     return {
       data: response,
     };

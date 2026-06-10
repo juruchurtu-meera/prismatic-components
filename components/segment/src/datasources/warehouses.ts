@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, region } from "../inputs";
-
 export const warehouses = dataSource({
   display: {
     label: "Fetch Warehouses",
@@ -22,7 +21,12 @@ export const warehouses = dataSource({
     });
     if (data.warehouses) {
       const result = data.warehouses.map(
-        (warehouses: { id: string; metadata: { name: string } }) => ({
+        (warehouses: {
+          id: string;
+          metadata: {
+            name: string;
+          };
+        }) => ({
           label: warehouses.metadata.name,
           key: warehouses.id,
         }),

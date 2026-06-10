@@ -2,7 +2,6 @@ import { type Element, dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { adAccountId, myConnectionField, version } from "../inputs";
 import { getPaginatedData } from "../util";
-
 export const selectAdCreative = dataSource({
   display: {
     label: "Select Ad Creative",
@@ -20,14 +19,12 @@ export const selectAdCreative = dataSource({
         fields: "name,id",
       },
     );
-
     const result: Element[] = data
       .map((creative: { name: string; id: string }) => ({
         label: `${creative.name} - (${creative.id})`,
         key: creative.id.toString(),
       }))
       .sort((a: Element, b: Element) => (a.label < b.label ? -1 : 1));
-
     return {
       result,
     };

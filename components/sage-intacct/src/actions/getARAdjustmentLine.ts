@@ -3,7 +3,6 @@ import { connection, fieldsInput, recordNoInput } from "../inputs";
 import { convertResultToGenericObject, executeAction } from "../utils";
 import { Functions } from "@intacct/intacct-sdk";
 import { getARAdjustmentLinePayload } from "../examplePayloads/getARAdjustmentLinePayload";
-
 export const getARAdjustmentLine = action({
   display: {
     label: "Get AR Adjustment Line",

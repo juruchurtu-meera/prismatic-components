@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const createConversationExamplePayload = {
   ok: true,
   channels: [
@@ -33,13 +20,11 @@ export const createConversationExamplePayload = {
     },
   ],
 };
-
 export const closeConversationExamplePayload = {
   ok: true,
   no_op: true,
   already_closed: true,
 };
-
 export const renameConversationExamplePayload = {
   ok: true,
   channel: {
@@ -79,7 +64,6 @@ export const renameConversationExamplePayload = {
     locale: "en-US",
   },
 };
-
 export const getConversationHistoryExamplePayload = {
   ok: true,
   messages: [
@@ -93,7 +77,6 @@ export const getConversationHistoryExamplePayload = {
     },
   ],
 };
-
 export const listConversationsExamplePayload = {
   ok: true,
   channels: [
@@ -116,12 +99,10 @@ export const listConversationsExamplePayload = {
     },
   ],
 };
-
 export const leaveConversationExamplePayload = {
   ok: true,
   not_in_channel: true,
 };
-
 export const listConversationMembersExamplePayload = {
   ok: true,
   members: ["U023BECGF", "U061F7AUR", "W012A3CDE"],
@@ -129,11 +110,9 @@ export const listConversationMembersExamplePayload = {
     next_cursor: "e3VzZXJfaWQ6IFcxMjM0NTY3fQ==",
   },
 };
-
 export const archiveConversationExamplePayload = {
   ok: true,
 };
-
 export const inviteUserToConversationExamplePayload = {
   ok: true,
   channel: {
@@ -171,7 +150,6 @@ export const inviteUserToConversationExamplePayload = {
     previous_names: ["specifics", "abstractions", "etc"],
   },
 };
-
 export const listUserConversationsExamplePayload = {
   ok: true,
   channels: [

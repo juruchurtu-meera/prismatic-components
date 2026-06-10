@@ -9,7 +9,6 @@ import {
 } from "../inputs";
 import type { PollingState } from "../types/PollingState";
 import { fetchTasksSince, partitionTasksByTimestamp } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Tasks",
@@ -33,7 +32,6 @@ export const pollChangesTrigger = pollingTrigger({
     const sinceDate = lastState?.lastPolledAt
       ? new Date(lastState.lastPolledAt)
       : now;
-
     const client = await createAsanaClient(
       asanaConnection,
       context.debug.enabled,
@@ -43,25 +41,20 @@ export const pollChangesTrigger = pollingTrigger({
       projectId,
       sinceDate.toISOString(),
     );
-
     const { created, updated } = partitionTasksByTimestamp(tasks, sinceDate);
-
     context.polling.setState({ lastPolledAt: now.toISOString() } as Record<
       string,
       unknown
     >);
-
     const result = {
       created: showNewRecords ? created : [],
       updated: showUpdatedRecords ? updated : [],
     };
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled project ${projectId}: ${tasks.length} total → ${created.length} new, ${updated.length} updated`,
       );
     }
-
     return {
       payload: { ...payload, body: { data: result } },
       polledNoChanges:

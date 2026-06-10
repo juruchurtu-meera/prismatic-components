@@ -23,14 +23,12 @@ import {
   updateSharedLinkOnFolder,
   removeSharedLinkFromFolder,
 } from "./actions/sharedLinksFolders";
-
 import webhookActions from "./actions/webhooks";
 import rawRequest from "./actions/rawRequest";
 import connections from "./connections";
 import triggers from "./triggers";
 import dataSources from "./dataSources";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export default component({
   key: "box",
   documentationUrl: "https://prismatic.io/docs/components/box/",

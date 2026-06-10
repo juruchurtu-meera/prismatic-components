@@ -1,7 +1,6 @@
 import { action, input } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, filter, validateId } from "../../inputs";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
@@ -31,7 +30,6 @@ export const createWebhook = action({
       params.asanaConnection,
       context.debug.enabled,
     );
-
     try {
       const { data } = await client.post("/webhooks", {
         data: {
@@ -43,7 +41,13 @@ export const createWebhook = action({
       return { data };
     } catch (err) {
       const error = err as {
-        response: { data: { errors: { message: string }[] } };
+        response: {
+          data: {
+            errors: {
+              message: string;
+            }[];
+          };
+        };
       };
       if (error) {
         if (

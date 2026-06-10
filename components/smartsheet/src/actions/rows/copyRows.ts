@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { copyRowsExamplePayload } from "../../examplePayloads";
 import { copyRowsInputs } from "../../inputs";
-
 export const copyRows = action({
   display: {
     label: "Copy Rows",

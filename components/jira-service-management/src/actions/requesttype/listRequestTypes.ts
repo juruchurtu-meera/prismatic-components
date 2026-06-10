@@ -4,7 +4,6 @@ import { listRequestTypesExamplePayload } from "../../examplePayloads";
 import { listRequestTypesInputs } from "../../inputs";
 import type { RequestType } from "../../types";
 import { getPaginatedData } from "../../util";
-
 export const listRequestTypes = action({
   display: {
     label: "List Request Types",

@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const vertexAIConnection = connection({
   key: "vertexAIConnection",
   display: {

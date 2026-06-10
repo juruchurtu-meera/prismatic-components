@@ -39,7 +39,6 @@ import type { FieldsSegment } from "./types/FieldsSegment";
 import type { FieldsTemplate } from "./types/FieldsTemplate";
 import type { FieldsMetric } from "./types/FieldsMetric";
 import type { FieldsProfileEvent } from "./types/FieldsProfileEvent";
-
 export const validateConnection = (connection: Connection): void => {
   const connectionKeys = connections.map((c) => c.key);
   if (!connectionKeys.includes(connection.key)) {
@@ -49,27 +48,21 @@ export const validateConnection = (connection: Connection): void => {
     );
   }
 };
-
 export const cleanStringInput = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanNumberInput = (value: unknown) =>
   value ? util.types.toNumber(value) : undefined;
-
 export const cleanValueListInput = (value: unknown): string[] | undefined => {
   if (Array.isArray(value)) {
     return value.length > 0 ? value : undefined;
   }
   return undefined;
 };
-
 export const cleanBooleanInput = (value: unknown) =>
   value ? util.types.toBool(value) : undefined;
-
 const throwCodeInputError = (inputLabel: string) => {
   throw new Error(`Invalid code for ${inputLabel} input.`);
 };
-
 export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     try {
@@ -80,7 +73,6 @@ export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     let object: unknown;
@@ -96,7 +88,6 @@ export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const cleanDate = (value: unknown, inputLabel: string) => {
   if (value) {
     const date = new Date(util.types.toString(value));
@@ -107,12 +98,10 @@ export const cleanDate = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const bufferToDataUri = (buffer: Buffer, mimeType: string): string => {
   const base64String = buffer.toString("base64");
   return `data:${mimeType};base64,${base64String}`;
 };
-
 export const fetchCampaigns = async (
   campaignsApi: CampaignsApi,
   fieldsCampaign: FieldsCampaign[] | undefined,
@@ -120,11 +109,14 @@ export const fetchCampaigns = async (
   data: GetCampaignResponseCollectionCompoundDocumentDataInner[] = [],
   next?: string,
 ): Promise<GetCampaignResponseCollectionCompoundDocument> => {
-  const { body }: { body: GetCampaignResponseCollectionCompoundDocument } =
-    await campaignsApi.getCampaigns(filterCampaigns, {
-      fieldsCampaign,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetCampaignResponseCollectionCompoundDocument;
+  } = await campaignsApi.getCampaigns(filterCampaigns, {
+    fieldsCampaign,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchCampaigns(
@@ -139,7 +131,6 @@ export const fetchCampaigns = async (
     return body;
   }
 };
-
 export const getIncludeParams = (
   fieldsProfile: FieldsProfileEvent[] | undefined,
   fieldsMetric: FieldsMetric[] | undefined,
@@ -153,7 +144,6 @@ export const getIncludeParams = (
   }
   return include;
 };
-
 export const fetchEvents = async (
   eventsApi: EventsApi,
   fieldsEvent: FieldsEvent[] | undefined,
@@ -164,24 +154,23 @@ export const fetchEvents = async (
   next?: string,
 ): Promise<GetEventResponseCollectionCompoundDocument> => {
   const include = getIncludeParams(fieldsProfile, fieldsMetric);
-  const { body }: { body: GetEventResponseCollectionCompoundDocument } =
-    await eventsApi.getEvents({
-      fieldsEvent,
-      fieldsMetric,
-      fieldsProfile,
-      pageCursor: next,
-      include,
-    });
-
-  
+  const {
+    body,
+  }: {
+    body: GetEventResponseCollectionCompoundDocument;
+  } = await eventsApi.getEvents({
+    fieldsEvent,
+    fieldsMetric,
+    fieldsProfile,
+    pageCursor: next,
+    include,
+  });
   if (body.included && body.included.length > 0) {
     const existingIds = new Set(includedData.map((item) => item.id));
     const newItems = body.included.filter((item) => !existingIds.has(item.id));
     includedData.push(...newItems);
   }
-
   data.push(...body.data);
-
   if (body.links.next) {
     return fetchEvents(
       eventsApi,
@@ -200,18 +189,20 @@ export const fetchEvents = async (
     return body;
   }
 };
-
 export const fetchImages = async (
   imagesApi: ImagesApi,
   fieldsImage: FieldsImage[] | undefined,
   data: ImageResponseObjectResource[] = [],
   next?: string,
 ): Promise<GetImageResponseCollection> => {
-  const { body }: { body: GetImageResponseCollection } =
-    await imagesApi.getImages({
-      fieldsImage,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetImageResponseCollection;
+  } = await imagesApi.getImages({
+    fieldsImage,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchImages(imagesApi, fieldsImage, data, body.links.next);
@@ -220,7 +211,6 @@ export const fetchImages = async (
     return body;
   }
 };
-
 export const fetchListProfiles = async (
   listsApi: ListsApi,
   listId: string,
@@ -229,12 +219,15 @@ export const fetchListProfiles = async (
   data: GetListMemberResponseCollectionDataInner[] = [],
   next?: string,
 ): Promise<GetListMemberResponseCollection> => {
-  const { body }: { body: GetListMemberResponseCollection } =
-    await listsApi.getListProfiles(listId, {
-      additionalFieldsProfile,
-      fieldsProfile,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetListMemberResponseCollection;
+  } = await listsApi.getListProfiles(listId, {
+    additionalFieldsProfile,
+    fieldsProfile,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchListProfiles(
@@ -250,18 +243,20 @@ export const fetchListProfiles = async (
     return body;
   }
 };
-
 export const fetchLists = async (
   listsApi: ListsApi,
   fieldsList: FieldsList[] | undefined,
   data: GetListListResponseCollectionCompoundDocumentDataInner[] = [],
   next?: string,
 ): Promise<GetListListResponseCollectionCompoundDocument> => {
-  const { body }: { body: GetListListResponseCollectionCompoundDocument } =
-    await listsApi.getLists({
-      fieldsList,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetListListResponseCollectionCompoundDocument;
+  } = await listsApi.getLists({
+    fieldsList,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchLists(listsApi, fieldsList, data, body.links.next);
@@ -270,7 +265,6 @@ export const fetchLists = async (
     return body;
   }
 };
-
 export const fetchProfile = async (
   profilesApi: ProfilesApi,
   fieldsProfile: FieldsProfile[] | undefined,
@@ -278,12 +272,15 @@ export const fetchProfile = async (
   data: GetProfileResponseData[] = [],
   next?: string,
 ): Promise<GetProfileResponseCollectionCompoundDocument> => {
-  const { body }: { body: GetProfileResponseCollectionCompoundDocument } =
-    await profilesApi.getProfiles({
-      fieldsProfile,
-      additionalFieldsProfile,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetProfileResponseCollectionCompoundDocument;
+  } = await profilesApi.getProfiles({
+    fieldsProfile,
+    additionalFieldsProfile,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchProfile(
@@ -298,18 +295,20 @@ export const fetchProfile = async (
     return body;
   }
 };
-
 export const fetchSegments = async (
   segmentsApi: SegmentsApi,
   fieldsSegment: FieldsSegment[] | undefined,
   data: GetSegmentListResponseCollectionCompoundDocumentDataInner[] = [],
   next?: string,
 ): Promise<GetSegmentListResponseCollectionCompoundDocument> => {
-  const { body }: { body: GetSegmentListResponseCollectionCompoundDocument } =
-    await segmentsApi.getSegments({
-      fieldsSegment,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetSegmentListResponseCollectionCompoundDocument;
+  } = await segmentsApi.getSegments({
+    fieldsSegment,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchSegments(segmentsApi, fieldsSegment, data, body.links.next);
@@ -318,18 +317,20 @@ export const fetchSegments = async (
     return body;
   }
 };
-
 export const fetchTemplates = async (
   templatesApi: TemplatesApi,
   fieldsTemplate: FieldsTemplate[] | undefined,
   data: TemplateResponseObjectResource[] = [],
   next?: string,
 ): Promise<GetTemplateResponseCollection> => {
-  const { body }: { body: GetTemplateResponseCollection } =
-    await templatesApi.getTemplates({
-      fieldsTemplate,
-      pageCursor: next,
-    });
+  const {
+    body,
+  }: {
+    body: GetTemplateResponseCollection;
+  } = await templatesApi.getTemplates({
+    fieldsTemplate,
+    pageCursor: next,
+  });
   data.push(...body.data);
   if (body.links.next) {
     return fetchTemplates(templatesApi, fieldsTemplate, data, body.links.next);
@@ -338,31 +339,22 @@ export const fetchTemplates = async (
     return body;
   }
 };
-
 export const getAuthorizationHeader = (
   connection: Connection,
-): { Authorization: string } => {
+): {
+  Authorization: string;
+} => {
   let authorization = "";
   switch (connection.key) {
     case "klaviyoApiKeyConnection":
       authorization = `Klaviyo-API-Key ${util.types.toString(connection.fields.apiKey)}`;
-
       break;
     case "klaviyoOAuth2Connection":
       authorization = `Bearer ${util.types.toString(connection.token?.access_token)}`;
       break;
   }
-
   return { Authorization: authorization };
 };
-
-
-
-
-
-
-
-
 export const filterByTimestamp = (
   records: KlaviyoRecord[],
   lastPolledAt: string,
@@ -370,38 +362,32 @@ export const filterByTimestamp = (
   updatedAtField: string,
   includeNew: boolean,
   includeUpdated: boolean,
-): { created: KlaviyoRecord[]; updated: KlaviyoRecord[] } => {
+): {
+  created: KlaviyoRecord[];
+  updated: KlaviyoRecord[];
+} => {
   const lastPolledAtDate = new Date(lastPolledAt);
   const created: KlaviyoRecord[] = [];
   const updated: KlaviyoRecord[] = [];
-
   for (const record of records) {
     const attrs = record.attributes;
     const rawCreatedAt = attrs[createdAtField];
     const rawUpdatedAt = attrs[updatedAtField];
-
     const createdAtDate =
       typeof rawCreatedAt === "string" ? new Date(rawCreatedAt) : null;
     const updatedAtDate =
       typeof rawUpdatedAt === "string" ? new Date(rawUpdatedAt) : null;
-
     const isNew = createdAtDate !== null && createdAtDate > lastPolledAtDate;
     const isUpdated =
       !isNew && updatedAtDate !== null && updatedAtDate > lastPolledAtDate;
-
     if (isNew && includeNew) {
       created.push(record);
     } else if (isUpdated && includeUpdated) {
       updated.push(record);
     }
   }
-
   return { created, updated };
 };
-
-
-
-
 export const fetchProfileOrListRecords = async (
   conn: Parameters<typeof getApi>[0],
   resourceType: KlaviyoPollableResource,
@@ -426,11 +412,6 @@ export const fetchProfileOrListRecords = async (
   } while (next);
   return all;
 };
-
-
-
-
-
 export const fetchCampaignRecords = async (
   conn: Parameters<typeof getApi>[0],
   filter: string,

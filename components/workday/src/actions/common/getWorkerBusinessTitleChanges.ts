@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getWorkerBusinessTitleChangesExamplePayload } from "../../examplePayloads";
 import { getWorkerBusinessTitleChangesInputs } from "../../inputs";
-
 export const getWorkerBusinessTitleChanges = action({
   display: {
     label: "Get Worker Business Title Changes",

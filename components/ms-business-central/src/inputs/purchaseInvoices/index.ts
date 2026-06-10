@@ -1,10 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { BOOLEAN_INPUT_MODEL } from "../../constants";
-import { cleanBooleanInput, cleanNumberInput, cleanStringInput } from "../../utils";
+import {
+  cleanBooleanInput,
+  cleanNumberInput,
+  cleanStringInput,
+} from "../../utils";
 import { companyId } from "../accounts/getAccountsInputs";
 import { connectionInput, odataParams } from "../general";
-
-
 export const purchaseInvoiceId = input({
   label: "Purchase Invoice ID",
   type: "string",
@@ -15,7 +17,6 @@ export const purchaseInvoiceId = input({
   dataSource: "selectPurchaseInvoice",
   clean: util.types.toString,
 });
-
 export const vendorId = input({
   label: "Vendor ID",
   type: "string",
@@ -26,7 +27,6 @@ export const vendorId = input({
   dataSource: "selectVendor",
   clean: cleanStringInput,
 });
-
 export const vendorNumber = input({
   label: "Vendor Number",
   type: "string",
@@ -36,7 +36,6 @@ export const vendorNumber = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const invoiceDate = input({
   label: "Invoice Date",
   type: "string",
@@ -46,7 +45,6 @@ export const invoiceDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const postingDate = input({
   label: "Posting Date",
   type: "string",
@@ -56,7 +54,6 @@ export const postingDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const dueDate = input({
   label: "Due Date",
   type: "string",
@@ -66,7 +63,6 @@ export const dueDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const vendorInvoiceNumber = input({
   label: "Vendor Invoice Number",
   type: "string",
@@ -76,7 +72,6 @@ export const vendorInvoiceNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const payToVendorId = input({
   label: "Pay To Vendor ID",
   type: "string",
@@ -87,7 +82,6 @@ export const payToVendorId = input({
   dataSource: "selectVendor",
   clean: cleanStringInput,
 });
-
 export const payToVendorNumber = input({
   label: "Pay To Vendor Number",
   type: "string",
@@ -97,7 +91,6 @@ export const payToVendorNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const shipToName = input({
   label: "Ship To Name",
   type: "string",
@@ -107,7 +100,6 @@ export const shipToName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const shipToContact = input({
   label: "Ship To Contact",
   type: "string",
@@ -117,7 +109,6 @@ export const shipToContact = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const buyFromAddressLine1 = input({
   label: "Buy From Address Line 1",
   type: "string",
@@ -127,7 +118,6 @@ export const buyFromAddressLine1 = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const buyFromAddressLine2 = input({
   label: "Buy From Address Line 2",
   type: "string",
@@ -137,7 +127,6 @@ export const buyFromAddressLine2 = input({
   placeholder: "Enter address line 2",
   clean: cleanStringInput,
 });
-
 export const buyFromCity = input({
   label: "Buy From City",
   type: "string",
@@ -147,7 +136,6 @@ export const buyFromCity = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const buyFromState = input({
   label: "Buy From State",
   type: "string",
@@ -157,7 +145,6 @@ export const buyFromState = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const buyFromCountry = input({
   label: "Buy From Country",
   type: "string",
@@ -167,7 +154,6 @@ export const buyFromCountry = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const buyFromPostCode = input({
   label: "Buy From Post Code",
   type: "string",
@@ -177,7 +163,6 @@ export const buyFromPostCode = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const currencyId = input({
   label: "Currency ID",
   type: "string",
@@ -187,7 +172,6 @@ export const currencyId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const currencyCode = input({
   label: "Currency Code",
   type: "string",
@@ -197,7 +181,6 @@ export const currencyCode = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const pricesIncludeTax = input({
   label: "Prices Include Tax",
   type: "boolean",
@@ -205,7 +188,6 @@ export const pricesIncludeTax = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const discountAmount = input({
   label: "Discount Amount",
   type: "string",
@@ -215,25 +197,22 @@ export const discountAmount = input({
   required: false,
   clean: cleanNumberInput,
 });
-
-
 export const listPurchaseInvoicesInputs = {
   connection: connectionInput,
   companyId,
   ...odataParams,
 };
-
 export const getPurchaseInvoiceInputs = {
   connection: connectionInput,
   companyId,
   purchaseInvoiceId,
 };
-
 export const createPurchaseInvoiceInputs = {
   connection: connectionInput,
   companyId: {
     ...companyId,
-    comments: "The ID of the company you want to create the purchase invoice in.",
+    comments:
+      "The ID of the company you want to create the purchase invoice in.",
   },
   vendorNumber,
   vendorId,
@@ -256,7 +235,6 @@ export const createPurchaseInvoiceInputs = {
   pricesIncludeTax,
   discountAmount,
 };
-
 export const updatePurchaseInvoiceInputs = {
   connection: connectionInput,
   companyId: {
@@ -291,13 +269,11 @@ export const updatePurchaseInvoiceInputs = {
   },
   discountAmount,
 };
-
 export const deletePurchaseInvoiceInputs = {
   connection: connectionInput,
   companyId,
   purchaseInvoiceId,
 };
-
 export const postPurchaseInvoiceInputs = {
   connection: connectionInput,
   companyId,

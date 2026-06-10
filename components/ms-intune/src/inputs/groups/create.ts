@@ -8,7 +8,6 @@ import {
   securityEnabled,
   visibility,
 } from "./general";
-
 export const createGroupInputs = {
   displayName,
   mailNickname,

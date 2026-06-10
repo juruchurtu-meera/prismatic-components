@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { JOURNEYS_PATH } from "../../constants";
 import { updateJourneyExamplePayload } from "../../examplePayloads";
 import { updateJourneyInputs } from "../../inputs";
-
 export const updateJourney = action({
   examplePayload: updateJourneyExamplePayload,
   display: {
@@ -24,7 +23,6 @@ export const updateJourney = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       id: journeyId,
       key: journeyKey,
@@ -32,9 +30,7 @@ export const updateJourney = action({
       version: journeyVersion,
       ...journeyExtraBody,
     };
-
     const { data } = await client.put(JOURNEYS_PATH, body);
-
     return { data };
   },
 });

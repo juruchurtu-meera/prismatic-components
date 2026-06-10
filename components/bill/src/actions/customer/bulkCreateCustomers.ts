@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { bulkCreateCustomersInputs } from "../../inputs/customer";
 import { bulkCreateCustomersExamplePayload } from "../../examplePayloads";
-
 export const bulkCreateCustomers = action({
   display: {
     label: "Bulk Create Customers",
@@ -15,7 +14,6 @@ export const bulkCreateCustomers = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       bulk: customersCreateBulk,
     };
@@ -24,12 +22,10 @@ export const bulkCreateCustomers = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Bulk/Crud/Create/Customer.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

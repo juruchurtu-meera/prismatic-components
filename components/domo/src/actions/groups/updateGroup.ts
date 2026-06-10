@@ -3,7 +3,6 @@ import { getDomoClient } from "../../client";
 import { updateGroupInputs } from "../../inputs";
 import type { UpdateGroupBody } from "../types/UpdateGroupBody";
 import { updateGroupExamplePayload } from "../../examplePayloads";
-
 export const updateGroup = action({
   display: {
     label: "Update Group",
@@ -22,5 +21,4 @@ export const updateGroup = action({
   },
   inputs: updateGroupInputs,
 });
-
 export default { updateGroup };

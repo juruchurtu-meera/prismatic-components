@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, envelopeId, advancedUpdate, include } from "../inputs";
 import { getEnvelopePayload } from "../examplePayloads";
-
 export const getEnvelope = action({
   display: {
     label: "Get Envelope",

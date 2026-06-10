@@ -5,32 +5,23 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { MarketoConnection } from "./connections";
 import { URL } from "node:url";
-
 export const baseUrl = (connection: Connection): string => {
   const tokenUrl = new URL(util.types.toString(connection.fields?.tokenUrl));
   return `${tokenUrl.origin}/rest/`;
 };
-
 export const authorizationHeaders = async (
   connection: Connection,
   debugRequest: boolean,
-): Promise<{ Authorization: string }> => {
+): Promise<{
+  Authorization: string;
+}> => {
   const expiresDate = new Date(
     util.types.toString(connection.token?.expires_at),
   );
   const now = new Date();
-
-  
-
-
-
-
-
   if (now < expiresDate) {
     return {
-      Authorization: `Bearer ${util.types.toString(
-        connection.token?.access_token,
-      )}`,
+      Authorization: `Bearer ${util.types.toString(connection.token?.access_token)}`,
     };
   } else {
     if (debugRequest) {
@@ -52,7 +43,6 @@ export const authorizationHeaders = async (
     };
   }
 };
-
 export const createClient = async (
   connection: Connection,
   debugRequest: boolean,
@@ -63,7 +53,6 @@ export const createClient = async (
       `Unsupported Connection specified. Please specify a supported connection type for Marketo. Received ${connection.key}`,
     );
   }
-
   const client = createHttpClient({
     baseUrl: baseUrl(connection),
     headers: {
@@ -73,6 +62,5 @@ export const createClient = async (
     responseType: "json",
     debug: debugRequest,
   });
-
   return client;
 };

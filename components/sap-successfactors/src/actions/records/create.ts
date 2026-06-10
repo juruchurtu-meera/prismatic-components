@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createRecordInputs } from "../../inputs/records";
 import { cleanResultFromResponse } from "../../util";
-
 export const createRecord = action({
   display: {
     label: "Create a Record",

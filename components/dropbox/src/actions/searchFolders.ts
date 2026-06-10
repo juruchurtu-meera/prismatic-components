@@ -12,7 +12,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, fetchAllSearchFolders, handleDropboxError } from "../util";
-
 export const searchFolders = action({
   display: {
     label: "Search Folders",
@@ -25,7 +24,6 @@ export const searchFolders = action({
       params.userType,
       params.teamMemberId,
     );
-
     try {
       const data = await fetchAllSearchFolders(dbx, {
         query: params.query,

@@ -1,7 +1,9 @@
 import { trigger } from "@prismatic-io/spectral";
 import { notificationsTriggerInputs } from "../inputs";
-import { createNotificationTrigger, deleteNotificationTrigger } from "../util/triggers";
-
+import {
+  createNotificationTrigger,
+  deleteNotificationTrigger,
+} from "../util/triggers";
 export const notificationsTrigger = trigger({
   display: {
     label: "CRM Notifications",
@@ -13,12 +15,14 @@ export const notificationsTrigger = trigger({
   scheduleSupport: "invalid",
   allowsBranching: false,
   perform: async (context, payload, _params) => {
-    const storedChannelId = context.crossFlowState.zohoChannelId as number | undefined;
-
+    const storedChannelId = context.crossFlowState.zohoChannelId as
+      | number
+      | undefined;
     if (!storedChannelId) {
-      const body = payload.body as { channel_id?: number };
+      const body = payload.body as {
+        channel_id?: number;
+      };
       const channelId = body?.channel_id;
-
       if (channelId) {
         return Promise.resolve({
           payload,
@@ -32,7 +36,6 @@ export const notificationsTrigger = trigger({
         });
       }
     }
-
     return Promise.resolve({
       payload,
       response: {

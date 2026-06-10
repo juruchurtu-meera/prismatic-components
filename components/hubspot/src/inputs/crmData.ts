@@ -1,5 +1,4 @@
 import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
-
 export const importId = input({
   label: "Import ID",
   type: "string",
@@ -9,7 +8,6 @@ export const importId = input({
   example: "43203123",
   dataSource: "selectImport",
 });
-
 export const importOperations = input({
   label: "Import Operations",
   type: "code",
@@ -20,7 +18,6 @@ export const importOperations = input({
   clean: util.types.toObject,
   example: JSON.stringify({ "0-1": "CREATE" }),
 });
-
 export const dateFormat = input({
   label: "Date Format",
   type: "string",
@@ -36,7 +33,6 @@ export const dateFormat = input({
   example: "YEAR_MONTH_DAY",
   clean: util.types.toString,
 });
-
 export const marketableContactImport = input({
   label: "Marketable Contact Import",
   type: "boolean",
@@ -45,16 +41,15 @@ export const marketableContactImport = input({
   comments: "When true, the contacts being imported are marketable.",
   clean: util.types.toBool,
 });
-
 export const createContactListFromImport = input({
   label: "Create Contact List From Import",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "When true, creates a static list of the contacts from your import.",
+  comments:
+    "When true, creates a static list of the contacts from your import.",
   clean: util.types.toBool,
 });
-
 export const files = input({
   label: "Files",
   type: "code",
@@ -91,7 +86,6 @@ export const files = input({
     },
   ]),
 });
-
 export const dataFiles = input({
   label: "Data CSV File",
   type: "data",
@@ -100,9 +94,9 @@ export const dataFiles = input({
   comments:
     "The CSV file to import, this should be binary data from a previous step. Key name should be the file name and the value should be the binary data.",
   example: "key: 'contact-import-file.csv', value: 'binary data'",
-  clean: (values: unknown) => util.types.keyValPairListToObject(values as KeyValuePair[]),
+  clean: (values: unknown) =>
+    util.types.keyValPairListToObject(values as KeyValuePair[]),
 });
-
 export const schemaType = input({
   label: "Schema Type",
   type: "string",
@@ -114,7 +108,6 @@ export const schemaType = input({
     { label: "PublicExportListRequest", value: "LIST" },
   ],
 });
-
 export const format = input({
   label: "Format",
   type: "string",
@@ -127,7 +120,6 @@ export const format = input({
     { label: "XLS", value: "XLS" },
   ],
 });
-
 export const exportName = input({
   label: "Export Name",
   type: "string",
@@ -135,7 +127,6 @@ export const exportName = input({
   comments: "The name of the export.",
   example: "My Export",
 });
-
 export const objectProperties = input({
   label: "Object Properties",
   type: "string",
@@ -144,7 +135,6 @@ export const objectProperties = input({
   comments: "A list of the properties you want included in your export.",
   example: "email",
 });
-
 export const associatedObjectType = input({
   label: "Associated Object Type",
   type: "string",
@@ -153,7 +143,6 @@ export const associatedObjectType = input({
     "The name or ID of an associated object to include in the export. If you include an associated object, the export will contain the associated record IDs of that object and the records' primary display property value.",
   example: "name",
 });
-
 export const language = input({
   label: "Language",
   type: "string",
@@ -173,7 +162,6 @@ export const language = input({
   ],
   comments: "The language of the export file.",
 });
-
 export const publicCrmSearchRequest = input({
   label: "Public CRM Search Request (Only for PublicExportViewRequest)",
   type: "code",
@@ -196,7 +184,6 @@ export const publicCrmSearchRequest = input({
     query: "string",
   }),
 });
-
 export const listId = input({
   label: "List Id (Only and required for PublicExportListRequest)",
   type: "string",

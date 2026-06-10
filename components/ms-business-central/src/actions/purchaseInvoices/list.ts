@@ -3,11 +3,11 @@ import { getMsBusinessCentralClient } from "../../client";
 import { listPurchaseInvoicesExamplePayload } from "../../examplePayloads";
 import { listPurchaseInvoicesInputs } from "../../inputs/purchaseInvoices";
 import type { MultipleItemsResponse, PurchaseInvoice } from "../../interfaces";
-
 export const listPurchaseInvoices = action({
   display: {
     label: "List Purchase Invoices",
-    description: "Retrieve all purchase invoices in your Business Central organization.",
+    description:
+      "Retrieve all purchase invoices in your Business Central organization.",
   },
   inputs: listPurchaseInvoicesInputs,
   perform: async (
@@ -27,7 +27,11 @@ export const listPurchaseInvoices = action({
       $select,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const params = {
       $search,
       $skip,
@@ -40,14 +44,12 @@ export const listPurchaseInvoices = action({
       $orderBy,
       $select,
     };
-
     const { data } = await client.get<MultipleItemsResponse<PurchaseInvoice[]>>(
       `/companies(${companyId})/purchaseInvoices`,
       {
         params,
       },
     );
-
     return { data };
   },
   examplePayload: listPurchaseInvoicesExamplePayload,

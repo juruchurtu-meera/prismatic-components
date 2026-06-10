@@ -15,7 +15,6 @@ import {
   viewer_info_policy,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const shareFolder = action({
   display: {
     label: "Share Folder",
@@ -29,7 +28,6 @@ export const shareFolder = action({
       params.userType,
       params.teamMemberId,
     );
-
     try {
       const data = await dbx.sharingShareFolder({
         path: params.path,
@@ -41,7 +39,6 @@ export const shareFolder = action({
         viewer_info_policy: params.viewer_info_policy as any,
         actions: params.actions as any,
       });
-
       return {
         data,
       };

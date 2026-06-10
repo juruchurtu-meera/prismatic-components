@@ -4,7 +4,6 @@ import {
   oauth2Connection,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
 const zohoRegions = [
   {
     tld: "https://accounts.zoho.eu",
@@ -19,7 +18,6 @@ const zohoRegions = [
   { tld: "https://accounts.zohocloud.ca", location: "Canada" },
   { tld: "https://accounts.zoho.sa", location: "Saudi Arabia" },
 ];
-
 export const clientId = input({
   label: "Client ID",
   placeholder: "Enter Client ID",
@@ -30,7 +28,6 @@ export const clientId = input({
     "The Client ID for the Zoho API application. Generate this in the [Zoho API Console](https://api-console.zoho.com/).",
   example: "1000.ABC123XYZ456DEF789",
 });
-
 export const clientSecret = input({
   label: "Client Secret",
   placeholder: "Enter Client Secret",
@@ -41,7 +38,6 @@ export const clientSecret = input({
     "The Client Secret for the Zoho API application. Generate this in the [Zoho API Console](https://api-console.zoho.com/).",
   example: "1234567890abcdef1234567890abcdef12345678",
 });
-
 export const scopes = input({
   label: "Scopes",
   placeholder: "Enter space-separated scopes",
@@ -51,7 +47,6 @@ export const scopes = input({
   comments:
     "Space-separated OAuth 2.0 permission scopes for the Zoho API. Can combine [Zoho CRM](https://www.zoho.com/crm/developer/docs/api/v8/scopes.html) and [Zoho Books](https://www.zoho.com/books/api/v3/oauth/#overview) scopes.",
   default: [
-    
     "ZohoCRM.coql.READ",
     "ZohoCRM.notifications.ALL",
     "ZohoCRM.users.ALL",
@@ -59,12 +54,10 @@ export const scopes = input({
     "ZohoCRM.settings.ALL",
     "ZohoCRM.modules.ALL",
     "ZohoCRM.bulk.ALL",
-    
     "ZohoBooks.fullaccess.all",
   ].join(" "),
   example: "ZohoCRM.modules.ALL ZohoBooks.fullaccess.all",
 });
-
 export const ZohoConnection = oauth2Connection({
   key: "oauth2",
   display: {
@@ -114,7 +107,6 @@ export const ZohoConnection = oauth2Connection({
     clientSecret,
   },
 });
-
 export const zohoTemplatedConnection = oauth2Connection({
   key: "zohoTemplatedConnection",
   display: {
@@ -145,9 +137,12 @@ export const zohoTemplatedConnection = oauth2Connection({
         type: "template",
         required: true,
         shown: false,
-        templateValue: "{{#zohoRegion}}/oauth/v2/auth?access_type=offline&prompt=consent",
-        example: "https://accounts.zoho.com/oauth/v2/auth?access_type=offline&prompt=consent",
-        comments: "The OAuth 2.0 Authorization URL for the selected Zoho region.",
+        templateValue:
+          "{{#zohoRegion}}/oauth/v2/auth?access_type=offline&prompt=consent",
+        example:
+          "https://accounts.zoho.com/oauth/v2/auth?access_type=offline&prompt=consent",
+        comments:
+          "The OAuth 2.0 Authorization URL for the selected Zoho region.",
       },
       tokenUrl: {
         label: "Token URL",
@@ -168,11 +163,11 @@ export const zohoTemplatedConnection = oauth2Connection({
         shown: false,
         templateValue: "{{#zohoRegion}}/oauth/v2/token/revoke",
         example: "https://accounts.zoho.com/oauth/v2/token/revoke",
-        comments: "The OAuth 2.0 Token Revocation URL for the selected Zoho region.",
+        comments:
+          "The OAuth 2.0 Token Revocation URL for the selected Zoho region.",
       },
     },
     OAuth2Type.AuthorizationCode,
   ),
 });
-
 export default [zohoTemplatedConnection, ZohoConnection];

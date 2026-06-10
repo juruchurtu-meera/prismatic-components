@@ -3,7 +3,6 @@ import { createFreshserviceClient } from "../client";
 import { selectProblemInputs as inputs } from "../inputs/dataSources";
 import type { Problem } from "../types/dataSourceTypes";
 import { getListData } from "../util";
-
 export const selectProblem = dataSource({
   display: {
     label: "Select Problem",
@@ -13,7 +12,6 @@ export const selectProblem = dataSource({
   dataSourceType: "picklist",
   perform: async (_context, { connection }) => {
     const client = createFreshserviceClient(connection, false);
-
     const { data } = await getListData<Problem, "problems">(
       client,
       `/problems`,
@@ -21,12 +19,10 @@ export const selectProblem = dataSource({
       true,
       {},
     );
-
     const objects = (data.problems || []).map<Element>(({ id, subject }) => ({
       key: util.types.toString(id),
       label: subject,
     }));
-
     return { result: objects };
   },
 });

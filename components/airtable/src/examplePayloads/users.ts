@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const getCurrentUserExamplePayload = {
   data: {
     id: "usrL2PNC5o3H4lBEi",

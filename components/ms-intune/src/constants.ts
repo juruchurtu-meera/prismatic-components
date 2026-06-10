@@ -1,10 +1,8 @@
 export const API_URL = "https://graph.microsoft.com/";
-
 export const API_VERSIONS = {
   beta: "beta",
   v1: "v1.0",
 };
-
 export const DEVICE_ACTION_RESULTS_EXAMPLE = [
   {
     "@odata.type": "microsoft.graph.deviceActionResult",
@@ -14,7 +12,6 @@ export const DEVICE_ACTION_RESULTS_EXAMPLE = [
     lastUpdatedDateTime: "2017-01-01T00:00:56.8321556-08:00",
   },
 ];
-
 export const CONFIGURATION_MANAGER_CLIENT_ENABLED_FEATURES_EXAMPLE = {
   "@odata.type": "microsoft.graph.configurationManagerClientEnabledFeatures",
   inventory: true,
@@ -24,7 +21,6 @@ export const CONFIGURATION_MANAGER_CLIENT_ENABLED_FEATURES_EXAMPLE = {
   compliancePolicy: true,
   windowsUpdateForBusiness: true,
 };
-
 export const DEVICE_HEALTH_ATTESTATION_STATE_EXAMPLE = {
   "@odata.type": "microsoft.graph.deviceHealthAttestationState",
   lastUpdateDateTime: "Last Update Date Time value",
@@ -62,7 +58,6 @@ export const DEVICE_HEALTH_ATTESTATION_STATE_EXAMPLE = {
   healthStatusMismatchInfo: "Health Status Mismatch Info value",
   healthAttestationSupportedStatus: "Health Attestation Supported Status value",
 };
-
 export const CREATE_OFFICE_SUITE_APP_SPECIFIC_PROPERTIES_EXAMPLE =
   JSON.stringify(
     {
@@ -87,7 +82,6 @@ export const CREATE_OFFICE_SUITE_APP_SPECIFIC_PROPERTIES_EXAMPLE =
     null,
     2,
   );
-
 export const UPDATE_OFFICE_SUITE_APP_SPECIFIC_PROPERTIES_EXAMPLE =
   JSON.stringify(
     {
@@ -96,24 +90,17 @@ export const UPDATE_OFFICE_SUITE_APP_SPECIFIC_PROPERTIES_EXAMPLE =
     null,
     2,
   );
-
 export const MANAGED_APPS_FILTER =
   "(microsoft.graph.managedApp/appAvailability eq null or microsoft.graph.managedApp/appAvailability eq 'lineOfBusiness' or isAssigned eq true)";
-
 export const NO_RESPONSE_SUCCESSFULL_PAYLOAD = "Action successfully completed.";
-
 export enum TriggerBranches {
   Notification = "Notification",
   URLValidation = "URL Validation",
 }
-
 export const MAX_MINUTES_EXPIRATION_USERS_GROUPS_SUBSCRIPTION = 41760;
-
 export const ADD_MEMBERS_RESPONSE_MESSAGE =
   "Sucessfully added member(s) to group.";
-
 export const DELETE_MEMBERS_RESPONSE_MESSAGE =
   "Successfully deleted member from group.";
-
 export const GENERAL_MEMBER_TYPE_URL =
   "https://graph.microsoft.com/v1.0/directoryObjects";

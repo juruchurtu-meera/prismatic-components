@@ -3,7 +3,6 @@ import mime from "mime-types";
 import { Readable } from "node:stream";
 import { createClient } from "../client";
 import { connection, fileId, fileContent, fileName, fields } from "../inputs";
-
 export const updateFile = action({
   display: {
     label: "Update File",
@@ -14,11 +13,8 @@ export const updateFile = action({
     const fileName = util.types.toString(params.fileName);
     const fields = util.types.toString(params.fields);
     const { data: fileData } = util.types.toData(params.fileContent);
-
     const mimeType = mime.lookup(fileName) || undefined;
-
     const drive = createClient(params.connection);
-
     const { data } = await drive.files.update({
       fileId,
       requestBody: {
@@ -32,7 +28,6 @@ export const updateFile = action({
       fields,
       supportsAllDrives: true,
     });
-
     return {
       data,
     };
@@ -54,5 +49,4 @@ export const updateFile = action({
     },
   },
 });
-
 export default updateFile;

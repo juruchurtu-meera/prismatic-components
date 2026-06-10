@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const codesOfConductGetAllCodesOfConduct = action({
   display: {
     label: "Codes Of Conduct Get All Codes Of Conduct",
@@ -19,14 +18,16 @@ const codesOfConductGetAllCodesOfConduct = action({
     },
   },
 });
-
 const codesOfConductGetConductCode = action({
   display: {
     label: "Codes Of Conduct Get Conduct Code",
     description: "Get a code of conduct",
   },
   perform: async (context, { connection, key }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/codes_of_conduct/${key}`);
     return { data };
   },
@@ -44,7 +45,6 @@ const codesOfConductGetConductCode = action({
     },
   },
 });
-
 export default {
   codesOfConductGetAllCodesOfConduct,
   codesOfConductGetConductCode,

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const upsertContactInputs = {
   connection,
   creatorId: input({
@@ -12,7 +11,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -22,7 +20,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   isOrganization: input({
     label: "Is Organization",
     comments:
@@ -37,7 +34,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   contactId: input({
     label: "Contact ID",
     placeholder: "Enter Contact ID",
@@ -49,7 +45,6 @@ export const upsertContactInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   parentOrganizationId: input({
     label: "Parent Organization ID",
     comments:
@@ -59,7 +54,6 @@ export const upsertContactInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   name: input({
     label: "Name",
     placeholder: "Enter name",
@@ -68,7 +62,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   firstName: input({
     label: "First Name",
     placeholder: "Enter first name",
@@ -77,7 +70,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   lastName: input({
     label: "Last Name",
     placeholder: "Enter last name",
@@ -87,7 +79,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   email: input({
     label: "Email",
     comments: "Email address of the contact.",
@@ -95,7 +86,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   phone: input({
     label: "Phone",
     comments: "Phone number of the contact.",
@@ -103,7 +93,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   mobile: input({
     label: "Mobile",
     comments: "Mobile phone number of the contact.",
@@ -111,7 +100,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customerStatus: input({
     label: "Customer Status",
     comments:
@@ -127,7 +115,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   prospectStatus: input({
     label: "Prospect Status",
     comments:
@@ -143,7 +130,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressCity: input({
     label: "Address (City)",
     comments: "City name.",
@@ -151,7 +137,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressPostalCode: input({
     label: "Address (Postal Code)",
     comments: "Zip code or equivalent",
@@ -159,7 +144,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressCountry: input({
     label: "Address (Country)",
     comments: "Country name.",
@@ -167,7 +151,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   billingAddress: input({
     label: "Billing Address",
     comments:
@@ -184,7 +167,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   shippingAddress: input({
     label: "Shipping Address",
     comments:
@@ -201,7 +183,6 @@ export const upsertContactInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customFields: input({
     label: "Custom Field",
     comments: "Filterable custom field key-value pairs.",
@@ -211,7 +192,6 @@ export const upsertContactInputs = {
     required: false,
     example: "key: external_id value: SKU01",
   }),
-
   filterableCustomFields: input({
     label: "Filter",
     type: "string",
@@ -220,7 +200,6 @@ export const upsertContactInputs = {
     comments: "Filterable custom field.",
     example: "key: custom_fields[referral_website] value: https://www.test.com",
   }),
-
   inclusive: input({
     label: "Inclusive",
     comments:

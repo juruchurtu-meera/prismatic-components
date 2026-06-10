@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getInstalledEquipmentResponse } from "../../examplePayloads";
 import { connection, installedEquipmentId } from "../../inputs";
-
 export const getInstalledEquipment = action({
   display: {
     label: "Get Installed Equipment",

@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { SEARCH_ENDPOINTS } from "../constant";
 import { MAX_SEARCH_LIMIT } from "../constants";
 import { cleanNumberInput } from "../util";
-
 export const propertyName = input({
   label: "Property Name",
   type: "string",
@@ -12,7 +11,6 @@ export const propertyName = input({
   comments:
     "The property to search on. Ensure the spelling and capitalization are correct for the property you want to use.",
 });
-
 export const operator = input({
   label: "Operator",
   type: "string",
@@ -33,7 +31,6 @@ export const operator = input({
     { label: "Not Contains Token", value: "NOT_CONTAINS_TOKEN" },
   ],
 });
-
 export const searchEndpoint = input({
   label: "Search Endpoint",
   type: "string",
@@ -43,7 +40,6 @@ export const searchEndpoint = input({
     "The endpoint to search for objects or engagements. For Custom objects don't forget to fill the Object Type input.",
   clean: util.types.toString,
 });
-
 export const searchProperties = input({
   label: "Search Properties",
   type: "code",
@@ -65,7 +61,6 @@ export const searchProperties = input({
   ),
   clean: util.types.toObject,
 });
-
 export const searchLimit = input({
   label: "Search Limit",
   type: "string",

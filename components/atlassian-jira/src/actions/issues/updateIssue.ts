@@ -21,18 +21,21 @@ import {
   versions,
 } from "../../inputs";
 import { getIssueType, validateDescription } from "../../util";
-
 export const updateIssue = action({
   display: {
     label: "Update Issue",
     description: "Update an existing issue within a given project.",
   },
   perform: async (context, params) => {
-    const client = await createV3Client(params.jiraConnection, context.debug.enabled);
-
+    const client = await createV3Client(
+      params.jiraConnection,
+      context.debug.enabled,
+    );
     const issuetype = getIssueType(params.issueType, params.issueTypeId, false);
-    const description = validateDescription(params.description, params.ADFdescription);
-
+    const description = validateDescription(
+      params.description,
+      params.ADFdescription,
+    );
     const config = {
       fields: {
         project: {
@@ -58,7 +61,9 @@ export const updateIssue = action({
             }
           : undefined,
         labels: params.labels,
-        duedate: params.dueDate ? util.types.toString(params.dueDate) : undefined,
+        duedate: params.dueDate
+          ? util.types.toString(params.dueDate)
+          : undefined,
         versions: util.types.toString(params.versions)
           ? JSON.parse(util.types.toString(params.versions))
           : undefined,

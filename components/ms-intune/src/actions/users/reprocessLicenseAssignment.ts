@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { reprocessLicenseAssignmentExamplePayload } from "../../examplePayloads";
 import { reprocessLicenseAssignmentInputs } from "../../inputs/users/reprocessLicenseAssignment";
-
 export const reprocessUserLicenseAssignment = action({
   display: {
     label: "Reprocess User License Assignment",

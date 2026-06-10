@@ -10,7 +10,6 @@ import {
   serviceDeskId,
   start,
 } from "./common";
-
 const requestSummary = input({
   label: "Summary",
   type: "string",
@@ -20,7 +19,6 @@ const requestSummary = input({
   example: "Laptop won't start",
   clean: util.types.toString,
 });
-
 const requestDescription = input({
   label: "Description",
   type: "string",
@@ -31,7 +29,6 @@ const requestDescription = input({
   example: "My laptop stopped responding after the latest update.",
   clean: toOptionalString,
 });
-
 const requestFieldValues = input({
   label: "Field Values",
   type: "code",
@@ -43,7 +40,6 @@ const requestFieldValues = input({
   example: '{"priority": {"name": "High"}, "customfield_10010": "value"}',
   clean: toObjectOrEmpty,
 });
-
 const raiseOnBehalfOf = input({
   label: "Raise On Behalf Of",
   type: "string",
@@ -54,7 +50,6 @@ const raiseOnBehalfOf = input({
   example: "5b10ac8d82e05b22cc7d4ef5",
   clean: toOptionalString,
 });
-
 const commentBody = input({
   label: "Comment Body",
   type: "string",
@@ -65,7 +60,6 @@ const commentBody = input({
   example: "We are investigating the issue and will update you shortly.",
   clean: util.types.toString,
 });
-
 const publicComment = input({
   label: "Public",
   type: "boolean",
@@ -75,7 +69,6 @@ const publicComment = input({
     "When true, the comment is visible to the customer. When false, the comment is internal only.",
   clean: util.types.toBool,
 });
-
 const approvalId = input({
   label: "Approval ID",
   type: "string",
@@ -87,7 +80,6 @@ const approvalId = input({
   dataSource: "selectApproval",
   clean: util.types.toString,
 });
-
 const approvalDecision = input({
   label: "Decision",
   type: "string",
@@ -100,7 +92,6 @@ const approvalDecision = input({
   placeholder: "Select decision",
   clean: util.types.toString,
 });
-
 const transitionId = input({
   label: "Transition ID",
   type: "string",
@@ -112,7 +103,6 @@ const transitionId = input({
   dataSource: "selectTransition",
   clean: util.types.toString,
 });
-
 const commentOnTransition = input({
   label: "Comment",
   type: "string",
@@ -122,7 +112,6 @@ const commentOnTransition = input({
   placeholder: "Enter transition comment",
   clean: toOptionalString,
 });
-
 const attachmentTemporaryFileId = input({
   label: "Temporary File ID",
   type: "string",
@@ -133,7 +122,6 @@ const attachmentTemporaryFileId = input({
   example: "temp:123456",
   clean: util.types.toString,
 });
-
 const fileContents = input({
   label: "File Contents",
   placeholder: "Output data from previous step",
@@ -144,7 +132,6 @@ const fileContents = input({
   example: "My File Contents",
   clean: util.types.toBufferDataPayload,
 });
-
 const fileName = input({
   label: "File Name",
   type: "string",
@@ -155,7 +142,6 @@ const fileName = input({
   example: "atlassian.png",
   clean: util.types.toString,
 });
-
 export const createRequestInputs = {
   connection,
   serviceDeskId,
@@ -166,12 +152,10 @@ export const createRequestInputs = {
   raiseOnBehalfOf,
   additionalFields,
 };
-
 export const getRequestInputs = {
   connection,
   issueIdOrKey,
 };
-
 export const listRequestsInputs = {
   connection,
   serviceDeskId,
@@ -179,7 +163,6 @@ export const listRequestsInputs = {
   start,
   limit,
 };
-
 export const listCommentsInputs = {
   connection,
   issueIdOrKey,
@@ -187,14 +170,12 @@ export const listCommentsInputs = {
   start,
   limit,
 };
-
 export const addCommentInputs = {
   connection,
   issueIdOrKey,
   commentBody,
   publicComment,
 };
-
 export const listApprovalsInputs = {
   connection,
   issueIdOrKey,
@@ -202,14 +183,12 @@ export const listApprovalsInputs = {
   start,
   limit,
 };
-
 export const approveRequestInputs = {
   connection,
   issueIdOrKey,
   approvalId,
   approvalDecision,
 };
-
 export const listTransitionsInputs = {
   connection,
   issueIdOrKey,
@@ -217,14 +196,12 @@ export const listTransitionsInputs = {
   start,
   limit,
 };
-
 export const transitionRequestInputs = {
   connection,
   issueIdOrKey,
   transitionId,
   commentOnTransition,
 };
-
 export const listSlaInputs = {
   connection,
   issueIdOrKey,
@@ -232,14 +209,12 @@ export const listSlaInputs = {
   start,
   limit,
 };
-
 export const uploadTemporaryFileInputs = {
   connection,
   serviceDeskId,
   fileContents,
   fileName,
 };
-
 export const addAttachmentInputs = {
   connection,
   issueIdOrKey,

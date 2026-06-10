@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-09
+
+Added the **New Records** polling trigger for Devices and Groups, which checks for records added since the last run
+
 ### 2026-04-30
 
 Updated spectral version

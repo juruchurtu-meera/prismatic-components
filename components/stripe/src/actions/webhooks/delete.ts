@@ -3,7 +3,6 @@ import { createStripeClient } from "../../auth";
 import { timeout, connectionInput, webhookId } from "../../inputs";
 import { deleteWebhookExamplePayload } from "../../examplePayloads/webhooks";
 import { deleteWebhookFn } from "../../util";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",

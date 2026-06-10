@@ -7,7 +7,6 @@ import {
   sysId,
 } from "../../inputs";
 import { createNowApiClient } from "../../util";
-
 export const getAttachment = action({
   display: {
     label: "Get Attachment",

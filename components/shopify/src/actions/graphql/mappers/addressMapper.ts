@@ -1,5 +1,4 @@
 import type { RestAddress } from "../../interfaces/RestAddress";
-
 export const addressMapper = (input: RestAddress) => {
   return {
     firstName: input.first_name || undefined,

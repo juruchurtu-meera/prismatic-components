@@ -3,7 +3,6 @@ import {
   globalCompanyIdInput,
   reportSuiteIdInput,
 } from "../common";
-
 export const listReportSuiteDimensionsInputs = {
   connection: connectionInput,
   globalCompanyId: globalCompanyIdInput,

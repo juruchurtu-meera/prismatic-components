@@ -36,7 +36,6 @@ export const TYPE_MODEL = [
     value: "ENTITY_RISK",
   },
 ];
-
 export const EVENT_LIST_MODEL = [
   { label: "User Created", value: "user.lifecycle.create" },
   {
@@ -99,7 +98,6 @@ export const EVENT_LIST_MODEL = [
     value: "application.user_membership.update",
   },
 ];
-
 export const EVENT_WEBHOOK_VERSION = "1.0.0";
 export const EVENT_WEBHOOK_CHANNEL_TYPE = "HTTP";
 export const EVENT_WEBHOOK_TYPE = "EVENT_TYPE";

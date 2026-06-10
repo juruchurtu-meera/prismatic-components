@@ -1,9 +1,16 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-import { driveId, pageToken, pageSize, connection, fields, query, fetchAll } from "../inputs";
+import {
+  driveId,
+  pageToken,
+  pageSize,
+  connection,
+  fields,
+  query,
+  fetchAll,
+} from "../inputs";
 import { getDriveQueryParams } from "../util";
 import { fetchFiles } from "../helpers/pagination";
-
 export const listFiles = action({
   display: {
     label: "List Files",
@@ -22,7 +29,6 @@ export const listFiles = action({
       },
       fetchAll: params.fetchAll,
     });
-
     return {
       data,
     };
@@ -32,5 +38,4 @@ export const listFiles = action({
     data: { files: [{ name: "example", description: "example" }] },
   },
 });
-
 export default listFiles;

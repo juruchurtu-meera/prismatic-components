@@ -1,7 +1,16 @@
 import { pollingTrigger, trigger } from "@prismatic-io/spectral";
 import changes from "./actions/changes";
-import type { ListChangesResult, SearchRecordsPollingState } from "./interfaces";
-import { ancestorName, connection, consolidationStrategy, itemName, triggerEvents } from "./inputs";
+import type {
+  ListChangesResult,
+  SearchRecordsPollingState,
+} from "./interfaces";
+import {
+  ancestorName,
+  connection,
+  consolidationStrategy,
+  itemName,
+  triggerEvents,
+} from "./inputs";
 import {
   BASE_EXAMPLE_PAYLOAD,
   driveActivityPollingTriggerExamplePayload,
@@ -10,7 +19,6 @@ import {
 import { createActivityClient } from "./client";
 import { cleanItemInput, getQueryDriveActivity } from "./util";
 import type { driveactivity_v2 } from "googleapis";
-
 export const pushNotificationWebhook = trigger({
   display: {
     label: "Push Notification Webhook",
@@ -28,7 +36,6 @@ export const pushNotificationWebhook = trigger({
   scheduleSupport: "invalid",
   examplePayload: { ...BASE_EXAMPLE_PAYLOAD },
 });
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Files",
@@ -40,21 +47,22 @@ export const pollChangesTrigger = pollingTrigger({
     const actionReturn = await context.polling.invokeAction(params);
     const data = actionReturn.data as ListChangesResult;
     let polledNoChanges = true;
-
     if (data.changes.length > 0) {
       polledNoChanges = false;
     }
-
     return Promise.resolve({
       payload: { ...payload, body: { data } },
-      ...(actionReturn.crossFlowState ? { crossFlowState: actionReturn.crossFlowState } : {}),
-      ...(actionReturn.instanceState ? { instanceState: actionReturn.instanceState } : {}),
+      ...(actionReturn.crossFlowState
+        ? { crossFlowState: actionReturn.crossFlowState }
+        : {}),
+      ...(actionReturn.instanceState
+        ? { instanceState: actionReturn.instanceState }
+        : {}),
       polledNoChanges,
     });
   },
   examplePayload: { ...pollChangesTriggerExamplePayload },
 });
-
 export const driveActivityPollingTrigger = pollingTrigger({
   display: {
     label: "Drive Activity",
@@ -68,7 +76,8 @@ export const driveActivityPollingTrigger = pollingTrigger({
       ...ancestorName,
       comments:
         "Return activities for this Drive or folder, plus all children and descendants. You may supply an array of drive or folder IDs.",
-      clean: (value) => (Array.isArray(value) ? value : [value]).map(cleanItemInput),
+      clean: (value) =>
+        (Array.isArray(value) ? value : [value]).map(cleanItemInput),
     },
     consolidationStrategy,
     connection,
@@ -79,15 +88,15 @@ export const driveActivityPollingTrigger = pollingTrigger({
     { triggerEvents, connection, ancestorName: ancestors, ...params },
   ) => {
     const pollState = context.polling.getState() as SearchRecordsPollingState;
-    const lastPolledAt: string = pollState.lastPolledAt || new Date().toISOString();
-
+    const lastPolledAt: string =
+      pollState.lastPolledAt || new Date().toISOString();
     let filter = `time > "${lastPolledAt}"`;
     filter +=
-      triggerEvents.length > 0 ? ` AND detail.action_detail_case:(${triggerEvents.join(" ")})` : "";
-
+      triggerEvents.length > 0
+        ? ` AND detail.action_detail_case:(${triggerEvents.join(" ")})`
+        : "";
     const drive = createActivityClient(connection);
     const searchRecords: driveactivity_v2.Schema$DriveActivity[] = [];
-
     for (const ancestor of ancestors) {
       const actionReturn = await getQueryDriveActivity(
         drive,
@@ -100,10 +109,8 @@ export const driveActivityPollingTrigger = pollingTrigger({
       );
       searchRecords.push(...(actionReturn.activities || []));
     }
-
     const newLastPolledAtDate = new Date().toISOString();
     context.polling.setState({ lastPolledAt: newLastPolledAtDate });
-
     return Promise.resolve({
       payload: { ...payload, body: { data: searchRecords } },
       polledNoChanges: searchRecords.length === 0,
@@ -111,7 +118,6 @@ export const driveActivityPollingTrigger = pollingTrigger({
   },
   examplePayload: { ...driveActivityPollingTriggerExamplePayload },
 });
-
 export default {
   pushNotificationWebhook,
   pollChangesTrigger,

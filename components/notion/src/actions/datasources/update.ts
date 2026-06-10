@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { updateDataSourceInputs } from "../../inputs";
 import { createClient } from "../../client";
 import { updateDataSourceResponse } from "../../examplePayloads";
-
 export const updateDataSource = action({
   display: {
     label: "Update Data Source",
@@ -15,7 +14,6 @@ export const updateDataSource = action({
     { connection, dataSourceId, title, properties, icon, databaseId },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const payload = {
       title,
       properties,
@@ -27,7 +25,6 @@ export const updateDataSource = action({
           }
         : undefined,
     };
-
     const { data } = await client.patch(
       `/data_sources/${dataSourceId}`,
       payload,

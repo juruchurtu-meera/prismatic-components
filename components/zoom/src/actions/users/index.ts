@@ -5,7 +5,6 @@ import { getUser } from "./getUser";
 import { deleteUser } from "./deleteUser";
 import { listUsersChatMessages } from "./listChatMessages";
 import { listUsersChannels } from "./listUserChannels";
-
 export default {
   listUsers,
   createUser,

@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-05
+
+Added the **New and Updated Assets** polling trigger, which checks a library for assets created or modified since the last run
+
 ### 2026-04-30
 
 Updated spectral version

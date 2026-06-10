@@ -2,7 +2,6 @@ import { action, input } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, workspaceId } from "../../inputs";
 import { TAG_OPT_FIELDS } from "../../util";
-
 interface Tag {
   gid: string;
   name: string;
@@ -10,7 +9,6 @@ interface Tag {
   created_at: string;
   resource_type: string;
 }
-
 interface TagReturn {
   data: {
     data: Tag[];
@@ -21,7 +19,6 @@ interface TagReturn {
     };
   };
 }
-
 export const findTagByName = action({
   display: {
     label: "Find Tag by Name",

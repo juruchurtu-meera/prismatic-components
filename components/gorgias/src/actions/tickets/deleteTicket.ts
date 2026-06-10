@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { MESSAGES } from "../../constants";
 import { deleteTicketInputs } from "../../inputs/tickets";
 import { successEmptyExamplePayload as examplePayload } from "../../examplePayloads/shared";
-
 export const deleteTicket = action({
   display: {
     label: "Delete Ticket",
@@ -14,7 +13,6 @@ export const deleteTicket = action({
       connection,
       debug: context.debug.enabled,
     }).delete(`/tickets/${id}`);
-
     return {
       data: { message: MESSAGES.SUCCESS },
     };

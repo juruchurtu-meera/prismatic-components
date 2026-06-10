@@ -6,7 +6,6 @@ import { acknowledgeMessage } from "./actions/acknowledgeMessage";
 import { checkConnection } from "./actions/checkConnection";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import connections from "./connections";
-
 export default component({
   key: "amqp",
   documentationUrl: "https://prismatic.io/docs/components/amqp/",

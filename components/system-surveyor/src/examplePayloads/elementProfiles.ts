@@ -1,7 +1,3 @@
-
-
-
-
 export const listElementProfilesExamplePayload = {
   data: {
     count: 23,
@@ -20,7 +16,6 @@ export const listElementProfilesExamplePayload = {
     ],
   },
 };
-
 export const getElementProfileAccessoriesExamplePayload = {
   data: [
     {
@@ -36,7 +31,6 @@ export const getElementProfileAccessoriesExamplePayload = {
     },
   ],
 };
-
 export const syncElementProfileExamplePayload = {
   data: {
     id: 9045,

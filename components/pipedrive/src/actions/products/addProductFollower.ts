@@ -2,14 +2,17 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, productIdInput } from "../../inputs";
 import { WebhookVersion } from "../../constants";
-
 export const addProductFollower = action({
   display: {
     label: "Add Product Follower",
     description: "Adds a follower to a product.",
   },
   perform: async (context, { connection, id, userId }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post(`/products/${id}/followers`, {
       user_id: userId,
     });

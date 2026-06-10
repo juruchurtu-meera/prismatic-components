@@ -3,7 +3,6 @@ import { getCalendlyClient } from "../../client";
 import { connection, uuid, email, sort, status } from "../../inputs";
 import { listOrganizationInvitationsExamplePayload } from "../../examplePayloads";
 import { paginator } from "../../util";
-
 export const listOrganizationInvitations = action({
   display: {
     label: "List Organization Invitations",
@@ -17,7 +16,6 @@ export const listOrganizationInvitations = action({
       sort: sort || undefined,
       status: status || undefined,
     });
-
     return { data };
   },
   inputs: {

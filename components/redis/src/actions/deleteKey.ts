@@ -3,7 +3,6 @@ import { key, connectionInput } from "../inputs";
 import { createClient } from "../client";
 import closeConnection from "../closeConnection";
 import { deleteKeyExamplePayload } from "../examplePayloads";
-
 export const deleteKey = action({
   display: {
     label: "Delete Key",
@@ -15,9 +14,7 @@ export const deleteKey = action({
       context.debug.enabled,
     );
     const data = await client.del(key);
-
     await closeConnection(client);
-
     return {
       data,
     };

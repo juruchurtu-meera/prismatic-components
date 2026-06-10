@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { manageIncidentsExamplePayload } from "../../examplePayloads";
 import { connectionInput, incidents, limit, offset, total } from "../../inputs";
-
 export const updateIncidents = action({
   display: {
     label: "Manage Incidents",

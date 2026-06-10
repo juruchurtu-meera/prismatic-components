@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, version } from "../inputs";
 import type { UserDataSources } from "../types";
-
 export const usersNames = dataSource({
   display: {
     label: "Fetch User Names",
@@ -29,7 +28,6 @@ export const usersNames = dataSource({
     ],
   },
 });
-
 export const users = dataSource({
   display: {
     label: "Fetch User Emails",

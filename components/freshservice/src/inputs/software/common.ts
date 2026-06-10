@@ -1,21 +1,17 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanNumberInput, cleanStringInput } from "../../util";
 import { additionalFields } from "../common";
-
 const softwareDocumentationComments =
   "See [Freshservice API documentation](https://api.freshservice.com/#software_attributes) for more information.";
-
 export const softwareAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${softwareDocumentationComments}`,
 });
-
 const applicationTypeOptions = [
   { label: "Desktop", value: "desktop" },
   { label: "SaaS", value: "saas" },
   { label: "Mobile", value: "mobile" },
 ];
-
 const statusOptions = [
   { label: "Restricted", value: "restricted" },
   { label: "Ignored", value: "ignored" },
@@ -25,7 +21,6 @@ const statusOptions = [
   { label: "In Review", value: "in review" },
   { label: "Needs Review", value: "needs review" },
 ];
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -35,7 +30,6 @@ export const name = input({
   placeholder: "Enter software name",
   clean: util.types.toString,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -45,7 +39,6 @@ export const description = input({
   placeholder: "Enter software description",
   clean: util.types.toString,
 });
-
 export const applicationType = input({
   label: "Application Type",
   type: "string",
@@ -56,7 +49,6 @@ export const applicationType = input({
   model: applicationTypeOptions,
   clean: util.types.toString,
 });
-
 export const status = input({
   label: "Status",
   type: "string",
@@ -67,7 +59,6 @@ export const status = input({
   model: statusOptions,
   clean: cleanStringInput,
 });
-
 export const managedById = input({
   label: "Managed By ID",
   type: "string",
@@ -78,7 +69,6 @@ export const managedById = input({
   placeholder: "79560",
   clean: cleanNumberInput,
 });
-
 export const notes = input({
   label: "Notes",
   type: "string",
@@ -88,7 +78,6 @@ export const notes = input({
   placeholder: "Enter notes",
   clean: cleanStringInput,
 });
-
 export const category = input({
   label: "Category",
   type: "string",
@@ -99,7 +88,6 @@ export const category = input({
   placeholder: "Enter category",
   clean: cleanStringInput,
 });
-
 export const source = input({
   label: "Source",
   type: "string",
@@ -110,7 +98,6 @@ export const source = input({
   placeholder: "Enter source",
   clean: cleanStringInput,
 });
-
 export const workspaceId = input({
   label: "Workspace ID",
   type: "string",
@@ -122,7 +109,6 @@ export const workspaceId = input({
   dataSource: "selectWorkspace",
   clean: cleanNumberInput,
 });
-
 export const applicationId = input({
   label: "Application ID",
   type: "string",

@@ -8,7 +8,6 @@ import {
   firstName,
   lastName,
 } from "../../inputs";
-
 export const updateEmployee = action({
   display: {
     label: "Update Employee",
@@ -36,7 +35,6 @@ export const updateEmployee = action({
   ) => {
     validateV2Connection(connectionInput);
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const { data } = await client.patch(
       `/companies/${companyId}/employees/${employeeId}`,
       {

@@ -8,7 +8,6 @@ import {
 } from "klaviyo-api";
 import { updateSegmentExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const updateSegment = action({
   display: {
     label: "Update Segment",

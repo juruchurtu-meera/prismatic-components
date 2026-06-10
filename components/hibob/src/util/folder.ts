@@ -1,5 +1,4 @@
 import { FolderType } from "../types/folderTypes";
-
 export function getFolderPath(
   employeeId: string,
   folderType: string,
@@ -7,7 +6,6 @@ export function getFolderPath(
   documentId?: string,
 ): string {
   const basePath = `/docs/people/${employeeId}`;
-
   switch (folderType) {
     case FolderType.SHARED:
       return documentId

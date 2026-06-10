@@ -3,7 +3,6 @@ import { getEventSubscriptionExamplePayload as examplePayload } from "../../exam
 import { getEventSubscriptionInputs as inputs } from "../../inputs/eventSubscriptions";
 import { action } from "@prismatic-io/spectral";
 import { getEventSubscriptionUrl } from "../../util";
-
 export const getEventSubscription = action({
   display: {
     label: "Get Event Subscription",
@@ -30,7 +29,6 @@ export const getEventSubscription = action({
       topicName,
       eventSubscriptionName,
     );
-
     const { data } = await managementClient.get(eventSubscriptionURL);
     return { data };
   },

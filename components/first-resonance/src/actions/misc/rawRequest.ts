@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGraphQLClient } from "../../client";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { rawRequestInputs } from "../../inputs/general";
-
 export const rawRequest = action({
   display: {
     label: "Run GraphQL Query",

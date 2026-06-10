@@ -9,7 +9,6 @@ import {
   parseAndCheckFault,
   performCommit,
 } from "../../util";
-
 export const callBapi = action({
   display: {
     label: "Call BAPI",
@@ -31,16 +30,12 @@ export const callBapi = action({
   ) => {
     const debug = context.debug.enabled;
     const client = createClient(connection, context, debug);
-
     const soapBody = buildSoapEnvelope(bapiName, bapiParameters || "");
-
     const { data } = await client.post(endpoint, soapBody, {
       headers: { SOAPAction: buildSoapAction(bapiName) },
     });
-
     const parsed = await parseAndCheckFault(data);
     const bapiResponse = getResponseBody(parsed);
-
     if (commitTransaction) {
       const commitResponse = await performCommit(
         client,
@@ -49,7 +44,6 @@ export const callBapi = action({
       );
       return { data: { bapiResponse, commitResponse } };
     }
-
     return { data: bapiResponse };
   },
 });

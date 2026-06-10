@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { upsertLeadExamplePayload } from "../../examplePayloads";
 import { upsertLeadInputs } from "../../inputs";
-
 export const upsertLead = action({
   display: {
     label: "Upsert Lead",
@@ -75,7 +74,6 @@ export const upsertLead = action({
           },
         },
       );
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

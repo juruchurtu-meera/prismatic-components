@@ -4,13 +4,11 @@ import {
   valueListInputClean,
   valueListInputToStringClean,
 } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const type = input({
   label: "Type",
   type: "string",
@@ -19,7 +17,6 @@ export const type = input({
   default: "policyList",
   clean: util.types.toString,
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -27,7 +24,6 @@ export const fileName = input({
   comments: "The name of a file generated from the exporter job.",
   clean: util.types.toString,
 });
-
 export const fileSystem = input({
   label: "File System",
   type: "string",
@@ -46,7 +42,6 @@ export const fileSystem = input({
     },
   ],
 });
-
 export const adminOnly = input({
   label: "Admin Only",
   type: "boolean",
@@ -56,7 +51,6 @@ export const adminOnly = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const shouldFixApprovalChains = input({
   label: "Admin Only",
   type: "boolean",
@@ -66,7 +60,6 @@ export const shouldFixApprovalChains = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const dryRun = input({
   label: "Dry Run",
   type: "boolean",
@@ -76,7 +69,6 @@ export const dryRun = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const userEmail = input({
   label: "User Email",
   type: "string",
@@ -85,7 +77,6 @@ export const userEmail = input({
     "Specifies the user to gather the policy list for. You must have been granted third-party access by that user/company domain beforehand.",
   clean: util.types.toString,
 });
-
 export const employeeEmail = input({
   label: "Employee Email",
   type: "string",
@@ -93,7 +84,6 @@ export const employeeEmail = input({
   comments: "The report will be created in that account.",
   clean: util.types.toString,
 });
-
 export const policyId = input({
   label: "Policy ID",
   type: "string",
@@ -102,7 +92,6 @@ export const policyId = input({
   example: "Any valid Expensify policy ID, owned or shared by the user",
   clean: util.types.toString,
 });
-
 export const ruleId = input({
   label: "Rule ID",
   type: "string",
@@ -111,7 +100,6 @@ export const ruleId = input({
   example: "Any valid Expensify rule ID, owned or shared by the user",
   clean: util.types.toInt,
 });
-
 export const domain = input({
   label: "Domain",
   type: "string",
@@ -119,7 +107,6 @@ export const domain = input({
   comments: "The name of the domain to get the cards for.",
   clean: util.types.toString,
 });
-
 export const status = input({
   label: "Status",
   type: "string",
@@ -129,7 +116,6 @@ export const status = input({
   clean: util.types.toString,
   default: "REIMBURSED",
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -137,7 +123,6 @@ export const limit = input({
   comments: "Maximum number of reports to export.",
   clean: util.types.toString,
 });
-
 export const test = input({
   label: "Test",
   type: "boolean",
@@ -146,7 +131,6 @@ export const test = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const reportState = input({
   label: "Report State",
   type: "string",
@@ -178,7 +162,6 @@ export const reportState = input({
     },
   ],
 });
-
 export const policyName = input({
   label: "Policy Name",
   type: "string",
@@ -186,7 +169,6 @@ export const policyName = input({
   comments: "The name of the policy to create.",
   clean: util.types.toString,
 });
-
 export const policyIDList = input({
   label: "Policy ID List",
   type: "string",
@@ -195,7 +177,6 @@ export const policyIDList = input({
   comments: "The IDs of the policies to get information for.",
   clean: valueListInputClean,
 });
-
 export const fields = input({
   label: "Fields",
   type: "string",
@@ -226,7 +207,6 @@ export const fields = input({
   ],
   clean: valueListInputClean,
 });
-
 export const plan = input({
   label: "Plan",
   type: "string",
@@ -245,7 +225,6 @@ export const plan = input({
   ],
   clean: util.types.toString,
 });
-
 export const setEmployeePrimaryPolicy = input({
   label: "Set Employee Primary Policy",
   type: "string",
@@ -269,7 +248,6 @@ export const setEmployeePrimaryPolicy = input({
   default: "none",
   clean: util.types.toString,
 });
-
 export const expenses = input({
   label: "Expenses",
   type: "code",
@@ -296,7 +274,6 @@ export const expenses = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const report = input({
   label: "Report",
   type: "code",
@@ -316,7 +293,6 @@ export const report = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const transactionList = input({
   label: "Transaction List",
   type: "code",
@@ -358,7 +334,6 @@ export const transactionList = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const actions = input({
   label: "Actions",
   type: "code",
@@ -375,7 +350,6 @@ export const actions = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const categories = input({
   label: "Categories",
   type: "code",
@@ -407,7 +381,6 @@ export const categories = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const tags = input({
   label: "Tags",
   type: "code",
@@ -437,7 +410,6 @@ export const tags = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const reportFields = input({
   label: "Report Fields",
   type: "code",
@@ -461,7 +433,6 @@ export const reportFields = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const onFinish = input({
   label: "On Finish",
   type: "code",
@@ -481,7 +452,6 @@ export const onFinish = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const employees = input({
   label: "Employees",
   type: "code",
@@ -521,7 +491,6 @@ export const employees = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const filters = input({
   label: "Filters",
   type: "code",
@@ -541,7 +510,6 @@ export const filters = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const startDate = input({
   label: "Start Date",
   type: "string",
@@ -551,7 +519,6 @@ export const startDate = input({
   clean: util.types.toString,
   default: "2016-01-01",
 });
-
 export const endDate = input({
   label: "End Date",
   type: "string",
@@ -561,7 +528,6 @@ export const endDate = input({
   clean: util.types.toString,
   default: "2016-01-01",
 });
-
 export const fileExtension = input({
   label: "File Extension",
   type: "string",
@@ -601,7 +567,6 @@ export const fileExtension = input({
   ],
   default: "json",
 });
-
 export const fileBasename = input({
   label: "File Basename",
   type: "string",
@@ -610,7 +575,6 @@ export const fileBasename = input({
     "The name of the generated file(s) will start with this value, and a random part will be added to make each filename globally unique. If not specified, the default value export is use.",
   clean: util.types.toString,
 });
-
 export const includeFullPageReceiptsPdf = input({
   label: "Include Full Page Receipts PDF",
   type: "boolean",
@@ -620,7 +584,6 @@ export const includeFullPageReceiptsPdf = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const templateName = input({
   label: "Template",
   type: "code",
@@ -648,7 +611,6 @@ export const templateName = input({
         <#assign reportNumber = reportNumber + 1>
     </#list>`,
 });
-
 export const approvedAfter = input({
   label: "Approved After",
   type: "string",
@@ -656,14 +618,12 @@ export const approvedAfter = input({
   placeholder: "yyyy-mm-dd",
   example: "2016-01-01",
 });
-
 export const markAsExportedFilter = input({
   label: "Mark as Exported Label Filter",
   type: "string",
   required: false,
   placeholder: "Expensify Export",
 });
-
 export const reportIdList = input({
   label: "Report ID List",
   type: "string",
@@ -672,7 +632,6 @@ export const reportIdList = input({
   comments: "The IDs of the reports to get information for.",
   clean: valueListInputClean,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",

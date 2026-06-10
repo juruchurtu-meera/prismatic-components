@@ -3,7 +3,6 @@ export const getLocationResponse = {
   id: "f4efe11c-221f-4b49-a1e4-33eaf96a49ee",
   name: "New York City, NY",
 };
-
 export const listLocationsResponse = {
   data: [getLocationResponse],
   page: {

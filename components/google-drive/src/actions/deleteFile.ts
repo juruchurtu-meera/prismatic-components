@@ -1,7 +1,6 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, fileId, fields } from "../inputs";
-
 export const deleteFile = action({
   display: {
     label: "Delete File",
@@ -14,12 +13,10 @@ export const deleteFile = action({
       fields: util.types.toString(fields) || undefined,
       supportsAllDrives: true,
     });
-
     return {
       data,
     };
   },
   inputs: { connection, fileId, fields },
 });
-
 export default deleteFile;

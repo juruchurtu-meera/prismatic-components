@@ -1,7 +1,6 @@
 import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, dealIdInput } from "../../inputs";
-
 export const deleteDealParticipant = action({
   display: {
     label: "Delete Deal Participant",
@@ -9,7 +8,9 @@ export const deleteDealParticipant = action({
   },
   perform: async (context, { connection, id, dealParticipantId }) => {
     const client = createClient(connection, context.debug.enabled);
-    const { data } = await client.delete(`/deals/${id}/participants/${dealParticipantId}`);
+    const { data } = await client.delete(
+      `/deals/${id}/participants/${dealParticipantId}`,
+    );
     return { data };
   },
   inputs: {

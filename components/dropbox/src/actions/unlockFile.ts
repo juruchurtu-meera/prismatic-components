@@ -10,7 +10,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, getEntries, handleDropboxError } from "../util";
-
 export const unlockFile = action({
   display: {
     label: "Unlock File",
@@ -38,9 +37,7 @@ export const unlockFile = action({
       userType,
       teamMemberId,
     );
-
     const entries = getEntries(filePaths, dynamicPaths);
-
     try {
       const args = {
         entries,

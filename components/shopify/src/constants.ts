@@ -1,6 +1,5 @@
 export const DEFAULT_SHOPIFY_VERSION = "2026-01";
 export const DEFAULT_SHOPIFY_GRAPHQL_API_VERSION = "2026-01";
-
 export const GRAPHQL_EXAMPLE = `{
     products(first: 3) {
       edges {
@@ -11,10 +10,8 @@ export const GRAPHQL_EXAMPLE = `{
       }
     }
   }`;
-
 export const MAX_LIMIT = 250;
-export const POLLING_LIMIT = 50; 
-
+export const POLLING_LIMIT = 50;
 export const WEBHOOK_TOPICS = [
   "APP_PURCHASES_ONE_TIME_UPDATE",
   "APP_SCOPES_UPDATE",
@@ -206,7 +203,6 @@ export const WEBHOOK_TOPICS = [
   "VARIANTS_IN_STOCK",
   "VARIANTS_OUT_OF_STOCK",
 ];
-
 export const WEBHOOK_TOPICS_MAP = {
   "app/uninstalled": "APP_UNINSTALLED",
   "app_subscriptions/update": "APP_SUBSCRIPTIONS_UPDATE",
@@ -245,7 +241,8 @@ export const WEBHOOK_TOPICS_MAP = {
   "customers/enable": "CUSTOMERS_ENABLE",
   "customers/merge": "CUSTOMERS_MERGE",
   "customers/update": "CUSTOMERS_UPDATE",
-  "customers_email_marketing_consent/update": "CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE",
+  "customers_email_marketing_consent/update":
+    "CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE",
   "customers_marketing_consent/update": "CUSTOMERS_MARKETING_CONSENT_UPDATE",
   "disputes/create": "DISPUTES_CREATE",
   "disputes/update": "DISPUTES_UPDATE",
@@ -278,7 +275,8 @@ export const WEBHOOK_TOPICS_MAP = {
   "fulfillment_orders/line_items_prepared_for_pickup":
     "FULFILLMENT_ORDERS_LINE_ITEMS_PREPARED_FOR_PICKUP",
   "fulfillment_orders/moved": "FULFILLMENT_ORDERS_MOVED",
-  "fulfillment_orders/order_routing_complete": "FULFILLMENT_ORDERS_ORDER_ROUTING_COMPLETE",
+  "fulfillment_orders/order_routing_complete":
+    "FULFILLMENT_ORDERS_ORDER_ROUTING_COMPLETE",
   "fulfillment_orders/placed_on_hold": "FULFILLMENT_ORDERS_PLACED_ON_HOLD",
   "fulfillment_orders/rescheduled": "FULFILLMENT_ORDERS_RESCHEDULED",
   "fulfillment_orders/scheduled_fulfillment_order_ready":
@@ -331,12 +329,18 @@ export const WEBHOOK_TOPICS_MAP = {
   "selling_plan_groups/delete": "SELLING_PLAN_GROUPS_DELETE",
   "selling_plan_groups/update": "SELLING_PLAN_GROUPS_UPDATE",
   "shop/update": "SHOP_UPDATE",
-  "subscription_billing_attempts/challenged": "SUBSCRIPTION_BILLING_ATTEMPTS_CHALLENGED",
-  "subscription_billing_attempts/failure": "SUBSCRIPTION_BILLING_ATTEMPTS_FAILURE",
-  "subscription_billing_attempts/success": "SUBSCRIPTION_BILLING_ATTEMPTS_SUCCESS",
-  "subscription_billing_cycle_edits/create": "SUBSCRIPTION_BILLING_CYCLE_EDITS_CREATE",
-  "subscription_billing_cycle_edits/delete": "SUBSCRIPTION_BILLING_CYCLE_EDITS_DELETE",
-  "subscription_billing_cycle_edits/update": "SUBSCRIPTION_BILLING_CYCLE_EDITS_UPDATE",
+  "subscription_billing_attempts/challenged":
+    "SUBSCRIPTION_BILLING_ATTEMPTS_CHALLENGED",
+  "subscription_billing_attempts/failure":
+    "SUBSCRIPTION_BILLING_ATTEMPTS_FAILURE",
+  "subscription_billing_attempts/success":
+    "SUBSCRIPTION_BILLING_ATTEMPTS_SUCCESS",
+  "subscription_billing_cycle_edits/create":
+    "SUBSCRIPTION_BILLING_CYCLE_EDITS_CREATE",
+  "subscription_billing_cycle_edits/delete":
+    "SUBSCRIPTION_BILLING_CYCLE_EDITS_DELETE",
+  "subscription_billing_cycle_edits/update":
+    "SUBSCRIPTION_BILLING_CYCLE_EDITS_UPDATE",
   "subscription_contracts/create": "SUBSCRIPTION_CONTRACTS_CREATE",
   "subscription_contracts/update": "SUBSCRIPTION_CONTRACTS_UPDATE",
   "tender_transactions/create": "TENDER_TRANSACTIONS_CREATE",
@@ -345,27 +349,17 @@ export const WEBHOOK_TOPICS_MAP = {
   "themes/publish": "THEMES_PUBLISH",
   "themes/update": "THEMES_UPDATE",
 };
-
 export const LIST_PRODUCTS_DATASOURCE_REFERENCE = "listProducts";
-
 export const LIST_ORDERS_DATASOURCE_REFERENCE = "listOrders";
-
 export const LIST_LOCATIONS_DATASOURCE_REFERENCE = "listLocations";
-
-export const LIST_FULFILLMENT_ORDERS_DATASOURCE_REFERENCE = "listFulfillmentOrders";
-
+export const LIST_FULFILLMENT_ORDERS_DATASOURCE_REFERENCE =
+  "listFulfillmentOrders";
 export const LIST_FULFILLMENTS_DATASOURCE_REFERENCE = "listFulfillments";
-
 export const LIST_CUSTOMERS_DATASOURCE_REFERENCE = "listCustomers";
-
 export const LIST_VARIANTS_DATASOURCE_REFERENCE = "listVariants";
-
 export const LIST_PRODUCT_IMAGES_DATASOURCE_REFERENCE = "listProductImages";
-
 export const LIST_INVENTORY_ITEMS_DATASOURCE_REFERENCE = "listInventoryItems";
-
 export const LIST_DRAFT_ORDERS_DATASOURCE_REFERENCE = "listDraftOrders";
-
 export const LIST_COLLECTIONS_DATASOURCE_REFERENCE = "listCollections";
-
-export const LIST_FULFILLMENT_SERVICES_DATASOURCE_REFERENCE = "listFulfillmentServices";
+export const LIST_FULFILLMENT_SERVICES_DATASOURCE_REFERENCE =
+  "listFulfillmentServices";

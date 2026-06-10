@@ -1,7 +1,6 @@
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
 import { HIBOB_API_URL_PROD, HIBOB_API_URL_SANDBOX } from "../../constants";
 import { connection } from "../common";
-
 export const rawRequestInputs = {
   connection,
   url: {

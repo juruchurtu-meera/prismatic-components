@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { connection } from "../inputs/general";
 import { createClient } from "../client";
 import { selectManagedAppExamplePayload } from "../examplePayloads";
-
 export const selectManagedApp = dataSource({
   display: {
     label: "Select Managed App",
@@ -22,7 +21,6 @@ export const selectManagedApp = dataSource({
     } = await client.get("/deviceAppManagement/mobileApps", {
       params,
     });
-
     return value.map((managedApp: { id: string; displayName: string }) => {
       return {
         label: managedApp.displayName,

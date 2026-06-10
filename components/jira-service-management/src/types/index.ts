@@ -7,7 +7,6 @@ export interface PagedResponse<T> {
   _links?: Record<string, unknown>;
   _expands?: string[];
 }
-
 export interface ServiceDesk {
   id: string;
   projectId: string;
@@ -15,7 +14,6 @@ export interface ServiceDesk {
   projectKey: string;
   _links?: Record<string, unknown>;
 }
-
 export interface RequestType {
   id: string;
   name: string;
@@ -24,24 +22,24 @@ export interface RequestType {
   issueTypeId: string;
   serviceDeskId: string;
   groupIds?: string[];
-  icon?: { id: string; _links?: Record<string, unknown> };
+  icon?: {
+    id: string;
+    _links?: Record<string, unknown>;
+  };
   _links?: Record<string, unknown>;
 }
-
 export interface DateField {
   iso8601?: string;
   jira?: string;
   friendly?: string;
   epochMillis?: number;
 }
-
 export interface User {
   accountId: string;
   displayName: string;
   emailAddress?: string;
   active?: boolean;
 }
-
 export interface ServiceRequest {
   issueId: string;
   issueKey: string;
@@ -49,25 +47,31 @@ export interface ServiceRequest {
   serviceDeskId?: string;
   summary?: string;
   description?: string;
-  status?: { status: string; statusDate?: DateField };
-  currentStatus?: { status: string; statusDate?: DateField };
+  status?: {
+    status: string;
+    statusDate?: DateField;
+  };
+  currentStatus?: {
+    status: string;
+    statusDate?: DateField;
+  };
   requestedBy?: User;
   reporter?: User;
   createdDate?: DateField;
   _links?: Record<string, unknown>;
   _expands?: string[];
 }
-
 export interface Comment {
   id: string;
   author?: User;
   body?: string;
-  renderedBody?: { html?: string };
+  renderedBody?: {
+    html?: string;
+  };
   created?: DateField;
   public?: boolean;
   _links?: Record<string, unknown>;
 }
-
 export interface Approval {
   id: string;
   name: string;
@@ -81,7 +85,6 @@ export interface Approval {
   completionDate?: DateField;
   _links?: Record<string, unknown>;
 }
-
 export interface SlaInformation {
   id: string;
   name: string;
@@ -91,32 +94,47 @@ export interface SlaInformation {
     stopTime?: DateField;
     breachTime?: DateField;
     breached?: boolean;
-    goalDuration?: { millis?: number; friendly?: string };
-    elapsedTime?: { millis?: number; friendly?: string };
-    remainingTime?: { millis?: number; friendly?: string };
+    goalDuration?: {
+      millis?: number;
+      friendly?: string;
+    };
+    elapsedTime?: {
+      millis?: number;
+      friendly?: string;
+    };
+    remainingTime?: {
+      millis?: number;
+      friendly?: string;
+    };
   }[];
   ongoingCycle?: {
     startTime?: DateField;
     breachTime?: DateField;
     paused?: boolean;
     withinCalendarHours?: boolean;
-    goalDuration?: { millis?: number; friendly?: string };
-    elapsedTime?: { millis?: number; friendly?: string };
-    remainingTime?: { millis?: number; friendly?: string };
+    goalDuration?: {
+      millis?: number;
+      friendly?: string;
+    };
+    elapsedTime?: {
+      millis?: number;
+      friendly?: string;
+    };
+    remainingTime?: {
+      millis?: number;
+      friendly?: string;
+    };
   };
 }
-
 export interface Transition {
   id: string;
   name: string;
 }
-
 export interface Organization {
   id: string;
   name: string;
   _links?: Record<string, unknown>;
 }
-
 export interface Queue {
   id: string;
   name: string;
@@ -124,13 +142,11 @@ export interface Queue {
   fields?: string[];
   _links?: Record<string, unknown>;
 }
-
 export interface Issue {
   id: string;
   key: string;
   fields?: Record<string, unknown>;
 }
-
 export interface AccessibleResource {
   id: string;
   name: string;
@@ -138,21 +154,14 @@ export interface AccessibleResource {
   scopes?: string[];
   avatarUrl?: string;
 }
-
-
-
-
-
-
 export interface OpsPagedResponse<T> {
   values: T[];
-  links?: { next?: string; prev?: string };
+  links?: {
+    next?: string;
+    prev?: string;
+  };
   count?: number;
 }
-
-
-
-
 export interface AssetsPagedResponse<T> {
   values: T[];
   startAt: number;
@@ -160,35 +169,28 @@ export interface AssetsPagedResponse<T> {
   total: number;
   isLast: boolean;
 }
-
 export interface AssetSchema {
   id: string;
   name: string;
   objectSchemaKey?: string;
 }
-
 export interface AssetObjectType {
   id: number | string;
   name: string;
 }
-
 export interface OpsScheduleSummary {
   id: string;
   name: string;
   enabled?: boolean;
 }
-
 export interface OpsAlertSummary {
   id: string;
   tinyId?: string;
   alias?: string;
   message: string;
   status: string;
-  createdAt?: number; 
+  createdAt?: number;
 }
-
-
-
 export interface PollingState extends Record<string, unknown> {
-  lastPolledAt?: string; 
+  lastPolledAt?: string;
 }

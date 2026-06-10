@@ -2,8 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { timeEntryPayload } from "../exampleInputs";
 import { cleanObject } from "../util";
 import { connection } from "./common";
-
-
 export const events = input({
   label: "Events",
   type: "code",
@@ -13,8 +11,6 @@ export const events = input({
   example: JSON.stringify(timeEntryPayload, null, 2),
   clean: cleanObject,
 });
-
-
 export const modifyTimeEntriesInputs = {
   connection,
   events,

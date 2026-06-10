@@ -3,8 +3,6 @@ import { createBambooClient } from "../../client";
 import { getEmployeeExamplePayload } from "../../examplePayloads";
 import { getEmployeeInputs } from "../../inputs";
 import { employeeFields } from "../../util";
-
-
 export const getEmployee = action({
   display: {
     label: "Get Employee",

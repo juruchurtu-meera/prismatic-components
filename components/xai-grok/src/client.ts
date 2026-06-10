@@ -13,14 +13,12 @@ import type {
   XaiGrokClient,
 } from "./interfaces";
 import { getToken, validateConnection } from "./util";
-
 export const createClient = (
   connection: Connection,
   debug: boolean,
 ): XaiGrokClient => {
   validateConnection(connection);
   const token = getToken(connection);
-
   const client = createHttpClient({
     baseUrl: API_BASE_URL,
     headers: {
@@ -29,7 +27,6 @@ export const createClient = (
     },
     debug,
   });
-
   return {
     createChatCompletion: async (params: IChatCompletionParams) => {
       const response = await client.post<IChatCompletionResponse>(

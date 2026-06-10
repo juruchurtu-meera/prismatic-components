@@ -2,7 +2,6 @@ import { dataSource, util } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../client";
 import { connectionInput, contentType, limit, marker, offset } from "../inputs";
 import { getFolderEntries, getPathEntries } from "../utils";
-
 export const selectContent = dataSource({
   display: {
     label: "Select File or Folder",
@@ -14,14 +13,10 @@ export const selectContent = dataSource({
       boxConnection: params.boxConnection,
     });
     const pathEntries = await getPathEntries(client, "/");
-
-    
     const { id, type, name } = pathEntries.slice(-1)[0];
-
     if (type !== "folder") {
       throw Error(`'${name}' is not a folder`);
     }
-
     let allEntries = await getFolderEntries({
       client,
       id,
@@ -29,7 +24,6 @@ export const selectContent = dataSource({
       marker: util.types.toString(params.marker) || undefined,
       offset: util.types.toInt(params.offset) || undefined,
     });
-
     switch (params.contentType) {
       case "file":
         allEntries = allEntries.filter((entry) => entry.type === "file");
@@ -38,7 +32,6 @@ export const selectContent = dataSource({
         allEntries = allEntries.filter((entry) => entry.type === "folder");
         break;
       case "all":
-        
         break;
       default:
         throw new Error(

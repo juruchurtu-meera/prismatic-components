@@ -3,7 +3,6 @@ import { getHubspotClient } from "../client";
 import { hubspotOAuth, privateAppAccessToken } from "../connections";
 import { getCurrentUserPayload } from "../examplePayloads";
 import { connectionInput, timeout } from "../inputs";
-
 export const getCurrentUser = action({
   display: {
     label: "Get Current User",
@@ -17,9 +16,7 @@ export const getCurrentUser = action({
       timeout,
       debugRequest,
     });
-
     const { data: userData } = await client.get("/integrations/v1/me");
-
     if (hubspotConnection.key === hubspotOAuth.key) {
       const token = (client.defaults.headers.Authorization as string).slice(
         TOKEN_WITHOUT_BEARER_PREFIX_INDEX_START,
@@ -31,7 +28,6 @@ export const getCurrentUser = action({
         client_secret: clientSecret,
         token,
       };
-      
       const { data: tokenData } = await client.post(
         "/oauth/v3/token/introspect",
         new URLSearchParams(data).toString(),
@@ -41,7 +37,6 @@ export const getCurrentUser = action({
           },
         },
       );
-
       return {
         data: {
           ...userData,
@@ -62,5 +57,4 @@ export const getCurrentUser = action({
   },
   examplePayload: getCurrentUserPayload,
 });
-
 export default getCurrentUser;

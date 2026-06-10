@@ -1,22 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const listChannelsExamplePayload = {
   data: {
     "@odata.context":
@@ -35,12 +16,6 @@ export const listChannelsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const listChannelMessagesExamplePayload = {
   data: {
     "@odata.context":
@@ -77,14 +52,6 @@ export const listChannelMessagesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
 export const listUsersExamplePayload = {
   data: {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users",
@@ -104,12 +71,6 @@ export const listUsersExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const getUserExamplePayload = {
   data: {
     businessPhones: ["+1 425 555 0109"],
@@ -124,21 +85,9 @@ export const getUserExamplePayload = {
     id: "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
   },
 };
-
-
-
-
-
-
 export const deleteUserExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
 export const getCurrentUserExamplePayload = {
   data: {
     businessPhones: ["+1 425 555 0109"],
@@ -153,14 +102,6 @@ export const getCurrentUserExamplePayload = {
     id: "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
   },
 };
-
-
-
-
-
-
-
-
 export const listTeamsExamplePayload = {
   data: {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#groups",
@@ -180,12 +121,6 @@ export const listTeamsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const listJoinedTeamsExamplePayload = {
   data: {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#teams",
@@ -205,12 +140,6 @@ export const listJoinedTeamsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const listMembersExamplePayload = {
   data: {
     "@odata.context":
@@ -229,12 +158,6 @@ export const listMembersExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const getMemberExamplePayload = {
   data: {
     "@odata.type": "#microsoft.graph.aadUserConversationMember",
@@ -246,12 +169,6 @@ export const getMemberExamplePayload = {
     tenantId: "72f988bf-86f1-41af-91ab-2d7cd011db47",
   },
 };
-
-
-
-
-
-
 export const addMemberExamplePayload = {
   data: {
     "@odata.type": "#microsoft.graph.aadUserConversationMember",
@@ -263,14 +180,6 @@ export const addMemberExamplePayload = {
     tenantId: "72f988bf-86f1-41af-91ab-2d7cd011db47",
   },
 };
-
-
-
-
-
-
-
-
 export const listAttendanceRecordsExamplePayload = {
   data: {
     "@odata.context":
@@ -315,7 +224,6 @@ export const listAttendanceRecordsExamplePayload = {
     ],
   },
 };
-
 const webinarExampleData = {
   "@odata.type": "#microsoft.graph.virtualEventWebinar",
   id: "88b245ac-b0b2-f1aa-e34a-c81c27abdac2@f9448ec4-804b-46af-b810-62085248da33",
@@ -362,23 +270,11 @@ const webinarExampleData = {
     },
   ],
 };
-
-
-
-
-
-
 export const getSessionAttendanceReportExamplePayload = {
   data: {
     value: [webinarExampleData],
   },
 };
-
-
-
-
-
-
 export const listSessionAttendanceReportsExamplePayload = {
   data: {
     "@odata.context":
@@ -386,23 +282,11 @@ export const listSessionAttendanceReportsExamplePayload = {
     value: [webinarExampleData],
   },
 };
-
-
-
-
-
-
 export const getWebinarSessionExamplePayload = {
   data: {
     value: [webinarExampleData],
   },
 };
-
-
-
-
-
-
 export const listWebinarSessionsExamplePayload = {
   data: {
     value: [
@@ -437,18 +321,11 @@ export const listWebinarSessionsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const listWebinarsExamplePayload = {
   data: {
     value: [webinarExampleData],
   },
 };
-
 const registrationExampleData = {
   "@odata.type": "#microsoft.graph.virtualEventRegistration",
   id: "127962bb-84e1-7b62-fd98-1c9d39def7b6",
@@ -487,79 +364,31 @@ const registrationExampleData = {
     },
   ],
 };
-
-
-
-
-
-
 export const createWebinarRegistrationExamplePayload = {
   data: registrationExampleData,
 };
-
-
-
-
-
-
 export const cancelWebinarRegistrationExamplePayload = {
   data: registrationExampleData,
 };
-
-
-
-
-
-
 export const getWebinarRegistrationExamplePayload = {
   data: registrationExampleData,
 };
-
-
-
-
-
-
 export const listWebinarRegistrationsExamplePayload = {
   data: {
     value: [registrationExampleData],
   },
 };
-
-
-
-
-
-
 export const getWebinarExamplePayload = {
   data: {
     value: [webinarExampleData],
   },
 };
-
-
-
-
-
-
 export const cancelWebinarExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
 export const publishWebinarExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
 export const createWebinarExamplePayload = {
   data: {
     "@odata.context":

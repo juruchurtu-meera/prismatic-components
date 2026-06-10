@@ -3,7 +3,6 @@ import { connection, fieldsInput, recordNoInput } from "../inputs";
 import { convertResultToGenericObject, executeAction } from "../utils";
 import { Functions } from "@intacct/intacct-sdk";
 import { getArPaymentPayload } from "../examplePayloads/getArPaymentPayload";
-
 export const getArPayment = action({
   display: {
     label: "Get AR Payment",

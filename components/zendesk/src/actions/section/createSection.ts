@@ -10,7 +10,6 @@ import {
 import { rawHttpClient } from "../../auth";
 import type { Section } from "../../types";
 import { createSectionPayload } from "../../examplePayloads";
-
 export const createSection = action({
   display: {
     label: "Create Section",
@@ -36,12 +35,9 @@ export const createSection = action({
         position,
       },
     };
-
-    const { data } = await client.post<{ section: Section }>(
-      `/help_center/categories/${categoryId}/sections`,
-      payload,
-    );
-
+    const { data } = await client.post<{
+      section: Section;
+    }>(`/help_center/categories/${categoryId}/sections`, payload);
     return {
       data,
     };

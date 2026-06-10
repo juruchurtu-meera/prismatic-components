@@ -1,5 +1,4 @@
 import { trigger } from "@prismatic-io/spectral";
-
 export const toolFlowTrigger = trigger({
   display: {
     label: "Tool Flow Trigger",
@@ -9,10 +8,7 @@ export const toolFlowTrigger = trigger({
   perform: async (context, payload) => {
     return Promise.resolve({ payload });
   },
-
   synchronousResponseSupport: "valid",
-
   scheduleSupport: "invalid",
 });
-
 export default { toolFlowTrigger };

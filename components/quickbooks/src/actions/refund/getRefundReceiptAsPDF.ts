@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { connectionInput, receiptId } from "../../inputs";
-
 export const getRefundReceiptAsPDF = action({
   display: {
     label: "Get Refund Receipt as PDF",

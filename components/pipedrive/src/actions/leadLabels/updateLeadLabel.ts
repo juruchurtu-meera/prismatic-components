@@ -2,7 +2,6 @@ import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, leadLabelIdInput } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const updateLeadLabel = action({
   display: {
     label: "Update Lead Label",

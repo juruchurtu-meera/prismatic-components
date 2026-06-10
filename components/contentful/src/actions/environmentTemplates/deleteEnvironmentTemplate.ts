@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createApiClient } from "../../client";
 import { deleteEnvironmentTemplateInputs } from "../../inputs";
-
 export const deleteEnvironmentTemplate = action({
   display: {
     label: "Delete Environment Template",

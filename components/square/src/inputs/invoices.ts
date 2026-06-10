@@ -1,6 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
-import { cursor, idempotencyKey, limit, locationId, squareConnection } from "./common";
-
+import {
+  cursor,
+  idempotencyKey,
+  limit,
+  locationId,
+  squareConnection,
+} from "./common";
 const invoiceQuery = input({
   label: "Query",
   type: "code",
@@ -29,7 +34,6 @@ const invoiceQuery = input({
     return JSON.parse(util.types.toString(queryInput));
   },
 });
-
 const invoiceId = input({
   label: "Invoice ID",
   type: "string",
@@ -40,7 +44,6 @@ const invoiceId = input({
   dataSource: "selectInvoice",
   clean: util.types.toString,
 });
-
 const updateInvoiceInput = input({
   label: "Update Invoice",
   type: "code",
@@ -57,7 +60,9 @@ const updateInvoiceInput = input({
         ],
       },
       idempotency_key: "4ee82288-0910-499e-ab4c-5d0071dad1be",
-      fields_to_clear: ["payment_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders"],
+      fields_to_clear: [
+        "payment_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders",
+      ],
     },
     null,
     2,
@@ -72,43 +77,36 @@ const updateInvoiceInput = input({
     return JSON.parse(util.types.toString(updateInvoiceInput));
   },
 });
-
 export const listInvoicesInputs = {
   squareConnection,
   locationId,
   cursor,
   limit,
 };
-
 export const searchInvoicesInputs = {
   squareConnection,
   invoiceQuery,
   cursor,
   limit,
 };
-
 export const getInvoiceInputs = {
   squareConnection,
   invoiceId,
 };
-
 export const updateInvoiceInputs = {
   squareConnection,
   invoiceId,
   updateInvoiceInput,
 };
-
 export const publishInvoiceInputs = {
   squareConnection,
   invoiceId,
   idempotencyKey,
 };
-
 export const cancelInvoiceInputs = {
   squareConnection,
   invoiceId,
 };
-
 export const deleteInvoiceInputs = {
   squareConnection,
   invoiceId,

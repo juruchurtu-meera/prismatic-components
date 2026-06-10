@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const publishMessagesExamplePayload = {
   data: [
     {
@@ -27,14 +21,6 @@ export const publishMessagesExamplePayload = {
     logStartOffset?: string;
   }[],
 };
-
-
-
-
-
-
-
-
 export const listTopicsExamplePayload = {
   data: {
     topics: [

@@ -5,7 +5,6 @@ import {
   oauth2Connection,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
 export const zendeskConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -63,7 +62,6 @@ export const zendeskConnection = oauth2Connection({
     },
   },
 });
-
 export const apiTokenConnection = connection({
   key: "apiToken",
   display: {
@@ -81,7 +79,6 @@ export const apiTokenConnection = connection({
         shown: true,
         comments:
           "Your Zendesk sub domain. (e.g. if your Zendesk URL is https://acme-inc.zendesk.com, then your sub domain is acme-inc).",
-        
       },
       username: {
         label: "Username",
@@ -112,7 +109,6 @@ export const apiTokenConnection = connection({
     },
   ),
 });
-
 export const oauth2TemplateConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2DynamicInputs",
@@ -176,7 +172,6 @@ export const oauth2TemplateConnection = oauth2Connection({
     OAuth2Type.AuthorizationCode,
   ),
 });
-
 export default [
   oauth2TemplateConnection,
   zendeskConnection,

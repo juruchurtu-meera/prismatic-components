@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { publishAssetExamplePayload } from "../../examplePayloads";
 import { publishAnAssetInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const publishAnAsset = action({
   display: {
     label: "Publish Asset",
@@ -17,11 +16,10 @@ export const publishAnAsset = action({
       spaceId,
       environmentId,
     );
-
     const asset: Asset = await environment.getAsset(assetId);
     const data: AssetProps = (await asset.publish()).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: publishAnAssetInputs,

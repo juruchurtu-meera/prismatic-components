@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 import {
   issuesListForRepoExamplePayload,
   issuesCreateCommentExamplePayload,
@@ -13,7 +12,6 @@ import {
   gitCreateTreeExamplePayload,
   actionsCreateWorkflowDispatchExamplePayload,
 } from "../examplePayloads";
-
 import {
   assignee,
   connectionInput,
@@ -34,7 +32,6 @@ import {
 } from "../inputs";
 import { paginateResults } from "../utils";
 import { Issue } from "../interfaces/Issue";
-
 const reposGet = action({
   display: {
     label: "Repos Get",
@@ -55,7 +52,6 @@ const reposGet = action({
     repo,
   },
 });
-
 const reposUpdate = action({
   display: {
     label: "Repos Update",
@@ -85,9 +81,12 @@ const reposUpdate = action({
       deleteBranchOnMerge,
       archived,
       allowForking,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/repos/${owner}/${repo}`, {
       name,
       description,
@@ -275,7 +274,6 @@ const reposUpdate = action({
     },
   },
 });
-
 const reposDelete = action({
   display: {
     label: "Repos Delete",
@@ -296,19 +294,21 @@ const reposDelete = action({
     repo,
   },
 });
-
 const actionsListArtifactsForRepo = action({
   display: {
     label: "Actions List Artifacts For Repo",
     description: "List artifacts for a repository",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/artifacts`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -336,16 +336,18 @@ const actionsListArtifactsForRepo = action({
     },
   },
 });
-
 const actionsGetArtifact = action({
   display: {
     label: "Actions Get Artifact",
     description: "Get an artifact",
   },
   perform: async (context, { connection, owner, repo, artifactId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/artifacts/${artifactId}`
+      `/repos/${owner}/${repo}/actions/artifacts/${artifactId}`,
     );
     return { data };
   },
@@ -366,16 +368,18 @@ const actionsGetArtifact = action({
     },
   },
 });
-
 const actionsDeleteArtifact = action({
   display: {
     label: "Actions Delete Artifact",
     description: "Delete an artifact",
   },
   perform: async (context, { connection, owner, repo, artifactId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/artifacts/${artifactId}`
+      `/repos/${owner}/${repo}/actions/artifacts/${artifactId}`,
     );
     return { data };
   },
@@ -396,7 +400,6 @@ const actionsDeleteArtifact = action({
     },
   },
 });
-
 const actionsDownloadArtifact = action({
   display: {
     label: "Actions Download Artifact",
@@ -404,11 +407,14 @@ const actionsDownloadArtifact = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, artifactId, archiveFormat }
+    { connection, owner, repo, artifactId, archiveFormat },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/artifacts/${artifactId}/${archiveFormat}`
+      `/repos/${owner}/${repo}/actions/artifacts/${artifactId}/${archiveFormat}`,
     );
     return { data };
   },
@@ -435,7 +441,6 @@ const actionsDownloadArtifact = action({
     },
   },
 });
-
 const actionsGetActionsCacheUsage = action({
   display: {
     label: "Actions Get Actions Cache Usage",
@@ -444,7 +449,7 @@ const actionsGetActionsCacheUsage = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/cache/usage`
+      `/repos/${owner}/${repo}/actions/cache/usage`,
     );
     return { data };
   },
@@ -458,16 +463,18 @@ const actionsGetActionsCacheUsage = action({
     repo,
   },
 });
-
 const actionsGetJobForWorkflowRun = action({
   display: {
     label: "Actions Get Job For Workflow Run",
     description: "Get a job for a workflow run",
   },
   perform: async (context, { connection, owner, repo, jobId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/jobs/${jobId}`
+      `/repos/${owner}/${repo}/actions/jobs/${jobId}`,
     );
     return { data };
   },
@@ -488,16 +495,18 @@ const actionsGetJobForWorkflowRun = action({
     },
   },
 });
-
 const actionsDownloadJobLogsForWorkflowRun = action({
   display: {
     label: "Actions Download Job Logs For Workflow Run",
     description: "Download job logs for a workflow run",
   },
   perform: async (context, { connection, owner, repo, jobId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/jobs/${jobId}/logs`
+      `/repos/${owner}/${repo}/actions/jobs/${jobId}/logs`,
     );
     return { data };
   },
@@ -518,7 +527,6 @@ const actionsDownloadJobLogsForWorkflowRun = action({
     },
   },
 });
-
 const actionsReRunJobForWorkflowRun = action({
   display: {
     label: "Actions Re Run Job For Workflow Run",
@@ -526,12 +534,15 @@ const actionsReRunJobForWorkflowRun = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, jobId, enableDebugLogging }
+    { connection, owner, repo, jobId, enableDebugLogging },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/jobs/${jobId}/rerun`,
-      { enable_debug_logging: enableDebugLogging }
+      { enable_debug_logging: enableDebugLogging },
     );
     return { data };
   },
@@ -560,7 +571,6 @@ const actionsReRunJobForWorkflowRun = action({
     },
   },
 });
-
 const actionsGetGithubActionsPermissionsRepository = action({
   display: {
     label: "Actions Get Github Actions Permissions Repository",
@@ -569,7 +579,7 @@ const actionsGetGithubActionsPermissionsRepository = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/permissions`
+      `/repos/${owner}/${repo}/actions/permissions`,
     );
     return { data };
   },
@@ -583,7 +593,6 @@ const actionsGetGithubActionsPermissionsRepository = action({
     repo,
   },
 });
-
 const actionsSetGithubActionsPermissionsRepository = action({
   display: {
     label: "Actions Set Github Actions Permissions Repository",
@@ -591,15 +600,18 @@ const actionsSetGithubActionsPermissionsRepository = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, enabled, allowedActions }
+    { connection, owner, repo, enabled, allowedActions },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/permissions`,
       {
         enabled,
         allowed_actions: allowedActions,
-      }
+      },
     );
     return { data };
   },
@@ -633,7 +645,6 @@ const actionsSetGithubActionsPermissionsRepository = action({
     },
   },
 });
-
 const actionsGetWorkflowAccessToRepository = action({
   display: {
     label: "Actions Get Workflow Access To Repository",
@@ -643,7 +654,7 @@ const actionsGetWorkflowAccessToRepository = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/permissions/access`
+      `/repos/${owner}/${repo}/actions/permissions/access`,
     );
     return { data };
   },
@@ -657,7 +668,6 @@ const actionsGetWorkflowAccessToRepository = action({
     repo,
   },
 });
-
 const actionsSetWorkflowAccessToRepository = action({
   display: {
     label: "Actions Set Workflow Access To Repository",
@@ -665,12 +675,15 @@ const actionsSetWorkflowAccessToRepository = action({
       "Set the level of access for workflows outside of the repository",
   },
   perform: async (context, { connection, owner, repo, accessLevel }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/permissions/access`,
       {
         access_level: accessLevel,
-      }
+      },
     );
     return { data };
   },
@@ -697,7 +710,6 @@ const actionsSetWorkflowAccessToRepository = action({
     },
   },
 });
-
 const actionsGetAllowedActionsRepository = action({
   display: {
     label: "Actions Get Allowed Actions Repository",
@@ -706,7 +718,7 @@ const actionsGetAllowedActionsRepository = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/permissions/selected-actions`
+      `/repos/${owner}/${repo}/actions/permissions/selected-actions`,
     );
     return { data };
   },
@@ -720,7 +732,6 @@ const actionsGetAllowedActionsRepository = action({
     repo,
   },
 });
-
 const actionsSetAllowedActionsRepository = action({
   display: {
     label: "Actions Set Allowed Actions Repository",
@@ -735,16 +746,19 @@ const actionsSetAllowedActionsRepository = action({
       githubOwnedAllowed,
       verifiedAllowed,
       patternsAllowed,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/permissions/selected-actions`,
       {
         github_owned_allowed: githubOwnedAllowed,
         verified_allowed: verifiedAllowed,
         patterns_allowed: patternsAllowed,
-      }
+      },
     );
     return { data };
   },
@@ -781,7 +795,6 @@ const actionsSetAllowedActionsRepository = action({
     },
   },
 });
-
 const actionsGetGithubActionsDefaultWorkflowPermissionsRepository = action({
   display: {
     label: "Actions Get Github Actions Default Workflow Permissions Repository",
@@ -790,7 +803,7 @@ const actionsGetGithubActionsDefaultWorkflowPermissionsRepository = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/permissions/workflow`
+      `/repos/${owner}/${repo}/actions/permissions/workflow`,
     );
     return { data };
   },
@@ -804,7 +817,6 @@ const actionsGetGithubActionsDefaultWorkflowPermissionsRepository = action({
     repo,
   },
 });
-
 const actionsSetGithubActionsDefaultWorkflowPermissionsRepository = action({
   display: {
     label: "Actions Set Github Actions Default Workflow Permissions Repository",
@@ -818,15 +830,18 @@ const actionsSetGithubActionsDefaultWorkflowPermissionsRepository = action({
       repo,
       defaultWorkflowPermissions,
       canApprovePullRequestReviews,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/permissions/workflow`,
       {
         default_workflow_permissions: defaultWorkflowPermissions,
         can_approve_pull_request_reviews: canApprovePullRequestReviews,
-      }
+      },
     );
     return { data };
   },
@@ -859,17 +874,19 @@ const actionsSetGithubActionsDefaultWorkflowPermissionsRepository = action({
     },
   },
 });
-
 const actionsListSelfHostedRunnersForRepo = action({
   display: {
     label: "Actions List Self Hosted Runners For Repo",
     description: "List self-hosted runners for a repository",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/runners`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -897,7 +914,6 @@ const actionsListSelfHostedRunnersForRepo = action({
     },
   },
 });
-
 const actionsListRunnerApplicationsForRepo = action({
   display: {
     label: "Actions List Runner Applications For Repo",
@@ -906,7 +922,7 @@ const actionsListRunnerApplicationsForRepo = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runners/downloads`
+      `/repos/${owner}/${repo}/actions/runners/downloads`,
     );
     return { data };
   },
@@ -920,7 +936,6 @@ const actionsListRunnerApplicationsForRepo = action({
     repo,
   },
 });
-
 const actionsCreateRegistrationTokenForRepo = action({
   display: {
     label: "Actions Create Registration Token For Repo",
@@ -930,7 +945,7 @@ const actionsCreateRegistrationTokenForRepo = action({
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runners/registration-token`,
-      {}
+      {},
     );
     return { data };
   },
@@ -944,7 +959,6 @@ const actionsCreateRegistrationTokenForRepo = action({
     repo,
   },
 });
-
 const actionsCreateRemoveTokenForRepo = action({
   display: {
     label: "Actions Create Remove Token For Repo",
@@ -954,7 +968,7 @@ const actionsCreateRemoveTokenForRepo = action({
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runners/remove-token`,
-      {}
+      {},
     );
     return { data };
   },
@@ -968,16 +982,18 @@ const actionsCreateRemoveTokenForRepo = action({
     repo,
   },
 });
-
 const actionsGetSelfHostedRunnerForRepo = action({
   display: {
     label: "Actions Get Self Hosted Runner For Repo",
     description: "Get a self-hosted runner for a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runners/${runnerId}`
+      `/repos/${owner}/${repo}/actions/runners/${runnerId}`,
     );
     return { data };
   },
@@ -998,16 +1014,18 @@ const actionsGetSelfHostedRunnerForRepo = action({
     },
   },
 });
-
 const actionsDeleteSelfHostedRunnerFromRepo = action({
   display: {
     label: "Actions Delete Self Hosted Runner From Repo",
     description: "Delete a self-hosted runner from a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/runners/${runnerId}`
+      `/repos/${owner}/${repo}/actions/runners/${runnerId}`,
     );
     return { data };
   },
@@ -1028,16 +1046,18 @@ const actionsDeleteSelfHostedRunnerFromRepo = action({
     },
   },
 });
-
 const actionsListLabelsForSelfHostedRunnerForRepo = action({
   display: {
     label: "Actions List Labels For Self Hosted Runner For Repo",
     description: "List labels for a self-hosted runner for a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels`
+      `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels`,
     );
     return { data };
   },
@@ -1058,17 +1078,19 @@ const actionsListLabelsForSelfHostedRunnerForRepo = action({
     },
   },
 });
-
 const actionsAddCustomLabelsToSelfHostedRunnerForRepo = action({
   display: {
     label: "Actions Add Custom Labels To Self Hosted Runner For Repo",
     description: "Add custom labels to a self-hosted runner for a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId, labels }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels`,
-      { labels }
+      { labels },
     );
     return { data };
   },
@@ -1096,17 +1118,19 @@ const actionsAddCustomLabelsToSelfHostedRunnerForRepo = action({
     },
   },
 });
-
 const actionsSetCustomLabelsForSelfHostedRunnerForRepo = action({
   display: {
     label: "Actions Set Custom Labels For Self Hosted Runner For Repo",
     description: "Set custom labels for a self-hosted runner for a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId, labels }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels`,
-      { labels }
+      { labels },
     );
     return { data };
   },
@@ -1134,7 +1158,6 @@ const actionsSetCustomLabelsForSelfHostedRunnerForRepo = action({
     },
   },
 });
-
 const actionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo = action({
   display: {
     label: "Actions Remove All Custom Labels From Self Hosted Runner For Repo",
@@ -1142,9 +1165,12 @@ const actionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo = action({
       "Remove all custom labels from a self-hosted runner for a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels`
+      `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels`,
     );
     return { data };
   },
@@ -1165,7 +1191,6 @@ const actionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo = action({
     },
   },
 });
-
 const actionsRemoveCustomLabelFromSelfHostedRunnerForRepo = action({
   display: {
     label: "Actions Remove Custom Label From Self Hosted Runner For Repo",
@@ -1173,9 +1198,12 @@ const actionsRemoveCustomLabelFromSelfHostedRunnerForRepo = action({
       "Remove a custom label from a self-hosted runner for a repository",
   },
   perform: async (context, { connection, owner, repo, runnerId, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels/${name}`
+      `/repos/${owner}/${repo}/actions/runners/${runnerId}/labels/${name}`,
     );
     return { data };
   },
@@ -1203,7 +1231,6 @@ const actionsRemoveCustomLabelFromSelfHostedRunnerForRepo = action({
     },
   },
 });
-
 const actionsListWorkflowRunsForRepo = action({
   display: {
     label: "Actions List Workflow Runs For Repo",
@@ -1224,9 +1251,12 @@ const actionsListWorkflowRunsForRepo = action({
       created,
       excludePullRequests,
       checkSuiteId,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/actions/runs`, {
       params: {
         actor,
@@ -1334,7 +1364,6 @@ const actionsListWorkflowRunsForRepo = action({
     },
   },
 });
-
 const actionsGetWorkflowRun = action({
   display: {
     label: "Actions Get Workflow Run",
@@ -1342,14 +1371,17 @@ const actionsGetWorkflowRun = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, excludePullRequests }
+    { connection, owner, repo, runId, excludePullRequests },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/runs/${runId}`,
       {
         params: { exclude_pull_requests: excludePullRequests },
-      }
+      },
     );
     return { data };
   },
@@ -1379,16 +1411,18 @@ const actionsGetWorkflowRun = action({
     },
   },
 });
-
 const actionsDeleteWorkflowRun = action({
   display: {
     label: "Actions Delete Workflow Run",
     description: "Delete a workflow run",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/runs/${runId}`
+      `/repos/${owner}/${repo}/actions/runs/${runId}`,
     );
     return { data };
   },
@@ -1409,16 +1443,18 @@ const actionsDeleteWorkflowRun = action({
     },
   },
 });
-
 const actionsGetReviewsForRun = action({
   display: {
     label: "Actions Get Reviews For Run",
     description: "Get the review history for a workflow run",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runs/${runId}/approvals`
+      `/repos/${owner}/${repo}/actions/runs/${runId}/approvals`,
     );
     return { data };
   },
@@ -1439,17 +1475,19 @@ const actionsGetReviewsForRun = action({
     },
   },
 });
-
 const actionsApproveWorkflowRun = action({
   display: {
     label: "Actions Approve Workflow Run",
     description: "Approve a workflow run for a fork pull request",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runs/${runId}/approve`,
-      {}
+      {},
     );
     return { data };
   },
@@ -1470,7 +1508,6 @@ const actionsApproveWorkflowRun = action({
     },
   },
 });
-
 const actionsListWorkflowRunArtifacts = action({
   display: {
     label: "Actions List Workflow Run Artifacts",
@@ -1478,12 +1515,15 @@ const actionsListWorkflowRunArtifacts = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, perPage, page }
+    { connection, owner, repo, runId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/runs/${runId}/artifacts`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -1518,7 +1558,6 @@ const actionsListWorkflowRunArtifacts = action({
     },
   },
 });
-
 const actionsGetWorkflowRunAttempt = action({
   display: {
     label: "Actions Get Workflow Run Attempt",
@@ -1526,12 +1565,15 @@ const actionsGetWorkflowRunAttempt = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, attemptNumber, excludePullRequests }
+    { connection, owner, repo, runId, attemptNumber, excludePullRequests },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/runs/${runId}/attempts/${attemptNumber}`,
-      { params: { exclude_pull_requests: excludePullRequests } }
+      { params: { exclude_pull_requests: excludePullRequests } },
     );
     return { data };
   },
@@ -1568,7 +1610,6 @@ const actionsGetWorkflowRunAttempt = action({
     },
   },
 });
-
 const actionsListJobsForWorkflowRunAttempt = action({
   display: {
     label: "Actions List Jobs For Workflow Run Attempt",
@@ -1576,12 +1617,15 @@ const actionsListJobsForWorkflowRunAttempt = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, attemptNumber, perPage, page }
+    { connection, owner, repo, runId, attemptNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/runs/${runId}/attempts/${attemptNumber}/jobs`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -1623,7 +1667,6 @@ const actionsListJobsForWorkflowRunAttempt = action({
     },
   },
 });
-
 const actionsDownloadWorkflowRunAttemptLogs = action({
   display: {
     label: "Actions Download Workflow Run Attempt Logs",
@@ -1631,11 +1674,14 @@ const actionsDownloadWorkflowRunAttemptLogs = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, attemptNumber }
+    { connection, owner, repo, runId, attemptNumber },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runs/${runId}/attempts/${attemptNumber}/logs`
+      `/repos/${owner}/${repo}/actions/runs/${runId}/attempts/${attemptNumber}/logs`,
     );
     return { data };
   },
@@ -1663,17 +1709,19 @@ const actionsDownloadWorkflowRunAttemptLogs = action({
     },
   },
 });
-
 const actionsCancelWorkflowRun = action({
   display: {
     label: "Actions Cancel Workflow Run",
     description: "Cancel a workflow run",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runs/${runId}/cancel`,
-      {}
+      {},
     );
     return { data };
   },
@@ -1694,7 +1742,6 @@ const actionsCancelWorkflowRun = action({
     },
   },
 });
-
 const actionsListJobsForWorkflowRun = action({
   display: {
     label: "Actions List Jobs For Workflow Run",
@@ -1702,14 +1749,17 @@ const actionsListJobsForWorkflowRun = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, filter, perPage, page }
+    { connection, owner, repo, runId, filter, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/runs/${runId}/jobs`,
       {
         params: { filter, per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -1756,16 +1806,18 @@ const actionsListJobsForWorkflowRun = action({
     },
   },
 });
-
 const actionsDownloadWorkflowRunLogs = action({
   display: {
     label: "Actions Download Workflow Run Logs",
     description: "Download workflow run logs",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runs/${runId}/logs`
+      `/repos/${owner}/${repo}/actions/runs/${runId}/logs`,
     );
     return { data };
   },
@@ -1786,16 +1838,18 @@ const actionsDownloadWorkflowRunLogs = action({
     },
   },
 });
-
 const actionsDeleteWorkflowRunLogs = action({
   display: {
     label: "Actions Delete Workflow Run Logs",
     description: "Delete workflow run logs",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/runs/${runId}/logs`
+      `/repos/${owner}/${repo}/actions/runs/${runId}/logs`,
     );
     return { data };
   },
@@ -1816,16 +1870,18 @@ const actionsDeleteWorkflowRunLogs = action({
     },
   },
 });
-
 const actionsGetPendingDeploymentsForRun = action({
   display: {
     label: "Actions Get Pending Deployments For Run",
     description: "Get pending deployments for a workflow run",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runs/${runId}/pending_deployments`
+      `/repos/${owner}/${repo}/actions/runs/${runId}/pending_deployments`,
     );
     return { data };
   },
@@ -1846,7 +1902,6 @@ const actionsGetPendingDeploymentsForRun = action({
     },
   },
 });
-
 const actionsReviewPendingDeploymentsForRun = action({
   display: {
     label: "Actions Review Pending Deployments For Run",
@@ -1854,12 +1909,15 @@ const actionsReviewPendingDeploymentsForRun = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, environmentIds, state, comment }
+    { connection, owner, repo, runId, environmentIds, state, comment },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runs/${runId}/pending_deployments`,
-      { environment_ids: environmentIds, state, comment }
+      { environment_ids: environmentIds, state, comment },
     );
     return { data };
   },
@@ -1909,7 +1967,6 @@ const actionsReviewPendingDeploymentsForRun = action({
     },
   },
 });
-
 const actionsReRunWorkflow = action({
   display: {
     label: "Actions Re Run Workflow",
@@ -1917,12 +1974,15 @@ const actionsReRunWorkflow = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, enableDebugLogging }
+    { connection, owner, repo, runId, enableDebugLogging },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runs/${runId}/rerun`,
-      { enable_debug_logging: enableDebugLogging }
+      { enable_debug_logging: enableDebugLogging },
     );
     return { data };
   },
@@ -1951,7 +2011,6 @@ const actionsReRunWorkflow = action({
     },
   },
 });
-
 const actionsReRunWorkflowFailedJobs = action({
   display: {
     label: "Actions Re Run Workflow Failed Jobs",
@@ -1959,12 +2018,15 @@ const actionsReRunWorkflowFailedJobs = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, runId, enableDebugLogging }
+    { connection, owner, repo, runId, enableDebugLogging },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/runs/${runId}/rerun-failed-jobs`,
-      { enable_debug_logging: enableDebugLogging }
+      { enable_debug_logging: enableDebugLogging },
     );
     return { data };
   },
@@ -1993,16 +2055,18 @@ const actionsReRunWorkflowFailedJobs = action({
     },
   },
 });
-
 const actionsGetWorkflowRunUsage = action({
   display: {
     label: "Actions Get Workflow Run Usage",
     description: "Get workflow run usage",
   },
   perform: async (context, { connection, owner, repo, runId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/runs/${runId}/timing`
+      `/repos/${owner}/${repo}/actions/runs/${runId}/timing`,
     );
     return { data };
   },
@@ -2023,17 +2087,19 @@ const actionsGetWorkflowRunUsage = action({
     },
   },
 });
-
 const actionsListRepoSecrets = action({
   display: {
     label: "Actions List Repo Secrets",
     description: "List repository secrets",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/secrets`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -2061,7 +2127,6 @@ const actionsListRepoSecrets = action({
     },
   },
 });
-
 const actionsGetRepoPublicKey = action({
   display: {
     label: "Actions Get Repo Public Key",
@@ -2070,7 +2135,7 @@ const actionsGetRepoPublicKey = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/secrets/public-key`
+      `/repos/${owner}/${repo}/actions/secrets/public-key`,
     );
     return { data };
   },
@@ -2084,16 +2149,18 @@ const actionsGetRepoPublicKey = action({
     repo,
   },
 });
-
 const actionsGetRepoSecret = action({
   display: {
     label: "Actions Get Repo Secret",
     description: "Get a repository secret",
   },
   perform: async (context, { connection, owner, repo, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/secrets/${secretName}`
+      `/repos/${owner}/${repo}/actions/secrets/${secretName}`,
     );
     return { data };
   },
@@ -2114,7 +2181,6 @@ const actionsGetRepoSecret = action({
     },
   },
 });
-
 const actionsCreateOrUpdateRepoSecret = action({
   display: {
     label: "Actions Create Or Update Repo Secret",
@@ -2122,12 +2188,15 @@ const actionsCreateOrUpdateRepoSecret = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, secretName, encryptedValue, keyId }
+    { connection, owner, repo, secretName, encryptedValue, keyId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/secrets/${secretName}`,
-      { encrypted_value: encryptedValue, key_id: keyId }
+      { encrypted_value: encryptedValue, key_id: keyId },
     );
     return { data };
   },
@@ -2163,16 +2232,18 @@ const actionsCreateOrUpdateRepoSecret = action({
     },
   },
 });
-
 const actionsDeleteRepoSecret = action({
   display: {
     label: "Actions Delete Repo Secret",
     description: "Delete a repository secret",
   },
   perform: async (context, { connection, owner, repo, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/actions/secrets/${secretName}`
+      `/repos/${owner}/${repo}/actions/secrets/${secretName}`,
     );
     return { data };
   },
@@ -2193,19 +2264,21 @@ const actionsDeleteRepoSecret = action({
     },
   },
 });
-
 const actionsListRepoWorkflows = action({
   display: {
     label: "Actions List Repo Workflows",
     description: "List repository workflows",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/workflows`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -2233,16 +2306,18 @@ const actionsListRepoWorkflows = action({
     },
   },
 });
-
 const actionsGetWorkflow = action({
   display: {
     label: "Actions Get Workflow",
     description: "Get a workflow",
   },
   perform: async (context, { connection, owner, repo, workflowId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/workflows/${workflowId}`
+      `/repos/${owner}/${repo}/actions/workflows/${workflowId}`,
     );
     return { data };
   },
@@ -2263,17 +2338,19 @@ const actionsGetWorkflow = action({
     },
   },
 });
-
 const actionsDisableWorkflow = action({
   display: {
     label: "Actions Disable Workflow",
     description: "Disable a workflow",
   },
   perform: async (context, { connection, owner, repo, workflowId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/workflows/${workflowId}/disable`,
-      {}
+      {},
     );
     return { data };
   },
@@ -2294,7 +2371,6 @@ const actionsDisableWorkflow = action({
     },
   },
 });
-
 const actionsCreateWorkflowDispatch = action({
   display: {
     label: "Actions Create Workflow Dispatch",
@@ -2303,12 +2379,15 @@ const actionsCreateWorkflowDispatch = action({
   examplePayload: actionsCreateWorkflowDispatchExamplePayload,
   perform: async (
     context,
-    { connection, owner, repo, workflowId, ref, inputs }
+    { connection, owner, repo, workflowId, ref, inputs },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/actions/workflows/${workflowId}/dispatches`,
-      { ref, inputs }
+      { ref, inputs },
     );
     return { data };
   },
@@ -2353,17 +2432,19 @@ const actionsCreateWorkflowDispatch = action({
     },
   },
 });
-
 const actionsEnableWorkflow = action({
   display: {
     label: "Actions Enable Workflow",
     description: "Enable a workflow",
   },
   perform: async (context, { connection, owner, repo, workflowId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/actions/workflows/${workflowId}/enable`,
-      {}
+      {},
     );
     return { data };
   },
@@ -2384,7 +2465,6 @@ const actionsEnableWorkflow = action({
     },
   },
 });
-
 const actionsListWorkflowRuns = action({
   display: {
     label: "Actions List Workflow Runs",
@@ -2406,9 +2486,12 @@ const actionsListWorkflowRuns = action({
       created,
       excludePullRequests,
       checkSuiteId,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/actions/workflows/${workflowId}/runs`,
       {
@@ -2423,7 +2506,7 @@ const actionsListWorkflowRuns = action({
           exclude_pull_requests: excludePullRequests,
           check_suite_id: checkSuiteId,
         },
-      }
+      },
     );
     return { data };
   },
@@ -2526,16 +2609,18 @@ const actionsListWorkflowRuns = action({
     },
   },
 });
-
 const actionsGetWorkflowUsage = action({
   display: {
     label: "Actions Get Workflow Usage",
     description: "Get workflow usage",
   },
   perform: async (context, { connection, owner, repo, workflowId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/actions/workflows/${workflowId}/timing`
+      `/repos/${owner}/${repo}/actions/workflows/${workflowId}/timing`,
     );
     return { data };
   },
@@ -2556,14 +2641,16 @@ const actionsGetWorkflowUsage = action({
     },
   },
 });
-
 const issuesListAssignees = action({
   display: {
     label: "Issues List Assignees",
     description: "List assignees",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/assignees`, {
       params: { per_page: perPage, page },
     });
@@ -2593,16 +2680,18 @@ const issuesListAssignees = action({
     },
   },
 });
-
 const issuesCheckUserCanBeAssigned = action({
   display: {
     label: "Issues Check User Can Be Assigned",
     description: "Check if a user can be assigned",
   },
   perform: async (context, { connection, owner, repo, assignee }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/assignees/${assignee}`
+      `/repos/${owner}/${repo}/assignees/${assignee}`,
     );
     return { data };
   },
@@ -2622,14 +2711,16 @@ const issuesCheckUserCanBeAssigned = action({
     },
   },
 });
-
 const reposListAutolinks = action({
   display: {
     label: "Repos List Autolinks",
     description: "List all autolinks of a repository",
   },
   perform: async (context, { connection, owner, repo, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/autolinks`, {
       params: { page },
     });
@@ -2652,7 +2743,6 @@ const reposListAutolinks = action({
     },
   },
 });
-
 const reposCreateAutolink = action({
   display: {
     label: "Repos Create Autolink",
@@ -2660,9 +2750,12 @@ const reposCreateAutolink = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, keyPrefix, urlTemplate }
+    { connection, owner, repo, keyPrefix, urlTemplate },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/autolinks`, {
       key_prefix: keyPrefix,
       url_template: urlTemplate,
@@ -2694,16 +2787,18 @@ const reposCreateAutolink = action({
     },
   },
 });
-
 const reposGetAutolink = action({
   display: {
     label: "Repos Get Autolink",
     description: "Get an autolink reference of a repository",
   },
   perform: async (context, { connection, owner, repo, autolinkId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/autolinks/${autolinkId}`
+      `/repos/${owner}/${repo}/autolinks/${autolinkId}`,
     );
     return { data };
   },
@@ -2724,16 +2819,18 @@ const reposGetAutolink = action({
     },
   },
 });
-
 const reposDeleteAutolink = action({
   display: {
     label: "Repos Delete Autolink",
     description: "Delete an autolink reference from a repository",
   },
   perform: async (context, { connection, owner, repo, autolinkId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/autolinks/${autolinkId}`
+      `/repos/${owner}/${repo}/autolinks/${autolinkId}`,
     );
     return { data };
   },
@@ -2754,7 +2851,6 @@ const reposDeleteAutolink = action({
     },
   },
 });
-
 const reposEnableAutomatedSecurityFixes = action({
   display: {
     label: "Repos Enable Automated Security Fixes",
@@ -2764,7 +2860,7 @@ const reposEnableAutomatedSecurityFixes = action({
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.put(
       `/repos/${owner}/${repo}/automated-security-fixes`,
-      {}
+      {},
     );
     return { data };
   },
@@ -2778,7 +2874,6 @@ const reposEnableAutomatedSecurityFixes = action({
     repo,
   },
 });
-
 const reposDisableAutomatedSecurityFixes = action({
   display: {
     label: "Repos Disable Automated Security Fixes",
@@ -2787,7 +2882,7 @@ const reposDisableAutomatedSecurityFixes = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/automated-security-fixes`
+      `/repos/${owner}/${repo}/automated-security-fixes`,
     );
     return { data };
   },
@@ -2801,7 +2896,6 @@ const reposDisableAutomatedSecurityFixes = action({
     repo,
   },
 });
-
 const reposListBranches = action({
   display: {
     label: "Repos List Branches",
@@ -2809,9 +2903,12 @@ const reposListBranches = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, isProtected, perPage, page }
+    { connection, owner, repo, isProtected, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/branches`, {
       params: { protected: isProtected, per_page: perPage, page },
     });
@@ -2848,16 +2945,18 @@ const reposListBranches = action({
     },
   },
 });
-
 const reposGetBranch = action({
   display: {
     label: "Repos Get Branch",
     description: "Get a branch",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}`
+      `/repos/${owner}/${repo}/branches/${branch}`,
     );
     return { data };
   },
@@ -2878,16 +2977,18 @@ const reposGetBranch = action({
     },
   },
 });
-
 const reposGetBranchProtection = action({
   display: {
     label: "Repos Get Branch Protection",
     description: "Get branch protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection`
+      `/repos/${owner}/${repo}/branches/${branch}/protection`,
     );
     return { data };
   },
@@ -2908,7 +3009,6 @@ const reposGetBranchProtection = action({
     },
   },
 });
-
 const reposUpdateBranchProtection = action({
   display: {
     label: "Repos Update Branch Protection",
@@ -2930,9 +3030,12 @@ const reposUpdateBranchProtection = action({
       allowDeletions,
       blockCreations,
       requiredConversationResolution,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/branches/${branch}/protection`,
       {
@@ -2945,7 +3048,7 @@ const reposUpdateBranchProtection = action({
         allow_deletions: allowDeletions,
         block_creations: blockCreations,
         required_conversation_resolution: requiredConversationResolution,
-      }
+      },
     );
     return { data };
   },
@@ -3035,16 +3138,18 @@ const reposUpdateBranchProtection = action({
     },
   },
 });
-
 const reposDeleteBranchProtection = action({
   display: {
     label: "Repos Delete Branch Protection",
     description: "Delete branch protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection`
+      `/repos/${owner}/${repo}/branches/${branch}/protection`,
     );
     return { data };
   },
@@ -3065,16 +3170,18 @@ const reposDeleteBranchProtection = action({
     },
   },
 });
-
 const reposGetAdminBranchProtection = action({
   display: {
     label: "Repos Get Admin Branch Protection",
     description: "Get admin branch protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/enforce_admins`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/enforce_admins`,
     );
     return { data };
   },
@@ -3095,17 +3202,19 @@ const reposGetAdminBranchProtection = action({
     },
   },
 });
-
 const reposSetAdminBranchProtection = action({
   display: {
     label: "Repos Set Admin Branch Protection",
     description: "Set admin branch protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/protection/enforce_admins`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3126,16 +3235,18 @@ const reposSetAdminBranchProtection = action({
     },
   },
 });
-
 const reposDeleteAdminBranchProtection = action({
   display: {
     label: "Repos Delete Admin Branch Protection",
     description: "Delete admin branch protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/enforce_admins`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/enforce_admins`,
     );
     return { data };
   },
@@ -3156,16 +3267,18 @@ const reposDeleteAdminBranchProtection = action({
     },
   },
 });
-
 const reposGetPullRequestReviewProtection = action({
   display: {
     label: "Repos Get Pull Request Review Protection",
     description: "Get pull request review protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_pull_request_reviews`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_pull_request_reviews`,
     );
     return { data };
   },
@@ -3186,7 +3299,6 @@ const reposGetPullRequestReviewProtection = action({
     },
   },
 });
-
 const reposUpdatePullRequestReviewProtection = action({
   display: {
     label: "Repos Update Pull Request Review Protection",
@@ -3204,9 +3316,12 @@ const reposUpdatePullRequestReviewProtection = action({
       requireCodeOwnerReviews,
       requiredApprovingReviewCount,
       bypassPullRequestAllowances,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/branches/${branch}/protection/required_pull_request_reviews`,
       {
@@ -3215,7 +3330,7 @@ const reposUpdatePullRequestReviewProtection = action({
         require_code_owner_reviews: requireCodeOwnerReviews,
         required_approving_review_count: requiredApprovingReviewCount,
         bypass_pull_request_allowances: bypassPullRequestAllowances,
-      }
+      },
     );
     return { data };
   },
@@ -3275,16 +3390,18 @@ const reposUpdatePullRequestReviewProtection = action({
     },
   },
 });
-
 const reposDeletePullRequestReviewProtection = action({
   display: {
     label: "Repos Delete Pull Request Review Protection",
     description: "Delete pull request review protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_pull_request_reviews`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_pull_request_reviews`,
     );
     return { data };
   },
@@ -3305,16 +3422,18 @@ const reposDeletePullRequestReviewProtection = action({
     },
   },
 });
-
 const reposGetCommitSignatureProtection = action({
   display: {
     label: "Repos Get Commit Signature Protection",
     description: "Get commit signature protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_signatures`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_signatures`,
     );
     return { data };
   },
@@ -3335,17 +3454,19 @@ const reposGetCommitSignatureProtection = action({
     },
   },
 });
-
 const reposCreateCommitSignatureProtection = action({
   display: {
     label: "Repos Create Commit Signature Protection",
     description: "Create commit signature protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/protection/required_signatures`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3366,16 +3487,18 @@ const reposCreateCommitSignatureProtection = action({
     },
   },
 });
-
 const reposDeleteCommitSignatureProtection = action({
   display: {
     label: "Repos Delete Commit Signature Protection",
     description: "Delete commit signature protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_signatures`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_signatures`,
     );
     return { data };
   },
@@ -3396,16 +3519,18 @@ const reposDeleteCommitSignatureProtection = action({
     },
   },
 });
-
 const reposGetStatusChecksProtection = action({
   display: {
     label: "Repos Get Status Checks Protection",
     description: "Get status checks protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks`,
     );
     return { data };
   },
@@ -3426,7 +3551,6 @@ const reposGetStatusChecksProtection = action({
     },
   },
 });
-
 const reposUpdateStatusCheckProtection = action({
   display: {
     label: "Repos Update Status Check Protection",
@@ -3434,12 +3558,15 @@ const reposUpdateStatusCheckProtection = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, branch, strict, contexts, checks }
+    { connection, owner, repo, branch, strict, contexts, checks },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks`,
-      { strict, contexts, checks }
+      { strict, contexts, checks },
     );
     return { data };
   },
@@ -3483,16 +3610,18 @@ const reposUpdateStatusCheckProtection = action({
     },
   },
 });
-
 const reposRemoveStatusCheckProtection = action({
   display: {
     label: "Repos Remove Status Check Protection",
     description: "Remove status check protection",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks`,
     );
     return { data };
   },
@@ -3513,16 +3642,18 @@ const reposRemoveStatusCheckProtection = action({
     },
   },
 });
-
 const reposGetAllStatusCheckContexts = action({
   display: {
     label: "Repos Get All Status Check Contexts",
     description: "Get all status check contexts",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks/contexts`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks/contexts`,
     );
     return { data };
   },
@@ -3543,17 +3674,19 @@ const reposGetAllStatusCheckContexts = action({
     },
   },
 });
-
 const reposAddStatusCheckContexts = action({
   display: {
     label: "Repos Add Status Check Contexts",
     description: "Add status check contexts",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks/contexts`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3574,17 +3707,19 @@ const reposAddStatusCheckContexts = action({
     },
   },
 });
-
 const reposSetStatusCheckContexts = action({
   display: {
     label: "Repos Set Status Check Contexts",
     description: "Set status check contexts",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks/contexts`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3605,16 +3740,18 @@ const reposSetStatusCheckContexts = action({
     },
   },
 });
-
 const reposRemoveStatusCheckContexts = action({
   display: {
     label: "Repos Remove Status Check Contexts",
     description: "Remove status check contexts",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks/contexts`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/required_status_checks/contexts`,
     );
     return { data };
   },
@@ -3635,16 +3772,18 @@ const reposRemoveStatusCheckContexts = action({
     },
   },
 });
-
 const reposGetAccessRestrictions = action({
   display: {
     label: "Repos Get Access Restrictions",
     description: "Get access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions`,
     );
     return { data };
   },
@@ -3665,16 +3804,18 @@ const reposGetAccessRestrictions = action({
     },
   },
 });
-
 const reposDeleteAccessRestrictions = action({
   display: {
     label: "Repos Delete Access Restrictions",
     description: "Delete access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions`,
     );
     return { data };
   },
@@ -3695,16 +3836,18 @@ const reposDeleteAccessRestrictions = action({
     },
   },
 });
-
 const reposGetAppsWithAccessToProtectedBranch = action({
   display: {
     label: "Repos Get Apps With Access To Protected Branch",
     description: "Get apps with access to the protected branch",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/apps`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/apps`,
     );
     return { data };
   },
@@ -3725,17 +3868,19 @@ const reposGetAppsWithAccessToProtectedBranch = action({
     },
   },
 });
-
 const reposAddAppAccessRestrictions = action({
   display: {
     label: "Repos Add App Access Restrictions",
     description: "Add app access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/apps`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3756,17 +3901,19 @@ const reposAddAppAccessRestrictions = action({
     },
   },
 });
-
 const reposSetAppAccessRestrictions = action({
   display: {
     label: "Repos Set App Access Restrictions",
     description: "Set app access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/apps`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3787,16 +3934,18 @@ const reposSetAppAccessRestrictions = action({
     },
   },
 });
-
 const reposRemoveAppAccessRestrictions = action({
   display: {
     label: "Repos Remove App Access Restrictions",
     description: "Remove app access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/apps`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/apps`,
     );
     return { data };
   },
@@ -3817,16 +3966,18 @@ const reposRemoveAppAccessRestrictions = action({
     },
   },
 });
-
 const reposGetTeamsWithAccessToProtectedBranch = action({
   display: {
     label: "Repos Get Teams With Access To Protected Branch",
     description: "Get teams with access to the protected branch",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/teams`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/teams`,
     );
     return { data };
   },
@@ -3847,17 +3998,19 @@ const reposGetTeamsWithAccessToProtectedBranch = action({
     },
   },
 });
-
 const reposAddTeamAccessRestrictions = action({
   display: {
     label: "Repos Add Team Access Restrictions",
     description: "Add team access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/teams`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3878,17 +4031,19 @@ const reposAddTeamAccessRestrictions = action({
     },
   },
 });
-
 const reposSetTeamAccessRestrictions = action({
   display: {
     label: "Repos Set Team Access Restrictions",
     description: "Set team access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/teams`,
-      {}
+      {},
     );
     return { data };
   },
@@ -3909,16 +4064,18 @@ const reposSetTeamAccessRestrictions = action({
     },
   },
 });
-
 const reposRemoveTeamAccessRestrictions = action({
   display: {
     label: "Repos Remove Team Access Restrictions",
     description: "Remove team access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/teams`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/teams`,
     );
     return { data };
   },
@@ -3939,16 +4096,18 @@ const reposRemoveTeamAccessRestrictions = action({
     },
   },
 });
-
 const reposGetUsersWithAccessToProtectedBranch = action({
   display: {
     label: "Repos Get Users With Access To Protected Branch",
     description: "Get users with access to the protected branch",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/users`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/users`,
     );
     return { data };
   },
@@ -3969,17 +4128,19 @@ const reposGetUsersWithAccessToProtectedBranch = action({
     },
   },
 });
-
 const reposAddUserAccessRestrictions = action({
   display: {
     label: "Repos Add User Access Restrictions",
     description: "Add user access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/users`,
-      {}
+      {},
     );
     return { data };
   },
@@ -4000,17 +4161,19 @@ const reposAddUserAccessRestrictions = action({
     },
   },
 });
-
 const reposSetUserAccessRestrictions = action({
   display: {
     label: "Repos Set User Access Restrictions",
     description: "Set user access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/users`,
-      {}
+      {},
     );
     return { data };
   },
@@ -4031,16 +4194,18 @@ const reposSetUserAccessRestrictions = action({
     },
   },
 });
-
 const reposRemoveUserAccessRestrictions = action({
   display: {
     label: "Repos Remove User Access Restrictions",
     description: "Remove user access restrictions",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/users`
+      `/repos/${owner}/${repo}/branches/${branch}/protection/restrictions/users`,
     );
     return { data };
   },
@@ -4061,19 +4226,21 @@ const reposRemoveUserAccessRestrictions = action({
     },
   },
 });
-
 const reposRenameBranch = action({
   display: {
     label: "Repos Rename Branch",
     description: "Rename a branch",
   },
   perform: async (context, { connection, owner, repo, branch, newName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/branches/${branch}/rename`,
       {
         new_name: newName,
-      }
+      },
     );
     return { data };
   },
@@ -4101,7 +4268,6 @@ const reposRenameBranch = action({
     },
   },
 });
-
 const checksCreate = action({
   display: {
     label: "Checks Create",
@@ -4123,9 +4289,12 @@ const checksCreate = action({
       completedAt,
       output,
       actions,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/check-runs`, {
       name,
       head_sha: headSha,
@@ -4240,16 +4409,18 @@ const checksCreate = action({
     },
   },
 });
-
 const checksGet = action({
   display: {
     label: "Checks Get",
     description: "Get a check run",
   },
   perform: async (context, { connection, owner, repo, checkRunId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/check-runs/${checkRunId}`
+      `/repos/${owner}/${repo}/check-runs/${checkRunId}`,
     );
     return { data };
   },
@@ -4270,7 +4441,6 @@ const checksGet = action({
     },
   },
 });
-
 const checksUpdate = action({
   display: {
     label: "Checks Update",
@@ -4292,9 +4462,12 @@ const checksUpdate = action({
       completedAt,
       output,
       actions,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/check-runs/${checkRunId}`,
       {
@@ -4307,7 +4480,7 @@ const checksUpdate = action({
         completed_at: completedAt,
         output,
         actions,
-      }
+      },
     );
     return { data };
   },
@@ -4410,7 +4583,6 @@ const checksUpdate = action({
     },
   },
 });
-
 const checksListAnnotations = action({
   display: {
     label: "Checks List Annotations",
@@ -4418,12 +4590,15 @@ const checksListAnnotations = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, checkRunId, perPage, page }
+    { connection, owner, repo, checkRunId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/check-runs/${checkRunId}/annotations`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -4458,17 +4633,19 @@ const checksListAnnotations = action({
     },
   },
 });
-
 const checksRerequestRun = action({
   display: {
     label: "Checks Rerequest Run",
     description: "Rerequest a check run",
   },
   perform: async (context, { connection, owner, repo, checkRunId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/check-runs/${checkRunId}/rerequest`,
-      {}
+      {},
     );
     return { data };
   },
@@ -4489,14 +4666,16 @@ const checksRerequestRun = action({
     },
   },
 });
-
 const checksCreateSuite = action({
   display: {
     label: "Checks Create Suite",
     description: "Create a check suite",
   },
   perform: async (context, { connection, owner, repo, headSha }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/check-suites`, {
       head_sha: headSha,
     });
@@ -4519,19 +4698,21 @@ const checksCreateSuite = action({
     },
   },
 });
-
 const checksSetSuitesPreferences = action({
   display: {
     label: "Checks Set Suites Preferences",
     description: "Update repository preferences for check suites",
   },
   perform: async (context, { connection, owner, repo, autoTriggerChecks }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/check-suites/preferences`,
       {
         auto_trigger_checks: autoTriggerChecks,
-      }
+      },
     );
     return { data };
   },
@@ -4553,16 +4734,18 @@ const checksSetSuitesPreferences = action({
     },
   },
 });
-
 const checksGetSuite = action({
   display: {
     label: "Checks Get Suite",
     description: "Get a check suite",
   },
   perform: async (context, { connection, owner, repo, checkSuiteId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/check-suites/${checkSuiteId}`
+      `/repos/${owner}/${repo}/check-suites/${checkSuiteId}`,
     );
     return { data };
   },
@@ -4583,7 +4766,6 @@ const checksGetSuite = action({
     },
   },
 });
-
 const checksListForSuite = action({
   display: {
     label: "Checks List For Suite",
@@ -4601,9 +4783,12 @@ const checksListForSuite = action({
       filter,
       perPage,
       page,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/check-suites/${checkSuiteId}/check-runs`,
       {
@@ -4614,7 +4799,7 @@ const checksListForSuite = action({
           per_page: perPage,
           page,
         },
-      }
+      },
     );
     return { data };
   },
@@ -4680,17 +4865,19 @@ const checksListForSuite = action({
     },
   },
 });
-
 const checksRerequestSuite = action({
   display: {
     label: "Checks Rerequest Suite",
     description: "Rerequest a check suite",
   },
   perform: async (context, { connection, owner, repo, checkSuiteId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/check-suites/${checkSuiteId}/rerequest`,
-      {}
+      {},
     );
     return { data };
   },
@@ -4711,7 +4898,6 @@ const checksRerequestSuite = action({
     },
   },
 });
-
 const codeScanningListAlertsForRepo = action({
   display: {
     label: "Code Scanning List Alerts For Repo",
@@ -4731,9 +4917,12 @@ const codeScanningListAlertsForRepo = action({
       direction,
       sort,
       state,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/code-scanning/alerts`,
       {
@@ -4747,7 +4936,7 @@ const codeScanningListAlertsForRepo = action({
           sort,
           state,
         },
-      }
+      },
     );
     return { data };
   },
@@ -4835,16 +5024,18 @@ const codeScanningListAlertsForRepo = action({
     },
   },
 });
-
 const codeScanningGetAlert = action({
   display: {
     label: "Code Scanning Get Alert",
     description: "Get a code scanning alert",
   },
   perform: async (context, { connection, owner, repo, alertNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/code-scanning/alerts/${alertNumber}`
+      `/repos/${owner}/${repo}/code-scanning/alerts/${alertNumber}`,
     );
     return { data };
   },
@@ -4865,7 +5056,6 @@ const codeScanningGetAlert = action({
     },
   },
 });
-
 const codeScanningUpdateAlert = action({
   display: {
     label: "Code Scanning Update Alert",
@@ -4881,16 +5071,19 @@ const codeScanningUpdateAlert = action({
       state,
       dismissedReason,
       dismissedComment,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/code-scanning/alerts/${alertNumber}`,
       {
         state,
         dismissed_reason: dismissedReason,
         dismissed_comment: dismissedComment,
-      }
+      },
     );
     return { data };
   },
@@ -4943,7 +5136,6 @@ const codeScanningUpdateAlert = action({
     },
   },
 });
-
 const codeScanningListAlertInstances = action({
   display: {
     label: "Code Scanning List Alert Instances",
@@ -4951,12 +5143,15 @@ const codeScanningListAlertInstances = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, alertNumber, page, perPage, ref }
+    { connection, owner, repo, alertNumber, page, perPage, ref },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/code-scanning/alerts/${alertNumber}/instances`,
-      { params: { page, per_page: perPage, ref } }
+      { params: { page, per_page: perPage, ref } },
     );
     return { data };
   },
@@ -4998,7 +5193,6 @@ const codeScanningListAlertInstances = action({
     },
   },
 });
-
 const codeScanningListRecentAnalyses = action({
   display: {
     label: "Code Scanning List Recent Analyses",
@@ -5006,9 +5200,22 @@ const codeScanningListRecentAnalyses = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, toolName, toolGuid, page, perPage, ref, sarifId }
+    {
+      connection,
+      owner,
+      repo,
+      toolName,
+      toolGuid,
+      page,
+      perPage,
+      ref,
+      sarifId,
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/code-scanning/analyses`,
       {
@@ -5020,7 +5227,7 @@ const codeScanningListRecentAnalyses = action({
           ref,
           sarif_id: sarifId,
         },
-      }
+      },
     );
     return { data };
   },
@@ -5077,16 +5284,18 @@ const codeScanningListRecentAnalyses = action({
     },
   },
 });
-
 const codeScanningGetAnalysis = action({
   display: {
     label: "Code Scanning Get Analysis",
     description: "Get a code scanning analysis for a repository",
   },
   perform: async (context, { connection, owner, repo, analysisId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/code-scanning/analyses/${analysisId}`
+      `/repos/${owner}/${repo}/code-scanning/analyses/${analysisId}`,
     );
     return { data };
   },
@@ -5108,7 +5317,6 @@ const codeScanningGetAnalysis = action({
     },
   },
 });
-
 const codeScanningDeleteAnalysis = action({
   display: {
     label: "Code Scanning Delete Analysis",
@@ -5116,12 +5324,15 @@ const codeScanningDeleteAnalysis = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, analysisId, confirmDelete }
+    { connection, owner, repo, analysisId, confirmDelete },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/repos/${owner}/${repo}/code-scanning/analyses/${analysisId}`,
-      { params: { confirm_delete: confirmDelete } }
+      { params: { confirm_delete: confirmDelete } },
     );
     return { data };
   },
@@ -5150,7 +5361,6 @@ const codeScanningDeleteAnalysis = action({
     },
   },
 });
-
 const codeScanningUploadSarif = action({
   display: {
     label: "Code Scanning Upload Sarif",
@@ -5168,9 +5378,12 @@ const codeScanningUploadSarif = action({
       checkoutUri,
       startedAt,
       toolName,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/code-scanning/sarifs`,
       {
@@ -5180,7 +5393,7 @@ const codeScanningUploadSarif = action({
         checkout_uri: checkoutUri,
         started_at: startedAt,
         tool_name: toolName,
-      }
+      },
     );
     return { data };
   },
@@ -5240,16 +5453,18 @@ const codeScanningUploadSarif = action({
     },
   },
 });
-
 const codeScanningGetSarif = action({
   display: {
     label: "Code Scanning Get Sarif",
     description: "Get information about a SARIF upload",
   },
   perform: async (context, { connection, owner, repo, sarifId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/code-scanning/sarifs/${sarifId}`
+      `/repos/${owner}/${repo}/code-scanning/sarifs/${sarifId}`,
     );
     return { data };
   },
@@ -5270,19 +5485,21 @@ const codeScanningGetSarif = action({
     },
   },
 });
-
 const reposCodeownersErrors = action({
   display: {
     label: "Repos Codeowners Errors",
     description: "List CODEOWNERS errors",
   },
   perform: async (context, { connection, owner, repo, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/codeowners/errors`,
       {
         params: { ref },
-      }
+      },
     );
     return { data };
   },
@@ -5304,14 +5521,16 @@ const reposCodeownersErrors = action({
     },
   },
 });
-
 const codespacesListInRepositoryForAuthenticatedUser = action({
   display: {
     label: "Codespaces List In Repository For Authenticated User",
     description: "List codespaces in a repository for the authenticated user",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/codespaces`, {
       params: { per_page: perPage, page },
     });
@@ -5341,7 +5560,6 @@ const codespacesListInRepositoryForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesCreateWithRepoForAuthenticatedUser = action({
   display: {
     label: "Codespaces Create With Repo For Authenticated User",
@@ -5362,9 +5580,12 @@ const codespacesCreateWithRepoForAuthenticatedUser = action({
       workingDirectory,
       idleTimeoutMinutes,
       displayName,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/codespaces`, {
       ref,
       location,
@@ -5451,7 +5672,6 @@ const codespacesCreateWithRepoForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesListDevcontainersInRepositoryForAuthenticatedUser = action({
   display: {
     label: "Codespaces List Devcontainers In Repository For Authenticated User",
@@ -5459,12 +5679,15 @@ const codespacesListDevcontainersInRepositoryForAuthenticatedUser = action({
       "List devcontainer configurations in a repository for the authenticated user",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/codespaces/devcontainers`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -5492,19 +5715,21 @@ const codespacesListDevcontainersInRepositoryForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesRepoMachinesForAuthenticatedUser = action({
   display: {
     label: "Codespaces Repo Machines For Authenticated User",
     description: "List available machine types for a repository",
   },
   perform: async (context, { connection, owner, repo, location, clientIp }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/codespaces/machines`,
       {
         params: { location, client_ip: clientIp },
-      }
+      },
     );
     return { data };
   },
@@ -5531,19 +5756,21 @@ const codespacesRepoMachinesForAuthenticatedUser = action({
     },
   },
 });
-
 const codespacesListRepoSecrets = action({
   display: {
     label: "Codespaces List Repo Secrets",
     description: "List repository secrets",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/codespaces/secrets`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -5571,7 +5798,6 @@ const codespacesListRepoSecrets = action({
     },
   },
 });
-
 const codespacesGetRepoPublicKey = action({
   display: {
     label: "Codespaces Get Repo Public Key",
@@ -5580,7 +5806,7 @@ const codespacesGetRepoPublicKey = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/codespaces/secrets/public-key`
+      `/repos/${owner}/${repo}/codespaces/secrets/public-key`,
     );
     return { data };
   },
@@ -5594,16 +5820,18 @@ const codespacesGetRepoPublicKey = action({
     repo,
   },
 });
-
 const codespacesGetRepoSecret = action({
   display: {
     label: "Codespaces Get Repo Secret",
     description: "Get a repository secret",
   },
   perform: async (context, { connection, owner, repo, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/codespaces/secrets/${secretName}`
+      `/repos/${owner}/${repo}/codespaces/secrets/${secretName}`,
     );
     return { data };
   },
@@ -5624,7 +5852,6 @@ const codespacesGetRepoSecret = action({
     },
   },
 });
-
 const codespacesCreateOrUpdateRepoSecret = action({
   display: {
     label: "Codespaces Create Or Update Repo Secret",
@@ -5632,12 +5859,15 @@ const codespacesCreateOrUpdateRepoSecret = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, secretName, encryptedValue, keyId }
+    { connection, owner, repo, secretName, encryptedValue, keyId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/codespaces/secrets/${secretName}`,
-      { encrypted_value: encryptedValue, key_id: keyId }
+      { encrypted_value: encryptedValue, key_id: keyId },
     );
     return { data };
   },
@@ -5673,16 +5903,18 @@ const codespacesCreateOrUpdateRepoSecret = action({
     },
   },
 });
-
 const codespacesDeleteRepoSecret = action({
   display: {
     label: "Codespaces Delete Repo Secret",
     description: "Delete a repository secret",
   },
   perform: async (context, { connection, owner, repo, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/codespaces/secrets/${secretName}`
+      `/repos/${owner}/${repo}/codespaces/secrets/${secretName}`,
     );
     return { data };
   },
@@ -5703,7 +5935,6 @@ const codespacesDeleteRepoSecret = action({
     },
   },
 });
-
 const reposListCollaborators = action({
   display: {
     label: "Repos List Collaborators",
@@ -5711,9 +5942,12 @@ const reposListCollaborators = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, affiliation, perPage, page }
+    { connection, owner, repo, affiliation, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/collaborators`, {
       params: { affiliation, per_page: perPage, page },
     });
@@ -5756,16 +5990,18 @@ const reposListCollaborators = action({
     },
   },
 });
-
 const reposCheckCollaborator = action({
   display: {
     label: "Repos Check Collaborator",
     description: "Check if a user is a repository collaborator",
   },
   perform: async (context, { connection, owner, repo, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/collaborators/${username}`
+      `/repos/${owner}/${repo}/collaborators/${username}`,
     );
     return { data };
   },
@@ -5786,7 +6022,6 @@ const reposCheckCollaborator = action({
     },
   },
 });
-
 const reposAddCollaborator = action({
   display: {
     label: "Repos Add Collaborator",
@@ -5794,15 +6029,18 @@ const reposAddCollaborator = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, username, permission, permissions }
+    { connection, owner, repo, username, permission, permissions },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/collaborators/${username}`,
       {
         permission,
         permissions,
-      }
+      },
     );
     return { data };
   },
@@ -5845,16 +6083,18 @@ const reposAddCollaborator = action({
     },
   },
 });
-
 const reposRemoveCollaborator = action({
   display: {
     label: "Repos Remove Collaborator",
     description: "Remove a repository collaborator",
   },
   perform: async (context, { connection, owner, repo, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/collaborators/${username}`
+      `/repos/${owner}/${repo}/collaborators/${username}`,
     );
     return { data };
   },
@@ -5875,16 +6115,18 @@ const reposRemoveCollaborator = action({
     },
   },
 });
-
 const reposGetCollaboratorPermissionLevel = action({
   display: {
     label: "Repos Get Collaborator Permission Level",
     description: "Get repository permissions for a user",
   },
   perform: async (context, { connection, owner, repo, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/collaborators/${username}/permission`
+      `/repos/${owner}/${repo}/collaborators/${username}/permission`,
     );
     return { data };
   },
@@ -5905,14 +6147,16 @@ const reposGetCollaboratorPermissionLevel = action({
     },
   },
 });
-
 const reposListCommitCommentsForRepo = action({
   display: {
     label: "Repos List Commit Comments For Repo",
     description: "List commit comments for a repository",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/comments`, {
       params: { per_page: perPage, page },
     });
@@ -5942,16 +6186,18 @@ const reposListCommitCommentsForRepo = action({
     },
   },
 });
-
 const reposGetCommitComment = action({
   display: {
     label: "Repos Get Commit Comment",
     description: "Get a commit comment",
   },
   perform: async (context, { connection, owner, repo, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/comments/${commentId}`
+      `/repos/${owner}/${repo}/comments/${commentId}`,
     );
     return { data };
   },
@@ -5972,19 +6218,21 @@ const reposGetCommitComment = action({
     },
   },
 });
-
 const reposUpdateCommitComment = action({
   display: {
     label: "Repos Update Commit Comment",
     description: "Update a commit comment",
   },
   perform: async (context, { connection, owner, repo, commentId, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/comments/${commentId}`,
       {
         body,
-      }
+      },
     );
     return { data };
   },
@@ -6012,16 +6260,18 @@ const reposUpdateCommitComment = action({
     },
   },
 });
-
 const reposDeleteCommitComment = action({
   display: {
     label: "Repos Delete Commit Comment",
     description: "Delete a commit comment",
   },
   perform: async (context, { connection, owner, repo, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/comments/${commentId}`
+      `/repos/${owner}/${repo}/comments/${commentId}`,
     );
     return { data };
   },
@@ -6042,7 +6292,6 @@ const reposDeleteCommitComment = action({
     },
   },
 });
-
 const reactionsListForCommitComment = action({
   display: {
     label: "Reactions List For Commit Comment",
@@ -6050,12 +6299,15 @@ const reactionsListForCommitComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commentId, content, perPage, page }
+    { connection, owner, repo, commentId, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/comments/${commentId}/reactions`,
-      { params: { content, per_page: perPage, page } }
+      { params: { content, per_page: perPage, page } },
     );
     return { data };
   },
@@ -6107,17 +6359,19 @@ const reactionsListForCommitComment = action({
     },
   },
 });
-
 const reactionsCreateForCommitComment = action({
   display: {
     label: "Reactions Create For Commit Comment",
     description: "Create reaction for a commit comment",
   },
   perform: async (context, { connection, owner, repo, commentId, content }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/comments/${commentId}/reactions`,
-      { content }
+      { content },
     );
     return { data };
   },
@@ -6155,7 +6409,6 @@ const reactionsCreateForCommitComment = action({
     },
   },
 });
-
 const reactionsDeleteForCommitComment = action({
   display: {
     label: "Reactions Delete For Commit Comment",
@@ -6163,11 +6416,14 @@ const reactionsDeleteForCommitComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commentId, reactionId }
+    { connection, owner, repo, commentId, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/comments/${commentId}/reactions/${reactionId}`
+      `/repos/${owner}/${repo}/comments/${commentId}/reactions/${reactionId}`,
     );
     return { data };
   },
@@ -6195,7 +6451,6 @@ const reactionsDeleteForCommitComment = action({
     },
   },
 });
-
 const reposListCommits = action({
   display: {
     label: "Repos List Commits",
@@ -6203,9 +6458,12 @@ const reposListCommits = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, sha, path, author, since, until, perPage, page }
+    { connection, owner, repo, sha, path, author, since, until, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/commits`, {
       params: { sha, path, author, since, until, per_page: perPage, page },
     });
@@ -6271,16 +6529,18 @@ const reposListCommits = action({
     },
   },
 });
-
 const reposListBranchesForHeadCommit = action({
   display: {
     label: "Repos List Branches For Head Commit",
     description: "List branches for HEAD commit",
   },
   perform: async (context, { connection, owner, repo, commitSha }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/commits/${commitSha}/branches-where-head`
+      `/repos/${owner}/${repo}/commits/${commitSha}/branches-where-head`,
     );
     return { data };
   },
@@ -6301,7 +6561,6 @@ const reposListBranchesForHeadCommit = action({
     },
   },
 });
-
 const reposListCommentsForCommit = action({
   display: {
     label: "Repos List Comments For Commit",
@@ -6309,12 +6568,15 @@ const reposListCommentsForCommit = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commitSha, perPage, page }
+    { connection, owner, repo, commitSha, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${commitSha}/comments`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -6349,7 +6611,6 @@ const reposListCommentsForCommit = action({
     },
   },
 });
-
 const reposCreateCommitComment = action({
   display: {
     label: "Repos Create Commit Comment",
@@ -6357,12 +6618,15 @@ const reposCreateCommitComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commitSha, body, path, position, line }
+    { connection, owner, repo, commitSha, body, path, position, line },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/commits/${commitSha}/comments`,
-      { body, path, position, line }
+      { body, path, position, line },
     );
     return { data };
   },
@@ -6411,7 +6675,6 @@ const reposCreateCommitComment = action({
     },
   },
 });
-
 const reposListPullRequestsAssociatedWithCommit = action({
   display: {
     label: "Repos List Pull Requests Associated With Commit",
@@ -6419,14 +6682,17 @@ const reposListPullRequestsAssociatedWithCommit = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commitSha, perPage, page }
+    { connection, owner, repo, commitSha, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${commitSha}/pulls`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -6461,17 +6727,19 @@ const reposListPullRequestsAssociatedWithCommit = action({
     },
   },
 });
-
 const reposGetCommit = action({
   display: {
     label: "Repos Get Commit",
     description: "Get a commit",
   },
   perform: async (context, { connection, owner, repo, ref, page, perPage }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${ref}`,
-      { params: { page, per_page: perPage } }
+      { params: { page, per_page: perPage } },
     );
     return { data };
   },
@@ -6506,7 +6774,6 @@ const reposGetCommit = action({
     },
   },
 });
-
 const checksListForRef = action({
   display: {
     label: "Checks List For Ref",
@@ -6525,9 +6792,12 @@ const checksListForRef = action({
       perPage,
       page,
       appId,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${ref}/check-runs`,
       {
@@ -6539,7 +6809,7 @@ const checksListForRef = action({
           page,
           app_id: appId,
         },
-      }
+      },
     );
     return { data };
   },
@@ -6611,7 +6881,6 @@ const checksListForRef = action({
     },
   },
 });
-
 const checksListSuitesForRef = action({
   display: {
     label: "Checks List Suites For Ref",
@@ -6619,9 +6888,12 @@ const checksListSuitesForRef = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, ref, appId, checkName, perPage, page }
+    { connection, owner, repo, ref, appId, checkName, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${ref}/check-suites`,
       {
@@ -6631,7 +6903,7 @@ const checksListSuitesForRef = action({
           per_page: perPage,
           page,
         },
-      }
+      },
     );
     return { data };
   },
@@ -6680,19 +6952,21 @@ const checksListSuitesForRef = action({
     },
   },
 });
-
 const reposGetCombinedStatusForRef = action({
   display: {
     label: "Repos Get Combined Status For Ref",
     description: "Get the combined status for a specific reference",
   },
   perform: async (context, { connection, owner, repo, ref, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${ref}/status`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -6727,19 +7001,21 @@ const reposGetCombinedStatusForRef = action({
     },
   },
 });
-
 const reposListCommitStatusesForRef = action({
   display: {
     label: "Repos List Commit Statuses For Ref",
     description: "List commit statuses for a reference",
   },
   perform: async (context, { connection, owner, repo, ref, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/commits/${ref}/statuses`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -6774,7 +7050,6 @@ const reposListCommitStatusesForRef = action({
     },
   },
 });
-
 const reposGetCommunityProfileMetrics = action({
   display: {
     label: "Repos Get Community Profile Metrics",
@@ -6783,7 +7058,7 @@ const reposGetCommunityProfileMetrics = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/community/profile`
+      `/repos/${owner}/${repo}/community/profile`,
     );
     return { data };
   },
@@ -6797,7 +7072,6 @@ const reposGetCommunityProfileMetrics = action({
     repo,
   },
 });
-
 const reposCompareCommits = action({
   display: {
     label: "Repos Compare Commits",
@@ -6805,14 +7079,17 @@ const reposCompareCommits = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, basehead, page, perPage }
+    { connection, owner, repo, basehead, page, perPage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/compare/${basehead}`,
       {
         params: { page, per_page: perPage },
-      }
+      },
     );
     return { data };
   },
@@ -6854,19 +7131,21 @@ const reposCompareCommits = action({
     },
   },
 });
-
 const reposGetContent = action({
   display: {
     label: "Repos Get Content",
     description: "Get repository content",
   },
   perform: async (context, { connection, owner, repo, path, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/contents/${path}`,
       {
         params: { ref },
-      }
+      },
     );
     return { data };
   },
@@ -6894,7 +7173,6 @@ const reposGetContent = action({
     },
   },
 });
-
 const reposCreateOrUpdateFileContents = action({
   display: {
     label: "Repos Create Or Update File Contents",
@@ -6913,9 +7191,12 @@ const reposCreateOrUpdateFileContents = action({
       branch,
       committer,
       author,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/contents/${path}`,
       {
@@ -6925,7 +7206,7 @@ const reposCreateOrUpdateFileContents = action({
         branch,
         committer,
         author,
-      }
+      },
     );
     return { data };
   },
@@ -6988,7 +7269,6 @@ const reposCreateOrUpdateFileContents = action({
     },
   },
 });
-
 const reposDeleteFile = action({
   display: {
     label: "Repos Delete File",
@@ -6996,11 +7276,14 @@ const reposDeleteFile = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, path, message, sha, branch, committer, author }
+    { connection, owner, repo, path, message, sha, branch, committer, author },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/contents/${path}`
+      `/repos/${owner}/${repo}/contents/${path}`,
     );
     return { data };
   },
@@ -7056,7 +7339,6 @@ const reposDeleteFile = action({
     },
   },
 });
-
 const reposListContributors = action({
   display: {
     label: "Repos List Contributors",
@@ -7064,9 +7346,12 @@ const reposListContributors = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, anon, perPage, page }
+    { connection, owner, repo, anon, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/contributors`, {
       params: { anon, per_page: perPage, page },
     });
@@ -7104,19 +7389,21 @@ const reposListContributors = action({
     },
   },
 });
-
 const dependabotListRepoSecrets = action({
   display: {
     label: "Dependabot List Repo Secrets",
     description: "List repository secrets",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/dependabot/secrets`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -7144,7 +7431,6 @@ const dependabotListRepoSecrets = action({
     },
   },
 });
-
 const dependabotGetRepoPublicKey = action({
   display: {
     label: "Dependabot Get Repo Public Key",
@@ -7153,7 +7439,7 @@ const dependabotGetRepoPublicKey = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/dependabot/secrets/public-key`
+      `/repos/${owner}/${repo}/dependabot/secrets/public-key`,
     );
     return { data };
   },
@@ -7167,16 +7453,18 @@ const dependabotGetRepoPublicKey = action({
     repo,
   },
 });
-
 const dependabotGetRepoSecret = action({
   display: {
     label: "Dependabot Get Repo Secret",
     description: "Get a repository secret",
   },
   perform: async (context, { connection, owner, repo, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/dependabot/secrets/${secretName}`
+      `/repos/${owner}/${repo}/dependabot/secrets/${secretName}`,
     );
     return { data };
   },
@@ -7197,7 +7485,6 @@ const dependabotGetRepoSecret = action({
     },
   },
 });
-
 const dependabotCreateOrUpdateRepoSecret = action({
   display: {
     label: "Dependabot Create Or Update Repo Secret",
@@ -7205,12 +7492,15 @@ const dependabotCreateOrUpdateRepoSecret = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, secretName, encryptedValue, keyId }
+    { connection, owner, repo, secretName, encryptedValue, keyId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/dependabot/secrets/${secretName}`,
-      { encrypted_value: encryptedValue, key_id: keyId }
+      { encrypted_value: encryptedValue, key_id: keyId },
     );
     return { data };
   },
@@ -7246,16 +7536,18 @@ const dependabotCreateOrUpdateRepoSecret = action({
     },
   },
 });
-
 const dependabotDeleteRepoSecret = action({
   display: {
     label: "Dependabot Delete Repo Secret",
     description: "Delete a repository secret",
   },
   perform: async (context, { connection, owner, repo, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/dependabot/secrets/${secretName}`
+      `/repos/${owner}/${repo}/dependabot/secrets/${secretName}`,
     );
     return { data };
   },
@@ -7276,17 +7568,19 @@ const dependabotDeleteRepoSecret = action({
     },
   },
 });
-
 const dependencyGraphDiffRange = action({
   display: {
     label: "Dependency Graph Diff Range",
     description: "Get a diff of the dependencies between commits",
   },
   perform: async (context, { connection, owner, repo, basehead, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/dependency-graph/compare/${basehead}`,
-      { params: { name } }
+      { params: { name } },
     );
     return { data };
   },
@@ -7320,7 +7614,6 @@ const dependencyGraphDiffRange = action({
     },
   },
 });
-
 const reposListDeployments = action({
   display: {
     label: "Repos List Deployments",
@@ -7328,9 +7621,12 @@ const reposListDeployments = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, sha, ref, task, environment, perPage, page }
+    { connection, owner, repo, sha, ref, task, environment, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/deployments`, {
       params: { sha, ref, task, environment, per_page: perPage, page },
     });
@@ -7392,7 +7688,6 @@ const reposListDeployments = action({
     },
   },
 });
-
 const reposCreateDeployment = action({
   display: {
     label: "Repos Create Deployment",
@@ -7413,9 +7708,12 @@ const reposCreateDeployment = action({
       description,
       transientEnvironment,
       productionEnvironment,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/deployments`, {
       ref,
       task,
@@ -7509,16 +7807,18 @@ const reposCreateDeployment = action({
     },
   },
 });
-
 const reposGetDeployment = action({
   display: {
     label: "Repos Get Deployment",
     description: "Get a deployment",
   },
   perform: async (context, { connection, owner, repo, deploymentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/deployments/${deploymentId}`
+      `/repos/${owner}/${repo}/deployments/${deploymentId}`,
     );
     return { data };
   },
@@ -7539,16 +7839,18 @@ const reposGetDeployment = action({
     },
   },
 });
-
 const reposDeleteDeployment = action({
   display: {
     label: "Repos Delete Deployment",
     description: "Delete a deployment",
   },
   perform: async (context, { connection, owner, repo, deploymentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/deployments/${deploymentId}`
+      `/repos/${owner}/${repo}/deployments/${deploymentId}`,
     );
     return { data };
   },
@@ -7569,7 +7871,6 @@ const reposDeleteDeployment = action({
     },
   },
 });
-
 const reposListDeploymentStatuses = action({
   display: {
     label: "Repos List Deployment Statuses",
@@ -7577,12 +7878,15 @@ const reposListDeploymentStatuses = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, deploymentId, perPage, page }
+    { connection, owner, repo, deploymentId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/deployments/${deploymentId}/statuses`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -7617,7 +7921,6 @@ const reposListDeploymentStatuses = action({
     },
   },
 });
-
 const reposCreateDeploymentStatus = action({
   display: {
     label: "Repos Create Deployment Status",
@@ -7637,9 +7940,12 @@ const reposCreateDeploymentStatus = action({
       environment,
       environmentUrl,
       autoInactive,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/deployments/${deploymentId}/statuses`,
       {
@@ -7650,7 +7956,7 @@ const reposCreateDeploymentStatus = action({
         environment,
         environment_url: environmentUrl,
         auto_inactive: autoInactive,
-      }
+      },
     );
     return { data };
   },
@@ -7740,7 +8046,6 @@ const reposCreateDeploymentStatus = action({
     },
   },
 });
-
 const reposGetDeploymentStatus = action({
   display: {
     label: "Repos Get Deployment Status",
@@ -7748,11 +8053,14 @@ const reposGetDeploymentStatus = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, deploymentId, statusId }
+    { connection, owner, repo, deploymentId, statusId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/deployments/${deploymentId}/statuses/${statusId}`
+      `/repos/${owner}/${repo}/deployments/${deploymentId}/statuses/${statusId}`,
     );
     return { data };
   },
@@ -7779,7 +8087,6 @@ const reposGetDeploymentStatus = action({
     },
   },
 });
-
 const reposCreateDispatchEvent = action({
   display: {
     label: "Repos Create Dispatch Event",
@@ -7787,9 +8094,12 @@ const reposCreateDispatchEvent = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, eventType, clientPayload }
+    { connection, owner, repo, eventType, clientPayload },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/dispatches`, {
       event_type: eventType,
       client_payload: clientPayload,
@@ -7821,14 +8131,16 @@ const reposCreateDispatchEvent = action({
     },
   },
 });
-
 const reposGetAllEnvironments = action({
   display: {
     label: "Repos Get All Environments",
     description: "Get all environments",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/environments`, {
       params: { per_page: perPage, page },
     });
@@ -7858,16 +8170,18 @@ const reposGetAllEnvironments = action({
     },
   },
 });
-
 const reposGetEnvironment = action({
   display: {
     label: "Repos Get Environment",
     description: "Get an environment",
   },
   perform: async (context, { connection, owner, repo, environmentName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/environments/${environmentName}`
+      `/repos/${owner}/${repo}/environments/${environmentName}`,
     );
     return { data };
   },
@@ -7888,7 +8202,6 @@ const reposGetEnvironment = action({
     },
   },
 });
-
 const reposCreateOrUpdateEnvironment = action({
   display: {
     label: "Repos Create Or Update Environment",
@@ -7904,16 +8217,19 @@ const reposCreateOrUpdateEnvironment = action({
       waitTimer,
       reviewers,
       deploymentBranchPolicy,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/environments/${environmentName}`,
       {
         wait_timer: waitTimer,
         reviewers,
         deployment_branch_policy: deploymentBranchPolicy,
-      }
+      },
     );
     return { data };
   },
@@ -7958,16 +8274,18 @@ const reposCreateOrUpdateEnvironment = action({
     },
   },
 });
-
 const reposDeleteAnEnvironment = action({
   display: {
     label: "Repos Delete An Environment",
     description: "Delete an environment",
   },
   perform: async (context, { connection, owner, repo, environmentName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/environments/${environmentName}`
+      `/repos/${owner}/${repo}/environments/${environmentName}`,
     );
     return { data };
   },
@@ -7988,14 +8306,16 @@ const reposDeleteAnEnvironment = action({
     },
   },
 });
-
 const activityListRepoEvents = action({
   display: {
     label: "Activity List Repo Events",
     description: "List repository events",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/events`, {
       params: { per_page: perPage, page },
     });
@@ -8025,7 +8345,6 @@ const activityListRepoEvents = action({
     },
   },
 });
-
 const reposListForks = action({
   display: {
     label: "Repos List Forks",
@@ -8033,9 +8352,12 @@ const reposListForks = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, sort, perPage, page }
+    { connection, owner, repo, sort, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/forks`, {
       params: { sort, per_page: perPage, page },
     });
@@ -8079,14 +8401,16 @@ const reposListForks = action({
     },
   },
 });
-
 const reposCreateFork = action({
   display: {
     label: "Repos Create Fork",
     description: "Create a fork",
   },
   perform: async (context, { connection, owner, repo, organization }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/forks`, {
       organization,
     });
@@ -8110,7 +8434,6 @@ const reposCreateFork = action({
     },
   },
 });
-
 const gitCreateBlob = action({
   display: {
     label: "Git Create Blob",
@@ -8118,7 +8441,10 @@ const gitCreateBlob = action({
   },
   examplePayload: gitCreateBlobExamplePayload,
   perform: async (context, { connection, owner, repo, content, encoding }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/git/blobs`, {
       content,
       encoding,
@@ -8150,16 +8476,18 @@ const gitCreateBlob = action({
     },
   },
 });
-
 const gitGetBlob = action({
   display: {
     label: "Git Get Blob",
     description: "Get a blob",
   },
   perform: async (context, { connection, owner, repo, fileSha }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/git/blobs/${fileSha}`
+      `/repos/${owner}/${repo}/git/blobs/${fileSha}`,
     );
     return { data };
   },
@@ -8179,7 +8507,6 @@ const gitGetBlob = action({
     },
   },
 });
-
 const gitCreateCommit = action({
   display: {
     label: "Git Create Commit",
@@ -8197,9 +8524,12 @@ const gitCreateCommit = action({
       author,
       committer,
       signature,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/git/commits`, {
       message,
       tree,
@@ -8262,16 +8592,18 @@ const gitCreateCommit = action({
     },
   },
 });
-
 const gitGetCommit = action({
   display: {
     label: "Git Get Commit",
     description: "Get a commit",
   },
   perform: async (context, { connection, owner, repo, commitSha }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/git/commits/${commitSha}`
+      `/repos/${owner}/${repo}/git/commits/${commitSha}`,
     );
     return { data };
   },
@@ -8292,19 +8624,21 @@ const gitGetCommit = action({
     },
   },
 });
-
 const gitListMatchingRefs = action({
   display: {
     label: "Git List Matching Refs",
     description: "List matching references",
   },
   perform: async (context, { connection, owner, repo, ref, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/git/matching-refs/${ref}`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -8339,7 +8673,6 @@ const gitListMatchingRefs = action({
     },
   },
 });
-
 const gitGetRef = action({
   display: {
     label: "Git Get Ref",
@@ -8347,7 +8680,10 @@ const gitGetRef = action({
   },
   examplePayload: gitGetRefExamplePayload,
   perform: async (context, { connection, owner, repo, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/git/ref/${ref}`);
     return { data };
   },
@@ -8364,7 +8700,6 @@ const gitGetRef = action({
     },
   },
 });
-
 const gitCreateRef = action({
   display: {
     label: "Git Create Ref",
@@ -8372,7 +8707,10 @@ const gitCreateRef = action({
   },
   examplePayload: gitCreateRefExamplePayload,
   perform: async (context, { connection, owner, repo, ref, sha, key }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/git/refs`, {
       ref,
       sha,
@@ -8408,20 +8746,22 @@ const gitCreateRef = action({
     },
   },
 });
-
 const gitUpdateRef = action({
   display: {
     label: "Git Update Ref",
     description: "Update a reference",
   },
   perform: async (context, { connection, owner, repo, ref, sha, force }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/git/refs/${ref}`,
       {
         sha,
         force,
-      }
+      },
     );
     return { data };
   },
@@ -8458,16 +8798,18 @@ const gitUpdateRef = action({
     },
   },
 });
-
 const gitDeleteRef = action({
   display: {
     label: "Git Delete Ref",
     description: "Delete a reference",
   },
   perform: async (context, { connection, owner, repo, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/git/refs/${ref}`
+      `/repos/${owner}/${repo}/git/refs/${ref}`,
     );
     return { data };
   },
@@ -8488,7 +8830,6 @@ const gitDeleteRef = action({
     },
   },
 });
-
 const gitCreateTag = action({
   display: {
     label: "Git Create Tag",
@@ -8496,9 +8837,12 @@ const gitCreateTag = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, tag, message, object, type, tagger }
+    { connection, owner, repo, tag, message, object, type, tagger },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/git/tags`, {
       tag,
       message,
@@ -8559,16 +8903,18 @@ const gitCreateTag = action({
     },
   },
 });
-
 const gitGetTag = action({
   display: {
     label: "Git Get Tag",
     description: "Get a tag",
   },
   perform: async (context, { connection, owner, repo, tagSha }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/git/tags/${tagSha}`
+      `/repos/${owner}/${repo}/git/tags/${tagSha}`,
     );
     return { data };
   },
@@ -8588,7 +8934,6 @@ const gitGetTag = action({
     },
   },
 });
-
 const gitCreateTree = action({
   display: {
     label: "Git Create Tree",
@@ -8596,7 +8941,10 @@ const gitCreateTree = action({
   },
   examplePayload: gitCreateTreeExamplePayload,
   perform: async (context, { connection, owner, repo, tree, baseTree }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/git/trees`, {
       tree,
       base_tree: baseTree,
@@ -8617,7 +8965,7 @@ const gitCreateTree = action({
       default: JSON.stringify(
         [{ path: "test.txt", mode: "100644", content: "This is a test" }],
         null,
-        2
+        2,
       ),
       clean: util.types.toObject,
     },
@@ -8632,19 +8980,21 @@ const gitCreateTree = action({
     },
   },
 });
-
 const gitGetTree = action({
   display: {
     label: "Git Get Tree",
     description: "Get a tree",
   },
   perform: async (context, { connection, owner, repo, treeSha, recursive }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/git/trees/${treeSha}`,
       {
         params: { recursive },
-      }
+      },
     );
     return { data };
   },
@@ -8672,7 +9022,6 @@ const gitGetTree = action({
     },
   },
 });
-
 const migrationsGetImportStatus = action({
   display: {
     label: "Migrations Get Import Status",
@@ -8693,7 +9042,6 @@ const migrationsGetImportStatus = action({
     repo,
   },
 });
-
 const migrationsStartImport = action({
   display: {
     label: "Migrations Start Import",
@@ -8710,9 +9058,12 @@ const migrationsStartImport = action({
       vcsUsername,
       vcsPassword,
       tfvcProject,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/repos/${owner}/${repo}/import`, {
       vcs_url: vcsUrl,
       vcs,
@@ -8776,7 +9127,6 @@ const migrationsStartImport = action({
     },
   },
 });
-
 const migrationsUpdateImport = action({
   display: {
     label: "Migrations Update Import",
@@ -8784,9 +9134,12 @@ const migrationsUpdateImport = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, vcsUsername, vcsPassword, vcs, tfvcProject }
+    { connection, owner, repo, vcsUsername, vcsPassword, vcs, tfvcProject },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/repos/${owner}/${repo}/import`, {
       vcs_username: vcsUsername,
       vcs_password: vcsPassword,
@@ -8842,7 +9195,6 @@ const migrationsUpdateImport = action({
     },
   },
 });
-
 const migrationsCancelImport = action({
   display: {
     label: "Migrations Cancel Import",
@@ -8863,17 +9215,19 @@ const migrationsCancelImport = action({
     repo,
   },
 });
-
 const migrationsGetCommitAuthors = action({
   display: {
     label: "Migrations Get Commit Authors",
     description: "Get commit authors",
   },
   perform: async (context, { connection, owner, repo, since }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/import/authors`,
-      { params: { since } }
+      { params: { since } },
     );
     return { data };
   },
@@ -8894,7 +9248,6 @@ const migrationsGetCommitAuthors = action({
     },
   },
 });
-
 const migrationsMapCommitAuthor = action({
   display: {
     label: "Migrations Map Commit Author",
@@ -8902,12 +9255,15 @@ const migrationsMapCommitAuthor = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, authorId, email, name }
+    { connection, owner, repo, authorId, email, name },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/import/authors/${authorId}`,
-      { email, name }
+      { email, name },
     );
     return { data };
   },
@@ -8941,7 +9297,6 @@ const migrationsMapCommitAuthor = action({
     },
   },
 });
-
 const migrationsGetLargeFiles = action({
   display: {
     label: "Migrations Get Large Files",
@@ -8950,7 +9305,7 @@ const migrationsGetLargeFiles = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/import/large_files`
+      `/repos/${owner}/${repo}/import/large_files`,
     );
     return { data };
   },
@@ -8964,14 +9319,16 @@ const migrationsGetLargeFiles = action({
     repo,
   },
 });
-
 const migrationsSetLfsPreference = action({
   display: {
     label: "Migrations Set Lfs Preference",
     description: "Update Git LFS preference",
   },
   perform: async (context, { connection, owner, repo, useLfs }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/repos/${owner}/${repo}/import/lfs`, {
       use_lfs: useLfs,
     });
@@ -8998,7 +9355,6 @@ const migrationsSetLfsPreference = action({
     },
   },
 });
-
 const appsGetRepoInstallation = action({
   display: {
     label: "Apps Get Repo Installation",
@@ -9019,7 +9375,6 @@ const appsGetRepoInstallation = action({
     repo,
   },
 });
-
 const interactionsGetRestrictionsForRepo = action({
   display: {
     label: "Interactions Get Restrictions For Repo",
@@ -9028,7 +9383,7 @@ const interactionsGetRestrictionsForRepo = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/interaction-limits`
+      `/repos/${owner}/${repo}/interaction-limits`,
     );
     return { data };
   },
@@ -9042,20 +9397,22 @@ const interactionsGetRestrictionsForRepo = action({
     repo,
   },
 });
-
 const interactionsSetRestrictionsForRepo = action({
   display: {
     label: "Interactions Set Restrictions For Repo",
     description: "Set interaction restrictions for a repository",
   },
   perform: async (context, { connection, owner, repo, limit, expiry }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/interaction-limits`,
       {
         limit,
         expiry,
-      }
+      },
     );
     return { data };
   },
@@ -9098,7 +9455,6 @@ const interactionsSetRestrictionsForRepo = action({
     },
   },
 });
-
 const interactionsRemoveRestrictionsForRepo = action({
   display: {
     label: "Interactions Remove Restrictions For Repo",
@@ -9107,7 +9463,7 @@ const interactionsRemoveRestrictionsForRepo = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/interaction-limits`
+      `/repos/${owner}/${repo}/interaction-limits`,
     );
     return { data };
   },
@@ -9121,14 +9477,16 @@ const interactionsRemoveRestrictionsForRepo = action({
     repo,
   },
 });
-
 const reposListInvitations = action({
   display: {
     label: "Repos List Invitations",
     description: "List repository invitations",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/invitations`, {
       params: { per_page: perPage, page },
     });
@@ -9158,7 +9516,6 @@ const reposListInvitations = action({
     },
   },
 });
-
 const reposUpdateInvitation = action({
   display: {
     label: "Repos Update Invitation",
@@ -9166,12 +9523,15 @@ const reposUpdateInvitation = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, invitationId, permissions }
+    { connection, owner, repo, invitationId, permissions },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/invitations/${invitationId}`,
-      { permissions }
+      { permissions },
     );
     return { data };
   },
@@ -9207,16 +9567,18 @@ const reposUpdateInvitation = action({
     },
   },
 });
-
 const reposDeleteInvitation = action({
   display: {
     label: "Repos Delete Invitation",
     description: "Delete a repository invitation",
   },
   perform: async (context, { connection, owner, repo, invitationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/invitations/${invitationId}`
+      `/repos/${owner}/${repo}/invitations/${invitationId}`,
     );
     return { data };
   },
@@ -9237,7 +9599,6 @@ const reposDeleteInvitation = action({
     },
   },
 });
-
 const issuesListForRepo = action({
   display: {
     label: "Issues List For Repo",
@@ -9262,9 +9623,12 @@ const issuesListForRepo = action({
       perPage,
       page,
       fetchAll,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const data = await paginateResults<Issue>(
       client,
       `/repos/${owner}/${repo}/issues`,
@@ -9281,7 +9645,7 @@ const issuesListForRepo = action({
         since,
         perPage,
         page,
-      }
+      },
     );
     return { data };
   },
@@ -9302,7 +9666,7 @@ const issuesListForRepo = action({
         { label: "Updated", value: "updated" },
         { label: "Comments", value: "comments" },
       ],
-      "created"
+      "created",
     ),
     direction,
     since,
@@ -9310,7 +9674,6 @@ const issuesListForRepo = action({
     page,
   },
 });
-
 const issuesCreate = action({
   display: {
     label: "Issues Create",
@@ -9328,9 +9691,12 @@ const issuesCreate = action({
       milestone,
       labels,
       assignees,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/issues`, {
       title,
       body,
@@ -9392,7 +9758,6 @@ const issuesCreate = action({
     },
   },
 });
-
 const issuesListCommentsForRepo = action({
   display: {
     label: "Issues List Comments For Repo",
@@ -9400,12 +9765,15 @@ const issuesListCommentsForRepo = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, sort, direction, since, perPage, page }
+    { connection, owner, repo, sort, direction, since, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/comments`,
-      { params: { sort, direction, since, per_page: perPage, page } }
+      { params: { sort, direction, since, per_page: perPage, page } },
     );
     return { data };
   },
@@ -9463,16 +9831,18 @@ const issuesListCommentsForRepo = action({
     },
   },
 });
-
 const issuesGetComment = action({
   display: {
     label: "Issues Get Comment",
     description: "Get an issue comment",
   },
   perform: async (context, { connection, owner, repo, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/issues/comments/${commentId}`
+      `/repos/${owner}/${repo}/issues/comments/${commentId}`,
     );
     return { data };
   },
@@ -9493,17 +9863,19 @@ const issuesGetComment = action({
     },
   },
 });
-
 const issuesUpdateComment = action({
   display: {
     label: "Issues Update Comment",
     description: "Update an issue comment",
   },
   perform: async (context, { connection, owner, repo, commentId, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/issues/comments/${commentId}`,
-      { body }
+      { body },
     );
     return { data };
   },
@@ -9531,16 +9903,18 @@ const issuesUpdateComment = action({
     },
   },
 });
-
 const issuesDeleteComment = action({
   display: {
     label: "Issues Delete Comment",
     description: "Delete an issue comment",
   },
   perform: async (context, { connection, owner, repo, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/comments/${commentId}`
+      `/repos/${owner}/${repo}/issues/comments/${commentId}`,
     );
     return { data };
   },
@@ -9561,7 +9935,6 @@ const issuesDeleteComment = action({
     },
   },
 });
-
 const reactionsListForIssueComment = action({
   display: {
     label: "Reactions List For Issue Comment",
@@ -9569,12 +9942,15 @@ const reactionsListForIssueComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commentId, content, perPage, page }
+    { connection, owner, repo, commentId, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/comments/${commentId}/reactions`,
-      { params: { content, per_page: perPage, page } }
+      { params: { content, per_page: perPage, page } },
     );
     return { data };
   },
@@ -9626,17 +10002,19 @@ const reactionsListForIssueComment = action({
     },
   },
 });
-
 const reactionsCreateForIssueComment = action({
   display: {
     label: "Reactions Create For Issue Comment",
     description: "Create reaction for an issue comment",
   },
   perform: async (context, { connection, owner, repo, commentId, content }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/issues/comments/${commentId}/reactions`,
-      { content }
+      { content },
     );
     return { data };
   },
@@ -9674,7 +10052,6 @@ const reactionsCreateForIssueComment = action({
     },
   },
 });
-
 const reactionsDeleteForIssueComment = action({
   display: {
     label: "Reactions Delete For Issue Comment",
@@ -9682,11 +10059,14 @@ const reactionsDeleteForIssueComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commentId, reactionId }
+    { connection, owner, repo, commentId, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/comments/${commentId}/reactions/${reactionId}`
+      `/repos/${owner}/${repo}/issues/comments/${commentId}/reactions/${reactionId}`,
     );
     return { data };
   },
@@ -9714,14 +10094,16 @@ const reactionsDeleteForIssueComment = action({
     },
   },
 });
-
 const issuesListEventsForRepo = action({
   display: {
     label: "Issues List Events For Repo",
     description: "List issue events for a repository",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/issues/events`, {
       params: { per_page: perPage, page },
     });
@@ -9751,16 +10133,18 @@ const issuesListEventsForRepo = action({
     },
   },
 });
-
 const issuesGetEvent = action({
   display: {
     label: "Issues Get Event",
     description: "Get an issue event",
   },
   perform: async (context, { connection, owner, repo, eventId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/issues/events/${eventId}`
+      `/repos/${owner}/${repo}/issues/events/${eventId}`,
     );
     return { data };
   },
@@ -9780,16 +10164,18 @@ const issuesGetEvent = action({
     },
   },
 });
-
 const issuesGet = action({
   display: {
     label: "Issues Get",
     description: "Get an issue",
   },
   perform: async (context, { connection, owner, repo, issueNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/issues/${issueNumber}`
+      `/repos/${owner}/${repo}/issues/${issueNumber}`,
     );
     return { data };
   },
@@ -9810,7 +10196,6 @@ const issuesGet = action({
     },
   },
 });
-
 const issuesUpdate = action({
   display: {
     label: "Issues Update",
@@ -9830,9 +10215,12 @@ const issuesUpdate = action({
       milestone,
       labels,
       assignees,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/issues/${issueNumber}`,
       {
@@ -9843,7 +10231,7 @@ const issuesUpdate = action({
         milestone,
         labels,
         assignees,
-      }
+      },
     );
     return { data };
   },
@@ -9916,7 +10304,6 @@ const issuesUpdate = action({
     },
   },
 });
-
 const issuesAddAssignees = action({
   display: {
     label: "Issues Add Assignees",
@@ -9924,12 +10311,15 @@ const issuesAddAssignees = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, assignees }
+    { connection, owner, repo, issueNumber, assignees },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/issues/${issueNumber}/assignees`,
-      { assignees }
+      { assignees },
     );
     return { data };
   },
@@ -9957,7 +10347,6 @@ const issuesAddAssignees = action({
     },
   },
 });
-
 const issuesRemoveAssignees = action({
   display: {
     label: "Issues Remove Assignees",
@@ -9965,11 +10354,14 @@ const issuesRemoveAssignees = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, assignees }
+    { connection, owner, repo, issueNumber, assignees },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/${issueNumber}/assignees`
+      `/repos/${owner}/${repo}/issues/${issueNumber}/assignees`,
     );
     return { data };
   },
@@ -9997,7 +10389,6 @@ const issuesRemoveAssignees = action({
     },
   },
 });
-
 const issuesListComments = action({
   display: {
     label: "Issues List Comments",
@@ -10006,12 +10397,15 @@ const issuesListComments = action({
   examplePayload: issuesListCommentsExamplePayload,
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, since, perPage, page }
+    { connection, owner, repo, issueNumber, since, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/${issueNumber}/comments`,
-      { params: { since, per_page: perPage, page } }
+      { params: { since, per_page: perPage, page } },
     );
     return { data };
   },
@@ -10025,7 +10419,6 @@ const issuesListComments = action({
     page,
   },
 });
-
 const issuesCreateComment = action({
   display: {
     label: "Issues Create Comment",
@@ -10033,10 +10426,13 @@ const issuesCreateComment = action({
   },
   examplePayload: issuesCreateCommentExamplePayload,
   perform: async (context, { connection, owner, repo, issueNumber, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/issues/${issueNumber}/comments`,
-      { body }
+      { body },
     );
     return { data };
   },
@@ -10060,7 +10456,6 @@ const issuesCreateComment = action({
     },
   },
 });
-
 const issuesListEvents = action({
   display: {
     label: "Issues List Events",
@@ -10068,12 +10463,15 @@ const issuesListEvents = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, perPage, page }
+    { connection, owner, repo, issueNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/${issueNumber}/events`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -10090,7 +10488,6 @@ const issuesListEvents = action({
     page,
   },
 });
-
 const issuesListLabelsOnIssue = action({
   display: {
     label: "Issues List Labels On Issue",
@@ -10098,12 +10495,15 @@ const issuesListLabelsOnIssue = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, perPage, page }
+    { connection, owner, repo, issueNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/${issueNumber}/labels`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -10138,17 +10538,19 @@ const issuesListLabelsOnIssue = action({
     },
   },
 });
-
 const issuesAddLabels = action({
   display: {
     label: "Issues Add Labels",
     description: "Add labels to an issue",
   },
   perform: async (context, { connection, owner, repo, issueNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/issues/${issueNumber}/labels`,
-      {}
+      {},
     );
     return { data };
   },
@@ -10169,17 +10571,19 @@ const issuesAddLabels = action({
     },
   },
 });
-
 const issuesSetLabels = action({
   display: {
     label: "Issues Set Labels",
     description: "Set labels for an issue",
   },
   perform: async (context, { connection, owner, repo, issueNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/issues/${issueNumber}/labels`,
-      {}
+      {},
     );
     return { data };
   },
@@ -10200,16 +10604,18 @@ const issuesSetLabels = action({
     },
   },
 });
-
 const issuesRemoveAllLabels = action({
   display: {
     label: "Issues Remove All Labels",
     description: "Remove all labels from an issue",
   },
   perform: async (context, { connection, owner, repo, issueNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/${issueNumber}/labels`
+      `/repos/${owner}/${repo}/issues/${issueNumber}/labels`,
     );
     return { data };
   },
@@ -10230,16 +10636,18 @@ const issuesRemoveAllLabels = action({
     },
   },
 });
-
 const issuesRemoveLabel = action({
   display: {
     label: "Issues Remove Label",
     description: "Remove a label from an issue",
   },
   perform: async (context, { connection, owner, repo, issueNumber, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/${issueNumber}/labels/${name}`
+      `/repos/${owner}/${repo}/issues/${issueNumber}/labels/${name}`,
     );
     return { data };
   },
@@ -10266,7 +10674,6 @@ const issuesRemoveLabel = action({
     },
   },
 });
-
 const issuesLock = action({
   display: {
     label: "Issues Lock",
@@ -10274,14 +10681,17 @@ const issuesLock = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, lockReason }
+    { connection, owner, repo, issueNumber, lockReason },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/issues/${issueNumber}/lock`,
       {
         lock_reason: lockReason,
-      }
+      },
     );
     return { data };
   },
@@ -10315,16 +10725,18 @@ const issuesLock = action({
     },
   },
 });
-
 const issuesUnlock = action({
   display: {
     label: "Issues Unlock",
     description: "Unlock an issue",
   },
   perform: async (context, { connection, owner, repo, issueNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/${issueNumber}/lock`
+      `/repos/${owner}/${repo}/issues/${issueNumber}/lock`,
     );
     return { data };
   },
@@ -10345,7 +10757,6 @@ const issuesUnlock = action({
     },
   },
 });
-
 const reactionsListForIssue = action({
   display: {
     label: "Reactions List For Issue",
@@ -10353,12 +10764,15 @@ const reactionsListForIssue = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, content, perPage, page }
+    { connection, owner, repo, issueNumber, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/${issueNumber}/reactions`,
-      { params: { content, per_page: perPage, page } }
+      { params: { content, per_page: perPage, page } },
     );
     return { data };
   },
@@ -10410,7 +10824,6 @@ const reactionsListForIssue = action({
     },
   },
 });
-
 const reactionsCreateForIssue = action({
   display: {
     label: "Reactions Create For Issue",
@@ -10418,12 +10831,15 @@ const reactionsCreateForIssue = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, content }
+    { connection, owner, repo, issueNumber, content },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/issues/${issueNumber}/reactions`,
-      { content }
+      { content },
     );
     return { data };
   },
@@ -10461,7 +10877,6 @@ const reactionsCreateForIssue = action({
     },
   },
 });
-
 const reactionsDeleteForIssue = action({
   display: {
     label: "Reactions Delete For Issue",
@@ -10469,11 +10884,14 @@ const reactionsDeleteForIssue = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, reactionId }
+    { connection, owner, repo, issueNumber, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/issues/${issueNumber}/reactions/${reactionId}`
+      `/repos/${owner}/${repo}/issues/${issueNumber}/reactions/${reactionId}`,
     );
     return { data };
   },
@@ -10501,7 +10919,6 @@ const reactionsDeleteForIssue = action({
     },
   },
 });
-
 const issuesListEventsForTimeline = action({
   display: {
     label: "Issues List Events For Timeline",
@@ -10509,12 +10926,15 @@ const issuesListEventsForTimeline = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, issueNumber, perPage, page }
+    { connection, owner, repo, issueNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/issues/${issueNumber}/timeline`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -10549,14 +10969,16 @@ const issuesListEventsForTimeline = action({
     },
   },
 });
-
 const reposListDeployKeys = action({
   display: {
     label: "Repos List Deploy Keys",
     description: "List deploy keys",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/keys`, {
       params: { per_page: perPage, page },
     });
@@ -10586,7 +11008,6 @@ const reposListDeployKeys = action({
     },
   },
 });
-
 const reposCreateDeployKey = action({
   display: {
     label: "Repos Create Deploy Key",
@@ -10594,9 +11015,12 @@ const reposCreateDeployKey = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, title, key, readOnly }
+    { connection, owner, repo, title, key, readOnly },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/keys`, {
       title,
       key,
@@ -10636,14 +11060,16 @@ const reposCreateDeployKey = action({
     },
   },
 });
-
 const reposGetDeployKey = action({
   display: {
     label: "Repos Get Deploy Key",
     description: "Get a deploy key",
   },
   perform: async (context, { connection, owner, repo, keyId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/keys/${keyId}`);
     return { data };
   },
@@ -10664,16 +11090,18 @@ const reposGetDeployKey = action({
     },
   },
 });
-
 const reposDeleteDeployKey = action({
   display: {
     label: "Repos Delete Deploy Key",
     description: "Delete a deploy key",
   },
   perform: async (context, { connection, owner, repo, keyId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/keys/${keyId}`
+      `/repos/${owner}/${repo}/keys/${keyId}`,
     );
     return { data };
   },
@@ -10694,14 +11122,16 @@ const reposDeleteDeployKey = action({
     },
   },
 });
-
 const issuesListLabelsForRepo = action({
   display: {
     label: "Issues List Labels For Repo",
     description: "List labels for a repository",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/labels`, {
       params: { per_page: perPage, page },
     });
@@ -10731,7 +11161,6 @@ const issuesListLabelsForRepo = action({
     },
   },
 });
-
 const issuesCreateLabel = action({
   display: {
     label: "Issues Create Label",
@@ -10739,9 +11168,12 @@ const issuesCreateLabel = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, name, color, description }
+    { connection, owner, repo, name, color, description },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/labels`, {
       name,
       color,
@@ -10780,14 +11212,16 @@ const issuesCreateLabel = action({
     },
   },
 });
-
 const issuesGetLabel = action({
   display: {
     label: "Issues Get Label",
     description: "Get a label",
   },
   perform: async (context, { connection, owner, repo, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/labels/${name}`);
     return { data };
   },
@@ -10807,7 +11241,6 @@ const issuesGetLabel = action({
     },
   },
 });
-
 const issuesUpdateLabel = action({
   display: {
     label: "Issues Update Label",
@@ -10815,16 +11248,19 @@ const issuesUpdateLabel = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, name, newName, color, description }
+    { connection, owner, repo, name, newName, color, description },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/labels/${name}`,
       {
         new_name: newName,
         color,
         description,
-      }
+      },
     );
     return { data };
   },
@@ -10865,16 +11301,18 @@ const issuesUpdateLabel = action({
     },
   },
 });
-
 const issuesDeleteLabel = action({
   display: {
     label: "Issues Delete Label",
     description: "Delete a label",
   },
   perform: async (context, { connection, owner, repo, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/labels/${name}`
+      `/repos/${owner}/${repo}/labels/${name}`,
     );
     return { data };
   },
@@ -10894,7 +11332,6 @@ const issuesDeleteLabel = action({
     },
   },
 });
-
 const reposListLanguages = action({
   display: {
     label: "Repos List Languages",
@@ -10915,7 +11352,6 @@ const reposListLanguages = action({
     repo,
   },
 });
-
 const reposEnableLfsForRepo = action({
   display: {
     label: "Repos Enable Lfs For Repo",
@@ -10936,7 +11372,6 @@ const reposEnableLfsForRepo = action({
     repo,
   },
 });
-
 const reposDisableLfsForRepo = action({
   display: {
     label: "Repos Disable Lfs For Repo",
@@ -10957,7 +11392,6 @@ const reposDisableLfsForRepo = action({
     repo,
   },
 });
-
 const licensesGetForRepo = action({
   display: {
     label: "Licenses Get For Repo",
@@ -10978,17 +11412,19 @@ const licensesGetForRepo = action({
     repo,
   },
 });
-
 const reposMergeUpstream = action({
   display: {
     label: "Repos Merge Upstream",
     description: "Sync a fork branch with the upstream repository",
   },
   perform: async (context, { connection, owner, repo, branch }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/merge-upstream`,
-      { branch }
+      { branch },
     );
     return { data };
   },
@@ -11010,7 +11446,6 @@ const reposMergeUpstream = action({
     },
   },
 });
-
 const reposMerge = action({
   display: {
     label: "Repos Merge",
@@ -11018,9 +11453,12 @@ const reposMerge = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, base, head, commitMessage }
+    { connection, owner, repo, base, head, commitMessage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/merges`, {
       base,
       head,
@@ -11066,7 +11504,6 @@ const reposMerge = action({
     },
   },
 });
-
 const issuesListMilestones = action({
   display: {
     label: "Issues List Milestones",
@@ -11074,9 +11511,12 @@ const issuesListMilestones = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, state, sort, direction, perPage, page }
+    { connection, owner, repo, state, sort, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/milestones`, {
       params: { state, sort, direction, per_page: perPage, page },
     });
@@ -11143,7 +11583,6 @@ const issuesListMilestones = action({
     },
   },
 });
-
 const issuesCreateMilestone = action({
   display: {
     label: "Issues Create Milestone",
@@ -11151,9 +11590,12 @@ const issuesCreateMilestone = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, title, state, description, dueOn }
+    { connection, owner, repo, title, state, description, dueOn },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/milestones`, {
       title,
       state,
@@ -11205,16 +11647,18 @@ const issuesCreateMilestone = action({
     },
   },
 });
-
 const issuesGetMilestone = action({
   display: {
     label: "Issues Get Milestone",
     description: "Get a milestone",
   },
   perform: async (context, { connection, owner, repo, milestoneNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/milestones/${milestoneNumber}`
+      `/repos/${owner}/${repo}/milestones/${milestoneNumber}`,
     );
     return { data };
   },
@@ -11235,7 +11679,6 @@ const issuesGetMilestone = action({
     },
   },
 });
-
 const issuesUpdateMilestone = action({
   display: {
     label: "Issues Update Milestone",
@@ -11252,12 +11695,15 @@ const issuesUpdateMilestone = action({
       state,
       description,
       dueOn,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/milestones/${milestoneNumber}`,
-      { title, state, description, due_on: dueOn }
+      { title, state, description, due_on: dueOn },
     );
     return { data };
   },
@@ -11311,16 +11757,18 @@ const issuesUpdateMilestone = action({
     },
   },
 });
-
 const issuesDeleteMilestone = action({
   display: {
     label: "Issues Delete Milestone",
     description: "Delete a milestone",
   },
   perform: async (context, { connection, owner, repo, milestoneNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/milestones/${milestoneNumber}`
+      `/repos/${owner}/${repo}/milestones/${milestoneNumber}`,
     );
     return { data };
   },
@@ -11341,7 +11789,6 @@ const issuesDeleteMilestone = action({
     },
   },
 });
-
 const issuesListLabelsForMilestone = action({
   display: {
     label: "Issues List Labels For Milestone",
@@ -11349,12 +11796,15 @@ const issuesListLabelsForMilestone = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, milestoneNumber, perPage, page }
+    { connection, owner, repo, milestoneNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/milestones/${milestoneNumber}/labels`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -11389,7 +11839,6 @@ const issuesListLabelsForMilestone = action({
     },
   },
 });
-
 const activityListRepoNotificationsForAuthenticatedUser = action({
   display: {
     label: "Activity List Repo Notifications For Authenticated User",
@@ -11407,9 +11856,12 @@ const activityListRepoNotificationsForAuthenticatedUser = action({
       before,
       perPage,
       page,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/notifications`, {
       params: { all, participating, since, before, per_page: perPage, page },
     });
@@ -11470,14 +11922,16 @@ const activityListRepoNotificationsForAuthenticatedUser = action({
     },
   },
 });
-
 const activityMarkRepoNotificationsAsRead = action({
   display: {
     label: "Activity Mark Repo Notifications As Read",
     description: "Mark repository notifications as read",
   },
   perform: async (context, { connection, owner, repo, lastReadAt }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/repos/${owner}/${repo}/notifications`, {
       last_read_at: lastReadAt,
     });
@@ -11500,7 +11954,6 @@ const activityMarkRepoNotificationsAsRead = action({
     },
   },
 });
-
 const reposGetPages = action({
   display: {
     label: "Repos Get Pages",
@@ -11521,14 +11974,16 @@ const reposGetPages = action({
     repo,
   },
 });
-
 const reposCreatePagesSite = action({
   display: {
     label: "Repos Create Pages Site",
     description: "Create a GitHub Pages site",
   },
   perform: async (context, { connection, owner, repo, source }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/pages`, {
       source,
     });
@@ -11552,7 +12007,6 @@ const reposCreatePagesSite = action({
     },
   },
 });
-
 const reposUpdateInformationAboutPagesSite = action({
   display: {
     label: "Repos Update Information About Pages Site",
@@ -11560,9 +12014,12 @@ const reposUpdateInformationAboutPagesSite = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, cname, httpsEnforced, isPublic, source }
+    { connection, owner, repo, cname, httpsEnforced, isPublic, source },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/repos/${owner}/${repo}/pages`, {
       cname,
       https_enforced: httpsEnforced,
@@ -11608,7 +12065,6 @@ const reposUpdateInformationAboutPagesSite = action({
     },
   },
 });
-
 const reposDeletePagesSite = action({
   display: {
     label: "Repos Delete Pages Site",
@@ -11629,14 +12085,16 @@ const reposDeletePagesSite = action({
     repo,
   },
 });
-
 const reposListPagesBuilds = action({
   display: {
     label: "Repos List Pages Builds",
     description: "List GitHub Pages builds",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/pages/builds`, {
       params: { per_page: perPage, page },
     });
@@ -11666,7 +12124,6 @@ const reposListPagesBuilds = action({
     },
   },
 });
-
 const reposRequestPagesBuild = action({
   display: {
     label: "Repos Request Pages Build",
@@ -11676,7 +12133,7 @@ const reposRequestPagesBuild = action({
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pages/builds`,
-      {}
+      {},
     );
     return { data };
   },
@@ -11690,7 +12147,6 @@ const reposRequestPagesBuild = action({
     repo,
   },
 });
-
 const reposGetLatestPagesBuild = action({
   display: {
     label: "Repos Get Latest Pages Build",
@@ -11699,7 +12155,7 @@ const reposGetLatestPagesBuild = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/pages/builds/latest`
+      `/repos/${owner}/${repo}/pages/builds/latest`,
     );
     return { data };
   },
@@ -11713,16 +12169,18 @@ const reposGetLatestPagesBuild = action({
     repo,
   },
 });
-
 const reposGetPagesBuild = action({
   display: {
     label: "Repos Get Pages Build",
     description: "Get GitHub Pages build",
   },
   perform: async (context, { connection, owner, repo, buildId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/pages/builds/${buildId}`
+      `/repos/${owner}/${repo}/pages/builds/${buildId}`,
     );
     return { data };
   },
@@ -11742,7 +12200,6 @@ const reposGetPagesBuild = action({
     },
   },
 });
-
 const reposGetPagesHealthCheck = action({
   display: {
     label: "Repos Get Pages Health Check",
@@ -11763,7 +12220,6 @@ const reposGetPagesHealthCheck = action({
     repo,
   },
 });
-
 const projectsListForRepo = action({
   display: {
     label: "Projects List For Repo",
@@ -11771,9 +12227,12 @@ const projectsListForRepo = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, state, perPage, page }
+    { connection, owner, repo, state, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/projects`, {
       params: { state, per_page: perPage, page },
     });
@@ -11816,14 +12275,16 @@ const projectsListForRepo = action({
     },
   },
 });
-
 const projectsCreateForRepo = action({
   display: {
     label: "Projects Create For Repo",
     description: "Create a repository project",
   },
   perform: async (context, { connection, owner, repo, name, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/projects`, {
       name,
       body,
@@ -11854,7 +12315,6 @@ const projectsCreateForRepo = action({
     },
   },
 });
-
 const pullsList = action({
   display: {
     label: "Pulls List",
@@ -11874,9 +12334,12 @@ const pullsList = action({
       direction,
       perPage,
       page,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/pulls`, {
       params: { state, head, base, sort, direction, per_page: perPage, page },
     });
@@ -11966,7 +12429,6 @@ const pullsList = action({
     },
   },
 });
-
 const pullsCreate = action({
   display: {
     label: "Pulls Create",
@@ -11986,9 +12448,12 @@ const pullsCreate = action({
       maintainerCanModify,
       draft,
       issue,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/pulls`, {
       title,
       head,
@@ -12064,7 +12529,6 @@ const pullsCreate = action({
     issueNumber,
   },
 });
-
 const pullsListReviewCommentsForRepo = action({
   display: {
     label: "Pulls List Review Comments For Repo",
@@ -12072,12 +12536,15 @@ const pullsListReviewCommentsForRepo = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, sort, direction, since, perPage, page }
+    { connection, owner, repo, sort, direction, since, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/comments`,
-      { params: { sort, direction, since, per_page: perPage, page } }
+      { params: { sort, direction, since, per_page: perPage, page } },
     );
     return { data };
   },
@@ -12144,16 +12611,18 @@ const pullsListReviewCommentsForRepo = action({
     },
   },
 });
-
 const pullsGetReviewComment = action({
   display: {
     label: "Pulls Get Review Comment",
     description: "Get a review comment for a pull request",
   },
   perform: async (context, { connection, owner, repo, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/pulls/comments/${commentId}`
+      `/repos/${owner}/${repo}/pulls/comments/${commentId}`,
     );
     return { data };
   },
@@ -12176,17 +12645,19 @@ const pullsGetReviewComment = action({
     },
   },
 });
-
 const pullsUpdateReviewComment = action({
   display: {
     label: "Pulls Update Review Comment",
     description: "Update a review comment for a pull request",
   },
   perform: async (context, { connection, owner, repo, commentId, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/pulls/comments/${commentId}`,
-      { body }
+      { body },
     );
     return { data };
   },
@@ -12218,16 +12689,18 @@ const pullsUpdateReviewComment = action({
     },
   },
 });
-
 const pullsDeleteReviewComment = action({
   display: {
     label: "Pulls Delete Review Comment",
     description: "Delete a review comment for a pull request",
   },
   perform: async (context, { connection, owner, repo, commentId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/pulls/comments/${commentId}`
+      `/repos/${owner}/${repo}/pulls/comments/${commentId}`,
     );
     return { data };
   },
@@ -12250,7 +12723,6 @@ const pullsDeleteReviewComment = action({
     },
   },
 });
-
 const reactionsListForPullRequestReviewComment = action({
   display: {
     label: "Reactions List For Pull Request Review Comment",
@@ -12258,12 +12730,15 @@ const reactionsListForPullRequestReviewComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commentId, content, perPage, page }
+    { connection, owner, repo, commentId, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/comments/${commentId}/reactions`,
-      { params: { content, per_page: perPage, page } }
+      { params: { content, per_page: perPage, page } },
     );
     return { data };
   },
@@ -12322,17 +12797,19 @@ const reactionsListForPullRequestReviewComment = action({
     },
   },
 });
-
 const reactionsCreateForPullRequestReviewComment = action({
   display: {
     label: "Reactions Create For Pull Request Review Comment",
     description: "Create reaction for a pull request review comment",
   },
   perform: async (context, { connection, owner, repo, commentId, content }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/comments/${commentId}/reactions`,
-      { content }
+      { content },
     );
     return { data };
   },
@@ -12373,7 +12850,6 @@ const reactionsCreateForPullRequestReviewComment = action({
     },
   },
 });
-
 const reactionsDeleteForPullRequestComment = action({
   display: {
     label: "Reactions Delete For Pull Request Comment",
@@ -12381,11 +12857,14 @@ const reactionsDeleteForPullRequestComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, commentId, reactionId }
+    { connection, owner, repo, commentId, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/pulls/comments/${commentId}/reactions/${reactionId}`
+      `/repos/${owner}/${repo}/pulls/comments/${commentId}/reactions/${reactionId}`,
     );
     return { data };
   },
@@ -12417,16 +12896,18 @@ const reactionsDeleteForPullRequestComment = action({
     },
   },
 });
-
 const pullsGet = action({
   display: {
     label: "Pulls Get",
     description: "Get a pull request",
   },
   perform: async (context, { connection, owner, repo, pullNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/pulls/${pullNumber}`
+      `/repos/${owner}/${repo}/pulls/${pullNumber}`,
     );
     return { data };
   },
@@ -12449,7 +12930,6 @@ const pullsGet = action({
     },
   },
 });
-
 const pullsUpdate = action({
   display: {
     label: "Pulls Update",
@@ -12467,9 +12947,12 @@ const pullsUpdate = action({
       state,
       base,
       maintainerCanModify,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/pulls/${pullNumber}`,
       {
@@ -12478,7 +12961,7 @@ const pullsUpdate = action({
         state,
         base,
         maintainer_can_modify: maintainerCanModify,
-      }
+      },
     );
     return { data };
   },
@@ -12548,7 +13031,6 @@ const pullsUpdate = action({
     },
   },
 });
-
 const codespacesCreateWithPrForAuthenticatedUser = action({
   display: {
     label: "Codespaces Create With Pr For Authenticated User",
@@ -12569,9 +13051,12 @@ const codespacesCreateWithPrForAuthenticatedUser = action({
       workingDirectory,
       idleTimeoutMinutes,
       displayName,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/codespaces`,
       {
@@ -12583,7 +13068,7 @@ const codespacesCreateWithPrForAuthenticatedUser = action({
         working_directory: workingDirectory,
         idle_timeout_minutes: idleTimeoutMinutes,
         display_name: displayName,
-      }
+      },
     );
     return { data };
   },
@@ -12679,7 +13164,6 @@ const codespacesCreateWithPrForAuthenticatedUser = action({
     },
   },
 });
-
 const pullsListReviewComments = action({
   display: {
     label: "Pulls List Review Comments",
@@ -12697,12 +13181,15 @@ const pullsListReviewComments = action({
       since,
       perPage,
       page,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/comments`,
-      { params: { sort, direction, since, per_page: perPage, page } }
+      { params: { sort, direction, since, per_page: perPage, page } },
     );
     return { data };
   },
@@ -12778,7 +13265,6 @@ const pullsListReviewComments = action({
     },
   },
 });
-
 const pullsCreateReviewComment = action({
   display: {
     label: "Pulls Create Review Comment",
@@ -12800,9 +13286,12 @@ const pullsCreateReviewComment = action({
       startLine,
       startSide,
       inReplyTo,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/comments`,
       {
@@ -12815,7 +13304,7 @@ const pullsCreateReviewComment = action({
         start_line: startLine,
         start_side: startSide,
         in_reply_to: inReplyTo,
-      }
+      },
     );
     return { data };
   },
@@ -12929,7 +13418,6 @@ const pullsCreateReviewComment = action({
     },
   },
 });
-
 const pullsCreateReplyForReviewComment = action({
   display: {
     label: "Pulls Create Reply For Review Comment",
@@ -12937,12 +13425,15 @@ const pullsCreateReplyForReviewComment = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, commentId, body }
+    { connection, owner, repo, pullNumber, commentId, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/comments/${commentId}/replies`,
-      { body }
+      { body },
     );
     return { data };
   },
@@ -12983,7 +13474,6 @@ const pullsCreateReplyForReviewComment = action({
     },
   },
 });
-
 const pullsListCommits = action({
   display: {
     label: "Pulls List Commits",
@@ -12991,12 +13481,15 @@ const pullsListCommits = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, perPage, page }
+    { connection, owner, repo, pullNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/commits`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -13037,7 +13530,6 @@ const pullsListCommits = action({
     },
   },
 });
-
 const pullsListFiles = action({
   display: {
     label: "Pulls List Files",
@@ -13045,14 +13537,17 @@ const pullsListFiles = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, perPage, page }
+    { connection, owner, repo, pullNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/files`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -13093,16 +13588,18 @@ const pullsListFiles = action({
     },
   },
 });
-
 const pullsCheckIfMerged = action({
   display: {
     label: "Pulls Check If Merged",
     description: "Check if a pull request has been merged",
   },
   perform: async (context, { connection, owner, repo, pullNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/pulls/${pullNumber}/merge`
+      `/repos/${owner}/${repo}/pulls/${pullNumber}/merge`,
     );
     return { data };
   },
@@ -13125,7 +13622,6 @@ const pullsCheckIfMerged = action({
     },
   },
 });
-
 const pullsMerge = action({
   display: {
     label: "Pulls Merge",
@@ -13142,9 +13638,12 @@ const pullsMerge = action({
       commitMessage,
       sha,
       mergeMethod,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/merge`,
       {
@@ -13152,7 +13651,7 @@ const pullsMerge = action({
         commit_message: commitMessage,
         sha,
         merge_method: mergeMethod,
-      }
+      },
     );
     return { data };
   },
@@ -13217,7 +13716,6 @@ const pullsMerge = action({
     },
   },
 });
-
 const pullsListRequestedReviewers = action({
   display: {
     label: "Pulls List Requested Reviewers",
@@ -13225,12 +13723,15 @@ const pullsListRequestedReviewers = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, perPage, page }
+    { connection, owner, repo, pullNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/requested_reviewers`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -13271,7 +13772,6 @@ const pullsListRequestedReviewers = action({
     },
   },
 });
-
 const pullsRequestReviewers = action({
   display: {
     label: "Pulls Request Reviewers",
@@ -13279,12 +13779,15 @@ const pullsRequestReviewers = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewers, teamReviewers }
+    { connection, owner, repo, pullNumber, reviewers, teamReviewers },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/requested_reviewers`,
-      { reviewers, team_reviewers: teamReviewers }
+      { reviewers, team_reviewers: teamReviewers },
     );
     return { data };
   },
@@ -13325,7 +13828,6 @@ const pullsRequestReviewers = action({
     },
   },
 });
-
 const pullsRemoveRequestedReviewers = action({
   display: {
     label: "Pulls Remove Requested Reviewers",
@@ -13333,11 +13835,14 @@ const pullsRemoveRequestedReviewers = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewers, teamReviewers }
+    { connection, owner, repo, pullNumber, reviewers, teamReviewers },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/pulls/${pullNumber}/requested_reviewers`
+      `/repos/${owner}/${repo}/pulls/${pullNumber}/requested_reviewers`,
     );
     return { data };
   },
@@ -13378,7 +13883,6 @@ const pullsRemoveRequestedReviewers = action({
     },
   },
 });
-
 const pullsListReviews = action({
   display: {
     label: "Pulls List Reviews",
@@ -13386,12 +13890,15 @@ const pullsListReviews = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, perPage, page }
+    { connection, owner, repo, pullNumber, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -13432,7 +13939,6 @@ const pullsListReviews = action({
     },
   },
 });
-
 const pullsCreateReview = action({
   display: {
     label: "Pulls Create Review",
@@ -13440,12 +13946,15 @@ const pullsCreateReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, commitId, body, event, comments }
+    { connection, owner, repo, pullNumber, commitId, body, event, comments },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews`,
-      { commit_id: commitId, body, event, comments }
+      { commit_id: commitId, body, event, comments },
     );
     return { data };
   },
@@ -13512,7 +14021,6 @@ const pullsCreateReview = action({
     },
   },
 });
-
 const pullsGetReview = action({
   display: {
     label: "Pulls Get Review",
@@ -13520,11 +14028,14 @@ const pullsGetReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewId }
+    { connection, owner, repo, pullNumber, reviewId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}`
+      `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}`,
     );
     return { data };
   },
@@ -13556,7 +14067,6 @@ const pullsGetReview = action({
     },
   },
 });
-
 const pullsUpdateReview = action({
   display: {
     label: "Pulls Update Review",
@@ -13564,12 +14074,15 @@ const pullsUpdateReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewId, body }
+    { connection, owner, repo, pullNumber, reviewId, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}`,
-      { body }
+      { body },
     );
     return { data };
   },
@@ -13610,7 +14123,6 @@ const pullsUpdateReview = action({
     },
   },
 });
-
 const pullsDeletePendingReview = action({
   display: {
     label: "Pulls Delete Pending Review",
@@ -13618,11 +14130,14 @@ const pullsDeletePendingReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewId }
+    { connection, owner, repo, pullNumber, reviewId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}`
+      `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}`,
     );
     return { data };
   },
@@ -13654,7 +14169,6 @@ const pullsDeletePendingReview = action({
     },
   },
 });
-
 const pullsListCommentsForReview = action({
   display: {
     label: "Pulls List Comments For Review",
@@ -13662,12 +14176,15 @@ const pullsListCommentsForReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewId, perPage, page }
+    { connection, owner, repo, pullNumber, reviewId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}/comments`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -13717,7 +14234,6 @@ const pullsListCommentsForReview = action({
     },
   },
 });
-
 const pullsDismissReview = action({
   display: {
     label: "Pulls Dismiss Review",
@@ -13725,12 +14241,15 @@ const pullsDismissReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewId, message, event }
+    { connection, owner, repo, pullNumber, reviewId, message, event },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}/dismissals`,
-      { message, event }
+      { message, event },
     );
     return { data };
   },
@@ -13780,7 +14299,6 @@ const pullsDismissReview = action({
     },
   },
 });
-
 const pullsSubmitReview = action({
   display: {
     label: "Pulls Submit Review",
@@ -13788,12 +14306,15 @@ const pullsSubmitReview = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, reviewId, body, event }
+    { connection, owner, repo, pullNumber, reviewId, body, event },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/reviews/${reviewId}/events`,
-      { body, event }
+      { body, event },
     );
     return { data };
   },
@@ -13849,7 +14370,6 @@ const pullsSubmitReview = action({
     },
   },
 });
-
 const pullsUpdateBranch = action({
   display: {
     label: "Pulls Update Branch",
@@ -13857,12 +14377,15 @@ const pullsUpdateBranch = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, pullNumber, expectedHeadSha }
+    { connection, owner, repo, pullNumber, expectedHeadSha },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repos/${owner}/${repo}/pulls/${pullNumber}/update-branch`,
-      { expected_head_sha: expectedHeadSha }
+      { expected_head_sha: expectedHeadSha },
     );
     return { data };
   },
@@ -13894,14 +14417,16 @@ const pullsUpdateBranch = action({
     },
   },
 });
-
 const reposGetReadme = action({
   display: {
     label: "Repos Get Readme",
     description: "Get a repository README",
   },
   perform: async (context, { connection, owner, repo, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/readme`, {
       params: { ref },
     });
@@ -13926,14 +14451,16 @@ const reposGetReadme = action({
     },
   },
 });
-
 const reposGetReadmeInDirectory = action({
   display: {
     label: "Repos Get Readme In Directory",
     description: "Get a repository README for a directory",
   },
   perform: async (context, { connection, owner, repo, dir, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/readme/${dir}`, {
       params: { ref },
     });
@@ -13967,14 +14494,16 @@ const reposGetReadmeInDirectory = action({
     },
   },
 });
-
 const reposListReleases = action({
   display: {
     label: "Repos List Releases",
     description: "List releases",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/releases`, {
       params: { per_page: perPage, page },
     });
@@ -14008,7 +14537,6 @@ const reposListReleases = action({
     },
   },
 });
-
 const reposCreateRelease = action({
   display: {
     label: "Repos Create Release",
@@ -14028,9 +14556,12 @@ const reposCreateRelease = action({
       prerelease,
       discussionCategoryName,
       generateReleaseNotes,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/releases`, {
       tag_name: tagName,
       target_commitish: targetCommitish,
@@ -14130,16 +14661,18 @@ const reposCreateRelease = action({
     },
   },
 });
-
 const reposGetReleaseAsset = action({
   display: {
     label: "Repos Get Release Asset",
     description: "Get a release asset",
   },
   perform: async (context, { connection, owner, repo, assetId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/releases/assets/${assetId}`
+      `/repos/${owner}/${repo}/releases/assets/${assetId}`,
     );
     return { data };
   },
@@ -14162,7 +14695,6 @@ const reposGetReleaseAsset = action({
     },
   },
 });
-
 const reposUpdateReleaseAsset = action({
   display: {
     label: "Repos Update Release Asset",
@@ -14170,12 +14702,15 @@ const reposUpdateReleaseAsset = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, assetId, name, label, state }
+    { connection, owner, repo, assetId, name, label, state },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/releases/assets/${assetId}`,
-      { name, label, state }
+      { name, label, state },
     );
     return { data };
   },
@@ -14225,16 +14760,18 @@ const reposUpdateReleaseAsset = action({
     },
   },
 });
-
 const reposDeleteReleaseAsset = action({
   display: {
     label: "Repos Delete Release Asset",
     description: "Delete a release asset",
   },
   perform: async (context, { connection, owner, repo, assetId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/releases/assets/${assetId}`
+      `/repos/${owner}/${repo}/releases/assets/${assetId}`,
     );
     return { data };
   },
@@ -14257,7 +14794,6 @@ const reposDeleteReleaseAsset = action({
     },
   },
 });
-
 const reposGenerateReleaseNotes = action({
   display: {
     label: "Repos Generate Release Notes",
@@ -14273,9 +14809,12 @@ const reposGenerateReleaseNotes = action({
       targetCommitish,
       previousTagName,
       configurationFilePath,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/releases/generate-notes`,
       {
@@ -14283,7 +14822,7 @@ const reposGenerateReleaseNotes = action({
         target_commitish: targetCommitish,
         previous_tag_name: previousTagName,
         configuration_file_path: configurationFilePath,
-      }
+      },
     );
     return { data };
   },
@@ -14336,7 +14875,6 @@ const reposGenerateReleaseNotes = action({
     },
   },
 });
-
 const reposGetLatestRelease = action({
   display: {
     label: "Repos Get Latest Release",
@@ -14345,7 +14883,7 @@ const reposGetLatestRelease = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/releases/latest`
+      `/repos/${owner}/${repo}/releases/latest`,
     );
     return { data };
   },
@@ -14359,16 +14897,18 @@ const reposGetLatestRelease = action({
     repo,
   },
 });
-
 const reposGetReleaseByTag = action({
   display: {
     label: "Repos Get Release By Tag",
     description: "Get a release by tag name",
   },
   perform: async (context, { connection, owner, repo, tag }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/releases/tags/${tag}`
+      `/repos/${owner}/${repo}/releases/tags/${tag}`,
     );
     return { data };
   },
@@ -14391,16 +14931,18 @@ const reposGetReleaseByTag = action({
     },
   },
 });
-
 const reposGetRelease = action({
   display: {
     label: "Repos Get Release",
     description: "Get a release",
   },
   perform: async (context, { connection, owner, repo, releaseId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/releases/${releaseId}`
+      `/repos/${owner}/${repo}/releases/${releaseId}`,
     );
     return { data };
   },
@@ -14423,7 +14965,6 @@ const reposGetRelease = action({
     },
   },
 });
-
 const reposUpdateRelease = action({
   display: {
     label: "Repos Update Release",
@@ -14443,9 +14984,12 @@ const reposUpdateRelease = action({
       draft,
       prerelease,
       discussionCategoryName,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/releases/${releaseId}`,
       {
@@ -14456,7 +15000,7 @@ const reposUpdateRelease = action({
         draft,
         prerelease,
         discussion_category_name: discussionCategoryName,
-      }
+      },
     );
     return { data };
   },
@@ -14541,16 +15085,18 @@ const reposUpdateRelease = action({
     },
   },
 });
-
 const reposDeleteRelease = action({
   display: {
     label: "Repos Delete Release",
     description: "Delete a release",
   },
   perform: async (context, { connection, owner, repo, releaseId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/releases/${releaseId}`
+      `/repos/${owner}/${repo}/releases/${releaseId}`,
     );
     return { data };
   },
@@ -14573,7 +15119,6 @@ const reposDeleteRelease = action({
     },
   },
 });
-
 const reposListReleaseAssets = action({
   display: {
     label: "Repos List Release Assets",
@@ -14581,12 +15126,15 @@ const reposListReleaseAssets = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, releaseId, perPage, page }
+    { connection, owner, repo, releaseId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/releases/${releaseId}/assets`,
-      { params: { per_page: perPage, page } }
+      { params: { per_page: perPage, page } },
     );
     return { data };
   },
@@ -14627,7 +15175,6 @@ const reposListReleaseAssets = action({
     },
   },
 });
-
 const reposUploadReleaseAsset = action({
   display: {
     label: "Repos Upload Release Asset",
@@ -14635,13 +15182,16 @@ const reposUploadReleaseAsset = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, releaseId, name, label }
+    { connection, owner, repo, releaseId, name, label },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/releases/${releaseId}/assets`,
       {},
-      { params: { name, label } }
+      { params: { name, label } },
     );
     return { data };
   },
@@ -14681,7 +15231,6 @@ const reposUploadReleaseAsset = action({
     },
   },
 });
-
 const reactionsListForRelease = action({
   display: {
     label: "Reactions List For Release",
@@ -14689,12 +15238,15 @@ const reactionsListForRelease = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, releaseId, content, perPage, page }
+    { connection, owner, repo, releaseId, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/releases/${releaseId}/reactions`,
-      { params: { content, per_page: perPage, page } }
+      { params: { content, per_page: perPage, page } },
     );
     return { data };
   },
@@ -14751,17 +15303,19 @@ const reactionsListForRelease = action({
     },
   },
 });
-
 const reactionsCreateForRelease = action({
   display: {
     label: "Reactions Create For Release",
     description: "Create reaction for a release",
   },
   perform: async (context, { connection, owner, repo, releaseId, content }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/releases/${releaseId}/reactions`,
-      { content }
+      { content },
     );
     return { data };
   },
@@ -14800,7 +15354,6 @@ const reactionsCreateForRelease = action({
     },
   },
 });
-
 const reactionsDeleteForRelease = action({
   display: {
     label: "Reactions Delete For Release",
@@ -14808,11 +15361,14 @@ const reactionsDeleteForRelease = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, releaseId, reactionId }
+    { connection, owner, repo, releaseId, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/releases/${releaseId}/reactions/${reactionId}`
+      `/repos/${owner}/${repo}/releases/${releaseId}/reactions/${reactionId}`,
     );
     return { data };
   },
@@ -14844,7 +15400,6 @@ const reactionsDeleteForRelease = action({
     },
   },
 });
-
 const secretScanningListAlertsForRepo = action({
   display: {
     label: "Secret Scanning List Alerts For Repo",
@@ -14852,9 +15407,12 @@ const secretScanningListAlertsForRepo = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, state, secretType, resolution, page, perPage }
+    { connection, owner, repo, state, secretType, resolution, page, perPage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/secret-scanning/alerts`,
       {
@@ -14865,7 +15423,7 @@ const secretScanningListAlertsForRepo = action({
           page,
           per_page: perPage,
         },
-      }
+      },
     );
     return { data };
   },
@@ -14927,16 +15485,18 @@ const secretScanningListAlertsForRepo = action({
     },
   },
 });
-
 const secretScanningGetAlert = action({
   display: {
     label: "Secret Scanning Get Alert",
     description: "Get a secret scanning alert",
   },
   perform: async (context, { connection, owner, repo, alertNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/secret-scanning/alerts/${alertNumber}`
+      `/repos/${owner}/${repo}/secret-scanning/alerts/${alertNumber}`,
     );
     return { data };
   },
@@ -14959,7 +15519,6 @@ const secretScanningGetAlert = action({
     },
   },
 });
-
 const secretScanningUpdateAlert = action({
   display: {
     label: "Secret Scanning Update Alert",
@@ -14967,12 +15526,15 @@ const secretScanningUpdateAlert = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, alertNumber, state, resolution }
+    { connection, owner, repo, alertNumber, state, resolution },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/repos/${owner}/${repo}/secret-scanning/alerts/${alertNumber}`,
-      { state, resolution }
+      { state, resolution },
     );
     return { data };
   },
@@ -15023,7 +15585,6 @@ const secretScanningUpdateAlert = action({
     },
   },
 });
-
 const secretScanningListLocationsForAlert = action({
   display: {
     label: "Secret Scanning List Locations For Alert",
@@ -15031,12 +15592,15 @@ const secretScanningListLocationsForAlert = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, alertNumber, page, perPage }
+    { connection, owner, repo, alertNumber, page, perPage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/secret-scanning/alerts/${alertNumber}/locations`,
-      { params: { page, per_page: perPage } }
+      { params: { page, per_page: perPage } },
     );
     return { data };
   },
@@ -15077,14 +15641,16 @@ const secretScanningListLocationsForAlert = action({
     },
   },
 });
-
 const activityListStargazersForRepo = action({
   display: {
     label: "Activity List Stargazers For Repo",
     description: "List stargazers",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/stargazers`, {
       params: { per_page: perPage, page },
     });
@@ -15118,7 +15684,6 @@ const activityListStargazersForRepo = action({
     },
   },
 });
-
 const reposGetCodeFrequencyStats = action({
   display: {
     label: "Repos Get Code Frequency Stats",
@@ -15127,7 +15692,7 @@ const reposGetCodeFrequencyStats = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/stats/code_frequency`
+      `/repos/${owner}/${repo}/stats/code_frequency`,
     );
     return { data };
   },
@@ -15141,7 +15706,6 @@ const reposGetCodeFrequencyStats = action({
     repo,
   },
 });
-
 const reposGetCommitActivityStats = action({
   display: {
     label: "Repos Get Commit Activity Stats",
@@ -15150,7 +15714,7 @@ const reposGetCommitActivityStats = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/stats/commit_activity`
+      `/repos/${owner}/${repo}/stats/commit_activity`,
     );
     return { data };
   },
@@ -15164,7 +15728,6 @@ const reposGetCommitActivityStats = action({
     repo,
   },
 });
-
 const reposGetContributorsStats = action({
   display: {
     label: "Repos Get Contributors Stats",
@@ -15173,7 +15736,7 @@ const reposGetContributorsStats = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/stats/contributors`
+      `/repos/${owner}/${repo}/stats/contributors`,
     );
     return { data };
   },
@@ -15187,7 +15750,6 @@ const reposGetContributorsStats = action({
     repo,
   },
 });
-
 const reposGetParticipationStats = action({
   display: {
     label: "Repos Get Participation Stats",
@@ -15196,7 +15758,7 @@ const reposGetParticipationStats = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/stats/participation`
+      `/repos/${owner}/${repo}/stats/participation`,
     );
     return { data };
   },
@@ -15210,7 +15772,6 @@ const reposGetParticipationStats = action({
     repo,
   },
 });
-
 const reposGetPunchCardStats = action({
   display: {
     label: "Repos Get Punch Card Stats",
@@ -15219,7 +15780,7 @@ const reposGetPunchCardStats = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/stats/punch_card`
+      `/repos/${owner}/${repo}/stats/punch_card`,
     );
     return { data };
   },
@@ -15233,7 +15794,6 @@ const reposGetPunchCardStats = action({
     repo,
   },
 });
-
 const reposCreateCommitStatus = action({
   display: {
     label: "Repos Create Commit Status",
@@ -15241,9 +15801,12 @@ const reposCreateCommitStatus = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, sha, state, targetUrl, description, ctx }
+    { connection, owner, repo, sha, state, targetUrl, description, ctx },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/statuses/${sha}`,
       {
@@ -15251,7 +15814,7 @@ const reposCreateCommitStatus = action({
         target_url: targetUrl,
         description,
         context: ctx,
-      }
+      },
     );
     return { data };
   },
@@ -15318,14 +15881,16 @@ const reposCreateCommitStatus = action({
     },
   },
 });
-
 const activityListWatchersForRepo = action({
   display: {
     label: "Activity List Watchers For Repo",
     description: "List watchers",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/subscribers`, {
       params: { per_page: perPage, page },
     });
@@ -15359,7 +15924,6 @@ const activityListWatchersForRepo = action({
     },
   },
 });
-
 const activityGetRepoSubscription = action({
   display: {
     label: "Activity Get Repo Subscription",
@@ -15380,7 +15944,6 @@ const activityGetRepoSubscription = action({
     repo,
   },
 });
-
 const activitySetRepoSubscription = action({
   display: {
     label: "Activity Set Repo Subscription",
@@ -15388,9 +15951,12 @@ const activitySetRepoSubscription = action({
   },
   perform: async (
     context,
-    { connection, owner, repo, subscribed, ignored }
+    { connection, owner, repo, subscribed, ignored },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/repos/${owner}/${repo}/subscription`, {
       subscribed,
       ignored,
@@ -15421,7 +15987,6 @@ const activitySetRepoSubscription = action({
     },
   },
 });
-
 const activityDeleteRepoSubscription = action({
   display: {
     label: "Activity Delete Repo Subscription",
@@ -15430,7 +15995,7 @@ const activityDeleteRepoSubscription = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/subscription`
+      `/repos/${owner}/${repo}/subscription`,
     );
     return { data };
   },
@@ -15444,14 +16009,16 @@ const activityDeleteRepoSubscription = action({
     repo,
   },
 });
-
 const reposListTags = action({
   display: {
     label: "Repos List Tags",
     description: "List repository tags",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/tags`, {
       params: { per_page: perPage, page },
     });
@@ -15485,7 +16052,6 @@ const reposListTags = action({
     },
   },
 });
-
 const reposListTagProtection = action({
   display: {
     label: "Repos List Tag Protection",
@@ -15494,7 +16060,7 @@ const reposListTagProtection = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/tags/protection`
+      `/repos/${owner}/${repo}/tags/protection`,
     );
     return { data };
   },
@@ -15508,19 +16074,21 @@ const reposListTagProtection = action({
     repo,
   },
 });
-
 const reposCreateTagProtection = action({
   display: {
     label: "Repos Create Tag Protection",
     description: "Create a tag protection state for a repository",
   },
   perform: async (context, { connection, owner, repo, pattern }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${owner}/${repo}/tags/protection`,
       {
         pattern,
-      }
+      },
     );
     return { data };
   },
@@ -15544,16 +16112,18 @@ const reposCreateTagProtection = action({
     },
   },
 });
-
 const reposDeleteTagProtection = action({
   display: {
     label: "Repos Delete Tag Protection",
     description: "Delete a tag protection state for a repository",
   },
   perform: async (context, { connection, owner, repo, tagProtectionId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/tags/protection/${tagProtectionId}`
+      `/repos/${owner}/${repo}/tags/protection/${tagProtectionId}`,
     );
     return { data };
   },
@@ -15576,14 +16146,16 @@ const reposDeleteTagProtection = action({
     },
   },
 });
-
 const reposDownloadTarballArchive = action({
   display: {
     label: "Repos Download Tarball Archive",
     description: "Download a repository archive (tar)",
   },
   perform: async (context, { connection, owner, repo, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/tarball/${ref}`);
     return { data };
   },
@@ -15606,14 +16178,16 @@ const reposDownloadTarballArchive = action({
     },
   },
 });
-
 const reposListTeams = action({
   display: {
     label: "Repos List Teams",
     description: "List repository teams",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/teams`, {
       params: { per_page: perPage, page },
     });
@@ -15647,14 +16221,16 @@ const reposListTeams = action({
     },
   },
 });
-
 const reposGetAllTopics = action({
   display: {
     label: "Repos Get All Topics",
     description: "Get all repository topics",
   },
   perform: async (context, { connection, owner, repo, page, perPage }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/topics`, {
       params: { page, per_page: perPage },
     });
@@ -15688,14 +16264,16 @@ const reposGetAllTopics = action({
     },
   },
 });
-
 const reposReplaceAllTopics = action({
   display: {
     label: "Repos Replace All Topics",
     description: "Replace all repository topics",
   },
   perform: async (context, { connection, owner, repo, names }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/repos/${owner}/${repo}/topics`, {
       names,
     });
@@ -15720,17 +16298,19 @@ const reposReplaceAllTopics = action({
     },
   },
 });
-
 const reposGetClones = action({
   display: {
     label: "Repos Get Clones",
     description: "Get repository clones",
   },
   perform: async (context, { connection, owner, repo, per }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repos/${owner}/${repo}/traffic/clones`,
-      { params: { per } }
+      { params: { per } },
     );
     return { data };
   },
@@ -15758,7 +16338,6 @@ const reposGetClones = action({
     },
   },
 });
-
 const reposGetTopPaths = action({
   display: {
     label: "Repos Get Top Paths",
@@ -15767,7 +16346,7 @@ const reposGetTopPaths = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/traffic/popular/paths`
+      `/repos/${owner}/${repo}/traffic/popular/paths`,
     );
     return { data };
   },
@@ -15781,7 +16360,6 @@ const reposGetTopPaths = action({
     repo,
   },
 });
-
 const reposGetTopReferrers = action({
   display: {
     label: "Repos Get Top Referrers",
@@ -15790,7 +16368,7 @@ const reposGetTopReferrers = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/traffic/popular/referrers`
+      `/repos/${owner}/${repo}/traffic/popular/referrers`,
     );
     return { data };
   },
@@ -15804,14 +16382,16 @@ const reposGetTopReferrers = action({
     repo,
   },
 });
-
 const reposGetViews = action({
   display: {
     label: "Repos Get Views",
     description: "Get page views",
   },
   perform: async (context, { connection, owner, repo, per }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/traffic/views`, {
       params: { per },
     });
@@ -15841,14 +16421,16 @@ const reposGetViews = action({
     },
   },
 });
-
 const reposTransfer = action({
   display: {
     label: "Repos Transfer",
     description: "Transfer a repository",
   },
   perform: async (context, { connection, owner, repo, newOwner, teamIds }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/repos/${owner}/${repo}/transfer`, {
       new_owner: newOwner,
       team_ids: teamIds,
@@ -15884,7 +16466,6 @@ const reposTransfer = action({
     },
   },
 });
-
 const reposCheckVulnerabilityAlerts = action({
   display: {
     label: "Repos Check Vulnerability Alerts",
@@ -15893,7 +16474,7 @@ const reposCheckVulnerabilityAlerts = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(
-      `/repos/${owner}/${repo}/vulnerability-alerts`
+      `/repos/${owner}/${repo}/vulnerability-alerts`,
     );
     return { data };
   },
@@ -15907,7 +16488,6 @@ const reposCheckVulnerabilityAlerts = action({
     repo,
   },
 });
-
 const reposEnableVulnerabilityAlerts = action({
   display: {
     label: "Repos Enable Vulnerability Alerts",
@@ -15917,7 +16497,7 @@ const reposEnableVulnerabilityAlerts = action({
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.put(
       `/repos/${owner}/${repo}/vulnerability-alerts`,
-      {}
+      {},
     );
     return { data };
   },
@@ -15931,7 +16511,6 @@ const reposEnableVulnerabilityAlerts = action({
     repo,
   },
 });
-
 const reposDisableVulnerabilityAlerts = action({
   display: {
     label: "Repos Disable Vulnerability Alerts",
@@ -15940,7 +16519,7 @@ const reposDisableVulnerabilityAlerts = action({
   perform: async (context, { connection, owner, repo }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.delete(
-      `/repos/${owner}/${repo}/vulnerability-alerts`
+      `/repos/${owner}/${repo}/vulnerability-alerts`,
     );
     return { data };
   },
@@ -15954,14 +16533,16 @@ const reposDisableVulnerabilityAlerts = action({
     repo,
   },
 });
-
 const reposDownloadZipballArchive = action({
   display: {
     label: "Repos Download Zipball Archive",
     description: "Download a repository archive (zip)",
   },
   perform: async (context, { connection, owner, repo, ref }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repos/${owner}/${repo}/zipball/${ref}`);
     return { data };
   },
@@ -15984,7 +16565,6 @@ const reposDownloadZipballArchive = action({
     },
   },
 });
-
 const reposCreateUsingTemplate = action({
   display: {
     label: "Repos Create Using Template",
@@ -16001,9 +16581,12 @@ const reposCreateUsingTemplate = action({
       description,
       includeAllBranches,
       isPrivate,
-    }
+    },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/repos/${templateOwner}/${templateRepo}/generate`,
       {
@@ -16012,7 +16595,7 @@ const reposCreateUsingTemplate = action({
         description,
         include_all_branches: includeAllBranches,
         private: isPrivate,
-      }
+      },
     );
     return { data };
   },
@@ -16087,7 +16670,6 @@ const reposCreateUsingTemplate = action({
     },
   },
 });
-
 export default {
   reposGet,
   reposUpdate,

@@ -11,7 +11,6 @@ import {
 } from "../../inputs";
 import { createWebhookSubscriptionExamplePayload } from "../../examplePayloads";
 import { postWebhookSubscription } from "../../util";
-
 export const createWebhookSubscription = action({
   display: {
     label: "Create Webhook Subscription",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGotoWebinarClient } from "../../client";
 import { updateUserSubscriptionInputs } from "../../inputs/subscriptions/updateUserSubscriptionInputs";
 import { GENERAL_DELETE_MESSAGE } from "../../constants";
-
 export const updateUserSubscription = action({
   display: {
     label: "Update User Subscription",
@@ -30,7 +29,6 @@ export const updateUserSubscription = action({
         webhookKey,
       },
     ];
-
     await client.put(url, payload);
     return GENERAL_DELETE_MESSAGE;
   },

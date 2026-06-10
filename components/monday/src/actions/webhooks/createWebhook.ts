@@ -3,7 +3,6 @@ import { getMondayClient } from "../../client";
 import { createWebhookExamplePayload } from "../../examplePayloads";
 import { createWebhookInputs } from "../../inputs";
 import CreateWebhookMutation from "../../queries/createWebhook.gql";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",

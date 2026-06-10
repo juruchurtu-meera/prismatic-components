@@ -3,7 +3,6 @@ import { getXeroClient } from "../client";
 import { connectionInput } from "../inputs";
 import { fetchAllData } from "../util";
 import { type Invoice } from "../interfaces/Invoice";
-
 export const selectInvoice = dataSource({
   display: {
     label: "Select Invoice",
@@ -21,7 +20,6 @@ export const selectInvoice = dataSource({
       headers: {},
       fetchAll: true,
     });
-
     const result = (data.Invoices || []).map<Element>((invoice) => ({
       label: invoice.InvoiceNumber,
       key: invoice.InvoiceID,

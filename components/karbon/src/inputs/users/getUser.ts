@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { connection } from "../shared";
 import { cleanStringInput } from "../../utils";
-
 const userId = input({
   label: "User ID",
   type: "string",
@@ -12,5 +11,4 @@ const userId = input({
   placeholder: "2bYxtn94ZSdY",
   dataSource: "selectUser",
 });
-
 export default { connection, userId };

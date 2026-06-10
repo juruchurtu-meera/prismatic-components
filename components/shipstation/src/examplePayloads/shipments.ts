@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const listShipmentsExamplePayload = {
   data: {
     shipments: [
@@ -75,13 +69,6 @@ export const listShipmentsExamplePayload = {
     pages: 1,
   },
 };
-
-
-
-
-
-
-
 export const createShipmentLabelExamplePayload = {
   data: {
     shipmentId: 123456789,
@@ -115,13 +102,6 @@ export const createShipmentLabelExamplePayload = {
     formData: null,
   },
 };
-
-
-
-
-
-
-
 export const listCarriersExamplePayload = {
   data: [
     {
@@ -146,13 +126,6 @@ export const listCarriersExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
 export const listServicesExamplePayload = {
   data: [
     {
@@ -178,13 +151,6 @@ export const listServicesExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
 export const listPackagesExamplePayload = {
   data: [
     {

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 export const fieldId = input({
   label: "Field ID",
   type: "string",
@@ -11,7 +10,6 @@ export const fieldId = input({
   placeholder: "Enter field ID",
   clean: util.types.toString,
 });
-
 export const fieldName = input({
   label: "Field Name",
   type: "string",
@@ -21,7 +19,6 @@ export const fieldName = input({
   placeholder: "Enter field name",
   clean: util.types.toString,
 });
-
 export const category = input({
   label: "Category",
   type: "string",
@@ -31,7 +28,6 @@ export const category = input({
   placeholder: "Enter field category",
   clean: util.types.toString,
 });
-
 export const fieldType = input({
   label: "Field Type",
   type: "string",
@@ -52,7 +48,6 @@ export const fieldType = input({
   placeholder: "Select field type",
   clean: util.types.toString,
 });
-
 export const fieldDescription = input({
   label: "Description",
   type: "string",
@@ -62,7 +57,6 @@ export const fieldDescription = input({
   placeholder: "Enter field description",
   clean: cleanStringInput,
 });
-
 export const historical = input({
   label: "Historical",
   type: "boolean",

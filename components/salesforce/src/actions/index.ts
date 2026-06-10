@@ -16,7 +16,6 @@ import profilesActions from "./profiles";
 import recordsActions from "./records";
 import usersActions from "./users";
 import workflowsActions from "./workflows";
-
 export default {
   ...accountActions,
   ...attachmentActions,

@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanExpirationDateTime } from "ms-utils";
-
 export const oneDriveConnection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Microsoft OneDrive connection to use.",
 });
-
 export const siteId = input({
   label: "Site",
   type: "string",
@@ -18,7 +16,6 @@ export const siteId = input({
   comments: "The unique identifier of the SharePoint site.",
   dataSource: "selectSite",
 });
-
 export const groupId = input({
   label: "Group",
   type: "string",
@@ -28,7 +25,6 @@ export const groupId = input({
   comments: "The unique identifier of the Microsoft 365 group.",
   dataSource: "listGroups",
 });
-
 export const driveId = input({
   label: "Drive",
   type: "string",
@@ -38,7 +34,6 @@ export const driveId = input({
   comments: "The unique identifier of the drive.",
   dataSource: "listDrives",
 });
-
 export const dir = input({
   label: "Directory",
   type: "string",
@@ -48,7 +43,6 @@ export const dir = input({
   comments:
     "The directory path of the file. Use a forward slash (/) to access the root directory.",
 });
-
 export const itemId = input({
   label: "Item Id",
   type: "string",
@@ -58,7 +52,6 @@ export const itemId = input({
   comments: "The unique identifier of the drive item (file or folder).",
   dataSource: "listFilesInDirectory",
 });
-
 export const path = input({
   label: "Path",
   type: "string",
@@ -68,7 +61,6 @@ export const path = input({
   comments:
     "The path to the desired SharePoint resource. The root directory does not need to be included.",
 });
-
 export const search = input({
   label: "Search",
   type: "string",
@@ -77,7 +69,6 @@ export const search = input({
   placeholder: "Enter search text",
   comments: "The text to search for within the current drive.",
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -86,7 +77,6 @@ export const fileName = input({
   placeholder: "Enter file name",
   comments: "The new name for the file.",
 });
-
 export const requestBody = input({
   label: "Request Body",
   type: "code",
@@ -103,7 +93,6 @@ export const requestBody = input({
   comments: "The JSON request body for the operation.",
   clean: util.types.toObject,
 });
-
 export const userId = input({
   label: "User",
   type: "string",
@@ -113,7 +102,6 @@ export const userId = input({
   comments: "The unique identifier or email address of the user.",
   dataSource: "listUsers",
 });
-
 export const fileData = input({
   label: "File Data",
   type: "data",
@@ -121,7 +109,6 @@ export const fileData = input({
   comments: "The binary content of the file to upload.",
   clean: util.types.toData,
 });
-
 export const values = input({
   label: "Optional Values",
   type: "string",
@@ -129,7 +116,6 @@ export const values = input({
   collection: "keyvaluelist",
   comments: "Optional key-value pairs to include in the request body.",
 });
-
 export const timeout = input({
   label: "Timeout",
   type: "string",
@@ -139,7 +125,6 @@ export const timeout = input({
   comments: "The maximum time in milliseconds to wait for a response.",
   clean: util.types.toString,
 });
-
 export const pageLimit = input({
   label: "Page Limit",
   type: "string",
@@ -149,7 +134,6 @@ export const pageLimit = input({
   comments: "The maximum number of results to return per page.",
   clean: util.types.toString,
 });
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
@@ -159,7 +143,6 @@ export const pageToken = input({
   comments: "The token for retrieving the next page of results.",
   clean: util.types.toString,
 });
-
 export const changeType = input({
   label: "Change Type",
   type: "string",
@@ -171,7 +154,6 @@ export const changeType = input({
   default: "updated",
   clean: util.types.toString,
 });
-
 export const notificationUrl = input({
   label: "Notification URL",
   type: "string",
@@ -182,7 +164,6 @@ export const notificationUrl = input({
   placeholder: "Enter notification URL",
   clean: util.types.toString,
 });
-
 export const resource = input({
   label: "Resource",
   type: "string",
@@ -193,7 +174,6 @@ export const resource = input({
   placeholder: "Enter resource path",
   clean: util.types.toString,
 });
-
 export const expirationDateTime = input({
   label: "Expiration Date Time",
   type: "string",
@@ -204,7 +184,6 @@ export const expirationDateTime = input({
   placeholder: "Enter expiration date (ISO 8601)",
   clean: cleanExpirationDateTime,
 });
-
 export const clientState = input({
   label: "Client State",
   type: "string",
@@ -215,7 +194,6 @@ export const clientState = input({
   placeholder: "Enter client state token",
   clean: util.types.toString,
 });
-
 export const subscriptionId = input({
   label: "Subscription Id",
   type: "string",
@@ -226,7 +204,6 @@ export const subscriptionId = input({
   dataSource: "selectSubscription",
   clean: util.types.toString,
 });
-
 export const allowDuplicates = input({
   label: "Allow Duplicates",
   type: "boolean",
@@ -235,7 +212,6 @@ export const allowDuplicates = input({
   comments: "When true, allows multiple subscriptions for the same endpoint.",
   clean: util.types.toBool,
 });
-
 export const showInstanceSubscriptions = input({
   label: "Show Instance Subscriptions",
   type: "boolean",
@@ -245,7 +221,6 @@ export const showInstanceSubscriptions = input({
     "When true, shows only subscriptions associated with this instance.",
   clean: util.types.toBool,
 });
-
 export const deltaURL = input({
   label: "Delta URL",
   type: "string",
@@ -257,7 +232,6 @@ export const deltaURL = input({
   default: "/drives/{drive-id}/root/delta",
   clean: util.types.toString,
 });
-
 export const $select = input({
   label: "$select Parameter",
   type: "string",
@@ -268,7 +242,6 @@ export const $select = input({
   placeholder: "Enter properties to select",
   clean: util.types.toString,
 });
-
 export const $expand = input({
   label: "$expand Parameter",
   type: "string",
@@ -279,7 +252,6 @@ export const $expand = input({
   placeholder: "Enter relationships to expand",
   clean: util.types.toString,
 });
-
 export const $top = input({
   label: "$top Parameter",
   type: "string",
@@ -290,7 +262,6 @@ export const $top = input({
   placeholder: "Enter maximum results",
   clean: util.types.toString,
 });
-
 export const expirationDays = input({
   label: "Expiration Days",
   type: "string",
@@ -305,7 +276,6 @@ export const expirationDays = input({
     return days > 0 && days <= 30 ? days : 3;
   },
 });
-
 export const instanceDeployWebhookInputs = {
   oneDriveConnection,
   resource: {
@@ -331,7 +301,6 @@ export const instanceDeployWebhookInputs = {
       "Optional expiration date/time for the subscription. If not provided, defaults to 3 days from now. Maximum is 30 days for OneDrive resources.",
   },
 };
-
 export const renewSubscriptionInputs = {
   oneDriveConnection,
   subscriptionId,

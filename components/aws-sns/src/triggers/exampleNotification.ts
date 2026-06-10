@@ -1,5 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
 export const snsExampleHeaders = {
   "x-amz-sns-message-type": "Notification",
   "x-amz-sns-message-id": "da41e39f-ea4d-435a-b922-c6aae3915ebe",
@@ -12,7 +11,6 @@ export const snsExampleHeaders = {
   Connection: "Keep-Alive",
   "User-Agent": "Amazon Simple Notification Service Agent",
 };
-
 export const snsExampleBody = {
   Type: "Notification",
   MessageId: "da41e39f-ea4d-435a-b922-c6aae3915ebe",
@@ -28,7 +26,6 @@ export const snsExampleBody = {
   UnsubscribeURL:
     "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55",
 };
-
 export const snsExamplePayload: TriggerPayload = {
   headers: snsExampleHeaders,
   queryParameters: {},

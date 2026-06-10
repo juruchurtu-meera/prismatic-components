@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { listFulfillmentsExamplePayload } from "../../examplePayloads";
 import { listFulfillmentsInputs } from "../../inputs";
 import { listFulfillmentsGql } from "../graphql/fulfillments/listFulfillments";
-
 export const listFulfillments = action({
   display: {
     label: "List Fulfillments",

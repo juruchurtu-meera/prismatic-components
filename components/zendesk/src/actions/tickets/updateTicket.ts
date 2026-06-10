@@ -18,7 +18,6 @@ import {
 } from "../../inputs";
 import { isPriority, isStatus, isType, validateComment } from "../.././helper";
 import { createTicketPayload } from "../../examplePayloads";
-
 export const updateTicket = action({
   display: {
     label: "Update Ticket",
@@ -29,13 +28,10 @@ export const updateTicket = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const ticketPriorityString = params.ticketPriority;
     const ticketStatusString = params.ticketStatus;
     const ticketTypeString = params.ticketType;
-
     let attachment: Record<string, Record<string, unknown>> | undefined;
-
     if (params.file) {
       if (!params.fileName) {
         throw new Error("Must specify a file name when you attach a file");
@@ -45,7 +41,6 @@ export const updateTicket = action({
         binary: true,
       })) as Record<string, Record<string, unknown>>;
     }
-
     const { result } = await client.tickets.update(
       util.types.toInt(params.ticketId),
       {
@@ -60,13 +55,11 @@ export const updateTicket = action({
             : undefined) as undefined,
           organization_id:
             util.types.toInt(params.requesterOrganization) || undefined,
-
           comment: validateComment({
             bodyValue: params.ticketComment,
             htmlValue: params.ticketCommentHTML,
             attachment,
           }),
-
           status: (isStatus(ticketStatusString)
             ? ticketStatusString
             : undefined) as undefined,
@@ -79,7 +72,6 @@ export const updateTicket = action({
         },
       },
     );
-
     return {
       data: result,
     };

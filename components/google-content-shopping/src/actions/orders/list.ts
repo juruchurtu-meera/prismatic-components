@@ -15,7 +15,6 @@ import {
 import { fetchAllOrders } from "../../helpers/fetchAllOrders";
 import type { content_v2_1 } from "googleapis";
 import { listOrdersExamplePayload } from "../../examplePayloads";
-
 export const listOrders = action({
   display: {
     label: "List Orders (Deprecated)",
@@ -53,9 +52,7 @@ export const listOrders = action({
     context.logger.warn(
       "'List Orders' is deprecated. Google is retiring the Orders endpoints in the Content API.",
     );
-
     const client = createClient(connectionInput);
-
     const params: content_v2_1.Params$Resource$Orders$List = {
       merchantId,
       maxResults: maxResults || undefined,
@@ -66,9 +63,7 @@ export const listOrders = action({
       acknowledged: acknowledged || undefined,
       statuses: statuses || undefined,
     };
-
     const { data } = await fetchAllOrders({ client, fetchAll, params });
-
     return {
       data,
     };

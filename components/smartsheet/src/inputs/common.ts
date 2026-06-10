@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const validateId = (value: unknown, required = true) => {
   if (!value && !required) {
     return undefined;
@@ -12,7 +11,6 @@ export const validateId = (value: unknown, required = true) => {
     );
   }
 };
-
 export const page = input({
   label: "Pagination Page (Deprecated)",
   type: "string",
@@ -23,7 +21,6 @@ export const page = input({
     "DEPRECATED — has no effect on actions migrated for the 2026-06-03 Smartsheet sunset. Preserved for backwards compatibility on those actions; will be removed in a future major release.",
   placeholder: "Enter page number",
 });
-
 export const pageSize = input({
   label: "Pagination Page Size (Deprecated)",
   type: "string",
@@ -33,7 +30,6 @@ export const pageSize = input({
     "DEPRECATED — has no effect on actions migrated for the 2026-06-03 Smartsheet sunset. Preserved for backwards compatibility on those actions; will be removed in a future major release.",
   placeholder: "Enter page size",
 });
-
 export const includeAll = input({
   label: "Fetch All (Deprecated)",
   type: "boolean",
@@ -43,14 +39,12 @@ export const includeAll = input({
   comments:
     "DEPRECATED — has no effect on actions migrated for the 2026-06-03 Smartsheet sunset. Preserved for backwards compatibility on those actions; will be removed in a future major release.",
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Smartsheet connection to use.",
 });
-
 export const modifiedSince = input({
   label: "Modified Since",
   type: "string",
@@ -61,7 +55,6 @@ export const modifiedSince = input({
   example: "2023-01-01T00:00:00Z",
   placeholder: "Enter date and time",
 });
-
 export const folderId = input({
   label: "Folder ID",
   type: "string",
@@ -73,7 +66,6 @@ export const folderId = input({
   placeholder: "Enter folder ID",
   dataSource: "selectFolder",
 });
-
 export const groupId = input({
   label: "Group ID",
   type: "string",
@@ -84,7 +76,6 @@ export const groupId = input({
   placeholder: "Enter group ID",
   dataSource: "selectGroup",
 });
-
 export const sheetId = input({
   label: "Sheet ID",
   type: "string",
@@ -95,7 +86,6 @@ export const sheetId = input({
   placeholder: "Enter sheet ID",
   dataSource: "selectSheet",
 });
-
 export const sheetIdOptional = input({
   label: "Sheet ID (Optional)",
   type: "string",
@@ -106,7 +96,6 @@ export const sheetIdOptional = input({
   example: "4583173393803140",
   placeholder: "Enter sheet ID (optional)",
 });
-
 export const columnId = input({
   label: "Column ID",
   type: "string",
@@ -117,7 +106,6 @@ export const columnId = input({
   placeholder: "Enter column ID",
   dataSource: "selectColumn",
 });
-
 export const workspaceId = input({
   label: "Workspace ID",
   type: "string",
@@ -128,7 +116,6 @@ export const workspaceId = input({
   placeholder: "Enter workspace ID",
   dataSource: "selectWorkspace",
 });
-
 export const workspaceIdOptional = input({
   label: "Workspace ID (Optional)",
   type: "string",
@@ -139,7 +126,6 @@ export const workspaceIdOptional = input({
   example: "843750385",
   placeholder: "Enter workspace ID (optional)",
 });
-
 export const discussionId = input({
   label: "Discussion ID",
   type: "string",
@@ -150,7 +136,6 @@ export const discussionId = input({
   placeholder: "Enter discussion ID",
   dataSource: "selectDiscussion",
 });
-
 export const reportId = input({
   label: "Report ID",
   type: "string",
@@ -161,7 +146,6 @@ export const reportId = input({
   placeholder: "Enter report ID",
   dataSource: "selectReport",
 });
-
 export const attachmentId = input({
   label: "Attachment ID",
   type: "string",
@@ -172,7 +156,6 @@ export const attachmentId = input({
   placeholder: "Enter attachment ID",
   dataSource: "selectAttachment",
 });
-
 export const rowId = input({
   label: "Row ID",
   type: "string",
@@ -183,7 +166,6 @@ export const rowId = input({
   placeholder: "Enter row ID",
   dataSource: "selectRow",
 });
-
 export const rowIdOptional = input({
   label: "Row ID (Optional)",
   type: "string",
@@ -194,7 +176,6 @@ export const rowIdOptional = input({
   example: "8908091207493508",
   placeholder: "Enter row ID (optional)",
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -205,8 +186,6 @@ export const webhookId = input({
   placeholder: "Enter webhook ID",
   dataSource: "selectWebhook",
 });
-
-
 export const attachmentType = input({
   label: "Attachment Type",
   type: "string",

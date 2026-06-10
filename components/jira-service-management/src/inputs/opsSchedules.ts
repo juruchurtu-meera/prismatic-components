@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalNumber, toOptionalString } from "../util";
 import { additionalQueryParams, connection, fetchAll } from "./common";
-
 const scheduleId = input({
   label: "Schedule",
   type: "string",
@@ -12,7 +11,6 @@ const scheduleId = input({
   dataSource: "selectOpsSchedule",
   clean: util.types.toString,
 });
-
 const scheduleQuery = input({
   label: "Query",
   type: "string",
@@ -22,7 +20,6 @@ const scheduleQuery = input({
   example: "production",
   clean: toOptionalString,
 });
-
 const scheduleFlat = input({
   label: "Flatten On-Call",
   type: "boolean",
@@ -32,7 +29,6 @@ const scheduleFlat = input({
     "When true, returns only the user IDs of the on-call participants. When false, returns the full rotation tree.",
   clean: util.types.toBool,
 });
-
 const scheduleDate = input({
   label: "Reference Date",
   type: "string",
@@ -43,7 +39,6 @@ const scheduleDate = input({
   example: "2026-05-04T18:30:00Z",
   clean: toOptionalString,
 });
-
 const scheduleOffset = input({
   label: "Offset",
   type: "string",
@@ -54,7 +49,6 @@ const scheduleOffset = input({
   example: "0",
   clean: toOptionalNumber,
 });
-
 const scheduleSize = input({
   label: "Size",
   type: "string",
@@ -65,7 +59,6 @@ const scheduleSize = input({
   example: "25",
   clean: toOptionalNumber,
 });
-
 export const listOpsSchedulesInputs = {
   connection,
   fetchAll,
@@ -74,12 +67,10 @@ export const listOpsSchedulesInputs = {
   scheduleSize,
   additionalQueryParams,
 };
-
 export const getOpsScheduleInputs = {
   connection,
   scheduleId,
 };
-
 export const getOpsOnCallInputs = {
   connection,
   scheduleId,

@@ -1,7 +1,6 @@
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
 import { API_URL } from "../constants";
 import { connection } from "./common";
-
 export const rawRequestInputs = {
   connection,
   ...httpClientInputs,

@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../utils";
 import { connection } from "./general";
 import { COUNTRY_CODES_MODEL } from "../constants";
-
 const phoneNumberId = input({
   label: "Phone Number ID",
   comments: "The ID of the phone number to register.",
@@ -12,7 +11,6 @@ const phoneNumberId = input({
   example: "912345678912345",
   clean: util.types.toString,
 });
-
 const pin = input({
   label: "PIN",
   comments:
@@ -23,7 +21,6 @@ const pin = input({
   example: "123456",
   clean: util.types.toString,
 });
-
 const dataLocalizationRegion = input({
   label: "Data Localization Region",
   comments:
@@ -35,7 +32,6 @@ const dataLocalizationRegion = input({
   model: COUNTRY_CODES_MODEL,
   clean: cleanStringInput,
 });
-
 export const registerPhoneNumberInputs = {
   connection,
   phoneNumberId,

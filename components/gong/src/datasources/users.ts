@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection } from "../inputs";
-
 interface User {
   requestId: string;
   users: {
@@ -11,7 +10,6 @@ interface User {
     emailAddress: string;
   }[];
 }
-
 export const users = dataSource({
   display: {
     label: "Select User",
@@ -20,14 +18,12 @@ export const users = dataSource({
   perform: async (_context, { connection }) => {
     const client = createClient(connection, false);
     const { data } = await client.get<User>(`/v2/users`);
-
     const result = data.users.map<Element>((user) => {
       return {
         label: `${user.emailAddress} - ${user.lastName} ${user.firstName}`,
         key: user.id.toString(),
       };
     });
-
     return {
       result,
     };

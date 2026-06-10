@@ -10,7 +10,6 @@ import {
 } from "../inputs";
 import { Authorization } from "../enums/Authorization";
 import { customJQLQueryExamplePayload } from "../examplePayloads";
-
 export const customJQLQuery = action({
   display: {
     label: "Custom JQL Query",

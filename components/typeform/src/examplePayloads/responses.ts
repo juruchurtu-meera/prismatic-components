@@ -180,5 +180,4 @@ export const listResponsesPayload = {
   page_count: 1,
   total_items: 4,
 };
-
 export const getFileResponse = Buffer.from("file content");

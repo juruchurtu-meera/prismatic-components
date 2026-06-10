@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listPatchManagementDevicesExamplePayload } from "../../examplePayloads/patchManagement";
 import { listPatchManagementDevicesInputs } from "../../inputs/patchManagement";
 import { paginateWithContinuationToken } from "../../util";
-
 export const listPatchMagementDevices = action({
   display: {
     label: "List Patch Management Device",
@@ -14,7 +13,6 @@ export const listPatchMagementDevices = action({
     { connection, continuationToken, queryParams, fetchAll },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await paginateWithContinuationToken(
       client,
       "/patchmanagement/devices",
@@ -24,7 +22,6 @@ export const listPatchMagementDevices = action({
         continuationToken,
       },
     );
-
     return {
       data,
     };

@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { createLeadInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const createLead = action({
   display: {
     label: "Create Lead",
@@ -36,7 +35,6 @@ export const createLead = action({
     },
   ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const command = salesforceClient.sobject("Lead").create({
       Company: company,
       FirstName: firstName,

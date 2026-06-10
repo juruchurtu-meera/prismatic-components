@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createPostExamplePayload } from "../../examplePayloads";
 import { createPostInputs } from "../../inputs";
-
 export const createPost = action({
   display: {
     label: "Create Post",

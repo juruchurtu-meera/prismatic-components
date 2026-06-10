@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listSecurityProfilesResponse } from "../../examplePayloads";
 import { connection } from "../../inputs";
-
 export const listSecurityProfiles = action({
   display: {
     label: "List Security Profiles",

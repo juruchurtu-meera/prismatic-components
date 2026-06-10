@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { updateFulfillmentServiceInputs } from "../../inputs";
 import { updateFulfillmentServiceExamplePayload } from "../../payloadExamples";
-
 export const updateFulfillmentService = action({
   display: {
     label: "Update Fulfillment Service (Deprecated)",
@@ -11,7 +10,11 @@ export const updateFulfillmentService = action({
   },
   inputs: updateFulfillmentServiceInputs,
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const payload = {
       fulfillment_service: {
         callback_url: params.callbackUrl || undefined,

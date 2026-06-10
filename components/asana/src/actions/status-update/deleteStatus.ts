@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, statusId } from "../../inputs";
-
 export const deleteStatus = action({
   display: {
     label: "Delete Status Update",

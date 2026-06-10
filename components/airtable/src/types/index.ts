@@ -3,17 +3,14 @@ export interface AirtableBase {
   name: string;
   permissionLevel: string;
 }
-
 export interface PollingState {
   lastPolledAt?: string;
 }
-
 export interface AirtableRecord {
   id: string;
   createdTime: string;
   fields: Record<string, unknown>;
 }
-
 export interface AirtableTable {
   id: string;
   primaryFieldId: string;

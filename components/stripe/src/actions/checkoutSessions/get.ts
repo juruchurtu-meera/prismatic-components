@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { connectionInput, sessionId, timeout } from "../../inputs";
 import { createCheckoutSessionExamplePayload as examplePayload } from "../../examplePayloads/checkoutSessions";
-
 export const getCheckoutSession = action({
   display: {
     label: "Get Checkout Session",
@@ -13,9 +12,7 @@ export const getCheckoutSession = action({
       stripeConnection,
       timeout,
     });
-
     const session = await client.checkout.sessions.retrieve(sessionId);
-
     return {
       data: session,
     };

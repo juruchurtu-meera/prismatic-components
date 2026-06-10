@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { timeClockingInAndOutExamplePayload } from "../examplePayloads";
 import { clocked_time, connectionInput, override } from "../inputs";
-
 export const timeClockingInAndOut = action({
   display: {
     label: "Time Clocking In and Out",

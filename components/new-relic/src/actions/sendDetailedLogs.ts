@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getNewRelicClient } from "../client";
 import { sendDetailedLogsExamplePayload } from "../examplePayloads";
 import { codeMessage, connectionInput } from "../inputs";
-
 export const sendDetailedLogs = action({
   display: {
     label: "Send Detailed Logs",
@@ -14,12 +13,10 @@ export const sendDetailedLogs = action({
       params.newRelicConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.post(
       "https://log-api.newrelic.com/log/v1",
       params.codeMessage,
     );
-
     return {
       data,
     };
@@ -27,5 +24,4 @@ export const sendDetailedLogs = action({
   examplePayload: sendDetailedLogsExamplePayload,
   inputs: { codeMessage, newRelicConnection: connectionInput },
 });
-
 export default sendDetailedLogs;

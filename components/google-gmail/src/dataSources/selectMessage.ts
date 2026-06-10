@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { connectionInput, query, userIdInput } from "../inputs";
 import { createClient } from "../client";
 import { listAllMessages } from "../utils";
-
 export const selectMessage = dataSource({
   display: {
     label: "Select Message",

@@ -2,7 +2,6 @@ import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const getCurrencies = action({
   display: {
     label: "Get Currencies",
@@ -19,7 +18,8 @@ export const getCurrencies = action({
       label: "Term",
       type: "string",
       clean: cleanString,
-      comments: "Optional search term that is searched for from currency's name and/or code",
+      comments:
+        "Optional search term that is searched for from currency's name and/or code",
     }),
   },
 });

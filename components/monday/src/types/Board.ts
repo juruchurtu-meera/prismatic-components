@@ -7,5 +7,4 @@ export interface Board {
     id: string;
   };
 }
-
 export type BoardIdName = Pick<Board, "id" | "name">;

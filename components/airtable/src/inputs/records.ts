@@ -1,7 +1,6 @@
 import { type KeyValuePair, input, util } from "@prismatic-io/spectral";
 import { cleanDynamicValues } from "../util";
 import { baseIdInput, connectionInput, tableName } from "./common";
-
 const recordIdInput = input({
   label: "Record ID",
   type: "string",
@@ -13,7 +12,6 @@ const recordIdInput = input({
   dataSource: "selectRecord",
   clean: util.types.toString,
 });
-
 const recordFields = input({
   label: "Record Fields",
   type: "string",
@@ -25,7 +23,6 @@ const recordFields = input({
   clean: (values: unknown): Record<string, string> =>
     util.types.keyValPairListToObject(values as KeyValuePair<unknown>[]),
 });
-
 const dynamicFields = input({
   label: "Dynamic Fields",
   type: "code",
@@ -43,7 +40,6 @@ const dynamicFields = input({
   ),
   clean: cleanDynamicValues,
 });
-
 const view = input({
   label: "View",
   type: "string",
@@ -54,7 +50,6 @@ const view = input({
     "The name or ID of a view in the table. When set, only records in that view are returned, sorted in the order defined by the view.",
   clean: (value) => util.types.toString(value) || undefined,
 });
-
 const fields = input({
   label: "Fields",
   type: "string",
@@ -69,7 +64,6 @@ const fields = input({
       ? values.map((field) => util.types.toString(field))
       : undefined,
 });
-
 const filterByFormula = input({
   label: "Filter By Formula",
   type: "string",
@@ -80,7 +74,6 @@ const filterByFormula = input({
     "An Airtable formula used to limit results to records matching specific criteria.",
   clean: (value) => util.types.toString(value) || undefined,
 });
-
 export const listRecordsInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
@@ -89,14 +82,12 @@ export const listRecordsInputs = {
   fields,
   filterByFormula,
 };
-
 export const getRecordInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
   tableName,
   record: recordIdInput,
 };
-
 export const createRecordInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
@@ -104,7 +95,6 @@ export const createRecordInputs = {
   recordFields,
   dynamicFields,
 };
-
 export const updateRecordInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
@@ -113,7 +103,6 @@ export const updateRecordInputs = {
   recordFields,
   dynamicFields,
 };
-
 export const deleteRecordInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,

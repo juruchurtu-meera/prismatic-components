@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { AUTOMATIONS_PATH } from "../../constants";
 import { executeAutomationActivitiesExamplePayload } from "../../examplePayloads";
 import { executeAutomationActivitiesInputs } from "../../inputs";
-
 export const executeAutomationActivities = action({
   examplePayload: executeAutomationActivitiesExamplePayload,
   display: {
@@ -18,7 +17,6 @@ export const executeAutomationActivities = action({
       `${AUTOMATIONS_PATH}/${encodeURIComponent(automationId)}/actions/runallonce`,
       {},
     );
-
     return { data };
   },
 });

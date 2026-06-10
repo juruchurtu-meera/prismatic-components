@@ -1,6 +1,5 @@
 import { action, Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const rateLimitGet = action({
   display: {
     label: "Rate Limit Get",
@@ -19,7 +18,6 @@ const rateLimitGet = action({
     },
   },
 });
-
 export default {
   rateLimitGet,
 };

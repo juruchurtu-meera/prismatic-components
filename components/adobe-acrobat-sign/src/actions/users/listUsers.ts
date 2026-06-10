@@ -4,7 +4,6 @@ import { getAdobeSignClient } from "../../client";
 import type { UserResponse } from "../../types";
 import { fetchAdobeSignResults } from "../../util";
 import { listUsersExamplePayload } from "../../examplePayloads";
-
 export const listUsers = action({
   display: {
     label: "List Users",
@@ -13,7 +12,6 @@ export const listUsers = action({
   inputs: listUsersInputs,
   perform: async (context, { connection, fetchAll, cursor, pageSize }) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
-
     const data = await fetchAdobeSignResults<
       UserResponse,
       "userInfoList",
@@ -28,7 +26,6 @@ export const listUsers = action({
       },
       "userInfoList",
     );
-
     return { data };
   },
   examplePayload: listUsersExamplePayload,

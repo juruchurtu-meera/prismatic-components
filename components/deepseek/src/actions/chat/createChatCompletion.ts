@@ -2,7 +2,6 @@ import { action, Connection } from "@prismatic-io/spectral";
 import { CREATE_CHAT_COMPLETION_EXAMPLE_PAYLOAD } from "../../examplePayloads";
 import { createDeepSeekClient } from "../../client";
 import createChatCompletionInputs from "../../inputs/chat/createChatCompletionInputs";
-
 export const createChatCompletion = action({
   display: {
     label: "Create Chat Completion",
@@ -28,13 +27,12 @@ export const createChatCompletion = action({
       tool_choice,
       log_probs,
       top_logprobs,
-    }
+    },
   ) => {
     const client = createDeepSeekClient(
       connection as Connection,
-      context.debug.enabled
+      context.debug.enabled,
     );
-
     const payload = {
       messages,
       model,
@@ -54,9 +52,7 @@ export const createChatCompletion = action({
       log_probs,
       top_logprobs,
     };
-
     const { data } = await client.post("/chat/completions", payload);
-
     return { data };
   },
   examplePayload: CREATE_CHAT_COMPLETION_EXAMPLE_PAYLOAD,

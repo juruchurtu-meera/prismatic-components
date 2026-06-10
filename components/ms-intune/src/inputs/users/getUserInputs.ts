@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
 import { odataParams } from "../general";
-
 const userId = input({
   label: "User Id",
   comments:
@@ -13,7 +12,6 @@ const userId = input({
   clean: cleanStringInput,
   dataSource: "selectUser",
 });
-
 export default {
   userId,
   $select: odataParams.$select,

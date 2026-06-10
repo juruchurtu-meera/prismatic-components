@@ -17,7 +17,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const createProduct = action({
   display: {
     label: "Create Product",
@@ -44,14 +43,15 @@ export const createProduct = action({
       stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
     return {
       data: await client.products.create({
         name: util.types.toString(productName),
         active: util.types.toBool(active),
         description: util.types.toString(description) || undefined,
         images: productImages?.map((image) => util.types.toString(image)),
-        type: util.types.toString(productType) as Stripe.ProductCreateParams.Type,
+        type: util.types.toString(
+          productType,
+        ) as Stripe.ProductCreateParams.Type,
         ...(util.types.keyValPairListToObject(fieldValues) || {}),
         shippable: util.types.toBool(shippable) || undefined,
         url: util.types.toString(productUrl) || undefined,

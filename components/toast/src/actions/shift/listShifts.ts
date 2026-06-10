@@ -3,7 +3,6 @@ import { createToastClient } from "../../client";
 import { listShiftsExamplePayload as examplePayload } from "../../examplePayloads";
 import { listShiftsInputs as inputs } from "../../inputs/shift";
 import { serializeRepeatedParam } from "../../utils";
-
 export const listShifts = action({
   display: {
     label: "List Shifts",
@@ -19,12 +18,10 @@ export const listShifts = action({
       context.debug.enabled,
       restaurantExternalId,
     );
-
     const serializedshiftIds = serializeRepeatedParam(
       shiftIds || [],
       "shiftIds",
     );
-
     const { data } = await client.get(
       `/labor/v1/shifts?${serializedshiftIds}`,
       {
@@ -34,7 +31,6 @@ export const listShifts = action({
         },
       },
     );
-
     return {
       data,
     };

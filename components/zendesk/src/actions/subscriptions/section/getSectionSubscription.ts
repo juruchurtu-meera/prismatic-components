@@ -3,7 +3,6 @@ import { connectionInput, sectionId, subscriptionId } from "../../../inputs";
 import { rawHttpClient } from "../../../auth";
 import type { SubscriptionResponse } from "../../../types";
 import { action } from "@prismatic-io/spectral";
-
 export const getSectionSubscription = action({
   display: {
     label: "Get Section Subscription",
@@ -17,7 +16,6 @@ export const getSectionSubscription = action({
     const { data } = await client.get<SubscriptionResponse>(
       `/help_center/sections/${sectionId}/subscriptions/${subscriptionId}`,
     );
-
     return {
       data,
     };

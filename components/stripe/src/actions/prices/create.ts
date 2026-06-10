@@ -15,7 +15,6 @@ import {
   unitPrice,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const createPrice = action({
   display: {
     label: "Create Price",

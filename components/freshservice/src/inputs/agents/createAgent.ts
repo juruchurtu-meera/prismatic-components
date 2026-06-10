@@ -13,7 +13,6 @@ import {
   roles,
   workPhoneNumber,
 } from "./common";
-
 export const createAgentInputs = {
   connection,
   firstName,

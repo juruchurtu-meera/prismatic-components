@@ -12,7 +12,6 @@ import {
   snsTopicArn,
 } from "../../inputs";
 import { processTopicConfiguration } from "../../utils";
-
 export const bucketEventTriggerConfiguration = action({
   display: {
     label: "Bucket SNS Event Trigger Configuration",
@@ -40,13 +39,11 @@ export const bucketEventTriggerConfiguration = action({
       dynamicSecretAccessKey,
       dynamicSessionToken,
     });
-
     const topicConfiguration: TopicConfiguration = {
       Id: eventNotificationName,
       TopicArn: snsTopicArn,
       Events: eventsList as Event[],
     };
-
     return {
       data: await processTopicConfiguration(
         s3Client,

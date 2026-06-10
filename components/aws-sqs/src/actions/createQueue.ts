@@ -8,7 +8,6 @@ import {
   tags,
 } from "../inputs";
 import { createQueueExample } from "../examplePayloads";
-
 const createQueue = action({
   display: {
     label: "Create Queue",
@@ -16,16 +15,10 @@ const createQueue = action({
   },
   perform: async (context, params) => {
     const client = await createSQSClient(params);
-
     const result = await client.createQueue({
       QueueName: params.name,
       tags: params.tags,
       Attributes: {
-        
-        
-        
-        
-        
         FifoQueue: params.isFifo ? "true" : undefined,
         ContentBasedDeduplication:
           params.isFifo && params.contentBasedDeduplication
@@ -33,7 +26,6 @@ const createQueue = action({
             : undefined,
       },
     });
-
     return { data: result };
   },
   inputs: {
@@ -45,5 +37,4 @@ const createQueue = action({
   },
   examplePayload: createQueueExample,
 });
-
 export default createQueue;

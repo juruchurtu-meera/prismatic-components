@@ -1,19 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
 import { SUCCESS_RESPONSE } from "./constants";
-
-
-
-
 export const createTicketExamplePayload = {
   data: {
     ticket: {
@@ -56,24 +41,15 @@ export const createTicketExamplePayload = {
     },
   },
 };
-
 export const listTicketsExamplePayload = {
   data: {
     tickets: [createTicketExamplePayload.data.ticket],
   },
 };
-
 export const getTicketExamplePayload = createTicketExamplePayload;
-
 export const updateTicketExamplePayload = createTicketExamplePayload;
-
 export const moveTicketExamplePayload = createTicketExamplePayload;
-
 export const deleteTicketExamplePayload = SUCCESS_RESPONSE;
-
-
-
-
 export const createProblemExamplePayload = {
   data: {
     problem: {
@@ -120,22 +96,13 @@ export const createProblemExamplePayload = {
     },
   },
 };
-
 export const getProblemExamplePayload = createProblemExamplePayload;
-
 export const listProblemsExamplePayload = {
   data: { problems: [createProblemExamplePayload.data.problem] },
 };
-
 export const updateProblemExamplePayload = createProblemExamplePayload;
-
 export const moveProblemExamplePayload = createProblemExamplePayload;
-
 export const deleteProblemExamplePayload = SUCCESS_RESPONSE;
-
-
-
-
 export const createRequesterExamplePayload = {
   data: {
     requester: {
@@ -169,20 +136,12 @@ export const createRequesterExamplePayload = {
     },
   },
 };
-
 export const getRequesterExamplePayload = createRequesterExamplePayload;
-
 export const listRequestersExamplePayload = {
   data: { requesters: [createRequesterExamplePayload.data.requester] },
 };
-
 export const updateRequesterExamplePayload = createRequesterExamplePayload;
-
 export const deactivateRequesterExamplePayload = SUCCESS_RESPONSE;
-
-
-
-
 export const createAgentExamplePayload = {
   data: {
     agent: {
@@ -223,22 +182,13 @@ export const createAgentExamplePayload = {
     },
   },
 };
-
 export const getAgentExamplePayload = createAgentExamplePayload;
-
 export const listAgentsExamplePayload = {
   data: { agents: [createAgentExamplePayload.data.agent] },
 };
-
 export const updateAgentExamplePayload = createAgentExamplePayload;
-
 export const deactivateAgentExamplePayload = createAgentExamplePayload;
-
 export const forgetAgentExamplePayload = SUCCESS_RESPONSE;
-
-
-
-
 export const createAssetExamplePayload = {
   data: {
     asset: {
@@ -278,24 +228,14 @@ export const createAssetExamplePayload = {
     },
   },
 };
-
 export const getAssetExamplePayload = createAssetExamplePayload;
-
 export const listAssetsExamplePayload = {
   data: { assets: [createAssetExamplePayload.data.asset] },
 };
-
 export const searchAssetExamplePayload = listAssetsExamplePayload;
-
 export const updateAssetExamplePayload = createAssetExamplePayload;
-
 export const deleteAssetExamplePayload = SUCCESS_RESPONSE;
-
 export const moveAssetExamplePayload = createAssetExamplePayload;
-
-
-
-
 export const createSoftwareExamplePayload = {
   data: {
     application: {
@@ -317,22 +257,13 @@ export const createSoftwareExamplePayload = {
     },
   },
 };
-
 export const updateSoftwareExamplePayload = createSoftwareExamplePayload;
-
 export const getSoftwareExamplePayload = createSoftwareExamplePayload;
-
 export const listSoftwareExamplePayload = {
   data: { applications: [createSoftwareExamplePayload.data.application] },
 };
-
 export const deleteSoftwareExamplePayload = SUCCESS_RESPONSE;
-
 export const moveSoftwareExamplePayload = createSoftwareExamplePayload;
-
-
-
-
 export const createServiceRequestExamplePayload = {
   data: {
     service_request: {
@@ -379,10 +310,6 @@ export const createServiceRequestExamplePayload = {
     },
   },
 };
-
-
-
-
 export const createOnboardingRequestExamplePayload = {
   data: {
     initiator_id: 1,
@@ -401,7 +328,6 @@ export const createOnboardingRequestExamplePayload = {
     },
   },
 };
-
 export const viewOnboardingRequestExamplePayload = {
   data: {
     fields: [
@@ -417,10 +343,6 @@ export const viewOnboardingRequestExamplePayload = {
     ],
   },
 };
-
-
-
-
 export const listWorkspacesExamplePayload = {
   data: {
     workspaces: [
@@ -438,7 +360,6 @@ export const listWorkspacesExamplePayload = {
     ],
   },
 };
-
 export const getWorkspaceExamplePayload = {
   data: {
     workspace: listWorkspacesExamplePayload.data.workspaces[0],

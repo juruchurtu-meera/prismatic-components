@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../../client";
 import { createCustomerExamplePayload } from "../../examplePayloads";
 import { createCustomerInputs } from "../../inputs";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -26,13 +25,17 @@ export const createCustomer = action({
       squareConnection,
     },
   ) => {
-    
-    if (!givenName && !familyName && !companyName && !emailAddress && !phoneNumber) {
+    if (
+      !givenName &&
+      !familyName &&
+      !companyName &&
+      !emailAddress &&
+      !phoneNumber
+    ) {
       throw new Error(
         "At least one of `given_name`, `family_name`, `company_name`, `email_address`, or `phone_number` is required for a customer.",
       );
     }
-
     const euCountries = [
       "BE",
       "BG",
@@ -63,13 +66,13 @@ export const createCustomer = action({
       "SE",
       "UK",
     ];
-
     if (address?.country && !euCountries.includes(address.country)) {
       taxIds = null;
     }
-
-    const client = await createAuthorizedClient(squareConnection, context.debug.enabled);
-
+    const client = await createAuthorizedClient(
+      squareConnection,
+      context.debug.enabled,
+    );
     const requestBody = {
       idempotency_key: idempotencyKey,
       given_name: givenName,
@@ -84,9 +87,7 @@ export const createCustomer = action({
       tax_ids: taxIds,
       nickname,
     };
-
     const response = await client.post("/v2/customers", requestBody);
-
     return {
       data: response.data,
     };

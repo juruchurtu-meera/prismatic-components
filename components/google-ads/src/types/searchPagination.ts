@@ -4,7 +4,6 @@ export interface GoogleAdsSearchResponse<T> {
   fieldMask?: string;
   queryResourceConsumption?: string;
 }
-
 export interface SearchGoogleAdsOptions {
   customerId: string;
   params: Record<string, unknown>;

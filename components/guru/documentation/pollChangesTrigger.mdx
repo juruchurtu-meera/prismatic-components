@@ -1,0 +1,45 @@
+This trigger polls [Guru](https://www.getguru.com/) on a configured schedule and emits cards that were created or updated since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+It relies on [Guru Query Language](https://developer.getguru.com/docs/guru-query-language) to filter cards server-side by their `lastModified` timestamp.
+
+#### How It Works
+
+On each scheduled run, the trigger searches cards using the query `lastModified > <last poll timestamp>`, then splits the results into two groups:
+
+- **Created**: cards whose `dateCreated` is after the previous poll.
+- **Updated**: cards the filter returned that were not newly created.
+
+The trigger stores the current run time as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical cards on deploy.
+- **Subsequent runs**: only cards created or updated since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the matching cards grouped under `created` and `updated`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [],
+    "updated": [
+      {
+        "id": "13131313-1313-1313-1313-131313131313",
+        "preferredPhrase": "Updated Title",
+        "dateCreated": "2025-08-22T19:33:23.876+0000",
+        "lastModified": "2025-08-22T19:33:25.487+0000"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- Card timestamps are compared with full precision, so polling is incremental and does not re-emit unchanged cards.
+- The "new vs updated" split is derived from each card's `dateCreated` relative to the last poll time.

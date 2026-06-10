@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { getDriveOrSiteBaseUrl, paginateResults } from "../helpers";
 import type { Worksheet } from "../interfaces";
 import { selectWorksheetInputs } from "../inputs/worksheets/list";
-
 export const selectWorksheet = dataSource({
   display: {
     label: "Select Worksheet",
@@ -13,7 +12,6 @@ export const selectWorksheet = dataSource({
   perform: async (_context, { connection, workbookId, driveOrSiteId }) => {
     const { client, source } = createClient(connection, false);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const data = await paginateResults<Worksheet>(
       client,
       `${baseUrl}/worksheets`,

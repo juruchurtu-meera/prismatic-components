@@ -10,9 +10,7 @@ import {
   getTokenFromConnection,
   getURLFromConnection,
 } from "../util";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

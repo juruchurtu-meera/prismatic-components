@@ -8,7 +8,6 @@ import {
   deltaURL,
 } from "../inputs";
 import { listChangesExamplePayload } from "../examplePayloads";
-
 export const listChanges = action({
   display: {
     label: "List Changes",

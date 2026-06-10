@@ -1,6 +1,5 @@
 import { RECORDS_PAGE_SIZE } from "../constants";
 import type { FetchAllRecordsParams } from "../types/Record";
-
 export const fetchAllRecords = async ({
   client,
   recordType,
@@ -9,7 +8,6 @@ export const fetchAllRecords = async ({
   const allRecords: unknown[] = [];
   let offset = 0;
   let hasMore = true;
-
   while (hasMore) {
     const { data } = await client.get(`/${recordType}`, {
       params: {
@@ -18,17 +16,13 @@ export const fetchAllRecords = async ({
         offset,
       },
     });
-
     const records = data?.items || [];
     allRecords.push(...records);
-
     hasMore = data?.hasMore === true;
     offset += RECORDS_PAGE_SIZE;
   }
-
   return allRecords;
 };
-
 export const parseLocationData = (locationHeader: string) => {
   const idRegex = /\/services\/rest\/record\/v1\/(\w*)\/(\d*)/;
   const locationData = idRegex.exec(locationHeader);

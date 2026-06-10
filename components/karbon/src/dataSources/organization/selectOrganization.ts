@@ -3,7 +3,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import type { KarbonOrganization } from "../../interfaces/KarbonOrganization";
 import { connection } from "../../inputs/shared";
 import { getPaginatedData } from "../../utils";
-
 export const selectOrganization = dataSource({
   display: {
     label: "Select Organization",
@@ -20,14 +19,10 @@ export const selectOrganization = dataSource({
       pagination: {},
     });
     const organizations = data.value || [];
-    
-
-    
     const objects = organizations.map<Element>((organization) => ({
       key: organization.OrganizationKey,
       label: organization.FullName,
     }));
-
     return { result: objects };
   },
 });

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, limit, offset } from "./common";
-
 export const start = input({
   label: "Start",
   type: "string",
@@ -10,7 +9,6 @@ export const start = input({
   example: "1609459200000",
   clean: util.types.toString,
 });
-
 export const end = input({
   label: "End",
   type: "string",
@@ -20,7 +18,6 @@ export const end = input({
   example: "1640995200000",
   clean: util.types.toString,
 });
-
 export const user = input({
   label: "User",
   type: "string",
@@ -31,7 +28,6 @@ export const user = input({
   example: "959463190",
   clean: util.types.toString,
 });
-
 export const getActivityLogEntriesInputs = {
   connection,
   start,

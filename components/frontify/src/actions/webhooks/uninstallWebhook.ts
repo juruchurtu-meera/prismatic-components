@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { uninstallWebhookExamplePayload as examplePayload } from "../../examplePayloads";
 import { uninstallWebhookInputs as inputs } from "../../inputs/webhooks";
-
 export const uninstallWebhook = action({
   display: {
     label: "Uninstall Webhook",
@@ -23,7 +22,6 @@ export const uninstallWebhook = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input: { id: webhookId } });
-
     return {
       data: response,
     };

@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const mobileAppAssignmentId = input({
   label: "Mobile App Assignment Id",
   comments: "Unique Identifier for the mobile app assignment to get.",

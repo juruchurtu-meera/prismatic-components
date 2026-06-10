@@ -5,7 +5,6 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { DEFAULT_VERSION } from "./constants";
 import { getAuthHeaders, getBaseUrl, validateConnection } from "./util";
-
 export const createClient = (
   connection: Connection,
   debug: boolean,

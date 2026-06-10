@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { jsonCheck, getDocumentIds, getUserIds } from "../utils";
 import { WEBHOOK_EVENTS } from "../constants";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const accountId = input({
   label: "Account ID",
   type: "string",
@@ -17,7 +15,6 @@ export const accountId = input({
   placeholder: "Enter Account ID",
   clean: util.types.toString,
 });
-
 export const accountName = input({
   label: "Account Name",
   type: "string",
@@ -489,8 +486,7 @@ export const includeItems = input({
   type: "boolean",
   required: false,
   default: "false",
-  comments:
-    "When true, folder items are included in the response.",
+  comments: "When true, folder items are included in the response.",
   clean: util.types.toBool,
 });
 export const startPosition = input({

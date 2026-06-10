@@ -8,7 +8,6 @@ import {
   topicName,
 } from "./general";
 import { cleanString } from "../util";
-
 export const resourceGroupName = input({
   label: "Resource Group Name",
   type: "string",
@@ -18,7 +17,6 @@ export const resourceGroupName = input({
   placeholder: "my-resource-group",
   clean: util.types.toString,
 });
-
 export const eventSubscriptionName = input({
   label: "Event Subscription Name",
   type: "string",
@@ -29,7 +27,6 @@ export const eventSubscriptionName = input({
   dataSource: "selectEventSubscription",
   clean: util.types.toString,
 });
-
 export const webhookUrl = input({
   label: "Webhook URL",
   type: "string",
@@ -40,7 +37,6 @@ export const webhookUrl = input({
   placeholder: "https://example.com/webhook",
   clean: util.types.toString,
 });
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -50,7 +46,6 @@ export const subscriptionId = input({
   placeholder: "00000000-0000-0000-0000-000000000000",
   clean: util.types.toString,
 });
-
 export const eventDeliverySchema = input({
   label: "Event Delivery Schema",
   type: "string",
@@ -59,7 +54,6 @@ export const eventDeliverySchema = input({
   comments: "The event delivery schema for the event subscription.",
   clean: util.types.toString,
 });
-
 export const $filter = input({
   label: "Filter",
   type: "string",
@@ -69,7 +63,6 @@ export const $filter = input({
   example: "contains(namE, 'PATTERN') and name ne 'PATTERN-1'",
   clean: cleanString,
 });
-
 export const $top = input({
   label: "Top",
   type: "string",
@@ -79,7 +72,6 @@ export const $top = input({
   example: "20",
   clean: cleanString,
 });
-
 export const createOrUpdateEventSubscriptionInputs = {
   connection,
   subscriptionId,
@@ -90,7 +82,6 @@ export const createOrUpdateEventSubscriptionInputs = {
   webhookUrl,
   bodyFields,
 };
-
 export const updateEventSubscriptionInputs = {
   connection,
   subscriptionId,
@@ -109,7 +100,6 @@ export const updateEventSubscriptionInputs = {
   },
   bodyFields,
 };
-
 export const getEventSubscriptionInputs = {
   connection,
   subscriptionId,
@@ -117,9 +107,7 @@ export const getEventSubscriptionInputs = {
   resourceGroupName,
   eventSubscriptionName,
 };
-
 export const deleteEventSubscriptionInputs = getEventSubscriptionInputs;
-
 export const listEventSubscriptionsInputs = {
   connection,
   subscriptionId,

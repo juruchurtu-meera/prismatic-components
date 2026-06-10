@@ -5,10 +5,8 @@ import {
   cleanValueListInput,
 } from "../utils";
 import { additionalFields, connection, restaurantExternalId } from "./shared";
-
 const documentationComment =
   "See [Toast API documentation](https://doc.toasttab.com/openapi/labor/tag/Data-definitions/schema/Employee/) for more information.";
-
 const email = input({
   label: "Email",
   type: "string",
@@ -18,7 +16,6 @@ const email = input({
   placeholder: "example@email.com",
   clean: util.types.toString,
 });
-
 const firstName = input({
   label: "First Name",
   type: "string",
@@ -28,7 +25,6 @@ const firstName = input({
   placeholder: "John",
   clean: util.types.toString,
 });
-
 const chosenName = input({
   label: "Chosen Name",
   type: "string",
@@ -39,7 +35,6 @@ const chosenName = input({
   placeholder: "Johnny",
   clean: cleanStringInput,
 });
-
 const lastName = input({
   label: "Last Name",
   type: "string",
@@ -49,7 +44,6 @@ const lastName = input({
   placeholder: "Doe",
   clean: util.types.toString,
 });
-
 const externalId = input({
   label: "External ID",
   type: "string",
@@ -60,7 +54,6 @@ const externalId = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: cleanStringInput,
 });
-
 const externalEmployeeId = input({
   label: "External Employee ID",
   type: "string",
@@ -70,7 +63,6 @@ const externalEmployeeId = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: cleanStringInput,
 });
-
 const jobReferences = input({
   label: "Job References",
   type: "code",
@@ -89,7 +81,6 @@ const jobReferences = input({
   ),
   clean: (value) => cleanArrayCodeInput(value, "Job References"),
 });
-
 const wageOverrides = input({
   label: "Wage Overrides",
   type: "code",
@@ -111,13 +102,11 @@ const wageOverrides = input({
   ),
   clean: (value) => cleanArrayCodeInput(value, "Wage Overrides"),
 });
-
 const employeeAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${documentationComment}`,
   example: JSON.stringify({ phoneNumber: "555-555-5555" }, null, 2),
 });
-
 export const createEmployeeInputs = {
   connection,
   restaurantExternalId,
@@ -131,7 +120,6 @@ export const createEmployeeInputs = {
   wageOverrides,
   additionalFields: employeeAdditionalFields,
 };
-
 const employeeId = input({
   label: "Employee ID",
   type: "string",
@@ -142,13 +130,11 @@ const employeeId = input({
   clean: util.types.toString,
   dataSource: "selectEmployee",
 });
-
 export const deleteEmployeeInputs = {
   connection,
   restaurantExternalId,
   employeeId,
 };
-
 export const getEmployeeInputs = {
   connection,
   restaurantExternalId,
@@ -157,7 +143,6 @@ export const getEmployeeInputs = {
     comments: "The GUID of the employee to retrieve.",
   }),
 };
-
 const employeeIds = input({
   label: "Employee IDs",
   type: "string",
@@ -169,13 +154,11 @@ const employeeIds = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: cleanValueListInput,
 });
-
 export const listEmployeesInputs = {
   connection,
   restaurantExternalId,
   employeeIds,
 };
-
 const passcode = input({
   label: "Passcode",
   type: "string",
@@ -186,7 +169,6 @@ const passcode = input({
   placeholder: "1234",
   clean: cleanStringInput,
 });
-
 const currentPasscode = input({
   label: "Current Passcode",
   type: "string",
@@ -197,7 +179,6 @@ const currentPasscode = input({
   placeholder: "1234",
   clean: cleanStringInput,
 });
-
 export const updateEmployeeInputs = {
   connection,
   restaurantExternalId,

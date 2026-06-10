@@ -20,7 +20,6 @@ import type {
   UserSegment,
 } from "../types";
 import { paginateResults } from "../util";
-
 export const listArticlesDataSource = dataSource({
   display: {
     label: "Select Articles",
@@ -31,7 +30,6 @@ export const listArticlesDataSource = dataSource({
     const results = [] as Article[];
     const client = rawHttpClient(zendeskConnection);
     const pageSize = 30;
-
     const paginatedResults = await paginateResults<Article>(
       client,
       nextUrl,
@@ -39,7 +37,6 @@ export const listArticlesDataSource = dataSource({
       "articles",
       pageSize,
     );
-
     return {
       result: paginatedResults.map((article) => ({
         label: article.title,
@@ -53,7 +50,6 @@ export const listArticlesDataSource = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const listSectionsDataSource = dataSource({
   display: {
     label: "Select Sections",
@@ -63,14 +59,12 @@ export const listSectionsDataSource = dataSource({
     const client = rawHttpClient(zendeskConnection);
     const results: Section[] = [];
     const nextUrl = `/help_center/${locale}/sections`;
-
     const paginatedResults = await paginateResults<Section>(
       client,
       nextUrl,
       results,
       "sections",
     );
-
     return {
       result: paginatedResults.map((section) => ({
         label: section.name,
@@ -99,7 +93,6 @@ export const listCategoriesDataSource = dataSource({
       results,
       "categories",
     );
-
     return {
       result: paginatedResults.map((category) => ({
         label: category.name,
@@ -113,7 +106,6 @@ export const listCategoriesDataSource = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const listTagsDataSource = dataSource({
   display: {
     label: "Select Tags",
@@ -129,7 +121,6 @@ export const listTagsDataSource = dataSource({
       results,
       "tags",
     );
-
     return {
       result: paginatedResults.map((tag) => ({
         label: tag.name,
@@ -142,7 +133,6 @@ export const listTagsDataSource = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const listUserSegmentsDataSource = dataSource({
   display: {
     label: "Select User Segments",
@@ -158,7 +148,6 @@ export const listUserSegmentsDataSource = dataSource({
       results,
       "user_segments",
     );
-
     return {
       result: paginatedResults.map((usegment: UserSegment) => ({
         label: usegment.name,
@@ -171,7 +160,6 @@ export const listUserSegmentsDataSource = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const listPermissionGroupsDataSource = dataSource({
   display: {
     label: "Select Management Permission Groups",
@@ -187,7 +175,6 @@ export const listPermissionGroupsDataSource = dataSource({
       results,
       "permission_groups",
     );
-
     return {
       result: paginatedResults.map((pgroup: PermissionGroup) => ({
         label: pgroup.name,
@@ -200,7 +187,6 @@ export const listPermissionGroupsDataSource = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const selectUser = dataSource({
   display: {
     label: "Select User",
@@ -210,9 +196,7 @@ export const selectUser = dataSource({
     const client = createClient({
       zendeskConnection,
     });
-
     const result = await client.users.list();
-
     return {
       result: result
         .map<Element>((user) => ({
@@ -230,7 +214,6 @@ export const selectUser = dataSource({
     result: [{ label: "John Doe", key: "488042375842" }],
   },
 });
-
 export const selectTicket = dataSource({
   display: {
     label: "Select Ticket",
@@ -240,9 +223,7 @@ export const selectTicket = dataSource({
     const client = createClient({
       zendeskConnection,
     });
-
     const result = await client.tickets.list();
-
     return {
       result: result
         .map<Element>((ticket) => ({
@@ -260,7 +241,6 @@ export const selectTicket = dataSource({
     result: [{ label: "12345 - Example Ticket Subject", key: "12345" }],
   },
 });
-
 export const selectTopic = dataSource({
   display: {
     label: "Select Topic",
@@ -269,14 +249,12 @@ export const selectTopic = dataSource({
   perform: async (_context, { zendeskConnection }) => {
     const client = rawHttpClient(zendeskConnection);
     const results = [] as Topic[];
-
     const paginatedResults = await paginateResults<Topic>(
       client,
       "/community/topics",
       results,
       "topics",
     );
-
     return {
       result: paginatedResults
         .map<Element>((topic) => ({
@@ -294,7 +272,6 @@ export const selectTopic = dataSource({
     result: [{ label: "Example Topic", key: "12" }],
   },
 });
-
 export const selectPost = dataSource({
   display: {
     label: "Select Post",
@@ -303,14 +280,12 @@ export const selectPost = dataSource({
   perform: async (_context, { zendeskConnection }) => {
     const client = rawHttpClient(zendeskConnection);
     const results = [] as Post[];
-
     const paginatedResults = await paginateResults<Post>(
       client,
       "/community/posts",
       results,
       "posts",
     );
-
     return {
       result: paginatedResults
         .map<Element>((post) => ({
@@ -328,7 +303,6 @@ export const selectPost = dataSource({
     result: [{ label: "Example Post Title", key: "12" }],
   },
 });
-
 export const selectTopicSubscription = dataSource({
   display: {
     label: "Select Topic Subscription",
@@ -338,14 +312,12 @@ export const selectTopicSubscription = dataSource({
   perform: async (_context, { zendeskConnection, topicId }) => {
     const client = rawHttpClient(zendeskConnection);
     const results = [] as Subscription[];
-
     const paginatedResults = await paginateResults<Subscription>(
       client,
       `/community/topics/${topicId}/subscriptions`,
       results,
       "subscriptions",
     );
-
     return {
       result: paginatedResults
         .map<Element>((sub) => ({
@@ -361,7 +333,6 @@ export const selectTopicSubscription = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const selectArticleSubscription = dataSource({
   display: {
     label: "Select Article Subscription",
@@ -371,14 +342,12 @@ export const selectArticleSubscription = dataSource({
   perform: async (_context, { zendeskConnection, articleId }) => {
     const client = rawHttpClient(zendeskConnection);
     const results = [] as Subscription[];
-
     const paginatedResults = await paginateResults<Subscription>(
       client,
       `/community/articles/${articleId}/subscriptions`,
       results,
       "subscriptions",
     );
-
     return {
       result: paginatedResults
         .map<Element>((sub) => ({
@@ -394,7 +363,6 @@ export const selectArticleSubscription = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const selectSectionSubscription = dataSource({
   display: {
     label: "Select Section Subscription",
@@ -404,14 +372,12 @@ export const selectSectionSubscription = dataSource({
   perform: async (_context, { zendeskConnection, sectionId }) => {
     const client = rawHttpClient(zendeskConnection);
     const results = [] as Subscription[];
-
     const paginatedResults = await paginateResults<Subscription>(
       client,
       `/help_center/sections/${sectionId}/subscriptions`,
       results,
       "subscriptions",
     );
-
     return {
       result: paginatedResults
         .map<Element>((sub) => ({
@@ -427,7 +393,6 @@ export const selectSectionSubscription = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const selectPostSubscription = dataSource({
   display: {
     label: "Select Post Subscription",
@@ -436,14 +401,12 @@ export const selectPostSubscription = dataSource({
   perform: async (_context, { zendeskConnection, postId }) => {
     const client = rawHttpClient(zendeskConnection);
     const results = [] as Subscription[];
-
     const paginatedResults = await paginateResults<Subscription>(
       client,
       `/community/posts/${postId}/subscriptions`,
       results,
       "subscriptions",
     );
-
     return {
       result: paginatedResults
         .map<Element>((sub) => ({
@@ -459,7 +422,6 @@ export const selectPostSubscription = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default {
   listArticlesDataSource,
   listSectionsDataSource,

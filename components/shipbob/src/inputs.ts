@@ -5,14 +5,12 @@ import {
   valueListInputClean,
   valueListStringInputClean,
 } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The ShipBob connection to use.",
 });
-
 export const version = input({
   label: "Version",
   type: "string",
@@ -23,7 +21,6 @@ export const version = input({
   comments: "The version of the ShipBob API to use",
   clean: util.types.toString,
 });
-
 export const orderId = input({
   label: "Order ID",
   type: "string",
@@ -34,7 +31,6 @@ export const orderId = input({
   dataSource: "selectOrder",
   clean: util.types.toString,
 });
-
 export const productId = input({
   label: "Product ID",
   type: "string",
@@ -45,7 +41,6 @@ export const productId = input({
   dataSource: "products",
   clean: util.types.toString,
 });
-
 export const inventoryId = input({
   label: "Inventory ID",
   type: "string",
@@ -56,7 +51,6 @@ export const inventoryId = input({
   dataSource: "inventory",
   clean: util.types.toString,
 });
-
 export const shipmentId = input({
   label: "Shipment ID",
   type: "string",
@@ -66,7 +60,6 @@ export const shipmentId = input({
   comments: "The shipment ID to retrieve",
   clean: util.types.toString,
 });
-
 export const receivingId = input({
   label: "Receiving ID",
   type: "string",
@@ -77,7 +70,6 @@ export const receivingId = input({
   dataSource: "selectReceivingOrder",
   clean: util.types.toString,
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -88,7 +80,6 @@ export const webhookId = input({
   dataSource: "selectWebhook",
   clean: util.types.toString,
 });
-
 export const shipbob_channel_id = input({
   label: "ShipBob Channel ID",
   type: "string",
@@ -99,7 +90,6 @@ export const shipbob_channel_id = input({
   dataSource: "selectChannel",
   clean: util.types.toString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -109,7 +99,6 @@ export const fetchAll = input({
   required: false,
   default: "false",
 });
-
 export const Page = input({
   label: "Page",
   type: "string",
@@ -119,7 +108,6 @@ export const Page = input({
   comments: "Page number of orders to retrieve",
   clean: util.types.toString,
 });
-
 export const Limit = input({
   label: "Limit",
   type: "string",
@@ -129,7 +117,6 @@ export const Limit = input({
   comments: "Number of orders per page to retrieve",
   clean: util.types.toString,
 });
-
 export const IDs = input({
   label: "Order IDs",
   type: "string",
@@ -139,7 +126,6 @@ export const IDs = input({
   comments: "Comma-separated list of order IDs to filter by",
   clean: util.types.toString,
 });
-
 export const ReferenceIds = input({
   label: "Reference IDs",
   type: "string",
@@ -149,7 +135,6 @@ export const ReferenceIds = input({
   comments: "Comma-separated list of reference IDs to filter by",
   clean: util.types.toString,
 });
-
 export const StartDate = input({
   label: "Start Date",
   type: "string",
@@ -160,7 +145,6 @@ export const StartDate = input({
     "Start date to filter orders inserted on or after this date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const EndDate = input({
   label: "End Date",
   type: "string",
@@ -171,7 +155,6 @@ export const EndDate = input({
     "End date to filter orders inserted on or before this date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const SortOrder = input({
   label: "Sort Order",
   type: "string",
@@ -181,7 +164,6 @@ export const SortOrder = input({
   comments: "Order to sort results. Options: Newest, Oldest",
   clean: util.types.toString,
 });
-
 export const HasTracking = input({
   label: "Has Tracking",
   type: "boolean",
@@ -190,7 +172,6 @@ export const HasTracking = input({
     "When true, filters to orders that have been assigned a tracking number",
   clean: util.types.toBool,
 });
-
 export const LastUpdateStartDate = input({
   label: "Last Update Start Date",
   type: "string",
@@ -201,7 +182,6 @@ export const LastUpdateStartDate = input({
     "Start date to filter orders updated on or after this date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const LastUpdateEndDate = input({
   label: "Last Update End Date",
   type: "string",
@@ -212,7 +192,6 @@ export const LastUpdateEndDate = input({
     "End date to filter orders updated on or before this date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const IsTrackingUploaded = input({
   label: "Is Tracking Uploaded",
   type: "boolean",
@@ -221,7 +200,6 @@ export const IsTrackingUploaded = input({
     "When true, filters to orders with tracking information fully uploaded",
   clean: util.types.toBool,
 });
-
 export const LastTrackingUpdateStartDate = input({
   label: "Last Tracking Update Start Date",
   type: "string",
@@ -232,7 +210,6 @@ export const LastTrackingUpdateStartDate = input({
     "Start date to filter orders with tracking updates on or after this date (YYYY-MM-DD). Only returns orders with tracking information",
   clean: util.types.toString,
 });
-
 export const LastTrackingUpdateEndDate = input({
   label: "Last Tracking Update End Date",
   type: "string",
@@ -243,7 +220,6 @@ export const LastTrackingUpdateEndDate = input({
     "End date to filter orders with tracking updates on or before this date (YYYY-MM-DD). Only returns orders with tracking information",
   clean: util.types.toString,
 });
-
 export const DeliveryStartDate = input({
   label: "Delivery Start Date",
   type: "string",
@@ -254,7 +230,6 @@ export const DeliveryStartDate = input({
     "Start date to filter orders with delivery date on or after this date (YYYY-MM-DD). Only returns orders with tracking information",
   clean: util.types.toString,
 });
-
 export const DeliveryEndDate = input({
   label: "Delivery En Date",
   type: "string",
@@ -265,7 +240,6 @@ export const DeliveryEndDate = input({
     "End date to filter orders with delivery date on or before this date (YYYY-MM-DD). Only returns orders with tracking information",
   clean: util.types.toString,
 });
-
 export const FulfillmentStartDate = input({
   label: "Fulfillment Start Date",
   type: "string",
@@ -276,7 +250,6 @@ export const FulfillmentStartDate = input({
     "Start date to filter orders with fulfillment date on or after this date (YYYY-MM-DD). Only returns orders with tracking information",
   clean: util.types.toString,
 });
-
 export const FulfillmentEndDate = input({
   label: "Fulfillment End Date",
   type: "string",
@@ -287,7 +260,6 @@ export const FulfillmentEndDate = input({
     "End date to filter orders with fulfillment date on or before this date (YYYY-MM-DD). Only returns orders with tracking information",
   clean: util.types.toString,
 });
-
 export const shipping_method = input({
   label: "Shipping Method",
   type: "string",
@@ -298,7 +270,6 @@ export const shipping_method = input({
     "Client-defined shipping method matching what the user has listed as the shipping method on the Ship Option Mapping setup page in the ShipBob Merchant Portal. If they don't match, a new one will be created and defaulted to Standard",
   clean: util.types.toString,
 });
-
 export const recipient = input({
   label: "Recipient",
   type: "code",
@@ -317,7 +288,6 @@ export const recipient = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const products = input({
   label: "Products",
   type: "code",
@@ -339,7 +309,6 @@ export const products = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const reference_id = input({
   label: "Reference ID",
   type: "string",
@@ -349,7 +318,6 @@ export const reference_id = input({
   comments: "Unique and immutable order identifier from your upstream system",
   clean: util.types.toString,
 });
-
 export const order_number = input({
   label: "Order Number",
   type: "string",
@@ -360,7 +328,6 @@ export const order_number = input({
     "User-friendly order ID or store order number that will be shown on the Orders Page. If not provided, reference ID will be used",
   clean: util.types.toString,
 });
-
 export const type = input({
   label: "Type",
   type: "string",
@@ -371,7 +338,6 @@ export const type = input({
     "Order type. Options: DTC (Direct to Consumer), DropShip. Defaults to DTC if not provided. Note: B2B is not currently supported",
   clean: util.types.toString,
 });
-
 export const tags = input({
   label: "Tags",
   type: "string",
@@ -382,7 +348,6 @@ export const tags = input({
   comments:
     "Key-value pairs to store extra information at the order level for API purposes. ShipBob won't display the info in the ShipBob Merchant Portal or react based on this data",
 });
-
 export const shipment_ids = input({
   label: "Shipment IDs",
   type: "string",
@@ -394,7 +359,6 @@ export const shipment_ids = input({
   default: ["000xxx"],
   clean: valueListInputClean,
 });
-
 export const purchase_date = input({
   label: "Purchase Date",
   type: "string",
@@ -404,7 +368,6 @@ export const purchase_date = input({
   comments: "Date this order was purchased by the end user (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const location_id = input({
   label: "Location ID",
   type: "string",
@@ -416,7 +379,6 @@ export const location_id = input({
   dataSource: "locations",
   clean: util.types.toString,
 });
-
 export const shipping_terms = input({
   label: "Shipping Terms",
   type: "code",
@@ -433,7 +395,6 @@ export const shipping_terms = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const retailer_program_data = input({
   label: "Retailer Program Data",
   type: "code",
@@ -466,7 +427,6 @@ export const retailer_program_data = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const gift_message = input({
   label: "Gift Message",
   type: "string",
@@ -476,7 +436,6 @@ export const gift_message = input({
   comments: "Gift message to include with the order",
   clean: util.types.toString,
 });
-
 export const financials = input({
   label: "Financials",
   type: "code",
@@ -492,7 +451,6 @@ export const financials = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const Statuses = input({
   label: "Statuses",
   type: "string",
@@ -505,7 +463,6 @@ export const Statuses = input({
   default: ["000xxx"],
   clean: valueListStringInputClean,
 });
-
 export const InsertStartDate = input({
   label: "Insert Start Date",
   type: "string",
@@ -515,7 +472,6 @@ export const InsertStartDate = input({
   comments: "Earliest date that a WRO was created (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const InsertEndDate = input({
   label: "Insert End Date",
   type: "string",
@@ -525,7 +481,6 @@ export const InsertEndDate = input({
   comments: "Latest date that a WRO was created (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const FulfillmentCenterIds = input({
   label: "Fulfillment Center IDs",
   type: "string",
@@ -537,7 +492,6 @@ export const FulfillmentCenterIds = input({
   default: ["000xxx"],
   clean: valueListStringInputClean,
 });
-
 export const PurchaseOrderNumbers = input({
   label: "Purchase Order Numbers",
   type: "string",
@@ -549,7 +503,6 @@ export const PurchaseOrderNumbers = input({
   default: ["000xxx"],
   clean: valueListStringInputClean,
 });
-
 export const fulfillment_center = input({
   label: "Fulfillment Center",
   type: "code",
@@ -566,7 +519,6 @@ export const fulfillment_center = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const package_type = input({
   label: "Package Type",
   type: "string",
@@ -590,7 +542,6 @@ export const package_type = input({
   ],
   required: true,
 });
-
 export const box_packaging_type = input({
   label: "Box Packaging Type",
   type: "string",
@@ -614,7 +565,6 @@ export const box_packaging_type = input({
   ],
   required: true,
 });
-
 export const boxes = input({
   label: "Boxes",
   type: "code",
@@ -640,7 +590,6 @@ export const boxes = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const expected_arrival_date = input({
   label: "Expected Arrival Date",
   type: "string",
@@ -651,7 +600,6 @@ export const expected_arrival_date = input({
     "Expected arrival date of all the box shipments in this receiving order (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const purchase_order_number = input({
   label: "Purchase Order Number",
   type: "string",
@@ -661,7 +609,6 @@ export const purchase_order_number = input({
   comments: "Purchase order number for this receiving order",
   clean: util.types.toString,
 });
-
 export const Topic = input({
   label: "Topic",
   type: "string",
@@ -671,7 +618,6 @@ export const Topic = input({
   clean: util.types.toString,
   model: getTopicsInputModel(),
 });
-
 export const subscription_url = input({
   label: "Subscription URL",
   type: "string",
@@ -682,7 +628,6 @@ export const subscription_url = input({
     "URL to call when an event matching the subscription topic is raised. Must have SSL enabled (https) and accept POST requests with content type application/json",
   clean: util.types.toString,
 });
-
 export const IncludeInactive = input({
   label: "Include Inactive",
   type: "boolean",
@@ -690,7 +635,6 @@ export const IncludeInactive = input({
   comments: "When true, includes inactive locations in the results",
   clean: util.types.toBool,
 });
-
 export const ReceivingEnabled = input({
   label: "Receiving Enabled",
   type: "boolean",
@@ -698,7 +642,6 @@ export const ReceivingEnabled = input({
   comments: "When true, returns only receiving-enabled locations",
   clean: util.types.toBool,
 });
-
 export const AccessGranted = input({
   label: "Access Granted",
   type: "boolean",
@@ -706,7 +649,6 @@ export const AccessGranted = input({
   comments: "When true, returns only locations with access granted",
   clean: util.types.toBool,
 });
-
 export const Search = input({
   label: "Search",
   type: "string",
@@ -716,7 +658,6 @@ export const Search = input({
   comments: "Search term to filter by Inventory ID or Name",
   clean: util.types.toString,
 });
-
 export const ActiveStatus = input({
   label: "Active Status",
   type: "string",
@@ -740,7 +681,6 @@ export const ActiveStatus = input({
   ],
   required: false,
 });
-
 export const BundleStatus = input({
   label: "Bundle Status",
   type: "string",
@@ -764,7 +704,6 @@ export const BundleStatus = input({
   ],
   required: false,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -774,7 +713,6 @@ export const name = input({
   comments: "The name of the product",
   clean: util.types.toString,
 });
-
 export const sku = input({
   label: "Sku",
   type: "string",
@@ -784,7 +722,6 @@ export const sku = input({
   comments: "The stock keeping unit (SKU) of the product",
   clean: util.types.toString,
 });
-
 export const barcode = input({
   label: "Barcode",
   type: "string",
@@ -794,7 +731,6 @@ export const barcode = input({
   comments: "Barcode for the product",
   clean: util.types.toString,
 });
-
 export const gtin = input({
   label: "GTIN",
   type: "string",
@@ -805,7 +741,6 @@ export const gtin = input({
     "Global Trade Item Number - unique and internationally recognized identifier assigned to item by company GS1",
   clean: util.types.toString,
 });
-
 export const upc = input({
   label: "UPC",
   type: "string",
@@ -815,7 +750,6 @@ export const upc = input({
   comments: "Universal Product Code (UPC) - unique external identifier",
   clean: util.types.toString,
 });
-
 export const unit_price = input({
   label: "Unit Price",
   type: "string",
@@ -825,7 +759,6 @@ export const unit_price = input({
   comments: "The price of one unit in USD",
   clean: util.types.toNumber,
 });
-
 export const IsActive = input({
   label: "IsActive",
   type: "boolean",
@@ -833,7 +766,6 @@ export const IsActive = input({
   comments: "When true, marks the inventory as active",
   clean: util.types.toBool,
 });
-
 export const IsDigital = input({
   label: "IsDigital",
   type: "boolean",
@@ -841,7 +773,6 @@ export const IsDigital = input({
   comments: "When true, marks the inventory as digital (non-physical)",
   clean: util.types.toBool,
 });
-
 export const Sort = input({
   label: "Sort",
   type: "string",
@@ -852,7 +783,6 @@ export const Sort = input({
     "Sort field(s) in ascending order (default). Prefix field with '-' for descending order. Example: -onHand,name sorts by onHand descending, then name ascending",
   clean: util.types.toString,
 });
-
 export const LocationType = input({
   label: "Location Type",
   type: "string",
@@ -863,7 +793,6 @@ export const LocationType = input({
     "Location type to filter by. Options: hub, spoke, lts. Defaults to all locations if not specified",
   clean: util.types.toString,
 });
-
 export const topicsToSubscribe = input({
   type: "string",
   collection: "valuelist",
@@ -875,7 +804,6 @@ export const topicsToSubscribe = input({
   required: true,
   clean: valueListInputClean,
 });
-
 export const overwriteWebhookSettings = input({
   type: "boolean",
   label: "Overwrite Webhook Settings",
@@ -883,5 +811,23 @@ export const overwriteWebhookSettings = input({
   default: "false",
   comments:
     "When true, deletes existing webhook settings pointing to this flow's URL and creates new ones",
+  clean: util.types.toBool,
+});
+export const showNewRecords = input({
+  label: "Show New Records",
+  type: "boolean",
+  required: false,
+  default: "true",
+  comments:
+    "When true, orders created since the last poll are included in the trigger output.",
+  clean: util.types.toBool,
+});
+export const showUpdatedRecords = input({
+  label: "Show Updated Records",
+  type: "boolean",
+  required: false,
+  default: "true",
+  comments:
+    "When true, orders updated since the last poll are included in the trigger output.",
   clean: util.types.toBool,
 });

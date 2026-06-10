@@ -11,7 +11,6 @@ import {
 import { createClient } from "../client";
 import { generatePayload } from "../util";
 import { updateEmployeeExamplePayload } from "../examplePayloads";
-
 export const updateEmployee = action({
   display: {
     description: "Add, update or remove policy members",
@@ -57,7 +56,6 @@ export const updateEmployee = action({
       employees: employees || undefined,
     };
     const generatedJson = generatePayload(json, connectionInput);
-
     const { data } = await client.post("", generatedJson);
     return {
       data,

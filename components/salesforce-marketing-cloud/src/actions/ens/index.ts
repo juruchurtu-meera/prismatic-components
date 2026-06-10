@@ -8,7 +8,6 @@ import { listSubscriptions } from "./listSubscriptions";
 import { updateCallback } from "./updateCallback";
 import { updateSubscription } from "./updateSubscription";
 import { verifyCallback } from "./verifyCallback";
-
 export default {
   createCallback,
   createSubscription,

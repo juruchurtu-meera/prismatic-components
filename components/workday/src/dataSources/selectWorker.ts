@@ -3,7 +3,6 @@ import { getClient } from "../client";
 import { SERVICES } from "../constants";
 import { connection } from "../inputs/shared";
 import { toSortedPicklist } from "./helpers";
-
 export const selectWorker = dataSource({
   display: {
     label: "Select Worker",
@@ -15,7 +14,6 @@ export const selectWorker = dataSource({
   perform: async (_context, { connection }) => {
     const client = getClient(connection, false);
     const { data } = await client.get(`${SERVICES.timeTracking}/workers`);
-
     return {
       result: toSortedPicklist(
         data.data,

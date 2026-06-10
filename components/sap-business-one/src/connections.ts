@@ -1,6 +1,5 @@
 import { connection } from "@prismatic-io/spectral";
 import { API_VERSION } from "./constants";
-
 export const authentication = connection({
   key: "sap-business-one-auth",
   display: {
@@ -84,5 +83,4 @@ export const authentication = connection({
     },
   },
 });
-
 export default [authentication];

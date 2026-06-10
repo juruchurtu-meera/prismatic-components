@@ -5,7 +5,6 @@ import policies from "./policies";
 import { rawRequest } from "./rawRequest";
 import reports from "./reports";
 import { updateEmployee } from "./updateEmployee";
-
 export default {
   ...expenseRules,
   ...policies,

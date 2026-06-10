@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { createTaskExamplePayload } from "../../examplePayloads";
 import { createTaskInputs } from "../../inputs";
-
 export const createTask = action({
   display: {
     label: "Create Task",
@@ -43,7 +42,6 @@ export const createTask = action({
           },
         },
       );
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

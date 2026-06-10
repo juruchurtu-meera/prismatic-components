@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
 import { updateStreamInputs } from "../../inputs";
 import { updateStreamExamplePayload } from "../../examplePayloads";
-
 export const updateStream = action({
   display: {
     label: "Update Stream",
@@ -27,5 +26,4 @@ export const updateStream = action({
   },
   inputs: updateStreamInputs,
 });
-
 export default { updateStream };

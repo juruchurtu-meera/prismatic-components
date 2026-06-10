@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { getObjectPayload } from "../examplePayloads";
 import { accessKeyInput, bucket, objectKey } from "../inputs";
-
 export const getObject = action({
   display: {
     label: "Get Object",
@@ -39,7 +38,6 @@ export const getObject = action({
     const response = await s3.send(command);
     const objectBodyAsArray = await response.Body.transformToByteArray();
     const objectAsABuffer = Buffer.from(objectBodyAsArray);
-
     return {
       data: objectAsABuffer,
       contentType: response.ContentType,

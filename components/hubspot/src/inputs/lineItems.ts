@@ -1,5 +1,4 @@
 import { input } from "@prismatic-io/spectral";
-
 export const lineItemId = input({
   label: "Line Item ID",
   type: "string",
@@ -9,7 +8,6 @@ export const lineItemId = input({
   comments: "The unique identifier of the line item.",
   example: "78349093",
 });
-
 export const lineItemName = input({
   label: "Name",
   type: "string",
@@ -17,7 +15,6 @@ export const lineItemName = input({
   comments: "The name of the line item.",
   example: "My Line Item",
 });
-
 export const updateLineItemName = input({
   label: "Name",
   type: "string",
@@ -25,7 +22,6 @@ export const updateLineItemName = input({
   comments: "The name of the line item.",
   example: "My line Item",
 });
-
 export const quantity = input({
   label: "Quantity",
   type: "string",
@@ -33,7 +29,6 @@ export const quantity = input({
   comments: "The quantity of product in the line item.",
   example: "80",
 });
-
 export const recurringBillingFrequency = input({
   label: "Recurring Billing Monthly Rate",
   type: "string",

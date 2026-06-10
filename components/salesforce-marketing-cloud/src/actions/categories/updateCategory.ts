@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { CATEGORIES_PATH } from "../../constants";
 import { updateCategoryExamplePayload } from "../../examplePayloads/categories";
 import { updateCategoryInputs } from "../../inputs/categories";
-
 export const updateCategory = action({
   examplePayload: updateCategoryExamplePayload,
   display: {
@@ -17,13 +16,10 @@ export const updateCategory = action({
     { connection, categoryId, categoryName, parentCategoryId },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body: Record<string, unknown> = {};
     if (categoryName) body.name = categoryName;
     if (parentCategoryId) body.parentId = parentCategoryId;
-
     const { data } = await client.put(`${CATEGORIES_PATH}/${categoryId}`, body);
-
     return { data };
   },
 });

@@ -3,14 +3,20 @@ import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getDealsSummary = action({
   display: {
     label: "Get Deals Summary",
     description: "Gets a summary of deals.",
   },
-  perform: async (context, { connection, status, filterId, userId, stageId }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, status, filterId, userId, stageId },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/deals/summary", {
       params: {
         status,

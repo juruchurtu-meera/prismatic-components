@@ -3,7 +3,6 @@ import type { Asset, Environment } from "contentful-management";
 import { createClient } from "../../client";
 import { processAssetInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const processAsset = action({
   display: {
     label: "Process Asset",
@@ -16,7 +15,6 @@ export const processAsset = action({
       spaceId,
       environmentId,
     );
-
     const asset: Asset = await environment.getAsset(assetId);
     await asset.processForAllLocales();
     return {

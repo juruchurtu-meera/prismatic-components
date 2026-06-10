@@ -10,7 +10,6 @@ import {
   userName,
 } from "../../inputs";
 import { createTableRecord } from "../tables/records/createTableRecord";
-
 export const createUser = action({
   display: {
     label: "Create User",

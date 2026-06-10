@@ -1,13 +1,15 @@
-import type { WebhookSubscriptionPayload, Webhook } from "../types";
+import type {
+  CalendlyEvent,
+  WebhookSubscriptionPayload,
+  Webhook,
+} from "../types";
 import { WEBHOOK_SUBSCRIPTIONS_URL } from "../constants";
 import { util } from "@prismatic-io/spectral";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
-
 export const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const getEventTypes = async (
   client: HttpClient,
   adminManaged: boolean,
@@ -27,7 +29,6 @@ export const getEventTypes = async (
   });
   return data;
 };
-
 export const getOrganizationMemberships = async (
   client: HttpClient,
   email: string | undefined,
@@ -41,10 +42,8 @@ export const getOrganizationMemberships = async (
   });
   return data;
 };
-
 export const getUuidFromUri = (url: string): string =>
   url.replace(WEBHOOK_SUBSCRIPTIONS_URL, "");
-
 export const postWebhookSubscription = async (
   client: HttpClient,
   url: string,
@@ -62,11 +61,9 @@ export const postWebhookSubscription = async (
     scope,
     signing_key: signingKey || undefined,
   };
-  
   const { data } = await client.post("/webhook_subscriptions", body);
   return data;
 };
-
 export const findWebhook = async (
   client: HttpClient,
   url: string,
@@ -76,8 +73,6 @@ export const findWebhook = async (
 ): Promise<Webhook | undefined> => {
   let nextPageToken: string | undefined;
   let foundWebhook: Webhook | undefined;
-
-  
   do {
     const data: WebhookSubscriptionPayload = await getWebhookSubscriptions(
       client,
@@ -91,16 +86,12 @@ export const findWebhook = async (
     foundWebhook = data.collection.find(
       (webhook) => webhook.callback_url === url,
     );
-
     if (!foundWebhook) {
-      
       nextPageToken = data.pagination.next_page_token ?? undefined;
     }
   } while (!foundWebhook && nextPageToken);
-
   return foundWebhook;
 };
-
 export const getWebhookSubscriptions = async (
   client: HttpClient,
   organization: string,
@@ -122,7 +113,6 @@ export const getWebhookSubscriptions = async (
   });
   return data;
 };
-
 export const deleteWebhook = async (
   client: HttpClient,
   webhookUuid: string,
@@ -130,7 +120,6 @@ export const deleteWebhook = async (
   const { data } = await client.delete(`/webhook_subscriptions/${webhookUuid}`);
   return data;
 };
-
 export const deleteWebhookInstance = async (
   client: HttpClient,
   endpoint: string,
@@ -145,13 +134,10 @@ export const deleteWebhookInstance = async (
     user,
     scope,
   );
-
   if (foundWebhook)
     return await deleteWebhook(client, getUuidFromUri(foundWebhook.uri));
-
   throw new Error("Webhook not found");
 };
-
 export const paginator = async (
   client: HttpClient,
   url: string,
@@ -160,21 +146,17 @@ export const paginator = async (
   const allData = [];
   do {
     const { data } = await client.get(url, { params });
-    
     if (data.pagination.next_page_token) {
       params.page_token = data.pagination.next_page_token;
     } else {
-      
       params.page_token = undefined;
     }
-    
     if (data.collection) {
       allData.push(...data.collection);
     }
   } while (params.page_token);
   return allData;
 };
-
 export const getEvents = async (
   client: HttpClient,
   inviteeEmail: string | undefined,
@@ -194,10 +176,8 @@ export const getEvents = async (
     status: status || undefined,
     user: user || undefined,
   });
-
   return allData;
 };
-
 export const getRoutingForms = async (
   client: HttpClient,
   organization: string,
@@ -207,25 +187,46 @@ export const getRoutingForms = async (
     organization,
     sort: sort || undefined,
   });
-
   return data;
 };
-
 export const cleanOrganizationInput = (value: unknown) => {
   const organizationsBasePath = "https://api.calendly.com/organizations/";
   if (typeof value === "string") {
-    
     if (!value.includes(organizationsBasePath)) {
-      
       return `${organizationsBasePath}${value}`;
     }
   }
-  
   return util.types.toString(value);
 };
-
 export const extractUuidFromUri = (uri: string): string => {
-  
   const parts = uri.split("/");
   return parts[parts.length - 1];
+};
+export const classifyEventsByPollDate = (
+  events: CalendlyEvent[],
+  lastPolledAt: string,
+): {
+  created: CalendlyEvent[];
+  updated: CalendlyEvent[];
+} => {
+  const lastPolledAtMs = new Date(lastPolledAt).getTime();
+  const created: CalendlyEvent[] = [];
+  const updated: CalendlyEvent[] = [];
+  for (const event of events) {
+    const createdMs = event.created_at
+      ? new Date(event.created_at).getTime()
+      : Number.NaN;
+    const updatedMs = event.updated_at
+      ? new Date(event.updated_at).getTime()
+      : Number.NaN;
+    const isNew = !Number.isNaN(createdMs) && createdMs > lastPolledAtMs;
+    const isUpdated =
+      !isNew && !Number.isNaN(updatedMs) && updatedMs > lastPolledAtMs;
+    if (isNew) {
+      created.push(event);
+    } else if (isUpdated) {
+      updated.push(event);
+    }
+  }
+  return { created, updated };
 };

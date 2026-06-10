@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const odooBasicAuth = connection({
   key: "odooBasicAuth",
   display: {

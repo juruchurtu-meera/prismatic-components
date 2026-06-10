@@ -1,6 +1,7 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-export const pollIdocExamplePayload: { payload: TriggerPayload } = {
+export const pollIdocExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { brokers, clientId, connection } from "../inputs";
 import { listTopicsExamplePayload } from "../examplePayloads";
-
 export const listTopics = action({
   display: {
     label: "List Topics",
@@ -17,21 +16,17 @@ export const listTopics = action({
       },
       context.debug.enabled,
     );
-
     const admin = kafka.admin();
-
     try {
       await admin.connect();
       const topics = await admin.listTopics();
       const topicMetadata = await admin.fetchTopicMetadata({ topics });
       await admin.disconnect();
-
       const result = topicMetadata.topics.map((topic) => ({
         name: topic.name,
         partitions: topic.partitions.length,
         isInternal: topic.name.startsWith("__"),
       }));
-
       return {
         data: {
           topics: result.filter((t) => !t.isInternal),
@@ -47,5 +42,4 @@ export const listTopics = action({
   inputs: { connection, clientId, brokers },
   examplePayload: listTopicsExamplePayload,
 });
-
 export default listTopics;

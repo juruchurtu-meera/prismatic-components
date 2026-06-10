@@ -1,5 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
 export const oauth2 = oauth2Connection({
   key: "oauth2",
   display: {
@@ -52,10 +51,10 @@ export const oauth2 = oauth2Connection({
       required: true,
       shown: true,
       label: "Client Secret",
-      comments: "The Client Secret from the Pipedrive OAuth app. Keep this value secure.",
+      comments:
+        "The Client Secret from the Pipedrive OAuth app. Keep this value secure.",
       placeholder: "Enter Client Secret",
     },
   },
 });
-
 export default [oauth2];

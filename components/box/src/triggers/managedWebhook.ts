@@ -11,7 +11,6 @@ import { createAuthorizedClient } from "../client";
 import { listWebhooks } from "../actions/webhooks";
 import type { StoreState, WebhookTriggerType } from "../interfaces";
 import { createWebhookFN, getStoreKey } from "../utils";
-
 export const managedWebhook = trigger({
   display: {
     label: "Managed Webhook",
@@ -33,11 +32,9 @@ export const managedWebhook = trigger({
       const client = createAuthorizedClient({ boxConnection: connection });
       const storeKey = getStoreKey(targetId, targetType, flowProperties.name);
       const state = crossFlowState[storeKey] as StoreState;
-
       logger.info("Checking for existing webhook...");
       if (state?.existingWebhookId) {
         logger.info("Existing webhook found, checking for changes...");
-        
         const { data: existingInstanceWebhooks } = await listWebhooks.perform(
           {
             webhookUrls: webhookUrls as Record<string, string>,
@@ -53,11 +50,9 @@ export const managedWebhook = trigger({
         const existingInstanceWebhook = existingInstanceWebhooks.entries?.find(
           ({ id }) => id === state?.existingWebhookId,
         );
-
         const hasChanges =
           existingInstanceWebhook.target.id !== targetId ||
           existingInstanceWebhook.target.type !== targetType;
-
         if (!hasChanges) {
           logger.info("No changes found, skipping...");
           return;
@@ -77,7 +72,6 @@ export const managedWebhook = trigger({
             primarySignatureKey,
             secondarySignatureKey,
           );
-
           return { crossFlowState: newCrossFlowState };
         }
       } else {
@@ -93,7 +87,6 @@ export const managedWebhook = trigger({
           primarySignatureKey,
           secondarySignatureKey,
         );
-
         return { crossFlowState: newCrossFlowState };
       }
     },
@@ -104,13 +97,11 @@ export const managedWebhook = trigger({
       const storeKey = getStoreKey(targetId, targetType, flowProperties.name);
       const client = createAuthorizedClient({ boxConnection: connection });
       const state = crossFlowState[storeKey] as StoreState;
-
       logger.info("Checking for existing webhook...");
       if (state?.existingWebhookId) {
         logger.info("Existing webhook found, deleting...");
         await client.webhooks.delete(state.existingWebhookId);
         crossFlowState[storeKey] = undefined;
-
         return { crossFlowState };
       } else {
         logger.info("No existing webhook found, skipping...");
@@ -123,33 +114,27 @@ export const managedWebhook = trigger({
         payload,
       });
     }
-
     const { rawBody, headers } = payload;
     const lowerHeaders = util.types.lowerCaseHeaders(headers);
     const primarySignature = lowerHeaders["box-signature-primary"];
     const secondarySignature = lowerHeaders["box-signature-secondary"];
-
     if (primarySignature || secondarySignature) {
       const primarySignatureKey = context.crossFlowState
         .primarySignatureKey as string;
       const secondarySignatureKey = context.crossFlowState
         .secondarySignatureKey as string;
-
-      
       const isValid = Box.validateWebhookMessage(
         util.types.toString(rawBody.data),
         headers,
         primarySignatureKey,
         secondarySignatureKey,
       );
-
       if (!isValid) {
         throw new Error(
           "The request has failed Box signature validation. Rejecting.",
         );
       }
     }
-
     return Promise.resolve({
       payload,
     });

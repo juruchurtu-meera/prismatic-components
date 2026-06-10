@@ -36,9 +36,6 @@ export const getEnvironmentExamplePayload = {
     updatedAt: "2024-01-29T18:33:02Z",
   },
 };
-
 export const listEnvironmentsExamplePayload = [getEnvironmentExamplePayload];
-
 export const createEnvironmentExamplePayload = getEnvironmentExamplePayload;
-
 export const updateEnvironmentExamplePayload = getEnvironmentExamplePayload;

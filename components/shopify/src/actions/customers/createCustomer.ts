@@ -5,7 +5,6 @@ import { cleanArrayCodeInput, cleanValueListInput } from "../../util";
 import { createCustomerGql } from "../graphql/customers/createCustomer";
 import { addressMapper } from "../graphql/mappers/addressMapper";
 import type { RestAddress } from "../interfaces/RestAddress";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -36,9 +35,9 @@ export const createCustomer = action({
       metafields: cleanArrayCodeInput(metafields, "Metafields"),
       tags: cleanValueListInput(tags),
       taxExempt: util.types.toBool(taxExempt),
-      addressListGql: (cleanArrayCodeInput(addressList, "AddressList") as RestAddress[]).map(
-        addressMapper,
-      ),
+      addressListGql: (
+        cleanArrayCodeInput(addressList, "AddressList") as RestAddress[]
+      ).map(addressMapper),
       additionalFields: {},
     });
     return { data };

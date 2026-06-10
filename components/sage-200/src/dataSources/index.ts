@@ -6,7 +6,6 @@ import { selectProduct } from "./selectProduct";
 import { selectProductGroup } from "./selectProductGroup";
 import { selectSalesOrder } from "./selectSalesOrder";
 import { selectTaxCode } from "./selectTaxCode";
-
 export default {
   selectCustomer,
   selectCustomerContact,

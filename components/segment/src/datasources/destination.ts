@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, region } from "../inputs";
-
 export const destination = dataSource({
   display: {
     label: "Fetch Destination",
@@ -22,7 +21,12 @@ export const destination = dataSource({
     });
     if (data.data?.destinations) {
       const result = data.data.destinations.map(
-        (destination: { id: string; metadata: { name: string } }) => ({
+        (destination: {
+          id: string;
+          metadata: {
+            name: string;
+          };
+        }) => ({
           label: destination.metadata.name,
           key: destination.id,
         }),

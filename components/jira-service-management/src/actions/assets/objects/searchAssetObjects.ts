@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAssetsClient } from "../../../client";
 import { searchAssetObjectsExamplePayload } from "../../../examplePayloads";
 import { searchAssetObjectsInputs } from "../../../inputs";
-
 export const searchAssetObjects = action({
   display: {
     label: "Search Asset Objects",
@@ -24,7 +23,6 @@ export const searchAssetObjects = action({
       connection,
       context.debug.enabled,
     );
-
     const { data } = await client.post(
       "/object/aql",
       { qlQuery: assetQL },

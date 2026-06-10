@@ -4,7 +4,7 @@ import {
   query,
   tableName,
   connectionInput,
-  expressionAttributeValues as queryParams, 
+  expressionAttributeValues as queryParams,
   expressionAttributeValueTypes as queryParamTypes,
   rangeKeyValue,
   value,
@@ -14,7 +14,6 @@ import { createDynamoClient } from "../auth";
 import { convertDataType, getItemKeySearch } from "../util";
 import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { updateItemExamplePayload } from "../examplePayloads";
-
 export const updateItem = action({
   display: {
     label: "Update Item",
@@ -40,14 +39,12 @@ export const updateItem = action({
       debug: context.debug.enabled,
       logger: context.logger,
     });
-
     const key = await getItemKeySearch({
       client,
       tableName,
       hashKeyValue: value,
       rangeKeyValue: rangeKeyValue,
     });
-
     const command = new UpdateItemCommand({
       TableName: tableName,
       Key: key,

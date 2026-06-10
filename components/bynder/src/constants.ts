@@ -1,6 +1,5 @@
 export const DEFAULT_SCOPES =
   "asset:read asset:write collection:read collection:write current.user:read current.profile:read workflow.campaign:read workflow.campaign:write workflow.job:read workflow.job:write brandstore.order:read brandstore.order:write meta.assetbank:read meta.assetbank:write admin.profile:read admin.user:read admin.user:write workflow.preset:read offline";
-
 export const ORDER_STATUSES = [
   "IN_PROGRESS",
   "CANCELED",
@@ -12,11 +11,8 @@ export const ORDER_STATUSES = [
   "OUT_FOR_DELIVERY",
   "FINISHED",
 ];
-
 export const METAPROPERTY_TYPES = ["image", "document", "audio", "video", "3d"];
-
 import type { PollResourceConfig } from "./types/triggers";
-
 export const POLL_RESOURCE_CONFIG: Record<string, PollResourceConfig> = {
   assets: {
     label: "Assets",
@@ -49,7 +45,6 @@ export const POLL_RESOURCE_CONFIG: Record<string, PollResourceConfig> = {
     updatedAtField: null,
   },
 };
-
 export const pollResourceModel = Object.entries(POLL_RESOURCE_CONFIG).map(
   ([value, { label }]) => ({ label, value }),
 );

@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const webhookNotificationExamplePayload = {
   body: {
     data: {
@@ -45,26 +32,11 @@ export const webhookNotificationExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
-
 export const webhookValidationExamplePayload = {
   queryParameters: {
     validationToken: "Validation: Testing connector endpoint validation.",
   },
 };
-
-
-
-
-
-
-
 export const pollSiteChangesExamplePayload = {
   body: {
     data: {
@@ -79,7 +51,8 @@ export const pollSiteChangesExamplePayload = {
             webUrl:
               "https://example.sharepoint.com/sites/ExampleSite/Shared%20Documents/NewDocument.docx",
             file: {
-              mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              mimeType:
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
             },
             parentReference: {
               driveId: "b!ExampleDriveId123456789",
@@ -97,7 +70,8 @@ export const pollSiteChangesExamplePayload = {
             webUrl:
               "https://example.sharepoint.com/sites/ExampleSite/Shared%20Documents/UpdatedSpreadsheet.xlsx",
             file: {
-              mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              mimeType:
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             },
             parentReference: {
               driveId: "b!ExampleDriveId123456789",
@@ -127,9 +101,11 @@ export const pollSiteChangesExamplePayload = {
             createdDateTime: "2025-12-09T09:20:00Z",
             lastModifiedDateTime: "2025-12-09T09:20:00Z",
             size: 3456789,
-            webUrl: "https://example.sharepoint.com/sites/ExampleSite/Marketing/CampaignBrief.pptx",
+            webUrl:
+              "https://example.sharepoint.com/sites/ExampleSite/Marketing/CampaignBrief.pptx",
             file: {
-              mimeType: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+              mimeType:
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
             },
             parentReference: {
               driveId: "b!ExampleMarketingDriveId987654",
@@ -141,13 +117,6 @@ export const pollSiteChangesExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const drivePollingTriggerExamplePayload = {
   body: {
     data: {
@@ -158,9 +127,11 @@ export const drivePollingTriggerExamplePayload = {
           createdDateTime: "2025-12-09T11:00:00Z",
           lastModifiedDateTime: "2025-12-09T11:00:00Z",
           size: 45678,
-          webUrl: "https://example.sharepoint.com/sites/ExampleSite/Documents/ProjectPlan.docx",
+          webUrl:
+            "https://example.sharepoint.com/sites/ExampleSite/Documents/ProjectPlan.docx",
           file: {
-            mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            mimeType:
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
           },
           parentReference: {
             driveId: "b!ExampleDriveId123456789",
@@ -175,9 +146,11 @@ export const drivePollingTriggerExamplePayload = {
           createdDateTime: "2025-12-01T08:30:00Z",
           lastModifiedDateTime: "2025-12-09T15:22:00Z",
           size: 128456,
-          webUrl: "https://example.sharepoint.com/sites/ExampleSite/Documents/Budget2025.xlsx",
+          webUrl:
+            "https://example.sharepoint.com/sites/ExampleSite/Documents/Budget2025.xlsx",
           file: {
-            mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            mimeType:
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
           },
           parentReference: {
             driveId: "b!ExampleDriveId123456789",
@@ -205,7 +178,8 @@ export const drivePollingTriggerExamplePayload = {
           createdDateTime: "2025-11-15T10:00:00Z",
           lastModifiedDateTime: "2025-12-09T13:45:00Z",
           size: 234567,
-          webUrl: "https://example.sharepoint.com/sites/ExampleSite/Archive/ArchiveDocument.pdf",
+          webUrl:
+            "https://example.sharepoint.com/sites/ExampleSite/Archive/ArchiveDocument.pdf",
           file: {
             mimeType: "application/pdf",
           },
@@ -218,13 +192,6 @@ export const drivePollingTriggerExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const folderPollingTriggerExamplePayload = {
   body: {
     data: {
@@ -238,7 +205,8 @@ export const folderPollingTriggerExamplePayload = {
           webUrl:
             "https://example.sharepoint.com/sites/ExampleSite/Documents/Projects/Proposal.docx",
           file: {
-            mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            mimeType:
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
           },
           parentReference: {
             driveId: "b!ExampleDriveId123456789",
@@ -256,7 +224,8 @@ export const folderPollingTriggerExamplePayload = {
           webUrl:
             "https://example.sharepoint.com/sites/ExampleSite/Documents/Projects/Roadmap.xlsx",
           file: {
-            mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            mimeType:
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
           },
           parentReference: {
             driveId: "b!ExampleDriveId123456789",

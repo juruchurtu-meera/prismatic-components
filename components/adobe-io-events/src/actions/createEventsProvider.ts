@@ -12,7 +12,6 @@ import {
   workspaceId,
 } from "../inputs";
 import type { EventsProvider } from "../types/EventsProvider";
-
 export const createEventsProvider = action({
   display: {
     label: "Create Events Provider",
@@ -37,7 +36,6 @@ export const createEventsProvider = action({
     };
     if (description) body.description = description;
     if (docsUrl) body.docs_url = docsUrl;
-
     try {
       const { data } = await client.post(
         `/${consumerOrgId}/${projectId}/${workspaceId}/providers`,

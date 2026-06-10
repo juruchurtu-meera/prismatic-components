@@ -15,7 +15,6 @@ import { createClient } from "../client";
 import { createPageResponse, listPagesResponse } from "../examplePayloads";
 import { getPaginatedData } from "../util";
 import { HttpMethod, MAX_PAGE_SIZE } from "../constants";
-
 const getPage = action({
   display: {
     label: "Get Page",
@@ -28,19 +27,15 @@ const getPage = action({
   },
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
-
-    
     const filterProperties = params.filterProperties as string;
     const filterParams = filterProperties
       ? { params: { filter_properties: filterProperties.split(",") } }
       : {};
-
     const { data } = await client.get(`/pages/${params.pageId}`, filterParams);
     return { data };
   },
   examplePayload: createPageResponse,
 });
-
 const listPages = action({
   display: {
     label: "List Pages",
@@ -71,7 +66,6 @@ const listPages = action({
   },
   examplePayload: listPagesResponse,
 });
-
 const createPage = action({
   display: {
     label: "Create Page",
@@ -102,5 +96,4 @@ const createPage = action({
   },
   examplePayload: createPageResponse,
 });
-
 export default { getPage, listPages, createPage };

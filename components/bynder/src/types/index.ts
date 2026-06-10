@@ -3,12 +3,10 @@ export interface PollState {
   itemsFailed: string[];
   itemsRejected: string[];
 }
-
 export interface Collections {
   collections: Collection[];
   count: number;
 }
-
 export interface Collection {
   userId: string;
   dateModified: string;
@@ -22,18 +20,15 @@ export interface Collection {
   description: string;
   IsPublic: number;
 }
-
 export interface Cover {
   thumbnail: string;
   thumbnails: string[];
   large: string;
 }
-
 export interface User {
   id: string;
   name: string;
 }
-
 export type OrderStatus =
   | "IN_PROGRESS"
   | "CANCELED"
@@ -44,5 +39,4 @@ export type OrderStatus =
   | "PRODUCTION_SUSPENDED"
   | "OUT_FOR_DELIVERY"
   | "FINISHED";
-
 export type Records = Record<string, string | number>;

@@ -8,7 +8,6 @@ import {
   paginateSearchLegacy,
 } from "../../legacy";
 import { paginateSearch } from "../../util";
-
 export const listRecords = action({
   display: {
     label: "List Records",

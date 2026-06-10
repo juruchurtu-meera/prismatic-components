@@ -38,13 +38,11 @@ export const eventsPayload = [
     opt_out: false,
   },
 ];
-
 export const moreDataExample = {
   event_id: "event.id.123",
   event_source_url: "http://jaspers-market.com",
   opt_out: false,
 };
-
 export const customDataExample = {
   currency: "usd",
   value: 123.45,
@@ -56,7 +54,6 @@ export const customDataExample = {
     },
   ],
 };
-
 export const userDataExample = {
   em: ["309a0a5c3e211326ae75ca18196d301a9bdbd1a882a4d2569511033da23f0abd"],
   ph: [

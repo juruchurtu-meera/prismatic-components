@@ -32,7 +32,6 @@ import type {
   MailData,
   TrackingSettings,
 } from "@sendgrid/helpers/classes/mail";
-
 export const sendEmail = action({
   display: {
     label: "Send Email",
@@ -68,22 +67,17 @@ export const sendEmail = action({
       );
     }
     const fileData = content.data.toString("base64");
-
     if ((fileData && !fileName) || (!fileData && fileName)) {
       throw new Error(
         "Missing required field. Please provide a File Name and Attachment Content.",
       );
     }
-
     const trackingSettings: TrackingSettings = {};
     trackingSettings.subscriptionTracking = {
       enable: subscriptionTracking,
     };
-
     const sendGrid = createMailClient(sendGridConnection);
-
     const attachments = [];
-
     if (fileData)
       attachments.push({
         content: fileData,
@@ -92,9 +86,7 @@ export const sendEmail = action({
         type: fileType,
         content_id: contentId,
       });
-
     if (multipleAttachments) attachments.push(...multipleAttachments);
-
     const payload = createPayload({
       to,
       cc,
@@ -118,7 +110,6 @@ export const sendEmail = action({
       trackingSettings,
     });
     try {
-      
       const result = await sendGrid.send(payload);
       return {
         data: result,
@@ -148,12 +139,10 @@ export const sendEmail = action({
     multipleAttachments,
     subscriptionTracking,
   },
-
   examplePayload: {
     data: [{ body: { message: "Example" }, statusCode: 200, headers: {} }, {}],
   },
 });
-
 export const sendMultipleEmails = action({
   display: {
     label: "Send Multiple Emails",
@@ -188,17 +177,13 @@ export const sendMultipleEmails = action({
       );
     }
     const fileData = content.data.toString("base64");
-
     if ((fileData && !fileName) || (!fileData && fileName)) {
       throw new Error(
         "Missing required field. Please provide a File Name and Attachment Content.",
       );
     }
-
     const sendGrid = createMailClient(sendGridConnection);
-
     const attachments = [];
-
     if (fileData)
       attachments.push({
         content: fileData,
@@ -207,9 +192,7 @@ export const sendMultipleEmails = action({
         type: fileType,
         content_id: contentId,
       });
-
     if (multipleAttachments) attachments.push(...multipleAttachments);
-
     const payload = createPayload({
       to,
       cc,
@@ -260,12 +243,10 @@ export const sendMultipleEmails = action({
     contentId,
     multipleAttachments,
   },
-
   examplePayload: {
     data: [{ body: { message: "Example" }, statusCode: 200, headers: {} }, {}],
   },
 });
-
 export const sendEmailWithDynamicTemplate = action({
   display: {
     label: "Send Email with Dynamic Template",
@@ -316,21 +297,17 @@ export const sendEmailWithDynamicTemplate = action({
     },
   ) => {
     const sendGrid = createMailClient(sendGridConnection);
-
     if ((!personalizations || personalizations.length === 0) && !to) {
       throw new Error(
         "Either 'To' recipients or 'Personalizations' array must be provided. Provide email addresses in 'To' field for simple sends, or use 'Personalizations' for advanced configurations.",
       );
     }
-
     if (personalizations && personalizations.length > 0 && (to || cc || bcc)) {
       context.logger.warn(
         "Personalizations array is provided, ignoring 'To', 'CC', and 'BCC' individual inputs. Recipients should be defined within the personalizations array.",
       );
     }
-
     let personalizationsArray = [];
-
     if (personalizations && personalizations.length > 0) {
       personalizationsArray = personalizations.map((p) => ({
         ...p,
@@ -340,27 +317,22 @@ export const sendEmailWithDynamicTemplate = action({
       const toRecipients = to.split(",").map((email: string) => ({
         email: email.trim(),
       }));
-
       const personalization: PersonalizationData = {
         to: toRecipients,
         dynamicTemplateData: dynamicTemplateData,
       };
-
       if (cc) {
         personalization.cc = cc.split(",").map((email: string) => ({
           email: email.trim(),
         }));
       }
-
       if (bcc) {
         personalization.bcc = bcc.split(",").map((email: string) => ({
           email: email.trim(),
         }));
       }
-
       personalizationsArray = [personalization];
     }
-
     const payloadParameters: MailData = {
       templateId,
       personalizations: personalizationsArray,
@@ -369,22 +341,18 @@ export const sendEmailWithDynamicTemplate = action({
         ...(fromName && { name: fromName }),
       },
     };
-
     if (!replyToEmail && replyToName) {
       throw new Error(
         "If you want to include the 'Reply To Name' property, you must supply a 'Reply To Email' value.",
       );
     }
-
     if (replyToEmail) {
       payloadParameters.replyTo = {
         email: replyToEmail,
         ...(replyToName && { name: replyToName }),
       };
     }
-
     const payload = createPayload(payloadParameters);
-
     try {
       const result = await sendGrid.send(payload);
       return {

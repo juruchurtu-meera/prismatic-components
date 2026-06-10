@@ -2,10 +2,8 @@ import { action } from "@prismatic-io/spectral";
 import { createClickUpClient } from "../../client";
 import { removeGuestFromWorkspaceExamplePayload } from "../../examplePayloads";
 import { connectionInput, getGuestId, getTeamId } from "../../inputs";
-
 const teamId = getTeamId(true);
 const guestId = getGuestId(true, "Guest ID");
-
 export const removeGuestFromWorkspace = action({
   display: {
     label: "Remove Guest from Workspace",
@@ -13,10 +11,11 @@ export const removeGuestFromWorkspace = action({
   },
   examplePayload: removeGuestFromWorkspaceExamplePayload,
   perform: async (context, { clickUpConnection, teamId, guestId }) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
-
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/team/${teamId}/guest/${guestId}`);
-
     return {
       data,
     };

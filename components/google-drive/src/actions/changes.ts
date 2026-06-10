@@ -1,7 +1,12 @@
 import { v4 as uuid_v4 } from "uuid";
 import { action, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-import { connection, driveId, webhookEndpointInput, webhookExpirationInput } from "../inputs";
+import {
+  connection,
+  driveId,
+  webhookEndpointInput,
+  webhookExpirationInput,
+} from "../inputs";
 import { LIST_CHANGES_EXAMPLE_PAYLOAD } from "../examplePayloads";
 import {
   getDriveQueryParams,
@@ -9,7 +14,6 @@ import {
   getListChangesNewStateKey,
   resolveListChangesPageToken,
 } from "../util";
-
 const listChanges = action({
   display: {
     label: "List Changes",
@@ -27,9 +31,7 @@ const listChanges = action({
     const legacyCleanup = isLegacy
       ? { instanceState: { [getListChangesLegacyStateKey(context)]: null } }
       : {};
-
     if (pageToken) {
-      
       const { data } = await client.changes.list({
         pageSize: 1000,
         pageToken,
@@ -41,12 +43,11 @@ const listChanges = action({
         ...legacyCleanup,
       };
     }
-
-    
-    
     const {
       data: { startPageToken },
-    } = await client.changes.getStartPageToken(getDriveQueryParams(params.driveId));
+    } = await client.changes.getStartPageToken(
+      getDriveQueryParams(params.driveId),
+    );
     context.logger.info(
       "First time running. Subsequent runs will show changes that occurred since the previous run.",
     );
@@ -68,11 +69,11 @@ const listChanges = action({
     },
   },
 });
-
 const createDriveWebhook = action({
   display: {
     label: "Create Webhook for Drive",
-    description: "Create a webhook to receive notifications of changes with a Google Drive",
+    description:
+      "Create a webhook to receive notifications of changes with a Google Drive",
   },
   inputs: {
     connection,
@@ -100,11 +101,11 @@ const createDriveWebhook = action({
     return { data };
   },
 });
-
 const createFileWebhook = action({
   display: {
     label: "Create Webhook for File or Folder",
-    description: "Create a webhook to receive notifications of changes for a file or folder",
+    description:
+      "Create a webhook to receive notifications of changes for a file or folder",
   },
   inputs: {
     connection,
@@ -133,7 +134,6 @@ const createFileWebhook = action({
     return { data };
   },
 });
-
 const deleteWebhook = action({
   display: {
     label: "Delete Webhook",
@@ -169,7 +169,6 @@ const deleteWebhook = action({
     return { data };
   },
 });
-
 export default {
   listChanges,
   createDriveWebhook,

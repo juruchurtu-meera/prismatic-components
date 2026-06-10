@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { API_VERSION } from "../../constants";
 import { getCompaniesExamplePayload } from "../../examplePayloads";
 import { getCompaniesInputs } from "../../inputs";
-
 const getCompanies = action({
   display: {
     label: "Get Companies (V1)",
@@ -21,7 +20,6 @@ const getCompanies = action({
     return { data };
   },
 });
-
 export default {
   getCompanies,
 };

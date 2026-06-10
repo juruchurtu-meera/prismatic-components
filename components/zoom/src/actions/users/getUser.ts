@@ -8,7 +8,6 @@ import {
   searchByUniqueId,
 } from "../../inputs";
 import { getUserExamplePayload } from "../../examplePayloads";
-
 export const getUser = action({
   display: {
     label: "Get User",
@@ -19,7 +18,6 @@ export const getUser = action({
     { connection, userId, loginType, encryptedEmail, searchByUniqueId },
   ) => {
     const client = createZoomClient({ connection, debug });
-
     const { data } = await client.get(`/users/${userId}`, {
       params: {
         login_type: loginType,
@@ -27,7 +25,6 @@ export const getUser = action({
         search_by_unique_id: searchByUniqueId,
       },
     });
-
     return {
       data,
     };

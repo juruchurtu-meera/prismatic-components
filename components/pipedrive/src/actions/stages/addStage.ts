@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const addStage = action({
   display: {
     label: "Add Stage",
@@ -13,7 +12,11 @@ export const addStage = action({
     context,
     { connection, name, pipelineId, dealProbability, rottenFlag, rottenDays },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post("/stages", {
       name,
       pipeline_id: pipelineId,
@@ -58,7 +61,8 @@ export const addStage = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The number of days the deals not updated in this stage would become rotten",
+      comments:
+        "The number of days the deals not updated in this stage would become rotten",
     }),
   },
 });

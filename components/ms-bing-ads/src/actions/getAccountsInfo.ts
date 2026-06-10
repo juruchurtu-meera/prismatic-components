@@ -1,25 +1,20 @@
 import { action } from "@prismatic-io/spectral";
-
 import { connectionInput, customerIdInput } from "../inputs";
 import { getClient, sendAsync } from "../client";
 import { BING_API, toArray } from "../util";
 import { getAccountsInfoExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "GetAccountsInfo";
-
 export interface AccountInfo {
   Id: number;
   Name: string;
   Number: string;
   AccountLifeCycleStatus: string;
 }
-
 export interface GetAccountsInfoResponse {
   AccountsInfo: {
     AccountInfo: AccountInfo | AccountInfo[];
   };
 }
-
 export const getAccountsInfo = action({
   display: {
     label: "Get Account Info",
@@ -34,7 +29,6 @@ export const getAccountsInfo = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<GetAccountsInfoResponse>({
       debug,
       args: {
@@ -44,7 +38,6 @@ export const getAccountsInfo = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data: response?.AccountsInfo?.AccountInfo
         ? {

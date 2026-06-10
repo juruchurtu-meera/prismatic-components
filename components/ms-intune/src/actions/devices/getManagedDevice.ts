@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import getManagedDeviceInputs from "../../inputs/devices/getManagedDeviceInputs";
 import { getManagedDeviceExamplePayload } from "../../examplePayloads";
-
 export const getManagedDevice = action({
   display: {
     label: "Get Managed Device",

@@ -3,11 +3,11 @@ import { getMsBusinessCentralClient } from "../../client";
 import { updatePurchaseOrderLineExamplePayload as examplePayload } from "../../examplePayloads";
 import { updatePurchaseOrderLineInputs as inputs } from "../../inputs/purchaseOrderLines/updatePurchaseOrderLineInputs";
 import type { PurchaseOrderLine } from "../../interfaces";
-
 export const updatePurchaseOrderLine = action({
   display: {
     label: "Update Purchase Order Line",
-    description: "Updates a purchase order line object in your Business Central organization.",
+    description:
+      "Updates a purchase order line object in your Business Central organization.",
   },
   perform: async (
     context,
@@ -26,7 +26,11 @@ export const updatePurchaseOrderLine = action({
       additionalProperties,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       ...additionalProperties,
       documentId,
@@ -38,7 +42,6 @@ export const updatePurchaseOrderLine = action({
       quantity,
       directUnitCost,
     };
-
     const { data } = await client.patch<PurchaseOrderLine>(
       `/companies(${companyId})/purchaseOrderLines(${purchaseOrderLineId})`,
       payload,
@@ -48,7 +51,6 @@ export const updatePurchaseOrderLine = action({
         },
       },
     );
-
     return { data };
   },
   inputs,

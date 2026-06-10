@@ -4,12 +4,9 @@ import {
   inputs as httpClientInputs,
   sendRawRequest,
 } from "@prismatic-io/spectral/dist/clients/http";
-
 import connections from "./connections";
 import { rawRequestExamplePayload } from "./examplePayloads";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -49,14 +46,14 @@ const rawRequest = action({
   },
   examplePayload: rawRequestExamplePayload,
 });
-
 export default component({
   key: "ms-graph-api",
   public: true,
   documentationUrl: "https://prismatic.io/docs/components/ms-graph-api/",
   display: {
     label: "Microsoft Graph API",
-    description: "Access Microsoft 365 services and data through the Microsoft Graph API.",
+    description:
+      "Access Microsoft 365 services and data through the Microsoft Graph API.",
     iconPath: "icon.png",
     category: "Application Connectors",
   },

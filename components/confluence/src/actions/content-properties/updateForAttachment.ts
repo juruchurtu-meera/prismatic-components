@@ -7,7 +7,6 @@ import {
   propertyId,
 } from "../../inputs";
 import { getContentPropertyExamplePayload as updateContentPropertyForAttachmentExamplePayload } from "../../examplePayloads";
-
 export const updateContentPropertyForAttachment = action({
   display: {
     label: "Update Content Property for Attachment",

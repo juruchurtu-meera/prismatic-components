@@ -1,6 +1,5 @@
 import { connection } from "../common";
 import { fieldsUpdate, identifier } from "./common";
-
 export const updateEmployeeInputs = {
   connection,
   identifier: {

@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 const inventoryItemData = {
   id: 78234,
   name: "Medium Blue T-Shirt",
@@ -63,15 +54,12 @@ const inventoryItemData = {
     },
   ],
 };
-
 export const getInventoryItemExamplePayload = {
   data: inventoryItemData,
 };
-
 export const listInventoryItemsExamplePayload = {
   data: [inventoryItemData],
 };
-
 export const listByProductIdExamplePayload = {
   data: [inventoryItemData],
 };

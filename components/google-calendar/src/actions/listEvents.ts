@@ -9,7 +9,6 @@ import {
   syncToken,
 } from "../inputs";
 import { parseReturn } from "../parseReturn";
-
 export const listEvents = action({
   display: {
     label: "List Events",
@@ -17,7 +16,6 @@ export const listEvents = action({
   },
   perform: async (_context, params) => {
     const { config, ...base } = await listAllEvents(params);
-
     return {
       data: {
         config: parseReturn(config),

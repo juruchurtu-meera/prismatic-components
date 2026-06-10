@@ -13,7 +13,6 @@ import connections, {
   conversionsToken,
 } from "./connections";
 import { API_URL, DEFAULT_VERSION, TriggerBranches } from "./constants";
-
 export const adCreativeDefaults =
   "name, object_story_spec, adlabels, body, object_id, url_tags";
 export const adSetDefaults =
@@ -22,25 +21,20 @@ export const adAccountDefaults =
   "name,age,balance,is_personal,account_status,line_numbers,adcreatives";
 export const adDefaults =
   "name,adset,account_id,ad_review_feedback,adlabels,adset_id,bid_amount,campaign,campaign_id,configured_status,conversion_domain,created_time,creative,effective_status,issues_info,last_updated_by_app_id,preview_shareable_link,recommendations,status,tracking_specs";
-
 export const valueListInputClean = (value: unknown) => {
   if (Array.isArray(value)) {
     return value;
   }
   return undefined;
 };
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanNumber = (value: unknown) => {
   return value ? util.types.toNumber(value) : undefined;
 };
-
 const throwCodeInputError = (inputLabel: string) => {
   throw new Error(`Invalid code for ${inputLabel} input.`);
 };
-
 export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     try {
@@ -55,7 +49,6 @@ export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
   const object = cleanCodeInput(value, inputLabel);
   if (object) {
@@ -64,10 +57,8 @@ export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
     }
     throw new Error(`Invalid array for ${inputLabel} input.`);
   }
-
   return undefined;
 };
-
 export const validateConversionsConnection = (connection: Connection) => {
   if (connection.key !== conversionsToken.key) {
     throw new Error(
@@ -75,15 +66,12 @@ export const validateConversionsConnection = (connection: Connection) => {
     );
   }
 };
-
 export const eventTimeClean = (value: unknown) => {
   if (!value) {
-    
     return Math.floor(new Date().getTime() / 1000);
   }
   return cleanNumber(value);
 };
-
 export const validateConnection = (connection: Connection): void => {
   const connectionKeys = connections.map((c) => c.key);
   if (!connectionKeys.includes(connection.key)) {
@@ -93,10 +81,8 @@ export const validateConnection = (connection: Connection): void => {
     );
   }
 };
-
 export const getBaseUrl = (version = DEFAULT_VERSION): string =>
   `${API_URL}/v${version}.0`;
-
 export const getAuthHeaders = (
   connection: Connection,
 ): Record<string, string> => {
@@ -105,7 +91,6 @@ export const getAuthHeaders = (
   );
   return { Authorization: `Bearer ${token}` };
 };
-
 export const getPaginatedData = async (
   client: HttpClient,
   url: string,
@@ -117,26 +102,19 @@ export const getPaginatedData = async (
     params.before = undefined;
     params.after = undefined;
   }
-
   const response = await client.get(url, {
     params,
   });
-
   if (!fetchAll) {
     return response;
   }
-
   const allData: Record<string, unknown>[] = response.data.data;
-
   let next = response.data.paging?.next;
   while (next) {
     const { data } = await client.get(next);
-
     allData.push(...data.data);
-
     next = data.paging?.next;
   }
-
   return {
     data: {
       data: allData,
@@ -144,7 +122,6 @@ export const getPaginatedData = async (
     },
   };
 };
-
 export const performFunction = async (
   context: ActionContext,
   payload: TriggerPayload,
@@ -161,7 +138,6 @@ export const performFunction = async (
   const mode = query["hub.mode"];
   const token = query["hub.verify_token"];
   const challenge = query["hub.challenge"];
-
   if (mode === "subscribe") {
     const validWebhook = validateWebhook(token, challenge, verifyToken);
     if (validWebhook) {
@@ -176,7 +152,6 @@ export const performFunction = async (
       });
     }
   }
-
   const validWebhook = verifyWebhook(payload, params);
   if (validWebhook) {
     return Promise.resolve({
@@ -189,7 +164,6 @@ export const performFunction = async (
   }
   throw new Error("Invalid webhook");
 };
-
 const verifyWebhook = (
   payload: TriggerPayload,
   params: Record<string, unknown>,
@@ -211,7 +185,6 @@ const verifyWebhook = (
     .digest("hex");
   return signature === bodySignature;
 };
-
 const validateWebhook = (
   token: string,
   challenge: string,
@@ -222,7 +195,6 @@ const validateWebhook = (
   }
   return null;
 };
-
 export const onInstanceDeploy = async (
   context: ActionContext,
   { connection, version, object, verifyToken, fields },
@@ -233,7 +205,6 @@ export const onInstanceDeploy = async (
   const endpoint = context.webhookUrls[context.flow.name];
   await createWebhookFn(client, appId, object, endpoint, verifyToken, fields);
 };
-
 export const onInstanceDelete = async (
   context: ActionContext,
   { connection, version, object, fields },
@@ -243,7 +214,6 @@ export const onInstanceDelete = async (
   const appId = getAppId(connection);
   await deleteWebhookFn(client, appId, object, fields);
 };
-
 export const getWebhookObject = (object: string) => {
   let webhookObject: string;
   let webhookFields: string;
@@ -265,11 +235,9 @@ export const getWebhookObject = (object: string) => {
   }
   return { webhookObject, webhookFields };
 };
-
 export const getAppId = (connection: Connection) => {
   return util.types.toString(connection.fields.clientId);
 };
-
 export const createWebhookFn = async (
   client: HttpClient,
   appId: string,
@@ -287,7 +255,6 @@ export const createWebhookFn = async (
   });
   return data;
 };
-
 export const deleteWebhookFn = async (
   client: HttpClient,
   appId: string,
@@ -301,7 +268,6 @@ export const deleteWebhookFn = async (
     },
   });
 };
-
 export const clientCredentialsConnection = (connection: Connection) => {
   if (connection.key !== clientCredentials.key) {
     throw new Error(
@@ -309,7 +275,6 @@ export const clientCredentialsConnection = (connection: Connection) => {
     );
   }
 };
-
 export const validateFields = (fields: string[]) => {
   if (fields.length === 0) {
     throw new Error("At least one field must be selected");

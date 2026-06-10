@@ -8,7 +8,6 @@ import {
   spaceId,
   usage,
 } from "../../inputs";
-
 export const createApp = action({
   display: {
     label: "Create App",
@@ -19,7 +18,6 @@ export const createApp = action({
     { connection, description, name, locale, spaceId, usage },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/apps`, {
       attributes: {
         description: description || undefined,
@@ -29,7 +27,6 @@ export const createApp = action({
         usage: usage || undefined,
       },
     });
-
     return {
       data,
     };

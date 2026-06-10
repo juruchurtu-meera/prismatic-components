@@ -3,7 +3,6 @@ import { createCosmosDbClient } from "../../client";
 import { deleteDatabaseInputs } from "../../inputs";
 import { deleteDatabaseExamplePayload } from "../../examplePayloads";
 import { CosmosDbResourceType, HttpVerb } from "../../constants";
-
 export const deleteDatabase = action({
   display: {
     label: "Delete Database",

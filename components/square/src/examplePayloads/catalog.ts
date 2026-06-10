@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const listCatalogExamplePayload = {
   data: {
     objects: [
@@ -50,12 +39,6 @@ export const listCatalogExamplePayload = {
     cursor: "BwUbDYr9HXzXVmkLu7j5S8fVEoJYo5EZxqBq3Pc2kBa...",
   },
 };
-
-
-
-
-
-
 export const searchCatalogItemsExamplePayload = {
   data: {
     items: [
@@ -96,12 +79,6 @@ export const searchCatalogItemsExamplePayload = {
     cursor: "BwUbDYr9HXzXVmkLu7j5S8fVEoJYo5EZxqBq3Pc2kBa...",
   },
 };
-
-
-
-
-
-
 export const searchCatalogObjectsExamplePayload = {
   data: {
     objects: [
@@ -122,12 +99,6 @@ export const searchCatalogObjectsExamplePayload = {
     cursor: "BwUbDYr9HXzXVmkLu7j5S8fVEoJYo5EZxqBq3Pc2kBa...",
   },
 };
-
-
-
-
-
-
 export const batchRetrieveCatalogObjectsExamplePayload = {
   data: {
     objects: [
@@ -147,12 +118,6 @@ export const batchRetrieveCatalogObjectsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const upsertCatalogObjectExamplePayload = {
   data: {
     catalog_object: {
@@ -196,12 +161,6 @@ export const upsertCatalogObjectExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const batchUpsertCatalogObjectsExamplePayload = {
   data: {
     objects: [
@@ -225,12 +184,6 @@ export const batchUpsertCatalogObjectsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const retrieveCatalogObjectExamplePayload = {
   data: {
     object: {
@@ -268,27 +221,18 @@ export const retrieveCatalogObjectExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const deleteCatalogObjectExamplePayload = {
   data: {
     deleted_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
     deleted_at: "2023-05-21T10:30:00.000Z",
   },
 };
-
-
-
-
-
-
 export const batchDeleteCatalogObjectsExamplePayload = {
   data: {
-    deleted_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "X6NH6N2H6TK4W8AD4VFKZL8J"],
+    deleted_object_ids: [
+      "W62UWFY35CWMYGVWK6TWJDNI",
+      "X6NH6N2H6TK4W8AD4VFKZL8J",
+    ],
     deleted_at: "2023-05-21T10:30:00.000Z",
   },
 };

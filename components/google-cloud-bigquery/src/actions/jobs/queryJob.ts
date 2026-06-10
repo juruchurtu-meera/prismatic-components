@@ -20,7 +20,6 @@ import {
   useLegacySql,
   useQueryCache,
 } from "../../inputs";
-
 export const queryJob = action({
   display: {
     description:

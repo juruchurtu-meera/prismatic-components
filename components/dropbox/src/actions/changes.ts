@@ -17,7 +17,6 @@ import {
 } from "../inputs";
 import type { CursorData, ListChangesResult } from "../interfaces";
 import { checkDebug } from "../util";
-
 export const listChanges = action({
   display: {
     label: "List Changes",
@@ -30,16 +29,12 @@ export const listChanges = action({
       params.userType,
       params.teamMemberId,
     );
-
     const { value: cursorData, isLegacy } = resolveCursorState(context);
-
     const legacyCleanup = isLegacy
       ? { instanceState: { [getLegacyStateKey(context)]: null } }
       : {};
     const newStateKey = getNewStateKey(context);
-
     checkDebug(params, context);
-
     if (
       cursorData &&
       isEqual(
@@ -55,7 +50,6 @@ export const listChanges = action({
         },
       )
     ) {
-      
       const response = await dbx.filesListFolderContinue({
         cursor: cursorData.cursor,
       });
@@ -71,9 +65,6 @@ export const listChanges = action({
         ...legacyCleanup,
       };
     }
-
-    
-    
     const response = await dbx.filesListFolderGetLatestCursor({
       path: params.directoryPath,
       recursive: params.recursive,

@@ -1,8 +1,10 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { awsRegion, connectionInput } from "../inputs";
 import { createDynamoClient } from "../auth";
-import { ListTablesCommand, type ListTablesCommandOutput } from "@aws-sdk/client-dynamodb";
-
+import {
+  ListTablesCommand,
+  type ListTablesCommandOutput,
+} from "@aws-sdk/client-dynamodb";
 export const selectTable = dataSource({
   display: {
     label: "Select Table",
@@ -10,7 +12,7 @@ export const selectTable = dataSource({
   },
   inputs: {
     awsConnection: connectionInput,
-    awsRegion: { ...awsRegion, dataSource: undefined, model: undefined }, 
+    awsRegion: { ...awsRegion, dataSource: undefined, model: undefined },
   },
   perform: async (context, { awsConnection, awsRegion }) => {
     const client = await createDynamoClient({
@@ -19,7 +21,6 @@ export const selectTable = dataSource({
     });
     const command = new ListTablesCommand({});
     const { TableNames }: ListTablesCommandOutput = await client.send(command);
-
     const result = TableNames
       ? TableNames.map<Element>((table) => ({
           label: table,

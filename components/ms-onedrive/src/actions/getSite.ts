@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, siteId } from "../inputs";
 import { handleErrors } from "../errors";
 import { getSiteExamplePayload } from "../examplePayloads";
-
 export const getSite = action({
   display: {
     label: "Get Site",

@@ -9,7 +9,6 @@ import {
   testLabel,
 } from "../common";
 import { orderId } from "./common";
-
 export const createLabelForOrderInputs = {
   connectionInput,
   orderIdInput: { ...orderId, required: true, clean: util.types.toString },

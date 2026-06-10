@@ -14,7 +14,6 @@ import {
   productType,
   storeHash,
 } from "../../inputs";
-
 export const getAllProducts = action({
   display: {
     label: "List Products",
@@ -40,9 +39,7 @@ export const getAllProducts = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products`;
-
     const queryParamsObj: Record<string, unknown> = {};
-
     if (productId) queryParamsObj.id = productId;
     if (productName) queryParamsObj.name = productName;
     if (productPrice) queryParamsObj.price = productPrice;
@@ -50,11 +47,9 @@ export const getAllProducts = action({
     if (productType) queryParamsObj.type = productType;
     if (productPage) queryParamsObj.page = productPage;
     if (productLimit) queryParamsObj.limit = productLimit;
-
     const queryParams = querystring.stringify(
       queryParamsObj as Record<string, string>,
     );
-
     try {
       const response = await client.get(`${endpoint}?${queryParams}`);
       return {
@@ -66,7 +61,6 @@ export const getAllProducts = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash,

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { CONTACTS_PATH } from "../../constants";
 import { updateContactExamplePayload } from "../../examplePayloads";
 import { updateContactInputs } from "../../inputs";
-
 export const updateContact = action({
   examplePayload: updateContactExamplePayload,
   display: {
@@ -13,17 +12,14 @@ export const updateContact = action({
   inputs: updateContactInputs,
   perform: async (context, { connection, contactKey, attributeSets }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       contactKey,
       attributeSets,
     };
-
     const { data } = await client.patch(
       `${CONTACTS_PATH}/key:${encodeURIComponent(contactKey)}`,
       body,
     );
-
     return { data };
   },
 });

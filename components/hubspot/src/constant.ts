@@ -17,7 +17,6 @@ export const SEARCH_ENDPOINTS = [
   { label: "Notes", value: "/crm/v3/objects/notes/search" },
   { label: "Tasks", value: "/crm/v3/objects/tasks/search" },
 ];
-
 export const HUBSPOT_DATE_PROPERTIES = {
   "/crm/v3/objects/carts/search": {
     createdate: "createdate",

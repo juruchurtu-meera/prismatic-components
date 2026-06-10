@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { setFlagsExamplePayload } from "../examplePayloads";
 import { setFlagsInputs } from "../inputs/actions";
-
 export const setFlags = action({
   display: {
     label: "Set Flags",
@@ -17,7 +16,6 @@ export const setFlags = action({
         params.flags.map((flag) => util.types.toString(flag)),
         { uid: true },
       );
-
       return {
         data,
       };

@@ -9,7 +9,6 @@ import {
 } from "../../inputs";
 import type { PaginatedDataRequest } from "../../types";
 import { paginatedData } from "../../util";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",
@@ -23,7 +22,6 @@ export const listCustomers = action({
       quickbooksConnection,
       context.debug.enabled,
     );
-
     const request: PaginatedDataRequest = {
       client,
       queryString: "select * from Customer",
@@ -31,7 +29,6 @@ export const listCustomers = action({
       fetchAll,
       params: { startPosition, maxResults },
     };
-
     const data = await paginatedData(request);
     return {
       data,

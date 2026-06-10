@@ -22,7 +22,6 @@ import {
   unTrashMessageByIdExamplePayload,
   updateLabelsExamplePayload,
 } from "../examplePayloads";
-
 const listMessages = action({
   display: {
     label: "List Messages",
@@ -40,10 +39,18 @@ const listMessages = action({
   },
   perform: async (
     context,
-    { connection, query: q, pageToken, userId, labelIds, maxResults, fetchAll, addMetadata },
+    {
+      connection,
+      query: q,
+      pageToken,
+      userId,
+      labelIds,
+      maxResults,
+      fetchAll,
+      addMetadata,
+    },
   ) => {
     const client = await createClient(connection);
-
     const data = await listAllMessages(
       client,
       {
@@ -69,7 +76,6 @@ const listMessages = action({
     },
   },
 });
-
 const getMessageById = action({
   display: {
     label: "Get Message",
@@ -89,8 +95,6 @@ const getMessageById = action({
       id: params.messageId,
       format: "raw",
     });
-
-    
     const parsed = await simpleParser(Buffer.from(raw, "base64"), {
       writableObjectMode: true,
       autoDestroy: true,
@@ -104,14 +108,12 @@ const getMessageById = action({
       text: parsed.text,
       html: parsed.html,
     };
-
     const ret = {
       id,
       threadId,
       labelIds,
       message,
     };
-
     return { data: ret };
   },
   examplePayload: {
@@ -147,7 +149,6 @@ const getMessageById = action({
     },
   },
 });
-
 const trashMessageById = action({
   display: {
     label: "Trash Message",
@@ -168,7 +169,6 @@ const trashMessageById = action({
   },
   examplePayload: trashMessageByIdExamplePayload,
 });
-
 const unTrashMessageById = action({
   display: {
     label: "Untrash Message",
@@ -189,7 +189,6 @@ const unTrashMessageById = action({
   },
   examplePayload: unTrashMessageByIdExamplePayload,
 });
-
 const updateLabels = action({
   display: {
     label: "Update Message Labels",
@@ -207,7 +206,9 @@ const updateLabels = action({
       example: '["INBOX", "IMPORTANT"]',
       comments: "Gmail labels to add to the message.",
       clean: (values) =>
-        ((values as unknown[]) || []).map((value: unknown) => util.types.toString(value)),
+        ((values as unknown[]) || []).map((value: unknown) =>
+          util.types.toString(value),
+        ),
     }),
     removeLabels: input({
       label: "Labels to Remove",
@@ -217,7 +218,9 @@ const updateLabels = action({
       example: '["SPAM", "UNREAD"]',
       comments: "Gmail labels to remove from the message.",
       clean: (values) =>
-        ((values as unknown[]) || []).map((value: unknown) => util.types.toString(value)),
+        ((values as unknown[]) || []).map((value: unknown) =>
+          util.types.toString(value),
+        ),
     }),
   },
   perform: async (context, params) => {
@@ -234,7 +237,6 @@ const updateLabels = action({
   },
   examplePayload: updateLabelsExamplePayload,
 });
-
 const sendMessage = action({
   display: {
     label: "Send Message",
@@ -250,7 +252,9 @@ const sendMessage = action({
       example: '["recipient@example.com"]',
       comments: "Recipient email addresses.",
       clean: (values) =>
-        ((values as string[]) || []).map((value) => util.types.toString(value)).join(", "),
+        ((values as string[]) || [])
+          .map((value) => util.types.toString(value))
+          .join(", "),
       collection: "valuelist",
     }),
     from,
@@ -262,7 +266,9 @@ const sendMessage = action({
       example: '["cc@example.com"]',
       comments: "Carbon copy (CC) email addresses.",
       clean: (values) =>
-        ((values as string[]) || []).map((value) => util.types.toString(value)).join(", "),
+        ((values as string[]) || [])
+          .map((value) => util.types.toString(value))
+          .join(", "),
       collection: "valuelist",
     }),
     bcc: input({
@@ -273,7 +279,9 @@ const sendMessage = action({
       example: '["bcc@example.com"]',
       comments: "Blind carbon copy (BCC) email addresses.",
       clean: (values) =>
-        ((values as string[]) || []).map((value) => util.types.toString(value)).join(", "),
+        ((values as string[]) || [])
+          .map((value) => util.types.toString(value))
+          .join(", "),
       collection: "valuelist",
     }),
     subject: input({
@@ -289,7 +297,8 @@ const sendMessage = action({
       label: "Plain Text Body",
       type: "text",
       placeholder: "Enter plain text email body",
-      example: "Hello,\n\nThis is a reminder about our meeting tomorrow at 2 PM.\n\nBest regards",
+      example:
+        "Hello,\n\nThis is a reminder about our meeting tomorrow at 2 PM.\n\nBest regards",
       comments:
         "Plain text version of the email body. Used as fallback for email clients that do not support HTML.",
       clean: util.types.toString,
@@ -300,7 +309,8 @@ const sendMessage = action({
       placeholder: "Enter HTML email body",
       example:
         "<html><body><h1>Hello</h1><p>This is a reminder about our meeting tomorrow at 2 PM.</p></body></html>",
-      comments: "HTML version of the email body. For email clients that support HTML.",
+      comments:
+        "HTML version of the email body. For email clients that support HTML.",
       clean: util.types.toString,
     }),
     attachments: input({
@@ -339,7 +349,6 @@ const sendMessage = action({
     };
     const mailComposer = new MailComposer(options).compile();
     mailComposer.keepBcc = true;
-
     const message = await mailComposer.build();
     const rawMessage = Buffer.from(message)
       .toString("base64")
@@ -354,7 +363,6 @@ const sendMessage = action({
   },
   examplePayload: sendMessageExamplePayload,
 });
-
 export default {
   getMessageById,
   listMessages,

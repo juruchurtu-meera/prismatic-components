@@ -1,4 +1,3 @@
-
 export const getProjectExamplePayload = {
   data: {
     expand: "description,lead,url,projectKeys",
@@ -19,16 +18,18 @@ export const getProjectExamplePayload = {
     components: [],
     versions: [],
     roles: {
-      Developers: "https://your-domain.atlassian.net/rest/api/3/project/EX/role/10001",
-      Users: "https://your-domain.atlassian.net/rest/api/3/project/EX/role/10002",
+      Developers:
+        "https://your-domain.atlassian.net/rest/api/3/project/EX/role/10001",
+      Users:
+        "https://your-domain.atlassian.net/rest/api/3/project/EX/role/10002",
     },
   },
 };
-
 export const listProjectsExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/project/search",
-    nextPage: "https://your-domain.atlassian.net/rest/api/3/project/search?startAt=2",
+    nextPage:
+      "https://your-domain.atlassian.net/rest/api/3/project/search?startAt=2",
     maxResults: 2,
     startAt: 0,
     total: 7,
@@ -57,7 +58,6 @@ export const listProjectsExamplePayload = {
     ],
   },
 };
-
 export const findProjectExamplePayload = {
   data: [
     {
@@ -72,7 +72,6 @@ export const findProjectExamplePayload = {
     },
   ],
 };
-
 export const searchProjectsExamplePayload = {
   data: [
     {

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput } from "./common";
-
 const accountId = input({
   label: "Account ID",
   type: "string",
@@ -11,7 +10,6 @@ const accountId = input({
   example: "690560",
   clean: util.types.toNumber,
 });
-
 const customerId = input({
   label: "Customer ID",
   type: "string",
@@ -21,7 +19,6 @@ const customerId = input({
   example: "67890",
   clean: util.types.toString,
 });
-
 const webhookName = input({
   label: "Webhook Name",
   type: "string",
@@ -31,7 +28,6 @@ const webhookName = input({
   example: "create_netsuite_quote",
   clean: util.types.toString,
 });
-
 const webhookUrl = input({
   label: "Webhook URL",
   type: "string",
@@ -41,7 +37,6 @@ const webhookUrl = input({
   example: "https://mydomain.com/webhook-endpoint",
   clean: util.types.toString,
 });
-
 export const registerWebhookInputs = {
   ssvConnection: connectionInput,
   accountId,

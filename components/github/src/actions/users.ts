@@ -2,14 +2,16 @@ import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { usersGetByUsernameExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
-
 const usersList = action({
   display: {
     label: "Users List",
     description: "List users",
   },
   perform: async (context, { connection, since, perPage }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users`, {
       params: { since, per_page: perPage },
     });
@@ -41,7 +43,6 @@ const usersList = action({
     },
   },
 });
-
 const usersGetByUsername = action({
   display: {
     label: "Users Get By Username",
@@ -49,7 +50,10 @@ const usersGetByUsername = action({
   },
   examplePayload: usersGetByUsernameExamplePayload,
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}`);
     return { data };
   },
@@ -66,14 +70,16 @@ const usersGetByUsername = action({
     },
   },
 });
-
 const activityListEventsForAuthenticatedUser = action({
   display: {
     label: "Activity List Events For Authenticated User",
     description: "List events for the authenticated user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/events`, {
       params: { per_page: perPage, page },
     });
@@ -114,14 +120,16 @@ const activityListEventsForAuthenticatedUser = action({
     },
   },
 });
-
 const activityListOrgEventsForAuthenticatedUser = action({
   display: {
     label: "Activity List Org Events For Authenticated User",
     description: "List organization events for the authenticated user",
   },
   perform: async (context, { connection, username, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/events/orgs/${org}`, {
       params: { per_page: perPage, page },
     });
@@ -171,14 +179,16 @@ const activityListOrgEventsForAuthenticatedUser = action({
     },
   },
 });
-
 const activityListPublicEventsForUser = action({
   display: {
     label: "Activity List Public Events For User",
     description: "List public events for a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/events/public`, {
       params: { per_page: perPage, page },
     });
@@ -219,14 +229,16 @@ const activityListPublicEventsForUser = action({
     },
   },
 });
-
 const usersListFollowersForUser = action({
   display: {
     label: "Users List Followers For User",
     description: "List followers of a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/followers`, {
       params: { per_page: perPage, page },
     });
@@ -267,14 +279,16 @@ const usersListFollowersForUser = action({
     },
   },
 });
-
 const usersListFollowingForUser = action({
   display: {
     label: "Users List Following For User",
     description: "List the people a user follows",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/following`, {
       params: { per_page: perPage, page },
     });
@@ -315,16 +329,18 @@ const usersListFollowingForUser = action({
     },
   },
 });
-
 const usersCheckFollowingForUser = action({
   display: {
     label: "Users Check Following For User",
     description: "Check if a user follows another user",
   },
   perform: async (context, { connection, username, targetUser }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/following/${targetUser}`
+      `/users/${username}/following/${targetUser}`,
     );
     return { data };
   },
@@ -354,14 +370,16 @@ const usersCheckFollowingForUser = action({
     },
   },
 });
-
 const gistsListForUser = action({
   display: {
     label: "Gists List For User",
     description: "List gists for a user",
   },
   perform: async (context, { connection, username, since, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/gists`, {
       params: { since, per_page: perPage, page },
     });
@@ -412,14 +430,16 @@ const gistsListForUser = action({
     },
   },
 });
-
 const usersListGpgKeysForUser = action({
   display: {
     label: "Users List Gpg Keys For User",
     description: "List GPG keys for a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/gpg_keys`, {
       params: { per_page: perPage, page },
     });
@@ -460,7 +480,6 @@ const usersListGpgKeysForUser = action({
     },
   },
 });
-
 const usersGetContextForUser = action({
   display: {
     label: "Users Get Context For User",
@@ -468,9 +487,12 @@ const usersGetContextForUser = action({
   },
   perform: async (
     context,
-    { connection, username, subjectType, subjectId }
+    { connection, username, subjectType, subjectId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/hovercard`, {
       params: { subject_type: subjectType, subject_id: subjectId },
     });
@@ -516,14 +538,16 @@ const usersGetContextForUser = action({
     },
   },
 });
-
 const appsGetUserInstallation = action({
   display: {
     label: "Apps Get User Installation",
     description: "Get a user installation for the authenticated app",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/installation`);
     return { data };
   },
@@ -544,14 +568,16 @@ const appsGetUserInstallation = action({
     },
   },
 });
-
 const usersListPublicKeysForUser = action({
   display: {
     label: "Users List Public Keys For User",
     description: "List public keys for a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/keys`, {
       params: { per_page: perPage, page },
     });
@@ -592,14 +618,16 @@ const usersListPublicKeysForUser = action({
     },
   },
 });
-
 const orgsListForUser = action({
   display: {
     label: "Orgs List For User",
     description: "List organizations for a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/orgs`, {
       params: { per_page: perPage, page },
     });
@@ -640,7 +668,6 @@ const orgsListForUser = action({
     },
   },
 });
-
 const packagesListPackagesForUser = action({
   display: {
     label: "Packages List Packages For User",
@@ -648,9 +675,12 @@ const packagesListPackagesForUser = action({
   },
   perform: async (
     context,
-    { connection, username, packageType, visibility }
+    { connection, username, packageType, visibility },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/packages`, {
       params: { package_type: packageType, visibility },
     });
@@ -702,7 +732,6 @@ const packagesListPackagesForUser = action({
     },
   },
 });
-
 const packagesGetPackageForUser = action({
   display: {
     label: "Packages Get Package For User",
@@ -710,11 +739,14 @@ const packagesGetPackageForUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, username }
+    { connection, packageType, packageName, username },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/packages/${packageType}/${packageName}`
+      `/users/${username}/packages/${packageType}/${packageName}`,
     );
     return { data };
   },
@@ -760,7 +792,6 @@ const packagesGetPackageForUser = action({
     },
   },
 });
-
 const packagesDeletePackageForUser = action({
   display: {
     label: "Packages Delete Package For User",
@@ -768,11 +799,14 @@ const packagesDeletePackageForUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, username }
+    { connection, packageType, packageName, username },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/users/${username}/packages/${packageType}/${packageName}`
+      `/users/${username}/packages/${packageType}/${packageName}`,
     );
     return { data };
   },
@@ -818,7 +852,6 @@ const packagesDeletePackageForUser = action({
     },
   },
 });
-
 const packagesRestorePackageForUser = action({
   display: {
     label: "Packages Restore Package For User",
@@ -826,13 +859,16 @@ const packagesRestorePackageForUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, username, token }
+    { connection, packageType, packageName, username, token },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/users/${username}/packages/${packageType}/${packageName}/restore`,
       {},
-      { params: { token } }
+      { params: { token } },
     );
     return { data };
   },
@@ -886,7 +922,6 @@ const packagesRestorePackageForUser = action({
     },
   },
 });
-
 const packagesGetAllPackageVersionsForPackageOwnedByUser = action({
   display: {
     label: "Packages Get All Package Versions For Package Owned By User",
@@ -894,11 +929,14 @@ const packagesGetAllPackageVersionsForPackageOwnedByUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, username }
+    { connection, packageType, packageName, username },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/packages/${packageType}/${packageName}/versions`
+      `/users/${username}/packages/${packageType}/${packageName}/versions`,
     );
     return { data };
   },
@@ -944,7 +982,6 @@ const packagesGetAllPackageVersionsForPackageOwnedByUser = action({
     },
   },
 });
-
 const packagesGetPackageVersionForUser = action({
   display: {
     label: "Packages Get Package Version For User",
@@ -952,11 +989,14 @@ const packagesGetPackageVersionForUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, packageVersionId, username }
+    { connection, packageType, packageName, packageVersionId, username },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/packages/${packageType}/${packageName}/versions/${packageVersionId}`
+      `/users/${username}/packages/${packageType}/${packageName}/versions/${packageVersionId}`,
     );
     return { data };
   },
@@ -1011,7 +1051,6 @@ const packagesGetPackageVersionForUser = action({
     },
   },
 });
-
 const packagesDeletePackageVersionForUser = action({
   display: {
     label: "Packages Delete Package Version For User",
@@ -1019,11 +1058,14 @@ const packagesDeletePackageVersionForUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, username, packageVersionId }
+    { connection, packageType, packageName, username, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
-      `/users/${username}/packages/${packageType}/${packageName}/versions/${packageVersionId}`
+      `/users/${username}/packages/${packageType}/${packageName}/versions/${packageVersionId}`,
     );
     return { data };
   },
@@ -1078,7 +1120,6 @@ const packagesDeletePackageVersionForUser = action({
     },
   },
 });
-
 const packagesRestorePackageVersionForUser = action({
   display: {
     label: "Packages Restore Package Version For User",
@@ -1086,12 +1127,15 @@ const packagesRestorePackageVersionForUser = action({
   },
   perform: async (
     context,
-    { connection, packageType, packageName, username, packageVersionId }
+    { connection, packageType, packageName, username, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/users/${username}/packages/${packageType}/${packageName}/versions/${packageVersionId}/restore`,
-      {}
+      {},
     );
     return { data };
   },
@@ -1146,14 +1190,16 @@ const packagesRestorePackageVersionForUser = action({
     },
   },
 });
-
 const projectsListForUser = action({
   display: {
     label: "Projects List For User",
     description: "List user projects",
   },
   perform: async (context, { connection, username, state, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/projects`, {
       params: { state, per_page: perPage, page },
     });
@@ -1208,14 +1254,16 @@ const projectsListForUser = action({
     },
   },
 });
-
 const activityListReceivedEventsForUser = action({
   display: {
     label: "Activity List Received Events For User",
     description: "List events received by the authenticated user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/received_events`, {
       params: { per_page: perPage, page },
     });
@@ -1256,19 +1304,21 @@ const activityListReceivedEventsForUser = action({
     },
   },
 });
-
 const activityListReceivedPublicEventsForUser = action({
   display: {
     label: "Activity List Received Public Events For User",
     description: "List public events received by a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/users/${username}/received_events/public`,
       {
         params: { per_page: perPage, page },
-      }
+      },
     );
     return { data };
   },
@@ -1307,7 +1357,6 @@ const activityListReceivedPublicEventsForUser = action({
     },
   },
 });
-
 const reposListForUser = action({
   display: {
     label: "Repos List For User",
@@ -1315,9 +1364,12 @@ const reposListForUser = action({
   },
   perform: async (
     context,
-    { connection, username, type, sort, direction, perPage, page }
+    { connection, username, type, sort, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/repos`, {
       params: { type, sort, direction, per_page: perPage, page },
     });
@@ -1399,16 +1451,18 @@ const reposListForUser = action({
     },
   },
 });
-
 const billingGetGithubActionsBillingUser = action({
   display: {
     label: "Billing Get Github Actions Billing User",
     description: "Get GitHub Actions billing for a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/settings/billing/actions`
+      `/users/${username}/settings/billing/actions`,
     );
     return { data };
   },
@@ -1429,16 +1483,18 @@ const billingGetGithubActionsBillingUser = action({
     },
   },
 });
-
 const billingGetGithubPackagesBillingUser = action({
   display: {
     label: "Billing Get Github Packages Billing User",
     description: "Get GitHub Packages billing for a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/settings/billing/packages`
+      `/users/${username}/settings/billing/packages`,
     );
     return { data };
   },
@@ -1459,16 +1515,18 @@ const billingGetGithubPackagesBillingUser = action({
     },
   },
 });
-
 const billingGetSharedStorageBillingUser = action({
   display: {
     label: "Billing Get Shared Storage Billing User",
     description: "Get shared storage billing for a user",
   },
   perform: async (context, { connection, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
-      `/users/${username}/settings/billing/shared-storage`
+      `/users/${username}/settings/billing/shared-storage`,
     );
     return { data };
   },
@@ -1489,7 +1547,6 @@ const billingGetSharedStorageBillingUser = action({
     },
   },
 });
-
 const activityListReposStarredByUser = action({
   display: {
     label: "Activity List Repos Starred By User",
@@ -1497,9 +1554,12 @@ const activityListReposStarredByUser = action({
   },
   perform: async (
     context,
-    { connection, username, sort, direction, perPage, page }
+    { connection, username, sort, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/starred`, {
       params: { sort, direction, per_page: perPage, page },
     });
@@ -1566,14 +1626,16 @@ const activityListReposStarredByUser = action({
     },
   },
 });
-
 const activityListReposWatchedByUser = action({
   display: {
     label: "Activity List Repos Watched By User",
     description: "List repositories watched by a user",
   },
   perform: async (context, { connection, username, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/users/${username}/subscriptions`, {
       params: { per_page: perPage, page },
     });
@@ -1614,7 +1676,6 @@ const activityListReposWatchedByUser = action({
     },
   },
 });
-
 export default {
   usersList,
   usersGetByUsername,

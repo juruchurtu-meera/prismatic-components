@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { updateRecordInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const updateRecord = action({
   display: {
     label: "Update Record",
@@ -23,7 +22,6 @@ export const updateRecord = action({
       });
     }
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const command = salesforceClient.sobject(recordType).update({
       ...dynamicValues,
       ...fieldValues,

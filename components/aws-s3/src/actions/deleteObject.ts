@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { deleteObjectPayload } from "../examplePayloads";
 import { accessKeyInput, bucket, objectKey } from "../inputs";
-
 export const deleteObject = action({
   display: {
     label: "Delete Object",

@@ -1,7 +1,3 @@
-
-
-
-
 export const getNotificationDetailsExamplePayload = {
   data: {
     watch: [
@@ -127,7 +123,6 @@ export const getNotificationDetailsExamplePayload = {
     },
   },
 };
-
 export const enableNotificationExamplePayload = {
   data: {
     watch: [
@@ -144,13 +139,13 @@ export const enableNotificationExamplePayload = {
             },
           ],
         },
-        message: "Successfully subscribed for actions-watch of the given module",
+        message:
+          "Successfully subscribed for actions-watch of the given module",
         status: "success",
       },
     ],
   },
 };
-
 export const disableNotificationExamplePayload = {
   data: {
     watch: [
@@ -177,7 +172,6 @@ export const disableNotificationExamplePayload = {
     ],
   },
 };
-
 export const disableSpecificNotificationExamplePayload = {
   data: {
     watch: [
@@ -199,7 +193,6 @@ export const disableSpecificNotificationExamplePayload = {
     ],
   },
 };
-
 export const updateNotificationExamplePayload = {
   data: {
     watch: [

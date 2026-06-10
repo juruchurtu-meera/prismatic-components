@@ -13,13 +13,6 @@ import {
   paymentMethodId,
   paymentMethodName,
 } from "../../inputs";
-
-
-
-
-
-
-
 export const createReceipt = action({
   display: {
     label: "Create Sales Receipt",
@@ -35,7 +28,6 @@ export const createReceipt = action({
         name: params?.paymentMethodName,
         value: params?.paymentMethodId,
       },
-
       CustomerRef: {
         name: params?.customerName,
         value: params?.customerId,

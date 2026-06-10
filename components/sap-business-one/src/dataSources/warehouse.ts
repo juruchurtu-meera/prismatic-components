@@ -3,7 +3,6 @@ import { $filter, connection } from "../inputs/general";
 import { createClient } from "../client";
 import { fetchAllData, mapPicklistArray, validateArray } from "../util";
 import { warehouseDataSourceExamplePayload } from "../examplePayloads/datasources";
-
 export const selectWarehouse = dataSource({
   display: {
     label: "Select Warehouse",
@@ -17,7 +16,6 @@ export const selectWarehouse = dataSource({
     const WAREHOUSE_CODE = "WarehouseCode";
     const WAREHOUSE_NAME = "WarehouseName";
     const client = await createClient(connection, context, true);
-
     const data = await fetchAllData(
       client,
       "Warehouses",
@@ -28,16 +26,13 @@ export const selectWarehouse = dataSource({
       true,
       1000,
     );
-
     const array = validateArray(data);
-
     const objects = mapPicklistArray({
       data: array,
       keyName: WAREHOUSE_CODE,
       keyLabel: WAREHOUSE_NAME,
       orderKey: WAREHOUSE_NAME,
     });
-
     return { result: objects };
   },
   dataSourceType: "picklist",

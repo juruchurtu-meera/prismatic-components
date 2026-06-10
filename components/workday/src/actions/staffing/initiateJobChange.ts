@@ -4,7 +4,6 @@ import { SERVICES } from "../../constants";
 import { initiateJobChangeExamplePayload } from "../../examplePayloads";
 import { initiateJobChangeInputs } from "../../inputs";
 import { getIdObject } from "../../util";
-
 export const initiateJobChange = action({
   display: {
     label: "Initiate Job Change",

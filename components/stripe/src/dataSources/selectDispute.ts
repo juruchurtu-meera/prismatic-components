@@ -1,11 +1,11 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../auth";
 import { connectionInput } from "../inputs";
-
 export const selectDispute = dataSource({
   display: {
     label: "Select Dispute",
-    description: "Select a dispute from a list of disputes in your Stripe account.",
+    description:
+      "Select a dispute from a list of disputes in your Stripe account.",
   },
   dataSourceType: "picklist",
   inputs: {
@@ -15,9 +15,7 @@ export const selectDispute = dataSource({
     const client = createStripeClient({
       stripeConnection,
     });
-
     const { data } = await client.disputes.list({ limit: 100 });
-
     return {
       result: data
         .map<Element>((dispute) => ({

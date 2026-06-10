@@ -5,7 +5,6 @@ import {
 } from "@prismatic-io/spectral";
 import type { OAuth2Connection } from "../interfaces/ConnectionParams/AuthorizationCodeParams";
 import type { ClientCredentialParams } from "../interfaces/ConnectionParams/ClientCredentialsParams";
-
 const _getMicrosoftOAuth2ClientCredentialsConnection = ({
   key,
   defaultScopes,
@@ -103,7 +102,6 @@ const _getMicrosoftOAuth2ClientCredentialsConnection = ({
       OAuth2Type.ClientCredentials,
     ),
   });
-
 export const getMicrosoftOAuth2ClientCredentialsConnection: (
   params: ClientCredentialParams,
 ) => OAuth2Connection = _getMicrosoftOAuth2ClientCredentialsConnection;

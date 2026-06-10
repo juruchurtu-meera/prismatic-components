@@ -1,10 +1,8 @@
 import { input, util } from "@prismatic-io/spectral";
-
 const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const application_id = input({
   label: "Application ID",
   type: "string",
@@ -15,7 +13,6 @@ export const application_id = input({
   example: "69102626",
   dataSource: "applications",
 });
-
 export const last_activity_after = input({
   label: "Last Activity After",
   type: "string",
@@ -26,7 +23,6 @@ export const last_activity_after = input({
   example: "2024-01-01T00:00:00Z",
   clean: cleanString,
 });
-
 export const source_id = input({
   label: "Source ID",
   type: "string",
@@ -36,7 +32,6 @@ export const source_id = input({
   example: "2",
   clean: util.types.toInt,
 });
-
 export const prospect_pool_id = input({
   label: "Prospect Pool ID",
   type: "string",
@@ -46,7 +41,6 @@ export const prospect_pool_id = input({
   example: "123",
   clean: util.types.toInt,
 });
-
 export const prospect_stage_id = input({
   label: "Prospect Stage ID",
   type: "string",
@@ -57,7 +51,6 @@ export const prospect_stage_id = input({
   example: "456",
   clean: util.types.toInt,
 });
-
 export const referrer = input({
   label: "Referrer",
   type: "code",

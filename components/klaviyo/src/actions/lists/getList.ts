@@ -4,7 +4,6 @@ import { getListInputs as inputs } from "../../inputs/lists";
 import type { FieldsList } from "../../types/FieldsList";
 import { getListExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const getList = action({
   display: {
     label: "Get List",
@@ -16,7 +15,6 @@ export const getList = action({
     if (debug) {
       context.logger.debug({ connection, listId, fieldsList, debug });
     }
-
     const { body } = await listsApi.getList(listId!, {
       fieldsList: fieldsList as FieldsList[],
     });

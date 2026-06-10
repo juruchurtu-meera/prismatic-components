@@ -1,1 +1,1 @@
-export * from "./ResolvedWebhookSecret"
+export * from "./ResolvedWebhookSecret";

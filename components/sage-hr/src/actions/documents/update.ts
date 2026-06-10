@@ -21,7 +21,6 @@ import {
   status,
 } from "../../inputs";
 import { generateForm } from "../../util";
-
 export const updateDocument = action({
   display: {
     label: "Update Document",

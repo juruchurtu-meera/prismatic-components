@@ -4,7 +4,6 @@ import {
   oauth2Connection,
 } from "@prismatic-io/spectral";
 import { environment } from "./inputs";
-
 export const v1Environment = {
   Production: {
     value: "https://dc1prodgwext.paylocity.com/",
@@ -17,7 +16,6 @@ export const v1Environment = {
     tokenUrl: "https://dc1demogwext.paylocity.com/public/security/v1/token",
   },
 };
-
 export const v2Environment = {
   Production: {
     value: "https://api.paylocity.com/api/v2",
@@ -30,7 +28,6 @@ export const v2Environment = {
     tokenUrl: "https://apisandbox.paylocity.com/IdentityServer/connect/token",
   },
 };
-
 const tokenUrlV2 = [
   {
     value: "https://api.paylocity.com/IdentityServer/connect/token",
@@ -41,7 +38,6 @@ const tokenUrlV2 = [
     label: "Testing",
   },
 ];
-
 const tokenUrlV1 = [
   {
     value: "https://dc1prodgwext.paylocity.com/public/security/v1/token",
@@ -52,7 +48,6 @@ const tokenUrlV1 = [
     label: "Testing",
   },
 ];
-
 export const paylocityOAuth = oauth2Connection({
   key: "oauth2",
   oauth2Type: OAuth2Type.ClientCredentials,
@@ -99,7 +94,6 @@ export const paylocityOAuth = oauth2Connection({
     },
   },
 });
-
 export const paylocityOAuthV1 = connection({
   key: "payEntryOAuth2",
   display: {
@@ -145,5 +139,4 @@ export const paylocityOAuthV1 = connection({
     },
   },
 });
-
 export default [paylocityOAuth, paylocityOAuthV1];

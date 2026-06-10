@@ -8,7 +8,6 @@ import {
 } from "../../inputs/general";
 import { listProductsPayload } from "../../examplePayloads";
 import { filterDataChangedAfter } from "../../util";
-
 export const listProducts = action({
   display: {
     label: "List Products",

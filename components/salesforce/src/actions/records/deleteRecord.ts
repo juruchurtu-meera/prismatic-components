@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { deleteRecordInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const deleteRecord = action({
   display: {
     label: "Delete Record",

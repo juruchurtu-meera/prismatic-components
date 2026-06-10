@@ -8,7 +8,6 @@ export interface UpdateTimeEntryBody {
   billable: boolean;
   duration: number | undefined;
 }
-
 interface Tag {
   name: string;
   tag_bg: string;

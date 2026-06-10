@@ -1,11 +1,12 @@
 import type { JSONForm } from "@prismatic-io/spectral";
-
 interface Option {
   const: string;
   title: string;
 }
-
-export const createKeyValMapper = (keyOptions: Option[], valueOptions: Option[]): Omit<JSONForm, "data"> => ({
+export const createKeyValMapper = (
+  keyOptions: Option[],
+  valueOptions: Option[],
+): Omit<JSONForm, "data"> => ({
   schema: {
     type: "object",
     properties: {
@@ -29,11 +30,5 @@ export const createKeyValMapper = (keyOptions: Option[], valueOptions: Option[])
   },
   uiSchema: {
     type: "VerticalLayout",
-    
-
-
-
-
- 
   },
 });

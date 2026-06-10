@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { getJobFunctionExamplePayload } from "../../../examplePayloads";
 import { getJobFunctionInputs } from "../../../inputs";
-
 export const getJobFunction = action({
   display: {
     label: "Get Job Function (V2)",

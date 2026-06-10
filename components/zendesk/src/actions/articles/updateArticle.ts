@@ -18,7 +18,6 @@ import {
 } from "../../inputs";
 import { updateArticlePayload } from "../../examplePayloads";
 import { convertBooleanInputIntoUpdateInput } from "../../util";
-
 export const updateArticle = action({
   display: {
     label: "Update Article",
@@ -62,7 +61,6 @@ export const updateArticle = action({
         },
       },
     );
-
     return {
       data,
     };

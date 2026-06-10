@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, region } from "../inputs";
-
 export const sources = dataSource({
   display: {
     label: "Fetch Sources",

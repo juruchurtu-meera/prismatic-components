@@ -1,7 +1,6 @@
 import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, dealIdInput } from "../../inputs";
-
 export const addDealParticipant = action({
   display: {
     label: "Add Deal Participant",

@@ -6,14 +6,20 @@ import { listVariantsInputs as inputs } from "../../../inputsGql";
 import { fetchData } from "../../../util";
 import type { PageInfo } from "../../interfaces/PageInfo";
 import listVariantsQuery from "../queries/variants/ListVariants.gql";
-
 export const listVariantsGql = action({
   display: {
     label: "List Variants",
     description: "Lists all variants for the specified product.",
   },
-  perform: async (context, { shopifyConnection, productId, getAlldata, limit, endCursor }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
+  perform: async (
+    context,
+    { shopifyConnection, productId, getAlldata, limit, endCursor },
+  ) => {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const data = (await fetchData(
       client,
       ["productVariants"],
@@ -25,8 +31,9 @@ export const listVariantsGql = action({
         first: getAlldata ? MAX_LIMIT : limit,
         cursor: getAlldata ? undefined : endCursor,
       },
-    )) as Record<"productVariants", unknown[]> & { pageInfo: PageInfo };
-
+    )) as Record<"productVariants", unknown[]> & {
+      pageInfo: PageInfo;
+    };
     return {
       data,
     };

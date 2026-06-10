@@ -1,6 +1,5 @@
 import { connection } from "../common";
 import { identifier } from "./common";
-
 export const revokeEmployeeAccessInputs = {
   connection,
   identifier: {

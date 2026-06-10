@@ -4,7 +4,6 @@ import { listPagesInputs } from "../../inputs";
 import type { ListPagesQueryParams } from "../types/ListPagesQueryParams";
 import { listPagesExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listPages = action({
   display: {
     label: "List Pages",
@@ -16,9 +15,13 @@ export const listPages = action({
     const queryParams: ListPagesQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(client, "/pages", fetchAll, queryParams as Record<string, string>);
+    return paginateResults(
+      client,
+      "/pages",
+      fetchAll,
+      queryParams as Record<string, string>,
+    );
   },
   inputs: listPagesInputs,
 });
-
 export default { listPages };

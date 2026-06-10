@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { listCustomerBankAccountInputs } from "../../inputs/customer";
 import { listCustomerBankAccountsExamplePayload } from "../../examplePayloads";
-
 export const listCustomerBankAccount = action({
   display: {
     label: "List Customer Bank Account",
@@ -18,7 +17,6 @@ export const listCustomerBankAccount = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       start,
       max,
@@ -31,12 +29,10 @@ export const listCustomerBankAccount = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/List/CustomerBankAccount.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

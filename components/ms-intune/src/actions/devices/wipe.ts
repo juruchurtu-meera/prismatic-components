@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { wipeDeviceInputs } from "../../inputs/devices/wipe";
 import { wipeDeviceExamplePayload } from "../../examplePayloads";
-
 export const wipeDevice = action({
   display: {
     label: "Wipe Device",

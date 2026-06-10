@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { listCompositeResourcesInputs } from "../../inputs";
 import { listCompositeResourcesExamplePayload } from "../../examplePayloads";
-
 export const listCompositeResources = action({
   display: {
     label: "List Composite Resources",

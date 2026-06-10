@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { rowGetExamplePayload } from "../../examplePayloads";
 import { rowGetInputs } from "../../inputs";
-
 export const rowGet = action({
   display: {
     label: "Get Row",

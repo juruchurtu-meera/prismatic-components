@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
 import { updateEmployeeEmailExamplePayload } from "../../examplePayloads";
 import { updateEmployeeEmailInputs } from "../../inputs";
-
 export const updateEmployeeEmail = action({
   display: {
     label: "Update Employee Email",
@@ -10,7 +9,6 @@ export const updateEmployeeEmail = action({
   },
   perform: async (context, { connection, identifier, email }) => {
     const client = getClient(connection, context.debug.enabled);
-
     await client.put(`/people/${identifier}/email`, {
       email,
     });

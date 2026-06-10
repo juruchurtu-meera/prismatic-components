@@ -3,11 +3,11 @@ import { getMsBusinessCentralClient } from "../../client";
 import { updateVendorExamplePayload } from "../../examplePayloads";
 import { updateVendorInputs } from "../../inputs/vendors";
 import type { Vendor } from "../../interfaces";
-
 export const updateVendor = action({
   display: {
     label: "Update Vendor",
-    description: "Update a vendor object in your Business Central organization.",
+    description:
+      "Update a vendor object in your Business Central organization.",
   },
   inputs: updateVendorInputs,
   perform: async (
@@ -36,8 +36,11 @@ export const updateVendor = action({
       irs1099Code,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
-
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const { data } = await client.patch<Vendor>(
       `/companies(${companyId})/vendors(${vendorId})`,
       {
@@ -66,7 +69,6 @@ export const updateVendor = action({
         },
       },
     );
-
     return { data };
   },
   examplePayload: updateVendorExamplePayload,

@@ -489,7 +489,6 @@ export const getBusinessPartnerExample = {
     BPCurrenciesCollection: [],
   },
 };
-
 export const listBusinessPartnersExample = {
   data: [getBusinessPartnerExample.data],
 };

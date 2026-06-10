@@ -4,7 +4,6 @@ import { EMAIL_DEFINITIONS_PATH } from "../../constants";
 import { listEmailDefinitionsExamplePayload } from "../../examplePayloads";
 import { listEmailDefinitionsInputs } from "../../inputs";
 import { paginateResults } from "../../util/pagination";
-
 export const listEmailDefinitions = action({
   examplePayload: listEmailDefinitionsExamplePayload,
   display: {
@@ -15,12 +14,10 @@ export const listEmailDefinitions = action({
   inputs: listEmailDefinitionsInputs,
   perform: async (context, { connection, fetchAll, pageSize, page }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const params = {
       $pageSize: pageSize,
       $page: page,
     };
-
     const data = await paginateResults(
       client,
       EMAIL_DEFINITIONS_PATH,
@@ -31,7 +28,6 @@ export const listEmailDefinitions = action({
         preserveFields: ["requestId"],
       },
     );
-
     return { data };
   },
 });

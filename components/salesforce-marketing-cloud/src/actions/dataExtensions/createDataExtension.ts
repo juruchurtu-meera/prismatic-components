@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { DATA_EXTENSIONS_PATH } from "../../constants";
 import { createDataExtensionExamplePayload } from "../../examplePayloads";
 import { createDataExtensionInputs } from "../../inputs";
-
 export const createDataExtension = action({
   examplePayload: createDataExtensionExamplePayload,
   display: {
@@ -23,16 +22,13 @@ export const createDataExtension = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       name: dataExtensionName,
       key: dataExtensionKey,
       fields: dataExtensionFields,
       isSendable,
     };
-
     const { data } = await client.post(DATA_EXTENSIONS_PATH, body);
-
     return { data };
   },
 });

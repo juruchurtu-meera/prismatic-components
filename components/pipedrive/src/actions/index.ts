@@ -28,7 +28,6 @@ import userConnections from "./userConnections";
 import userSettings from "./userSettings";
 import users from "./users";
 import webhooks from "./webhooks";
-
 export default {
   ...activities,
   ...activityFields,

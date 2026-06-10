@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, signatureId, imageType } from "../inputs";
-
 export const updateAccountSignatureImage = action({
   display: {
     label: "Update Account Signature Image",
@@ -13,7 +12,6 @@ export const updateAccountSignatureImage = action({
       true,
       context.debug.enabled,
     );
-
     const { data } = await client.put(
       `/signatures/${signatureId}/${imageType}`,
     );

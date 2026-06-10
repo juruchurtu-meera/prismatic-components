@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { selectRecordInputs } from "../inputs";
 import type { Record } from "../types/Record";
-
 export const selectRecord = dataSource({
   display: {
     label: "Select Record",
@@ -23,7 +22,6 @@ export const selectRecord = dataSource({
       },
     });
     const records: Record[] = data.items;
-
     return {
       result: records.map<Element>((record) => ({
         key: record.id,

@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { createAlgoliaClient } from "../../client";
 import { listIndexesExamplePayload } from "../../examplePayloads";
 import { connectionInput, page } from "../../inputs";
-
 export const listIndexes = action({
   display: {
     label: "List Indices",
@@ -15,7 +14,6 @@ export const listIndexes = action({
       isGoingToRead: true,
       debug: context.debug.enabled,
     });
-
     try {
       const { data } = await client.get(`/1/indexes`, {
         params: {

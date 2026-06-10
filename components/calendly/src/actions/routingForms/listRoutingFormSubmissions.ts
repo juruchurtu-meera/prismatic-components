@@ -3,7 +3,6 @@ import { getCalendlyClient } from "../../client";
 import { connection, form, organization, sort } from "../../inputs";
 import { listRoutingFormSubmissionsExamplePayload } from "../../examplePayloads";
 import { paginator } from "../../util";
-
 export const listRoutingFormSubmissions = action({
   display: {
     label: "List Routing Form Submissions",
@@ -16,7 +15,6 @@ export const listRoutingFormSubmissions = action({
       form,
       sort: sort || undefined,
     });
-
     return { data };
   },
   inputs: {

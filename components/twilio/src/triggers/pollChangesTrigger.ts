@@ -3,7 +3,6 @@ import { pollChangesTriggerExamplePayload } from "../examplePayloads";
 import { pollChangesTriggerInputs } from "../inputs";
 import type { PollingState, TwilioMessage } from "../types";
 import { fetchMessagesSince } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -17,7 +16,6 @@ export const pollChangesTrigger = pollingTrigger({
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
     const dateSentAfter = new Date(lastPolledAt);
-
     const { messages, truncated } = await fetchMessagesSince(
       params.connection,
       dateSentAfter,
@@ -25,19 +23,18 @@ export const pollChangesTrigger = pollingTrigger({
       params.from,
       params.to,
     );
-
-    const created: TwilioMessage[] = params.showNewRecords !== false ? messages : [];
+    const created: TwilioMessage[] =
+      params.showNewRecords !== false ? messages : [];
     const updated: TwilioMessage[] = [];
-
-    
-    
-    
     let nextCursor = now;
     if (truncated) {
       const oldestSent = messages
         .map((m) => m.dateSent)
         .filter((d): d is Date => d instanceof Date)
-        .reduce<Date | null>((min, d) => (min === null || d < min ? d : min), null);
+        .reduce<Date | null>(
+          (min, d) => (min === null || d < min ? d : min),
+          null,
+        );
       if (oldestSent !== null) {
         nextCursor = oldestSent.toISOString();
       }
@@ -46,13 +43,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled Twilio messages: ${messages.length} fetched, ${created.length} created, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },

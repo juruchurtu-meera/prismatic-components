@@ -19,7 +19,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { queryFunnelSavedReportsExamplePayload } from "../../examplePayloads";
-
 export const queryFunnelSavedReports = action({
   display: {
     label: "Query Funnel Saved Reports",

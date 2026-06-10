@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-05
+
+Added the **New Envelopes** polling trigger that returns envelopes created since the last run
+
 ### 2026-04-30
 
 Updated spectral version

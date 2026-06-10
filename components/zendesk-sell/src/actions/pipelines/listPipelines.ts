@@ -4,7 +4,6 @@ import { getZendeskClient } from "../../client";
 import { listPipelinesExamplePayload } from "../../examplePayloads";
 import { listPipelinesInputs } from "../../inputs";
 import { fetchAllPages } from "../../util";
-
 export const listPipelines = action({
   display: {
     label: "List Pipelines",
@@ -25,7 +24,6 @@ export const listPipelines = action({
         ...(name && { name }),
         ...(disabled && { disabled }),
       };
-
       const data: unknown = await fetchAllPages(
         client,
         "/pipelines",

@@ -16,7 +16,6 @@ import {
   editServerExamplePayload,
   deleteServerExamplePayload,
 } from "../examplePayloads";
-
 export const getServer = action({
   display: {
     label: "Get Server",
@@ -28,7 +27,6 @@ export const getServer = action({
       params.postmarkConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.get(`/server`);
     return {
       data,
@@ -38,7 +36,6 @@ export const getServer = action({
     postmarkConnection: connectionInput,
   },
 });
-
 export const editServer = action({
   display: {
     label: "Edit Server Using Server Token Account",
@@ -65,7 +62,6 @@ export const editServer = action({
     serverColor: serverColor,
   },
 });
-
 export const createServer = action({
   display: {
     label: "Create Server",
@@ -78,7 +74,6 @@ export const createServer = action({
       Color: params.serverColor,
       SmtpApiActivated: params.smtpApiActivated,
     };
-
     const client = createHttpClient(
       params.postmarkConnection,
       context.debug.enabled,
@@ -99,7 +94,6 @@ export const createServer = action({
     inboundHookUrl,
   },
 });
-
 export const deleteServer = action({
   display: {
     label: "Delete Server",

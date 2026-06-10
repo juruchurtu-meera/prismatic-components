@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The IMAP connection to use.",
 });
-
 export const mailbox = input({
   label: "Mailbox",
   type: "string",
@@ -16,7 +14,6 @@ export const mailbox = input({
   placeholder: "Enter mailbox name",
   clean: util.types.toString,
 });
-
 export const path = input({
   label: "Path",
   type: "string",
@@ -26,7 +23,6 @@ export const path = input({
   placeholder: "Enter mailbox path",
   clean: util.types.toString,
 });
-
 export const range = input({
   label: "Range",
   type: "string",
@@ -37,7 +33,6 @@ export const range = input({
   placeholder: "Enter message range",
   clean: util.types.toString,
 });
-
 export const flags = input({
   label: "Flags",
   type: "string",
@@ -49,7 +44,6 @@ export const flags = input({
   placeholder: "Enter flag value",
   clean: (value: unknown) => value as string[],
 });
-
 export const content = input({
   label: "Message Content",
   type: "string",
@@ -66,7 +60,6 @@ export const content = input({
   placeholder: "Enter message content",
   clean: util.types.toString,
 });
-
 export const messageIndex = input({
   label: "Message UID",
   type: "string",

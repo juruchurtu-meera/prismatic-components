@@ -15,7 +15,6 @@ import {
   performFunction,
   validateFields,
 } from "./util";
-
 export const metaAdsPageTrigger = trigger({
   display: {
     label: "Page Trigger",
@@ -64,7 +63,6 @@ export const metaAdsPageTrigger = trigger({
     },
   },
 });
-
 export const metaAdsAdAccountTrigger = trigger({
   display: {
     label: "Ad Account Trigger",
@@ -121,5 +119,4 @@ export const metaAdsAdAccountTrigger = trigger({
     },
   },
 });
-
 export default { metaAdsPageTrigger, metaAdsAdAccountTrigger };

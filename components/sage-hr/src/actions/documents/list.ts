@@ -8,7 +8,6 @@ import {
   fetchAll,
 } from "../../inputs";
 import { fetchAllRecords } from "../../util";
-
 export const listDocuments = action({
   display: {
     label: "List Documents",
@@ -33,12 +32,10 @@ export const listDocuments = action({
       category_id: category_id || undefined,
       employee_id: employee_id || undefined,
     };
-
     if (fetchAll) {
       const data = await fetchAllRecords(client, "/documents", params);
       return { data };
     }
-
     const { data } = await client.get("/documents", { params });
     return { data };
   },

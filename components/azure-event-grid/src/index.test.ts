@@ -21,7 +21,6 @@ const EVENT_GRID_SAMPLE_PAYLOAD = [
 ];
 describe("test my trigger", () => {
   test("verify the return value of my trigger", async () => {
-    
     const events = ["Microsoft.Storage.BlobCreate"];
     const { result } = await invokeTrigger(
       myTrigger,

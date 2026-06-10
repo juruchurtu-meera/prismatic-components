@@ -1,12 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
 export const getCurrentUserExamplePayload = {
   data: {
     userById: {
@@ -21,7 +13,6 @@ export const getCurrentUserExamplePayload = {
     },
   },
 };
-
 export const listCompanyUsersExamplePayload = {
   data: {
     id: "abcdef1234567890abcdef12",
@@ -40,7 +31,6 @@ export const listCompanyUsersExamplePayload = {
     ],
   },
 };
-
 export const getComponentByIdExamplePayload = {
   data: {
     componentsByIds: [
@@ -118,7 +108,6 @@ export const getComponentByIdExamplePayload = {
     ],
   },
 };
-
 export const createChangeOrderExamplePayload = {
   data: {
     createChangeOrder: {
@@ -140,7 +129,6 @@ export const createChangeOrderExamplePayload = {
     },
   },
 };
-
 export const listChangeOrdersExamplePayload = {
   data: {
     changeOrders: {
@@ -177,7 +165,6 @@ export const listChangeOrdersExamplePayload = {
     },
   },
 };
-
 export const listComponentsExamplePayload = {
   data: [
     {
@@ -189,7 +176,6 @@ export const listComponentsExamplePayload = {
     },
   ],
 };
-
 export const rawRequestExamplePayload = {
   data: {
     componentsByIds: [
@@ -200,7 +186,6 @@ export const rawRequestExamplePayload = {
     ],
   },
 };
-
 export const pollChangesExamplePayload = {
   payload: {
     headers: {},

@@ -11,7 +11,6 @@ import {
   sysparmQuery as sysparm_query,
 } from "../../../inputs";
 import { createNowApiClient, fetchAllTableRecords } from "../../../util";
-
 export const listConfigurationItems = action({
   display: {
     label: "List Configuration Items",
@@ -37,7 +36,6 @@ export const listConfigurationItems = action({
       apiVersionInput,
       context.debug.enabled,
     );
-
     if (fetchAll) {
       const data = await fetchAllTableRecords(
         client,
@@ -46,7 +44,6 @@ export const listConfigurationItems = action({
       );
       return { data };
     }
-
     const { data } = await client.get(`/cmdb/instance/${className}`, {
       params: { sysparm_limit, sysparm_offset, sysparm_query },
     });

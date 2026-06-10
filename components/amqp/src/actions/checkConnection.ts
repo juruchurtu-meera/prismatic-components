@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { checkConnectionExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
-
 export const checkConnection = action({
   display: {
     label: "Check AMQP Connection",
@@ -10,7 +9,11 @@ export const checkConnection = action({
       "Verify that an AMQP server is available, and return the server's connection information. This is helpful for debugging purposes.",
   },
   perform: async (context, { amqpConnection }) => {
-    const client = await createClient(amqpConnection, context.debug.enabled, context.logger);
+    const client = await createClient(
+      amqpConnection,
+      context.debug.enabled,
+      context.logger,
+    );
     await client.close();
     return {
       data: {

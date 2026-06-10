@@ -10,7 +10,6 @@ export const listCallbacksExamplePayload = {
     },
   ],
 };
-
 export const createCallbackExamplePayload = {
   data: [
     {
@@ -22,11 +21,9 @@ export const createCallbackExamplePayload = {
     },
   ],
 };
-
 export const verifyCallbackExamplePayload = {
   data: {},
 };
-
 export const updateCallbackExamplePayload = {
   data: [
     {
@@ -39,7 +36,6 @@ export const updateCallbackExamplePayload = {
     },
   ],
 };
-
 export const deleteCallbackExamplePayload = {
   data: {
     success: true,
@@ -47,7 +43,6 @@ export const deleteCallbackExamplePayload = {
     message: "Callback deleted successfully",
   },
 };
-
 export const listSubscriptionsExamplePayload = {
   data: [
     {
@@ -64,7 +59,6 @@ export const listSubscriptionsExamplePayload = {
     },
   ],
 };
-
 export const createSubscriptionExamplePayload = {
   data: [
     {
@@ -81,7 +75,6 @@ export const createSubscriptionExamplePayload = {
     },
   ],
 };
-
 export const getSubscriptionExamplePayload = {
   data: {
     callbackId: "65b885ab-c2b4-46fe-85d0-d6cb8be8057d",
@@ -99,7 +92,6 @@ export const getSubscriptionExamplePayload = {
     statusReason: "none",
   },
 };
-
 export const updateSubscriptionExamplePayload = {
   data: [
     {
@@ -116,7 +108,6 @@ export const updateSubscriptionExamplePayload = {
     },
   ],
 };
-
 export const deleteSubscriptionExamplePayload = {
   data: {
     success: true,

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getAccountingConnectionResponse as createAccountingConnectionResponse } from "../../examplePayloads/accountingConnection";
 import { connection, reactivate, remoteProviderName } from "../../inputs";
-
 export const createAccountingConnection = action({
   display: {
     label: "Create Accounting Connection",
@@ -19,7 +18,6 @@ export const createAccountingConnection = action({
   },
   perform: async (context, { connection, reactivate, remoteProviderName }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/accounting/connection`, {
       reactivate,
       remote_provider_name: remoteProviderName,

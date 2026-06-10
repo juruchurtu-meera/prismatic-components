@@ -4,7 +4,6 @@ import { createAuthorizedClient } from "../auth";
 import { getTemporaryLinkExamplePayload } from "../example-payloads";
 import { connectionInput, path, teamMemberId } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const getTemporaryLink = action({
   display: {
     label: "Get Temporary Link",
@@ -19,7 +18,6 @@ export const getTemporaryLink = action({
       },
       context,
     );
-
     const dbx = createAuthorizedClient(
       dropboxConnection,
       teamMemberId ? "user" : undefined,

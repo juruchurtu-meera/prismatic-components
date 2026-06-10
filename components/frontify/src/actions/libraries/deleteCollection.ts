@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { deleteCollectionExamplePayload as examplePayload } from "../../examplePayloads";
 import { deleteCollectionInputs as inputs } from "../../inputs/libraries";
-
 export const deleteCollection = action({
   display: {
     label: "Delete Collection",
@@ -21,7 +20,6 @@ export const deleteCollection = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

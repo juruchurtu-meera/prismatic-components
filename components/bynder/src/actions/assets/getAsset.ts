@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getAssetResponse } from "../../examplePayloads";
 import { connection, id, stats, versions } from "../../inputs";
-
 export const getAsset = action({
   display: {
     label: "Get Asset",

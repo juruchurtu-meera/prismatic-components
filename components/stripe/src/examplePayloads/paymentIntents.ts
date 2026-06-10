@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 export const getPaymentIntentExamplePayload = {
   data: {
     id: "pi_3MmlLrLkdIwHu7ix01zsk9pV",
@@ -22,7 +14,8 @@ export const getPaymentIntentExamplePayload = {
     canceled_at: null,
     cancellation_reason: null,
     capture_method: "automatic",
-    client_secret: "pi_3MmlLrLkdIwHu7ix01zsk9pV_secret_DfFyfyVOLOaYMnE5DuFGYTrXf",
+    client_secret:
+      "pi_3MmlLrLkdIwHu7ix01zsk9pV_secret_DfFyfyVOLOaYMnE5DuFGYTrXf",
     confirmation_method: "automatic",
     created: 1716397800,
     currency: "usd",
@@ -58,21 +51,8 @@ export const getPaymentIntentExamplePayload = {
     transfer_group: null,
   } as unknown,
 };
-
-
-
-
 export const createPaymentIntentExamplePayload = getPaymentIntentExamplePayload;
-
-
-
-
 export const updatePaymentIntentExamplePayload = getPaymentIntentExamplePayload;
-
-
-
-
-
 export const confirmPaymentIntentExamplePayload = {
   data: {
     ...(getPaymentIntentExamplePayload.data as Record<string, unknown>),
@@ -82,10 +62,6 @@ export const confirmPaymentIntentExamplePayload = {
     payment_method: "pm_1MqM05LkdIwHu7ixlDxxO6Mc",
   } as unknown,
 };
-
-
-
-
 export const capturePaymentIntentExamplePayload = {
   data: {
     ...(getPaymentIntentExamplePayload.data as Record<string, unknown>),
@@ -95,10 +71,6 @@ export const capturePaymentIntentExamplePayload = {
     latest_charge: "ch_3MmlLrLkdIwHu7ix0snN0B15",
   } as unknown,
 };
-
-
-
-
 export const cancelPaymentIntentExamplePayload = {
   data: {
     ...(getPaymentIntentExamplePayload.data as Record<string, unknown>),
@@ -107,12 +79,6 @@ export const cancelPaymentIntentExamplePayload = {
     cancellation_reason: "requested_by_customer",
   } as unknown,
 };
-
-
-
-
-
-
 export const listPaymentIntentsExamplePayload = {
   data: {
     object: "list",
@@ -121,12 +87,6 @@ export const listPaymentIntentsExamplePayload = {
     url: "/v1/payment_intents",
   } as unknown,
 };
-
-
-
-
-
-
 export const searchPaymentIntentsExamplePayload = {
   data: {
     object: "search_result",

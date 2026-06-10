@@ -13,7 +13,6 @@ import {
 } from "../../inputs";
 import type { CreateTimeEntryQueryParams } from "./types/CreateTimeEntryQueryParams";
 import type { StartTimeEntryBody } from "./types/StartTimeEntryBody";
-
 const teamId = getTeamId(true);
 const customTaskIds = getCustomTaskIds(false);
 const customTeamId = getCustomTeamId(false);
@@ -21,7 +20,6 @@ const description = getDescription(true, "Description");
 const billable = getBillable(true, "Billable", false);
 const taskId = getTaskId(true, "Associate a time entry with a task by ID");
 const tagNamesArray = getTagNamesArray(true, "Add a tag name");
-
 export const startTimeEntry = action({
   display: {
     label: "Start Time Entry",
@@ -30,12 +28,24 @@ export const startTimeEntry = action({
   examplePayload: startTimeEntryExamplePayload,
   perform: async (
     context,
-    { clickUpConnection, teamId, customTaskIds, customTeamId, description, billable, taskId, tagNamesArray }
+    {
+      clickUpConnection,
+      teamId,
+      customTaskIds,
+      customTeamId,
+      description,
+      billable,
+      taskId,
+      tagNamesArray,
+    },
   ) => {
     const tags = tagNamesArray.map((tagName) => ({
       name: util.types.toString(tagName),
     }));
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const queryParams: CreateTimeEntryQueryParams = {
       custom_task_ids: customTaskIds,
       team_id: customTeamId,
@@ -46,11 +56,13 @@ export const startTimeEntry = action({
       tid: taskId,
       billable,
     };
-
-    const { data } = await client.post(`/team/${teamId}/time_entries/start`, body, {
-      params: queryParams,
-    });
-
+    const { data } = await client.post(
+      `/team/${teamId}/time_entries/start`,
+      body,
+      {
+        params: queryParams,
+      },
+    );
     return {
       data,
     };

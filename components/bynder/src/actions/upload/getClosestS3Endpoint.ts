@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createApiClient } from "../../client";
 import { getClosestS3EndpointResponse } from "../../examplePayloads";
 import { connection } from "../../inputs";
-
 export const getClosestS3Endpoint = action({
   display: {
     label: "Get Closest S3 Upload Endpoint",

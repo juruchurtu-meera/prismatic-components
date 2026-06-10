@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../client";
 import { oneDriveConnection } from "../inputs";
-
 export const listUsers = dataSource({
   display: {
     label: "List Users from Source",
@@ -15,7 +14,6 @@ export const listUsers = dataSource({
     const {
       data: { value },
     } = await client.get("/users");
-
     return value
       .map((record: Record<string, unknown>) => {
         if (record.mail) {

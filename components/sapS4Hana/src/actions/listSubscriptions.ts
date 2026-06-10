@@ -1,8 +1,14 @@
 import { action, input, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
-import { connectionInput, top, skip, search, filter, inlinecount } from "../inputs";
-
+import {
+  connectionInput,
+  top,
+  skip,
+  search,
+  filter,
+  inlinecount,
+} from "../inputs";
 const orderByOptions = [
   "BusEventSubscriberCode",
   "BusEventSubscriberCode desc",
@@ -15,7 +21,6 @@ const orderByOptions = [
   "BusEventPriority",
   "BusEventPriority desc",
 ].map((option) => ({ label: option, value: option }));
-
 const selectOptions = [
   "BusEventSubscriberCode",
   "SAPObjectType",
@@ -23,7 +28,6 @@ const selectOptions = [
   "BusEventSubscriptionStateCode",
   "BusEventPriority",
 ].map((option) => ({ label: option, value: option }));
-
 export const listSubscriptionsOrderBy = input({
   label: "Order By",
   placeholder: "Order By",
@@ -34,7 +38,6 @@ export const listSubscriptionsOrderBy = input({
   model: orderByOptions,
   clean: util.types.toString,
 });
-
 export const listSubscriptionsSelect = input({
   label: "Select",
   placeholder: "Select",
@@ -45,7 +48,6 @@ export const listSubscriptionsSelect = input({
   model: selectOptions,
   clean: util.types.toString,
 });
-
 export const listSubscriptions = action({
   display: {
     label: "List Subscriptions",
@@ -53,7 +55,16 @@ export const listSubscriptions = action({
   },
   perform: async (
     _context,
-    { connectionInput, top, skip, search, filter, inlinecount, orderBy, select },
+    {
+      connectionInput,
+      top,
+      skip,
+      search,
+      filter,
+      inlinecount,
+      orderBy,
+      select,
+    },
   ) => {
     const headers = {
       Accept: "application/json",
@@ -61,15 +72,7 @@ export const listSubscriptions = action({
     const client = getSapClient(connectionInput, headers);
     try {
       const { data } = await client.get(
-        `/sap/opu/odata/sap/CA_BEH_SUBSCRIPTION_SRV/SubscriptionMaintain?${
-          top.length ? `$top=${top}&` : ""
-        }${skip.length ? `$skip=${skip}&` : ""}${
-          search.length ? `search=${search}&` : ""
-        }${filter.length ? `$filter=${filter}&` : ""}${
-          inlinecount.length ? `$inlinecount=${inlinecount}&` : ""
-        }${orderBy.length ? `$orderby=${orderBy}&` : ""}${
-          select.length ? `$select=${select}&` : ""
-        }`,
+        `/sap/opu/odata/sap/CA_BEH_SUBSCRIPTION_SRV/SubscriptionMaintain?${top.length ? `$top=${top}&` : ""}${skip.length ? `$skip=${skip}&` : ""}${search.length ? `search=${search}&` : ""}${filter.length ? `$filter=${filter}&` : ""}${inlinecount.length ? `$inlinecount=${inlinecount}&` : ""}${orderBy.length ? `$orderby=${orderBy}&` : ""}${select.length ? `$select=${select}&` : ""}`,
       );
       return { data };
     } catch (error) {

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { retrieveCommentExamplePayload } from "../../examplePayloads";
 import { retrieveCommentInputs } from "../../inputs";
-
 export const retrieveComment = action({
   display: {
     label: "Retrieve Comment",

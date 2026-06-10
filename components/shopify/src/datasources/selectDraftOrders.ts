@@ -5,7 +5,6 @@ import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
 import { selectDraftOrdersInputs as inputs } from "../inputsGql";
 import { fetchData, getNumericId } from "../util";
-
 export const selectDraftOrders = dataSource({
   display: {
     label: "Select Draft Orders",
@@ -13,7 +12,6 @@ export const selectDraftOrders = dataSource({
   },
   perform: async (_context, { shopifyConnection }) => {
     const client = getShopifyGraphQlClient(shopifyConnection, undefined, false);
-
     const { draftOrders } = await fetchData<DataSourceRecord>(
       client,
       ["draftOrders"],
@@ -24,7 +22,6 @@ export const selectDraftOrders = dataSource({
         first: MAX_LIMIT,
       },
     );
-
     const result = draftOrders.map((record) => {
       const numericId = getNumericId(record.id);
       return {

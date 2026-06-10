@@ -29,7 +29,6 @@ export interface Transaction {
   trip_name: string;
   user_transaction_time: string;
 }
-
 interface AccountingFieldSelection {
   category_info?: AccountingFieldSelection;
   external_id: string;
@@ -37,7 +36,6 @@ interface AccountingFieldSelection {
   name: string;
   type: string;
 }
-
 interface CardHolder {
   department_id: string;
   department_name: string;
@@ -47,17 +45,14 @@ interface CardHolder {
   location_name: string;
   user_id: string;
 }
-
 interface LineItem {
   accounting_field_selections: AccountingFieldSelection[];
   amount: Amount;
 }
-
 interface Amount {
   amount: number;
   currency_code: string;
 }
-
 interface MerchantData {
   auto_rental: string | null;
   flight: string | null;
@@ -66,7 +61,6 @@ interface MerchantData {
   receipt: Receipt[];
   reference: string;
 }
-
 interface Receipt {
   commodity_code: string | null;
   description: string;
@@ -76,7 +70,6 @@ interface Receipt {
   total: number;
   unit_cost: number;
 }
-
 interface MerchantLocation {
   city: string;
   country: string;

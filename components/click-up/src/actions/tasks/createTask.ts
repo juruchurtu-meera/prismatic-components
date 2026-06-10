@@ -27,20 +27,21 @@ import {
 import type { CreateTaskBody } from "./types/CreateTaskBody";
 import type { CreateTaskQueryParams } from "./types/CreateTaskQueryParams";
 import type { CustomField } from "./types/CustomField";
-
 const listId = getlistId(true, "List ID");
 const customTaskIds = getCustomTaskIds(
   false,
-  "If you want to reference a task by it's custom task id, this value must be true."
+  "If you want to reference a task by it's custom task id, this value must be true.",
 );
-const teamId = getTeamId(false, "Only used when the custom_task_ids parameter is set to true.");
+const teamId = getTeamId(
+  false,
+  "Only used when the custom_task_ids parameter is set to true.",
+);
 const name = getTaskName(true, "Task Name");
 const description = getDescription(false, "Task Description");
 const assignees = getAssignees(false, "Task Assignees");
 const tags = getTags(false, "Task Tags");
 const status = getStatus(false, "Task Status");
 const priority = getPriority(false, "Task Priority");
-
 const dueDate = getDueDateInt(false, "Task Due Date", "1508369194377");
 const dueDateTime = getDueDateTime(false, "Task Due Date Time", false);
 const timeEstimate = getTimeEstimate(false, "Task Time Estimate", "8640000");
@@ -49,20 +50,21 @@ const startDateTime = getStartDateTime(false, "Task Start Date Time", false);
 const notifyAll = getNotifyAll(
   false,
   "If notify_all is true, notifications will be sent to everyone including the creator of the comment.",
-  true
+  true,
 );
 const parent = getParent(
   false,
-  "You can create a subtask by including an existing task ID. The parent task ID you include cannot be a subtask, and must be in the same List specified in the path parameter."
+  "You can create a subtask by including an existing task ID. The parent task ID you include cannot be a subtask, and must be in the same List specified in the path parameter.",
 );
-const linksTo = getLinksTo(false, "Include a task ID to create a linked dependency with your new task.");
-
+const linksTo = getLinksTo(
+  false,
+  "Include a task ID to create a linked dependency with your new task.",
+);
 const checkRequiredCustomFields = getCheckRequiredCustomFields(
   false,
   "When creating a task via API any required Custom Fields are ignored by default (false).",
-  false
+  false,
 );
-
 export const createTask = action({
   display: {
     label: "Create Task",
@@ -93,7 +95,7 @@ export const createTask = action({
       checkRequiredCustomFields,
       customFields,
       markdownDescription,
-    }
+    },
   ) => {
     const newCustomFields: CustomField[] = [];
     if (customFields?.length) {
@@ -131,7 +133,6 @@ export const createTask = action({
     const { data } = await client.post(`/list/${listId}/task`, body, {
       params,
     });
-
     return {
       data,
     };

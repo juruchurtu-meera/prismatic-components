@@ -7,7 +7,6 @@ import {
   connection,
   libraryId,
 } from "./sharedInputs";
-
 export const createCollectionInputs = {
   connection,
   parentId: input({
@@ -30,7 +29,6 @@ export const createCollectionInputs = {
     clean: util.types.toString,
   }),
 };
-
 export const deleteCollectionInputs = {
   connection,
   brandId: { ...brandId, required: false },
@@ -46,13 +44,11 @@ export const deleteCollectionInputs = {
     dataSource: "selectLibraryCollection",
   }),
 };
-
 export const getLibraryInputs = {
   connection,
   brandId: { ...brandId, required: false },
   libraryId,
 };
-
 export const listLibraryAssetsInputs = {
   connection,
   ...paginationInputs,
@@ -61,14 +57,12 @@ export const listLibraryAssetsInputs = {
   assetSearch,
   assetExternalId,
 };
-
 export const listLibraryCollaboratorsInputs = {
   connection,
   ...paginationInputs,
   brandId: { ...brandId, required: false },
   libraryId,
 };
-
 export const listLibraryCollectionsInputs = {
   connection,
   ...paginationInputs,
@@ -94,7 +88,6 @@ export const listLibraryCollectionsInputs = {
     placeholder: "50",
     clean: util.types.toInt,
   }),
-  
   fetchAll: input({
     label: "Fetch All",
     type: "boolean",
@@ -104,14 +97,12 @@ export const listLibraryCollectionsInputs = {
     clean: util.types.toBool,
   }),
 };
-
 export const listLibraryFoldersInputs = {
   connection,
   ...paginationInputs,
   brandId: { ...brandId, required: false },
   libraryId,
 };
-
 export const updateCollectionInputs = {
   connection,
   brandId: { ...brandId, required: false },

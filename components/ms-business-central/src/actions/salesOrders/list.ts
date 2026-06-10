@@ -4,17 +4,16 @@ import { listSalesOrdersExamplePayload } from "../../examplePayloads";
 import { companyId } from "../../inputs/accounts/getAccountsInputs";
 import { connectionInput, odataParams } from "../../inputs/general";
 import type { MultipleItemsResponse, SalesOrder } from "../../interfaces";
-
 export const listSalesOrders = action({
   display: {
     label: "List Sales Orders",
-    description: "List all sales orders objects in your Business Central Organization.",
+    description:
+      "List all sales orders objects in your Business Central Organization.",
   },
   perform: async (
     context,
     {
       companyId,
-
       $orderBy,
       connection,
       $format,
@@ -28,7 +27,11 @@ export const listSalesOrders = action({
       $select,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const params = {
       $orderBy,
       $format,
@@ -41,14 +44,12 @@ export const listSalesOrders = action({
       $search,
       $select,
     };
-
     const { data } = await client.get<MultipleItemsResponse<SalesOrder[]>>(
       `/companies(${companyId})/salesOrders`,
       {
         params,
       },
     );
-
     return { data };
   },
   inputs: {

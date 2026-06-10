@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const asposeConnection = connection({
   key: "apiKey",
   display: {
@@ -32,5 +31,4 @@ export const asposeConnection = connection({
     },
   },
 });
-
 export default [asposeConnection];

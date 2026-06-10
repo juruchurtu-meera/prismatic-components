@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { connectionInput, locale, sectionId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
-
 export const deleteSection = action({
   display: {
     label: "Delete Section",
@@ -13,7 +12,6 @@ export const deleteSection = action({
     const { data } = await client.delete(
       `/help_center/${locale}/sections/${sectionId}.json`,
     );
-
     return {
       data,
     };

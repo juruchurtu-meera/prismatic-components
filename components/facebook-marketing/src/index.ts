@@ -29,7 +29,6 @@ import webhooks from "./actions/webhooks";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "facebook-marketing",
   public: true,

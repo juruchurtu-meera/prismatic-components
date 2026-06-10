@@ -2,7 +2,6 @@ import { dataSource, Element } from "@prismatic-io/spectral";
 import { connection } from "../inputs/general";
 import { createGotoWebinarClient } from "../client";
 import { UserSubscription } from "../interfaces";
-
 export const selectWebhook = dataSource({
   display: {
     label: "Select Webhook",
@@ -19,16 +18,13 @@ export const selectWebhook = dataSource({
         product: "g2w",
       },
     });
-
     const userSubscriptions = data?._embedded
       ?.userSubscriptions as UserSubscription[];
-
     if (!userSubscriptions) {
       return {
         result: [],
       };
     }
-
     const result = userSubscriptions.map(
       ({ eventName, webhookKey, userSubscriptionState }): Element => {
         return {
@@ -37,7 +33,6 @@ export const selectWebhook = dataSource({
         };
       },
     );
-
     return {
       result,
     };

@@ -9,7 +9,6 @@ import { listRelatedAssets } from "./listRelatedAssets";
 import { moveAssets } from "./moveAssets";
 import { updateAsset } from "./updateAsset";
 import { uploadFile } from "./uploadFile";
-
 export default {
   createAsset,
   createAttachment,

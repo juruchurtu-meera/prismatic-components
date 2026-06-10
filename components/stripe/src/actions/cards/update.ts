@@ -22,7 +22,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updateCard = action({
   display: {
     label: "Update Card",
@@ -51,7 +50,6 @@ export const updateCard = action({
       stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
     return {
       data: await client.paymentMethods.update(util.types.toString(paymentId), {
         card: {

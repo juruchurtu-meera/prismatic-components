@@ -2,7 +2,6 @@ import { trigger, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { kafkaConsumerInputs } from "../inputs";
 import type { KafkaMessage } from "../types/consumer";
-
 export const kafkaConsumer = trigger({
   display: {
     label: "Kafka Consumer",
@@ -21,7 +20,6 @@ export const kafkaConsumer = trigger({
       sessionTimeout,
       heartbeatInterval,
     } = params;
-
     const kafka = createClient(
       {
         clientId,
@@ -30,17 +28,13 @@ export const kafkaConsumer = trigger({
       },
       context.debug.enabled,
     );
-
     const consumer = kafka.consumer({
       groupId: consumerGroupId,
       sessionTimeout,
       heartbeatInterval,
     });
-
     try {
       await consumer.connect();
-
-      
       const topicsToSubscribe = topics;
       await Promise.all(
         topicsToSubscribe.map((topic) =>
@@ -50,22 +44,16 @@ export const kafkaConsumer = trigger({
           }),
         ),
       );
-
       const messages: KafkaMessage[] = [];
-
       let messageCount = 0;
-
-      
       const consumePromise = new Promise<void>((resolve) => {
         let resolved = false;
-
         const resolveOnce = () => {
           if (!resolved) {
             resolved = true;
             resolve();
           }
         };
-
         consumer.run({
           autoCommit,
           eachMessage: async ({ topic, partition, message }) => {
@@ -73,7 +61,6 @@ export const kafkaConsumer = trigger({
               resolveOnce();
               return;
             }
-
             messages.push({
               topic,
               partition,
@@ -83,23 +70,17 @@ export const kafkaConsumer = trigger({
               timestamp: message.timestamp,
               headers: message.headers,
             });
-
             messageCount++;
-
             if (messageCount >= maxMessages) {
               resolveOnce();
             }
           },
         });
-
-        
         setTimeout(() => resolveOnce(), 10000);
       });
-
       await consumePromise;
       await consumer.stop();
       await consumer.disconnect();
-
       return {
         payload: {
           ...payload,
@@ -114,7 +95,7 @@ export const kafkaConsumer = trigger({
         },
       };
     } catch (error) {
-      await consumer.disconnect().catch(() => {}); 
+      await consumer.disconnect().catch(() => {});
       throw error;
     }
   },

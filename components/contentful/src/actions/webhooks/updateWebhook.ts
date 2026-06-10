@@ -3,7 +3,6 @@ import type { Space, WebHooks, WebhookProps } from "contentful-management";
 import { createClient } from "../../client";
 import { updateWebhookExamplePayload } from "../../examplePayloads";
 import { updateWebhookInputs } from "../../inputs";
-
 export const updateWebhook = action({
   display: {
     label: "Update Webhook",

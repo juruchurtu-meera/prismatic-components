@@ -3,7 +3,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import type { WorkItem } from "../../interfaces/WorkItem";
 import { connection } from "../../inputs/shared";
 import { getPaginatedData } from "../../utils";
-
 export const selectWorkItem = dataSource({
   display: {
     label: "Select Work Item",
@@ -24,7 +23,6 @@ export const selectWorkItem = dataSource({
       key: workItem.WorkItemKey,
       label: workItem.Title,
     }));
-
     return { result: objects };
   },
 });

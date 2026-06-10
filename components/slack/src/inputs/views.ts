@@ -1,10 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanString, connectionInput, userId } from "./common";
-
-
-
-
-
 export const trigger_id = input({
   label: "Trigger ID",
   placeholder: "Enter trigger ID",
@@ -15,7 +10,6 @@ export const trigger_id = input({
   example: "12345.98765.abcd2358fdea",
   clean: util.types.toString,
 });
-
 export const view_id = input({
   label: "View ID",
   placeholder: "Enter view ID",
@@ -26,7 +20,6 @@ export const view_id = input({
   example: "VMM512F2U",
   clean: cleanString,
 });
-
 export const external_id = input({
   label: "External ID",
   placeholder: "Enter external ID",
@@ -37,7 +30,6 @@ export const external_id = input({
   example: "bmarley_view2",
   clean: cleanString,
 });
-
 export const view = input({
   label: "View",
   type: "code",
@@ -99,7 +91,7 @@ export const view = input({
       callback_id: "view_identifier_12",
     },
     null,
-    2
+    2,
   ),
   comments:
     "A [view payload](https://docs.slack.dev/reference/views). This must be a JSON-encoded string.",
@@ -107,29 +99,21 @@ export const view = input({
     return JSON.parse(util.types.toString(value));
   },
 });
-
-
-
-
-
 export const openViewInputs = {
   connection: connectionInput,
   trigger_id,
   view,
 };
-
 export const publishViewInputs = {
   connection: connectionInput,
   userId,
   view,
 };
-
 export const pushViewInputs = {
   connection: connectionInput,
   trigger_id,
   view,
 };
-
 export const updateViewInputs = {
   connection: connectionInput,
   view,

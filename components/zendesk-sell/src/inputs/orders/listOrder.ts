@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll } from "../common";
-
 export const listOrderInputs = {
   connection,
   fetchAll,
@@ -12,7 +11,6 @@ export const listOrderInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   sortBy: input({
     label: "Sort By",
     comments:
@@ -22,7 +20,6 @@ export const listOrderInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   dealId: input({
     label: "Deal ID",
     placeholder: "Enter Deal ID",
@@ -42,7 +39,6 @@ export const listOrderInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   perPage: input({
     label: "Per Page",
     comments:

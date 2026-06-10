@@ -12,22 +12,36 @@ import {
   getTeamId,
 } from "../../inputs";
 import type { CreateWebhookBody } from "./types/CreateWebhookBody";
-
 const teamId = getTeamId(true, "Team ID (Workspace)");
 const endpoint = getEndpoint(true, "URL of the webhook endpoint.");
 const spaceId = getSpaceId(false, "Space ID");
 const folderId = getFolderId(false, "Folder ID");
 const listId = getlistId(false, "List ID");
 const taskId = getTaskId(false, "Task ID");
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
-    description: "Create a new webhook for a workspace, space, folder, list, or task.",
+    description:
+      "Create a new webhook for a workspace, space, folder, list, or task.",
   },
   examplePayload: createWebhookExamplePayload,
-  perform: async (context, { clickUpConnection, teamId, endpoint, spaceId, events, folderId, listId, taskId }) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+  perform: async (
+    context,
+    {
+      clickUpConnection,
+      teamId,
+      endpoint,
+      spaceId,
+      events,
+      folderId,
+      listId,
+      taskId,
+    },
+  ) => {
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const body: CreateWebhookBody = {
       endpoint,
       events,
@@ -37,7 +51,6 @@ export const createWebhook = action({
       ...(taskId?.length && { task_id: taskId }),
     };
     const { data } = await client.post(`/team/${teamId}/webhook`, body);
-
     return {
       data,
     };

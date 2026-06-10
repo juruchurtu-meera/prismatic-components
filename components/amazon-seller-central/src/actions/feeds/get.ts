@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getFeedExamplePayload } from "../../examplePayloads/feeds";
 import { connectionInput, feedId } from "../../inputs";
-
 export const getFeed = action({
   display: {
     label: "Get Feed",

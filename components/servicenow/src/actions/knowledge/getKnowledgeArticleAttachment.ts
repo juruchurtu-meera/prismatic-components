@@ -7,7 +7,6 @@ import {
   instanceUrlInput,
 } from "../../inputs";
 import { getKnowledgeManagementApiClient } from "../../util";
-
 export const getKnowledgeArticleAttachment = action({
   display: {
     label: "Get Knowledge Article Attachment",

@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { getCustomerBankAccountInputs } from "../../inputs/customer";
 import { getCustomerBankAccountExamplePayload } from "../../examplePayloads";
-
 export const getCustomerBankAccount = action({
   display: {
     label: "Get Customer Bank Account",
@@ -15,7 +14,6 @@ export const getCustomerBankAccount = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       id: customerBankAccountId,
     };
@@ -24,12 +22,10 @@ export const getCustomerBankAccount = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Crud/Read/CustomerBankAccount.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

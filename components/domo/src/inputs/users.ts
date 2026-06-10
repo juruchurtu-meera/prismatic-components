@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, limit, name, offset } from "./common";
-
 export const userId = input({
   label: "User ID",
   comments: "The unique identifier for the Domo user.",
@@ -11,7 +10,6 @@ export const userId = input({
   dataSource: "selectUser",
   clean: util.types.toString,
 });
-
 export const email = input({
   label: "Email",
   type: "string",
@@ -21,7 +19,6 @@ export const email = input({
   example: "john.doe@example.com",
   clean: util.types.toString,
 });
-
 export const role = input({
   label: "Role",
   type: "string",
@@ -46,7 +43,6 @@ export const role = input({
   ],
   clean: util.types.toString,
 });
-
 export const roled = input({
   label: "Roled",
   type: "string",
@@ -57,7 +53,6 @@ export const roled = input({
   example: "123",
   clean: util.types.toString,
 });
-
 export const alternateEmail = input({
   label: "Alternate Email",
   type: "string",
@@ -68,7 +63,6 @@ export const alternateEmail = input({
   example: "john.doe.alternate@example.com",
   clean: util.types.toString,
 });
-
 export const employeeNumber = input({
   label: "Employee Number",
   type: "string",
@@ -78,7 +72,6 @@ export const employeeNumber = input({
   example: "23432",
   clean: util.types.toString,
 });
-
 export const locale = input({
   label: "Locale",
   type: "string",
@@ -89,7 +82,6 @@ export const locale = input({
   example: "en_US",
   clean: util.types.toString,
 });
-
 export const location = input({
   label: "Location",
   type: "string",
@@ -99,7 +91,6 @@ export const location = input({
   example: "American Fork",
   clean: util.types.toString,
 });
-
 export const phone = input({
   label: "Phone",
   type: "string",
@@ -109,7 +100,6 @@ export const phone = input({
   example: "888-361-1078",
   clean: util.types.toString,
 });
-
 export const sendInvite = input({
   label: "Send Invite",
   type: "string",
@@ -119,7 +109,6 @@ export const sendInvite = input({
   example: "true",
   clean: util.types.toString,
 });
-
 export const timezone = input({
   label: "Timezone",
   type: "string",
@@ -130,7 +119,6 @@ export const timezone = input({
   example: "America/Denver",
   clean: util.types.toString,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -140,7 +128,6 @@ export const title = input({
   example: "Software Engineer",
   clean: util.types.toString,
 });
-
 export const userBody = input({
   label: "User Body",
   type: "code",
@@ -165,7 +152,6 @@ export const userBody = input({
   ),
   clean: util.types.toString,
 });
-
 export const updateUserBody = input({
   label: "Update User Body",
   type: "code",
@@ -183,7 +169,6 @@ export const updateUserBody = input({
   ),
   clean: util.types.toString,
 });
-
 export const createUserInputs = {
   connection,
   email,
@@ -199,17 +184,14 @@ export const createUserInputs = {
   title,
   userBody,
 };
-
 export const deleteUserInputs = {
   connection,
   userId,
 };
-
 export const getUserInputs = {
   connection,
   userId,
 };
-
 export const listUsersInputs = {
   connection,
   fetchAll,
@@ -226,7 +208,6 @@ export const listUsersInputs = {
       "The offset of the user ID to begin list of users within the response.",
   }),
 };
-
 export const updateUserInputs = {
   connection,
   userId,

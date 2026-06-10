@@ -4,7 +4,6 @@ import type { Calendar } from "@microsoft/microsoft-graph-types";
 import type { ODataAttrs } from "../types";
 import { createClient } from "../client";
 import { connectionInput } from "../inputs";
-
 export const selectCalendar = dataSource({
   display: {
     label: "Select Calendar",
@@ -21,7 +20,6 @@ export const selectCalendar = dataSource({
       true,
       {},
     );
-
     const result = value.map<Element>((calendar) => ({
       label: util.types.toString(calendar.name),
       key: util.types.toString(calendar.id),

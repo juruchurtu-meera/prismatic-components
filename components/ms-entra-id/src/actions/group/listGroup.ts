@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listGroupExamplePayload as examplePayload } from "../../examplePayloads";
 import { listGroupInputs as inputs } from "../../inputs/group";
 import { getConsistencyLevelHeader, getValues } from "../../util";
-
 export const listGroup = action({
   display: {
     label: "List Groups",

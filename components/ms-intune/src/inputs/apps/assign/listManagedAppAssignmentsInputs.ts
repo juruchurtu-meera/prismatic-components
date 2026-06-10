@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../../util";
-
 const appId = input({
   label: "App Id",
   comments:
@@ -11,7 +10,6 @@ const appId = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export default {
   appId,
 };

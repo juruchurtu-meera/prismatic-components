@@ -8,7 +8,6 @@ import {
   orderStatus,
   trackingnumber,
 } from "../../inputs";
-
 export const updateOrder = action({
   display: {
     label: "Update Order",

@@ -4,7 +4,6 @@ import { getAdobeSignClient } from "../../client";
 import type { ProblemNotificationEmails, WebhookPayload } from "../../types";
 import { reduceConditionsArrayIntoObject } from "../../util";
 import { updateWebhookExamplePayload } from "../../examplePayloads";
-
 export const updateWebhook = action({
   display: {
     label: "Update Webhook",
@@ -55,7 +54,6 @@ export const updateWebhook = action({
         ),
       },
     };
-
     const { data } = await client.put(`/webhooks/${webhookId}`, payload);
     return {
       data,

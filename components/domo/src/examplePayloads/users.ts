@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getUserExamplePayload = {
   data: {
     id: 87264918,
@@ -32,7 +18,6 @@ export const getUserExamplePayload = {
     active: true,
   },
 };
-
 export const listUsersExamplePayload = {
   data: [
     getUserExamplePayload.data,
@@ -56,9 +41,7 @@ export const listUsersExamplePayload = {
     },
   ],
 };
-
 export const createUserExamplePayload = getUserExamplePayload;
-
 export const updateUserExamplePayload = {
   data: {
     ...getUserExamplePayload.data,
@@ -66,5 +49,4 @@ export const updateUserExamplePayload = {
     updatedAt: "2024-04-01T10:00:00.000Z",
   },
 };
-
 export const deleteUserExamplePayload = { data: null };

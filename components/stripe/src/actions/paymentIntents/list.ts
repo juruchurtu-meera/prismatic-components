@@ -11,7 +11,6 @@ import {
   timeout,
 } from "../../inputs";
 import type Stripe from "stripe";
-
 export const listPaymentIntents = action({
   display: {
     label: "List Payment Intents",
@@ -19,7 +18,15 @@ export const listPaymentIntents = action({
   },
   perform: async (
     context,
-    { stripeConnection, timeout, customerId, created, endingBefore, limit, startingAfter },
+    {
+      stripeConnection,
+      timeout,
+      customerId,
+      created,
+      endingBefore,
+      limit,
+      startingAfter,
+    },
   ) => {
     const client = createStripeClient({
       stripeConnection,
@@ -42,7 +49,8 @@ export const listPaymentIntents = action({
     customerId: {
       ...customerId,
       label: "Customer",
-      comments: "Only return PaymentIntents for the customer specified by this customer ID.",
+      comments:
+        "Only return PaymentIntents for the customer specified by this customer ID.",
       clean: util.types.toString,
     },
     created,

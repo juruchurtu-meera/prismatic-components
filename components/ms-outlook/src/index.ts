@@ -10,7 +10,8 @@ export default component({
   documentationUrl: "https://prismatic.io/docs/components/ms-outlook/",
   display: {
     label: "Microsoft Outlook",
-    description: "Manage emails, calendar events, and subscriptions in Microsoft Outlook.",
+    description:
+      "Manage emails, calendar events, and subscriptions in Microsoft Outlook.",
     iconPath: "icon.png",
     category: "Application Connectors",
   },

@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { updateAssetExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateAssetInputs as inputs } from "../../inputs/assets";
-
 export const updateAsset = action({
   display: {
     label: "Update Asset",
@@ -39,7 +38,6 @@ export const updateAsset = action({
             status: copyrightStatus,
           }
         : undefined;
-
     const response = await createClient({
       connection,
       debug: context.debug.enabled,
@@ -56,7 +54,6 @@ export const updateAsset = action({
         },
       },
     });
-
     return {
       data: response,
     };

@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const evidence = input({
   label: "Evidence",
   type: "code",
@@ -9,7 +8,6 @@ export const evidence = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const submit = input({
   label: "Submit",
   type: "string",

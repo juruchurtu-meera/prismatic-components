@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { getMondayClient } from "../../client";
 import { getItemsByColumnValueExamplePayload } from "../../examplePayloads";
 import { getItemsByColumnValueInputs } from "../../inputs";
-
 export const getItemsByColumnValue = action({
   display: {
     label: "Get Items By Column Value (Deprecated)",
@@ -13,7 +12,6 @@ export const getItemsByColumnValue = action({
   inputs: getItemsByColumnValueInputs,
   perform: async (context, params) => {
     const client = getMondayClient(params.connection, context.debug.enabled);
-    
     const query = gql`
       query ($boardId: Int!, $columnId: String!, $columnValue: String!) {
         items_by_column_values(
@@ -39,13 +37,11 @@ export const getItemsByColumnValue = action({
         }
       }
     `;
-
     const variables = {
       boardId: params.boardId,
       columnId: params.columnId,
       columnValue: params.columnValue,
     };
-
     try {
       const data = await client.request(query, variables);
       return { data };

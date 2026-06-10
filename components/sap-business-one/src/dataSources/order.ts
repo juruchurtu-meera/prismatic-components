@@ -1,9 +1,13 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { $filter, connection } from "../inputs/general";
 import { createClient } from "../client";
-import { fetchAllData, mapLabel, mapPicklistArray, validateArray } from "../util";
+import {
+  fetchAllData,
+  mapLabel,
+  mapPicklistArray,
+  validateArray,
+} from "../util";
 import { orderDataSourceExamplePayload } from "../examplePayloads/datasources";
-
 export const selectOrder = dataSource({
   display: {
     label: "Select Order",
@@ -16,7 +20,6 @@ export const selectOrder = dataSource({
   perform: async (context, { connection, $filter }) => {
     const DOC_ENTRY = "DocEntry";
     const client = await createClient(connection, context, true);
-
     const data = await fetchAllData(
       client,
       "Orders",
@@ -27,16 +30,13 @@ export const selectOrder = dataSource({
       true,
       1000,
     );
-
     const array = validateArray(data);
-
     const objects = mapPicklistArray({
       data: array,
       keyName: DOC_ENTRY,
       keyLabel: DOC_ENTRY,
       orderKey: DOC_ENTRY,
     });
-
     return { result: mapLabel(objects, "Order #") };
   },
   dataSourceType: "picklist",

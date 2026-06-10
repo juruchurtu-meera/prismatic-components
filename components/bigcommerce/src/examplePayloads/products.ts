@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 const productObject = {
   id: 174,
   name: "1L Le Parfait Jar",
@@ -81,7 +69,6 @@ const productObject = {
   open_graph_use_product_name: true,
   open_graph_use_image: true,
 };
-
 const paginationMeta = {
   pagination: {
     total: 36,
@@ -94,35 +81,30 @@ const paginationMeta = {
     },
   },
 };
-
 export const getAllProductsExamplePayload = {
   data: {
     data: [productObject],
     meta: paginationMeta,
   },
 };
-
 export const createProductExamplePayload = {
   data: {
     data: productObject,
     meta: {},
   },
 };
-
 export const updateProductExamplePayload = {
   data: {
     data: productObject,
     meta: {},
   },
 };
-
 export const updateProductsBatchExamplePayload = {
   data: {
     data: [productObject],
     meta: {},
   },
 };
-
 export const deleteProductExamplePayload = {
   data: null,
 };

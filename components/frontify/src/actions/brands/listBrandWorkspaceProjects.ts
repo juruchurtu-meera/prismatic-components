@@ -5,7 +5,6 @@ import { listBrandWorkspaceProjectsExamplePayload as examplePayload } from "../.
 import { listBrandWorkspaceProjectsInputs as inputs } from "../../inputs/brands";
 import { graphqlFetchAll } from "../../utils/graphqlFetchAll";
 import type ListBrandWorkspaceProjectsResponse from "../types/listBrandWorkspaceProjects";
-
 export const listBrandWorkspaceProjectsQuery = gql`
   query listBrandWorkspaceProjects($brandId: ID!, $limit: Int, $page: Int) {
     brand(id: $brandId) {
@@ -24,8 +23,6 @@ export const listBrandWorkspaceProjectsQuery = gql`
     }
   }
 `;
-
-
 export const listBrandWorkspaceProjects = action({
   display: {
     label: "List Brand Workspace Projects",
@@ -35,9 +32,10 @@ export const listBrandWorkspaceProjects = action({
   perform: async (
     context,
     { connection, page, limit, brandId, fetchAll },
-  ): Promise<{ data: ListBrandWorkspaceProjectsResponse }> => {
+  ): Promise<{
+    data: ListBrandWorkspaceProjectsResponse;
+  }> => {
     const client = createClient({ connection, debug: context.debug.enabled });
-
     if (fetchAll) {
       const hasNextPath = ["brand", "workspaceProjects", "hasNextPage"];
       const responses: ListBrandWorkspaceProjectsResponse[] =
@@ -47,11 +45,9 @@ export const listBrandWorkspaceProjects = action({
           params: { brandId },
           hasNextPath,
         });
-
       if (responses.length === 1) {
         return { data: responses[0] };
       }
-
       const baseResponse = responses.slice(-1)[0];
       const combinedWorkspaceProjects = responses.reduce(
         (combined, response) => {
@@ -59,8 +55,9 @@ export const listBrandWorkspaceProjects = action({
         },
         [],
       );
-
-      const formattedResponse: { data: ListBrandWorkspaceProjectsResponse } = {
+      const formattedResponse: {
+        data: ListBrandWorkspaceProjectsResponse;
+      } = {
         data: {
           brand: {
             ...baseResponse.brand,
@@ -71,10 +68,8 @@ export const listBrandWorkspaceProjects = action({
           },
         },
       };
-
       return formattedResponse;
     }
-
     const response: ListBrandWorkspaceProjectsResponse = await client.request(
       listBrandWorkspaceProjectsQuery,
       {
@@ -83,7 +78,6 @@ export const listBrandWorkspaceProjects = action({
         brandId,
       },
     );
-
     return {
       data: response,
     };

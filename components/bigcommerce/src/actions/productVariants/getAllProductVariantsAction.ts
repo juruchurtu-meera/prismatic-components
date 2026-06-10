@@ -11,7 +11,6 @@ import {
   getProductVariantsPage,
   storeHash,
 } from "../../inputs";
-
 export const getAllProductVariantsAction = action({
   display: {
     label: "List Product Variants",
@@ -35,14 +34,12 @@ export const getAllProductVariantsAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${product_id}/variants`;
-
     const params = {
       page,
       limit,
       include_fields,
       exclude_fields,
     };
-
     try {
       const response = await client.get(endpoint, { params });
       return {
@@ -54,7 +51,6 @@ export const getAllProductVariantsAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

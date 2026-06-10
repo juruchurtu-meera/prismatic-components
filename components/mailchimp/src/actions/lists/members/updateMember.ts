@@ -14,7 +14,6 @@ import {
   skipMerged,
   marketingPermissionsArray,
 } from "../../../inputs";
-
 export const updateMember = action({
   display: {
     label: "Update Member",
@@ -70,5 +69,4 @@ export const updateMember = action({
     connection: connectionInput,
   },
 });
-
 export default updateMember;

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { CONTACTS_EMAIL_SEARCH_PATH } from "../../constants";
 import { searchContactsByEmailExamplePayload } from "../../examplePayloads";
 import { searchContactsByEmailInputs } from "../../inputs";
-
 export const searchContactsByEmail = action({
   examplePayload: searchContactsByEmailExamplePayload,
   display: {
@@ -16,7 +15,6 @@ export const searchContactsByEmail = action({
     const { data } = await client.post(CONTACTS_EMAIL_SEARCH_PATH, {
       email: emailAddress,
     });
-
     return { data };
   },
 });

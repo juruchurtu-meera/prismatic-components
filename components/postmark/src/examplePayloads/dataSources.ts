@@ -10,7 +10,6 @@ export const selectWebhookExamplePayload = {
     },
   ],
 };
-
 export const selectServerExamplePayload = {
   result: [
     { label: "Production Mail Server", key: "1234567" },

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createApiClient } from "../../client";
 import { listEnvironmentTemplatesInputs } from "../../inputs";
-
 export const listEnvironmentTemplates = action({
   display: {
     label: "List Environment Templates",

@@ -1,6 +1,5 @@
 import { trigger } from "@prismatic-io/spectral";
 import { connection } from "../inputs";
-
 export const webhook = trigger({
   display: {
     label: "Webhook",
@@ -8,7 +7,6 @@ export const webhook = trigger({
       "Receive and validate webhook requests from Contentful for webhooks you configure.",
   },
   perform: async (_context, payload) => {
-    
     return { payload };
   },
   inputs: {

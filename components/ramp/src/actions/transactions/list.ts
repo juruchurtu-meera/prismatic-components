@@ -4,7 +4,6 @@ import { listTransactionsResponse } from "../../examplePayloads/transactions";
 import { defaultListInputs } from "../../inputs";
 import type { Transaction } from "../../interfaces/transactions";
 import { fetchAllData } from "../../util";
-
 export const listTransactions = action({
   display: {
     label: "List Transactions",
@@ -13,9 +12,11 @@ export const listTransactions = action({
   inputs: {
     ...defaultListInputs,
   },
-  perform: async (context, { connection, customQueryParams, fetchAll, pageSize, start }) => {
+  perform: async (
+    context,
+    { connection, customQueryParams, fetchAll, pageSize, start },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchAllData<Transaction>(
       client,
       "transactions",

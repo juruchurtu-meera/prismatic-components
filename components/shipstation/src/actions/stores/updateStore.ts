@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../../client";
 import { updateStoreExamplePayload } from "../../examplePayloads";
 import { updateStoreInputs } from "../../inputs";
-
 export const updateStore = action({
   display: {
     label: "Update Store",
@@ -13,7 +12,6 @@ export const updateStore = action({
       connectionInput,
       context.debug.enabled,
     );
-
     const { data } = await client.put(`/stores/${storeId}`, storeUpdateData);
     return { data };
   },

@@ -13,7 +13,6 @@ import {
 import type { ContentProperty } from "../../interfaces";
 import { listContentPropertiesExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listContentPropertiesForCustomContent = action({
   display: {
     label: "List Content Properties for Custom Content",
@@ -43,7 +42,6 @@ export const listContentPropertiesForCustomContent = action({
   ) => {
     const client = await createClient(connectionInput, context.debug.enabled);
     const url = `/custom-content/${customContentId}/properties`;
-
     if (fetchAll) {
       const results = await paginateResults<ContentProperty>(
         client,
@@ -52,7 +50,6 @@ export const listContentPropertiesForCustomContent = action({
       );
       return { data: { results } };
     }
-
     const { data } = await client.get(url, {
       params: {
         cursor,

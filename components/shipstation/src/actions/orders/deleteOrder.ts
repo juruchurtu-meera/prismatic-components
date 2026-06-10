@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../../client";
 import { deleteOrderExamplePayload } from "../../examplePayloads";
 import { deleteOrderInputs } from "../../inputs";
-
 export const deleteOrder = action({
   display: {
     label: "Delete Order",
@@ -14,7 +13,6 @@ export const deleteOrder = action({
       connectionInput,
       context.debug.enabled,
     );
-
     const { data } = await client.delete(`/orders/${orderId}`);
     return { data };
   },

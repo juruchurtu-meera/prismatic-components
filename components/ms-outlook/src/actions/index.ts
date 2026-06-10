@@ -6,7 +6,6 @@ import messages from "./messages";
 import misc from "./misc";
 import subscriptions from "./subscriptions";
 import users from "./users";
-
 export default {
   ...calendars,
   ...events,

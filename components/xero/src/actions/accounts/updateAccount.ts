@@ -13,7 +13,6 @@ import {
   connectionInput,
 } from "../../inputs";
 import { updateAccountExamplePayload } from "../../examplePayloads";
-
 export const updateAccount = action({
   display: {
     label: "Update Account",
@@ -54,6 +53,5 @@ export const updateAccount = action({
     showInExpenseClaims,
     xeroConnection: connectionInput,
   },
-
   examplePayload: updateAccountExamplePayload,
 });

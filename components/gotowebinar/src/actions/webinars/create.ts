@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { CREATE_WEBINAR_EXAMPLE_PAYLOAD } from "../../examplePayloads";
 import { createGotoWebinarClient } from "../../client";
 import { createWebinarInputs } from "../../inputs/webinars/createWebinarInputs";
-
 export const createWebinar = action({
   display: {
     label: "Create Webinar",
@@ -41,7 +40,6 @@ export const createWebinar = action({
       absenteeFollowUpEmail,
       attendeeFollowUpEmail,
     };
-
     const payload = {
       subject,
       description,
@@ -57,7 +55,6 @@ export const createWebinar = action({
       emailSettings:
         Object.keys(emailSettings).length > 0 ? emailSettings : undefined,
     };
-
     const { data } = await client.post(url, payload);
     return {
       data,

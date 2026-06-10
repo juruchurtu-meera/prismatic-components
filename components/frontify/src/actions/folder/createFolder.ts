@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { createFolderExamplePayload as examplePayload } from "../../examplePayloads";
 import { createFolderInputs as inputs } from "../../inputs/folder";
-
 export const createFolder = action({
   display: {
     label: "Create Folder",
@@ -23,7 +22,6 @@ export const createFolder = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

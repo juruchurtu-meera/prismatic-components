@@ -4,7 +4,10 @@ export interface Registrant {
   city: string;
   comments: string;
   country: string;
-  custom_questions: { title: string; value: string }[];
+  custom_questions: {
+    title: string;
+    value: string;
+  }[];
   email: string;
   first_name: string;
   industry: string;

@@ -7,7 +7,6 @@ import { selectPerson } from "./selectPerson";
 import { selectSupplierInvoiceRequest } from "./selectSupplierInvoiceRequest";
 import { selectTable } from "./selectTable";
 import { selectWorker } from "./selectWorker";
-
 export default {
   selectDataChange,
   selectEvent,

@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const email = input({
   label: "Email",
   type: "string",
@@ -8,14 +7,12 @@ export const email = input({
   placeholder: "Enter email address",
   comments: "The email address of the user.",
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Postmark connection to use.",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -25,7 +22,6 @@ export const fetchAll = input({
   required: false,
   default: "false",
 });
-
 export const count = input({
   label: "Count",
   placeholder: "Enter number of servers to return",
@@ -34,7 +30,6 @@ export const count = input({
   example: "50",
   comments: "Number of servers to return per request. Maximum 500.",
 });
-
 export const offset = input({
   label: "Offset",
   placeholder: "Enter number of servers to skip",
@@ -43,7 +38,6 @@ export const offset = input({
   example: "0",
   comments: "Number of servers to skip for pagination.",
 });
-
 export const serverId = input({
   label: "Server ID",
   placeholder: "Enter server ID",
@@ -53,7 +47,6 @@ export const serverId = input({
   comments: "The unique numeric identifier of the server.",
   dataSource: "selectServer",
 });
-
 export const serverConfig = input({
   label: "Server Config",
   placeholder: "Enter server configuration",
@@ -61,7 +54,6 @@ export const serverConfig = input({
   required: true,
   comments: "Configuration object to apply to the server.",
 });
-
 export const serverName = input({
   label: "Server Name",
   placeholder: "Enter server name",
@@ -71,7 +63,6 @@ export const serverName = input({
   comments:
     "Filter by a specific server name. <strong>Note:</strong> This is a partial match search - 'MyServer' will match 'MyServer', 'MyServer Production', and 'MyServer Test'.",
 });
-
 export const serverColor = input({
   label: "Server Color",
   placeholder: "Enter server color",
@@ -80,21 +71,18 @@ export const serverColor = input({
   example: "blue",
   comments: "Color label for the server in the Postmark interface.",
 });
-
 export const enableSmtpApiErrorHooks = input({
   label: "Enable SMTP API Error Hooks",
   type: "boolean",
   required: false,
   comments: "When true, SMTP API errors will be included with bounce webhooks.",
 });
-
 export const smtpApiActivated = input({
   label: "SMTP API Activated",
   type: "boolean",
   required: false,
   comments: "When true, SMTP is enabled on this server.",
 });
-
 export const webhookUrl = input({
   label: "Webhook URL",
   type: "string",
@@ -103,7 +91,6 @@ export const webhookUrl = input({
   placeholder: "Enter webhook URL",
   comments: "The URL where webhook events will be sent.",
 });
-
 export const triggers = input({
   label: "Triggers",
   type: "code",
@@ -143,7 +130,6 @@ export const triggers = input({
       : triggersInput;
   },
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -153,7 +139,6 @@ export const webhookId = input({
   placeholder: "Enter webhook ID",
   dataSource: "selectWebhook",
 });
-
 export const showOnlyInstanceWebhooks = input({
   label: "Show Only Instance Webhooks",
   type: "boolean",
@@ -161,7 +146,6 @@ export const showOnlyInstanceWebhooks = input({
   default: "true",
   comments: "When true, show only webhooks that point to this instance.",
 });
-
 export const fromAddress = input({
   label: "From Address",
   type: "string",
@@ -171,7 +155,6 @@ export const fromAddress = input({
   comments:
     "The sender email address. Must be a verified sender signature in Postmark.",
 });
-
 export const toAddress = input({
   label: "To Address",
   type: "string",
@@ -181,7 +164,6 @@ export const toAddress = input({
   comments:
     "The recipient email address(es). Multiple addresses can be comma-separated. Maximum of 50 recipients per message.",
 });
-
 export const ccAddress = input({
   label: "Cc",
   type: "string",
@@ -191,7 +173,6 @@ export const ccAddress = input({
   comments:
     "Carbon copy recipient email address(es). Multiple addresses can be comma-separated. Maximum of 50 recipients per message.",
 });
-
 export const bccAddress = input({
   label: "Bcc",
   type: "string",
@@ -201,7 +182,6 @@ export const bccAddress = input({
   comments:
     "Blind carbon copy recipient email address(es). Multiple addresses can be comma-separated. Maximum of 50 recipients per message.",
 });
-
 export const subject = input({
   label: "Subject",
   type: "string",
@@ -210,7 +190,6 @@ export const subject = input({
   placeholder: "Enter email subject",
   comments: "The subject line of the email message.",
 });
-
 export const tag = input({
   label: "Tag",
   type: "string",
@@ -220,7 +199,6 @@ export const tag = input({
   comments:
     "A tag to categorize the email for tracking and filtering purposes.",
 });
-
 export const htmlBody = input({
   label: "Html Body",
   type: "code",
@@ -230,7 +208,6 @@ export const htmlBody = input({
     "<html><body><h1>Welcome!</h1><p>Thanks for joining us.</p></body></html>",
   comments: "The HTML content of the email message.",
 });
-
 export const textBody = input({
   label: "Text Body",
   type: "text",
@@ -240,7 +217,6 @@ export const textBody = input({
   placeholder: "Enter email body text",
   comments: "The plain text content of the email message.",
 });
-
 export const replyTo = input({
   label: "Reply To",
   type: "string",
@@ -250,7 +226,6 @@ export const replyTo = input({
   comments:
     "Reply-to email address override. Defaults to the Reply To address set in the sender signature.",
 });
-
 export const trackOpens = input({
   label: "Track Opens",
   type: "boolean",
@@ -258,7 +233,6 @@ export const trackOpens = input({
   default: "true",
   comments: "When true, activate open tracking for this email.",
 });
-
 export const headers = input({
   label: "Headers",
   type: "code",
@@ -272,7 +246,6 @@ export const headers = input({
       : headersInput;
   },
 });
-
 export const metadata = input({
   label: "Metadata",
   type: "code",
@@ -286,7 +259,6 @@ export const metadata = input({
       : metadataInput;
   },
 });
-
 export const attachments = input({
   label: "Attachments",
   type: "code",
@@ -301,7 +273,6 @@ export const attachments = input({
       : attachmentsInput;
   },
 });
-
 export const emails = input({
   label: "Emails",
   type: "code",
@@ -341,9 +312,7 @@ export const emails = input({
           },
         ],
       },
-      {
-        
-      },
+      {},
     ],
     null,
     2,
@@ -357,7 +326,6 @@ export const emails = input({
       : emailsInput;
   },
 });
-
 export const templateId = input({
   label: "Template ID",
   type: "string",
@@ -367,7 +335,6 @@ export const templateId = input({
   comments:
     "The numeric ID of the Postmark template to use for sending the email.",
 });
-
 export const templateAlias = input({
   label: "Template Alias",
   type: "string",
@@ -377,7 +344,6 @@ export const templateAlias = input({
   comments:
     "The alias of a template to use when sending this message. Required if Template ID is not specified.",
 });
-
 export const templateModel = input({
   label: "Template Model",
   type: "code",
@@ -393,7 +359,6 @@ export const templateModel = input({
     return JSON.parse(util.types.toString(templateModelInput));
   },
 });
-
 export const inlineCss = input({
   label: "Inline Css",
   type: "boolean",
@@ -402,7 +367,6 @@ export const inlineCss = input({
   comments:
     "When true, CSS style blocks in the template will be applied as inline attributes to the rendered HTML content.",
 });
-
 export const messagesInput = input({
   label: "Messages",
   type: "code",
@@ -443,7 +407,6 @@ export const messagesInput = input({
     return parsedInput.Messages;
   },
 });
-
 export const rawEmailEnabled = input({
   label: "Raw Email Enabled",
   type: "boolean",
@@ -452,7 +415,6 @@ export const rawEmailEnabled = input({
   comments:
     "When true, raw email content will be included with inbound webhook payloads under the RawEmail key.",
 });
-
 export const deliveryType = input({
   label: "Delivery Type",
   type: "string",
@@ -463,7 +425,6 @@ export const deliveryType = input({
     "The type of environment for your server. Options: Live, Sandbox. Defaults to Live. <strong>Important:</strong> This cannot be changed after the server is created.",
   default: "Live",
 });
-
 export const inboundHookUrl = input({
   label: "Inbound Hook URL",
   type: "string",

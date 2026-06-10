@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listDatafilesExamplePayload } from "../../examplePayloads";
 import { connectionInput, limit, page, paramsInputFields } from "../../inputs";
-
 export const listDatafiles = action({
   display: {
     label: "List Data Files",
@@ -18,7 +17,6 @@ export const listDatafiles = action({
         ...paramsInputFields,
       },
     });
-
     return {
       data,
     };

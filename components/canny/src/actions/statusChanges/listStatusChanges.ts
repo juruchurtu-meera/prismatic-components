@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listStatusChangesExamplePayload } from "../../examplePayloads";
 import { listStatusChangesInputs } from "../../inputs";
 import { paginateCursor } from "../../util";
-
 export const listStatusChanges = action({
   display: {
     label: "List Status Changes",

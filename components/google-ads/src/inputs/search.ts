@@ -6,7 +6,6 @@ import {
   managerCustomerIdInput,
   pageTokenInput,
 } from "./common";
-
 const query = input({
   label: "Query",
   placeholder: "Enter GAQL query",
@@ -25,7 +24,6 @@ const query = input({
 FROM campaign
 WHERE campaign.advertising_channel_type = 'LOCAL_SERVICES'`,
 });
-
 const returnTotalResultsCount = input({
   label: "Return Total Results Count",
   type: "boolean",
@@ -35,7 +33,6 @@ const returnTotalResultsCount = input({
   comments:
     "When true, the total number of results that match the query ignoring the LIMIT clause will be included in the response. Default is false.",
 });
-
 export const searchAdsLocalServicesInputs = {
   connection: connectionInput,
   customerId: customerIdInput,

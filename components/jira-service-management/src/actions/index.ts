@@ -9,7 +9,6 @@ import queueActions from "./queue";
 import requestActions from "./request";
 import requestTypeActions from "./requesttype";
 import serviceDeskActions from "./servicedesk";
-
 export default {
   ...serviceDeskActions,
   ...requestActions,

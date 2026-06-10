@@ -2,7 +2,6 @@ export interface Rows {
   columnId: string | number;
   value: unknown;
 }
-
 export interface SmartsheetWebhook {
   id: number;
   name: string;
@@ -20,11 +19,9 @@ export interface SmartsheetWebhook {
   createdAt: string;
   modifiedAt: string;
 }
-
 export interface PollingState extends Record<string, unknown> {
   lastPolledAt?: string;
 }
-
 export interface SmartsheetSheet extends Record<string, unknown> {
   id: number;
   name: string;

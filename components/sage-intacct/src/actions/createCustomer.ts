@@ -71,7 +71,6 @@ import {
 import { Functions } from "@intacct/intacct-sdk";
 import type { AbstractCustomer } from "@intacct/intacct-sdk/dist/Functions/AccountsReceivable";
 import { createCustomerPayload } from "../examplePayloads/createCustomerPayload";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -215,7 +214,6 @@ export const createCustomer = action({
       restrictedDepartments: restrictedDepartmentsInput,
       customFields: customFieldsInput,
     } as unknown as AbstractCustomer);
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(createCustomer, null, 2));
     }

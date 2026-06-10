@@ -8,7 +8,6 @@ import {
   dataAssetInput,
   technicalName,
 } from "../../inputs";
-
 export const createDataAssets = action({
   display: {
     label: "Create Data Asset",
@@ -20,7 +19,6 @@ export const createDataAssets = action({
     { connection, appId, appType, dataAssetInput, technicalName },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/data-assets`, {
       id: null,
       appId: appId || undefined,
@@ -28,7 +26,6 @@ export const createDataAssets = action({
       technicalName: technicalName || undefined,
       ...dataAssetInput,
     });
-
     return {
       data,
     };

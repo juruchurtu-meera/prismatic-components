@@ -9,7 +9,6 @@ import {
   handlePollingError,
   searchGoogleAds,
 } from "../util";
-
 export const changeHistoryTrigger = pollingTrigger({
   display: {
     label: "Account Change History",
@@ -30,19 +29,16 @@ export const changeHistoryTrigger = pollingTrigger({
       Object.keys(context.polling.getState()).length > 0
         ? (context.polling.getState() as unknown as PollingState)
         : {
-            lastChangeTime: getGAQLDateTime(timezone, 1), 
+            lastChangeTime: getGAQLDateTime(timezone, 1),
             errorCount: 0,
             consecutiveErrors: 0,
           };
-
     try {
       const sinceTime = pollState.lastChangeTime;
-
       const resourceFilter =
         params.resourceTypes.length > 0
           ? `AND change_event.change_resource_type IN (${params.resourceTypes.map((t: string) => `'${t}'`).join(",")})`
           : "";
-
       const query = `
         SELECT
           change_event.change_date_time,
@@ -60,7 +56,6 @@ export const changeHistoryTrigger = pollingTrigger({
         ORDER BY change_event.change_date_time DESC
         LIMIT 1000
       `;
-
       const data = await searchGoogleAds<ChangeEventResponse>(client, {
         customerId: params.customerId,
         params: {
@@ -68,16 +63,13 @@ export const changeHistoryTrigger = pollingTrigger({
         },
         fetchAll: true,
       });
-
       const results = data.results ?? [];
-
       context.polling.setState({
         lastChangeTime: nowTime,
         changeCount: results.length,
         errorCount: 0,
         consecutiveErrors: 0,
       });
-
       return Promise.resolve({
         payload: {
           ...payload,
@@ -105,5 +97,4 @@ export const changeHistoryTrigger = pollingTrigger({
   },
   examplePayload: changeHistoryTriggerExamplePayload,
 });
-
 export default changeHistoryTrigger;

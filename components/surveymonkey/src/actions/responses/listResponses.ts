@@ -4,15 +4,6 @@ import { paginateResults } from "../../util";
 import { listResponsesInputs } from "../../inputs";
 import { listResponsesExamplePayload } from "../../examplePayloads";
 import type { SurveyResponse } from "../../types";
-
-
-
-
-
-
-
-
-
 export const listResponses = action({
   display: {
     label: "List Responses",
@@ -24,14 +15,11 @@ export const listResponses = action({
     { connection, surveyId, status, fetchAll, page, perPage },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const endpoint = `/surveys/${surveyId}/responses`;
     const params: Record<string, unknown> = {};
-
     if (status) {
       params.status = status;
     }
-
     const data = await paginateResults<SurveyResponse>(
       client,
       endpoint,
@@ -42,7 +30,6 @@ export const listResponses = action({
         per_page: perPage,
       },
     );
-
     return { data };
   },
   examplePayload: listResponsesExamplePayload,

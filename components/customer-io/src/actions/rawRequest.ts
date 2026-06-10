@@ -1,13 +1,11 @@
 import { action, util } from "@prismatic-io/spectral";
 import { region, connectionInput } from "../inputs";
 import { createCustomerClient } from "../client";
-
 import {
   handleErrors,
   sendRawRequest,
   inputs as httpClientInputs,
 } from "@prismatic-io/spectral/dist/clients/http";
-
 const rawRequest = action({
   display: {
     label: "Raw Request - Track API",
@@ -33,10 +31,8 @@ const rawRequest = action({
         "https://track.customer.io/api",
         httpClientInputs,
         {
-          Authorization: `Basic ${Buffer.from(`${siteid}:${apikey}`).toString(
-            "base64"
-          )}`,
-        }
+          Authorization: `Basic ${Buffer.from(`${siteid}:${apikey}`).toString("base64")}`,
+        },
       );
       return { data };
     } catch (error) {
@@ -46,5 +42,4 @@ const rawRequest = action({
     }
   },
 });
-
 export default rawRequest;

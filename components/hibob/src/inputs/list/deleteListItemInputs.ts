@@ -1,6 +1,5 @@
 import { connection } from "../common";
 import { itemId, listName } from "./common";
-
 export const deleteListItemInputs = {
   connection,
   listName: {

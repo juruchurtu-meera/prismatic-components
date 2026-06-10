@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { taskId, connectionInput } from "../../inputs";
 import { TASK_OPT_FIELDS } from "../../util";
-
 export const getTask = action({
   display: {
     label: "Get Task",

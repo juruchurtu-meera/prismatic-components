@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput } from "../../../util";
 import { CREATE_OFFICE_SUITE_APP_SPECIFIC_PROPERTIES_EXAMPLE } from "../../../constants";
-
 const odataTypeApp = input({
   label: "OData App Type",
   comments:
@@ -12,7 +11,6 @@ const odataTypeApp = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const displayName = input({
   label: "Display Name",
   comments:
@@ -23,7 +21,6 @@ const displayName = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const description = input({
   label: "Description",
   comments:
@@ -34,7 +31,6 @@ const description = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const publisher = input({
   label: "Publisher",
   comments:
@@ -45,7 +41,6 @@ const publisher = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const largeIconType = input({
   label: "Icon Image Type",
   comments:
@@ -56,7 +51,6 @@ const largeIconType = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const largeIconValue = input({
   label: "Icon Image Data",
   comments:
@@ -67,7 +61,6 @@ const largeIconValue = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const isFeatured = input({
   label: "Is Featured",
   comments:
@@ -77,7 +70,6 @@ const isFeatured = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const privacyInformationUrl = input({
   label: "Privacy Information URL",
   comments:
@@ -88,7 +80,6 @@ const privacyInformationUrl = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const informationUrl = input({
   label: "Information URL",
   comments:
@@ -99,7 +90,6 @@ const informationUrl = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const owner = input({
   label: "Owner",
   comments:
@@ -110,7 +100,6 @@ const owner = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const developer = input({
   label: "Developer",
   comments:
@@ -121,7 +110,6 @@ const developer = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const notes = input({
   label: "Notes",
   comments:
@@ -132,7 +120,6 @@ const notes = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const specificPlatformProperties = input({
   label: "Specific Platform Properties",
   comments:
@@ -143,7 +130,6 @@ const specificPlatformProperties = input({
   required: true,
   clean: cleanCodeInput,
 });
-
 export default {
   odataTypeApp,
   displayName,

@@ -1,0 +1,56 @@
+This trigger polls [Google BigQuery](https://cloud.google.com/bigquery/) for jobs created in a specified project since the last run, on a configured schedule. BigQuery jobs expose only a creation time and have no modification timestamp, so this trigger detects newly created jobs ordered by creation time. It does not detect status changes on existing jobs. Use it to react to query, load, copy, and export activity as new jobs appear in a project.
+
+#### How It Works
+
+1. The trigger runs on the configured schedule and records the time of each run as its state.
+2. On the first run, it bootstraps from the current time so that historical jobs do not flood the first poll. Only jobs created after that point are surfaced on subsequent runs.
+3. On each run, it fetches jobs created since the last recorded poll time, ordered newest-first by creation time.
+4. State is advanced only after a run fully drains the available jobs, so no created job is skipped between polls.
+
+When a single poll returns more jobs than the page cap allows, the response is treated as truncated. Because BigQuery serves jobs newest-first with no modification timestamp, the trigger walks backward through the backlog on the following runs (draining older jobs first) instead of advancing the lower time bound. This prevents the older, not-yet-fetched portion of the backlog from being dropped. Once the backlog is fully drained, the trigger advances its state to the point captured when draining began, and jobs created during the drain are picked up by the next regular poll.
+
+#### Returned Data
+
+The trigger returns an object with one array under `data`:
+
+- `data.created` holds the BigQuery job records created since the last poll.
+
+Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Response (Polling)</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "kind": "bigquery#job",
+        "id": "my-project:US.job_abc123def456",
+        "jobReference": {
+          "projectId": "my-project",
+          "jobId": "job_abc123def456",
+          "location": "US"
+        },
+        "status": {
+          "state": "DONE"
+        },
+        "statistics": {
+          "creationTime": "1640995200000",
+          "startTime": "1640995205000",
+          "endTime": "1640995210000"
+        },
+        "user_email": "user@example.com"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- The first poll establishes a baseline from the current time and does not return historical jobs.
+- When a poll exceeds the page cap, the backlog is drained across multiple subsequent polls before the state advances, so delivery may lag during high-volume periods.
+- BigQuery API quotas and rate limits apply. Very frequent schedules may approach those limits in busy projects.

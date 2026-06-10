@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, uuid } from "../../inputs";
 import { getRoutingFormSubmissionExamplePayload } from "../../examplePayloads";
-
 export const getRoutingFormSubmission = action({
   display: {
     label: "Get Routing Form Submission",
@@ -10,7 +9,6 @@ export const getRoutingFormSubmission = action({
   },
   perform: async (context, { connection, uuid }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const { data } = await client.get(`/routing_form_submissions/${uuid}`);
     return { data };
   },

@@ -33,7 +33,6 @@ import {
   deleteFileExamplePayload,
   copyFileExamplePayload,
 } from "./examplePayloads";
-
 const listShares = action({
   display: {
     label: "List Shares",
@@ -50,7 +49,6 @@ const listShares = action({
   inputs: { azureConnection: connectionInput },
   examplePayload: listSharesExamplePayload,
 });
-
 const createShare = action({
   display: {
     label: "Create Share",
@@ -59,7 +57,6 @@ const createShare = action({
   perform: async (context, { shareName, azureConnection }) => {
     const client = createAuthorizedClient(azureConnection);
     const { shareCreateResponse } = await client.createShare(shareName);
-
     return {
       data: shareCreateResponse as Omit<ShareCreateResponse, "_response">,
     };
@@ -67,7 +64,6 @@ const createShare = action({
   inputs: { shareName, azureConnection: connectionInput },
   examplePayload: createShareExamplePayload,
 });
-
 const deleteShare = action({
   display: {
     label: "Delete Share",
@@ -85,7 +81,6 @@ const deleteShare = action({
   inputs: { shareName, azureConnection: connectionInput },
   examplePayload: deleteShareExamplePayload,
 });
-
 const listFolder = action({
   display: {
     label: "List Folder",
@@ -108,7 +103,6 @@ const listFolder = action({
   },
   examplePayload: listFolderExamplePayload,
 });
-
 const createFolder = action({
   display: {
     label: "Create Folder",
@@ -128,7 +122,6 @@ const createFolder = action({
   inputs: { shareName, path, azureConnection: connectionInput },
   examplePayload: createFolderExamplePayload,
 });
-
 const deleteFolder = action({
   display: {
     label: "Delete Folder",
@@ -143,7 +136,6 @@ const deleteFolder = action({
   inputs: { shareName, path, azureConnection: connectionInput },
   examplePayload: deleteFolderExamplePayload,
 });
-
 const uploadFile = action({
   display: {
     label: "Upload File",
@@ -155,11 +147,7 @@ const uploadFile = action({
   ) => {
     const client = createAuthorizedClient(azureConnection);
     const shareClient = client.getShareClient(shareName);
-
     context.logger.info({ contentType: fileContents.contentType });
-
-    
-    
     const { fileClient, fileCreateResponse } = await shareClient.createFile(
       path,
       Buffer.byteLength(fileContents.data),
@@ -176,7 +164,6 @@ const uploadFile = action({
   inputs: { shareName, path, fileContents, azureConnection: connectionInput },
   examplePayload: uploadFileExamplePayload,
 });
-
 export const saveFromUrl = action({
   display: {
     label: "Save From URL",
@@ -185,30 +172,22 @@ export const saveFromUrl = action({
   perform: async (context, { azureConnection, shareName, sourceUrl, path }) => {
     const client = createAuthorizedClient(azureConnection);
     const shareClient = client.getShareClient(shareName);
-
-    
     const response = await createClient({
       baseUrl: sourceUrl,
     }).get("", {
       responseType: "stream",
     });
-
     const fileSize = Number(response.headers["content-length"]);
-
     if (!fileSize) {
       throw new Error(
         "Source file server did not include a content-length header. Azure Files requires that the file size is known ahead of time.",
       );
     }
-
     const { fileClient, fileCreateResponse } = await shareClient.createFile(
       path,
       fileSize,
     );
-
-    
     await fileClient.uploadStream(response.data, fileSize, 4 * 1024 * 1024, 4);
-
     return {
       data: fileCreateResponse as Omit<FileCreateResponse, "_response">,
     };
@@ -221,7 +200,6 @@ export const saveFromUrl = action({
   },
   examplePayload: saveFromUrlExamplePayload,
 });
-
 const downloadFile = action({
   display: {
     label: "Download File",
@@ -240,7 +218,6 @@ const downloadFile = action({
   inputs: { shareName, path, azureConnection: connectionInput },
   examplePayload: downloadFileExamplePayload,
 });
-
 const deleteFile = action({
   display: {
     label: "Delete File",
@@ -255,7 +232,6 @@ const deleteFile = action({
   inputs: { shareName, path, azureConnection: connectionInput },
   examplePayload: deleteFileExamplePayload,
 });
-
 const copyFile = action({
   display: {
     label: "Copy File",
@@ -280,7 +256,6 @@ const copyFile = action({
   inputs: { shareName, fromPath, toPath, azureConnection: connectionInput },
   examplePayload: copyFileExamplePayload,
 });
-
 export default {
   listShares,
   createShare,

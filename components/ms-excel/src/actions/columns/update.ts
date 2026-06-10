@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { getColumnExamplePayload as updateColumnExamplePayload } from "../../examplePayloads/columns";
 import { updateColumnInputs } from "../../inputs/columns/update";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const updateColumn = action({
   display: {
     label: "Update Column",
@@ -24,14 +23,12 @@ export const updateColumn = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.patch(
       `${baseUrl}/worksheets/${worksheetId}/tables/${tableId}/columns/${columnId}`,
       {
         values,
       },
     );
-
     return {
       data,
     };

@@ -1,5 +1,3 @@
-
-
 export interface CandidateParams {
   per_page?: string;
   page?: string;
@@ -11,7 +9,6 @@ export interface CandidateParams {
   email?: string;
   candidate_ids?: string;
 }
-
 export interface CandidateDataSources {
   id: number;
   first_name: string;
@@ -41,12 +38,10 @@ export interface CandidateDataSources {
   custom_fields: CustomFields;
   keyed_custom_fields: KeyedCustomFields;
 }
-
 export interface Address {
   value: string;
   type: string;
 }
-
 export interface Application {
   id: number;
   candidate_id: number;
@@ -69,14 +64,12 @@ export interface Application {
   prospect_detail: ProspectDetail;
   attachments: Attachment[];
 }
-
 export interface Attachment {
   filename: string;
   url: string;
   type: string;
   created_at: string;
 }
-
 export interface Recruiter {
   id: number;
   first_name: string;
@@ -84,33 +77,27 @@ export interface Recruiter {
   name: string;
   employee_id: null;
 }
-
 export interface CurrentStage {
   id: number;
   name: string;
 }
-
 export interface Location {
   address: string;
 }
-
 export interface ProspectDetail {
   prospect_pool: CurrentStage | null;
   prospect_stage: CurrentStage | null;
   prospect_owner: CurrentStage | null;
 }
-
 export interface Source {
   id: number;
   public_name: string;
 }
-
 export interface CustomFields {
   desired_salary: string;
   work_remotely: boolean;
   graduation_year: string;
 }
-
 export interface Education {
   id: number;
   school_name: string;
@@ -119,7 +106,6 @@ export interface Education {
   start_date: string;
   end_date: string;
 }
-
 export interface Employment {
   id: number;
   company_name: string;
@@ -127,19 +113,16 @@ export interface Employment {
   start_date: string;
   end_date: string;
 }
-
 export interface KeyedCustomFields {
   desired_salary: DesiredSalary;
   work_remotely: WorkRemotely;
   graduation_year_1: DesiredSalary;
 }
-
 export interface DesiredSalary {
   name: string;
   type: string;
   value: string;
 }
-
 export interface WorkRemotely {
   name: string;
   type: string;

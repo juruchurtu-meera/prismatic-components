@@ -9,7 +9,6 @@ import {
   promptInput,
 } from "../inputs";
 import type { ImageSize } from "../types";
-
 const createImage = action({
   display: {
     label: "Create Image",
@@ -34,5 +33,4 @@ const createImage = action({
   },
   examplePayload: createImageExamplePayload,
 });
-
 export default { createImage };

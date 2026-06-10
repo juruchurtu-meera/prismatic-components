@@ -3,7 +3,6 @@ import { rawHttpClient } from "../../../auth";
 import { connectionInput, subscriptionId, topicId } from "../../../inputs";
 import type { SubscriptionResponse } from "../../../types";
 import { subscriptionPayload } from "../../../examplePayloads";
-
 export const getTopicSubscription = action({
   display: {
     label: "Get Topic Subscription",
@@ -14,7 +13,6 @@ export const getTopicSubscription = action({
     const { data } = await client.get<SubscriptionResponse>(
       `/community/topics/${topicId}/subscriptions/${subscriptionId}`,
     );
-
     return {
       data,
     };

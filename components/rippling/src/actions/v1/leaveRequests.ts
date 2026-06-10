@@ -9,7 +9,6 @@ import {
   getLeaveRequestsInputs,
   processLeaveRequestsInputs,
 } from "../../inputs";
-
 const getLeaveRequests = action({
   display: {
     label: "Get Leave Requests (V1)",
@@ -55,7 +54,6 @@ const getLeaveRequests = action({
     return { data };
   },
 });
-
 const processLeaveRequests = action({
   display: {
     label: "Process Leave Requests (V1)",
@@ -77,7 +75,6 @@ const processLeaveRequests = action({
     return { data };
   },
 });
-
 export default {
   getLeaveRequests,
   processLeaveRequests,

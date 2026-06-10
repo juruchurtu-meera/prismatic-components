@@ -22,7 +22,6 @@ import {
 } from "../../inputs/companies/updateCompanyInformationInputs";
 import { connectionInput } from "../../inputs/general";
 import type { CompanyInformation } from "../../interfaces";
-
 export const updateCompanyInformation = action({
   display: {
     label: "Update Company Information",
@@ -37,7 +36,6 @@ export const updateCompanyInformation = action({
       companyPhoneNumber,
       companyFaxNumber,
       companyIndustry,
-
       companyCity,
       companyCountry,
       companyPostalCode,
@@ -53,7 +51,11 @@ export const updateCompanyInformation = action({
       connection,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       phoneNumber: companyPhoneNumber,
       faxNumber: companyFaxNumber,
@@ -71,11 +73,9 @@ export const updateCompanyInformation = action({
       addressLine1: companyAddressLine1,
       addressLine2: companyAddressLine2,
     };
-
     const headers = {
       "If-Match": "*",
     };
-
     const { data } = await client.patch<CompanyInformation>(
       `/companies(${companyId})/companyInformation(${companyInformationId})`,
       payload,
@@ -83,7 +83,6 @@ export const updateCompanyInformation = action({
         headers,
       },
     );
-
     return { data };
   },
   inputs: {

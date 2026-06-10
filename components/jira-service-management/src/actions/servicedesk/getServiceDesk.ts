@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getServiceDeskExamplePayload } from "../../examplePayloads";
 import { getServiceDeskInputs } from "../../inputs";
-
 export const getServiceDesk = action({
   display: {
     label: "Get Service Desk",

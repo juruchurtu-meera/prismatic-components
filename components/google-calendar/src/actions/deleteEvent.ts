@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { calendarId, connectionInput, eventId, sendUpdates } from "../inputs";
 import { parseReturn } from "../parseReturn";
-
 export const deleteEvent = action({
   display: {
     label: "Delete Event",

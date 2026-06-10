@@ -12,7 +12,6 @@ import {
 } from "../inputs";
 import { fetchFiles } from "../helpers/pagination";
 import { getDriveQueryParams } from "../util";
-
 export const searchFolders = action({
   display: {
     label: "Search Folders",
@@ -20,18 +19,14 @@ export const searchFolders = action({
   },
   perform: async (_context, params) => {
     const drive = createClient(params.connection);
-
     let finalQuery = "";
     if (params.folderId) {
       finalQuery += `'${params.folderId}' in parents and `;
     }
-
     finalQuery += `mimeType='application/vnd.google-apps.folder'`;
-
     if (params.searchQuery) {
       finalQuery += ` and name contains '${params.searchQuery}'`;
     }
-
     const data = await fetchFiles({
       drive,
       initialParams: {
@@ -43,11 +38,9 @@ export const searchFolders = action({
       },
       fetchAll: params.fetchAll,
     });
-
     if (data.files.length === 0) {
       throw new Error(`No results found for query: ${finalQuery}`);
     }
-
     return { data };
   },
   inputs: {
@@ -64,5 +57,4 @@ export const searchFolders = action({
     data: { files: [{ name: "example", description: "example" }] },
   },
 });
-
 export default searchFolders;

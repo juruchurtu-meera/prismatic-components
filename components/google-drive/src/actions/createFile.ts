@@ -3,7 +3,6 @@ import mime from "mime-types";
 import { Readable } from "node:stream";
 import { createClient } from "../client";
 import { connection, fileContent, folderId, fileName, fields } from "../inputs";
-
 export const createFile = action({
   display: {
     label: "Create File",
@@ -14,11 +13,8 @@ export const createFile = action({
     const folderId = util.types.toString(params.folderId);
     const fields = util.types.toString(params.fields);
     const { data: fileData } = util.types.toData(params.fileContent);
-
     const mimeType = mime.lookup(fileName) || undefined;
-
     const drive = createClient(params.connection);
-
     const { data } = await drive.files.create({
       requestBody: {
         name: fileName,
@@ -32,7 +28,6 @@ export const createFile = action({
       fields,
       supportsAllDrives: true,
     });
-
     return {
       data,
     };
@@ -54,5 +49,4 @@ export const createFile = action({
     },
   },
 });
-
 export default createFile;

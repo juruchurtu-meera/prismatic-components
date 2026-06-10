@@ -4,7 +4,6 @@ import { listStreamExecutionInputs } from "../../inputs";
 import type { ListStreamExecutionQueryParams } from "../types/ListStreamExecutionQueryParams";
 import { listStreamExecutionExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listStreamExecution = action({
   display: {
     label: "List Stream Execution",
@@ -29,5 +28,4 @@ export const listStreamExecution = action({
   },
   inputs: listStreamExecutionInputs,
 });
-
 export default { listStreamExecution };

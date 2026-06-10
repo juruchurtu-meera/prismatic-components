@@ -16,7 +16,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const createInvoice = action({
   display: {
     label: "Create Invoice",
@@ -42,14 +41,14 @@ export const createInvoice = action({
       stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
     return {
       data: await client.invoices.create({
         ...(util.types.keyValPairListToObject(fieldValues) || {}),
         customer: util.types.toString(customerId),
         collection_method:
-          (util.types.toString(collectionMethod) as Stripe.InvoiceCreateParams.CollectionMethod) ||
-          undefined,
+          (util.types.toString(
+            collectionMethod,
+          ) as Stripe.InvoiceCreateParams.CollectionMethod) || undefined,
         subscription: util.types.toString(subscriptionId) || undefined,
         description: util.types.toString(description) || undefined,
         auto_advance: util.types.toBool(autoAdvance) || undefined,

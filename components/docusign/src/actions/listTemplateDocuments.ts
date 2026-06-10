@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, templateId } from "../inputs";
 import { listTemplateDocumentsPayload } from "../examplePayloads";
-
 export const listTemplateDocuments = action({
   display: {
     label: "List Template Documents",

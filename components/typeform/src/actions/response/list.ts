@@ -9,7 +9,6 @@ import {
 import { fetchAllData } from "../../util";
 import { listResponsesPayload } from "../../examplePayloads/responses";
 import type { Response } from "../../interfaces/responses";
-
 export const listResponses = action({
   display: {
     label: "List Responses",
@@ -27,7 +26,6 @@ export const listResponses = action({
     { connection, id, customQueryParams, fetchAll, page, pageSize, search },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await fetchAllData<Response>(
       client,
       `/forms/${id}/responses`,

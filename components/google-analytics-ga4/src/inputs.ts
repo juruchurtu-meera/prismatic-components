@@ -2,10 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
 import { ANALYTICS_ENDPOINTS } from "./constants";
 import { pollResourceModel, toOptionalString } from "./util";
-
-
-
-
 const cleanId = (idType: string, id: string) => {
   if (id.startsWith(idType)) {
     return id;
@@ -13,7 +9,6 @@ const cleanId = (idType: string, id: string) => {
     return `${idType}/${id}`;
   }
 };
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
@@ -25,7 +20,6 @@ export const pageToken = input({
     "If a previous response was truncated, the response includes a `nextPageToken`. To retrieve the next page of results, set this parameter to the value of `nextPageToken` from the previous response.",
   clean: toOptionalString,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -35,13 +29,11 @@ export const pageSize = input({
   comments: `The maximum number of resources contained in the underlying API response. The API may return fewer values in a page, even if there are additional values to return. If unspecified, the default is 50; the maximum is 200.`,
   clean: toOptionalString,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const propertyIdInput = input({
   label: "Property ID",
   type: "string",
@@ -51,7 +43,6 @@ export const propertyIdInput = input({
   dataSource: "listProperties",
   clean: (value) => cleanId("properties", util.types.toString(value)),
 });
-
 export const appInstanceId = input({
   label: "App Instance ID",
   comments: "Your App's instance ID.",
@@ -61,7 +52,6 @@ export const appInstanceId = input({
   placeholder: "12345678901234567890123456789012",
   clean: util.types.toString,
 });
-
 export const events = input({
   label: "Events To Send",
   comments: "The events to send to Google Analytics",
@@ -84,17 +74,16 @@ export const events = input({
     },
   ]),
 });
-
 export const apiSecret = input({
   label: "API Secret",
   type: "password",
   required: true,
   example: "Str5ahciR5SJtWClz1mkRA",
   placeholder: "Str5ahciR5SJtWClz1mkRA",
-  comments: "The API secret for your Google Analytics G4. Generated in the Google Analytics UI",
+  comments:
+    "The API secret for your Google Analytics G4. Generated in the Google Analytics UI",
   clean: util.types.toString,
 });
-
 export const firebaseAppId = input({
   label: "Firebase App ID",
   type: "string",
@@ -106,7 +95,6 @@ export const firebaseAppId = input({
     " Project Settings > General > Your Apps > App ID",
   clean: util.types.toString,
 });
-
 export const accountId = input({
   label: "Account ID",
   type: "string",
@@ -116,7 +104,6 @@ export const accountId = input({
   dataSource: "listAccounts",
   clean: util.types.toString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -124,9 +111,7 @@ export const fetchAll = input({
   comments: "When true, retrieves all pages of results.",
   clean: util.types.toBool,
 });
-
 const { debugRequest: _, ...restInputs } = httpClientInputs;
-
 export const rawRequestInputs = {
   connection: connectionInput,
   baseUrl: input({
@@ -147,14 +132,12 @@ export const rawRequestInputs = {
     example: "/accounts",
   },
 };
-
 export const listAccountsInputs = {
   fetchAll,
   pageSize,
   pageToken,
   connection: connectionInput,
 };
-
 export const listPropertiesInputs = {
   fetchAll,
   pageSize,
@@ -162,7 +145,6 @@ export const listPropertiesInputs = {
   accountId: accountId,
   connection: connectionInput,
 };
-
 export const getPropertyInputs = {
   accountId: {
     ...accountId,
@@ -171,25 +153,24 @@ export const getPropertyInputs = {
   propertyId: propertyIdInput,
   connection: connectionInput,
 };
-
 const pollResourceType = input({
   label: "Resource Type",
   type: "string",
   required: true,
   model: pollResourceModel,
-  comments: "The Google Analytics GA4 resource type to poll for new or updated records.",
+  comments:
+    "The Google Analytics GA4 resource type to poll for new or updated records.",
   clean: util.types.toString,
 });
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
   required: false,
   default: "true",
-  comments: "When true, newly created records are included in the trigger output.",
+  comments:
+    "When true, newly created records are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -199,7 +180,6 @@ const showUpdatedRecords = input({
     "When true, records that were modified after the last poll are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 export const pollChangesInputs = {
   connection: {
     ...connectionInput,

@@ -4,12 +4,10 @@ export const ADD_FEATURES_EXAMPLE_PAYLOAD = {
     { objectId: 18, uniqueId: 18, globalId: null, success: true },
   ],
 };
-
 export const ADD_HOSTED_LAYER_TO_FEATURE_SERVICE_EXAMPLE_PAYLOAD = {
   success: true,
   layers: [{ name: "public_layer", id: 4 }],
 };
-
 export const CREATE_FEATURE_SERVICE_EXAMPLE_PAYLOAD = {
   encodedServiceURL:
     "https://services2.arcgis.com/ABCD12345abcd1234/arcgis/rest/services/Example/FeatureServer",
@@ -24,13 +22,11 @@ export const CREATE_FEATURE_SERVICE_EXAMPLE_PAYLOAD = {
   typeKeywords: [],
   isView: false,
 };
-
 export const CREATE_WEB_MAP_EXAMPLE_PAYLOAD = {
   success: true,
   id: "2e1ac491fdcd4d7dbd7bd25418ea1234",
   folder: "",
 };
-
 export const EXPORT_LAYERS_EXAMPLE_PAYLOAD = {
   type: "file",
   size: 32768,
@@ -39,7 +35,6 @@ export const EXPORT_LAYERS_EXAMPLE_PAYLOAD = {
   exportFormat: "Shapefile",
   exportItemId: "2123466496e645f488e63f3f37e12345",
 };
-
 export const GEOCODE_EXAMPLE_PAYLOAD = {
   spatialReference: { wkid: 4326, latestWkid: 4326 },
   candidates: [
@@ -141,7 +136,6 @@ export const GEOCODE_EXAMPLE_PAYLOAD = {
     ],
   },
 };
-
 export const GET_ALL_LAYERS_AND_TABLES_EXAMPLE_PAYLOAD = {
   layers: [
     {
@@ -397,12 +391,9 @@ export const GET_ALL_LAYERS_AND_TABLES_EXAMPLE_PAYLOAD = {
   ],
   tables: [],
 };
-
 export const GET_FEATURE_SERVICE_URL_EXAMPLE_PAYLOAD =
   "https://services2.arcgis.com/ABCD12345abcd1234/arcgis/rest/services/Search_location_layer/FeatureServer";
-
 export const GET_LAYER_ID_EXAMPLE_PAYLOAD = [{ id: 0, name: "Layer_1" }];
-
 export const LIST_FEATURE_SERVICES_EXAMPLE_PAYLOAD = {
   total: 3,
   start: 1,
@@ -471,7 +462,6 @@ export const LIST_FEATURE_SERVICES_EXAMPLE_PAYLOAD = {
     },
   ],
 };
-
 export const SEARCH_ITEMS_EXAMPLE_PAYLOAD = {
   total: 10000,
   start: 1,

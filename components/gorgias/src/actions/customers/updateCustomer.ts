@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { updateCustomerInputs as inputs } from "../../inputs/customers";
 import type { UpdateCustomerResponse } from "../../interfaces/customers";
 import { updateCustomerExamplePayload as examplePayload } from "../../examplePayloads/customers";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",
@@ -14,7 +13,6 @@ export const updateCustomer = action({
       connection,
       debug: context.debug.enabled,
     }).put<UpdateCustomerResponse>(`/customers/${id}`, body);
-
     return {
       data,
     };

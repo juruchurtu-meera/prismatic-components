@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanString } from "../util";
-
 export const key = input({
   label: "Key",
   type: "string",
@@ -10,7 +9,6 @@ export const key = input({
   placeholder: "Enter campaign key",
   clean: cleanString,
 });
-
 export const responsibleId = input({
   label: "Responsible ID",
   type: "string",

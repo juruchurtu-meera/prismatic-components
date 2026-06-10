@@ -1,16 +1,4 @@
-
-
-
-
-
-
-
-
-
-
 import { ASYNCHRONOUS_BRANCH } from "./constants";
-
-
 export const executeSqlSynchronousExamplePayload = {
   branch: ASYNCHRONOUS_BRANCH,
   data: {
@@ -19,7 +7,8 @@ export const executeSqlSynchronousExamplePayload = {
     sqlState: "00000",
     message: "Statement executed successfully.",
     createdOn: 1234567890123,
-    statementStatusUrl: "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
+    statementStatusUrl:
+      "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
     resultSetMetaData: {
       numRows: 2,
       format: "jsonv2",
@@ -67,21 +56,16 @@ export const executeSqlSynchronousExamplePayload = {
     ],
   },
 };
-
-
-
 export const executeSqlAsynchronousExamplePayload = {
   data: {
     code: "333334",
     sqlState: "00000",
     message: "Statement executed successfully.",
     statementHandle: "01b1e5d3-0606-7c93-0001-4aae0000e506",
-    statementStatusUrl: "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
+    statementStatusUrl:
+      "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
   },
 };
-
-
-
 export const executeSqlMultiStatementExamplePayload = {
   data: {
     code: "333334",
@@ -92,12 +76,10 @@ export const executeSqlMultiStatementExamplePayload = {
       "01b1e5d3-0606-7c93-0001-4aae0000e507",
       "01b1e5d3-0606-7c93-0001-4aae0000e508",
     ],
-    statementStatusUrl: "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
+    statementStatusUrl:
+      "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
   },
 };
-
-
-
 export const executeSqlPolledResultsExamplePayload = {
   data: [
     {
@@ -106,7 +88,8 @@ export const executeSqlPolledResultsExamplePayload = {
       sqlState: "00000",
       message: "Statement executed successfully.",
       createdOn: 1234567890123,
-      statementStatusUrl: "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
+      statementStatusUrl:
+        "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
       resultSetMetaData: {
         numRows: 1000,
         format: "jsonv2",
@@ -125,8 +108,6 @@ export const executeSqlPolledResultsExamplePayload = {
     },
   ],
 };
-
-
 export const getStatementHandleRunningExamplePayload = {
   data: {
     code: "333333",
@@ -135,8 +116,6 @@ export const getStatementHandleRunningExamplePayload = {
     statementHandle: "01b1e5d3-0606-7c93-0001-4aae0000e506",
   },
 };
-
-
 export const getStatementHandleCompletedExamplePayload = {
   data: {
     code: "090001",
@@ -144,7 +123,8 @@ export const getStatementHandleCompletedExamplePayload = {
     sqlState: "00000",
     message: "Statement executed successfully.",
     createdOn: 1234567890123,
-    statementStatusUrl: "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
+    statementStatusUrl:
+      "/api/v2/statements/01b1e5d3-0606-7c93-0001-4aae0000e506",
     resultSetMetaData: {
       numRows: 500,
       format: "jsonv2",

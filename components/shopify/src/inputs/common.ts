@@ -8,24 +8,26 @@ import {
   LIST_PRODUCTS_DATASOURCE_REFERENCE,
   LIST_VARIANTS_DATASOURCE_REFERENCE,
 } from "../constants";
-import { cleanCodeInput, cleanKeyValueListInput, cleanStringInput } from "../util";
+import {
+  cleanCodeInput,
+  cleanKeyValueListInput,
+  cleanStringInput,
+} from "../util";
 import shopifyEvents from "../webhook_events.json";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Shopify connection to use.",
 });
-
 export const returnHeaders = input({
   label: "Return Headers",
   type: "boolean",
   required: false,
-  comments: "When true, response headers will be included in the output object.",
+  comments:
+    "When true, response headers will be included in the output object.",
   clean: util.types.toBool,
 });
-
 export const apiVersion = input({
   label: "API Version",
   type: "string",
@@ -35,7 +37,6 @@ export const apiVersion = input({
     "Shopify versions its API. See [Shopify API release notes](https://shopify.dev/docs/api/release-notes) for a list of available versions.",
   clean: util.types.toString,
 });
-
 export const getAlldata = input({
   label: "Get All Data",
   type: "boolean",
@@ -44,7 +45,6 @@ export const getAlldata = input({
     "When true, fetches all data from all pages (API is limited to 250 records per page max). The limit input will be ignored when enabled.",
   clean: util.types.toBool,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -54,7 +54,6 @@ export const limit = input({
   placeholder: "Enter limit",
   clean: cleanStringInput,
 });
-
 export const pageInfo = input({
   label: "Page Offset Token",
   type: "string",
@@ -66,7 +65,6 @@ export const pageInfo = input({
   placeholder: "Enter page cursor",
   clean: cleanStringInput,
 });
-
 export const customerId = input({
   label: "Customer",
   type: "string",
@@ -77,7 +75,6 @@ export const customerId = input({
   clean: util.types.toString,
   dataSource: LIST_CUSTOMERS_DATASOURCE_REFERENCE,
 });
-
 export const productId = input({
   label: "Product ID",
   type: "string",
@@ -88,7 +85,6 @@ export const productId = input({
   clean: util.types.toString,
   dataSource: LIST_PRODUCTS_DATASOURCE_REFERENCE,
 });
-
 export const orderId = input({
   label: "Order ID",
   type: "string",
@@ -99,7 +95,6 @@ export const orderId = input({
   clean: util.types.toString,
   dataSource: LIST_ORDERS_DATASOURCE_REFERENCE,
 });
-
 export const fieldValues = input({
   label: "Values",
   placeholder: "Enter key-value pairs",
@@ -110,7 +105,6 @@ export const fieldValues = input({
     "Key-value pairs for creating or updating a record. Specify any property key and value.",
   clean: cleanKeyValueListInput,
 });
-
 export const tags = input({
   label: "Tags",
   type: "string",
@@ -121,7 +115,6 @@ export const tags = input({
   comments: "Tags for the product. Each list item is a tag string.",
   clean: util.types.toString,
 });
-
 export const itemId = input({
   label: "Inventory Item ID",
   type: "string",
@@ -131,7 +124,6 @@ export const itemId = input({
   placeholder: "Enter inventory item ID",
   clean: util.types.toString,
 });
-
 export const locationId = input({
   label: "Location ID",
   type: "string",
@@ -142,7 +134,6 @@ export const locationId = input({
   clean: util.types.toString,
   dataSource: LIST_LOCATIONS_DATASOURCE_REFERENCE,
 });
-
 export const sku = input({
   label: "SKU",
   type: "string",
@@ -152,7 +143,6 @@ export const sku = input({
   comments: "The SKU (stock-keeping unit) for the variant.",
   clean: util.types.toString,
 });
-
 export const updatePrice = input({
   label: "Price",
   type: "string",
@@ -162,7 +152,6 @@ export const updatePrice = input({
   comments: "The price of the variant.",
   clean: cleanStringInput,
 });
-
 export const updatedAtMin = input({
   label: "Updated At Min",
   type: "string",
@@ -173,16 +162,15 @@ export const updatedAtMin = input({
   placeholder: "Enter date (YYYY-MM-DD)",
   clean: cleanStringInput,
 });
-
 export const secretKey = input({
   label: "Secret Key",
   type: "password",
   required: true,
-  comments: "The Shopify app's client secret, viewable from the Partner Dashboard.",
+  comments:
+    "The Shopify app's client secret, viewable from the Partner Dashboard.",
   placeholder: "Enter secret key",
   clean: util.types.toString,
 });
-
 export const webhookTopic = input({
   label: "Webhook Topic",
   type: "string",
@@ -202,7 +190,6 @@ export const webhookTopic = input({
     return [value];
   },
 });
-
 const query = input({
   label: "Query or Mutation",
   type: "code",
@@ -213,7 +200,6 @@ const query = input({
   example: GRAPHQL_EXAMPLE,
   clean: util.types.toString,
 });
-
 const variables = input({
   label: "Variables",
   type: "string",
@@ -224,7 +210,6 @@ const variables = input({
   placeholder: "key1: value1, key2: value2",
   clean: cleanKeyValueListInput,
 });
-
 const variablesObject = input({
   label: "Variables Object",
   type: "code",
@@ -234,7 +219,6 @@ const variablesObject = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 export const graphQlRawRequestInputs = {
   connection: connectionInput,
   apiVersion,

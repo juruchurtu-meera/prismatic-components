@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SMS_DEFINITIONS_PATH } from "../../constants";
 import { createSmsDefinitionExamplePayload } from "../../examplePayloads";
 import { createSmsDefinitionInputs } from "../../inputs";
-
 export const createSmsDefinition = action({
   examplePayload: createSmsDefinitionExamplePayload,
   display: {
@@ -22,16 +21,13 @@ export const createSmsDefinition = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       definitionKey: smsDefinitionKey,
       name: smsDefinitionName,
       description: smsDefinitionDescription,
       ...smsDefinitionExtraBody,
     };
-
     const { data } = await client.post(SMS_DEFINITIONS_PATH, body);
-
     return { data };
   },
 });

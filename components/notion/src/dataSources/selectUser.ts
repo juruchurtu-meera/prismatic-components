@@ -3,13 +3,11 @@ import { createClient } from "../client";
 import { selectUserInputs } from "../inputs";
 import { getPaginatedData, sortArray } from "../util";
 import { HttpMethod, MAX_PAGE_SIZE } from "../constants";
-
 interface NotionUser {
   id: string;
   name?: string;
   type?: string;
 }
-
 export const selectUser = dataSource({
   display: {
     label: "Select User",
@@ -18,7 +16,6 @@ export const selectUser = dataSource({
   inputs: selectUserInputs,
   perform: async (_context, { connection }) => {
     const client = createClient(connection, false);
-
     const { data } = await getPaginatedData(
       client,
       HttpMethod.GET,
@@ -29,14 +26,12 @@ export const selectUser = dataSource({
         page_size: MAX_PAGE_SIZE,
       },
     );
-
     const result = sortArray(
       data.results.map((user: NotionUser) => ({
         label: user.name || "Unnamed User",
         key: user.id,
       })),
     );
-
     return { result };
   },
   dataSourceType: "picklist",

@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { getRecordInputs } from "../../inputs";
 import { getRecordExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const getRecord = action({
   display: {
     label: "Get Record",

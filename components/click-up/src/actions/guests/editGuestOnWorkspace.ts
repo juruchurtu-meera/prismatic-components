@@ -13,7 +13,6 @@ import {
   getUsername,
 } from "../../inputs";
 import type { EditGuestOnWorkspaceBody } from "./types/EditGuestOnWorkspaceBody";
-
 const teamId = getTeamId(true);
 const username = getUsername(true, "");
 const canEditTags = getCanEditTags(true, "", true);
@@ -21,7 +20,6 @@ const canSeeTimeSpent = getCanSeeTimeSpent(true, "", true);
 const canSeeTimeEstimated = getCanSeeTimeEstimated(true, "", true);
 const canCreateViews = getCanCreateViews(true, "", true);
 const guestId = getGuestId(true, "Guest ID");
-
 export const editGuestOnWorkspace = action({
   display: {
     label: "Edit Guest on Workspace",
@@ -40,9 +38,12 @@ export const editGuestOnWorkspace = action({
       canCreateViews,
       customRoleId,
       guestId,
-    }
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const body: EditGuestOnWorkspaceBody = {
       username,
       can_edit_tags: canEditTags,
@@ -51,9 +52,7 @@ export const editGuestOnWorkspace = action({
       can_create_views: canCreateViews,
       custom_role_id: customRoleId,
     };
-
     const { data } = await client.put(`/team/${teamId}/guest/${guestId}`, body);
-
     return {
       data,
     };

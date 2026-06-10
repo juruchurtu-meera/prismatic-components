@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { createBusinessPartnerExamplePayload } from "../../../examplePayloads";
 import { createBusinessPartnerInputs } from "../../../inputs";
-
 export const createBusinessPartner = action({
   display: {
     label: "Create Business Partner (V2)",

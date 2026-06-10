@@ -4,7 +4,6 @@ import { getLdapClient } from "../client";
 import { searchUsersExamplePayload as examplePayload } from "../examplePayloads";
 import { searchUsersInputs as inputs } from "../inputs";
 import { getRootDn } from "../util";
-
 export const searchUsers = action({
   display: {
     label: "Search Users",
@@ -13,11 +12,9 @@ export const searchUsers = action({
   perform: async (context, { connection, additionalAttributes }) => {
     const client = await getLdapClient(connection);
     const rootDn = await getRootDn(client);
-
     if (context.debug.enabled) {
       context.logger.debug({ additionalAttributes });
     }
-
     try {
       const options: SearchOptions = {
         scope: "sub",
@@ -25,7 +22,6 @@ export const searchUsers = action({
         attributes: ["cn", "mail", ...additionalAttributes],
       };
       const { searchEntries } = await client.search(rootDn, options);
-
       return {
         data: {
           users: searchEntries,

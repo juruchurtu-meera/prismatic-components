@@ -5,21 +5,9 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { apiKeyConnection } from "./connections/";
 import { validateConnection } from "./utils";
-
-
-
-
-
 export const getBaseUrl = (connection: Connection): string => {
   return util.types.toString(connection.fields.datadogSite);
 };
-
-
-
-
-
-
-
 export const getAuthHeaders = (
   connection: Connection,
 ): Record<string, string> => {
@@ -33,26 +21,16 @@ export const getAuthHeaders = (
       "DD-APPLICATION-KEY": applicationKey,
     };
   }
-
-  
   const token = util.types.toString(connection.token?.access_token);
   return {
     Authorization: `Bearer ${token}`,
   };
 };
-
-
-
-
-
-
-
 export const createClient = (
   connection: Connection,
   debug = false,
 ): HttpClient => {
   validateConnection(connection);
-
   const baseUrl = getBaseUrl(connection);
   return createHttpClient({
     baseUrl,

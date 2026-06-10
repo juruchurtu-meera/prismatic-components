@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { storeId, customerId, connectionInput } from "./../../../inputs";
-
 export const getCustomerInfo = action({
   display: {
     label: "Get Customer",
@@ -20,5 +19,4 @@ export const getCustomerInfo = action({
     connection: connectionInput,
   },
 });
-
 export default getCustomerInfo;

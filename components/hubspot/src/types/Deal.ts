@@ -8,7 +8,6 @@ export interface DealProperties {
   hs_lastmodifieddate: string;
   hs_object_id: number;
 }
-
 export interface Deal {
   id: number;
   properties: DealProperties;

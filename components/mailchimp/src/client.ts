@@ -1,19 +1,14 @@
 import { createClient as createHttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { mailchimpConnection, mailchimpOAuthConnection } from "./connections";
-
 interface ParsedConnection {
   baseUrl: string;
   basicAuth: string;
 }
-
 export const parseConnection = async (
   connection: Connection,
 ): Promise<ParsedConnection> => {
-  
   let dc: string, apiKey: string;
-
-  
   if (connection.key === mailchimpConnection.key) {
     apiKey = util.types.toString(connection.fields.apiKey);
     const apiKeyRegex = /.+-.+/;
@@ -22,8 +17,6 @@ export const parseConnection = async (
     }
     dc = apiKey.split("-")[1];
   }
-
-  
   if (connection.key === mailchimpOAuthConnection.key) {
     apiKey = util.types.toString(connection.token.access_token);
     const client = createHttpClient({
@@ -34,13 +27,11 @@ export const parseConnection = async (
     });
     dc = data.dc;
   }
-
   return Promise.resolve({
     baseUrl: `https://${dc}.api.mailchimp.com/3.0`,
     basicAuth: Buffer.from(`_:${apiKey}`).toString("base64"),
   });
 };
-
 export const createClient = async (connection: Connection, debug?: boolean) => {
   const { baseUrl, basicAuth } = await parseConnection(connection);
   const client = createHttpClient({
@@ -61,6 +52,5 @@ export const createClient = async (connection: Connection, debug?: boolean) => {
       return request;
     });
   }
-
   return client;
 };

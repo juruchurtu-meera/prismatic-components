@@ -3,7 +3,6 @@ import { getDomoClient } from "../../client";
 import { createGroupInputs } from "../../inputs";
 import type { CreateGroupBody } from "../types/CreateGroupBody";
 import { createGroupExamplePayload } from "../../examplePayloads";
-
 export const createGroup = action({
   display: {
     label: "Create Group",
@@ -20,5 +19,4 @@ export const createGroup = action({
   },
   inputs: createGroupInputs,
 });
-
 export default { createGroup };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { setUserPasswordExamplePayload } from "../../examplePayloads/users";
 import { setUserPasswordInputs } from "../../inputs/users";
-
 export const setUserPassword = action({
   display: {
     label: "Set User Password",
@@ -36,7 +35,6 @@ export const setUserPassword = action({
         },
       },
     );
-
     return { data };
   },
   examplePayload: setUserPasswordExamplePayload,

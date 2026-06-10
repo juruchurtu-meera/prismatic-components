@@ -4,7 +4,6 @@ import { listVendorsResponse } from "../../examplePayloads/vendors";
 import { defaultListInputs } from "../../inputs";
 import type { Vendor } from "../../interfaces/vendors";
 import { fetchAllData } from "../../util";
-
 export const listVendors = action({
   display: {
     label: "List Vendors",
@@ -13,9 +12,11 @@ export const listVendors = action({
   inputs: {
     ...defaultListInputs,
   },
-  perform: async (context, { connection, customQueryParams, fetchAll, pageSize, start }) => {
+  perform: async (
+    context,
+    { connection, customQueryParams, fetchAll, pageSize, start },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchAllData<Vendor>(
       client,
       "/accounting/vendors",

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput, sheetIdOptional } from "./common";
-
 const query = input({
   label: "Search Query",
   type: "string",
@@ -9,7 +8,6 @@ const query = input({
   comments: "The text to search for across sheets, rows, and cells.",
   placeholder: "Enter search text",
 });
-
 export const searchSheetInputs = {
   connection: connectionInput,
   sheetId: {

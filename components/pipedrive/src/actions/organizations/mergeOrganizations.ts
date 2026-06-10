@@ -1,7 +1,6 @@
 import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, organizationIdInput } from "../../inputs";
-
 export const mergeOrganizations = action({
   display: {
     label: "Merge Organizations",
@@ -22,7 +21,8 @@ export const mergeOrganizations = action({
       type: "string",
       required: true,
       clean: util.types.toNumber,
-      comments: "The ID of the organization that the organization will be merged with",
+      comments:
+        "The ID of the organization that the organization will be merged with",
     }),
   },
 });

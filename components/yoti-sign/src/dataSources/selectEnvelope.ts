@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { connectionInput } from "../inputs";
 import type { Envelope } from "../interfaces";
 import { fetchAllRecords } from "../util";
-
 export const selectEnvelope = dataSource({
   display: {
     label: "Select Envelope",
@@ -20,7 +19,6 @@ export const selectEnvelope = dataSource({
       "/organisations/envelopes/search",
       {},
     );
-
     return {
       result: data
         .map<Element>((item) => ({

@@ -2,10 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import deleteDetectedAppInputs from "../../../inputs/apps/detected/deleteDetectedAppInputs";
-
-
-
-
 export const deleteDetectedApp = action({
   display: {
     label: "Delete Detected App",

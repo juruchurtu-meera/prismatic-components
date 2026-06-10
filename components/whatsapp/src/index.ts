@@ -4,7 +4,6 @@ import triggers from "./triggers";
 import dataSources from "./dataSources";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import connections from "./connections";
-
 export default component({
   key: "whatsapp",
   public: true,

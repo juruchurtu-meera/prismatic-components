@@ -4,7 +4,6 @@ import { connection, odataParams, fetchAll } from "../../../inputs/general";
 import { listManagedAppsExamplePayload } from "../../../examplePayloads";
 import { MANAGED_APPS_FILTER } from "../../../constants";
 import { paginateResults } from "../../../util";
-
 export const listManagedApps = action({
   display: {
     label: "List Managed Apps",
@@ -28,7 +27,6 @@ export const listManagedApps = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, true);
-
     const params = {
       $filter,
       $select,

@@ -13,7 +13,6 @@ import {
   customAttributes,
 } from "../../../inputs";
 import { updateRegionalInventoryExamplePayload } from "../../../examplePayloads";
-
 export const updateProductRegionalInventory = action({
   display: {
     description:

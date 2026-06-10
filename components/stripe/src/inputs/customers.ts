@@ -1,16 +1,15 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const customerName = input({
   label: "Name",
   type: "string",
-  comments: "The customer's full name, displayed in the Stripe Dashboard and on receipts.",
+  comments:
+    "The customer's full name, displayed in the Stripe Dashboard and on receipts.",
   example: "John Doe",
   placeholder: "Enter customer name",
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerPhone = input({
   label: "Phone",
   type: "string",
@@ -21,7 +20,6 @@ export const customerPhone = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerAddress1 = input({
   label: "Address Line 1",
   type: "string",
@@ -32,7 +30,6 @@ export const customerAddress1 = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerAddress2 = input({
   label: "Address Line 2",
   type: "string",
@@ -43,7 +40,6 @@ export const customerAddress2 = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerCity = input({
   label: "City",
   type: "string",
@@ -53,17 +49,16 @@ export const customerCity = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerCountry = input({
   label: "Country",
   type: "string",
-  comments: "The two-letter ISO 3166-1 alpha-2 country code for the customer's billing address.",
+  comments:
+    "The two-letter ISO 3166-1 alpha-2 country code for the customer's billing address.",
   example: "US",
   placeholder: "Enter country code",
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerPostal = input({
   label: "Postal Code",
   type: "string",
@@ -73,7 +68,6 @@ export const customerPostal = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerState = input({
   label: "State",
   type: "string",
@@ -84,17 +78,16 @@ export const customerState = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerBalance = input({
   label: "Balance",
   type: "string",
-  comments: "The starting balance of the customer in cents (e.g., 5000 = $50.00).",
+  comments:
+    "The starting balance of the customer in cents (e.g., 5000 = $50.00).",
   example: "5000",
   placeholder: "Enter balance amount in cents",
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerPaymentId = input({
   label: "Default Payment Method ID",
   type: "string",
@@ -104,7 +97,6 @@ export const customerPaymentId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerDescription = input({
   label: "Description",
   type: "string",
@@ -114,7 +106,6 @@ export const customerDescription = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerEmail = input({
   label: "Email",
   type: "string",
@@ -125,7 +116,6 @@ export const customerEmail = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const customerMetadata = input({
   label: "Metadata",
   type: "string",
@@ -134,7 +124,6 @@ export const customerMetadata = input({
   collection: "keyvaluelist",
   required: false,
 });
-
 export const customerTaxExempt = input({
   label: "Customer Tax Exempt",
   type: "boolean",

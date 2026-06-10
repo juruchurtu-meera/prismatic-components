@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { getCurrentUserInputs } from "../../inputs";
 import { getCurrentUserExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const getCurrentUser = action({
   display: {
     label: "Get Current User",

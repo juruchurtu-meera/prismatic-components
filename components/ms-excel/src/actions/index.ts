@@ -9,7 +9,6 @@ import rows from "./rows";
 import tables from "./tables";
 import workbooks from "./workbooks";
 import worksheets from "./worksheets";
-
 export default {
   ...cells,
   ...columns,

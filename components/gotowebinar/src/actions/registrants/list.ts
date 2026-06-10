@@ -4,7 +4,6 @@ import { LIST_REGISTRANTS_EXAMPLE_PAYLOAD } from "../../examplePayloads";
 import { listRegistrantsInputs } from "../../inputs/registrants/listRegistrantsInputs";
 import { bigIntTransformerConfig, parseRegistrantKey } from "../../utils";
 import { Registrant } from "../../interfaces";
-
 export const listRegistrants = action({
   display: {
     label: "List Registrants",
@@ -23,17 +22,14 @@ export const listRegistrants = action({
       page,
       limit,
     };
-
     const { data } = await client.get<Registrant[]>(url, {
       params,
       transformResponse: bigIntTransformerConfig.transformResponse,
     });
-
     const parsedResponse = data.map((registrant) => ({
       ...registrant,
       registrantKey: parseRegistrantKey(registrant.registrantKey.c),
     }));
-
     return {
       data: parsedResponse,
     };

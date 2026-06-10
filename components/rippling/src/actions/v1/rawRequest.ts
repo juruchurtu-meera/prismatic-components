@@ -4,7 +4,6 @@ import { BASE_URL_V1 } from "../../constants";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { rawRequestV1Inputs } from "../../inputs";
 import { toAuthorizationHeaders, validateConnection } from "../../utils";
-
 const rawRequest = action({
   display: {
     label: "Raw Request (V1)",
@@ -22,5 +21,4 @@ const rawRequest = action({
     return { data };
   },
 });
-
 export default rawRequest;

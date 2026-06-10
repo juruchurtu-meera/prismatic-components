@@ -1,6 +1,5 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 import {
   adAccountId,
   after,
@@ -14,7 +13,6 @@ import {
   version,
 } from "../inputs";
 import { adCreativeDefaults } from "../util";
-
 export const addUrlTagsToCreative = action({
   display: {
     label: "Add URL Tags To Ad Creative",
@@ -37,7 +35,6 @@ export const addUrlTagsToCreative = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.post(
       `/${adAccountId}/adCreatives`,
       {},
@@ -46,7 +43,6 @@ export const addUrlTagsToCreative = action({
           ...optionalValues,
           url_tags: urlTags,
           object_story_id: objectStoryId,
-
           limit,
           before,
           after,
@@ -54,7 +50,6 @@ export const addUrlTagsToCreative = action({
         },
       },
     );
-
     return {
       data,
     };

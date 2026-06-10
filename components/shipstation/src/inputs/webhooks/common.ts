@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { WEBHOOK_EVENTS } from "../../constants";
 import { cleanStringInput } from "../../util";
-
 export const targetUrlInput = input({
   label: "Target URL",
   type: "string",
@@ -10,7 +9,6 @@ export const targetUrlInput = input({
   placeholder: "Enter webhook URL",
   clean: util.types.toString,
 });
-
 export const eventInput = input({
   label: "Event",
   type: "string",
@@ -19,7 +17,6 @@ export const eventInput = input({
   model: WEBHOOK_EVENTS,
   clean: util.types.toString,
 });
-
 export const storeIdWebhookInput = input({
   label: "Store ID",
   type: "string",
@@ -30,7 +27,6 @@ export const storeIdWebhookInput = input({
   dataSource: "selectStores",
   clean: cleanStringInput,
 });
-
 export const friendlyNameInput = input({
   label: "Friendly Name",
   type: "string",
@@ -39,7 +35,6 @@ export const friendlyNameInput = input({
   placeholder: "Enter friendly name",
   clean: cleanStringInput,
 });
-
 export const webhookIdInput = input({
   label: "Webhook ID",
   type: "string",
@@ -49,7 +44,6 @@ export const webhookIdInput = input({
   dataSource: "selectWebhooks",
   clean: util.types.toString,
 });
-
 export const webhookEventInput = input({
   label: "Webhook Event",
   type: "string",

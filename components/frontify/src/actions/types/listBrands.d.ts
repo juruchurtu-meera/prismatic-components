@@ -1,5 +1,4 @@
 import type { CustomMetadataProperty } from "./shared";
-
 export default interface ListBrandsResponse {
   brands: {
     id: string;

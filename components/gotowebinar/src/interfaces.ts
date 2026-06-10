@@ -3,7 +3,6 @@ export interface ClientProps {
   organizerKey: string;
   baseUrl: string;
 }
-
 export interface UserSubscription {
   callbackUrl: string;
   eventName: string;
@@ -15,13 +14,11 @@ export interface UserSubscription {
   activationState: string;
   createTime: string;
 }
-
 export interface UserSubscriptionResponse {
   _embedded: {
     userSubscriptions: UserSubscription[];
   };
 }
-
 export interface Webinar {
   webinarKey: string;
   webinarID: string;
@@ -37,7 +34,6 @@ export interface Webinar {
   recurrenceType: string;
   experienceType: string;
 }
-
 export interface Webhook {
   callbackUrl: string;
   eventName: string;
@@ -48,7 +44,6 @@ export interface Webhook {
   state: string;
   createTime: string;
 }
-
 export interface GoToWebinarResponse<T> {
   _embedded: Record<string, T[]>;
   page: {
@@ -58,7 +53,6 @@ export interface GoToWebinarResponse<T> {
     number: number;
   };
 }
-
 export interface Registrant {
   lastName: string;
   email: string;
@@ -69,11 +63,10 @@ export interface Registrant {
     c: number[];
   };
   registrationDate: string;
-  status: "APPROVED" | "PENDING" | "REJECTED"; 
+  status: "APPROVED" | "PENDING" | "REJECTED";
   joinUrl: string;
   timeZone: string;
 }
-
 export interface PaginatedResponse<T> {
   data: T[] | T;
   total: number;
@@ -81,3 +74,9 @@ export interface PaginatedResponse<T> {
   limit: number;
   pageSize: number;
 }
+export interface PollingState extends Record<string, unknown> {
+  lastPolledAt?: string;
+}
+export type ParsedRegistrant = Omit<Registrant, "registrantKey"> & {
+  registrantKey: string;
+};

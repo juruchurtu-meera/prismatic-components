@@ -16,7 +16,6 @@ import {
 } from "../../inputs";
 import { isRole } from "../../helper";
 import { createUserPayload } from "../../examplePayloads";
-
 export const createUser = action({
   display: {
     label: "Create User",
@@ -27,7 +26,6 @@ export const createUser = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const userRole = util.types.toString(params.userRole);
     const optionalItems = Object.fromEntries(
       Object.entries({
@@ -42,7 +40,6 @@ export const createUser = action({
         organization_id: util.types.toInt(params.organizationId),
       }).filter(([, value]) => Boolean(value)),
     );
-
     const { result } = await client.users.create({
       user: {
         ...optionalItems,
@@ -50,7 +47,6 @@ export const createUser = action({
         name: util.types.toString(params.userName),
       },
     });
-
     return {
       data: result,
     };

@@ -1,8 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
-import { capitalizeSalesforceObject, cleanStringInput, sanitizePrefix } from "../util";
+import {
+  capitalizeSalesforceObject,
+  cleanStringInput,
+  sanitizePrefix,
+} from "../util";
 import { connectionInput, description, version } from "./common";
 import { dynamicFieldsInput, endpointUrlInput, fieldsInput } from "./workflows";
-
 const flowNameInput = input({
   label: "Flow Name",
   placeholder: "Enter flow name",
@@ -13,7 +16,6 @@ const flowNameInput = input({
   comments:
     "The name for the Flow. Accepts both display names and API names. Display names are automatically converted to API format, while API names are used as is.",
 });
-
 const flowStatusInput = input({
   label: "Flow Status",
   placeholder: "Select a status",
@@ -30,7 +32,6 @@ const flowStatusInput = input({
     "The publication status of the Flow. Active flows execute when triggered; Draft and Obsolete flows do not.",
   clean: cleanStringInput,
 });
-
 const flowRunInModeInput = input({
   label: "Run In Mode",
   placeholder: "Select run mode",
@@ -46,14 +47,14 @@ const flowRunInModeInput = input({
     "The context user mode the Flow runs as. DefaultMode respects user permissions and sharing rules. SystemModeWithoutSharing grants broad data access but may lead to security warnings.",
   clean: cleanStringInput,
 });
-
 const flowMetadataInput = input({
   label: "Flow Metadata",
   placeholder: "Enter flow metadata in JSON format",
   type: "code",
   required: false,
   language: "json",
-  comments: "Additional Flow metadata in JSON format. This will be merged with other inputs.",
+  comments:
+    "Additional Flow metadata in JSON format. This will be merged with other inputs.",
   example: JSON.stringify(
     {
       label: "A new flow",
@@ -63,7 +64,6 @@ const flowMetadataInput = input({
   ),
   clean: util.types.toObject,
 });
-
 const triggerObjectInput = input({
   label: "Trigger Record Type",
   placeholder: "Select or enter a record type",
@@ -74,7 +74,6 @@ const triggerObjectInput = input({
   dataSource: "selectRecordType",
   clean: capitalizeSalesforceObject,
 });
-
 const triggerOnInput = input({
   label: "Trigger On",
   placeholder: "Select trigger condition",
@@ -89,7 +88,6 @@ const triggerOnInput = input({
   comments: "When to trigger the flow (record creation, update, or both).",
   clean: util.types.toString,
 });
-
 const prefixInput = input({
   label: "Prefix",
   type: "string",
@@ -100,7 +98,6 @@ const prefixInput = input({
   placeholder: "Enter prefix",
   clean: sanitizePrefix,
 });
-
 const filterFormulaInput = input({
   label: "Filter Formula",
   placeholder: "Enter filter formula",
@@ -110,13 +107,11 @@ const filterFormulaInput = input({
   clean: cleanStringInput,
   comments: "Optional formula to filter which records trigger the flow.",
 });
-
 export const activateFlowInputs = {
   version,
   flowName: flowNameInput,
   connection: connectionInput,
 };
-
 export const createFlowInputs = {
   version,
   flowName: { ...flowNameInput, dataSource: undefined },
@@ -125,43 +120,36 @@ export const createFlowInputs = {
   flowMetadata: flowMetadataInput,
   connection: connectionInput,
 };
-
 export const deactivateFlowInputs = {
   version,
   flowName: flowNameInput,
   connection: connectionInput,
 };
-
 export const deleteFlowInputs = {
   version,
   flowName: flowNameInput,
   connection: connectionInput,
 };
-
 export const getFlowInputs = {
   version,
   flowName: flowNameInput,
   connection: connectionInput,
 };
-
 export const listFlowsInputs = {
   version,
   connection: connectionInput,
 };
-
 export const updateFlowInputs = {
   version,
   flowName: flowNameInput,
   description: {
     ...description,
-
     comments: "Updated description for the Flow.",
   },
   status: { ...flowStatusInput, default: undefined },
   flowMetadata: flowMetadataInput,
   connection: connectionInput,
 };
-
 export const flowOutboundMessageTriggerInputs = {
   version,
   prefix: prefixInput,
@@ -169,10 +157,12 @@ export const flowOutboundMessageTriggerInputs = {
   triggerOn: triggerOnInput,
   fields: fieldsInput,
   flowMetadata: flowMetadataInput,
-  filterFormula: { ...filterFormulaInput, example: "ISCHANGED(Email) && NOT(ISBLANK(Email))" },
+  filterFormula: {
+    ...filterFormulaInput,
+    example: "ISCHANGED(Email) && NOT(ISBLANK(Email))",
+  },
   connection: connectionInput,
 };
-
 export const subscribeToRecordChangesInputs = {
   version,
   prefix: prefixInput,
@@ -182,15 +172,18 @@ export const subscribeToRecordChangesInputs = {
   fields: fieldsInput,
   dynamicFields: dynamicFieldsInput,
   flowMetadata: flowMetadataInput,
-  filterFormula: { ...filterFormulaInput, example: "ISCHANGED(Email) && NOT(ISBLANK(Email))" },
+  filterFormula: {
+    ...filterFormulaInput,
+    example: "ISCHANGED(Email) && NOT(ISBLANK(Email))",
+  },
   connection: connectionInput,
 };
-
 export const deleteInstancedFlowsAndOutboundMessagesInputs = {
   version,
   endpointUrl: {
     ...endpointUrlInput,
-    comments: "The endpoint URL to delete the instanced flows and outbound messages for.",
+    comments:
+      "The endpoint URL to delete the instanced flows and outbound messages for.",
   },
   connection: connectionInput,
 };

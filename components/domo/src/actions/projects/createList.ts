@@ -3,7 +3,6 @@ import { getDomoClient } from "../../client";
 import { createListInputs } from "../../inputs";
 import type { CreateListBody } from "../types/CreateListBody";
 import { createListExamplePayload } from "../../examplePayloads";
-
 export const createList = action({
   display: {
     label: "Create List",

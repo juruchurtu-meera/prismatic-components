@@ -1,0 +1,40 @@
+This trigger polls a [GoToWebinar](https://www.goto.com/webinar) webinar on a configured schedule and emits registrants that were added since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+#### How It Works
+
+GoToWebinar's registrants endpoint exposes a per-registrant `registrationDate` (creation time) but no modification timestamp, and it offers no server-side date filter. So on each scheduled run the trigger fetches the webinar's registrants and keeps only those whose `registrationDate` is after the previous poll time. The current run time is stored as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical registrants on deploy.
+- **Subsequent runs**: only registrants added since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the newly added registrants under `data.created`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "registrantKey": "1234567890",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "status": "APPROVED",
+        "registrationDate": "2026-05-30T14:22:00Z"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- This trigger detects **new registrants only**. Registrants carry a creation timestamp but no modification timestamp, so edits to existing registrants are not detected.
+- It is scoped to a single webinar (set by **Webinar Key**). Add one flow per webinar to monitor.
+- Because there is no server-side date filter, each run lists the webinar's registrants and filters them in memory.

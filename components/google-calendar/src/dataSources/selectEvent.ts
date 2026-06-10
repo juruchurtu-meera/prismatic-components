@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { listAllEvents } from "../helpers/listAllEvents";
 import { selectEventInputs } from "../inputs";
-
 export const selectEvent = dataSource({
   display: {
     label: "Select Event",
@@ -18,9 +17,7 @@ export const selectEvent = dataSource({
       key: event.id,
       label: `${event.summary} (${event.start.date} to ${event.end.date})`,
     }));
-
     pickListOptions.sort((a, b) => a.label.localeCompare(b.label));
-
     return { result: pickListOptions };
   },
   dataSourceType: "picklist",

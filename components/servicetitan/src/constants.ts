@@ -1,13 +1,10 @@
 const productionUrl = "https://api.servicetitan.io";
 const integrationUrl = "https://api-integration.servicetitan.io";
-
 export const URLS: Record<string, string> = {
   production: productionUrl,
   integration: integrationUrl,
 };
-
 import type { PollResourceConfig } from "./types";
-
 export const POLL_RESOURCE_CONFIG: Record<string, PollResourceConfig> = {
   jobs: {
     label: "Jobs",
@@ -73,7 +70,6 @@ export const POLL_RESOURCE_CONFIG: Record<string, PollResourceConfig> = {
     updatedAtField: "modifiedOn",
   },
 };
-
 export const pollResourceModel = Object.entries(POLL_RESOURCE_CONFIG).map(
   ([value, { label }]) => ({ label, value }),
 );

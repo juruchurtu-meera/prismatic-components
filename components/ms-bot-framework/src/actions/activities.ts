@@ -15,7 +15,6 @@ import {
   sendMessageExamplePayload,
   sendAdaptiveCardMessageExamplePayload,
 } from "../examplePayloads";
-
 const sendMessage = action({
   display: {
     label: "Send Message",
@@ -28,12 +27,15 @@ const sendMessage = action({
       params.apiVersion,
       context.debug.enabled,
     );
-    const { data } = await client.post(`/conversations/${params.conversationId}/activities`, {
-      type: "message",
-      text: params.text,
-      textFormat: params.textFormat,
-      from: { id: params.fromId, name: params.fromName },
-    });
+    const { data } = await client.post(
+      `/conversations/${params.conversationId}/activities`,
+      {
+        type: "message",
+        text: params.text,
+        textFormat: params.textFormat,
+        from: { id: params.fromId, name: params.fromName },
+      },
+    );
     return { data };
   },
   inputs: {
@@ -48,7 +50,6 @@ const sendMessage = action({
   },
   examplePayload: sendMessageExamplePayload,
 });
-
 const sendAdaptiveCardMessage = action({
   display: {
     label: "Send Adaptive Card Message",
@@ -61,17 +62,20 @@ const sendAdaptiveCardMessage = action({
       params.apiVersion,
       context.debug.enabled,
     );
-    const { data } = await client.post(`/conversations/${params.conversationId}/activities`, {
-      type: "message",
-      from: { id: params.fromId, name: params.fromName },
-      attachments: [
-        {
-          contentType: "application/vnd.microsoft.card.adaptive",
-          contentUrl: null,
-          content: params.cardPayload,
-        },
-      ],
-    });
+    const { data } = await client.post(
+      `/conversations/${params.conversationId}/activities`,
+      {
+        type: "message",
+        from: { id: params.fromId, name: params.fromName },
+        attachments: [
+          {
+            contentType: "application/vnd.microsoft.card.adaptive",
+            contentUrl: null,
+            content: params.cardPayload,
+          },
+        ],
+      },
+    );
     return { data };
   },
   inputs: {
@@ -85,7 +89,6 @@ const sendAdaptiveCardMessage = action({
   },
   examplePayload: sendAdaptiveCardMessageExamplePayload,
 });
-
 export default {
   sendMessage,
   sendAdaptiveCardMessage,

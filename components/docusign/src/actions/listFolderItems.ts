@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, folderId, includeItems } from "../inputs";
-
 export const listFolderItems = action({
   display: {
     label: "List Folder Items",

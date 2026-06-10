@@ -12,14 +12,12 @@ import {
   getTeamId,
 } from "../../inputs";
 import type { InviteGuestToWorkspaceBody } from "./types/InviteGuestToWorkspaceBody";
-
 const teamId = getTeamId(true);
 const email = getEmail(true, "Email address of the invited guest");
 const canEditTags = getCanEditTags(true, "", true);
 const canSeeTimeSpent = getCanSeeTimeSpent(true, "", true);
 const canSeeTimeEstimated = getCanSeeTimeEstimated(true, "", true);
 const canCreateViews = getCanCreateViews(true, "", true);
-
 export const inviteGuestToWorkspace = action({
   display: {
     label: "Invite Guest to Workspace",
@@ -37,9 +35,12 @@ export const inviteGuestToWorkspace = action({
       canSeeTimeEstimated,
       canCreateViews,
       customRoleId,
-    }
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const body: InviteGuestToWorkspaceBody = {
       email,
       can_edit_tags: canEditTags,
@@ -48,9 +49,7 @@ export const inviteGuestToWorkspace = action({
       can_create_views: canCreateViews,
       custom_role_id: customRoleId,
     };
-
     const { data } = await client.post(`/team/${teamId}/guest`, body);
-
     return {
       data,
     };

@@ -12,7 +12,6 @@ import {
   listPaySchedulesExamplePayload,
   getPayScheduleExamplePayload,
 } from "../examplePayloads";
-
 const listPaySchedules = action({
   display: {
     label: "List Pay Schedules",
@@ -26,7 +25,6 @@ const listPaySchedules = action({
   },
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
-
     if (params.fetchAll) {
       const data = await fetchAllPages(
         client,
@@ -34,7 +32,6 @@ const listPaySchedules = action({
       );
       return { data: { data, headers: {} } };
     }
-
     const { data, headers } = await client.get(
       `/companies/${params.companyId}/pay_schedules`,
       {
@@ -45,7 +42,6 @@ const listPaySchedules = action({
   },
   examplePayload: listPaySchedulesExamplePayload,
 });
-
 const getPaySchedule = action({
   display: {
     label: "Get Pay Schedule by ID",
@@ -65,5 +61,4 @@ const getPaySchedule = action({
   },
   examplePayload: getPayScheduleExamplePayload,
 });
-
 export default { getPaySchedule, listPaySchedules };

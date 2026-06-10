@@ -3,7 +3,6 @@ import { createAnthropicClient } from "../client";
 import { getModelExamplePayload } from "../examplePayloads/getModelExamplePayload";
 import { getModelInputs } from "../inputs/getModelInputs";
 import type { Model } from "../interfaces/Model";
-
 export const getModel = action({
   display: {
     label: "Get Model",

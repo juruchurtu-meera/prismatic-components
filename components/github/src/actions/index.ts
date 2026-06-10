@@ -35,7 +35,6 @@ import teams from "./teams";
 import user from "./user";
 import users from "./users";
 import zen from "./zen";
-
 export default {
   ...root,
   ...app,

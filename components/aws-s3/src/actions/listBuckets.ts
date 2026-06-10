@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { listBucketsPayload } from "../examplePayloads";
 import { accessKeyInput } from "../inputs";
-
 export const listBuckets = action({
   display: {
     label: "List Buckets",
@@ -12,7 +11,13 @@ export const listBuckets = action({
   },
   perform: async (
     context,
-    { awsRegion, accessKey, dynamicAccessKeyId, dynamicSecretAccessKey, dynamicSessionToken },
+    {
+      awsRegion,
+      accessKey,
+      dynamicAccessKeyId,
+      dynamicSecretAccessKey,
+      dynamicSessionToken,
+    },
   ) => {
     const s3 = await createS3Client({
       awsConnection: accessKey,

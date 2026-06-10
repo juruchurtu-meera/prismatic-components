@@ -3,7 +3,6 @@ export const createConversionsResponse = {
   messages: [],
   fbtrace_id: "AsGY30oxXE4Dvv_CDbCOFR6",
 };
-
 export const listAddAccountsResponse = {
   data: {
     data: [
@@ -24,14 +23,12 @@ export const listAddAccountsResponse = {
     },
   },
 };
-
 export const businessByNameResponse = {
   data: {
     id: "123456789012345",
     name: "Example User's Business",
   },
 };
-
 export const listWebhooksResponse = {
   data: [
     {

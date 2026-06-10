@@ -7,7 +7,6 @@ import {
   pageSize,
   validateId,
 } from "./common";
-
 const userId = input({
   label: "User ID",
   type: "string",
@@ -18,7 +17,6 @@ const userId = input({
   placeholder: "Enter user ID",
   dataSource: "selectUser",
 });
-
 const email = input({
   label: "Email",
   type: "string",
@@ -27,12 +25,10 @@ const email = input({
   comments: "The email address to filter users by.",
   placeholder: "Enter email address",
 });
-
 export const getUserInputs = {
   connection: connectionInput,
   userId,
 };
-
 export const listUsersInputs = {
   connection: connectionInput,
   includeAll,

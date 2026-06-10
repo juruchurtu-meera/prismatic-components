@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAssetsClient } from "../../../client";
 import { getAssetObjectExamplePayload } from "../../../examplePayloads";
 import { getAssetObjectInputs } from "../../../inputs";
-
 export const getAssetObject = action({
   display: {
     label: "Get Asset Object",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { attachmentsGetExamplePayload } from "../../examplePayloads";
 import { attachmentsGetInputs } from "../../inputs";
-
 export const attachmentsGet = action({
   display: {
     label: "Get Sheet Attachment",

@@ -5,9 +5,7 @@ import {
   inputs as httpClientInputs,
   sendRawRequest,
 } from "@prismatic-io/spectral/dist/clients/http";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -16,7 +14,6 @@ export const rawRequest = action({
   perform: async (context, { connection, version, ...rawRequestInputs }) => {
     const sfClient = await createSalesforceClient(connection, version);
     const baseUrl = `${sfClient.instanceUrl}/services/data/v${version}`;
-
     const { data } = await sendRawRequest(
       baseUrl,
       { ...rawRequestInputs, debugRequest: context.debug.enabled },

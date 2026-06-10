@@ -13,7 +13,6 @@ import {
   source,
   status,
 } from "./common";
-
 export const updateSoftwareInputs = {
   connection,
   applicationId,

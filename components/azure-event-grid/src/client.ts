@@ -2,7 +2,6 @@ import { type Connection, util } from "@prismatic-io/spectral";
 import { createClient as createHttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { validAzureOAuthConnection } from "./util";
 import { API_URL } from "./constants";
-
 export const createEventGridHttpClient = (
   connection: Connection,
   debug = true,
@@ -10,7 +9,6 @@ export const createEventGridHttpClient = (
 ) => {
   validAzureOAuthConnection(connection);
   const token = util.types.toString(connection.token?.access_token);
-
   return createHttpClient({
     baseUrl: API_URL,
     debug,
@@ -22,7 +20,6 @@ export const createEventGridHttpClient = (
     },
   });
 };
-
 export const createEventGridPublishClient = (
   connection: Connection,
   baseUrl: string,
@@ -30,7 +27,6 @@ export const createEventGridPublishClient = (
   debug = true,
 ) => {
   validAzureOAuthConnection(connection);
-
   return createHttpClient({
     baseUrl,
     debug,

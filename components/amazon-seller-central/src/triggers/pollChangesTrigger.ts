@@ -10,7 +10,6 @@ import {
 } from "../inputs";
 import type { AmazonRecord, PollingState } from "../types";
 import { fetchFeedsSince, fetchOrdersSince } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -38,19 +37,15 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     const client = createClient(connection, context.debug.enabled);
-
     let created: AmazonRecord[] = [];
     const updated: AmazonRecord[] = [];
-
     if (resourceType === PollResource.ORDERS) {
       const records = await fetchOrdersSince(
         client,
         lastPolledAt,
         marketplaceIds,
       );
-
       const lastPolledDate = new Date(lastPolledAt);
       for (const record of records) {
         const purchaseDate = record.PurchaseDate as string;
@@ -63,21 +58,17 @@ export const pollChangesTrigger = pollingTrigger({
     } else {
       created = await fetchFeedsSince(client, lastPolledAt);
     }
-
     const filteredCreated = showNewRecords ? created : [];
     const filteredUpdated = showUpdatedRecords ? updated : [];
     const totalChanges = filteredCreated.length + filteredUpdated.length;
-
     context.polling.setState({
       lastPolledAt: now,
     });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${resourceType}: ${filteredCreated.length} new, ${filteredUpdated.length} updated`,
       );
     }
-
     return {
       payload: {
         ...payload,

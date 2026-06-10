@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { connection } from "../inputs/general";
 import { createClient } from "../client";
 import { selectDetectedAppExamplePayload } from "../examplePayloads";
-
 export const selectDetectedApp = dataSource({
   display: {
     label: "Select Detected App",
@@ -16,7 +15,6 @@ export const selectDetectedApp = dataSource({
     const {
       data: { value },
     } = await client.get("/deviceManagement/detectedApps");
-
     return value.map((detectedApp: { id: string; displayName: string }) => {
       return {
         label: detectedApp.displayName,

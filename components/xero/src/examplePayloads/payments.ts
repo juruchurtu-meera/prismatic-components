@@ -4,7 +4,6 @@ const paymentEnvelope = {
   ProviderName: "Acme Corp",
   DateTimeUTC: "/Date(1637616068092)/",
 };
-
 const samplePayment = {
   PaymentID: "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
   Date: "/Date(1638144000000+0000)/",
@@ -46,28 +45,24 @@ const samplePayment = {
   },
   HasValidationErrors: false,
 };
-
 export const listPaymentsExamplePayload = {
   data: {
     ...paymentEnvelope,
     Payments: [samplePayment],
   },
 };
-
 export const getPaymentExamplePayload = {
   data: {
     ...paymentEnvelope,
     Payments: [samplePayment],
   },
 };
-
 export const payInvoiceExamplePayload = {
   data: {
     ...paymentEnvelope,
     Payments: [samplePayment],
   },
 };
-
 export const reversePaymentExamplePayload = {
   data: {
     ...paymentEnvelope,
@@ -79,7 +74,6 @@ export const reversePaymentExamplePayload = {
     ],
   },
 };
-
 export const getPaymentHistoryExamplePayload = {
   data: {
     ...paymentEnvelope,

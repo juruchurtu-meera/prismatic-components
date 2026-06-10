@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { selectPolicyExamplePayload } from "../examplePayloads/dataSources";
 import { connection } from "../inputs/general";
 import type { Policy } from "../interfaces/policies";
-
 export const selectPolicy = dataSource({
   display: {
     label: "Select Policy",
@@ -15,7 +14,6 @@ export const selectPolicy = dataSource({
   perform: async (_context, { connection }) => {
     const client = await createClient(connection, false);
     const { data } = await client.get<Policy | Policy[]>("/policies");
-
     if (!Array.isArray(data)) {
       return {
         result: [
@@ -30,7 +28,6 @@ export const selectPolicy = dataSource({
       label: policy.name,
       key: policy.id,
     }));
-
     return {
       result,
     };

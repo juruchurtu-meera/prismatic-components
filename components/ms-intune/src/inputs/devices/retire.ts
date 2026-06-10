@@ -1,5 +1,4 @@
 import { managedDeviceId } from "./general";
-
 export const retireDeviceInputs = {
   managedDeviceId: {
     ...managedDeviceId,

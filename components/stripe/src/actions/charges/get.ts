@@ -2,11 +2,11 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { getChargeExamplePayload } from "../../examplePayloads/charges";
 import { chargeId, connectionInput, timeout } from "../../inputs";
-
 export const getCharge = action({
   display: {
     label: "Get Charge",
-    description: "Retrieve the details of a charge that has previously been created.",
+    description:
+      "Retrieve the details of a charge that has previously been created.",
   },
   perform: async (context, params) => {
     const client = createStripeClient({

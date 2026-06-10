@@ -3,7 +3,6 @@ import type { SpaceProps } from "contentful-management";
 import { createClient } from "../../client";
 import { getSpaceExamplePayload } from "../../examplePayloads";
 import { getSpaceInputs } from "../../inputs";
-
 export const getSpace = action({
   display: {
     label: "Get Space",

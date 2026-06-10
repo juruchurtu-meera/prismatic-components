@@ -29,9 +29,6 @@ export const getSpaceExamplePayload = {
   },
   name: "Contentful Example API",
 };
-
 export const listSpacesExamplePayload = [getSpaceExamplePayload];
-
 export const createSpaceExamplePayload = getSpaceExamplePayload;
-
 export const updateSpaceExamplePayload = getSpaceExamplePayload;

@@ -4,7 +4,6 @@ import { getClient } from "../client";
 import { createProductAttributesExamplePayload } from "../examplePayloads";
 import { validateJSON } from "../helpers";
 import { attribute, connectionInput } from "../inputs";
-
 export const createProductAttributes = action({
   display: {
     label: "Create Product Attributes",
@@ -12,11 +11,9 @@ export const createProductAttributes = action({
   },
   perform: async (context, { connection, attribute }) => {
     const client = await getClient(connection, context.debug.enabled);
-
     if (!validateJSON(attribute)) {
       throw new Error("Attribute must be valid JSON.");
     }
-
     try {
       const { data } = await client.post("/products/attributes", attribute);
       return { data };
@@ -32,5 +29,4 @@ export const createProductAttributes = action({
   },
   examplePayload: createProductAttributesExamplePayload,
 });
-
 export default { createProductAttributes };

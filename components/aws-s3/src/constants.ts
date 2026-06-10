@@ -5,7 +5,6 @@ import type {
   QueueConfiguration,
   TopicConfiguration,
 } from "@aws-sdk/client-s3";
-
 export const INPUT_EVENT_TYPES_MODEL = [
   { label: "s3:ObjectCreated:*", value: "s3:ObjectCreated:*" },
   { label: "s3:ObjectCreated:Put", value: "s3:ObjectCreated:Put" },
@@ -62,7 +61,6 @@ export const INPUT_EVENT_TYPES_MODEL = [
   { label: "s3:ObjectTagging:Delete", value: "s3:ObjectTagging:Delete" },
   { label: "s3:ObjectAcl:Put", value: "s3:ObjectAcl:Put" },
 ];
-
 export const TOPIC_CONFIGURATIONS_EXAMPLE: TopicConfiguration[] = [
   {
     Id: "topic-1",
@@ -80,7 +78,6 @@ export const TOPIC_CONFIGURATIONS_EXAMPLE: TopicConfiguration[] = [
     },
   },
 ];
-
 export const QUEUE_CONFIGURATIONS_EXAMPLE: QueueConfiguration[] = [
   {
     Id: "queue-1",
@@ -98,25 +95,25 @@ export const QUEUE_CONFIGURATIONS_EXAMPLE: QueueConfiguration[] = [
     },
   },
 ];
-
-export const LAMBDA_FUNCTION_CONFIGURATIONS_EXAMPLE: LambdaFunctionConfiguration[] = [
-  {
-    Id: "lambda-1",
-    LambdaFunctionArn: "arn:aws:lambda:us-west-2:123456789012:function:my-function",
-    Events: ["s3:ObjectCreated:*"],
-    Filter: {
-      Key: {
-        FilterRules: [
-          {
-            Name: "prefix",
-            Value: "images/",
-          },
-        ],
+export const LAMBDA_FUNCTION_CONFIGURATIONS_EXAMPLE: LambdaFunctionConfiguration[] =
+  [
+    {
+      Id: "lambda-1",
+      LambdaFunctionArn:
+        "arn:aws:lambda:us-west-2:123456789012:function:my-function",
+      Events: ["s3:ObjectCreated:*"],
+      Filter: {
+        Key: {
+          FilterRules: [
+            {
+              Name: "prefix",
+              Value: "images/",
+            },
+          ],
+        },
       },
     },
-  },
-];
-
+  ];
 export const EVENT_BRIDGE_CONFIGURATION_EXAMPLE: EventBridgeConfiguration = {
   Id: "event-bridge-1",
   EventBridgeArn: "arn:aws:eventbridge:us-west-2:123456789012:myeventbridge",
@@ -132,7 +129,6 @@ export const EVENT_BRIDGE_CONFIGURATION_EXAMPLE: EventBridgeConfiguration = {
     },
   },
 };
-
 export const OBJECT_ATTRIBUTES: ObjectAttributes[] = [
   "ETag",
   "Checksum",

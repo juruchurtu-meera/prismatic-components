@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const webhookUrl = input({
   label: "Webhook URL",
   type: "string",
@@ -10,7 +9,6 @@ export const webhookUrl = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export const webhookEvents = input({
   label: "Webhook Events",
   type: "string",
@@ -21,7 +19,6 @@ export const webhookEvents = input({
   placeholder: "Enter event type",
   required: true,
 });
-
 export const webhookSecret = input({
   label: "Webhook Secret",
   type: "string",
@@ -31,7 +28,6 @@ export const webhookSecret = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const disableWebhookValidation = input({
   label: "Disable Webhook Validation",
   type: "boolean",

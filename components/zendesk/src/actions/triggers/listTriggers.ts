@@ -3,7 +3,6 @@ import { rawHttpClient } from "../../auth";
 import { listTriggersPayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs";
 import { fetchTriggers } from "./utils";
-
 export const listTriggers = action({
   display: {
     label: "List Triggers",

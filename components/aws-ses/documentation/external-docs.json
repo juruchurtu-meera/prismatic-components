@@ -4,7 +4,7 @@
     "href": "https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/ses/"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://github.com/aws/aws-sdk-js-v3/releases"
   }
 ]

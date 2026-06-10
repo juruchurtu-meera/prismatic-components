@@ -3,7 +3,6 @@ import { getDocuSignClient } from "../client";
 import { connection, jsonInput, templateId } from "../inputs";
 import { templateJson } from "../json/templateJson";
 import { updateTemplatePayload } from "../examplePayloads";
-
 export const updateTemplate = action({
   display: {
     label: "Update Template",

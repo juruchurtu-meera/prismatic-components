@@ -5,7 +5,6 @@ import {
   DEVICE_ACTION_RESULTS_EXAMPLE,
   DEVICE_HEALTH_ATTESTATION_STATE_EXAMPLE,
 } from "../../constants";
-
 const userId = input({
   label: "User Id",
   comments: "Unique Identifier for the user associated with the device.",
@@ -15,7 +14,6 @@ const userId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const deviceName = input({
   label: "Device Name",
   comments: "Name of the device.",
@@ -25,7 +23,6 @@ const deviceName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const managedDeviceOwnerType = input({
   label: "Managed Device Owner Type",
   comments: "Ownership of the device. Can be 'company' or 'personal'.",
@@ -35,7 +32,6 @@ const managedDeviceOwnerType = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const deviceActionResults = input({
   label: "Device Action Results",
   comments:
@@ -46,7 +42,6 @@ const deviceActionResults = input({
   example: JSON.stringify(DEVICE_ACTION_RESULTS_EXAMPLE, null, 2),
   clean: cleanCodeInput,
 });
-
 const enrolledDateTime = input({
   label: "Enrolled Date Time",
   comments:
@@ -57,7 +52,6 @@ const enrolledDateTime = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const lastSyncDateTime = input({
   label: "Last Sync Date Time",
   comments:
@@ -68,7 +62,6 @@ const lastSyncDateTime = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const operatingSystem = input({
   label: "Operating System",
   comments: "Operating system of the device. Windows, iOS, etc.",
@@ -78,7 +71,6 @@ const operatingSystem = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const complianceState = input({
   label: "Compliance State",
   comments:
@@ -90,7 +82,6 @@ const complianceState = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const jailBroken = input({
   label: "Jail Broken",
   comments:
@@ -102,7 +93,6 @@ const jailBroken = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const managementAgent = input({
   label: "Management Agent",
   comments:
@@ -114,7 +104,6 @@ const managementAgent = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const osVersion = input({
   label: "OS Version",
   comments: "Operating system version of the device.",
@@ -124,7 +113,6 @@ const osVersion = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const easActivated = input({
   label: "EAS Activated",
   comments: "Whether the device is Exchange ActiveSync activated.",
@@ -133,7 +121,6 @@ const easActivated = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const easDeviceId = input({
   label: "EAS Device Id",
   comments: "Exchange ActiveSync Id of the device.",
@@ -143,7 +130,6 @@ const easDeviceId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const easActivationDateTime = input({
   label: "EAS Activation Date Time",
   comments: "Exchange ActivationSync activation time of the device.",
@@ -153,7 +139,6 @@ const easActivationDateTime = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const azureADRegistered = input({
   label: "Azure AD Registered",
   comments: "Whether the device is Azure Active Directory registered.",
@@ -162,7 +147,6 @@ const azureADRegistered = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const deviceEnrollmentType = input({
   label: "Device Enrollment Type",
   comments: "Enrollment type of the device.",
@@ -172,7 +156,6 @@ const deviceEnrollmentType = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const activationLockBypassCode = input({
   label: "Activation Lock Bypass Code",
   comments:
@@ -183,7 +166,6 @@ const activationLockBypassCode = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const emailAddress = input({
   label: "Email Address",
   comments: "Email(s) for the user associated with the device.",
@@ -193,7 +175,6 @@ const emailAddress = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const azureADDeviceId = input({
   label: "Azure AD Device Id",
   comments:
@@ -204,7 +185,6 @@ const azureADDeviceId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const deviceRegistrationState = input({
   label: "Device Registration State",
   comments: "Device registration state.",
@@ -214,7 +194,6 @@ const deviceRegistrationState = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const deviceCategoryDisplayName = input({
   label: "Device Category Display Name",
   comments:
@@ -226,7 +205,6 @@ const deviceCategoryDisplayName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const isSupervised = input({
   label: "Is Supervised",
   comments: "Device supervised status.",
@@ -235,7 +213,6 @@ const isSupervised = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const exchangeLastSuccessfulSyncDateTime = input({
   label: "Exchange Last Successful Sync Date Time",
   comments: "Last time the device contacted Exchange.",
@@ -245,7 +222,6 @@ const exchangeLastSuccessfulSyncDateTime = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const exchangeAccessState = input({
   label: "Exchange Access State",
   comments: "The Access State of the device in Exchange.",
@@ -255,7 +231,6 @@ const exchangeAccessState = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const exchangeAccessStateReason = input({
   label: "Exchange Access State Reason",
   comments: "The reason for the device's access state in Exchange.",
@@ -265,7 +240,6 @@ const exchangeAccessStateReason = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const remoteAssistanceSessionUrl = input({
   label: "Remote Assistance Session Url",
   comments:
@@ -277,7 +251,6 @@ const remoteAssistanceSessionUrl = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const remoteAssistanceSessionErrorDetails = input({
   label: "Remote Assistance Session Error Details",
   comments:
@@ -288,7 +261,6 @@ const remoteAssistanceSessionErrorDetails = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const isEncrypted = input({
   label: "Is Encrypted",
   comments: "Device encryption status.",
@@ -297,7 +269,6 @@ const isEncrypted = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const userPrincipalName = input({
   label: "User Principal Name",
   comments: "Device user principal name.",
@@ -307,7 +278,6 @@ const userPrincipalName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const model = input({
   label: "Model",
   comments: "Model of the device.",
@@ -317,7 +287,6 @@ const model = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const manufacturer = input({
   label: "Manufacturer",
   comments: "Manufacturer of the device.",
@@ -327,7 +296,6 @@ const manufacturer = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const imei = input({
   label: "IMEI",
   comments: "IMEI.",
@@ -337,7 +305,6 @@ const imei = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const complianceGracePeriodExpirationDateTime = input({
   label: "Compliance Grace Period Expiration Date Time",
   comments: "The DateTime when device compliance grace period expires.",
@@ -347,7 +314,6 @@ const complianceGracePeriodExpirationDateTime = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const serialNumber = input({
   label: "Serial Number",
   comments: "SerialNumber.",
@@ -357,7 +323,6 @@ const serialNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const phoneNumber = input({
   label: "Phone Number",
   comments: "Phone number of the device.",
@@ -367,7 +332,6 @@ const phoneNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const androidSecurityPatchLevel = input({
   label: "Android Security Patch Level",
   comments: "Android security patch level.",
@@ -377,7 +341,6 @@ const androidSecurityPatchLevel = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const userDisplayName = input({
   label: "User Display Name",
   comments: "User display name.",
@@ -387,7 +350,6 @@ const userDisplayName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const configurationManagerClientEnabledFeatures = input({
   label: "ConfigMgr Client Enabled Features",
   comments: "ConfigrMgr client enabled features.",
@@ -401,7 +363,6 @@ const configurationManagerClientEnabledFeatures = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const wiFiMacAddress = input({
   label: "Wi-Fi MAC Address",
   comments: "Wi-Fi MAC.",
@@ -411,7 +372,6 @@ const wiFiMacAddress = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const deviceHealthAttestationState = input({
   label: "Device Health Attestation State",
   comments: "The device health attestation state.",
@@ -421,7 +381,6 @@ const deviceHealthAttestationState = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const subscriberCarrier = input({
   label: "Subscriber Carrier",
   comments: "Subscriber Carrier.",
@@ -431,7 +390,6 @@ const subscriberCarrier = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const meid = input({
   label: "MEID",
   comments: "MEID.",
@@ -441,7 +399,6 @@ const meid = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const totalStorageSpaceInBytes = input({
   label: "Total Storage Space In Bytes",
   comments: "Total Storage in Bytes.",
@@ -451,7 +408,6 @@ const totalStorageSpaceInBytes = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const freeStorageSpaceInBytes = input({
   label: "Free Storage Space In Bytes",
   comments: "Free Storage in Bytes. Default value is 0. Read-only.",
@@ -462,7 +418,6 @@ const freeStorageSpaceInBytes = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const managedDeviceName = input({
   label: "Managed Device Name",
   comments:
@@ -473,7 +428,6 @@ const managedDeviceName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const partnerReportedThreatState = input({
   label: "Partner Reported Threat State",
   comments:
@@ -484,7 +438,6 @@ const partnerReportedThreatState = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const requireUserEnrollmentApproval = input({
   label: "Require User Enrollment Approval",
   comments: "Reports if the managed iOS device is user approval enrollment.",
@@ -493,7 +446,6 @@ const requireUserEnrollmentApproval = input({
   required: false,
   clean: util.types.toBool,
 });
-
 const managementCertificateExpirationDate = input({
   label: "Management Certificate Expiration Date",
   comments: "Reports device management certificate expiration date.",
@@ -503,7 +455,6 @@ const managementCertificateExpirationDate = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const iccid = input({
   label: "ICCID",
   comments:
@@ -515,7 +466,6 @@ const iccid = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const udid = input({
   label: "UDID",
   comments:
@@ -527,7 +477,6 @@ const udid = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const notes = input({
   label: "Notes",
   comments:
@@ -538,7 +487,6 @@ const notes = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const ethernetMacAddress = input({
   label: "Ethernet MAC Address",
   comments:
@@ -549,7 +497,6 @@ const ethernetMacAddress = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const physicalMemoryInBytes = input({
   label: "Physical Memory In Bytes",
   comments:
@@ -560,7 +507,6 @@ const physicalMemoryInBytes = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const enrollmentProfileName = input({
   label: "Enrollment Profile Name",
   comments:
@@ -572,7 +518,6 @@ const enrollmentProfileName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export default {
   userId,
   deviceName,

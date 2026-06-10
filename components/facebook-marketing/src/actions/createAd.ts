@@ -21,7 +21,6 @@ import {
   status,
   version,
 } from "../inputs";
-
 export const createAd = action({
   display: {
     label: "Create Ad",
@@ -52,7 +51,6 @@ export const createAd = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.post(
       `/${adAccountId}/ads`,
       {},
@@ -77,7 +75,6 @@ export const createAd = action({
         },
       },
     );
-
     return {
       data,
     };

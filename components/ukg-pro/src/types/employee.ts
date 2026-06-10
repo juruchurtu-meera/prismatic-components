@@ -77,7 +77,6 @@ export interface EmploymentDetails {
   companyGLSegment: string;
   locationGLSegment: string;
 }
-
 export interface EmployeeDetails {
   additionalName1: string;
   additionalName2: string;
@@ -174,7 +173,6 @@ export interface EmployeeDetails {
   ssn: string;
   ssnIsSuppressed: boolean;
 }
-
 export interface EmployeeChange {
   firstName: string;
   lastName: string;
@@ -222,7 +220,6 @@ export interface EmployeeChange {
   jobGroupCode: string;
   alternateJobTitle: string;
 }
-
 export interface EmployeeContractDetails {
   amendmentDate: null;
   companyId: string;
@@ -255,7 +252,6 @@ export interface EmployeeContractDetails {
   renewalContractId: number;
   rowLastChanged: string;
 }
-
 export interface EmployeeDemographicDetails {
   ethnicDescription: string;
   additionalName1: string;
@@ -316,7 +312,6 @@ export interface EmployeeDemographicDetails {
   integrationRecordId: string;
   cellPhoneNumber: string;
 }
-
 export interface EmployeeEmploymentDetails {
   companyID: string;
   employeeID: string;
@@ -396,7 +391,6 @@ export interface EmployeeEmploymentDetails {
   unionLocalCode: null;
   unionNationalCode: null;
 }
-
 export interface EmployeeJobHistoryDetails {
   annualSalary: number;
   companyId: string;

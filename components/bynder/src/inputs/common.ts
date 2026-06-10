@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanKeyValueListInput, cleanString } from "../util";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Bynder connection to use.",
 });
-
 export const id = input({
   label: "ID",
   type: "string",
@@ -17,7 +15,6 @@ export const id = input({
   placeholder: "Enter resource ID",
   clean: util.types.toString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -27,7 +24,6 @@ export const fetchAll = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -37,7 +33,6 @@ export const page = input({
   placeholder: "Enter page number",
   clean: util.types.toNumber,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -47,7 +42,6 @@ export const limit = input({
   placeholder: "Enter limit",
   clean: util.types.toNumber,
 });
-
 export const bodyData = input({
   label: "Data",
   type: "code",
@@ -68,7 +62,6 @@ export const bodyData = input({
   placeholder: "Enter additional fields as JSON",
   clean: cleanCodeInput,
 });
-
 export const extraParams = input({
   label: "Extra Parameters",
   type: "string",
@@ -78,7 +71,6 @@ export const extraParams = input({
   example: '{"keyword": "logo"}',
   clean: cleanKeyValueListInput,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -89,7 +81,6 @@ export const name = input({
   placeholder: "Enter asset name",
   clean: cleanString,
 });
-
 export const description = input({
   label: "Description",
   type: "string",

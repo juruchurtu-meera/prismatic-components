@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { generateMfaChallengeIdInputs } from "../../inputs/misc";
 import { generateMfaChallengeIdExamplePayload } from "../../examplePayloads";
-
 export const generateMfaChallengeId = action({
   display: {
     label: "Generate an MFA Challenge ID",
@@ -22,9 +21,7 @@ export const generateMfaChallengeId = action({
       devKey: loginData.devKey,
       sessionId,
     });
-
     const { data } = await client.post("/MFAChallenge.json", stringifiedData);
-
     return {
       data: { ...cleanReturnData(data), sessionId },
     };

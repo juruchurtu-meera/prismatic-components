@@ -9,7 +9,6 @@ import {
   type,
   uri,
 } from "../../inputs";
-
 export const updateDataStore = action({
   display: {
     label: "Update Data Store",
@@ -21,7 +20,6 @@ export const updateDataStore = action({
     { connection, dataStoreId, dataStoreInput, technicalName, type, uri },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.put(`/data-stores/${dataStoreId}`, {
       id: dataStoreId,
       technicalName: technicalName || undefined,
@@ -29,7 +27,6 @@ export const updateDataStore = action({
       uri: uri || undefined,
       ...dataStoreInput,
     });
-
     return {
       data,
     };

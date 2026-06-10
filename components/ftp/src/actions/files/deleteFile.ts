@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { connect } from "../../client";
 import { deleteFileExamplePayload } from "../../examplePayloads";
 import { connection, verbose } from "../../inputs";
-
 const path = input({
   label: "Path",
   placeholder: "Enter file path",
@@ -12,7 +11,6 @@ const path = input({
   example: "/path/to/file.txt",
   clean: util.types.toString,
 });
-
 const deleteFile = action({
   display: {
     label: "Delete File",
@@ -25,11 +23,9 @@ const deleteFile = action({
     } finally {
       client.close();
     }
-
     return null;
   },
   inputs: { connection, verbose, path },
   examplePayload: deleteFileExamplePayload,
 });
-
 export default deleteFile;

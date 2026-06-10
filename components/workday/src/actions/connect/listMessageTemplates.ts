@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { listMessageTemplatesExamplePayload } from "../../examplePayloads";
 import { listMessageTemplatesInputs } from "../../inputs";
-
 export const listMessageTemplates = action({
   display: {
     label: "List Message Templates",

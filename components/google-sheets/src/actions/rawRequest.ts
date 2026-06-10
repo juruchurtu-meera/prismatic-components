@@ -5,9 +5,7 @@ import {
   inputs as httpClientInputs,
   sendRawRequest,
 } from "@prismatic-io/spectral/dist/clients/http";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -25,7 +23,6 @@ const rawRequest = action({
   },
   perform: async (context, { connection, ...rawRequestInputs }) => {
     const accessToken = getAccessToken(connection);
-
     const { data } = await sendRawRequest(
       "https://sheets.googleapis.com",
       { ...rawRequestInputs, debugRequest: context.debug.enabled },
@@ -34,5 +31,4 @@ const rawRequest = action({
     return { data };
   },
 });
-
 export default rawRequest;

@@ -8,7 +8,6 @@ import {
   sysId,
 } from "../../../inputs";
 import { createNowApiClient } from "../../../util";
-
 export const getConfigurationItemAttributes = action({
   display: {
     label: "Get Configuration Item Attributes",

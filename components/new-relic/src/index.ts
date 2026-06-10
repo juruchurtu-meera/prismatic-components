@@ -6,7 +6,6 @@ import { sendDetailedLogs } from "./actions/sendDetailedLogs";
 import connections from "./connections";
 import rawRequest from "./actions/rawRequest";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export default component({
   key: "new-relic",
   public: true,

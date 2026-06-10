@@ -7,7 +7,6 @@ import {
   insertBefore,
   taskId,
 } from "../../inputs";
-
 export const addTaskToSection = action({
   display: {
     label: "Add Task to Section",

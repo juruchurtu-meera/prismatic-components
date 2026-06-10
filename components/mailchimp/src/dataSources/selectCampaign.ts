@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { connectionInput } from "../inputs";
 import type { MailchimpCampaign } from "../types";
 import { paginatedRequest } from "../utils/pagination";
-
 export const selectCampaign = dataSource({
   display: {
     label: "Select Campaign",
@@ -20,16 +19,13 @@ export const selectCampaign = dataSource({
       dataKey: "campaigns",
       fetchAll: true,
     });
-
     const campaigns = data.campaigns as MailchimpCampaign[];
     const result = campaigns.map<Element>((campaign) => ({
       label: campaign.settings.title || campaign.id,
       key: campaign.id,
     }));
-
     return { result };
   },
   dataSourceType: "picklist",
 });
-
 export default selectCampaign;

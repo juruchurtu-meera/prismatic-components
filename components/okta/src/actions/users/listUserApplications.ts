@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listUserApplicationsExamplePayload } from "../../examplePayloads/users";
 import { listUserGroupsInputs as listUserApplicationsInputs } from "../../inputs/users";
-
 export const listUserApplications = action({
   display: {
     label: "List User Applications",
@@ -11,9 +10,9 @@ export const listUserApplications = action({
   inputs: listUserApplicationsInputs,
   perform: async (context, { connection, id }) => {
     const client = await createClient(connection, context.debug.enabled);
-
-    const { data } = await client.get(`/users/${encodeURIComponent(id)}/appLinks`);
-
+    const { data } = await client.get(
+      `/users/${encodeURIComponent(id)}/appLinks`,
+    );
     return {
       data,
     };

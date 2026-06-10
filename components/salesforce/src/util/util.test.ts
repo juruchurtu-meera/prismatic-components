@@ -4,7 +4,6 @@ import {
   toFindOptions,
   toFullNameIdentifier,
 } from ".";
-
 describe("toFindOptions", () => {
   it.each([
     { pageSize: undefined, pageNumber: undefined },
@@ -14,11 +13,13 @@ describe("toFindOptions", () => {
     { pageSize: 20, pageNumber: 0 },
     { pageSize: "0", pageNumber: "1" },
     { pageSize: 0, pageNumber: 1 },
-  ])("should return undefined for invalid values", ({ pageSize, pageNumber }) => {
+  ])("should return undefined for invalid values", ({
+    pageSize,
+    pageNumber,
+  }) => {
     const result = toFindOptions(pageSize, pageNumber);
     expect(result).toBeUndefined();
   });
-
   it.each([
     { pageSize: 20, pageNumber: 1, expected: { limit: 20, offset: 0 } },
     { pageSize: "20", pageNumber: "1", expected: { limit: 20, offset: 0 } },
@@ -26,15 +27,15 @@ describe("toFindOptions", () => {
     { pageSize: "20", pageNumber: "2", expected: { limit: 20, offset: 20 } },
     { pageSize: 50, pageNumber: 5, expected: { limit: 50, offset: 200 } },
     { pageSize: "50", pageNumber: "5", expected: { limit: 50, offset: 200 } },
-  ])(
-    "should return expected options object for valid values",
-    ({ pageSize, pageNumber, expected }) => {
-      const result = toFindOptions(pageSize, pageNumber);
-      expect(result).toStrictEqual(expected);
-    },
-  );
+  ])("should return expected options object for valid values", ({
+    pageSize,
+    pageNumber,
+    expected,
+  }) => {
+    const result = toFindOptions(pageSize, pageNumber);
+    expect(result).toStrictEqual(expected);
+  });
 });
-
 describe("toFullNameIdentifier", () => {
   it.each([
     {
@@ -52,12 +53,15 @@ describe("toFullNameIdentifier", () => {
       name: "helloworld",
       expected: "Account.helloworld",
     },
-  ])("should return valid fullName identifiers", ({ objectType, name, expected }) => {
+  ])("should return valid fullName identifiers", ({
+    objectType,
+    name,
+    expected,
+  }) => {
     const result = toFullNameIdentifier(objectType, name);
     expect(result).toStrictEqual(expected);
   });
 });
-
 describe("parseFullNameIdentifier", () => {
   it.each([
     {
@@ -77,7 +81,6 @@ describe("parseFullNameIdentifier", () => {
     expect(result).toStrictEqual(expected);
   });
 });
-
 describe("processOutboundMessageFields", () => {
   it.each([
     { fields: [], dynamicFields: [], expected: [] },
@@ -92,7 +95,11 @@ describe("processOutboundMessageFields", () => {
       expected: ["id", "name", "description"],
     },
     { fields: ["name"], dynamicFields: ["name"], expected: ["name"] },
-  ])("should combine fields from multiple sources", ({ fields, dynamicFields, expected }) => {
+  ])("should combine fields from multiple sources", ({
+    fields,
+    dynamicFields,
+    expected,
+  }) => {
     const result = processOutboundMessageFields(fields, dynamicFields);
     expect(result).toStrictEqual(expected);
   });

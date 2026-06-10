@@ -1,14 +1,11 @@
 import type { AxiosInstance } from "axios";
 import { RFC_FUNCTIONS, SOAP_URN } from "../constants";
 import { getResponseBody, parseAndCheckFault } from "./xml";
-
-
 const normalizeXml = (xml: string): string =>
   xml.replace(
     /<([^>]*\n[^>]*)>/g,
     (_, inner) => `<${(inner as string).replace(/\s+/g, " ").trim()}>`,
   );
-
 export const buildSoapEnvelope = (
   functionName: string,
   params: string,
@@ -21,10 +18,8 @@ export const buildSoapEnvelope = (
     </urn:${functionName}>
   </soap:Body>  
 </soap:Envelope>`);
-
 export const buildSoapAction = (functionName: string): string =>
   `${SOAP_URN}:${functionName}`;
-
 export const performCommit = async (
   client: AxiosInstance,
   endpoint: string,

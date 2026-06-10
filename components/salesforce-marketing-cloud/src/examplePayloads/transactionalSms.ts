@@ -1,5 +1,4 @@
 import type { PaginatedResponse } from "../types";
-
 export const getSmsDefinitionExamplePayload = {
   data: {
     requestId: "582bec09-6d04-4222-bbba-cea616495596",
@@ -29,8 +28,9 @@ export const getSmsDefinitionExamplePayload = {
     },
   },
 };
-
-export const listSmsDefinitionsExamplePayload: { data: PaginatedResponse } = {
+export const listSmsDefinitionsExamplePayload: {
+  data: PaginatedResponse;
+} = {
   data: {
     requestId: "ba9633fa-5c8d-4c42-8efa-a16412ac0c53",
     definitions: [
@@ -47,18 +47,14 @@ export const listSmsDefinitionsExamplePayload: { data: PaginatedResponse } = {
     pageSize: 10,
   },
 };
-
 export const createSmsDefinitionExamplePayload = getSmsDefinitionExamplePayload;
-
 export const updateSmsDefinitionExamplePayload = getSmsDefinitionExamplePayload;
-
 export const deleteSmsDefinitionExamplePayload = {
   data: {
     requestId: "582bec09-6d04-4222-bbba-cea616495596",
     deletedDefinitionKey: "example-sms-def",
   },
 };
-
 export const sendSmsExamplePayload = {
   data: {
     requestId: "239a2bc3-bdcb-4f8a-9e08-28aff9f983b7",
@@ -70,7 +66,6 @@ export const sendSmsExamplePayload = {
     ],
   },
 };
-
 export const sendSmsBatchExamplePayload = {
   data: {
     requestId: "ccdb94bf-fcac-4fef-b194-08f534a2079a",

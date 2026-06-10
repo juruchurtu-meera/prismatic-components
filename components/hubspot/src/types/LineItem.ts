@@ -5,7 +5,6 @@ export interface LineItemProperties {
   name: string;
   hs_sku?: string;
 }
-
 export interface LineItem {
   id: number;
   properties: LineItemProperties;

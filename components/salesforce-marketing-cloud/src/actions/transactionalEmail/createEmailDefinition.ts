@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { EMAIL_DEFINITIONS_PATH } from "../../constants";
 import { createEmailDefinitionExamplePayload } from "../../examplePayloads";
 import { createEmailDefinitionInputs } from "../../inputs";
-
 export const createEmailDefinition = action({
   examplePayload: createEmailDefinitionExamplePayload,
   display: {
@@ -23,7 +22,6 @@ export const createEmailDefinition = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       definitionKey: emailDefinitionKey,
       name: emailDefinitionName,
@@ -31,9 +29,7 @@ export const createEmailDefinition = action({
       content: { customerKey: emailContentCustomerKey },
       ...emailDefinitionExtraBody,
     };
-
     const { data } = await client.post(EMAIL_DEFINITIONS_PATH, body);
-
     return { data };
   },
 });

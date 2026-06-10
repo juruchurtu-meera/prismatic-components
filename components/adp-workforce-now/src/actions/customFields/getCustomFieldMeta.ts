@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getCustomFieldMetaResponse } from "../../examplePayloads";
 import { $filter, connection, customFieldTypes } from "../../inputs";
-
 export const getCustomFieldMeta = action({
   display: {
     label: "Get Custom Field Meta",

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { DEFAULT_UPDATE_RESPONSE } from "../../constants";
 import { updateRecordInputs } from "../../inputs/records/update";
-
 export const updateRecord = action({
   display: {
     label: "Update Record",
@@ -13,13 +12,18 @@ export const updateRecord = action({
     ...updateRecordInputs,
     connection,
   },
-  perform: async (context, { connection, bodyFields, recordId, recordType }) => {
-    const client = await createClient(connection, context, context.debug.enabled);
-
+  perform: async (
+    context,
+    { connection, bodyFields, recordId, recordType },
+  ) => {
+    const client = await createClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     await client.patch(`/${recordType}(${recordId})`, {
       ...bodyFields,
     });
-
     return {
       data: DEFAULT_UPDATE_RESPONSE,
     };

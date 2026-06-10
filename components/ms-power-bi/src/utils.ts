@@ -1,11 +1,10 @@
 import { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { TResponse } from "./interfaces/TResponse";
-
 export const paginateResults = async <T>(
   client: HttpClient,
   url: string,
   fetchAll: boolean = false,
-  params: Record<string, unknown> | undefined = undefined
+  params: Record<string, unknown> | undefined = undefined,
 ): Promise<{
   value: T[];
   "@odata.context"?: string;
@@ -18,10 +17,8 @@ export const paginateResults = async <T>(
     } = await client.get<TResponse<T>>(url, {
       params,
     });
-
     return { value };
   }
-
   const results: T[] = [];
   let nextLink = url;
   do {
@@ -30,12 +27,10 @@ export const paginateResults = async <T>(
     });
     results.push(...data.value);
     nextLink = data["@odata.nextLink"];
-
     if (!firstResponse) {
       firstResponse = data;
     }
   } while (nextLink);
-
   if (firstResponse["odata.context"]) {
     return {
       "@odata.nextLink": firstResponse["@odata.nextLink"] || undefined,
@@ -43,6 +38,5 @@ export const paginateResults = async <T>(
       value: results,
     };
   }
-
   return { value: results };
 };

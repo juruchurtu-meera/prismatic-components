@@ -8,7 +8,6 @@ import {
   limit,
   skip,
 } from "./common";
-
 const categoryIdRequired = input({
   label: "Category ID",
   type: "string",
@@ -19,7 +18,6 @@ const categoryIdRequired = input({
   example: "553c3ef8b8cdcd1501baabcd",
   dataSource: "selectCategory",
 });
-
 const categoryName = input({
   label: "Name",
   type: "string",
@@ -29,7 +27,6 @@ const categoryName = input({
   placeholder: "Enter category name",
   example: "UI Improvements",
 });
-
 const subscribeAdmins = input({
   label: "Subscribe Admins",
   type: "boolean",
@@ -37,7 +34,6 @@ const subscribeAdmins = input({
   comments: "When true, subscribes admins to the category.",
   clean: util.types.toBool,
 });
-
 const parentCategoryId = input({
   label: "Parent Category ID",
   type: "string",
@@ -48,7 +44,6 @@ const parentCategoryId = input({
   example: "553c3ef8b8cdcd1501baabcd",
   dataSource: "selectCategory",
 });
-
 export const listCategoriesInputs = {
   connection,
   boardId,
@@ -56,9 +51,7 @@ export const listCategoriesInputs = {
   limit,
   skip,
 };
-
 export const retrieveCategoryInputs = { connection, categoryIdRequired };
-
 export const createCategoryInputs = {
   connection,
   boardIdRequired,
@@ -66,9 +59,7 @@ export const createCategoryInputs = {
   subscribeAdmins,
   parentCategoryId,
 };
-
 export const deleteCategoryInputs = { connection, categoryIdRequired };
-
 export const selectCategoryInputs = {
   connection,
   boardId: { ...boardId, dataSource: undefined },

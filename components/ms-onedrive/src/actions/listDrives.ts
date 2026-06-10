@@ -10,9 +10,6 @@ import {
 } from "../inputs";
 import { handleErrors } from "../errors";
 import { listDrivesExamplePayload } from "../examplePayloads";
-
-
-
 export const listDrives = action({
   display: {
     label: "List My Drives",
@@ -41,7 +38,6 @@ export const listDrives = action({
   },
   examplePayload: listDrivesExamplePayload,
 });
-
 export const listDrivesByUser = action({
   display: {
     label: "List Drives By User",
@@ -72,7 +68,6 @@ export const listDrivesByUser = action({
   },
   examplePayload: listDrivesExamplePayload,
 });
-
 export const listDrivesByGroup = action({
   display: {
     label: "List Drives By Group",
@@ -103,7 +98,6 @@ export const listDrivesByGroup = action({
   },
   examplePayload: listDrivesExamplePayload,
 });
-
 export const listDrivesBySite = action({
   display: {
     label: "List Drives By Site",
@@ -134,7 +128,6 @@ export const listDrivesBySite = action({
   },
   examplePayload: listDrivesExamplePayload,
 });
-
 export default {
   listDrives,
   listDrivesByGroup,

@@ -5,7 +5,6 @@ import {
   validateJSON,
   validateJSONArray,
 } from "../../util";
-
 export const orderId = input({
   label: "Order ID",
   type: "string",
@@ -16,7 +15,6 @@ export const orderId = input({
   dataSource: "selectOrders",
   clean: cleanStringInput,
 });
-
 export const orderNumber = input({
   label: "Order Number",
   type: "string",
@@ -26,7 +24,6 @@ export const orderNumber = input({
   placeholder: "Enter order number",
   clean: util.types.toString,
 });
-
 export const orderDate = input({
   label: "Order Date",
   type: "string",
@@ -38,7 +35,6 @@ export const orderDate = input({
   placeholder: "Enter order date (ISO 8601)",
   clean: util.types.toString,
 });
-
 export const orderStatus = input({
   label: "Order Status",
   type: "string",
@@ -49,7 +45,6 @@ export const orderStatus = input({
   placeholder: "Enter order status",
   clean: util.types.toString,
 });
-
 export const orderKey = input({
   label: "Order Key",
   type: "string",
@@ -60,7 +55,6 @@ export const orderKey = input({
   placeholder: "Enter order key",
   clean: cleanStringInput,
 });
-
 export const billTo = input({
   label: "Billing Address",
   type: "code",
@@ -83,7 +77,6 @@ export const billTo = input({
   comments: "Provide the billing address in JSON format.",
   clean: validateJSON,
 });
-
 export const ordersArray = input({
   label: "Orders Array",
   type: "code",
@@ -140,7 +133,6 @@ export const ordersArray = input({
     "Provide an array of order objects to create or update multiple orders.",
   clean: (input) => validateJSONArray(input),
 });
-
 export const fulfillmentId = input({
   label: "Fulfillment ID",
   type: "string",
@@ -150,7 +142,6 @@ export const fulfillmentId = input({
   dataSource: "selectFulfillments",
   clean: cleanStringInput,
 });
-
 export const pageFulfillments = input({
   label: "Page",
   type: "string",
@@ -160,7 +151,6 @@ export const pageFulfillments = input({
   placeholder: "Enter page number",
   clean: util.types.toNumber,
 });
-
 export const pageFullorders = input({
   label: "Page",
   type: "string",
@@ -170,7 +160,6 @@ export const pageFullorders = input({
   placeholder: "Enter page number",
   clean: util.types.toNumber,
 });
-
 export const pageSizeFulfillments = input({
   label: "Page Size",
   type: "string",
@@ -180,7 +169,6 @@ export const pageSizeFulfillments = input({
   placeholder: "Enter page size",
   clean: util.types.toNumber,
 });
-
 export const pageSizeFulfillorders = input({
   label: "Page Size",
   type: "string",
@@ -190,7 +178,6 @@ export const pageSizeFulfillorders = input({
   placeholder: "Enter page size",
   clean: util.types.toNumber,
 });
-
 export const orderAdditionalFieldsInput = input({
   label: "Additional Fields",
   type: "string",
@@ -200,7 +187,6 @@ export const orderAdditionalFieldsInput = input({
   example: "paymentMethod: Credit Card",
   clean: cleanKeyValueListInput,
 });
-
 export const orderIdInput = input({
   label: "Order ID",
   type: "string",
@@ -211,5 +197,4 @@ export const orderIdInput = input({
   dataSource: "selectOrders",
   clean: util.types.toString,
 });
-
 export const orderStatusList = orderStatus;

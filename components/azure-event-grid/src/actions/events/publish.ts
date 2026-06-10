@@ -2,7 +2,6 @@ import { createEventGridPublishClient } from "../../client";
 import { getEventSubscriptionExamplePayload as examplePayload } from "../../examplePayloads";
 import { publishEventsInputs as inputs } from "../../inputs/events";
 import { action } from "@prismatic-io/spectral";
-
 export const publishEvents = action({
   display: {
     label: "Publish Events",
@@ -19,7 +18,6 @@ export const publishEvents = action({
       topicAccessKey,
       context.debug.enabled,
     );
-
     const { data } = await publishClient.post("", events);
     return { data };
   },

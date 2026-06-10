@@ -1,12 +1,14 @@
 import { input, util } from "@prismatic-io/spectral";
-import { cleanCodeInput, cleanKeyValueListInput, toOptionalString } from "../util";
-
+import {
+  cleanCodeInput,
+  cleanKeyValueListInput,
+  toOptionalString,
+} from "../util";
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const additionalInputs = input({
   label: "Additional Inputs",
   type: "code",
@@ -16,7 +18,6 @@ export const additionalInputs = input({
   example: JSON.stringify({}, null, 2),
   clean: cleanCodeInput,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -25,7 +26,6 @@ export const fetchAll = input({
     "If true will fetch all records, otherwise will use the other inputs to fetch the records",
   clean: util.types.toBool,
 });
-
 export const customQueryParams = input({
   label: "Custom Query Params",
   type: "string",
@@ -36,7 +36,6 @@ export const customQueryParams = input({
   placeholder: "key1=value1",
   clean: cleanKeyValueListInput,
 });
-
 export const $top = input({
   label: "Top",
   type: "string",
@@ -46,7 +45,6 @@ export const $top = input({
   example: "20",
   clean: toOptionalString,
 });
-
 export const $skip = input({
   label: "Skip",
   type: "string",
@@ -56,7 +54,6 @@ export const $skip = input({
   example: "20",
   clean: toOptionalString,
 });
-
 export const $search = input({
   label: "Search",
   type: "string",
@@ -66,7 +63,6 @@ export const $search = input({
   example: "NOT clothing",
   clean: toOptionalString,
 });
-
 export const $filter = input({
   label: "Filter",
   type: "string",
@@ -76,7 +72,6 @@ export const $filter = input({
   example: "Price lt 10.00",
   clean: toOptionalString,
 });
-
 export const $orderby = input({
   label: "Order By",
   type: "string",
@@ -86,7 +81,6 @@ export const $orderby = input({
   example: "userId desc",
   clean: toOptionalString,
 });
-
 export const $count = input({
   label: "Count",
   type: "boolean",
@@ -94,7 +88,6 @@ export const $count = input({
   comments: "Include count of items",
   clean: util.types.toBool,
 });
-
 export const $select = input({
   label: "Select",
   type: "string",
@@ -104,7 +97,6 @@ export const $select = input({
   example: "Rating,ReleaseDate",
   clean: toOptionalString,
 });
-
 export const $expand = input({
   label: "Expand",
   type: "string",
@@ -114,7 +106,6 @@ export const $expand = input({
   example: "Orders($filter=Amount gt 100)",
   clean: toOptionalString,
 });
-
 export const defaultListInputs = {
   fetchAll,
   $top,

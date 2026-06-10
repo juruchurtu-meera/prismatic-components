@@ -4,7 +4,6 @@ import { createClient } from "../client";
 import { getPaginatedData } from "../util";
 import { HttpMethod, MAX_PAGE_SIZE } from "../constants";
 import type { NotionPage, PollingState } from "../types";
-
 export const dataSourceItemsPollingTrigger = pollingTrigger({
   display: {
     label: "New and Updated Database Items",
@@ -17,21 +16,18 @@ export const dataSourceItemsPollingTrigger = pollingTrigger({
     const state = context.polling.getState() as unknown as PollingState;
     const lastPolledAt = state.lastPolledAt || now;
     const client = createClient(connection, context.debug.enabled);
-
     const createdFilter = {
       timestamp: "created_time",
       created_time: {
         on_or_after: lastPolledAt,
       },
     };
-
     const editedFilter = {
       timestamp: "last_edited_time",
       last_edited_time: {
         on_or_after: lastPolledAt,
       },
     };
-
     const [newItemsResponse, updatedItemsResponse] = await Promise.all([
       getPaginatedData(
         client,
@@ -56,15 +52,11 @@ export const dataSourceItemsPollingTrigger = pollingTrigger({
         },
       ),
     ]);
-
     const newItems = (newItemsResponse.data.results || []) as NotionPage[];
     const updatedItems = (updatedItemsResponse.data.results ||
       []) as NotionPage[];
-
     const polledNoChanges = newItems.length === 0 && updatedItems.length === 0;
-
     context.polling.setState({ lastPolledAt: now });
-
     return Promise.resolve({
       payload: {
         ...payload,

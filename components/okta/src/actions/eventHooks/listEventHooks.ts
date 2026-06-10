@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listEventHooksExamplePayload } from "../../examplePayloads/webhook";
 import { listEventHooksInputs } from "../../inputs/webhooks";
 import { listAllEventHooksFN } from "../../util/eventHooks";
-
 export const listEventHooks = action({
   display: {
     label: "List Event Hooks",
@@ -12,9 +11,7 @@ export const listEventHooks = action({
   inputs: listEventHooksInputs,
   perform: async (context, { connection }) => {
     const client = await createClient(connection, context.debug.enabled);
-
     const data = await listAllEventHooksFN(client);
-
     return {
       data,
     };

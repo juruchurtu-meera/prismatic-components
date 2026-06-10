@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createCrmClient } from "../../client";
 import { queryAttributesExamplePayload } from "../../examplePayloads";
 import { queryAttributesInputs } from "../../inputs";
-
 export const queryAttributes = action({
   display: {
     label: "Query Attributes",
@@ -11,8 +10,10 @@ export const queryAttributes = action({
   inputs: queryAttributesInputs,
   examplePayload: queryAttributesExamplePayload,
   perform: async (context, params) => {
-    const client = await createCrmClient(params.connection, context.debug.enabled);
-
+    const client = await createCrmClient(
+      params.connection,
+      context.debug.enabled,
+    );
     const result = await client.retrieveAttributes({
       entityKey: params.entityId,
       castType: params.attributeType,
@@ -20,7 +21,6 @@ export const queryAttributes = action({
       filter: params.filterExpression,
       expand: params.expandPropertyNames,
     });
-
     return { data: result };
   },
 });

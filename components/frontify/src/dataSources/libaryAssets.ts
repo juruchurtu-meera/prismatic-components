@@ -3,7 +3,6 @@ import { listLibraryAssetsQuery } from "../actions/libraries/listLibraryAssets";
 import type ListLibraryAssetsResponse from "../actions/types/listLibraryAssets";
 import { createClient } from "../client";
 import { libraryAssetsInputs as inputs } from "../inputs/dataSources";
-
 export const libraryAssetDataSource = dataSource({
   display: {
     label: "Select Library Asset",
@@ -20,7 +19,6 @@ export const libraryAssetDataSource = dataSource({
         label: asset.title,
       };
     });
-
     return {
       result,
     };

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { callLogIdInput, connectionInput } from "../../inputs";
-
 export const deleteCallLog = action({
   display: {
     label: "Delete Call Log",

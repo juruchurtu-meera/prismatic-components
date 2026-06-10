@@ -7,7 +7,6 @@ import {
   sortInput,
 } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
-
 export const getLeads = action({
   display: {
     label: "Get Leads",
@@ -50,7 +49,8 @@ export const getLeads = action({
       type: "string",
       example: "1",
       clean: cleanNumber,
-      comments: "If supplied, only leads matching the given user will be returned",
+      comments:
+        "If supplied, only leads matching the given user will be returned",
     }),
     filterId: input({
       label: "Filter ID",

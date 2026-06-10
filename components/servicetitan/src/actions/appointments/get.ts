@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getAppointmentResponse } from "../../examplePayloads";
 import { appointmentId, connection } from "../../inputs";
-
 export const getAppointment = action({
   display: {
     label: "Get Appointment",

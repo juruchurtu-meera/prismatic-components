@@ -11,7 +11,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updatePrice = action({
   display: {
     label: "Update Price",
@@ -19,7 +18,15 @@ export const updatePrice = action({
   },
   perform: async (
     context,
-    { priceId, active, nickname, fieldValues, metadata, timeout, stripeConnection },
+    {
+      priceId,
+      active,
+      nickname,
+      fieldValues,
+      metadata,
+      timeout,
+      stripeConnection,
+    },
   ) => {
     const client = createStripeClient({
       stripeConnection,

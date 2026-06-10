@@ -36,7 +36,6 @@ import {
   useStripeSdk,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const createPaymentIntent = action({
   display: {
     label: "Create Payment Intent",
@@ -96,7 +95,8 @@ export const createPaymentIntent = action({
       ...(paymentMethod && { payment_method: paymentMethod }),
       ...(receiptEmail && { receipt_email: receiptEmail }),
       ...(setupFutureUsage && {
-        setup_future_usage: setupFutureUsage as Stripe.PaymentIntentCreateParams.SetupFutureUsage,
+        setup_future_usage:
+          setupFutureUsage as Stripe.PaymentIntentCreateParams.SetupFutureUsage,
       }),
       ...(shipping && { shipping: JSON.parse(shipping) }),
       ...(statementDescriptor && { statement_descriptor: statementDescriptor }),
@@ -107,7 +107,8 @@ export const createPaymentIntent = action({
         application_fee_amount: util.types.toInt(applicationFeeAmount),
       }),
       ...(captureMethod && {
-        capture_method: captureMethod as Stripe.PaymentIntentCreateParams.CaptureMethod,
+        capture_method:
+          captureMethod as Stripe.PaymentIntentCreateParams.CaptureMethod,
       }),
       ...(confirmationMethod && {
         confirmation_method:
@@ -148,12 +149,14 @@ export const createPaymentIntent = action({
     customerId: {
       ...customerId,
       label: "Customer",
-      comments: "ID of the Customer this PaymentIntent belongs to, if one exists.",
+      comments:
+        "ID of the Customer this PaymentIntent belongs to, if one exists.",
       clean: util.types.toString,
     },
     description: {
       ...description,
-      comments: "An arbitrary string attached to the object. Often useful for displaying to users.",
+      comments:
+        "An arbitrary string attached to the object. Often useful for displaying to users.",
       clean: util.types.toString,
     },
     metadata,
@@ -161,7 +164,8 @@ export const createPaymentIntent = action({
     paymentMethod,
     receiptEmail: {
       ...receiptEmail,
-      comments: "Email address that the receipt for the resulting payment will be sent to. ",
+      comments:
+        "Email address that the receipt for the resulting payment will be sent to. ",
     },
     setupFutureUsage,
     shipping: {
@@ -190,7 +194,8 @@ export const createPaymentIntent = action({
     transferData,
     transferGroup: {
       ...transferGroup,
-      comments: "A string that identifies the resulting payment as part of a group.",
+      comments:
+        "A string that identifies the resulting payment as part of a group.",
     },
     useStripeSdk,
   },

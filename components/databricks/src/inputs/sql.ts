@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const sqlStatementInput = input({
   label: "SQL Statement",
   type: "string",
@@ -10,7 +9,6 @@ export const sqlStatementInput = input({
   placeholder: "Enter SQL statement",
   clean: util.types.toString,
 });
-
 export const sqlParametersInput = input({
   label: "SQL Parameters",
   type: "code",

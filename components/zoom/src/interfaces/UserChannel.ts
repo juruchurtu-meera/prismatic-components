@@ -6,7 +6,6 @@ export interface UserChannel {
   type: number;
   channel_url: string;
 }
-
 interface ChannelSettings {
   add_member_permissions: number;
   new_members_can_see_previous_messages_files: boolean;

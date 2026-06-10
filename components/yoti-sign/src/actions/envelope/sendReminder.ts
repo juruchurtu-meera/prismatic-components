@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { sendReminderResponse } from "../../examplePayloads";
 import { connectionInput, envelopeId, recipientId } from "../../inputs";
-
 export const sendEnvelopeReminder = action({
   display: {
     label: `Send Reminder`,
@@ -18,7 +17,6 @@ export const sendEnvelopeReminder = action({
     const { data } = await client.post(
       `/envelopes/${envelopeId}/recipients/${recipientId}/send-reminder`,
     );
-
     return { data };
   },
   examplePayload: {

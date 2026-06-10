@@ -7,7 +7,6 @@ import {
   pageSize,
   workspaceIdOptional,
 } from "./common";
-
 const folderName = input({
   label: "Folder Name",
   type: "string",
@@ -18,7 +17,6 @@ const folderName = input({
   placeholder: "Enter folder name",
   dataSource: "selectFolder",
 });
-
 export const createFolderInputs = {
   connection: connectionInput,
   folderId: {
@@ -34,17 +32,14 @@ export const createFolderInputs = {
   },
   folderName,
 };
-
 export const deleteFolderInputs = {
   connection: connectionInput,
   folderId,
 };
-
 export const getFolderInputs = {
   connection: connectionInput,
   folderId,
 };
-
 export const listFoldersInputs = {
   connection: connectionInput,
   folderId: {
@@ -62,13 +57,11 @@ export const listFoldersInputs = {
   page,
   pageSize,
 };
-
 export const moveFolderInputs = {
   connection: connectionInput,
   folderId,
   destinationId: { ...folderId, label: "Destination Folder ID" },
 };
-
 export const updateFolderInputs = {
   connection: connectionInput,
   folderId,

@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { businessUnitsDatasource } from "../examplePayloads";
 import { connection } from "../inputs";
 import type { BusinessUnits } from "../interfaces";
-
 export const selectBusinessUnit = dataSource({
   display: {
     label: "Select Business Unit",
@@ -18,7 +17,6 @@ export const selectBusinessUnit = dataSource({
     let businessUnits: BusinessUnits[] = [];
     let cursor = false;
     let page = 1;
-
     do {
       const { data } = await client.get(`/business-units`, {
         params: {
@@ -31,14 +29,12 @@ export const selectBusinessUnit = dataSource({
       cursor = data.hasMore;
       page++;
     } while (cursor && page < 10);
-
     const objects = businessUnits
       .sort((a, b) => (a.name < b.name ? -1 : 1))
       .map<Element>((bu) => ({
         key: bu.id.toString(),
         label: `${bu.name} (ID: ${bu.id})`,
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

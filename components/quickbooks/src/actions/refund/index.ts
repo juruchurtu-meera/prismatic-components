@@ -6,7 +6,6 @@ import { listRefundReceipts } from "./listRefundReceipts";
 import { sendRefundReceipt } from "./sendRefundReceipt";
 import { sendRefundReceiptToEmail } from "./sendRefundReceiptToEmail";
 import { updateRefundReceipt } from "./updateRefundReceipt";
-
 export default {
   updateRefundReceipt,
   createRefundReceipt,

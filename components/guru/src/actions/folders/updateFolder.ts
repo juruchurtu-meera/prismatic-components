@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getGuruClient } from "../../client";
 import { updateFolderInputs } from "../../inputs";
 import { updateFolderPayload } from "../../examplePayloads";
-
 export const updateFolder = action({
   display: {
     label: "Update Folder",
@@ -13,7 +12,6 @@ export const updateFolder = action({
     { connection, folderId, folderTitle, folderDescription, parentFolder },
   ) => {
     const client = getGuruClient(connection, context.debug.enabled);
-
     const requestBody = {
       title: folderTitle,
       description: folderDescription,
@@ -23,9 +21,7 @@ export const updateFolder = action({
           }
         : undefined,
     };
-
     const { data } = await client.put(`/folders/${folderId}`, requestBody);
-
     return { data };
   },
   inputs: updateFolderInputs,

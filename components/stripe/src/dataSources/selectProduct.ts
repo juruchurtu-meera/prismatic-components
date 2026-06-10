@@ -2,7 +2,6 @@ import { dataSource, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../auth";
 import { connectionInput } from "../inputs";
 import type { Product, StripeResponse } from "../types";
-
 export const selectProduct = dataSource({
   display: {
     label: "Select Product",

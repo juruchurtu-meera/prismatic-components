@@ -1,6 +1,3 @@
-
-
-
 export interface Order {
   purchaseOrderNumber: string;
   AmazonOrderId: string;
@@ -38,14 +35,11 @@ export interface Order {
   IsISPU?: boolean;
   IsAccessPointOrder?: boolean;
 }
-
 export interface OrdersResponse {
   Orders: Order[];
   NextToken?: string;
   CreatedBefore?: string;
 }
-
-
 export interface Feed {
   feedId: string;
   feedType: string;
@@ -56,13 +50,10 @@ export interface Feed {
   processingEndTime?: string;
   resultFeedDocumentId?: string;
 }
-
 export interface FeedsResponse {
   feeds: Feed[];
   nextToken?: string;
 }
-
-
 export interface Destination {
   name: string;
   destinationId: string;
@@ -77,12 +68,9 @@ export interface Destination {
     };
   };
 }
-
 export interface DestinationsResponse {
   destinations: Destination[];
 }
-
-
 export interface Subscription {
   subscriptionId: string;
   payloadVersion: string;
@@ -95,7 +83,6 @@ export interface Subscription {
     };
   };
 }
-
 export interface SubscriptionsResponse {
   subscriptions: Subscription[];
 }

@@ -1,6 +1,5 @@
 import { intent, mobileAppId, settings, target } from "../general";
 import { mobileAppAssignmentId } from "./general";
-
 export const updateMobileAppAssignmentInputs = {
   mobileAppId: {
     ...mobileAppId,

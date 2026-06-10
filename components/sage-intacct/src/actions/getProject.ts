@@ -7,7 +7,6 @@ import {
 } from "../utils";
 import { Functions } from "@intacct/intacct-sdk";
 import { getProjectPayload } from "../examplePayloads/getProjectPayload";
-
 export const getProject = action({
   display: {
     label: "Get Project",

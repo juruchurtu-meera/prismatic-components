@@ -5,13 +5,10 @@ export const buildCampaignQuery = (options: {
   toDate: string;
 }): string => {
   const { changeTypes, sinceDate, toDate } = options;
-
   const fields = ["campaign.id", "campaign.name", "campaign.status"];
-
   if (changeTypes.includes("budget") || changeTypes.includes("all")) {
     fields.push("campaign_budget.amount_micros", "campaign_budget.period");
   }
-
   if (changeTypes.includes("bidding") || changeTypes.includes("all")) {
     fields.push(
       "campaign.bidding_strategy_type",
@@ -19,7 +16,6 @@ export const buildCampaignQuery = (options: {
       "campaign.target_roas.target_roas",
     );
   }
-
   if (changeTypes.includes("settings") || changeTypes.includes("all")) {
     fields.push(
       "campaign.start_date_time",
@@ -29,13 +25,11 @@ export const buildCampaignQuery = (options: {
       "campaign.network_settings.target_search_network",
     );
   }
-
   const query = `
     SELECT ${fields.join(", ")}
     FROM campaign
     WHERE segments.date >= '${sinceDate}' AND segments.date <= '${toDate}'
     ORDER BY campaign.id
   `;
-
   return query.trim();
 };

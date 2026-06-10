@@ -9,7 +9,6 @@ import { createClient } from "../../client";
 import { createEntryExamplePayload } from "../../examplePayloads";
 import { archiveEntryInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const archiveEntry = action({
   display: {
     label: "Archive Entry",

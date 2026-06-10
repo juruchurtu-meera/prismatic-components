@@ -16,7 +16,6 @@ export const createPaymentResponse = {
     },
   ],
 };
-
 export const listPaymentsResponse = {
   page: 0,
   pageSize: 0,
@@ -77,7 +76,6 @@ export const listPaymentsResponse = {
     },
   ],
 };
-
 export const getInvoiceResponse = {
   id: 0,
   syncStatus: "string",
@@ -220,7 +218,6 @@ export const getInvoiceResponse = {
     },
   ],
 };
-
 export const listInvoiceResponse = {
   page: 0,
   pageSize: 0,
@@ -228,7 +225,6 @@ export const listInvoiceResponse = {
   totalCount: 0,
   data: [getInvoiceResponse, getInvoiceResponse],
 };
-
 export const createBookingResponse = {
   id: 0,
   source: "string",
@@ -259,7 +255,6 @@ export const createBookingResponse = {
   bookingProviderId: 0,
   modifiedOn: "string",
 };
-
 export const listBookingByProviderResponse = {
   page: 0,
   pageSize: 0,
@@ -267,7 +262,6 @@ export const listBookingByProviderResponse = {
   totalCount: 0,
   data: [createBookingResponse, createBookingResponse],
 };
-
 export const createCustomerResponse = {
   id: 0,
   active: true,
@@ -359,7 +353,6 @@ export const createCustomerResponse = {
     },
   ],
 };
-
 export const getCustomerResponse = {
   id: 0,
   active: true,
@@ -397,7 +390,6 @@ export const getCustomerResponse = {
     },
   ],
 };
-
 export const listCustomersResponse = {
   page: 0,
   pageSize: 0,
@@ -405,7 +397,6 @@ export const listCustomersResponse = {
   totalCount: 0,
   data: [getCustomerResponse, getCustomerResponse],
 };
-
 export const createCustomerContactResponse = {
   id: 0,
   type: {},
@@ -417,7 +408,6 @@ export const createCustomerContactResponse = {
     doNotText: true,
   },
 };
-
 export const listCustomerContactsResponse = {
   page: 0,
   pageSize: 0,
@@ -425,7 +415,6 @@ export const listCustomerContactsResponse = {
   totalCount: 0,
   data: [createCustomerContactResponse, createCustomerContactResponse],
 };
-
 export const getJobResponse = {
   id: 0,
   jobNumber: "string",
@@ -472,7 +461,6 @@ export const getJobResponse = {
   ],
   customerPo: "string",
 };
-
 export const listJobsResponse = {
   page: 0,
   pageSize: 0,
@@ -480,9 +468,7 @@ export const listJobsResponse = {
   totalCount: 0,
   data: [getJobResponse, getJobResponse],
 };
-
 export const createJobResponse = getJobResponse;
-
 export const getAppointmentResponse = {
   id: 0,
   jobId: 0,
@@ -498,7 +484,6 @@ export const getAppointmentResponse = {
   customerId: 0,
   unused: true,
 };
-
 export const listAppointmentsResponse = {
   page: 0,
   pageSize: 0,
@@ -506,7 +491,6 @@ export const listAppointmentsResponse = {
   totalCount: 0,
   data: [getAppointmentResponse, getAppointmentResponse],
 };
-
 export const getProjectResponse = {
   id: 0,
   number: "string",
@@ -540,7 +524,6 @@ export const getProjectResponse = {
   ],
   jobIds: [0],
 };
-
 export const listProjectsResponse = {
   page: 0,
   pageSize: 0,
@@ -548,7 +531,6 @@ export const listProjectsResponse = {
   totalCount: 0,
   data: [getProjectResponse, getProjectResponse],
 };
-
 export const getLocationResponse = {
   id: 0,
   customerId: 0,
@@ -585,7 +567,6 @@ export const getLocationResponse = {
   ],
   taxZoneId: 0,
 };
-
 export const createLocationResponse = {
   ...getLocationResponse,
   contacts: [
@@ -597,7 +578,6 @@ export const createLocationResponse = {
     },
   ],
 };
-
 export const listLocationsResponse = {
   page: 0,
   pageSize: 0,
@@ -605,7 +585,6 @@ export const listLocationsResponse = {
   totalCount: 0,
   data: [getLocationResponse, getLocationResponse],
 };
-
 export const getTechnicianResponse = {
   id: 0,
   userId: 0,
@@ -645,7 +624,6 @@ export const getTechnicianResponse = {
   team: "string",
   jobFilter: {},
 };
-
 export const listTechniciansResponse = {
   page: 0,
   pageSize: 0,
@@ -653,11 +631,9 @@ export const listTechniciansResponse = {
   totalCount: 0,
   data: [getTechnicianResponse, getTechnicianResponse],
 };
-
 export const createTechnicianResponse = {
   id: 0,
 };
-
 export const getInstalledEquipmentResponse = {
   id: 0,
   equipmentId: 0,
@@ -706,7 +682,6 @@ export const getInstalledEquipmentResponse = {
     },
   ],
 };
-
 export const listInstalledEquipmentResponse = {
   page: 0,
   pageSize: 0,
@@ -747,7 +722,6 @@ export const listInstalledEquipmentResponse = {
     },
   ],
 };
-
 export const createEquipmentResponse = {
   id: 0,
   equipmentId: 0,
@@ -796,7 +770,6 @@ export const createEquipmentResponse = {
     },
   ],
 };
-
 export const listAppointmentsAssignedResponse = {
   page: 0,
   pageSize: 0,
@@ -816,7 +789,6 @@ export const listAppointmentsAssignedResponse = {
     },
   ],
 };
-
 export const assignTechniciansResponse = {
   id: 0,
   jobId: 0,
@@ -830,7 +802,6 @@ export const assignTechniciansResponse = {
   createdOn: "string",
   modifiedOn: "string",
 };
-
 export const listJobCancelReasonsResponse = {
   page: 0,
   pageSize: 0,
@@ -846,11 +817,9 @@ export const listJobCancelReasonsResponse = {
     },
   ],
 };
-
 export const createInstalledEquipmentAttachmentResponse = {
   path: "InstalledEquipment/Documents/e2374d0c-16b8-4bb7-b3b5-1bd0ac1df1f4.csv",
 };
-
 export const listBusinessUnitsResponse = {
   page: 0,
   pageSize: 0,
@@ -903,7 +872,6 @@ export const listBusinessUnitsResponse = {
     },
   ],
 };
-
 export const listUserRolesResponse = {
   page: 0,
   pageSize: 0,
@@ -919,16 +887,13 @@ export const listUserRolesResponse = {
     },
   ],
 };
-
 export const listAttachmentResponse = Buffer.from("ExampleFile");
-
 export const appointmentDatasource = [
   {
     key: "1",
     label: "#1 (ID: 1)",
   },
 ];
-
 export const bookingDatasource = [
   {
     key: "1",
@@ -939,7 +904,6 @@ export const bookingDatasource = [
     label: "Booking 2 (ID: 2)",
   },
 ];
-
 export const customersDatasource = [
   {
     key: "1",
@@ -950,7 +914,6 @@ export const customersDatasource = [
     label: "Jane Doe (ID: 2)",
   },
 ];
-
 export const installedEquipmentDatasource = [
   {
     key: "1",
@@ -961,14 +924,12 @@ export const installedEquipmentDatasource = [
     label: "Installed Equipment 2 (ID: 2)",
   },
 ];
-
 export const invoicesDatasource = [
   {
     key: "1",
     label: "#1234",
   },
 ];
-
 export const jobDatasource = [
   {
     key: "1",
@@ -983,7 +944,6 @@ export const jobDatasource = [
     label: "#3",
   },
 ];
-
 export const locationDatasource = [
   {
     key: "1",
@@ -998,7 +958,6 @@ export const locationDatasource = [
     label: "Location 3 (ID: 3)",
   },
 ];
-
 export const projectsDatasource = [
   {
     key: "1",
@@ -1009,28 +968,24 @@ export const projectsDatasource = [
     label: "Project 2 (ID: 2)",
   },
 ];
-
 export const businessUnitsDatasource = [
   {
     key: "1",
     label: "Business Unit 1 (ID: 1)",
   },
 ];
-
 export const userRolesDatasource = [
   {
     key: "1",
     label: "Admin (ID: 1)",
   },
 ];
-
 export const jobCancelReasonsDatasource = [
   {
     key: "1",
     label: "Customer Request (ID: 1)",
   },
 ];
-
 export const techniciansDatasource = [
   {
     key: "1",

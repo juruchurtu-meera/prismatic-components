@@ -5,7 +5,6 @@ import { paginateRecordsWithCursor, sortRecords } from "../util";
 import type { Person } from "../types/persons";
 import { personsDatasource } from "../examplePayloads/datasources";
 import { WebhookVersion } from "../constants";
-
 export const selectPerson = dataSource({
   display: {
     label: "Select Person",
@@ -16,13 +15,16 @@ export const selectPerson = dataSource({
   },
   perform: async (_context, { connectionInput }) => {
     const client = createClient(connectionInput, false, WebhookVersion.V2);
-    const { data } = await paginateRecordsWithCursor<Person>(client, "persons", {}, true);
-
+    const { data } = await paginateRecordsWithCursor<Person>(
+      client,
+      "persons",
+      {},
+      true,
+    );
     const objects = sortRecords(data, "id").map<Element>((person) => ({
       key: person.id.toString(),
       label: `${person.first_name}${person.last_name ? ` ${person.last_name}` : ""}`,
     }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

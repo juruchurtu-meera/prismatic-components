@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const purchaseOrderId = input({
   label: "Purchase Order ID",
   placeholder: "Enter purchase order ID",
@@ -10,7 +9,6 @@ export const purchaseOrderId = input({
   dataSource: "selectPurchaseOrder",
   clean: util.types.toString,
 });
-
 export const apAccountIdInput = input({
   label: "AP Account ID",
   placeholder: "Enter AP account ID",
@@ -19,7 +17,6 @@ export const apAccountIdInput = input({
   comments: "The AP account to which the bill is credited.",
   clean: util.types.toString,
 });
-
 export const vendorIdInput = input({
   label: "Vendor ID",
   placeholder: "Enter vendor ID",
@@ -28,7 +25,6 @@ export const vendorIdInput = input({
   comments: "The vendor referenced in this transaction.",
   clean: util.types.toString,
 });
-
 export const linesInput = input({
   label: "Lines",
   type: "data",

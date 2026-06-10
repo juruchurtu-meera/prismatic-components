@@ -75,7 +75,6 @@ import {
 import { Functions } from "@intacct/intacct-sdk";
 import type { AbstractVendor } from "@intacct/intacct-sdk/dist/Functions/AccountsPayable";
 import { updateVendorPayload } from "../examplePayloads/updateVendorPayload";
-
 export const updateVendor = action({
   display: {
     label: "Update Vendor",
@@ -153,7 +152,6 @@ export const updateVendor = action({
     },
   ) => {
     const updateVendor = new Functions.AccountsPayable.VendorUpdate();
-
     assignParametersToObject(updateVendor, {
       vendorId: vendorIdInput,
       vendorName: vendorNameInput,
@@ -242,7 +240,6 @@ export const updateVendor = action({
       restrictedDepartments: restrictedDepartmentsInput,
       customFields: customFieldsInput,
     } as unknown as AbstractVendor);
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(updateVendor, null, 2));
     }

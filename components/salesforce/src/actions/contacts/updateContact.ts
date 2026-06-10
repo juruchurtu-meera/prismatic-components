@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { updateContactInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const updateContact = action({
   display: {
     label: "Update Contact",
@@ -42,7 +41,6 @@ export const updateContact = action({
     },
   ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const payload = {
       ...(recordId && { Id: recordId }),
       ...(firstName && { FirstName: firstName }),
@@ -72,14 +70,11 @@ export const updateContact = action({
       ...dynamicValues,
       ...fieldValues,
     };
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", payload);
     }
-
     const command = salesforceClient.sobject("Contact").update(payload);
     const response = await executeSFAction(context, command);
-
     return {
       data: response,
     };

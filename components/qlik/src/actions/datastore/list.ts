@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listDataStoresExamplePayload } from "../../examplePayloads";
 import { connectionInput, limit, page, projections, sort } from "../../inputs";
-
 export const listDataStores = action({
   display: {
     label: "List Data Stores",
@@ -19,7 +18,6 @@ export const listDataStores = action({
         sort: sort || undefined,
       },
     });
-
     return {
       data,
     };

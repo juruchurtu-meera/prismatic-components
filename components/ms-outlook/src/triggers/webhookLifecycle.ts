@@ -1,10 +1,13 @@
 import { trigger } from "@prismatic-io/spectral";
-import { createSubscriptionTrigger, deleteSubscriptionTrigger, getBase64FromUrl } from "ms-utils";
+import {
+  createSubscriptionTrigger,
+  deleteSubscriptionTrigger,
+  getBase64FromUrl,
+} from "ms-utils";
 import { createClient } from "../client";
 import { webhookLifecycleTriggerExamplePayload } from "../examplePayloads";
 import { createWebhookSubscriptionInputs } from "../inputs";
 import { createWebhookPerformFN } from "../util";
-
 export const webhookLifecycle = trigger({
   display: {
     label: "Calendar Event Webhook",
@@ -19,7 +22,10 @@ export const webhookLifecycle = trigger({
   perform: createWebhookPerformFN("event"),
   examplePayload: webhookLifecycleTriggerExamplePayload,
   webhookLifecycleHandlers: {
-    create: async (context, { allowDuplicates, connection, expirationDateTime }) => {
+    create: async (
+      context,
+      { allowDuplicates, connection, expirationDateTime },
+    ) => {
       const client = createClient(connection, context.debug.enabled);
       const flowKey = getBase64FromUrl(context.webhookUrls[context.flow.name]);
       const subscription = await createSubscriptionTrigger(
@@ -32,12 +38,12 @@ export const webhookLifecycle = trigger({
         },
         context,
       );
-
       if (subscription?.id) {
-        context.logger.info(`Storing subscription ID ${subscription.id} for scheduled renewals`);
+        context.logger.info(
+          `Storing subscription ID ${subscription.id} for scheduled renewals`,
+        );
         context.crossFlowState[flowKey] = subscription.id;
       }
-
       context.logger.info(
         `Created webhook subscription for flow ${context.flow.name} (${context.flow.id})`,
       );

@@ -3,7 +3,6 @@ import type { Environment } from "contentful-management";
 import { createClient } from "../../client";
 import { deleteEnvironmentInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const deleteEnvironment = action({
   display: {
     label: "Delete Environment",

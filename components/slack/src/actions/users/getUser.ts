@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { getUserExamplePayload } from "../../examplePayloads";
 import { getUserInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const getUser = action({
   display: {
     label: "Get User By Email",

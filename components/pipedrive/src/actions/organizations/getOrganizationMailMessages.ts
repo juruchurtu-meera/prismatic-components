@@ -6,7 +6,6 @@ import {
   paginationLimitInput,
   paginationStartInput,
 } from "../../inputs";
-
 export const getOrganizationMailMessages = action({
   display: {
     label: "Get Organization Mail Messages",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { attachmentsListOnRowExamplePayload } from "../../examplePayloads";
 import { attachmentsListOnRowInputs } from "../../inputs";
-
 export const attachmentsListOnRow = action({
   display: {
     label: "List Attachments on Row",

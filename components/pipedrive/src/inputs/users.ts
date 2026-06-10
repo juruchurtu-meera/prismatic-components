@@ -7,7 +7,6 @@ import {
   userIdInput,
 } from "./common";
 import { cleanNumber } from "../util";
-
 const term = input({
   label: "Term",
   type: "string",
@@ -17,7 +16,6 @@ const term = input({
   example: "john",
   placeholder: "Enter search term",
 });
-
 const searchByEmail = input({
   label: "Search By Email",
   type: "string",
@@ -27,49 +25,42 @@ const searchByEmail = input({
     { label: "1", value: "1" },
   ],
   clean: cleanNumber,
-  comments: "When set to 1, the term is matched against user email addresses only.",
+  comments:
+    "When set to 1, the term is matched against user email addresses only.",
   example: "1",
   placeholder: "Select option",
 });
-
 export const getUsersInputs = {
   connection: connectionInput,
 };
-
 export const findUsersByNameInputs = {
   connection: connectionInput,
   term,
   searchByEmail,
 };
-
 export const getCurrentUserInputs = {
   connection: connectionInput,
 };
-
 export const getUserInputs = {
   connection: connectionInput,
   id: userIdInput,
 };
-
 export const getUserFollowersInputs = {
   connection: connectionInput,
   id: userIdInput,
   limit: paginationLimitInput,
   cursor,
 };
-
 export const getUserPermissionsInputs = {
   connection: connectionInput,
   id: userIdInput,
 };
-
 export const getUserRoleAssignmentsInputs = {
   connection: connectionInput,
   id: userIdInput,
   start: paginationStartInput,
   limit: paginationLimitInput,
 };
-
 export const getUserRoleSettingsInputs = {
   connection: connectionInput,
   id: userIdInput,

@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const orgsList = action({
   display: {
     label: "Orgs List",
     description: "List organizations",
   },
   perform: async (context, { connection, since, perPage }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/organizations`, {
       params: { since, per_page: perPage },
     });
@@ -35,14 +37,16 @@ const orgsList = action({
     },
   },
 });
-
 const orgsListCustomRoles = action({
   display: {
     label: "Orgs List Custom Roles",
     description: "List custom repository roles in an organization",
   },
   perform: async (context, { connection, organizationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/organizations/${organizationId}/custom_roles`,
     );
@@ -62,7 +66,6 @@ const orgsListCustomRoles = action({
     },
   },
 });
-
 export default {
   orgsList,
   orgsListCustomRoles,

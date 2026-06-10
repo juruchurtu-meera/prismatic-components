@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, envelopeId } from "../../inputs";
-
 export const archiveEnvelope = action({
   display: {
     label: `Archive Envelope`,
@@ -15,7 +14,6 @@ export const archiveEnvelope = action({
   perform: async (context, { connection, envelopeId }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.patch(`/envelopes/${envelopeId}`);
-
     return { data };
   },
   examplePayload: {

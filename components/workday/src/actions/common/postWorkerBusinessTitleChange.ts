@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { postWorkerBusinessTitleChangeExamplePayload } from "../../examplePayloads";
 import { postWorkerBusinessTitleChangeInputs } from "../../inputs";
-
 export const postWorkerBusinessTitleChange = action({
   display: {
     label: "Create Worker Business Title Change",

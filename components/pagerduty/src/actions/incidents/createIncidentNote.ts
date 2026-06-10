@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createIncidentNoteExamplePayload } from "../../examplePayloads";
 import { connectionInput, incidentId, note } from "../../inputs";
-
 export const createIncidentNote = action({
   display: {
     label: "Create Incident Note",

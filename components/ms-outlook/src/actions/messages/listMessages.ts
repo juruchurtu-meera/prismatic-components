@@ -5,7 +5,6 @@ import { listMessagesExamplePayload } from "../../examplePayloads";
 import { listMessagesInputs } from "../../inputs";
 import type { ODataAttrs, ODataQueryParams } from "../../types";
 import { computeEndpointBasedOnConnection, fetchAllData } from "../../util";
-
 export const listMessages = action({
   display: {
     label: "List Mail Messages",
@@ -16,9 +15,10 @@ export const listMessages = action({
     const client = createClient(params.connection, context.debug.enabled);
     const url = computeEndpointBasedOnConnection(
       params.connection,
-      params.folderId ? `/me/mailFolders/${params.folderId}/messages` : "/me/messages",
+      params.folderId
+        ? `/me/mailFolders/${params.folderId}/messages`
+        : "/me/messages",
     );
-
     const queryParams: ODataQueryParams = {};
     if (params.pageLimit) {
       queryParams.$top = params.pageLimit;
@@ -32,7 +32,6 @@ export const listMessages = action({
     if (params.filter) {
       queryParams.$filter = params.filter;
     }
-
     const data = await fetchAllData<Message & ODataAttrs>(
       client,
       url,

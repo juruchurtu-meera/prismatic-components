@@ -1,12 +1,10 @@
 import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { jsonInputClean, valueListInputClean } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const region = input({
   label: "Region",
   type: "string",
@@ -19,7 +17,6 @@ export const region = input({
   ],
   clean: util.types.toString,
 });
-
 export const resourceType = input({
   label: "Resource Type",
   type: "string",
@@ -32,7 +29,6 @@ export const resourceType = input({
   ],
   clean: util.types.toString,
 });
-
 export const warehouseId = input({
   label: "Warehouse ID",
   type: "string",
@@ -42,7 +38,6 @@ export const warehouseId = input({
   clean: util.types.toString,
   dataSource: "warehouses",
 });
-
 export const userId = input({
   label: "User ID",
   type: "string",
@@ -52,7 +47,6 @@ export const userId = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const transformationId = input({
   label: "Transformation ID",
   type: "string",
@@ -62,7 +56,6 @@ export const transformationId = input({
   clean: util.types.toString,
   dataSource: "selectTransformation",
 });
-
 export const metadataId = input({
   label: "Metadata ID",
   type: "string",
@@ -71,7 +64,6 @@ export const metadataId = input({
   example: "kjU72LCJexvrqL7G4TMHHN",
   clean: util.types.toString,
 });
-
 export const destinationMetadataId = input({
   label: "Destination Metadata ID",
   type: "string",
@@ -81,7 +73,6 @@ export const destinationMetadataId = input({
   clean: util.types.toString,
   dataSource: "selectDestinationMetadata",
 });
-
 export const warehouseMetadataId = input({
   label: "Warehouse Metadata ID",
   type: "string",
@@ -91,7 +82,6 @@ export const warehouseMetadataId = input({
   clean: util.types.toString,
   dataSource: "selectWarehouseMetadata",
 });
-
 export const sourceMetadataId = input({
   label: "Source Metadata ID",
   type: "string",
@@ -101,7 +91,6 @@ export const sourceMetadataId = input({
   clean: util.types.toString,
   dataSource: "selectSourceMetadata",
 });
-
 export const sourceId = input({
   label: "Source ID",
   type: "string",
@@ -111,7 +100,6 @@ export const sourceId = input({
   clean: util.types.toString,
   dataSource: "sources",
 });
-
 export const destinationId = input({
   label: "Destination ID",
   type: "string",
@@ -121,7 +109,6 @@ export const destinationId = input({
   clean: util.types.toString,
   dataSource: "destination",
 });
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -131,7 +118,6 @@ export const subscriptionId = input({
   clean: util.types.toString,
   dataSource: "selectSubscription",
 });
-
 export const actionId = input({
   label: "Action ID",
   type: "string",
@@ -140,7 +126,6 @@ export const actionId = input({
   example: "jiMz7MfHNeHmUckzRnUGkU",
   clean: util.types.toString,
 });
-
 export const functionId = input({
   label: "Function ID",
   type: "string",
@@ -150,7 +135,6 @@ export const functionId = input({
   clean: util.types.toString,
   dataSource: "selectFunction",
 });
-
 export const count = input({
   label: "Count",
   type: "string",
@@ -160,7 +144,6 @@ export const count = input({
   example: "50",
   clean: util.types.toString,
 });
-
 export const cursor = input({
   label: "Cursor",
   type: "string",
@@ -169,7 +152,6 @@ export const cursor = input({
   example: "MA==",
   clean: util.types.toString,
 });
-
 export const code = input({
   label: "Code",
   type: "code",
@@ -180,7 +162,6 @@ export const code = input({
     "// Learn more about source functions API at https://segment.com/docs/connections/sources/source-functions",
   clean: util.types.toString,
 });
-
 export const logoUrl = input({
   label: "Logo URL",
   type: "string",
@@ -189,7 +170,6 @@ export const logoUrl = input({
   example: "https://placekitten.com/200/139",
   clean: util.types.toString,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -198,7 +178,6 @@ export const description = input({
   example: "My source function",
   clean: util.types.toString,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -207,7 +186,6 @@ export const name = input({
   example: "Example Warehouse",
   clean: util.types.toString,
 });
-
 export const trigger = input({
   label: "Trigger",
   type: "string",
@@ -216,7 +194,6 @@ export const trigger = input({
   example: 'type = "track"',
   clean: util.types.toString,
 });
-
 export const modelId = input({
   label: "Trigger",
   type: "string",
@@ -226,7 +203,6 @@ export const modelId = input({
   example: "model-id-example",
   clean: util.types.toString,
 });
-
 export const enabled = input({
   label: "Enabled",
   type: "string",
@@ -240,7 +216,6 @@ export const enabled = input({
   ],
   clean: util.types.toString,
 });
-
 export const settings = input({
   label: "Settings",
   type: "string",
@@ -252,7 +227,6 @@ export const settings = input({
   clean: (value: unknown) =>
     util.types.keyValPairListToObject(value as KeyValuePair<unknown>[]),
 });
-
 export const slug = input({
   label: "Slug",
   type: "string",
@@ -261,7 +235,6 @@ export const slug = input({
   example: "my-test-source-rhpd18",
   clean: util.types.toString,
 });
-
 export const userIds = input({
   label: "User IDs",
   type: "string",
@@ -272,7 +245,6 @@ export const userIds = input({
   clean: valueListInputClean,
   example: "123213",
 });
-
 export const invites = input({
   label: "Invites",
   type: "code",
@@ -301,7 +273,6 @@ export const invites = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const ifInput = input({
   label: "If",
   type: "string",
@@ -310,7 +281,6 @@ export const ifInput = input({
   example: 'event="my-event"',
   clean: util.types.toString,
 });
-
 export const newEventName = input({
   label: "New Event Name",
   type: "string",
@@ -320,7 +290,6 @@ export const newEventName = input({
   example: "my-updated-event",
   clean: util.types.toString,
 });
-
 export const propertyRenames = input({
   label: "Property Renames",
   type: "code",
@@ -339,7 +308,6 @@ export const propertyRenames = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const propertyValueTransformations = input({
   label: "Property Value Transformations",
   type: "code",
@@ -358,7 +326,6 @@ export const propertyValueTransformations = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const fqlDefinedProperties = input({
   label: "FQL Defined Properties",
   type: "code",
@@ -368,7 +335,6 @@ export const fqlDefinedProperties = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const granularity = input({
   label: "Granularity",
   type: "string",
@@ -381,7 +347,6 @@ export const granularity = input({
   ],
   clean: util.types.toString,
 });
-
 export const startTime = input({
   label: "Start Time",
   type: "string",
@@ -391,7 +356,6 @@ export const startTime = input({
   example: "2020-01-01T00:00:00.000Z",
   clean: util.types.toString,
 });
-
 export const endTime = input({
   label: "End Time",
   type: "string",
@@ -401,7 +365,6 @@ export const endTime = input({
   example: "2020-01-01T00:00:00.000Z",
   clean: util.types.toString,
 });
-
 export const groupBy = input({
   label: "Group By",
   type: "string",
@@ -415,7 +378,6 @@ export const groupBy = input({
   ],
   clean: valueListInputClean,
 });
-
 export const eventName = input({
   label: "Event Name",
   type: "string",
@@ -426,7 +388,6 @@ export const eventName = input({
   default: ["000xxx"],
   clean: valueListInputClean,
 });
-
 export const sourceIds = input({
   label: "Source IDs",
   type: "string",
@@ -437,7 +398,6 @@ export const sourceIds = input({
   default: ["000xxx"],
   clean: valueListInputClean,
 });
-
 export const eventType = input({
   label: "Event Type",
   type: "string",
@@ -448,7 +408,6 @@ export const eventType = input({
   default: ["000xxx"],
   clean: valueListInputClean,
 });
-
 export const appVersion = input({
   label: "App Version",
   type: "string",
@@ -459,7 +418,6 @@ export const appVersion = input({
   default: ["000xxx"],
   clean: valueListInputClean,
 });
-
 export const functionSettings = input({
   label: "Function Settings",
   type: "code",

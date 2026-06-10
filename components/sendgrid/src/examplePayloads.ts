@@ -1,5 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
 export const listWebhooksExamplePayload = {
   data: {
     max_allowed: 5,
@@ -29,7 +28,6 @@ export const listWebhooksExamplePayload = {
     ],
   },
 };
-
 export const createWebhookExamplePayload = {
   data: {
     enabled: true,
@@ -53,14 +51,12 @@ export const createWebhookExamplePayload = {
     updated_date: "2023-02-15T10:00:00Z",
   },
 };
-
 export const deleteWebhookExamplePayload = {
   data: {
     success: true,
     message: "Webhook deleted successfully",
   },
 };
-
 export const getWebhookExamplePayload = {
   data: {
     enabled: true,
@@ -85,21 +81,18 @@ export const getWebhookExamplePayload = {
     updated_at: "2023-02-15T10:00:00Z",
   },
 };
-
 export const testWebhookExamplePayload = {
   data: {
     success: true,
     message: "Test event sent successfully",
   },
 };
-
 export const toggleSignatureVerificationExamplePayload = {
   data: {
     id: "77d4a5da-7015-11ed-a1eb-0242ac120002",
     public_key: "123publickeyabc",
   },
 };
-
 export const updateWebhookExamplePayload = {
   data: {
     enabled: true,
@@ -123,8 +116,63 @@ export const updateWebhookExamplePayload = {
     updated_date: "2023-02-15T10:00:00Z",
   },
 };
-
-export const eventWebhookTriggerExamplePayload: { payload: TriggerPayload } = {
+export const pollChangesTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
+  payload: {
+    headers: {},
+    queryParameters: {},
+    rawBody: { data: null },
+    body: {
+      data: {
+        created: [],
+        updated: [
+          {
+            msg_id: "abc12345.recvd-67890-XYZ-1-1234567-1.0",
+            from_email: "sender@example.com",
+            subject: "Hello from Acme!",
+            to_email: "user@example.com",
+            status: "delivered",
+            opens_count: 0,
+            clicks_count: 0,
+            last_event_time: "2026-05-27T14:30:00Z",
+            api_key_id: "abc12345defg67890hijkXYZ",
+            template_id: "d-exampletemplateid1234567890abcdef",
+          },
+        ],
+      },
+    },
+    pathFragment: "",
+    webhookUrls: {},
+    webhookApiKeys: {},
+    invokeUrl: "",
+    executionId: "RXhhbXBsZUV4ZWN1dGlvblJlc3VsdElk",
+    customer: {
+      id: "testCustomerId",
+      name: "Test Customer",
+      externalId: "testExternalId",
+    },
+    instance: { id: "testInstanceId", name: "Test Instance" },
+    user: {
+      id: "testUserId",
+      email: "user@example.com",
+      name: "Test User",
+      externalId: "testUserExternalId",
+    },
+    integration: {
+      id: "testIntegrationId",
+      name: "Test Integration",
+      versionSequenceId: "1",
+      externalVersion: "",
+    },
+    flow: { id: "testFlowId", name: "Test Flow" },
+    startedAt: "2026-05-27T14:30:30.000Z",
+    globalDebug: false,
+  },
+};
+export const eventWebhookTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {
       "Accept-Encoding": "gzip",

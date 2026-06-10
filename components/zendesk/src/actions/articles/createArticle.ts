@@ -12,7 +12,6 @@ import {
   userSegmentId,
 } from "../../inputs";
 import { createArticlePayload } from "../../examplePayloads";
-
 export const createArticle = action({
   display: {
     label: "Create Article",
@@ -46,7 +45,6 @@ export const createArticle = action({
         notify_subscribers: notifySubscribers,
       },
     );
-
     return {
       data,
     };

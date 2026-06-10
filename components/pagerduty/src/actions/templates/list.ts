@@ -13,7 +13,6 @@ import {
   total,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const getTemplates = action({
   display: {
     label: "List Templates",
@@ -32,7 +31,6 @@ export const getTemplates = action({
       template_type: templateType,
       sort_by: sortBy,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({
@@ -43,7 +41,6 @@ export const getTemplates = action({
         }),
       };
     }
-
     const { data } = await client.get(ENDPOINTS.TEMPLATES, {
       params,
     });

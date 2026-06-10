@@ -12,7 +12,6 @@ import {
 } from "../inputs";
 import type { BusinessUnits } from "../interfaces";
 import { fetchAllRecords } from "../util";
-
 export const listBusinessUnits = action({
   display: {
     label: "List Business Units",
@@ -40,7 +39,6 @@ export const listBusinessUnits = action({
     },
   ) => {
     const client = createClient(connection, "settings", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<BusinessUnits>(
         client,

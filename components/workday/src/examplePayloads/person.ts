@@ -29,7 +29,6 @@ export const listPeopleExamplePayload = {
     total: 0,
   },
 };
-
 export const getPersonByIdExamplePayload = {
   data: {
     photos: "http://example.com",

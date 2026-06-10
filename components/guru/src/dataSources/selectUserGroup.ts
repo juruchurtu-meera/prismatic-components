@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getGuruClient } from "../client";
 import { selectUserGroupInputs } from "../inputs";
 import type { GuruGroup } from "../types";
-
 export const selectUserGroup = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -11,9 +10,7 @@ export const selectUserGroup = dataSource({
   },
   perform: async (_context, { connection }) => {
     const client = getGuruClient(connection, false);
-
     const { data: groups } = await client.get<GuruGroup[]>("/groups");
-
     return {
       result: groups
         .map(

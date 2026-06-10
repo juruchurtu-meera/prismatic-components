@@ -8,7 +8,6 @@ import {
   registeredEvents,
 } from "../../inputs";
 import { updatePubSubNotificationExamplePayload } from "../../examplePayloads";
-
 export const updatePubSubNotification = action({
   display: {
     description:

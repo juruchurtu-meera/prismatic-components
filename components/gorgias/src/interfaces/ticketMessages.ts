@@ -1,5 +1,4 @@
 import type { CreateApiPaginationResponse } from "../types";
-
 interface TicketMessage {
   id: number;
   attachments: {
@@ -40,10 +39,22 @@ interface TicketMessage {
   sent_datetime: string | null;
   source: {
     type: string;
-    to: { name: string; address: string }[];
-    cc: { name: string; address: string }[];
-    bcc: { name: string; address: string }[];
-    from: { name: string; address: string };
+    to: {
+      name: string;
+      address: string;
+    }[];
+    cc: {
+      name: string;
+      address: string;
+    }[];
+    bcc: {
+      name: string;
+      address: string;
+    }[];
+    from: {
+      name: string;
+      address: string;
+    };
   };
   stripped_html: string | null;
   stripped_text: string | null;
@@ -52,9 +63,6 @@ interface TicketMessage {
   via: string;
   uri: string;
 }
-
 export type GetTicketMessageResponse = TicketMessage;
-
 export type CreateTicketMessageResponse = TicketMessage;
-
 export type ListMessagesResponse = CreateApiPaginationResponse<TicketMessage>;

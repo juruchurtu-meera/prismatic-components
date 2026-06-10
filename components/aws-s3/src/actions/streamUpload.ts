@@ -9,13 +9,20 @@ import { util, action, input, ActionContext } from "@prismatic-io/spectral";
 import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { v4 as uuidv4 } from "uuid";
 import { createS3Client } from "../auth";
-import { accessKeyInput, acl, bucket, fileContents, objectKey, tagging } from "../inputs";
-
+import {
+  accessKeyInput,
+  acl,
+  bucket,
+  fileContents,
+  objectKey,
+  tagging,
+} from "../inputs";
 interface UploadStreamExecutionState {
-  uploadFinisher: Promise<CompleteMultipartUploadCommandOutput | AbortMultipartUploadCommandOutput>;
+  uploadFinisher: Promise<
+    CompleteMultipartUploadCommandOutput | AbortMultipartUploadCommandOutput
+  >;
   fileStream: PassThrough;
 }
-
 const uploadIdInput = input({
   label: "Upload Stream ID",
   type: "string",
@@ -24,7 +31,6 @@ const uploadIdInput = input({
     "The ID of the upload stream to write to. Generate this with the 'Create Stream' action.",
   clean: util.types.toString,
 });
-
 const createUploadStream = action({
   display: {
     label: "Upload Stream - Create Stream",
@@ -47,20 +53,13 @@ const createUploadStream = action({
       dynamicSecretAccessKey: params.dynamicSecretAccessKey,
       dynamicSessionToken: params.dynamicSessionToken,
     });
-
     const tagsObj: Record<string, string> = {};
     for (const { key, value } of params.tagging || []) {
       tagsObj[key as string] = value as string;
     }
     const tags = querystring.encode(tagsObj);
-
-    
     const uploadId = uuidv4();
-
-    const fileStream = new PassThrough({ highWaterMark: 1024 * 1024 }); 
-
-    
-    
+    const fileStream = new PassThrough({ highWaterMark: 1024 * 1024 });
     const upload = new Upload({
       client: s3,
       params: {
@@ -71,21 +70,16 @@ const createUploadStream = action({
         Tagging: tags,
       },
     });
-
-    
-    
     executionState[uploadId] = {
-      uploadFinisher: upload.done(), 
+      uploadFinisher: upload.done(),
       fileStream,
     };
-
     return { data: uploadId };
   },
   examplePayload: {
     data: "711B632B-C025-4E26-9E34-525822E3C0ED",
   },
 });
-
 const writeUploadStream = action({
   display: {
     label: "Upload Stream - Write Data",
@@ -96,22 +90,19 @@ const writeUploadStream = action({
     fileContents,
   },
   perform: async ({ executionState }, params) => {
-    const { fileStream } = executionState[params.uploadId] as UploadStreamExecutionState;
-
+    const { fileStream } = executionState[
+      params.uploadId
+    ] as UploadStreamExecutionState;
     await new Promise((resolve) => {
-      
-      
       if (!fileStream.write(params.fileContents.data)) {
         fileStream.once("drain", resolve);
       } else {
         resolve(true);
       }
     });
-
     return { data: null };
   },
 });
-
 const closeUploadStream = action({
   display: {
     label: "Upload Stream - Close Stream",
@@ -129,5 +120,4 @@ const closeUploadStream = action({
     return { data: null };
   },
 });
-
 export default { createUploadStream, writeUploadStream, closeUploadStream };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { mutateCampaignCriteriaExamplePayload } from "../../examplePayloads";
 import { mutateCampaignCriteriaInputs } from "../../inputs";
-
 export const mutateCampaignCriteria = action({
   display: {
     label: "Mutate Campaign Criteria",

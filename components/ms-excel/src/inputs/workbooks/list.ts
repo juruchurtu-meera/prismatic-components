@@ -10,7 +10,6 @@ import {
   fetchAll,
 } from "../general";
 import { cleanString } from "../../helpers";
-
 const listOrItemId = input({
   label: "List or Item ID",
   type: "string",
@@ -21,7 +20,6 @@ const listOrItemId = input({
   placeholder: "Enter list or item ID",
   clean: util.types.toString,
 });
-
 export const path = input({
   label: "Path",
   type: "string",
@@ -32,7 +30,6 @@ export const path = input({
   placeholder: "Enter file or folder path",
   clean: cleanString,
 });
-
 export const listWorkbooksInputs = {
   path,
   driveOrSiteId: {
@@ -48,7 +45,6 @@ export const listWorkbooksInputs = {
   $top,
   $orderBy,
 };
-
 export const selectWorkbookInputs = {
   connection,
   driveOrSiteId: {

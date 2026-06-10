@@ -4,7 +4,6 @@ import { rawRequestInputs as inputs } from "../inputs/rawRequest";
 import { getBaseUrl } from "../utils/getBaseUrl";
 import { getConnectionHeaders } from "../utils/getConnectionHeaders";
 import { validateConnection } from "../utils/validateConnection";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -17,7 +16,6 @@ export const rawRequest = action({
       configVars,
       getConnectionHeaders(connection),
     );
-
     return {
       data,
     };

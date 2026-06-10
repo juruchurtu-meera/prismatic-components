@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, mailThreadIdInput } from "../../inputs";
-
 export const getMailThread = action({
   display: {
     label: "Get Mail Thread",

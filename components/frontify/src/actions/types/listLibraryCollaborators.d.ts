@@ -1,5 +1,4 @@
 import type { UsersResponse } from "./shared";
-
 export default interface ListLibraryCollaboratorsResponse {
   library: {
     id: string;

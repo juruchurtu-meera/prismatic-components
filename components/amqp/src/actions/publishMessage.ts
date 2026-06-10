@@ -1,8 +1,13 @@
 import { action, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { publishMessageExamplePayload } from "../examplePayloads";
-import { queueName, connectionInput, routeMessage, routingKey, exchange } from "../inputs";
-
+import {
+  queueName,
+  connectionInput,
+  routeMessage,
+  routingKey,
+  exchange,
+} from "../inputs";
 export const publishMessage = action({
   display: {
     label: "Publish Message",
@@ -12,16 +17,18 @@ export const publishMessage = action({
     context,
     { queueName, message, amqpConnection, routeMessage, routingKey, exchange },
   ) => {
-    const client = await createClient(amqpConnection, context.debug.enabled, context.logger);
+    const client = await createClient(
+      amqpConnection,
+      context.debug.enabled,
+      context.logger,
+    );
     const channel = await client.createConfirmChannel();
-
     let result: boolean;
     if (!routeMessage) {
       result = channel.sendToQueue(queueName, message);
     } else {
       result = channel.publish(exchange, routingKey, message);
     }
-
     await channel.waitForConfirms();
     await channel.close();
     await client.close();

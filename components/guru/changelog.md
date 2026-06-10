@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-05
+
+Added the **New and Updated Cards** polling trigger that returns cards created or updated since the last run
+
 ### 2026-04-30
 
 Updated spectral version

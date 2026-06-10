@@ -9,7 +9,6 @@ import {
   subscriptionId,
   topicName,
 } from "../inputs";
-
 export const deleteTopic = action({
   display: {
     label: "Delete Topic",
@@ -41,5 +40,4 @@ export const deleteTopic = action({
     topicName,
   },
 });
-
 export default { deleteTopic };

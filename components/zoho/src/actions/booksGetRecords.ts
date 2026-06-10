@@ -12,7 +12,6 @@ import {
 } from "../inputs";
 import { getBooksUrl } from "../util/general";
 import { fetchAllPages } from "../util/pagination";
-
 const booksGetRecords = action({
   display: {
     label: "Books - Get Records",
@@ -46,8 +45,11 @@ const booksGetRecords = action({
       fetchAll,
     },
   ) => {
-    const booksClient = createClient(connection, ClientType.BOOKS, context.debug.enabled);
-
+    const booksClient = createClient(
+      connection,
+      ClientType.BOOKS,
+      context.debug.enabled,
+    );
     const url = getBooksUrl(parentRecordType, parentRecordId, recordType);
     const params = Object.fromEntries(
       Object.entries({
@@ -56,11 +58,15 @@ const booksGetRecords = action({
         per_page,
       }).filter(([_key, val]) => Boolean(val)),
     );
-
-    const data = await fetchAllPages(booksClient, url, params, recordType, fetchAll);
+    const data = await fetchAllPages(
+      booksClient,
+      url,
+      params,
+      recordType,
+      fetchAll,
+    );
     return { data };
   },
   examplePayload: booksGetRecordsExamplePayload,
 });
-
 export default booksGetRecords;

@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const commentObject = {
   id: "458",
   comment: [
@@ -19,7 +5,8 @@ const commentObject = {
       text: "Great progress on the homepage design. Let's review the color palette in the next standup.",
     },
   ],
-  comment_text: "Great progress on the homepage design. Let's review the color palette in the next standup.",
+  comment_text:
+    "Great progress on the homepage design. Let's review the color palette in the next standup.",
   user: {
     id: 81942673,
     username: "John Doe",
@@ -34,13 +21,11 @@ const commentObject = {
   reactions: [],
   date: "1704153600000",
 };
-
 export const getTaskCommentsExamplePayload = {
   data: {
     comments: [commentObject],
   },
 };
-
 export const createTaskCommentExamplePayload = {
   data: {
     id: 458,
@@ -48,11 +33,9 @@ export const createTaskCommentExamplePayload = {
     date: 1704153600000,
   },
 };
-
 export const updateCommentExamplePayload = {
   data: null,
 };
-
 export const deleteCommentExamplePayload = {
   data: null,
 };

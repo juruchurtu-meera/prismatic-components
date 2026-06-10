@@ -11,7 +11,6 @@ import {
   userName,
 } from "../../inputs";
 import { updateTableRecord } from "../tables/records/updateTableRecord";
-
 export const updateUser = action({
   display: {
     label: "Update User",

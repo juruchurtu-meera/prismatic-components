@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { getEnvironmentExamplePayload } from "../../examplePayloads";
 import { getEnvironmentInputs } from "../../inputs";
 import { getEnvironment as getEnvironmentFn } from "../../util";
-
 export const getEnvironment = action({
   display: {
     label: "Get Environment",

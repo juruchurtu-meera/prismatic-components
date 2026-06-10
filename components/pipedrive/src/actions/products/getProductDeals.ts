@@ -7,7 +7,6 @@ import {
   productIdInput,
 } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const getProductDeals = action({
   display: {
     label: "Get Product Deals",

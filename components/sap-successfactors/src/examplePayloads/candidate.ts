@@ -9,7 +9,6 @@ export const createCandidateExamplePayload = {
     firstName: "Nancy",
   },
 };
-
 export const listCandidatesExamplePayload = {
   data: [createCandidateExamplePayload.data],
 };

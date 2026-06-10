@@ -25,7 +25,6 @@ import {
   customQuestions,
 } from "../../inputs";
 import { addMeetingRegistrantExamplePayload } from "../../examplePayloads";
-
 export const addMeetingRegistrant = action({
   display: {
     label: "Add Meeting Registrant",
@@ -59,7 +58,6 @@ export const addMeetingRegistrant = action({
     },
   ) => {
     const client = createZoomClient({ connection, debug });
-
     const registrantData = {
       email,
       first_name: firstName,
@@ -81,7 +79,6 @@ export const addMeetingRegistrant = action({
       language,
       auto_approve: autoApprove,
     };
-
     const { data } = await client.post(
       `/meetings/${meetingId}/registrants`,
       registrantData,
@@ -91,7 +88,6 @@ export const addMeetingRegistrant = action({
         },
       },
     );
-
     return {
       data,
     };

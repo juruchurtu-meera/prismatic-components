@@ -1,7 +1,6 @@
 import { type KeyValuePair, input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput, toMongoDBObjectId } from "./util";
 import type { Document } from "mongodb";
-
 export const queryFilter = input({
   label: "Query Fields",
   type: "string",
@@ -13,14 +12,12 @@ export const queryFilter = input({
     const query = util.types.keyValPairListToObject(
       (value as KeyValuePair[]) || [],
     );
-    
     if (query._id) {
       query._id = toMongoDBObjectId(query._id);
     }
     return query;
   },
 });
-
 export const document = input({
   label: "Document Fields",
   comments:
@@ -32,7 +29,6 @@ export const document = input({
     return util.types.keyValPairListToObject((value as KeyValuePair[]) || []);
   },
 });
-
 export const documentUpdate = input({
   label: "Update Fields",
   comments:
@@ -44,7 +40,6 @@ export const documentUpdate = input({
     return util.types.keyValPairListToObject((value as KeyValuePair[]) || []);
   },
 });
-
 export const documentList = input({
   label: "Documents",
   comments:
@@ -53,7 +48,6 @@ export const documentList = input({
   required: true,
   collection: "valuelist",
 });
-
 export const upsert = input({
   label: "Upsert",
   type: "boolean",
@@ -63,7 +57,6 @@ export const upsert = input({
     "If true, creates a new document when no document matches the query criteria.",
   clean: util.types.toBool,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -71,7 +64,6 @@ export const limit = input({
   comments: "The maximum number of documents to return.",
   clean: (value) => util.types.toInt(value) || undefined,
 });
-
 export const skip = input({
   label: "Skip",
   type: "string",
@@ -79,13 +71,11 @@ export const skip = input({
   comments: "The number of documents to skip when paginating.",
   clean: (value) => util.types.toInt(value) || undefined,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const comparisonOperator = input({
   label: "Comparison Operator",
   type: "string",
@@ -102,7 +92,6 @@ export const comparisonOperator = input({
     'The comparison operator to use when filtering documents. Use this field in conjunction with the "Query Fields" input.',
   clean: cleanStringInput,
 });
-
 export const convertValuesToNumbers = input({
   label: "Convert Values to Numbers",
   type: "boolean",
@@ -112,7 +101,6 @@ export const convertValuesToNumbers = input({
     'If true, number values detected in the "Query Fields" input will be converted to numeric types.',
   clean: util.types.toBool,
 });
-
 export const executeCommand = input({
   label: "Execute Command",
   type: "code",
@@ -123,7 +111,6 @@ export const executeCommand = input({
   example: JSON.stringify({ ping: 1 }, null, 2),
   clean: (value: unknown) => cleanCodeInput(value, "Execute Command"),
 });
-
 export const runAdminCommand = input({
   label: "Run Admin Command",
   type: "boolean",
@@ -132,7 +119,6 @@ export const runAdminCommand = input({
   comments: "If true, the command will be executed against the admin database.",
   clean: util.types.toBool,
 });
-
 export const pipeline = input({
   label: "Aggregation Pipeline",
   type: "code",
@@ -152,11 +138,9 @@ export const pipeline = input({
     if (!value) {
       throw new Error("Aggregation pipeline is required.");
     }
-
     return cleanCodeInput(value, "Aggregation Pipeline") as Document[];
   },
 });
-
 export const aggregationOptions = input({
   label: "Aggregation Options",
   type: "code",

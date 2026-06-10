@@ -3,7 +3,6 @@ import { createDB } from "./client";
 import { action, util } from "@prismatic-io/spectral";
 import { queryField, params, paramsObject, connectionInput } from "./inputs";
 import { queryExamplePayload } from "./examplePayloads";
-
 export const query = action({
   display: {
     label: "Query",
@@ -17,7 +16,6 @@ export const query = action({
     const db = createDB({ connection: postgresConnection });
     const query = util.types.toString(queryField);
     let variables: unknown[] | Record<string, unknown> | null = null;
-
     if (Array.isArray(paramsObject)) {
       if (Object.keys(params).length > 0) {
         throw new Error(
@@ -28,12 +26,10 @@ export const query = action({
     } else {
       variables = merge(params, paramsObject);
     }
-
     if (context.debug.enabled) {
       context.logger.debug("Query: ", query);
       context.logger.debug("Variables: ", variables);
     }
-
     try {
       const result = await db.tx(
         async (task) => await task.any(query, variables),
@@ -50,5 +46,4 @@ export const query = action({
     postgresConnection: connectionInput,
   },
 });
-
 export default { query };

@@ -5,7 +5,6 @@ import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
 import { selectFulfillmentOrdersInputs as inputs } from "../inputsGql";
 import { fetchData, getNumericId } from "../util";
-
 export const selectFulfillmentOrders = dataSource({
   display: {
     label: "Select Fulfillment Orders",
@@ -24,7 +23,6 @@ export const selectFulfillmentOrders = dataSource({
         first: MAX_LIMIT,
       },
     );
-
     const result = fulfillmentOrders.map((order) => {
       const numericId = getNumericId(order.id);
       return {

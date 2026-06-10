@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createCandidateExamplePayload as getCandidateExamplePayload } from "../../examplePayloads/candidate";
 import { getCandidateInputs } from "../../inputs/candidates";
 import { cleanResultFromResponse } from "../../util";
-
 export const getCandidate = action({
   display: {
     label: "Get Candidate",

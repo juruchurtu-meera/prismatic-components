@@ -3,7 +3,6 @@ import { getMondayClient } from "../../client";
 import { deleteWebhookExamplePayload } from "../../examplePayloads";
 import { deleteWebhookInputs } from "../../inputs";
 import DeleteWebhookMutation from "../../queries/deleteWebhook.gql";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",

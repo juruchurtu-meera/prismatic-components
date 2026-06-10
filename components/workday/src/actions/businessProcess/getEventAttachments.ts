@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getEventAttachmentsExamplePayload } from "../../examplePayloads";
 import { getEventAttachmentsInputs } from "../../inputs";
-
 export const getEventAttachments = action({
   display: {
     label: "Get Event Attachments",

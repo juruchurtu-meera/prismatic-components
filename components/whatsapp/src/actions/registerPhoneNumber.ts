@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../client";
 import { registerPhoneNumberInputs } from "../inputs/registerPhoneNumberInputs";
 import { registerPhoneNumberExamplePayload } from "../examplePayloads";
-
 export const registerPhoneNumber = action({
   display: {
     label: "Register Phone Number",

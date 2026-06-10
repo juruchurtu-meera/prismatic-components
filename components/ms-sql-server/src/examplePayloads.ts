@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const queryExamplePayload = {
   data: {
     recordsets: [
@@ -28,7 +17,6 @@ export const queryExamplePayload = {
           created_at: "2024-09-22T14:45:00.000Z",
         },
       ],
-      // biome-ignore lint/suspicious/noExplicitAny: mssql IResult recordsets type is a union incompatible with typed arrays
     ] as any,
     recordset: [
       {
@@ -50,18 +38,6 @@ export const queryExamplePayload = {
     rowsAffected: [2],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const executeExamplePayload = {
   data: {
     recordsets: [
@@ -72,7 +48,6 @@ export const executeExamplePayload = {
           last_updated: "2024-10-01T08:00:00.000Z",
         },
       ],
-      // biome-ignore lint/suspicious/noExplicitAny: mssql IProcedureResult recordsets type is a union incompatible with typed arrays
     ] as any,
     recordset: [
       {

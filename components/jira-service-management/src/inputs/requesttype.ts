@@ -6,7 +6,6 @@ import {
   serviceDeskId,
   start,
 } from "./common";
-
 export const listRequestTypesInputs = {
   connection,
   serviceDeskId,
@@ -14,7 +13,6 @@ export const listRequestTypesInputs = {
   start,
   limit,
 };
-
 export const getRequestTypeInputs = {
   connection,
   serviceDeskId,

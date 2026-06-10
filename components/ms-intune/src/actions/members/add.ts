@@ -3,7 +3,6 @@ import { addMemberToGroupInputs } from "../../inputs/members/add";
 import { createClient } from "../../client";
 import { ADD_MEMBERS_RESPONSE_MESSAGE } from "../../constants";
 import { addObjectTypeToMemberIds } from "../../util";
-
 export const addMemberToGroup = action({
   display: {
     label: "Add Group Member",
@@ -15,7 +14,6 @@ export const addMemberToGroup = action({
     await client.patch(`/groups/${groupId}`, {
       "members@odata.bind": addObjectTypeToMemberIds([memberId]),
     });
-
     return {
       data: {
         message: ADD_MEMBERS_RESPONSE_MESSAGE,

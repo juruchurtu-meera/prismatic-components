@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, id } from "../../inputs";
-
 export const deleteCollection = action({
   display: {
     label: "Delete Collection",

@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../client";
 import { oneDriveConnection } from "../inputs";
-
 export const listGroups = dataSource({
   display: {
     label: "List Groups from Source",
@@ -15,7 +14,6 @@ export const listGroups = dataSource({
     const {
       data: { value },
     } = await client.get("/groups");
-
     return value.map((record: Record<string, unknown>) => {
       return {
         label: record.displayName,

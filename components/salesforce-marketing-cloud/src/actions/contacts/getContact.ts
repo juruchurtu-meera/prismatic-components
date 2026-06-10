@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { CONTACTS_ESTABLISH_PATH } from "../../constants";
 import { getContactExamplePayload } from "../../examplePayloads";
 import { getContactInputs } from "../../inputs";
-
 export const getContact = action({
   examplePayload: getContactExamplePayload,
   display: {

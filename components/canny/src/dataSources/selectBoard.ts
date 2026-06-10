@@ -4,7 +4,6 @@ import { selectBoardExamplePayload } from "../examplePayloads";
 import { selectBoardInputs } from "../inputs";
 import type { Board } from "../types";
 import { toSortedPicklist } from "../util";
-
 export const selectBoard = dataSource({
   display: {
     label: "Select Board",
@@ -14,7 +13,9 @@ export const selectBoard = dataSource({
   inputs: selectBoardInputs,
   perform: async (_context, { connection }) => {
     const client = createClient(connection, false);
-    const data = await client.post<{ boards: Board[] }>("/boards/list");
+    const data = await client.post<{
+      boards: Board[];
+    }>("/boards/list");
     const result = toSortedPicklist(
       data.boards,
       (b) => b.name,

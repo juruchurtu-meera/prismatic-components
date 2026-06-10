@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../utils";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Microsoft Business Central connection to use.",
 });
-
 export const odataParams = {
   $filter: input({
     label: "Filter",
@@ -94,14 +92,14 @@ export const odataParams = {
   $skipToken: input({
     label: "Skip Token",
     type: "string",
-    comments: "Retrieves the next page of results from result sets that span multiple pages.",
+    comments:
+      "Retrieves the next page of results from result sets that span multiple pages.",
     required: false,
     placeholder: "Enter skip token",
     example: "X%274453707402000100000017...",
     clean: cleanStringInput,
   }),
 };
-
 export const additionalProperties = input({
   label: "Additional Properties",
   type: "code",

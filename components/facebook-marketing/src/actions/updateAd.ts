@@ -1,6 +1,5 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 import {
   adId,
   adName,
@@ -13,7 +12,6 @@ import {
   version,
 } from "../inputs";
 import { adDefaults } from "../util";
-
 export const updateAd = action({
   display: {
     label: "Update Ad",
@@ -34,7 +32,6 @@ export const updateAd = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.post(
       `/${adId}`,
       {},
@@ -49,7 +46,6 @@ export const updateAd = action({
         },
       },
     );
-
     return {
       data,
     };

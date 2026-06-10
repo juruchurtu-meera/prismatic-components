@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const openaiConnectionInput = input({
   label: "OpenAI Connection",
   required: true,
   type: "connection",
   comments: "Connection to OpenAI API with your API key",
 });
-
 export const agentConfigInput = input({
   label: "Agent Configuration",
   type: "code",
@@ -25,7 +23,6 @@ export const agentConfigInput = input({
     2,
   ),
 });
-
 export const userInputInput = input({
   label: "User Input",
   type: "text",
@@ -34,7 +31,6 @@ export const userInputInput = input({
   example: "What is the weather like today?",
   placeholder: "Enter message or question",
 });
-
 export const fileIdsInput = input({
   label: "File IDs",
   type: "string",
@@ -44,7 +40,6 @@ export const fileIdsInput = input({
     "File IDs from previously uploaded files to OpenAI. Use the Upload File action to get these IDs.",
   example: "file-abc123",
 });
-
 export const handoffsInput = input({
   label: "Handoff Agents",
   type: "code",
@@ -67,7 +62,6 @@ export const handoffsInput = input({
     2,
   ),
 });
-
 export const maxTurnsInput = input({
   label: "Max Turns",
   type: "string",
@@ -78,7 +72,6 @@ export const maxTurnsInput = input({
     "Maximum number of conversation turns the agent can take. Prevents infinite loops.",
   example: "20",
 });
-
 export const historyInput = input({
   label: "History",
   type: "code",
@@ -101,7 +94,6 @@ export const historyInput = input({
     2,
   ),
 });
-
 export const previousResponseIdInput = input({
   label: "Previous Response ID",
   type: "text",
@@ -110,7 +102,6 @@ export const previousResponseIdInput = input({
     "ID of the previous response to continue the conversation. Alternative to passing full history array.",
   example: "resp_abc123",
 });
-
 export const agentNameInput = input({
   label: "Name",
   type: "text",
@@ -119,7 +110,6 @@ export const agentNameInput = input({
   example: "Customer Support Agent",
   placeholder: "Enter agent name",
 });
-
 export const agentInstructionsInput = input({
   label: "Instructions",
   type: "text",
@@ -130,7 +120,6 @@ export const agentInstructionsInput = input({
     "You are a helpful customer support agent. Answer questions politely and accurately.",
   placeholder: "Enter system instructions for the agent",
 });
-
 export const agentHandoffDescriptionInput = input({
   label: "Handoff Description",
   type: "text",
@@ -140,7 +129,6 @@ export const agentHandoffDescriptionInput = input({
   example: "Handles technical support questions",
   placeholder: "Describe when to route to this agent",
 });
-
 export const agentToolsInput = input({
   label: "Tools",
   type: "code",
@@ -169,7 +157,6 @@ export const agentToolsInput = input({
     2,
   ),
 });
-
 export const agentMcpServersInput = input({
   label: "MCP Servers",
   type: "code",
@@ -191,7 +178,6 @@ export const agentMcpServersInput = input({
     2,
   ),
 });
-
 export const outputSchemaInput = input({
   label: "Output Schema",
   type: "code",
@@ -212,7 +198,6 @@ export const outputSchemaInput = input({
     2,
   ),
 });
-
 export const outputSchemaNameInput = input({
   label: "Output Schema Name",
   type: "text",
@@ -222,7 +207,6 @@ export const outputSchemaNameInput = input({
   example: "response",
   placeholder: "Enter schema name",
 });
-
 export const outputSchemaStrictInput = input({
   label: "Output Schema Strict",
   type: "boolean",
@@ -231,7 +215,6 @@ export const outputSchemaStrictInput = input({
   comments: "If true, enforces strict schema validation",
   example: "true",
 });
-
 export const stateInput = input({
   label: "Run State",
   type: "code",
@@ -241,7 +224,6 @@ export const stateInput = input({
     "State from the interrupted run, containing the execution context and interruptions.",
   example: '{"agentId":"agent-123","messages":[...],"interruptions":[...]}',
 });
-
 export const approvalResponsesInput = input({
   label: "Approval Responses",
   type: "code",
@@ -261,7 +243,6 @@ export const approvalResponsesInput = input({
     2,
   ),
 });
-
 export const toolNameInput = (defaultName: string) =>
   input({
     label: "Tool Name",
@@ -272,7 +253,6 @@ export const toolNameInput = (defaultName: string) =>
     example: "SearchDatabase",
     placeholder: "Enter custom tool name",
   });
-
 export const toolDescriptionInput = (defaultDescription: string) =>
   input({
     label: "Tool Description",
@@ -284,14 +264,12 @@ export const toolDescriptionInput = (defaultDescription: string) =>
     example: "Search the customer database for user information by email or ID",
     placeholder: "Describe what this tool does and when to use it",
   });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   example: "OpenAI Connection",
 });
-
 export const modelInput = input({
   label: "Model",
   type: "string",
@@ -320,7 +298,6 @@ export const modelInput = input({
   comments:
     "Select an OpenAI model to use for the request. The list of available models will be fetched from your OpenAI account.",
 });
-
 export const timeout = input({
   label: "Timeout (ms)",
   type: "string",
@@ -330,7 +307,6 @@ export const timeout = input({
   default: "10000",
   clean: (value: unknown) => util.types.toInt(value, 10000),
 });
-
 export const messagesInput = input({
   label: "Messages",
   type: "code",
@@ -351,7 +327,6 @@ export const messagesInput = input({
   ),
   clean: util.types.toObject,
 });
-
 export const temperatureInput = input({
   label: "Temperature",
   type: "string",
@@ -362,7 +337,6 @@ export const temperatureInput = input({
   example: "0.7",
   clean: util.types.toNumber,
 });
-
 export const topPInput = input({
   label: "top_p",
   type: "string",
@@ -373,7 +347,6 @@ export const topPInput = input({
   example: "0.9",
   clean: util.types.toNumber,
 });
-
 export const promptInput = input({
   label: "Prompt",
   type: "string",
@@ -384,7 +357,6 @@ export const promptInput = input({
   example: "A cute baby sea otter",
   placeholder: "Describe the image you want to generate",
 });
-
 export const imageSizeInput = input({
   label: "Image Size",
   type: "string",

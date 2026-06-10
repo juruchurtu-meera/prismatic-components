@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, members, portfolioId } from "../../inputs";
-
 export const removeUserFromPortfolio = action({
   display: {
     label: "Remove Users from Portfolio",

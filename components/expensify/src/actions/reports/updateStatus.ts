@@ -3,7 +3,6 @@ import { connectionInput, type, status, filters } from "../../inputs";
 import { createClient } from "../../client";
 import { generatePayload } from "../../util";
 import { updateReportStatusExamplePayload } from "../../examplePayloads";
-
 export const updateReportStatus = action({
   display: {
     description: "Update the status of a report.",
@@ -31,7 +30,6 @@ export const updateReportStatus = action({
       },
     };
     const generatedJson = generatePayload(json, connectionInput);
-
     const { data } = await client.post("", generatedJson);
     return {
       data,

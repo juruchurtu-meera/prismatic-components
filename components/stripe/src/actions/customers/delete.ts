@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { deleteCustomerExamplePayload } from "../../examplePayloads/customers";
 import { connectionInput, customerId, timeout } from "../../inputs";
-
 export const deleteCustomer = action({
   display: {
     label: "Delete Customer",

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { pollResourceModel } from "../constants";
 import { connection } from "./general";
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -11,7 +10,6 @@ export const pollResourceType = input({
   comments: "The type of Rippling resource to poll for changes.",
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -20,7 +18,6 @@ export const showNewRecords = input({
   comments: "When true, includes newly created records in the results.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -29,7 +26,6 @@ export const showUpdatedRecords = input({
   comments: "When true, includes updated records in the results.",
   clean: util.types.toBool,
 });
-
 export const pollChangesTriggerInputs = {
   connection,
   pollResourceType,

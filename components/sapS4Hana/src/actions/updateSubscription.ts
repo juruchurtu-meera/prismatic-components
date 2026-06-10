@@ -8,7 +8,6 @@ import {
   requestBodyCode,
   connectionInput,
 } from "../inputs";
-
 export const updateSubscription = action({
   display: {
     label: "Update Subscription",
@@ -17,7 +16,13 @@ export const updateSubscription = action({
   },
   perform: async (
     _context,
-    { busEventSubscriberCode, sapObjectType, sapObjectTaskCode, requestBodyCode, connectionInput },
+    {
+      busEventSubscriberCode,
+      sapObjectType,
+      sapObjectTaskCode,
+      requestBodyCode,
+      connectionInput,
+    },
   ) => {
     const headers = {
       Accept: "*/*",

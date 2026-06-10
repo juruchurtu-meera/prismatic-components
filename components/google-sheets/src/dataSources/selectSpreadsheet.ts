@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { createDriveClient } from "../client";
 import { fetchFiles } from "../helpers";
 import { connectionInput } from "../inputs";
-
 export const selectSpreadsheet = dataSource({
   display: {
     label: "Select Spreadsheet",
@@ -11,7 +10,6 @@ export const selectSpreadsheet = dataSource({
   dataSourceType: "picklist",
   perform: async (_context, { connection }) => {
     const drive = createDriveClient(connection);
-
     const { files } = await fetchFiles({
       drive,
       initialParams: {
@@ -21,7 +19,6 @@ export const selectSpreadsheet = dataSource({
       },
       fetchAll: true,
     });
-
     return {
       result: files.map((file) => ({ key: file.id, label: file.name })),
     };

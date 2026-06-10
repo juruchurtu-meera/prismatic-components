@@ -9,7 +9,6 @@ import {
   sellerId,
   sku,
 } from "../../inputs";
-
 export const getListingsItem = action({
   display: {
     label: "Get Listings Item",

@@ -7,7 +7,6 @@ import { listEventsExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
 import type { FieldsMetric } from "../../types/FieldsMetric";
 import type { FieldsProfileEvent } from "../../types/FieldsProfileEvent";
-
 export const listEvents = action({
   display: {
     label: "List Events",
@@ -36,7 +35,6 @@ export const listEvents = action({
       [],
       [],
     );
-
     return {
       data,
     };

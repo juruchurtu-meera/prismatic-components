@@ -7,7 +7,6 @@ import {
   handleSageError,
 } from "../utils";
 import { updateARAdjustmentPayload } from "../examplePayloads/updateARAdjustmentPayload";
-
 export const updateARAdjustment = action({
   display: {
     label: "Update AR Adjustment",
@@ -31,7 +30,6 @@ export const updateARAdjustment = action({
     },
   ) => {
     const NO_CHARACTERS = 0;
-
     const action = `<update_aradjustment key="${keyId}">
     ${getXmlTagOrEmptyString("customerid", customerIdInput)}
     ${
@@ -56,15 +54,12 @@ export const updateARAdjustment = action({
         : ""
     }
 </update_aradjustment>`;
-
     const responseFromSage = await executeXmlRequest(
       connection,
       action,
       context.debug.enabled,
     );
-
     handleSageError(responseFromSage);
-
     return {
       data: responseFromSage,
     };

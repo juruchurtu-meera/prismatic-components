@@ -1,7 +1,10 @@
 import { action, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
-import { connectionInput, paginationLimitInput, paginationStartInput } from "../../inputs";
-
+import {
+  connectionInput,
+  paginationLimitInput,
+  paginationStartInput,
+} from "../../inputs";
 export const getMailThreads = action({
   display: {
     label: "Get Mail Threads",

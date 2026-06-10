@@ -5,7 +5,6 @@ import type { FieldsImage } from "../../types/FieldsImage";
 import { fetchImages } from "../../utils";
 import { listImagesExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const listImages = action({
   display: {
     label: "List Images",

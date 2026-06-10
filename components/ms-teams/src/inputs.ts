@@ -1,12 +1,10 @@
 import { util, input } from "@prismatic-io/spectral";
 import { cleanObject, cleanString } from "./utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const groupId = input({
   label: "Group",
   type: "string",
@@ -15,7 +13,6 @@ export const groupId = input({
   comments: "Provide a string value for the group Id",
   clean: (param) => util.types.toString(param),
 });
-
 export const teamId = input({
   label: "Team",
   type: "string",
@@ -26,7 +23,6 @@ export const teamId = input({
   clean: (param) => util.types.toString(param) || undefined,
   dataSource: "teamNames",
 });
-
 export const appId = input({
   label: "App ID",
   type: "string",
@@ -35,7 +31,6 @@ export const appId = input({
   comments: "Provide the ID of the app to install.",
   clean: util.types.toString,
 });
-
 export const appInstallationId = input({
   label: "App Installation ID",
   type: "string",
@@ -45,7 +40,6 @@ export const appInstallationId = input({
   comments: "Provide the Installation ID of the app to remove.",
   clean: util.types.toString,
 });
-
 export const memberId = input({
   label: "Member",
   type: "string",
@@ -55,7 +49,6 @@ export const memberId = input({
     "Provide the identifier of a given member. This value should be a memberId.",
   clean: (param) => util.types.toString(param) || undefined,
 });
-
 export const visibility = input({
   label: "Visibility",
   type: "string",
@@ -67,7 +60,6 @@ export const visibility = input({
   required: true,
   comments: "The visibility of the group and team. Defaults to Public.",
 });
-
 export const teamName = input({
   label: "Team Name",
   type: "string",
@@ -75,7 +67,6 @@ export const teamName = input({
   example: "myTeam",
   comments: "Provide a string value for the team name.",
 });
-
 export const teamDescription = input({
   label: "Team Description",
   type: "string",
@@ -83,7 +74,6 @@ export const teamDescription = input({
   example: "This is an example description.",
   comments: "Provide a string value for the description.",
 });
-
 export const template = input({
   label: "Template",
   type: "string",
@@ -92,7 +82,6 @@ export const template = input({
   comments:
     "Select from a list of templates provided by Microsoft. See a full list of the available templates here: https://docs.microsoft.com/en-us/microsoftteams/get-started-with-teams-templates",
 });
-
 export const channelName = input({
   label: "Channel Name",
   type: "string",
@@ -100,7 +89,6 @@ export const channelName = input({
   example: "myChannel",
   comments: "Provide a string value for the channel name.",
 });
-
 export const channelDescription = input({
   label: "Channel Description",
   type: "string",
@@ -108,7 +96,6 @@ export const channelDescription = input({
   example: "This is an example description",
   comments: "Provide a string value for the channel description.",
 });
-
 export const allowCreateUpdateChannels = input({
   label: "Allow users to create/update channels",
   type: "boolean",
@@ -116,21 +103,18 @@ export const allowCreateUpdateChannels = input({
   comments:
     "This flag will give users the permission to create/update channels.",
 });
-
 export const allowUserEditMessages = input({
   label: "Allow users to edit messages",
   type: "boolean",
   comments: "This flag will give users the permission to edit messages.",
   required: false,
 });
-
 export const allowUserDeleteMessages = input({
   label: "Allow users to delete messages",
   type: "boolean",
   required: false,
   comments: "This flag will give users the permission to delete messages.",
 });
-
 export const roles = input({
   label: "Roles",
   type: "string",
@@ -140,14 +124,12 @@ export const roles = input({
   example: "owner",
   required: false,
 });
-
 export const allowGiphy = input({
   label: "Allow Giphy",
   type: "boolean",
   comments: "This flag will enable the use of Giphy content in your team.",
   required: false,
 });
-
 export const giphyContentRating = input({
   label: "Giphy Content Rating",
   type: "string",
@@ -157,7 +139,6 @@ export const giphyContentRating = input({
   ],
   required: false,
 });
-
 export const userId = input({
   label: "User Id",
   type: "string",
@@ -167,7 +148,6 @@ export const userId = input({
   clean: (param) => util.types.toString(param),
   dataSource: "userNames",
 });
-
 export const channelId = input({
   label: "Channel Id",
   type: "string",
@@ -177,7 +157,6 @@ export const channelId = input({
   clean: (param) => util.types.toString(param),
   dataSource: "channelNames",
 });
-
 export const membershipType = input({
   label: "Membership Type",
   type: "string",
@@ -195,7 +174,6 @@ export const membershipType = input({
   comments:
     "The type of the channel. Can be set during creation and can't be changed. Possible values are: standard - Channel inherits the list of members of the parent team; private - Channel can have members that are a subset of all the members on the parent team.",
 });
-
 export const message = input({
   label: "Message",
   type: "string",
@@ -204,7 +182,6 @@ export const message = input({
   comments: "Provide a string value for the message to send.",
   clean: util.types.toString,
 });
-
 export const timeout = input({
   label: "Timeout",
   type: "string",
@@ -214,7 +191,6 @@ export const timeout = input({
     "The maximum time a client will await a response in milliseconds (defaults to 30000ms)",
   clean: (value) => util.types.toInt(value, 30000),
 });
-
 export const changeType = input({
   label: "Change Type",
   type: "string",
@@ -223,7 +199,6 @@ export const changeType = input({
   example: "created/updated",
   clean: util.types.toString,
 });
-
 export const notificationUrl = input({
   label: "Notification URL",
   type: "string",
@@ -233,7 +208,6 @@ export const notificationUrl = input({
   example: "https://hooks.example.com/EXAMPLE",
   clean: util.types.toString,
 });
-
 export const webhookResource = input({
   label: "Resource",
   type: "string",
@@ -243,7 +217,6 @@ export const webhookResource = input({
   example: "teams/getAllMessages",
   clean: util.types.toString,
 });
-
 export const expirationDateTime = input({
   label: "Expiration Date Time",
   type: "string",
@@ -251,7 +224,6 @@ export const expirationDateTime = input({
   comments: "Provide a valid date time for the expiration of the webhook.",
   example: "2021-10-21T14:55:45.0000000Z",
 });
-
 export const top = input({
   label: "Top",
   type: "string",
@@ -261,7 +233,6 @@ export const top = input({
   example: "20",
   clean: (param) => util.types.toNumber(param) || undefined,
 });
-
 export const skipToken = input({
   label: "Page Offset",
   type: "string",
@@ -271,8 +242,6 @@ export const skipToken = input({
   example: "3",
   clean: (param) => util.types.toString(param) || undefined,
 });
-
-
 export const contentType = input({
   label: "Content Type",
   model: [
@@ -284,7 +253,6 @@ export const contentType = input({
   default: "text",
   comments: "Provide a value for the content type of the message",
 });
-
 export const displayName = input({
   label: "Display Name",
   type: "string",
@@ -293,7 +261,6 @@ export const displayName = input({
   example: "My Group",
   clean: (param) => util.types.toString(param),
 });
-
 export const securityEnabled = input({
   label: "Security Enabled",
   type: "string",
@@ -302,7 +269,6 @@ export const securityEnabled = input({
   default: "true",
   clean: (param) => util.types.toBool(param),
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -311,7 +277,6 @@ export const description = input({
   example: "This is an example description",
   clean: (param) => util.types.toString(param),
 });
-
 export const fields = input({
   label: "Fields",
   type: "string",
@@ -319,7 +284,6 @@ export const fields = input({
   required: false,
   comments: "Optional fields to include in the request body",
 });
-
 export const filter = input({
   label: "Filter",
   type: "string",
@@ -328,7 +292,6 @@ export const filter = input({
   example: "startswith(givenName,'J')",
   clean: (param) => util.types.toString(param) || undefined,
 });
-
 export const webinarId = input({
   label: "Webinar ID",
   type: "string",
@@ -336,7 +299,6 @@ export const webinarId = input({
   clean: (param) => util.types.toString(param) || undefined,
   dataSource: "webinarNames",
 });
-
 export const sessionId = input({
   label: "Session ID",
   type: "string",
@@ -344,7 +306,6 @@ export const sessionId = input({
   clean: (param) => util.types.toString(param) || undefined,
   dataSource: "selectWebinarSession",
 });
-
 export const select = input({
   label: "Select",
   type: "string",
@@ -353,7 +314,6 @@ export const select = input({
   example: "givenName,surname",
   clean: (param) => util.types.toString(param) || undefined,
 });
-
 export const expand = input({
   label: "Expand",
   type: "string",
@@ -362,7 +322,6 @@ export const expand = input({
   example: "teamsAppDefinition",
   clean: (param) => util.types.toString(param) || undefined,
 });
-
 export const search = input({
   label: "Search",
   type: "string",
@@ -371,7 +330,6 @@ export const search = input({
   example: "Search For This",
   clean: (param) => util.types.toString(param) || undefined,
 });
-
 export const cardPayload = input({
   label: "Card Payload",
   type: "data",
@@ -379,7 +337,6 @@ export const cardPayload = input({
   placeholder: "Adaptive Card Payload",
   comments: "Adaptive Card payload to send",
 });
-
 export const importance = input({
   label: "Importance",
   type: "string",
@@ -390,7 +347,6 @@ export const importance = input({
     { label: "Urgent", value: "urgent" },
   ],
 });
-
 export const userPrincipalName = input({
   label: "User Principal Name",
   type: "string",
@@ -401,14 +357,12 @@ export const userPrincipalName = input({
   placeholder: "user@example.onmicrosoft.com",
   clean: cleanString,
 });
-
 export const webinarDisplayName = {
   ...displayName,
   comments: "Provide a string value for the display name of the webinar.",
   example: "My Webinar",
   required: true,
 };
-
 export const webinarDescriptionContentType = input({
   label: "Description Content Type",
   type: "string",
@@ -420,7 +374,6 @@ export const webinarDescriptionContentType = input({
   comments: "The content type for the webinar description.",
   clean: util.types.toString,
 });
-
 export const webinarDescriptionContent = input({
   label: "Description Content",
   type: "string",
@@ -429,7 +382,6 @@ export const webinarDescriptionContent = input({
   example: "This is a description for the webinar.",
   clean: util.types.toString,
 });
-
 export const webinarStartDateTime = input({
   label: "Start Date",
   type: "string",
@@ -438,7 +390,6 @@ export const webinarStartDateTime = input({
   example: "2025-05-28T04:00:00",
   clean: util.types.toString,
 });
-
 export const webinarEndDateTime = input({
   label: "End Date",
   type: "string",
@@ -447,7 +398,6 @@ export const webinarEndDateTime = input({
   example: "2025-05-28T04:00:00",
   clean: util.types.toString,
 });
-
 export const webinarTimeZone = input({
   label: "Time Zone",
   type: "string",
@@ -456,7 +406,6 @@ export const webinarTimeZone = input({
   example: "Pacific Standard Time",
   clean: util.types.toString,
 });
-
 export const audience = input({
   label: "Audience",
   type: "string",
@@ -469,7 +418,6 @@ export const audience = input({
   example: "organization",
   clean: cleanString,
 });
-
 export const coOrganizers = input({
   label: "Co-Organizers",
   type: "code",
@@ -487,7 +435,6 @@ export const coOrganizers = input({
   ),
   clean: cleanObject,
 });
-
 export const settings = input({
   label: "Attendee Email Notification Enabled",
   type: "boolean",
@@ -499,7 +446,6 @@ export const settings = input({
       ? { isAttendeeEmailNotificationEnabled: util.types.toBool(value) }
       : undefined,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -507,7 +453,6 @@ export const fetchAll = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const orderBy = input({
   label: "Order By",
   type: "string",
@@ -516,7 +461,6 @@ export const orderBy = input({
   example: "displayName desc",
   clean: cleanString,
 });
-
 export const role = input({
   label: "Role",
   type: "string",

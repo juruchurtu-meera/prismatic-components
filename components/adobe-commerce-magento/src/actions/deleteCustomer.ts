@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { deleteCustomerExampleResponse } from "../examplePayloads";
 import { connectionInput, customerId } from "../inputs";
-
 export const deleteCustomer = action({
   display: {
     label: "Delete Customer",
@@ -26,5 +25,4 @@ export const deleteCustomer = action({
   },
   examplePayload: deleteCustomerExampleResponse,
 });
-
 export default { deleteCustomer };

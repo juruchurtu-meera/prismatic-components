@@ -20,9 +20,7 @@ import {
   useStartDate,
 } from "../../inputs";
 import type { Body } from "./types/Body";
-
 const teamId = getTeamId(true);
-
 export const createSpace = action({
   display: {
     label: "Create Space",
@@ -48,9 +46,12 @@ export const createSpace = action({
       enableRemapDependencies,
       enableDependencyWarning,
       enablePortfolios,
-    }
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const body: Body = {
       name: spaceName,
       multiple_assignees: multipleAssignees,
@@ -87,9 +88,7 @@ export const createSpace = action({
         },
       },
     };
-
     const { data } = await client.post(`/team/${teamId}/space`, body);
-
     return {
       data,
     };

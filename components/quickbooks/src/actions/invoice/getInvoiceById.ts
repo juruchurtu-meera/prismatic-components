@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { connectionInput, invoiceId } from "../../inputs";
-
 export const getInvoiceById = action({
   display: {
     label: "Get Invoice By ID",
@@ -14,7 +13,6 @@ export const getInvoiceById = action({
       context.debug.enabled,
     );
     const { data } = await client.get(`/invoice/${params.id}`);
-
     return {
       data: data.Invoice,
     };

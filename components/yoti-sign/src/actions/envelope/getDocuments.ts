@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { genericMediaResponse } from "../../examplePayloads";
 import { connectionInput, envelopeId } from "../../inputs";
-
 export const getDocuments = action({
   display: {
     label: `Get Documents`,
@@ -20,7 +19,6 @@ export const getDocuments = action({
         responseType: "arraybuffer",
       },
     );
-
     return { data };
   },
   examplePayload: {

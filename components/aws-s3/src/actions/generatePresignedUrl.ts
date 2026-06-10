@@ -4,12 +4,18 @@ import { action } from "@prismatic-io/spectral";
 import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { generatePresignedUrlPayload } from "../examplePayloads";
-import { accessKeyInput, actionType, bucket, expirationSeconds, objectKey } from "../inputs";
-
+import {
+  accessKeyInput,
+  actionType,
+  bucket,
+  expirationSeconds,
+  objectKey,
+} from "../inputs";
 export const generatePresignedUrl = action({
   display: {
     label: "Generate Presigned URL",
-    description: "Generate a presigned URL that can be used to upload or download an object in S3",
+    description:
+      "Generate a presigned URL that can be used to upload or download an object in S3",
   },
   inputs: {
     awsRegion,

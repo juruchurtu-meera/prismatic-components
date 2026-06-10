@@ -9,7 +9,6 @@ import {
   visibility,
 } from "./general";
 import { cleanBooleanStringInput } from "../../util";
-
 export const updateGroupInputs = {
   groupId: {
     ...groupId,

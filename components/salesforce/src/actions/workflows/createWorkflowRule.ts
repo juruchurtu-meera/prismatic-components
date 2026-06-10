@@ -9,7 +9,6 @@ import {
   toFullNameIdentifier,
 } from "../../util";
 import { genericCreateUpdateFullNameExamplePayload } from "../../examplePayloads";
-
 export const createWorkflowRule = action({
   display: {
     label: "Create Workflow Rule",
@@ -33,7 +32,6 @@ export const createWorkflowRule = action({
     },
   ) => {
     const client = await createSalesforceClient(connection, version);
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", {
         recordType,
@@ -46,7 +44,6 @@ export const createWorkflowRule = action({
         formula: formulaInput,
       });
     }
-
     const result = await createWorkflowRuleFunction(client, {
       fullName: toFullNameIdentifier(recordType, ruleName),
       active,

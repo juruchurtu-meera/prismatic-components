@@ -4,7 +4,6 @@ import listWorkItemsInputs from "../../inputs/workitems/listWorkItems";
 import { getPaginatedData } from "../../utils";
 import { listWorkItemsExamplePayload } from "../../examplePayloads";
 import type { WorkItem } from "../../interfaces/WorkItem";
-
 export const listWorkItems = action({
   display: {
     label: "List Work Items",

@@ -11,7 +11,6 @@ import {
   resourceGroupName,
   subscriptionId,
 } from "../../inputs";
-
 export const receiveMessagesFromQueue = action({
   display: {
     label: "Receive Messages from Queue",
@@ -40,7 +39,6 @@ export const receiveMessagesFromQueue = action({
         : await queueReceiver.receiveMessages(amountOfMessages, {
             maxWaitTimeInMs: maxTimeToWait * 1000,
           });
-
       for (const message of messages) {
         allMessages.push(
           returnFullMessages
@@ -51,7 +49,6 @@ export const receiveMessagesFromQueue = action({
           await queueReceiver.completeMessage(message);
         }
       }
-
       await queueReceiver.close();
     } finally {
       await client.close();
@@ -88,5 +85,4 @@ export const receiveMessagesFromQueue = action({
     }),
   },
 });
-
 export default { receiveMessagesFromQueue };

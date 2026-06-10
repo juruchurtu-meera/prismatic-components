@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {
@@ -26,9 +25,9 @@ export const oauth = oauth2Connection({
       shown: true,
       comments:
         "The OAuth 2.0 Token URL for Microsoft Project; replace `<pwaSite>` with the protocol and domain of the PWA Site. Example: https://example.sharepoint.com",
-      example: "https://login.microsoftonline.com/common/oauth2/token?resource=<pwaSite>",
+      example:
+        "https://login.microsoftonline.com/common/oauth2/token?resource=<pwaSite>",
     },
-    
     scopes: {
       label: "Scopes",
       placeholder: "Scopes",
@@ -52,7 +51,8 @@ export const oauth = oauth2Connection({
       type: "password",
       required: true,
       shown: true,
-      comments: "This value can be generated inside your Active Directory application.",
+      comments:
+        "This value can be generated inside your Active Directory application.",
     },
     pwaSite: {
       label: "PWA Site",
@@ -64,5 +64,4 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export default [oauth];

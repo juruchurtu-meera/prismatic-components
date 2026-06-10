@@ -4,7 +4,6 @@ import triggers from "./triggers";
 import dataSources from "./dataSources";
 import connections from "./connections";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export default component({
   key: "adobe-acrobat-sign",
   documentationUrl: "https://prismatic.io/docs/components/adobe-acrobat-sign/",

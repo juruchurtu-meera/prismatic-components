@@ -1,6 +1,5 @@
 import { action, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const processRule = action({
   allowsBranching: true,
   display: {
@@ -31,7 +30,6 @@ const processRule = action({
     }),
   },
 });
-
 const addCallUsingPost = action({
   display: {
     label: "Add Call",
@@ -50,7 +48,6 @@ const addCallUsingPost = action({
     }),
   },
 });
-
 const addCallRecordingUsingPut = action({
   display: {
     label: "Add Call Recording",
@@ -77,7 +74,6 @@ const addCallRecordingUsingPut = action({
     }),
   },
 });
-
 const listCallsExtensiveUsingPost = action({
   display: {
     label: "List Calls Extensive",
@@ -97,7 +93,6 @@ const listCallsExtensiveUsingPost = action({
     }),
   },
 });
-
 const listPermissionProfileUsingGet = action({
   display: {
     label: "List Permission Profile",
@@ -128,7 +123,6 @@ const listPermissionProfileUsingGet = action({
     }),
   },
 });
-
 const listCrmCallsManualAssociationUsingGet = action({
   display: {
     label: "List Crm Calls Manual Association",
@@ -168,7 +162,6 @@ const listCrmCallsManualAssociationUsingGet = action({
     }),
   },
 });
-
 const getCallTranscriptsUsingPost = action({
   display: {
     label: "Get Call Transcripts",
@@ -188,7 +181,6 @@ const getCallTranscriptsUsingPost = action({
     }),
   },
 });
-
 const getUsersAccessToCallsUsingGet = action({
   display: {
     label: "Get Users Access To Calls",
@@ -208,7 +200,6 @@ const getUsersAccessToCallsUsingGet = action({
     }),
   },
 });
-
 const addUsersAccessToCallsUsingPut = action({
   display: {
     label: "Add Users Access To Calls",
@@ -228,7 +219,6 @@ const addUsersAccessToCallsUsingPut = action({
     }),
   },
 });
-
 const deleteUsersAccessToCallsUsingDelete = action({
   display: {
     label: "Delete Users Access To Calls",
@@ -248,7 +238,6 @@ const deleteUsersAccessToCallsUsingDelete = action({
     }),
   },
 });
-
 const deleteGenericCrmIntegrationUsingDelete = action({
   display: {
     label: "Delete Generic Crm Integration",
@@ -287,7 +276,6 @@ const deleteGenericCrmIntegrationUsingDelete = action({
     }),
   },
 });
-
 const listGenericCrmIntegrationUsingGet = action({
   display: {
     label: "List Generic Crm Integration",
@@ -307,7 +295,6 @@ const listGenericCrmIntegrationUsingGet = action({
     }),
   },
 });
-
 const registerGenericCrmIntegrationUsingPut = action({
   display: {
     label: "Register Generic Crm Integration",
@@ -326,7 +313,6 @@ const registerGenericCrmIntegrationUsingPut = action({
     }),
   },
 });
-
 const mapCrmUsersUsingPost = action({
   display: {
     label: "Map Crm Users",
@@ -345,7 +331,6 @@ const mapCrmUsersUsingPost = action({
     }),
   },
 });
-
 const uploadCrmDataUsingPost = action({
   display: {
     label: "Upload Crm Data",
@@ -364,7 +349,6 @@ const uploadCrmDataUsingPost = action({
     }),
   },
 });
-
 const getCrmObjectsUsingGet = action({
   display: {
     label: "Get Crm Objects",
@@ -401,7 +385,6 @@ const getCrmObjectsUsingGet = action({
     }),
   },
 });
-
 const uploadCrmSchemaFieldUsingPost = action({
   display: {
     label: "Upload Crm Schema Field",
@@ -440,7 +423,6 @@ const uploadCrmSchemaFieldUsingPost = action({
     }),
   },
 });
-
 const listCrmSchemaFieldsUsingGet = action({
   display: {
     label: "List Crm Schema Fields",
@@ -478,7 +460,6 @@ const listCrmSchemaFieldsUsingGet = action({
     }),
   },
 });
-
 const getRequestStatusUsingGet = action({
   display: {
     label: "Get Request Status",
@@ -516,7 +497,6 @@ const getRequestStatusUsingGet = action({
     }),
   },
 });
-
 const uploadStagesUsingPost = action({
   display: {
     label: "Upload Stages",
@@ -547,7 +527,6 @@ const uploadStagesUsingPost = action({
     }),
   },
 });
-
 const customActionUsingPut = action({
   display: {
     label: "Custom Action",
@@ -567,7 +546,6 @@ const customActionUsingPut = action({
     }),
   },
 });
-
 const contentSharedUsingPut = action({
   display: {
     label: "Content Shared",
@@ -590,7 +568,6 @@ const contentSharedUsingPut = action({
     }),
   },
 });
-
 const contentViewedUsingPut = action({
   display: {
     label: "Content Viewed",
@@ -613,7 +590,6 @@ const contentViewedUsingPut = action({
     }),
   },
 });
-
 const findAllReferencesToEmailAddressUsingGet = action({
   display: {
     label: "Find All References To Email Address",
@@ -643,7 +619,6 @@ const findAllReferencesToEmailAddressUsingGet = action({
     }),
   },
 });
-
 const findAllReferencesToPhoneNumberUsingGet = action({
   display: {
     label: "Find All References To Phone Number",
@@ -673,7 +648,6 @@ const findAllReferencesToPhoneNumberUsingGet = action({
     }),
   },
 });
-
 const purgeEmailAddressUsingPost = action({
   display: {
     label: "Purge Email Address",
@@ -705,7 +679,6 @@ const purgeEmailAddressUsingPost = action({
     }),
   },
 });
-
 const purgePhoneNumberUsingPost = action({
   display: {
     label: "Purge Phone Number",
@@ -737,7 +710,6 @@ const purgePhoneNumberUsingPost = action({
     }),
   },
 });
-
 const getCallsInSpecificFolderUsingGet = action({
   display: {
     label: "Get Calls In Specific Folder",
@@ -768,7 +740,6 @@ const getCallsInSpecificFolderUsingGet = action({
     }),
   },
 });
-
 const getLibraryStructureUsingGet = action({
   display: {
     label: "Get Library Structure",
@@ -797,7 +768,6 @@ const getLibraryStructureUsingGet = action({
     }),
   },
 });
-
 const listLogsUsingGet = action({
   display: {
     label: "List Logs",
@@ -856,7 +826,6 @@ const listLogsUsingGet = action({
     }),
   },
 });
-
 const addMeetingUsingPost = action({
   display: {
     label: "Add Meeting",
@@ -875,7 +844,6 @@ const addMeetingUsingPost = action({
     }),
   },
 });
-
 const integrationStatusUsingPost = action({
   display: {
     label: "Integration Status",
@@ -895,7 +863,6 @@ const integrationStatusUsingPost = action({
     }),
   },
 });
-
 const updateMeetingUsingPut = action({
   display: {
     label: "Update Meeting",
@@ -922,7 +889,6 @@ const updateMeetingUsingPut = action({
     }),
   },
 });
-
 const deleteMeetingUsingDelete = action({
   display: {
     label: "Delete Meeting",
@@ -949,7 +915,6 @@ const deleteMeetingUsingDelete = action({
     }),
   },
 });
-
 const getPermissionProfileUsingGet = action({
   display: {
     label: "Get Permission Profile",
@@ -979,7 +944,6 @@ const getPermissionProfileUsingGet = action({
     }),
   },
 });
-
 const createPermissionProfileUsingPost = action({
   display: {
     label: "Create Permission Profile",
@@ -1010,7 +974,6 @@ const createPermissionProfileUsingPost = action({
     }),
   },
 });
-
 const updatePermissionProfileUsingPut = action({
   display: {
     label: "Update Permission Profile",
@@ -1041,7 +1004,6 @@ const updatePermissionProfileUsingPut = action({
     }),
   },
 });
-
 const listPermissionProfileUsersUsingGet = action({
   display: {
     label: "List Permission Profile Users",
@@ -1071,7 +1033,6 @@ const listPermissionProfileUsersUsingGet = action({
     }),
   },
 });
-
 const listScorecardsUsingGet = action({
   display: {
     label: "List Scorecards",
@@ -1090,7 +1051,6 @@ const listScorecardsUsingGet = action({
     }),
   },
 });
-
 const listMultipleUsersAggregateActivityUsingPost = action({
   display: {
     label: "List Multiple Users Aggregate Activity",
@@ -1110,7 +1070,6 @@ const listMultipleUsersAggregateActivityUsingPost = action({
     }),
   },
 });
-
 const listMultipleUsersAggregateByPeriodUsingPost = action({
   display: {
     label: "List Multiple Users Aggregate By Period",
@@ -1133,7 +1092,6 @@ const listMultipleUsersAggregateByPeriodUsingPost = action({
     }),
   },
 });
-
 const listMultipleUsersDayByDayActivityUsingPost = action({
   display: {
     label: "List Multiple Users Day By Day Activity",
@@ -1153,7 +1111,6 @@ const listMultipleUsersDayByDayActivityUsingPost = action({
     }),
   },
 });
-
 const listAnsweredScorecardsUsingPost = action({
   display: {
     label: "List Answered Scorecards",
@@ -1173,7 +1130,6 @@ const listAnsweredScorecardsUsingPost = action({
     }),
   },
 });
-
 const listInteractionStatsUsingPost = action({
   display: {
     label: "List Interaction Stats",
@@ -1193,7 +1149,6 @@ const listInteractionStatsUsingPost = action({
     }),
   },
 });
-
 const listUsersUsingGet1 = action({
   display: {
     label: "List Users",
@@ -1232,7 +1187,6 @@ const listUsersUsingGet1 = action({
     }),
   },
 });
-
 const listMultipleUsersUsingPost = action({
   display: {
     label: "List Multiple Users",
@@ -1251,7 +1205,6 @@ const listMultipleUsersUsingPost = action({
     }),
   },
 });
-
 const getUserUsingGet = action({
   display: {
     label: "Get User",
@@ -1279,7 +1232,6 @@ const getUserUsingGet = action({
     }),
   },
 });
-
 const getUserHistoryUsingGet = action({
   display: {
     label: "Get User History",
@@ -1307,7 +1259,6 @@ const getUserHistoryUsingGet = action({
     }),
   },
 });
-
 const listWorkspacesUsingGet = action({
   display: {
     label: "List Workspaces",
@@ -1326,7 +1277,6 @@ const listWorkspacesUsingGet = action({
     }),
   },
 });
-
 export default {
   addCallUsingPost,
   addCallRecordingUsingPut,

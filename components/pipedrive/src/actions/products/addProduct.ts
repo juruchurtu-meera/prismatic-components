@@ -3,14 +3,20 @@ import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanCode, cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const addProduct = action({
   display: {
     label: "Add Product",
     description: "Adds a product.",
   },
-  perform: async (context, { connection, name, code, unit, tax, visibleTo, ownerId, prices }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, name, code, unit, tax, visibleTo, ownerId, prices },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post("/products", {
       name,
       code,
@@ -79,7 +85,8 @@ export const addProduct = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The ID of the user who will be marked as the owner of this product",
+      comments:
+        "The ID of the user who will be marked as the owner of this product",
       example: "123",
       placeholder: "Enter User ID",
     }),

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createProjectsClient } from "../../client";
 import { connection, guId } from "../../inputs";
-
 export const verifyDraft = action({
   display: {
     label: "Verify Draft",
@@ -14,13 +13,13 @@ export const verifyDraft = action({
       },
       context.debug.enabled,
     );
-    const { data } = await client.post(`/Projects('${params.guId}')/Draft/validate()`);
-
+    const { data } = await client.post(
+      `/Projects('${params.guId}')/Draft/validate()`,
+    );
     return {
       data,
     };
   },
   inputs: { connection, guId },
 });
-
 export default verifyDraft;

@@ -9,15 +9,20 @@ import type { Product } from "../../interfaces/Product";
 import { paginationMapper } from "../mappers/paginationMapper";
 import { productMapper } from "../mappers/productMapper";
 import listProductsQuery from "../queries/products/ListProducts.gql";
-
 export const listProductsGql = action({
   display: {
     label: "List Products",
     description: "Lists all products.",
   },
-  perform: async (context, { shopifyConnection, limit, getAlldata, endCursor }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+  perform: async (
+    context,
+    { shopifyConnection, limit, getAlldata, endCursor },
+  ) => {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const data = (await fetchData<Product>(
       client,
       ["products"],
@@ -28,8 +33,9 @@ export const listProductsGql = action({
         first: getAlldata ? MAX_LIMIT : limit,
         cursor: getAlldata ? undefined : endCursor,
       },
-    )) as Record<"products", Product[]> & { pageInfo: PageInfo };
-
+    )) as Record<"products", Product[]> & {
+      pageInfo: PageInfo;
+    };
     return {
       data: {
         data: {

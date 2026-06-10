@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanNumberInput, cleanStringInput } from "../../util";
 import sharedInputs from "./sharedInputs";
-
 const code = input({
   label: "Product Code",
   comments: "Product code.",
@@ -11,7 +10,6 @@ const code = input({
   example: "VID003",
   clean: cleanStringInput,
 });
-
 const name = input({
   label: "Product Name",
   comments: "Product name.",
@@ -21,7 +19,6 @@ const name = input({
   example: "32mb PCI Video Card",
   clean: cleanStringInput,
 });
-
 const productGroupId = input({
   label: "Product Group ID",
   comments:
@@ -33,7 +30,6 @@ const productGroupId = input({
   dataSource: "selectProductGroup",
   clean: cleanNumberInput,
 });
-
 export default {
   code,
   name,

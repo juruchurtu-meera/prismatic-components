@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { selectCompanyInputs } from "../inputs";
 import type { DiscoveryResponse } from "../types";
-
 const selectCompany = dataSource({
   display: {
     label: "Select Company",
@@ -22,5 +21,4 @@ const selectCompany = dataSource({
     return { result };
   },
 });
-
 export default { selectCompany };

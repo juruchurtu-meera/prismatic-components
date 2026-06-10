@@ -1,7 +1,3 @@
-
-
-
-
 export type { Attachment, AttachmentResponse } from "./Attachment";
 export type { JiraApiCustomOptions } from "./JiraApiCustomOptions";
 export type { PaginatedResponse, WebhookData } from "./PaginatedResponse";
@@ -28,53 +24,29 @@ export type {
   Watcher,
   Worklog,
 } from "./Issue";
-
-
-
-
 export interface JiraWebhookUser {
   accountId: string;
   accountType?: string;
   displayName: string;
   emailAddress?: string;
 }
-
-
-
-
 export interface JiraIssueStatus {
   name: string;
   id: string;
 }
-
-
-
-
 export interface JiraIssueType {
   name: string;
   id: string;
 }
-
-
-
-
 export interface JiraProject {
   key: string;
   name: string;
   id: string;
 }
-
-
-
-
 export interface JiraPriority {
   name: string;
   id: string;
 }
-
-
-
-
 export interface JiraIssueFields {
   summary: string;
   status: JiraIssueStatus;
@@ -87,27 +59,15 @@ export interface JiraIssueFields {
   updated: string;
   [key: string]: unknown;
 }
-
-
-
-
 export interface JiraIssue {
   id: string;
   key: string;
   self: string;
   fields: JiraIssueFields;
 }
-
-
-
-
 export interface PollingState extends Record<string, unknown> {
-  lastPolledAt?: string; 
+  lastPolledAt?: string;
 }
-
-
-
-
 export interface JiraWebhookPayload {
   timestamp: number;
   webhookEvent: string;

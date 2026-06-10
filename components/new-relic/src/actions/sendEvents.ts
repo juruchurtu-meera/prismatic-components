@@ -7,7 +7,6 @@ import {
   accountId,
   connectionInput,
 } from "../inputs";
-
 export const sendEventData = action({
   display: {
     label: "Send Event Data",
@@ -18,7 +17,6 @@ export const sendEventData = action({
       params.newRelicConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.post(
       `https://insights-collector.newrelic.com/v1/accounts/${params.accountId}/events`,
       [
@@ -29,7 +27,6 @@ export const sendEventData = action({
         },
       ],
     );
-
     return {
       data,
     };
@@ -42,5 +39,4 @@ export const sendEventData = action({
     newRelicConnection: connectionInput,
   },
 });
-
 export default sendEventData;

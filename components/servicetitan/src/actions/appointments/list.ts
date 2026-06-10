@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Appointment } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listAppointments = action({
   display: {
     label: "List Appointments",
@@ -40,7 +39,6 @@ export const listAppointments = action({
     },
   ) => {
     const client = createClient(connection, "jpm", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<Appointment>(client, "/appointments", {
         includeTotal,

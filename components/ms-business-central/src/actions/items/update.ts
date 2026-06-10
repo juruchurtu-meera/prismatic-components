@@ -21,18 +21,17 @@ import {
 } from "../../inputs/items/updateItemInputs";
 import type { Item } from "../../interfaces";
 import { cleanStringInput } from "../../utils";
-
 export const updateItem = action({
   display: {
     label: "Update Item",
-    description: "Updates an item object from your Business Central Organization.",
+    description:
+      "Updates an item object from your Business Central Organization.",
   },
   perform: async (
     context,
     {
       baseUnitOfMeasureCode,
       baseUnitOfMeasureId,
-
       unitCost,
       unitPrice,
       priceIncludesTax,
@@ -49,7 +48,11 @@ export const updateItem = action({
       connection,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       baseUnitOfMeasureCode,
       baseUnitOfMeasureId,
@@ -65,7 +68,6 @@ export const updateItem = action({
       gtin,
       type,
     };
-
     const { data } = await client.patch<Item>(
       `/companies(${companyId})/items(${itemId})`,
       payload,
@@ -75,7 +77,6 @@ export const updateItem = action({
         },
       },
     );
-
     return { data };
   },
   inputs: {

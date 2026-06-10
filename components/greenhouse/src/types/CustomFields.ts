@@ -18,7 +18,6 @@ export interface CustomFieldDataSources {
   template_token_string: string;
   custom_field_options: CustomFieldOption[];
 }
-
 export interface CustomFieldOption {
   id: number;
   name: string;

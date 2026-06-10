@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { API_VERSION } from "./constants";
 import { toObject, toOptionalString } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   required: true,
   type: "connection",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -17,7 +15,6 @@ export const fetchAll = input({
   required: false,
   default: "false",
 });
-
 export const additionalFieldsInput = input({
   label: "Additional Fields",
   type: "code",
@@ -29,7 +26,6 @@ export const additionalFieldsInput = input({
   example: JSON.stringify({ preferred_first_name: "John" }, null, 2),
   clean: toObject,
 });
-
 export const companyIdInput = input({
   label: "Company ID",
   required: true,
@@ -39,7 +35,6 @@ export const companyIdInput = input({
   dataSource: "selectCompany",
   clean: util.types.toString,
 });
-
 export const employeeIdInput = input({
   label: "Employee ID",
   required: true,
@@ -49,7 +44,6 @@ export const employeeIdInput = input({
   dataSource: "selectEmployee",
   clean: util.types.toString,
 });
-
 export const payScheduleIdInput = input({
   label: "Pay Schedule ID",
   required: true,
@@ -59,7 +53,6 @@ export const payScheduleIdInput = input({
   dataSource: "selectPaySchedule",
   clean: util.types.toString,
 });
-
 export const paginationPageInput = input({
   label: "Pagination Page",
   required: false,
@@ -68,7 +61,6 @@ export const paginationPageInput = input({
     "Which page of results to fetch. See [Gusto API documentation](https://docs.gusto.com/app-integrations/docs/pagination) for more information.",
   clean: (value) => util.types.toInt(value) || undefined,
 });
-
 export const firstNameInput = input({
   label: "First Name",
   required: true,
@@ -76,7 +68,6 @@ export const firstNameInput = input({
   comments: "The employee's first name.",
   clean: util.types.toString,
 });
-
 export const middleInitialInput = input({
   label: "Middle Initial",
   required: false,
@@ -84,7 +75,6 @@ export const middleInitialInput = input({
   comments: "The employee's middle initial.",
   clean: (value) => (value ? util.types.toString(value) : undefined),
 });
-
 export const lastNameInput = input({
   label: "Last Name",
   required: true,
@@ -92,7 +82,6 @@ export const lastNameInput = input({
   comments: "The employee's last name.",
   clean: util.types.toString,
 });
-
 export const dateOfBirthInput = input({
   label: "Date of Birth",
   required: false,
@@ -101,7 +90,6 @@ export const dateOfBirthInput = input({
   clean: util.types.toString,
   example: "1990-12-30",
 });
-
 export const emailInput = input({
   label: "Email Address",
   required: false,
@@ -110,7 +98,6 @@ export const emailInput = input({
   clean: util.types.toString,
   example: "john.doe@example.com",
 });
-
 export const selfOnboardingInput = input({
   label: "Self Onboarding",
   required: false,
@@ -120,7 +107,6 @@ export const selfOnboardingInput = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const ssnInput = input({
   label: "Social Security Number",
   required: false,
@@ -129,7 +115,6 @@ export const ssnInput = input({
   clean: util.types.toString,
   example: "123-45-6789",
 });
-
 export const terminationDateInput = input({
   label: "Termination Date",
   required: true,
@@ -138,7 +123,6 @@ export const terminationDateInput = input({
   clean: util.types.toString,
   example: "2020-12-30",
 });
-
 export const runTerminationPayrollInput = input({
   label: "Run Termination Payroll?",
   required: true,
@@ -146,7 +130,6 @@ export const runTerminationPayrollInput = input({
   comments: "Whether to run a termination payroll for the employee.",
   clean: util.types.toBool,
 });
-
 export const webhookUrlInput = input({
   label: "Webhook URL",
   required: true,
@@ -155,7 +138,6 @@ export const webhookUrlInput = input({
   example: "https://example.com/webhooks",
   clean: util.types.toString,
 });
-
 export const subscriptionTypesInput = input({
   label: "Subscription Types",
   required: true,
@@ -165,7 +147,6 @@ export const subscriptionTypesInput = input({
   example: "type1,type2",
   clean: util.types.toString,
 });
-
 export const webhookSubscriptionUuidInput = input({
   label: "Webhook Subscription UUID",
   required: true,
@@ -174,7 +155,6 @@ export const webhookSubscriptionUuidInput = input({
   example: "00000000-0000-0000-0000-000000000000",
   clean: util.types.toString,
 });
-
 export const startingAfterUuidInput = input({
   label: "Starting After UUID",
   required: false,
@@ -183,7 +163,6 @@ export const startingAfterUuidInput = input({
     "Serves as a cursor, returns all events occurring after specified UUID (exclusive).",
   clean: toOptionalString,
 });
-
 export const eventTypeInput = input({
   label: "Event Type",
   required: false,
@@ -193,7 +172,6 @@ export const eventTypeInput = input({
   example: "employee.created",
   clean: toOptionalString,
 });
-
 export const limitInput = input({
   label: "Limit",
   required: false,
@@ -202,7 +180,6 @@ export const limitInput = input({
     "Limits the number of objects returned in a single response, between 1 and 100. Defaults to 25.",
   clean: toOptionalString,
 });
-
 export const resourceUuidInput = input({
   label: "Resource UUID",
   required: false,
@@ -212,7 +189,6 @@ export const resourceUuidInput = input({
   example: "00000000-0000-0000-0000-000000000000",
   clean: toOptionalString,
 });
-
 export const sortOrderInput = input({
   label: "Sort Order",
   required: false,
@@ -225,7 +201,6 @@ export const sortOrderInput = input({
     "Sort resulting events in ascending (asc) or descending (desc) chronological order.",
   clean: toOptionalString,
 });
-
 export const apiVersionInput = input({
   label: "API Version",
   required: true,

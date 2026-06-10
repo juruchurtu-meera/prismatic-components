@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, user } from "../../inputs";
 import { listUserAvailabilitySchedulesExamplePayload } from "../../examplePayloads";
-
 export const listUserAvailabilitySchedules = action({
   display: {
     label: "List User Availability Schedules",
@@ -10,7 +9,6 @@ export const listUserAvailabilitySchedules = action({
   },
   perform: async (context, { connection, user }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const { data } = await client.get("/user_availability_schedules", {
       params: {
         user,

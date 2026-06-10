@@ -1,13 +1,11 @@
 import { action, input } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, workspaceId } from "../../inputs";
-
 interface Team {
   gid: string;
   name: string;
   resource_type: string;
 }
-
 interface TeamReturn {
   data: {
     data: Team[];
@@ -18,7 +16,6 @@ interface TeamReturn {
     };
   };
 }
-
 export const findTeamByName = action({
   display: {
     label: "Find Team by Name",

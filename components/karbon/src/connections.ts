@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const karbonApiKey = connection({
   key: "karbonApiKey",
   display: {
@@ -25,5 +24,4 @@ export const karbonApiKey = connection({
     },
   },
 });
-
 export default [karbonApiKey];

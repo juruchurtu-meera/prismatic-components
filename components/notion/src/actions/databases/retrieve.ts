@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { retrieveDatabaseInputs } from "../../inputs";
 import { createClient } from "../../client";
 import { retrieveDatabaseResponse } from "../../examplePayloads";
-
 export const retrieveDatabase = action({
   display: {
     label: "Retrieve Database",

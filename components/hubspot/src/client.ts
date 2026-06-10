@@ -1,24 +1,38 @@
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
-import { type ClientProps, createClient } from "@prismatic-io/spectral/dist/clients/http";
-import { hubspotOAuth, baseUrl as importedBaseUrl, privateAppAccessToken } from "./connections";
-
+import {
+  type ClientProps,
+  createClient,
+} from "@prismatic-io/spectral/dist/clients/http";
+import {
+  hubspotOAuth,
+  baseUrl as importedBaseUrl,
+  privateAppAccessToken,
+} from "./connections";
 export const baseUrl = importedBaseUrl;
-
 interface GetHubspotClientProps {
   hubspotConnection: Connection;
   timeout?: unknown;
   debugRequest?: boolean;
   headers?: Record<string, unknown>;
 }
-
 export const validateConnection = (connection: Connection): void => {
-  if (connection.key !== hubspotOAuth.key && connection.key !== privateAppAccessToken.key) {
-    throw new ConnectionError(connection, "HubSpot connection is required for this action.");
+  if (
+    connection.key !== hubspotOAuth.key &&
+    connection.key !== privateAppAccessToken.key
+  ) {
+    throw new ConnectionError(
+      connection,
+      "HubSpot connection is required for this action.",
+    );
   }
 };
-
 const getClientConfiguration = (
-  { hubspotConnection, timeout, headers = {}, debugRequest }: GetHubspotClientProps,
+  {
+    hubspotConnection,
+    timeout,
+    headers = {},
+    debugRequest,
+  }: GetHubspotClientProps,
   addBearerToken: boolean,
 ): ClientProps => {
   const toReturn: ClientProps = {
@@ -30,7 +44,6 @@ const getClientConfiguration = (
     },
     debug: debugRequest,
   };
-
   if (addBearerToken) {
     switch (hubspotConnection.key) {
       case privateAppAccessToken.key:
@@ -46,14 +59,14 @@ const getClientConfiguration = (
         );
     }
   }
-
   return toReturn;
 };
-
-export const getHubspotClient = (params: GetHubspotClientProps, addBearerToken = true) => {
+export const getHubspotClient = (
+  params: GetHubspotClientProps,
+  addBearerToken = true,
+) => {
   validateConnection(params.hubspotConnection);
   const config = getClientConfiguration(params, addBearerToken);
   const client = createClient(config);
-
   return client;
 };

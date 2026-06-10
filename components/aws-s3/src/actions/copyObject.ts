@@ -1,4 +1,7 @@
-import { CopyObjectCommand, type CopyObjectCommandInput } from "@aws-sdk/client-s3";
+import {
+  CopyObjectCommand,
+  type CopyObjectCommandInput,
+} from "@aws-sdk/client-s3";
 import { action } from "@prismatic-io/spectral";
 import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
@@ -11,7 +14,6 @@ import {
   sourceBucket,
   sourceKey,
 } from "../inputs";
-
 export const copyObject = action({
   display: {
     label: "Copy Object",

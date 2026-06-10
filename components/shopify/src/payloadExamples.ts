@@ -34,7 +34,8 @@ const paginationExtraPayloadData = {
     "x-stats-apiclientid": "6511233",
     "x-stats-apipermissionid": "429538012345",
     "x-shopify-api-version": "2023-04",
-    "x-shopify-api-version-warning": "https://shopify.dev/concepts/about-apis/versioning",
+    "x-shopify-api-version-warning":
+      "https://shopify.dev/concepts/about-apis/versioning",
     http_x_shopify_shop_api_call_limit: "1/40",
     "x-shopify-shop-api-call-limit": "1/40",
     link: '<https://test-store.myshopify.com/admin/api/2023-04/resource?limit=2&page_info=eyJkaXJlY3Rpb24iOiJwcmV2IiwibGFzdF9pZCI6NTMyNjQwNDQ4NTI3MywibGFzdF92YWx1ZSI6IjIwMjQtMDMtMDYgMjE6MzE6MTQuNDMxO123456>; rel="previous", <https://test-store.myshopify.com/admin/api/2023-04/resource?limit=2&page_info=eyJkaXJlY3Rpb24iOiJuZXh0IiwibGFzdF9pZCI6NTMyNjQwNDMyMTQzMywibGFzdF92YWx1ZSI6IjIwMjQtMDMtMDYgMjE6MzA6NTYuOTY1NDYabcd>; rel="next"',
@@ -60,7 +61,6 @@ const paginationExtraPayloadData = {
     "alt-svc": 'h3=":443"; ma=86400',
   },
 };
-
 const genericHeaders = {
   headers: {
     date: "Wed, 27 Mar 2024 00:52:16 GMT",
@@ -78,7 +78,8 @@ const genericHeaders = {
     "x-stats-apiclientid": "6511123",
     "x-stats-apipermissionid": "429538082969",
     "x-shopify-api-version": "2023-04",
-    "x-shopify-api-version-warning": "https://shopify.dev/concepts/about-apis/versioning",
+    "x-shopify-api-version-warning":
+      "https://shopify.dev/concepts/about-apis/versioning",
     http_x_shopify_shop_api_call_limit: "3/40",
     "x-shopify-shop-api-call-limit": "3/40",
     "strict-transport-security": "max-age=7889238",
@@ -103,7 +104,6 @@ const genericHeaders = {
     "alt-svc": 'h3=":443"; ma=86400',
   },
 };
-
 export const orderExamplePayload = {
   order: {
     orders: [
@@ -822,7 +822,8 @@ export const orderExamplePayload = {
             transactions: [
               {
                 id: 179259969,
-                admin_graphql_api_id: "gid://shopify/OrderTransaction/179259969",
+                admin_graphql_api_id:
+                  "gid://shopify/OrderTransaction/179259969",
                 amount: "209.00",
                 authorization: "authorization-key",
                 created_at: "2005-08-05T12:59:12-04:00",
@@ -1136,20 +1137,15 @@ export const orderExamplePayload = {
     ],
   },
 };
-
 export const cancelOrderExamplePayload = {
   order: orderExamplePayload.order,
   notice: "Order has been cancelled",
 };
-
 export const countCustomersExamplePayload = {
   count: 1,
 };
-
 export const countVariantsExamplePayload = countCustomersExamplePayload;
-
 export const countOrdersExamplePayload = countCustomersExamplePayload;
-
 export const customerExamplePayload = {
   customer: {
     id: 207119551,
@@ -1228,17 +1224,14 @@ export const customerExamplePayload = {
     },
   },
 };
-
 export const createAccountActivationUrlExamplePayload = {
   account_activation_url:
     "https://jsmith.myshopify.com/account/activate/207119551/b2b567478ce4eeec0e8caeb7e472c543-1689114132",
 };
-
 export const listCustomersExamplePayload = {
   data: { customers: [customerExamplePayload] },
   ...paginationExtraPayloadData,
 };
-
 export const getDraftOrderExamplePayload = {
   data: {
     draft_order: {
@@ -1395,36 +1388,27 @@ export const getDraftOrderExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const createDraftOrderExamplePayload = getDraftOrderExamplePayload;
-
 export const completeDraftOrderExamplePayload = getDraftOrderExamplePayload;
-
 export const deleteDraftOrderExamplePayload = {
   data: {},
   ...genericHeaders,
 };
-
 export const deleteProductImageExamplePayload = deleteDraftOrderExamplePayload;
-
 export const deleteMetafieldExamplePayload = deleteDraftOrderExamplePayload;
-
 export const countDraftOrdersExamplePayload = {
   data: {
     count: 5,
   },
   ...genericHeaders,
 };
-
 export const countProductImagesExamplePayload = countDraftOrdersExamplePayload;
-
 export const listDraftOrdersExamplePayload = {
   data: {
     draft_orders: [getDraftOrderExamplePayload.data.draft_order],
   },
   ...paginationExtraPayloadData,
 };
-
 export const getProductExamplePayload = {
   product: {
     id: 632910392,
@@ -1520,7 +1504,6 @@ export const getProductExamplePayload = {
     },
   },
 };
-
 export const createProductExamplePayload = {
   product: {
     id: 1072481093,
@@ -1589,7 +1572,6 @@ export const createProductExamplePayload = {
     image: null,
   },
 };
-
 export const updateProductExamplePayload = {
   product: {
     id: 632910392,
@@ -1685,14 +1667,12 @@ export const updateProductExamplePayload = {
     },
   },
 };
-
 export const listProductsExamplePayload = {
   data: {
     products: [getProductExamplePayload.product],
   },
   ...paginationExtraPayloadData,
 };
-
 export const getLocationExamplePayload = {
   data: {
     location: {
@@ -1717,23 +1697,19 @@ export const getLocationExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const countLocationsExamplePayload = {
   data: {
     count: 5,
   },
   ...genericHeaders,
 };
-
 export const countProductsExamplePayload = countLocationsExamplePayload;
-
 export const listLocationsExamplePayload = {
   data: {
     locations: [getLocationExamplePayload.data.location],
   },
   ...paginationExtraPayloadData,
 };
-
 export const getProductImagesExamplePayload = {
   data: {
     image: {
@@ -1752,16 +1728,13 @@ export const getProductImagesExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const createProductImageExamplePayload = getProductImagesExamplePayload;
-
 export const listProductImagesExamplePayload = {
   data: {
     images: [getProductImagesExamplePayload.data.image],
   },
   ...genericHeaders,
 };
-
 export const getInventoryLevelsExamplePayload = {
   data: {
     inventory_level: {
@@ -1769,24 +1742,22 @@ export const getInventoryLevelsExamplePayload = {
       location_id: 844681632,
       available: 0,
       updated_at: "2023-07-11T18:02:41-04:00",
-      admin_graphql_api_id: "gid://shopify/InventoryLevel/844681632?inventory_item_id=457924702",
+      admin_graphql_api_id:
+        "gid://shopify/InventoryLevel/844681632?inventory_item_id=457924702",
     },
   },
   ...genericHeaders,
 };
-
 export const deleteInventoryLevelsExamplePayload = {
   data: {},
   ...genericHeaders,
 };
-
 export const listInventoryLevelsExamplePayload = {
   data: {
     inventory_levels: [getInventoryLevelsExamplePayload.data.inventory_level],
   },
   ...paginationExtraPayloadData,
 };
-
 export const connectInventoryLevelsExamplePayload = {
   data: {
     inventory_level: {
@@ -1794,12 +1765,12 @@ export const connectInventoryLevelsExamplePayload = {
       location_id: 844681632,
       available: 0,
       updated_at: "2024-01-02T08:57:20-05:00",
-      admin_graphql_api_id: "gid://shopify/InventoryLevel/844681632?inventory_item_id=457924702",
+      admin_graphql_api_id:
+        "gid://shopify/InventoryLevel/844681632?inventory_item_id=457924702",
     },
   },
   ...genericHeaders,
 };
-
 export const listCollectsExamplePayload = {
   data: {
     collects: [
@@ -1816,7 +1787,6 @@ export const listCollectsExamplePayload = {
   },
   ...paginationExtraPayloadData,
 };
-
 export const getCollectExamplePayload = {
   data: {
     collect: {
@@ -1831,19 +1801,16 @@ export const getCollectExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const countCollectExamplePayload = {
   data: {
     count: 2,
   },
   ...genericHeaders,
 };
-
 export const deleteCollectExamplePayload = {
   data: {},
   ...genericHeaders,
 };
-
 export const listCurrenciesExamplePayload = {
   data: {
     currencies: [
@@ -1865,7 +1832,6 @@ export const listCurrenciesExamplePayload = {
     ],
   },
 };
-
 export const listFulfillmentsExamplePayload = {
   data: {
     fulfillments: [
@@ -1973,8 +1939,11 @@ export const listFulfillmentsExamplePayload = {
         ],
         tracking_number: "1Z2345",
         tracking_numbers: ["1Z2345"],
-        tracking_url: "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345",
-        tracking_urls: ["https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345"],
+        tracking_url:
+          "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345",
+        tracking_urls: [
+          "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345",
+        ],
         receipt: {
           testcase: true,
           authorization: "123456",
@@ -1986,7 +1955,6 @@ export const listFulfillmentsExamplePayload = {
   },
   ...paginationExtraPayloadData,
 };
-
 export const getFulfillmentExamplePayload = {
   data: {
     fulfillment: {
@@ -2093,8 +2061,11 @@ export const getFulfillmentExamplePayload = {
       ],
       tracking_number: "1Z2345",
       tracking_numbers: ["1Z2345"],
-      tracking_url: "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345",
-      tracking_urls: ["https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345"],
+      tracking_url:
+        "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345",
+      tracking_urls: [
+        "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=1Z2345",
+      ],
       receipt: {
         testcase: true,
         authorization: "123456",
@@ -2105,7 +2076,6 @@ export const getFulfillmentExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const listFulfillmentOrdersExamplePayload = {
   data: {
     fulfillment_orders: [
@@ -2166,7 +2136,6 @@ export const listFulfillmentOrdersExamplePayload = {
     ],
   },
 };
-
 export const getFulfillmentOrderExamplePayload = {
   data: {
     fulfillment_order: {
@@ -2225,7 +2194,6 @@ export const getFulfillmentOrderExamplePayload = {
     },
   },
 };
-
 export const getInventoryItemExamplePayload = {
   data: {
     inventory_item: {
@@ -2245,7 +2213,6 @@ export const getInventoryItemExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const listInventoryItemsExamplePayload = {
   data: {
     inventory_items: [
@@ -2266,7 +2233,6 @@ export const listInventoryItemsExamplePayload = {
   },
   ...paginationExtraPayloadData,
 };
-
 export const updateInventoryItemsExamplePayload = {
   data: {
     inventory_item: {
@@ -2286,7 +2252,6 @@ export const updateInventoryItemsExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const getMetafieldsExamplePayload = {
   data: {
     metafield: {
@@ -2305,7 +2270,6 @@ export const getMetafieldsExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const listMetafieldsExamplePayload = {
   data: {
     metafields: [
@@ -2325,7 +2289,6 @@ export const listMetafieldsExamplePayload = {
   },
   ...paginationExtraPayloadData,
 };
-
 export const createMetafieldExamplePayload = {
   data: {
     metafield: {
@@ -2344,7 +2307,6 @@ export const createMetafieldExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const updateMetafieldExamplePayload = {
   data: {
     metafield: {
@@ -2363,7 +2325,6 @@ export const updateMetafieldExamplePayload = {
   },
   ...genericHeaders,
 };
-
 export const listOrdersExamplePayload = {
   data: {
     orders: [
@@ -2652,7 +2613,6 @@ export const listOrdersExamplePayload = {
   },
   ...paginationExtraPayloadData,
 };
-
 export const getShopConfigExamplePayload = {
   data: {
     shop: {
@@ -2713,7 +2673,6 @@ export const getShopConfigExamplePayload = {
     },
   },
 };
-
 export const listVariantsExamplePayload = {
   data: {
     variants: [
@@ -2758,7 +2717,6 @@ export const listVariantsExamplePayload = {
   },
   ...paginationExtraPayloadData,
 };
-
 export const getVariantExamplePayload = {
   variant: {
     id: 808950810,
@@ -2799,7 +2757,6 @@ export const getVariantExamplePayload = {
     admin_graphql_api_id: "gid://shopify/ProductVariant/808950810",
   },
 };
-
 export const updateVariantExamplePayload = {
   variant: {
     id: 808950810,
@@ -2839,7 +2796,6 @@ export const updateVariantExamplePayload = {
     admin_graphql_api_id: "gid://shopify/ProductVariant/808950810",
   },
 };
-
 export const createVariantExamplePayload = {
   variant: {
     id: 1070325039,
@@ -2879,7 +2835,6 @@ export const createVariantExamplePayload = {
     admin_graphql_api_id: "gid://shopify/ProductVariant/1070325039",
   },
 };
-
 export const listWebhooksExamplePayload = [
   {
     id: 4759306,
@@ -2894,7 +2849,6 @@ export const listWebhooksExamplePayload = [
     private_metafield_namespaces: [],
   },
 ];
-
 export const createWebhookExamplePayload = {
   webhook: {
     id: 8099884584,
@@ -2909,7 +2863,6 @@ export const createWebhookExamplePayload = {
     private_metafield_namespaces: [],
   },
 };
-
 export const listFulfillmentServicesExamplePayload = {
   fulfillment_services: [
     {
@@ -2929,7 +2882,6 @@ export const listFulfillmentServicesExamplePayload = {
     },
   ],
 };
-
 export const getFulfillmentServiceExamplePayload = {
   fulfillment_service: {
     id: 755357713,
@@ -2947,9 +2899,8 @@ export const getFulfillmentServiceExamplePayload = {
     admin_graphql_api_id: "gid://shopify/ApiFulfillmentService/755357713",
   },
 };
-
-export const updateFulfillmentServiceExamplePayload = getFulfillmentServiceExamplePayload;
-
+export const updateFulfillmentServiceExamplePayload =
+  getFulfillmentServiceExamplePayload;
 export const createFulfillmentServiceExamplePayload = {
   fulfillment_service: {
     id: 1061774510,
@@ -2968,7 +2919,6 @@ export const createFulfillmentServiceExamplePayload = {
     permits_sku_sharing: true,
   },
 };
-
 export const createOrderExamplePayload = {
   order: {
     id: 1073459963,

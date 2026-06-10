@@ -1,11 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
 export const ukgProBasicAuth = connection({
   key: "ukgProBasicAuth",
   display: {
@@ -41,7 +34,8 @@ export const ukgProBasicAuth = connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "The username for the Web Service Account configured in UKG Pro.",
+      comments:
+        "The username for the Web Service Account configured in UKG Pro.",
       example: "api_service_account",
     },
     password: {
@@ -54,70 +48,4 @@ export const ukgProBasicAuth = connection({
     },
   },
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default [ukgProBasicAuth];

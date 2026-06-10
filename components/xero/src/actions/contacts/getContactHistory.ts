@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { contactId, connectionInput } from "../../inputs";
 import { getContactHistoryExamplePayload } from "../../examplePayloads";
-
 export const getContactHistory = action({
   display: {
     label: "Get Contact History",

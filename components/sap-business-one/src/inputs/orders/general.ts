@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCode } from "../../util";
 import { documentLinesExample } from "../../exampleInputs/orders";
-
 export const docEntry = input({
   label: "Doc Entry",
   type: "string",
@@ -12,7 +11,6 @@ export const docEntry = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const cardCode = input({
   label: "Card Code",
   type: "string",
@@ -22,7 +20,6 @@ export const cardCode = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const docDueDate = input({
   label: "Doc Due Date",
   type: "string",
@@ -32,7 +29,6 @@ export const docDueDate = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const docLines = input({
   label: "Doc Lines",
   type: "code",

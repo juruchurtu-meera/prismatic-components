@@ -8,7 +8,6 @@ import { selectLocation } from "./location";
 import { selectReimbursement } from "./reimbursement";
 import { selectTransaction } from "./transaction";
 import { selectVendor } from "./vendor";
-
 export default {
   selectBill,
   selectBusinessEntity,

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createBambooClient } from "../../client";
 import { getEmployeeFileExamplePayload } from "../../examplePayloads";
 import { getEmployeeFileInputs } from "../../inputs";
-
 export const getEmployeeFile = action({
   display: {
     label: "Get Employee File",

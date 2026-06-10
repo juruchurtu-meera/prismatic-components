@@ -5,14 +5,16 @@ import {
   reposListForOrgExamplePayload,
   orgsListForAuthenticatedUserExamplePayload,
 } from "../examplePayloads";
-
 const orgsGet = action({
   display: {
     label: "Orgs Get",
     description: "Get an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}`);
     return { data };
   },
@@ -31,7 +33,6 @@ const orgsGet = action({
     },
   },
 });
-
 const orgsUpdate = action({
   display: {
     label: "Orgs Update",
@@ -64,7 +65,10 @@ const orgsUpdate = action({
       blog,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/orgs/${org}`, {
       billing_email: billingEmail,
       company,
@@ -275,14 +279,16 @@ const orgsUpdate = action({
     },
   },
 });
-
 const actionsGetActionsCacheUsageForOrg = action({
   display: {
     label: "Actions Get Actions Cache Usage For Org",
     description: "Get GitHub Actions cache usage for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/actions/cache/usage`);
     return { data };
   },
@@ -301,7 +307,6 @@ const actionsGetActionsCacheUsageForOrg = action({
     },
   },
 });
-
 const actionsGetActionsCacheUsageByRepoForOrg = action({
   display: {
     label: "Actions Get Actions Cache Usage By Repo For Org",
@@ -309,7 +314,10 @@ const actionsGetActionsCacheUsageByRepoForOrg = action({
       "List repositories with GitHub Actions cache usage for an organization",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/cache/usage-by-repository`,
       {
@@ -347,14 +355,16 @@ const actionsGetActionsCacheUsageByRepoForOrg = action({
     },
   },
 });
-
 const actionsGetGithubActionsPermissionsOrganization = action({
   display: {
     label: "Actions Get Github Actions Permissions Organization",
     description: "Get GitHub Actions permissions for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/actions/permissions`);
     return { data };
   },
@@ -373,7 +383,6 @@ const actionsGetGithubActionsPermissionsOrganization = action({
     },
   },
 });
-
 const actionsSetGithubActionsPermissionsOrganization = action({
   display: {
     label: "Actions Set Github Actions Permissions Organization",
@@ -383,7 +392,10 @@ const actionsSetGithubActionsPermissionsOrganization = action({
     context,
     { connection, org, enabledRepositories, allowedActions },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/orgs/${org}/actions/permissions`, {
       enabled_repositories: enabledRepositories,
       allowed_actions: allowedActions,
@@ -431,7 +443,6 @@ const actionsSetGithubActionsPermissionsOrganization = action({
     },
   },
 });
-
 const actionsListSelectedRepositoriesEnabledGithubActionsOrganization = action({
   display: {
     label:
@@ -440,7 +451,10 @@ const actionsListSelectedRepositoriesEnabledGithubActionsOrganization = action({
       "List selected repositories enabled for GitHub Actions in an organization",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/permissions/repositories`,
       {
@@ -478,7 +492,6 @@ const actionsListSelectedRepositoriesEnabledGithubActionsOrganization = action({
     },
   },
 });
-
 const actionsSetSelectedRepositoriesEnabledGithubActionsOrganization = action({
   display: {
     label:
@@ -487,7 +500,10 @@ const actionsSetSelectedRepositoriesEnabledGithubActionsOrganization = action({
       "Set selected repositories enabled for GitHub Actions in an organization",
   },
   perform: async (context, { connection, org, selectedRepositoryIds }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/permissions/repositories`,
       {
@@ -518,7 +534,6 @@ const actionsSetSelectedRepositoriesEnabledGithubActionsOrganization = action({
     },
   },
 });
-
 const actionsEnableSelectedRepositoryGithubActionsOrganization = action({
   display: {
     label: "Actions Enable Selected Repository Github Actions Organization",
@@ -526,7 +541,10 @@ const actionsEnableSelectedRepositoryGithubActionsOrganization = action({
       "Enable a selected repository for GitHub Actions in an organization",
   },
   perform: async (context, { connection, org, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/permissions/repositories/${repositoryId}`,
       {},
@@ -555,7 +573,6 @@ const actionsEnableSelectedRepositoryGithubActionsOrganization = action({
     },
   },
 });
-
 const actionsDisableSelectedRepositoryGithubActionsOrganization = action({
   display: {
     label: "Actions Disable Selected Repository Github Actions Organization",
@@ -563,7 +580,10 @@ const actionsDisableSelectedRepositoryGithubActionsOrganization = action({
       "Disable a selected repository for GitHub Actions in an organization",
   },
   perform: async (context, { connection, org, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/permissions/repositories/${repositoryId}`,
     );
@@ -591,7 +611,6 @@ const actionsDisableSelectedRepositoryGithubActionsOrganization = action({
     },
   },
 });
-
 const actionsGetAllowedActionsOrganization = action({
   display: {
     label: "Actions Get Allowed Actions Organization",
@@ -599,7 +618,10 @@ const actionsGetAllowedActionsOrganization = action({
       "Get allowed actions and reusable workflows for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/permissions/selected-actions`,
     );
@@ -620,7 +642,6 @@ const actionsGetAllowedActionsOrganization = action({
     },
   },
 });
-
 const actionsSetAllowedActionsOrganization = action({
   display: {
     label: "Actions Set Allowed Actions Organization",
@@ -631,7 +652,10 @@ const actionsSetAllowedActionsOrganization = action({
     context,
     { connection, org, githubOwnedAllowed, verifiedAllowed, patternsAllowed },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/permissions/selected-actions`,
       {
@@ -680,7 +704,6 @@ const actionsSetAllowedActionsOrganization = action({
     },
   },
 });
-
 const actionsGetGithubActionsDefaultWorkflowPermissionsOrganization = action({
   display: {
     label:
@@ -688,7 +711,10 @@ const actionsGetGithubActionsDefaultWorkflowPermissionsOrganization = action({
     description: "Get default workflow permissions for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/permissions/workflow`,
     );
@@ -709,7 +735,6 @@ const actionsGetGithubActionsDefaultWorkflowPermissionsOrganization = action({
     },
   },
 });
-
 const actionsSetGithubActionsDefaultWorkflowPermissionsOrganization = action({
   display: {
     label:
@@ -725,7 +750,10 @@ const actionsSetGithubActionsDefaultWorkflowPermissionsOrganization = action({
       canApprovePullRequestReviews,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/permissions/workflow`,
       {
@@ -769,7 +797,6 @@ const actionsSetGithubActionsDefaultWorkflowPermissionsOrganization = action({
     },
   },
 });
-
 const actionsListSelfHostedRunnerGroupsForOrg = action({
   display: {
     label: "Actions List Self Hosted Runner Groups For Org",
@@ -779,7 +806,10 @@ const actionsListSelfHostedRunnerGroupsForOrg = action({
     context,
     { connection, org, perPage, page, visibleToRepository },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/actions/runner-groups`, {
       params: {
         per_page: perPage,
@@ -826,7 +856,6 @@ const actionsListSelfHostedRunnerGroupsForOrg = action({
     },
   },
 });
-
 const actionsCreateSelfHostedRunnerGroupForOrg = action({
   display: {
     label: "Actions Create Self Hosted Runner Group For Org",
@@ -846,7 +875,10 @@ const actionsCreateSelfHostedRunnerGroupForOrg = action({
       selectedWorkflows,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/actions/runner-groups`, {
       name,
       visibility,
@@ -931,14 +963,16 @@ const actionsCreateSelfHostedRunnerGroupForOrg = action({
     },
   },
 });
-
 const actionsGetSelfHostedRunnerGroupForOrg = action({
   display: {
     label: "Actions Get Self Hosted Runner Group For Org",
     description: "Get a self-hosted runner group for an organization",
   },
   perform: async (context, { connection, org, runnerGroupId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}`,
     );
@@ -966,7 +1000,6 @@ const actionsGetSelfHostedRunnerGroupForOrg = action({
     },
   },
 });
-
 const actionsUpdateSelfHostedRunnerGroupForOrg = action({
   display: {
     label: "Actions Update Self Hosted Runner Group For Org",
@@ -985,7 +1018,10 @@ const actionsUpdateSelfHostedRunnerGroupForOrg = action({
       selectedWorkflows,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}`,
       {
@@ -1063,14 +1099,16 @@ const actionsUpdateSelfHostedRunnerGroupForOrg = action({
     },
   },
 });
-
 const actionsDeleteSelfHostedRunnerGroupFromOrg = action({
   display: {
     label: "Actions Delete Self Hosted Runner Group From Org",
     description: "Delete a self-hosted runner group from an organization",
   },
   perform: async (context, { connection, org, runnerGroupId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}`,
     );
@@ -1098,7 +1136,6 @@ const actionsDeleteSelfHostedRunnerGroupFromOrg = action({
     },
   },
 });
-
 const actionsListRepoAccessToSelfHostedRunnerGroupInOrg = action({
   display: {
     label: "Actions List Repo Access To Self Hosted Runner Group In Org",
@@ -1109,7 +1146,10 @@ const actionsListRepoAccessToSelfHostedRunnerGroupInOrg = action({
     context,
     { connection, org, runnerGroupId, page, perPage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/repositories`,
       { params: { page, per_page: perPage } },
@@ -1152,7 +1192,6 @@ const actionsListRepoAccessToSelfHostedRunnerGroupInOrg = action({
     },
   },
 });
-
 const actionsSetRepoAccessToSelfHostedRunnerGroupInOrg = action({
   display: {
     label: "Actions Set Repo Access To Self Hosted Runner Group In Org",
@@ -1163,7 +1202,10 @@ const actionsSetRepoAccessToSelfHostedRunnerGroupInOrg = action({
     context,
     { connection, org, runnerGroupId, selectedRepositoryIds },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/repositories`,
       { selected_repository_ids: selectedRepositoryIds },
@@ -1199,7 +1241,6 @@ const actionsSetRepoAccessToSelfHostedRunnerGroupInOrg = action({
     },
   },
 });
-
 const actionsAddRepoAccessToSelfHostedRunnerGroupInOrg = action({
   display: {
     label: "Actions Add Repo Access To Self Hosted Runner Group In Org",
@@ -1210,7 +1251,10 @@ const actionsAddRepoAccessToSelfHostedRunnerGroupInOrg = action({
     context,
     { connection, org, runnerGroupId, repositoryId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/repositories/${repositoryId}`,
       {},
@@ -1246,7 +1290,6 @@ const actionsAddRepoAccessToSelfHostedRunnerGroupInOrg = action({
     },
   },
 });
-
 const actionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg = action({
   display: {
     label: "Actions Remove Repo Access To Self Hosted Runner Group In Org",
@@ -1257,7 +1300,10 @@ const actionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg = action({
     context,
     { connection, org, runnerGroupId, repositoryId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/repositories/${repositoryId}`,
     );
@@ -1292,7 +1338,6 @@ const actionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg = action({
     },
   },
 });
-
 const actionsListSelfHostedRunnersInGroupForOrg = action({
   display: {
     label: "Actions List Self Hosted Runners In Group For Org",
@@ -1302,7 +1347,10 @@ const actionsListSelfHostedRunnersInGroupForOrg = action({
     context,
     { connection, org, runnerGroupId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/runners`,
       { params: { per_page: perPage, page } },
@@ -1345,14 +1393,16 @@ const actionsListSelfHostedRunnersInGroupForOrg = action({
     },
   },
 });
-
 const actionsSetSelfHostedRunnersInGroupForOrg = action({
   display: {
     label: "Actions Set Self Hosted Runners In Group For Org",
     description: "Set self-hosted runners in a group for an organization",
   },
   perform: async (context, { connection, org, runnerGroupId, runners }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/runners`,
       { runners },
@@ -1388,14 +1438,16 @@ const actionsSetSelfHostedRunnersInGroupForOrg = action({
     },
   },
 });
-
 const actionsAddSelfHostedRunnerToGroupForOrg = action({
   display: {
     label: "Actions Add Self Hosted Runner To Group For Org",
     description: "Add a self-hosted runner to a group for an organization",
   },
   perform: async (context, { connection, org, runnerGroupId, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/runners/${runnerId}`,
       {},
@@ -1431,14 +1483,16 @@ const actionsAddSelfHostedRunnerToGroupForOrg = action({
     },
   },
 });
-
 const actionsRemoveSelfHostedRunnerFromGroupForOrg = action({
   display: {
     label: "Actions Remove Self Hosted Runner From Group For Org",
     description: "Remove a self-hosted runner from a group for an organization",
   },
   perform: async (context, { connection, org, runnerGroupId, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/runner-groups/${runnerGroupId}/runners/${runnerId}`,
     );
@@ -1473,14 +1527,16 @@ const actionsRemoveSelfHostedRunnerFromGroupForOrg = action({
     },
   },
 });
-
 const actionsListSelfHostedRunnersForOrg = action({
   display: {
     label: "Actions List Self Hosted Runners For Org",
     description: "List self-hosted runners for an organization",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/actions/runners`, {
       params: { per_page: perPage, page },
     });
@@ -1515,14 +1571,16 @@ const actionsListSelfHostedRunnersForOrg = action({
     },
   },
 });
-
 const actionsListRunnerApplicationsForOrg = action({
   display: {
     label: "Actions List Runner Applications For Org",
     description: "List runner applications for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/actions/runners/downloads`);
     return { data };
   },
@@ -1541,14 +1599,16 @@ const actionsListRunnerApplicationsForOrg = action({
     },
   },
 });
-
 const actionsCreateRegistrationTokenForOrg = action({
   display: {
     label: "Actions Create Registration Token For Org",
     description: "Create a registration token for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/actions/runners/registration-token`,
       {},
@@ -1570,14 +1630,16 @@ const actionsCreateRegistrationTokenForOrg = action({
     },
   },
 });
-
 const actionsCreateRemoveTokenForOrg = action({
   display: {
     label: "Actions Create Remove Token For Org",
     description: "Create a remove token for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/actions/runners/remove-token`,
       {},
@@ -1599,14 +1661,16 @@ const actionsCreateRemoveTokenForOrg = action({
     },
   },
 });
-
 const actionsGetSelfHostedRunnerForOrg = action({
   display: {
     label: "Actions Get Self Hosted Runner For Org",
     description: "Get a self-hosted runner for an organization",
   },
   perform: async (context, { connection, org, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/runners/${runnerId}`,
     );
@@ -1634,14 +1698,16 @@ const actionsGetSelfHostedRunnerForOrg = action({
     },
   },
 });
-
 const actionsDeleteSelfHostedRunnerFromOrg = action({
   display: {
     label: "Actions Delete Self Hosted Runner From Org",
     description: "Delete a self-hosted runner from an organization",
   },
   perform: async (context, { connection, org, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/runners/${runnerId}`,
     );
@@ -1669,14 +1735,16 @@ const actionsDeleteSelfHostedRunnerFromOrg = action({
     },
   },
 });
-
 const actionsListLabelsForSelfHostedRunnerForOrg = action({
   display: {
     label: "Actions List Labels For Self Hosted Runner For Org",
     description: "List labels for a self-hosted runner for an organization",
   },
   perform: async (context, { connection, org, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/runners/${runnerId}/labels`,
     );
@@ -1704,7 +1772,6 @@ const actionsListLabelsForSelfHostedRunnerForOrg = action({
     },
   },
 });
-
 const actionsAddCustomLabelsToSelfHostedRunnerForOrg = action({
   display: {
     label: "Actions Add Custom Labels To Self Hosted Runner For Org",
@@ -1712,7 +1779,10 @@ const actionsAddCustomLabelsToSelfHostedRunnerForOrg = action({
       "Add custom labels to a self-hosted runner for an organization",
   },
   perform: async (context, { connection, org, runnerId, labels }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/actions/runners/${runnerId}/labels`,
       {
@@ -1750,7 +1820,6 @@ const actionsAddCustomLabelsToSelfHostedRunnerForOrg = action({
     },
   },
 });
-
 const actionsSetCustomLabelsForSelfHostedRunnerForOrg = action({
   display: {
     label: "Actions Set Custom Labels For Self Hosted Runner For Org",
@@ -1758,7 +1827,10 @@ const actionsSetCustomLabelsForSelfHostedRunnerForOrg = action({
       "Set custom labels for a self-hosted runner for an organization",
   },
   perform: async (context, { connection, org, runnerId, labels }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/runners/${runnerId}/labels`,
       {
@@ -1796,7 +1868,6 @@ const actionsSetCustomLabelsForSelfHostedRunnerForOrg = action({
     },
   },
 });
-
 const actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg = action({
   display: {
     label: "Actions Remove All Custom Labels From Self Hosted Runner For Org",
@@ -1804,7 +1875,10 @@ const actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg = action({
       "Remove all custom labels from a self-hosted runner for an organization",
   },
   perform: async (context, { connection, org, runnerId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/runners/${runnerId}/labels`,
     );
@@ -1832,7 +1906,6 @@ const actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg = action({
     },
   },
 });
-
 const actionsRemoveCustomLabelFromSelfHostedRunnerForOrg = action({
   display: {
     label: "Actions Remove Custom Label From Self Hosted Runner For Org",
@@ -1840,7 +1913,10 @@ const actionsRemoveCustomLabelFromSelfHostedRunnerForOrg = action({
       "Remove a custom label from a self-hosted runner for an organization",
   },
   perform: async (context, { connection, org, runnerId, name }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/runners/${runnerId}/labels/${name}`,
     );
@@ -1875,14 +1951,16 @@ const actionsRemoveCustomLabelFromSelfHostedRunnerForOrg = action({
     },
   },
 });
-
 const actionsListOrgSecrets = action({
   display: {
     label: "Actions List Org Secrets",
     description: "List organization secrets",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/actions/secrets`, {
       params: { per_page: perPage, page },
     });
@@ -1917,14 +1995,16 @@ const actionsListOrgSecrets = action({
     },
   },
 });
-
 const actionsGetOrgPublicKey = action({
   display: {
     label: "Actions Get Org Public Key",
     description: "Get an organization public key",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/secrets/public-key`,
     );
@@ -1945,14 +2025,16 @@ const actionsGetOrgPublicKey = action({
     },
   },
 });
-
 const actionsGetOrgSecret = action({
   display: {
     label: "Actions Get Org Secret",
     description: "Get an organization secret",
   },
   perform: async (context, { connection, org, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/secrets/${secretName}`,
     );
@@ -1980,7 +2062,6 @@ const actionsGetOrgSecret = action({
     },
   },
 });
-
 const actionsCreateOrUpdateOrgSecret = action({
   display: {
     label: "Actions Create Or Update Org Secret",
@@ -1998,7 +2079,10 @@ const actionsCreateOrUpdateOrgSecret = action({
       selectedRepositoryIds,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/secrets/${secretName}`,
       {
@@ -2068,14 +2152,16 @@ const actionsCreateOrUpdateOrgSecret = action({
     },
   },
 });
-
 const actionsDeleteOrgSecret = action({
   display: {
     label: "Actions Delete Org Secret",
     description: "Delete an organization secret",
   },
   perform: async (context, { connection, org, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/secrets/${secretName}`,
     );
@@ -2103,14 +2189,16 @@ const actionsDeleteOrgSecret = action({
     },
   },
 });
-
 const actionsListSelectedReposForOrgSecret = action({
   display: {
     label: "Actions List Selected Repos For Org Secret",
     description: "List selected repositories for an organization secret",
   },
   perform: async (context, { connection, org, secretName, page, perPage }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/actions/secrets/${secretName}/repositories`,
       { params: { page, per_page: perPage } },
@@ -2153,7 +2241,6 @@ const actionsListSelectedReposForOrgSecret = action({
     },
   },
 });
-
 const actionsSetSelectedReposForOrgSecret = action({
   display: {
     label: "Actions Set Selected Repos For Org Secret",
@@ -2163,7 +2250,10 @@ const actionsSetSelectedReposForOrgSecret = action({
     context,
     { connection, org, secretName, selectedRepositoryIds },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/secrets/${secretName}/repositories`,
       { selected_repository_ids: selectedRepositoryIds },
@@ -2200,14 +2290,16 @@ const actionsSetSelectedReposForOrgSecret = action({
     },
   },
 });
-
 const actionsAddSelectedRepoToOrgSecret = action({
   display: {
     label: "Actions Add Selected Repo To Org Secret",
     description: "Add selected repository to an organization secret",
   },
   perform: async (context, { connection, org, secretName, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/actions/secrets/${secretName}/repositories/${repositoryId}`,
       {},
@@ -2242,14 +2334,16 @@ const actionsAddSelectedRepoToOrgSecret = action({
     },
   },
 });
-
 const actionsRemoveSelectedRepoFromOrgSecret = action({
   display: {
     label: "Actions Remove Selected Repo From Org Secret",
     description: "Remove selected repository from an organization secret",
   },
   perform: async (context, { connection, org, secretName, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/actions/secrets/${secretName}/repositories/${repositoryId}`,
     );
@@ -2283,7 +2377,6 @@ const actionsRemoveSelectedRepoFromOrgSecret = action({
     },
   },
 });
-
 const orgsGetAuditLog = action({
   display: {
     label: "Orgs Get Audit Log",
@@ -2293,7 +2386,10 @@ const orgsGetAuditLog = action({
     context,
     { connection, org, phrase, include, after, before, order, perPage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/audit-log`, {
       params: { phrase, include, after, before, order, per_page: perPage },
     });
@@ -2365,14 +2461,16 @@ const orgsGetAuditLog = action({
     },
   },
 });
-
 const orgsListBlockedUsers = action({
   display: {
     label: "Orgs List Blocked Users",
     description: "List users blocked by an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/blocks`);
     return { data };
   },
@@ -2391,14 +2489,16 @@ const orgsListBlockedUsers = action({
     },
   },
 });
-
 const orgsCheckBlockedUser = action({
   display: {
     label: "Orgs Check Blocked User",
     description: "Check if a user is blocked by an organization",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/blocks/${username}`);
     return { data };
   },
@@ -2424,14 +2524,16 @@ const orgsCheckBlockedUser = action({
     },
   },
 });
-
 const orgsBlockUser = action({
   display: {
     label: "Orgs Block User",
     description: "Block a user from an organization",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/orgs/${org}/blocks/${username}`, {});
     return { data };
   },
@@ -2457,14 +2559,16 @@ const orgsBlockUser = action({
     },
   },
 });
-
 const orgsUnblockUser = action({
   display: {
     label: "Orgs Unblock User",
     description: "Unblock a user from an organization",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/orgs/${org}/blocks/${username}`);
     return { data };
   },
@@ -2490,7 +2594,6 @@ const orgsUnblockUser = action({
     },
   },
 });
-
 const codeScanningListAlertsForOrg = action({
   display: {
     label: "Code Scanning List Alerts For Org",
@@ -2512,7 +2615,10 @@ const codeScanningListAlertsForOrg = action({
       sort,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/code-scanning/alerts`, {
       params: {
         tool_name: toolName,
@@ -2623,14 +2729,16 @@ const codeScanningListAlertsForOrg = action({
     },
   },
 });
-
 const orgsListSamlSsoAuthorizations = action({
   display: {
     label: "Orgs List Saml Sso Authorizations",
     description: "List SAML SSO authorizations for an organization",
   },
   perform: async (context, { connection, org, perPage, page, login }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/credential-authorizations`,
       { params: { per_page: perPage, page, login } },
@@ -2672,14 +2780,16 @@ const orgsListSamlSsoAuthorizations = action({
     },
   },
 });
-
 const orgsRemoveSamlSsoAuthorization = action({
   display: {
     label: "Orgs Remove Saml Sso Authorization",
     description: "Remove a SAML SSO authorization for an organization",
   },
   perform: async (context, { connection, org, credentialId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/credential-authorizations/${credentialId}`,
     );
@@ -2706,14 +2816,16 @@ const orgsRemoveSamlSsoAuthorization = action({
     },
   },
 });
-
 const dependabotListOrgSecrets = action({
   display: {
     label: "Dependabot List Org Secrets",
     description: "List organization secrets",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/dependabot/secrets`, {
       params: { per_page: perPage, page },
     });
@@ -2748,14 +2860,16 @@ const dependabotListOrgSecrets = action({
     },
   },
 });
-
 const dependabotGetOrgPublicKey = action({
   display: {
     label: "Dependabot Get Org Public Key",
     description: "Get an organization public key",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/dependabot/secrets/public-key`,
     );
@@ -2776,14 +2890,16 @@ const dependabotGetOrgPublicKey = action({
     },
   },
 });
-
 const dependabotGetOrgSecret = action({
   display: {
     label: "Dependabot Get Org Secret",
     description: "Get an organization secret",
   },
   perform: async (context, { connection, org, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/dependabot/secrets/${secretName}`,
     );
@@ -2811,7 +2927,6 @@ const dependabotGetOrgSecret = action({
     },
   },
 });
-
 const dependabotCreateOrUpdateOrgSecret = action({
   display: {
     label: "Dependabot Create Or Update Org Secret",
@@ -2829,7 +2944,10 @@ const dependabotCreateOrUpdateOrgSecret = action({
       selectedRepositoryIds,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/dependabot/secrets/${secretName}`,
       {
@@ -2899,14 +3017,16 @@ const dependabotCreateOrUpdateOrgSecret = action({
     },
   },
 });
-
 const dependabotDeleteOrgSecret = action({
   display: {
     label: "Dependabot Delete Org Secret",
     description: "Delete an organization secret",
   },
   perform: async (context, { connection, org, secretName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/dependabot/secrets/${secretName}`,
     );
@@ -2934,14 +3054,16 @@ const dependabotDeleteOrgSecret = action({
     },
   },
 });
-
 const dependabotListSelectedReposForOrgSecret = action({
   display: {
     label: "Dependabot List Selected Repos For Org Secret",
     description: "List selected repositories for an organization secret",
   },
   perform: async (context, { connection, org, secretName, page, perPage }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/dependabot/secrets/${secretName}/repositories`,
       { params: { page, per_page: perPage } },
@@ -2984,7 +3106,6 @@ const dependabotListSelectedReposForOrgSecret = action({
     },
   },
 });
-
 const dependabotSetSelectedReposForOrgSecret = action({
   display: {
     label: "Dependabot Set Selected Repos For Org Secret",
@@ -2994,7 +3115,10 @@ const dependabotSetSelectedReposForOrgSecret = action({
     context,
     { connection, org, secretName, selectedRepositoryIds },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/dependabot/secrets/${secretName}/repositories`,
       { selected_repository_ids: selectedRepositoryIds },
@@ -3031,14 +3155,16 @@ const dependabotSetSelectedReposForOrgSecret = action({
     },
   },
 });
-
 const dependabotAddSelectedRepoToOrgSecret = action({
   display: {
     label: "Dependabot Add Selected Repo To Org Secret",
     description: "Add selected repository to an organization secret",
   },
   perform: async (context, { connection, org, secretName, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/dependabot/secrets/${secretName}/repositories/${repositoryId}`,
       {},
@@ -3073,14 +3199,16 @@ const dependabotAddSelectedRepoToOrgSecret = action({
     },
   },
 });
-
 const dependabotRemoveSelectedRepoFromOrgSecret = action({
   display: {
     label: "Dependabot Remove Selected Repo From Org Secret",
     description: "Remove selected repository from an organization secret",
   },
   perform: async (context, { connection, org, secretName, repositoryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/dependabot/secrets/${secretName}/repositories/${repositoryId}`,
     );
@@ -3114,14 +3242,16 @@ const dependabotRemoveSelectedRepoFromOrgSecret = action({
     },
   },
 });
-
 const activityListPublicOrgEvents = action({
   display: {
     label: "Activity List Public Org Events",
     description: "List public organization events",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/events`, {
       params: { per_page: perPage, page },
     });
@@ -3156,14 +3286,16 @@ const activityListPublicOrgEvents = action({
     },
   },
 });
-
 const teamsExternalIdpGroupInfoForOrg = action({
   display: {
     label: "Teams External Idp Group Info For Org",
     description: "Get an external group",
   },
   perform: async (context, { connection, org, groupId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/external-group/${groupId}`);
     return { data };
   },
@@ -3189,14 +3321,16 @@ const teamsExternalIdpGroupInfoForOrg = action({
     },
   },
 });
-
 const teamsListExternalIdpGroupsForOrg = action({
   display: {
     label: "Teams List External Idp Groups For Org",
     description: "List external groups in an organization",
   },
   perform: async (context, { connection, org, perPage, page, displayName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/external-groups`, {
       params: { per_page: perPage, page, display_name: displayName },
     });
@@ -3237,14 +3371,16 @@ const teamsListExternalIdpGroupsForOrg = action({
     },
   },
 });
-
 const orgsListFailedInvitations = action({
   display: {
     label: "Orgs List Failed Invitations",
     description: "List failed organization invitations",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/failed_invitations`, {
       params: { per_page: perPage, page },
     });
@@ -3279,14 +3415,16 @@ const orgsListFailedInvitations = action({
     },
   },
 });
-
 const orgsListWebhooks = action({
   display: {
     label: "Orgs List Webhooks",
     description: "List organization webhooks",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/hooks`, {
       params: { per_page: perPage, page },
     });
@@ -3321,7 +3459,6 @@ const orgsListWebhooks = action({
     },
   },
 });
-
 const orgsCreateWebhook = action({
   display: {
     label: "Orgs Create Webhook",
@@ -3331,7 +3468,10 @@ const orgsCreateWebhook = action({
     context,
     { connection, org, name, config, events, active },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/hooks`, {
       name,
       config,
@@ -3379,14 +3519,16 @@ const orgsCreateWebhook = action({
     },
   },
 });
-
 const orgsGetWebhook = action({
   display: {
     label: "Orgs Get Webhook",
     description: "Get an organization webhook",
   },
   perform: async (context, { connection, org, hookId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/hooks/${hookId}`);
     return { data };
   },
@@ -3412,7 +3554,6 @@ const orgsGetWebhook = action({
     },
   },
 });
-
 const orgsUpdateWebhook = action({
   display: {
     label: "Orgs Update Webhook",
@@ -3422,7 +3563,10 @@ const orgsUpdateWebhook = action({
     context,
     { connection, org, hookId, config, events, active, name },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/orgs/${org}/hooks/${hookId}`, {
       config,
       events,
@@ -3477,14 +3621,16 @@ const orgsUpdateWebhook = action({
     },
   },
 });
-
 const orgsDeleteWebhook = action({
   display: {
     label: "Orgs Delete Webhook",
     description: "Delete an organization webhook",
   },
   perform: async (context, { connection, org, hookId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/orgs/${org}/hooks/${hookId}`);
     return { data };
   },
@@ -3510,14 +3656,16 @@ const orgsDeleteWebhook = action({
     },
   },
 });
-
 const orgsGetWebhookConfigForOrg = action({
   display: {
     label: "Orgs Get Webhook Config For Org",
     description: "Get a webhook configuration for an organization",
   },
   perform: async (context, { connection, org, hookId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/hooks/${hookId}/config`);
     return { data };
   },
@@ -3543,7 +3691,6 @@ const orgsGetWebhookConfigForOrg = action({
     },
   },
 });
-
 const orgsUpdateWebhookConfigForOrg = action({
   display: {
     label: "Orgs Update Webhook Config For Org",
@@ -3553,7 +3700,10 @@ const orgsUpdateWebhookConfigForOrg = action({
     context,
     { connection, org, hookId, url, contentType, secret, insecureSsl },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/orgs/${org}/hooks/${hookId}/config`, {
       url,
       content_type: contentType,
@@ -3615,14 +3765,16 @@ const orgsUpdateWebhookConfigForOrg = action({
     },
   },
 });
-
 const orgsListWebhookDeliveries = action({
   display: {
     label: "Orgs List Webhook Deliveries",
     description: "List deliveries for an organization webhook",
   },
   perform: async (context, { connection, org, hookId, perPage, cursor }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/hooks/${hookId}/deliveries`,
       { params: { per_page: perPage, cursor } },
@@ -3666,14 +3818,16 @@ const orgsListWebhookDeliveries = action({
     },
   },
 });
-
 const orgsGetWebhookDelivery = action({
   display: {
     label: "Orgs Get Webhook Delivery",
     description: "Get a webhook delivery for an organization webhook",
   },
   perform: async (context, { connection, org, hookId, deliveryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/hooks/${hookId}/deliveries/${deliveryId}`,
     );
@@ -3707,14 +3861,16 @@ const orgsGetWebhookDelivery = action({
     },
   },
 });
-
 const orgsRedeliverWebhookDelivery = action({
   display: {
     label: "Orgs Redeliver Webhook Delivery",
     description: "Redeliver a delivery for an organization webhook",
   },
   perform: async (context, { connection, org, hookId, deliveryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/hooks/${hookId}/deliveries/${deliveryId}/attempts`,
       {},
@@ -3749,14 +3905,16 @@ const orgsRedeliverWebhookDelivery = action({
     },
   },
 });
-
 const orgsPingWebhook = action({
   display: {
     label: "Orgs Ping Webhook",
     description: "Ping an organization webhook",
   },
   perform: async (context, { connection, org, hookId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/hooks/${hookId}/pings`,
       {},
@@ -3785,14 +3943,16 @@ const orgsPingWebhook = action({
     },
   },
 });
-
 const appsGetOrgInstallation = action({
   display: {
     label: "Apps Get Org Installation",
     description: "Get an organization installation for the authenticated app",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/installation`);
     return { data };
   },
@@ -3811,14 +3971,16 @@ const appsGetOrgInstallation = action({
     },
   },
 });
-
 const orgsListAppInstallations = action({
   display: {
     label: "Orgs List App Installations",
     description: "List app installations for an organization",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/installations`, {
       params: { per_page: perPage, page },
     });
@@ -3853,14 +4015,16 @@ const orgsListAppInstallations = action({
     },
   },
 });
-
 const interactionsGetRestrictionsForOrg = action({
   display: {
     label: "Interactions Get Restrictions For Org",
     description: "Get interaction restrictions for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/interaction-limits`);
     return { data };
   },
@@ -3879,14 +4043,16 @@ const interactionsGetRestrictionsForOrg = action({
     },
   },
 });
-
 const interactionsSetRestrictionsForOrg = action({
   display: {
     label: "Interactions Set Restrictions For Org",
     description: "Set interaction restrictions for an organization",
   },
   perform: async (context, { connection, org, limit, expiry }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/orgs/${org}/interaction-limits`, {
       limit,
       expiry,
@@ -3937,14 +4103,16 @@ const interactionsSetRestrictionsForOrg = action({
     },
   },
 });
-
 const interactionsRemoveRestrictionsForOrg = action({
   display: {
     label: "Interactions Remove Restrictions For Org",
     description: "Remove interaction restrictions for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/orgs/${org}/interaction-limits`);
     return { data };
   },
@@ -3963,14 +4131,16 @@ const interactionsRemoveRestrictionsForOrg = action({
     },
   },
 });
-
 const orgsListPendingInvitations = action({
   display: {
     label: "Orgs List Pending Invitations",
     description: "List pending organization invitations",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/invitations`, {
       params: { per_page: perPage, page },
     });
@@ -4005,7 +4175,6 @@ const orgsListPendingInvitations = action({
     },
   },
 });
-
 const orgsCreateInvitation = action({
   display: {
     label: "Orgs Create Invitation",
@@ -4015,7 +4184,10 @@ const orgsCreateInvitation = action({
     context,
     { connection, org, inviteeId, email, role, teamIds },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/invitations`, {
       invitee_id: inviteeId,
       email,
@@ -4073,14 +4245,16 @@ const orgsCreateInvitation = action({
     },
   },
 });
-
 const orgsCancelInvitation = action({
   display: {
     label: "Orgs Cancel Invitation",
     description: "Cancel an organization invitation",
   },
   perform: async (context, { connection, org, invitationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/invitations/${invitationId}`,
     );
@@ -4108,7 +4282,6 @@ const orgsCancelInvitation = action({
     },
   },
 });
-
 const orgsListInvitationTeams = action({
   display: {
     label: "Orgs List Invitation Teams",
@@ -4118,7 +4291,10 @@ const orgsListInvitationTeams = action({
     context,
     { connection, org, invitationId, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/invitations/${invitationId}/teams`,
       {
@@ -4163,7 +4339,6 @@ const orgsListInvitationTeams = action({
     },
   },
 });
-
 const issuesListForOrg = action({
   display: {
     label: "Issues List For Org",
@@ -4184,7 +4359,10 @@ const issuesListForOrg = action({
       page,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/issues`, {
       params: {
         filter,
@@ -4296,7 +4474,6 @@ const issuesListForOrg = action({
     },
   },
 });
-
 const orgsListMembers = action({
   display: {
     label: "Orgs List Members",
@@ -4306,7 +4483,10 @@ const orgsListMembers = action({
     context,
     { connection, org, filter, role, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/members`, {
       params: { filter, role, per_page: perPage, page },
     });
@@ -4366,14 +4546,16 @@ const orgsListMembers = action({
     },
   },
 });
-
 const orgsCheckMembershipForUser = action({
   display: {
     label: "Orgs Check Membership For User",
     description: "Check organization membership for a user",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/members/${username}`);
     return { data };
   },
@@ -4399,14 +4581,16 @@ const orgsCheckMembershipForUser = action({
     },
   },
 });
-
 const orgsRemoveMember = action({
   display: {
     label: "Orgs Remove Member",
     description: "Remove an organization member",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/orgs/${org}/members/${username}`);
     return { data };
   },
@@ -4432,14 +4616,16 @@ const orgsRemoveMember = action({
     },
   },
 });
-
 const orgsGetMembershipForUser = action({
   display: {
     label: "Orgs Get Membership For User",
     description: "Get organization membership for a user",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/memberships/${username}`);
     return { data };
   },
@@ -4465,14 +4651,16 @@ const orgsGetMembershipForUser = action({
     },
   },
 });
-
 const orgsSetMembershipForUser = action({
   display: {
     label: "Orgs Set Membership For User",
     description: "Set organization membership for a user",
   },
   perform: async (context, { connection, org, username, role }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/orgs/${org}/memberships/${username}`, {
       role,
     });
@@ -4512,14 +4700,16 @@ const orgsSetMembershipForUser = action({
     },
   },
 });
-
 const orgsRemoveMembershipForUser = action({
   display: {
     label: "Orgs Remove Membership For User",
     description: "Remove organization membership for a user",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/memberships/${username}`,
     );
@@ -4547,14 +4737,16 @@ const orgsRemoveMembershipForUser = action({
     },
   },
 });
-
 const migrationsListForOrg = action({
   display: {
     label: "Migrations List For Org",
     description: "List organization migrations",
   },
   perform: async (context, { connection, org, perPage, page, exclude }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/migrations`, {
       params: { per_page: perPage, page, exclude },
     });
@@ -4596,7 +4788,6 @@ const migrationsListForOrg = action({
     },
   },
 });
-
 const migrationsStartForOrg = action({
   display: {
     label: "Migrations Start For Org",
@@ -4618,7 +4809,10 @@ const migrationsStartForOrg = action({
       exclude,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/migrations`, {
       repositories,
       lock_repositories: lockRepositories,
@@ -4729,14 +4923,16 @@ const migrationsStartForOrg = action({
     },
   },
 });
-
 const migrationsGetStatusForOrg = action({
   display: {
     label: "Migrations Get Status For Org",
     description: "Get an organization migration status",
   },
   perform: async (context, { connection, org, migrationId, exclude }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/migrations/${migrationId}`,
       { params: { exclude } },
@@ -4772,14 +4968,16 @@ const migrationsGetStatusForOrg = action({
     },
   },
 });
-
 const migrationsDownloadArchiveForOrg = action({
   display: {
     label: "Migrations Download Archive For Org",
     description: "Download an organization migration archive",
   },
   perform: async (context, { connection, org, migrationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/migrations/${migrationId}/archive`,
     );
@@ -4807,14 +5005,16 @@ const migrationsDownloadArchiveForOrg = action({
     },
   },
 });
-
 const migrationsDeleteArchiveForOrg = action({
   display: {
     label: "Migrations Delete Archive For Org",
     description: "Delete an organization migration archive",
   },
   perform: async (context, { connection, org, migrationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/migrations/${migrationId}/archive`,
     );
@@ -4842,14 +5042,16 @@ const migrationsDeleteArchiveForOrg = action({
     },
   },
 });
-
 const migrationsUnlockRepoForOrg = action({
   display: {
     label: "Migrations Unlock Repo For Org",
     description: "Unlock an organization repository",
   },
   perform: async (context, { connection, org, migrationId, repoName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/migrations/${migrationId}/repos/${repoName}/lock`,
     );
@@ -4884,14 +5086,16 @@ const migrationsUnlockRepoForOrg = action({
     },
   },
 });
-
 const migrationsListReposForOrg = action({
   display: {
     label: "Migrations List Repos For Org",
     description: "List repositories in an organization migration",
   },
   perform: async (context, { connection, org, migrationId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/migrations/${migrationId}/repositories`,
       { params: { per_page: perPage, page } },
@@ -4934,14 +5138,16 @@ const migrationsListReposForOrg = action({
     },
   },
 });
-
 const orgsListOutsideCollaborators = action({
   display: {
     label: "Orgs List Outside Collaborators",
     description: "List outside collaborators for an organization",
   },
   perform: async (context, { connection, org, filter, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/outside_collaborators`, {
       params: { filter, per_page: perPage, page },
     });
@@ -4988,14 +5194,16 @@ const orgsListOutsideCollaborators = action({
     },
   },
 });
-
 const orgsConvertMemberToOutsideCollaborator = action({
   display: {
     label: "Orgs Convert Member To Outside Collaborator",
     description: "Convert an organization member to outside collaborator",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/outside_collaborators/${username}`,
       {},
@@ -5024,14 +5232,16 @@ const orgsConvertMemberToOutsideCollaborator = action({
     },
   },
 });
-
 const orgsRemoveOutsideCollaborator = action({
   display: {
     label: "Orgs Remove Outside Collaborator",
     description: "Remove outside collaborator from an organization",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/outside_collaborators/${username}`,
     );
@@ -5059,14 +5269,16 @@ const orgsRemoveOutsideCollaborator = action({
     },
   },
 });
-
 const packagesListPackagesForOrganization = action({
   display: {
     label: "Packages List Packages For Organization",
     description: "List packages for an organization",
   },
   perform: async (context, { connection, org, packageType, visibility }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/packages`, {
       params: { package_type: packageType, visibility },
     });
@@ -5114,14 +5326,16 @@ const packagesListPackagesForOrganization = action({
     },
   },
 });
-
 const packagesGetPackageForOrganization = action({
   display: {
     label: "Packages Get Package For Organization",
     description: "Get a package for an organization",
   },
   perform: async (context, { connection, packageType, packageName, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/packages/${packageType}/${packageName}`,
     );
@@ -5164,14 +5378,16 @@ const packagesGetPackageForOrganization = action({
     },
   },
 });
-
 const packagesDeletePackageForOrg = action({
   display: {
     label: "Packages Delete Package For Org",
     description: "Delete a package for an organization",
   },
   perform: async (context, { connection, packageType, packageName, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/packages/${packageType}/${packageName}`,
     );
@@ -5214,7 +5430,6 @@ const packagesDeletePackageForOrg = action({
     },
   },
 });
-
 const packagesRestorePackageForOrg = action({
   display: {
     label: "Packages Restore Package For Org",
@@ -5224,7 +5439,10 @@ const packagesRestorePackageForOrg = action({
     context,
     { connection, packageType, packageName, org, token },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/packages/${packageType}/${packageName}/restore`,
       {},
@@ -5276,7 +5494,6 @@ const packagesRestorePackageForOrg = action({
     },
   },
 });
-
 const packagesGetAllPackageVersionsForPackageOwnedByOrg = action({
   display: {
     label: "Packages Get All Package Versions For Package Owned By Org",
@@ -5287,7 +5504,10 @@ const packagesGetAllPackageVersionsForPackageOwnedByOrg = action({
     context,
     { connection, packageType, packageName, org, page, perPage, state },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/packages/${packageType}/${packageName}/versions`,
       { params: { page, per_page: perPage, state } },
@@ -5357,7 +5577,6 @@ const packagesGetAllPackageVersionsForPackageOwnedByOrg = action({
     },
   },
 });
-
 const packagesGetPackageVersionForOrganization = action({
   display: {
     label: "Packages Get Package Version For Organization",
@@ -5367,7 +5586,10 @@ const packagesGetPackageVersionForOrganization = action({
     context,
     { connection, packageType, packageName, org, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/packages/${packageType}/${packageName}/versions/${packageVersionId}`,
     );
@@ -5417,7 +5639,6 @@ const packagesGetPackageVersionForOrganization = action({
     },
   },
 });
-
 const packagesDeletePackageVersionForOrg = action({
   display: {
     label: "Packages Delete Package Version For Org",
@@ -5427,7 +5648,10 @@ const packagesDeletePackageVersionForOrg = action({
     context,
     { connection, packageType, packageName, org, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/packages/${packageType}/${packageName}/versions/${packageVersionId}`,
     );
@@ -5477,7 +5701,6 @@ const packagesDeletePackageVersionForOrg = action({
     },
   },
 });
-
 const packagesRestorePackageVersionForOrg = action({
   display: {
     label: "Packages Restore Package Version For Org",
@@ -5487,7 +5710,10 @@ const packagesRestorePackageVersionForOrg = action({
     context,
     { connection, packageType, packageName, org, packageVersionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/packages/${packageType}/${packageName}/versions/${packageVersionId}/restore`,
       {},
@@ -5538,14 +5764,16 @@ const packagesRestorePackageVersionForOrg = action({
     },
   },
 });
-
 const projectsListForOrg = action({
   display: {
     label: "Projects List For Org",
     description: "List organization projects",
   },
   perform: async (context, { connection, org, state, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/projects`, {
       params: { state, per_page: perPage, page },
     });
@@ -5593,14 +5821,16 @@ const projectsListForOrg = action({
     },
   },
 });
-
 const projectsCreateForOrg = action({
   display: {
     label: "Projects Create For Org",
     description: "Create an organization project",
   },
   perform: async (context, { connection, org, name, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/projects`, { name, body });
     return { data };
   },
@@ -5633,14 +5863,16 @@ const projectsCreateForOrg = action({
     },
   },
 });
-
 const orgsListPublicMembers = action({
   display: {
     label: "Orgs List Public Members",
     description: "List public organization members",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/public_members`, {
       params: { per_page: perPage, page },
     });
@@ -5675,14 +5907,16 @@ const orgsListPublicMembers = action({
     },
   },
 });
-
 const orgsCheckPublicMembershipForUser = action({
   display: {
     label: "Orgs Check Public Membership For User",
     description: "Check public organization membership for a user",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/public_members/${username}`,
     );
@@ -5710,7 +5944,6 @@ const orgsCheckPublicMembershipForUser = action({
     },
   },
 });
-
 const orgsSetPublicMembershipForAuthenticatedUser = action({
   display: {
     label: "Orgs Set Public Membership For Authenticated User",
@@ -5718,7 +5951,10 @@ const orgsSetPublicMembershipForAuthenticatedUser = action({
       "Set public organization membership for the authenticated user",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/public_members/${username}`,
       {},
@@ -5747,7 +5983,6 @@ const orgsSetPublicMembershipForAuthenticatedUser = action({
     },
   },
 });
-
 const orgsRemovePublicMembershipForAuthenticatedUser = action({
   display: {
     label: "Orgs Remove Public Membership For Authenticated User",
@@ -5755,7 +5990,10 @@ const orgsRemovePublicMembershipForAuthenticatedUser = action({
       "Remove public organization membership for the authenticated user",
   },
   perform: async (context, { connection, org, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/public_members/${username}`,
     );
@@ -5783,7 +6021,6 @@ const orgsRemovePublicMembershipForAuthenticatedUser = action({
     },
   },
 });
-
 const reposListForOrg = action({
   display: {
     label: "Repos List For Org",
@@ -5794,7 +6031,10 @@ const reposListForOrg = action({
     context,
     { connection, org, type, sort, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/repos`, {
       params: { type, sort, direction, per_page: perPage, page },
     });
@@ -5870,7 +6110,6 @@ const reposListForOrg = action({
     },
   },
 });
-
 const reposCreateInOrg = action({
   display: {
     label: "Repos Create In Org",
@@ -5901,7 +6140,10 @@ const reposCreateInOrg = action({
       deleteBranchOnMerge,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/repos`, {
       name,
       description,
@@ -6092,7 +6334,6 @@ const reposCreateInOrg = action({
     },
   },
 });
-
 const secretScanningListAlertsForOrg = action({
   display: {
     label: "Secret Scanning List Alerts For Org",
@@ -6102,7 +6343,10 @@ const secretScanningListAlertsForOrg = action({
     context,
     { connection, org, state, secretType, resolution, page, perPage },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/secret-scanning/alerts`, {
       params: {
         state,
@@ -6169,14 +6413,16 @@ const secretScanningListAlertsForOrg = action({
     },
   },
 });
-
 const billingGetGithubActionsBillingOrg = action({
   display: {
     label: "Billing Get Github Actions Billing Org",
     description: "Get GitHub Actions billing for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/settings/billing/actions`);
     return { data };
   },
@@ -6195,7 +6441,6 @@ const billingGetGithubActionsBillingOrg = action({
     },
   },
 });
-
 const billingGetGithubAdvancedSecurityBillingOrg = action({
   display: {
     label: "Billing Get Github Advanced Security Billing Org",
@@ -6203,7 +6448,10 @@ const billingGetGithubAdvancedSecurityBillingOrg = action({
       "Get GitHub Advanced Security active committers for an organization",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/settings/billing/advanced-security`,
       {
@@ -6241,14 +6489,16 @@ const billingGetGithubAdvancedSecurityBillingOrg = action({
     },
   },
 });
-
 const billingGetGithubPackagesBillingOrg = action({
   display: {
     label: "Billing Get Github Packages Billing Org",
     description: "Get GitHub Packages billing for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/settings/billing/packages`);
     return { data };
   },
@@ -6267,14 +6517,16 @@ const billingGetGithubPackagesBillingOrg = action({
     },
   },
 });
-
 const billingGetSharedStorageBillingOrg = action({
   display: {
     label: "Billing Get Shared Storage Billing Org",
     description: "Get shared storage billing for an organization",
   },
   perform: async (context, { connection, org }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/settings/billing/shared-storage`,
     );
@@ -6295,14 +6547,16 @@ const billingGetSharedStorageBillingOrg = action({
     },
   },
 });
-
 const teamsListIdpGroupsForOrg = action({
   display: {
     label: "Teams List Idp Groups For Org",
     description: "List IdP groups for an organization",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/team-sync/groups`, {
       params: { per_page: perPage, page },
     });
@@ -6336,14 +6590,16 @@ const teamsListIdpGroupsForOrg = action({
     },
   },
 });
-
 const teamsList = action({
   display: {
     label: "Teams List",
     description: "List teams",
   },
   perform: async (context, { connection, org, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/teams`, {
       params: { per_page: perPage, page },
     });
@@ -6378,7 +6634,6 @@ const teamsList = action({
     },
   },
 });
-
 const teamsCreate = action({
   display: {
     label: "Teams Create",
@@ -6398,7 +6653,10 @@ const teamsCreate = action({
       parentTeamId,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/orgs/${org}/teams`, {
       name,
       description,
@@ -6484,14 +6742,16 @@ const teamsCreate = action({
     },
   },
 });
-
 const teamsGetByName = action({
   display: {
     label: "Teams Get By Name",
     description: "Get a team by name",
   },
   perform: async (context, { connection, org, teamSlug }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/teams/${teamSlug}`);
     return { data };
   },
@@ -6517,7 +6777,6 @@ const teamsGetByName = action({
     },
   },
 });
-
 const teamsUpdateInOrg = action({
   display: {
     label: "Teams Update In Org",
@@ -6536,7 +6795,10 @@ const teamsUpdateInOrg = action({
       parentTeamId,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/orgs/${org}/teams/${teamSlug}`, {
       name,
       description,
@@ -6613,14 +6875,16 @@ const teamsUpdateInOrg = action({
     },
   },
 });
-
 const teamsDeleteInOrg = action({
   display: {
     label: "Teams Delete In Org",
     description: "Delete a team",
   },
   perform: async (context, { connection, org, teamSlug }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/orgs/${org}/teams/${teamSlug}`);
     return { data };
   },
@@ -6646,7 +6910,6 @@ const teamsDeleteInOrg = action({
     },
   },
 });
-
 const teamsListDiscussionsInOrg = action({
   display: {
     label: "Teams List Discussions In Org",
@@ -6656,7 +6919,10 @@ const teamsListDiscussionsInOrg = action({
     context,
     { connection, org, teamSlug, direction, perPage, page, pinned },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/discussions`,
       {
@@ -6720,7 +6986,6 @@ const teamsListDiscussionsInOrg = action({
     },
   },
 });
-
 const teamsCreateDiscussionInOrg = action({
   display: {
     label: "Teams Create Discussion In Org",
@@ -6730,7 +6995,10 @@ const teamsCreateDiscussionInOrg = action({
     context,
     { connection, org, teamSlug, title, body, isPrivate },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/teams/${teamSlug}/discussions`,
       {
@@ -6786,14 +7054,16 @@ const teamsCreateDiscussionInOrg = action({
     },
   },
 });
-
 const teamsGetDiscussionInOrg = action({
   display: {
     label: "Teams Get Discussion In Org",
     description: "Get a discussion",
   },
   perform: async (context, { connection, org, teamSlug, discussionNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}`,
     );
@@ -6828,7 +7098,6 @@ const teamsGetDiscussionInOrg = action({
     },
   },
 });
-
 const teamsUpdateDiscussionInOrg = action({
   display: {
     label: "Teams Update Discussion In Org",
@@ -6838,7 +7107,10 @@ const teamsUpdateDiscussionInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, title, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}`,
       { title, body },
@@ -6888,14 +7160,16 @@ const teamsUpdateDiscussionInOrg = action({
     },
   },
 });
-
 const teamsDeleteDiscussionInOrg = action({
   display: {
     label: "Teams Delete Discussion In Org",
     description: "Delete a discussion",
   },
   perform: async (context, { connection, org, teamSlug, discussionNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}`,
     );
@@ -6930,7 +7204,6 @@ const teamsDeleteDiscussionInOrg = action({
     },
   },
 });
-
 const teamsListDiscussionCommentsInOrg = action({
   display: {
     label: "Teams List Discussion Comments In Org",
@@ -6940,7 +7213,10 @@ const teamsListDiscussionCommentsInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments`,
       { params: { direction, per_page: perPage, page } },
@@ -7002,7 +7278,6 @@ const teamsListDiscussionCommentsInOrg = action({
     },
   },
 });
-
 const teamsCreateDiscussionCommentInOrg = action({
   display: {
     label: "Teams Create Discussion Comment In Org",
@@ -7012,7 +7287,10 @@ const teamsCreateDiscussionCommentInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments`,
       { body },
@@ -7055,7 +7333,6 @@ const teamsCreateDiscussionCommentInOrg = action({
     },
   },
 });
-
 const teamsGetDiscussionCommentInOrg = action({
   display: {
     label: "Teams Get Discussion Comment In Org",
@@ -7065,7 +7342,10 @@ const teamsGetDiscussionCommentInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, commentNumber },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments/${commentNumber}`,
     );
@@ -7107,7 +7387,6 @@ const teamsGetDiscussionCommentInOrg = action({
     },
   },
 });
-
 const teamsUpdateDiscussionCommentInOrg = action({
   display: {
     label: "Teams Update Discussion Comment In Org",
@@ -7117,7 +7396,10 @@ const teamsUpdateDiscussionCommentInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, commentNumber, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments/${commentNumber}`,
       { body },
@@ -7167,7 +7449,6 @@ const teamsUpdateDiscussionCommentInOrg = action({
     },
   },
 });
-
 const teamsDeleteDiscussionCommentInOrg = action({
   display: {
     label: "Teams Delete Discussion Comment In Org",
@@ -7177,7 +7458,10 @@ const teamsDeleteDiscussionCommentInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, commentNumber },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments/${commentNumber}`,
     );
@@ -7219,7 +7503,6 @@ const teamsDeleteDiscussionCommentInOrg = action({
     },
   },
 });
-
 const reactionsListForTeamDiscussionCommentInOrg = action({
   display: {
     label: "Reactions List For Team Discussion Comment In Org",
@@ -7238,7 +7521,10 @@ const reactionsListForTeamDiscussionCommentInOrg = action({
       page,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments/${commentNumber}/reactions`,
       { params: { content, per_page: perPage, page } },
@@ -7312,7 +7598,6 @@ const reactionsListForTeamDiscussionCommentInOrg = action({
     },
   },
 });
-
 const reactionsCreateForTeamDiscussionCommentInOrg = action({
   display: {
     label: "Reactions Create For Team Discussion Comment In Org",
@@ -7322,7 +7607,10 @@ const reactionsCreateForTeamDiscussionCommentInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, commentNumber, content },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments/${commentNumber}/reactions`,
       { content },
@@ -7382,7 +7670,6 @@ const reactionsCreateForTeamDiscussionCommentInOrg = action({
     },
   },
 });
-
 const reactionsDeleteForTeamDiscussionComment = action({
   display: {
     label: "Reactions Delete For Team Discussion Comment",
@@ -7392,7 +7679,10 @@ const reactionsDeleteForTeamDiscussionComment = action({
     context,
     { connection, org, teamSlug, discussionNumber, commentNumber, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/comments/${commentNumber}/reactions/${reactionId}`,
     );
@@ -7441,7 +7731,6 @@ const reactionsDeleteForTeamDiscussionComment = action({
     },
   },
 });
-
 const reactionsListForTeamDiscussionInOrg = action({
   display: {
     label: "Reactions List For Team Discussion In Org",
@@ -7451,7 +7740,10 @@ const reactionsListForTeamDiscussionInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/reactions`,
       { params: { content, per_page: perPage, page } },
@@ -7518,7 +7810,6 @@ const reactionsListForTeamDiscussionInOrg = action({
     },
   },
 });
-
 const reactionsCreateForTeamDiscussionInOrg = action({
   display: {
     label: "Reactions Create For Team Discussion In Org",
@@ -7528,7 +7819,10 @@ const reactionsCreateForTeamDiscussionInOrg = action({
     context,
     { connection, org, teamSlug, discussionNumber, content },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/reactions`,
       { content },
@@ -7581,7 +7875,6 @@ const reactionsCreateForTeamDiscussionInOrg = action({
     },
   },
 });
-
 const reactionsDeleteForTeamDiscussion = action({
   display: {
     label: "Reactions Delete For Team Discussion",
@@ -7591,7 +7884,10 @@ const reactionsDeleteForTeamDiscussion = action({
     context,
     { connection, org, teamSlug, discussionNumber, reactionId },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/discussions/${discussionNumber}/reactions/${reactionId}`,
     );
@@ -7633,14 +7929,16 @@ const reactionsDeleteForTeamDiscussion = action({
     },
   },
 });
-
 const teamsListLinkedExternalIdpGroupsToTeamForOrg = action({
   display: {
     label: "Teams List Linked External Idp Groups To Team For Org",
     description: "List a connection between an external group and a team",
   },
   perform: async (context, { connection, org, teamSlug }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/external-groups`,
     );
@@ -7668,14 +7966,16 @@ const teamsListLinkedExternalIdpGroupsToTeamForOrg = action({
     },
   },
 });
-
 const teamsLinkExternalIdpGroupToTeamForOrg = action({
   display: {
     label: "Teams Link External Idp Group To Team For Org",
     description: "Update the connection between an external group and a team",
   },
   perform: async (context, { connection, org, teamSlug, groupId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/orgs/${org}/teams/${teamSlug}/external-groups`,
       {
@@ -7714,14 +8014,16 @@ const teamsLinkExternalIdpGroupToTeamForOrg = action({
     },
   },
 });
-
 const teamsUnlinkExternalIdpGroupFromTeamForOrg = action({
   display: {
     label: "Teams Unlink External Idp Group From Team For Org",
     description: "Remove the connection between an external group and a team",
   },
   perform: async (context, { connection, org, teamSlug }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/external-groups`,
     );
@@ -7749,14 +8051,16 @@ const teamsUnlinkExternalIdpGroupFromTeamForOrg = action({
     },
   },
 });
-
 const teamsListPendingInvitationsInOrg = action({
   display: {
     label: "Teams List Pending Invitations In Org",
     description: "List pending team invitations",
   },
   perform: async (context, { connection, org, teamSlug, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/invitations`,
       {
@@ -7801,7 +8105,6 @@ const teamsListPendingInvitationsInOrg = action({
     },
   },
 });
-
 const teamsListMembersInOrg = action({
   display: {
     label: "Teams List Members In Org",
@@ -7811,7 +8114,10 @@ const teamsListMembersInOrg = action({
     context,
     { connection, org, teamSlug, role, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/members`,
       { params: { role, per_page: perPage, page } },
@@ -7867,14 +8173,16 @@ const teamsListMembersInOrg = action({
     },
   },
 });
-
 const teamsGetMembershipForUserInOrg = action({
   display: {
     label: "Teams Get Membership For User In Org",
     description: "Get team membership for a user",
   },
   perform: async (context, { connection, org, teamSlug, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/memberships/${username}`,
     );
@@ -7909,14 +8217,16 @@ const teamsGetMembershipForUserInOrg = action({
     },
   },
 });
-
 const teamsAddOrUpdateMembershipForUserInOrg = action({
   display: {
     label: "Teams Add Or Update Membership For User In Org",
     description: "Add or update team membership for a user",
   },
   perform: async (context, { connection, org, teamSlug, username, role }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/teams/${teamSlug}/memberships/${username}`,
       { role },
@@ -7964,14 +8274,16 @@ const teamsAddOrUpdateMembershipForUserInOrg = action({
     },
   },
 });
-
 const teamsRemoveMembershipForUserInOrg = action({
   display: {
     label: "Teams Remove Membership For User In Org",
     description: "Remove team membership for a user",
   },
   perform: async (context, { connection, org, teamSlug, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/memberships/${username}`,
     );
@@ -8006,14 +8318,16 @@ const teamsRemoveMembershipForUserInOrg = action({
     },
   },
 });
-
 const teamsListProjectsInOrg = action({
   display: {
     label: "Teams List Projects In Org",
     description: "List team projects",
   },
   perform: async (context, { connection, org, teamSlug, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/projects`,
       { params: { per_page: perPage, page } },
@@ -8056,14 +8370,16 @@ const teamsListProjectsInOrg = action({
     },
   },
 });
-
 const teamsCheckPermissionsForProjectInOrg = action({
   display: {
     label: "Teams Check Permissions For Project In Org",
     description: "Check team permissions for a project",
   },
   perform: async (context, { connection, org, teamSlug, projectId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/projects/${projectId}`,
     );
@@ -8098,7 +8414,6 @@ const teamsCheckPermissionsForProjectInOrg = action({
     },
   },
 });
-
 const teamsAddOrUpdateProjectPermissionsInOrg = action({
   display: {
     label: "Teams Add Or Update Project Permissions In Org",
@@ -8108,7 +8423,10 @@ const teamsAddOrUpdateProjectPermissionsInOrg = action({
     context,
     { connection, org, teamSlug, projectId, permission },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/teams/${teamSlug}/projects/${projectId}`,
       { permission },
@@ -8156,14 +8474,16 @@ const teamsAddOrUpdateProjectPermissionsInOrg = action({
     },
   },
 });
-
 const teamsRemoveProjectInOrg = action({
   display: {
     label: "Teams Remove Project In Org",
     description: "Remove a project from a team",
   },
   perform: async (context, { connection, org, teamSlug, projectId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/projects/${projectId}`,
     );
@@ -8198,14 +8518,16 @@ const teamsRemoveProjectInOrg = action({
     },
   },
 });
-
 const teamsListReposInOrg = action({
   display: {
     label: "Teams List Repos In Org",
     description: "List team repositories",
   },
   perform: async (context, { connection, org, teamSlug, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/teams/${teamSlug}/repos`, {
       params: { per_page: perPage, page },
     });
@@ -8247,14 +8569,16 @@ const teamsListReposInOrg = action({
     },
   },
 });
-
 const teamsCheckPermissionsForRepoInOrg = action({
   display: {
     label: "Teams Check Permissions For Repo In Org",
     description: "Check team permissions for a repository",
   },
   perform: async (context, { connection, org, teamSlug, owner, repo }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/repos/${owner}/${repo}`,
     );
@@ -8284,7 +8608,6 @@ const teamsCheckPermissionsForRepoInOrg = action({
     repo,
   },
 });
-
 const teamsAddOrUpdateRepoPermissionsInOrg = action({
   display: {
     label: "Teams Add Or Update Repo Permissions In Org",
@@ -8294,7 +8617,10 @@ const teamsAddOrUpdateRepoPermissionsInOrg = action({
     context,
     { connection, org, teamSlug, owner, repo, permission },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/orgs/${org}/teams/${teamSlug}/repos/${owner}/${repo}`,
       { permission },
@@ -8340,14 +8666,16 @@ const teamsAddOrUpdateRepoPermissionsInOrg = action({
     },
   },
 });
-
 const teamsRemoveRepoInOrg = action({
   display: {
     label: "Teams Remove Repo In Org",
     description: "Remove a repository from a team",
   },
   perform: async (context, { connection, org, teamSlug, owner, repo }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/orgs/${org}/teams/${teamSlug}/repos/${owner}/${repo}`,
     );
@@ -8377,14 +8705,16 @@ const teamsRemoveRepoInOrg = action({
     repo,
   },
 });
-
 const teamsListIdpGroupsInOrg = action({
   display: {
     label: "Teams List Idp Groups In Org",
     description: "List IdP groups for a team",
   },
   perform: async (context, { connection, org, teamSlug }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/orgs/${org}/teams/${teamSlug}/team-sync/group-mappings`,
     );
@@ -8412,14 +8742,16 @@ const teamsListIdpGroupsInOrg = action({
     },
   },
 });
-
 const teamsCreateOrUpdateIdpGroupConnectionsInOrg = action({
   display: {
     label: "Teams Create Or Update Idp Group Connections In Org",
     description: "Create or update IdP group connections",
   },
   perform: async (context, { connection, org, teamSlug, groups }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/orgs/${org}/teams/${teamSlug}/team-sync/group-mappings`,
       { groups },
@@ -8455,14 +8787,16 @@ const teamsCreateOrUpdateIdpGroupConnectionsInOrg = action({
     },
   },
 });
-
 const teamsListChildInOrg = action({
   display: {
     label: "Teams List Child In Org",
     description: "List child teams",
   },
   perform: async (context, { connection, org, teamSlug, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/orgs/${org}/teams/${teamSlug}/teams`, {
       params: { per_page: perPage, page },
     });
@@ -8504,7 +8838,6 @@ const teamsListChildInOrg = action({
     },
   },
 });
-
 export default {
   orgsGet,
   orgsUpdate,

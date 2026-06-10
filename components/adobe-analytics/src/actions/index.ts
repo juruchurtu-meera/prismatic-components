@@ -9,7 +9,6 @@ import {
   runReport,
 } from "./reportSuites";
 import { getCurrentUser } from "./users";
-
 export default {
   listCompanies,
   listReportSuiteDimensions,

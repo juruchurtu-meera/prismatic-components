@@ -1,14 +1,16 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { owner, repo } from "../inputs";
-
 const activityListPublicEventsForRepoNetwork = action({
   display: {
     label: "Activity List Public Events For Repo Network",
     description: "List public events for a network of repositories",
   },
   perform: async (context, { connection, owner, repo, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/networks/${owner}/${repo}/events`, {
       params: { per_page: perPage, page },
     });
@@ -38,7 +40,6 @@ const activityListPublicEventsForRepoNetwork = action({
     },
   },
 });
-
 export default {
   activityListPublicEventsForRepoNetwork,
 };

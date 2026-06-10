@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getChargeExamplePayload = {
   data: {
     id: "ch_3MmlLrLkdIwHu7ix0snN0B15",
@@ -69,17 +63,7 @@ export const getChargeExamplePayload = {
     transfer_group: null,
   } as unknown,
 };
-
-
-
-
 export const updateChargeExamplePayload = getChargeExamplePayload;
-
-
-
-
-
-
 export const listChargesExamplePayload = {
   data: {
     object: "list",
@@ -88,12 +72,6 @@ export const listChargesExamplePayload = {
     url: "/v1/charges",
   } as unknown,
 };
-
-
-
-
-
-
 export const searchChargesExamplePayload = {
   data: {
     object: "search_result",

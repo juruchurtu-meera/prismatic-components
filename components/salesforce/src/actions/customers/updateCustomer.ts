@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceClient } from "../../client";
 import { updateCustomerInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",

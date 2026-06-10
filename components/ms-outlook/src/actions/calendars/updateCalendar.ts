@@ -5,7 +5,6 @@ import { updateCalendarExamplePayload } from "../../examplePayloads";
 import { updateCalendarInputs } from "../../inputs";
 import type { ODataAttrs } from "../../types";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const updateCalendar = action({
   display: {
     label: "Update Calendar",
@@ -15,7 +14,10 @@ export const updateCalendar = action({
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
     const { data } = await client.patch<Calendar & ODataAttrs>(
-      computeEndpointBasedOnConnection(params.connection, `/me/calendars/${params.id}`),
+      computeEndpointBasedOnConnection(
+        params.connection,
+        `/me/calendars/${params.id}`,
+      ),
       {
         name: params.name,
         color: params.color,

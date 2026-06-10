@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { connection, object, keys } from "../inputs";
 import { executeXmlRequest, handleSageError } from "../utils";
 import { deleteObjectPayload } from "../examplePayloads/deleteObjectPayload";
-
 export const deleteObject = action({
   display: {
     label: "Delete Object",
@@ -13,16 +12,13 @@ export const deleteObject = action({
     <object>${object}</object>
     <keys>${keys}</keys>
   </delete>`;
-
     const responseFromSage = await executeXmlRequest(
       connection,
       action,
       context.debug.enabled,
       { explicitArray: false },
     );
-
     handleSageError(responseFromSage);
-
     return {
       data: responseFromSage,
     };

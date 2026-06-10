@@ -3,7 +3,6 @@ import { MAX_LIMIT } from "../../constants";
 import { listProductImagesExamplePayload } from "../../examplePayloads";
 import { listProductImagesInputs } from "../../inputs";
 import { listProductImagesGql } from "../graphql/productImage/listProductImages";
-
 export const listProductImages = action({
   display: {
     label: "List Product Images",

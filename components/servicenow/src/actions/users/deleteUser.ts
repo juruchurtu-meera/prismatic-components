@@ -6,7 +6,6 @@ import {
   sysId,
 } from "../../inputs";
 import { deleteTableRecord } from "../tables/records/deleteTableRecord";
-
 export const deleteUser = action({
   display: {
     label: "Delete User",

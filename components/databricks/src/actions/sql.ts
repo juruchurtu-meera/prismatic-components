@@ -7,7 +7,6 @@ import {
   sqlStatementInput,
   warehouseIdInput,
 } from "../inputs";
-
 const runSql = action({
   display: {
     label: "Execute SQL Statement",
@@ -30,22 +29,18 @@ const runSql = action({
       statement: params.sqlStatement,
       warehouse_id: params.warehouseId,
       parameters: params.sqlParameters,
-      wait_timeout: "0s", 
+      wait_timeout: "0s",
     });
-
     do {
       const statusResponse = await client.get(
         `sql/statements/${response.data.statement_id}`,
       );
-
       const error = JSON.stringify(statusResponse.data?.status?.error);
-
       switch (statusResponse.data.status.state) {
         case "SUCCEEDED":
           return { data: statusResponse.data };
         case "PENDING":
         case "RUNNING":
-          
           await new Promise((resolve) => setTimeout(resolve, 1000));
           break;
         default:
@@ -53,10 +48,8 @@ const runSql = action({
             `SQL statement failed with status: ${statusResponse.data.status.state}.${error ? ` Error: ${error}` : ""}`,
           );
       }
-      // biome-ignore lint/correctness/noConstantCondition: Intentional polling loop with break conditions
     } while (true);
   },
   examplePayload: runSqlExamplePayload,
 });
-
 export default { runSql };

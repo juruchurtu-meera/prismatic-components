@@ -10,7 +10,6 @@ import { listSla } from "./listSla";
 import { listTransitions } from "./listTransitions";
 import { transitionRequest } from "./transitionRequest";
 import { uploadTemporaryFile } from "./uploadTemporaryFile";
-
 export default {
   listRequests,
   createRequest,

@@ -6,7 +6,6 @@ import {
   notificationType,
   subscriptionId,
 } from "../../inputs";
-
 export const getSubscriptionById = action({
   display: {
     label: "Get Subscription By ID",

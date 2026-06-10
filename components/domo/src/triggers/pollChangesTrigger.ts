@@ -10,7 +10,6 @@ import {
   filterByTimestamp,
   getLastPolled,
 } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -26,19 +25,17 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const lastState = context.polling.getState() as PollingState;
     const config = RESOURCE_CONFIG[resourceType];
-
     if (!config) {
       throw new Error(`Unsupported resource type: ${resourceType}`);
     }
-
     const client = await getDomoClient(connection, context.debug.enabled);
     const records = await fetchAllRecords(client, config);
-
     const hasTimestamps = config.createdAtField !== null;
     const lastPolled = getLastPolled(lastState, now);
-
-    let result: { created: typeof records; updated: typeof records };
-
+    let result: {
+      created: typeof records;
+      updated: typeof records;
+    };
     if (hasTimestamps && lastPolled) {
       const filtered = filterByTimestamp(
         records,
@@ -46,7 +43,6 @@ export const pollChangesTrigger = pollingTrigger({
         config.createdAtField,
         config.updatedAtField,
       );
-
       result = {
         created: showNewRecords ? filtered.created : [],
         updated: showUpdatedRecords ? filtered.updated : [],
@@ -54,26 +50,21 @@ export const pollChangesTrigger = pollingTrigger({
     } else {
       const knownIds = lastState?.knownIds ?? [];
       const newRecords = filterByNewIds(records, knownIds);
-
       result = {
         created: showNewRecords ? newRecords : [],
         updated: [],
       };
     }
-
     const newState: PollingState = { lastPolled: now };
     if (!hasTimestamps) {
       newState.knownIds = records.map((r) => r.id);
     }
-
     context.polling.setState(newState as unknown as Record<string, unknown>);
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${resourceType}: ${records.length} total, ${result.created.length} new, ${result.updated.length} updated`,
       );
     }
-
     return buildPollingResult(payload, result);
   },
 });

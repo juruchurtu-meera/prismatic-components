@@ -16,7 +16,6 @@ import {
   updateProductName,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updateProduct = action({
   display: {
     label: "Update Product",
@@ -43,7 +42,6 @@ export const updateProduct = action({
       stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
     return {
       data: await client.products.update(util.types.toString(productId), {
         name: util.types.toString(updateProductName) || undefined,

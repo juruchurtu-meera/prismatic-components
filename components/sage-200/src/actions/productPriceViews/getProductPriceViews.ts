@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
 import { connection, site, company } from "../../inputs/general";
 import { getProductPriceViewsPayload } from "../../examplePayloads";
-
 export const getProductPriceViews = action({
   display: {
     label: "Get Product Price Views",

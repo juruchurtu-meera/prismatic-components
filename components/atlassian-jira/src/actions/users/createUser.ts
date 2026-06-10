@@ -11,14 +11,16 @@ import {
   password,
   username,
 } from "../../inputs";
-
 export const createUser = action({
   display: {
     label: "Create User",
     description: "Create a new user record.",
   },
   perform: async (context, params) => {
-    const client = await createClient(params.jiraConnection, context.debug.enabled);
+    const client = await createClient(
+      params.jiraConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.post("/user", {
       name: util.types.toString(params.username),
       password: util.types.toString(params.password),

@@ -1,7 +1,6 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, fileId, folderId } from "../inputs";
-
 export const moveFile = action({
   display: {
     label: "Move File",
@@ -20,11 +19,9 @@ export const moveFile = action({
       removeParents: previousParents,
       supportsAllDrives: true,
     });
-
     return { data };
   },
   inputs: { connection, fileId, folderId: { ...folderId, required: true } },
   examplePayload: { data: { name: "example", description: "example" } },
 });
-
 export default moveFile;

@@ -8,7 +8,6 @@ import {
   customFieldTypes,
   itemId,
 } from "../../inputs";
-
 export const createCustomField = action({
   display: {
     label: "Create Custom Field",

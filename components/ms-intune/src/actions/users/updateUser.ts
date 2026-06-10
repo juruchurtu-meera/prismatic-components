@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import updateUserInputs from "../../inputs/users/updateUserInputs";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -24,25 +23,19 @@ export const updateUser = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const lacksDomainWithPrincipalName = userPrincipalName && !domain;
     const lacksPrincipalNameWithDomain = !userPrincipalName && domain;
-
     const condition =
       lacksDomainWithPrincipalName || lacksPrincipalNameWithDomain;
-
     if (condition) {
       throw new Error(
         "'Domain' and 'User Principal Name' inputs must be provided together.",
       );
     }
-
     const userPrincipalNameProvided = userPrincipalName && domain;
-
     const updatedUserPrincipalName = userPrincipalNameProvided
       ? `${userPrincipalName}@${domain}`
       : undefined;
-
     const payload = {
       accountEnabled,
       displayName,

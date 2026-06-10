@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { getTeamInfoExamplePayload } from "../example-payloads";
 import { connectionInput, lookupKey, lookupValue } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const getTeamMembers = action({
   display: {
     label: "Get Team Members",
@@ -21,7 +20,6 @@ export const getTeamMembers = action({
           },
         ] as any,
       });
-
       return {
         data,
       };

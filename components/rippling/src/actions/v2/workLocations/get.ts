@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { getWorkLocationExamplePayload } from "../../../examplePayloads";
 import { getWorkLocationInputs } from "../../../inputs";
-
 export const getWorkLocation = action({
   display: {
     label: "Get Work Location (V2)",

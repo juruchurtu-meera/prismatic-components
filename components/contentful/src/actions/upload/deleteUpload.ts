@@ -3,7 +3,6 @@ import type { Environment } from "contentful-management";
 import { createClient } from "../../client";
 import { deleteUploadInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const deleteUpload = action({
   display: {
     label: "Delete Upload",

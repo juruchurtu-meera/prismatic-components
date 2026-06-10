@@ -10,7 +10,6 @@ import {
 import { fetchAllProducts } from "../../helpers/fetchAllProducts";
 import type { content_v2_1 } from "googleapis";
 import { listProductsExamplePayload } from "../../examplePayloads";
-
 export const listProducts = action({
   display: {
     description: "Lists the products in your Merchant Center account.",
@@ -28,15 +27,12 @@ export const listProducts = action({
     { connectionInput, maxResults, pageToken, merchantId, fetchAll },
   ) => {
     const client = createClient(connectionInput);
-
     const params: content_v2_1.Params$Resource$Products$List = {
       merchantId,
       maxResults: maxResults || undefined,
       pageToken: pageToken || undefined,
     };
-
     const { data } = await fetchAllProducts({ client, fetchAll, params });
-
     return {
       data,
     };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { NO_CONTENT_RESPONSE } from "../../constants";
 import { updateManagedDeviceInputs } from "../../inputs/managedDevices";
-
 export const updateManagedDevice = action({
   display: {
     label: "Update Managed Device",
@@ -11,24 +10,15 @@ export const updateManagedDevice = action({
   },
   perform: async (
     context,
-    {
-      connection,
-      name,
-      managedGroupId,
-      teamviewerPolicyId,
-      managedDeviceId,
-    },
+    { connection, name, managedGroupId, teamviewerPolicyId, managedDeviceId },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       name,
       managedGroupId,
       teamviewerPolicyId,
     };
-
     await client.put(`/managed/devices/${managedDeviceId}`, body);
-
     return {
       data: NO_CONTENT_RESPONSE,
     };

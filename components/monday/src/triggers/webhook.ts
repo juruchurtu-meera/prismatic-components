@@ -3,7 +3,6 @@ import { webhookExamplePayload } from "../examplePayloads";
 import { webhookTriggerInputs } from "../inputs";
 import { onWebhookCreate, onWebhookDelete } from "../util/webhookLifecycle";
 import { perform } from "../util/webhookPerform";
-
 export const webhook = trigger({
   display: {
     label: "Webhook",

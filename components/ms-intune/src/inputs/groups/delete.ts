@@ -1,5 +1,4 @@
 import { groupId } from "../mobileApps/general";
-
 export const deleteGroupInputs = {
   groupId: {
     ...groupId,

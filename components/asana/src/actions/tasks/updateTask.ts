@@ -22,7 +22,6 @@ import {
   startAt,
 } from "../../inputs";
 import { TASK_OPT_FIELDS } from "../../util";
-
 export const updateTask = action({
   display: {
     label: "Update Task",
@@ -33,7 +32,6 @@ export const updateTask = action({
       params.asanaConnection,
       context.debug.enabled,
     );
-
     const taskData = {
       data: {
         approval_status: params.approvalStatus,
@@ -57,7 +55,6 @@ export const updateTask = action({
         html_notes: params.htmlNotes || undefined,
       },
     };
-
     const { data } = await client.put(`/tasks/${params.taskId}`, taskData, {
       params: {
         opt_fields: TASK_OPT_FIELDS,

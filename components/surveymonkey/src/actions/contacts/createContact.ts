@@ -3,12 +3,6 @@ import { createClient } from "../../client";
 import { createContactInputs } from "../../inputs";
 import { createContactExamplePayload } from "../../examplePayloads";
 import type { Contact, CreateContactInput } from "../../types";
-
-
-
-
-
-
 export const createContact = action({
   display: {
     label: "Create Contact",
@@ -20,7 +14,6 @@ export const createContact = action({
     { connection, email, firstName, lastName, customFields, extraBody },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body: CreateContactInput = {
       email,
       first_name: firstName,
@@ -28,9 +21,7 @@ export const createContact = action({
       custom_fields: (customFields as Record<string, string>) || undefined,
       ...extraBody,
     };
-
     const { data } = await client.post<Contact>("/contacts", body);
-
     return { data };
   },
   examplePayload: createContactExamplePayload,

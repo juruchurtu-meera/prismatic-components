@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const listCustomersExamplePayload = {
   data: {
     customers: [
@@ -41,12 +30,6 @@ export const listCustomersExamplePayload = {
     cursor: "MTY1Njk2OTU5NjEzMjAwMDAwMA==",
   },
 };
-
-
-
-
-
-
 export const retrieveCustomerExamplePayload = {
   data: {
     customer: {
@@ -77,12 +60,6 @@ export const retrieveCustomerExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createCustomerExamplePayload = {
   data: {
     customer: {
@@ -108,12 +85,6 @@ export const createCustomerExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const updateCustomerExamplePayload = {
   data: {
     customer: {
@@ -140,12 +111,6 @@ export const updateCustomerExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const searchCustomersExamplePayload = {
   data: {
     customers: [
@@ -166,13 +131,6 @@ export const searchCustomersExamplePayload = {
     cursor: "MTY1Njk2OTU5NjEzMjAwMDAwMA==",
   },
 };
-
-
-
-
-
-
-
 export const deleteCustomerExamplePayload = {
   data: {},
 };

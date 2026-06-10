@@ -1,65 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const azureEventGridOauth = oauth2Connection({
   key: "azure-event-grid-oauth2",
   display: {
@@ -115,5 +54,4 @@ export const azureEventGridOauth = oauth2Connection({
     },
   },
 });
-
 export default [azureEventGridOauth];

@@ -17,7 +17,6 @@ import {
   updateProductImageUrlTiny,
   updateProductImageUrlZoom,
 } from "../../inputs";
-
 export const updateProductImageAction = action({
   display: {
     label: "Update Product Image",
@@ -59,7 +58,6 @@ export const updateProductImageAction = action({
       sort_order,
       description,
     };
-
     try {
       const response = await client.put(endpoint, requestBody);
       return {
@@ -71,7 +69,6 @@ export const updateProductImageAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash,

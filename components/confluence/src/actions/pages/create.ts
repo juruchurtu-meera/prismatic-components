@@ -12,7 +12,6 @@ import {
   queryParameters,
 } from "../../inputs";
 import { getPageExamplePayload as createPageExamplePayload } from "../../examplePayloads";
-
 export const createPage = action({
   display: {
     label: "Create Page",

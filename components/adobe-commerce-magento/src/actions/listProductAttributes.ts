@@ -13,7 +13,6 @@ import {
   searchCriteriaSortField,
   searchCriteriaValue,
 } from "../inputs";
-
 export const listProductAttributes = action({
   display: {
     label: "List Product Attributes",
@@ -37,11 +36,15 @@ export const listProductAttributes = action({
       "searchCriteria[currentPage]": searchCriteriaCurrentPage || undefined,
       "searchCriteria[filterGroups][0][filters][0][conditionType]":
         searchCriteriaConditionType || undefined,
-      "searchCriteria[filterGroups][0][filters][0][field]": searchCriteriaField || undefined,
-      "searchCriteria[filterGroups][0][filters][0][value]": searchCriteriaValue || undefined,
+      "searchCriteria[filterGroups][0][filters][0][field]":
+        searchCriteriaField || undefined,
+      "searchCriteria[filterGroups][0][filters][0][value]":
+        searchCriteriaValue || undefined,
       "searchCriteria[pageSize]": searchCriteriaPageSize || undefined,
-      "searchCriteria[sortOrders][0][direction]": searchCriteriaSortDirection || undefined,
-      "searchCriteria[sortOrders][0][field]": searchCriteriaSortField || undefined,
+      "searchCriteria[sortOrders][0][direction]":
+        searchCriteriaSortDirection || undefined,
+      "searchCriteria[sortOrders][0][field]":
+        searchCriteriaSortField || undefined,
     });
     try {
       const { data } = await client.get("/products/attributes", {
@@ -66,5 +69,4 @@ export const listProductAttributes = action({
   },
   examplePayload: listProductAttributesExamplePayload,
 });
-
 export default { listProductAttributes };

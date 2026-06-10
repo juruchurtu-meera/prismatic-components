@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { createOnboardingRequestExamplePayload as examplePayload } from "../../examplePayloads";
 import { createOnboardingRequestInputs as inputs } from "../../inputs/onboarding";
-
 export const createOnboardingRequest = action({
   display: {
     label: "Create Onboarding Request",
@@ -25,7 +24,6 @@ export const createOnboardingRequest = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       fields: {
         cf_employee_name: cfEmployeeName,
@@ -40,9 +38,7 @@ export const createOnboardingRequest = action({
         ...onboardingAdditionalFields,
       },
     };
-
     const { data } = await client.post(`/onboarding_requests`, payload);
-
     return {
       data,
     };

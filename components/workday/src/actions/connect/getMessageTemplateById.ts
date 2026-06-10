@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getMessageTemplateByIdExamplePayload } from "../../examplePayloads";
 import { getMessageTemplateByIdInputs } from "../../inputs";
-
 export const getMessageTemplateById = action({
   display: {
     label: "Get Message Template by ID",

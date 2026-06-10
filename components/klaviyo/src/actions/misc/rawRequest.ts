@@ -6,9 +6,7 @@ import {
 import { BASE_URL } from "../../constants";
 import { connection, excludeAuthorization } from "../../inputs/shared";
 import { getAuthorizationHeader, validateConnection } from "../../utils";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -30,7 +28,6 @@ export const rawRequest = action({
   ) => {
     validateConnection(connection);
     const authorizationHeader = getAuthorizationHeader(connection);
-
     const { data } = await sendRawRequest(
       BASE_URL,
       {

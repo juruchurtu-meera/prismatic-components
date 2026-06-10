@@ -13,13 +13,11 @@ import {
   cleanValueListInput,
   mapModel,
 } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const id = input({
   label: "ID",
   type: "string",
@@ -29,7 +27,6 @@ export const id = input({
   placeholder: "1510894167438614",
   clean: cleanString,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -39,7 +36,6 @@ export const name = input({
   placeholder: "test-name",
   clean: cleanString,
 });
-
 export const assetId = input({
   label: "Asset ID",
   type: "string",
@@ -49,7 +45,6 @@ export const assetId = input({
   placeholder: "1510894167438614",
   clean: cleanString,
 });
-
 export const assetName = input({
   label: "Asset Name",
   type: "string",
@@ -59,7 +54,6 @@ export const assetName = input({
   placeholder: "192.0.2.1",
   clean: cleanString,
 });
-
 export const barCode = input({
   label: "Bar Code",
   type: "string",
@@ -69,7 +63,6 @@ export const barCode = input({
   placeholder: "test-barcode",
   clean: cleanString,
 });
-
 export const keyValuePairParams = input({
   label: "Extra parameters",
   type: "string",
@@ -79,7 +72,6 @@ export const keyValuePairParams = input({
   example: "key1=value1,key2=value2",
   clean: cleanKeyValueListInput,
 });
-
 export const product = input({
   label: "Product",
   type: "code",
@@ -96,7 +88,6 @@ export const product = input({
   ),
   clean: cleanObject,
 });
-
 export const state = input({
   label: "State",
   type: "code",
@@ -114,7 +105,6 @@ export const state = input({
   ),
   clean: cleanObject,
 });
-
 export const assetTag = input({
   label: "Asset Tag",
   type: "string",
@@ -124,7 +114,6 @@ export const assetTag = input({
   placeholder: "Sample Content",
   clean: cleanString,
 });
-
 export const stateHistoryComments = input({
   label: "State History Comments",
   type: "string",
@@ -135,7 +124,6 @@ export const stateHistoryComments = input({
   placeholder: "Sample Content",
   clean: cleanString,
 });
-
 export const productType = input({
   label: "Product Type",
   type: "code",
@@ -153,7 +141,6 @@ export const productType = input({
   ),
   clean: cleanObject,
 });
-
 export const attributes = input({
   label: "Attributes",
   type: "code",
@@ -176,7 +163,6 @@ export const attributes = input({
   ),
   clean: cleanObject,
 });
-
 export const manufacturer = input({
   label: "Manufacturer",
   type: "string",
@@ -186,7 +172,6 @@ export const manufacturer = input({
   placeholder: "test-manufacturer",
   clean: cleanString,
 });
-
 export const isLaptop = input({
   label: "Is Laptop",
   type: "string",
@@ -201,7 +186,6 @@ export const isLaptop = input({
   default: "",
   clean: cleanBool,
 });
-
 export const partNo = input({
   label: "Part No",
   type: "string",
@@ -211,7 +195,6 @@ export const partNo = input({
   placeholder: "test-part_no",
   clean: cleanString,
 });
-
 export const category = input({
   label: "Category",
   type: "code",
@@ -229,7 +212,6 @@ export const category = input({
   ),
   clean: cleanObject,
 });
-
 export const assetType = input({
   label: "Asset Type",
   type: "code",
@@ -246,7 +228,6 @@ export const assetType = input({
   ),
   clean: cleanObject,
 });
-
 export const ciTypeApiName = input({
   label: "CI Type API Name",
   type: "string",
@@ -256,7 +237,6 @@ export const ciTypeApiName = input({
   placeholder: "ci_application",
   clean: cleanString,
 });
-
 export const ciId = input({
   label: "CI ID",
   type: "string",
@@ -266,7 +246,6 @@ export const ciId = input({
   placeholder: "100000000000034020",
   clean: cleanString,
 });
-
 export const ciIds = input({
   label: "CI IDs",
   type: "string",
@@ -277,7 +256,6 @@ export const ciIds = input({
   placeholder: "100000000000034020",
   clean: cleanValueListInput,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -287,7 +265,6 @@ export const description = input({
   placeholder: "API Test",
   clean: cleanString,
 });
-
 export const rowCount = input({
   label: "Row Count",
   type: "string",
@@ -298,7 +275,6 @@ export const rowCount = input({
   default: "100",
   clean: cleanNumber,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -309,7 +285,6 @@ export const page = input({
   default: "1",
   clean: cleanNumber,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -319,7 +294,6 @@ export const fetchAll = input({
   default: "true",
   clean: cleanBool,
 });
-
 export const conditionsCriteria = input({
   label: "Conditions Criteria",
   type: "string",
@@ -330,7 +304,6 @@ export const conditionsCriteria = input({
   model: mapModel(SUPPORTED_CONDITIONS, true),
   example: "created_time=Greater Than",
 });
-
 export const conditionsCriteriaValue = input({
   label: "Conditions Criteria Value",
   type: "string",
@@ -339,7 +312,6 @@ export const conditionsCriteriaValue = input({
   comments: "The value of the field to be compared.",
   example: "created_time=1488451440000",
 });
-
 export const conditionsCriteriaType = input({
   label: "Conditions Criteria Type",
   type: "string",
@@ -349,10 +321,8 @@ export const conditionsCriteriaType = input({
   example: "created_time=number",
   model: mapModel(CRITERIA_TYPES, true),
 });
-
 const problemsDocumentationText =
   "See [ServiceDesk Plus API documentation](https://www.manageengine.com/products/service-desk/sdpod-v3-api/problems/problem.html) for details.";
-
 const problemTitle = input({
   label: "Problem Title",
   type: "string",
@@ -362,7 +332,6 @@ const problemTitle = input({
   placeholder: "Sample Content",
   clean: util.types.toString,
 });
-
 const problemDescription = input({
   label: "Problem Description",
   type: "string",
@@ -372,7 +341,6 @@ const problemDescription = input({
   placeholder: "<b>The content to be displayed</b>",
   clean: cleanString,
 });
-
 const problemReportedTime = input({
   label: "Problem Reported Time",
   type: "code",
@@ -389,7 +357,6 @@ const problemReportedTime = input({
   ),
   clean: cleanObject,
 });
-
 const problemDueByTime = input({
   label: "Problem Due By Time",
   type: "code",
@@ -402,7 +369,6 @@ const problemDueByTime = input({
   }),
   clean: cleanObject,
 });
-
 const problemClosedTime = input({
   label: "Problem Closed Time",
   type: "code",
@@ -415,7 +381,6 @@ const problemClosedTime = input({
   }),
   clean: cleanObject,
 });
-
 const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -425,7 +390,6 @@ const additionalFields = input({
   required: false,
   clean: (value) => cleanObject(value) || {},
 });
-
 export const createProblemInputs = {
   connectionInput,
   problemTitle,
@@ -438,7 +402,6 @@ export const createProblemInputs = {
     comments: `${additionalFields.comments} ${problemsDocumentationText}`,
   }),
 };
-
 const toUpdateProblemId = input({
   label: "To Update Problem ID",
   type: "string",
@@ -448,7 +411,6 @@ const toUpdateProblemId = input({
   placeholder: "234759602834500",
   clean: util.types.toString,
 });
-
 export const updateProblemInputs = {
   connectionInput,
   toUpdateProblemId,
@@ -462,7 +424,6 @@ export const updateProblemInputs = {
     comments: `${additionalFields.comments} ${problemsDocumentationText}`,
   }),
 };
-
 const toGetProblemId = input({
   label: "To Get Problem ID",
   type: "string",
@@ -472,12 +433,10 @@ const toGetProblemId = input({
   placeholder: "234759602834500",
   clean: util.types.toString,
 });
-
 export const getProblemInputs = {
   connectionInput,
   toGetProblemId,
 };
-
 export const listProblemsInputs = {
   connectionInput,
   fetchAll,
@@ -486,7 +445,6 @@ export const listProblemsInputs = {
   conditionsCriteria,
   conditionsCriteriaValue,
 };
-
 const toDeleteProblemId = input({
   label: "To Delete Problem ID",
   type: "string",
@@ -496,15 +454,12 @@ const toDeleteProblemId = input({
   placeholder: "234759602834500",
   clean: util.types.toString,
 });
-
 export const deleteProblemInputs = {
   connectionInput,
   toDeleteProblemId,
 };
-
 const problemNotesDocumentationText =
   "See [ServiceDesk Plus API documentation](https://www.manageengine.com/products/service-desk/sdpod-v3-api/problems/problem_note.html) for details.";
-
 const noteProblemId = input({
   label: "Problem ID",
   type: "string",
@@ -514,7 +469,6 @@ const noteProblemId = input({
   placeholder: "234759602834500",
   clean: util.types.toString,
 });
-
 const noteDescription = input({
   label: "Note Description",
   type: "string",
@@ -524,7 +478,6 @@ const noteDescription = input({
   placeholder: "<b>The content to be displayed</b>",
   clean: util.types.toString,
 });
-
 const notifyTo = input({
   label: "Notify To",
   type: "code",
@@ -545,13 +498,11 @@ const notifyTo = input({
         },
       ],
     },
-
     null,
     2,
   ),
   clean: cleanObject,
 });
-
 export const createProblemNoteInputs = {
   connectionInput,
   noteProblemId,
@@ -562,7 +513,6 @@ export const createProblemNoteInputs = {
     comments: `${additionalFields.comments} ${problemNotesDocumentationText}`,
   }),
 };
-
 const toDeleteNoteId = input({
   label: "To Delete Note ID",
   type: "string",
@@ -572,13 +522,11 @@ const toDeleteNoteId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const deleteProblemNoteInputs = {
   connectionInput,
   noteProblemId,
   toDeleteNoteId,
 };
-
 const toGetNoteId = input({
   label: "To Get Note ID",
   type: "string",
@@ -588,13 +536,11 @@ const toGetNoteId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const getProblemNoteInputs = {
   connectionInput,
   noteProblemId,
   toGetNoteId,
 };
-
 export const listProblemNotesInputs = {
   connectionInput,
   noteProblemId,
@@ -604,7 +550,6 @@ export const listProblemNotesInputs = {
   conditionsCriteria,
   conditionsCriteriaValue,
 };
-
 const toUpdateNoteId = input({
   label: "To Update Note ID",
   type: "string",
@@ -614,7 +559,6 @@ const toUpdateNoteId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const updateProblemNoteInputs = {
   connectionInput,
   noteProblemId,
@@ -630,9 +574,7 @@ export const updateProblemNoteInputs = {
     comments: `${additionalFields.comments} ${problemNotesDocumentationText}`,
   }),
 };
-
 const taskProblemId = noteProblemId;
-
 const taskTitle = input({
   label: "Task Title",
   type: "string",
@@ -642,7 +584,6 @@ const taskTitle = input({
   placeholder: "Sample Content",
   clean: util.types.toString,
 });
-
 const taskDescription = input({
   label: "Task Description",
   type: "string",
@@ -652,10 +593,8 @@ const taskDescription = input({
   placeholder: "<b>The content to be displayed</b>",
   clean: cleanString,
 });
-
 const problemTasksDocumentationText =
   "See [ServiceDesk Plus API documentation](https://www.manageengine.com/products/service-desk/sdpod-v3-api/problems/problem_task.html) for details.";
-
 const taskType = input({
   label: "Task Type",
   type: "code",
@@ -672,7 +611,6 @@ const taskType = input({
   ),
   clean: cleanObject,
 });
-
 const taskOwner = input({
   label: "Owner",
   type: "code",
@@ -686,7 +624,6 @@ const taskOwner = input({
   }),
   clean: cleanObject,
 });
-
 const estimatedEffortMinutes = input({
   label: "Estimated Effort Minutes",
   type: "string",
@@ -696,7 +633,6 @@ const estimatedEffortMinutes = input({
   placeholder: "234759602834500",
   clean: cleanNumber,
 });
-
 const estimatedEffortHours = input({
   label: "Estimated Effort Hours",
   type: "string",
@@ -706,7 +642,6 @@ const estimatedEffortHours = input({
   placeholder: "234759602834500",
   clean: cleanNumber,
 });
-
 const estimatedEffortDays = input({
   label: "Estimated Effort Days",
   type: "string",
@@ -716,7 +651,6 @@ const estimatedEffortDays = input({
   placeholder: "234759602834500",
   clean: cleanNumber,
 });
-
 const percentageCompletion = input({
   label: "Percentage Completion",
   type: "string",
@@ -726,7 +660,6 @@ const percentageCompletion = input({
   placeholder: "100",
   clean: cleanNumber,
 });
-
 const group = input({
   label: "Group",
   type: "code",
@@ -738,13 +671,11 @@ const group = input({
       name: "group 1",
       id: "1003333001243212",
     },
-
     null,
     2,
   ),
   clean: cleanObject,
 });
-
 export const createProblemTaskInputs = {
   connectionInput,
   taskProblemId,
@@ -762,7 +693,6 @@ export const createProblemTaskInputs = {
     comments: `${additionalFields.comments} ${problemTasksDocumentationText}`,
   }),
 };
-
 const toDeleteTaskId = input({
   label: "To Delete Task ID",
   type: "string",
@@ -772,13 +702,11 @@ const toDeleteTaskId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const deleteProblemTaskInputs = {
   connectionInput,
   taskProblemId,
   toDeleteTaskId,
 };
-
 const toGetTaskId = input({
   label: "To Get Task ID",
   type: "string",
@@ -788,13 +716,11 @@ const toGetTaskId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const getProblemTaskInputs = {
   connectionInput,
   taskProblemId,
   toGetTaskId,
 };
-
 export const listProblemTasksInputs = {
   connectionInput,
   taskProblemId,
@@ -804,7 +730,6 @@ export const listProblemTasksInputs = {
   conditionsCriteria,
   conditionsCriteriaValue,
 };
-
 const toUpdateTaskId = input({
   label: "To Update Task ID",
   type: "string",
@@ -814,7 +739,6 @@ const toUpdateTaskId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const updateProblemTaskInputs = {
   connectionInput,
   taskProblemId,
@@ -833,7 +757,6 @@ export const updateProblemTaskInputs = {
     comments: `${additionalFields.comments} ${problemTasksDocumentationText}`,
   }),
 };
-
 const requestSubject = input({
   label: "Request Subject",
   type: "string",
@@ -843,7 +766,6 @@ const requestSubject = input({
   placeholder: "Sample Content",
   clean: cleanString,
 });
-
 const requestDescription = input({
   label: "Request Description",
   type: "string",
@@ -853,7 +775,6 @@ const requestDescription = input({
   placeholder: "<b>The content to be displayed</b>",
   clean: cleanString,
 });
-
 const impactDetails = input({
   label: "Impact Details",
   type: "string",
@@ -863,7 +784,6 @@ const impactDetails = input({
   placeholder: "Sample Content",
   clean: cleanString,
 });
-
 const emailIdsToNotify = input({
   label: "Email IDs To Notify",
   type: "string",
@@ -875,7 +795,6 @@ const emailIdsToNotify = input({
   placeholder: "abc.gmail.com",
   clean: cleanValueListInput,
 });
-
 const deletePreTemplateTasks = input({
   label: "Delete Pre Template Tasks",
   type: "boolean",
@@ -885,10 +804,8 @@ const deletePreTemplateTasks = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const requestsDocumentationText =
   "See [ServiceDesk Plus API documentation](https://www.manageengine.com/products/service-desk/sdpod-v3-api/requests/request.html) for details.";
-
 export const createRequestInputs = {
   connectionInput,
   requestSubject,
@@ -901,7 +818,6 @@ export const createRequestInputs = {
     comments: `${additionalFields.comments} ${requestsDocumentationText}`,
   }),
 };
-
 const toDeleteRequestId = input({
   label: "To Delete Request ID",
   type: "string",
@@ -911,12 +827,10 @@ const toDeleteRequestId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const deleteRequestInputs = {
   connectionInput,
   toDeleteRequestId,
 };
-
 const toGetRequestId = input({
   label: "To Get Request ID",
   type: "string",
@@ -926,12 +840,10 @@ const toGetRequestId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const getRequestInputs = {
   connectionInput,
   toGetRequestId,
 };
-
 export const listRequestsInputs = {
   connectionInput,
   fetchAll,
@@ -940,7 +852,6 @@ export const listRequestsInputs = {
   conditionsCriteria,
   conditionsCriteriaValue,
 };
-
 const toUpdateRequestId = input({
   label: "To Update Request ID",
   type: "string",
@@ -950,7 +861,6 @@ const toUpdateRequestId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const updateRequestInputs = {
   connectionInput,
   toUpdateRequestId,
@@ -968,7 +878,6 @@ export const updateRequestInputs = {
     comments: `${additionalFields.comments} ${requestsDocumentationText}`,
   }),
 };
-
 const taskRequestId = input({
   label: "Request ID",
   type: "string",
@@ -978,7 +887,6 @@ const taskRequestId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 const taskRequestTitle = input({
   label: "Request Task Title",
   type: "string",
@@ -988,7 +896,6 @@ const taskRequestTitle = input({
   placeholder: "Sample Content",
   clean: util.types.toString,
 });
-
 const taskRequestPercentageCompletion = input({
   label: "Request Task Percentage Completion",
   type: "string",
@@ -998,7 +905,6 @@ const taskRequestPercentageCompletion = input({
   placeholder: "100",
   clean: cleanNumber,
 });
-
 const taskRequestEstimatedEffortHours = input({
   label: "Request Task Estimated Effort Hours",
   type: "string",
@@ -1008,7 +914,6 @@ const taskRequestEstimatedEffortHours = input({
   placeholder: "12",
   clean: cleanNumber,
 });
-
 const taskRequestAdditionalCost = input({
   label: "Request Task Additional Cost",
   type: "string",
@@ -1018,10 +923,8 @@ const taskRequestAdditionalCost = input({
   placeholder: "23.08",
   clean: cleanNumber,
 });
-
 const requestTasksDocumentationText =
   "See [ServiceDesk Plus API documentation](https://www.manageengine.com/products/service-desk/sdpod-v3-api/requests/request_task.html) for details.";
-
 const taskRequestActualStartTime = input({
   label: "Request Task Actual Start Time",
   type: "code",
@@ -1034,7 +937,6 @@ const taskRequestActualStartTime = input({
   }),
   clean: cleanObject,
 });
-
 const taskRequestActualEndTime = input({
   label: "Request Task Actual End Time",
   type: "code",
@@ -1047,7 +949,6 @@ const taskRequestActualEndTime = input({
   }),
   clean: cleanObject,
 });
-
 const taskRequestDescription = input({
   label: "Request Task Description",
   type: "string",
@@ -1057,7 +958,6 @@ const taskRequestDescription = input({
   placeholder: "<b>The content to be displayed</b>",
   clean: cleanString,
 });
-
 const taskRequestOwner = input({
   label: "Request Task Owner",
   type: "code",
@@ -1070,7 +970,6 @@ const taskRequestOwner = input({
   }),
   clean: cleanObject,
 });
-
 export const createRequestTaskInputs = {
   connectionInput,
   taskRequestId,
@@ -1087,7 +986,6 @@ export const createRequestTaskInputs = {
     comments: `${additionalFields.comments} ${requestTasksDocumentationText}`,
   }),
 };
-
 const toDeleteRequestTaskId = input({
   label: "To Delete Request Task ID",
   type: "string",
@@ -1097,13 +995,11 @@ const toDeleteRequestTaskId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const deleteRequestTaskInputs = {
   connectionInput,
   taskRequestId,
   toDeleteRequestTaskId,
 };
-
 const toGetRequestTaskId = input({
   label: "To Get Request Task ID",
   type: "string",
@@ -1113,13 +1009,11 @@ const toGetRequestTaskId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const getRequestTaskInputs = {
   connectionInput,
   taskRequestId,
   toGetRequestTaskId,
 };
-
 export const listRequestTasksInputs = {
   connectionInput,
   taskRequestId,
@@ -1129,7 +1023,6 @@ export const listRequestTasksInputs = {
   conditionsCriteria,
   conditionsCriteriaValue,
 };
-
 const toUpdateRequestTaskId = input({
   label: "To Update Request Task ID",
   type: "string",
@@ -1139,7 +1032,6 @@ const toUpdateRequestTaskId = input({
   placeholder: "4149000001300019",
   clean: util.types.toString,
 });
-
 export const updateRequestTaskInputs = {
   connectionInput,
   taskRequestId,
@@ -1161,7 +1053,6 @@ export const updateRequestTaskInputs = {
     comments: `${additionalFields.comments} ${requestTasksDocumentationText}`,
   }),
 };
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -1171,7 +1062,6 @@ export const pollResourceType = input({
   comments: "The type of resource to poll for new records.",
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { defaultListInputs } from "../../inputs/general";
 import { paginateData } from "../../util";
-
 export const listOnboardingCandidateInfo = action({
   display: {
     label: "List Onboarding Candidate Info",
@@ -25,16 +24,21 @@ export const listOnboardingCandidateInfo = action({
     },
   ) => {
     const client = await createClient(connection, context.debug.enabled);
-    const data = await paginateData(client, "/OnboardingCandidateInfo", fetchAll, {
-      $count,
-      $filter,
-      $orderby,
-      $search,
-      $select,
-      $skip,
-      $top,
-      ...customQueryParams,
-    });
+    const data = await paginateData(
+      client,
+      "/OnboardingCandidateInfo",
+      fetchAll,
+      {
+        $count,
+        $filter,
+        $orderby,
+        $search,
+        $select,
+        $skip,
+        $top,
+        ...customQueryParams,
+      },
+    );
     return {
       data,
     };

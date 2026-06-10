@@ -18,8 +18,10 @@ import {
   startDate,
 } from "../../inputs";
 import type { TimeEntriesDateRangeQueryParams } from "./types/TimeEntriesDateRangeQueryParams";
-
-const spaceId = getSpaceId(false, "Only include time entries associated with tasks in a specific Space.");
+const spaceId = getSpaceId(
+  false,
+  "Only include time entries associated with tasks in a specific Space.",
+);
 const teamId = getTeamId(true);
 const listId = getlistId(false);
 const folderId = getFolderId(false);
@@ -27,7 +29,6 @@ const taskId = getTaskId(false);
 const customTeamId = getCustomTeamId(false);
 const customTaskIds = getCustomTaskIds(false);
 const assignee = getAssignee(false, "Filter by User ID");
-
 export const getTimeEntriesWithinDateRange = action({
   display: {
     label: "Get Time Entries Within Date Range",
@@ -51,9 +52,12 @@ export const getTimeEntriesWithinDateRange = action({
       taskId,
       customTaskIds,
       customTeamId,
-    }
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const queryParams: TimeEntriesDateRangeQueryParams = addToObjectIfContent({
       start_date: startDate,
       end_date: endDate,
@@ -67,11 +71,9 @@ export const getTimeEntriesWithinDateRange = action({
       custom_task_ids: booleanToString(customTaskIds),
       team_id: customTeamId,
     });
-
     const { data } = await client.get(`/team/${teamId}/time_entries`, {
       params: queryParams,
     });
-
     return {
       data,
     };

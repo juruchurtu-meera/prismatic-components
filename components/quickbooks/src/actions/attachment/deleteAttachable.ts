@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { attachablePayload, connectionInput, minorVersion } from "../../inputs";
-
 export const deleteAttachable = action({
   display: {
     label: "Delete Attachable",

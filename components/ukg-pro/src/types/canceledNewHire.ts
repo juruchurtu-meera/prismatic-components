@@ -23,7 +23,6 @@ export interface CanceledNewHire {
   createdAt: string | null;
   updatedAt: string | null;
 }
-
 export interface Compensation {
   isFullTime: boolean;
   isSalaried: boolean;
@@ -34,16 +33,13 @@ export interface Compensation {
   payRate: number;
   ratePer: Currency;
 }
-
 export interface Currency {
   code: string;
   name: CurrencyName;
 }
-
 export interface CurrencyName {
   enUS: string;
 }
-
 export interface ContactInformation {
   name: ContactInformationName;
   emailAddress: string;
@@ -51,7 +47,6 @@ export interface ContactInformation {
   secondaryPhone: string;
   address: Address;
 }
-
 export interface Address {
   line1: string;
   line2: string | null;
@@ -62,12 +57,10 @@ export interface Address {
   countryCode: string;
   country: Country;
 }
-
 export interface Country {
   code: string;
   name: CountryName;
 }
-
 export interface CountryName {
   enUS: string;
   nlNL: string;
@@ -80,7 +73,6 @@ export interface CountryName {
   ptBR: string;
   esES: string;
 }
-
 export interface ContactInformationName {
   prefix: Prefix | string | null;
   first: string;
@@ -90,12 +82,10 @@ export interface ContactInformationName {
   suffix: string | null;
   preferredFirst: string | null;
 }
-
 export interface Prefix {
   id: string;
   name: CurrencyName;
 }
-
 export interface Job {
   id: string;
   code: string;
@@ -107,17 +97,14 @@ export interface Job {
   workLocation: ComponentCompany;
   employeeType: string | null;
 }
-
 export interface ComponentCompany {
   id: string;
   name: string;
 }
-
 export interface JobName {
   enUS: string;
   esES: string;
 }
-
 export interface Mentor {
   id: string;
   name: ContactInformationName;

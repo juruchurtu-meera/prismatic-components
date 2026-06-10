@@ -1,9 +1,16 @@
-import { input, util, type ObjectFieldMap, type ObjectSelection } from "@prismatic-io/spectral";
-import { connectionInput, dynamicRecordType, filterQuery, version } from "./common";
+import {
+  input,
+  util,
+  type ObjectFieldMap,
+  type ObjectSelection,
+} from "@prismatic-io/spectral";
+import {
+  connectionInput,
+  dynamicRecordType,
+  filterQuery,
+  version,
+} from "./common";
 import { showTriggerableOnly } from "./workflows";
-
-
-
 export const dynamicFieldName = input({
   label: "Field Name",
   type: "dynamicFieldSelection",
@@ -18,10 +25,8 @@ export const dynamicFieldName = input({
     return rt;
   },
 });
-
 const DEFAULT_VALUE_COUNT = 5;
 const MAX_VALUE_COUNT = 20;
-
 export const valueCount = input({
   label: "Value Count",
   type: "string",
@@ -30,15 +35,15 @@ export const valueCount = input({
   default: `${DEFAULT_VALUE_COUNT}`,
   example: `${DEFAULT_VALUE_COUNT}`,
   clean: (value: unknown): number => {
-    if (util.types.isNumber(value) && util.types.toNumber(value) <= MAX_VALUE_COUNT) {
+    if (
+      util.types.isNumber(value) &&
+      util.types.toNumber(value) <= MAX_VALUE_COUNT
+    ) {
       return util.types.toNumber(value);
     }
     return DEFAULT_VALUE_COUNT;
   },
 });
-
-
-
 export const defaultSelectedRecordTypes = input({
   label: "Default Selected Record Types",
   type: "string",
@@ -49,7 +54,6 @@ export const defaultSelectedRecordTypes = input({
     return util.types.isPicklist(value) ? (value as string[]) : [];
   },
 });
-
 export const recordTypeFilter = input({
   label: "Record Type Filter",
   type: "string",
@@ -63,7 +67,6 @@ export const recordTypeFilter = input({
       : [];
   },
 });
-
 export const includeAllCustomRecordTypes = input({
   label: "Include All Custom Record Types",
   type: "boolean",
@@ -73,7 +76,6 @@ export const includeAllCustomRecordTypes = input({
     "When true, will include all Custom Record Types, even those not included in Record Type Name Filter.",
   clean: (value: unknown): boolean => util.types.toBool(value, true),
 });
-
 export const includeOnlyTopLevelRecordTypes = input({
   label: "Include Only Top Level Record Types",
   type: "boolean",
@@ -83,9 +85,6 @@ export const includeOnlyTopLevelRecordTypes = input({
     "When true, will include only Record Types that are top-level, meaning not subtypes of other Types, regardless of other filters.",
   clean: (value: unknown): boolean => util.types.toBool(value, true),
 });
-
-
-
 export const recordTypeFilterRequired = input({
   label: "Record Type Filter",
   type: "string",
@@ -99,7 +98,6 @@ export const recordTypeFilterRequired = input({
       : [];
   },
 });
-
 export const includeAllCustomRecordTypesStrict = input({
   label: "Include All Custom Record Types",
   type: "boolean",
@@ -109,7 +107,6 @@ export const includeAllCustomRecordTypesStrict = input({
     "When true, will include all Custom Record Types, even those not included in Record Type Name Filter.",
   clean: (value: unknown): boolean => util.types.toBool(value, false),
 });
-
 export const includeOnlyTopLevelRecordTypesStrict = input({
   label: "Include Only Top Level Record Types",
   type: "boolean",
@@ -119,9 +116,6 @@ export const includeOnlyTopLevelRecordTypesStrict = input({
     "When true, will include only Record Types that are top-level, meaning not subtypes of other Types",
   clean: (value: unknown): boolean => util.types.toBool(value, false),
 });
-
-
-
 export const mappingFields = input({
   label: "Mapping Fields",
   type: "objectFieldMap",
@@ -154,12 +148,12 @@ export const mappingFields = input({
     2,
   ),
 });
-
 export const objectSelection = input({
   label: "Selected Record Types",
   type: "objectSelection",
   required: true,
-  comments: "The selected Record Types to use as choices for performing field mapping.",
+  comments:
+    "The selected Record Types to use as choices for performing field mapping.",
   clean: (value: unknown): ObjectSelection => {
     try {
       return util.types.toObjectSelection(value);
@@ -168,7 +162,6 @@ export const objectSelection = input({
     }
   },
 });
-
 export const includeSupplementalMetadata = input({
   label: "Include Supplemental Metadata",
   type: "boolean",
@@ -178,15 +171,11 @@ export const includeSupplementalMetadata = input({
     "When true, will store all data retrieved from the Salesforce Metadata API for each mapped Record Type.",
   clean: (value: unknown): boolean => util.types.toBool(value, false),
 });
-
-
-
 export const previewRecordTypeFieldsInputs = {
   version,
   connection: connectionInput,
   dynamicRecordType,
 };
-
 export const previewRecordTypeFieldValuesInputs = {
   version,
   connection: connectionInput,
@@ -194,7 +183,6 @@ export const previewRecordTypeFieldValuesInputs = {
   dynamicFieldName,
   valueCount,
 };
-
 export const selectRecordTypesInputs = {
   version,
   connection: connectionInput,
@@ -204,7 +192,6 @@ export const selectRecordTypesInputs = {
   includeOnlyTopLevelRecordTypes,
   showTriggerableOnly,
 };
-
 export const selectRecordTypesWithFieldsInputs = {
   version,
   connection: connectionInput,
@@ -214,7 +201,6 @@ export const selectRecordTypesWithFieldsInputs = {
   includeOnlyTopLevelRecordTypes: includeOnlyTopLevelRecordTypesStrict,
   showTriggerableOnly,
 };
-
 export const mapRecordTypeFieldsInputs = {
   version,
   connection: connectionInput,
@@ -222,29 +208,18 @@ export const mapRecordTypeFieldsInputs = {
   objectSelection,
   includeSupplementalMetadata,
 };
-
 const picklistBaseInputs = {
   version,
   filterQuery,
   connection: connectionInput,
 };
-
 export const selectBulkJobInputs = picklistBaseInputs;
-
 export const selectContactInputs = picklistBaseInputs;
-
 export const selectCustomerInputs = picklistBaseInputs;
-
 export const selectFlowInputs = picklistBaseInputs;
-
 export const selectLeadInputs = picklistBaseInputs;
-
 export const selectOpportunityInputs = picklistBaseInputs;
-
 export const selectOutboundMessageInputs = picklistBaseInputs;
-
 export const selectProfileInputs = picklistBaseInputs;
-
 export const selectRecordTypeInputs = picklistBaseInputs;
-
 export const selectUserInputs = picklistBaseInputs;

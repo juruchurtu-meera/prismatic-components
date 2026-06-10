@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll } from "../common";
-
 export const listDealsInputs = {
   connection,
   fetchAll,
@@ -12,7 +11,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ids: input({
     label: "IDs",
     comments: "Comma-separated list of deal IDs to be returned in a request.",
@@ -22,7 +20,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   includes: input({
     label: "Includes",
     comments:
@@ -31,7 +28,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   creatorId: input({
     label: "Creator ID",
     comments:
@@ -40,7 +36,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -51,7 +46,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   contactId: input({
     label: "Contact ID",
     placeholder: "Enter Contact ID",
@@ -62,7 +56,6 @@ export const listDealsInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   organizationId: input({
     label: "Organization ID",
     comments: "Unique identifier of an organization.",
@@ -71,7 +64,6 @@ export const listDealsInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   hot: input({
     label: "Hot",
     comments: "Indicator of whether or not the deal is hot.",
@@ -86,7 +78,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   sourceId: input({
     label: "Source ID",
     placeholder: "Enter Source ID",
@@ -96,7 +87,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   stageId: input({
     label: "Stage ID",
     placeholder: "Enter Stage ID",
@@ -107,7 +97,6 @@ export const listDealsInputs = {
     clean: util.types.toString,
     dataSource: "selectStage",
   }),
-
   name: input({
     label: "Name",
     placeholder: "Enter name",
@@ -116,7 +105,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   value: input({
     label: "Value",
     comments:
@@ -125,7 +113,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   estimatedCloseDate: input({
     label: "Estimated Close Date",
     comments: "Estimated close date of the deal.",
@@ -133,7 +120,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customFields: input({
     label: "Custom Field",
     comments: "Filterable custom field key-value pairs.",
@@ -143,7 +129,6 @@ export const listDealsInputs = {
     required: false,
     example: "key: external_id value: SKU01",
   }),
-
   inclusive: input({
     label: "Inclusive",
     comments:
@@ -166,7 +151,6 @@ export const listDealsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   perPage: input({
     label: "Per Page",
     comments:

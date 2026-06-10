@@ -7,7 +7,6 @@ import {
   where,
   fetchAll,
 } from "../../inputs";
-
 import { type Payment } from "../../interfaces/Payment";
 import { fetchAllData } from "../../util";
 import { listPaymentsExamplePayload } from "../../examplePayloads";

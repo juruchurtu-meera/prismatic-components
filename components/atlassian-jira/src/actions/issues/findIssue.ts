@@ -3,7 +3,6 @@ import { createV3Client } from "../../connections/auth";
 import { findIssueExamplePayload } from "../../examplePayloads";
 import { connectionInput, fields } from "../../inputs";
 import { DEFAULT_ISSUE_FIELDS } from "../constants";
-
 export const findIssue = action({
   display: {
     label: "Find Issue",
@@ -37,9 +36,11 @@ export const findIssue = action({
     }),
     fields,
   },
-  perform: async (context, { searchType, searchValue, jiraConnection, fields }) => {
+  perform: async (
+    context,
+    { searchType, searchValue, jiraConnection, fields },
+  ) => {
     const client = await createV3Client(jiraConnection, context.debug.enabled);
-
     if (searchType === "number") {
       try {
         const { data } = await client.get("/search/jql", {
@@ -53,7 +54,6 @@ export const findIssue = action({
         return { data: [] };
       }
     }
-
     if (searchType === "summary") {
       const { data } = await client.get("/search/jql", {
         params: {

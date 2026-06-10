@@ -10,7 +10,6 @@ import {
 import { updateCategoryPayload } from "../../examplePayloads";
 import { rawHttpClient } from "../../auth";
 import type { Category } from "../../types";
-
 export const updateCategory = action({
   display: {
     label: "Update Category",
@@ -36,12 +35,9 @@ export const updateCategory = action({
         position: position || undefined,
       },
     };
-
-    const { data } = await client.put<{ category: Category }>(
-      `/help_center/categories/${categoryId}`,
-      payload,
-    );
-
+    const { data } = await client.put<{
+      category: Category;
+    }>(`/help_center/categories/${categoryId}`, payload);
     return {
       data,
     };

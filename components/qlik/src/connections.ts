@@ -4,7 +4,6 @@ import {
   OAuth2Type,
   oauth2Connection,
 } from "@prismatic-io/spectral";
-
 export const apiKey = connection({
   key: "apiKey",
   display: {
@@ -31,7 +30,6 @@ export const apiKey = connection({
     },
   },
 });
-
 export const oauth = oauth2Connection({
   key: "oauth2",
   display: {
@@ -87,56 +85,4 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default [apiKey, oauth];

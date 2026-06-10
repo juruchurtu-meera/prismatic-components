@@ -8,7 +8,6 @@ import {
   tagId,
 } from "../../common";
 import { countryCode, stateCode } from "../../customers/common";
-
 export const selectCustomersInputs = {
   stateCode,
   countryCode,

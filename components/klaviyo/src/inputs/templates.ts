@@ -2,14 +2,11 @@ import { input } from "@prismatic-io/spectral";
 import { FIELDS_TEMPLATE_MODEL } from "../constants";
 import { cleanStringInput } from "../utils";
 import { connection, fields } from "./shared";
-
 const fieldsTemplate = input({ ...fields, model: FIELDS_TEMPLATE_MODEL });
-
 export const listTemplatesInputs = {
   connection,
   fieldsTemplate,
 };
-
 const templateName = input({
   label: "Template Name",
   comments: "The name of the template.",
@@ -19,7 +16,6 @@ const templateName = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const templateHtml = input({
   label: "Template HTML",
   comments: "The HTML content of the template.",
@@ -29,7 +25,6 @@ const templateHtml = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const templateText = input({
   label: "Template Text",
   comments: "The text content of the template.",
@@ -39,7 +34,6 @@ const templateText = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const editorType = input({
   label: "Editor Type",
   comments: "Restricted to CODE.",
@@ -49,7 +43,6 @@ const editorType = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export const createTemplateInputs = {
   connection,
   templateName,
@@ -57,7 +50,6 @@ export const createTemplateInputs = {
   templateHtml,
   templateText,
 };
-
 const templateId = input({
   label: "Template ID",
   comments: "The ID of the template.",
@@ -68,13 +60,11 @@ const templateId = input({
   dataSource: "selectTemplate",
   clean: cleanStringInput,
 });
-
 export const getTemplateInputs = {
   connection,
   templateId,
   fieldsTemplate,
 };
-
 export const updateTemplateInputs = {
   connection,
   templateId,
@@ -82,7 +72,6 @@ export const updateTemplateInputs = {
   templateHtml,
   templateText,
 };
-
 export const deleteTemplateInputs = {
   connection,
   templateId,

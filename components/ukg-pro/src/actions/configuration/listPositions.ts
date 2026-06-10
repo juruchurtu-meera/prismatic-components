@@ -4,13 +4,6 @@ import { listPositionsExamplePayload } from "../../examplePayloads";
 import { listPositionsInputs } from "../../inputs";
 import type { EmployeePosition } from "../../types";
 import { fetchWithPagination } from "../../util";
-
-
-
-
-
-
-
 export const listPositions = action({
   display: {
     label: "List Positions",
@@ -37,7 +30,6 @@ export const listPositions = action({
     },
   ) => {
     const client = createBasicAuthClient(connection, context.debug.enabled);
-
     const { data } = await fetchWithPagination<EmployeePosition>(
       client,
       "/configuration/v1/positions",
@@ -57,7 +49,6 @@ export const listPositions = action({
       },
       fetchAll,
     );
-
     return { data };
   },
   examplePayload: listPositionsExamplePayload,

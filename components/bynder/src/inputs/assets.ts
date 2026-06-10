@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { METAPROPERTY_TYPES } from "../constants";
 import { cleanString, cleanValueListInput } from "../util";
-
 export const versions = input({
   label: "Versions",
   type: "boolean",
@@ -10,7 +9,6 @@ export const versions = input({
     "When true, includes information about the different asset media items including versions.",
   clean: util.types.toBool,
 });
-
 export const stats = input({
   label: "Stats",
   type: "boolean",
@@ -18,7 +16,6 @@ export const stats = input({
   comments: "When true, includes information about views and downloads.",
   clean: util.types.toBool,
 });
-
 export const count = input({
   label: "Count",
   type: "boolean",
@@ -27,7 +24,6 @@ export const count = input({
     "When true, the response includes count results. This parameter overrides the total parameter when set to true.",
   clean: util.types.toBool,
 });
-
 export const total = input({
   label: "Total",
   type: "boolean",
@@ -35,7 +31,6 @@ export const total = input({
   comments: "When true, the response includes the total count of results.",
   clean: util.types.toBool,
 });
-
 export const copyright = input({
   label: "Copyright",
   type: "string",
@@ -45,7 +40,6 @@ export const copyright = input({
   placeholder: "Enter copyright information",
   clean: cleanString,
 });
-
 export const metapropertyId = input({
   label: "Metaproperty ID",
   type: "string",
@@ -57,7 +51,6 @@ export const metapropertyId = input({
   dataSource: "selectMetaproperty",
   clean: util.types.toString,
 });
-
 export const metapropertyOptionsIds = input({
   label: "Metaproperty Options IDs",
   type: "string",
@@ -68,7 +61,6 @@ export const metapropertyOptionsIds = input({
   placeholder: "Enter metaproperty option ID",
   clean: cleanValueListInput,
 });
-
 export const io = input({
   label: "IO",
   type: "string",
@@ -80,7 +72,6 @@ export const io = input({
     "Enter image operation (e.g., transform:crop,width:100,height:200)",
   clean: cleanString,
 });
-
 export const focuspoint = input({
   label: "Focus Point",
   type: "string",
@@ -91,7 +82,6 @@ export const focuspoint = input({
   placeholder: "Enter focus point (e.g., 0.5,0.25)",
   clean: cleanString,
 });
-
 export const format = input({
   label: "Format",
   type: "string",
@@ -102,7 +92,6 @@ export const format = input({
   placeholder: "Enter image format (e.g., jpg, png)",
   clean: cleanString,
 });
-
 export const quality = input({
   label: "Quality",
   type: "string",
@@ -113,7 +102,6 @@ export const quality = input({
   placeholder: "Enter quality (1-100)",
   clean: cleanString,
 });
-
 export const type = input({
   label: "Type",
   type: "string",
@@ -127,7 +115,6 @@ export const type = input({
   })),
   clean: cleanValueListInput,
 });
-
 export const options = input({
   label: "Options",
   type: "boolean",
@@ -136,7 +123,6 @@ export const options = input({
     "When true, the response includes the metaproperty options of each metaproperty.",
   clean: util.types.toBool,
 });
-
 export const ids = input({
   label: "IDs",
   type: "string",

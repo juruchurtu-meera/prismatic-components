@@ -4,7 +4,6 @@ import { bulkUpsertRecordsInputs } from "../../inputs";
 import { bulkUpsertRecordsExamplePayload } from "../../examplePayloads";
 import { Readable } from "node:stream";
 import { executeSFAction } from "../../util";
-
 export const bulkUpsertRecords = action({
   display: {
     label: "Bulk Upsert Records",
@@ -12,7 +11,10 @@ export const bulkUpsertRecords = action({
       "Update Salesforce records if they exist, otherwise create new Salesforce records.",
   },
   inputs: bulkUpsertRecordsInputs,
-  perform: async (context, { version, recordType, externalIdFieldName, connection, file }) => {
+  perform: async (
+    context,
+    { version, recordType, externalIdFieldName, connection, file },
+  ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
     if (context.debug.enabled) {
       context.logger.debug("Payload", {

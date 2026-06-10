@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const receivingOrderData = {
   id: 5042781,
   purchase_order_number: "PO-2024-06-150042",
@@ -56,29 +42,18 @@ const receivingOrderData = {
     },
   ],
 };
-
 export const listWarehouseReceivingOrdersExamplePayload = {
   data: [receivingOrderData],
 };
-
 export const getWarehouseReceivingOrdersExamplePayload = {
   data: receivingOrderData,
 };
-
 export const createWarehouseReceivingOrderExamplePayload = {
   data: receivingOrderData,
 };
-
 export const cancelWarehouseReceivingOrderExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const getWarehouseReceivingOrderBoxLabelsExamplePayload = {
   data: null,
 };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import type { Space } from "contentful-management";
 import { createClient } from "../../client";
 import { deleteSpaceInputs } from "../../inputs";
-
 export const deleteSpace = action({
   display: {
     label: "Delete Space",

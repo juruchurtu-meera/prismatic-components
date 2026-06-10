@@ -1,6 +1,5 @@
 import { connection } from "@prismatic-io/spectral";
 import { BASE_URL } from "../constants";
-
 export const ssvApiKeyConnection = connection({
   key: "ssvApiKeyConnection",
   display: {

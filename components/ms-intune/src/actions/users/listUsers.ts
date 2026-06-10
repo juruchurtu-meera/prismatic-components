@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection, odataParams, fetchAll } from "../../inputs/general";
 import { listUsersExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listUsers = action({
   display: {
     label: "List Users",

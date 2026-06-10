@@ -4,7 +4,6 @@ import { API_VERSION } from "../../../constants";
 import { listJobFunctionsExamplePayload } from "../../../examplePayloads";
 import { listJobFunctionsInputs } from "../../../inputs";
 import { paginateV2Results } from "../../../utils/pagination";
-
 export const listJobFunctions = action({
   display: {
     label: "List Job Functions (V2)",

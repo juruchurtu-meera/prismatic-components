@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
 import { connectionInput, filter, inlinecount } from "../inputs";
-
 const orderByOptions = [
   "ProjectID",
   "ProjectID desc",
@@ -49,7 +48,6 @@ const orderByOptions = [
   "ChangedOn",
   "ChangedOn desc",
 ].map((option) => ({ label: option, value: option }));
-
 const selectOptions = [
   "ProjectID",
   "ProjectName",
@@ -79,12 +77,10 @@ const selectOptions = [
   "ProjectRoleSet",
   "WorkPackageSet",
 ].map((option) => ({ label: option, value: option }));
-
 const expandOptions = ["ProjectRoleSet", "WorkPackageSet"].map((option) => ({
   label: option,
   value: option,
 }));
-
 export const listProjectsOrderBy = input({
   label: "Order By",
   placeholder: "Order By",
@@ -95,7 +91,6 @@ export const listProjectsOrderBy = input({
   model: orderByOptions,
   clean: util.types.toString,
 });
-
 export const listProjectsSelect = input({
   label: "Select",
   placeholder: "Select",
@@ -106,7 +101,6 @@ export const listProjectsSelect = input({
   model: selectOptions,
   clean: util.types.toString,
 });
-
 export const listProjectsExpand = input({
   label: "Expand",
   placeholder: "Expand",
@@ -117,24 +111,23 @@ export const listProjectsExpand = input({
   model: expandOptions,
   clean: util.types.toString,
 });
-
 export const listProjects = action({
   display: {
     label: "List Projects",
-    description: "Returns details about all customer and internal projects in the system.",
+    description:
+      "Returns details about all customer and internal projects in the system.",
   },
-  perform: async (_context, { connectionInput, filter, inlinecount, orderBy, select, expand }) => {
+  perform: async (
+    _context,
+    { connectionInput, filter, inlinecount, orderBy, select, expand },
+  ) => {
     const headers = {
       Accept: "application/json",
     };
     const client = getSapClient(connectionInput, headers);
     try {
       const { data } = await client.get(
-        `/sap/opu/odata/CPD/SC_PROJ_ENGMT_CREATE_UPD_SRV/ProjectSet?${
-          filter.length ? `$filter=${filter}&` : ""
-        }${inlinecount.length ? `$inlinecount=${inlinecount}&` : ""}${
-          orderBy.length ? `$orderby=${orderBy}&` : ""
-        }${select.length ? `$select=${select}&` : ""}${expand.length ? `$expand=${expand}&` : ""}`,
+        `/sap/opu/odata/CPD/SC_PROJ_ENGMT_CREATE_UPD_SRV/ProjectSet?${filter.length ? `$filter=${filter}&` : ""}${inlinecount.length ? `$inlinecount=${inlinecount}&` : ""}${orderBy.length ? `$orderby=${orderBy}&` : ""}${select.length ? `$select=${select}&` : ""}${expand.length ? `$expand=${expand}&` : ""}`,
       );
       return { data };
     } catch (error) {

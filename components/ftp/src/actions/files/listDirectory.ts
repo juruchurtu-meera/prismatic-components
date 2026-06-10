@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { connect } from "../../client";
 import { listDirectoryExamplePayload } from "../../examplePayloads";
 import { connection, verbose } from "../../inputs";
-
 const path = input({
   label: "Path",
   placeholder: "Enter directory path",
@@ -12,7 +11,6 @@ const path = input({
   example: "/path/to/directory",
   clean: util.types.toString,
 });
-
 const listDirectory = action({
   display: {
     label: "List Directory",
@@ -21,9 +19,6 @@ const listDirectory = action({
   perform: async (_context, { connection, verbose, path }) => {
     const client = await connect(connection, verbose);
     try {
-      
-      
-      
       await client.cd(path);
       const contents = await client.list();
       const data = contents.map((file) => ({
@@ -40,5 +35,4 @@ const listDirectory = action({
   inputs: { connection, verbose, path },
   examplePayload: listDirectoryExamplePayload,
 });
-
 export default listDirectory;

@@ -1,6 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
-import { cleanCommaSeparatedString, cleanNumber, cleanNumberArray, cleanStringArray } from "./helpers";
-
+import {
+  cleanCommaSeparatedString,
+  cleanNumber,
+  cleanNumberArray,
+  cleanStringArray,
+} from "./helpers";
 export const getTeamId = (required: boolean, comments?: string) =>
   input({
     label: "Team ID",
@@ -12,7 +16,6 @@ export const getTeamId = (required: boolean, comments?: string) =>
     clean: util.types.toString,
     dataSource: "teams",
   });
-
 export const getWebhookId = (required: boolean, comments: string) =>
   input({
     label: "Webhook ID",
@@ -23,7 +26,6 @@ export const getWebhookId = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const tagsCode = input({
   label: "Tags",
   type: "code",
@@ -41,12 +43,11 @@ export const tagsCode = input({
       ],
     },
     null,
-    2
+    2,
   ),
   required: true,
   clean: util.types.toString,
 });
-
 export const customFieldsCode = input({
   label: "Custom Fields",
   type: "code",
@@ -69,13 +70,16 @@ export const customFieldsCode = input({
       ],
     },
     null,
-    2
+    2,
   ),
   required: false,
   clean: util.types.toString,
 });
-
-export const getPermissionLevel = (required: boolean, comments: string, defaultValue?: string) =>
+export const getPermissionLevel = (
+  required: boolean,
+  comments: string,
+  defaultValue?: string,
+) =>
   input({
     label: "Permission Level",
     type: "string",
@@ -86,7 +90,6 @@ export const getPermissionLevel = (required: boolean, comments: string, defaultV
     ...(defaultValue && { default: `${defaultValue}` }),
     clean: util.types.toString,
   });
-
 export const getGuestId = (required: boolean, comments: string) =>
   input({
     label: "Guest ID",
@@ -96,7 +99,6 @@ export const getGuestId = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const getEndpoint = (required: boolean, comments: string) =>
   input({
     label: "Endpoint",
@@ -106,17 +108,16 @@ export const getEndpoint = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const groupIds = input({
   label: "Group IDs",
   type: "string",
   placeholder: "Enter Group IDs",
   example: "C9C58BE9-7C73-4002-A6A9-310014852858",
-  comments: "Enter one or more Team IDs (user groups) to retrieve information about specific Teams.",
+  comments:
+    "Enter one or more Team IDs (user groups) to retrieve information about specific Teams.",
   required: false,
   clean: util.types.toString,
 });
-
 export const getSpaceId = (required: boolean, comments?: string) =>
   input({
     label: "Space ID",
@@ -127,7 +128,6 @@ export const getSpaceId = (required: boolean, comments?: string) =>
     clean: util.types.toString,
     dataSource: "spaces",
   });
-
 export const getStartId = (required: boolean, comments: string) =>
   input({
     label: "Start ID",
@@ -137,7 +137,6 @@ export const getStartId = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const folderName = input({
   label: "Name",
   type: "string",
@@ -147,7 +146,6 @@ export const folderName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const getCommentText = (required: boolean, comments: string) =>
   input({
     label: "Comment Text",
@@ -157,7 +155,6 @@ export const getCommentText = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const startDate = input({
   label: "Start Date",
   type: "string",
@@ -167,8 +164,11 @@ export const startDate = input({
   required: false,
   clean: util.types.toString,
 });
-
-export const getStartDateInt = (required: boolean, comments: string, example?: string) =>
+export const getStartDateInt = (
+  required: boolean,
+  comments: string,
+  example?: string,
+) =>
   input({
     label: "Start Date",
     type: "string",
@@ -178,7 +178,6 @@ export const getStartDateInt = (required: boolean, comments: string, example?: s
     comments,
     clean: cleanNumber,
   });
-
 export const assigneeId = input({
   label: "Assignee",
   type: "string",
@@ -188,7 +187,6 @@ export const assigneeId = input({
   required: true,
   clean: cleanNumber,
 });
-
 export const getCommentId = (required: boolean, comments: string) =>
   input({
     label: "Comment ID",
@@ -198,7 +196,6 @@ export const getCommentId = (required: boolean, comments: string) =>
     required,
     clean: cleanNumber,
   });
-
 export const endDate = input({
   label: "End Date",
   type: "string",
@@ -208,7 +205,6 @@ export const endDate = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const getAssignee = (required: boolean, comments: string) =>
   input({
     label: "Assignee",
@@ -218,7 +214,6 @@ export const getAssignee = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const assigneeInt = input({
   label: "Assignee",
   type: "string",
@@ -228,16 +223,15 @@ export const assigneeInt = input({
   required: false,
   clean: cleanNumber,
 });
-
 export const includeTaskTags = input({
   label: "Include Task Tags",
   type: "boolean",
-  comments: "When true, includes task tags in the response for time entries associated with tasks.",
+  comments:
+    "When true, includes task tags in the response for time entries associated with tasks.",
   required: false,
   default: "true",
   clean: util.types.toBool,
 });
-
 export const includeLocationNames = input({
   label: "Include Location Names",
   type: "boolean",
@@ -247,41 +241,43 @@ export const includeLocationNames = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const getFolderId = (required: boolean, comments?: string) =>
   input({
     label: "Folder ID",
     type: "string",
     placeholder: "Enter Folder ID",
-    comments: comments ? comments : "Only include time entries associated with tasks in a specific Folder.",
+    comments: comments
+      ? comments
+      : "Only include time entries associated with tasks in a specific Folder.",
     required,
     clean: util.types.toString,
     dataSource: "folders",
   });
-
 export const getlistId = (required: boolean, comments?: string) =>
   input({
     label: "List ID",
     type: "string",
     placeholder: "Enter List ID",
-    comments: comments ? comments : "Only include time entries associated with tasks in a specific List.",
+    comments: comments
+      ? comments
+      : "Only include time entries associated with tasks in a specific List.",
     required,
     clean: util.types.toString,
     dataSource: "lists",
   });
-
 export const getTaskId = (required: boolean, comments?: string) => {
   return input({
     label: "Task ID",
     type: "string",
     placeholder: "Enter Task ID",
-    comments: comments ? comments : "Only include time entries associated with a specific task.",
+    comments: comments
+      ? comments
+      : "Only include time entries associated with a specific task.",
     required,
     clean: util.types.toString,
     dataSource: "tasks",
   });
 };
-
 export const getCalendarId = (required: boolean, comments?: string) =>
   input({
     label: "Calendar ID",
@@ -292,8 +288,11 @@ export const getCalendarId = (required: boolean, comments?: string) =>
     clean: util.types.toString,
     dataSource: "calendars",
   });
-
-export const getCanEditTags = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getCanEditTags = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Can Edit Tags",
     type: "boolean",
@@ -302,8 +301,11 @@ export const getCanEditTags = (required: boolean, comments: string, defaultValue
     clean: util.types.toBool,
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
   });
-
-export const getStartDateTime = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getStartDateTime = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Start Date Time",
     type: "boolean",
@@ -312,8 +314,11 @@ export const getStartDateTime = (required: boolean, comments: string, defaultVal
     clean: util.types.toBool,
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
   });
-
-export const getIncludeShared = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getIncludeShared = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Include Shared",
     type: "boolean",
@@ -322,8 +327,11 @@ export const getIncludeShared = (required: boolean, comments: string, defaultVal
     clean: util.types.toBool,
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
   });
-
-export const getCanSeeTimeSpent = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getCanSeeTimeSpent = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Can See Time Spent",
     type: "boolean",
@@ -332,8 +340,11 @@ export const getCanSeeTimeSpent = (required: boolean, comments: string, defaultV
     clean: util.types.toBool,
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
   });
-
-export const getCanSeeTimeEstimated = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getCanSeeTimeEstimated = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Can See Time Estimated",
     type: "boolean",
@@ -342,8 +353,11 @@ export const getCanSeeTimeEstimated = (required: boolean, comments: string, defa
     clean: util.types.toBool,
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
   });
-
-export const getCanCreateViews = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getCanCreateViews = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Can Create Views",
     type: "boolean",
@@ -352,18 +366,26 @@ export const getCanCreateViews = (required: boolean, comments: string, defaultVa
     clean: util.types.toBool,
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
   });
-
-export const getCustomTaskIds = (required: boolean, comments?: string, defaultValue?: boolean) =>
+export const getCustomTaskIds = (
+  required: boolean,
+  comments?: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Custom Task ID",
     type: "boolean",
-    comments: comments ? comments : "When true, allows referencing a task by its custom task ID.",
+    comments: comments
+      ? comments
+      : "When true, allows referencing a task by its custom task ID.",
     required,
     default: defaultValue !== undefined ? `${defaultValue}` : "false",
     clean: util.types.toBool,
   });
-
-export const getArchived = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getArchived = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Archived",
     type: "boolean",
@@ -372,7 +394,6 @@ export const getArchived = (required: boolean, comments: string, defaultValue?: 
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
     clean: util.types.toBool,
   });
-
 export const getCustomTeamId = (required: boolean) =>
   input({
     label: "Custom Team ID",
@@ -382,7 +403,6 @@ export const getCustomTeamId = (required: boolean) =>
     required,
     clean: util.types.toString,
   });
-
 export const groupId = input({
   label: "Group ID",
   type: "string",
@@ -392,7 +412,6 @@ export const groupId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const teamName = input({
   label: "Team Name",
   type: "string",
@@ -402,17 +421,16 @@ export const teamName = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const teamHandle = input({
   label: "Team Handle",
   type: "string",
   placeholder: "Enter team handle",
   example: "engineering",
-  comments: "You may update the team handle which is used to @mention a Team (user group) in your Workspace.",
+  comments:
+    "You may update the team handle which is used to @mention a Team (user group) in your Workspace.",
   required: false,
   clean: util.types.toString,
 });
-
 export const addMember = input({
   label: "Add Member",
   type: "string",
@@ -422,7 +440,6 @@ export const addMember = input({
   required: false,
   clean: cleanCommaSeparatedString,
 });
-
 export const removeMember = input({
   label: "Remove Member",
   type: "string",
@@ -432,7 +449,6 @@ export const removeMember = input({
   required: false,
   clean: cleanCommaSeparatedString,
 });
-
 export const userId = input({
   label: "User ID",
   type: "string",
@@ -442,7 +458,6 @@ export const userId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -452,7 +467,6 @@ export const name = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const getListName = (required: boolean, comments: string) =>
   input({
     label: "Name",
@@ -462,7 +476,6 @@ export const getListName = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const getContent = (required: boolean, comments: string) =>
   input({
     label: "Content",
@@ -472,7 +485,6 @@ export const getContent = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const spaceName = input({
   label: "Space Name",
   type: "string",
@@ -482,7 +494,6 @@ export const spaceName = input({
   required: true,
   clean: (input) => util.types.toString(input),
 });
-
 export const color = input({
   label: "Color",
   type: "string",
@@ -492,7 +503,6 @@ export const color = input({
   required: true,
   clean: (input) => util.types.toString(input),
 });
-
 export const privateInput = input({
   label: "Private",
   type: "boolean",
@@ -501,7 +511,6 @@ export const privateInput = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const adminCanManage = input({
   label: "Admin Can Manage",
   type: "boolean",
@@ -510,7 +519,6 @@ export const adminCanManage = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const multipleAssignees = input({
   label: "Multiple Assignees",
   type: "boolean",
@@ -519,7 +527,6 @@ export const multipleAssignees = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableDueDates = input({
   label: "Enable Due Dates",
   type: "boolean",
@@ -528,7 +535,6 @@ export const enableDueDates = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const useStartDate = input({
   label: "Use Start Date",
   type: "boolean",
@@ -537,7 +543,6 @@ export const useStartDate = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const remapDueDates = input({
   label: "Remap Due Dates",
   type: "boolean",
@@ -546,7 +551,6 @@ export const remapDueDates = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const remapClosedDueDates = input({
   label: "Remap closed Due Dates",
   type: "boolean",
@@ -555,7 +559,6 @@ export const remapClosedDueDates = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const enableTimeTracking = input({
   label: "Enable Time Tracking",
   type: "boolean",
@@ -564,7 +567,6 @@ export const enableTimeTracking = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableTags = input({
   label: "Enable Tags",
   type: "boolean",
@@ -573,7 +575,6 @@ export const enableTags = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableTimeEstimates = input({
   label: "Enable Time Estimates",
   type: "boolean",
@@ -582,7 +583,6 @@ export const enableTimeEstimates = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableChecklists = input({
   label: "Enable Checklists",
   type: "boolean",
@@ -591,7 +591,6 @@ export const enableChecklists = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableCustomFields = input({
   label: "Enable Custom Fields",
   type: "boolean",
@@ -600,7 +599,6 @@ export const enableCustomFields = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableRemapDependencies = input({
   label: "Enable Remap Dependencies",
   type: "boolean",
@@ -609,7 +607,6 @@ export const enableRemapDependencies = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enableDependencyWarning = input({
   label: "Enable Dependency Warning",
   type: "boolean",
@@ -618,7 +615,6 @@ export const enableDependencyWarning = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const enablePortfolios = input({
   label: "Enable Portfolios",
   type: "boolean",
@@ -627,7 +623,6 @@ export const enablePortfolios = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const members = input({
   label: "Member",
   type: "string",
@@ -637,7 +632,6 @@ export const members = input({
   required: true,
   clean: cleanNumberArray,
 });
-
 export const getTags = (required: boolean, comments: string) =>
   input({
     label: "Tag",
@@ -647,7 +641,6 @@ export const getTags = (required: boolean, comments: string) =>
     required,
     clean: cleanStringArray,
   });
-
 export const events = input({
   label: "Event",
   type: "string",
@@ -657,7 +650,6 @@ export const events = input({
   required: true,
   clean: cleanStringArray,
 });
-
 export const getEmail = (required: boolean, comments: string) =>
   input({
     label: "Email",
@@ -668,7 +660,6 @@ export const getEmail = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const getUsername = (required: boolean, comments: string) =>
   input({
     label: "Username",
@@ -678,7 +669,6 @@ export const getUsername = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const admin = input({
   label: "Admin",
   type: "boolean",
@@ -687,16 +677,15 @@ export const admin = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 export const allEvents = input({
   label: "All Events",
   type: "boolean",
-  comments: "When true, subscribes to all events and overrides the event inputs.",
+  comments:
+    "When true, subscribes to all events and overrides the event inputs.",
   required: false,
   default: "false",
   clean: util.types.toBool,
 });
-
 export const customRoleId = input({
   label: "Custom Role ID",
   type: "string",
@@ -706,14 +695,12 @@ export const customRoleId = input({
   required: true,
   clean: (value) => util.types.toNumber(value),
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The ClickUp connection to use.",
 });
-
 export const getDescription = (required: boolean, comments?: string) =>
   input({
     label: "Description",
@@ -750,7 +737,6 @@ export const getParent = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const getLinksTo = (required: boolean, comments: string) =>
   input({
     label: "Links To",
@@ -760,7 +746,6 @@ export const getLinksTo = (required: boolean, comments: string) =>
     required,
     clean: util.types.toString,
   });
-
 export const getPriority = (required: boolean, comments: string) =>
   input({
     label: "Priority",
@@ -788,8 +773,11 @@ export const getDueDate = (required: boolean, comments: string) =>
     required,
     clean: util.types.toDate,
   });
-
-export const getDueDateInt = (required: boolean, comments: string, example?: string) =>
+export const getDueDateInt = (
+  required: boolean,
+  comments: string,
+  example?: string,
+) =>
   input({
     label: "Due Date",
     type: "string",
@@ -799,8 +787,11 @@ export const getDueDateInt = (required: boolean, comments: string, example?: str
     ...(example?.length && { example }),
     clean: cleanNumber,
   });
-
-export const getTimeEstimate = (required: boolean, comments: string, example?: string) =>
+export const getTimeEstimate = (
+  required: boolean,
+  comments: string,
+  example?: string,
+) =>
   input({
     label: "Time Estimate",
     type: "string",
@@ -810,8 +801,11 @@ export const getTimeEstimate = (required: boolean, comments: string, example?: s
     ...(example?.length && { example }),
     clean: cleanNumber,
   });
-
-export const getDueDateTime = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getDueDateTime = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Due Date Time",
     type: "boolean",
@@ -820,8 +814,11 @@ export const getDueDateTime = (required: boolean, comments: string, defaultValue
     default: `${defaultValue}`,
     clean: util.types.toBool,
   });
-
-export const getCheckRequiredCustomFields = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getCheckRequiredCustomFields = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Check Required Custom Fields",
     type: "boolean",
@@ -830,8 +827,11 @@ export const getCheckRequiredCustomFields = (required: boolean, comments: string
     ...(defaultValue !== undefined && { default: `${defaultValue}` }),
     clean: util.types.toBool,
   });
-
-export const getUnsetStatus = (required: boolean, comments: string, defaultValue?: boolean) =>
+export const getUnsetStatus = (
+  required: boolean,
+  comments: string,
+  defaultValue?: boolean,
+) =>
   input({
     label: "Unset Status",
     type: "boolean",
@@ -847,7 +847,6 @@ export const assignees = input({
   type: "data",
   required: false,
 });
-
 export const getAssignees = (required: boolean, comments: string) =>
   input({
     label: "Assignee",
@@ -866,7 +865,6 @@ export const getAddAssignees = (required: boolean, comments: string) =>
     required,
     clean: cleanNumberArray,
   });
-
 export const getRemoveAssignees = (required: boolean, comments: string) =>
   input({
     label: "Remove Assignee",
@@ -884,7 +882,6 @@ export const customFields = input({
   example: '{"field_id": "value"}',
   required: false,
 });
-
 export const getTagNamesArray = (required: boolean, comments: string) =>
   input({
     label: "Tag name",
@@ -893,17 +890,16 @@ export const getTagNamesArray = (required: boolean, comments: string) =>
     required,
     comments,
   });
-
 export const orderBy = input({
   label: "Order By",
   type: "string",
   placeholder: "Enter order by field",
   required: false,
-  comments: "Order by a particular field. By default, tasks are ordered by created.",
+  comments:
+    "Order by a particular field. By default, tasks are ordered by created.",
   example: "created",
   clean: util.types.toString,
 });
-
 export const reverse = input({
   label: "Reverse",
   type: "boolean",
@@ -912,16 +908,15 @@ export const reverse = input({
   comments: "When true, tasks are displayed in reverse order.",
   clean: util.types.toBool,
 });
-
 export const includeClosed = input({
   label: "Include Closed",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "When true, includes closed tasks in the results. By default, they are excluded.",
+  comments:
+    "When true, includes closed tasks in the results. By default, they are excluded.",
   clean: util.types.toBool,
 });
-
 export const dueDateGt = input({
   label: "Due Date Greater Than",
   type: "string",
@@ -994,13 +989,13 @@ export const dateDoneLt = input({
   comments: "Filter by date done less than Unix time in milliseconds.",
   clean: util.types.toString,
 });
-
 export const fieldId = input({
   label: "Field ID",
   type: "string",
   placeholder: "Enter Field ID",
   required: true,
-  comments: "Enter the universal unique identifier (UUID) of the Custom Field you want to set.",
+  comments:
+    "Enter the universal unique identifier (UUID) of the Custom Field you want to set.",
   clean: util.types.toString,
   dataSource: "customFields",
 });
@@ -1010,7 +1005,8 @@ export const fieldValue = input({
   placeholder: "Field value from previous step",
   comments: "The value to set for the custom field.",
   required: true,
-  clean: (value) => (util.types.isDate(value) ? util.types.toDate(value).getTime() : value),
+  clean: (value) =>
+    util.types.isDate(value) ? util.types.toDate(value).getTime() : value,
 });
 export const valueType = input({
   label: "Value Type",
@@ -1020,7 +1016,6 @@ export const valueType = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -1040,8 +1035,11 @@ export const getSubTasks = (required: boolean, comments: string) =>
     comments,
     clean: util.types.toBool,
   });
-
-export const getNotifyAll = (required: boolean, comments: string, defaultValue: boolean) =>
+export const getNotifyAll = (
+  required: boolean,
+  comments: string,
+  defaultValue: boolean,
+) =>
   input({
     label: "Notify All",
     type: "boolean",
@@ -1050,8 +1048,11 @@ export const getNotifyAll = (required: boolean, comments: string, defaultValue: 
     default: `${defaultValue}`,
     clean: util.types.toBool,
   });
-
-export const getResolved = (required: boolean, comments: string, defaultValue: boolean) =>
+export const getResolved = (
+  required: boolean,
+  comments: string,
+  defaultValue: boolean,
+) =>
   input({
     label: "Resolved",
     type: "boolean",
@@ -1060,7 +1061,6 @@ export const getResolved = (required: boolean, comments: string, defaultValue: b
     default: `${defaultValue}`,
     clean: util.types.toBool,
   });
-
 export const customFieldId = input({
   label: "Custom Field ID",
   type: "string",
@@ -1078,7 +1078,6 @@ export const value = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const timerId = input({
   label: "Timer ID",
   type: "string",
@@ -1088,7 +1087,6 @@ export const timerId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const getStart = (required: boolean, comments: string) =>
   input({
     label: "Start",
@@ -1098,7 +1096,6 @@ export const getStart = (required: boolean, comments: string) =>
     required,
     clean: cleanNumber,
   });
-
 export const getEnd = (required: boolean, comments: string) =>
   input({
     label: "End",
@@ -1108,8 +1105,11 @@ export const getEnd = (required: boolean, comments: string) =>
     required,
     clean: cleanNumber,
   });
-
-export const getBillable = (required: boolean, comments: string, defaultValue: boolean) =>
+export const getBillable = (
+  required: boolean,
+  comments: string,
+  defaultValue: boolean,
+) =>
   input({
     label: "Billable",
     type: "boolean",
@@ -1118,7 +1118,6 @@ export const getBillable = (required: boolean, comments: string, defaultValue: b
     default: `${defaultValue}`,
     clean: util.types.toBool,
   });
-
 export const getDuration = (required: boolean, comments: string) =>
   input({
     label: "Duration",
@@ -1128,7 +1127,6 @@ export const getDuration = (required: boolean, comments: string) =>
     required,
     clean: cleanNumber,
   });
-
 export const assigneeTimeEntry = input({
   label: "Assignee",
   type: "string",
@@ -1139,7 +1137,6 @@ export const assigneeTimeEntry = input({
   required: true,
   clean: cleanNumber,
 });
-
 export const tagAction = input({
   label: "Tag Action",
   type: "string",
@@ -1149,7 +1146,6 @@ export const tagAction = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const getFile = (required: boolean) =>
   input({
     label: "File",
@@ -1159,7 +1155,6 @@ export const getFile = (required: boolean) =>
     required,
     clean: util.types.toBufferDataPayload,
   });
-
 export const getFileName = (required: boolean) =>
   input({
     label: "File Name",
@@ -1170,7 +1165,6 @@ export const getFileName = (required: boolean) =>
     example: "my-image.png",
     clean: util.types.toString,
   });
-
 export const markdownDescription = input({
   label: "Markdown Description",
   type: "string",
@@ -1180,7 +1174,6 @@ export const markdownDescription = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const pollScopeType = input({
   label: "Scope",
   type: "string",
@@ -1190,9 +1183,9 @@ export const pollScopeType = input({
     { label: "List", value: "list" },
   ],
   clean: util.types.toString,
-  comments: "Whether to poll tasks across an entire Team (Workspace) or scoped to a single List.",
+  comments:
+    "Whether to poll tasks across an entire Team (Workspace) or scoped to a single List.",
 });
-
 export const pollScopeId = input({
   label: "Scope ID",
   type: "string",
@@ -1200,23 +1193,24 @@ export const pollScopeId = input({
   example: "9010065123",
   placeholder: "Enter the Team or List ID",
   clean: util.types.toString,
-  comments: "The Team ID or List ID to monitor for changes, depending on the Scope selected above.",
+  comments:
+    "The Team ID or List ID to monitor for changes, depending on the Scope selected above.",
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
   required: false,
   default: "true",
   clean: util.types.toBool,
-  comments: "When enabled, tasks created since the last poll are returned in the trigger payload.",
+  comments:
+    "When enabled, tasks created since the last poll are returned in the trigger payload.",
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
   required: false,
   default: "true",
   clean: util.types.toBool,
-  comments: "When enabled, tasks updated since the last poll are returned in the trigger payload.",
+  comments:
+    "When enabled, tasks updated since the last poll are returned in the trigger payload.",
 });

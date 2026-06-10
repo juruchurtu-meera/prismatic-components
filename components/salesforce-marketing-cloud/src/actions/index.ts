@@ -9,7 +9,6 @@ import journeys from "./journeys";
 import misc from "./misc";
 import transactionalEmail from "./transactionalEmail";
 import transactionalSms from "./transactionalSms";
-
 export default {
   ...assets,
   ...automations,

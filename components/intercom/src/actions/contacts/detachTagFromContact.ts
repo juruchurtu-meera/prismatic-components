@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, idInput } from "../../inputs";
 import { tagIdInput } from "../../inputs/contacts";
-
 export const detachTag = action({
   display: {
     label: "Detach Tag from Contact",

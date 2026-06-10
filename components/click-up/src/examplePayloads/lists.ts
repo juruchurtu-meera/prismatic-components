@@ -1,23 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const listObject = {
   id: "124",
   name: "Sprint Backlog",
@@ -69,37 +49,31 @@ const listObject = {
       type: "closed",
     },
   ],
-  inbound_address: "add.task.124.U-81942673.ccc7c26e-3ab9-46d5-ad07-62a9a7d0f0c4@tasks.clickup.com",
+  inbound_address:
+    "add.task.124.U-81942673.ccc7c26e-3ab9-46d5-ad07-62a9a7d0f0c4@tasks.clickup.com",
   archived: false,
   permission_level: "create",
 };
-
 export const getListExamplePayload = {
   data: listObject,
 };
-
 export const getListsExamplePayload = {
   data: {
     lists: [listObject],
   },
 };
-
 export const createListExamplePayload = {
   data: listObject,
 };
-
 export const updateListExamplePayload = {
   data: listObject,
 };
-
 export const deleteListExamplePayload = {
   data: null,
 };
-
 export const addTaskToListExamplePayload = {
   data: null,
 };
-
 export const removeTaskFromListExamplePayload = {
   data: null,
 };

@@ -3,11 +3,11 @@ import { createCrmClient } from "../../client";
 import { fetchXmlExamplePayload } from "../../examplePayloads";
 import { fetchXmlInputs } from "../../inputs";
 import { paginateFetchXml } from "../../utils/pagination";
-
 export const fetchXml = action({
   display: {
     label: "Run Fetch XML Query",
-    description: "Executes a Fetch XML query against the Microsoft Dynamics 365 CRM instance.",
+    description:
+      "Executes a Fetch XML query against the Microsoft Dynamics 365 CRM instance.",
   },
   examplePayload: fetchXmlExamplePayload,
   perform: async (
@@ -21,10 +21,9 @@ export const fetchXml = action({
       impersonateUserId,
       fetchAll: shouldFetchAll,
       connection,
-    }
+    },
   ) => {
     const client = await createCrmClient(connection, context.debug.enabled);
-
     const executeFn = async (page?: number, cookie?: string) => {
       const result = await client.fetch({
         collection: entityType,
@@ -36,11 +35,9 @@ export const fetchXml = action({
       });
       return result as unknown as Record<string, unknown>;
     };
-
     if (shouldFetchAll) {
       return paginateFetchXml(executeFn, true, pageNumber, nextPageId);
     }
-
     const result = await client.fetch({
       collection: entityType,
       fetchXml: xmlQuery,

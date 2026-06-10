@@ -1,6 +1,7 @@
 import type { PaginatedResponse } from "../types";
-
-export const listCategoriesExamplePayload: { data: PaginatedResponse } = {
+export const listCategoriesExamplePayload: {
+  data: PaginatedResponse;
+} = {
   data: {
     count: 1,
     page: 1,
@@ -19,7 +20,6 @@ export const listCategoriesExamplePayload: { data: PaginatedResponse } = {
     ],
   },
 };
-
 export const getCategoryExamplePayload = {
   data: {
     id: 54975,
@@ -31,13 +31,10 @@ export const getCategoryExamplePayload = {
     categoryType: "asset",
   },
 };
-
 export const updateCategoryExamplePayload = getCategoryExamplePayload;
-
 export const deleteCategoryExamplePayload = {
   data: null,
 };
-
 export const createCategoryExamplePayload = {
   data: {
     id: 337349,

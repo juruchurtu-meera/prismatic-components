@@ -7,7 +7,6 @@ import type {
   AuthorizationCodeParams,
   OAuth2Connection,
 } from "../interfaces/ConnectionParams/AuthorizationCodeParams";
-
 export const _getMicrosoftOAuth2AuthorizationCodeConnection = ({
   key,
   defaultScopes,
@@ -123,7 +122,6 @@ export const _getMicrosoftOAuth2AuthorizationCodeConnection = ({
       OAuth2Type.AuthorizationCode,
     ),
   });
-
 export const getMicrosoftOAuth2AuthorizationCodeConnection: (
   params: AuthorizationCodeParams,
 ) => OAuth2Connection = _getMicrosoftOAuth2AuthorizationCodeConnection;

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "./general";
-
 const whatsappBusinessAccountId = input({
   label: "WhatsApp Business Account ID",
   comments:
@@ -11,5 +10,4 @@ const whatsappBusinessAccountId = input({
   placeholder: "Enter WhatsApp Business Account ID",
   clean: util.types.toString,
 });
-
 export const selectPhoneInputs = { connection, whatsappBusinessAccountId };

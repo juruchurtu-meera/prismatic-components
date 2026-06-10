@@ -1,5 +1,3 @@
-
-
 export const updateARAdjustmentPayload = {
   data: {
     response: {

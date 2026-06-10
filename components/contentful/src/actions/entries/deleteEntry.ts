@@ -3,7 +3,6 @@ import type { Entry, Environment } from "contentful-management";
 import { createClient } from "../../client";
 import { deleteEntryInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const deleteEntry = action({
   display: {
     label: "Delete Entry",

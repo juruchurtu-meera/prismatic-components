@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../../client";
 import { listShipmentsExamplePayload } from "../../examplePayloads";
 import { listShipmentsInputs } from "../../inputs";
-
 export const listShipments = action({
   display: {
     label: "List Shipments",
@@ -28,7 +27,6 @@ export const listShipments = action({
       connectionInput,
       context.debug.enabled,
     );
-
     const params = {
       trackingNumber,
       createDateStart,
@@ -40,7 +38,6 @@ export const listShipments = action({
       page,
       pageSize,
     };
-
     const { data } = await client.get("/shipments", { params });
     return { data };
   },

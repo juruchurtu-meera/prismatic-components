@@ -3,7 +3,6 @@ import { getAzureServiceBusClient } from "../client";
 import { connection } from "../inputs";
 import type { RuleItem } from "../types/DataSources";
 import { toSortedPicklist } from "./helpers";
-
 const subscriptionId = input({
   label: "Subscription ID",
   comments: "The Azure subscription ID.",
@@ -11,7 +10,6 @@ const subscriptionId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const resourceGroupName = input({
   label: "Resource Group Name",
   comments: "Name of the Resource group within the Azure subscription.",
@@ -19,7 +17,6 @@ const resourceGroupName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const namespaceName = input({
   label: "Namespace Name",
   comments: "The namespace name.",
@@ -27,7 +24,6 @@ const namespaceName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const topicName = input({
   label: "Topic Name",
   comments: "The topic name.",
@@ -35,7 +31,6 @@ const topicName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const subscriptionName = input({
   label: "Subscription Name",
   comments: "The subscription name.",
@@ -43,7 +38,6 @@ const subscriptionName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const selectRule = dataSource({
   display: {
     label: "Select Rule",

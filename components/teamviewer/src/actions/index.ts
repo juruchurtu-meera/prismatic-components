@@ -9,7 +9,6 @@ import misc from "./misc";
 import patchManagement from "./patchManagement";
 import sessions from "./sessions";
 import user from "./user";
-
 export default {
   ...accounts,
   ...contacts,

@@ -4,7 +4,6 @@ import {
   OAuth2Type,
   oauth2Connection,
 } from "@prismatic-io/spectral";
-
 const personalDeveloperToken = connection({
   key: "personalDeveloperToken",
   display: {
@@ -31,11 +30,6 @@ const personalDeveloperToken = connection({
     },
   },
 });
-
-
-
-
-
 const oauth2 = oauth2Connection({
   key: "frontifyOAuth2",
   display: {
@@ -96,5 +90,4 @@ const oauth2 = oauth2Connection({
     },
   },
 });
-
 export default [oauth2, personalDeveloperToken];

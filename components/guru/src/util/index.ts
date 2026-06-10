@@ -3,3 +3,4 @@ export * from "./pagination";
 export * from "./webhooks";
 export * from "./cleanInput";
 export * from "./misc";
+export * from "./polling";

@@ -39,10 +39,20 @@ import {
   updateWebsite,
   website,
 } from "../inputs";
-import { getAllPaginatedData, getArrayOfObjectsWithKey, getProps, toStringList } from "../util";
-
-const contactProps = ["firstname", "lastname", "email", "company", "website", "phone"];
-
+import {
+  getAllPaginatedData,
+  getArrayOfObjectsWithKey,
+  getProps,
+  toStringList,
+} from "../util";
+const contactProps = [
+  "firstname",
+  "lastname",
+  "email",
+  "company",
+  "website",
+  "phone",
+];
 export const listContacts = action({
   display: {
     label: "List Contacts",
@@ -55,9 +65,10 @@ export const listContacts = action({
       timeout: params.timeout || undefined,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(contactProps, params.additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      contactProps,
+      params.additionalProperties || [],
+    );
     const data = await getAllPaginatedData(
       client,
       "/crm/v3/objects/contacts",
@@ -68,12 +79,12 @@ export const listContacts = action({
           ...parameterizedProperties,
           limit: util.types.toInt(params.limit) || undefined,
           after: util.types.toString(params.after) || undefined,
-          associations: toStringList(params.associationsList || []).join(",") || undefined,
+          associations:
+            toStringList(params.associationsList || []).join(",") || undefined,
           archived: util.types.toBool(params.archived) || false,
         },
       },
     );
-
     return { data };
   },
   inputs: {
@@ -88,7 +99,6 @@ export const listContacts = action({
   },
   examplePayload: listContactsPayload,
 });
-
 export const getContact = action({
   display: {
     label: "Get Contact",
@@ -101,7 +111,6 @@ export const getContact = action({
       contactId,
       additionalProperties,
       timeout,
-
       hubspotConnection,
       associationsList,
       archived,
@@ -113,21 +122,20 @@ export const getContact = action({
       throw new Error("You must supply an Id or an email to get a record.");
     }
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(contactProps, additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      contactProps,
+      additionalProperties || [],
+    );
     const params = {
       ...parameterizedProperties,
       associations: toStringList(associationsList || []).join(",") || undefined,
       archived: util.types.toBool(archived) || false,
     };
-
     if (id) {
       return {
         data: (
@@ -167,12 +175,9 @@ export const getContact = action({
     associationsList,
     archived,
     timeout,
-
     hubspotConnection: connectionInput,
   },
-  
 });
-
 export const deleteContact = action({
   display: {
     label: "Delete Contact",
@@ -180,13 +185,11 @@ export const deleteContact = action({
   },
   perform: async (context, { contactId, timeout, hubspotConnection }) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (await client.delete(`/crm/v3/objects/contacts/${contactId}`)).data,
     };
@@ -194,12 +197,10 @@ export const deleteContact = action({
   inputs: {
     contactId,
     timeout,
-
     hubspotConnection: connectionInput,
   },
   examplePayload: deleteContactPayload,
 });
-
 export const CreateContact = action({
   display: {
     label: "Create Contact",
@@ -215,20 +216,17 @@ export const CreateContact = action({
       phone,
       website,
       timeout,
-
       fieldValues,
       dynamicValues,
       hubspotConnection,
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.post("/crm/v3/objects/contacts", {
@@ -256,12 +254,10 @@ export const CreateContact = action({
     fieldValues,
     dynamicValues,
     timeout,
-
     hubspotConnection: connectionInput,
   },
   examplePayload: createContactPayload,
 });
-
 export const updateContact = action({
   display: {
     label: "Update Contact",
@@ -278,20 +274,17 @@ export const updateContact = action({
       updatePhone,
       updateWebsite,
       timeout,
-
       fieldValues,
       dynamicValues,
       hubspotConnection,
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.patch(`/crm/v3/objects/contacts/${contactId}`, {
@@ -320,12 +313,10 @@ export const updateContact = action({
     fieldValues,
     dynamicValues,
     timeout,
-
     hubspotConnection: connectionInput,
   },
   examplePayload: updateContactPayload,
 });
-
 export const archiveBatchContacts = action({
   display: {
     label: "Archive Batch Contacts",
@@ -333,14 +324,16 @@ export const archiveBatchContacts = action({
   },
   perform: async (context, { contactIds, timeout, hubspotConnection }) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
     const payload = { inputs: getArrayOfObjectsWithKey(contactIds, "id") };
-    const { data } = await client.post("/crm/v3/objects/contacts/batch/archive", payload);
+    const { data } = await client.post(
+      "/crm/v3/objects/contacts/batch/archive",
+      payload,
+    );
     return {
       data,
     };
@@ -348,12 +341,10 @@ export const archiveBatchContacts = action({
   inputs: {
     contactIds,
     timeout,
-
     hubspotConnection: connectionInput,
   },
   examplePayload: archiveBatchContactsPayload,
 });
-
 export const createBatchContacts = action({
   display: {
     label: "Create Batch Contacts",
@@ -361,7 +352,6 @@ export const createBatchContacts = action({
   },
   perform: async (context, { timeout, hubspotConnection, batchInputs }) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
@@ -370,13 +360,13 @@ export const createBatchContacts = action({
         "Content-Type": "application/json",
       },
     });
-
     const payload = {
       inputs: batchInputs,
     };
-
-    const { data } = await client.post("/crm/v3/objects/contacts/batch/create", payload);
-
+    const { data } = await client.post(
+      "/crm/v3/objects/contacts/batch/create",
+      payload,
+    );
     return {
       data,
     };
@@ -418,11 +408,11 @@ export const createBatchContacts = action({
   },
   examplePayload: createBatchContactsPayload,
 });
-
 export const getBatchContacts = action({
   display: {
     label: "Get Batch Contacts",
-    description: "Read a batch of contacts by internal ID, or unique property values.",
+    description:
+      "Read a batch of contacts by internal ID, or unique property values.",
   },
   perform: async (
     context,
@@ -437,7 +427,6 @@ export const getBatchContacts = action({
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
@@ -446,17 +435,19 @@ export const getBatchContacts = action({
         "Content-Type": "application/json",
       },
     });
-
     const payload = {
       propertiesWithHistory: propertiesWithHistory || [],
       ...(idProperty && { idProperty }),
       inputs: contactIds ? getArrayOfObjectsWithKey(contactIds, "id") : [],
       properties: properties || [],
     };
-    const { data } = await client.post("/crm/v3/objects/contacts/batch/read", payload, {
-      params: { archived },
-    });
-
+    const { data } = await client.post(
+      "/crm/v3/objects/contacts/batch/read",
+      payload,
+      {
+        params: { archived },
+      },
+    );
     return {
       data,
     };
@@ -475,7 +466,6 @@ export const getBatchContacts = action({
   },
   examplePayload: getBatchContactsPayload,
 });
-
 export const updateBatchContacts = action({
   display: {
     label: "Update Batch Contacts",
@@ -483,7 +473,6 @@ export const updateBatchContacts = action({
   },
   perform: async (context, { timeout, hubspotConnection, batchInputs }) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
@@ -492,13 +481,13 @@ export const updateBatchContacts = action({
         "Content-Type": "application/json",
       },
     });
-
     const payload = {
       inputs: batchInputs,
     };
-
-    const { data } = await client.post("/crm/v3/objects/contacts/batch/update", payload);
-
+    const { data } = await client.post(
+      "/crm/v3/objects/contacts/batch/update",
+      payload,
+    );
     return {
       data,
     };

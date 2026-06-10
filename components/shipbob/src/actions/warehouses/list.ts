@@ -16,7 +16,6 @@ import {
 } from "../../inputs";
 import { generatePayload } from "../util";
 import { getAllPaginatedData } from "../../util";
-
 export const listWarehouseReceivingOrders = action({
   display: {
     label: "List Warehouse Receiving Orders",
@@ -32,12 +31,10 @@ export const listWarehouseReceivingOrders = action({
       context.debug.enabled,
     );
     const params = generatePayload(inputs);
-
     if (doFetchAll) {
       const data = await getAllPaginatedData(client, "/receiving", params);
       return { data };
     }
-
     const { data } = await client.get(`/receiving`, {
       params,
     });

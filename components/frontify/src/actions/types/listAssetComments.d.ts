@@ -1,5 +1,4 @@
 import type { CommentResponse } from "./shared";
-
 export default interface ListAssetCommentsResponse {
   asset: {
     id: string;

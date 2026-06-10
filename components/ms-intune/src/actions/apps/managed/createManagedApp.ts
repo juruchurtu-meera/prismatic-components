@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import createManagedAppInputs from "../../../inputs/apps/managed/createManagedAppInputs";
 import { createManagedAppExamplePayload } from "../../../examplePayloads";
-
 export const createManagedApp = action({
   display: {
     label: "Create Managed App",
@@ -55,7 +54,6 @@ export const createManagedApp = action({
       "/deviceAppManagement/mobileApps",
       payload,
     );
-
     return {
       data,
     };

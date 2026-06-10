@@ -1,6 +1,8 @@
-import { BlobServiceClient, StorageSharedKeyCredential } from "@azure/storage-blob";
+import {
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+} from "@azure/storage-blob";
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
-
 export const createAuthorizedClient = (azureConnection: Connection) => {
   switch (azureConnection.key) {
     case "storageSharedKey":

@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { getMondayClient } from "../../client";
 import { getBoardExamplePayload } from "../../examplePayloads";
 import { getBoardInputs } from "../../inputs";
-
 export const getBoard = action({
   display: {
     label: "Get Board",

@@ -1,6 +1,5 @@
 import type { DataSourceContext, Element } from "@prismatic-io/spectral";
 import type { Connection, Schema } from "jsforce";
-
 export interface GetRecordDataSource {
   context: DataSourceContext;
   salesforceClient: Connection<Schema>;
@@ -9,5 +8,6 @@ export interface GetRecordDataSource {
   valueKey?: string;
   sortValueInput?: string;
 }
-
-export type ElementWithLabel = Omit<Element, "label"> & { label: string };
+export type ElementWithLabel = Omit<Element, "label"> & {
+  label: string;
+};

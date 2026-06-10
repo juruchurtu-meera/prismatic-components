@@ -5,7 +5,6 @@ export const getTableExamplePayload = {
   showTotals: true,
   style: "style-value",
 };
-
 export const listTablesExamplePayload = {
   value: [getTableExamplePayload],
 };

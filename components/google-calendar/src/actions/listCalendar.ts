@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { listAllCalendars } from "../helpers/listAllCalendars";
 import { connectionInput, fetchAll, maxResults, pageToken } from "../inputs";
 import { parseReturn } from "../parseReturn";
-
 export const listCalendar = action({
   display: {
     label: "List Calendars",

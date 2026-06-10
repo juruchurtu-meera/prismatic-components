@@ -12,7 +12,6 @@ import {
 } from "../../../inputs";
 import type { WorkerDemographics } from "../../../types";
 import { fetchAllRecordsNoCount } from "../../../util";
-
 export const listWorkersDemographics = action({
   display: {
     label: "List Worker Demographics",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { geteTimeCardsResponse } from "../../examplePayloads";
 import { $expand, $filter, $skip, $top, aoid, connection } from "../../inputs";
-
 export const getTimeCards = action({
   display: {
     label: "Get Time Cards",

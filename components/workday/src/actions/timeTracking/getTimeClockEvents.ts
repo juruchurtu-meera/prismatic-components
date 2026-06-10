@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getTimeClockEventsExamplePayload } from "../../examplePayloads";
 import { getTimeClockEventsInputs } from "../../inputs";
-
 export const getTimeClockEvents = action({
   display: {
     label: "Get Time Clock Events",

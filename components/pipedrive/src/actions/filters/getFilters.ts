@@ -2,7 +2,6 @@ import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const getFilters = action({
   display: {
     label: "Get Filters",

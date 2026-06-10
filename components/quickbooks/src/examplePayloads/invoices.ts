@@ -1,8 +1,3 @@
-
-
-
-
-
 export const listInvoicesExamplePayload = {
   data: [
     {
@@ -84,12 +79,6 @@ export const listInvoicesExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const createInvoiceV2ExamplePayload = {
   data: {
     TxnDate: "2015-07-24",

@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import FormData from "form-data";
-
 export const addFile = action({
   display: {
     label: "Add File",
@@ -74,7 +73,8 @@ export const addFile = action({
         log_id: null,
         add_time: "2020-02-20 14:36:35",
         update_time: "2020-02-20 14:36:31",
-        file_name: "IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg",
+        file_name:
+          "IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg",
         file_type: "img",
         file_size: 7801780,
         active_flag: true,

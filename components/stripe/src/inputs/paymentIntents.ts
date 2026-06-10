@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const clientSecret = input({
   label: "Client Secret",
   type: "string",
@@ -8,7 +7,6 @@ export const clientSecret = input({
     "The client secret of the PaymentIntent. Required if a publishable key is used to retrieve the source.",
   clean: util.types.toString,
 });
-
 export const amount = input({
   label: "Amount",
   type: "string",
@@ -18,7 +16,6 @@ export const amount = input({
   placeholder: "Enter amount in cents",
   clean: util.types.toString,
 });
-
 export const automaticPaymentMethods = input({
   label: "Automatic Payment Methods",
   type: "code",
@@ -29,7 +26,6 @@ export const automaticPaymentMethods = input({
   example: JSON.stringify({ enabled: true }),
   clean: util.types.toString,
 });
-
 export const confirm = input({
   label: "Confirm",
   type: "boolean",
@@ -37,7 +33,6 @@ export const confirm = input({
   comments: "When true, attempts to confirm this PaymentIntent immediately.",
   clean: util.types.toBool,
 });
-
 export const offSession = input({
   label: "Off Session",
   type: "string",
@@ -52,7 +47,6 @@ export const offSession = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const paymentMethod = input({
   label: "Payment Method",
   type: "string",
@@ -61,7 +55,6 @@ export const paymentMethod = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const setupFutureUsage = input({
   label: "Setup Future Usage",
   type: "string",
@@ -76,11 +69,11 @@ export const setupFutureUsage = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const captureMethod = input({
   label: "Capture Method",
   type: "string",
-  comments: "Controls when the funds will be captured from the customer's account.",
+  comments:
+    "Controls when the funds will be captured from the customer's account.",
   model: [
     { label: "", value: "" },
     { label: "Automatic", value: "automatic" },
@@ -91,7 +84,6 @@ export const captureMethod = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const confirmationMethod = input({
   label: "Confirmation Method",
   type: "string",
@@ -106,7 +98,6 @@ export const confirmationMethod = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const errorOnRequiresAction = input({
   label: "Error On Requires Action",
   type: "string",
@@ -121,7 +112,6 @@ export const errorOnRequiresAction = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const mandate = input({
   label: "Mandate",
   type: "string",
@@ -129,7 +119,6 @@ export const mandate = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const mandateData = input({
   label: "Mandate Data",
   type: "code",
@@ -139,7 +128,6 @@ export const mandateData = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const onBehalfOf = input({
   label: "On Behalf Of",
   type: "string",
@@ -147,7 +135,6 @@ export const onBehalfOf = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const paymentMethodData = input({
   label: "Payment Method Data",
   type: "code",
@@ -157,7 +144,6 @@ export const paymentMethodData = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const paymentMethodOptions = input({
   label: "Payment Method Options",
   type: "code",
@@ -167,17 +153,16 @@ export const paymentMethodOptions = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const paymentMethodTypes = input({
   label: "Payment Method Types",
   type: "string",
   collection: "valuelist",
-  comments: "The list of payment method types that this PaymentIntent is allowed to use.",
+  comments:
+    "The list of payment method types that this PaymentIntent is allowed to use.",
   required: false,
   clean: (stringArray: unknown) =>
     (stringArray as []).map((string: string) => util.types.toString(string)),
 });
-
 export const radarOptions = input({
   label: "Radar Options",
   type: "code",
@@ -187,7 +172,6 @@ export const radarOptions = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const returnUrl = input({
   label: "Return URL",
   type: "string",
@@ -198,7 +182,6 @@ export const returnUrl = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const useStripeSdk = input({
   label: "Use Stripe SDK",
   type: "string",
@@ -213,7 +196,6 @@ export const useStripeSdk = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const cancellationReason = input({
   label: "Cancellation Reason",
   type: "string",
@@ -229,7 +211,6 @@ export const cancellationReason = input({
   default: "",
   clean: util.types.toString,
 });
-
 export const amountToCapture = input({
   label: "Amount to Capture",
   type: "string",

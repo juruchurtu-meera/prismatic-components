@@ -9,7 +9,6 @@ import {
   slug,
 } from "../../inputs";
 import { getSourceExamplePayload } from "../../examplePayloads";
-
 export const createSource = action({
   display: {
     label: "Create Source",

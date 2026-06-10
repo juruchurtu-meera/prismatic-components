@@ -4,7 +4,6 @@ import { SERVICES } from "../../constants";
 import { postMessageTemplatesExamplePayload } from "../../examplePayloads";
 import { postMessageTemplatesInputs } from "../../inputs";
 import { getIdObject } from "../../util";
-
 export const postMessageTemplates = action({
   display: {
     label: "Create Message Template",

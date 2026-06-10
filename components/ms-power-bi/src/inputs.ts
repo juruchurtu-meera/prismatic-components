@@ -1,12 +1,10 @@
 import { util, input } from "@prismatic-io/spectral";
 import { pollResourceModel } from "./constants";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const datasetId = input({
   label: "Dataset ID",
   type: "string",
@@ -17,7 +15,6 @@ export const datasetId = input({
     "The unique identifier of the dataset. A dataset is a collection of tables that can be used to generate reports and visuals in Power BI. Datasets must be 'Push' datasets to be accessible via API.",
   dataSource: "selectDataset",
 });
-
 export const tableName = input({
   label: "Table Name",
   type: "string",
@@ -28,7 +25,6 @@ export const tableName = input({
   clean: util.types.toString,
   dataSource: "selectTable",
 });
-
 export const datasetName = input({
   label: "Dataset Name",
   type: "string",
@@ -38,7 +34,6 @@ export const datasetName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const rows = input({
   label: "Rows",
   type: "code",
@@ -71,11 +66,10 @@ export const rows = input({
       },
     ],
     null,
-    2
+    2,
   ),
   clean: util.types.toObject,
 });
-
 export const columns = input({
   label: "Columns",
   type: "code",
@@ -112,11 +106,10 @@ export const columns = input({
       },
     ],
     null,
-    2
+    2,
   ),
   clean: util.types.toObject,
 });
-
 export const top = input({
   label: "Top",
   type: "string",
@@ -127,7 +120,6 @@ export const top = input({
   placeholder: "Enter maximum number of results",
   clean: (value) => util.types.toNumber(value) || undefined,
 });
-
 export const skipToken = input({
   label: "Page Offset",
   type: "string",
@@ -138,7 +130,6 @@ export const skipToken = input({
   placeholder: "Enter page offset",
   clean: (value) => util.types.toNumber(value) || undefined,
 });
-
 export const pollResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -147,7 +138,6 @@ export const pollResourceType = input({
   model: pollResourceModel,
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",

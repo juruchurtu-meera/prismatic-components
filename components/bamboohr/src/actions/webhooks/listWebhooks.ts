@@ -2,8 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createBambooClient } from "../../client";
 import { listWebhooksExamplePayload } from "../../examplePayloads";
 import { listWebhooksInputs } from "../../inputs";
-
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",

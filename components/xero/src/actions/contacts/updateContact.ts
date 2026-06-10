@@ -24,7 +24,6 @@ import {
 } from "../../inputs";
 import { createContactAdditionalFields } from "../../constants";
 import { updateContactExamplePayload } from "../../examplePayloads";
-
 export const updateContact = action({
   display: {
     label: "Update Contact",

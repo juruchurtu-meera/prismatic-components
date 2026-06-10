@@ -2,18 +2,16 @@ import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
 import { listItemsInputs as inputs } from "../../inputs/items/listItemsInputs";
 import type { Item, MultipleItemsResponse } from "../../interfaces";
-
-
 export const listItems = action({
   display: {
     label: "List Items",
-    description: "List all item objects from your Business Central Organization.",
+    description:
+      "List all item objects from your Business Central Organization.",
   },
   perform: async (
     context,
     {
       companyId,
-
       $orderBy,
       connection,
       $format,
@@ -27,7 +25,11 @@ export const listItems = action({
       $select,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const params = {
       $orderBy,
       $format,
@@ -40,16 +42,13 @@ export const listItems = action({
       $search,
       $select,
     };
-
     const { data } = await client.get<MultipleItemsResponse<Item[]>>(
       `/companies(${companyId})/items`,
       {
         params,
       },
     );
-
     return { data };
   },
   inputs,
-  
 });

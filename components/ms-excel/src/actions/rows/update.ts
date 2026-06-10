@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { getRowExamplePayload as updateRowExamplePayload } from "../../examplePayloads/rows";
 import { updateRowInputs } from "../../inputs/rows/update";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const updateRow = action({
   display: {
     label: "Update Row",
@@ -24,14 +23,12 @@ export const updateRow = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.patch(
       `${baseUrl}/worksheets/${worksheetId}/tables/${tableId}/rows/${rowId}`,
       {
         values,
       },
     );
-
     return {
       data,
     };

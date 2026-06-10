@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { deleteInvoiceExamplePayload } from "../../examplePayloads/invoices";
 import { connectionInput, invoiceId, timeout } from "../../inputs";
-
 export const deleteInvoice = action({
   display: {
     label: "Delete Invoice",

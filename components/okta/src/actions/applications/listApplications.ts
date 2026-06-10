@@ -4,7 +4,6 @@ import { listApplicationsExamplePayload } from "../../examplePayloads/applicatio
 import { listApplicationsInputs } from "../../inputs/applications";
 import type { Application } from "../../interfaces/application";
 import { paginateRecordsWithLink } from "../../util/util";
-
 export const listApplications = action({
   display: {
     label: "List Applications",
@@ -13,20 +12,33 @@ export const listApplications = action({
   inputs: listApplicationsInputs,
   perform: async (
     context,
-    { after, connection, expand, filter, includeNonDeleted, limit, q, useOptimization, fetchAll },
-  ) => {
-    const client = await createClient(connection, context.debug.enabled);
-
-    const data = await paginateRecordsWithLink<Application>(client, "/apps", fetchAll, {
+    {
       after,
+      connection,
       expand,
       filter,
       includeNonDeleted,
       limit,
       q,
       useOptimization,
-    });
-
+      fetchAll,
+    },
+  ) => {
+    const client = await createClient(connection, context.debug.enabled);
+    const data = await paginateRecordsWithLink<Application>(
+      client,
+      "/apps",
+      fetchAll,
+      {
+        after,
+        expand,
+        filter,
+        includeNonDeleted,
+        limit,
+        q,
+        useOptimization,
+      },
+    );
     return {
       data,
     };

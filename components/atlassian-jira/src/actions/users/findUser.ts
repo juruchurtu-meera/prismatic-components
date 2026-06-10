@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { createV3Client } from "../../connections/auth";
 import { findUserExamplePayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs";
-
 export const findUser = action({
   display: {
     label: "Find User",
@@ -19,7 +18,10 @@ export const findUser = action({
     }),
   },
   perform: async (context, params) => {
-    const client = await createV3Client(params.jiraConnection, context.debug.enabled);
+    const client = await createV3Client(
+      params.jiraConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.get("/user/search", {
       params: {
         query: params.searchValue,

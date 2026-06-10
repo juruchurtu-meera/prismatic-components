@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const quickbooksConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -42,7 +41,8 @@ export const quickbooksConnection = oauth2Connection({
       required: true,
       shown: true,
       default: "com.intuit.quickbooks.accounting",
-      comments: "A space-delimited set of one or more scopes to request access to QuickBooks resources.",
+      comments:
+        "A space-delimited set of one or more scopes to request access to QuickBooks resources.",
     },
     clientId: {
       label: "Client ID",
@@ -50,7 +50,8 @@ export const quickbooksConnection = oauth2Connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "The client ID from the QuickBooks developer console, used to identify the application during OAuth authentication.",
+      comments:
+        "The client ID from the QuickBooks developer console, used to identify the application during OAuth authentication.",
     },
     clientSecret: {
       label: "Client Secret",
@@ -58,16 +59,17 @@ export const quickbooksConnection = oauth2Connection({
       type: "password",
       required: true,
       shown: true,
-      comments: "The client secret from the QuickBooks developer console, used to authenticate the application during OAuth token exchange.",
+      comments:
+        "The client secret from the QuickBooks developer console, used to authenticate the application during OAuth token exchange.",
     },
     useSandbox: {
       label: "Use Sandbox",
       type: "boolean",
       required: true,
       shown: true,
-      comments: "When true, requests are sent to the QuickBooks sandbox environment instead of production. Useful for integration testing.",
+      comments:
+        "When true, requests are sent to the QuickBooks sandbox environment instead of production. Useful for integration testing.",
     },
   },
 });
-
 export default [quickbooksConnection];

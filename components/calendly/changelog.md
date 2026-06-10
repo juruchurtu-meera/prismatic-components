@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-08
+
+Added the **New and Updated Events** polling trigger that checks for scheduled events created or updated since the last run
+
 ### 2026-05-20
 
 Applied automated security patches and code formatting updates

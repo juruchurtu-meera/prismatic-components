@@ -8,7 +8,6 @@ import {
   pagesize,
 } from "../../inputs";
 import { fetchEmployees } from "../../util";
-
 export const listEmployees = action({
   display: {
     label: "List Employees",
@@ -28,7 +27,6 @@ export const listEmployees = action({
   ) => {
     validateV2Connection(connectionInput);
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const employees = await fetchEmployees(
       client,
       companyId,

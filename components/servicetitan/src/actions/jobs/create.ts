@@ -19,7 +19,6 @@ import {
   summary,
   tagTypeIds,
 } from "../../inputs";
-
 export const createJob = action({
   display: {
     label: "Create Job",

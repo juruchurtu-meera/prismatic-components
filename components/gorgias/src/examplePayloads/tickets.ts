@@ -1,8 +1,3 @@
-
-
-
-
-
 import type {
   CreateTicketResponse,
   GetTicketResponse,
@@ -11,8 +6,9 @@ import type {
   UpdateTicketCustomFieldsResponse,
   UpdateTicketResponse,
 } from "../interfaces/tickets";
-
-export const createTicketExamplePayload: { data: CreateTicketResponse } = {
+export const createTicketExamplePayload: {
+  data: CreateTicketResponse;
+} = {
   data: {
     id: 1234,
     assignee_user: {
@@ -144,8 +140,9 @@ export const createTicketExamplePayload: { data: CreateTicketResponse } = {
     uri: "https://www.example.com/tickets/1234",
   },
 };
-
-export const getTicketExamplePayload: { data: GetTicketResponse } = {
+export const getTicketExamplePayload: {
+  data: GetTicketResponse;
+} = {
   data: {
     id: 101,
     url: "https://www.example.com/tickets/101",
@@ -313,7 +310,6 @@ export const getTicketExamplePayload: { data: GetTicketResponse } = {
     reply_options: "Reply, Forward, Archive",
   },
 };
-
 export const listTicketCustomFieldsExamplePayload: {
   data: ListTicketCustomFieldsResponse;
 } = {
@@ -348,8 +344,9 @@ export const listTicketCustomFieldsExamplePayload: {
     },
   ],
 };
-
-export const listTicketsExamplePayload: { data: ListTicketsResponse } = {
+export const listTicketsExamplePayload: {
+  data: ListTicketsResponse;
+} = {
   data: {
     data: [
       {
@@ -471,8 +468,9 @@ export const listTicketsExamplePayload: { data: ListTicketsResponse } = {
     },
   },
 };
-
-export const updateTicketExamplePayload: { data: UpdateTicketResponse } = {
+export const updateTicketExamplePayload: {
+  data: UpdateTicketResponse;
+} = {
   data: {
     id: 2201,
     assignee_user: {
@@ -605,7 +603,6 @@ export const updateTicketExamplePayload: { data: UpdateTicketResponse } = {
     uri: "https://www.example.com/tickets/2201",
   },
 };
-
 export const updateTicketCustomFieldsExamplePayload: {
   data: UpdateTicketCustomFieldsResponse;
 } = {

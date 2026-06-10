@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createWorkflowClient } from "../../client";
 import { createJobResponse } from "../../examplePayloads";
 import { bodyData, connection, description, id, name } from "../../inputs";
-
 export const createJob = action({
   display: {
     label: "Create Job",

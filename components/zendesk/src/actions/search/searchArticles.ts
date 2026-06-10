@@ -20,7 +20,6 @@ import {
   sortBy,
   sortOrder,
 } from "../../inputs";
-
 export const searchArticles = action({
   display: {
     label: "Search Articles",
@@ -65,14 +64,13 @@ export const searchArticles = action({
       sort_by: sortBy || undefined,
       locale: filterLocale || undefined,
     };
-
-    const { data } = await client.get<PaginatedResponse<{ results: unknown }>>(
-      "/help_center/articles/search",
-      {
-        params,
-      },
-    );
-
+    const { data } = await client.get<
+      PaginatedResponse<{
+        results: unknown;
+      }>
+    >("/help_center/articles/search", {
+      params,
+    });
     return {
       data,
     };

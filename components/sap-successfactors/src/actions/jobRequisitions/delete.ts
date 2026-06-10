@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteJobRequisitionInputs } from "../../inputs/jobRequisitions";
-
 export const deleteJobRequisition = action({
   display: {
     label: "Delete Job Requisition",

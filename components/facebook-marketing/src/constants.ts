@@ -1,7 +1,5 @@
 export const API_URL = "https://graph.facebook.com";
-
 export const DEFAULT_VERSION = 22;
-
 export const COUNTRY_CODES = [
   {
     label: "Aruba",
@@ -1000,7 +998,6 @@ export const COUNTRY_CODES = [
     value: "ZW",
   },
 ];
-
 export const PREVIEW_FORMATS = [
   {
     label: "Audience Network Instream Video",
@@ -1139,14 +1136,11 @@ export const PREVIEW_FORMATS = [
   { label: "Watch Feed Home", value: "WATCH_FEED_HOME" },
   { label: "Watch Feed Mobile", value: "WATCH_FEED_MOBILE" },
 ];
-
 export enum TriggerBranches {
   Notification = "Notification",
   URLValidation = "URL Validation",
 }
-
 export const DELETE_RESPONSE = "Webhook deleted successfully";
-
 export const PAGE_FIELDS = [
   { label: "Affiliation", value: "affiliation" },
   { label: "Attire", value: "attire" },
@@ -1220,7 +1214,6 @@ export const PAGE_FIELDS = [
   { label: "Videos", value: "videos" },
   { label: "Website", value: "website" },
 ];
-
 export const AD_ACCOUNT_FIELDS = [
   { label: "Ad Recommendations", value: "ad_recommendations" },
   { label: "Creative Fatigue", value: "creative_fatigue" },

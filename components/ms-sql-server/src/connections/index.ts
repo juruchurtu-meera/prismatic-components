@@ -1,5 +1,4 @@
 import { onPremConnection } from "@prismatic-io/spectral";
-
 export const msSQLServerConnection = onPremConnection({
   key: "basic",
   display: {
@@ -66,7 +65,6 @@ export const msSQLServerConnection = onPremConnection({
     },
   },
 });
-
 export const msSQLServerAzureADConnection = onPremConnection({
   key: "azureAd",
   display: {
@@ -144,5 +142,4 @@ export const msSQLServerAzureADConnection = onPremConnection({
     },
   },
 });
-
 export default [msSQLServerConnection, msSQLServerAzureADConnection];

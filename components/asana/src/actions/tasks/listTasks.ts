@@ -9,7 +9,6 @@ import {
   projectId,
 } from "../../inputs";
 import { TASK_OPT_FIELDS } from "../../util";
-
 export const listTasks = action({
   display: {
     label: "List Tasks",

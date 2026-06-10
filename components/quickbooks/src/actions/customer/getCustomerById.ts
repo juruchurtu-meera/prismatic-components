@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createHttpClient } from "../../client";
 import { getCustomerByIdPayload as examplePayload } from "../../examplePayloads";
 import { connectionInput, customerId } from "../../inputs";
-
 export const getCustomerById = action({
   display: {
     label: "Get Customer By ID",
@@ -14,7 +13,6 @@ export const getCustomerById = action({
       params.quickbooksConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.get(`/customer/${params.id}`);
     return {
       data: data.Customer,

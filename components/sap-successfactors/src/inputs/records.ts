@@ -1,6 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
-import { $select, additionalInputs, connection, defaultListInputs } from "./general";
-
+import {
+  $select,
+  additionalInputs,
+  connection,
+  defaultListInputs,
+} from "./general";
 const recordTypeId = input({
   label: "Record Type ID",
   type: "string",
@@ -10,7 +14,6 @@ const recordTypeId = input({
   example: "1234-5678",
   clean: util.types.toString,
 });
-
 const recordType = input({
   label: "Record Type",
   type: "string",
@@ -20,14 +23,12 @@ const recordType = input({
   example: "Candidate",
   clean: util.types.toString,
 });
-
 export const getRecordInputs = {
   recordType,
   recordTypeId,
   $select,
   connection,
 };
-
 export const deleteRecordInputs = {
   recordType: {
     ...recordType,
@@ -39,20 +40,17 @@ export const deleteRecordInputs = {
   },
   connection,
 };
-
 export const createRecordInputs = {
   recordType,
   additionalInputs,
   connection,
 };
-
 export const updateRecordInputs = {
   recordType,
   recordTypeId,
   additionalInputs,
   connection,
 };
-
 export const listRecordsInputs = {
   recordType,
   ...defaultListInputs,

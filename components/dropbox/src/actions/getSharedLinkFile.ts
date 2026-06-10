@@ -10,7 +10,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const getSharedLinkFile = action({
   display: {
     label: "Get Shared Link File",
@@ -23,13 +22,11 @@ export const getSharedLinkFile = action({
       params.userType,
       params.teamMemberId,
     );
-
     try {
       const data = await dbx.sharingGetSharedLinkFile({
         url: params.urlToSave,
         path: params.path || undefined,
       });
-
       return {
         data,
       };

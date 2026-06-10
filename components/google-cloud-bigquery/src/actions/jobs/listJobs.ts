@@ -14,7 +14,6 @@ import {
   stateFilter,
 } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
-
 export const listJobs = action({
   display: {
     description: "Lists all jobs that you started in the specified project.",

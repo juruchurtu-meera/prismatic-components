@@ -14,9 +14,7 @@ import {
   user_attributes,
   version,
 } from "../../inputs";
-
 import { generatePayload } from "../../util";
-
 export const listUsers = action({
   display: {
     label: "List Users",

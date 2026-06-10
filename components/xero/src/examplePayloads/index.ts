@@ -6,7 +6,6 @@ export {
   deleteAccountExamplePayload,
   archiveAccountExamplePayload,
 } from "./accounts";
-
 export {
   listContactsExamplePayload,
   getContactExamplePayload,
@@ -15,7 +14,6 @@ export {
   archiveContactExamplePayload,
   getContactHistoryExamplePayload,
 } from "./contacts";
-
 export {
   listInvoicesExamplePayload,
   getInvoiceExamplePayload,
@@ -26,7 +24,6 @@ export {
   getInvoiceHistoryExamplePayload,
   addNoteToInvoiceExamplePayload,
 } from "./invoices";
-
 export {
   listItemsExamplePayload,
   getItemExamplePayload,
@@ -36,7 +33,6 @@ export {
   getItemHistoryExamplePayload,
   addNoteToItemExamplePayload,
 } from "./items";
-
 export {
   listPaymentsExamplePayload,
   getPaymentExamplePayload,
@@ -44,5 +40,4 @@ export {
   reversePaymentExamplePayload,
   getPaymentHistoryExamplePayload,
 } from "./payments";
-
 export { listConnectionsExamplePayload } from "./connections";

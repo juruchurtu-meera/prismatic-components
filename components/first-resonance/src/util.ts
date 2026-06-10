@@ -1,7 +1,6 @@
 import { type Connection, util } from "@prismatic-io/spectral";
 import connections from "./connections";
 import { AUTH_SERVERS } from "./constants";
-
 export const validConnection = (connection: Connection): boolean => {
   if (!connections.map((c) => c.key).includes(connection.key)) {
     throw new Error(
@@ -10,7 +9,6 @@ export const validConnection = (connection: Connection): boolean => {
   }
   return true;
 };
-
 export const getApiUrl = (connection: Connection): string => {
   const { authEndpoint: selectedAuthEndpoint } = connection.fields;
   const selectedEndpoint = AUTH_SERVERS.find((authServer) =>

@@ -5,7 +5,6 @@ import { createS3Client } from "../auth";
 import { createMultipartUploadPayload } from "../examplePayloads";
 import { accessKeyInput, acl, bucket, objectKey, tagging } from "../inputs";
 import { encodeTags } from "../utils";
-
 export const createMultipartUpload = action({
   display: {
     label: "Create Multipart Upload",
@@ -41,7 +40,6 @@ export const createMultipartUpload = action({
       Tagging: encodeTags(tagging),
     });
     const result = await s3.send(command);
-
     return { data: result };
   },
   inputs: {

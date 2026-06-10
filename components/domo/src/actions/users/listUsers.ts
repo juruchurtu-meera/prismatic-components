@@ -4,7 +4,6 @@ import { listUsersInputs } from "../../inputs";
 import type { ListUsersQueryParams } from "../types/ListUsersQueryParams";
 import { listUsersExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listUsers = action({
   display: {
     label: "List Users",
@@ -16,9 +15,13 @@ export const listUsers = action({
     const queryParams: ListUsersQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(client, "/users", fetchAll, queryParams as Record<string, string>);
+    return paginateResults(
+      client,
+      "/users",
+      fetchAll,
+      queryParams as Record<string, string>,
+    );
   },
   inputs: listUsersInputs,
 });
-
 export default { listUsers };

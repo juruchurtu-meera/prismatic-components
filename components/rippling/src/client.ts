@@ -10,16 +10,13 @@ import {
   toAuthorizationHeaders,
   validateConnection,
 } from "./utils";
-
 export const createClient = (
   connection: Connection,
   version: ApiVersion = API_VERSION.V1,
   debug = false,
 ): HttpClient => {
   validateConnection(connection);
-
   const baseUrl = getBaseUrl(version);
-
   return createHttpClient({
     baseUrl,
     headers: {

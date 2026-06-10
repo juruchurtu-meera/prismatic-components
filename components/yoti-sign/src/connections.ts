@@ -1,6 +1,5 @@
 import { connection } from "@prismatic-io/spectral";
 import { environment } from "./inputs";
-
 export const yotiSignConnection = connection({
   key: "apiKey",
   display: {
@@ -18,5 +17,4 @@ export const yotiSignConnection = connection({
     },
   },
 });
-
 export default [yotiSignConnection];

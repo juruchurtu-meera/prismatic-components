@@ -4,7 +4,6 @@ import { selectModelExamplePayload } from "../examplePayloads/selectModel";
 import { connectionInput } from "../inputs/general";
 import type { Model } from "../interfaces/Model";
 import { getPaginatedResponse } from "../utils";
-
 export const selectModel = dataSource({
   display: {
     label: "List Models",

@@ -11,7 +11,6 @@ import {
   taxExempt,
   verifiedEmail,
 } from "./common";
-
 export const createCustomerInputs = {
   shopifyConnection: connectionInput,
   firstName,

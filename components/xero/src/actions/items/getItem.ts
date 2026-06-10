@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { itemId, connectionInput } from "../../inputs";
 import { getItemExamplePayload } from "../../examplePayloads";
-
 export const getItem = action({
   display: {
     label: "Get Item",

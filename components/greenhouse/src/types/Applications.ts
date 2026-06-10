@@ -3,7 +3,6 @@ export interface Application extends Record<string, unknown> {
   created_at?: string;
   last_activity_at?: string;
 }
-
 export interface PollingState extends Record<string, unknown> {
   lastPolledAt?: string;
 }

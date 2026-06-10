@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { CONTACTS_SCHEMA_PATH } from "../../constants";
 import { getContactSchemaExamplePayload } from "../../examplePayloads";
 import { getContactSchemaInputs } from "../../inputs";
-
 export const getContactSchema = action({
   examplePayload: getContactSchemaExamplePayload,
   display: {
@@ -15,7 +14,6 @@ export const getContactSchema = action({
   perform: async (context, { connection }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(CONTACTS_SCHEMA_PATH);
-
     return { data };
   },
 });

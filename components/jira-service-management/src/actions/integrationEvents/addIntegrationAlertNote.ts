@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOpsEventsClient } from "../../client";
 import { addIntegrationAlertNoteExamplePayload } from "../../examplePayloads";
 import { addIntegrationAlertNoteInputs } from "../../inputs";
-
 export const addIntegrationAlertNote = action({
   display: {
     label: "Add Integration Alert Note",
@@ -27,7 +26,6 @@ export const addIntegrationAlertNote = action({
       user: alertUser,
       source: alertSource,
     };
-
     const { data } = await client.post(
       `/alerts/${encodeURIComponent(alertIdentifier)}/notes`,
       body,

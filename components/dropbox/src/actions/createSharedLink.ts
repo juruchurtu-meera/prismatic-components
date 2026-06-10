@@ -15,7 +15,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const createSharedLink = action({
   display: {
     label: "Create Shared Link",

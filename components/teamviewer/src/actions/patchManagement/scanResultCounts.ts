@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { scanResultsCountExamplePayload } from "../../examplePayloads/patchManagement";
 import { scanResultsCountInputs } from "../../inputs/patchManagement";
-
 export const scanResultsCount = action({
   display: {
     label: "Scan Results Count",
@@ -14,12 +13,10 @@ export const scanResultsCount = action({
     { connection, continuation_token, device_id_list },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/patchmanagement/scanresultcounts`, {
       device_id_list,
       continuation_token,
     });
-
     return {
       data,
     };

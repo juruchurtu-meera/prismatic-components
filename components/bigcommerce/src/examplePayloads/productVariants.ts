@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 const variantObject = {
   id: 384,
   product_id: 192,
@@ -47,7 +34,6 @@ const variantObject = {
     },
   ],
 };
-
 const paginationMeta = {
   pagination: {
     total: 3,
@@ -60,39 +46,33 @@ const paginationMeta = {
     },
   },
 };
-
 export const getAllProductVariantsExamplePayload = {
   data: {
     data: [variantObject],
     meta: paginationMeta,
   },
 };
-
 export const getProductVariantExamplePayload = {
   data: {
     data: variantObject,
     meta: {},
   },
 };
-
 export const createProductVariantExamplePayload = {
   data: {
     data: variantObject,
     meta: {},
   },
 };
-
 export const updateProductVariantExamplePayload = {
   data: {
     data: variantObject,
     meta: {},
   },
 };
-
 export const deleteProductVariantExamplePayload = {
   data: null,
 };
-
 export const createVariantImageExamplePayload = {
   data: {
     data: {

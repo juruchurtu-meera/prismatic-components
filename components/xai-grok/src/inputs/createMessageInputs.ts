@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { additionalFields, connection } from "./generalInputs";
-
 const messages = input({
   label: "Messages",
   type: "code",
@@ -16,7 +15,6 @@ const messages = input({
   ]),
   clean: util.types.toObject,
 });
-
 const model = input({
   label: "Model",
   type: "string",
@@ -28,7 +26,6 @@ const model = input({
   dataSource: "selectModel",
   clean: util.types.toString,
 });
-
 const maxTokens = input({
   label: "Max Tokens",
   type: "string",
@@ -40,7 +37,6 @@ const maxTokens = input({
   placeholder: "100",
   clean: util.types.toNumber,
 });
-
 export const createMessageInputs = {
   connection,
   messages,

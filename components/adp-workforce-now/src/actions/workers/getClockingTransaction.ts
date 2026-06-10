@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getClockingTransactionsResponse } from "../../examplePayloads";
 import { connection, eventID } from "../../inputs";
-
 export const getClockingTransaction = action({
   display: {
     label: "Get Clocking Transaction",

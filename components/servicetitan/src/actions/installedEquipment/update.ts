@@ -19,7 +19,6 @@ import {
   serviceProviderWarrantyStart,
   tagTypeIds,
 } from "../../inputs";
-
 export const updateInstalledEquipment = action({
   display: {
     label: "Update Installed Equipment",

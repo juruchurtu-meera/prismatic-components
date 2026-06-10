@@ -16,7 +16,6 @@ import {
 import { Readable } from "node:stream";
 import { URL } from "node:url";
 import { getFilesFromDriveFN, paginateResults } from "../utils";
-
 const listDrives = action({
   display: {
     label: "List Drives",
@@ -32,12 +31,10 @@ const listDrives = action({
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
     const endpoint = `/sites/${params.siteId}/drives`;
-
     if (params.fetchAll) {
       const results = await paginateResults(client, endpoint);
       return { data: results };
     }
-
     const { data } = await client.get(endpoint, {
       params:
         params.pageLimit || params.pageToken
@@ -47,12 +44,10 @@ const listDrives = action({
             }
           : undefined,
     });
-
     if (data["@odata.nextLink"]) {
       const nextLink = new URL(data["@odata.nextLink"]);
       data["@odata.nextToken"] = nextLink.searchParams.get("$skipToken");
     }
-
     return { data };
   },
   examplePayload: {
@@ -90,7 +85,6 @@ const listDrives = action({
     },
   },
 });
-
 const getDrive = action({
   display: {
     label: "Get Drive",
@@ -106,7 +100,6 @@ const getDrive = action({
     return { data };
   },
 });
-
 const getFilesFromDrive = action({
   display: {
     label: "List Files in Drive (Deprecated)",
@@ -121,13 +114,11 @@ const getFilesFromDrive = action({
   perform: async ({ debug: { enabled: debug } }, { connection, driveId }) => {
     const client = await createClient(connection, debug);
     const { data } = await client.get(`/drives/${driveId}/root/children`);
-
     return {
       data: data.value,
     };
   },
 });
-
 const getFilesFromDriveFolder = action({
   display: {
     label: "List Folder Files in Drive (Deprecated)",
@@ -141,16 +132,19 @@ const getFilesFromDriveFolder = action({
     driveId,
     folderId,
   },
-  perform: async ({ debug: { enabled: debug } }, { connection, folderId, driveId }) => {
+  perform: async (
+    { debug: { enabled: debug } },
+    { connection, folderId, driveId },
+  ) => {
     const client = await createClient(connection, debug);
-    const { data } = await client.get(`/drives/${driveId}/items/${folderId}/children`);
-
+    const { data } = await client.get(
+      `/drives/${driveId}/items/${folderId}/children`,
+    );
     return {
       data: data.value,
     };
   },
 });
-
 const getFilesFromDriveWithPagination = action({
   display: {
     label: "List Files in Drive",
@@ -164,10 +158,12 @@ const getFilesFromDriveWithPagination = action({
     fetchAll,
     recursive,
   },
-  perform: async (context, { connection, driveId, pageLimit, pageToken, fetchAll, recursive }) => {
+  perform: async (
+    context,
+    { connection, driveId, pageLimit, pageToken, fetchAll, recursive },
+  ) => {
     const client = await createClient(connection, context.debug.enabled);
     const endpoint = `/drives/${driveId}/root/children`;
-
     if (fetchAll) {
       if (recursive) {
         const { data } = await getFilesFromDriveRecursive.perform(context, {
@@ -181,19 +177,16 @@ const getFilesFromDriveWithPagination = action({
         data: results,
       };
     }
-
     const { data } = await client.get(endpoint, {
       params: {
         $top: pageLimit,
         $skipToken: pageToken,
       },
     });
-
     if (data["@odata.nextLink"]) {
       const nextLink = new URL(data["@odata.nextLink"]);
       data["@odata.nextToken"] = nextLink.searchParams.get("$skipToken");
     }
-
     if (recursive) {
       const allFiles = await getFilesFromDriveFN(client, driveId, data.value);
       return {
@@ -203,13 +196,11 @@ const getFilesFromDriveWithPagination = action({
         },
       };
     }
-
     return {
       data,
     };
   },
 });
-
 const getFilesFromDriveFolderWithPagination = action({
   display: {
     label: "List Folder Files in Drive",
@@ -229,32 +220,27 @@ const getFilesFromDriveFolderWithPagination = action({
   ) => {
     const endpoint = `/drives/${driveId}/items/${folderId}/children`;
     const client = await createClient(connection, debug);
-
     if (fetchAll) {
       const results = await paginateResults(client, endpoint);
       return {
         data: results,
       };
     }
-
     const { data } = await client.get(endpoint, {
       params: {
         $top: pageLimit,
         $skipToken: pageToken,
       },
     });
-
     if (data["@odata.nextLink"]) {
       const nextLink = new URL(data["@odata.nextLink"]);
       data["@odata.nextToken"] = nextLink.searchParams.get("$skipToken");
     }
-
     return {
       data,
     };
   },
 });
-
 const getFile = action({
   display: {
     label: "Get File",
@@ -265,10 +251,15 @@ const getFile = action({
     driveId,
     itemId,
   },
-  perform: async ({ debug: { enabled: debug } }, { connection, driveId, itemId }) => {
+  perform: async (
+    { debug: { enabled: debug } },
+    { connection, driveId, itemId },
+  ) => {
     const client = await createClient(connection, debug);
     try {
-      const { data } = await client.get(`/drives/${driveId}/items/${itemId}/content`);
+      const { data } = await client.get(
+        `/drives/${driveId}/items/${itemId}/content`,
+      );
       return {
         data,
       };
@@ -277,7 +268,6 @@ const getFile = action({
     }
   },
 });
-
 const uploadFile = action({
   display: {
     label: "Upload File",
@@ -300,13 +290,11 @@ const uploadFile = action({
       `/drives/${driveId}/items/${folderId}:/${fileName}:/content`,
       Readable.from(data),
     );
-
     return {
       data: uploadedData,
     };
   },
 });
-
 const updateFile = action({
   display: {
     label: "Update File",
@@ -318,20 +306,21 @@ const updateFile = action({
     itemId,
     fileData,
   },
-  perform: async ({ debug: { enabled: debug } }, { connection, driveId, itemId, fileData }) => {
+  perform: async (
+    { debug: { enabled: debug } },
+    { connection, driveId, itemId, fileData },
+  ) => {
     const client = await createClient(connection, debug);
     const { data } = util.types.toData(fileData);
     const { data: updatedData } = await client.put(
       `/drives/${driveId}/items/${itemId}/content`,
       Readable.from(data),
     );
-
     return {
       data: updatedData,
     };
   },
 });
-
 const downloadFile = action({
   display: {
     label: "Download File",
@@ -342,7 +331,10 @@ const downloadFile = action({
     driveId,
     itemId,
   },
-  perform: async ({ debug: { enabled: debug } }, { connection, itemId, driveId }) => {
+  perform: async (
+    { debug: { enabled: debug } },
+    { connection, itemId, driveId },
+  ) => {
     const client = await createClient(connection, debug);
     try {
       const { data } = await client.get(`/drives/${driveId}/items/${itemId}`);
@@ -351,7 +343,6 @@ const downloadFile = action({
       const { data: downloadedFile } = await client.get(downloadURL, {
         responseType: "arraybuffer",
       });
-
       return {
         data: downloadedFile,
         contentType: mimeType,
@@ -361,11 +352,11 @@ const downloadFile = action({
     }
   },
 });
-
 const getFilesFromDriveRecursive = action({
   display: {
     label: "List All Files in Drive (Recursive)",
-    description: "List all files from a Drive, including files in all subfolders",
+    description:
+      "List all files from a Drive, including files in all subfolders",
   },
   inputs: {
     connection,
@@ -374,13 +365,11 @@ const getFilesFromDriveRecursive = action({
   perform: async ({ debug: { enabled: debug } }, { connection, driveId }) => {
     const client = await createClient(connection, debug);
     const data = await getFilesFromDriveFN(client, driveId);
-
     return {
       data,
     };
   },
 });
-
 export default {
   listDrives,
   getDrive,

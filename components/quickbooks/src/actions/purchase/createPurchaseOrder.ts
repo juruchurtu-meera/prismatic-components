@@ -9,7 +9,6 @@ import {
   linesInput,
   vendorIdInput,
 } from "../../inputs";
-
 export const createPurchaseOrder = action({
   display: {
     label: "Create Purchase Order",
@@ -25,7 +24,6 @@ export const createPurchaseOrder = action({
   },
   perform: async (context, params) => {
     const client = createHttpClient(params.connection, context.debug.enabled);
-
     const payload = {
       ...util.types.keyValPairListToObject(
         (params.dynamicValues as KeyValuePair[]) || [],
@@ -39,13 +37,11 @@ export const createPurchaseOrder = action({
         value: params.vendorId,
       },
     };
-
     const { data } = await client.post("/purchaseorder", payload, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-
     return { data: data.PurchaseOrder };
   },
   examplePayload,

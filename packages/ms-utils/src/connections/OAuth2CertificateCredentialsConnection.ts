@@ -3,7 +3,6 @@ import type {
   CertificateCredentialParams,
   ConnectionAuth,
 } from "../interfaces/ConnectionParams/CertificateCredentialsParams";
-
 const _getMicrosoftCertificateCredentialsConnection = ({
   key,
   defaultScopes,
@@ -90,7 +89,6 @@ const _getMicrosoftCertificateCredentialsConnection = ({
       {},
     ),
   });
-
 export const getMicrosoftCertificateCredentialsConnection: (
   params: CertificateCredentialParams,
 ) => ConnectionAuth = _getMicrosoftCertificateCredentialsConnection;

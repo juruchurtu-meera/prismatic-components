@@ -1,7 +1,6 @@
 import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, personIdInput } from "../../inputs";
-
 export const mergePersons = action({
   display: {
     label: "Merge Persons",

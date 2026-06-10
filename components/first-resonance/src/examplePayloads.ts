@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 export const importPurchaseOrderFromQuickbooksExamplePayload = {
   data: {
     createPurchaseOrder: {
@@ -24,13 +12,6 @@ export const importPurchaseOrderFromQuickbooksExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     me: {

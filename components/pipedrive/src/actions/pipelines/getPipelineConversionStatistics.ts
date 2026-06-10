@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, pipelineIdInput } from "../../inputs";
 import { cleanNumber } from "../../util";
-
 export const getPipelineConversionStatistics = action({
   display: {
     label: "Get Pipeline Conversion Statistics",
@@ -10,9 +9,12 @@ export const getPipelineConversionStatistics = action({
   },
   perform: async (context, { connection, id, startDate, endDate, userId }) => {
     const client = createClient(connection, context.debug.enabled);
-    const { data } = await client.get(`/pipelines/${id}/conversion_statistics`, {
-      params: { start_date: startDate, end_date: endDate, user_id: userId },
-    });
+    const { data } = await client.get(
+      `/pipelines/${id}/conversion_statistics`,
+      {
+        params: { start_date: startDate, end_date: endDate, user_id: userId },
+      },
+    );
     return { data };
   },
   inputs: {

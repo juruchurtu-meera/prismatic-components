@@ -6,7 +6,6 @@ import { selectNotificationChannelInputs } from "../inputs";
 import type { NotificationChannel } from "../types";
 import { getNotificationChannelLabel } from "../util/general";
 import { fetchAllPages } from "../util/pagination";
-
 export const selectNotificationChannel = dataSource({
   display: {
     label: "Select Notification Channel",
@@ -15,7 +14,6 @@ export const selectNotificationChannel = dataSource({
   inputs: selectNotificationChannelInputs,
   perform: async (_context, { connection }) => {
     const client = createClient(connection, ClientType.CRM, false);
-
     const response = await fetchAllPages(
       client,
       "/actions/watch",
@@ -23,9 +21,7 @@ export const selectNotificationChannel = dataSource({
       "watch",
       true,
     );
-
     const channels = response.watch as NotificationChannel[];
-
     if (channels?.length) {
       const result = channels.map<Element>((channel) => ({
         label: getNotificationChannelLabel(channel),

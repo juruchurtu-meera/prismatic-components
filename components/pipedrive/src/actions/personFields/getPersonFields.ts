@@ -1,7 +1,10 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
-import { connectionInput, paginationLimitInput, paginationStartInput } from "../../inputs";
-
+import {
+  connectionInput,
+  paginationLimitInput,
+  paginationStartInput,
+} from "../../inputs";
 export const getPersonFields = action({
   display: {
     label: "Get Person Fields",

@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const oauth2 = oauth2Connection({
   key: "oauth2",
   display: {
@@ -44,7 +43,8 @@ export const oauth2 = oauth2Connection({
       required: true,
       placeholder: "Enter Client ID",
       example: "Iv1.a629723000000000",
-      comments: "The Client ID from your GitHub OAuth App. Find this in GitHub Settings > Developer settings > OAuth Apps.",
+      comments:
+        "The Client ID from your GitHub OAuth App. Find this in GitHub Settings > Developer settings > OAuth Apps.",
     },
     clientSecret: {
       label: "Client Secret",
@@ -52,9 +52,9 @@ export const oauth2 = oauth2Connection({
       shown: true,
       required: true,
       placeholder: "Enter Client Secret",
-      comments: "The Client Secret from your GitHub OAuth App. Keep this value secure.",
+      comments:
+        "The Client Secret from your GitHub OAuth App. Keep this value secure.",
     },
   },
 });
-
 export default [oauth2];

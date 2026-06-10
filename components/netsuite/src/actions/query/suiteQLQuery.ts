@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { suiteQLQueryCustomersExamplePayload } from "../../examplePayloads";
 import { suiteQLQueryInputs } from "../../inputs";
-
 export const suiteQLQuery = action({
   display: {
     label: "SuiteQL Query",

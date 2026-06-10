@@ -41,7 +41,6 @@ import {
   webinarTimeZone,
 } from "../inputs";
 import { paginateResults } from "../utils";
-
 const listAttendanceRecords = action({
   display: {
     label: "List Attendance Records",
@@ -53,7 +52,6 @@ const listAttendanceRecords = action({
       params.timeout,
       context.debug.enabled,
     );
-
     const data = await paginateResults(
       client,
       `/solutions/virtualEvents/webinars/${params.webinarId}/sessions/${params.sessionId}/attendanceReports/${params.reportId}/attendanceRecords`,
@@ -70,7 +68,6 @@ const listAttendanceRecords = action({
         },
       },
     );
-
     return { data };
   },
   inputs: {
@@ -90,7 +87,6 @@ const listAttendanceRecords = action({
   },
   examplePayload: listAttendanceRecordsExamplePayload,
 });
-
 const getSessionAttendanceReport = action({
   display: {
     label: "Get Webinar Session Attendance Report",
@@ -102,7 +98,6 @@ const getSessionAttendanceReport = action({
       params.timeout,
       context.debug.enabled,
     );
-
     const { data } = await client.get(
       `/solutions/virtualEvents/webinars/${params.webinarId}/sessions/${params.sessionId}/attendanceReports/${params.reportId}`,
       {
@@ -135,7 +130,6 @@ const getSessionAttendanceReport = action({
   },
   examplePayload: getSessionAttendanceReportExamplePayload,
 });
-
 const listSessionAttendanceReports = action({
   display: {
     label: "List Webinar Session Attendance Reports",
@@ -147,7 +141,6 @@ const listSessionAttendanceReports = action({
       params.timeout,
       context.debug.enabled,
     );
-
     const data = await paginateResults(
       client,
       `/solutions/virtualEvents/webinars/${params.webinarId}/sessions/${params.sessionId}/attendanceReports`,
@@ -163,7 +156,6 @@ const listSessionAttendanceReports = action({
         },
       },
     );
-
     return { data };
   },
   inputs: {
@@ -181,7 +173,6 @@ const listSessionAttendanceReports = action({
   },
   examplePayload: listSessionAttendanceReportsExamplePayload,
 });
-
 const getWebinarSession = action({
   display: {
     label: "Get Webinar Session",
@@ -194,7 +185,6 @@ const getWebinarSession = action({
       context.debug.enabled,
     );
     const endpointUrl = `/solutions/virtualEvents/webinars/${params.webinarId}/sessions/${params.sessionId}`;
-
     const { data } = await client.get(endpointUrl);
     return { data };
   },
@@ -205,7 +195,6 @@ const getWebinarSession = action({
   },
   examplePayload: getWebinarSessionExamplePayload,
 });
-
 const listWebinarSessions = action({
   display: {
     label: "List Webinar Sessions",
@@ -217,7 +206,6 @@ const listWebinarSessions = action({
       params.timeout,
       context.debug.enabled,
     );
-
     const { data } = await client.get(
       `/solutions/virtualEvents/webinars/${params.webinarId}/sessions`,
       {
@@ -248,7 +236,6 @@ const listWebinarSessions = action({
   },
   examplePayload: listWebinarSessionsExamplePayload,
 });
-
 const listWebinars = action({
   display: {
     label: "List Webinars",
@@ -264,7 +251,6 @@ const listWebinars = action({
     if (params.role) {
       endpointUrl += `/getByUserRole(role='${params.role}')`;
     }
-
     const { data } = await client.get(endpointUrl, {
       params: {
         $top: params.top || undefined,
@@ -292,7 +278,6 @@ const listWebinars = action({
   },
   examplePayload: listWebinarsExamplePayload,
 });
-
 const createWebinarRegistration = action({
   display: {
     label: "Create Webinar Registration",
@@ -386,7 +371,6 @@ const createWebinarRegistration = action({
   },
   examplePayload: createWebinarRegistrationExamplePayload,
 });
-
 const cancelWebinarRegistration = action({
   display: {
     label: "Cancel Webinar Registration",
@@ -414,7 +398,6 @@ const cancelWebinarRegistration = action({
   },
   examplePayload: cancelWebinarRegistrationExamplePayload,
 });
-
 const getWebinarRegistration = action({
   display: {
     label: "Get Webinar Registration",
@@ -442,7 +425,6 @@ const getWebinarRegistration = action({
   },
   examplePayload: getWebinarRegistrationExamplePayload,
 });
-
 const listWebinarRegistrations = action({
   display: {
     label: "List Webinar Registrations",
@@ -465,7 +447,6 @@ const listWebinarRegistrations = action({
   },
   examplePayload: listWebinarRegistrationsExamplePayload,
 });
-
 const getWebinar = action({
   display: {
     label: "Get Webinar",
@@ -478,7 +459,6 @@ const getWebinar = action({
       context.debug.enabled,
     );
     const endpointUrl = `/solutions/virtualEvents/webinars/${params.webinarId}`;
-
     const { data } = await client.get(endpointUrl);
     return { data };
   },
@@ -488,7 +468,6 @@ const getWebinar = action({
   },
   examplePayload: getWebinarExamplePayload,
 });
-
 const cancelWebinar = action({
   display: {
     label: "Cancel Webinar",
@@ -501,7 +480,6 @@ const cancelWebinar = action({
       context.debug.enabled,
     );
     const endpointUrl = `/solutions/virtualEvents/webinars/${params.webinarId}/cancel`;
-
     const { data } = await client.post(endpointUrl);
     return { data };
   },
@@ -511,7 +489,6 @@ const cancelWebinar = action({
   },
   examplePayload: cancelWebinarExamplePayload,
 });
-
 const publishWebinar = action({
   display: {
     label: "Publish Webinar",
@@ -524,7 +501,6 @@ const publishWebinar = action({
       context.debug.enabled,
     );
     const endpointUrl = `/solutions/virtualEvents/webinars/${params.webinarId}/publish`;
-
     const { data } = await client.post(endpointUrl);
     return { data };
   },
@@ -534,7 +510,6 @@ const publishWebinar = action({
   },
   examplePayload: publishWebinarExamplePayload,
 });
-
 const createWebinar = action({
   display: {
     label: "Create Webinar",
@@ -590,17 +565,14 @@ const createWebinar = action({
       coOrganizers,
       settings,
     };
-
     const { data } = await client.post(
       "/solutions/virtualEvents/webinars",
       body,
     );
-
     return { data };
   },
   examplePayload: createWebinarExamplePayload,
 });
-
 export default {
   getWebinar,
   publishWebinar,

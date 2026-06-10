@@ -9,7 +9,6 @@ import {
   sysId,
 } from "../../../inputs";
 import { createNowApiClient } from "../../../util";
-
 export const updateConfigurationItem = action({
   display: {
     label: "Update Configuration Item",
@@ -34,17 +33,14 @@ export const updateConfigurationItem = action({
       apiVersionInput,
       context.debug.enabled,
     );
-
     const payload = {
       attributes: configurationItemAttributes,
       source: configurationItemSource,
     };
-
     const { data } = await client.put(
       `/cmdb/instance/${className}/${sysId}`,
       payload,
     );
-
     return {
       data,
     };

@@ -5,10 +5,8 @@ import {
   cleanValueListInput,
 } from "../utils";
 import { additionalFields, connection, restaurantExternalId } from "./shared";
-
 const documentationComment =
   "See [Toast API documentation](https://doc.toasttab.com/openapi/labor/tag/Data-definitions/schema/Shift/) for more information.";
-
 const externalId = input({
   label: "External ID",
   type: "string",
@@ -19,7 +17,6 @@ const externalId = input({
   placeholder: "MyToastNamingAuthority:1234",
   clean: cleanStringInput,
 });
-
 const jobReference = input({
   label: "Job Reference",
   type: "code",
@@ -37,7 +34,6 @@ const jobReference = input({
   required: false,
   clean: (value) => cleanCodeInput(value, "Job Reference"),
 });
-
 const employeeReference = input({
   label: "Employee Reference",
   type: "code",
@@ -55,7 +51,6 @@ const employeeReference = input({
   required: true,
   clean: (value) => cleanCodeInput(value, "Employee Reference"),
 });
-
 const inDate = input({
   label: "In Date",
   type: "string",
@@ -66,7 +61,6 @@ const inDate = input({
   placeholder: "2015-10-10T06:00:00.000+0000",
   clean: util.types.toString,
 });
-
 const outDate = input({
   label: "Out Date",
   type: "string",
@@ -77,13 +71,11 @@ const outDate = input({
   placeholder: "2015-10-10T12:00:00.000+0000",
   clean: util.types.toString,
 });
-
 const shiftAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${documentationComment}`,
   example: JSON.stringify({ externalId: "MyToastNamingAuthority" }, null, 2),
 });
-
 export const createShiftInputs = {
   connection,
   restaurantExternalId,
@@ -94,7 +86,6 @@ export const createShiftInputs = {
   jobReference,
   additionalFields: shiftAdditionalFields,
 };
-
 const shiftId = input({
   label: "Shift ID",
   type: "string",
@@ -106,15 +97,12 @@ const shiftId = input({
   clean: util.types.toString,
   dataSource: "selectShift",
 });
-
 export const deleteShiftInputs = {
   connection,
   restaurantExternalId,
   shiftId,
 };
-
 export const getShiftInputs = deleteShiftInputs;
-
 const endDate = input({
   label: "End Date",
   type: "string",
@@ -125,7 +113,6 @@ const endDate = input({
   placeholder: "2015-10-10T12:00:00.000+0000",
   clean: cleanStringInput,
 });
-
 const shiftIds = input({
   label: "Shift IDs",
   type: "string",
@@ -137,7 +124,6 @@ const shiftIds = input({
   placeholder: "12345678-1234-1234-1234-123456789012",
   clean: cleanValueListInput,
 });
-
 const startDate = input({
   label: "Start Date",
   type: "string",
@@ -148,7 +134,6 @@ const startDate = input({
   placeholder: "2015-10-10T06:00:00.000+0000",
   clean: cleanStringInput,
 });
-
 export const listShiftsInputs = {
   connection,
   restaurantExternalId,
@@ -156,7 +141,6 @@ export const listShiftsInputs = {
   endDate,
   shiftIds,
 };
-
 export const updateShiftInputs = {
   connection,
   restaurantExternalId,

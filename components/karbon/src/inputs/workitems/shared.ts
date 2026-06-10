@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../utils";
-
 export const workItemkey = input({
   label: "Work Item Key",
   type: "string",

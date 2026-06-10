@@ -58,11 +58,8 @@ export const createAssetExamplePayload = {
     },
   },
 };
-
 export const getAssetExamplePayload = createAssetExamplePayload;
-
 export const listAssetsExamplePayload = [getAssetExamplePayload];
-
 export const updateAssetExamplePayload = {
   fields: {
     title: {
@@ -123,7 +120,6 @@ export const updateAssetExamplePayload = {
     },
   },
 };
-
 export const publishAssetExamplePayload = {
   fields: {
     title: {
@@ -162,7 +158,6 @@ export const publishAssetExamplePayload = {
     publishedVersion: 9,
   },
 };
-
 export const unpublishAssetExamplePayload = {
   fields: {
     title: {

@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../client";
 import { fromPath, toPath, connectionInput } from "../inputs";
 import { getPathEntries } from "../utils";
 import { moveObjectExamplePayload } from "../examplePayloads";
-
 export const moveObject = action({
   display: {
     label: "Move Object",
@@ -19,7 +18,6 @@ export const moveObject = action({
       client,
       util.types.toString(toPath),
     );
-
     const {
       id: sourceId,
       type: sourceType,
@@ -30,11 +28,9 @@ export const moveObject = action({
       type: destType,
       name: destName,
     } = toPathEntries.slice(-1)[0];
-
     if (destType !== "folder") {
       throw Error(`'${destName} is not a folder`);
     }
-
     let result: unknown;
     if (sourceType === "folder") {
       result = await client.folders.move(sourceId, destId);
@@ -43,7 +39,6 @@ export const moveObject = action({
     } else {
       throw Error(`'${sourceName}' is neither a file nor a folder`);
     }
-
     return {
       data: result,
     };

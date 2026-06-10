@@ -5,7 +5,6 @@ import {
   storeIdWebhookInput,
   targetUrlInput,
 } from "./common";
-
 export const subscribeToWebhookInputs = {
   connectionInput,
   targetUrl: targetUrlInput,

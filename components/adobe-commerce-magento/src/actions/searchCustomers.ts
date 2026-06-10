@@ -13,7 +13,6 @@ import {
   searchCriteriaSortField,
   searchCriteriaValue,
 } from "../inputs";
-
 export const searchCustomers = action({
   display: {
     label: "Search Customers",
@@ -37,11 +36,15 @@ export const searchCustomers = action({
       "searchCriteria[currentPage]": searchCriteriaCurrentPage || undefined,
       "searchCriteria[filterGroups][0][filters][0][conditionType]":
         searchCriteriaConditionType || undefined,
-      "searchCriteria[filterGroups][0][filters][0][field]": searchCriteriaField || undefined,
-      "searchCriteria[filterGroups][0][filters][0][value]": searchCriteriaValue || undefined,
+      "searchCriteria[filterGroups][0][filters][0][field]":
+        searchCriteriaField || undefined,
+      "searchCriteria[filterGroups][0][filters][0][value]":
+        searchCriteriaValue || undefined,
       "searchCriteria[pageSize]": searchCriteriaPageSize || undefined,
-      "searchCriteria[sortOrders][0][direction]": searchCriteriaSortDirection || undefined,
-      "searchCriteria[sortOrders][0][field]": searchCriteriaSortField || undefined,
+      "searchCriteria[sortOrders][0][direction]":
+        searchCriteriaSortDirection || undefined,
+      "searchCriteria[sortOrders][0][field]":
+        searchCriteriaSortField || undefined,
     });
     try {
       const { data } = await client.get("/customers/search", {
@@ -66,5 +69,4 @@ export const searchCustomers = action({
   },
   examplePayload: searchCustomersExampleResponse,
 });
-
 export default { searchCustomers };

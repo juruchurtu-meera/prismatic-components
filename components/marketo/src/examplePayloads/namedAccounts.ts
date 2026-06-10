@@ -1,7 +1,3 @@
-
-
-
-
 export const describeNamedAccountExamplePayload = {
   data: {
     requestId: "d65e#156c27ac57d",
@@ -68,7 +64,6 @@ export const describeNamedAccountExamplePayload = {
     success: true,
   },
 };
-
 export const getNamedAccountsByFilterExamplePayload = {
   data: {
     requestId: "6dac#157d4ddc9d7",
@@ -91,7 +86,6 @@ export const getNamedAccountsByFilterExamplePayload = {
     success: true,
   },
 };
-
 export const syncNamedAccountsExamplePayload = {
   data: {
     requestId: "e42b#14272d07d78",
@@ -110,7 +104,6 @@ export const syncNamedAccountsExamplePayload = {
     ],
   },
 };
-
 export const deleteNamedAccountsExamplePayload = {
   data: {
     requestId: "e42b#14272d07d78",

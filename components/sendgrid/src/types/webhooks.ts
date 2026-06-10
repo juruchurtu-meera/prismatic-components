@@ -14,7 +14,6 @@ export interface CreateWebhookParams {
   groupUnsubscribe: boolean;
   groupResubscribe: boolean;
 }
-
 export interface WebhookRequestBody {
   url: string;
   friendly_name?: string;
@@ -31,20 +30,16 @@ export interface WebhookRequestBody {
   group_unsubscribe: boolean;
   group_resubscribe: boolean;
 }
-
 export interface UpdateWebhookParams extends CreateWebhookParams {
   webhookId: string;
 }
-
 export interface DeleteWebhookParams {
   webhookId: string;
 }
-
 export interface ToggleSignatureVerificationParams {
   webhookId: string;
   enabled: boolean;
 }
-
 export interface WebhookResponse {
   enabled: boolean;
   url: string;
@@ -67,17 +62,14 @@ export interface WebhookResponse {
   created_date: string;
   updated_date: string;
 }
-
 export interface ToggleSignatureVerificationResponse {
   id: string;
   public_key: string;
 }
-
 export interface WebhookState {
   webhookId: string;
   publicKey?: string;
 }
-
 export interface TrackEvents {
   delivered: boolean;
   bounce: boolean;

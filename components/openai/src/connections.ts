@@ -1,5 +1,4 @@
 import { connection, input } from "@prismatic-io/spectral";
-
 export const openAiApiKey = connection({
   key: "openAiApiKey",
   display: {
@@ -26,5 +25,4 @@ export const openAiApiKey = connection({
     }),
   },
 });
-
 export default [openAiApiKey];

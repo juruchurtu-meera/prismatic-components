@@ -4,7 +4,7 @@
     "href": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/CHANGELOG.md"
   }
 ]

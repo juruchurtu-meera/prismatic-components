@@ -3,7 +3,6 @@ import { getMondayClient } from "../client";
 import { selectWebhookInputs } from "../inputs";
 import ListBoardWebhooksQuery from "../queries/listBoardWebhooks.gql";
 import type { ListWebhooksResponse } from "../types";
-
 export const selectWebhook = dataSource({
   display: {
     label: "Select Webhook",
@@ -12,19 +11,15 @@ export const selectWebhook = dataSource({
   inputs: selectWebhookInputs,
   perform: async (_context, { connection, boardId }) => {
     const client = getMondayClient(connection, false);
-
     const data = await client.request<ListWebhooksResponse>(
       ListBoardWebhooksQuery,
       { board_id: boardId },
     );
-
     const webhooks = data.webhooks ?? [];
-
     const result = webhooks.map<Element>((webhook) => ({
       label: `${webhook.id} - ${webhook.event}`,
       key: webhook.id,
     }));
-
     return { result };
   },
   dataSourceType: "picklist",

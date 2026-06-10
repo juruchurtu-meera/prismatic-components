@@ -19,7 +19,6 @@ import {
   getItemFromSiteListExamplePayload,
   createItemInSiteListExamplePayload,
 } from "../examplePayloads/actions";
-
 const listSiteLists = action({
   display: {
     label: "List Site Lists",
@@ -33,22 +32,20 @@ const listSiteLists = action({
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
     const endpoint = `/sites/${params.siteId}/lists`;
-
     if (params.fetchAll) {
       const results = await paginateResults(client, endpoint);
       return { data: results };
     }
-
     const { data } = await client.get(endpoint);
     return { data };
   },
   examplePayload: listSiteListsExamplePayload,
 });
-
 const getList = action({
   display: {
     label: "Get Site List",
-    description: "Returns the information and metadata of an existing site list",
+    description:
+      "Returns the information and metadata of an existing site list",
   },
   inputs: {
     connection,
@@ -57,12 +54,13 @@ const getList = action({
   },
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
-    const { data } = await client.get(`/sites/${params.siteId}/lists/${params.listId}`);
+    const { data } = await client.get(
+      `/sites/${params.siteId}/lists/${params.listId}`,
+    );
     return { data };
   },
   examplePayload: getSiteListExamplePayload,
 });
-
 const getListItemsInSite = action({
   display: {
     label: "List Items in Site List",
@@ -70,16 +68,19 @@ const getListItemsInSite = action({
   },
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
-    const { data } = await client.get(`/sites/${params.siteId}/lists/${params.listId}/items`, {
-      params:
-        params.pageLimit || params.pageToken
-          ? {
-              $top: params.pageLimit,
-              $skipToken: params.pageToken,
-              $select: params.optInFields,
-            }
-          : undefined,
-    });
+    const { data } = await client.get(
+      `/sites/${params.siteId}/lists/${params.listId}/items`,
+      {
+        params:
+          params.pageLimit || params.pageToken
+            ? {
+                $top: params.pageLimit,
+                $skipToken: params.pageToken,
+                $select: params.optInFields,
+              }
+            : undefined,
+      },
+    );
     return { data };
   },
   inputs: {
@@ -92,7 +93,6 @@ const getListItemsInSite = action({
   },
   examplePayload: listItemsInSiteListExamplePayload,
 });
-
 const getItemInSite = action({
   display: {
     label: "Get Item from Site List",
@@ -121,7 +121,6 @@ const getItemInSite = action({
   },
   examplePayload: getItemFromSiteListExamplePayload,
 });
-
 const createItemInSite = action({
   display: {
     label: "Create Item in Site List",
@@ -129,9 +128,12 @@ const createItemInSite = action({
   },
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
-    const { data } = await client.post(`/sites/${params.siteId}/lists/${params.listId}/items`, {
-      fields: util.types.keyValPairListToObject(params.fields),
-    });
+    const { data } = await client.post(
+      `/sites/${params.siteId}/lists/${params.listId}/items`,
+      {
+        fields: util.types.keyValPairListToObject(params.fields),
+      },
+    );
     return { data };
   },
   inputs: {
@@ -142,7 +144,6 @@ const createItemInSite = action({
   },
   examplePayload: createItemInSiteListExamplePayload,
 });
-
 export default {
   listSiteLists,
   getListItemsInSite,

@@ -7,7 +7,6 @@ import {
   propertyId,
 } from "../../inputs";
 import { getContentPropertyExamplePayload as updateContentPropertyForCustomContentExamplePayload } from "../../examplePayloads";
-
 export const updateContentPropertyForCustomContent = action({
   display: {
     label: "Update Content Property for Custom Content",

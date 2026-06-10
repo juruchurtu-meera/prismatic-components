@@ -8,7 +8,6 @@ import { selectRequest } from "./selectRequest";
 import { selectRequestType } from "./selectRequestType";
 import { selectServiceDesk } from "./selectServiceDesk";
 import { selectTransition } from "./selectTransition";
-
 export default {
   selectServiceDesk,
   selectRequestType,

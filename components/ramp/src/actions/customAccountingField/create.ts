@@ -1,8 +1,13 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getCustomAccountingFieldResponse as createCustomAccountingFieldResponse } from "../../examplePayloads/customAccountingFields";
-import { connection, customAccountingFieldId, inputType, isSplittable, name } from "../../inputs";
-
+import {
+  connection,
+  customAccountingFieldId,
+  inputType,
+  isSplittable,
+  name,
+} from "../../inputs";
 export const createCustomAccountingField = action({
   display: {
     label: "Create Custom Accounting Field",
@@ -27,7 +32,6 @@ export const createCustomAccountingField = action({
     { connection, customAccountingFieldId, inputType, isSplittable, name },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/accounting/fields`, {
       id: customAccountingFieldId,
       name,

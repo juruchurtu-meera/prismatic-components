@@ -4,7 +4,6 @@ import { connectionInput } from "../inputs";
 import type { Attachment } from "../interfaces";
 import { ATTACHMENTS_URL, ATTACHMENTS_URL_REGEX } from "../constants";
 import { paginateResults } from "../util";
-
 export const listAttachments = dataSource({
   display: {
     label: "List Attachments",
@@ -15,20 +14,17 @@ export const listAttachments = dataSource({
   },
   perform: async (_context, { connectionInput }) => {
     const client = await createClient(connectionInput, false);
-
     const attachments = await paginateResults<Attachment>(
       client,
       ATTACHMENTS_URL,
       ATTACHMENTS_URL_REGEX,
     );
-
     const result = attachments
       .map<Element>(({ title, id }) => ({
         label: title,
         key: id,
       }))
       .sort((a, b) => ((a.label ?? "") < (b.label ?? "") ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

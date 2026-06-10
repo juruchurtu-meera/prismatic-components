@@ -11,7 +11,6 @@ import {
   version,
 } from "../inputs";
 import { adDefaults, getPaginatedData } from "../util";
-
 export const listAdsInAccount = action({
   display: {
     label: "List Ads In Account",
@@ -31,7 +30,6 @@ export const listAdsInAccount = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await getPaginatedData(
       client,
       `/${adAccountId}/ads`,
@@ -43,7 +41,6 @@ export const listAdsInAccount = action({
         fields,
       },
     );
-
     return {
       data,
     };

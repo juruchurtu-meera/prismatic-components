@@ -63,7 +63,6 @@ import { createWebhook } from "./webhooks/createWebhook";
 import { deleteWebhook } from "./webhooks/deleteWebhook";
 import { getWebhooks } from "./webhooks/getWebhooks";
 import { updateWebhook } from "./webhooks/updateWebhook";
-
 export default {
   getUser,
   inviteUserToWorkspace,

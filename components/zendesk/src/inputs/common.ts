@@ -14,7 +14,6 @@ import {
   webhookEvents,
   zendeskLocales,
 } from "../constants";
-
 export const requesterName = input({
   label: "Requester Name",
   type: "string",
@@ -24,7 +23,6 @@ export const requesterName = input({
   comments: "The full name of the person requesting the ticket.",
   clean: util.types.toString,
 });
-
 export const requesterEmail = input({
   label: "Requester Email",
   type: "string",
@@ -34,7 +32,6 @@ export const requesterEmail = input({
   comments: "The email address of the person requesting the ticket.",
   clean: util.types.toString,
 });
-
 export const assigneeId = input({
   label: "Assignee ID",
   type: "string",
@@ -44,7 +41,6 @@ export const assigneeId = input({
   comments: "The unique identifier for the user assigned to the ticket.",
   clean: cleanString,
 });
-
 export const assigneeEmail = input({
   label: "Assignee Email",
   type: "string",
@@ -54,7 +50,6 @@ export const assigneeEmail = input({
   comments: "The email address of the user assigned to the ticket.",
   clean: util.types.toString,
 });
-
 export const recipientEmail = input({
   label: "Recipient Email",
   type: "string",
@@ -64,7 +59,6 @@ export const recipientEmail = input({
   comments: "The email address of the ticket recipient.",
   clean: cleanString,
 });
-
 export const ticketComment = input({
   label: "Ticket Comment Body",
   type: "string",
@@ -75,7 +69,6 @@ export const ticketComment = input({
     "The plain text description used as the initial comment on the ticket, attributed to the assignee.",
   clean: cleanString,
 });
-
 export const ticketCommentHTML = input({
   label: "Ticket Comment HTML Body",
   type: "string",
@@ -86,7 +79,6 @@ export const ticketCommentHTML = input({
     "The HTML-formatted description used as the initial comment on the ticket, attributed to the assignee.",
   clean: cleanString,
 });
-
 export const ticketId = input({
   label: "Ticket ID",
   type: "string",
@@ -97,7 +89,6 @@ export const ticketId = input({
   clean: cleanNumber,
   dataSource: "selectTicket",
 });
-
 export const ticketStatus = input({
   label: "Ticket Status",
   type: "string",
@@ -113,7 +104,6 @@ export const ticketStatus = input({
   comments: "The current workflow status of the ticket.",
   clean: cleanString,
 });
-
 export const tags = input({
   label: "Tags",
   type: "string",
@@ -123,7 +113,6 @@ export const tags = input({
   collection: "valuelist",
   comments: "The list of tags to attach to the resource.",
 });
-
 export const ticketType = input({
   label: "Ticket Type",
   type: "string",
@@ -137,7 +126,6 @@ export const ticketType = input({
   comments: "The classification of the ticket.",
   clean: cleanString,
 });
-
 export const ticketSubject = input({
   label: "Ticket Subject",
   type: "string",
@@ -147,7 +135,6 @@ export const ticketSubject = input({
   comments: "The summary line shown at the top of the ticket.",
   clean: cleanString,
 });
-
 export const ticketPriority = input({
   label: "Ticket Priority",
   type: "string",
@@ -161,7 +148,6 @@ export const ticketPriority = input({
   comments: "The urgency level assigned to the ticket.",
   clean: cleanString,
 });
-
 export const requesterOrganization = input({
   label: "Requester Organization ID",
   type: "string",
@@ -172,7 +158,6 @@ export const requesterOrganization = input({
     "The unique identifier for the organization the requester belongs to.",
   clean: cleanString,
 });
-
 export const followers = input({
   label: "Followers",
   type: "string",
@@ -182,7 +167,6 @@ export const followers = input({
   collection: "valuelist",
   comments: "The list of user IDs to add as followers on the issue.",
 });
-
 export const userId = input({
   label: "User ID",
   type: "string",
@@ -193,7 +177,6 @@ export const userId = input({
   clean: cleanNumber,
   dataSource: "selectUser",
 });
-
 export const userRole = input({
   label: "User Role",
   type: "string",
@@ -206,7 +189,6 @@ export const userRole = input({
   ],
   clean: cleanString,
 });
-
 export const userEmail = input({
   label: "Email Address",
   type: "string",
@@ -217,7 +199,6 @@ export const userEmail = input({
   placeholder: "Enter the user's email address",
   clean: util.types.toString,
 });
-
 export const userName = input({
   label: "Name",
   type: "string",
@@ -227,7 +208,6 @@ export const userName = input({
   placeholder: "Enter the user's full name",
   clean: util.types.toString,
 });
-
 export const userPhone = input({
   label: "Phone Number",
   type: "string",
@@ -237,7 +217,6 @@ export const userPhone = input({
   placeholder: "Enter the phone number",
   clean: cleanString,
 });
-
 export const userNotes = input({
   label: "Notes",
   type: "string",
@@ -247,7 +226,6 @@ export const userNotes = input({
   placeholder: "Enter notes for the user",
   clean: cleanString,
 });
-
 export const userDetails = input({
   label: "Details",
   type: "string",
@@ -258,7 +236,6 @@ export const userDetails = input({
   placeholder: "Enter details for the user",
   clean: cleanString,
 });
-
 export const isModerator = input({
   label: "Moderator",
   type: "boolean",
@@ -266,7 +243,6 @@ export const isModerator = input({
   comments: "When true, the user is granted moderator permissions.",
   clean: util.types.toBool,
 });
-
 export const userAlias = input({
   label: "Alias",
   type: "string",
@@ -276,7 +252,6 @@ export const userAlias = input({
   placeholder: "Enter an alias for the user",
   clean: cleanString,
 });
-
 export const userTimeZone = input({
   label: "Time Zone",
   type: "string",
@@ -286,7 +261,6 @@ export const userTimeZone = input({
   placeholder: "Enter the user's time zone",
   clean: cleanString,
 });
-
 export const userExternalIdInput = input({
   label: "External ID",
   type: "string",
@@ -296,7 +270,6 @@ export const userExternalIdInput = input({
     'A unique identifier from another system. The API treats the ID as case sensitive — for example, "ian1" and "Ian1" are different users.',
   clean: cleanString,
 });
-
 export const userQueryInput = input({
   label: "Query",
   type: "string",
@@ -306,7 +279,6 @@ export const userQueryInput = input({
     'The search query supporting Zendesk search syntax. Accepts a partial or full value of any user property, including name, email address, notes, or phone. Example: query="jdoe".',
   clean: cleanString,
 });
-
 export const isVerified = input({
   label: "Verified",
   type: "boolean",
@@ -315,7 +287,6 @@ export const isVerified = input({
     "When true, marks at least one of the user's identities as verified.",
   clean: util.types.toBool,
 });
-
 export const organizationId = input({
   label: "Organization ID",
   type: "string",
@@ -324,14 +295,12 @@ export const organizationId = input({
   comments: "The unique identifier for the organization.",
   clean: cleanString,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Zendesk connection to use.",
 });
-
 export const webhookEventsInput = input({
   label: "Events",
   type: "string",
@@ -340,7 +309,6 @@ export const webhookEventsInput = input({
   model: webhookEvents.map((event) => ({ label: event, value: event })),
   comments: "The list of events that trigger the webhook to fire.",
 });
-
 export const externalId = input({
   label: "External ID",
   type: "string",
@@ -349,7 +317,6 @@ export const externalId = input({
   comments: "The identifier for the issue from an external system.",
   clean: cleanString,
 });
-
 export const file = input({
   label: "File",
   type: "data",
@@ -358,7 +325,6 @@ export const file = input({
     "The file contents to attach to the comment, accepted as either a string or a binary payload.",
   clean: cleanFile,
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -367,7 +333,6 @@ export const fileName = input({
   comments: "The display name to use for the uploaded file.",
   clean: cleanString,
 });
-
 export const locale = input({
   label: "Locale",
   type: "string",
@@ -377,7 +342,6 @@ export const locale = input({
   model: zendeskLocales.map((locale) => ({ label: locale, value: locale })),
   clean: util.types.toString,
 });
-
 export const pageLimit = input({
   label: "Page Limit",
   type: "string",
@@ -388,7 +352,6 @@ export const pageLimit = input({
     "The number of results to return per page. The maximum is 100; any greater value is capped at 100.",
   clean: cleanFunctionForLimitInput,
 });
-
 export const cursor = input({
   label: "Pagination Cursor",
   type: "string",
@@ -399,7 +362,6 @@ export const cursor = input({
     "The pagination cursor from a previous request. If omitted, the first page is returned.",
   clean: cleanString,
 });
-
 export const sortBy = input({
   label: "Sort By",
   type: "string",
@@ -408,7 +370,6 @@ export const sortBy = input({
   comments: "The field used to sort the results.",
   clean: cleanString,
 });
-
 export const sortOrder = input({
   label: "Sort Order",
   type: "string",
@@ -422,7 +383,6 @@ export const sortOrder = input({
   comments: "The direction used to order the results.",
   clean: cleanString,
 });
-
 export const articleLabels = input({
   label: "Label Names",
   type: "string",
@@ -434,7 +394,6 @@ export const articleLabels = input({
     "Restrict results to articles with the specified labels. A maximum of 10 labels can be supplied. See [label names](https://developer.zendesk.com/api-reference/help_center/help-center-api/articles/#label-names) for more information.",
   clean: cleanValueListToString,
 });
-
 export const startTime = input({
   label: "Start Time",
   type: "string",
@@ -445,7 +404,6 @@ export const startTime = input({
     "The start of the time range to search for events. Format: Unix timestamp (seconds since epoch).",
   clean: util.types.toNumber,
 });
-
 export const articleId = input({
   label: "Article ID",
   type: "string",
@@ -456,7 +414,6 @@ export const articleId = input({
   clean: util.types.toString,
   dataSource: "listArticlesDataSource",
 });
-
 export const sectionId = input({
   label: "Section ID",
   type: "string",
@@ -467,7 +424,6 @@ export const sectionId = input({
   clean: util.types.toNumber,
   dataSource: "listSectionsDataSource",
 });
-
 export const userSegmentId = input({
   label: "User Segment ID",
   type: "string",
@@ -478,7 +434,6 @@ export const userSegmentId = input({
   clean: util.types.toNumber,
   dataSource: "listUserSegmentsDataSource",
 });
-
 export const permissionGroupId = input({
   label: "Permission Group ID",
   type: "string",
@@ -489,7 +444,6 @@ export const permissionGroupId = input({
   clean: util.types.toNumber,
   dataSource: "listPermissionGroupsDataSource",
 });
-
 export const isDraft = input({
   label: "Draft",
   type: "boolean",
@@ -497,7 +451,6 @@ export const isDraft = input({
   comments: "When true, the article is saved as a draft instead of published.",
   clean: util.types.toBool,
 });
-
 export const notifySubscribers = input({
   label: "Notify Subscribers",
   type: "boolean",
@@ -506,7 +459,6 @@ export const notifySubscribers = input({
     "When false, suppresses the article creation email to subscribers. Useful when creating many articles at once.",
   clean: util.types.toBool,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -516,7 +468,6 @@ export const title = input({
   comments: "The headline displayed for the article.",
   clean: util.types.toString,
 });
-
 export const body = input({
   label: "Body",
   type: "string",
@@ -526,7 +477,6 @@ export const body = input({
   comments: "The main content of the article.",
   clean: util.types.toString,
 });
-
 export const promoted = input({
   label: "Promoted",
   type: "boolean",
@@ -534,7 +484,6 @@ export const promoted = input({
   comments: "When true, the object is highlighted at the top of its list.",
   clean: util.types.toBool,
 });
-
 export const position = input({
   label: "Position",
   type: "string",
@@ -544,7 +493,6 @@ export const position = input({
   example: "42",
   clean: util.types.toNumber,
 });
-
 export const commentsDisabled = input({
   label: "Comments Disabled",
   type: "boolean",
@@ -552,7 +500,6 @@ export const commentsDisabled = input({
   comments: "When true, prevents users from leaving comments on the object.",
   clean: util.types.toBool,
 });
-
 export const contentTagIds = input({
   label: "Content Tag IDs",
   type: "string",
@@ -562,7 +509,6 @@ export const contentTagIds = input({
   comments: "The list of content tag IDs to attach to the object.",
   clean: cleanValueList,
 });
-
 export const labelNames = input({
   label: "Label Names",
   type: "string",
@@ -572,7 +518,6 @@ export const labelNames = input({
   comments: "The list of label names to attach to the object.",
   clean: cleanValueList,
 });
-
 export const attachmentIds = input({
   label: "Attachment IDs",
   type: "string",
@@ -582,7 +527,6 @@ export const attachmentIds = input({
   comments: "The list of attachment IDs to attach to the object.",
   clean: cleanValueList,
 });
-
 export const brandIds = input({
   label: "Brand IDs",
   type: "string",
@@ -593,7 +537,6 @@ export const brandIds = input({
   comments: "Restrict the search to articles or posts within these brands.",
   clean: cleanValueListToEncodedString,
 });
-
 export const categoryIds = input({
   label: "Category IDs",
   type: "string",
@@ -604,7 +547,6 @@ export const categoryIds = input({
   comments: "Restrict the search to articles or posts within these categories.",
   clean: cleanValueListToEncodedString,
 });
-
 export const contentTypes = input({
   label: "Content Types",
   type: "string",
@@ -614,7 +556,6 @@ export const contentTypes = input({
   comments: "Restrict the search to one of these content types: ARTICLE, POST.",
   clean: cleanValueListToString,
 });
-
 export const externalSourceIds = input({
   label: "External Source IDs",
   type: "string",
@@ -626,7 +567,6 @@ export const externalSourceIds = input({
     "Restrict the search results to the specified external source or sources.",
   clean: cleanValueListToEncodedString,
 });
-
 export const locales = input({
   label: "Locales",
   type: "string",
@@ -637,7 +577,6 @@ export const locales = input({
   comments: "Restrict the search to articles or posts within these locales.",
   clean: cleanValueListToEncodedString,
 });
-
 export const sectionIds = input({
   label: "Section IDs",
   type: "string",
@@ -648,7 +587,6 @@ export const sectionIds = input({
   comments: "Restrict the search to articles or posts within these sections.",
   clean: cleanValueListToEncodedString,
 });
-
 export const topicIds = input({
   label: "Topic IDs",
   type: "string",
@@ -659,7 +597,6 @@ export const topicIds = input({
   comments: "Restrict the search to posts within these topics.",
   clean: cleanValueListToEncodedString,
 });
-
 export const searchQuery = input({
   label: "Search Query",
   type: "string",
@@ -669,7 +606,6 @@ export const searchQuery = input({
   comments: "The text or search string used to match results.",
   clean: util.types.toString,
 });
-
 export const articleAttachmentId = input({
   label: "Article Attachment ID",
   type: "string",
@@ -679,7 +615,6 @@ export const articleAttachmentId = input({
   comments: "The unique identifier for the article attachment.",
   clean: util.types.toNumber,
 });
-
 export const categoryId = input({
   label: "Category ID",
   type: "string",
@@ -690,7 +625,6 @@ export const categoryId = input({
   clean: util.types.toNumber,
   dataSource: "listCategoriesDataSource",
 });
-
 export const sectionName = input({
   label: "Section Name",
   type: "string",
@@ -700,7 +634,6 @@ export const sectionName = input({
   comments: "The display name of the section.",
   clean: util.types.toString,
 });
-
 export const sectionDescription = input({
   label: "Section Description",
   type: "string",
@@ -710,7 +643,6 @@ export const sectionDescription = input({
   comments: "The descriptive text shown below the section title.",
   clean: util.types.toString,
 });
-
 export const parentSectionId = input({
   label: "Parent Section ID",
   type: "string",
@@ -720,7 +652,6 @@ export const parentSectionId = input({
   comments: "The unique identifier for the parent section.",
   clean: util.types.toNumber,
 });
-
 export const categoryName = input({
   label: "Category Name",
   type: "string",
@@ -730,7 +661,6 @@ export const categoryName = input({
   comments: "The display name of the category.",
   clean: util.types.toString,
 });
-
 export const categoryDescription = input({
   label: "Category Description",
   type: "string",
@@ -740,7 +670,6 @@ export const categoryDescription = input({
   comments: "The descriptive text shown below the category title.",
   clean: util.types.toString,
 });
-
 export const topicName = input({
   label: "Topic Name",
   type: "string",
@@ -750,7 +679,6 @@ export const topicName = input({
   comments: "The display name of the topic.",
   clean: util.types.toString,
 });
-
 export const topicDescription = input({
   label: "Topic Description",
   type: "string",
@@ -760,7 +688,6 @@ export const topicDescription = input({
   comments: "The descriptive text shown below the topic title.",
   clean: util.types.toString,
 });
-
 export const topicId = input({
   label: "Topic ID",
   type: "string",
@@ -771,7 +698,6 @@ export const topicId = input({
   clean: util.types.toNumber,
   dataSource: "selectTopic",
 });
-
 export const manageableBy = input({
   label: "Manageable By",
   type: "string",
@@ -789,7 +715,6 @@ export const manageableBy = input({
   comments: "The user segment allowed to manage the topic.",
   clean: util.types.toString,
 });
-
 export const authorId = input({
   label: "Author ID",
   type: "string",
@@ -799,7 +724,6 @@ export const authorId = input({
   comments: "The unique identifier for the author.",
   clean: util.types.toNumber,
 });
-
 export const isPostClosed = input({
   label: "Closed",
   type: "boolean",
@@ -807,7 +731,6 @@ export const isPostClosed = input({
   comments: "When true, the post is closed to new comments.",
   clean: util.types.toBool,
 });
-
 export const postDetails = input({
   label: "Details",
   type: "string",
@@ -816,7 +739,6 @@ export const postDetails = input({
   comments: "The main body content of the post.",
   clean: util.types.toString,
 });
-
 export const isPostFeatured = input({
   label: "Featured",
   type: "boolean",
@@ -824,7 +746,6 @@ export const isPostFeatured = input({
   comments: "When true, the post is featured prominently in the community.",
   clean: util.types.toBool,
 });
-
 export const isPostPinned = input({
   label: "Pinned",
   type: "boolean",
@@ -832,7 +753,6 @@ export const isPostPinned = input({
   comments: "When true, the post is pinned to the top of its topic.",
   clean: util.types.toBool,
 });
-
 export const postTitle = input({
   label: "Title",
   type: "string",
@@ -842,7 +762,6 @@ export const postTitle = input({
   comments: "The headline displayed for the post.",
   clean: util.types.toString,
 });
-
 export const postStatus = input({
   label: "Status",
   type: "string",
@@ -856,7 +775,6 @@ export const postStatus = input({
   comments: "The current workflow state of the post.",
   clean: util.types.toString,
 });
-
 export const postId = input({
   label: "Post ID",
   type: "string",
@@ -867,7 +785,6 @@ export const postId = input({
   clean: util.types.toNumber,
   dataSource: "selectPost",
 });
-
 export const postFilterBy = input({
   label: "Filter By",
   type: "string",
@@ -876,7 +793,6 @@ export const postFilterBy = input({
   comments: "The field used to filter the results.",
   clean: util.types.toString,
 });
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -886,7 +802,6 @@ export const subscriptionId = input({
   comments: "The unique identifier for the subscription.",
   clean: util.types.toNumber,
 });
-
 export const includeComments = input({
   label: "Include Comments",
   type: "boolean",
@@ -895,7 +810,6 @@ export const includeComments = input({
     "When true, the subscription also includes notifications for comments.",
   clean: util.types.toBool,
 });
-
 export const filterCreatedBefore = input({
   label: "Created Before",
   type: "string",
@@ -906,7 +820,6 @@ export const filterCreatedBefore = input({
     "The upper bound used to filter results by creation date. Format: YYYY-MM-DD.",
   clean: util.types.toString,
 });
-
 export const filterCreatedAfter = input({
   label: "Created After",
   type: "string",
@@ -917,7 +830,6 @@ export const filterCreatedAfter = input({
     "The lower bound used to filter results by creation date. Format: YYYY-MM-DD.",
   clean: util.types.toString,
 });
-
 export const filterCategoryId = input({
   label: "Category ID",
   type: "string",
@@ -928,7 +840,6 @@ export const filterCategoryId = input({
     "The unique identifier for the category used to filter the results.",
   clean: util.types.toNumber,
 });
-
 export const filterCreatedAt = input({
   label: "Created At",
   type: "string",
@@ -939,7 +850,6 @@ export const filterCreatedAt = input({
     "The exact creation date used to filter the results. Format: YYYY-MM-DD.",
   clean: util.types.toString,
 });
-
 export const filterLabelNames = input({
   label: "Label Names",
   type: "string",
@@ -950,7 +860,6 @@ export const filterLabelNames = input({
   comments: "The list of label names used to filter the results.",
   clean: cleanValueListToString,
 });
-
 export const shouldFilterMultibrand = input({
   label: "Multibrand",
   type: "boolean",
@@ -958,7 +867,6 @@ export const shouldFilterMultibrand = input({
   comments: "When true, results are filtered across all brands in the account.",
   clean: util.types.toBool,
 });
-
 export const filterSectionId = input({
   label: "Section ID",
   type: "string",
@@ -968,7 +876,6 @@ export const filterSectionId = input({
   comments: "The unique identifier for the section used to filter the results.",
   clean: util.types.toNumber,
 });
-
 export const filterUpdatedAt = input({
   label: "Updated At",
   type: "string",
@@ -979,7 +886,6 @@ export const filterUpdatedAt = input({
     "The exact update date used to filter the results. Format: YYYY-MM-DD.",
   clean: util.types.toString,
 });
-
 export const filterUpdatedBefore = input({
   label: "Updated Before",
   type: "string",
@@ -990,7 +896,6 @@ export const filterUpdatedBefore = input({
     "The upper bound used to filter results by update date. Format: YYYY-MM-DD.",
   clean: util.types.toString,
 });
-
 export const filterUpdatedAfter = input({
   label: "Updated After",
   type: "string",
@@ -1001,7 +906,6 @@ export const filterUpdatedAfter = input({
     "The lower bound used to filter results by update date. Format: YYYY-MM-DD.",
   clean: util.types.toString,
 });
-
 export const inline = input({
   label: "Inline",
   type: "boolean",
@@ -1009,7 +913,6 @@ export const inline = input({
   comments: "When true, the attachment is rendered inline within the content.",
   clean: util.types.toBool,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -1019,7 +922,6 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results instead of returning a single page.",
   clean: util.types.toBool,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -1029,7 +931,6 @@ export const showNewRecords = input({
     "When true, newly created tickets are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",

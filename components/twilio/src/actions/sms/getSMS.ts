@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../../client";
 import { getSMSExamplePayload } from "../../examplePayloads";
 import { getSMSInputs } from "../../inputs";
-
 export const getSMS = action({
   display: {
     label: "Get SMS",

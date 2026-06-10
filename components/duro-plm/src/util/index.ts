@@ -16,7 +16,6 @@ import type { ComponentNode } from "../types/ComponentNode";
 import type { DuroRecord } from "../types/DuroRecord";
 import type { ListComponentsResponse } from "../types/ListComponentsResponse";
 import type { PollConnection } from "../types/PollConnection";
-
 export const validateConnection = (connection: Connection): void => {
   const connectionKeys = connections.map((c) => c.key);
   if (!connectionKeys.includes(connection.key)) {
@@ -26,20 +25,19 @@ export const validateConnection = (connection: Connection): void => {
     );
   }
 };
-
 export const cleanStringInput = (value: unknown): string | undefined =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanNumberInput = (value: unknown): number | undefined =>
   value ? util.types.toNumber(value) : undefined;
-
 export const getCredentials = (
   connection: Connection,
-): { apiKey: string; url: string } => {
+): {
+  apiKey: string;
+  url: string;
+} => {
   const customDuroEnvironment = util.types
     .toString(connection.fields.customDuroEnvironment)
     .trim();
-
   const url =
     customDuroEnvironment ||
     util.types.toString(connection.fields.duroEnvironment);
@@ -49,17 +47,14 @@ export const getCredentials = (
     url,
   };
 };
-
 export const cleanCodeInput = (value: unknown): object =>
   value ? util.types.toObject(value) : {};
-
 export const cleanKeyValueListInput = (
   value: unknown,
 ): Record<string, unknown> => {
   if (Array.isArray(value)) return util.types.keyValPairListToObject(value);
   return {};
 };
-
 export const parseJsonArray = (value: unknown) => {
   if (value) {
     const json = util.types.toObject(value);
@@ -70,10 +65,8 @@ export const parseJsonArray = (value: unknown) => {
   }
   return [];
 };
-
 const mapComponentEdges = (edges: ComponentEdge[]) =>
   edges.map((edge) => edge.node);
-
 export const getComponentsList = async (
   client: GraphQLClient,
   query: string,
@@ -84,34 +77,21 @@ export const getComponentsList = async (
     first,
     libraryType,
   };
-
   const data = await client.request<ListComponentsResponse>(query, variables);
-
   const edges = data?.components?.connection?.edges ?? [];
-
   const mappedEdges = mapComponentEdges(edges);
-
   return mappedEdges;
 };
-
-
-
 const toResourceLabel = (key: string): string =>
   key
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/^./, (char) => char.toUpperCase());
-
-
-
 export const pollResourceModel = Object.entries(POLL_RESOURCE_CONFIG).map(
   ([value]) => ({
     label: toResourceLabel(value),
     value,
   }),
 );
-
-
-
 const readConnection = (
   data: unknown,
   dataPath: string[],
@@ -126,53 +106,38 @@ const readConnection = (
   }
   return current as PollConnection | undefined;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const fetchAllSince = async (
   client: GraphQLClient,
   resourceType: string,
   lastPolledAt: string,
-  options: { debug?: boolean; logger?: ActionLogger } = {},
-): Promise<{ records: DuroRecord[]; truncated: boolean }> => {
+  options: {
+    debug?: boolean;
+    logger?: ActionLogger;
+  } = {},
+): Promise<{
+  records: DuroRecord[];
+  truncated: boolean;
+}> => {
   const config = POLL_RESOURCE_CONFIG[resourceType];
   if (!config) {
     throw new Error(`Unsupported resource type: ${resourceType}`);
   }
-
   const { debug, logger } = options;
   const lastPolledAtDate = new Date(lastPolledAt);
   const records: DuroRecord[] = [];
-
   let after: string | undefined;
   let page = 0;
-
   while (page < MAX_POLL_PAGES) {
     page += 1;
     const variables = config.buildVariables(POLL_PAGE_SIZE, after);
     const data = await client.request(config.query, variables);
     const connection = readConnection(data, config.dataPath);
     const edges = connection?.edges ?? [];
-
     let stop = false;
     for (const edge of edges) {
       const node = edge?.node;
       if (!node) continue;
       records.push(node);
-
-      
-      
-      
       if (
         config.earlyStop &&
         typeof node.lastModified === "string" &&
@@ -182,9 +147,6 @@ export const fetchAllSince = async (
         break;
       }
     }
-
-    
-    
     if (stop) return { records, truncated: false };
     const pageInfo = connection?.pageInfo;
     if (!pageInfo?.hasNextPage || !pageInfo.endCursor) {
@@ -192,13 +154,10 @@ export const fetchAllSince = async (
     }
     after = pageInfo.endCursor;
   }
-
-  
   if (debug && logger) {
     logger.warn(
       `Reached MAX_POLL_PAGES (${MAX_POLL_PAGES}) while polling ${resourceType}; results truncated. Holding the polling cursor so the remaining older records are fetched on the next poll.`,
     );
   }
-
   return { records, truncated: true };
 };

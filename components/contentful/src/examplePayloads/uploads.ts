@@ -20,5 +20,4 @@ export const getUploadExamplePayload = {
     },
   },
 };
-
 export const uploadFileExamplePayload = getUploadExamplePayload;

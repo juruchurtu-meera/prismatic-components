@@ -4,7 +4,6 @@ import { SERVICES } from "../../constants";
 import { postSupplierInvoiceRequestsExamplePayload } from "../../examplePayloads";
 import { postSupplierInvoiceRequestsInputs } from "../../inputs";
 import { getIdObject } from "../../util";
-
 export const postSupplierInvoiceRequests = action({
   display: {
     label: "Create Supplier Invoice Request",
@@ -28,7 +27,6 @@ export const postSupplierInvoiceRequests = action({
     },
   ) => {
     const client = getClient(connection, context.debug.enabled);
-
     const body = {
       currency: getIdObject(currencyId),
       company: getIdObject(companyId),

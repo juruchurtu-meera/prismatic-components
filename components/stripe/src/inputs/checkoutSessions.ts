@@ -1,26 +1,25 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanObjectInput, cleanStringInput } from "../util";
-
 export const successUrl = input({
   label: "Success URL",
   type: "string",
-  comments: "The URL the customer will be directed to after the payment is successful.",
+  comments:
+    "The URL the customer will be directed to after the payment is successful.",
   example: "https://example.com/success",
   placeholder: "Enter success URL",
   required: false,
   clean: cleanStringInput,
 });
-
 export const cancelUrl = input({
   label: "Cancel URL",
   type: "string",
-  comments: "The URL the customer will be directed to if they decide to cancel payment.",
+  comments:
+    "The URL the customer will be directed to if they decide to cancel payment.",
   example: "https://example.com/cancel",
   placeholder: "Enter cancel URL",
   required: false,
   clean: cleanStringInput,
 });
-
 export const mode = input({
   label: "Mode",
   type: "string",
@@ -36,7 +35,6 @@ export const mode = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export const lineItems = input({
   label: "Line Items",
   type: "code",
@@ -46,7 +44,6 @@ export const lineItems = input({
   example: JSON.stringify([{ price: "price_H5ggYwtDq4fbrJ", quantity: 2 }]),
   clean: cleanObjectInput,
 });
-
 export const clientReferenceId = input({
   label: "Client Reference ID",
   type: "string",

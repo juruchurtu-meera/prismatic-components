@@ -1,12 +1,7 @@
 import type { Connection } from "@prismatic-io/spectral";
-import {
-  createApiClient,
-  createClient,
-  createWorkflowClient,
-} from "../client";
+import { createApiClient, createClient, createWorkflowClient } from "../client";
 import { fetchAllRecords, fetchCollections } from "./index";
 import type { BynderRecord } from "../types/triggers";
-
 export const fetchRecordsForResource = async (
   conn: Connection,
   resourceType: string,
@@ -70,29 +65,28 @@ export const fetchRecordsForResource = async (
       throw new Error(`Unsupported resource type: ${resourceType}`);
   }
 };
-
 export const filterByTimestamp = (
   records: BynderRecord[],
   lastPolledAt: string,
   createdAtField: string,
   updatedAtField: string | null,
-): { created: BynderRecord[]; updated: BynderRecord[] } => {
+): {
+  created: BynderRecord[];
+  updated: BynderRecord[];
+} => {
   const lastPolledDate = new Date(lastPolledAt);
   const created: BynderRecord[] = [];
   const updated: BynderRecord[] = [];
-
   for (const record of records) {
     const createdAt = record[createdAtField] as string;
     const updatedAt = updatedAtField
       ? (record[updatedAtField] as string)
       : null;
-
     if (createdAt && new Date(createdAt) > lastPolledDate) {
       created.push(record);
     } else if (updatedAt && new Date(updatedAt) > lastPolledDate) {
       updated.push(record);
     }
   }
-
   return { created, updated };
 };

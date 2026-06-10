@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll } from "../common";
-
 export const listContactsInputs = {
   connection,
   fetchAll,
@@ -12,7 +11,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ids: input({
     label: "IDs",
     comments:
@@ -21,7 +19,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   creatorId: input({
     label: "Creator ID",
     comments: "User ID. Returns all contacts created by that user.",
@@ -31,7 +28,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -41,7 +37,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   isOrganization: input({
     label: "Is Organization",
     comments:
@@ -56,7 +51,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   contactId: input({
     label: "Contact ID",
     placeholder: "Enter Contact ID",
@@ -68,7 +62,6 @@ export const listContactsInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   name: input({
     label: "Name",
     placeholder: "Enter name",
@@ -77,7 +70,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   firstName: input({
     label: "First Name",
     placeholder: "Enter first name",
@@ -86,7 +78,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   lastName: input({
     label: "Last Name",
     placeholder: "Enter last name",
@@ -96,7 +87,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   email: input({
     label: "Email",
     comments: "Email address of the contact.",
@@ -104,7 +94,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   phone: input({
     label: "Phone",
     comments: "Phone number of the contact.",
@@ -112,7 +101,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   mobile: input({
     label: "Mobile",
     comments: "Mobile phone number of the contact.",
@@ -120,7 +108,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customerStatus: input({
     label: "Customer Status",
     comments:
@@ -136,7 +123,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   prospectStatus: input({
     label: "Prospect Status",
     comments:
@@ -152,7 +138,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressCity: input({
     label: "Address (City)",
     comments: "City name.",
@@ -160,7 +145,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressPostalCode: input({
     label: "Address (Postal Code)",
     comments: "Zip code or equivalent",
@@ -168,7 +152,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressCountry: input({
     label: "Address (Country)",
     comments: "Country name.",
@@ -176,7 +159,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressState: input({
     label: "Address (State)",
     comments: "State/region name.",
@@ -184,7 +166,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   billingAddress: input({
     label: "Billing Address",
     comments:
@@ -193,7 +174,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   shippingAddress: input({
     label: "Shipping Address",
     comments:
@@ -202,7 +182,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customFields: input({
     label: "Custom Field",
     comments: "Filterable custom field key-value pairs.",
@@ -212,7 +191,6 @@ export const listContactsInputs = {
     required: false,
     example: "key: external_id value: SKU01",
   }),
-
   inclusive: input({
     label: "Inclusive",
     comments:
@@ -235,7 +213,6 @@ export const listContactsInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   perPage: input({
     label: "Per Page",
     comments:

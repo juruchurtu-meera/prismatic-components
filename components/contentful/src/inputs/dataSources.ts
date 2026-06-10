@@ -1,5 +1,4 @@
 import { connection, dataSourceReturn, environmentId, spaceId } from "./common";
-
 export const selectAssetInputs = {
   connection,
   spaceId: {
@@ -11,7 +10,6 @@ export const selectAssetInputs = {
     dataSource: undefined,
   },
 };
-
 export const selectContentTypeInputs = {
   connection,
   spaceId: {
@@ -24,7 +22,6 @@ export const selectContentTypeInputs = {
   },
   dataSourceReturn,
 };
-
 export const selectEntryInputs = {
   connection,
   spaceId: {
@@ -36,7 +33,6 @@ export const selectEntryInputs = {
     dataSource: undefined,
   },
 };
-
 export const selectEnvironmentInputs = {
   connection,
   spaceId: {
@@ -45,21 +41,17 @@ export const selectEnvironmentInputs = {
   },
   dataSourceReturn,
 };
-
 export const selectEnvironmentTemplateInputs = {
   connection,
 };
-
 export const selectOrganizationInputs = {
   connection,
   dataSourceReturn,
 };
-
 export const selectSpaceInputs = {
   connection,
   dataSourceReturn,
 };
-
 export const selectWebhookInputs = {
   connection,
   spaceId: {

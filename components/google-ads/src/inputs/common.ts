@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCustomerId, cleanString } from "../util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Google Ads connection to use.",
 });
-
 export const customerIdInput = input({
   label: "Customer ID",
   placeholder: "Enter customer ID",
@@ -19,7 +17,6 @@ export const customerIdInput = input({
   dataSource: "listAccessibleCustomers",
   clean: cleanCustomerId,
 });
-
 export const managerCustomerIdInput = input({
   label: "Manager Customer ID",
   placeholder: "Enter manager customer ID",
@@ -31,7 +28,6 @@ export const managerCustomerIdInput = input({
   dataSource: "listAccessibleCustomers",
   clean: cleanCustomerId,
 });
-
 export const pageSizeInput = input({
   label: "Page Size",
   placeholder: "Enter page size",
@@ -41,7 +37,6 @@ export const pageSizeInput = input({
   clean: util.types.toNumber,
   comments: "The maximum number of results to return per page.",
 });
-
 export const pageTokenInput = input({
   label: "Page Token",
   placeholder: "Enter page token",
@@ -52,7 +47,6 @@ export const pageTokenInput = input({
   comments:
     "The pagination cursor from a previous request. Returned in previous page responses.",
 });
-
 export const validateOnly = input({
   label: "Validate Only",
   type: "boolean",
@@ -62,7 +56,6 @@ export const validateOnly = input({
   comments:
     "When true, the request is validated but not executed. Only errors are returned, not results.",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -72,7 +65,6 @@ export const fetchAll = input({
   comments:
     "When true, automatically fetches all pages of results. When false, only the first page of results will be returned.",
 });
-
 export const startDateInput = input({
   label: "Start Date",
   placeholder: "Enter start date (MM-DD-YYYY)",
@@ -82,7 +74,6 @@ export const startDateInput = input({
   comments: "The start date of the date range, inclusive. Format: MM-DD-YYYY.",
   clean: cleanString,
 });
-
 export const endDateInput = input({
   label: "End Date",
   placeholder: "Enter end date (MM-DD-YYYY)",
@@ -92,7 +83,6 @@ export const endDateInput = input({
   comments: "The end date of the date range, inclusive. Format: MM-DD-YYYY.",
   clean: cleanString,
 });
-
 export const customerClientLevel = input({
   label: "Customer Client Level",
   type: "string",

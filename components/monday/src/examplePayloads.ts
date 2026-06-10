@@ -1,19 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const archiveBoardExamplePayload = {
   data: {
     archive_board: {
@@ -21,14 +6,6 @@ export const archiveBoardExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
-
 export const createBoardExamplePayload = {
   data: {
     create_board: {
@@ -36,17 +13,6 @@ export const createBoardExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
-
-
-
-
 export const getBoardExamplePayload = {
   data: {
     boards: [
@@ -80,18 +46,6 @@ export const getBoardExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const getItemsByColumnValueExamplePayload = {
   data: {
     items_by_column_values: [
@@ -133,19 +87,6 @@ export const getItemsByColumnValueExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getItemsByColumnValueNewExamplePayload = {
   data: {
     items_by_column_values: [
@@ -216,17 +157,6 @@ export const getItemsByColumnValueNewExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
 export const listBoardsExamplePayload = {
   data: {
     boards: [
@@ -251,14 +181,6 @@ export const listBoardsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
 export const createWebhookExamplePayload = {
   data: {
     create_webhook: {
@@ -269,14 +191,6 @@ export const createWebhookExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
-
 export const deleteWebhookExamplePayload = {
   data: {
     delete_webhook: {
@@ -285,18 +199,6 @@ export const deleteWebhookExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const listWebhooksExamplePayload = {
   data: {
     webhooks: [
@@ -315,25 +217,6 @@ export const listWebhooksExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const webhookExamplePayload = {
   payload: {
     headers: {
@@ -395,23 +278,6 @@ export const webhookExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},

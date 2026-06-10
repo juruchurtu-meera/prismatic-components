@@ -1,12 +1,5 @@
 import type { File } from "@google/genai";
 import { DELETE_SUCCESS_MESSAGE } from "../constants";
-
-
-
-
-
-
-
 export const listFilesExamplePayload = {
   data: [
     {
@@ -38,31 +31,10 @@ export const listFilesExamplePayload = {
     },
   ] as File[],
 };
-
-
-
-
-
-
-
 export const getFileExamplePayload = {
   data: listFilesExamplePayload.data[0],
 };
-
-
-
-
-
-
-
 export const uploadFileExamplePayload = getFileExamplePayload;
-
-
-
-
-
-
-
 export const deleteFileExamplePayload = {
   data: DELETE_SUCCESS_MESSAGE,
 };

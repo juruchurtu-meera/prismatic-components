@@ -10,7 +10,6 @@ import {
   project_id,
   project_name,
 } from "../../inputs";
-
 export const updateProject = action({
   display: {
     label: "Update Project",

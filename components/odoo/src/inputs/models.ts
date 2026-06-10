@@ -7,7 +7,6 @@ import {
   nameSearch,
   offset,
 } from "./common";
-
 export const listModelsInputs = {
   connection,
   fetchAll,
@@ -16,7 +15,6 @@ export const listModelsInputs = {
   nameSearch,
   modelSearch,
 };
-
 export const listModelFieldsInputs = {
   connection,
   model,

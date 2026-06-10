@@ -16,7 +16,6 @@ import {
   pageToken,
   sellerId,
 } from "../../inputs";
-
 export const searchCatalogItem = action({
   display: {
     label: "Search Catalog Item",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { updateDeviceInputs } from "../../inputs/devices";
 import { NO_CONTENT_RESPONSE } from "../../constants";
-
 export const updateDevice = action({
   display: {
     label: "Update Device",
@@ -21,7 +20,6 @@ export const updateDevice = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       alias,
       description,
@@ -29,9 +27,7 @@ export const updateDevice = action({
       password,
       remotecontrol_id,
     };
-
     await client.put(`/devices/${deviceId}`, body);
-
     return {
       data: NO_CONTENT_RESPONSE,
     };

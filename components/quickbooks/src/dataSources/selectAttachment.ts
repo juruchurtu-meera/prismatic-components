@@ -3,7 +3,6 @@ import { connectionInput } from "../inputs";
 import { createHttpClient } from "../client";
 import type { PaginatedDataRequest } from "../types";
 import { paginatedData } from "../util";
-
 export const selectAttachment = dataSource({
   display: {
     label: "Select Attachment",
@@ -14,21 +13,17 @@ export const selectAttachment = dataSource({
   },
   perform: async (_context, { connectionInput }) => {
     const client = createHttpClient(connectionInput, false);
-
     const request: PaginatedDataRequest = {
       client,
       queryString: "select * from Attachable",
       objectName: "Attachable",
       fetchAll: true,
     };
-
     const data = await paginatedData(request);
-
     const objects = data.map<Element>((attachable) => ({
       key: (attachable.Id as string).toString(),
       label: (attachable.FileName as string) || `Attachment ${attachable.Id}`,
     }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

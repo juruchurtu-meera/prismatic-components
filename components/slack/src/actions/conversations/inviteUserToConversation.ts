@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { inviteUserToConversationExamplePayload } from "../../examplePayloads";
 import { inviteUserToConversationInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const inviteUserToConversation = action({
   display: {
     label: "Invite User to Conversation",
@@ -11,7 +10,7 @@ export const inviteUserToConversation = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, channelName, userId }
+    { connection, channelName, userId },
   ) => {
     debugLogger({ debug, channelName, userId });
     const client = await createOauthClient({
@@ -21,7 +20,6 @@ export const inviteUserToConversation = action({
       channel: channelName,
       users: userId,
     });
-
     return { data };
   },
   inputs: inviteUserToConversationInputs,

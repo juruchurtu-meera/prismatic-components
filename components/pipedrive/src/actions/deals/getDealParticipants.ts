@@ -7,7 +7,6 @@ import {
   paginationLimitInput,
   paginationStartInput,
 } from "../../inputs";
-
 export const getDealParticipants = action({
   display: {
     label: "Get Deal Participants",

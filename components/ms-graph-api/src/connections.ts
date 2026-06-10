@@ -1,15 +1,14 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
 import { getMicrosoftOAuth2ClientCredentialsConnection } from "ms-utils";
-
 const oauthClientCredentials = getMicrosoftOAuth2ClientCredentialsConnection({
   key: "oauthClientCredentials",
 });
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {
     label: "OAuth 2.0 Authorization Code",
-    description: "OAuth 2.0 Authorization Code Connectivity for Microsoft Graph API",
+    description:
+      "OAuth 2.0 Authorization Code Connectivity for Microsoft Graph API",
   },
   oauth2Type: OAuth2Type.AuthorizationCode,
   inputs: {
@@ -61,9 +60,9 @@ export const oauth = oauth2Connection({
       type: "password",
       required: true,
       shown: true,
-      comments: "This is the 'value' (not ID) of the client secret you generated in Azure Portal.",
+      comments:
+        "This is the 'value' (not ID) of the client secret you generated in Azure Portal.",
     },
   },
 });
-
 export default [oauth, oauthClientCredentials];

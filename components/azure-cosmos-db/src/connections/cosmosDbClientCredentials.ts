@@ -3,7 +3,6 @@ import {
   OAuth2Type,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
 export const cosmosDbClientCredentials = oauth2Connection({
   key: "cosmosDbClientCredentials",
   display: {

@@ -8,7 +8,6 @@ import { selectEmailDefinition } from "./selectEmailDefinition";
 import { selectJourney } from "./selectJourney";
 import { selectSmsDefinition } from "./selectSmsDefinition";
 import { selectSubscription } from "./selectSubscription";
-
 export default {
   selectAsset,
   selectAutomation,

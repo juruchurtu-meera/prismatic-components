@@ -1,10 +1,13 @@
 import { trigger } from "@prismatic-io/spectral";
 import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
-
 import { eventTopicWebhookInputs as inputs } from "../inputsGql";
-import { createWebhook, deleteWebhookById, listWebhooks, performFunction } from "../util";
-
+import {
+  createWebhook,
+  deleteWebhookById,
+  listWebhooks,
+  performFunction,
+} from "../util";
 export const eventTopicWebhookGql = trigger({
   display: {
     label: "Event Topic Subscription",
@@ -18,9 +21,11 @@ export const eventTopicWebhookGql = trigger({
   webhookLifecycleHandlers: {
     create: async (context, { shopifyConnection, webhookTopics }) => {
       const endpoint = context.webhookUrls[context.flow.name];
-
-      const client = getShopifyGraphQlClient(shopifyConnection, undefined, false);
-
+      const client = getShopifyGraphQlClient(
+        shopifyConnection,
+        undefined,
+        false,
+      );
       const promises = webhookTopics.map((webhookTopic) =>
         createWebhook(client, {
           topic: webhookTopic,
@@ -30,13 +35,15 @@ export const eventTopicWebhookGql = trigger({
           },
         }),
       );
-
       await Promise.all(promises);
     },
     delete: async (context, { shopifyConnection }) => {
       const endpoint = context.webhookUrls[context.flow.name];
-      const client = getShopifyGraphQlClient(shopifyConnection, undefined, false);
-
+      const client = getShopifyGraphQlClient(
+        shopifyConnection,
+        undefined,
+        false,
+      );
       const { webhookSubscriptions } = await listWebhooks(
         client,
         true,
@@ -46,7 +53,9 @@ export const eventTopicWebhookGql = trigger({
         undefined,
         endpoint,
       );
-      const promises = webhookSubscriptions.map((webhook) => deleteWebhookById(client, webhook.id));
+      const promises = webhookSubscriptions.map((webhook) =>
+        deleteWebhookById(client, webhook.id),
+      );
       await Promise.all(promises);
     },
   },

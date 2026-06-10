@@ -3,7 +3,6 @@ import actions from "./actions";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
 import { googleConnection } from "./connections";
-
 export default component({
   key: "google-content-shopping",
   public: true,

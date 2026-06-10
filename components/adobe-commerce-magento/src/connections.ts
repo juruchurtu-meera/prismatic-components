@@ -1,10 +1,10 @@
 import { connection, util } from "@prismatic-io/spectral";
-
 export const adobeCommerceApiKey = connection({
   key: "adobeCommerceApiKey",
   display: {
     label: "API Access Key",
-    description: "Authenticate with Adobe Commerce using an API Access Key and Secret.",
+    description:
+      "Authenticate with Adobe Commerce using an API Access Key and Secret.",
   },
   inputs: {
     applicationId: {
@@ -39,5 +39,4 @@ export const adobeCommerceApiKey = connection({
     },
   },
 });
-
 export default [adobeCommerceApiKey];

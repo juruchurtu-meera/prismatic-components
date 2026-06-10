@@ -6,7 +6,6 @@ import { listMeetingRegistrants } from "./listMeetingRegistrants";
 import { updateMeeting } from "./updateMeeting";
 import { listMeetings } from "./listMeetings";
 import { getMeeting } from "./getMeeting";
-
 export default {
   createMeeting,
   addMeetingRegistrant,

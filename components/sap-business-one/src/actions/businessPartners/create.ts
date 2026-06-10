@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { createBusinessPartnersInputs } from "../../inputs/businessPartners/create";
 import { getBusinessPartnerExample as createBusinessPartnerExample } from "../../examplePayloads/businessPartners";
-
 export const createBusinessPartner = action({
   display: {
     label: "Create Business Partner",
@@ -13,9 +12,15 @@ export const createBusinessPartner = action({
     ...createBusinessPartnersInputs,
     connection,
   },
-  perform: async (context, { connection, bodyFields, CardCode, CardName, CardType }) => {
-    const client = await createClient(connection, context, context.debug.enabled);
-
+  perform: async (
+    context,
+    { connection, bodyFields, CardCode, CardName, CardType },
+  ) => {
+    const client = await createClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/BusinessPartners`, {
       CardCode,
       CardName,

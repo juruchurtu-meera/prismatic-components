@@ -4,7 +4,6 @@ import { createClient } from "../client";
 import { toDocument } from "../util";
 import type { ErrorWithMessage } from "../types";
 import { insertManyExamplePayload } from "../examplePayloads";
-
 const insertMany = action({
   display: {
     label: "Insert Many",
@@ -35,5 +34,4 @@ const insertMany = action({
   },
   examplePayload: insertManyExamplePayload,
 });
-
 export default insertMany;

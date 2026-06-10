@@ -1,6 +1,5 @@
 import { connection, employeeId } from "../common";
 import { taskStatus } from "./common";
-
 export const getEmployeeTasksInputs = {
   connection,
   employeeId: {

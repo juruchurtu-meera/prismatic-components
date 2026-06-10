@@ -11,7 +11,6 @@ import {
 import { rawHttpClient } from "../../auth";
 import type { Topic } from "../../types";
 import { updateTopicPayload } from "../../examplePayloads";
-
 export const updateTopic = action({
   display: {
     label: "Update Topic",
@@ -39,12 +38,9 @@ export const updateTopic = action({
         user_segment_id: userSegmentId || undefined,
       },
     };
-
-    const { data } = await client.put<{ topic: Topic }>(
-      `/community/topics/${topicId}`,
-      payload,
-    );
-
+    const { data } = await client.put<{
+      topic: Topic;
+    }>(`/community/topics/${topicId}`, payload);
     return {
       data,
     };

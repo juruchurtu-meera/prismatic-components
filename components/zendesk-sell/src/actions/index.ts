@@ -58,7 +58,6 @@ import {
   listTasks,
   updateTask,
 } from "./tasks";
-
 export default {
   listContacts,
   getContact,

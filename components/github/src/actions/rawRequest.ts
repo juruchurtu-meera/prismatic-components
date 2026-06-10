@@ -7,9 +7,7 @@ import {
 import { baseUrl } from "../client";
 import { connectionInput } from "../inputs";
 import { rawRequestExamplePayload } from "../examplePayloads";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -27,9 +25,13 @@ const rawRequest = action({
   },
   perform: async (context, { connection, ...rawRequestInputs }) => {
     try {
-      const { data } = await sendRawRequest(baseUrl, { ...rawRequestInputs, debugRequest: context.debug.enabled }, {
-        Authorization: `Bearer ${connection.token?.access_token}`,
-      });
+      const { data } = await sendRawRequest(
+        baseUrl,
+        { ...rawRequestInputs, debugRequest: context.debug.enabled },
+        {
+          Authorization: `Bearer ${connection.token?.access_token}`,
+        },
+      );
       return { data };
     } catch (error) {
       const handled = handleErrors(error);
@@ -38,7 +40,6 @@ const rawRequest = action({
     }
   },
 });
-
 export default {
   rawRequest,
 };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, merchantId } from "../../inputs";
 import { getPubSubNotificationExamplePayload } from "../../examplePayloads";
-
 export const getPubSubNotification = action({
   display: {
     description:

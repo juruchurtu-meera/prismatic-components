@@ -1,7 +1,6 @@
 export const sendIdocExamplePayload = {
   data: "IDoc-XML-inbound ok",
 };
-
 export const getIdocStatusExamplePayload = {
   data: {
     rows: [

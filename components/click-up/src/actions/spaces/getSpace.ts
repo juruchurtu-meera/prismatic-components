@@ -2,9 +2,7 @@ import { action } from "@prismatic-io/spectral";
 import { createClickUpClient } from "../../client";
 import { getSpaceExamplePayload } from "../../examplePayloads";
 import { connectionInput, getSpaceId } from "../../inputs";
-
 const spaceId = getSpaceId(true);
-
 export const getSpace = action({
   display: {
     label: "Get Space",
@@ -12,10 +10,11 @@ export const getSpace = action({
   },
   examplePayload: getSpaceExamplePayload,
   perform: async (context, { clickUpConnection, spaceId }) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
-
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/space/${spaceId}`);
-
     return {
       data,
     };

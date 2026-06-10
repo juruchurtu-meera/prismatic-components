@@ -3,7 +3,6 @@ import { createFreshserviceClient } from "../../client";
 import { listProblemsExamplePayload as examplePayload } from "../../examplePayloads";
 import { listProblemsInputs as inputs } from "../../inputs/problems";
 import { getListData } from "../../util";
-
 export const listProblems = action({
   display: {
     label: "List Problems",
@@ -14,7 +13,6 @@ export const listProblems = action({
     { connection, fetchAll, perPage, page, additionalQueryParams },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const { data } = await getListData(
       client,
       `/problems`,
@@ -26,7 +24,6 @@ export const listProblems = action({
         page,
       },
     );
-
     return {
       data,
     };

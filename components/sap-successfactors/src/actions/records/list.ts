@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listRecordsInputs } from "../../inputs/records";
 import { paginateData } from "../../util";
-
 export const listRecords = action({
   display: {
     label: "List Records",

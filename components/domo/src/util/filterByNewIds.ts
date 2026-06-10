@@ -1,5 +1,4 @@
 import type { DomoRecord } from "../types";
-
 export const filterByNewIds = (
   records: DomoRecord[],
   knownIds: (string | number)[],

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { myConnectionField, userId, version } from "../inputs";
-
 export const getUserById = action({
   display: {
     label: "Get User By Id",
@@ -9,9 +8,7 @@ export const getUserById = action({
   },
   perform: async (context, { version, connection, userId }) => {
     const client = createClient(connection, context.debug.enabled, version);
-
     const { data } = await client.get(`/${userId}`);
-
     return {
       data,
     };

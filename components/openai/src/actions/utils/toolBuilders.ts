@@ -17,19 +17,15 @@ import type {
   HostedToolOutput,
   ToolOutput,
 } from "../../types/tools";
-
 function isFlowTool(tool: ToolOutput): tool is FlowToolOutput {
   return "type" in tool && tool.type === "flow";
 }
-
 function isApprovalTool(tool: ToolOutput): tool is ApprovalToolOutput {
   return "type" in tool && tool.type === "approval";
 }
-
 function isHostedTool(tool: ToolOutput): tool is HostedToolOutput {
   return "toolType" in tool && tool.tool.type === "hosted";
 }
-
 export function toSnakeCase(str: string): string {
   return str
     .replace(/\s+/g, "_")
@@ -39,17 +35,14 @@ export function toSnakeCase(str: string): string {
     .replace(/^_+/, "")
     .replace(/_+/g, "_");
 }
-
 export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
   const tools: Tool[] = [];
-
   for (const toolData of hostedTools) {
     switch (toolData.toolType) {
       case "webSearch": {
         const config = toolData.tool.configuration || {};
         // biome-ignore lint/suspicious/noExplicitAny: Dynamic configuration from OpenAI SDK
         const webSearchOptions: any = {};
-
         if (config.name) {
           webSearchOptions.name = config.name;
         }
@@ -59,7 +52,6 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
         if (config.userLocation) {
           webSearchOptions.userLocation = config.userLocation;
         }
-
         tools.push(
           Object.keys(webSearchOptions).length > 0
             ? webSearchTool(webSearchOptions)
@@ -71,14 +63,12 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
         const config = toolData.tool.configuration || {};
         // biome-ignore lint/suspicious/noExplicitAny: Dynamic configuration from OpenAI SDK
         const codeInterpreterOptions: any = {};
-
         if (config.name) {
           codeInterpreterOptions.name = config.name;
         }
         if (config.container) {
           codeInterpreterOptions.container = config.container;
         }
-
         tools.push(
           Object.keys(codeInterpreterOptions).length > 0
             ? codeInterpreterTool(codeInterpreterOptions)
@@ -88,14 +78,11 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
       }
       case "fileSearch": {
         const config = toolData.tool.configuration || {};
-
         const vectorStoreIds = Array.isArray(config.vectorStoreIds)
           ? config.vectorStoreIds
           : [];
-
         // biome-ignore lint/suspicious/noExplicitAny: Dynamic configuration from OpenAI SDK
         const fileSearchOptions: any = {};
-
         if (config.name) {
           fileSearchOptions.name = config.name;
         }
@@ -108,7 +95,6 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
         if (config.rankingOptions) {
           fileSearchOptions.rankingOptions = config.rankingOptions;
         }
-
         tools.push(
           fileSearchTool(
             vectorStoreIds,
@@ -123,7 +109,6 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
         const config = toolData.tool.configuration || {};
         // biome-ignore lint/suspicious/noExplicitAny: Dynamic configuration from OpenAI SDK
         const imageOptions: any = {};
-
         if (config.name) imageOptions.name = config.name;
         if (config.background) imageOptions.background = config.background;
         if (config.inputFidelity)
@@ -140,7 +125,6 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
         }
         if (config.quality) imageOptions.quality = config.quality;
         if (config.size) imageOptions.size = config.size;
-
         tools.push(
           Object.keys(imageOptions).length > 0
             ? imageGenerationTool(imageOptions)
@@ -154,23 +138,18 @@ export function buildHostedTools(hostedTools: HostedToolOutput[]): Tool[] {
         );
     }
   }
-
   return tools;
 }
-
 export function buildApprovalTools(
   approvalTools: ApprovalToolOutput[],
 ): Tool[] {
   const tools: Tool[] = [];
-
   if (!approvalTools || !Array.isArray(approvalTools)) {
     return tools;
   }
-
   for (const toolData of approvalTools) {
     const toolConfig = toolData.tool;
     if (!toolConfig?.function) continue;
-
     if (toolConfig.function.strict) {
       const schema = toolConfig.function.parameters as JsonObjectSchemaStrict<
         // biome-ignore lint/suspicious/noExplicitAny: Dynamic configuration from OpenAI SDK
@@ -205,27 +184,21 @@ export function buildApprovalTools(
       );
     }
   }
-
   return tools;
 }
-
 export function buildFlowTools(
   flowTools: FlowToolOutput[],
   context: ActionContext,
 ): Tool[] {
   const tools: Tool[] = [];
-
   if (!flowTools || !Array.isArray(flowTools)) {
     return tools;
   }
-
   for (const toolData of flowTools) {
     const toolConfig = toolData.tool;
     if (!toolConfig?.function) continue;
-
     const flowName = toolConfig.function.__prismaticFlow?.flowName;
     if (!flowName) continue;
-
     const executeFunction = async (args: unknown) => {
       try {
         const response = await context.invokeFlow(
@@ -241,7 +214,6 @@ export function buildFlowTools(
         return `Error invoking flow ${flowName}: ${error}`;
       }
     };
-
     if (toolConfig.function.strict) {
       const schema = toolConfig.function.parameters as JsonObjectSchemaStrict<
         // biome-ignore lint/suspicious/noExplicitAny: Dynamic schema types from OpenAI require flexibility
@@ -274,24 +246,19 @@ export function buildFlowTools(
       );
     }
   }
-
   return tools;
 }
-
 export function buildAllTools(
   tools: ToolOutput[],
   context: ActionContext,
 ): Tool[] {
   const allTools: Tool[] = [];
-
   if (!tools || !Array.isArray(tools)) {
     return allTools;
   }
-
   const hostedTools: HostedToolOutput[] = [];
   const flowTools: FlowToolOutput[] = [];
   const approvalTools: ApprovalToolOutput[] = [];
-
   for (const toolData of tools) {
     if (isFlowTool(toolData)) {
       flowTools.push(toolData);
@@ -301,13 +268,10 @@ export function buildAllTools(
       hostedTools.push(toolData);
     }
   }
-
   allTools.push(...buildHostedTools(hostedTools));
   allTools.push(...buildApprovalTools(approvalTools));
   allTools.push(...buildFlowTools(flowTools, context));
-
   return allTools;
 }
-
 export { buildHostedTools as buildStandardTools };
 export { buildFlowTools as buildCustomTools };

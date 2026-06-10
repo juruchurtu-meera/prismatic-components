@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
 import { connectionInput, listInputs, name, recordId, version } from "./common";
-
 const customerStatusType = input({
   label: "Customer Status Type",
   type: "string",
@@ -20,17 +19,16 @@ const customerStatusType = input({
   clean: cleanStringInput,
   default: "Active",
 });
-
 const lastReferenceDate = input({
   label: "Last Reference Date",
   type: "string",
   required: false,
   placeholder: "Enter date (ISO 8601)",
-  comments: "The timestamp for when the current user last viewed a record related to this record.",
+  comments:
+    "The timestamp for when the current user last viewed a record related to this record.",
   clean: cleanStringInput,
   example: "2021-09-01T00:00:00.000Z",
 });
-
 const lastViewedDate = input({
   label: "Last Viewed Date",
   type: "string",
@@ -41,7 +39,6 @@ const lastViewedDate = input({
   clean: cleanStringInput,
   example: "2021-09-01T00:00:00.000Z",
 });
-
 const ownerId = input({
   label: "Owner ID",
   placeholder: "Enter owner ID",
@@ -51,17 +48,16 @@ const ownerId = input({
   clean: cleanStringInput,
   example: "00570000001a2fF",
 });
-
 const partyId = input({
   label: "Party ID",
   placeholder: "Enter party ID",
   type: "string",
   required: true,
-  comments: "The unique identifier of the individual object related to this customer record.",
+  comments:
+    "The unique identifier of the individual object related to this customer record.",
   clean: util.types.toString,
   example: "0697000000K2g5AAAR",
 });
-
 const totalLifeTimeValue = input({
   label: "Total Lifetime Value",
   type: "string",
@@ -77,7 +73,6 @@ const totalLifeTimeValue = input({
   },
   example: "1000",
 });
-
 export const createCustomerInputs = {
   version,
   name: {
@@ -93,7 +88,6 @@ export const createCustomerInputs = {
   totalLifeTimeValue,
   connection: connectionInput,
 };
-
 export const updateCustomerInputs = {
   recordId: {
     ...recordId,
@@ -113,7 +107,6 @@ export const updateCustomerInputs = {
   totalLifeTimeValue,
   connection: connectionInput,
 };
-
 export const deleteCustomerInputs = {
   version,
   recordId: {
@@ -122,7 +115,6 @@ export const deleteCustomerInputs = {
   },
   connection: connectionInput,
 };
-
 export const getCustomerInputs = {
   version,
   recordId: {
@@ -131,9 +123,7 @@ export const getCustomerInputs = {
   },
   connection: connectionInput,
 };
-
 export const listCustomersInputs = { ...listInputs };
-
 export const describeCustomerSObjectInputs = {
   version,
   connection: connectionInput,

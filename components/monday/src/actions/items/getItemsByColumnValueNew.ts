@@ -4,7 +4,6 @@ import { getMondayClient } from "../../client";
 import { MAX_LIMIT } from "../../constants";
 import { getItemsByColumnValueNewExamplePayload } from "../../examplePayloads";
 import { getItemsByColumnValueNewInputs } from "../../inputs";
-
 export const getItemsByColumnValueNew = action({
   display: {
     label: "Get Items By Column Value",
@@ -13,7 +12,6 @@ export const getItemsByColumnValueNew = action({
   inputs: getItemsByColumnValueNewInputs,
   perform: async (context, params) => {
     const client = getMondayClient(params.connection, context.debug.enabled);
-
     const ITEMS_PAGE = {
       arguments:
         "$boardId: ID!, $limit: Int, $columns: [ItemsPageByColumnValuesQuery!]",
@@ -23,12 +21,10 @@ export const getItemsByColumnValueNew = action({
           columns: $columns
         )`,
     };
-
     const NEXT_ITEMS_PAGE = {
       arguments: "$cursor: String!, $limit: Int",
       action: "next_items_page(cursor: $cursor, limit: $limit)",
     };
-
     const query = gql`
       query(
         <QUERY_ARGUMENTS>
@@ -65,29 +61,22 @@ export const getItemsByColumnValueNew = action({
       const variables: Record<string, unknown> = {
         limit: MAX_LIMIT,
       };
-
-      
       if (!data && !cursor) {
         variables.boardId = params.boardId;
-
         variables.columns = [
           {
             column_id: params.columnId,
             column_values: [params.columnValue],
           },
         ];
-
         toExecuteQuery = query.replace("<QUERY_ACTION>", ITEMS_PAGE.action);
         toExecuteQuery = toExecuteQuery.replace(
           "<QUERY_ARGUMENTS>",
           ITEMS_PAGE.arguments,
         );
       }
-
-      
       if (cursor && params.getAllItems) {
         variables.cursor = cursor;
-
         toExecuteQuery = query.replace(
           "<QUERY_ACTION>",
           NEXT_ITEMS_PAGE.action,
@@ -97,21 +86,15 @@ export const getItemsByColumnValueNew = action({
           NEXT_ITEMS_PAGE.arguments,
         );
       }
-
       data = await client.request(toExecuteQuery, variables);
-
-      
       if (data.items_page_by_column_values) {
         cursor = data.items_page_by_column_values.cursor;
         items.push(...data.items_page_by_column_values.items);
-      }
-      
-      else if (data.next_items_page) {
+      } else if (data.next_items_page) {
         cursor = data.next_items_page.cursor;
         items.push(...data.next_items_page.items);
       } else cursor = null;
     } while (params.getAllItems && cursor);
-
     return { data: { items_by_column_values: items } };
   },
   examplePayload: getItemsByColumnValueNewExamplePayload,

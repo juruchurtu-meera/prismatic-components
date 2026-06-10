@@ -63,12 +63,10 @@ export interface Person {
   primary_email: string | null;
   cc_email: string;
 }
-
 export interface Email {
   value: string;
   primary: boolean;
 }
-
 export interface OrgID {
   name: string;
   people_count: number;
@@ -80,7 +78,6 @@ export interface OrgID {
   owner_name: string;
   value: number;
 }
-
 export interface OwnerID {
   id: number;
   name: string;

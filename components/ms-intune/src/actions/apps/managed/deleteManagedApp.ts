@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import deleteManagedAppInputs from "../../../inputs/apps/managed/deleteManagedAppInputs";
-
 export const deleteManagedApp = action({
   display: {
     label: "Delete Managed App",

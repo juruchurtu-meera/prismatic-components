@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
-
 export const getActivityFields = action({
   display: {
     label: "Get Activity Fields",

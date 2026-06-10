@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { searchMessagesExamplePayload } from "../../examplePayloads";
 import { searchMessagesInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const searchMessages = action({
   display: {
     label: "Search Messages",
@@ -11,7 +10,7 @@ export const searchMessages = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, count, highlight, page, query, sort, sort_dir, team_id }
+    { connection, count, highlight, page, query, sort, sort_dir, team_id },
   ) => {
     debugLogger({
       debug,

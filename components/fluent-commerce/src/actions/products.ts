@@ -3,7 +3,6 @@ import { createFluentClient } from "../client";
 import { createProductExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
 import { gql } from "graphql-request";
-
 const createProduct = action({
   display: {
     label: "Create Product",
@@ -81,7 +80,6 @@ const createProduct = action({
       params.connection,
       context.debug.enabled,
     );
-
     const query = gql`
       mutation createProduct(
         $productCatalogueRef: String!
@@ -111,7 +109,6 @@ const createProduct = action({
         }
       }
     `;
-
     const variables = {
       productCatalogueRef: params.productCatalogueRef,
       productRef: params.productRef,
@@ -122,12 +119,9 @@ const createProduct = action({
       priceCurrency: params.priceCurrency,
       priceValue: params.priceValue,
     };
-
     const data = await client.request(query, variables);
-
     return { data };
   },
   examplePayload: createProductExamplePayload,
 });
-
 export default { createProduct };

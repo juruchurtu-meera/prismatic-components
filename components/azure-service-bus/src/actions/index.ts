@@ -22,7 +22,6 @@ import { listSubscriptionsByTopic } from "./listSubscriptionsByTopic";
 import { listTopicsByNamespace } from "./listTopicsByNamespace";
 import messages from "./messages";
 import { rawRequest } from "./rawRequest";
-
 export default {
   createOrUpdateNamespaces,
   createOrUpdateQueue,

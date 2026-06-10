@@ -1,32 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import type { CanceledNewHire } from "./types/canceledNewHire";
 import type { CompletedNewHire } from "./types/completedNewHire";
 import type { InProgressNewHire } from "./types/inProgressNewHire";
-
-
-
-
-
-
-
-
 export const listCompaniesExamplePayload = {
   data: [
     {
@@ -52,18 +26,6 @@ export const listCompaniesExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const getJobExamplePayload = {
   data: {
     countryCode: "USA",
@@ -71,7 +33,8 @@ export const getJobExamplePayload = {
     title: "Software Engineer",
     jobFamilyCode: "ENG",
     isActive: true,
-    longDescription: "Designs, develops, and maintains software applications and systems.",
+    longDescription:
+      "Designs, develops, and maintains software applications and systems.",
     jobEE0Category: "Professional",
     jobGroup: "Engineering",
     flsaTypeCode: "EXEMPT",
@@ -80,20 +43,9 @@ export const getJobExamplePayload = {
     workEnvironmentDesc: "Office Environment",
   },
 };
-
-
-
-
-
-
 export const listJobsExamplePayload = {
   data: [getJobExamplePayload.data],
 };
-
-
-
-
-
 export const listLocationsExamplePayload = {
   data: {
     locations: [
@@ -115,22 +67,9 @@ export const listLocationsExamplePayload = {
     pageSize: 100,
   },
 };
-
 export const getSingleLocationExamplePayload = {
   data: listLocationsExamplePayload.data.locations[0],
 };
-
-
-
-
-
-
-
-
-
-
-
-
 export const listPositionsExamplePayload = {
   data: [
     {
@@ -171,11 +110,6 @@ export const listPositionsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const getAllPersonDetailsExamplePayload = {
   data: [
     {
@@ -276,24 +210,9 @@ export const getAllPersonDetailsExamplePayload = {
     },
   ],
 };
-
 export const getPersonDetailsByCompanyExamplePayload = {
   data: [getAllPersonDetailsExamplePayload.data[0]],
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getEmployeeDemographicDetailsExamplePayload = {
   data: [
     {
@@ -358,11 +277,6 @@ export const getEmployeeDemographicDetailsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const getEmployeeEmploymentDetailsExamplePayload = {
   data: [
     {
@@ -446,16 +360,6 @@ export const getEmployeeEmploymentDetailsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
-
 export const getAllEmploymentDetailsByCompanyExamplePayload = {
   data: [
     {
@@ -539,11 +443,6 @@ export const getAllEmploymentDetailsByCompanyExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const getEmployeeContractDetailsExamplePayload = {
   data: [
     {
@@ -580,11 +479,6 @@ export const getEmployeeContractDetailsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const getEmployeeJobHistoryExamplePayload = {
   data: [
     {
@@ -656,11 +550,6 @@ export const getEmployeeJobHistoryExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const getEmployeeChangesByIdExamplePayload = {
   data: {
     employeeId: "EMP-12345",
@@ -735,7 +624,6 @@ export const getEmployeeChangesByIdExamplePayload = {
     totalChanges: 3,
   },
 };
-
 export const getEmployeeChangesByDateExamplePayload = {
   data: [
     {
@@ -787,11 +675,6 @@ export const getEmployeeChangesByDateExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const getPendingHiresExamplePayload = {
   data: {
     pendingHires: [
@@ -873,7 +756,6 @@ export const getPendingHiresExamplePayload = {
     pageSize: 100,
   },
 };
-
 export const updatePendingHireExamplePayload = {
   data: {
     pendingHireId: "PH-10001",
@@ -913,11 +795,6 @@ export const updatePendingHireExamplePayload = {
     message: "Pending hire record updated successfully",
   },
 };
-
-
-
-
-
 export const getNewHireByIdExamplePayload = {
   data: {
     newHireId: "NH-12347",
@@ -1007,7 +884,6 @@ export const getNewHireByIdExamplePayload = {
     },
   },
 };
-
 export const createNewHireExamplePayload = {
   data: {
     newHireId: "NH-12349",
@@ -1029,11 +905,11 @@ export const createNewHireExamplePayload = {
     locationCode: "ATL-HQ",
     companyId: "COMP-001",
     companyName: "ACME Corporation",
-    message: "New hire record created successfully. Onboarding process initiated.",
+    message:
+      "New hire record created successfully. Onboarding process initiated.",
     onboardingLink: "https://onboarding.ukg.com/portal/newhire/NH-12349",
   },
 };
-
 export const getInProgressNewHiresExamplePayload = {
   data: [
     {
@@ -1260,7 +1136,11 @@ export const getInProgressNewHiresExamplePayload = {
             comments: "Requires a black phone",
           },
         ],
-        summaryEmailRecipients: ["first@last.com", "last@beuh.com", "Joe@erad.com"],
+        summaryEmailRecipients: [
+          "first@last.com",
+          "last@beuh.com",
+          "Joe@erad.com",
+        ],
       },
       identityUserId: "05882bc4-7ae6-40b5-b1ee-2e56dd37bb49",
       externalUserId: "b7a4fd34-73c7-43d6-aaab-7b2bc20ed50f",
@@ -1268,14 +1148,14 @@ export const getInProgressNewHiresExamplePayload = {
       ukgProStatus: "Not in Core",
       personalMessage:
         "Hugo, I was very impressed with your passion. I am looking forward to working with you and I know your expertise in this space will help our team get to the next level.",
-      pastStartDateReason: "An internal audit revealed that the new hire was not initiated",
+      pastStartDateReason:
+        "An internal audit revealed that the new hire was not initiated",
       id: "05882bc4-7ae6-40b5-b1ee-2e56dd37bb49",
       createdAt: "2018-05-29T19:30:35.95Z",
       updatedAt: "2018-06-07T17:44:25.378Z",
     } as InProgressNewHire,
   ],
 };
-
 export const getCompletedNewHiresExamplePayload = {
   data: [
     {
@@ -1438,7 +1318,6 @@ export const getCompletedNewHiresExamplePayload = {
     } as CompletedNewHire,
   ],
 };
-
 export const getCanceledNewHiresExamplePayload = {
   data: [
     {
@@ -1577,7 +1456,6 @@ export const getCanceledNewHiresExamplePayload = {
     } as CanceledNewHire,
   ],
 };
-
 export const deleteNewHireExamplePayload = {
   data: {
     success: true,
@@ -1586,20 +1464,15 @@ export const deleteNewHireExamplePayload = {
     deletedDate: "2024-02-15T10:30:00.000Z",
   },
 };
-
-
-
-
-
 export const importXmlDataExamplePayload = {
   data: {
     stagingId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
     dateTimeCreated: "2024-02-15T14:30:00.000Z",
     fileName: "newhire-batch-2024-02-15.xml",
-    message: "XML transaction submitted successfully. Use stagingId to check status.",
+    message:
+      "XML transaction submitted successfully. Use stagingId to check status.",
   },
 };
-
 export const getImportStatusExamplePayload = {
   data: {
     stagingId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -1616,7 +1489,6 @@ export const getImportStatusExamplePayload = {
     percentComplete: 40,
   },
 };
-
 export const getTransactionStatusExamplePayload = {
   data: {
     stagingId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -1629,7 +1501,6 @@ export const getTransactionStatusExamplePayload = {
     fileName: "newhire-batch-2024-02-15.xml",
   },
 };
-
 export const getFileStatusExamplePayload = {
   data: {
     stagingId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -1645,7 +1516,6 @@ export const getFileStatusExamplePayload = {
     validationErrors: [],
   },
 };
-
 export const getFileSummaryExamplePayload = {
   data: {
     stagingId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -1683,11 +1553,6 @@ export const getFileSummaryExamplePayload = {
     ],
   },
 };
-
-
-
-
-
 export const selectCompanyExamplePayload = {
   result: [
     { label: "ACME Corporation (ACME001)", key: "ACME001" },
@@ -1695,7 +1560,6 @@ export const selectCompanyExamplePayload = {
     { label: "Global Services LLC (GLOB003)", key: "GLOB003" },
   ],
 };
-
 export const selectJobExamplePayload = {
   result: [
     { label: "Software Developer (SW-DEV)", key: "JOB-DEV-001" },
@@ -1704,7 +1568,6 @@ export const selectJobExamplePayload = {
     { label: "HR Specialist (HR-SPEC)", key: "JOB-HR-001" },
   ],
 };
-
 export const selectLocationExamplePayload = {
   result: [
     { label: "San Francisco Headquarters (SF-HQ)", key: "LOC-SF" },
@@ -1713,7 +1576,6 @@ export const selectLocationExamplePayload = {
     { label: "Chicago Branch (CHI-BRANCH)", key: "LOC-CHI" },
   ],
 };
-
 export const selectPositionExamplePayload = {
   result: [
     { label: "Software Engineer (SW-ENG-001)", key: "POS-001" },

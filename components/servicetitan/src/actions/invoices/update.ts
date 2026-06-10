@@ -19,7 +19,6 @@ import {
   tax,
   typeId,
 } from "../../inputs";
-
 export const updateInvoice = action({
   display: {
     label: "Update Invoice",

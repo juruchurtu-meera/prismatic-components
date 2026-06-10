@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const appsListReposAccessibleToInstallation = action({
   display: {
     label: "Apps List Repos Accessible To Installation",
     description: "List repositories accessible to the app installation",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/installation/repositories`, {
       params: { per_page: perPage, page },
     });
@@ -35,7 +37,6 @@ const appsListReposAccessibleToInstallation = action({
     },
   },
 });
-
 const appsRevokeInstallationAccessToken = action({
   display: {
     label: "Apps Revoke Installation Access Token",
@@ -54,7 +55,6 @@ const appsRevokeInstallationAccessToken = action({
     },
   },
 });
-
 export default {
   appsListReposAccessibleToInstallation,
   appsRevokeInstallationAccessToken,

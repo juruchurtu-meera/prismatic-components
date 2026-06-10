@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../../client";
 import { createOrUpdateOrderExamplePayload } from "../../examplePayloads";
 import { createOrUpdateOrderInputs } from "../../inputs";
-
 export const createOrUpdateOrder = action({
   display: {
     label: "Create or Update Order",
@@ -26,7 +25,6 @@ export const createOrUpdateOrder = action({
       connectionInput,
       context.debug.enabled,
     );
-
     const payload = {
       orderNumber,
       orderDate,
@@ -36,7 +34,6 @@ export const createOrUpdateOrder = action({
       shipTo,
       ...additionalFields,
     };
-
     const { data } = await client.post("/orders/createorder", payload);
     return { data };
   },

@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { HttpMethod, MAX_PAGE_SIZE } from "../../constants";
 import { getPaginatedData } from "../../util";
 import { listDataSourcesResponse } from "../../examplePayloads";
-
 export const listDataSources = action({
   display: {
     label: "List Data Sources",
@@ -13,7 +12,6 @@ export const listDataSources = action({
   inputs: listDataSourcesInputs,
   perform: async (context, { connection, fetchAll, startCursor }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await getPaginatedData(
       client,
       HttpMethod.POST,

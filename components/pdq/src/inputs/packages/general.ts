@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const packageId = input({
   label: "Package ID",
   comments: "The ID of the package",

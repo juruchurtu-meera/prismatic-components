@@ -13,7 +13,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../../util";
-
 export const listApplications = action({
   display: {
     label: "List Applications",

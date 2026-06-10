@@ -15,7 +15,6 @@ import {
   lineItems,
   long,
 } from "../../inputs";
-
 export const createRefundReceipt = action({
   display: {
     label: "Create Refund Receipt",

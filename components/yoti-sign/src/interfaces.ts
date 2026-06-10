@@ -4,3 +4,6 @@ export interface Envelope {
   status: string;
   created_at: string;
 }
+export interface PollingState extends Record<string, unknown> {
+  lastPolledAt?: string;
+}

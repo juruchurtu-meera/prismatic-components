@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { listPeopleExamplePayload } from "../../examplePayloads";
 import { listPeopleInputs } from "../../inputs";
-
 export const listPeople = action({
   display: {
     label: "List People",

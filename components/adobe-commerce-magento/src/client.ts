@@ -2,13 +2,11 @@ import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
 import { adobeCommerceApiKey } from "./connections";
 import { productionUrl, sandboxUrl } from "./constants";
-
 const validateConnection = (connection: Connection) => {
   if (connection.key !== adobeCommerceApiKey.key) {
     throw new ConnectionError(connection, "Unknown Connection type provided.");
   }
 };
-
 export const getConfig = async (connection: Connection, debug: boolean) => {
   validateConnection(connection);
   const useProductionEnvironment = connection?.fields?.productionEnvironment;
@@ -18,8 +16,6 @@ export const getConfig = async (connection: Connection, debug: boolean) => {
     headers: { "Content-Type": "application/json" },
     debug,
   });
-
-  
   const auth = {
     username: util.types.toString(connection?.fields?.applicationId),
     password: util.types.toString(connection?.fields?.applicationSecret),
@@ -38,7 +34,6 @@ export const getConfig = async (connection: Connection, debug: boolean) => {
     throw new Error("Unable to obtain a session token.");
   }
 };
-
 export const getClient = async (connection: Connection, debug: boolean) => {
   const { environmentUrl, token } = await getConfig(connection, debug);
   return createClient({

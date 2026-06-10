@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { CAMPAIGNS_PATH } from "../../constants";
 import { createCampaignExamplePayload } from "../../examplePayloads";
 import { createCampaignInputs } from "../../inputs";
-
 export const createCampaign = action({
   examplePayload: createCampaignExamplePayload,
   display: {
@@ -23,7 +22,6 @@ export const createCampaign = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       name: campaignName,
       description: campaignDescription,
@@ -31,9 +29,7 @@ export const createCampaign = action({
       color: campaignColor,
       ...campaignExtraBody,
     };
-
     const { data } = await client.post(CAMPAIGNS_PATH, body);
-
     return { data };
   },
 });

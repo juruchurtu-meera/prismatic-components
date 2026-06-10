@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const upsertLeadInputs = {
   connection,
   creatorId: input({
@@ -12,7 +11,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -22,7 +20,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   sourceId: input({
     label: "Source ID",
     placeholder: "Enter Source ID",
@@ -32,7 +29,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   firstName: input({
     label: "First Name",
     placeholder: "Enter first name",
@@ -41,7 +37,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   lastName: input({
     label: "Last Name",
     placeholder: "Enter last name",
@@ -51,7 +46,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   organizationName: input({
     label: "Organization Name",
     placeholder: "Enter organization name",
@@ -61,7 +55,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   status: input({
     label: "Status",
     comments: "Status of the lead.",
@@ -69,7 +62,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   email: input({
     label: "Email",
     comments: "Email address of the lead.",
@@ -77,7 +69,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   phone: input({
     label: "Phone",
     comments: "Phone number of the lead.",
@@ -85,7 +76,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   mobile: input({
     label: "Mobile",
     comments: "Mobile phone number of the lead.",
@@ -93,7 +83,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressCity: input({
     label: "Address[city]",
     comments: "City name.",
@@ -101,7 +90,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressPostalCode: input({
     label: "Address[postal Code]",
     comments: "Zip or Postal code",
@@ -109,7 +97,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addressCountry: input({
     label: "Address[country]",
     comments: "Country name.",
@@ -117,7 +104,6 @@ export const upsertLeadInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customFields: input({
     label: "Custom Field",
     comments: "Filterable custom field key-value pairs.",
@@ -127,7 +113,6 @@ export const upsertLeadInputs = {
     required: false,
     example: "key: external_id value: SKU01",
   }),
-
   filterableCustomFields: input({
     label: "Filter",
     type: "string",
@@ -136,7 +121,6 @@ export const upsertLeadInputs = {
     comments: "Filterable custom field.",
     example: "key: custom_fields[referral_website] value: https://www.test.com",
   }),
-
   inclusive: input({
     label: "Inclusive",
     comments:

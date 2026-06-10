@@ -4,14 +4,12 @@ export const groupDatasource = [
     label: "Firefox",
   },
 ];
-
 export const deviceDatasource = [
   {
     key: "dvc_1bced782734040a581d",
     label: "LAB01",
   },
 ];
-
 export const packageDatasource = [
   {
     key: "pkg_1bced782734040a581d",

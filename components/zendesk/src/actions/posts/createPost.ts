@@ -13,7 +13,6 @@ import {
 import { rawHttpClient } from "../../auth";
 import type { Post } from "../../types";
 import { createPostPayload } from "../../examplePayloads";
-
 export const createPost = action({
   display: {
     label: "Create Post",
@@ -46,12 +45,9 @@ export const createPost = action({
       },
       notify_subscribers: notifySubscribers,
     };
-
-    const { data } = await client.post<{ post: Post }>(
-      "/community/posts",
-      payload,
-    );
-
+    const { data } = await client.post<{
+      post: Post;
+    }>("/community/posts", payload);
     return {
       data,
     };

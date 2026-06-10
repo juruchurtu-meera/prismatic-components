@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { updateCellInputs } from "../../inputs/cells/update";
 import { getCellsExamplePayload as updateCellsExamplePayload } from "../../examplePayloads/cells";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const updateCellRange = action({
   display: {
     label: "Update Cell Range",
@@ -29,7 +28,6 @@ export const updateCellRange = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.patch(
       `${baseUrl}/worksheets/${worksheetId}/range(address='${address}')`,
       {
@@ -42,7 +40,6 @@ export const updateCellRange = action({
         rowHidden,
       },
     );
-
     return {
       data,
     };

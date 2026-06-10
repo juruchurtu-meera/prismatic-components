@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getSheetVersionExamplePayload } from "../../examplePayloads";
 import { getSheetVersionInputs } from "../../inputs";
-
 export const getSheetVersion = action({
   display: {
     label: "Get Sheet Version",

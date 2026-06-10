@@ -70,17 +70,10 @@ export const createEnvironmentTemplateExamplePayload = {
     ],
   },
 };
-
 export const updateEnvironmentTemplateExamplePayload =
   createEnvironmentTemplateExamplePayload;
-
 export const getEnvironmentTemplateExamplePayload =
   createEnvironmentTemplateExamplePayload;
-
-
-
-
-
 export const installTemplateExamplePayload = {
   sys: {
     id: "8a428ae1",

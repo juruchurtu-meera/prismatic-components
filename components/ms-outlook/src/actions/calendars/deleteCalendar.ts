@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { deleteCalendarExamplePayload } from "../../examplePayloads";
 import { deleteCalendarInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const deleteCalendar = action({
   display: {
     label: "Delete Calendar",
@@ -13,7 +12,10 @@ export const deleteCalendar = action({
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
     const { data } = await client.delete(
-      computeEndpointBasedOnConnection(params.connection, `/me/calendars/${params.id}`),
+      computeEndpointBasedOnConnection(
+        params.connection,
+        `/me/calendars/${params.id}`,
+      ),
     );
     return { data };
   },

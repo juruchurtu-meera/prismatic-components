@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
 import { address } from "./general";
 import { cleanString, mapModelArray } from "../../helpers";
-
 const applyTo = input({
   label: "Apply To",
   type: "string",
@@ -11,7 +10,6 @@ const applyTo = input({
   model: mapModelArray(["All", "Formats", "Contents"]),
   clean: cleanString,
 });
-
 export const clearCellInputs = {
   driveOrSiteId,
   workbookId: {

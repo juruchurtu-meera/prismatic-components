@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, timeout } from "../inputs";
-
 const listModels = dataSource({
   display: {
     label: "List Models",
@@ -14,14 +13,16 @@ const listModels = dataSource({
   },
   perform: async (_context, params) => {
     const client = createClient(params.connection, false, params.timeout);
-    const { data } = await client.get<{ data: { id: string }[] }>("/v1/models");
-
+    const { data } = await client.get<{
+      data: {
+        id: string;
+      }[];
+    }>("/v1/models");
     const models = data.data.map<string>(({ id }) => id).sort();
     const choices = models.map<Element>((id) => ({
       label: id,
       key: id,
     }));
-
     return { result: choices };
   },
   dataSourceType: "picklist",
@@ -34,5 +35,4 @@ const listModels = dataSource({
     ],
   },
 });
-
 export default { listModels };

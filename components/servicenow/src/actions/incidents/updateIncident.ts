@@ -7,7 +7,6 @@ import {
   sysId,
 } from "../../inputs";
 import { updateTableRecord } from "../tables/records/updateTableRecord";
-
 export const updateIncident = action({
   display: {
     label: "Update Incident",

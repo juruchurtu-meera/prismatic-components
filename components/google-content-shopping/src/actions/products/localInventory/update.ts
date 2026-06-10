@@ -17,7 +17,6 @@ import {
   customAttributes,
 } from "../../../inputs";
 import { updateLocalInventoryExamplePayload } from "../../../examplePayloads";
-
 export const updateProductLocalInventory = action({
   display: {
     description:

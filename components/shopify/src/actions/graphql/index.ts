@@ -14,7 +14,6 @@ import products from "./products";
 import shops from "./shops";
 import variants from "./variants";
 import webhooks from "./webhooks";
-
 export default {
   ...currencies,
   ...customers,

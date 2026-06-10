@@ -6,7 +6,6 @@ import {
   sysId,
 } from "../../inputs";
 import { getTableRecord } from "../tables/records/getTableRecord";
-
 export const getIncident = action({
   display: {
     label: "Get Incident",

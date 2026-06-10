@@ -6,7 +6,6 @@ import { selectCrmRecordInputs } from "../inputs";
 import type { CRMRecord } from "../types";
 import { getCrmRecordLabel } from "../util/general";
 import { fetchAllPages } from "../util/pagination";
-
 export const selectCrmRecord = dataSource({
   display: {
     label: "Select CRM Record",
@@ -15,7 +14,6 @@ export const selectCrmRecord = dataSource({
   inputs: selectCrmRecordInputs,
   perform: async (_context, { connection, recordType }) => {
     const client = createClient(connection, ClientType.CRM, false);
-
     const response = await fetchAllPages(
       client,
       `/${recordType}`,
@@ -23,9 +21,7 @@ export const selectCrmRecord = dataSource({
       "data",
       true,
     );
-
     const records = response.data as CRMRecord[];
-
     if (records?.length) {
       const result = records.map<Element>((record) => ({
         label: getCrmRecordLabel(record),

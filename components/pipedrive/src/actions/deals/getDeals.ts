@@ -15,7 +15,6 @@ import { paginateRecordsWithCursor } from "../../util";
 import type { Deal } from "../../types/deals";
 import { getDealsExamplePayload } from "../../examplePayloads/deals";
 import { WebhookVersion } from "../../constants";
-
 export const getDeals = action({
   display: {
     label: "Get Deals",
@@ -23,10 +22,23 @@ export const getDeals = action({
   },
   perform: async (
     context,
-    { connection, filterId, stageId, status, limit, sortBy, sortDirection, fetchAll, cursor },
+    {
+      connection,
+      filterId,
+      stageId,
+      status,
+      limit,
+      sortBy,
+      sortDirection,
+      fetchAll,
+      cursor,
+    },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
-
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const data = await paginateRecordsWithCursor<Deal>(
       client,
       "deals",

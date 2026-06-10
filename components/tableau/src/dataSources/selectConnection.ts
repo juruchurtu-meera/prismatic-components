@@ -1,42 +1,36 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
-import { getTableuClient } from "../auth";
-import { connectionInput, workbookId } from "../inputs";
-
+import { getTableauClient } from "../util";
+import { selectConnectionInputs } from "../inputs";
 export const selectConnection = dataSource({
   display: {
     label: "Select Connection",
     description: "Select a connection from a workbook in your Tableau site.",
   },
-  inputs: {
-    tableauConnection: connectionInput,
-    workbookId: {
-      ...workbookId,
-      dataSource: undefined,
-    },
-  },
+  inputs: selectConnectionInputs,
   perform: async (_context, { tableauConnection, workbookId }) => {
-    const client = await getTableuClient({
+    const client = await getTableauClient({
       tableauConnection,
       timeout: 10000,
       debug: false,
     });
-
     const { data } = await client.get(
       `/workbooks/${util.types.toString(workbookId)}/connections/`,
       {
         params: { pageSize: 1000 },
       },
     );
-
     const connections = data?.connections?.connection ?? [];
-
-    const result: Element[] = (connections as { id: string; type: string }[])
+    const result: Element[] = (
+      connections as {
+        id: string;
+        type: string;
+      }[]
+    )
       .map((connection) => ({
         label: connection.type,
         key: connection.id.toString(),
       }))
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

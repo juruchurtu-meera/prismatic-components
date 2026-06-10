@@ -60,7 +60,5 @@ export const createContentTypeExamplePayload = {
     },
   ],
 };
-
 export const listContentTypesExamplePayload = [createContentTypeExamplePayload];
-
 export const updateContentTypeExamplePayload = createContentTypeExamplePayload;

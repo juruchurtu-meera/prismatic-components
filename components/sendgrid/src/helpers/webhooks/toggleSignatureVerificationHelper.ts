@@ -3,7 +3,6 @@ import type {
   ToggleSignatureVerificationParams,
   WebhookResponse,
 } from "../../types";
-
 export const toggleSignatureVerificationHelper = async (
   client: Client,
   params: ToggleSignatureVerificationParams,
@@ -15,6 +14,5 @@ export const toggleSignatureVerificationHelper = async (
       enabled: params.enabled,
     },
   });
-
   return body as WebhookResponse;
 };

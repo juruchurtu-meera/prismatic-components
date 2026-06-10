@@ -8,7 +8,6 @@ import {
   deleteSubscriptionTrigger,
   calculateExpirationDateTime,
 } from "ms-utils";
-
 export const instanceDeployWebhook = trigger({
   display: {
     label: "Drive Subscription",
@@ -19,14 +18,13 @@ export const instanceDeployWebhook = trigger({
   synchronousResponseSupport: "valid",
   allowsBranching: true,
   inputs: instanceDeployWebhookInputs,
-  staticBranchNames: [TriggerBranches.Notification, TriggerBranches.URLValidation],
+  staticBranchNames: [
+    TriggerBranches.Notification,
+    TriggerBranches.URLValidation,
+  ],
   perform: async (context, payload, params) => {
-    
-    
     const rawValidationToken = payload.queryParameters?.validationToken;
     const validationToken = util.types.toString(rawValidationToken);
-
-    
     const expectedClientState = params.clientState;
     if (expectedClientState) {
       const body = payload.body?.data as WebhookNotificationPayload | undefined;
@@ -38,7 +36,6 @@ export const instanceDeployWebhook = trigger({
         }
       }
     }
-
     if (validationToken) {
       return Promise.resolve({
         payload,
@@ -50,7 +47,6 @@ export const instanceDeployWebhook = trigger({
         branch: TriggerBranches.URLValidation,
       });
     }
-
     return Promise.resolve({
       payload,
       branch: TriggerBranches.Notification,
@@ -58,13 +54,15 @@ export const instanceDeployWebhook = trigger({
   },
   webhookLifecycleHandlers: {
     create: async (context, params) => {
-      const client = await createClient(params.connection, context.debug.enabled);
-
-      
-      const expiration = params.expirationDateTime || calculateExpirationDateTime(3);
-
-      context.logger.info(`Creating SharePoint subscription for resource: ${params.resource}`);
-
+      const client = await createClient(
+        params.connection,
+        context.debug.enabled,
+      );
+      const expiration =
+        params.expirationDateTime || calculateExpirationDateTime(3);
+      context.logger.info(
+        `Creating SharePoint subscription for resource: ${params.resource}`,
+      );
       await createSubscriptionTrigger(
         client,
         {
@@ -78,10 +76,11 @@ export const instanceDeployWebhook = trigger({
       );
     },
     delete: async (context, params) => {
-      const client = await createClient(params.connection, context.debug.enabled);
-
+      const client = await createClient(
+        params.connection,
+        context.debug.enabled,
+      );
       context.logger.info("Deleting SharePoint subscription(s) for this flow");
-
       await deleteSubscriptionTrigger(client, context);
     },
   },

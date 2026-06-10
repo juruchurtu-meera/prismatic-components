@@ -7,7 +7,6 @@ import type {
   PollingState,
   PollSiteChangesSeparatedChanges,
 } from "../interfaces";
-
 export const pollSiteChanges = pollingTrigger({
   display: {
     label: "New and Updated Site Items",
@@ -18,39 +17,36 @@ export const pollSiteChanges = pollingTrigger({
     connection,
     siteId,
   },
-  perform: async ({ logger, polling, debug }, payload, { connection, siteId }) => {
+  perform: async (
+    { logger, polling, debug },
+    payload,
+    { connection, siteId },
+  ) => {
     const client = await createClient(connection, debug.enabled);
-
     const drivesEndpoint = `/sites/${siteId}/drives?$select=id,name`;
-
     let polledNoChanges = true;
-
     const allDrives = (await paginateResults(client, drivesEndpoint)) as {
       id: string;
       name: string;
     }[];
-
     const allChanges: Record<string, unknown> = {};
-
     for (const drive of allDrives) {
       const deltaLink = polling.getState()[drive.id];
-      const endpoint = deltaLink ? deltaLink : `/sites/${siteId}/drives/${drive.id}/root/delta`;
+      const endpoint = deltaLink
+        ? deltaLink
+        : `/sites/${siteId}/drives/${drive.id}/root/delta`;
       allChanges[drive.name] = paginateResults(
         client,
         endpoint as string,
         true,
-        
         false,
         true,
       );
     }
-
     const allChangesResults = (await Promise.all(
       Object.values(allChanges),
     )) as DriveDeltaResponse[];
-
     const newPollingState: PollingState = {};
-
     allChangesResults.forEach((result, index) => {
       if (result.value.length > 0) {
         const separatedChanges: PollSiteChangesSeparatedChanges = {};
@@ -64,26 +60,19 @@ export const pollSiteChanges = pollingTrigger({
           addUpdated({ isDeleted, separatedChanges, change });
           addCreated({ isDeleted, separatedChanges, change });
         }
-
         allChanges[allDrives[index].name] = separatedChanges;
-
         if (polledNoChanges === true) {
           polledNoChanges = false;
         }
       } else {
         delete allChanges[allDrives[index].name];
       }
-
       newPollingState[allDrives[index].id] = result["@odata.deltaLink"];
     });
-
-    
     polling.setState(newPollingState);
-
     if (debug.enabled) {
       logger.debug("Polling state:", newPollingState);
     }
-
     return Promise.resolve({
       payload: { ...payload, body: { data: allChanges } },
       polledNoChanges,

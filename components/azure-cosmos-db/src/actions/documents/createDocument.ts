@@ -3,7 +3,6 @@ import { createCosmosDbClient } from "../../client";
 import { createDocumentInputs } from "../../inputs";
 import { createDocumentExamplePayload } from "../../examplePayloads";
 import { CosmosDbResourceType, HttpVerb } from "../../constants";
-
 export const createDocument = action({
   display: {
     label: "Create Document",
@@ -21,12 +20,10 @@ export const createDocument = action({
       resourceLink,
       debug: context.debug.enabled,
     });
-
     const headers: Record<string, string> = {};
     if (partitionKey) {
       headers["x-ms-documentdb-partitionkey"] = `["${partitionKey}"]`;
     }
-
     const { data } = await client.post(`/${resourceLink}/docs`, document, {
       headers,
     });

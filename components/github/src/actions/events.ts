@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const activityListPublicEvents = action({
   display: {
     label: "Activity List Public Events",
     description: "List public events",
   },
   perform: async (context, { connection, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/events`, {
       params: { per_page: perPage, page },
     });
@@ -35,7 +37,6 @@ const activityListPublicEvents = action({
     },
   },
 });
-
 export default {
   activityListPublicEvents,
 };

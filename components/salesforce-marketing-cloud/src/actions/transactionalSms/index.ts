@@ -5,7 +5,6 @@ import { listSmsDefinitions } from "./listSmsDefinitions";
 import { sendSms } from "./sendSms";
 import { sendSmsBatch } from "./sendSmsBatch";
 import { updateSmsDefinition } from "./updateSmsDefinition";
-
 export default {
   createSmsDefinition,
   deleteSmsDefinition,

@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { bulkUpdateInvoicesInputs } from "../../inputs/invoice";
 import { bulkUpdateInvoicesExamplePayload } from "../../examplePayloads";
-
 export const bulkUpdateInvoices = action({
   display: {
     label: "Bulk Update Invoices",
@@ -15,7 +14,6 @@ export const bulkUpdateInvoices = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       bulk: invoiceUpdateBulk,
     };
@@ -24,12 +22,10 @@ export const bulkUpdateInvoices = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Bulk/Crud/Update/Invoice.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

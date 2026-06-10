@@ -14,7 +14,6 @@ import {
   getModifierId,
   storeHash,
 } from "../../inputs";
-
 export const updateProductModifierAction = action({
   display: {
     label: "Update Product Modifier",
@@ -49,7 +48,6 @@ export const updateProductModifierAction = action({
       option_values,
       display_name,
     };
-
     try {
       const response = await client.put(endpoint, requestBody);
       return {
@@ -61,7 +59,6 @@ export const updateProductModifierAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

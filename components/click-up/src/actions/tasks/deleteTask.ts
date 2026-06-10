@@ -1,13 +1,19 @@
 import { action } from "@prismatic-io/spectral";
 import { createClickUpClient } from "../../client";
 import { deleteTaskExamplePayload } from "../../examplePayloads";
-import { connectionInput, getCustomTaskIds, getTaskId, getTeamId } from "../../inputs";
+import {
+  connectionInput,
+  getCustomTaskIds,
+  getTaskId,
+  getTeamId,
+} from "../../inputs";
 import type { DeleteTaskQueryParams } from "./types/DeleteTaskQueryParams";
-
 const taskId = getTaskId(true, "Task ID");
 const customTaskIds = getCustomTaskIds(false);
-const teamId = getTeamId(false, "Only used when the custom_task_ids parameter is set to true.");
-
+const teamId = getTeamId(
+  false,
+  "Only used when the custom_task_ids parameter is set to true.",
+);
 export const deleteTask = action({
   display: {
     label: "Delete Task",
@@ -20,7 +26,6 @@ export const deleteTask = action({
       custom_task_ids: customTaskIds,
     };
     if (teamId.length) params.team_id = teamId;
-
     const { data } = await client.delete(`/task/${taskId}`, {
       params,
     });

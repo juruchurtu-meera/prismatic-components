@@ -25,7 +25,6 @@ import {
   title,
   website,
 } from "./fields";
-
 export const createLeadInputs = {
   version,
   dynamicValues,
@@ -49,7 +48,6 @@ export const createLeadInputs = {
   leadStatus,
   connection: connectionInput,
 };
-
 export const updateLeadInputs = {
   recordId: {
     ...recordId,
@@ -77,7 +75,6 @@ export const updateLeadInputs = {
   revenue,
   connection: connectionInput,
 };
-
 export const deleteLeadInputs = {
   version,
   recordId: {
@@ -86,5 +83,4 @@ export const deleteLeadInputs = {
   },
   connection: connectionInput,
 };
-
 export const listLeadsInputs = { ...listInputs };

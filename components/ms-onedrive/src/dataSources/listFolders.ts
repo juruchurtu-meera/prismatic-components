@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../client";
 import { oneDriveConnection, dir } from "../inputs";
-
 export const listFolders = dataSource({
   display: {
     label: "List Folders from Source",
@@ -17,7 +16,6 @@ export const listFolders = dataSource({
     let files: Record<string, unknown>[] = [];
     let nextLink = `${client.defaults.baseURL}${path}`;
     client.defaults.baseURL = undefined;
-
     do {
       const { data } = await client.get(nextLink);
       files = [
@@ -28,7 +26,6 @@ export const listFolders = dataSource({
       ];
       nextLink = data?.["@odata.nextLink"];
     } while (nextLink);
-
     return {
       result: files.map((record) => {
         return {

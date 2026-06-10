@@ -1,5 +1,4 @@
 import type { AssetResponse } from "./shared";
-
 export default interface ListLibraryAssetsResponse {
   library: {
     id: string;

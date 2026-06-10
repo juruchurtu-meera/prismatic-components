@@ -3,7 +3,6 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 import { title, connectionInput } from "../inputs";
 import { getAccessToken } from "../client";
 import { ensureTitle } from "../util";
-
 export const createDocument = action({
   display: {
     label: "Create Spreadsheet",
@@ -19,7 +18,6 @@ export const createDocument = action({
         title: ensureTitle(title),
       },
     );
-
     return {
       data: {
         spreadsheetId: spreadsheet.spreadsheetId,
@@ -36,5 +34,4 @@ export const createDocument = action({
     connection: connectionInput,
   },
 });
-
 export default createDocument;

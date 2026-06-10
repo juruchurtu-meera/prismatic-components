@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const createDealInputs = {
   connection,
   name: input({
@@ -12,7 +11,6 @@ export const createDealInputs = {
     required: true,
     clean: util.types.toString,
   }),
-
   contactId: input({
     label: "Contact ID",
     comments:
@@ -24,7 +22,6 @@ export const createDealInputs = {
     clean: util.types.toString,
     dataSource: "selectContact",
   }),
-
   value: input({
     label: "Value",
     comments: "Value of the deal in decimal format (e.g., two decimal places).",
@@ -34,7 +31,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   currency: input({
     label: "Currency",
     comments:
@@ -45,7 +41,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -56,7 +51,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   hot: input({
     label: "Hot",
     comments: "Indicator of whether or not the deal is hot.",
@@ -71,7 +65,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   stageId: input({
     label: "Stage ID",
     placeholder: "Enter Stage ID",
@@ -83,7 +76,6 @@ export const createDealInputs = {
     clean: util.types.toString,
     dataSource: "selectStage",
   }),
-
   lastStageChangeAt: input({
     label: "Last Stage Change At",
     comments:
@@ -92,7 +84,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   addedAt: input({
     label: "Added At",
     comments:
@@ -101,7 +92,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   sourceId: input({
     label: "Source ID",
     placeholder: "Enter Source ID",
@@ -111,7 +101,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   lossReasonId: input({
     label: "Loss Reason ID",
     placeholder: "Enter Loss Reason ID",
@@ -121,7 +110,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   unqualifiedReasonId: input({
     label: "Unqualified Reason ID",
     placeholder: "Enter Unqualified Reason ID",
@@ -131,7 +119,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   estimatedCloseDate: input({
     label: "Estimated Close Date",
     comments: "Expected date when the deal will close.",
@@ -141,7 +128,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   customizedWinLikelihood: input({
     label: "Customized Win Likelihood",
     comments: "User-provided win likelihood with value range 0-100.",
@@ -151,7 +137,6 @@ export const createDealInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   tags: input({
     label: "Tag",
     comments: "Tags to apply. You need to supply the entire set.",
@@ -160,7 +145,6 @@ export const createDealInputs = {
     collection: "valuelist",
     required: false,
   }),
-
   customFields: input({
     label: "Custom Field",
     comments: "Filterable custom field key-value pairs.",

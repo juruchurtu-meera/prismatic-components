@@ -5,7 +5,6 @@ import type { FieldsTemplate } from "../../types/FieldsTemplate";
 import { fetchTemplates } from "../../utils";
 import { listTemplatesExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const listTemplates = action({
   display: {
     label: "List Templates",
@@ -23,7 +22,6 @@ export const listTemplates = action({
       [],
       undefined,
     );
-
     return {
       data,
     };

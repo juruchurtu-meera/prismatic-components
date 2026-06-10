@@ -1,20 +1,8 @@
-
-
-
-
-
-
-
-
-
-
-
 const customFieldObject = {
   id: 1,
   name: "Material",
   value: "Borosilicate Glass",
 };
-
 const paginationMeta = {
   pagination: {
     total: 2,
@@ -27,28 +15,24 @@ const paginationMeta = {
     },
   },
 };
-
 export const getProductCustomFieldsExamplePayload = {
   data: {
     data: [customFieldObject],
     meta: paginationMeta,
   },
 };
-
 export const createCustomFieldExamplePayload = {
   data: {
     data: customFieldObject,
     meta: {},
   },
 };
-
 export const updateCustomFieldExamplePayload = {
   data: {
     data: customFieldObject,
     meta: {},
   },
 };
-
 export const deleteCustomFieldExamplePayload = {
   data: null,
 };

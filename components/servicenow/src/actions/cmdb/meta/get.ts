@@ -7,7 +7,6 @@ import {
   instanceUrlInput,
 } from "../../../inputs";
 import { createNowApiClient } from "../../../util";
-
 export const getCMDBClassMetaData = action({
   display: {
     label: "Get CMDB Class Metadata",

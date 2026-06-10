@@ -1,9 +1,7 @@
 import type { PollingTriggerObject } from "./PollingTriggerObject";
-
 export interface NetSuitePollingState {
-  lastPolledAt: string; 
+  lastPolledAt: string;
 }
-
 export interface PollingChangesResult {
   changesObject: {
     createdRecords?: PollingTriggerObject[];

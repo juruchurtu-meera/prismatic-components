@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, version } from "../inputs";
 import type { CandidateDataSources } from "../types";
-
 export const candidatesNames = dataSource({
   display: {
     label: "Fetch Candidate Names",
@@ -29,7 +28,6 @@ export const candidatesNames = dataSource({
     ],
   },
 });
-
 export const candidatesEmail = dataSource({
   display: {
     label: "Fetch Candidate Emails",

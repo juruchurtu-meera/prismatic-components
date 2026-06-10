@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-08
+
+Added the **New Registrants** polling trigger, which checks a webinar for registrants added since the last run
+
 ### 2026-04-30
 
 Updated spectral version

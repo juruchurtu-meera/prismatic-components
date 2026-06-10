@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import type { Expand } from "dynamics-web-api";
 import { toOptionalString } from "../util/cleanInput";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const entityType = input({
   label: "Entity Type",
   placeholder: "Enter entity type",
@@ -18,14 +16,14 @@ export const entityType = input({
   dataSource: "entityTypes",
   clean: util.types.toString,
 });
-
 export const fieldNames = input({
   label: "Field Name",
   placeholder: "Enter field name",
   type: "string",
   collection: "valuelist",
   required: true,
-  comments: "The OData $select fields to include in the result. Leave empty to return all fields.",
+  comments:
+    "The OData $select fields to include in the result. Leave empty to return all fields.",
   clean: (rawValue: unknown): string[] | undefined => {
     if (!Array.isArray(rawValue) || rawValue.length === 0) {
       return undefined;
@@ -33,7 +31,6 @@ export const fieldNames = input({
     return rawValue.map((item) => util.types.toString(item));
   },
 });
-
 export const entityId = input({
   label: "Entity ID",
   placeholder: "Enter entity ID (GUID)",
@@ -44,7 +41,6 @@ export const entityId = input({
   dataSource: "entities",
   clean: util.types.toString,
 });
-
 export const filterExpression = input({
   label: "Filter Expression",
   placeholder: "Enter OData filter expression",
@@ -54,7 +50,6 @@ export const filterExpression = input({
   example: "Country_Region_Code eq 'ES' and Payment_Terms_Code eq '14 DAYS'",
   clean: util.types.toString,
 });
-
 export const nextPageId = input({
   label: "Next Page ID",
   placeholder: "Enter pagination cookie",
@@ -64,7 +59,6 @@ export const nextPageId = input({
     "The pagination cookie returned in 'oDataNextLink' from a previous request. Leave empty for the first page.",
   clean: toOptionalString,
 });
-
 export const expandPropertyNames = input({
   label: "Expand Property Name",
   placeholder: "Enter property name",
@@ -81,7 +75,6 @@ export const expandPropertyNames = input({
     }));
   },
 });
-
 export const defaultSelectedRecordTypes = input({
   label: "Default Selected Entity Types",
   placeholder: "Enter entity type schema name",
@@ -94,7 +87,6 @@ export const defaultSelectedRecordTypes = input({
     return util.types.isPicklist(value) ? (value as string[]) : [];
   },
 });
-
 export const recordTypeFilter = input({
   label: "Entity Type Filter",
   placeholder: "Enter entity type",
@@ -110,7 +102,6 @@ export const recordTypeFilter = input({
       : [];
   },
 });
-
 export const includeAllCustomRecordTypes = input({
   label: "Include All Custom Entity Types",
   type: "boolean",
@@ -120,7 +111,6 @@ export const includeAllCustomRecordTypes = input({
     "When true, will include all Custom Entity Types, even those not included in Record Type Name Filter.",
   clean: (value: unknown): boolean => util.types.toBool(value, true),
 });
-
 export const includeOnlyTopLevelRecordTypes = input({
   label: "Include Only Top Level Record Types",
   type: "boolean",
@@ -130,12 +120,12 @@ export const includeOnlyTopLevelRecordTypes = input({
     "When true, will include only Entity Types that are top-level, meaning not subtypes of other Types, regardless of other filters.",
   clean: util.types.toBool,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "When true, automatically fetches all pages of results using pagination.",
+  comments:
+    "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });

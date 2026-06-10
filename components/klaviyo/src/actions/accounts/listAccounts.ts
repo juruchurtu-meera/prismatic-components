@@ -4,7 +4,6 @@ import { listAccountsInputs as inputs } from "../../inputs/accounts";
 import type { FieldsAccount } from "../../types/FieldsAccount";
 import { listAccountsExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const listAccounts = action({
   display: {
     label: "List Accounts",

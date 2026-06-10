@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { getCalendarEventExamplePayload } from "../../examplePayloads";
 import { getCalendarEventInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const getCalendarEvent = action({
   display: {
     label: "Get Calendar Event",
@@ -13,7 +12,10 @@ export const getCalendarEvent = action({
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
     const { data } = await client.get(
-      computeEndpointBasedOnConnection(params.connection, `/me/events/${params.eventId}`),
+      computeEndpointBasedOnConnection(
+        params.connection,
+        `/me/events/${params.eventId}`,
+      ),
     );
     return { data };
   },

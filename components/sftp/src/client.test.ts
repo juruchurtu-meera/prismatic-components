@@ -1,7 +1,6 @@
 import { getAuthParams } from "./client";
 import { basic, privateKey } from "./connections";
 import { createConnection } from "@prismatic-io/spectral/dist/testing";
-
 describe("getAuthParams", () => {
   test("returns params with basic credentials", () => {
     const expectedUsername = "user";
@@ -15,7 +14,6 @@ describe("getAuthParams", () => {
       password: expectedPassword,
     });
   });
-
   test("returns params with private key credentials with no passphrase", () => {
     const expectedUsername = "user";
     const expectedPrivateKey = "private";
@@ -30,12 +28,10 @@ describe("getAuthParams", () => {
       password: "",
     });
   });
-
   test("returns params with private key credentials with passphrase", () => {
     const expectedUsername = "user";
     const expectedPrivateKey = "private";
     const expectedPassphrase = "passphrase";
-
     const connection = createConnection(privateKey, {
       username: expectedUsername,
       privateKey: expectedPrivateKey,

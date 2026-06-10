@@ -9,7 +9,6 @@ import {
   sysparmQuery,
 } from "../../inputs";
 import { listTableRecords } from "../tables/records/listTableRecords";
-
 export const listIncidents = action({
   display: {
     label: "List Incidents",

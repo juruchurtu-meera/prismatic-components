@@ -7,7 +7,6 @@ import {
   on_behalf_of_user_id,
   version,
 } from "../../inputs";
-
 export const deleteApplication = action({
   display: {
     label: "Delete Application",

@@ -52,7 +52,6 @@ export const getActivityExamplePayload = {
       "CoUBADFn3tFqHUj7yCuV1klvj0yytkQy7+pfLdrj1eepGfjkD3FB5tGKr3KfLViTU1NXF2EPzJADxALt8O7M1rC98LjHnv9YG6Sl5sxU8F7UOYI1nzzpXhFNaxmAnNmlzBbdRHKt33n2KeX/wKd8uvLETNydZ/9SEYYRlB2aIqzTf41Cp2CUvxIMEgppdGVtcy9yb290GoUBADFn3tFN3fZknT3aMUZoAhEoqOy0S2eimkjEsCV1+t01uERxyQKMsgS5Zn9cSJOzDIj2BR7jkbfIQeDbBLgMhjrtaVaAMppVhBOdQKtn9+u5CKE1JNIuVXREsrEago3Bbd77pDvQJNYTIeW0P+NYbPPP7oRCWTbBZ9soopmJnkyjUX/m5A==",
   },
 };
-
 export const LIST_CHANGES_EXAMPLE_PAYLOAD = {
   kind: "drive#changeList",
   newStartPageToken: "247040",
@@ -73,7 +72,6 @@ export const LIST_CHANGES_EXAMPLE_PAYLOAD = {
     },
   ],
 };
-
 export const BASE_EXAMPLE_PAYLOAD = {
   response: { statusCode: 200, contentType: "application/json" },
   payload: {
@@ -81,7 +79,8 @@ export const BASE_EXAMPLE_PAYLOAD = {
       Accept: "*/*",
       "Accept-Encoding": "gzip, deflate, br",
       Host: "hooks.example.io",
-      "User-Agent": "APIs-Google; (+https://developers.google.com/webmasters/APIs-Google.html)",
+      "User-Agent":
+        "APIs-Google; (+https://developers.google.com/webmasters/APIs-Google.html)",
       "X-Amz-Cf-Id": "_K9KZtNN78sy1aygl3nJuQ4OoMh65STAsLFsPGENcnm_l68C112345==",
       "X-Amzn-Trace-Id": "Root=1-64931762-5665c8324c471b204f212345",
       "X-Goog-Channel-Expiration": "Wed, 21 Jun 2023 16:28:01 GMT",
@@ -109,7 +108,8 @@ export const BASE_EXAMPLE_PAYLOAD = {
       "Flow 1": ["sample-api-key"],
     },
     invokeUrl: "https://hooks.example.io/trigger/WEBHOOK_ID",
-    executionId: "SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6MGRlZjk2ZjYtYzhhOS00MDgzLWJlOTUtZmIwZDMzNDQ12345",
+    executionId:
+      "SW5zdGFuY2VFeGVjdXRpb25SZXN1bHQ6MGRlZjk2ZjYtYzhhOS00MDgzLWJlOTUtZmIwZDMzNDQ12345",
     customer: {
       id: "testCustomerId",
       name: "Test Customer",
@@ -139,7 +139,6 @@ export const BASE_EXAMPLE_PAYLOAD = {
     globalDebug: false,
   },
 };
-
 export const driveActivityPollingTriggerExamplePayload = {
   ...BASE_EXAMPLE_PAYLOAD,
   payload: {
@@ -153,11 +152,11 @@ export const driveActivityPollingTriggerExamplePayload = {
   },
   polledNoChanges: false,
 };
-
 export const pollChangesTriggerExamplePayload = {
   ...BASE_EXAMPLE_PAYLOAD,
   crossFlowState: {
-    "google-drive-list-changes-page-token:exampleStableFlowId:exampleStepId": "testCursor",
+    "google-drive-list-changes-page-token:exampleStableFlowId:exampleStepId":
+      "testCursor",
   },
   payload: {
     ...BASE_EXAMPLE_PAYLOAD.payload,

@@ -23,7 +23,6 @@ export const listAttachmentsResponse = {
     },
   ],
 };
-
 export const getAttachmentResponse = {
   result: {
     table_sys_id: "5054b6f8c0a800060056addcf551ecf8",
@@ -47,11 +46,8 @@ export const getAttachmentResponse = {
     size_compressed: "485",
   },
 };
-
 export const getAttachmentFileResponse = Buffer.from("file contents");
-
 export const deleteAttachmentResponse = "";
-
 export const uploadAttachmentResponse = {
   result: {
     average_image_color: "String",
@@ -76,7 +72,6 @@ export const uploadAttachmentResponse = {
     updated_by_name: "String",
   },
 };
-
 export const multipartUploadAttachmentResponse = {
   result: {
     table_sys_id: "d71f7935c0a8016700802b64c67c11c6",
@@ -100,7 +95,6 @@ export const multipartUploadAttachmentResponse = {
     size_compressed: "25130",
   },
 };
-
 export const listConfigurationItemsResponse = {
   data: {
     result: [
@@ -111,7 +105,6 @@ export const listConfigurationItemsResponse = {
     ],
   },
 };
-
 export const getConfigurationItemAttributesResponse = {
   data: {
     result: {
@@ -331,11 +324,9 @@ export const getConfigurationItemAttributesResponse = {
     },
   },
 };
-
 export const deleteConfigurationItemRelationResponse = {
   data: null,
 };
-
 export const getCMDBClassMetaDataResponse = {
   data: {
     result: {
@@ -516,7 +507,6 @@ export const getCMDBClassMetaDataResponse = {
     },
   },
 };
-
 export const createConfigurationItemResponse = {
   data: {
     result: {

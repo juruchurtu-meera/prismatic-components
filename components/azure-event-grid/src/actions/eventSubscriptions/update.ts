@@ -4,7 +4,6 @@ import { getEventSubscriptionExamplePayload as examplePayload } from "../../exam
 import { action } from "@prismatic-io/spectral";
 import type { UpdateEventSubscription } from "../../interfaces";
 import { getEventSubscriptionUrl } from "../../util";
-
 export const updateEventSubscription = action({
   display: {
     label: "Update Event Subscription",
@@ -34,7 +33,6 @@ export const updateEventSubscription = action({
       topicName,
       eventSubscriptionName,
     );
-
     const payload: UpdateEventSubscription = {
       retryPolicy: {
         maxDeliveryAttempts: 10,
@@ -51,7 +49,6 @@ export const updateEventSubscription = action({
         endpointType: "WebHook",
       };
     }
-
     const { data } = await managementClient.patch(
       eventSubscriptionURL,
       payload,

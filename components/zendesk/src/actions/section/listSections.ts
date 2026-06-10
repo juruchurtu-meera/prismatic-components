@@ -12,7 +12,6 @@ import { rawHttpClient } from "../../auth";
 import type { PaginatedResponse, Section } from "../../types";
 import { listSectionsExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listSections = action({
   display: {
     label: "List Sections",
@@ -35,7 +34,6 @@ export const listSections = action({
     const url = categoryId
       ? `/help_center/${locale}/categories/${categoryId}/sections`
       : `/help_center/${locale}/sections`;
-
     if (fetchAll) {
       const sections: Section[] = [];
       return {
@@ -50,18 +48,20 @@ export const listSections = action({
         },
       };
     }
-
     const params = {
       sort_by: sortBy || undefined,
       sort_order: sortOrder || undefined,
     };
-
     const { data } = await client.get<
-      PaginatedResponse<{ sections: Section[] }> | { sections: Section[] }
+      | PaginatedResponse<{
+          sections: Section[];
+        }>
+      | {
+          sections: Section[];
+        }
     >(url, {
       params,
     });
-
     return { data };
   },
   inputs: {

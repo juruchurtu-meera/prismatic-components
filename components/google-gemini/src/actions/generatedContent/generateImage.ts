@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGeminiClient } from "../../client";
 import { generateImageExamplePayload as examplePayload } from "../../examplePayloads/generatedContent";
 import { generateImageInputs } from "../../inputs/generatedContent";
-
 export const generateImage = action({
   display: {
     label: "Generate Image",
@@ -33,7 +32,6 @@ export const generateImage = action({
         ...extraParameters,
       },
     });
-
     return {
       data,
     };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createUserExamplePayload as examplePayload } from "../../examplePayloads";
 import { createUserInputs as inputs } from "../../inputs/user";
-
 export const createUser = action({
   display: {
     label: "Create User",

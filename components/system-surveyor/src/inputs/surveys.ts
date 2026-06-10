@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput, siteId } from "./common";
-
 const surveyId = input({
   label: "Survey ID",
   type: "string",
@@ -11,7 +10,6 @@ const surveyId = input({
   clean: util.types.toString,
   dataSource: "selectSiteSurvey",
 });
-
 export const getSurveyInputs = {
   ssvConnection: connectionInput,
   siteId: { ...siteId, required: false },

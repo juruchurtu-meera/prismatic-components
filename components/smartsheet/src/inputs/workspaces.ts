@@ -6,7 +6,6 @@ import {
   pageSize,
   workspaceId,
 } from "./common";
-
 const workspaceName = input({
   label: "Workspace Name",
   type: "string",
@@ -16,7 +15,6 @@ const workspaceName = input({
   comments: "The display name for the workspace.",
   placeholder: "Enter workspace name",
 });
-
 const loadAll = input({
   label: "Load All",
   type: "boolean",
@@ -26,7 +24,6 @@ const loadAll = input({
   comments:
     "Preserved for backward compatibility. Smartsheet's redesigned API no longer supports recursive nested expansion of folders/contents in a single response; this input has no effect on the migrated action.",
 });
-
 const updateWorkspaceName = input({
   label: "Name",
   type: "string",
@@ -35,30 +32,25 @@ const updateWorkspaceName = input({
   comments: "The updated display name for the workspace.",
   placeholder: "Enter new workspace name",
 });
-
 export const createWorkspaceInputs = {
   connection: connectionInput,
   name: workspaceName,
 };
-
 export const deleteWorkspaceInputs = {
   connection: connectionInput,
   workspaceId,
 };
-
 export const getWorkspaceInputs = {
   connection: connectionInput,
   workspaceId,
   loadAll,
 };
-
 export const listWorkspacesInputs = {
   connection: connectionInput,
   includeAll,
   page,
   pageSize,
 };
-
 export const updateWorkspaceInputs = {
   connection: connectionInput,
   workspaceId,

@@ -16,7 +16,6 @@ import { getPersons } from "./getPersons";
 import { mergePersons } from "./mergePersons";
 import { searchPersons } from "./searchPersons";
 import { updatePerson } from "./updatePerson";
-
 export default {
   getPersons,
   addPerson,

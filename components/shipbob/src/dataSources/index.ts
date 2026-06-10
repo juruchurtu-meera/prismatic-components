@@ -6,7 +6,6 @@ import { selectChannel } from "./selectChannel";
 import { selectOrder } from "./selectOrder";
 import { selectReceivingOrder } from "./selectReceivingOrder";
 import { selectWebhook } from "./selectWebhook";
-
 export default {
   fulfillmentCenters,
   inventory,

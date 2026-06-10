@@ -11,7 +11,6 @@ import {
   startIndex,
   tableId,
 } from "./common";
-
 export const skipInvalidRows = input({
   label: "Skip Invalid Rows",
   type: "boolean",
@@ -20,7 +19,6 @@ export const skipInvalidRows = input({
     "When true, inserts all valid rows of a request even if invalid rows exist. Default is false, which causes the entire request to fail if any invalid rows exist.",
   required: false,
 });
-
 export const ignoreUnknownValues = input({
   label: "Ignore Unknown Values",
   type: "boolean",
@@ -29,7 +27,6 @@ export const ignoreUnknownValues = input({
     "When true, accepts rows that contain values that do not match the schema. The unknown values are ignored. Default is false, which treats unknown values as errors.",
   required: false,
 });
-
 export const templateSuffix = input({
   label: "Template Suffix",
   type: "string",
@@ -40,7 +37,6 @@ export const templateSuffix = input({
   placeholder: "Enter template suffix",
   required: false,
 });
-
 export const traceId = input({
   label: "Trace ID",
   type: "string",
@@ -51,7 +47,6 @@ export const traceId = input({
   placeholder: "Enter trace ID",
   required: false,
 });
-
 export const rows = input({
   label: "Rows",
   type: "code",
@@ -67,8 +62,6 @@ export const rows = input({
   clean: jsonInputClean,
   required: false,
 });
-
-
 export const listTableDataInputs = {
   connectionInput,
   datasetId,
@@ -79,7 +72,6 @@ export const listTableDataInputs = {
   pageToken,
   selectedFields,
 };
-
 export const tableDataInsertAllInputs = {
   connectionInput,
   datasetId,

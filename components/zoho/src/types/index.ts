@@ -1,9 +1,7 @@
 import type { Connection } from "@prismatic-io/spectral";
-
 export interface CRMRecords {
   data: CRMRecord[];
 }
-
 export interface CRMRecord {
   id: string;
   Created_Time: string;
@@ -12,19 +10,15 @@ export interface CRMRecord {
   Name?: string;
   Subject?: string;
 }
-
 export interface BookContactsRecords {
   contacts: BookRecord[];
 }
-
 export interface BookRecord {
   created_time: string;
   last_modified_time: string;
   [key: string]: string;
 }
-
 export type ZohoRecord = CRMRecord | BookRecord;
-
 export interface NotificationTriggerInputs {
   connection: Connection;
   channelId?: string;
@@ -35,7 +29,6 @@ export interface NotificationTriggerInputs {
   notifyOnRelatedAction?: boolean;
   notificationCondition?: unknown;
 }
-
 export interface EnableNotificationParams {
   channelId: string | number;
   events: unknown;
@@ -46,13 +39,11 @@ export interface EnableNotificationParams {
   notifyOnRelatedAction?: boolean;
   notificationCondition?: unknown;
 }
-
 export interface DisableSpecificNotificationParams {
   channelId: string | number;
   events: unknown;
   notifyOnRelatedAction?: boolean;
 }
-
 export interface WatchConfig {
   channel_id: string | number;
   events?: unknown;
@@ -63,18 +54,15 @@ export interface WatchConfig {
   notify_on_related_action?: boolean;
   return_affected_field_values?: boolean;
 }
-
 export interface NotificationChannel {
   channel_id: string;
   events: string[];
   notify_url?: string;
   channel_expiry?: string;
 }
-
 export interface WatchResponse {
   watch: NotificationChannel[];
 }
-
 export interface NotificationsBody {
   token?: string;
   channelExpiry?: string;
@@ -84,7 +72,6 @@ export interface NotificationsBody {
   notifyOnRelatedAction?: boolean;
   returnAffectedFieldValues?: boolean;
 }
-
 export interface paginationParams {
   searchFields?: string;
   fields?: string;

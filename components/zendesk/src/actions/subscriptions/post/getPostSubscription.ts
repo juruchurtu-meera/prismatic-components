@@ -3,7 +3,6 @@ import { subscriptionPayload } from "../../../examplePayloads";
 import { rawHttpClient } from "../../../auth";
 import type { SubscriptionResponse } from "../../../types";
 import { action } from "@prismatic-io/spectral";
-
 export const getPostSubscription = action({
   display: {
     label: "Get Post Subscription",
@@ -14,7 +13,6 @@ export const getPostSubscription = action({
     const { data } = await client.get<SubscriptionResponse>(
       `/community/posts/${postId}/subscriptions/${subscriptionId}`,
     );
-
     return {
       data,
     };

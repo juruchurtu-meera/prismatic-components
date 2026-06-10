@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { createDraftOrderInputs } from "../../inputs";
 import { createDraftOrderExamplePayload } from "../../payloadExamples";
-
 export const createDraftOrder = action({
   display: {
     label: "Create Draft Orders (Deprecated)",
@@ -10,7 +9,11 @@ export const createDraftOrder = action({
       "Create a new draft order. This version of the action is being deprecated. Please replace action with Create Draft Order.",
   },
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const { data, headers } = await client.post("/draft_orders.json", {
       draft_order: {
         line_items:

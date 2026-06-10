@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createToastClient } from "../../client";
 import { listAccessibleRestaurantsExamplePayload as examplePayload } from "../../examplePayloads";
 import { listAccessibleRestaurantsInputs as inputs } from "../../inputs/restaurant";
-
 export const listAccessibleRestaurants = action({
   display: {
     label: "List Accessible Restaurants",
@@ -11,11 +10,9 @@ export const listAccessibleRestaurants = action({
   },
   perform: async (context, { connection, lastModified }) => {
     const client = await createToastClient(connection, context.debug.enabled);
-
     const { data } = await client.get(`/partners/v1/restaurants`, {
       params: { lastModified },
     });
-
     return {
       data,
     };

@@ -16,7 +16,6 @@ import {
   reposDeleteInstanceWebhooksExamplePayload,
 } from "../examplePayloads";
 import { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
-
 interface GitHubWebhook {
   id: number;
   name: string;
@@ -26,7 +25,6 @@ interface GitHubWebhook {
     url: string;
   };
 }
-
 interface FetchWebhooksInput {
   client: HttpClient;
   owner: string;
@@ -34,7 +32,6 @@ interface FetchWebhooksInput {
   showOnlyInstanceWebhooks: boolean;
   instanceWebhookUrls: string[];
 }
-
 const fetchWebhooks = async ({
   client,
   owner,
@@ -46,7 +43,6 @@ const fetchWebhooks = async ({
   const per_page = 100;
   let page = 1;
   let link = "";
-
   do {
     const response = await client.get(`/repos/${owner}/${repo}/hooks`, {
       params: { per_page, page },
@@ -62,10 +58,8 @@ const fetchWebhooks = async ({
     page += 1;
     link = response.headers["link"];
   } while (link && link.includes('rel="next"'));
-
   return webhooks;
 };
-
 const reposListWebhooks = action({
   display: {
     label: "Repos List Webhooks",
@@ -97,7 +91,6 @@ const reposListWebhooks = action({
     }),
   },
 });
-
 const reposCreateWebhook = action({
   display: {
     label: "Repos Create Webhook",
@@ -139,7 +132,6 @@ const reposCreateWebhook = action({
     webhookSecret: webhookSecretInput,
   },
 });
-
 const reposDeleteWebhook = action({
   display: {
     label: "Repos Delete Webhook",
@@ -160,7 +152,6 @@ const reposDeleteWebhook = action({
     hookId: hookIdInput,
   },
 });
-
 const reposDeleteInstanceWebhooks = action({
   display: {
     label: "Repos Delete Instance Webhooks",
@@ -191,7 +182,6 @@ const reposDeleteInstanceWebhooks = action({
     repo: repoInput,
   },
 });
-
 export default {
   reposCreateWebhook,
   reposDeleteInstanceWebhooks,

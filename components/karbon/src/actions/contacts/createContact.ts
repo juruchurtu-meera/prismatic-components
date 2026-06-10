@@ -3,7 +3,6 @@ import createContactInputs from "../../inputs/contacts/createContact";
 import { createKarbonClient } from "../../client";
 import { cleanOdata } from "../../utils";
 import { createContactExamplePayload } from "../../examplePayloads";
-
 export const createContact = action({
   display: {
     label: "Create a Contact",

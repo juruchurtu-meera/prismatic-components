@@ -8,7 +8,6 @@ import {
   resourceType,
 } from "../../inputs";
 import { listFunctionsExamplePayload } from "../../examplePayloads";
-
 export const listFunctions = action({
   display: {
     label: "List Functions",

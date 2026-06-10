@@ -10,7 +10,6 @@ import {
   times,
 } from "./createWebinarInputs";
 import { toOptionalObject, toOptionalString } from "../../utils";
-
 export const notifyParticipants = input({
   label: "Notify Participants",
   comments: "Notify participants of the webinar.",
@@ -18,10 +17,8 @@ export const notifyParticipants = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const updateWebinarInputs = {
   connection,
-
   webinarKey,
   notifyParticipants,
   subject: {

@@ -15,7 +15,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../../util";
-
 export const listCandidates = action({
   display: {
     label: "List Candidates",

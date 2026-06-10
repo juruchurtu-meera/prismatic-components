@@ -39,7 +39,6 @@ export const listEventsExamplePayload = {
     total: 0,
   },
 };
-
 export const getEventByIdExamplePayload = {
   data: {
     data: [
@@ -81,7 +80,6 @@ export const getEventByIdExamplePayload = {
     total: 0,
   },
 };
-
 export const getEventAttachmentsExamplePayload = {
   data: {
     data: [

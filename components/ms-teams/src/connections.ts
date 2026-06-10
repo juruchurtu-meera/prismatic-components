@@ -3,7 +3,6 @@ import {
   connection,
   oauth2Connection,
 } from "@prismatic-io/spectral";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {
@@ -60,7 +59,6 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export const clientCredentials = oauth2Connection({
   key: "clientCredentials",
   display: {
@@ -107,7 +105,6 @@ export const clientCredentials = oauth2Connection({
     },
   },
 });
-
 export const webhook = connection({
   key: "webhook",
   display: {
@@ -128,7 +125,6 @@ export const webhook = connection({
     },
   },
 });
-
 export const adminConsent = oauth2Connection({
   key: "adminConsent",
   display: {
@@ -188,5 +184,4 @@ export const adminConsent = oauth2Connection({
     },
   },
 });
-
 export default [oauth, clientCredentials, webhook, adminConsent];

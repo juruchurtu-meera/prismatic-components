@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { connection } from "../shared";
 import { workItemkey } from "./shared";
 import { cleanStringInput } from "../../utils";
-
 const description = input({
   label: "Description",
   type: "string",
@@ -13,7 +12,6 @@ const description = input({
   placeholder: "This is a description.",
   clean: cleanStringInput,
 });
-
 const deadlineDate = input({
   label: "Deadline Date",
   type: "string",
@@ -24,7 +22,6 @@ const deadlineDate = input({
   placeholder: "2022-01-30",
   clean: cleanStringInput,
 });
-
 export default {
   connection,
   workItemkey: input({

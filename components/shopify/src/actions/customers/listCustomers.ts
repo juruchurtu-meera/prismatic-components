@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { listCustomersExamplePayload } from "../../examplePayloads";
 import { listCustomersInputs } from "../../inputs";
 import { listCustomersGql } from "../graphql/customers/listCustomers";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",

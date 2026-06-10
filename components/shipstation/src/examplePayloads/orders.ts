@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const createOrUpdateOrderExamplePayload = {
   data: {
     orderId: 94113592,
@@ -142,21 +136,7 @@ export const createOrUpdateOrderExamplePayload = {
     externallyFulfilledBy: null,
   },
 };
-
-
-
-
-
-
-
 export const getOrderExamplePayload = createOrUpdateOrderExamplePayload;
-
-
-
-
-
-
-
 export const listOrdersExamplePayload = {
   data: {
     orders: [createOrUpdateOrderExamplePayload.data],
@@ -165,38 +145,17 @@ export const listOrdersExamplePayload = {
     pages: 1,
   },
 };
-
-
-
-
-
-
-
 export const deleteOrderExamplePayload = {
   data: {
     success: true,
     message: "The requested order has been deleted.",
   },
 };
-
-
-
-
-
-
-
 export const createOrUpdateMultipleOrdersExamplePayload = {
   data: {
     results: [createOrUpdateOrderExamplePayload.data],
   },
 };
-
-
-
-
-
-
-
 export const createLabelForOrderExamplePayload = {
   data: {
     shipmentId: 72513480,
@@ -207,13 +166,6 @@ export const createLabelForOrderExamplePayload = {
     formData: null,
   },
 };
-
-
-
-
-
-
-
 export const listFulfillmentsExamplePayload = {
   data: {
     fulfillments: [

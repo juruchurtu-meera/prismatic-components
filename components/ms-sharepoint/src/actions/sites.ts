@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, siteId, pageLimit, pageToken, fetchAll } from "../inputs";
 import { paginateResults } from "../utils";
-
 const listFollowedSites = action({
   display: {
     label: "List Followed Sites",
@@ -17,12 +16,10 @@ const listFollowedSites = action({
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
     const endpoint = "/me/followedSites";
-
     if (params.fetchAll) {
       const results = await paginateResults(client, endpoint);
       return { data: results };
     }
-
     const { data } = await client.get("/me/followedSites", {
       params:
         params.pageLimit || params.pageToken
@@ -54,7 +51,6 @@ const listFollowedSites = action({
     },
   },
 });
-
 const listSites = action({
   display: {
     label: "List Sites",
@@ -63,12 +59,10 @@ const listSites = action({
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
     const endpoint = "/sites";
-
     if (params.fetchAll) {
       const results = await paginateResults(client, `${endpoint}?search=`);
       return { data: results };
     }
-
     const { data } = await client.get(endpoint, {
       params:
         params.pageLimit || params.pageToken
@@ -103,11 +97,11 @@ const listSites = action({
     },
   },
 });
-
 const getRootSite = action({
   display: {
     label: "Get Root Site",
-    description: "Returns the information and metadata of the root SharePoint site in your tenant",
+    description:
+      "Returns the information and metadata of the root SharePoint site in your tenant",
   },
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
@@ -129,11 +123,11 @@ const getRootSite = action({
     },
   },
 });
-
 const getSite = action({
   display: {
     label: "Get Site",
-    description: "Returns the information and metadata of the given SharePoint site",
+    description:
+      "Returns the information and metadata of the given SharePoint site",
   },
   perform: async ({ debug: { enabled: debug } }, params) => {
     const client = await createClient(params.connection, debug);
@@ -156,7 +150,6 @@ const getSite = action({
     },
   },
 });
-
 export default {
   listSites,
   listFollowedSites,

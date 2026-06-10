@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection } from "../inputs/general";
-
 export const selectDeviceCompliancePolicy = dataSource({
   display: {
     label: "Select Device Compliance Policy",
@@ -16,14 +15,17 @@ export const selectDeviceCompliancePolicy = dataSource({
     const {
       data: { value },
     } = await client.get("/deviceManagement/deviceCompliancePolicies");
-
-    const result = (value as { id: string; displayName: string }[])
+    const result = (
+      value as {
+        id: string;
+        displayName: string;
+      }[]
+    )
       .map<Element>((policy) => ({
         label: policy.displayName,
         key: policy.id.toString(),
       }))
       .sort((a, b) => ((a.label ?? "") < (b.label ?? "") ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

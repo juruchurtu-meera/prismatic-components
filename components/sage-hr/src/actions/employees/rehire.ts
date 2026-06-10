@@ -8,7 +8,6 @@ import {
   employee_id,
   start_fresh,
 } from "../../inputs";
-
 export const rehireEmployee = action({
   display: {
     label: "Rehire Employee",

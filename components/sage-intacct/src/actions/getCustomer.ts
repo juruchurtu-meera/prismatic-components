@@ -3,7 +3,6 @@ import { connection, fieldsInput, recordNoInput } from "../inputs";
 import { convertResultToGenericObject, executeAction } from "../utils";
 import { Functions } from "@intacct/intacct-sdk";
 import { getCustomerPayload } from "../examplePayloads/getCustomerPayload";
-
 export const getCustomer = action({
   display: {
     label: "Get Customer",

@@ -1,14 +1,16 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { owner, repo } from "../inputs";
-
 const teamsGetLegacy = action({
   display: {
     label: "Teams Get Legacy",
     description: "Get a team (Legacy)",
   },
   perform: async (context, { connection, teamId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}`);
     return { data };
   },
@@ -27,7 +29,6 @@ const teamsGetLegacy = action({
     },
   },
 });
-
 const teamsUpdateLegacy = action({
   display: {
     label: "Teams Update Legacy",
@@ -45,7 +46,10 @@ const teamsUpdateLegacy = action({
       parentTeamId,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/teams/${teamId}`, {
       name,
       description,
@@ -115,14 +119,16 @@ const teamsUpdateLegacy = action({
     },
   },
 });
-
 const teamsDeleteLegacy = action({
   display: {
     label: "Teams Delete Legacy",
     description: "Delete a team (Legacy)",
   },
   perform: async (context, { connection, teamId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/teams/${teamId}`);
     return { data };
   },
@@ -141,7 +147,6 @@ const teamsDeleteLegacy = action({
     },
   },
 });
-
 const teamsListDiscussionsLegacy = action({
   display: {
     label: "Teams List Discussions Legacy",
@@ -151,7 +156,10 @@ const teamsListDiscussionsLegacy = action({
     context,
     { connection, teamId, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/discussions`, {
       params: { direction, per_page: perPage, page },
     });
@@ -198,14 +206,16 @@ const teamsListDiscussionsLegacy = action({
     },
   },
 });
-
 const teamsCreateDiscussionLegacy = action({
   display: {
     label: "Teams Create Discussion Legacy",
     description: "Create a discussion (Legacy)",
   },
   perform: async (context, { connection, teamId, title, body, isPrivate }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/teams/${teamId}/discussions`, {
       title,
       body,
@@ -251,14 +261,16 @@ const teamsCreateDiscussionLegacy = action({
     },
   },
 });
-
 const teamsGetDiscussionLegacy = action({
   display: {
     label: "Teams Get Discussion Legacy",
     description: "Get a discussion (Legacy)",
   },
   perform: async (context, { connection, teamId, discussionNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/discussions/${discussionNumber}`,
     );
@@ -286,7 +298,6 @@ const teamsGetDiscussionLegacy = action({
     },
   },
 });
-
 const teamsUpdateDiscussionLegacy = action({
   display: {
     label: "Teams Update Discussion Legacy",
@@ -296,7 +307,10 @@ const teamsUpdateDiscussionLegacy = action({
     context,
     { connection, teamId, discussionNumber, title, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/teams/${teamId}/discussions/${discussionNumber}`,
       {
@@ -342,14 +356,16 @@ const teamsUpdateDiscussionLegacy = action({
     },
   },
 });
-
 const teamsDeleteDiscussionLegacy = action({
   display: {
     label: "Teams Delete Discussion Legacy",
     description: "Delete a discussion (Legacy)",
   },
   perform: async (context, { connection, teamId, discussionNumber }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/teams/${teamId}/discussions/${discussionNumber}`,
     );
@@ -377,7 +393,6 @@ const teamsDeleteDiscussionLegacy = action({
     },
   },
 });
-
 const teamsListDiscussionCommentsLegacy = action({
   display: {
     label: "Teams List Discussion Comments Legacy",
@@ -387,7 +402,10 @@ const teamsListDiscussionCommentsLegacy = action({
     context,
     { connection, teamId, discussionNumber, direction, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/discussions/${discussionNumber}/comments`,
       { params: { direction, per_page: perPage, page } },
@@ -442,14 +460,16 @@ const teamsListDiscussionCommentsLegacy = action({
     },
   },
 });
-
 const teamsCreateDiscussionCommentLegacy = action({
   display: {
     label: "Teams Create Discussion Comment Legacy",
     description: "Create a discussion comment (Legacy)",
   },
   perform: async (context, { connection, teamId, discussionNumber, body }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/teams/${teamId}/discussions/${discussionNumber}/comments`,
       { body },
@@ -485,7 +505,6 @@ const teamsCreateDiscussionCommentLegacy = action({
     },
   },
 });
-
 const teamsGetDiscussionCommentLegacy = action({
   display: {
     label: "Teams Get Discussion Comment Legacy",
@@ -495,7 +514,10 @@ const teamsGetDiscussionCommentLegacy = action({
     context,
     { connection, teamId, discussionNumber, commentNumber },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/discussions/${discussionNumber}/comments/${commentNumber}`,
     );
@@ -530,7 +552,6 @@ const teamsGetDiscussionCommentLegacy = action({
     },
   },
 });
-
 const teamsUpdateDiscussionCommentLegacy = action({
   display: {
     label: "Teams Update Discussion Comment Legacy",
@@ -540,7 +561,10 @@ const teamsUpdateDiscussionCommentLegacy = action({
     context,
     { connection, teamId, discussionNumber, commentNumber, body },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/teams/${teamId}/discussions/${discussionNumber}/comments/${commentNumber}`,
       { body },
@@ -583,7 +607,6 @@ const teamsUpdateDiscussionCommentLegacy = action({
     },
   },
 });
-
 const teamsDeleteDiscussionCommentLegacy = action({
   display: {
     label: "Teams Delete Discussion Comment Legacy",
@@ -593,7 +616,10 @@ const teamsDeleteDiscussionCommentLegacy = action({
     context,
     { connection, teamId, discussionNumber, commentNumber },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/teams/${teamId}/discussions/${discussionNumber}/comments/${commentNumber}`,
     );
@@ -628,7 +654,6 @@ const teamsDeleteDiscussionCommentLegacy = action({
     },
   },
 });
-
 const reactionsListForTeamDiscussionCommentLegacy = action({
   display: {
     label: "Reactions List For Team Discussion Comment Legacy",
@@ -646,7 +671,10 @@ const reactionsListForTeamDiscussionCommentLegacy = action({
       page,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/discussions/${discussionNumber}/comments/${commentNumber}/reactions`,
       { params: { content, per_page: perPage, page } },
@@ -713,7 +741,6 @@ const reactionsListForTeamDiscussionCommentLegacy = action({
     },
   },
 });
-
 const reactionsCreateForTeamDiscussionCommentLegacy = action({
   display: {
     label: "Reactions Create For Team Discussion Comment Legacy",
@@ -723,7 +750,10 @@ const reactionsCreateForTeamDiscussionCommentLegacy = action({
     context,
     { connection, teamId, discussionNumber, commentNumber, content },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/teams/${teamId}/discussions/${discussionNumber}/comments/${commentNumber}/reactions`,
       { content },
@@ -776,7 +806,6 @@ const reactionsCreateForTeamDiscussionCommentLegacy = action({
     },
   },
 });
-
 const reactionsListForTeamDiscussionLegacy = action({
   display: {
     label: "Reactions List For Team Discussion Legacy",
@@ -786,7 +815,10 @@ const reactionsListForTeamDiscussionLegacy = action({
     context,
     { connection, teamId, discussionNumber, content, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/discussions/${discussionNumber}/reactions`,
       { params: { content, per_page: perPage, page } },
@@ -846,7 +878,6 @@ const reactionsListForTeamDiscussionLegacy = action({
     },
   },
 });
-
 const reactionsCreateForTeamDiscussionLegacy = action({
   display: {
     label: "Reactions Create For Team Discussion Legacy",
@@ -856,7 +887,10 @@ const reactionsCreateForTeamDiscussionLegacy = action({
     context,
     { connection, teamId, discussionNumber, content },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/teams/${teamId}/discussions/${discussionNumber}/reactions`,
       { content },
@@ -902,14 +936,16 @@ const reactionsCreateForTeamDiscussionLegacy = action({
     },
   },
 });
-
 const teamsListPendingInvitationsLegacy = action({
   display: {
     label: "Teams List Pending Invitations Legacy",
     description: "List pending team invitations (Legacy)",
   },
   perform: async (context, { connection, teamId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/invitations`, {
       params: { per_page: perPage, page },
     });
@@ -944,14 +980,16 @@ const teamsListPendingInvitationsLegacy = action({
     },
   },
 });
-
 const teamsListMembersLegacy = action({
   display: {
     label: "Teams List Members Legacy",
     description: "List team members (Legacy)",
   },
   perform: async (context, { connection, teamId, role, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/members`, {
       params: { role, per_page: perPage, page },
     });
@@ -999,14 +1037,16 @@ const teamsListMembersLegacy = action({
     },
   },
 });
-
 const teamsGetMemberLegacy = action({
   display: {
     label: "Teams Get Member Legacy",
     description: "Get team member (Legacy)",
   },
   perform: async (context, { connection, teamId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/members/${username}`);
     return { data };
   },
@@ -1032,14 +1072,16 @@ const teamsGetMemberLegacy = action({
     },
   },
 });
-
 const teamsAddMemberLegacy = action({
   display: {
     label: "Teams Add Member Legacy",
     description: "Add team member (Legacy)",
   },
   perform: async (context, { connection, teamId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/teams/${teamId}/members/${username}`,
       {},
@@ -1068,14 +1110,16 @@ const teamsAddMemberLegacy = action({
     },
   },
 });
-
 const teamsRemoveMemberLegacy = action({
   display: {
     label: "Teams Remove Member Legacy",
     description: "Remove team member (Legacy)",
   },
   perform: async (context, { connection, teamId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/teams/${teamId}/members/${username}`,
     );
@@ -1103,14 +1147,16 @@ const teamsRemoveMemberLegacy = action({
     },
   },
 });
-
 const teamsGetMembershipForUserLegacy = action({
   display: {
     label: "Teams Get Membership For User Legacy",
     description: "Get team membership for a user (Legacy)",
   },
   perform: async (context, { connection, teamId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/memberships/${username}`,
     );
@@ -1138,14 +1184,16 @@ const teamsGetMembershipForUserLegacy = action({
     },
   },
 });
-
 const teamsAddOrUpdateMembershipForUserLegacy = action({
   display: {
     label: "Teams Add Or Update Membership For User Legacy",
     description: "Add or update team membership for a user (Legacy)",
   },
   perform: async (context, { connection, teamId, username, role }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/teams/${teamId}/memberships/${username}`,
       { role },
@@ -1186,14 +1234,16 @@ const teamsAddOrUpdateMembershipForUserLegacy = action({
     },
   },
 });
-
 const teamsRemoveMembershipForUserLegacy = action({
   display: {
     label: "Teams Remove Membership For User Legacy",
     description: "Remove team membership for a user (Legacy)",
   },
   perform: async (context, { connection, teamId, username }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/teams/${teamId}/memberships/${username}`,
     );
@@ -1221,14 +1271,16 @@ const teamsRemoveMembershipForUserLegacy = action({
     },
   },
 });
-
 const teamsListProjectsLegacy = action({
   display: {
     label: "Teams List Projects Legacy",
     description: "List team projects (Legacy)",
   },
   perform: async (context, { connection, teamId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/projects`, {
       params: { per_page: perPage, page },
     });
@@ -1263,14 +1315,16 @@ const teamsListProjectsLegacy = action({
     },
   },
 });
-
 const teamsCheckPermissionsForProjectLegacy = action({
   display: {
     label: "Teams Check Permissions For Project Legacy",
     description: "Check team permissions for a project (Legacy)",
   },
   perform: async (context, { connection, teamId, projectId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/projects/${projectId}`);
     return { data };
   },
@@ -1296,14 +1350,16 @@ const teamsCheckPermissionsForProjectLegacy = action({
     },
   },
 });
-
 const teamsAddOrUpdateProjectPermissionsLegacy = action({
   display: {
     label: "Teams Add Or Update Project Permissions Legacy",
     description: "Add or update team project permissions (Legacy)",
   },
   perform: async (context, { connection, teamId, projectId, permission }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/teams/${teamId}/projects/${projectId}`,
       { permission },
@@ -1344,14 +1400,16 @@ const teamsAddOrUpdateProjectPermissionsLegacy = action({
     },
   },
 });
-
 const teamsRemoveProjectLegacy = action({
   display: {
     label: "Teams Remove Project Legacy",
     description: "Remove a project from a team (Legacy)",
   },
   perform: async (context, { connection, teamId, projectId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/teams/${teamId}/projects/${projectId}`,
     );
@@ -1379,14 +1437,16 @@ const teamsRemoveProjectLegacy = action({
     },
   },
 });
-
 const teamsListReposLegacy = action({
   display: {
     label: "Teams List Repos Legacy",
     description: "List team repositories (Legacy)",
   },
   perform: async (context, { connection, teamId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/repos`, {
       params: { per_page: perPage, page },
     });
@@ -1421,14 +1481,16 @@ const teamsListReposLegacy = action({
     },
   },
 });
-
 const teamsCheckPermissionsForRepoLegacy = action({
   display: {
     label: "Teams Check Permissions For Repo Legacy",
     description: "Check team permissions for a repository (Legacy)",
   },
   perform: async (context, { connection, teamId, owner, repo }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/repos/${owner}/${repo}`,
     );
@@ -1451,14 +1513,16 @@ const teamsCheckPermissionsForRepoLegacy = action({
     repo,
   },
 });
-
 const teamsAddOrUpdateRepoPermissionsLegacy = action({
   display: {
     label: "Teams Add Or Update Repo Permissions Legacy",
     description: "Add or update team repository permissions (Legacy)",
   },
   perform: async (context, { connection, teamId, owner, repo, permission }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/teams/${teamId}/repos/${owner}/${repo}`,
       { permission },
@@ -1494,14 +1558,16 @@ const teamsAddOrUpdateRepoPermissionsLegacy = action({
     },
   },
 });
-
 const teamsRemoveRepoLegacy = action({
   display: {
     label: "Teams Remove Repo Legacy",
     description: "Remove a repository from a team (Legacy)",
   },
   perform: async (context, { connection, teamId, owner, repo }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/teams/${teamId}/repos/${owner}/${repo}`,
     );
@@ -1524,14 +1590,16 @@ const teamsRemoveRepoLegacy = action({
     repo,
   },
 });
-
 const teamsListIdpGroupsForLegacy = action({
   display: {
     label: "Teams List Idp Groups For Legacy",
     description: "List IdP groups for a team (Legacy)",
   },
   perform: async (context, { connection, teamId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/teams/${teamId}/team-sync/group-mappings`,
     );
@@ -1552,14 +1620,16 @@ const teamsListIdpGroupsForLegacy = action({
     },
   },
 });
-
 const teamsCreateOrUpdateIdpGroupConnectionsLegacy = action({
   display: {
     label: "Teams Create Or Update Idp Group Connections Legacy",
     description: "Create or update IdP group connections (Legacy)",
   },
   perform: async (context, { connection, teamId, groups, syncedAt }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/teams/${teamId}/team-sync/group-mappings`,
       {
@@ -1598,14 +1668,16 @@ const teamsCreateOrUpdateIdpGroupConnectionsLegacy = action({
     },
   },
 });
-
 const teamsListChildLegacy = action({
   display: {
     label: "Teams List Child Legacy",
     description: "List child teams (Legacy)",
   },
   perform: async (context, { connection, teamId, perPage, page }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/teams/${teamId}/teams`, {
       params: { per_page: perPage, page },
     });
@@ -1640,7 +1712,6 @@ const teamsListChildLegacy = action({
     },
   },
 });
-
 export default {
   teamsGetLegacy,
   teamsUpdateLegacy,

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { appointmentId, connection } from "../../inputs";
-
 export const deleteAppointment = action({
   display: {
     label: "Delete Appointment",

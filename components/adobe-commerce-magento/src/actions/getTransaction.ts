@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { getTransactionExampleResponse } from "../examplePayloads";
 import { connectionInput, transactionId } from "../inputs";
-
 export const getTransaction = action({
   display: {
     label: "Get Transaction",
@@ -26,5 +25,4 @@ export const getTransaction = action({
   },
   examplePayload: getTransactionExampleResponse,
 });
-
 export default { getTransaction };

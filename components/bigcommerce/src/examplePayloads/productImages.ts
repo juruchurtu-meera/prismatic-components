@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 const productImageObject = {
   id: 382,
   product_id: 174,
@@ -27,7 +15,6 @@ const productImageObject = {
     "https://cdn11.bigcommerce.com/s-abc123/images/stencil/44x44/products/174/382/jar-main__52168.1534347946.jpg",
   date_modified: "2018-08-15T14:49:15+00:00",
 };
-
 const paginationMeta = {
   pagination: {
     total: 1,
@@ -40,35 +27,30 @@ const paginationMeta = {
     },
   },
 };
-
 export const getAllProductImagesExamplePayload = {
   data: {
     data: [productImageObject],
     meta: paginationMeta,
   },
 };
-
 export const getProductImageExamplePayload = {
   data: {
     data: productImageObject,
     meta: {},
   },
 };
-
 export const createProductImageExamplePayload = {
   data: {
     data: productImageObject,
     meta: {},
   },
 };
-
 export const updateProductImageExamplePayload = {
   data: {
     data: productImageObject,
     meta: {},
   },
 };
-
 export const deleteProductImageExamplePayload = {
   data: null,
 };

@@ -7,10 +7,8 @@ import {
 } from "./constants";
 import type { LegacyPagination, OdooRecord } from "./types";
 import { toOdooDate } from "./util";
-
 export const isLegacyConnection = (connection: Connection): boolean =>
   connection.key === LEGACY_CONNECTION_KEY;
-
 export const createOdooAwaitClient = async (
   connection: Connection,
 ): Promise<Odoo> => {
@@ -31,7 +29,6 @@ export const createOdooAwaitClient = async (
   }
   return client;
 };
-
 export const paginateSearchLegacy = async <T>({
   client,
   model,
@@ -65,12 +62,14 @@ export const paginateSearchLegacy = async <T>({
   }
   return records;
 };
-
 export const fetchOdooRecordsSinceLegacy = async (
   client: Odoo,
   model: string,
   lastPolledAt: string,
-): Promise<{ records: OdooRecord[]; truncated: boolean }> => {
+): Promise<{
+  records: OdooRecord[];
+  truncated: boolean;
+}> => {
   const domain = [["write_date", ">=", toOdooDate(lastPolledAt)]];
   const records: OdooRecord[] = [];
   for (let page = 0; page < MAX_POLL_PAGES; page++) {

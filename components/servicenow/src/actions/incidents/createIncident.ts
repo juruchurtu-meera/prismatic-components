@@ -6,7 +6,6 @@ import {
   instanceUrlInput,
 } from "../../inputs";
 import { createTableRecord } from "../tables/records/createTableRecord";
-
 export const createIncident = action({
   display: {
     label: "Create Incident",

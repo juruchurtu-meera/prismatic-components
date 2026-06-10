@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const activityListNotificationsForAuthenticatedUser = action({
   display: {
     label: "Activity List Notifications For Authenticated User",
@@ -10,7 +9,10 @@ const activityListNotificationsForAuthenticatedUser = action({
     context,
     { connection, all, participating, since, before, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/notifications`, {
       params: { all, participating, since, before, per_page: perPage, page },
     });
@@ -69,14 +71,16 @@ const activityListNotificationsForAuthenticatedUser = action({
     },
   },
 });
-
 const activityMarkNotificationsAsRead = action({
   display: {
     label: "Activity Mark Notifications As Read",
     description: "Mark notifications as read",
   },
   perform: async (context, { connection, lastReadAt, read }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/notifications`, {
       last_read_at: lastReadAt,
       read,
@@ -105,14 +109,16 @@ const activityMarkNotificationsAsRead = action({
     },
   },
 });
-
 const activityGetThread = action({
   display: {
     label: "Activity Get Thread",
     description: "Get a thread",
   },
   perform: async (context, { connection, threadId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/notifications/threads/${threadId}`);
     return { data };
   },
@@ -131,14 +137,16 @@ const activityGetThread = action({
     },
   },
 });
-
 const activityMarkThreadAsRead = action({
   display: {
     label: "Activity Mark Thread As Read",
     description: "Mark a thread as read",
   },
   perform: async (context, { connection, threadId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/notifications/threads/${threadId}`,
       {},
@@ -160,14 +168,16 @@ const activityMarkThreadAsRead = action({
     },
   },
 });
-
 const activityGetThreadSubscriptionForAuthenticatedUser = action({
   display: {
     label: "Activity Get Thread Subscription For Authenticated User",
     description: "Get a thread subscription for the authenticated user",
   },
   perform: async (context, { connection, threadId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/notifications/threads/${threadId}/subscription`,
     );
@@ -188,14 +198,16 @@ const activityGetThreadSubscriptionForAuthenticatedUser = action({
     },
   },
 });
-
 const activitySetThreadSubscription = action({
   display: {
     label: "Activity Set Thread Subscription",
     description: "Set a thread subscription",
   },
   perform: async (context, { connection, threadId, ignored }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/notifications/threads/${threadId}/subscription`,
       {
@@ -227,14 +239,16 @@ const activitySetThreadSubscription = action({
     },
   },
 });
-
 const activityDeleteThreadSubscription = action({
   display: {
     label: "Activity Delete Thread Subscription",
     description: "Delete a thread subscription",
   },
   perform: async (context, { connection, threadId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/notifications/threads/${threadId}/subscription`,
     );
@@ -255,7 +269,6 @@ const activityDeleteThreadSubscription = action({
     },
   },
 });
-
 export default {
   activityListNotificationsForAuthenticatedUser,
   activityMarkNotificationsAsRead,

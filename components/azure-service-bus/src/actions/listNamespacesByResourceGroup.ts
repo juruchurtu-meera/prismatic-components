@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getAzureServiceBusClient } from "../client";
 import { listNamespacesByResourceGroupExamplePayload } from "../examplePayloads";
 import { connection, resourceGroupName, subscriptionId } from "../inputs";
-
 export const listNamespacesByResourceGroup = action({
   display: {
     label: "List Namespaces By Resource Group",
@@ -32,5 +31,4 @@ export const listNamespacesByResourceGroup = action({
     subscriptionId,
   },
 });
-
 export default { listNamespacesByResourceGroup };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listCompanyCodesResponse } from "../../examplePayloads";
 import { $filter, connection } from "../../inputs";
-
 export const listCompanyCodes = action({
   display: {
     label: "List Company Codes",

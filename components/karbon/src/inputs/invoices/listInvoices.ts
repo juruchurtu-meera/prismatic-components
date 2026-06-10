@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { $orderby, connection } from "../shared";
 import { includeLineItems } from "./shared";
-
 export default {
   connection,
   includeLineItems,

@@ -1,4 +1,3 @@
-
 export const getIssueExamplePayload = {
   data: {
     fields: {
@@ -28,7 +27,8 @@ export const getIssueExamplePayload = {
             name: "jdoe",
             self: "https://your-domain.atlassian.net/rest/api/2/user?accountId=5b10ac8d82e05b22cc7d4ef5",
           },
-          content: "https://your-domain.atlassian.net/secure/attachment/12345/document.pdf",
+          content:
+            "https://your-domain.atlassian.net/secure/attachment/12345/document.pdf",
           created: "2023-08-29T10:30:00.000+0000",
           filename: "document.pdf",
           id: 12345,
@@ -44,7 +44,8 @@ export const getIssueExamplePayload = {
           outwardIssue: {
             fields: {
               status: {
-                iconUrl: "https://your-domain.atlassian.net/images/icons/statuses/open.png",
+                iconUrl:
+                  "https://your-domain.atlassian.net/images/icons/statuses/open.png",
                 name: "Open",
               },
             },
@@ -77,10 +78,14 @@ export const getIssueExamplePayload = {
       },
       project: {
         avatarUrls: {
-          "16x16": "https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000",
-          "24x24": "https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000",
-          "32x32": "https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000",
-          "48x48": "https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000",
+          "16x16":
+            "https://your-domain.atlassian.net/secure/projectavatar?size=xsmall&pid=10000",
+          "24x24":
+            "https://your-domain.atlassian.net/secure/projectavatar?size=small&pid=10000",
+          "32x32":
+            "https://your-domain.atlassian.net/secure/projectavatar?size=medium&pid=10000",
+          "48x48":
+            "https://your-domain.atlassian.net/secure/projectavatar?size=large&pid=10000",
         },
         id: "10000",
         insight: {
@@ -145,7 +150,8 @@ export const getIssueExamplePayload = {
           inwardIssue: {
             fields: {
               status: {
-                iconUrl: "https://your-domain.atlassian.net/images/icons/statuses/inprogress.png",
+                iconUrl:
+                  "https://your-domain.atlassian.net/images/icons/statuses/inprogress.png",
                 name: "In Progress",
               },
             },
@@ -219,7 +225,6 @@ export const getIssueExamplePayload = {
     self: "https://your-domain.atlassian.net/rest/api/2/issue/10000",
   },
 };
-
 export const createIssueExamplePayload = {
   data: {
     id: "10001",
@@ -227,7 +232,6 @@ export const createIssueExamplePayload = {
     self: "https://your-domain.atlassian.net/rest/api/3/issue/10001",
   },
 };
-
 export const updateIssueExamplePayload = {
   data: {
     id: "10001",
@@ -235,7 +239,6 @@ export const updateIssueExamplePayload = {
     self: "https://your-domain.atlassian.net/rest/api/3/issue/10001",
   },
 };
-
 export const searchIssuesExamplePayload = {
   data: {
     expand: "names,schema",
@@ -276,7 +279,6 @@ export const searchIssuesExamplePayload = {
     ],
   },
 };
-
 export const listIssuesExamplePayload = {
   data: {
     expand: "names,schema",
@@ -314,7 +316,6 @@ export const listIssuesExamplePayload = {
     ],
   },
 };
-
 export const listIssueTransitionsExamplePayload = {
   data: {
     expand: "transitions",
@@ -324,8 +325,10 @@ export const listIssueTransitionsExamplePayload = {
         name: "In Progress",
         to: {
           self: "https://your-domain.atlassian.net/rest/api/3/status/3",
-          description: "This issue is being actively worked on at the moment by the assignee.",
-          iconUrl: "https://your-domain.atlassian.net/images/icons/statuses/inprogress.png",
+          description:
+            "This issue is being actively worked on at the moment by the assignee.",
+          iconUrl:
+            "https://your-domain.atlassian.net/images/icons/statuses/inprogress.png",
           name: "In Progress",
           id: "3",
         },
@@ -351,11 +354,9 @@ export const listIssueTransitionsExamplePayload = {
     ],
   },
 };
-
 export const deleteIssueExamplePayload = {
   data: {},
 };
-
 export const findIssueExamplePayload = {
   data: {
     expand: "names,schema",
@@ -388,11 +389,9 @@ export const findIssueExamplePayload = {
     ],
   },
 };
-
 export const transitionIssueExamplePayload = {
   data: {},
 };
-
 export const addIssueAttachmentExamplePayload = {
   data: [
     {
@@ -408,12 +407,12 @@ export const addIssueAttachmentExamplePayload = {
       created: "2024-01-15T10:30:00.000+0000",
       size: 1024000,
       mimeType: "application/pdf",
-      content: "https://your-domain.atlassian.net/secure/attachment/10001/document.pdf",
+      content:
+        "https://your-domain.atlassian.net/secure/attachment/10001/document.pdf",
       thumbnail: "https://your-domain.atlassian.net/secure/thumbnail/10001",
     },
   ],
 };
-
 export const downloadAttachmentExamplePayload = {
   data: [
     {
@@ -423,7 +422,6 @@ export const downloadAttachmentExamplePayload = {
     },
   ],
 };
-
 export const listIssueAttachmentsExamplePayload = {
   data: [
     {
@@ -439,7 +437,8 @@ export const listIssueAttachmentsExamplePayload = {
       created: "2024-01-15T10:30:00.000+0000",
       size: 256000,
       mimeType: "image/png",
-      content: "https://your-domain.atlassian.net/secure/attachment/10001/screenshot.png",
+      content:
+        "https://your-domain.atlassian.net/secure/attachment/10001/screenshot.png",
     },
     {
       self: "https://your-domain.atlassian.net/rest/api/2/attachment/10002",
@@ -453,12 +452,13 @@ export const listIssueAttachmentsExamplePayload = {
       },
       created: "2024-01-16T14:20:00.000+0000",
       size: 512000,
-      mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      content: "https://your-domain.atlassian.net/secure/attachment/10002/requirements.docx",
+      mimeType:
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      content:
+        "https://your-domain.atlassian.net/secure/attachment/10002/requirements.docx",
     },
   ],
 };
-
 export const listIssueWorklogsExamplePayload = {
   data: {
     startAt: 0,

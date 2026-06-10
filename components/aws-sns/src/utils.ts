@@ -11,9 +11,7 @@ import MessageValidator from "sns-validator";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
 import type { Store } from "./interfaces/Store";
 import { STORE_KEY } from "./constants";
-
 export const cleanStringInput = toOptionalString;
-
 export const lowerCaseHeaders = (
   headers: Record<string, string>,
 ): Record<string, string> =>
@@ -24,7 +22,6 @@ export const lowerCaseHeaders = (
     },
     {},
   );
-
 export const fetchTopics = async (
   sns: SNSClient,
   fetchAllTopics: boolean,
@@ -35,10 +32,8 @@ export const fetchTopics = async (
     : {
         NextToken: nextToken,
       };
-
   const command = new ListTopicsCommand(listTopicParams);
   const response = await sns.send(command);
-
   if (fetchAllTopics) {
     const allTopics: ListTopicsResponse["Topics"] = response.Topics || [];
     let nextToken = response.NextToken || undefined;
@@ -53,10 +48,8 @@ export const fetchTopics = async (
     response.Topics = allTopics;
     response.NextToken = undefined;
   }
-
   return response;
 };
-
 export const fetchSubscriptions = async (
   sns: SNSClient,
   topicArn: string,
@@ -71,7 +64,6 @@ export const fetchSubscriptions = async (
     listSubscriptionsByTopicParams,
   );
   const response = await sns.send(command);
-
   if (fetchAllSubscriptions) {
     const allSubscriptions: ListSubscriptionsByTopicResponse["Subscriptions"] =
       response.Subscriptions || [];
@@ -88,10 +80,8 @@ export const fetchSubscriptions = async (
     response.Subscriptions = allSubscriptions;
     response.NextToken = undefined;
   }
-
   return response;
 };
-
 export const webhookPerformFn = async (
   { logger, debug: { enabled: debug } },
   payload,
@@ -100,11 +90,9 @@ export const webhookPerformFn = async (
   const validator = new MessageValidator();
   const originalHeaders = payload.headers;
   payload.headers = lowerCaseHeaders(payload.headers);
-
   const _parseMessage =
     payload.headers["x-amz-sns-message-type"] === "Notification" &&
     util.types.toBool(parseMessage);
-
   const validateMessage = async ({ rawBody: { data }, headers }) => {
     if (headers["x-amz-sns-rawdelivery"] === "true") {
       return _parseMessage
@@ -123,12 +111,8 @@ export const webhookPerformFn = async (
       });
     });
   };
-
   const message = await validateMessage(payload);
-
-  
   let branch = "";
-
   const messageType = payload.headers["x-amz-sns-message-type"];
   const client = createClient({
     baseUrl: message.SubscribeURL,
@@ -151,8 +135,6 @@ export const webhookPerformFn = async (
         `Message type was not "Notification", "SubscriptionConfirmation" or "UnsubscribeConfirmation", but "${messageType}" instead.`,
       );
   }
-
-  
   if (_parseMessage && payload.headers["x-amz-sns-rawdelivery"] !== "true") {
     try {
       message.Message = JSON.parse(util.types.toString(message.Message));
@@ -162,11 +144,8 @@ export const webhookPerformFn = async (
       );
     }
   }
-
   payload.headers = originalHeaders;
-
   return {
-    
     branch,
     payload: {
       ...payload,
@@ -176,32 +155,28 @@ export const webhookPerformFn = async (
     },
   };
 };
-
 const getStateKey = (context: ActionContext): string => context.flow.stableId;
-
 const getLegacyStateKey = (context: ActionContext): string => {
   const triggerId = context.webhookUrls[context.flow.name]?.split("/").pop();
   return `${triggerId}:awsSnsTopicSubscription`;
 };
-
 export const resolveSubscriptionState = (
   context: ActionContext,
-): { subscriptionArn: string; isLegacy: boolean } => {
+): {
+  subscriptionArn: string;
+  isLegacy: boolean;
+} => {
   const store = context[STORE_KEY] as Store;
-
   const current = store[getStateKey(context)]?.subscriptionArn;
   if (current) {
     return { subscriptionArn: util.types.toString(current), isLegacy: false };
   }
-
   const legacy = store[getLegacyStateKey(context)]?.subscriptionArn;
   if (legacy) {
     return { subscriptionArn: util.types.toString(legacy), isLegacy: true };
   }
-
   return { subscriptionArn: "", isLegacy: false };
 };
-
 export const clearSubscriptionState = (
   context: ActionContext,
   isLegacy: boolean,

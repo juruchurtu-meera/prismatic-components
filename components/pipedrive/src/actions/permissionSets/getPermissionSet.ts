@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, permissionSetIdInput } from "../../inputs";
-
 export const getPermissionSet = action({
   display: {
     label: "Get Permission Set",

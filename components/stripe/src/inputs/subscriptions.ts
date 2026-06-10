@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const cancelAt = input({
   label: "Cancel At",
   type: "string",
@@ -11,7 +10,6 @@ export const cancelAt = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const promotionCode = input({
   label: "Promotion Code",
   type: "string",
@@ -22,7 +20,6 @@ export const promotionCode = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const quantity = input({
   label: "Quantity",
   type: "string",
@@ -32,7 +29,6 @@ export const quantity = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const subscriptionPriceId = input({
   label: "Price ID",
   type: "string",
@@ -42,7 +38,6 @@ export const subscriptionPriceId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const daysUntilDue = input({
   label: "Days Until Due",
   type: "string",

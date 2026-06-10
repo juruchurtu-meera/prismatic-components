@@ -4,7 +4,6 @@ import { createPortalOnlyCustomer } from "./createPortalOnlyCustomer";
 import { listCustomers } from "./listCustomers";
 import { removeCustomers } from "./removeCustomers";
 import { revokePortalAccess } from "./revokePortalAccess";
-
 export default {
   listCustomers,
   createCustomer,

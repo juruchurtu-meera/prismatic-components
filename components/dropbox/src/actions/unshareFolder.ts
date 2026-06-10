@@ -9,7 +9,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const unshareFolder = action({
   display: {
     label: "Unshare Folder",

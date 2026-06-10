@@ -8,7 +8,6 @@ import { selectUser } from "./selectUser";
 import { selectWarehouseMetadata } from "./selectWarehouseMetadata";
 import { sources } from "./sources";
 import { warehouses } from "./warehouses";
-
 export default {
   destination,
   selectDestinationMetadata,

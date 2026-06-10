@@ -1,7 +1,6 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { selectUserInputs } from "../inputs";
-
 export const selectUser = dataSource({
   display: {
     label: "Select User",
@@ -16,11 +15,9 @@ export const selectUser = dataSource({
     } = await client.get("/users", {
       params: { includeAll: true },
     });
-
     if (!users || !Array.isArray(users)) {
       return { result: [] };
     }
-
     const result: Element[] = users
       .map((user: { name?: string; email?: string; id: string | number }) => ({
         label: user.name || user.email || String(user.id),
@@ -29,7 +26,6 @@ export const selectUser = dataSource({
       .sort((a: Element, b: Element) =>
         (a.label ?? "") < (b.label ?? "") ? -1 : 1,
       );
-
     return { result };
   },
 });

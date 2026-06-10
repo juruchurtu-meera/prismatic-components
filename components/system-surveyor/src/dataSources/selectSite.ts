@@ -1,12 +1,9 @@
 import { dataSource } from "@prismatic-io/spectral";
-
 import { createSsvClient } from "../client";
 import { selectSiteExamplePayload } from "../examplePayloads/dataSources";
 import { selectSiteInputs } from "../inputs";
 import type { Site } from "../types";
 import { fetchPaginatedResults, sortByLabel } from "../util";
-
-
 export const selectSite = dataSource({
   display: {
     label: "Select Site",
@@ -18,14 +15,12 @@ export const selectSite = dataSource({
     const sites = await fetchPaginatedResults(client, "/v3/sitelist", {
       fetchAll: true,
     });
-
     const result = sortByLabel(
       (sites as Site[]).map((site) => ({
         label: site.name,
         key: site.id,
       })),
     );
-
     return { result };
   },
   dataSourceType: "picklist",

@@ -2,7 +2,6 @@ import { dataSource, input } from "@prismatic-io/spectral";
 import type { ListUsersQueryParams } from "../actions/types/ListUsersQueryParams";
 import { getDomoClient } from "../client";
 import { connection, limit, offset } from "../inputs";
-
 const selectUser = dataSource({
   display: {
     label: "Select User",
@@ -24,8 +23,15 @@ const selectUser = dataSource({
           label: user.name || user.email || user.id,
           key: user.id.toString(),
         }))
-        .sort((a: { label: string }, b: { label: string }) =>
-          a.label < b.label ? -1 : 1,
+        .sort(
+          (
+            a: {
+              label: string;
+            },
+            b: {
+              label: string;
+            },
+          ) => (a.label < b.label ? -1 : 1),
         ),
     };
   },
@@ -48,5 +54,4 @@ const selectUser = dataSource({
     result: [{ label: "Leonhard Euler", key: "27" }],
   },
 });
-
 export default { selectUser };

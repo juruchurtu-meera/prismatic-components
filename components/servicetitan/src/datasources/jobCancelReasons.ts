@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { jobCancelReasonsDatasource } from "../examplePayloads";
 import { connection } from "../inputs";
 import type { JobCancel } from "../interfaces";
-
 export const selectJobCancelReason = dataSource({
   display: {
     label: "Select Job Cancel Reason",
@@ -18,7 +17,6 @@ export const selectJobCancelReason = dataSource({
     let reasons: JobCancel[] = [];
     let cursor = false;
     let page = 1;
-
     do {
       const { data } = await client.get(`/job-cancel-reasons`, {
         params: {
@@ -31,14 +29,12 @@ export const selectJobCancelReason = dataSource({
       cursor = data.hasMore;
       page++;
     } while (cursor && page < 10);
-
     const objects = reasons
       .sort((a, b) => (a.name < b.name ? -1 : 1))
       .map<Element>((reason) => ({
         key: reason.id.toString(),
         label: `${reason.name} (ID: ${reason.id})`,
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

@@ -12,7 +12,6 @@ import {
   total,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const listWebhookSubscriptions = action({
   display: {
     label: "List Webhook Subscriptions",
@@ -30,7 +29,6 @@ export const listWebhookSubscriptions = action({
       filter_type: filterType,
       filter_id: filterId,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({

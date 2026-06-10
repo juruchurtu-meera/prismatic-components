@@ -27,7 +27,6 @@ export {
   updateCategoriesExamplePayload,
   upsertCategoryTreesExamplePayload,
 } from "./categoryTrees";
-
 export {
   createCustomFieldExamplePayload,
   deleteCustomFieldExamplePayload,
@@ -72,7 +71,6 @@ export {
   getWebhooksExamplePayload,
   updateWebhookExamplePayload,
 } from "./webhooks";
-
 export {
   myTriggerExamplePayload,
   pollChangesTriggerExamplePayload,

@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   clientEntityIdInput,
   connectionInput,
@@ -11,11 +10,8 @@ import { getClient, sendAsync } from "../client";
 import { BING_API, toArray } from "../util";
 import { AddClientLinksResponse, OperationError } from "./addClientLinks";
 import { updateClientLinksExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "UpdateClientLinks";
-
 export type UpdateClientLinksResponse = AddClientLinksResponse;
-
 export const updateClientLinks = action({
   display: {
     label: "Update Client Link",
@@ -29,7 +25,6 @@ export const updateClientLinks = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<UpdateClientLinksResponse>({
       debug,
       args: {
@@ -47,7 +42,6 @@ export const updateClientLinks = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data:
         response?.OperationErrors?.OperationError ||

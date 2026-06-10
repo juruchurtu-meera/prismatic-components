@@ -7,13 +7,15 @@ import {
   paginationStartInput,
 } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const getOrganizationUpdates = action({
   display: {
     label: "Get Organization Updates",
     description: "Lists updates about an organization.",
   },
-  perform: async (context, { connection, id, start, limit, allChanges, items }) => {
+  perform: async (
+    context,
+    { connection, id, start, limit, allChanges, items },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(`/organizations/${id}/flow`, {
       params: { start, limit, all_changes: allChanges, items },
@@ -35,7 +37,8 @@ export const getOrganizationUpdates = action({
       label: "Items",
       type: "string",
       clean: cleanString,
-      comments: "A comma-separated string for filtering out item specific updates",
+      comments:
+        "A comma-separated string for filtering out item specific updates",
     }),
   },
 });

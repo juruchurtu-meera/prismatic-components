@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createBookingResponse as getBookingResponse } from "../../examplePayloads";
 import { bookingId, connection } from "../../inputs";
-
 export const getBookingByTenant = action({
   display: {
     label: "Get Booking by Tenant",

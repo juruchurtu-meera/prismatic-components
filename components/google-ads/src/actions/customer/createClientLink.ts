@@ -2,18 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createClientLinkExamplePayload } from "../../examplePayloads";
 import { createClientLinkInputs } from "../../inputs";
-
-
-
-
-
-
-
-
-
-
-
-
 export const createClientLink = action({
   display: {
     label: "Create Client Link",
@@ -27,8 +15,6 @@ export const createClientLink = action({
       context.debug.enabled,
       context.logger,
     );
-
-    
     const { data } = await client.post(
       `customers/${managerCustomerId}/customerClientLinks:mutate`,
       {
@@ -41,8 +27,6 @@ export const createClientLink = action({
       },
     );
     const resourceName = data.result.resourceName;
-
-    
     const query = `SELECT customer_client_link.manager_link_id FROM customer_client_link WHERE customer_client_link.resource_name = "${resourceName}"`;
     const queryResponse = await client.post(
       `/customers/${managerCustomerId}/googleAds:search`,
@@ -52,7 +36,6 @@ export const createClientLink = action({
       ?.customerClientLink || {
       managerLinkId: undefined,
     };
-
     return {
       data: {
         resourceName,

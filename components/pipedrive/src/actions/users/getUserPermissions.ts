@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, userIdInput } from "../../inputs";
-
 export const getUserPermissions = action({
   display: {
     label: "Get User Permissions",

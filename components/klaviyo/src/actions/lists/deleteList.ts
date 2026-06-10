@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getApi } from "../../api";
 import { deleteListInputs as inputs } from "../../inputs/lists";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const deleteList = action({
   display: {
     label: "Delete List",
@@ -14,7 +13,6 @@ export const deleteList = action({
     if (debug) {
       context.logger.debug({ connection, listId, debug });
     }
-
     await listsApi.deleteList(listId!);
     return {
       data: "List deleted successfully.",

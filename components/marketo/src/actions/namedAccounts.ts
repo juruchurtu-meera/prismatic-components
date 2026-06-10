@@ -18,7 +18,6 @@ import {
   idsToDeleteInput,
   nextPageTokenInput,
 } from "../inputs";
-
 const describeNamedAccount = action({
   display: {
     label: "Describe Named Account",
@@ -35,7 +34,6 @@ const describeNamedAccount = action({
   },
   examplePayload: describeNamedAccountExamplePayload,
 });
-
 const getNamedAccountsByFilter = action({
   display: {
     label: "Get Named Accounts By Filter",
@@ -71,7 +69,6 @@ const getNamedAccountsByFilter = action({
   },
   examplePayload: getNamedAccountsByFilterExamplePayload,
 });
-
 const syncNamedAccounts = action({
   display: {
     label: "Sync Named Accounts (Create, Update, Upsert)",
@@ -102,7 +99,6 @@ const syncNamedAccounts = action({
   },
   examplePayload: syncNamedAccountsExamplePayload,
 });
-
 const deleteNamedAccounts = action({
   display: {
     label: "Delete Named Accounts",
@@ -123,7 +119,6 @@ const deleteNamedAccounts = action({
   },
   examplePayload: deleteNamedAccountsExamplePayload,
 });
-
 export default {
   describeNamedAccount,
   getNamedAccountsByFilter,

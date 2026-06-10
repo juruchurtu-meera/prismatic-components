@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 export const taxCodeId = input({
   label: "Tax Code ID",
   type: "string",

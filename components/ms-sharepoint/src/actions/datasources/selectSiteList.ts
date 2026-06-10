@@ -2,13 +2,11 @@ import { dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, siteId } from "../../inputs";
 import { sortArray } from "../../utils";
-
 interface SiteList {
   id: string;
   displayName?: string;
   name: string;
 }
-
 export const selectSiteList = dataSource({
   display: {
     label: "Select Site List",
@@ -24,13 +22,11 @@ export const selectSiteList = dataSource({
     const items: SiteList[] = [];
     let nextLink = `${client.defaults.baseURL}${path}`;
     client.defaults.baseURL = undefined;
-
     do {
       const { data } = await client.get(nextLink);
       items.push(...(data?.value || []));
       nextLink = data?.["@odata.nextLink"];
     } while (nextLink);
-
     return {
       result: sortArray(
         items.map((item) => ({

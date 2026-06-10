@@ -11,7 +11,6 @@ import {
   webhookIsActiveInput,
   webhookScopeInput,
 } from "../../inputs";
-
 export const updateWebhookAction = action({
   display: {
     label: "Update Webhook",
@@ -35,14 +34,12 @@ export const updateWebhookAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/hooks/${webhook_id}`;
-
     const data = {
       scope,
       destination,
       is_active,
       headers,
     };
-
     try {
       const response = await client.put(endpoint, data);
       return {
@@ -54,7 +51,6 @@ export const updateWebhookAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ASSETS_PATH } from "../../constants";
 import { getAssetExamplePayload } from "../../examplePayloads";
 import { getAssetInputs } from "../../inputs";
-
 export const getAsset = action({
   examplePayload: getAssetExamplePayload,
   display: {
@@ -16,7 +15,6 @@ export const getAsset = action({
     const { data } = await client.get(
       `${ASSETS_PATH}/${encodeURIComponent(assetId)}`,
     );
-
     return { data };
   },
 });

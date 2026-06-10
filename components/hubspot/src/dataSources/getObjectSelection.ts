@@ -1,7 +1,6 @@
 import { dataSource, input, util } from "@prismatic-io/spectral";
 import { getHubspotClient } from "../client";
 import { objectsToSelect } from "../inputs";
-
 export const getObjectSelection = dataSource({
   display: {
     label: "Object Selection",
@@ -21,10 +20,12 @@ export const getObjectSelection = dataSource({
       clean: util.types.toBool,
     }),
   },
-  perform: async (_context, { connection, objectsToSelect, includeCustomObjects }) => {
+  perform: async (
+    _context,
+    { connection, objectsToSelect, includeCustomObjects },
+  ) => {
     let customObjects = [];
     const client = getHubspotClient({ hubspotConnection: connection });
-
     if (includeCustomObjects) {
       const {
         data: { results },
@@ -42,7 +43,6 @@ export const getObjectSelection = dataSource({
         };
       });
     }
-
     const mappedObjects = objectsToSelect.map(async (hsObject) => {
       const apiKey = hsObject.replace(" ", "_").trim().toLowerCase();
       const {
@@ -56,7 +56,6 @@ export const getObjectSelection = dataSource({
         })),
       };
     }, []);
-
     return {
       result: [...customObjects, ...(await Promise.all(mappedObjects))],
     };

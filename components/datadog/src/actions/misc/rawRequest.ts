@@ -6,7 +6,6 @@ import {
 import { getAuthHeaders, getBaseUrl } from "../../client";
 import { connection } from "../../inputs";
 import { validateConnection } from "../../utils";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

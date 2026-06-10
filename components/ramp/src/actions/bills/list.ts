@@ -4,7 +4,6 @@ import { listBillsResponse } from "../../examplePayloads/bills";
 import { defaultListInputs } from "../../inputs";
 import type { Bill } from "../../interfaces/bills";
 import { fetchAllData } from "../../util";
-
 export const listBills = action({
   display: {
     label: "List Bills",
@@ -13,9 +12,11 @@ export const listBills = action({
   inputs: {
     ...defaultListInputs,
   },
-  perform: async (context, { connection, customQueryParams, fetchAll, pageSize, start }) => {
+  perform: async (
+    context,
+    { connection, customQueryParams, fetchAll, pageSize, start },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchAllData<Bill>(
       client,
       "bills",

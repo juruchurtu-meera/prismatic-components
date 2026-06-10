@@ -3,7 +3,6 @@ import { getShopifyGraphQlClient } from "../../../client";
 import { deleteWebhookExamplePayload } from "../../../examplePayloads";
 import { deleteWebhookInputs as inputs } from "../../../inputsGql";
 import { deleteWebhookById } from "../../../util";
-
 export const deleteWebhookGql = action({
   display: {
     label: "Delete Webhook",
@@ -11,10 +10,12 @@ export const deleteWebhookGql = action({
   },
   inputs,
   perform: async (context, { shopifyConnection, webhookId }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     await deleteWebhookById(client, webhookId);
-
     return { data: {} };
   },
   examplePayload: deleteWebhookExamplePayload.restMap,

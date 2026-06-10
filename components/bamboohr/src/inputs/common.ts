@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The BambooHR connection to use.",
 });
-
 export const employeeId = input({
   label: "Employee ID",
   type: "string",
@@ -17,7 +15,6 @@ export const employeeId = input({
   example: "42",
   dataSource: "selectEmployee",
 });
-
 export const categoryId = input({
   label: "Category ID",
   type: "string",
@@ -27,7 +24,6 @@ export const categoryId = input({
   clean: util.types.toString,
   example: "20",
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -37,7 +33,6 @@ export const fileName = input({
   clean: util.types.toString,
   example: "example.pdf",
 });
-
 export const share = input({
   label: "Share",
   type: "boolean",
@@ -45,7 +40,6 @@ export const share = input({
   comments: "When true, the file is shared with the employee.",
   clean: (value) => (util.types.toBool(value) ? "yes" : "no"),
 });
-
 export const file = input({
   label: "File Contents",
   type: "string",

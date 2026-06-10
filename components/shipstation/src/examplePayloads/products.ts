@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getProductExamplePayload = {
   data: {
     aliases: null,
@@ -45,13 +39,6 @@ export const getProductExamplePayload = {
     thumbnailURL: "url_to_thumbnail_image",
   },
 };
-
-
-
-
-
-
-
 export const listProductsExamplePayload = {
   data: {
     products: [getProductExamplePayload.data],
@@ -60,13 +47,6 @@ export const listProductsExamplePayload = {
     pages: 1,
   },
 };
-
-
-
-
-
-
-
 export const updateProductExamplePayload = {
   data: {
     success: true,

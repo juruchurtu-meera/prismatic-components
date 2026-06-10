@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput } from "../../util";
-
 export const lineItems = input({
   label: "Line Items",
   type: "code",
@@ -12,7 +11,6 @@ export const lineItems = input({
     "A JSON array of line item objects for the draft order. See [Draft Order line items](https://shopify.dev/api/admin-rest/2021-10/resources/draftorder#post-draft-orders) for available fields.",
   clean: cleanCodeInput,
 });
-
 export const useCustomerAddress = input({
   label: "Use Customer Address",
   type: "boolean",
@@ -21,7 +19,6 @@ export const useCustomerAddress = input({
   comments: "When true, the order uses the customer's default address.",
   clean: util.types.toBool,
 });
-
 export const totalPrice = input({
   label: "Total Price",
   type: "string",
@@ -31,7 +28,6 @@ export const totalPrice = input({
   placeholder: "Enter total price",
   clean: cleanStringInput,
 });
-
 export const totalTax = input({
   label: "Total Tax",
   type: "string",
@@ -41,7 +37,6 @@ export const totalTax = input({
   placeholder: "Enter total tax",
   clean: cleanStringInput,
 });
-
 export const taxIncluded = input({
   label: "Taxes Included",
   type: "boolean",
@@ -49,7 +44,6 @@ export const taxIncluded = input({
   comments: "When true, tax is included in the total order price.",
   clean: util.types.toBool,
 });
-
 export const subTotalPrice = input({
   label: "Subtotal Price",
   type: "string",

@@ -1,9 +1,14 @@
 import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
-import { connectionInput, cursor, paginationLimitInput, sortBy, sortDirection } from "../../inputs";
+import {
+  connectionInput,
+  cursor,
+  paginationLimitInput,
+  sortBy,
+  sortDirection,
+} from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getActivities = action({
   display: {
     label: "Get Activities",
@@ -11,9 +16,22 @@ export const getActivities = action({
   },
   perform: async (
     context,
-    { connection, filterId, limit, updatedSince, updatedUntil, cursor, sortBy, sortDirection },
+    {
+      connection,
+      filterId,
+      limit,
+      updatedSince,
+      updatedUntil,
+      cursor,
+      sortBy,
+      sortDirection,
+    },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/activities", {
       params: {
         filter_id: filterId,

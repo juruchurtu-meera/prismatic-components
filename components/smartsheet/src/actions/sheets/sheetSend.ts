@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { sheetSendExamplePayload } from "../../examplePayloads";
 import { sheetSendInputs } from "../../inputs";
-
 export const sheetSend = action({
   display: {
     label: "Send Sheet",

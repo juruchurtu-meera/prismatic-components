@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { createInvoiceInputs } from "../../inputs/invoice";
 import { createInvoiceExamplePayload } from "../../examplePayloads";
-
 export const createInvoice = action({
   display: {
     label: "Create Invoice",
@@ -26,7 +25,6 @@ export const createInvoice = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       obj: {
         entity: "Invoice",
@@ -43,12 +41,10 @@ export const createInvoice = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Crud/Create/Invoice.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

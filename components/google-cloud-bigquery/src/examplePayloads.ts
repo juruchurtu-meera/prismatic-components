@@ -1,24 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import type { TriggerPayload } from "@prismatic-io/spectral";
 export const getDatasetExamplePayload = {
   data: {
     kind: "bigquery#dataset",
@@ -52,26 +32,8 @@ export const getDatasetExamplePayload = {
       "https://bigquery.googleapis.com/bigquery/v2/projects/my-project/datasets/my_dataset",
   },
 };
-
-
-
-
-
-
 export const createDatasetExamplePayload = getDatasetExamplePayload;
-
-
-
-
-
-
 export const updateDatasetExamplePayload = getDatasetExamplePayload;
-
-
-
-
-
-
 export const listDatasetsExamplePayload = {
   data: {
     kind: "bigquery#datasetList",
@@ -101,26 +63,9 @@ export const listDatasetsExamplePayload = {
     nextPageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
-
 export const deleteDatasetExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const getTableExamplePayload = {
   data: {
     kind: "bigquery#table",
@@ -185,33 +130,9 @@ export const getTableExamplePayload = {
       "https://bigquery.googleapis.com/bigquery/v2/projects/my-project/datasets/my_dataset/tables/my_table",
   },
 };
-
-
-
-
-
-
 export const createTableExamplePayload = getTableExamplePayload;
-
-
-
-
-
-
 export const updateTableExamplePayload = getTableExamplePayload;
-
-
-
-
-
-
 export const patchTableExamplePayload = getTableExamplePayload;
-
-
-
-
-
-
 export const listTablesExamplePayload = {
   data: {
     kind: "bigquery#tableList",
@@ -246,26 +167,9 @@ export const listTablesExamplePayload = {
     nextPageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
-
 export const deleteTableExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const getJobExamplePayload = {
   data: {
     kind: "bigquery#job",
@@ -308,19 +212,7 @@ export const getJobExamplePayload = {
     user_email: "user@example.com",
   },
 };
-
-
-
-
-
-
 export const createJobExamplePayload = getJobExamplePayload;
-
-
-
-
-
-
 export const queryJobExamplePayload = {
   data: {
     kind: "bigquery#queryResponse",
@@ -362,12 +254,6 @@ export const queryJobExamplePayload = {
     cacheHit: false,
   },
 };
-
-
-
-
-
-
 export const getQueryJobResultExamplePayload = {
   data: {
     kind: "bigquery#getQueryResultsResponse",
@@ -406,12 +292,6 @@ export const getQueryJobResultExamplePayload = {
     cacheHit: false,
   },
 };
-
-
-
-
-
-
 export const listJobsExamplePayload = {
   data: {
     kind: "bigquery#jobList",
@@ -471,12 +351,6 @@ export const listJobsExamplePayload = {
     nextPageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
 export const cancelJobExamplePayload = {
   data: {
     kind: "bigquery#jobCancelResponse",
@@ -503,26 +377,9 @@ export const cancelJobExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const deleteJobExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const listTableDataExamplePayload = {
   data: {
     kind: "bigquery#tableDataList",
@@ -547,28 +404,12 @@ export const listTableDataExamplePayload = {
     pageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
 export const tableDataInsertAllExamplePayload = {
   data: {
     kind: "bigquery#tableDataInsertAllResponse",
     insertErrors: [],
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const getModelExamplePayload = {
   data: {
     kind: "bigquery#model",
@@ -618,19 +459,7 @@ export const getModelExamplePayload = {
     description: "Logistic regression model for user classification",
   },
 };
-
-
-
-
-
-
 export const updateModelExamplePayload = getModelExamplePayload;
-
-
-
-
-
-
 export const listModelsExamplePayload = {
   data: {
     kind: "bigquery#listModelsResponse",
@@ -663,26 +492,9 @@ export const listModelsExamplePayload = {
     nextPageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
-
 export const deleteModelExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const getRoutineExamplePayload = {
   data: {
     kind: "bigquery#routine",
@@ -711,26 +523,8 @@ export const getRoutineExamplePayload = {
     description: "Multiplies input by 2.5",
   },
 };
-
-
-
-
-
-
 export const createRoutineExamplePayload = getRoutineExamplePayload;
-
-
-
-
-
-
 export const updateRoutineExamplePayload = getRoutineExamplePayload;
-
-
-
-
-
-
 export const listRoutinesExamplePayload = {
   data: {
     kind: "bigquery#routineList",
@@ -763,26 +557,9 @@ export const listRoutinesExamplePayload = {
     nextPageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
-
 export const deleteRoutineExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
-
 export const listProjectsExamplePayload = {
   data: {
     kind: "bigquery#projectList",
@@ -811,28 +588,12 @@ export const listProjectsExamplePayload = {
     nextPageToken: "eyJwYWdlIjogMn0=",
   },
 };
-
-
-
-
-
-
 export const getServiceAccountExamplePayload = {
   data: {
     kind: "bigquery#getServiceAccountResponse",
     email: "123456789012-compute@developer.gserviceaccount.com",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const getPolicyExamplePayload = {
   data: {
     version: 1,
@@ -849,25 +610,69 @@ export const getPolicyExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const setPolicyExamplePayload = getPolicyExamplePayload;
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     kind: "bigquery#genericResponse",
     message: "Request completed successfully",
   },
+};
+export const pollChangesExamplePayload = {
+  payload: {
+    headers: {},
+    queryParameters: {},
+    rawBody: {
+      data: "",
+      contentType: "application/json",
+    },
+    body: {
+      data: {
+        created: [
+          {
+            kind: "bigquery#job",
+            id: "my-project:US.job_abc123def456",
+            jobReference: {
+              projectId: "my-project",
+              jobId: "job_abc123def456",
+              location: "US",
+            },
+            status: {
+              state: "DONE",
+            },
+            statistics: {
+              creationTime: "1640995200000",
+              startTime: "1640995205000",
+              endTime: "1640995210000",
+            },
+            user_email: "user@example.com",
+          },
+        ],
+      },
+    },
+    pathFragment: "",
+    webhookUrls: {
+      "Polling Flow": "https://hooks.example.com/trigger/EXAMPLE",
+    },
+    webhookApiKeys: {
+      "Polling Flow": ["example-api-key"],
+    },
+    invokeUrl: "https://hooks.example.com/trigger/EXAMPLE",
+    executionId: "SW5zdGFuY2VFeGVjdXRpb246MTIzNDU=",
+    customer: {
+      id: "Q3VzdG9tZXI6MTIzNDU=",
+      externalId: "example-customer-external-id",
+      name: "Example Customer",
+    },
+    instance: {
+      id: "SW5zdGFuY2U6MTIzNDU=",
+      name: "Example Instance",
+    },
+    user: {
+      id: "VXNlcjoxMjM0NQ==",
+      externalId: "example-user-external-id",
+      name: "Example User",
+      email: "user@example.com",
+    },
+  } as unknown as TriggerPayload,
+  polledNoChanges: false,
 };

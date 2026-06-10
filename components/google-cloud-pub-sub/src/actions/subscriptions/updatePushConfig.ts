@@ -9,7 +9,6 @@ import {
   subscription,
   subscriptionNameOrFullFormat,
 } from "../../inputs";
-
 export const updatePushConfig = action({
   display: {
     label: "Update Push Config",

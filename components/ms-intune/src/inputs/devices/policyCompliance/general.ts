@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const deviceCompliancePolicyId = input({
   label: "Device Compliance Policy Id",
   example: "705c034c-034c-705c-4c03-5c704c035c70",
@@ -10,7 +9,6 @@ export const deviceCompliancePolicyId = input({
   clean: util.types.toString,
   dataSource: "selectDeviceCompliancePolicy",
 });
-
 export const assignId = input({
   label: "Assign Id",
   example: "705c034c-034c-705c-4c03-5c704c035c70",
@@ -20,7 +18,6 @@ export const assignId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const target = input({
   label: "Target",
   type: "string",
@@ -31,7 +28,6 @@ export const target = input({
   placeholder: "Enter target type",
   clean: util.types.toString,
 });
-
 export const collectionId = input({
   label: "Collection Id",
   example: "705c034c-034c-705c-4c03-5c704c035c70",

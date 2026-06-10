@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const includeLineItems = input({
   label: "Include Line Items",
   type: "boolean",

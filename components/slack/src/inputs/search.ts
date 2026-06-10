@@ -8,11 +8,6 @@ import {
   sortSearch,
   team_id,
 } from "./common";
-
-
-
-
-
 export const searchAllInputs = {
   connection: connectionInput,
   query,

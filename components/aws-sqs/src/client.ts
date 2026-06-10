@@ -1,7 +1,6 @@
 import { SQS } from "@aws-sdk/client-sqs";
 import { type ClientProps, getClientParams } from "aws-utils";
 import { accessKeySecretPair } from "./connections";
-
 export const createSQSClient = async ({
   awsRegion,
   awsConnection,

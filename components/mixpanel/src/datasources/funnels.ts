@@ -7,12 +7,10 @@ import {
   workspace_id,
 } from "../inputs";
 import { Authorization } from "../enums/Authorization";
-
 interface Funnel {
   funnel_id: string;
   name: string;
 }
-
 export const funnels = dataSource({
   display: {
     label: "Fetch Funnels",
@@ -47,7 +45,6 @@ export const funnels = dataSource({
       }));
       return { result };
     }
-
     return { result: [] };
   },
   dataSourceType: "picklist",

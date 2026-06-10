@@ -1,1 +1,5 @@
-export type QueryCondition = { field: string; operator: string; value: string };
+export type QueryCondition = {
+  field: string;
+  operator: string;
+  value: string;
+};

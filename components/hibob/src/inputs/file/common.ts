@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { FolderType } from "../../types/folderTypes";
 import { cleanArrayCodeInput, cleanStringInput } from "../../util";
-
 export const folderType = input({
   label: "Folder Type",
   type: "string",
@@ -15,7 +14,6 @@ export const folderType = input({
   placeholder: "Select folder type",
   clean: util.types.toString,
 });
-
 export const folderId = input({
   label: "Folder ID",
   type: "string",
@@ -26,7 +24,6 @@ export const folderId = input({
   placeholder: "Enter folder ID",
   clean: cleanStringInput,
 });
-
 export const documentId = input({
   label: "Document ID",
   type: "string",
@@ -36,7 +33,6 @@ export const documentId = input({
   placeholder: "Enter document ID",
   clean: util.types.toString,
 });
-
 export const documentName = input({
   label: "Document Name",
   type: "string",
@@ -47,7 +43,6 @@ export const documentName = input({
   placeholder: "Enter document name",
   clean: util.types.toString,
 });
-
 export const documentUrl = input({
   label: "Document URL",
   type: "string",
@@ -57,7 +52,6 @@ export const documentUrl = input({
   placeholder: "Enter document URL",
   clean: util.types.toString,
 });
-
 export const fileData = input({
   label: "File Data",
   type: "data",
@@ -66,7 +60,6 @@ export const fileData = input({
     "The binary data of the file to upload. This should be a reference to a previous action that returns file data.",
   clean: util.types.toBufferDataPayload,
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -77,7 +70,6 @@ export const fileName = input({
   placeholder: "Enter file name",
   clean: util.types.toString,
 });
-
 export const tags = input({
   label: "Tags",
   type: "code",

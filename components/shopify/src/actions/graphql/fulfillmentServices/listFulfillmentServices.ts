@@ -3,7 +3,6 @@ import { getShopifyGraphQlClient } from "../../../client";
 import { listFulfillmentServicesExamplePayload as examplePayload } from "../../../examplePayloads";
 import { listFulfillmentServicesInputs as inputs } from "../../../inputsGql";
 import listFulfillmentServicesQuery from "../queries/fulfillmentServices/ListFulfillmentServices.gql";
-
 export const listFulfillmentServicesGql = action({
   display: {
     label: "List Fulfillment Services",
@@ -11,12 +10,14 @@ export const listFulfillmentServicesGql = action({
   },
   inputs,
   perform: async (context, { shopifyConnection }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
-    const data: { shop: Record<string, unknown> } = await client.request(
-      listFulfillmentServicesQuery,
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
     );
-
+    const data: {
+      shop: Record<string, unknown>;
+    } = await client.request(listFulfillmentServicesQuery);
     return {
       data: data.shop,
     };

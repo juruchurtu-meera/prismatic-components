@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { deleteAttachmentExamplePayload as examplePayload } from "../../examplePayloads";
 import { deleteAttachmentInputs as inputs } from "../../inputs/assets";
-
 export const deleteAttachment = action({
   display: {
     label: "Delete Attachment",
@@ -17,12 +16,10 @@ export const deleteAttachment = action({
         }
       }
     `;
-
     const response = await createClient({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input: { id: attachmentId } });
-
     return {
       data: response,
     };

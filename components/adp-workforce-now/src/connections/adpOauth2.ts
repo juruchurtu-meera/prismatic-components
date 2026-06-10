@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const adpOauth2 = connection({
   key: "adpOauth2",
   display: {
@@ -26,8 +25,6 @@ export const adpOauth2 = connection({
       comments: "The OAuth 2.0 token endpoint URL for ADP authentication.",
       example: "https://accounts.adp.com/auth/oauth/v2/token",
       default: "https://accounts.adp.com/auth/oauth/v2/token",
-      
-      
     },
     clientId: {
       label: "Client ID",

@@ -1,18 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const webhookTriggerExamplePayload = {
   payload: {
     headers: {
@@ -79,16 +65,6 @@ export const webhookTriggerExamplePayload = {
     globalDebug: false,
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const baseChangesTriggerExamplePayload = {
   payload: {
     headers: {
@@ -148,26 +124,9 @@ export const baseChangesTriggerExamplePayload = {
   },
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const pollChangesTriggerExamplePayload: { payload: TriggerPayload } = {
+export const pollChangesTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},

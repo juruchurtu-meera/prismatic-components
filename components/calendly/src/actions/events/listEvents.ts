@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import { listEventsExamplePayload } from "../../examplePayloads";
 import { getEvents } from "../../util";
-
 export const listEvents = action({
   display: {
     label: "List Events",

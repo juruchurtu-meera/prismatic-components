@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, dealIdInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const updateDealProduct = action({
   display: {
     label: "Update Deal Product",
@@ -25,16 +24,23 @@ export const updateDealProduct = action({
       tax,
     },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
-    const { data } = await client.patch(`/deals/${id}/products/${productAttachmentId}`, {
-      item_price: itemPrice,
-      quantity,
-      discount,
-      discount_type: discountType,
-      product_variation_id: productVariationId,
-      comments,
-      tax,
-    });
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
+    const { data } = await client.patch(
+      `/deals/${id}/products/${productAttachmentId}`,
+      {
+        item_price: itemPrice,
+        quantity,
+        discount,
+        discount_type: discountType,
+        product_variation_id: productVariationId,
+        comments,
+        tax,
+      },
+    );
     return { data };
   },
   inputs: {
@@ -45,7 +51,8 @@ export const updateDealProduct = action({
       type: "string",
       required: true,
       clean: util.types.toString,
-      comments: "The ID of the deal-product (the ID of the product attached to the deal)",
+      comments:
+        "The ID of the deal-product (the ID of the product attached to the deal)",
     }),
     itemPrice: input({
       label: "Item Price",
@@ -92,7 +99,8 @@ export const updateDealProduct = action({
       type: "string",
       required: false,
       clean: cleanString,
-      comments: "Any textual comment associated with this product-deal attachment",
+      comments:
+        "Any textual comment associated with this product-deal attachment",
     }),
     tax: input({
       label: "Tax",

@@ -3,7 +3,6 @@ import { createFreshserviceClient } from "../../client";
 import { listAgentsExamplePayload as examplePayload } from "../../examplePayloads";
 import { listAgentsInputs as inputs } from "../../inputs/agents";
 import { getListData } from "../../util";
-
 export const listAgents = action({
   display: {
     label: "List Agents",
@@ -14,13 +13,11 @@ export const listAgents = action({
     { connection, fetchAll, perPage, page, additionalQueryParams },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const { data } = await getListData(client, `/agents`, "agents", fetchAll, {
       ...additionalQueryParams,
       per_page: perPage,
       page,
     });
-
     return {
       data,
     };

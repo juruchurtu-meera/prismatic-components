@@ -4,7 +4,6 @@ import { SMS_DEFINITIONS_PATH } from "../constants";
 import { connection } from "../inputs/common";
 import type { PaginatedResponse } from "../types";
 import { paginateResults } from "../util/pagination";
-
 export const selectSmsDefinition = dataSource({
   display: {
     label: "Select SMS Definition",
@@ -15,7 +14,6 @@ export const selectSmsDefinition = dataSource({
   },
   perform: async (_context, { connection }) => {
     const client = createClient(connection, false);
-
     const response = await paginateResults(
       client,
       SMS_DEFINITIONS_PATH,
@@ -23,16 +21,13 @@ export const selectSmsDefinition = dataSource({
       { $pageSize: 500 },
       { itemsField: "definitions", preserveFields: ["requestId"] },
     );
-
     const definitions = (response as PaginatedResponse).definitions ?? [];
-
     const result = definitions
       .map<Element>((item) => ({
         label: util.types.toString(item.name),
         key: util.types.toString(item.definitionKey),
       }))
       .sort((a, b) => (a.label ?? "").localeCompare(b.label ?? ""));
-
     return { result };
   },
   dataSourceType: "picklist",

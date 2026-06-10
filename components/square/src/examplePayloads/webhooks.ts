@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const listWebhookSubscriptionsExamplePayload = {
   data: {
     subscriptions: [
@@ -26,19 +15,18 @@ export const listWebhookSubscriptionsExamplePayload = {
     cursor: "MTY1Njk2OTU5NjEzMjAwMDAwMA==",
   },
 };
-
-
-
-
-
-
 export const retrieveWebhookSubscriptionExamplePayload = {
   data: {
     subscription: {
       id: "wbhk_b35f6b3145074cf9ad513610786c19d5",
       name: "Example Webhook Subscription",
       enabled: true,
-      event_types: ["payment.created", "payment.updated", "refund.created", "refund.updated"],
+      event_types: [
+        "payment.created",
+        "payment.updated",
+        "refund.created",
+        "refund.updated",
+      ],
       notification_url: "https://example.com/webhook",
       api_version: "2023-05-17",
       signature_key: "1k9bIJKhi0QQ...",
@@ -47,12 +35,6 @@ export const retrieveWebhookSubscriptionExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createWebhookSubscriptionExamplePayload = {
   data: {
     subscription: {
@@ -68,12 +50,6 @@ export const createWebhookSubscriptionExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const updateWebhookSubscriptionExamplePayload = {
   data: {
     subscription: {
@@ -89,22 +65,9 @@ export const updateWebhookSubscriptionExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const deleteWebhookSubscriptionExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
 export const deleteInstanceWebhooksExamplePayload = {
   data: "All webhooks deleted",
 };

@@ -1,16 +1,28 @@
 import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
-import { connectionInput, cursor, paginationLimitInput, sortBy, sortDirection } from "../../inputs";
+import {
+  connectionInput,
+  cursor,
+  paginationLimitInput,
+  sortBy,
+  sortDirection,
+} from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getProducts = action({
   display: {
     label: "Get Products",
     description: "Gets all products.",
   },
-  perform: async (context, { connection, filterId, ids, limit, sortBy, sortDirection, cursor }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, filterId, ids, limit, sortBy, sortDirection, cursor },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/products", {
       params: {
         filter_id: filterId,

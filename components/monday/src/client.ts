@@ -2,12 +2,10 @@ import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { GraphQLClient } from "graphql-request";
 import { apiKey, oauth } from "./connections";
 import { CURRENT_API_VERSION } from "./constants";
-
 const getAccessToken = (connection: Connection): string => {
   if (connection.key === apiKey.key) {
     return util.types.toString(connection.fields.apiKey);
   }
-
   if (connection.key === oauth.key) {
     if (!connection.token?.access_token) {
       throw new ConnectionError(
@@ -15,13 +13,10 @@ const getAccessToken = (connection: Connection): string => {
         "Received valid Connection type but did not receive a valid access token.",
       );
     }
-
     return util.types.toString(connection.token.access_token);
   }
-
   throw new ConnectionError(connection, "Unknown Connection type provided.");
 };
-
 export const getMondayClient = (
   connection: Connection,
   debug: boolean,

@@ -12,7 +12,6 @@ import {
 import { rawHttpClient } from "../../auth";
 import type { Section } from "../../types";
 import { updateSectionPayload } from "../../examplePayloads";
-
 export const updateSection = action({
   display: {
     label: "Update Section",
@@ -41,12 +40,9 @@ export const updateSection = action({
         parent_section_id: parentSectionId || undefined,
       },
     };
-
-    const { data } = await client.put<{ section: Section }>(
-      `/help_center/${locale}/sections/${sectionId}`,
-      payload,
-    );
-
+    const { data } = await client.put<{
+      section: Section;
+    }>(`/help_center/${locale}/sections/${sectionId}`, payload);
     return { data };
   },
   inputs: {

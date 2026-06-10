@@ -8,7 +8,6 @@ import selectOrder from "./selectOrder";
 import selectOrderLineItem from "./selectOrderLineItem";
 import selectCart from "./selectCart";
 import selectWebhook from "./selectWebhook";
-
 export default {
   selectList,
   selectStore,

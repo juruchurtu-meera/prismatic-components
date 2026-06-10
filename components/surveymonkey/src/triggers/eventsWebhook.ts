@@ -6,18 +6,6 @@ import {
   eventsWebhookPerform,
 } from "../util";
 import { eventsWebhookExamplePayload } from "../examplePayloads";
-
-
-
-
-
-
-
-
-
-
-
-
 export const eventsWebhook = trigger({
   display: {
     label: "Webhook Events",

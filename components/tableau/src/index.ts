@@ -23,19 +23,17 @@ import {
   updateUser,
   getUser,
   searchUsers,
-} from "./actions/user";
+} from "./actions/users";
 import {
   listConnections,
   updateConnection,
   searchConnections,
 } from "./actions/connections";
-import rawRequest from "./actions/rawRequest";
-import connections from ".//connections";
+import { rawRequest } from "./actions/misc";
+import connections from "./connections";
 import dataSources from "./dataSources";
-
 import webhooks from "./actions/webhooks";
 import triggers from "./triggers";
-
 export default component({
   key: "tableau",
   public: true,

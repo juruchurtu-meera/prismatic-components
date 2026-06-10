@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { publishViewExamplePayload } from "../../examplePayloads";
 import { publishViewInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const publishView = action({
   display: {
     label: "Publish View",
@@ -11,7 +10,7 @@ export const publishView = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, userId, view }
+    { connection, userId, view },
   ) => {
     debugLogger({ connection, debug, userId, view });
     const client = await createOauthClient({

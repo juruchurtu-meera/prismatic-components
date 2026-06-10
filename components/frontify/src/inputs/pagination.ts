@@ -1,7 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const DEFAULT_PAGE_SIZE = 25;
-
 const page = input({
   label: "Page",
   type: "string",
@@ -12,7 +10,6 @@ const page = input({
   placeholder: "1",
   clean: util.types.toInt,
 });
-
 const limit = input({
   label: "Page Size",
   type: "string",
@@ -23,7 +20,6 @@ const limit = input({
   placeholder: "25",
   clean: util.types.toInt,
 });
-
 const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -32,5 +28,4 @@ const fetchAll = input({
     "If true, it will fetch all records and ignore parameters like page and page size.",
   clean: util.types.toBool,
 });
-
 export const paginationInputs = { fetchAll, page, limit };

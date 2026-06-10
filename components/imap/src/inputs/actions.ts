@@ -8,7 +8,6 @@ import {
   path,
   range,
 } from "./general";
-
 export const from = input({
   label: "From",
   type: "string",
@@ -18,7 +17,6 @@ export const from = input({
   placeholder: "Enter sender email address",
   clean: util.types.toString,
 });
-
 export const to = input({
   label: "To",
   type: "string",
@@ -28,7 +26,6 @@ export const to = input({
   placeholder: "Enter recipient email address",
   clean: util.types.toString,
 });
-
 export const readUnread = input({
   label: "Read / Unread Filter",
   type: "string",
@@ -42,7 +39,6 @@ export const readUnread = input({
   ],
   clean: util.types.toString,
 });
-
 export const filterOptions = input({
   label: "Filter Options",
   type: "code",
@@ -64,39 +60,33 @@ export const filterOptions = input({
   ),
   clean: util.types.toObject,
 });
-
 export const addFlagsInputs = {
   connection,
   mailbox,
   range,
   flags,
 };
-
 export const appendMessageInputs = {
   connection,
   mailbox,
   path,
   content,
 };
-
 export const copyMessageInputs = {
   connection,
   mailbox,
   range,
   path: { ...path, label: "New Path" },
 };
-
 export const createMailboxInputs = {
   connection,
   path,
 };
-
 export const deleteMessageInputs = {
   connection,
   mailbox,
   messageIndex,
 };
-
 export const downloadMessageInputs = {
   connection,
   mailbox,
@@ -107,29 +97,24 @@ export const downloadMessageInputs = {
       "The index of the message you would like to download (1 for the oldest message, 2 for second oldest, etc), or the ID of the message.",
   },
 };
-
 export const getStatusInputs = {
   connection,
   mailbox,
 };
-
 export const listMailboxesInputs = {
   connection,
 };
-
 export const removeFlagsInputs = {
   connection,
   mailbox,
   range,
   flags,
 };
-
 export const renameMailboxInputs = {
   connection,
   path,
   newPath: { ...path, label: "New Path" },
 };
-
 export const searchMailboxInputs = {
   connection,
   mailbox,
@@ -138,7 +123,6 @@ export const searchMailboxInputs = {
   readUnread,
   filterOptions,
 };
-
 export const setFlagsInputs = {
   connection,
   mailbox,

@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanKeyValueList, cleanString } from "../util";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const version = input({
   label: "Version",
   type: "string",
@@ -15,7 +13,6 @@ export const version = input({
   placeholder: "Enter API version",
   comments: "API version",
 });
-
 export const customQueryParams = input({
   label: "Custom Query Params",
   type: "string",
@@ -26,7 +23,6 @@ export const customQueryParams = input({
   placeholder: "Enter key=value pairs",
   clean: cleanKeyValueList,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -34,7 +30,6 @@ export const fetchAll = input({
   comments: "If true, fetch all data.",
   clean: util.types.toBool,
 });
-
 export const includes = input({
   label: "Includes",
   type: "string",
@@ -44,7 +39,6 @@ export const includes = input({
   placeholder: "Enter related resources (comma-separated)",
   clean: cleanString,
 });
-
 export const group = input({
   label: "Group",
   type: "string",
@@ -55,7 +49,6 @@ export const group = input({
   clean: cleanString,
   dataSource: "selectGroup",
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -65,7 +58,6 @@ export const pageSize = input({
   placeholder: "Enter page size (max 100)",
   clean: cleanString,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -75,7 +67,6 @@ export const page = input({
   placeholder: "Enter page number",
   clean: cleanString,
 });
-
 export const sort = input({
   label: "Sort",
   type: "string",
@@ -86,7 +77,6 @@ export const sort = input({
   placeholder: "Enter sort field (e.g., insertedAtDesc)",
   clean: cleanString,
 });
-
 export const filter = input({
   label: "Filter",
   type: "string",
@@ -97,7 +87,6 @@ export const filter = input({
   placeholder: "Enter filter as JSON",
   clean: cleanString,
 });
-
 export const listDefaultInputs = {
   fetchAll,
   pageSize,

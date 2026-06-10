@@ -4,7 +4,6 @@ import { selectMessageInputs as inputs } from "../inputs/ticketMessages";
 import type { ListMessagesResponse } from "../interfaces/ticketMessages";
 import { selectMessageExamplePayload as examplePayload } from "../examplePayloads/dataSources";
 import { fetchAllWithPagination } from "../utils/fetchAllWithPagination";
-
 export const selectMessage = dataSource({
   display: {
     label: "Select Message",
@@ -16,13 +15,11 @@ export const selectMessage = dataSource({
       connection,
       debug: false,
     });
-
     const { data } = await fetchAllWithPagination<ListMessagesResponse>({
       client,
       configVars,
       endpoint: "/messages",
     });
-
     const result = data.data.map<Element>((message) => ({
       label:
         message.subject ??
@@ -31,7 +28,6 @@ export const selectMessage = dataSource({
         "No subject",
       key: util.types.toString(message.id),
     }));
-
     return {
       result,
     };

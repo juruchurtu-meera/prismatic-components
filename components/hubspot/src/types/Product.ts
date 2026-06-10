@@ -7,7 +7,6 @@ export interface ProductProperties {
   price: string;
   hs_sku?: string;
 }
-
 export interface Product {
   id: number;
   properties: ProductProperties;

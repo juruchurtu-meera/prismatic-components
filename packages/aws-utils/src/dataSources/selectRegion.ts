@@ -1,6 +1,5 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { awsRegions } from "../data/awsRegions";
-
 export const selectRegion = dataSource({
   display: {
     label: "Select AWS Region",

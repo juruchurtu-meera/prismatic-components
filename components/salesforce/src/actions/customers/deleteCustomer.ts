@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { deleteCustomerInputs } from "../../inputs";
 import { genericCreateUpdateFullNameExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const deleteCustomer = action({
   display: {
     label: "Delete Customer",
@@ -13,7 +12,6 @@ export const deleteCustomer = action({
     const salesforceClient = await createSalesforceClient(connection, version);
     const command = salesforceClient.sobject("Customer").retrieve(recordId);
     const response = await executeSFAction(context, command);
-
     return {
       data: response,
     };

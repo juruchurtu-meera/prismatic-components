@@ -1,11 +1,4 @@
 import { toMongoDBObjectId } from "./util";
-
-
-
-
-
-
-
 export const findAllExamplePayload = {
   data: [
     {
@@ -17,13 +10,6 @@ export const findAllExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
 export const findOneExamplePayload = {
   data: {
     _id: toMongoDBObjectId("610ae111774d8aaef3b5d2eb"),
@@ -33,26 +19,12 @@ export const findOneExamplePayload = {
     createdAt: "2024-08-04T12:30:00.000Z",
   },
 };
-
-
-
-
-
-
-
 export const insertOneExamplePayload = {
   data: {
     acknowledged: true,
     insertedId: toMongoDBObjectId("610ae111774d8aaef3b5d2eb"),
   },
 };
-
-
-
-
-
-
-
 export const insertManyExamplePayload = {
   data: {
     acknowledged: true,
@@ -64,13 +36,6 @@ export const insertManyExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const updateOneExamplePayload = {
   data: {
     acknowledged: true,
@@ -80,13 +45,6 @@ export const updateOneExamplePayload = {
     matchedCount: 1,
   },
 };
-
-
-
-
-
-
-
 export const updateManyExamplePayload = {
   data: {
     acknowledged: true,
@@ -96,26 +54,12 @@ export const updateManyExamplePayload = {
     matchedCount: 5,
   },
 };
-
-
-
-
-
-
-
 export const deleteManyExamplePayload = {
   data: {
     acknowledged: true,
     deletedCount: 1,
   },
 };
-
-
-
-
-
-
-
 export const aggregateExamplePayload = {
   data: [
     {
@@ -125,25 +69,11 @@ export const aggregateExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     ok: 1,
   },
 };
-
-
-
-
-
-
-
 export const convertObjectIdExamplePayload = {
   data: {
     _id: toMongoDBObjectId("5a9427648b0beebeb69579e7"),

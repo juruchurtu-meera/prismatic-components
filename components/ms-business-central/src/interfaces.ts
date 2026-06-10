@@ -3,7 +3,6 @@ export interface MultipleItemsResponse<T> {
   "@odata.nextLink": string;
   "@odata.context": string;
 }
-
 export interface Company {
   id: string;
   systemVersion: string;
@@ -16,7 +15,6 @@ export interface Company {
   systemModifiedAt: string;
   systemModifiedBy: string;
 }
-
 export interface Account {
   id: string;
   number: string;
@@ -33,7 +31,6 @@ export interface Account {
   excludeFromConsolidation: boolean;
   lastModifiedDateTime: string;
 }
-
 export interface Customer {
   id: string;
   number: string;
@@ -63,7 +60,6 @@ export interface Customer {
   blocked: string;
   lastModifiedDateTime: string;
 }
-
 export interface CompanyInformation {
   id: string;
   displayName: string;
@@ -84,7 +80,6 @@ export interface CompanyInformation {
   "picture@odata.mediaReadLink": string;
   lastModifiedDateTime: string;
 }
-
 export interface Attachment {
   "@odata.context": string;
   "@odata.etag": string;
@@ -97,14 +92,12 @@ export interface Attachment {
   "attachmentContent@odata.mediaEditLink": string;
   "attachmentContent@odata.mediaReadLink": string;
 }
-
 export interface ShipmentMethod {
   id: string;
   code: string;
   displayName: string;
   lastModifiedDateTime: string;
 }
-
 export interface SalesShipmentLine {
   id: string;
   documentId: string;
@@ -121,7 +114,6 @@ export interface SalesShipmentLine {
   taxPercent: number;
   shipmentDate: string;
 }
-
 export interface Item {
   id: string;
   number: string;
@@ -199,7 +191,6 @@ export interface SalesOrder {
   phoneNumber: string;
   email: string;
 }
-
 export interface SaleShipment {
   id: string;
   number: string;
@@ -244,7 +235,6 @@ export interface SaleShipment {
   phoneNumber: string;
   email: string;
 }
-
 export interface SalesInvoice {
   id: string;
   number: string;
@@ -303,7 +293,6 @@ export interface SalesInvoice {
   phoneNumber: string;
   email: string;
 }
-
 export interface PurchaseOrder {
   id: string;
   number: string;
@@ -354,7 +343,6 @@ export interface PurchaseOrder {
   status: string;
   lastModifiedDateTime: Date;
 }
-
 export interface PurchaseOrderLine {
   id: string;
   documentId: string;
@@ -388,7 +376,6 @@ export interface PurchaseOrderLine {
   itemVariantId: string;
   locationId: string;
 }
-
 export interface PurchaseReceipt {
   id: string;
   number: string;
@@ -424,7 +411,6 @@ export interface PurchaseReceipt {
   orderNumber: string;
   lastModifiedDateTime: Date;
 }
-
 export interface PurchaseReceiptLine {
   id: string;
   documentId: string;
@@ -439,7 +425,6 @@ export interface PurchaseReceiptLine {
   taxPercent: number;
   expectedReceiptDate: Date;
 }
-
 export interface Subscription {
   "@odata.context": string;
   value: {
@@ -450,7 +435,6 @@ export interface Subscription {
     [key: string]: unknown;
   }[];
 }
-
 export interface Vendor {
   id: string;
   number: string;
@@ -475,7 +459,6 @@ export interface Vendor {
   balance: number;
   lastModifiedDateTime: string;
 }
-
 export interface PurchaseInvoice {
   id: string;
   number: string;
@@ -523,7 +506,6 @@ export interface PurchaseInvoice {
   status: string;
   lastModifiedDateTime: string;
 }
-
 export interface GeneralLedgerEntry {
   id: string;
   entryNumber: number;
@@ -539,7 +521,6 @@ export interface GeneralLedgerEntry {
   additionalCurrencyCreditAmount: number;
   lastModifiedDateTime: string;
 }
-
 export interface ItemLedgerEntry {
   id: string;
   entryNumber: number;
@@ -556,11 +537,9 @@ export interface ItemLedgerEntry {
   costAmountActual: number;
   lastModifiedDateTime: string;
 }
-
 export interface PollingState extends Record<string, unknown> {
   lastPolledAt?: string;
 }
-
 export interface BusinessCentralRecord extends Record<string, unknown> {
   id?: string;
   lastModifiedDateTime?: string;

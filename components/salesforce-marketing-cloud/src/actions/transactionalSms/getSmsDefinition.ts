@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SMS_DEFINITIONS_PATH } from "../../constants";
 import { getSmsDefinitionExamplePayload } from "../../examplePayloads";
 import { getSmsDefinitionInputs } from "../../inputs";
-
 export const getSmsDefinition = action({
   examplePayload: getSmsDefinitionExamplePayload,
   display: {
@@ -16,7 +15,6 @@ export const getSmsDefinition = action({
     const { data } = await client.get(
       `${SMS_DEFINITIONS_PATH}/${encodeURIComponent(smsDefinitionKey)}`,
     );
-
     return { data };
   },
 });

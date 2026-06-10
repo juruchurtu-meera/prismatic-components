@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const pipelineData = {
   id: 1074820,
   name: "Sales Pipeline",
@@ -12,8 +5,6 @@ const pipelineData = {
   updated_at: "2024-11-20T14:35:12Z",
   disabled: false,
 };
-
-
 export const listPipelinesExamplePayload = {
   data: {
     items: [

@@ -1,0 +1,45 @@
+This trigger polls [ShipBob](https://www.shipbob.com/) on a configured schedule and emits orders that were created or updated since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+For details on the underlying endpoint and its filters, refer to the [ShipBob Get Orders documentation](https://developer.shipbob.com/api/orders/get-orders).
+
+#### How It Works
+
+On each scheduled run, the trigger queries the orders endpoint using ShipBob's `LastUpdateStartDate` filter, scoped to the timestamp of the previous poll. It then splits the results into two groups:
+
+- **Created**: orders whose creation date is after the previous poll.
+- **Updated**: orders the update filter returned that were not newly created.
+
+The trigger stores the current run time as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical orders on deploy.
+- **Subsequent runs**: only orders created or updated since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the matching orders grouped under `created` and `updated`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "id": 11587429,
+        "order_number": "ORD-20240615-0042",
+        "status": "Processing",
+        "created_date": "2024-06-15T14:22:00Z"
+      }
+    ],
+    "updated": []
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- ShipBob's order date filters accept day granularity only (`YYYY-MM-DD`). As a result, orders changed earlier on the same calendar day as the cursor may be re-emitted on a later poll within that day. Downstream flows should be prepared to receive the same order ID more than once and handle repeats safely.
+- The "new vs updated" split is computed from each order's creation date, the only timestamp ShipBob exposes on the order body.

@@ -16,7 +16,6 @@ import {
   total,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const listServices = action({
   display: {
     label: "List Services",
@@ -49,7 +48,6 @@ export const listServices = action({
       "include[]": include,
       name,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({
@@ -60,7 +58,6 @@ export const listServices = action({
         }),
       };
     }
-
     const { data } = await client.get(ENDPOINTS.SERVICES, {
       params,
     });

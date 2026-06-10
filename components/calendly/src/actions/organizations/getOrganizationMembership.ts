@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, uuid } from "../../inputs";
 import { getOrganizationMembershipExamplePayload } from "../../examplePayloads";
-
 export const getOrganizationMembership = action({
   display: {
     label: "Get Organization Membership",
@@ -10,7 +9,6 @@ export const getOrganizationMembership = action({
   },
   perform: async (context, { connection, uuid }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const { data } = await client.get(`/organization_memberships/${uuid}`);
     return { data };
   },

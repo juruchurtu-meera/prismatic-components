@@ -14,7 +14,6 @@ import {
   getUserResponse,
   listUsersResponse,
 } from "../examplePayloads";
-
 const getCurrentUser = action({
   display: {
     label: "Get Current User",
@@ -28,7 +27,6 @@ const getCurrentUser = action({
   },
   examplePayload: getCurrentUserResponse,
 });
-
 const getUser = action({
   display: {
     label: "Get User by ID",
@@ -42,7 +40,6 @@ const getUser = action({
   },
   examplePayload: getUserResponse,
 });
-
 const listUsers = action({
   display: {
     label: "List Users",
@@ -60,7 +57,6 @@ const listUsers = action({
   },
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
-
     const { data } = await getPaginatedData(
       client,
       HttpMethod.GET,
@@ -76,5 +72,4 @@ const listUsers = action({
   },
   examplePayload: listUsersResponse,
 });
-
 export default { getCurrentUser, getUser, listUsers };

@@ -64,7 +64,6 @@ export interface Organization {
   org_hidden: boolean;
   person_hidden: boolean;
 }
-
 export interface UserID {
   id: number;
   name: string;
@@ -74,7 +73,6 @@ export interface UserID {
   active_flag: boolean;
   value: number;
 }
-
 export interface OrgID {
   name: string;
   people_count: number;
@@ -86,7 +84,6 @@ export interface OrgID {
   owner_name: string;
   value: number;
 }
-
 export interface PersonID {
   active_flag: boolean;
   name: string;
@@ -95,7 +92,6 @@ export interface PersonID {
   owner_id: number;
   value: number;
 }
-
 export interface Email {
   value: string;
   primary: boolean;

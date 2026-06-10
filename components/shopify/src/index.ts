@@ -1,6 +1,10 @@
 import { component } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-import { createCustomer, getCustomer, listCustomers } from "./actions/customers";
+import {
+  createCustomer,
+  getCustomer,
+  listCustomers,
+} from "./actions/customers";
 import { listDraftOrders } from "./actions/draftOrders";
 import {
   getFulfillmentOrder,
@@ -21,7 +25,6 @@ import {
 import connections from "./connections";
 import * as dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "shopify",
   public: true,

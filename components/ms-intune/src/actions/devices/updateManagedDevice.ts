@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import updateManagedDeviceInputs from "../../inputs/devices/updateManagedDeviceInputs";
-
 export const updateManagedDevice = action({
   display: {
     label: "Update Managed Device",

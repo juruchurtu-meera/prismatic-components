@@ -15,7 +15,6 @@ import {
   singularLabel,
   timeout,
 } from "../../inputs";
-
 export const createCustomObject = action({
   display: {
     label: "Create Custom Object",
@@ -58,7 +57,6 @@ export const createCustomObject = action({
       ...fieldValues,
       ...dynamicValues,
     });
-
     return {
       data,
     };

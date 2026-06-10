@@ -41,6 +41,5 @@ export const updateEnvironmentTemplate = action({
     };
   },
   inputs: updateEnvironmentTemplateInputs,
-
   examplePayload: { data: updateEnvironmentTemplateExamplePayload },
 });

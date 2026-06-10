@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { NO_CONTENT_RESPONSE, NO_CONTENT_RESPONSE_TEXT } from "../../constants";
 import { updateRecordInputs } from "../../inputs/records";
-
 export const updateRecord = action({
   display: {
     label: "Update Record",

@@ -22,7 +22,6 @@ import { connection } from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
 import getFileMetadata from "./actions/getFileMetadata";
-
 export default component({
   key: "google-drive",
   documentationUrl: "https://prismatic.io/docs/components/google-drive/",

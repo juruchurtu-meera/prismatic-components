@@ -3,7 +3,6 @@ import { getMondayClient } from "../../client";
 import { listWebhooksExamplePayload } from "../../examplePayloads";
 import { listWebhooksInputs } from "../../inputs";
 import ListBoardWebhooksQuery from "../../queries/listBoardWebhooks.gql";
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",

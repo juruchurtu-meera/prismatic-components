@@ -8,7 +8,6 @@ import {
   formatSmartsheetTimestamp,
   partitionSheetsByTimestamp,
 } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Sheets",
@@ -27,30 +26,24 @@ export const pollChangesTrigger = pollingTrigger({
     const sinceDate = lastState?.lastPolledAt
       ? new Date(lastState.lastPolledAt)
       : now;
-
     const client = createClient(connection, context.debug.enabled);
     const sheets = await fetchSheetsSince(
       client,
       formatSmartsheetTimestamp(sinceDate),
     );
-
     const { created, updated } = partitionSheetsByTimestamp(sheets, sinceDate);
-
     context.polling.setState({
       lastPolledAt: now.toISOString(),
     } as Record<string, unknown>);
-
     const result = {
       created: showNewRecords ? created : [],
       updated: showUpdatedRecords ? updated : [],
     };
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled sheets: ${sheets.length} total → ${created.length} new, ${updated.length} updated`,
       );
     }
-
     return {
       payload: { ...payload, body: { data: result } },
       polledNoChanges:

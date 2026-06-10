@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getPriceExamplePayload = {
   data: {
     id: "price_1MoBy5LkdIwHu7ixZhnattbH",
@@ -33,22 +27,8 @@ export const getPriceExamplePayload = {
     unit_amount_decimal: "1000",
   } as unknown,
 };
-
-
-
-
 export const createPriceExamplePayload = getPriceExamplePayload;
-
-
-
-
 export const updatePriceExamplePayload = getPriceExamplePayload;
-
-
-
-
-
-
 export const listPricesExamplePayload = {
   data: {
     object: "list",

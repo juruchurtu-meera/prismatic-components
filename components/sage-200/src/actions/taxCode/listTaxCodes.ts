@@ -8,7 +8,6 @@ import {
 } from "../../inputs/general";
 import { listTaxCodesPayload } from "../../examplePayloads";
 import { filterDataChangedAfter } from "../../util";
-
 export const listTaxCodes = action({
   display: {
     label: "List Tax Codes",

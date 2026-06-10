@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listWebhooksInputs } from "../../inputs";
 import { listWebhooks as listWebhooksFn } from "../../util";
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { retrieveBoardExamplePayload } from "../../examplePayloads";
 import { retrieveBoardInputs } from "../../inputs";
-
 export const retrieveBoard = action({
   display: {
     label: "Retrieve Board",

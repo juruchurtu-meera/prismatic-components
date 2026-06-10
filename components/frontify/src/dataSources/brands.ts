@@ -3,7 +3,6 @@ import { listBrandsQuery } from "../actions/brands/listBrands";
 import type ListBrandsResponse from "../actions/types/listBrands";
 import { createClient } from "../client";
 import { brandsInputs as inputs } from "../inputs/dataSources";
-
 export const brandDataSource = dataSource({
   display: {
     label: "Select Brand",
@@ -20,7 +19,6 @@ export const brandDataSource = dataSource({
         label: brand.name,
       };
     });
-
     return {
       result,
     };

@@ -4,7 +4,6 @@ import { name, connectionInput } from "../inputs";
 import { awsRegion } from "aws-utils";
 import { CreateTopicCommand } from "@aws-sdk/client-sns";
 import { createTopicExamplePayload } from "../examplePayloads";
-
 export const createTopic = action({
   display: {
     label: "Create Topic",
@@ -23,7 +22,6 @@ export const createTopic = action({
     const createTopicParams = { Name: util.types.toString(name) };
     const command = new CreateTopicCommand(createTopicParams);
     const response = await sns.send(command);
-
     return {
       data: response,
     };
@@ -31,5 +29,4 @@ export const createTopic = action({
   inputs: { awsRegion, name, awsConnection: connectionInput },
   examplePayload: createTopicExamplePayload,
 });
-
 export default createTopic;

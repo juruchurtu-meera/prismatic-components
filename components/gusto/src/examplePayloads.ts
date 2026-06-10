@@ -1,18 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const companyPayload = {
   uuid: "c7a07c73-a703-4462-9343-1b181182b6e0",
   name: "Shoppe Studios LLC",
@@ -165,30 +150,12 @@ const companyPayload = {
     email: "louie.hessel7757869450111547@zemlak.biz",
   },
 };
-
-
-
-
-
-
 export const listCompaniesExamplePayload = {
   data: { data: [companyPayload], headers: {} },
 };
-
-
-
-
-
-
 export const getCompanyExamplePayload = {
   data: { data: companyPayload, headers: {} },
 };
-
-
-
-
-
-
 export const listCompanyAdminsExamplePayload = {
   data: {
     data: [
@@ -203,14 +170,6 @@ export const listCompanyAdminsExamplePayload = {
     headers: {},
   },
 };
-
-
-
-
-
-
-
-
 const employeePayload = {
   uuid: "d7282d99-ab6b-42f5-ba45-f4a670e886a8",
   first_name: "Boaty",
@@ -313,50 +272,18 @@ const employeePayload = {
   },
   partner_portal_invitation_sent: true,
 };
-
-
-
-
-
-
 export const listEmployeesExamplePayload = {
   data: { data: [employeePayload], headers: {} },
 };
-
-
-
-
-
-
 export const getEmployeeExamplePayload = {
   data: { data: employeePayload, headers: {} },
 };
-
-
-
-
-
-
 export const createEmployeeExamplePayload = {
   data: { data: employeePayload, headers: {} },
 };
-
-
-
-
-
-
 export const findEmployeeByEmailExamplePayload = {
   data: { data: employeePayload, headers: {} },
 };
-
-
-
-
-
-
-
-
 const paySchedulePayload = {
   uuid: "f2a69c38-e2f9-4e31-b5c5-4754fc60a052",
   version: "68934a3e9455fa72420237eb05902327",
@@ -371,32 +298,12 @@ const paySchedulePayload = {
   active: true,
   auto_payroll_enablement_blockers: null,
 };
-
-
-
-
-
-
 export const listPaySchedulesExamplePayload = {
   data: { data: [paySchedulePayload], headers: {} },
 };
-
-
-
-
-
-
 export const getPayScheduleExamplePayload = {
   data: { data: [paySchedulePayload], headers: {} },
 };
-
-
-
-
-
-
-
-
 export const terminateEmployeeExamplePayload = {
   data: {
     data: {
@@ -409,14 +316,6 @@ export const terminateEmployeeExamplePayload = {
     headers: {},
   },
 };
-
-
-
-
-
-
-
-
 const webhookSubscriptionPayload = {
   uuid: "c5fdae57-5483-4529-9aae-f0edceed92d4",
   url: "https://partner-app.com/subscriber",
@@ -440,59 +339,21 @@ const webhookSubscriptionPayload = {
     "Signatory",
   ],
 };
-
-
-
-
-
-
 export const listWebhookSubscriptionsExamplePayload = {
   data: { data: [webhookSubscriptionPayload], headers: {} },
 };
-
-
-
-
-
-
 export const getWebhookSubscriptionExamplePayload = {
   data: { data: webhookSubscriptionPayload, headers: {} },
 };
-
-
-
-
-
-
 export const createWebhookSubscriptionExamplePayload = {
   data: { data: webhookSubscriptionPayload, headers: {} },
 };
-
-
-
-
-
-
 export const updateWebhookSubscriptionExamplePayload = {
   data: { data: webhookSubscriptionPayload, headers: {} },
 };
-
-
-
-
-
-
 export const deleteWebhookSubscriptionExamplePayload = {
   data: { message: "The resource was deleted successfully." },
 };
-
-
-
-
-
-
-
-
 export const getWebhookEventsExamplePayload = {
   data: {
     data: [

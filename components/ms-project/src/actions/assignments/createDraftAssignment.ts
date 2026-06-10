@@ -9,7 +9,6 @@ import {
   notes,
   resourceId,
 } from "../../inputs";
-
 export const createDraftAssignment = action({
   display: {
     label: "Create Draft Assignment",
@@ -22,17 +21,18 @@ export const createDraftAssignment = action({
       },
       context.debug.enabled,
     );
-
-    const { data } = await client.post(`/Projects('${params.guId}')/Draft/Assignments/add()`, {
-      parameters: {
-        ResourceId: params.guId || undefined,
-        TaskId: params.draftTaskId || undefined,
-        Start: params.assignmentStartDate || undefined,
-        Finish: params.assignmentFinishDate || undefined,
-        Notes: params.notes || undefined,
+    const { data } = await client.post(
+      `/Projects('${params.guId}')/Draft/Assignments/add()`,
+      {
+        parameters: {
+          ResourceId: params.guId || undefined,
+          TaskId: params.draftTaskId || undefined,
+          Start: params.assignmentStartDate || undefined,
+          Finish: params.assignmentFinishDate || undefined,
+          Notes: params.notes || undefined,
+        },
       },
-    });
-
+    );
     return {
       data,
     };
@@ -47,5 +47,4 @@ export const createDraftAssignment = action({
     notes,
   },
 });
-
 export default createDraftAssignment;

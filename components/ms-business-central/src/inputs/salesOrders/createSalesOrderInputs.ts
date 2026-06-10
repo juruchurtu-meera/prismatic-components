@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../utils";
-
 export const customerNumber = input({
   label: "Customer Number",
   required: false,
@@ -10,7 +9,6 @@ export const customerNumber = input({
   placeholder: "Enter customer number",
   clean: cleanStringInput,
 });
-
 export const billToCustomerId = input({
   label: "Bill To Customer ID",
   required: false,
@@ -21,7 +19,6 @@ export const billToCustomerId = input({
   dataSource: "listCustomers",
   clean: cleanStringInput,
 });
-
 export const shipToName = input({
   label: "Ship To Name",
   required: false,
@@ -31,7 +28,6 @@ export const shipToName = input({
   placeholder: "Enter ship to name",
   clean: cleanStringInput,
 });
-
 export const sellToAddressLine1 = input({
   label: "Sell To Address Line 1",
   required: false,
@@ -41,7 +37,6 @@ export const sellToAddressLine1 = input({
   placeholder: "Enter sell to address line 1",
   clean: cleanStringInput,
 });
-
 export const shipToAddressLine1 = input({
   label: "Ship To Address Line 1",
   required: false,
@@ -51,7 +46,6 @@ export const shipToAddressLine1 = input({
   placeholder: "Enter ship to address line 1",
   clean: cleanStringInput,
 });
-
 export const currencyCode = input({
   label: "Currency Code",
   required: false,
@@ -61,7 +55,6 @@ export const currencyCode = input({
   placeholder: "Enter currency code",
   clean: cleanStringInput,
 });
-
 export const email = input({
   label: "Customer Email Address",
   required: false,

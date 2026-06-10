@@ -18,7 +18,6 @@ import {
   tax,
   typeId,
 } from "../../inputs";
-
 export const createInvoices = action({
   display: {
     label: "Create Invoices",

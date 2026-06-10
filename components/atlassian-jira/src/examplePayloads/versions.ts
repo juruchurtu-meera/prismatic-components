@@ -39,7 +39,6 @@ export const listVersionsExamplePayload = {
     ],
   },
 };
-
 export const createVersionExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/version/10000",
@@ -54,7 +53,6 @@ export const createVersionExamplePayload = {
     projectId: 10000,
   },
 };
-
 export const updateVersionExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/version/10000",
@@ -69,7 +67,6 @@ export const updateVersionExamplePayload = {
     projectId: 10000,
   },
 };
-
 export const getVersionExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/version/10000",

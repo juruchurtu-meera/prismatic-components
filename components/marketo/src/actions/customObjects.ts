@@ -19,7 +19,6 @@ import {
   idsToDeleteInput,
   nextPageTokenInput,
 } from "../inputs";
-
 const customObjectNameInput = input({
   label: "Custom Object Name",
   type: "string",
@@ -28,7 +27,6 @@ const customObjectNameInput = input({
   comments: "The name of the Custom Object",
   dataSource: "selectCustomObject",
 });
-
 const listCustomObjects = action({
   display: {
     label: "List Custom Objects",
@@ -45,7 +43,6 @@ const listCustomObjects = action({
   },
   examplePayload: listCustomObjectsExamplePayload,
 });
-
 const describeCustomObject = action({
   display: {
     label: "Describe Custom Object",
@@ -64,7 +61,6 @@ const describeCustomObject = action({
   },
   examplePayload: describeCustomObjectExamplePayload,
 });
-
 const getCustomObjectsByFilter = action({
   display: {
     label: "Get Custom Objects By Filter",
@@ -112,7 +108,6 @@ const getCustomObjectsByFilter = action({
   },
   examplePayload: getCustomObjectsByFilterExamplePayload,
 });
-
 const syncCustomObjects = action({
   display: {
     label: "Sync Custom Objects (Create, Update, Upsert)",
@@ -151,7 +146,6 @@ const syncCustomObjects = action({
   },
   examplePayload: syncCustomObjectsExamplePayload,
 });
-
 const deleteCustomObjects = action({
   display: {
     label: "Delete Custom Objects",
@@ -173,7 +167,6 @@ const deleteCustomObjects = action({
   },
   examplePayload: deleteCustomObjectsExamplePayload,
 });
-
 export default {
   listCustomObjects,
   describeCustomObject,

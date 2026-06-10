@@ -4,7 +4,6 @@ import {
   util,
 } from "@prismatic-io/spectral/dist/";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
-
 export const getNewRelicClient = (
   connection: Connection,
   debug: boolean,
@@ -16,7 +15,6 @@ export const getNewRelicClient = (
       `Unsupported authorization method ${connection?.key}.`,
     );
   }
-
   const newRelicClient = createClient({
     baseUrl: "",
     headers: {
@@ -27,6 +25,5 @@ export const getNewRelicClient = (
     timeout: util.types.toInt(timeout, 2000),
     debug,
   });
-
   return newRelicClient;
 };

@@ -10,7 +10,6 @@ import {
 } from "../../legacy";
 import type { Model } from "../../types";
 import { getFilters, paginateSearch } from "../../util";
-
 export const listModels = action({
   display: {
     label: "List Models",

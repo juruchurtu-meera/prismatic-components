@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ENS_SUBSCRIPTIONS_PATH } from "../../constants";
 import { createSubscriptionExamplePayload } from "../../examplePayloads";
 import { createSubscriptionInputs } from "../../inputs";
-
 export const createSubscription = action({
   examplePayload: createSubscriptionExamplePayload,
   display: {
@@ -17,7 +16,6 @@ export const createSubscription = action({
     { connection, subscriptionName, callbackId, eventCategoryTypes },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = [
       {
         subscriptionName,
@@ -25,9 +23,7 @@ export const createSubscription = action({
         eventCategoryTypes,
       },
     ];
-
     const { data } = await client.post(ENS_SUBSCRIPTIONS_PATH, body);
-
     return { data };
   },
 });

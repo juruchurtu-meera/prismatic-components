@@ -4,7 +4,6 @@ import { listAssetsDatasource } from "../examplePayloads";
 import { connectionInput } from "../inputs";
 import type { Asset } from "../interfaces";
 import { paginateData } from "../util";
-
 export const selectAsset = dataSource({
   display: {
     label: "Select Asset",

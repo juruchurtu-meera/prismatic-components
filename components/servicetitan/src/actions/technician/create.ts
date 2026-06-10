@@ -24,7 +24,6 @@ import {
   roleId,
   team,
 } from "../../inputs";
-
 export const createTechnician = action({
   display: {
     label: "Create Technician",

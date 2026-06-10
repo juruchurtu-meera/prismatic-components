@@ -1,5 +1,4 @@
 import type { CreateApiPaginationResponse } from "../types";
-
 export interface CreateTicketResponse {
   id: number;
   assignee_user: {
@@ -18,7 +17,9 @@ export interface CreateTicketResponse {
   created_datetime: string | null;
   customer: {
     id: number;
-    channels: { id: number }[];
+    channels: {
+      id: number;
+    }[];
     email: string | null;
     external_id: string | null;
     firstname: string;
@@ -73,10 +74,22 @@ export interface CreateTicketResponse {
     sent_datetime: string | null;
     source: {
       type: string;
-      to: { name: string; address: string }[];
-      cc: { name: string; address: string }[];
-      bcc: { name: string; address: string }[];
-      from: { name: string; address: string };
+      to: {
+        name: string;
+        address: string;
+      }[];
+      cc: {
+        name: string;
+        address: string;
+      }[];
+      bcc: {
+        name: string;
+        address: string;
+      }[];
+      from: {
+        name: string;
+        address: string;
+      };
     };
     stripped_html: string | null;
     stripped_text: string | null;
@@ -108,14 +121,15 @@ export interface CreateTicketResponse {
     id: number;
     name: string;
     uri: string;
-    decoration: { color: string };
+    decoration: {
+      color: string;
+    };
   }[];
   trashed_datetime: string | null;
   updated_datetime: string | null;
   via: string;
   uri: string;
 }
-
 export interface GetTicketResponse {
   id: number;
   url: string;
@@ -234,10 +248,22 @@ export interface GetTicketResponse {
     sent_datetime: string | null;
     source: {
       type: string;
-      to: { name: string; address: string }[];
-      cc: { name: string; address: string }[];
-      bcc: { name: string; address: string }[];
-      from: { name: string; address: string };
+      to: {
+        name: string;
+        address: string;
+      }[];
+      cc: {
+        name: string;
+        address: string;
+      }[];
+      bcc: {
+        name: string;
+        address: string;
+      }[];
+      from: {
+        name: string;
+        address: string;
+      };
     };
     stripped_html: string | null;
     stripped_text: string | null;
@@ -268,7 +294,6 @@ export interface GetTicketResponse {
   };
   reply_options: string;
 }
-
 export type ListTicketCustomFieldsResponse = {
   field: {
     id: number;
@@ -296,7 +321,6 @@ export type ListTicketCustomFieldsResponse = {
     modified: boolean;
   };
 }[];
-
 export type ListTicketsResponse = CreateApiPaginationResponse<{
   id: number;
   assignee_user: {
@@ -338,7 +362,9 @@ export type ListTicketsResponse = CreateApiPaginationResponse<{
     id: number;
     name: string;
     uri: string;
-    decoration: { color: string };
+    decoration: {
+      color: string;
+    };
   }[];
   spam: boolean | null;
   trashed_datetime: string | null;
@@ -346,7 +372,6 @@ export type ListTicketsResponse = CreateApiPaginationResponse<{
   via: string;
   uri: string;
 }>;
-
 export interface UpdateTicketResponse {
   id: number;
   assignee_user: {
@@ -365,7 +390,9 @@ export interface UpdateTicketResponse {
   created_datetime: string | null;
   customer: {
     id: number;
-    channels: { id: number }[];
+    channels: {
+      id: number;
+    }[];
     email: string | null;
     external_id: string | null;
     firstname: string;
@@ -420,10 +447,22 @@ export interface UpdateTicketResponse {
     sent_datetime: string | null;
     source: {
       type: string;
-      to: { name: string; address: string }[];
-      cc: { name: string; address: string }[];
-      bcc: { name: string; address: string }[];
-      from: { name: string; address: string };
+      to: {
+        name: string;
+        address: string;
+      }[];
+      cc: {
+        name: string;
+        address: string;
+      }[];
+      bcc: {
+        name: string;
+        address: string;
+      }[];
+      from: {
+        name: string;
+        address: string;
+      };
     };
     stripped_html: string | null;
     stripped_text: string | null;
@@ -455,14 +494,15 @@ export interface UpdateTicketResponse {
     id: number;
     name: string;
     uri: string;
-    decoration: { color: string };
+    decoration: {
+      color: string;
+    };
   }[];
   trashed_datetime: string | null;
   updated_datetime: string | null;
   via: string;
   uri: string;
 }
-
 export type UpdateTicketCustomFieldsResponse = {
   field: {
     id: number;

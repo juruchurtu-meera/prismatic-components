@@ -1,14 +1,6 @@
-
 export interface PollingState extends Record<string, unknown> {
-  lastPolledAt?: string; 
+  lastPolledAt?: string;
 }
-
-
-
-
-
-
-
 export interface BigCommerceOrder {
   id: number;
   date_created?: string;

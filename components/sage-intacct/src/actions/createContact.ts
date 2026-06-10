@@ -36,7 +36,6 @@ import {
 import { Functions } from "@intacct/intacct-sdk";
 import type { AbstractContact } from "@intacct/intacct-sdk/dist/Functions/Company";
 import { createContactPayload } from "../examplePayloads/createContactPayload";
-
 export const createContact = action({
   display: {
     label: "Create Contact",
@@ -104,7 +103,6 @@ export const createContact = action({
         taxableInput === "" ? undefined : util.types.toBool(taxableInput),
       zipPostalCode: zipPostalCodeInput,
     } as unknown as AbstractContact);
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(createContact, null, 2));
     }

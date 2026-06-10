@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { listCustomersInputs } from "../../inputs";
 import { listCustomersExamplePayload } from "../../examplePayloads";
 import { executeSFAction, getFindQuery } from "../../util";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",

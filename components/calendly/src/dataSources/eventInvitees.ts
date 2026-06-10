@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { connection, uuid, returnUuidOnly } from "../inputs";
 import { getCalendlyClient } from "../client";
 import { paginator, extractUuidFromUri } from "../util";
-
 export const selectEventInvitee = dataSource({
   display: {
     label: "Select Event Invitee",
@@ -20,7 +19,6 @@ export const selectEventInvitee = dataSource({
       `/scheduled_events/${uuid}/invitees`,
       {},
     );
-
     return {
       result: data.map(
         (invitee: { email: string; name: string; uri: string }) => ({

@@ -6,9 +6,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { connectionInput, teamMemberId, userType } from "../inputs";
 import { checkDebug, getHeadersRawRequest, getUserTypeHeader } from "../util";
-
 const { debugRequest, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

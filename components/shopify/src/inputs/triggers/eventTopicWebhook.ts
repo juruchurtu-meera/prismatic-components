@@ -1,5 +1,4 @@
 import { connectionInput, secretKey, webhookTopic } from "../common";
-
 export const eventTopicWebhookInputs = {
   secret_key: secretKey,
   connectionInput,

@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const listEventInviteesExamplePayload = {
   data: [
     {
@@ -72,7 +62,6 @@ export const listEventInviteesExamplePayload = {
     },
   ],
 };
-
 export const listEventsExamplePayload = {
   data: [
     {
@@ -113,7 +102,12 @@ export const listEventsExamplePayload = {
     },
   ],
 };
-
+export const pollEventsExamplePayload = {
+  data: {
+    created: listEventsExamplePayload.data,
+    updated: [],
+  },
+};
 export const getEventInviteeExamplePayload = {
   data: {
     resource: {
@@ -178,7 +172,6 @@ export const getEventInviteeExamplePayload = {
     },
   },
 };
-
 export const getEventExamplePayload = {
   data: {
     resource: {
@@ -220,7 +213,6 @@ export const getEventExamplePayload = {
     },
   },
 };
-
 export const cancelEventExamplePayload = {
   data: {
     resource: {
@@ -231,7 +223,6 @@ export const cancelEventExamplePayload = {
     },
   },
 };
-
 export const createSingleUseSchedulingLinkExamplePayload = {
   data: {
     resource: {
@@ -241,11 +232,9 @@ export const createSingleUseSchedulingLinkExamplePayload = {
     },
   },
 };
-
 export const deleteInviteeDataExamplePayload = {
   data: {},
 };
-
 export const listUserEventTypesExamplePayload = {
   data: [
     {
@@ -323,7 +312,6 @@ export const listUserEventTypesExamplePayload = {
     },
   ],
 };
-
 export const getEventTypeExamplePayload = {
   data: {
     resource: {
@@ -401,7 +389,6 @@ export const getEventTypeExamplePayload = {
     },
   },
 };
-
 export const listEventTypeAvailableTimesExamplePayload = {
   data: {
     collection: [
@@ -429,7 +416,6 @@ export const listEventTypeAvailableTimesExamplePayload = {
     ],
   },
 };
-
 export const getUserExamplePayload = {
   data: {
     resource: {
@@ -449,7 +435,6 @@ export const getUserExamplePayload = {
     },
   },
 };
-
 export const getCurrentUserExamplePayload = {
   data: {
     resource: {
@@ -469,7 +454,6 @@ export const getCurrentUserExamplePayload = {
     },
   },
 };
-
 export const createShareExamplePayload = {
   data: {
     resource: {
@@ -517,7 +501,6 @@ export const createShareExamplePayload = {
     },
   },
 };
-
 export const createWebhookSubscriptionExamplePayload = {
   data: {
     resource: {
@@ -535,7 +518,6 @@ export const createWebhookSubscriptionExamplePayload = {
     },
   },
 };
-
 export const listWebhookSubscriptionExamplePayload = {
   data: [
     {
@@ -553,7 +535,6 @@ export const listWebhookSubscriptionExamplePayload = {
     },
   ],
 };
-
 export const getWebhookSubscriptionExamplePayload = {
   data: {
     resource: {
@@ -571,7 +552,6 @@ export const getWebhookSubscriptionExamplePayload = {
     },
   },
 };
-
 export const listOrganizationInvitationsExamplePayload = {
   data: [
     {
@@ -586,7 +566,6 @@ export const listOrganizationInvitationsExamplePayload = {
     },
   ],
 };
-
 export const inviteUserToOrganizationExamplePayload = {
   data: {
     resource: {
@@ -600,7 +579,6 @@ export const inviteUserToOrganizationExamplePayload = {
     },
   },
 };
-
 export const getOrganizationInvitationExamplePayload = {
   data: {
     resource: {
@@ -615,7 +593,6 @@ export const getOrganizationInvitationExamplePayload = {
     },
   },
 };
-
 export const getOrganizationMembershipExamplePayload = {
   data: {
     resource: {
@@ -639,7 +616,6 @@ export const getOrganizationMembershipExamplePayload = {
     },
   },
 };
-
 export const listOrganizationMembershipsExamplePayload = {
   data: [
     {
@@ -663,7 +639,6 @@ export const listOrganizationMembershipsExamplePayload = {
     },
   ],
 };
-
 export const listUserBusyTimesExamplePayload = {
   data: {
     collection: [
@@ -695,7 +670,6 @@ export const listUserBusyTimesExamplePayload = {
     ],
   },
 };
-
 export const listUserAvailabilitySchedulesExamplePayload = {
   data: {
     collection: [
@@ -791,7 +765,6 @@ export const listUserAvailabilitySchedulesExamplePayload = {
     ],
   },
 };
-
 export const getUserAvailabilityScheduleExamplePayload = {
   data: {
     resource: {
@@ -816,7 +789,6 @@ export const getUserAvailabilityScheduleExamplePayload = {
     },
   },
 };
-
 export const listActivityLogEntriesExamplePayload = {
   data: [
     {
@@ -845,7 +817,6 @@ export const listActivityLogEntriesExamplePayload = {
     },
   ],
 };
-
 export const listRoutingFormsExamplePayload = {
   data: [
     {
@@ -878,7 +849,6 @@ export const listRoutingFormsExamplePayload = {
     },
   ],
 };
-
 export const getRoutingFormExamplePayload = {
   data: {
     resource: {
@@ -911,7 +881,6 @@ export const getRoutingFormExamplePayload = {
     },
   },
 };
-
 export const listRoutingFormSubmissionsExamplePayload = {
   data: [
     {
@@ -944,7 +913,6 @@ export const listRoutingFormSubmissionsExamplePayload = {
     },
   ],
 };
-
 export const getRoutingFormSubmissionExamplePayload = {
   data: {
     resource: {

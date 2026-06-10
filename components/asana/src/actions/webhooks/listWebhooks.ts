@@ -1,7 +1,6 @@
 import { action, input, util } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, limit, offset, workspaceId } from "../../inputs";
-
 interface AsanaWebhook {
   gid: string;
   active: boolean;
@@ -13,7 +12,6 @@ interface AsanaWebhook {
   resource_type: string;
   target: string;
 }
-
 export const listWebhooks = action({
   display: {
     label: "List Workspace Webhooks",

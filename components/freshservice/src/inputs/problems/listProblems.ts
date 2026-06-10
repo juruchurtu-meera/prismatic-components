@@ -5,7 +5,6 @@ import {
   page,
   perPage,
 } from "../common";
-
 export const listProblemsInputs = {
   connection,
   fetchAll,

@@ -7,7 +7,6 @@ import {
   promptInput,
   timeout,
 } from "../inputs";
-
 const createImage = action({
   display: {
     label: "Create Image",
@@ -42,5 +41,4 @@ const createImage = action({
   },
   examplePayload: createImageExamplePayload,
 });
-
 export default { createImage };

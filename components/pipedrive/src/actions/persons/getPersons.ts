@@ -13,7 +13,6 @@ import { paginateRecordsWithCursor } from "../../util";
 import type { Person } from "../../types/persons";
 import { getPersonsExamplePayload } from "../../examplePayloads/persons";
 import { WebhookVersion } from "../../constants";
-
 export const getPersons = action({
   display: {
     label: "Get Persons",
@@ -23,8 +22,11 @@ export const getPersons = action({
     context,
     { connection, filterId, limit, sortBy, sortDirection, fetchAll, cursor },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
-
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const data = await paginateRecordsWithCursor<Person>(
       client,
       "persons",

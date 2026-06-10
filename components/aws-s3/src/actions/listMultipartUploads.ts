@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { listMultipartUploadsPayload } from "../examplePayloads";
 import { accessKeyInput, bucket } from "../inputs";
-
 export const listMultipartUploads = action({
   display: {
     label: "List Multipart Uploads",

@@ -4,7 +4,6 @@ import actions from "./actions";
 import { oauthConnection } from "./connections";
 import dataSources from "./datasources";
 import triggers from "./triggers";
-
 export default component({
   key: "dropbox",
   documentationUrl: "https://prismatic.io/docs/components/dropbox/",

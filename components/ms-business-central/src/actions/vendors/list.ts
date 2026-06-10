@@ -3,7 +3,6 @@ import { getMsBusinessCentralClient } from "../../client";
 import { listVendorsExamplePayload } from "../../examplePayloads";
 import { listVendorsInputs } from "../../inputs/vendors";
 import type { MultipleItemsResponse, Vendor } from "../../interfaces";
-
 export const listVendors = action({
   display: {
     label: "List Vendors",
@@ -27,7 +26,11 @@ export const listVendors = action({
       $select,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const params = {
       $search,
       $skip,
@@ -40,14 +43,12 @@ export const listVendors = action({
       $orderBy,
       $select,
     };
-
     const { data } = await client.get<MultipleItemsResponse<Vendor[]>>(
       `/companies(${companyId})/vendors`,
       {
         params,
       },
     );
-
     return { data };
   },
   examplePayload: listVendorsExamplePayload,

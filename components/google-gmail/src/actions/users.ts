@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput } from "../inputs";
-
 const getCurrentUser = action({
   display: {
     label: "Get Current User",
@@ -22,5 +21,4 @@ const getCurrentUser = action({
     },
   },
 });
-
 export default { getCurrentUser };

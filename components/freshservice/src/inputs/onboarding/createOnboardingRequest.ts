@@ -11,7 +11,6 @@ import {
   cfVerified,
   onboardingAdditionalFields,
 } from "./common";
-
 export const createOnboardingRequestInputs = {
   connection,
   cfEmployeeName,

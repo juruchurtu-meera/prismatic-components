@@ -1,7 +1,6 @@
 const path = require("node:path");
 const _webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
-
 module.exports = {
   mode: "production",
   target: "node",
@@ -34,7 +33,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     libraryTarget: "commonjs2",
   },
-  
   externals: {
     bufferutil: "bufferutil",
     "utf-8-validate": "utf-8-validate",

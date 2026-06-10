@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, dir, fileName, path, values } from "../inputs";
 import { handleErrors } from "../errors";
 import { updateFileExamplePayload } from "../examplePayloads";
-
 export const updateFile = action({
   display: {
     label: "Update File",
@@ -24,12 +23,9 @@ export const updateFile = action({
   },
   perform: async (context, { connection, dir, values, fileName, path }) => {
     const client = getOneDriveClient(connection, context.debug.enabled);
-
     return {
       data: await handleErrors(
         client.patch(`/me/drive/root:${dir}`, {
-          
-          
           ...util.types.keyValPairListToObject(values),
           name: util.types.toString(fileName),
           parentReference: { path: util.types.toString(path) },

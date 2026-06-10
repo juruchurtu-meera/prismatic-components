@@ -19,7 +19,6 @@ import {
   state,
   connectionInput,
 } from "../../inputs";
-
 export const addList = action({
   display: {
     label: "Add List",
@@ -71,5 +70,4 @@ export const addList = action({
     connection: connectionInput,
   },
 });
-
 export default addList;

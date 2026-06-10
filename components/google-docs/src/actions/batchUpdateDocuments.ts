@@ -10,7 +10,6 @@ import {
 import { batchUpdateDocumentsExamplePayload } from "../examplePayloads";
 import { docs_v1 } from "@googleapis/docs";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export const batchUpdateDocuments = action({
   display: {
     label: "Batch Update Documents",
@@ -25,19 +24,16 @@ export const batchUpdateDocuments = action({
       requests,
       requiredRevisionId,
       targetRevisionId,
-    }
+    },
   ) => {
     const googleDocsClient = getClient(googleConnection);
-
     if (requests && !util.types.isJSON(requests)) {
       throw new Error("Requests input must be a valid JSON.");
     }
-
     const writeControl: docs_v1.Schema$WriteControl = {
       requiredRevisionId: requiredRevisionId || null,
       targetRevisionId: targetRevisionId || null,
     };
-
     try {
       const { data } = await googleDocsClient.documents.batchUpdate({
         documentId,

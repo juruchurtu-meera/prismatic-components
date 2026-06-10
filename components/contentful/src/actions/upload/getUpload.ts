@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { getUploadExamplePayload } from "../../examplePayloads";
 import { getUploadInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const getUpload = action({
   display: {
     label: "Get Upload",
@@ -24,7 +23,7 @@ export const getUpload = action({
       await environment.getUpload(uploadId)
     ).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: getUploadInputs,

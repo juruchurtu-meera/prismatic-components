@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createCustomerExamplePayload } from "../../examplePayloads";
 import { createRecordInputs } from "../../inputs";
 import { parseLocationData } from "../../utils";
-
 export const createRecord = action({
   display: {
     label: "Create Record",

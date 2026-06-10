@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, projectId, offset, limit } from "../../inputs";
 import { SECTION_OPT_FIELDS } from "../../util";
-
 export const listSections = action({
   display: {
     label: "List Sections",

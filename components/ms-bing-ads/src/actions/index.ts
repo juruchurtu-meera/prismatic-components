@@ -9,7 +9,6 @@ import { rawRequest } from "./rawRequest";
 import { searchAccounts } from "./searchAccounts";
 import { searchClientLinks } from "./searchClientLinks";
 import { sendUserInvitation } from "./sendUserInvitation";
-
 export default {
   addClientLinks,
   getAccountsInfo,

@@ -1,9 +1,7 @@
 import { input } from "@prismatic-io/spectral";
 import { additionalFields, connection } from "../shared";
 import { cleanStringInput } from "../../utils";
-
 const DOCUMENTATION_COMMENTS = `See [Karbon API documentation](https://karbonhq.github.io/karbon-api-reference/#post-/v3/WorkItems) for more information.`;
-
 const assigneeEmailAddres = input({
   label: "Assignee Email Address",
   type: "string",
@@ -14,7 +12,6 @@ const assigneeEmailAddres = input({
   example: "example@email.com",
   placeholder: "example@email.com",
 });
-
 const title = input({
   label: "Title",
   type: "string",
@@ -24,7 +21,6 @@ const title = input({
   example: "Work Item Title",
   placeholder: "Work Item Title",
 });
-
 const clientKey = input({
   label: "Client Key",
   type: "string",
@@ -35,7 +31,6 @@ const clientKey = input({
   example: "p56mtcBhwb9",
   placeholder: "p56mtcBhwb9",
 });
-
 const clientType = input({
   label: "Client Type",
   type: "string",
@@ -48,7 +43,6 @@ const clientType = input({
   example: "Organization",
   clean: cleanStringInput,
 });
-
 const relatedClientGroupKey = input({
   label: "Related Client Group Key",
   type: "string",
@@ -59,7 +53,6 @@ const relatedClientGroupKey = input({
   required: false,
   placeholder: "4f3gHnLC323",
 });
-
 const startDate = input({
   label: "Start Date",
   type: "string",
@@ -69,7 +62,6 @@ const startDate = input({
   placeholder: "2022-01-30",
   clean: cleanStringInput,
 });
-
 export default {
   connection,
   assigneeEmailAddres,

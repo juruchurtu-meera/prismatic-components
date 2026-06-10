@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { createCustomObjectExamplePayload } from "../../../examplePayloads";
 import { createCustomObjectInputs } from "../../../inputs";
-
 export const createCustomObject = action({
   display: {
     label: "Create Custom Object (V2)",

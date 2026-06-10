@@ -4,7 +4,6 @@ import { path, connectionInput } from "../inputs";
 import { getPathEntries } from "../utils";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
 import { downloadFileExamplePayload } from "../examplePayloads";
-
 export const downloadFile = action({
   display: {
     label: "Download File",
@@ -14,11 +13,9 @@ export const downloadFile = action({
     const client = createAuthorizedClient({ boxConnection });
     const pathEntries = await getPathEntries(client, util.types.toString(path));
     const { id, type, name } = pathEntries.slice(-1)[0];
-
     if (type !== "file") {
       throw Error(`'${name}' is not a file`);
     }
-
     const url = await client.files.getDownloadURL(id);
     const {
       data,
@@ -27,7 +24,6 @@ export const downloadFile = action({
       baseUrl: url,
       responseType: "arraybuffer",
     }).get("");
-
     return {
       data,
       contentType,

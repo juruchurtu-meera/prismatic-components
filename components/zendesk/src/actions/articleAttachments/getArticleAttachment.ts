@@ -3,7 +3,6 @@ import { connectionInput, articleId, articleAttachmentId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { ArticleAttachment } from "../../types";
 import { getArticleAttachmentPayload } from "../../examplePayloads";
-
 export const getArticleAttachment = action({
   display: {
     label: "Get Article Attachment",
@@ -18,7 +17,6 @@ export const getArticleAttachment = action({
     const { data } = await client.get<{
       article_attachment: ArticleAttachment;
     }>(`/help_center/articles/${articleId}/attachments/${articleAttachmentId}`);
-
     return {
       data,
     };

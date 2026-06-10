@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { valueListInputClean } from "../util";
-
 export const contactId = input({
   label: "Contact ID",
   type: "string",
@@ -10,7 +9,6 @@ export const contactId = input({
   dataSource: "selectContact",
   comments: "The unique identifier of the contact.",
 });
-
 export const contactCompany = input({
   label: "Company",
   type: "string",
@@ -18,7 +16,6 @@ export const contactCompany = input({
   example: "Acme Inc.",
   comments: "The company of the contact.",
 });
-
 export const contactEmail = input({
   label: "Email",
   type: "string",
@@ -28,7 +25,6 @@ export const contactEmail = input({
   comments:
     "The email of the contact. Getting contacts by email performs a search function and will return a successful output even when no results are found.",
 });
-
 export const contactFirstName = input({
   label: "First Name",
   type: "string",
@@ -36,7 +32,6 @@ export const contactFirstName = input({
   example: "John",
   comments: "The first name of the contact.",
 });
-
 export const contactlastName = input({
   label: "Last Name",
   type: "string",
@@ -44,7 +39,6 @@ export const contactlastName = input({
   example: "Doe",
   comments: "The last name of the contact.",
 });
-
 export const phone = input({
   label: "Phone",
   type: "string",
@@ -52,7 +46,6 @@ export const phone = input({
   example: "(877) 929-0687",
   comments: "The phone number.",
 });
-
 export const website = input({
   label: "Website",
   type: "string",
@@ -60,7 +53,6 @@ export const website = input({
   example: "www.example.com",
   comments: "The website URL.",
 });
-
 export const contactUpdateCompany = input({
   label: "Company",
   type: "string",
@@ -68,7 +60,6 @@ export const contactUpdateCompany = input({
   example: "Acme Inc.",
   comments: "The company of the contact",
 });
-
 export const contactUpdateEmail = input({
   label: "Email",
   type: "string",
@@ -77,7 +68,6 @@ export const contactUpdateEmail = input({
   placeholder: "Enter email address",
   comments: "The email of the contact",
 });
-
 export const contactUpdateFirstName = input({
   label: "First Name",
   type: "string",
@@ -85,7 +75,6 @@ export const contactUpdateFirstName = input({
   example: "John",
   comments: "The first name of the contact",
 });
-
 export const contactUpdatelastName = input({
   label: "Last Name",
   type: "string",
@@ -93,7 +82,6 @@ export const contactUpdatelastName = input({
   example: "Doe",
   comments: "The last name of the contact",
 });
-
 export const updatePhone = input({
   label: "Phone",
   type: "string",
@@ -101,7 +89,6 @@ export const updatePhone = input({
   example: "(877) 929-0687",
   comments: "The phone number of the contact",
 });
-
 export const updateWebsite = input({
   label: "Website",
   type: "string",
@@ -109,7 +96,6 @@ export const updateWebsite = input({
   example: "www.example.com",
   comments: "The website of the contact",
 });
-
 export const contactIds = input({
   label: "Contact Ids",
   type: "string",

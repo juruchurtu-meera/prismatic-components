@@ -1,5 +1,4 @@
 import type { CampaignChange, CampaignQueryRow } from "../../types";
-
 export const detectCampaignChanges = (
   currentCampaigns: CampaignQueryRow[],
   previousCampaigns: CampaignQueryRow[],
@@ -8,18 +7,14 @@ export const detectCampaignChanges = (
   let localPreviousCampaigns = previousCampaigns;
   const changes: CampaignChange[] = [];
   const changedAt = new Date().toISOString();
-
   if (!localPreviousCampaigns || !Array.isArray(localPreviousCampaigns)) {
     localPreviousCampaigns = [];
   }
-
   for (const current of currentCampaigns) {
     const previous = localPreviousCampaigns.find(
       (p) => p.campaign?.id === current.campaign?.id,
     );
-
     if (!previous) {
-      
       changes.push({
         changeType: "created",
         campaignId: current.campaign.id,
@@ -31,8 +26,6 @@ export const detectCampaignChanges = (
       });
       continue;
     }
-
-    
     if (
       (changeTypes.includes("status") || changeTypes.includes("all")) &&
       current.campaign.status !== previous.campaign.status
@@ -47,8 +40,6 @@ export const detectCampaignChanges = (
         changedAt,
       });
     }
-
-    
     if (
       (changeTypes.includes("budget") || changeTypes.includes("all")) &&
       current.campaignBudget?.amountMicros !==
@@ -64,8 +55,6 @@ export const detectCampaignChanges = (
         changedAt,
       });
     }
-
-    
     if (
       (changeTypes.includes("bidding") || changeTypes.includes("all")) &&
       current.campaign?.biddingStrategyType !==
@@ -82,13 +71,10 @@ export const detectCampaignChanges = (
       });
     }
   }
-
-  
   for (const previous of localPreviousCampaigns) {
     const current = currentCampaigns.find(
       (c) => c.campaign?.id === previous.campaign?.id,
     );
-
     if (!current) {
       changes.push({
         changeType: "deleted",
@@ -101,6 +87,5 @@ export const detectCampaignChanges = (
       });
     }
   }
-
   return changes;
 };

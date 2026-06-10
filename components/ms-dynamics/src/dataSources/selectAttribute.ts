@@ -1,7 +1,6 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createCrmClient } from "../client";
 import { selectAttributeInputs } from "../inputs";
-
 export const selectAttribute = dataSource({
   display: {
     label: "Select Attribute",
@@ -12,14 +11,11 @@ export const selectAttribute = dataSource({
   inputs: selectAttributeInputs,
   perform: async (_context, { connection, entityId }) => {
     const client = await createCrmClient(connection, false);
-
     const selectFields = ["LogicalName", "DisplayName", "MetadataId"];
-
     const response = await client.retrieveAttributes({
       entityKey: util.types.toString(entityId),
       select: selectFields,
     });
-
     const result = response.value
       .filter((attr) => attr.DisplayName?.UserLocalizedLabel?.Label)
       .sort((a, b) => (a.LogicalName || "").localeCompare(b.LogicalName || ""))
@@ -27,9 +23,8 @@ export const selectAttribute = dataSource({
         (attribute): Element => ({
           label: attribute.DisplayName.UserLocalizedLabel.Label,
           key: attribute.MetadataId,
-        })
+        }),
       );
-
     return { result };
   },
 });

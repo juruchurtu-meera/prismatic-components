@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getModelExamplePayload = {
   data: {
     created_at: "2025-02-19T00:00:00Z",

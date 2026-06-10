@@ -1,6 +1,5 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
 import { applicationKey, environment, tenant } from "./inputs";
-
 export const serviceTitanConnection = oauth2Connection({
   key: "serviceTitanConnection",
   display: {
@@ -65,5 +64,4 @@ export const serviceTitanConnection = oauth2Connection({
     environment,
   },
 });
-
 export default [serviceTitanConnection];

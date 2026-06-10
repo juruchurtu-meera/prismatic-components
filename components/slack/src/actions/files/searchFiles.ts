@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { searchFilesExamplePayload } from "../../examplePayloads";
 import { searchFilesInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const searchFiles = action({
   display: {
     label: "Search Files",
@@ -11,7 +10,7 @@ export const searchFiles = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, query, sort, sort_dir, count, highlight, page, team_id }
+    { connection, query, sort, sort_dir, count, highlight, page, team_id },
   ) => {
     debugLogger({
       debug,

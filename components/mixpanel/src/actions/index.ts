@@ -7,7 +7,6 @@ import identities from "./identities";
 import pipelines from "./pipelines";
 import profiles from "./profiles";
 import rawRequest from "./rawRequest";
-
 export default {
   ...events,
   ...funnels,

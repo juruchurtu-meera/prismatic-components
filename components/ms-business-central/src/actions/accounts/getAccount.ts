@@ -4,7 +4,6 @@ import { getAccountExamplePayload } from "../../examplePayloads";
 import { accountId, companyId } from "../../inputs/accounts/getAccountsInputs";
 import { connectionInput } from "../../inputs/general";
 import type { Account } from "../../interfaces";
-
 export const getAccount = action({
   display: {
     label: "Get Account",
@@ -12,10 +11,14 @@ export const getAccount = action({
       "Retrieve the properties and relationships of an account object in Microsoft Business Central.",
   },
   perform: async (context, { companyId, connection, accountId }) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
-
-    const { data } = await client.get<Account>(`/companies(${companyId})/accounts(${accountId})`);
-
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
+    const { data } = await client.get<Account>(
+      `/companies(${companyId})/accounts(${accountId})`,
+    );
     return { data };
   },
   inputs: {

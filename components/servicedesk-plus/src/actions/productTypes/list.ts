@@ -10,7 +10,6 @@ import {
   rowCount,
 } from "../../inputs";
 import { buildCriteriaObject, paginateData } from "../../util";
-
 export const listProductTypes = action({
   display: {
     label: "List Product Types",

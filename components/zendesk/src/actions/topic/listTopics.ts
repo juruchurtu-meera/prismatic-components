@@ -4,7 +4,6 @@ import { rawHttpClient } from "../../auth";
 import type { PaginatedResponse, Topic } from "../../types";
 import { listTopicsPayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listTopics = action({
   display: {
     label: "List Topics",
@@ -20,7 +19,6 @@ export const listTopics = action({
       "page[size]": pageLimit || undefined,
       "page[after]": cursor || undefined,
     };
-
     if (fetchAll) {
       const topics: Topic[] = [];
       return {
@@ -35,13 +33,16 @@ export const listTopics = action({
         },
       };
     }
-
     const { data } = await client.get<
-      PaginatedResponse<{ topics: Topic[] }> | { topics: Topic[] }
+      | PaginatedResponse<{
+          topics: Topic[];
+        }>
+      | {
+          topics: Topic[];
+        }
     >("/community/topics", {
       params,
     });
-
     return {
       data,
     };

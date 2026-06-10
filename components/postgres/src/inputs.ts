@@ -1,5 +1,4 @@
 import { input, KeyValuePair, util } from "@prismatic-io/spectral";
-
 export const queryField = input({
   label: "Query Field",
   comments: "The query to be executed",
@@ -10,7 +9,6 @@ export const queryField = input({
   example:
     "INSERT INTO users(first_name, last_name, age) VALUES(${firstname}, ${lastname}, ${age})",
 });
-
 export const params = input({
   label: "Named Parameters",
   comments: "Optional named parameters to insert into a query.",
@@ -22,7 +20,6 @@ export const params = input({
       ? util.types.keyValPairListToObject(value as KeyValuePair<unknown>[])
       : {},
 });
-
 export const paramsObject = input({
   label: "Parameters Object or Array",
   comments:
@@ -33,7 +30,6 @@ export const paramsObject = input({
   example: JSON.stringify({ productId: 123, customerName: "Acme Corp" }),
   clean: (value) => (value ? util.types.toObject(value) : {}),
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",

@@ -1,14 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { DEFAULT_MODEL } from "./constants";
 import type { ImageSize } from "./types";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Azure OpenAI Service or OpenAI API connection to use.",
 });
-
 export const numImages = input({
   label: "Number of Images",
   type: "string",
@@ -19,7 +17,6 @@ export const numImages = input({
   placeholder: "Enter number of images",
   clean: util.types.toNumber,
 });
-
 export const modelInput = input({
   label: "Model / Deployment Name",
   type: "string",
@@ -32,7 +29,6 @@ export const modelInput = input({
   comments:
     "Specifies either the model deployment name (when using Azure OpenAI) or model name (when using OpenAI). See available models at https://platform.openai.com/docs/models.",
 });
-
 export const numChoicesInput = input({
   label: "Number of Choices",
   type: "string",
@@ -44,7 +40,6 @@ export const numChoicesInput = input({
   required: false,
   clean: util.types.toNumber,
 });
-
 export const messagesInput = input({
   label: "Messages",
   type: "code",
@@ -67,7 +62,6 @@ export const messagesInput = input({
   ),
   clean: util.types.toObject,
 });
-
 export const temperatureInput = input({
   label: "Temperature",
   type: "string",
@@ -79,7 +73,6 @@ export const temperatureInput = input({
   placeholder: "Enter temperature",
   clean: util.types.toNumber,
 });
-
 export const topPInput = input({
   label: "Top P",
   type: "string",
@@ -91,7 +84,6 @@ export const topPInput = input({
   placeholder: "Enter top_p value",
   clean: util.types.toNumber,
 });
-
 export const promptInput = input({
   label: "Prompt",
   type: "string",
@@ -102,7 +94,6 @@ export const promptInput = input({
   clean: util.types.toString,
   example: "A cute baby sea otter",
 });
-
 export const imageSizeInput = input({
   label: "Image Size",
   type: "string",

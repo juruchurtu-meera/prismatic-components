@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { connectionInput, listId } from "../inputs";
 import type { MailchimpMember } from "../types";
 import { paginatedRequest } from "../utils/pagination";
-
 export const selectMember = dataSource({
   display: {
     label: "Select Member",
@@ -21,7 +20,6 @@ export const selectMember = dataSource({
       dataKey: "members",
       fetchAll: true,
     });
-
     const members = data.members as MailchimpMember[];
     const result = members
       .map<Element>((member) => ({
@@ -31,7 +29,6 @@ export const selectMember = dataSource({
         key: member.id.toString(),
       }))
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",
@@ -44,5 +41,4 @@ export const selectMember = dataSource({
     ],
   },
 });
-
 export default selectMember;

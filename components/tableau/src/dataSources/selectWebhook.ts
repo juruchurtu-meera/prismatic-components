@@ -1,35 +1,32 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
-import { getTableuClient } from "../auth";
-import { connectionInput, apiVersion } from "../inputs";
-
+import { getTableauClient } from "../util";
+import { selectWebhookInputs } from "../inputs";
 export const selectWebhook = dataSource({
   display: {
     label: "Select Webhook",
     description: "A picklist of webhooks in your Tableau site.",
   },
-  inputs: {
-    tableauConnection: connectionInput,
-    apiVersion,
-  },
+  inputs: selectWebhookInputs,
   perform: async (_context, { tableauConnection, apiVersion }) => {
-    const client = await getTableuClient({
+    const client = await getTableauClient({
       tableauConnection,
       timeout: 10000,
       debug: false,
       apiVersion: util.types.toString(apiVersion) || undefined,
     });
-
     const { data } = await client.get("/webhooks");
-
     const webhooks = data?.webhooks?.webhook ?? [];
-
-    const result: Element[] = (webhooks as { name: string; id: string }[])
+    const result: Element[] = (
+      webhooks as {
+        name: string;
+        id: string;
+      }[]
+    )
       .map((webhook) => ({
         label: webhook.name,
         key: webhook.id.toString(),
       }))
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

@@ -9,7 +9,6 @@ import {
   limit,
 } from "../inputs";
 import { checkDebug, fetchAllTeamFolders, handleDropboxError } from "../util";
-
 export const listTeamFolder = action({
   display: {
     label: "List Team's Folders",
@@ -18,7 +17,6 @@ export const listTeamFolder = action({
   perform: async (context, params) => {
     checkDebug(params, context);
     const dbx = createAuthorizedClient(params.dropboxConnection);
-
     try {
       const data = await fetchAllTeamFolders(dbx, {
         limit: params.limit,

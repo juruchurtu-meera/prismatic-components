@@ -4,7 +4,6 @@ import { getResponseDetails } from "./getResponseDetails";
 import { listResponsesBulk } from "./listResponsesBulk";
 import { updateResponse } from "./updateResponse";
 import { deleteResponse } from "./deleteResponse";
-
 export default {
   listResponses,
   getResponse,

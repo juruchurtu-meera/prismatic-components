@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
-
 export const addCallLog = action({
   display: {
     label: "Add Call Log",

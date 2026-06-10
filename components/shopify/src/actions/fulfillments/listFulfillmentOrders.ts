@@ -3,7 +3,6 @@ import { MAX_LIMIT } from "../../constants";
 import { listFulfillmentOrdersExamplePayload } from "../../examplePayloads";
 import { listFulfillmentOrdersInputs } from "../../inputs";
 import { listFulfillmentOrdersGql } from "../graphql/fulfillments/listFulfillmentOrders";
-
 export const listFulfillmentOrders = action({
   display: {
     label: "List Fulfillment Orders",

@@ -6,7 +6,6 @@ import type {
   team,
   users,
 } from "dropbox";
-
 export const getTemporaryLinkExamplePayload: DropboxResponse<files.GetTemporaryLinkResult> =
   {
     status: 200,
@@ -28,7 +27,6 @@ export const getTemporaryLinkExamplePayload: DropboxResponse<files.GetTemporaryL
       link: "https://uc925b3fcc7a2208235a92b0e7e8.dl.dropboxusercontent.com/cd/0/get/COQEC7ffJgExogeJr8ngG5GH_4jW-iN6PC1heBZVwhZPs-3Wis_TJVR5GDHQnrLSuZRn8EhZVxFFxU9vOcpwZ2tbpIC59w1dQkaZ9Vs0q-8YPfD0hfLTOWy7iMpx5ymz6J9k6nnzHyr08sICt-RcM5jMk2ET8lwSQoQCeW6_TG6lWA/file",
     },
   };
-
 export const lockFileBatchExamplePayload: DropboxResponse<files.LockFileBatchResult> =
   {
     status: 200,
@@ -86,7 +84,6 @@ export const lockFileBatchExamplePayload: DropboxResponse<files.LockFileBatchRes
       ],
     },
   };
-
 export const listChangesExamplePayload = {
   entries: [
     {
@@ -113,7 +110,6 @@ export const listChangesExamplePayload = {
   cursor: "AAFCBKRdVxEXAMPLE",
   has_more: false,
 };
-
 export const copyObjectExamplePayload: DropboxResponse<files.RelocationResult> =
   {
     status: 200,
@@ -130,7 +126,6 @@ export const copyObjectExamplePayload: DropboxResponse<files.RelocationResult> =
       },
     },
   };
-
 export const createFolderExamplePayload: DropboxResponse<files.CreateFolderResult> =
   {
     status: 200,
@@ -139,7 +134,6 @@ export const createFolderExamplePayload: DropboxResponse<files.CreateFolderResul
       metadata: { id: "exampleId", name: "myFolderName" },
     },
   };
-
 export const createSharedLinkExamplePayload: DropboxResponse<
   | sharing.FileLinkMetadataReference
   | sharing.FolderLinkMetadataReference
@@ -227,7 +221,6 @@ export const createSharedLinkExamplePayload: DropboxResponse<
     url: "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
   },
 };
-
 export const deleteObjectExamplePayload: DropboxResponse<files.DeleteResult> = {
   status: 200,
   headers: {},
@@ -243,12 +236,10 @@ export const deleteObjectExamplePayload: DropboxResponse<files.DeleteResult> = {
     },
   },
 };
-
 export const downloadFileExamplePayload = {
   data: Buffer.from("example"),
   contentType: "application/octet",
 };
-
 export const exportFileExamplePayload: DropboxResponse<files.ExportResult> = {
   status: 200,
   headers: {},
@@ -296,7 +287,6 @@ export const exportFileExamplePayload: DropboxResponse<files.ExportResult> = {
     },
   },
 };
-
 export const getCurrentAccountExamplePayload: users.FullAccount = {
   account_id: "dbid:EXAMPLE",
   name: {
@@ -321,7 +311,6 @@ export const getCurrentAccountExamplePayload: users.FullAccount = {
     home_namespace_id: "123456789",
   },
 };
-
 export const getDownloadStatusExamplePayload: DropboxResponse<files.SaveUrlJobStatus> =
   {
     status: 200,
@@ -330,7 +319,6 @@ export const getDownloadStatusExamplePayload: DropboxResponse<files.SaveUrlJobSt
       ".tag": "in_progress",
     },
   };
-
 export const getFileLockExamplePayload: DropboxResponse<files.LockFileBatchResult> =
   {
     status: 200,
@@ -388,7 +376,6 @@ export const getFileLockExamplePayload: DropboxResponse<files.LockFileBatchResul
       ],
     },
   };
-
 export const getFileOrFolderMetadataExamplePayload: DropboxResponse<
   | files.FileMetadataReference
   | files.FolderMetadataReference
@@ -433,7 +420,6 @@ export const getFileOrFolderMetadataExamplePayload: DropboxResponse<
     size: 7212,
   },
 };
-
 export const getSharedLinkFileExamplePayload: DropboxResponse<
   | sharing.FileLinkMetadataReference
   | sharing.FolderLinkMetadataReference
@@ -521,7 +507,6 @@ export const getSharedLinkFileExamplePayload: DropboxResponse<
     url: "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
   },
 };
-
 export const getSharedMetadataForFileExamplePayload: DropboxResponse<sharing.SharedFileMetadata> =
   {
     status: 200,
@@ -558,7 +543,6 @@ export const getSharedMetadataForFileExamplePayload: DropboxResponse<sharing.Sha
       time_invited: "2016-01-20T00:00:00Z",
     },
   };
-
 export const getSharedMetadataForFolderExamplePayload: DropboxResponse<sharing.SharedFolderMetadata> =
   {
     status: 200,
@@ -620,7 +604,6 @@ export const getSharedMetadataForFolderExamplePayload: DropboxResponse<sharing.S
       time_invited: "2016-01-20T00:00:00Z",
     },
   };
-
 export const getTeamInfoExamplePayload: DropboxResponse<team.MembersGetInfoV2Result> =
   {
     status: 200,
@@ -675,7 +658,6 @@ export const getTeamInfoExamplePayload: DropboxResponse<team.MembersGetInfoV2Res
       ],
     },
   };
-
 export const getTemporaryUploadLinkExamplePayload: DropboxResponse<files.GetTemporaryUploadLinkResult> =
   {
     status: 200,
@@ -684,7 +666,6 @@ export const getTemporaryUploadLinkExamplePayload: DropboxResponse<files.GetTemp
       link: "https://content.dropboxapi.com/...",
     },
   };
-
 export const listFolderExamplePayload: DropboxResponse<files.ListFolderResult> =
   {
     status: 200,
@@ -713,7 +694,6 @@ export const listFolderExamplePayload: DropboxResponse<files.ListFolderResult> =
       has_more: true,
     },
   };
-
 export const listSharedFoldersExamplePayload: DropboxResponse<sharing.ListFoldersResult> =
   {
     status: 200,
@@ -780,7 +760,6 @@ export const listSharedFoldersExamplePayload: DropboxResponse<sharing.ListFolder
       ],
     },
   };
-
 export const listSharedLinksExamplePayload: DropboxResponse<sharing.ListSharedLinksResult> =
   {
     status: 200,
@@ -871,7 +850,6 @@ export const listSharedLinksExamplePayload: DropboxResponse<sharing.ListSharedLi
       ],
     },
   };
-
 export const listSharingFoldersExamplePayload: DropboxResponse<sharing.ListFoldersResult> =
   {
     status: 200,
@@ -938,7 +916,6 @@ export const listSharingFoldersExamplePayload: DropboxResponse<sharing.ListFolde
       ],
     },
   };
-
 export const listTeamFoldersExamplePayload: DropboxResponse<team.TeamFolderListResult> =
   {
     status: 200,
@@ -969,7 +946,6 @@ export const listTeamFoldersExamplePayload: DropboxResponse<team.TeamFolderListR
       ],
     },
   };
-
 export const moveObjectExamplePayload: DropboxResponse<files.RelocationResult> =
   {
     status: 200,
@@ -986,7 +962,6 @@ export const moveObjectExamplePayload: DropboxResponse<files.RelocationResult> =
       },
     },
   };
-
 export const saveFromUrlExamplePayload: DropboxResponse<files.SaveUrlResult> = {
   status: 200,
   headers: {},
@@ -995,7 +970,6 @@ export const saveFromUrlExamplePayload: DropboxResponse<files.SaveUrlResult> = {
     async_job_id: "LnMobEc7XVEAAAAAAAAAAQ",
   },
 };
-
 export const searchFilesExamplePayload: DropboxResponse<files.SearchV2Result> =
   {
     status: 200,
@@ -1031,7 +1005,6 @@ export const searchFilesExamplePayload: DropboxResponse<files.SearchV2Result> =
       ],
     },
   };
-
 export const searchFoldersExamplePayload: DropboxResponse<files.SearchV2Result> =
   {
     status: 200,
@@ -1067,7 +1040,6 @@ export const searchFoldersExamplePayload: DropboxResponse<files.SearchV2Result> 
       ],
     },
   };
-
 export const shareFolderExamplePayload: DropboxResponse<sharing.ShareFolderLaunch> =
   {
     status: 200,
@@ -1130,7 +1102,6 @@ export const shareFolderExamplePayload: DropboxResponse<sharing.ShareFolderLaunc
       time_invited: "2016-01-20T00:00:00Z",
     },
   };
-
 export const unlockFileExamplePayload: DropboxResponse<files.LockFileBatchResult> =
   {
     status: 200,
@@ -1188,13 +1159,11 @@ export const unlockFileExamplePayload: DropboxResponse<files.LockFileBatchResult
       ],
     },
   };
-
 export const unshareFileExamplePayload: DropboxResponse<void> = {
   status: 200,
   headers: {},
   result: null,
 };
-
 export const unshareFolderExamplePayload: DropboxResponse<async.LaunchEmptyResult> =
   {
     status: 200,
@@ -1203,7 +1172,6 @@ export const unshareFolderExamplePayload: DropboxResponse<async.LaunchEmptyResul
       ".tag": "complete",
     },
   };
-
 export const uploadFileExamplePayload: DropboxResponse<files.FileMetadata> = {
   status: 200,
   headers: {},

@@ -3,8 +3,6 @@ import { paymentDistributionPayload } from "../exampleInputs";
 import { cleanObject, cleanString } from "../util";
 import { connection } from "./common";
 import { aoid } from "./workers";
-
-
 export const paymentDistribution = input({
   label: "Payment Distribution",
   type: "code",
@@ -15,7 +13,6 @@ export const paymentDistribution = input({
   example: JSON.stringify(paymentDistributionPayload, null, 2),
   clean: cleanObject,
 });
-
 export const workAssignmentId = input({
   label: "Work Assignment ID",
   type: "string",
@@ -26,8 +23,6 @@ export const workAssignmentId = input({
   example: "G3STHDEHFMJ3BY3N",
   clean: cleanString,
 });
-
-
 export const updatePaymentDistributionInputs = {
   connection,
   aoid,

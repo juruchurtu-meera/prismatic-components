@@ -2,7 +2,6 @@ import { dataSource, util } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../client";
 import { selectOrdersInputs } from "../inputs";
 import type { Order } from "../types";
-
 export const selectOrders = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -21,16 +20,13 @@ export const selectOrders = dataSource({
     },
   ) => {
     const client = createShipStationClient(connectionInput);
-
     const params = {
       customerName,
       orderStatusList,
       pageFullorders,
       pageSizeFulfillorders,
     };
-
     const { data } = await client.get("/orders", { params });
-
     return {
       result: data.orders.map((order: Order) => ({
         key: util.types.toString(order.orderId),

@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 const productData = {
   id: 29187456,
   reference_id: "TShirtBlueM",
@@ -45,15 +36,12 @@ const productData = {
     },
   ],
 };
-
 export const getProductExamplePayload = {
   data: productData,
 };
-
 export const listProductExamplePayload = {
   data: [productData],
 };
-
 export const updateProductExamplePayload = {
   data: productData,
 };

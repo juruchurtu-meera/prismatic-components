@@ -6,8 +6,6 @@ import type {
   OpsPagedResponse,
   PagedResponse,
 } from "../types";
-
-
 export const getPaginatedData = async <T>(
   client: HttpClient,
   url: string,
@@ -17,13 +15,11 @@ export const getPaginatedData = async <T>(
   if (!fetchAll) {
     return client.get(url, config);
   }
-
   const mergedParams = { ...(config.params ?? {}), limit: DEFAULT_PAGE_SIZE };
   const allValues: T[] = [];
   let firstResponse: AxiosResponse<PagedResponse<T>> | undefined;
   let currentStart = 0;
   let isLastPage = false;
-
   while (!isLastPage) {
     const response = await client.get<PagedResponse<T>>(url, {
       ...config,
@@ -34,7 +30,6 @@ export const getPaginatedData = async <T>(
     isLastPage = response.data.isLastPage;
     currentStart += DEFAULT_PAGE_SIZE;
   }
-
   const first = firstResponse as AxiosResponse<PagedResponse<T>>;
   return {
     ...first,
@@ -48,10 +43,6 @@ export const getPaginatedData = async <T>(
     },
   };
 };
-
-
-
-
 export const getOpsPaginatedData = async <T>(
   client: HttpClient,
   url: string,
@@ -70,10 +61,7 @@ export const getOpsPaginatedData = async <T>(
   let firstResponse: AxiosResponse<OpsPagedResponse<T>> | undefined;
   let nextUrl: string | undefined = url;
   let firstCall = true;
-
   while (nextUrl) {
-    
-    
     const response: AxiosResponse<OpsPagedResponse<T>> = firstCall
       ? await client.get<OpsPagedResponse<T>>(url, {
           ...config,
@@ -85,7 +73,6 @@ export const getOpsPaginatedData = async <T>(
     allValues.push(...(response.data.values ?? []));
     nextUrl = response.data.links?.next;
   }
-
   const first = firstResponse as AxiosResponse<OpsPagedResponse<T>>;
   return {
     ...first,
@@ -97,11 +84,6 @@ export const getOpsPaginatedData = async <T>(
     },
   };
 };
-
-
-
-
-
 export const getAssetsPaginatedData = async <T>(
   client: HttpClient,
   url: string,
@@ -111,7 +93,6 @@ export const getAssetsPaginatedData = async <T>(
   if (!fetchAll) {
     return client.get(url, config);
   }
-
   const mergedParams = {
     ...(config.params ?? {}),
     maxResults: DEFAULT_PAGE_SIZE,
@@ -120,7 +101,6 @@ export const getAssetsPaginatedData = async <T>(
   let firstResponse: AxiosResponse<AssetsPagedResponse<T>> | undefined;
   let currentStart = 0;
   let isLast = false;
-
   while (!isLast) {
     const response = await client.get<AssetsPagedResponse<T>>(url, {
       ...config,
@@ -131,7 +111,6 @@ export const getAssetsPaginatedData = async <T>(
     isLast = response.data.isLast;
     currentStart += DEFAULT_PAGE_SIZE;
   }
-
   const first = firstResponse as AxiosResponse<AssetsPagedResponse<T>>;
   return {
     ...first,

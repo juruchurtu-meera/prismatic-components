@@ -1,5 +1,4 @@
 import { onPremConnection, util } from "@prismatic-io/spectral";
-
 export const imapConnection = onPremConnection({
   key: "imap",
   display: {
@@ -103,5 +102,4 @@ export const imapConnection = onPremConnection({
     },
   },
 });
-
 export default [imapConnection];

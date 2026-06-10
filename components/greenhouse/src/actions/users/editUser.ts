@@ -16,7 +16,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../../util";
-
 export const editUser = action({
   display: {
     label: "Edit User",

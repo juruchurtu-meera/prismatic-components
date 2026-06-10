@@ -10,7 +10,6 @@ const userObject = {
   locale: "en",
   language: "en",
 };
-
 export const listUsersExamplePayload = {
   data: {
     pagination: {
@@ -23,27 +22,22 @@ export const listUsersExamplePayload = {
     },
   },
 };
-
 export const searchUsersExamplePayload = listUsersExamplePayload;
-
 export const getUserExamplePayload = {
   data: {
     user: userObject,
   },
 };
-
 export const createUserExamplePayload = {
   data: {
     user: userObject,
   },
 };
-
 export const updateUserExamplePayload = {
   data: {
     user: userObject,
   },
 };
-
 export const deleteUserExamplePayload = {
   data: null,
 };

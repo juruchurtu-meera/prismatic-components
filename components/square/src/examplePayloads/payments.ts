@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const listPaymentsExamplePayload = {
   data: {
     payments: [
@@ -68,7 +57,8 @@ export const listPaymentsExamplePayload = {
           currency: "USD",
         },
         receipt_number: "KkAk",
-        receipt_url: "https://squareup.com/receipt/preview/KkAkhdMsgzn59SM8A89WgKwekxLZY",
+        receipt_url:
+          "https://squareup.com/receipt/preview/KkAkhdMsgzn59SM8A89WgKwekxLZY",
         delay_action: "CANCEL",
         delayed_until: "2023-05-08T21:23:59.255Z",
         version_token: "zpCBiO0YgSg5cCEqjUxHQGEuZA9SJBdp1WwI",
@@ -77,12 +67,6 @@ export const listPaymentsExamplePayload = {
     cursor: "5Ckfj4JXW8dJxBSXVYEIWkOcW9h8PBDyQf...",
   },
 };
-
-
-
-
-
-
 export const getPaymentExamplePayload = {
   data: {
     payment: {
@@ -141,25 +125,13 @@ export const getPaymentExamplePayload = {
         currency: "USD",
       },
       receipt_number: "KkAk",
-      receipt_url: "https://squareup.com/receipt/preview/KkAkhdMsgzn59SM8A89WgKwekxLZY",
+      receipt_url:
+        "https://squareup.com/receipt/preview/KkAkhdMsgzn59SM8A89WgKwekxLZY",
       version_token: "zpCBiO0YgSg5cCEqjUxHQGEuZA9SJBdp1WwI",
     },
   },
 };
-
-
-
-
-
-
-
 export const createPaymentExamplePayload = getPaymentExamplePayload;
-
-
-
-
-
-
 export const updatePaymentExamplePayload = {
   data: {
     payment: {
@@ -188,12 +160,6 @@ export const updatePaymentExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const completePaymentExamplePayload = {
   data: {
     payment: {
@@ -220,12 +186,6 @@ export const completePaymentExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const cancelPaymentExamplePayload = {
   data: {
     payment: {
@@ -244,12 +204,6 @@ export const cancelPaymentExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const refundPaymentExamplePayload = {
   data: {
     refund: {
@@ -268,12 +222,6 @@ export const refundPaymentExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const getPaymentRefundExamplePayload = {
   data: {
     refund: {
@@ -302,12 +250,6 @@ export const getPaymentRefundExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const listPaymentRefundsExamplePayload = {
   data: {
     refunds: [

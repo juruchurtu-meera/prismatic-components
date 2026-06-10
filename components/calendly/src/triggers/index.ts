@@ -13,7 +13,6 @@ import {
   eventNamesInput,
 } from "../inputs";
 import { getCalendlyClient } from "../client";
-
 const performFunction = async (
   context: ActionContext,
   payload: TriggerPayload,
@@ -26,7 +25,6 @@ const performFunction = async (
       statusCode: 200,
     },
   });
-
 const calendlyTrigger = trigger({
   display: {
     label: "Scheduled Event",
@@ -62,7 +60,6 @@ const calendlyTrigger = trigger({
     ) => {
       const endpoint = context.webhookUrls[context.flow.name];
       const client = getCalendlyClient(connection, context.debug.enabled);
-
       await postWebhookSubscription(
         client,
         endpoint,
@@ -80,7 +77,8 @@ const calendlyTrigger = trigger({
     },
   },
 });
-
+import { pollChangesTrigger } from "./pollChangesTrigger";
 export default {
   calendlyTrigger,
+  pollChangesTrigger,
 };

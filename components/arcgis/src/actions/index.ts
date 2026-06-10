@@ -11,7 +11,6 @@ import { getSelf } from "./getSelf";
 import { listFeatureServices } from "./listFeatureServices";
 import { rawRequest } from "./rawRequest";
 import { searchItems } from "./searchItems";
-
 export default {
   addFeatures,
   getSelf,

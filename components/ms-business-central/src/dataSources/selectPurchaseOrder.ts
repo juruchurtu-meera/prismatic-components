@@ -4,11 +4,11 @@ import { companyId } from "../inputs/accounts/getAccountsInputs";
 import { connectionInput } from "../inputs/general";
 import type { MultipleItemsResponse, PurchaseOrder } from "../interfaces";
 import { toSortedPicklist } from "./helpers";
-
 export const selectPurchaseOrder = dataSource({
   display: {
     label: "Select Purchase Order",
-    description: "A picklist of purchase orders in your Business Central organization.",
+    description:
+      "A picklist of purchase orders in your Business Central organization.",
   },
   inputs: {
     connection: connectionInput,
@@ -19,7 +19,6 @@ export const selectPurchaseOrder = dataSource({
     const { data } = await client.get<MultipleItemsResponse<PurchaseOrder[]>>(
       `/companies(${companyId})/purchaseOrders`,
     );
-
     return {
       result: toSortedPicklist(data.value, (po) => ({
         key: po.id,
@@ -30,7 +29,10 @@ export const selectPurchaseOrder = dataSource({
   dataSourceType: "picklist",
   examplePayload: {
     result: [
-      { label: "PO-001 - First Up Consultants", key: "5d115c9c-44e3-ea11-bb43-000d3a2feca1" },
+      {
+        label: "PO-001 - First Up Consultants",
+        key: "5d115c9c-44e3-ea11-bb43-000d3a2feca1",
+      },
     ],
   },
 });

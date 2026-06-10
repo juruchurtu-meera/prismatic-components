@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { AppointmentAssignment } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listAppointmentsAssignment = action({
   display: {
     label: "List Appointment Assignment",

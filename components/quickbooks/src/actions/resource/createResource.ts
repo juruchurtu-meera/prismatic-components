@@ -5,7 +5,6 @@ import {
   resourceAttributes,
   resourceType,
 } from "../../inputs";
-
 export const createResource = action({
   display: {
     label: "Create Resource",
@@ -28,7 +27,6 @@ export const createResource = action({
         },
       },
     );
-
     return {
       data,
     };

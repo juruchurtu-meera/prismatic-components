@@ -10,14 +10,20 @@ import {
 } from "../../inputs";
 import { cleanNumber } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getStageDeals = action({
   display: {
     label: "Get Stage Deals",
     description: "Gets deals in a stage.",
   },
-  perform: async (context, { connection, id, filterId, limit, sortBy, sortDirection, cursor }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, id, filterId, limit, sortBy, sortDirection, cursor },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/deals", {
       params: {
         filter_id: filterId,
@@ -37,7 +43,8 @@ export const getStageDeals = action({
       label: "Filter ID",
       type: "string",
       clean: cleanNumber,
-      comments: "If supplied, only deals matching the given filter will be returned",
+      comments:
+        "If supplied, only deals matching the given filter will be returned",
     }),
     limit: paginationLimitInput,
     cursor,

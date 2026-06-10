@@ -9,15 +9,21 @@ import type { PageInfo } from "../../interfaces/PageInfo";
 import { fulfillmentOrderMapper } from "../mappers/fulfillmentOrderMapper";
 import { paginationMapper } from "../mappers/paginationMapper";
 import listFulfillmentOrdersQuery from "../queries/fulfillments/ListFulfillmentOrders.gql";
-
 export const listFulfillmentOrdersGql = action({
   display: {
     label: "List Fulfillment Orders",
     description: "Lists all fulfillment orders for a specific order.",
   },
   inputs,
-  perform: async (context, { shopifyConnection, orderId, limit, getAlldata, endCursor }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
+  perform: async (
+    context,
+    { shopifyConnection, orderId, limit, getAlldata, endCursor },
+  ) => {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const data = (await fetchData(
       client,
       ["order", "fulfillmentOrders"],
@@ -32,11 +38,12 @@ export const listFulfillmentOrdersGql = action({
     )) as Record<"fulfillmentOrders", FulfillmentOrder[]> & {
       pageInfo: PageInfo;
     };
-
     return {
       data: {
         data: {
-          fulfillment_orders: data.fulfillmentOrders.map(fulfillmentOrderMapper),
+          fulfillment_orders: data.fulfillmentOrders.map(
+            fulfillmentOrderMapper,
+          ),
         },
         ...paginationMapper(data.pageInfo),
       },

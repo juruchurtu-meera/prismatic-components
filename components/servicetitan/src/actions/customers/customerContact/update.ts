@@ -9,7 +9,6 @@ import {
   customerId,
   memo,
 } from "../../../inputs";
-
 export const updateCustomerContact = action({
   display: {
     label: "Update Customer Contact",

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "./general";
-
 const mediaId = input({
   label: "Media ID",
   comments: "The ID of the media file to delete.",
@@ -10,5 +9,4 @@ const mediaId = input({
   placeholder: "Enter a Media ID",
   clean: util.types.toString,
 });
-
 export const deleteMediaInputs = { connection, mediaId };

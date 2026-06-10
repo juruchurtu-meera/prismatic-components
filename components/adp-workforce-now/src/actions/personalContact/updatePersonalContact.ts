@@ -7,7 +7,6 @@ import {
   personalContact,
   personalContactId,
 } from "../../inputs";
-
 export const updatePersonalContact = action({
   display: {
     label: "Update Personal Contact",

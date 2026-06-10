@@ -1,7 +1,6 @@
 export interface PollingState extends Record<string, unknown> {
   lastPolledAt?: string;
 }
-
 export interface MondayItem extends Record<string, unknown> {
   id: string;
   name?: string;

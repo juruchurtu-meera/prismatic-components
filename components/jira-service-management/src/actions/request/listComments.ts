@@ -4,7 +4,6 @@ import { listCommentsExamplePayload } from "../../examplePayloads";
 import { listCommentsInputs } from "../../inputs";
 import type { Comment } from "../../types";
 import { getPaginatedData } from "../../util";
-
 export const listComments = action({
   display: {
     label: "List Comments",

@@ -1,11 +1,6 @@
 import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import { connectionInput, fetchAll, page, perPage, extraBody } from "./common";
-
-
-
-
-
 export const contactId = input({
   label: "Contact ID",
   type: "string",
@@ -16,7 +11,6 @@ export const contactId = input({
   dataSource: "selectContact",
   clean: util.types.toString,
 });
-
 export const contactEmail = input({
   label: "Email",
   type: "string",
@@ -26,7 +20,6 @@ export const contactEmail = input({
   placeholder: "Enter email address",
   clean: util.types.toString,
 });
-
 export const contactFirstName = input({
   label: "First Name",
   type: "string",
@@ -36,7 +29,6 @@ export const contactFirstName = input({
   placeholder: "Enter first name",
   clean: toOptionalString,
 });
-
 export const contactLastName = input({
   label: "Last Name",
   type: "string",
@@ -46,7 +38,6 @@ export const contactLastName = input({
   placeholder: "Enter last name",
   clean: toOptionalString,
 });
-
 export const contactCustomFields = input({
   label: "Custom Fields",
   type: "string",
@@ -57,11 +48,6 @@ export const contactCustomFields = input({
   clean: (value: unknown) =>
     util.types.keyValPairListToObject(value as KeyValuePair[]),
 });
-
-
-
-
-
 export const updateExistingContacts = input({
   label: "Update Existing Contacts",
   type: "boolean",
@@ -70,7 +56,6 @@ export const updateExistingContacts = input({
   comments: "When true, existing contacts will be updated if they exist.",
   clean: util.types.toBool,
 });
-
 export const bulkContacts = input({
   label: "Contacts",
   type: "code",
@@ -88,23 +73,16 @@ export const bulkContacts = input({
   ),
   clean: util.types.toObject,
 });
-
-
-
-
-
 export const listContactsInputs = {
   connection: connectionInput,
   fetchAll,
   page,
   perPage,
 };
-
 export const getContactInputs = {
   connection: connectionInput,
   contactId,
 };
-
 export const createContactInputs = {
   connection: connectionInput,
   email: contactEmail,
@@ -113,7 +91,6 @@ export const createContactInputs = {
   customFields: contactCustomFields,
   extraBody,
 };
-
 export const updateContactInputs = {
   connection: connectionInput,
   contactId,
@@ -123,12 +100,10 @@ export const updateContactInputs = {
   customFields: contactCustomFields,
   extraBody,
 };
-
 export const deleteContactInputs = {
   connection: connectionInput,
   contactId,
 };
-
 export const createContactsBulkInputs = {
   connection: connectionInput,
   contacts: bulkContacts,

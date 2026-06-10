@@ -3,8 +3,7 @@ import actions from "./actions";
 import dataSources from "./dataSources";
 import connections from "./connections";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-import { userSubscriptionTrigger } from "./triggers/userSubscription";
-
+import triggers from "./triggers";
 export default component({
   key: "gotowebinar",
   public: true,
@@ -20,7 +19,5 @@ export default component({
   actions,
   dataSources,
   connections,
-  triggers: {
-    userSubscriptionTrigger,
-  },
+  triggers,
 });

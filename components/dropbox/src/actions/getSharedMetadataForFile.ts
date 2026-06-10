@@ -9,7 +9,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const getSharedMetadataForFile = action({
   display: {
     label: "Get Shared Metadata for File",

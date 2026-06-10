@@ -11,7 +11,6 @@ import {
   tableNameInput,
 } from "../../../inputs";
 import { fetchAllTableRecords, getTable } from "../../../util";
-
 export const listTableRecords = action({
   display: {
     label: "List Table Records",
@@ -47,7 +46,6 @@ export const listTableRecords = action({
       );
       return { data };
     }
-
     return {
       data: await getTable({
         connection,

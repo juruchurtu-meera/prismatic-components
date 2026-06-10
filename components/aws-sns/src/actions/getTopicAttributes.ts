@@ -4,7 +4,6 @@ import { awsRegion } from "aws-utils";
 import { topicArn, connectionInput } from "../inputs";
 import { GetTopicAttributesCommand } from "@aws-sdk/client-sns";
 import { getTopicAttributesExamplePayload } from "../examplePayloads";
-
 export const getTopicAttributes = action({
   display: {
     label: "Get Topic Attributes",
@@ -25,7 +24,6 @@ export const getTopicAttributes = action({
     };
     const command = new GetTopicAttributesCommand(getTopicAttributesParams);
     const response = await sns.send(command);
-
     return {
       data: response,
     };
@@ -33,5 +31,4 @@ export const getTopicAttributes = action({
   inputs: { awsRegion, topicArn, awsConnection: connectionInput },
   examplePayload: getTopicAttributesExamplePayload,
 });
-
 export default getTopicAttributes;

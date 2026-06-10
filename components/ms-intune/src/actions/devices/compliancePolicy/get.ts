@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import { getDeviceCompliancePolicyExamplePayload } from "../../../examplePayloads";
 import { deviceCompliancePolicyId } from "../../../inputs/devices/policyCompliance/general";
-
 export const getDeviceCompliancePolicy = action({
   display: {
     label: "Get Device Compliance Policy",
@@ -14,7 +13,6 @@ export const getDeviceCompliancePolicy = action({
     const { data } = await client.get(
       `/deviceManagement/deviceCompliancePolicies/${deviceCompliancePolicyId}`,
     );
-
     return {
       data,
     };

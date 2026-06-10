@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput } from "../../util";
-
 const accountEnabled = input({
   label: "Account Enabled",
   type: "boolean",
@@ -10,7 +9,6 @@ const accountEnabled = input({
     "When true, enables the user account. When false, the account is disabled and the user cannot sign in.",
   clean: util.types.toBool,
 });
-
 const displayName = input({
   label: "Display Name",
   type: "string",
@@ -20,7 +18,6 @@ const displayName = input({
   example: "John Doe",
   clean: cleanStringInput,
 });
-
 const forceChangePasswordNextSignIn = input({
   label: "Force Change Password Next Sign In",
   type: "boolean",
@@ -30,7 +27,6 @@ const forceChangePasswordNextSignIn = input({
     "When true, forces the user to change their password on next sign in.",
   clean: util.types.toBool,
 });
-
 const password = input({
   label: "Password",
   type: "password",
@@ -40,7 +36,6 @@ const password = input({
   placeholder: "Enter password",
   clean: cleanStringInput,
 });
-
 const userPrincipalName = input({
   label: "User Principal Name",
   type: "string",
@@ -51,7 +46,6 @@ const userPrincipalName = input({
   placeholder: "Enter username",
   clean: cleanStringInput,
 });
-
 const domain = input({
   label: "Domain",
   type: "string",
@@ -62,7 +56,6 @@ const domain = input({
   placeholder: "Enter domain",
   clean: cleanStringInput,
 });
-
 const additionalProperties = input({
   label: "Additional Properties",
   type: "code",
@@ -72,7 +65,6 @@ const additionalProperties = input({
     "Additional properties that are not covered by the other inputs. This should be a JSON object and will be merged with the other inputs. You can get additional properties from the Microsoft Graph API documentation https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#json-representation",
   clean: cleanCodeInput,
 });
-
 export default {
   accountEnabled,
   displayName,

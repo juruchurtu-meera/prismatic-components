@@ -8,7 +8,6 @@ import {
 import { createClient } from "../client";
 import { firestore } from "firebase-admin";
 import { removeFieldExamplePayload } from "../examplePayloads";
-
 export const removeField = action({
   display: {
     label: "Remove Field",
@@ -27,9 +26,7 @@ export const removeField = action({
         [util.types.toString(params.fieldToRemove)]:
           firestore.FieldValue.delete(),
       });
-
     await client.delete();
-
     return {
       data: result,
     };
@@ -42,5 +39,4 @@ export const removeField = action({
   },
   examplePayload: removeFieldExamplePayload,
 });
-
 export default removeField;

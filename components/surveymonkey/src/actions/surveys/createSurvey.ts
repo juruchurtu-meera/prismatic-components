@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createSurveyInputs } from "../../inputs";
 import { createSurveyExamplePayload } from "../../examplePayloads";
 import type { Survey, CreateSurveyInput } from "../../types";
-
 export const createSurvey = action({
   display: {
     label: "Create Survey",
@@ -24,7 +23,6 @@ export const createSurvey = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body: CreateSurveyInput = {
       title,
       nickname,
@@ -33,9 +31,7 @@ export const createSurvey = action({
       language,
       ...extraBody,
     };
-
     const { data } = await client.post<Survey>("/surveys", body);
-
     return { data };
   },
   examplePayload: createSurveyExamplePayload,

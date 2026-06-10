@@ -1,6 +1,5 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
 import { ConnectionKeys } from "ms-utils";
-
 export const oauth = oauth2Connection({
   key: ConnectionKeys.SharedOauth,
   display: {
@@ -57,7 +56,6 @@ export const oauth = oauth2Connection({
       comments:
         "The client secret value generated in your Azure AD app registration. [Learn more](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret).",
     },
-    
     source: {
       label: "Source",
       type: "string",
@@ -67,5 +65,4 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export default [oauth];

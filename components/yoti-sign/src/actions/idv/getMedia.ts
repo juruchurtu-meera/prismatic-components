@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { genericMediaResponse } from "../../examplePayloads";
 import { connectionInput, mediaId, recipientId } from "../../inputs";
-
 export const getIDVSessionMedia = action({
   display: {
     label: "Get IDV session media",
@@ -20,7 +19,6 @@ export const getIDVSessionMedia = action({
       `/idv/recipients/${recipientId}/sessions/signed/media/${mediaId}`,
       { responseType: "arraybuffer" },
     );
-
     return { data };
   },
   examplePayload: {

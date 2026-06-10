@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ENS_CALLBACKS_PATH } from "../../constants";
 import { deleteCallbackExamplePayload } from "../../examplePayloads";
 import { deleteCallbackInputs } from "../../inputs";
-
 export const deleteCallback = action({
   examplePayload: deleteCallbackExamplePayload,
   display: {
@@ -16,7 +15,6 @@ export const deleteCallback = action({
     await client.delete(
       `${ENS_CALLBACKS_PATH}/${encodeURIComponent(callbackId)}`,
     );
-
     return {
       data: {
         success: true,

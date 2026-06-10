@@ -1,7 +1,6 @@
 export type ChangeEventResponse = {
   changeEvent: ChangeEvent;
 };
-
 export type ChangeEvent = {
   resourceName: string;
   changeDateTime: string;
@@ -13,7 +12,6 @@ export type ChangeEvent = {
   newResource: ChangeEventResourceWrapper;
   resourceChangeOperation: ResourceChangeOperation;
 };
-
 export type ChangeResourceType =
   | "AD"
   | "AD_GROUP"
@@ -45,7 +43,6 @@ export type ChangeResourceType =
   | "OFFLINE_USER_DATA_JOB"
   | "SHARED_SET"
   | "UNSPECIFIED";
-
 export type ClientType =
   | "UNKNOWN"
   | "UNSPECIFIED"
@@ -54,18 +51,10 @@ export type ClientType =
   | "GOOGLE_ADS_MOBILE_APP"
   | "AUTOMATED_BIDDING_SYSTEM"
   | "EXTERNAL_API";
-
 export type ResourceChangeOperation = "CREATE" | "UPDATE" | "REMOVE";
-
-
-
 export interface ChangeEventResourceWrapper {
   campaign?: CampaignResource;
-  
 }
-
-
-
 export interface CampaignResource {
   resourceName: string;
   status?: string;
@@ -80,7 +69,6 @@ export interface CampaignResource {
   assetAutomationSettings?: AssetAutomationSetting[];
   containsEuPoliticalAdvertising?: string;
 }
-
 export interface NetworkSettings {
   targetGoogleSearch?: boolean;
   targetSearchNetwork?: boolean;
@@ -89,21 +77,17 @@ export interface NetworkSettings {
   targetYoutube?: boolean;
   targetGoogleTvNetwork?: boolean;
 }
-
 export interface TargetingSetting {
   targetRestrictions?: TargetRestriction[];
 }
-
 export interface TargetRestriction {
   targetingDimension: string;
   bidOnly: boolean;
 }
-
 export interface GeoTargetTypeSetting {
   positiveGeoTargetType: string;
   negativeGeoTargetType: string;
 }
-
 export interface AssetAutomationSetting {
   assetAutomationType: string;
   assetAutomationStatus: string;

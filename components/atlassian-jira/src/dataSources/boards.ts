@@ -1,7 +1,12 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createClient } from "../connections/auth";
-import { boardId, connectionInput, filter, maxResults, startAt } from "../inputs";
-
+import {
+  boardId,
+  connectionInput,
+  filter,
+  maxResults,
+  startAt,
+} from "../inputs";
 const selectBoard = dataSource({
   display: {
     label: "Select Board",
@@ -13,9 +18,11 @@ const selectBoard = dataSource({
     maxResults,
     filter,
   },
-  perform: async (_context, { jiraConnection, startAt, maxResults, filter }) => {
+  perform: async (
+    _context,
+    { jiraConnection, startAt, maxResults, filter },
+  ) => {
     const client = await createClient(jiraConnection, false);
-
     const {
       data,
     }: {
@@ -42,7 +49,6 @@ const selectBoard = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const selectBoardVersion = dataSource({
   display: {
     label: "Select Board Version",
@@ -57,9 +63,11 @@ const selectBoardVersion = dataSource({
     startAt,
     maxResults,
   },
-  perform: async (_context, { jiraConnection, boardId, startAt, maxResults }) => {
+  perform: async (
+    _context,
+    { jiraConnection, boardId, startAt, maxResults },
+  ) => {
     const client = await createClient(jiraConnection, false);
-
     const {
       data,
     }: {
@@ -83,7 +91,6 @@ const selectBoardVersion = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default {
   selectBoard,
   selectBoardVersion,

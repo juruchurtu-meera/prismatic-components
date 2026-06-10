@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createPunchResponse } from "../../examplePayloads";
 import { badgeID, clockingType, connection } from "../../inputs";
-
 export const createScanPunch = action({
   display: {
     label: "Create Scan/Punch",

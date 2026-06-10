@@ -9,7 +9,6 @@ import {
   sysId,
 } from "../../../inputs";
 import { createNowApiClient } from "../../../util";
-
 export const deleteConfigurationItem = action({
   display: {
     label: "Delete Configuration Item",
@@ -33,11 +32,9 @@ export const deleteConfigurationItem = action({
       apiVersionInput,
       context.debug.enabled,
     );
-
     const { data } = await client.delete(
       `/cmdb/instance/${className}/${sysId}/relation/${relSysId}`,
     );
-
     return {
       data,
     };

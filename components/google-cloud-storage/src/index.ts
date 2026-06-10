@@ -16,34 +16,35 @@ import rawRequest from "./actions/rawRequest";
 import { saveFile } from "./actions/saveFile";
 import connections from "./connections";
 import dataSources from "./dataSources";
-
 export default component({
-	key: "google-cloud-storage",
-	documentationUrl: "https://prismatic.io/docs/components/google-cloud-storage/",
-	public: true,
-	display: {
-		label: "Google Cloud Storage",
-		description: "Manage files in a Google Cloud Platform (GCP) Cloud Storage bucket",
-		iconPath: "icon.png",
-		category: "Data Platforms",
-	},
-	actions: {
-		saveFile,
-		downloadFile,
-		copyFile,
-		moveFile,
-		deleteFile,
-		...listFiles,
-		getFile,
-		listBuckets,
-		createBucket,
-		getBucket,
-		deleteBucket,
-		rawRequest,
-		generatePresignedUrl,
-		...multipartUpload,
-	},
-	hooks: { error: handleErrors },
-	connections,
-	dataSources,
+  key: "google-cloud-storage",
+  documentationUrl:
+    "https://prismatic.io/docs/components/google-cloud-storage/",
+  public: true,
+  display: {
+    label: "Google Cloud Storage",
+    description:
+      "Manage files in a Google Cloud Platform (GCP) Cloud Storage bucket",
+    iconPath: "icon.png",
+    category: "Data Platforms",
+  },
+  actions: {
+    saveFile,
+    downloadFile,
+    copyFile,
+    moveFile,
+    deleteFile,
+    ...listFiles,
+    getFile,
+    listBuckets,
+    createBucket,
+    getBucket,
+    deleteBucket,
+    rawRequest,
+    generatePresignedUrl,
+    ...multipartUpload,
+  },
+  hooks: { error: handleErrors },
+  connections,
+  dataSources,
 });

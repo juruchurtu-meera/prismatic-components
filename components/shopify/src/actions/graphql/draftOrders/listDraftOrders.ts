@@ -4,19 +4,24 @@ import { MAX_LIMIT } from "../../../constants";
 import { listDraftOrdersExamplePayload } from "../../../examplePayloads";
 import { listDraftOrdersInputs as inputs } from "../../../inputsGql";
 import { fetchData } from "../../../util";
-
 import type { DraftOrder } from "../../interfaces/DraftOrder";
 import { draftOrderMapper } from "../mappers/draftOrderMapper";
 import { paginationMapper } from "../mappers/paginationMapper";
 import listDraftOrdersQuery from "../queries/draftOrders/ListDraftOrders.gql";
-
 export const listDraftOrdersGql = action({
   display: {
     label: "List Draft Orders",
     description: "Lists all draft orders.",
   },
-  perform: async (context, { shopifyConnection, limit, getAlldata, endCursor }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
+  perform: async (
+    context,
+    { shopifyConnection, limit, getAlldata, endCursor },
+  ) => {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const data = await fetchData<DraftOrder>(
       client,
       ["draftOrders"],
@@ -37,7 +42,6 @@ export const listDraftOrdersGql = action({
       },
     };
   },
-
   inputs,
   examplePayload: listDraftOrdersExamplePayload.restMap,
 });

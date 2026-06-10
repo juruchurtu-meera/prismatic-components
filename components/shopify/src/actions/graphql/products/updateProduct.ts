@@ -24,8 +24,11 @@ export const updateProductGql = action({
       additionalFields,
     },
   ) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const media = imageUrl
       ? [
           {
@@ -35,24 +38,21 @@ export const updateProductGql = action({
           },
         ]
       : undefined;
-
-    const data: { productUpdate: Record<string, unknown> } = await client.request(
-      updateProductQuery,
-      {
-        input: {
-          id: productId,
-          title,
-          descriptionHtml,
-          vendor,
-          productType,
-          status: productStatus,
-          tags,
-          ...additionalFields,
-        },
-        media,
+    const data: {
+      productUpdate: Record<string, unknown>;
+    } = await client.request(updateProductQuery, {
+      input: {
+        id: productId,
+        title,
+        descriptionHtml,
+        vendor,
+        productType,
+        status: productStatus,
+        tags,
+        ...additionalFields,
       },
-    );
-
+      media,
+    });
     return {
       data: data.productUpdate,
     };

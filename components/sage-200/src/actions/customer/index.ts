@@ -4,7 +4,6 @@ import { getCustomer } from "./getCustomer";
 import { listCustomers } from "./listCustomers";
 import { searchCustomers } from "./searchCustomers";
 import { updateCustomer } from "./updateCustomer";
-
 export default {
   createCustomer,
   deleteCustomer,

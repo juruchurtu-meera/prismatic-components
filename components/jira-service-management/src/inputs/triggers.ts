@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import { connection, serviceDeskId } from "./common";
-
 export const onNewRequestInputs = {
   connection,
   serviceDeskId: {
@@ -12,9 +11,6 @@ export const onNewRequestInputs = {
     clean: toOptionalString,
   },
 };
-
-
-
 const opsAlertAdditionalQuery = input({
   label: "Additional Query",
   type: "string",
@@ -25,7 +21,6 @@ const opsAlertAdditionalQuery = input({
   example: "status: open AND priority: P1",
   clean: toOptionalString,
 });
-
 export const onNewOpsAlertInputs = {
   connection,
   opsAlertAdditionalQuery,

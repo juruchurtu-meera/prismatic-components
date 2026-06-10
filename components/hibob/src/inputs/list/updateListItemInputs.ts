@@ -1,7 +1,6 @@
 import { cleanStringInput } from "../../util";
 import { connection } from "../common";
 import { itemId, itemName, listName, parentId } from "./common";
-
 export const updateListItemInputs = {
   connection,
   listName: {

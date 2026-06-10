@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { postTableExamplePayload } from "../../examplePayloads";
 import { postTableInputs } from "../../inputs";
-
 export const postTable = action({
   display: {
     label: "Create Table",

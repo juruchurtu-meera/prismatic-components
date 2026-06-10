@@ -2,8 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createBambooClient } from "../../client";
 import { addEmployeeTableRowExamplePayload } from "../../examplePayloads";
 import { addEmployeeTableRowInputs } from "../../inputs";
-
-
 export const addEmployeeTableRow = action({
   display: {
     label: "Add Employee Table Row",

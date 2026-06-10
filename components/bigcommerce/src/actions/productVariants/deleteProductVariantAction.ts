@@ -8,7 +8,6 @@ import {
   productInputId,
   storeHash,
 } from "../../inputs";
-
 export const deleteProductVariantAction = action({
   display: {
     label: "Delete Product Variant",
@@ -24,7 +23,6 @@ export const deleteProductVariantAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${product_id}/variants/${variant_id}`;
-
     try {
       const response = await client.delete(endpoint);
       return {
@@ -36,7 +34,6 @@ export const deleteProductVariantAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

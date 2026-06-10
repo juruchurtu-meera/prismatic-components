@@ -4,7 +4,6 @@ import { listDataSetsInputs } from "../../inputs";
 import type { ListDataSetsQueryParams } from "../types/ListDataSetsQueryParams";
 import { listDataSetsExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listDataSets = action({
   display: {
     label: "List DataSets",
@@ -21,9 +20,13 @@ export const listDataSets = action({
     if (nameLike.length) queryParams.nameLike = nameLike;
     if (offset.length) queryParams.offset = offset;
     if (sort.length) queryParams.sort = sort;
-    return paginateResults(client, "/datasets", fetchAll, queryParams as Record<string, string>);
+    return paginateResults(
+      client,
+      "/datasets",
+      fetchAll,
+      queryParams as Record<string, string>,
+    );
   },
   inputs: listDataSetsInputs,
 });
-
 export default { listDataSets };

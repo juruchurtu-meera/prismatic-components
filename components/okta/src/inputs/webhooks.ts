@@ -3,7 +3,6 @@ import { cleanObject, cleanString } from "../util/clean";
 import { EVENT_LIST_MODEL } from "../util/constants";
 import { cleanStringArray } from "../util/util";
 import { connection, filter } from "./general";
-
 export const eventHookId = input({
   label: "Event Hook ID",
   type: "string",
@@ -14,7 +13,6 @@ export const eventHookId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const eventHookName = input({
   label: "Event Hook Name",
   type: "string",
@@ -24,7 +22,6 @@ export const eventHookName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const eventHookUrl = input({
   label: "Event Hook URL",
   type: "string",
@@ -34,7 +31,6 @@ export const eventHookUrl = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const eventHookUrlHeaders = input({
   label: "Event Hook URL Headers",
   type: "string",
@@ -47,7 +43,6 @@ export const eventHookUrlHeaders = input({
     return Array.isArray(value) && value.length > 0 ? value : undefined;
   },
 });
-
 export const eventHookItems = input({
   label: "Event Hook Items",
   type: "string",
@@ -57,17 +52,19 @@ export const eventHookItems = input({
   required: false,
   clean: cleanStringArray,
 });
-
 export const eventHookItemsCode = input({
   label: "Dynamic Event Hook Items",
   type: "code",
   language: "json",
   comments: "The list of event types to subscribe to in code format.",
-  example: JSON.stringify(["user.lifecycle.create", "user.lifecycle.activate"], null, 2),
+  example: JSON.stringify(
+    ["user.lifecycle.create", "user.lifecycle.activate"],
+    null,
+    2,
+  ),
   required: false,
   clean: cleanObject,
 });
-
 export const eventHookFilter = input({
   label: "Event Hook Filters",
   type: "code",
@@ -84,7 +81,6 @@ export const eventHookFilter = input({
   required: false,
   clean: cleanObject,
 });
-
 export const eventHookDescription = input({
   label: "Event Hook Description",
   type: "string",
@@ -94,7 +90,6 @@ export const eventHookDescription = input({
   required: false,
   clean: cleanString,
 });
-
 export const doNotActivateOnCreate = input({
   label: "Do Not Activate on Create",
   type: "boolean",
@@ -103,24 +98,17 @@ export const doNotActivateOnCreate = input({
   required: false,
   clean: util.types.toBool,
 });
-
 export const listEventHooksInputs = {
   connection,
 };
-
 export const getEventHookInputs = {
   eventHookId,
   connection,
 };
-
 export const activateEventHookInputs = getEventHookInputs;
-
 export const deactivateEventHookInputs = getEventHookInputs;
-
 export const verifyEventHookInputs = getEventHookInputs;
-
 export const deleteEventHookInputs = getEventHookInputs;
-
 export const createEventHookInputs = {
   eventHookName,
   eventHookUrl,
@@ -132,7 +120,6 @@ export const createEventHookInputs = {
   eventHookDescription,
   connection,
 };
-
 export const deleteAllEventHooksInputs = {
   eventHookUrl: {
     ...eventHookUrl,
@@ -142,7 +129,6 @@ export const deleteAllEventHooksInputs = {
   },
   connection,
 };
-
 export const triggerEventHookInputs = {
   eventHookItems,
   eventHookItemsCode,
@@ -150,15 +136,12 @@ export const triggerEventHookInputs = {
   eventHookFilter,
   connection,
 };
-
 export const newUsersPollingTriggerInputs = {
   connection,
 };
-
 export const updatedUsersPollingTriggerInputs = {
   connection,
 };
-
 export const newSystemLogsPollingTriggerInputs = {
   filter,
   connection,

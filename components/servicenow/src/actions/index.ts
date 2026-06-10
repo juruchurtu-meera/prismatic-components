@@ -5,7 +5,6 @@ import knowledge from "./knowledge";
 import misc from "./misc";
 import tables from "./tables";
 import users from "./users";
-
 export default {
   ...attachments,
   ...incidents,

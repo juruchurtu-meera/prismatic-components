@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -9,14 +8,12 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Domo connection to use.",
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -26,7 +23,6 @@ export const name = input({
   example: "John Doe",
   clean: util.types.toString,
 });
-
 export const id = input({
   label: "ID",
   type: "string",
@@ -36,7 +32,6 @@ export const id = input({
   example: "123456",
   clean: util.types.toString,
 });
-
 export const description = input({
   label: "Description",
   comments: "A summary of the DataSet contents and purpose.",
@@ -46,7 +41,6 @@ export const description = input({
   example: "Sales data for Q1 2024",
   clean: util.types.toString,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -57,7 +51,6 @@ export const limit = input({
   example: "100",
   clean: util.types.toString,
 });
-
 export const offset = input({
   label: "Offset",
   type: "string",
@@ -67,7 +60,6 @@ export const offset = input({
   example: "0",
   clean: util.types.toString,
 });
-
 export const dueDate = input({
   label: "Due Date",
   comments: "The due date for the project. Format: ISO 8601.",

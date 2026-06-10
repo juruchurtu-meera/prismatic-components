@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { listFilesExamplePayload } from "../../examplePayloads";
 import { listFilesInputs } from "../../inputs";
 import { debugLogger, paginateResults } from "../../util";
-
 export const listFiles = action({
   display: {
     label: "List Files",
@@ -14,11 +13,9 @@ export const listFiles = action({
     const client = await createOauthClient({
       slackConnection: params.connection,
     });
-
     if (params.fetchAll) {
       return paginateResults(client, "files", "files", "list", {});
     }
-
     const data = await client.files.list({
       page: util.types.toInt(params.cursor),
     });

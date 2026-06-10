@@ -2,7 +2,6 @@ import crypto from "node:crypto";
 import { input, pollingTrigger, trigger, util } from "@prismatic-io/spectral";
 import { listChanges } from "./actions/changes";
 import type { ListChangesResult } from "./interfaces";
-
 const dropboxWebhook = trigger({
   display: {
     label: "Webhook",
@@ -21,7 +20,6 @@ const dropboxWebhook = trigger({
     }),
   },
   perform: async (context, payload, params) => {
-    
     if (payload.queryParameters?.challenge) {
       return Promise.resolve({
         payload,
@@ -33,15 +31,12 @@ const dropboxWebhook = trigger({
         branch: "Verification Request",
       });
     }
-
     if (context.isSimulatedTestExecution) {
       return Promise.resolve({
         payload,
         branch: "Notification",
       });
     }
-
-    
     const requestBody = util.types.toString(payload.rawBody.data);
     const computedSignature = crypto
       .createHmac("sha256", params.signingSecret)
@@ -55,7 +50,6 @@ const dropboxWebhook = trigger({
         "Error validating message signature. Check your signing secret and verify that this message came from Dropbox.",
       );
     }
-
     return Promise.resolve({
       payload,
       branch: "Notification",
@@ -64,7 +58,6 @@ const dropboxWebhook = trigger({
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });
-
 const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Files",
@@ -77,18 +70,15 @@ const pollChangesTrigger = pollingTrigger({
     const actionReturn = await polling.invokeAction(params);
     const data = actionReturn.data as ListChangesResult;
     let polledNoChanges = true;
-
     if (debugEnabled) {
       logger.debug("Action response data:", actionReturn.data);
     }
-
     if (data.entries.length > 0) {
       if (debugEnabled) {
         logger.debug("New changes detected.");
       }
       polledNoChanges = false;
     }
-
     return Promise.resolve({
       payload: { ...payload, body: { data } },
       ...(actionReturn.crossFlowState
@@ -184,5 +174,4 @@ const pollChangesTrigger = pollingTrigger({
     },
   },
 });
-
 export default { dropboxWebhook, pollChangesTrigger };

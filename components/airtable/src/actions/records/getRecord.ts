@@ -4,7 +4,6 @@ import { getRecordExamplePayload } from "../../examplePayloads";
 import { getRecordInputs } from "../../inputs";
 import type { AirtableRecord } from "../../types";
 import { getBaseId } from "../../util";
-
 export const getRecord = action({
   display: {
     label: "Get Record",

@@ -10,19 +10,6 @@ import type {
   PartitionedRecords,
   SearchResponse,
 } from "../types";
-
-
-
-
-
-
-
-
-
-
-
-
-
 export async function fetchAgreementsModifiedSince(
   client: HttpClient,
   lastPolledAt: string,
@@ -31,14 +18,11 @@ export async function fetchAgreementsModifiedSince(
   let startIndex = 0;
   let pages = 0;
   let truncated = false;
-
   while (pages < MAX_POLL_PAGES) {
-    
     if (startIndex + POLL_PAGE_SIZE >= 10000) {
       truncated = true;
       break;
     }
-
     const body = {
       scope: ["AGREEMENT_ASSETS"],
       agreementAssetsCriteria: {
@@ -53,38 +37,23 @@ export async function fetchAgreementsModifiedSince(
         sortOrder: "ASC",
       },
     };
-
     const { data } = await client.post<SearchResponse>("/search", body, {
       headers: { "x-ownership-scope": POLL_OWNERSHIP_SCOPE },
     });
-
     const pageItems =
       data.agreementAssetEvents ??
       data.agreementAssetsResults?.agreementAssetsList ??
       [];
-
     records.push(...pageItems);
     pages += 1;
-
     if (pageItems.length < POLL_PAGE_SIZE) {
       break;
     }
-
     startIndex += POLL_PAGE_SIZE;
   }
-
-  
-  
-  
   if (pages >= MAX_POLL_PAGES && !truncated) {
     truncated = true;
   }
-
-  
-  
-  
-  
-  
   const latestModifiedDate = records.reduce<string | undefined>(
     (acc, record) => {
       const modified = record.modifiedDate;
@@ -94,23 +63,14 @@ export async function fetchAgreementsModifiedSince(
     },
     undefined,
   );
-
   return { records, truncated, latestModifiedDate };
 }
-
-
-
-
-
-
-
 export function partitionAgreementsByTimestamp(
   records: AdobeSignAgreementRecord[],
   sinceDate: Date,
 ): PartitionedRecords {
   const created: AdobeSignAgreementRecord[] = [];
   const updated: AdobeSignAgreementRecord[] = [];
-
   for (const record of records) {
     const createdValue = record.createdDate;
     const modifiedValue = record.modifiedDate;
@@ -118,11 +78,9 @@ export function partitionAgreementsByTimestamp(
       typeof createdValue === "string" ? new Date(createdValue) : null;
     const modifiedAtDate =
       typeof modifiedValue === "string" ? new Date(modifiedValue) : null;
-
     const isNew = createdAtDate !== null && createdAtDate > sinceDate;
     const isUpdated =
       !isNew && modifiedAtDate !== null && modifiedAtDate > sinceDate;
-
     if (isNew) {
       created.push(record);
     } else if (isUpdated) {
@@ -131,6 +89,5 @@ export function partitionAgreementsByTimestamp(
       updated.push(record);
     }
   }
-
   return { created, updated };
 }

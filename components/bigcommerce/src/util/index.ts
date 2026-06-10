@@ -1,17 +1,6 @@
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { ENDPOINTS, ORDERS_DEFAULT_SORT, PAGE_SIZE } from "../constants";
 import type { BigCommerceOrder } from "../types";
-
-
-
-
-
-
-
-
-
-
-
 export const fetchAllOrdersModifiedSince = async (
   client: HttpClient,
   storeHash: string,
@@ -35,18 +24,13 @@ export const fetchAllOrdersModifiedSince = async (
   }
   return collected;
 };
-
-
-
-
-
-
-
-
 export const partitionOrdersByTimestamp = (
   orders: BigCommerceOrder[],
   since: Date,
-): { created: BigCommerceOrder[]; updated: BigCommerceOrder[] } => {
+): {
+  created: BigCommerceOrder[];
+  updated: BigCommerceOrder[];
+} => {
   const created: BigCommerceOrder[] = [];
   const updated: BigCommerceOrder[] = [];
   for (const order of orders) {

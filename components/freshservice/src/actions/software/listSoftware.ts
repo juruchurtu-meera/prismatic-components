@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { listSoftwareExamplePayload as examplePayload } from "../../examplePayloads";
 import { listSoftwareInputs as inputs } from "../../inputs/software";
-
 export const listSoftware = action({
   display: {
     label: "List Software",
@@ -10,9 +9,7 @@ export const listSoftware = action({
   },
   perform: async (context, { connection }) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const { data } = await client.get(`/applications`);
-
     return {
       data,
     };

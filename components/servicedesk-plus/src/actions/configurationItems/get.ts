@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getConfigurationItemResponse } from "../../examplePayloads";
 import { ciId, ciTypeApiName, connectionInput } from "../../inputs";
-
 export const getConfigurationItem = action({
   display: {
     label: "Get Configuration Item",

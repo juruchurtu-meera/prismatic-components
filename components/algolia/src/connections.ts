@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const algoliaApiKey = connection({
   key: "apiKey",
   display: {
@@ -28,5 +27,4 @@ export const algoliaApiKey = connection({
     },
   },
 });
-
 export default [algoliaApiKey];

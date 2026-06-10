@@ -1,4 +1,4 @@
-The Scheduled Event trigger receives [Tableau webhook](https://help.tableau.com/current/developer/webhooks/en-us/) notifications in real time. This trigger automatically manages webhook subscriptions -- unlike manual webhook setups, the entire lifecycle is handled automatically.
+The Webhook Events trigger receives [Tableau webhook](https://help.tableau.com/current/developer/webhooks/en-us/) notifications in real time. This trigger automatically manages webhook subscriptions. Unlike manual webhook setups, the entire lifecycle is handled automatically.
 
 #### How It Works
 
@@ -13,6 +13,7 @@ When Tableau fires a matching event, the trigger receives the webhook payload an
 
 Configure the following inputs:
 
+- **Connection** (required): The Tableau connection used to manage the webhook subscription and fetch event data.
 - **API Event Name** (required): Select one or more Tableau event types to subscribe to. Multiple events can be selected.
 - **API Version**: The version of the Tableau REST API to use (default: `3.6`).
 - **Timeout**: The maximum time (in milliseconds) the client will wait for a response.

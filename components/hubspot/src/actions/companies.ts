@@ -29,9 +29,7 @@ import {
   updateDomain,
 } from "../inputs";
 import { getAllPaginatedData, getProps, toStringList } from "../util";
-
 const companyProps = ["name", "state", "city", "domain", "industry"];
-
 export const listCompanies = action({
   display: {
     label: "List Companies",
@@ -39,26 +37,33 @@ export const listCompanies = action({
   },
   perform: async (context, params) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection: params.hubspotConnection,
       timeout: params.timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(companyProps, params.additionalProperties || []);
+    const parameterizedProperties = getProps(
+      companyProps,
+      params.additionalProperties || [],
+    );
     const url = "/crm/v3/objects/companies";
     const configParams = {
       ...parameterizedProperties,
       limit: util.types.toInt(params.limit) || undefined,
       after: util.types.toString(params.after) || undefined,
-      associations: toStringList(params.associationsList || []).join(",") || undefined,
+      associations:
+        toStringList(params.associationsList || []).join(",") || undefined,
       archived: util.types.toBool(params.archived) || false,
     };
-    const data = await getAllPaginatedData(client, url, params.fetchAll, false, {
-      params: configParams,
-    });
-
+    const data = await getAllPaginatedData(
+      client,
+      url,
+      params.fetchAll,
+      false,
+      {
+        params: configParams,
+      },
+    );
     return {
       data,
     };
@@ -75,11 +80,11 @@ export const listCompanies = action({
   },
   examplePayload: listCompaniesPayload,
 });
-
 export const getCompany = action({
   display: {
     label: "Get Company",
-    description: "Retrieve the information or metadata of a company by Id, domain, or name",
+    description:
+      "Retrieve the information or metadata of a company by Id, domain, or name",
   },
   perform: async (
     context,
@@ -97,63 +102,75 @@ export const getCompany = action({
     const id = util.types.toString(companyId);
     const name = util.types.toString(companyName);
     const domainString = util.types.toString(domain);
-
     if (!id && !domainString && !name && !id) {
       throw new Error(
         "You must supply either an Id, domain, or name to retrieve a company record.",
       );
     }
-
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
-    const parameterizedProperties = getProps(companyProps, additionalProperties || []);
-
+    const parameterizedProperties = getProps(
+      companyProps,
+      additionalProperties || [],
+    );
     const params = {
       ...parameterizedProperties,
       associations: toStringList(associationsList || []).join(",") || undefined,
       archived: util.types.toBool(archived) || false,
     };
-
     const companiesUrl = "/crm/v3/objects/companies";
-
     if (domainString) {
-      const companies = await getAllPaginatedData(client, companiesUrl, true, true, {
-        params: {
-          ...params,
-          limit: undefined,
-          after: undefined,
+      const companies = await getAllPaginatedData(
+        client,
+        companiesUrl,
+        true,
+        true,
+        {
+          params: {
+            ...params,
+            limit: undefined,
+            after: undefined,
+          },
         },
-      });
-
+      );
       const filteredCompanies = (
-        (companies as unknown as { properties?: { domain?: string } }[]) || []
+        (companies as unknown as {
+          properties?: {
+            domain?: string;
+          };
+        }[]) || []
       ).filter((company) => {
         return company?.properties?.domain === domainString;
       });
-
       if (filteredCompanies.length === 0) {
         throw new Error(`No companies found matching ${domainString}`);
       }
       return { data: filteredCompanies };
     }
-
     if (name) {
-      const companies = await getAllPaginatedData(client, companiesUrl, true, true, {
-        params: {
-          ...params,
-          limit: undefined,
-          after: undefined,
+      const companies = await getAllPaginatedData(
+        client,
+        companiesUrl,
+        true,
+        true,
+        {
+          params: {
+            ...params,
+            limit: undefined,
+            after: undefined,
+          },
         },
-      });
-
+      );
       const filteredCompanies = (
-        (companies as unknown as { properties?: { name?: string } }[]) || []
+        (companies as unknown as {
+          properties?: {
+            name?: string;
+          };
+        }[]) || []
       ).filter((company) => {
         return company?.properties?.name === name;
       });
@@ -180,9 +197,7 @@ export const getCompany = action({
     timeout,
     hubspotConnection: connectionInput,
   },
-  
 });
-
 export const deleteCompany = action({
   display: {
     label: "Delete Company",
@@ -190,15 +205,14 @@ export const deleteCompany = action({
   },
   perform: async (context, { companyId, timeout, hubspotConnection }) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
-      data: (await client.delete(`/crm/v3/objects/companies/${companyId}`)).data,
+      data: (await client.delete(`/crm/v3/objects/companies/${companyId}`))
+        .data,
     };
   },
   inputs: {
@@ -208,7 +222,6 @@ export const deleteCompany = action({
   },
   examplePayload: deleteCompanyPayload,
 });
-
 export const createCompany = action({
   display: {
     label: "Create Company",
@@ -231,13 +244,11 @@ export const createCompany = action({
     },
   ) => {
     const debugRequest = context.debug.enabled;
-
     const client = getHubspotClient({
       hubspotConnection,
       timeout,
       debugRequest,
     });
-
     return {
       data: (
         await client.post("/crm/v3/objects/companies", {
@@ -271,7 +282,6 @@ export const createCompany = action({
   },
   examplePayload: createCompanyPayload,
 });
-
 export const updateCompany = action({
   display: {
     label: "Update Company",
@@ -299,7 +309,6 @@ export const updateCompany = action({
       timeout,
       debugRequest: context.debug.enabled,
     });
-
     return {
       data: (
         await client.patch(`/crm/v3/objects/companies/${companyId}`, {

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createDataManagerClient } from "../../client";
 import { ingestOfflineConversionsExamplePayload } from "../../examplePayloads";
 import { ingestOfflineConversionsInputs } from "../../inputs";
-
 export const ingestOfflineConversions = action({
   display: {
     label: "Ingest Offline Conversions",
@@ -19,14 +18,12 @@ export const ingestOfflineConversions = action({
       context.debug.enabled,
       context.logger,
     );
-
     const body = {
       destinations,
       events,
       validateOnly,
       encoding,
     };
-
     const { data } = await client.post("/events:ingest", body);
     return { data };
   },

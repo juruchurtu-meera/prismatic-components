@@ -1,11 +1,9 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const documentId = input({
   label: "Document ID",
   type: "string",
@@ -13,7 +11,6 @@ export const documentId = input({
   comments: "The ID of the document to retrieve.",
   clean: util.types.toString,
 });
-
 export const suggestionsViewMode = input({
   label: "Suggestions View Mode",
   type: "string",
@@ -40,7 +37,6 @@ export const suggestionsViewMode = input({
   default: "DEFAULT_FOR_CURRENT_ACCESS",
   clean: util.types.toString,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -48,7 +44,6 @@ export const title = input({
   comments: "The title of the document to create.",
   clean: util.types.toString,
 });
-
 export const requests = input({
   label: "Requests",
   type: "code",
@@ -69,7 +64,6 @@ export const requests = input({
   ]),
   clean: util.types.toString,
 });
-
 export const requiredRevisionId = input({
   label: "Required Revision ID",
   type: "string",
@@ -80,7 +74,6 @@ export const requiredRevisionId = input({
     "https://developers.google.com/docs/api/reference/rest/v1/documents/batchUpdate#writecontrol",
   clean: util.types.toString,
 });
-
 export const targetRevisionId = input({
   label: "Target Revision ID",
   type: "string",

@@ -8,7 +8,6 @@ import {
   groupId,
   pageSize,
 } from "./common";
-
 const groupName = input({
   label: "Group Name",
   type: "string",
@@ -18,7 +17,6 @@ const groupName = input({
   comments: "The name of the group.",
   clean: cleanFunctionForString,
 });
-
 const created = input({
   label: "Created",
   type: "string",
@@ -29,7 +27,6 @@ const created = input({
     "Date of creation of the group. Format would be yyyy-MM-dd'T'HH:mm:ssZ",
   clean: cleanFunctionForString,
 });
-
 const isDefaultGroup = input({
   label: "Is Default Group",
   type: "string",
@@ -52,14 +49,12 @@ const isDefaultGroup = input({
   ],
   clean: cleanFunctionForBoolean,
 });
-
 export const createGroupInputs = {
   connection,
   groupName,
   created,
   isDefaultGroup,
 };
-
 export const deleteGroupInputs = {
   connection,
   groupId: {
@@ -68,7 +63,6 @@ export const deleteGroupInputs = {
     required: true,
   },
 };
-
 export const getGroupInputs = {
   connection,
   groupId: {
@@ -77,14 +71,12 @@ export const getGroupInputs = {
     required: true,
   },
 };
-
 export const listGroupsInputs = {
   connection,
   fetchAll,
   cursor,
   pageSize,
 };
-
 export const listGroupEventsInputs = {
   connection,
   fetchAll,
@@ -96,7 +88,6 @@ export const listGroupEventsInputs = {
   cursor,
   pageSize,
 };
-
 export const listGroupUsersInputs = {
   connection,
   fetchAll,
@@ -108,7 +99,6 @@ export const listGroupUsersInputs = {
   cursor,
   pageSize,
 };
-
 export const updateGroupInputs = {
   connection,
   groupId: {
@@ -126,7 +116,6 @@ export const updateGroupInputs = {
   },
   isDefaultGroup,
 };
-
 export const selectGroupInputs = {
   connection,
   filterQuery,

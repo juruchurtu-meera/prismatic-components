@@ -3,8 +3,6 @@ import FormData from "form-data";
 import { ClientType, createClient } from "../client";
 import { crmAddAttachmentExamplePayload } from "../examplePayloads/crm";
 import { connectionInput, recordId } from "../inputs";
-
-
 const supportedModules = [
   "Accounts",
   "Campaigns",
@@ -25,7 +23,6 @@ const supportedModules = [
   "Tasks",
   "Vendors",
 ];
-
 const crmAddAttachment = action({
   display: {
     label: "CRM - Add Attachment",
@@ -65,7 +62,11 @@ const crmAddAttachment = action({
     }),
   },
   perform: async (context, params) => {
-    const crmClient = createClient(params.connection, ClientType.CRM, context.debug.enabled);
+    const crmClient = createClient(
+      params.connection,
+      ClientType.CRM,
+      context.debug.enabled,
+    );
     const formData = new FormData();
     formData.append("file", params.file.data, { filename: params.fileName });
     const { data } = await crmClient.post(
@@ -77,5 +78,4 @@ const crmAddAttachment = action({
   },
   examplePayload: crmAddAttachmentExamplePayload,
 });
-
 export default crmAddAttachment;

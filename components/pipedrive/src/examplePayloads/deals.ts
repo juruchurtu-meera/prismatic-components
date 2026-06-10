@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getDealsExamplePayload = {
   data: [
     {

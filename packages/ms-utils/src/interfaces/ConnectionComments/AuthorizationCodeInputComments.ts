@@ -1,5 +1,4 @@
 import type { InputComments } from "./InputComments";
-
 export interface AuthorizationCodeInputComments extends InputComments {
   authorizeUrl?: string;
   clientId?: string;

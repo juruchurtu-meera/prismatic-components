@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { orderId, storeId, lineId, connectionInput } from "../../../inputs";
-
 export const deleteOrderLineItem = action({
   display: {
     label: "Delete Order Line Item",
@@ -21,5 +20,4 @@ export const deleteOrderLineItem = action({
     connection: connectionInput,
   },
 });
-
 export default deleteOrderLineItem;

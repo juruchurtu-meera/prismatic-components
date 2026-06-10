@@ -4,7 +4,7 @@
     "href": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/CHANGELOG.md"
   }
 ]

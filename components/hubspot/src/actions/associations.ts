@@ -15,11 +15,11 @@ import {
   toId,
   toObjectType,
 } from "../inputs";
-
 export const listAssociationTypes = action({
   display: {
     label: "List Association Types",
-    description: "Retrieve a list of all association types available between two objects",
+    description:
+      "Retrieve a list of all association types available between two objects",
   },
   perform: async (context, params) => {
     const debugRequest = context.debug.enabled;
@@ -28,7 +28,6 @@ export const listAssociationTypes = action({
       timeout: params.timeout,
       debugRequest,
     });
-    
     return {
       data: (
         await client.get(
@@ -45,15 +44,23 @@ export const listAssociationTypes = action({
   },
   examplePayload: listAssociationTypesPayload,
 });
-
 export const createAssociations = action({
   display: {
     label: "Create Association",
-    description: "Create an association between the objects identified in the step",
+    description:
+      "Create an association between the objects identified in the step",
   },
   perform: async (
     context,
-    { fromObjectType, toObjectType, fromId, toId, associateType, timeout, hubspotConnection },
+    {
+      fromObjectType,
+      toObjectType,
+      fromId,
+      toId,
+      associateType,
+      timeout,
+      hubspotConnection,
+    },
   ) => {
     const debugRequest = context.debug.enabled;
     const client = getHubspotClient({
@@ -61,22 +68,24 @@ export const createAssociations = action({
       timeout,
       debugRequest,
     });
-
     return {
       data: (
-        await client.post(`/crm/v3/associations/${fromObjectType}/${toObjectType}/batch/create`, {
-          inputs: [
-            {
-              from: {
-                id: fromId,
+        await client.post(
+          `/crm/v3/associations/${fromObjectType}/${toObjectType}/batch/create`,
+          {
+            inputs: [
+              {
+                from: {
+                  id: fromId,
+                },
+                to: {
+                  id: toId,
+                },
+                type: associateType,
               },
-              to: {
-                id: toId,
-              },
-              type: associateType,
-            },
-          ],
-        })
+            ],
+          },
+        )
       ).data,
     };
   },
@@ -91,11 +100,11 @@ export const createAssociations = action({
   },
   examplePayload: createAssociationsPayload,
 });
-
 export const readAssociations = action({
   display: {
     label: "Read Association",
-    description: "Get the Ids of the objects associated with those specified in the step",
+    description:
+      "Get the Ids of the objects associated with those specified in the step",
   },
   perform: async (
     context,
@@ -107,16 +116,18 @@ export const readAssociations = action({
       timeout,
       debugRequest,
     });
-
     return {
       data: (
-        await client.post(`/crm/v3/associations/${fromObjectType}/${toObjectType}/batch/read`, {
-          inputs: [
-            {
-              id: fromId,
-            },
-          ],
-        })
+        await client.post(
+          `/crm/v3/associations/${fromObjectType}/${toObjectType}/batch/read`,
+          {
+            inputs: [
+              {
+                id: fromId,
+              },
+            ],
+          },
+        )
       ).data,
     };
   },
@@ -129,7 +140,6 @@ export const readAssociations = action({
   },
   examplePayload: readAssociationsPayload,
 });
-
 export const ArchiveAssociations = action({
   display: {
     label: "Archive Association",
@@ -137,7 +147,15 @@ export const ArchiveAssociations = action({
   },
   perform: async (
     context,
-    { fromObjectType, toObjectType, fromId, toId, associateType, timeout, hubspotConnection },
+    {
+      fromObjectType,
+      toObjectType,
+      fromId,
+      toId,
+      associateType,
+      timeout,
+      hubspotConnection,
+    },
   ) => {
     const debugRequest = context.debug.enabled;
     const client = getHubspotClient({
@@ -145,22 +163,24 @@ export const ArchiveAssociations = action({
       timeout,
       debugRequest,
     });
-
     return {
       data: (
-        await client.post(`/crm/v3/associations/${fromObjectType}/${toObjectType}/batch/archive`, {
-          inputs: [
-            {
-              from: {
-                id: fromId,
+        await client.post(
+          `/crm/v3/associations/${fromObjectType}/${toObjectType}/batch/archive`,
+          {
+            inputs: [
+              {
+                from: {
+                  id: fromId,
+                },
+                to: {
+                  id: toId,
+                },
+                type: associateType,
               },
-              to: {
-                id: toId,
-              },
-              type: associateType,
-            },
-          ],
-        })
+            ],
+          },
+        )
       ).data,
     };
   },

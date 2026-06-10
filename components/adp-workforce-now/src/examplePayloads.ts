@@ -104,7 +104,6 @@ export const getApplicantOnboardMetadataResponse = {
     },
   },
 };
-
 export const getWorkerResponse = {
   associateOID: "G3R47DSRZK5TRCFJ",
   workerID: {
@@ -393,13 +392,11 @@ export const getWorkerResponse = {
     },
   ],
 };
-
 export const listWorkersResponse = {
   workers: [getWorkerResponse],
   meta: null,
   confirmMessage: null,
 };
-
 export const listWorkersMetadataResponse = {
   meta: {
     queryCriteria: [
@@ -429,7 +426,6 @@ export const listWorkersMetadataResponse = {
     },
   },
 };
-
 export const getWorkerDemographicsResponse = {
   associateOID: "G39XMN203A2XB23T",
   workerID: {
@@ -676,7 +672,6 @@ export const getWorkerDemographicsResponse = {
       },
     ],
   },
-
   workAssignments: [
     {
       itemID: "88029255N",
@@ -814,13 +809,11 @@ export const getWorkerDemographicsResponse = {
     ],
   },
 };
-
 export const listWorkerDemoGraphicsResponse = {
   workers: [getWorkerDemographicsResponse],
   meta: null,
   confirmMessage: null,
 };
-
 export const geteTimeCardsResponse = {
   teamTimeCards: [
     {
@@ -1287,7 +1280,6 @@ export const geteTimeCardsResponse = {
     resourceMessages: [],
   },
 };
-
 export const createPunchResponse = {
   events: [
     {
@@ -1344,7 +1336,6 @@ export const createPunchResponse = {
     ],
   },
 };
-
 export const getClockingTransactionsResponse = {
   events: [
     {
@@ -1399,7 +1390,6 @@ export const getClockingTransactionsResponse = {
     ],
   },
 };
-
 export const modifiedEntryResponse = {
   meta: {
     resourceSetID: "654dd678b6c64d3fb3e815fd715832f8",
@@ -1465,7 +1455,6 @@ export const modifiedEntryResponse = {
     ],
   },
 };
-
 export const getPaymentDistributionMetaResponse = {
   meta: {
     "/data/eventContext": {
@@ -1680,7 +1669,6 @@ export const getPaymentDistributionMetaResponse = {
     "/eventNameCode/codeValue": "worker.payDistribution.change",
   },
 };
-
 export const getWorkerPaymentDistributionResponse = {
   payDistributions: [
     {
@@ -1748,7 +1736,6 @@ export const getWorkerPaymentDistributionResponse = {
     },
   ],
 };
-
 export const getPersonalContactsResponse = {
   itemID: "169750562647_284",
   personName: {
@@ -1843,7 +1830,6 @@ export const getPersonalContactsResponse = {
     shortName: "Primary",
   },
 };
-
 export const listPersonalContactsResponse = {
   personalContacts: [
     getPersonalContactsResponse,
@@ -1939,7 +1925,6 @@ export const listPersonalContactsResponse = {
     },
   ],
 };
-
 export const getPersonalContactMetaResponse = {
   meta: {
     "/personalContacts/relationshipTypeCode/codeValue": {
@@ -2203,7 +2188,6 @@ export const getPersonalContactMetaResponse = {
     },
   },
 };
-
 export const deletePersonaContactResponse = {
   events: [
     {
@@ -2224,7 +2208,6 @@ export const deletePersonaContactResponse = {
     },
   ],
 };
-
 export const addPersonalContactResponse = {
   events: [
     {
@@ -2338,7 +2321,6 @@ export const addPersonalContactResponse = {
     },
   ],
 };
-
 export const createCustomFieldResponse = {
   events: [
     {
@@ -2385,7 +2367,6 @@ export const createCustomFieldResponse = {
     },
   ],
 };
-
 export const getCustomFieldMetaResponse = {
   events: [
     {
@@ -2427,7 +2408,6 @@ export const getCustomFieldMetaResponse = {
     },
   ],
 };
-
 export const listCompanyCodesResponse = {
   codeListTitle: "Company Code",
   listItems: [
@@ -2438,7 +2418,6 @@ export const listCompanyCodesResponse = {
     },
   ],
 };
-
 export const selectWorkerExamplePayload = {
   result: [
     {
@@ -2451,7 +2430,6 @@ export const selectWorkerExamplePayload = {
     },
   ],
 };
-
 export const selectPersonalContactExamplePayload = {
   result: [
     {

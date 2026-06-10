@@ -13,7 +13,6 @@ import {
 import type { ContentProperty } from "../../interfaces";
 import { listContentPropertiesExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listContentPropertiesForAttachments = action({
   display: {
     label: "List Content Properties for Attachments",
@@ -43,7 +42,6 @@ export const listContentPropertiesForAttachments = action({
   ) => {
     const client = await createClient(connectionInput, context.debug.enabled);
     const url = `/attachments/${attachmentId}/properties`;
-
     if (fetchAll) {
       const results = await paginateResults<ContentProperty>(
         client,
@@ -52,7 +50,6 @@ export const listContentPropertiesForAttachments = action({
       );
       return { data: { results } };
     }
-
     const { data } = await client.get(url, {
       params: {
         cursor,

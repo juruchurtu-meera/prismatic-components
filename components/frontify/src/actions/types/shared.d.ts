@@ -5,14 +5,12 @@ export interface UsersResponse {
   hasNextPage: boolean;
   items: User[];
 }
-
 interface User {
   id: string;
   email: string;
   name: string;
   avatar?: string;
 }
-
 export interface CustomMetadataProperty {
   id: string;
   creator: {
@@ -34,7 +32,6 @@ export interface CustomMetadataProperty {
   isRequired: boolean;
   defaultValue: unknown;
 }
-
 export interface AssetResponse {
   id: string;
   creator: {
@@ -117,7 +114,6 @@ export interface AssetResponse {
     };
   };
 }
-
 export interface CommentResponse {
   id: string;
   creator: {
@@ -175,7 +171,6 @@ export interface CommentResponse {
       width: number;
       height: number;
     };
-
     page?: number;
     timeframe?: {
       start: number;
@@ -183,7 +178,6 @@ export interface CommentResponse {
     };
   };
 }
-
 export interface BrowseResponse {
   folders: {
     limit: number;

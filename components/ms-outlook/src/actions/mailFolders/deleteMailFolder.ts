@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { deleteMailFolderExamplePayload } from "../../examplePayloads";
 import { deleteMailFolderInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const deleteMailFolder = action({
   display: {
     label: "Delete Mail Folder",

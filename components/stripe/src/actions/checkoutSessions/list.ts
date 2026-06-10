@@ -11,7 +11,6 @@ import {
 } from "../../inputs";
 import { paginateStripeRecords } from "../../util";
 import { listCheckoutSessionsExamplePayload } from "../../examplePayloads/checkoutSessions";
-
 export const listCheckoutSessions = action({
   display: {
     label: "List Checkout Sessions",
@@ -25,13 +24,15 @@ export const listCheckoutSessions = action({
       stripeConnection,
       timeout,
     });
-
-    const sessions = (await paginateStripeRecords(client.checkout.sessions, fetchAll, {
-      limit,
-      starting_after: startingAfter,
-      ending_before: endingBefore,
-    })) as Stripe.ApiList<Stripe.Checkout.Session>;
-
+    const sessions = (await paginateStripeRecords(
+      client.checkout.sessions,
+      fetchAll,
+      {
+        limit,
+        starting_after: startingAfter,
+        ending_before: endingBefore,
+      },
+    )) as Stripe.ApiList<Stripe.Checkout.Session>;
     return {
       data: sessions,
     };

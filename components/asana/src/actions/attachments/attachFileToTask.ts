@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import FormData from "form-data";
 import { createAsanaClient } from "../../client";
 import { connectionInput, taskId } from "../../inputs";
-
 export const attachFileToTask = action({
   display: {
     label: "Attach File to Task",

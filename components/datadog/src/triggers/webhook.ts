@@ -6,17 +6,6 @@ import {
   webhookName,
   webhookPayload,
 } from "../inputs";
-
-
-
-
-
-
-
-
-
-
-
 export const webhook = trigger({
   display: {
     label: "Alert Notification Events",
@@ -38,7 +27,6 @@ export const webhook = trigger({
   ) => {
     const client = createClient(connection, context.debug.enabled);
     const webhookUrl = context.webhookUrls.Webhook;
-
     await client.post("/api/v1/integration/webhooks/configuration/webhooks", {
       name: webhookName,
       url: webhookUrl,
@@ -52,7 +40,6 @@ export const webhook = trigger({
   },
   onInstanceDelete: async (context, { connection, webhookName }) => {
     const client = createClient(connection, context.debug.enabled);
-
     await client.delete(
       `/api/v1/integration/webhooks/configuration/webhooks/${encodeURIComponent(webhookName)}`,
     );

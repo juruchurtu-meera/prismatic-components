@@ -1,9 +1,7 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const updateNoteInputs = {
   connection,
-
   resourceType: input({
     label: "Resource Type",
     comments:
@@ -14,7 +12,6 @@ export const updateNoteInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   resourceId: input({
     label: "Resource ID",
     comments: "The unique identifier of the resource the note is attached to.",
@@ -24,7 +21,6 @@ export const updateNoteInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   content: input({
     label: "Content",
     comments: "The body text of the note.",
@@ -34,7 +30,6 @@ export const updateNoteInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   isImportant: input({
     label: "Is Important",
     comments: "When true, marks the note as important.",
@@ -48,7 +43,6 @@ export const updateNoteInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   tags: input({
     label: "Tag",
     comments: "Tags to apply to the note.",
@@ -57,7 +51,6 @@ export const updateNoteInputs = {
     collection: "valuelist",
     required: false,
   }),
-
   type: input({
     label: "Type",
     comments:

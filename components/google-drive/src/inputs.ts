@@ -1,14 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanArrayInput, cleanItemInput, cleanStringInput } from "./util";
 import { MY_DRIVE } from "./constants";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Connection to use for Google Drive authorization.",
 });
-
 export const fileId = input({
   label: "File ID",
   placeholder: "Enter File ID",
@@ -20,7 +18,6 @@ export const fileId = input({
     "A unique opaque ID for each file. File IDs are stable throughout the life of the file, even if the file name changes.",
   dataSource: "selectFiles",
 });
-
 export const fileName = input({
   label: "File Name",
   placeholder: "Enter file name",
@@ -29,7 +26,6 @@ export const fileName = input({
   example: "My Document.pdf",
   comments: "The name of the file.",
 });
-
 export const folderName = input({
   label: "Folder Name",
   placeholder: "Enter folder name",
@@ -38,7 +34,6 @@ export const folderName = input({
   example: "Pictures",
   comments: "The name of the folder.",
 });
-
 export const fileContent = input({
   label: "File Content",
   placeholder: "Enter file content",
@@ -48,7 +43,6 @@ export const fileContent = input({
   comments:
     "The binary or text body of the file. Some content examples you can store in Google Drive are images, videos, text, and PDF.",
 });
-
 export const folderId = input({
   label: "Folder ID",
   placeholder: "Enter Folder ID",
@@ -58,18 +52,17 @@ export const folderId = input({
   comments: "A unique opaque ID for each folder.",
   dataSource: "selectFolder",
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
   required: false,
   placeholder: "Enter page size (1-50)",
-  comments: "The maximum number of results to return. Must be between 1 and 50.",
+  comments:
+    "The maximum number of results to return. Must be between 1 and 50.",
   example: "20",
   default: "20",
   clean: (value: unknown) => util.types.toInt(value, 20),
 });
-
 export const fields = input({
   label: "Fields",
   type: "string",
@@ -81,7 +74,6 @@ export const fields = input({
   example: "files(id,name,mimeType,size,modifiedTime)",
   clean: util.types.toString,
 });
-
 export const query = input({
   label: "Query",
   type: "string",
@@ -91,7 +83,6 @@ export const query = input({
     "A query string to filter results. See [Google's documentation](https://developers.google.com/drive/api/v3/search-files) for query syntax.",
   example: "name contains 'report'",
 });
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
@@ -102,7 +93,6 @@ export const pageToken = input({
   placeholder: "Enter page token",
   clean: util.types.toString,
 });
-
 export const searchQuery = input({
   label: "Search",
   type: "string",
@@ -112,16 +102,15 @@ export const searchQuery = input({
   example: "quarterly report 2024",
   clean: util.types.toString,
 });
-
 export const filesContainingSearchQuery = input({
   label: "Files Containing Search Query",
   type: "boolean",
   required: false,
-  comments: "When true, searches for files that contain the provided search query in their name.",
+  comments:
+    "When true, searches for files that contain the provided search query in their name.",
   clean: util.types.toBool,
   default: "false",
 });
-
 export const exportType = input({
   label: "Preferred Export Type",
   type: "string",
@@ -131,7 +120,6 @@ export const exportType = input({
     "The MIME type to export the file as. If not compatible, the first available export type will be used. Only required for non-binary files.",
   example: "application/pdf",
 });
-
 export const driveId = input({
   label: "Drive ID",
   type: "string",
@@ -142,7 +130,6 @@ export const driveId = input({
   example: "0AAvGyortvuqEXAMPLE",
   dataSource: "selectDrive",
 });
-
 export const webhookExpirationInput = input({
   type: "string",
   label: "Expiration Time",
@@ -153,7 +140,6 @@ export const webhookExpirationInput = input({
   clean: (value) => util.types.toString(value) || undefined,
   example: "1426325213000",
 });
-
 export const webhookEndpointInput = input({
   type: "string",
   label: "Endpoint",
@@ -163,7 +149,6 @@ export const webhookEndpointInput = input({
   example: "https://your-webhook-endpoint.com/webhook/abc123",
   clean: util.types.toString,
 });
-
 export const metadataFields = input({
   label: "Fields",
   type: "string",
@@ -173,7 +158,6 @@ export const metadataFields = input({
   placeholder: "Enter comma separated fields",
   clean: util.types.toString,
 });
-
 export const consolidationStrategy = input({
   label: "Consolidation Strategy",
   type: "string",
@@ -194,7 +178,6 @@ export const consolidationStrategy = input({
     return {};
   },
 });
-
 export const filter = input({
   label: "Filter",
   type: "string",
@@ -204,7 +187,6 @@ export const filter = input({
   placeholder: "Enter filter expression",
   clean: cleanStringInput,
 });
-
 export const itemName = input({
   label: "File ID",
   type: "string",
@@ -215,18 +197,17 @@ export const itemName = input({
   dataSource: "selectFiles",
   clean: cleanItemInput,
 });
-
 export const ancestorName = input({
   label: "Folder or Drive ID",
   type: "string",
   required: false,
-  comments: "Return activities for this Drive or folder, plus all children and descendants.",
+  comments:
+    "Return activities for this Drive or folder, plus all children and descendants.",
   example: "0ALiN8fRST0gxUk9PVA",
   placeholder: "Enter Folder or Drive ID",
   dataSource: "selectFolder",
   clean: cleanItemInput,
 });
-
 export const triggerEvents = input({
   label: "Trigger Events",
   type: "string",
@@ -246,7 +227,6 @@ export const triggerEvents = input({
   required: false,
   clean: cleanArrayInput,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",

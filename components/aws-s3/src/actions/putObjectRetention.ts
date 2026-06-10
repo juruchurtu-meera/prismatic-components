@@ -11,7 +11,6 @@ import {
   retainUntilDate,
   versionId,
 } from "../inputs";
-
 export const putObjectRetention = action({
   display: {
     label: "Put Object Retention",
@@ -41,31 +40,28 @@ export const putObjectRetention = action({
       logger: context.logger,
       debug: context.debug.enabled,
     });
-
     const retentionModePresent = retentionMode.length > 0;
     const retainUntilDatePresent = retainUntilDate.length > 0;
-
     if (
       (retentionModePresent && !retainUntilDatePresent) ||
       (!retentionModePresent && retainUntilDatePresent)
     ) {
-      throw new Error("Both Retention Mode and Retain Until Date must be set when either is set.");
+      throw new Error(
+        "Both Retention Mode and Retain Until Date must be set when either is set.",
+      );
     }
-
     const command = new PutObjectRetentionCommand({
       Bucket: bucket,
       Key: objectKey,
       Retention: retentionModePresent
         ? {
-            Mode: retentionMode, 
-            RetainUntilDate: new Date(retainUntilDate), 
+            Mode: retentionMode,
+            RetainUntilDate: new Date(retainUntilDate),
           }
         : {},
       VersionId: versionId || undefined,
     });
-
     const data = await s3.send(command);
-
     return {
       data,
     };
@@ -79,7 +75,8 @@ export const putObjectRetention = action({
     retentionMode: {
       ...defaultRetentionMode,
       label: "Retention Mode",
-      comments: "Retention mode for the specified object. Required when Retain Until Date is set.",
+      comments:
+        "Retention mode for the specified object. Required when Retain Until Date is set.",
     },
     retainUntilDate,
     versionId,

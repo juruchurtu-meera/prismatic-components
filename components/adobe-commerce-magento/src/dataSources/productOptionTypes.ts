@@ -2,7 +2,6 @@ import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { connectionInput } from "../inputs";
-
 export const productOptionTypes = dataSource({
   display: {
     label: "Product Option Types",

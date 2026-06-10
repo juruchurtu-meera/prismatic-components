@@ -20,7 +20,6 @@ import {
   taxRegistrationNumber,
   website,
 } from "./createCustomerInputs";
-
 export default {
   displayName: {
     ...displayName,

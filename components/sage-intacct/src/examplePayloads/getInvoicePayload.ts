@@ -1,5 +1,3 @@
-
-
 export const getInvoicePayload = {
   data: {
     _status: "success",

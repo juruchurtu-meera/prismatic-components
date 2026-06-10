@@ -6,7 +6,6 @@ import {
   sendRawRequest,
   inputs as httpClientInputs,
 } from "@prismatic-io/spectral/dist/clients/http";
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -28,7 +27,7 @@ const rawRequest = action({
       const { data } = await sendRawRequest(
         "https://docs.googleapis.com",
         httpClientInputs,
-        { Authorization: `Bearer ${token}` }
+        { Authorization: `Bearer ${token}` },
       );
       return { data };
     } catch (error) {
@@ -38,5 +37,4 @@ const rawRequest = action({
     }
   },
 });
-
 export default rawRequest;

@@ -102,7 +102,6 @@ export const createShipmentExamplePayload = {
     },
   },
 };
-
 export const getShipmentExamplePayload = {
   data: {
     Shipment: {
@@ -207,7 +206,6 @@ export const getShipmentExamplePayload = {
     },
   },
 };
-
 export const cancelShipmentExamplePayload = {
   data: {
     Shipment: {

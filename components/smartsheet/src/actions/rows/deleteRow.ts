@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteRowExamplePayload } from "../../examplePayloads";
 import { deleteRowInputs } from "../../inputs";
-
 export const deleteRow = action({
   display: {
     label: "Delete Row",

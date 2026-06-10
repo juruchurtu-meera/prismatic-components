@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listCategoriesExamplePayload } from "../../examplePayloads";
 import { listCategoriesInputs } from "../../inputs";
 import { paginateOffset } from "../../util";
-
 export const listCategories = action({
   display: {
     label: "List Categories",

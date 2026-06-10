@@ -1,12 +1,12 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
 import { AUTHORIZE_URL, DEFAULT_SCOPES, TOKEN_URL } from "./constants";
-
 export const oauth2 = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "ramp-oauth2",
   display: {
     label: "OAuth 2.0",
-    description: "Authenticate with Ramp using OAuth 2.0 authorization code flow.",
+    description:
+      "Authenticate with Ramp using OAuth 2.0 authorization code flow.",
   },
   inputs: {
     authorizeUrl: {
@@ -53,5 +53,4 @@ export const oauth2 = oauth2Connection({
     },
   },
 });
-
 export default [oauth2];

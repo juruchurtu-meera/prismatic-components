@@ -3,14 +3,20 @@ import { createClient } from "../../client";
 import { connectionInput, cursor, paginationLimitInput } from "../../inputs";
 import { cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const searchOrganization = action({
   display: {
     label: "Search Organization",
     description: "Searches organizations.",
   },
-  perform: async (context, { connection, term, fields, exactMatch, limit, cursor }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+  perform: async (
+    context,
+    { connection, term, fields, exactMatch, limit, cursor },
+  ) => {
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/organizations/search", {
       params: { term, fields, exact_match: exactMatch, limit, cursor },
     });
@@ -40,7 +46,8 @@ export const searchOrganization = action({
       label: "Exact Match",
       type: "boolean",
       clean: util.types.toBool,
-      comments: "When true, only full exact matches against the given term are returned",
+      comments:
+        "When true, only full exact matches against the given term are returned",
     }),
     limit: paginationLimitInput,
     cursor,

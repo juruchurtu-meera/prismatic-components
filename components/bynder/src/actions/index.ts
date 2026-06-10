@@ -10,7 +10,6 @@ import orders from "./orders";
 import securityProfiles from "./securityProfiles";
 import upload from "./upload";
 import users from "./users";
-
 export default {
   ...account,
   ...assets,

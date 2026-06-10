@@ -3,7 +3,6 @@ import {
   oauth2Connection,
   OAuth2Type,
 } from "@prismatic-io/spectral";
-
 export const oauth2 = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "typeform-oauth2",
@@ -58,7 +57,6 @@ export const oauth2 = oauth2Connection({
     },
   },
 });
-
 export const personalToken = connection({
   key: "typeform-personal-token",
   display: {
@@ -75,5 +73,4 @@ export const personalToken = connection({
     },
   },
 });
-
 export default [oauth2, personalToken];

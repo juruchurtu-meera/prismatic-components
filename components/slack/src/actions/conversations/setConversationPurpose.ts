@@ -1,13 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { createOauthClient } from "../../client";
-
-
-
-
 import { archiveConversationExamplePayload as setConversationPurposeResponse } from "../../examplePayloads";
 import { setConversationPurposeInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const setConversationPurpose = action({
   display: {
     label: "Set Conversation Purpose",
@@ -15,7 +10,7 @@ export const setConversationPurpose = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, channelName, purpose }
+    { connection, channelName, purpose },
   ) => {
     debugLogger({ debug, channelName, purpose });
     const client = await createOauthClient({
@@ -25,7 +20,6 @@ export const setConversationPurpose = action({
       channel: channelName,
       purpose,
     });
-
     return { data };
   },
   inputs: setConversationPurposeInputs,

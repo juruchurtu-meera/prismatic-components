@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "./general";
 import { CODE_METHODS_MODEL, LANGUAGES_MODEL } from "../constants";
-
 const phoneNumberId = input({
   label: "Phone Number ID to Verify",
   comments: "The ID of the phone number to verify.",
@@ -11,7 +10,6 @@ const phoneNumberId = input({
   example: "912345678912345",
   clean: util.types.toString,
 });
-
 const codeMethod = input({
   label: "Code Method",
   comments: "The method to use to send the verification code.",
@@ -22,7 +20,6 @@ const codeMethod = input({
   example: "SMS",
   clean: util.types.toString,
 });
-
 const language = input({
   label: "Language",
   comments: "The language's two-character language code code.",
@@ -33,7 +30,6 @@ const language = input({
   model: LANGUAGES_MODEL,
   clean: util.types.toString,
 });
-
 export const requestVerificationCodeInputs = {
   connection,
   phoneNumberId,

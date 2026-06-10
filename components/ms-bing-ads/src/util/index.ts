@@ -1,14 +1,11 @@
 import type { Arg, Args } from "../client";
-
 export const toArray = <T>(responseItem: T | T[]): T[] =>
   Array.isArray(responseItem)
     ? responseItem
     : responseItem
       ? [responseItem]
       : [];
-
 const isArgs = (arg: Arg) => typeof arg === "object";
-
 export const objectToXML = (args: Args): string =>
   Object.entries(args).reduce((acc, [key, value]) => {
     return (
@@ -26,7 +23,6 @@ export const objectToXML = (args: Args): string =>
       }</${key.split(" ")[0]}>`
     );
   }, "");
-
 export enum WEB_SERVICE {
   AD_INSIGHT_API = "AD_INSIGHT_API",
   BULK_API = "BULK_API",
@@ -35,7 +31,6 @@ export enum WEB_SERVICE {
   CUSTOMER_MANAGEMENT_API = "CUSTOMER_MANAGEMENT_API",
   REPORTING_API = "REPORTING_API",
 }
-
 export const BING_API = {
   [WEB_SERVICE.AD_INSIGHT_API]: {
     WSDL: "https://adinsight.api.bingads.microsoft.com/Api/Advertiser/AdInsight/v13/AdInsightService.svc?wsdl",
@@ -62,7 +57,6 @@ export const BING_API = {
     TN: "https://bingads.microsoft.com/Reporting/v13",
   },
 };
-
 export const mapModel = (values: string[]) => {
   return values.map((value) => {
     return {

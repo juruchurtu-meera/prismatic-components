@@ -9,7 +9,6 @@ import { createClient } from "../../client";
 import { createContentTypeExamplePayload } from "../../examplePayloads";
 import { createContentTypeInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const createContentType = action({
   display: {
     label: "Create Content Type",
@@ -33,7 +32,6 @@ export const createContentType = action({
       spaceId,
       environmentId,
     );
-
     const contentType: ContentTypeProps = (
       await environment.createContentType({
         name,
@@ -42,7 +40,6 @@ export const createContentType = action({
         description,
       })
     ).toPlainObject();
-
     return {
       data: contentType,
     };

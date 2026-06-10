@@ -17,7 +17,6 @@ import {
   nextPageTokenInput,
 } from "../inputs";
 import type { Lead, PaginatedResponse } from "../interfaces";
-
 const describeLead = action({
   display: {
     label: "Describe Lead",
@@ -36,7 +35,6 @@ const describeLead = action({
   },
   examplePayload: describeLeadExamplePayload,
 });
-
 const getSearchableLeadFields = action({
   display: {
     label: "Get Searchable Lead Fields",
@@ -53,7 +51,6 @@ const getSearchableLeadFields = action({
   },
   examplePayload: getSearchableLeadFieldsExamplePayload,
 });
-
 const getLeadById = action({
   display: {
     label: "Get Lead By Id",
@@ -80,7 +77,6 @@ const getLeadById = action({
   },
   examplePayload: getLeadByIdExamplePayload,
 });
-
 const getLeadsByFilter = action({
   display: {
     label: "Get Leads By Filter",
@@ -116,7 +112,6 @@ const getLeadsByFilter = action({
   },
   examplePayload: getLeadsByFilterExamplePayload,
 });
-
 const syncLeads = action({
   display: {
     label: "Sync Leads (Create, Update, Upsert)",
@@ -191,7 +186,6 @@ const syncLeads = action({
   },
   examplePayload: syncLeadsExamplePayload,
 });
-
 const deleteLeads = action({
   display: {
     label: "Delete Leads",
@@ -220,7 +214,6 @@ const deleteLeads = action({
   },
   examplePayload: deleteLeadsExamplePayload,
 });
-
 export default {
   describeLead,
   getSearchableLeadFields,

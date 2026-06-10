@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, productIdInput } from "../../inputs";
 import { cleanCode, cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const updateProduct = action({
   display: {
     label: "Update Product",
@@ -13,7 +12,11 @@ export const updateProduct = action({
     context,
     { connection, id, name, code, unit, tax, visibleTo, ownerId, prices },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.patch(`/products/${id}`, {
       name,
       code,
@@ -83,7 +86,8 @@ export const updateProduct = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The ID of the user who will be marked as the owner of this product",
+      comments:
+        "The ID of the user who will be marked as the owner of this product",
       example: "123",
       placeholder: "Enter User ID",
     }),

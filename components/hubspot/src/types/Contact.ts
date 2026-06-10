@@ -6,7 +6,6 @@ export interface ContactProperties {
   hs_lastmodifieddate: string;
   hs_object_id: number;
 }
-
 export interface Contact {
   id: number;
   properties: ContactProperties;

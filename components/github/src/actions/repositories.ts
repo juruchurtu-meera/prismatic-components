@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const reposListPublic = action({
   display: {
     label: "Repos List Public",
     description: "List public repositories",
   },
   perform: async (context, { connection, since }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/repositories`, { params: { since } });
     return { data };
   },
@@ -26,7 +28,6 @@ const reposListPublic = action({
     },
   },
 });
-
 const actionsListEnvironmentSecrets = action({
   display: {
     label: "Actions List Environment Secrets",
@@ -36,7 +37,10 @@ const actionsListEnvironmentSecrets = action({
     context,
     { connection, repositoryId, environmentName, perPage, page },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repositories/${repositoryId}/environments/${environmentName}/secrets`,
       { params: { per_page: perPage, page } },
@@ -79,14 +83,16 @@ const actionsListEnvironmentSecrets = action({
     },
   },
 });
-
 const actionsGetEnvironmentPublicKey = action({
   display: {
     label: "Actions Get Environment Public Key",
     description: "Get an environment public key",
   },
   perform: async (context, { connection, repositoryId, environmentName }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repositories/${repositoryId}/environments/${environmentName}/secrets/public-key`,
     );
@@ -114,7 +120,6 @@ const actionsGetEnvironmentPublicKey = action({
     },
   },
 });
-
 const actionsGetEnvironmentSecret = action({
   display: {
     label: "Actions Get Environment Secret",
@@ -124,7 +129,10 @@ const actionsGetEnvironmentSecret = action({
     context,
     { connection, repositoryId, environmentName, secretName },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/repositories/${repositoryId}/environments/${environmentName}/secrets/${secretName}`,
     );
@@ -159,7 +167,6 @@ const actionsGetEnvironmentSecret = action({
     },
   },
 });
-
 const actionsCreateOrUpdateEnvironmentSecret = action({
   display: {
     label: "Actions Create Or Update Environment Secret",
@@ -176,7 +183,10 @@ const actionsCreateOrUpdateEnvironmentSecret = action({
       keyId,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/repositories/${repositoryId}/environments/${environmentName}/secrets/${secretName}`,
       { encrypted_value: encryptedValue, key_id: keyId },
@@ -227,7 +237,6 @@ const actionsCreateOrUpdateEnvironmentSecret = action({
     },
   },
 });
-
 const actionsDeleteEnvironmentSecret = action({
   display: {
     label: "Actions Delete Environment Secret",
@@ -237,7 +246,10 @@ const actionsDeleteEnvironmentSecret = action({
     context,
     { connection, repositoryId, environmentName, secretName },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/repositories/${repositoryId}/environments/${environmentName}/secrets/${secretName}`,
     );
@@ -272,7 +284,6 @@ const actionsDeleteEnvironmentSecret = action({
     },
   },
 });
-
 export default {
   reposListPublic,
   actionsListEnvironmentSecrets,

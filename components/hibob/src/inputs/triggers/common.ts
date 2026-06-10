@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const appSecret = input({
   label: "App Secret",
   type: "password",

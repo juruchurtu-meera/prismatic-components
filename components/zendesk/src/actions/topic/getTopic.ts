@@ -3,7 +3,6 @@ import { connectionInput, topicId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { Topic } from "../../types";
 import { getTopicPayload } from "../../examplePayloads";
-
 export const getTopic = action({
   display: {
     label: "Get Topic",
@@ -11,10 +10,9 @@ export const getTopic = action({
   },
   perform: async (context, { zendeskConnection, topicId }) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
-    const { data } = await client.get<{ topic: Topic }>(
-      `/community/topics/${topicId}`,
-    );
-
+    const { data } = await client.get<{
+      topic: Topic;
+    }>(`/community/topics/${topicId}`);
     return {
       data,
     };

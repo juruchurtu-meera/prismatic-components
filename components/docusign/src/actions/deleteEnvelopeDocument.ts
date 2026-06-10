@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, envelopeId, documentIds } from "../inputs";
 import { deleteEnvelopePayload } from "../examplePayloads";
-
 export const deleteEnvelopeDocument = action({
   display: {
     label: "Delete Envelope Document",

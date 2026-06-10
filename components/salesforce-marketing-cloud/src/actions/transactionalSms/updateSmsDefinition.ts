@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SMS_DEFINITIONS_PATH } from "../../constants";
 import { updateSmsDefinitionExamplePayload } from "../../examplePayloads";
 import { updateSmsDefinitionInputs } from "../../inputs";
-
 export const updateSmsDefinition = action({
   examplePayload: updateSmsDefinitionExamplePayload,
   display: {
@@ -23,18 +22,15 @@ export const updateSmsDefinition = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body: Record<string, unknown> = {
       ...(smsDefinitionExtraBody as Record<string, unknown>),
     };
     if (smsDefinitionName) body.name = smsDefinitionName;
     if (smsDefinitionDescription) body.description = smsDefinitionDescription;
-
     const { data } = await client.patch(
       `${SMS_DEFINITIONS_PATH}/${smsDefinitionKey}`,
       body,
     );
-
     return { data };
   },
 });

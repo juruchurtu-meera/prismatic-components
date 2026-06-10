@@ -2,9 +2,7 @@ import { action } from "@prismatic-io/spectral";
 import { createClickUpClient } from "../../client";
 import { getTaskMembersExamplePayload } from "../../examplePayloads";
 import { connectionInput, getTaskId } from "../../inputs";
-
 const taskId = getTaskId(true, "Task ID");
-
 export const getTaskMembers = action({
   display: {
     label: "Get Task Members",
@@ -12,10 +10,11 @@ export const getTaskMembers = action({
   },
   examplePayload: getTaskMembersExamplePayload,
   perform: async (context, { clickUpConnection, taskId }) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
-
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/task/${taskId}/member`);
-
     return {
       data,
     };

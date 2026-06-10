@@ -4,17 +4,6 @@ import { paginateResults } from "../../util";
 import { listResponsesInputs } from "../../inputs";
 import { listResponsesBulkExamplePayload } from "../../examplePayloads";
 import type { SurveyResponseDetails } from "../../types";
-
-
-
-
-
-
-
-
-
-
-
 export const listResponsesBulk = action({
   display: {
     label: "List Responses Bulk",
@@ -27,14 +16,11 @@ export const listResponsesBulk = action({
     { connection, surveyId, status, fetchAll, page, perPage },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const endpoint = `/surveys/${surveyId}/responses/bulk`;
     const params: Record<string, unknown> = {};
-
     if (status) {
       params.status = status;
     }
-
     const data = await paginateResults<SurveyResponseDetails>(
       client,
       endpoint,
@@ -45,7 +31,6 @@ export const listResponsesBulk = action({
         per_page: perPage,
       },
     );
-
     return { data };
   },
   examplePayload: listResponsesBulkExamplePayload,

@@ -3,7 +3,6 @@ import { getCalendlyClient } from "../../client";
 import { connection, email, organization, user } from "../../inputs";
 import { listOrganizationMembershipsExamplePayload } from "../../examplePayloads";
 import { getOrganizationMemberships } from "../../util";
-
 export const listOrganizationMemberships = action({
   display: {
     label: "List Organization Memberships",
@@ -12,7 +11,6 @@ export const listOrganizationMemberships = action({
   },
   perform: async (context, { connection, email, organization, user }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const data = await getOrganizationMemberships(
       client,
       email,

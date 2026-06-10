@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const dealData = {
   id: 8150614,
   creator_id: 1290481,
@@ -33,8 +26,6 @@ const dealData = {
   updated_at: "2025-01-10T16:42:18Z",
   added_at: "2024-10-22T08:15:30Z",
 };
-
-
 export const createDealExamplePayload = {
   data: {
     data: dealData,
@@ -43,8 +34,6 @@ export const createDealExamplePayload = {
     },
   },
 };
-
-
 export const getDealExamplePayload = {
   data: {
     data: dealData,
@@ -53,8 +42,6 @@ export const getDealExamplePayload = {
     },
   },
 };
-
-
 export const updateDealExamplePayload = {
   data: {
     data: dealData,
@@ -63,8 +50,6 @@ export const updateDealExamplePayload = {
     },
   },
 };
-
-
 export const listDealsExamplePayload = {
   data: {
     items: [
@@ -86,18 +71,9 @@ export const listDealsExamplePayload = {
     },
   },
 };
-
-
 export const deleteDealExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const getDealsStreamExamplePayload = {
   data: {
     items: [

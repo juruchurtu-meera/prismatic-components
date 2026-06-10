@@ -1,15 +1,5 @@
 import { baseUrl } from "../connections";
 import { SUCCESS_MESSAGE } from "../constants";
-
-
-
-
-
-
-
-
-
-
 export const createCustomObjectPayload = {
   data: {
     id: "2116144016",
@@ -65,12 +55,8 @@ export const createCustomObjectPayload = {
     name: "equipment",
   },
 };
-
-
 export const deleteCustomObjectPayload = { data: {} };
-
 export const getCustomObjectPayload = createCustomObjectPayload;
-
 export const listCustomObjectsPayload = {
   data: {
     results: [
@@ -117,17 +103,10 @@ export const listCustomObjectsPayload = {
     ],
   },
 };
-
 export const updateCustomObjectPayload = createCustomObjectPayload;
-
-
-
-
-
 export const archiveBatchEngagementPayload = {
   data: {},
 };
-
 export const createBatchEngagementPayload = {
   data: {
     status: "COMPLETE",
@@ -175,7 +154,6 @@ export const createBatchEngagementPayload = {
     completedAt: "2024-01-15T14:09:49.903Z",
   },
 };
-
 export const createEngagementPayload = {
   data: {
     id: "47231018317",
@@ -215,9 +193,7 @@ export const createEngagementPayload = {
     archived: false,
   },
 };
-
 export const deleteEngagementPayload = { data: {} };
-
 export const getEngagementPayload = {
   data: {
     id: "47231018154",
@@ -250,7 +226,6 @@ export const getEngagementPayload = {
     archived: false,
   },
 };
-
 export const listEngagementsPayload = {
   data: [
     {
@@ -283,7 +258,6 @@ export const listEngagementsPayload = {
     },
   ],
 };
-
 export const updateBatchEngagementPayload = {
   data: {
     status: "COMPLETE",
@@ -311,7 +285,6 @@ export const updateBatchEngagementPayload = {
     completedAt: "2024-01-15T02:31:49.703Z",
   },
 };
-
 export const updateEngagementPayload = {
   data: {
     id: "47231018317",
@@ -331,11 +304,6 @@ export const updateEngagementPayload = {
     archived: false,
   },
 };
-
-
-
-
-
 export const listAssociationTypesPayload = {
   data: {
     results: [
@@ -354,7 +322,6 @@ export const listAssociationTypesPayload = {
     ],
   },
 };
-
 export const createAssociationsPayload = {
   data: {
     completedAt: "2024-01-15T23:59:28.273Z",
@@ -375,7 +342,6 @@ export const createAssociationsPayload = {
     status: "COMPLETE",
   },
 };
-
 export const readAssociationsPayload = {
   data: {
     completedAt: "2024-01-15T23:59:28.283Z",
@@ -408,15 +374,9 @@ export const readAssociationsPayload = {
     status: "COMPLETE",
   },
 };
-
 export const archiveAssociationsPayload = {
   data: {},
 };
-
-
-
-
-
 export const listCompaniesPayload = {
   data: {
     results: [
@@ -446,9 +406,7 @@ export const listCompaniesPayload = {
     },
   },
 };
-
 export const deleteCompanyPayload = { data: {} };
-
 export const createCompanyPayload = {
   data: {
     createdAt: "2024-01-15T00:06:42.321Z",
@@ -491,7 +449,6 @@ export const createCompanyPayload = {
     updatedAt: "2024-01-15T00:06:42.321Z",
   },
 };
-
 export const updateCompanyPayload = {
   data: {
     createdAt: "2024-01-15T00:06:42.336Z",
@@ -534,11 +491,6 @@ export const updateCompanyPayload = {
     updatedAt: "2024-01-16T10:15:30.120Z",
   },
 };
-
-
-
-
-
 export const listContactsPayload = {
   data: {
     results: [
@@ -568,9 +520,7 @@ export const listContactsPayload = {
     },
   },
 };
-
 export const deleteContactPayload = { data: {} };
-
 export const createContactPayload = {
   data: {
     createdAt: "2024-01-15T00:20:24.825Z",
@@ -621,7 +571,6 @@ export const createContactPayload = {
     updatedAt: "2024-01-15T00:20:24.825Z",
   },
 };
-
 export const updateContactPayload = {
   data: {
     createdAt: "2024-01-15T00:20:24.840Z",
@@ -662,9 +611,7 @@ export const updateContactPayload = {
     updatedAt: "2024-01-16T09:30:15.234Z",
   },
 };
-
 export const archiveBatchContactsPayload = { data: {} };
-
 export const createBatchContactsPayload = {
   data: {
     completedAt: "2024-01-15T08:27:09.446Z",
@@ -702,7 +649,6 @@ export const createBatchContactsPayload = {
     status: "COMPLETE",
   },
 };
-
 export const getBatchContactsPayload = {
   data: {
     completedAt: "2024-01-15T08:27:09.454Z",
@@ -740,7 +686,6 @@ export const getBatchContactsPayload = {
     status: "COMPLETE",
   },
 };
-
 export const updateBatchContactsPayload = {
   data: {
     completedAt: "2024-01-15T08:27:09.462Z",
@@ -779,11 +724,6 @@ export const updateBatchContactsPayload = {
     status: "COMPLETE",
   },
 };
-
-
-
-
-
 export const listDealsPayload = {
   data: {
     results: [
@@ -812,9 +752,7 @@ export const listDealsPayload = {
     },
   },
 };
-
 export const deleteDealPayload = { data: {} };
-
 export const searchDealsPayload = {
   data: {
     total: 2,
@@ -854,7 +792,6 @@ export const searchDealsPayload = {
     ],
   },
 };
-
 export const createDealPayload = {
   data: {
     createdAt: "2024-01-15T00:24:54.526Z",
@@ -893,7 +830,6 @@ export const createDealPayload = {
     updatedAt: "2024-01-15T00:24:54.526Z",
   },
 };
-
 export const updateDealPayload = {
   data: {
     createdAt: "2024-01-15T00:24:54.543Z",
@@ -932,11 +868,6 @@ export const updateDealPayload = {
     updatedAt: "2024-01-16T11:20:15.340Z",
   },
 };
-
-
-
-
-
 export const listLineItemsPayload = {
   data: {
     results: [
@@ -965,9 +896,7 @@ export const listLineItemsPayload = {
     },
   },
 };
-
 export const deleteLineItemPayload = { data: {} };
-
 export const createLineItemPayload = {
   data: {
     createdAt: "2024-01-15T00:31:42.469Z",
@@ -998,7 +927,6 @@ export const createLineItemPayload = {
     updatedAt: "2024-01-15T00:31:42.469Z",
   },
 };
-
 export const updateLineItemPayload = {
   data: {
     createdAt: "2024-01-15T00:31:42.485Z",
@@ -1039,11 +967,6 @@ export const updateLineItemPayload = {
     updatedAt: "2024-01-16T11:45:30.250Z",
   },
 };
-
-
-
-
-
 export const listProductsPayload = {
   data: {
     results: [
@@ -1055,7 +978,8 @@ export const listProductsPayload = {
           hs_object_id: "76543210987",
           name: "Enterprise Software License",
           price: "25000.00",
-          description: "Annual enterprise software license with premium support",
+          description:
+            "Annual enterprise software license with premium support",
           hs_sku: "ENT-SW-001",
         },
         createdAt: "2024-01-05T08:15:20.123Z",
@@ -1071,9 +995,7 @@ export const listProductsPayload = {
     },
   },
 };
-
 export const deleteProductPayload = { data: {} };
-
 export const createProductPayload = {
   data: {
     createdAt: "2024-01-15T00:35:05.442Z",
@@ -1096,14 +1018,14 @@ export const createProductPayload = {
       name: "Professional Services - Implementation",
       price: "8500.00",
       hs_sku: "PS-IMP-002",
-      description: "Full implementation service including data migration and training",
+      description:
+        "Full implementation service including data migration and training",
       hs_cost_of_goods_sold: "2500.00",
       hs_recurring_billing_period: "P0M",
     },
     updatedAt: "2024-01-15T00:35:05.442Z",
   },
 };
-
 export const updateProductPayload = {
   data: {
     createdAt: "2024-01-15T00:35:05.457Z",
@@ -1145,11 +1067,6 @@ export const updateProductPayload = {
     updatedAt: "2024-01-16T12:10:45.680Z",
   },
 };
-
-
-
-
-
 export const listPropertiesPayload = {
   data: {
     results: [
@@ -1247,11 +1164,6 @@ export const listPropertiesPayload = {
     ],
   },
 };
-
-
-
-
-
 export const cancelImportPayload = {
   data: {
     completedAt: "2024-01-15T05:02:32.700Z",
@@ -1261,7 +1173,6 @@ export const cancelImportPayload = {
     status: "CANCELED",
   },
 };
-
 export const listActiveImportsPayload = {
   data: [
     {
@@ -1296,7 +1207,6 @@ export const listActiveImportsPayload = {
     },
   ],
 };
-
 export const importCRMDataPayload = {
   data: {
     importTemplate: {
@@ -1329,7 +1239,6 @@ export const importCRMDataPayload = {
     updatedAt: "2024-01-15T05:02:32.679Z",
   },
 };
-
 export const getAnImportPayload = {
   data: {
     importTemplate: {
@@ -1362,10 +1271,6 @@ export const getAnImportPayload = {
     updatedAt: "2024-01-15T05:15:45.890Z",
   },
 };
-
-
-
-
 export const exportCRMDataPayload = {
   data: {
     id: "12345678",
@@ -1379,11 +1284,6 @@ export const exportCRMDataPayload = {
     recordCount: 0,
   },
 };
-
-
-
-
-
 export const searchPayload = {
   data: {
     total: 2,
@@ -1426,13 +1326,6 @@ export const searchPayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const getCurrentUserPayload = {
   data: {
     portalId: 12345678,
@@ -1445,17 +1338,7 @@ export const getCurrentUserPayload = {
     user: "admin@example.com",
   },
 };
-
-
-
-
-
 export const validateConnectionPayload = { data: true };
-
-
-
-
-
 export const listWebhooksPayload = {
   data: {
     results: [
@@ -1478,7 +1361,6 @@ export const listWebhooksPayload = {
     ],
   },
 };
-
 export const createWebhookPayload = {
   data: {
     createdAt: "2024-01-15T20:53:52.517Z",
@@ -1489,15 +1371,12 @@ export const createWebhookPayload = {
     updatedAt: "2024-01-15T20:53:52.517Z",
   },
 };
-
 export const deleteWebhookPayload = { data: {} };
-
 export const deleteAllWebhooksPayload = {
   data: {
     message: SUCCESS_MESSAGE,
   },
 };
-
 export const webhookPayload = {
   payload: {
     headers: {

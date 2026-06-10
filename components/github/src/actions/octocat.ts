@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const metaGetOctocat = action({
   display: {
     label: "Meta Get Octocat",
     description: "Get Octocat",
   },
   perform: async (context, { connection, s }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/octocat`, { params: { s } });
     return { data };
   },
@@ -26,7 +28,6 @@ const metaGetOctocat = action({
     },
   },
 });
-
 export default {
   metaGetOctocat,
 };

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { RAW_REQUEST_ACTION_OPTIONS } from "../constants";
 import { awsConnection, awsRegion } from "./common";
-
 const body = input({
   label: "Body",
   type: "code",
@@ -14,14 +13,14 @@ const body = input({
       WorkgroupName: "my-workgroup",
       Database: "analytics",
       Sql: "SELECT * FROM users WHERE status = 'active'",
-      SecretArn: "arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift-credentials",
+      SecretArn:
+        "arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift-credentials",
     },
     null,
     2,
   ),
   clean: util.types.toString,
 });
-
 const action = input({
   label: "Action",
   type: "string",
@@ -33,7 +32,6 @@ const action = input({
   model: RAW_REQUEST_ACTION_OPTIONS,
   clean: util.types.toString,
 });
-
 export const rawRequestInputs = {
   awsConnection,
   awsRegion,

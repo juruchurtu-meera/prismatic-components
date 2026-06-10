@@ -22,7 +22,6 @@ import {
   deleteAllSubscriptionsFN,
   scheduledRenewalFN,
 } from "../utils/webhooks";
-
 export const createSubscriptionTrigger = async (
   client: HttpClient,
   {
@@ -39,7 +38,6 @@ export const createSubscriptionTrigger = async (
   const flowId = context.flow.id;
   const flowName = context.flow.name;
   const webhookUrl = context.webhookUrls[flowName];
-
   const subscription = await createSubscriptionFN(
     client,
     {
@@ -53,14 +51,11 @@ export const createSubscriptionTrigger = async (
     },
     context,
   );
-
   context.logger.info(
     `Created Graph subscription ${subscription.id} for flow ${flowName} (${flowId})`,
   );
-
   return subscription;
 };
-
 export const deleteSubscriptionTrigger = async (
   client: HttpClient,
   context: ActionContext,
@@ -68,17 +63,14 @@ export const deleteSubscriptionTrigger = async (
   const flowId = context.flow.id;
   const flowName = context.flow.name;
   const webhookUrl = context.webhookUrls[flowName];
-
   const deletedSubscriptions = await deleteAllSubscriptionsFN(
     client,
     webhookUrl,
   );
-
   context.logger.info(
     `Deleted ${deletedSubscriptions.length} Graph subscription(s) for flow ${flowName} (${flowId})`,
   );
 };
-
 export const triggerPerformFN = async (
   _context: ActionContext,
   payload: TriggerPayload,
@@ -86,25 +78,21 @@ export const triggerPerformFN = async (
 ) => {
   const rawValidationToken = payload.queryParameters?.validationToken;
   const validationToken = util.types.toString(rawValidationToken);
-
   const response: HttpResponse = {
     statusCode: 200,
     contentType: "text/plain",
     body: validationToken,
   };
-
   return Promise.resolve({
     payload,
     response,
     branch: validationToken ? "URL Validation" : "Notification",
   });
 };
-
 export const createMsWebhookPerformFN = (
   options: CreateMsWebhookPerformOptions,
 ) => {
   const { createClient, renewalExpirationMinutes, fetchResourceData } = options;
-
   return async (
     context: ActionContext,
     payload: TriggerPayload,
@@ -114,13 +102,11 @@ export const createMsWebhookPerformFN = (
     const validationToken = util.types.toString(rawValidationToken);
     const headers = util.types.lowerCaseHeaders(payload.headers);
     const invokeType = headers["prismatic-invoke-type"];
-
     const response: HttpResponse = {
       statusCode: 200,
       contentType: "text/plain",
       body: validationToken,
     };
-
     if (validationToken) {
       return {
         payload,
@@ -128,9 +114,7 @@ export const createMsWebhookPerformFN = (
         branch: "URL Validation",
       };
     }
-
     const subscriptionBody = payload.body.data as SubscriptionBody;
-
     if (invokeType === "Scheduled" && params?.connection) {
       const client = createClient(
         params.connection as Connection,
@@ -141,18 +125,15 @@ export const createMsWebhookPerformFN = (
       const storedSubscriptionId = context.crossFlowState[flowKey] as
         | string
         | undefined;
-
       const result = await scheduledRenewalFN(
         client,
         storedSubscriptionId,
         webhookUrl,
         renewalExpirationMinutes,
       );
-
       context.logger.info(
         `Renewed ${result.renewedCount} subscription(s)${result.usedUrlFallback ? " via URL fallback" : ""}`,
       );
-
       if (result.newSubscriptionId) {
         return {
           payload,
@@ -163,27 +144,23 @@ export const createMsWebhookPerformFN = (
           },
         };
       }
-
       return {
         payload,
         response,
         branch: "Scheduled Renewal",
       };
     }
-
     if (subscriptionBody?.value?.length && params?.connection) {
       const client = createClient(
         params.connection as Connection,
         context.debug.enabled,
       );
-
       if (fetchResourceData) {
         await Promise.all(
           subscriptionBody.value.map(async (notification, index) => {
             if (notification?.changeType === "deleted") {
               return;
             }
-
             try {
               const resourceData = await fetchResourceData(
                 client,
@@ -204,7 +181,6 @@ export const createMsWebhookPerformFN = (
         );
       }
     }
-
     return {
       payload,
       response,

@@ -1,28 +1,22 @@
 import { type KeyValuePair, util } from "@prismatic-io/spectral";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import type { Collection, Collections, Records } from "../types";
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value).trim() : undefined;
-
 export const cleanNumber = (value: unknown) =>
   value ? util.types.toNumber(value) : undefined;
-
 export const cleanCodeInput = (value: unknown) =>
   value ? (util.types.toObject(value) as Record<string, unknown>) : undefined;
-
 export const cleanKeyValueListInput = (value: unknown) =>
   value
     ? util.types.keyValPairListToObject(value as KeyValuePair[])
     : undefined;
-
 export const cleanValueListInput = (value: unknown) => {
   if (value && Array.isArray(value) && value.length > 0) {
     return value.map(cleanString).filter(Boolean);
   }
   return undefined;
 };
-
 export const fetchAllRecords = async (
   client: HttpClient,
   url: string,
@@ -52,7 +46,6 @@ export const fetchAllRecords = async (
       }
       page++;
     } while (keepFetching);
-
     return {
       ...response,
       [listName]: records,
@@ -62,7 +55,6 @@ export const fetchAllRecords = async (
     return data;
   }
 };
-
 export const fetchCollections = async (
   client: HttpClient,
   extraParams: Record<string, unknown> | undefined,
@@ -89,9 +81,7 @@ export const fetchCollections = async (
   } while (flag);
   return records;
 };
-
 export function sortArray<T extends Records>(array: T[], key: string) {
   return array.sort((a, b) => (a[key] < b[key] ? -1 : 1));
 }
-
 export { fetchRecordsForResource, filterByTimestamp } from "./polling";

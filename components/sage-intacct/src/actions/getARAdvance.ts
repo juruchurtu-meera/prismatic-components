@@ -3,7 +3,6 @@ import { connection, fieldsInput, recordNoInput } from "../inputs";
 import { convertResultToGenericObject, executeAction } from "../utils";
 import { Functions } from "@intacct/intacct-sdk";
 import { getARAdvancePayload } from "../examplePayloads/getARAdvancePayload";
-
 export const getARAdvance = action({
   display: {
     label: "Get AR Advance",

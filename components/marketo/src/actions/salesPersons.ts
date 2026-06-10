@@ -18,7 +18,6 @@ import {
   idsToDeleteInput,
   nextPageTokenInput,
 } from "../inputs";
-
 const describeSalesPerson = action({
   display: {
     label: "Describe Sales Person",
@@ -35,7 +34,6 @@ const describeSalesPerson = action({
   },
   examplePayload: describeSalesPersonExamplePayload,
 });
-
 const getSalesPersonsByFilter = action({
   display: {
     label: "Get Sales Persons By Filter",
@@ -71,7 +69,6 @@ const getSalesPersonsByFilter = action({
   },
   examplePayload: getSalesPersonsByFilterExamplePayload,
 });
-
 const syncSalesPersons = action({
   display: {
     label: "Sync Sales Persons (Create, Update, Upsert)",
@@ -102,7 +99,6 @@ const syncSalesPersons = action({
   },
   examplePayload: syncSalesPersonsExamplePayload,
 });
-
 const deleteSalesPersons = action({
   display: {
     label: "Delete Sales Persons",
@@ -123,7 +119,6 @@ const deleteSalesPersons = action({
   },
   examplePayload: deleteSalesPersonsExamplePayload,
 });
-
 export default {
   describeSalesPerson,
   getSalesPersonsByFilter,

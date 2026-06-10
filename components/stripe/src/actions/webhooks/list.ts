@@ -10,7 +10,6 @@ import {
 } from "../../inputs";
 import { listWebhookEventsFn } from "../../util";
 import { listWebhooksExamplePayload } from "../../examplePayloads/webhooks";
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",

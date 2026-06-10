@@ -3,7 +3,6 @@ import { createFreshserviceClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { deleteSoftwareExamplePayload as examplePayload } from "../../examplePayloads";
 import { deleteSoftwareInputs as inputs } from "../../inputs/software";
-
 export const deleteSoftware = action({
   display: {
     label: "Delete Software",
@@ -11,9 +10,7 @@ export const deleteSoftware = action({
   },
   perform: async (context, { connection, applicationId }) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     await client.delete(`/applications/${applicationId}`);
-
     return SUCCESS_RESPONSE;
   },
   inputs,

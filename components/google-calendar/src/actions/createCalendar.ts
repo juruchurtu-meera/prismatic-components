@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, description, summary, timeZone } from "../inputs";
 import { parseReturn } from "../parseReturn";
-
 export const createCalendar = action({
   display: {
     label: "Create Calendar",

@@ -1,5 +1,4 @@
 import type { IMessageContent } from "./IMessageContent";
-
 export interface IMessageResponse {
   id: string;
   type: string;

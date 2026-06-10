@@ -3,7 +3,6 @@ import { getMsBusinessCentralClient } from "../../client";
 import { createVendorExamplePayload } from "../../examplePayloads";
 import { createVendorInputs } from "../../inputs/vendors";
 import type { Vendor } from "../../interfaces";
-
 export const createVendor = action({
   display: {
     label: "Create Vendor",
@@ -35,7 +34,11 @@ export const createVendor = action({
       companyId,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       addressLine1,
       addressLine2,
@@ -56,8 +59,10 @@ export const createVendor = action({
       paymentMethodId,
       displayName,
     };
-    const { data } = await client.post<Vendor>(`/companies(${companyId})/vendors`, payload);
-
+    const { data } = await client.post<Vendor>(
+      `/companies(${companyId})/vendors`,
+      payload,
+    );
     return {
       data,
     };

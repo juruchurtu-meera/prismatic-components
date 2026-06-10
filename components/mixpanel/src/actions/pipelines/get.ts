@@ -10,7 +10,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { getPipelineExamplePayload } from "../../examplePayloads";
-
 export const getPipeline = action({
   display: {
     label: "Get Pipeline",

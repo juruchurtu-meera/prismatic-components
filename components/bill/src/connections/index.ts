@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const billConnection = connection({
   key: "billConnection",
   display: {
@@ -46,5 +45,4 @@ export const billConnection = connection({
     },
   },
 });
-
 export default [billConnection];

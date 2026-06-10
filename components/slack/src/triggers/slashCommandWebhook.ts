@@ -1,7 +1,6 @@
 import { URLSearchParams } from "node:url";
 import { trigger, util } from "@prismatic-io/spectral";
 import { slashCommandWebhookInputs } from "../inputs";
-
 export const slashCommandWebhook = trigger({
   display: {
     label: "Slash Command Webhook",
@@ -10,9 +9,8 @@ export const slashCommandWebhook = trigger({
   },
   perform: async (context, payload, params) => {
     const deserializedPayload = Object.fromEntries(
-      new URLSearchParams(payload.rawBody.data.toString())
+      new URLSearchParams(payload.rawBody.data.toString()),
     );
-
     const response = {
       statusCode: 200,
       contentType: util.types.toString(params.contentType),
@@ -20,7 +18,6 @@ export const slashCommandWebhook = trigger({
         ? { body: util.types.toString(params.responseBody) }
         : {}),
     };
-
     return Promise.resolve({
       payload: {
         ...payload,

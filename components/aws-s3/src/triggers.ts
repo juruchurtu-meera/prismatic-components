@@ -5,11 +5,11 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "./auth";
 import { ListBucketsCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { objectMapper } from "./utils";
-
 export const snsS3NotificationWebhook = trigger({
   display: {
     label: "Webhook",
-    description: "Trigger to handle SNS subscription for S3 event notifications",
+    description:
+      "Trigger to handle SNS subscription for S3 event notifications",
   },
   allowsBranching: true,
   staticBranchNames: ["Notification", "Subscribe"],
@@ -18,7 +18,6 @@ export const snsS3NotificationWebhook = trigger({
     if (bodyData.length) {
       const data = JSON.parse(bodyData);
       const eventType = data.Type;
-
       if (eventType) {
         switch (eventType) {
           case "SubscriptionConfirmation": {
@@ -37,7 +36,6 @@ export const snsS3NotificationWebhook = trigger({
               payload: { ...payload, body: { data } },
             };
           }
-
           default:
             throw new Error(
               `Message type was not "Notification" or "SubscriptionConfirmation", but "${eventType}" instead.`,
@@ -52,7 +50,6 @@ export const snsS3NotificationWebhook = trigger({
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });
-
 export const pollChangesFilesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Files",
@@ -78,14 +75,14 @@ export const pollChangesFilesTrigger = pollingTrigger({
     },
   ) => {
     const now = new Date().toISOString();
-    const pollState = context.polling.getState() as { lastPolledAt: string };
+    const pollState = context.polling.getState() as {
+      lastPolledAt: string;
+    };
     const lastPolledAt: string = pollState.lastPolledAt || now;
-
     context.logger.debug(`Polled for changes from: ${lastPolledAt} to ${now}`);
     if (context.debug.enabled) {
       context.logger.debug(`Polling state: ${JSON.stringify(pollState)}`);
     }
-
     const s3 = await createS3Client({
       awsConnection: accessKey,
       awsRegion,
@@ -95,28 +92,23 @@ export const pollChangesFilesTrigger = pollingTrigger({
       logger: context.logger,
       debug: context.debug.enabled,
     });
-
     const command = new ListObjectsV2Command({
       Bucket: bucket,
       MaxKeys: 4000,
     });
-
     const response = await s3.send(command);
     const objects = response.Contents || [];
     const changes = objects
       .map((object) => objectMapper(object, "LastModified"))
       .filter(({ LastModified }) => LastModified > lastPolledAt)
       .map(({ Key }) => Key);
-
     context.polling.setState({ lastPolledAt: now });
-
     return {
       payload: { ...payload, body: { data: changes } },
       polledNoChanges: changes?.length === 0,
     };
   },
 });
-
 export const pollNewBucketsTrigger = pollingTrigger({
   display: {
     label: "New Buckets",
@@ -130,17 +122,23 @@ export const pollNewBucketsTrigger = pollingTrigger({
   perform: async (
     context,
     payload,
-    { accessKey, awsRegion, dynamicAccessKeyId, dynamicSecretAccessKey, dynamicSessionToken },
+    {
+      accessKey,
+      awsRegion,
+      dynamicAccessKeyId,
+      dynamicSecretAccessKey,
+      dynamicSessionToken,
+    },
   ) => {
     const now = new Date().toISOString();
-    const pollState = context.polling.getState() as { lastPolledAt: string };
+    const pollState = context.polling.getState() as {
+      lastPolledAt: string;
+    };
     const lastPolledAt: string = pollState.lastPolledAt || now;
-
     context.logger.debug(`Polled for changes from: ${lastPolledAt} to ${now}`);
     if (context.debug.enabled) {
       context.logger.debug(`Polling state: ${JSON.stringify(pollState)}`);
     }
-
     const s3 = await createS3Client({
       awsConnection: accessKey,
       awsRegion,
@@ -148,24 +146,19 @@ export const pollNewBucketsTrigger = pollingTrigger({
       dynamicSecretAccessKey,
       dynamicSessionToken,
     });
-
     const command = new ListBucketsCommand({});
     const response = await s3.send(command);
     const buckets = response.Buckets || [];
-
     const changes = buckets
       .map((bucket) => objectMapper(bucket, "CreationDate"))
       .filter(({ CreationDate }) => CreationDate > lastPolledAt);
-
     context.polling.setState({ lastPolledAt: now });
-
     return {
       payload: { ...payload, body: { data: changes } },
       polledNoChanges: changes?.length === 0,
     };
   },
 });
-
 export default {
   snsS3NotificationWebhook,
   pollChangesFilesTrigger,

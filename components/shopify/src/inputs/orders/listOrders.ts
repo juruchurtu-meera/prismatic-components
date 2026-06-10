@@ -1,4 +1,10 @@
-import { connectionInput, getAlldata, limit, pageInfo, updatedAtMin } from "../common";
+import {
+  connectionInput,
+  getAlldata,
+  limit,
+  pageInfo,
+  updatedAtMin,
+} from "../common";
 import {
   attributionAppId,
   commaSeparatedIds,
@@ -13,7 +19,6 @@ import {
   sinceId,
   updatedAtMax,
 } from "./common";
-
 export const listOrdersInputs = {
   shopifyConnection: connectionInput,
   getAlldata,

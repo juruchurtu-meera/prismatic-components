@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { sendRawRequest } from "@prismatic-io/spectral/dist/clients/http";
 import { rawRequestInputs } from "../../inputs";
 import { validateConnection } from "../../util";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -13,7 +12,6 @@ export const rawRequest = action({
     validateConnection(connection);
     const workdayToken = connection.token?.access_token;
     const baseUrl = connection.fields.apiUrl as string;
-
     const { data } = await sendRawRequest(
       baseUrl,
       {

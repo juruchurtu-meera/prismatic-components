@@ -1,24 +1,23 @@
 import { input, util } from "@prismatic-io/spectral";
 import { jsonInputClean } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
-  comments: "The connection to use for authenticating requests to Google Cloud Pub/Sub.",
+  comments:
+    "The connection to use for authenticating requests to Google Cloud Pub/Sub.",
 });
-
 export const version = input({
   label: "API Version",
   type: "string",
   clean: util.types.toString,
   default: "v1",
-  comments: "The API version to use for constructing the base URL for requests.",
+  comments:
+    "The API version to use for constructing the base URL for requests.",
   required: false,
   example: "v1",
   placeholder: "Enter API version",
 });
-
 export const projectId = input({
   label: "Project ID",
   type: "string",
@@ -28,7 +27,6 @@ export const projectId = input({
   example: "my-gcp-project-123456",
   placeholder: "Enter project ID",
 });
-
 export const topic = input({
   label: "Topic",
   type: "string",
@@ -40,7 +38,6 @@ export const topic = input({
   placeholder: "Enter topic name",
   dataSource: "topics",
 });
-
 export const subscription = input({
   label: "Subscription",
   type: "string",
@@ -52,17 +49,16 @@ export const subscription = input({
   placeholder: "Enter subscription name",
   dataSource: "subscriptions",
 });
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
   clean: util.types.toString,
-  comments: "The page token returned by a previous list call to request the next page of results.",
+  comments:
+    "The page token returned by a previous list call to request the next page of results.",
   required: false,
   example: "DBsPVgscdHRpdWhSGwQLQVd-",
   placeholder: "Enter page token",
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -72,7 +68,6 @@ export const pageSize = input({
   example: "100",
   placeholder: "Enter page size",
 });
-
 export const labels = input({
   label: "Labels",
   type: "code",
@@ -91,7 +86,6 @@ export const labels = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const satisfiesPzs = input({
   label: "Satisfies PZS",
   type: "boolean",
@@ -101,7 +95,6 @@ export const satisfiesPzs = input({
   required: false,
   default: "false",
 });
-
 export const messageStoragePolicy = input({
   label: "Message Storage Policy",
   type: "code",
@@ -118,7 +111,6 @@ export const messageStoragePolicy = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const kmsKeyName = input({
   label: "KMS Key Name",
   type: "string",
@@ -126,10 +118,10 @@ export const kmsKeyName = input({
   comments:
     "The resource name of the Cloud KMS CryptoKey used to protect access to messages published on this topic. See [Customer-Managed Encryption Keys](https://cloud.google.com/pubsub/docs/cmek) for more information.",
   required: false,
-  example: "projects/my-project/locations/us-east1/keyRings/my-keyring/cryptoKeys/my-key",
+  example:
+    "projects/my-project/locations/us-east1/keyRings/my-keyring/cryptoKeys/my-key",
   placeholder: "Enter KMS key resource name",
 });
-
 export const schemaSettings = input({
   label: "Schema Settings",
   type: "code",
@@ -149,7 +141,6 @@ export const schemaSettings = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const messageRetentionDuration = input({
   label: "Message Retention Duration",
   type: "string",
@@ -160,7 +151,6 @@ export const messageRetentionDuration = input({
   example: "86400s",
   placeholder: "Enter duration (e.g., 86400s)",
 });
-
 export const updateMask = input({
   label: "Update Mask",
   type: "string",
@@ -171,7 +161,6 @@ export const updateMask = input({
   example: "labels,messageRetentionDuration",
   placeholder: "Enter comma-separated field paths",
 });
-
 export const resource = input({
   label: "Resource",
   type: "string",
@@ -182,7 +171,6 @@ export const resource = input({
   example: "projects/my-project/topics/my-topic",
   placeholder: "Enter resource name",
 });
-
 export const requestedPolicyVersion = input({
   label: "Requested Policy Version",
   type: "string",
@@ -193,7 +181,6 @@ export const requestedPolicyVersion = input({
   example: "3",
   placeholder: "Enter policy version (0, 1, or 3)",
 });
-
 export const policy = input({
   label: "Policy",
   type: "code",
@@ -205,7 +192,9 @@ export const policy = input({
       bindings: [
         {
           role: "roles/pubsub.publisher",
-          members: ["serviceAccount:my-service@my-project.iam.gserviceaccount.com"],
+          members: [
+            "serviceAccount:my-service@my-project.iam.gserviceaccount.com",
+          ],
         },
       ],
       version: 1,
@@ -216,7 +205,6 @@ export const policy = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const pushConfig = input({
   label: "Push Config",
   type: "code",
@@ -236,7 +224,6 @@ export const pushConfig = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const bigqueryConfig = input({
   label: "BigQuery Config",
   type: "code",
@@ -256,7 +243,6 @@ export const bigqueryConfig = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const cloudStorageConfig = input({
   label: "Cloud Storage Config",
   type: "code",
@@ -277,7 +263,6 @@ export const cloudStorageConfig = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const ackDeadlineSeconds = input({
   label: "Ack Deadline Seconds",
   type: "string",
@@ -288,7 +273,6 @@ export const ackDeadlineSeconds = input({
   example: "60",
   placeholder: "Enter acknowledgment deadline in seconds",
 });
-
 export const retainAckedMessages = input({
   label: "Retain Acked Messages",
   type: "boolean",
@@ -298,7 +282,6 @@ export const retainAckedMessages = input({
   required: false,
   default: "false",
 });
-
 export const enableMessageOrdering = input({
   label: "Enable Message Ordering",
   type: "boolean",
@@ -308,7 +291,6 @@ export const enableMessageOrdering = input({
   required: false,
   default: "false",
 });
-
 export const expirationPolicy = input({
   label: "Expiration Policy",
   type: "code",
@@ -325,7 +307,6 @@ export const expirationPolicy = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const filter = input({
   label: "Filter",
   type: "string",
@@ -336,7 +317,6 @@ export const filter = input({
   example: 'attributes.environment = "production"',
   placeholder: "Enter filter expression",
 });
-
 export const deadLetterPolicy = input({
   label: "Dead Letter Policy",
   type: "code",
@@ -354,7 +334,6 @@ export const deadLetterPolicy = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const retryPolicy = input({
   label: "Retry Policy",
   type: "code",
@@ -372,7 +351,6 @@ export const retryPolicy = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const detached = input({
   label: "Detached",
   type: "boolean",
@@ -382,7 +360,6 @@ export const detached = input({
   required: false,
   default: "false",
 });
-
 export const enableExactlyOnceDelivery = input({
   label: "Enable Exactly Once Delivery",
   type: "boolean",
@@ -392,7 +369,6 @@ export const enableExactlyOnceDelivery = input({
   required: false,
   default: "false",
 });
-
 export const topicMessageRetentionDuration = input({
   label: "Topic Message Retention Duration",
   type: "string",
@@ -403,12 +379,12 @@ export const topicMessageRetentionDuration = input({
   example: "86400s",
   placeholder: "Enter duration (e.g., 86400s)",
 });
-
 export const state = input({
   label: "State",
   type: "string",
   clean: util.types.toString,
-  comments: "Output-only field indicating whether the subscription can receive messages.",
+  comments:
+    "Output-only field indicating whether the subscription can receive messages.",
   model: [
     {
       label: "STATE_UNSPECIFIED",
@@ -426,7 +402,6 @@ export const state = input({
   example: "ACTIVE",
   placeholder: "Select state",
 });
-
 export const pushEndpoint = input({
   label: "Push Endpoint",
   type: "string",
@@ -436,7 +411,6 @@ export const pushEndpoint = input({
   example: "https://example.com/webhook/pubsub",
   placeholder: "Enter push endpoint URL",
 });
-
 export const attributes = input({
   label: "Attributes",
   type: "code",
@@ -453,7 +427,6 @@ export const attributes = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const oidcToken = input({
   label: "OIDC Token",
   type: "code",
@@ -462,7 +435,8 @@ export const oidcToken = input({
     "Configuration for generating an OIDC JWT token as an Authorization header for push requests. See [Authentication](https://cloud.google.com/pubsub/docs/push#setting_up_for_push_authentication) for more information.",
   example: JSON.stringify(
     {
-      serviceAccountEmail: "my-service-account@my-project.iam.gserviceaccount.com",
+      serviceAccountEmail:
+        "my-service-account@my-project.iam.gserviceaccount.com",
       audience: "https://example.com",
     },
     null,
@@ -471,7 +445,6 @@ export const oidcToken = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const returnImmediately = input({
   label: "Return Immediately",
   type: "boolean",
@@ -481,7 +454,6 @@ export const returnImmediately = input({
   required: false,
   default: "false",
 });
-
 export const maxMessages = input({
   label: "Max Messages",
   type: "string",
@@ -492,7 +464,6 @@ export const maxMessages = input({
   example: "100",
   placeholder: "Enter maximum number of messages",
 });
-
 export const topicNameOrFullFormat = input({
   label: "Topic Name or Full Format",
   type: "string",
@@ -512,7 +483,6 @@ export const topicNameOrFullFormat = input({
   required: true,
   placeholder: "Select topic format",
 });
-
 export const subscriptionNameOrFullFormat = input({
   label: "Subscription Name or Full Format",
   type: "string",
@@ -532,7 +502,6 @@ export const subscriptionNameOrFullFormat = input({
   required: true,
   placeholder: "Select subscription format",
 });
-
 export const webhookUrl = input({
   label: "Webhook URL",
   type: "string",
@@ -543,7 +512,6 @@ export const webhookUrl = input({
   example: "https://your-webhook-endpoint.com/webhook/abc123",
   placeholder: "Enter webhook URL",
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -551,7 +519,6 @@ export const fetchAll = input({
   comments: "When true, fetches all pages of results using pagination.",
   default: "false",
 });
-
 export const listSubscriptionsInputs = {
   connectionInput,
   projectId,
@@ -566,7 +533,6 @@ export const listSubscriptionsInputs = {
     comments: "Maximum number of subscriptions to return.",
   },
 };
-
 export const listTopicsInputs = {
   connectionInput,
   projectId,

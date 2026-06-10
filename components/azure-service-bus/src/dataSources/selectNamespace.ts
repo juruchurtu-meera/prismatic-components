@@ -3,7 +3,6 @@ import { getAzureServiceBusClient } from "../client";
 import { connection } from "../inputs";
 import type { NamespaceItem } from "../types/DataSources";
 import { toSortedPicklist } from "./helpers";
-
 const subscriptionId = input({
   label: "Subscription ID",
   comments: "The Azure subscription ID.",
@@ -11,7 +10,6 @@ const subscriptionId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const selectNamespace = dataSource({
   display: {
     label: "Select Namespace",

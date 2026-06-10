@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 export const booksGetRecordExamplePayload = {
   data: {
     code: 0,
@@ -106,13 +98,6 @@ export const booksGetRecordExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const booksGetRecordsExamplePayload = {
   data: {
     contacts: [
@@ -165,11 +150,6 @@ export const booksGetRecordsExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const booksCreateRecordExamplePayload = {
   data: {
     code: 0,
@@ -201,11 +181,6 @@ export const booksCreateRecordExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const booksUpdateRecordExamplePayload = {
   data: {
     code: 0,
@@ -237,22 +212,12 @@ export const booksUpdateRecordExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const booksRemoveRecordExamplePayload = {
   data: {
     code: 0,
     message: "The contact has been deleted.",
   },
 };
-
-
-
-
-
 export const booksRawRequestExamplePayload = {
   data: {
     code: 0,

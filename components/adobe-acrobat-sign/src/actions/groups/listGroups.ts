@@ -4,7 +4,6 @@ import { getAdobeSignClient } from "../../client";
 import type { ListGroup } from "../../types";
 import { listGroupsExamplePayload } from "../../examplePayloads";
 import { fetchAdobeSignResults } from "../../util";
-
 export const listGroups = action({
   display: {
     label: "List Groups",
@@ -14,7 +13,6 @@ export const listGroups = action({
   inputs: listGroupsInputs,
   perform: async (context, { connection, fetchAll, cursor, pageSize }) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
-
     const data = await fetchAdobeSignResults<
       ListGroup,
       "groupInfoList",
@@ -29,7 +27,6 @@ export const listGroups = action({
       },
       "groupInfoList",
     );
-
     return { data };
   },
   examplePayload: listGroupsExamplePayload,

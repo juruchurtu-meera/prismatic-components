@@ -10,7 +10,6 @@ import {
 } from "../inputs";
 import type { Channel, Team, User, Webinar } from "../interfaces";
 import { getUserPath, paginateResults } from "../utils";
-
 const teamNames = dataSource({
   display: {
     label: "Select Team",
@@ -35,7 +34,6 @@ const teamNames = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const channelNames = dataSource({
   display: {
     label: "Select Channel",
@@ -56,7 +54,6 @@ const channelNames = dataSource({
       true,
       {},
     );
-
     const result = ((data?.value as Channel[]) || []).map<Element>(
       ({ displayName, id }) => ({
         label: displayName,
@@ -67,7 +64,6 @@ const channelNames = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const userNames = dataSource({
   display: {
     label: "Select User",
@@ -87,7 +83,6 @@ export const userNames = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export const webinarNames = dataSource({
   display: {
     label: "Select Webinar",
@@ -109,7 +104,6 @@ export const webinarNames = dataSource({
     if (role) {
       endpointUrl += `/getByUserRole(role='${role}')`;
     }
-
     const data = await paginateResults(client, endpointUrl, false, {});
     const result = (data.value as Webinar[]).map<Element>(
       ({ displayName, id }) => ({
@@ -121,12 +115,10 @@ export const webinarNames = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 interface VirtualEventSession {
   id: string;
   subject?: string;
 }
-
 const selectWebinarSession = dataSource({
   display: {
     label: "Select Webinar Session",
@@ -157,7 +149,6 @@ const selectWebinarSession = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default {
   teamNames,
   channelNames,

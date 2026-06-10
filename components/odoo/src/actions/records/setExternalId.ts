@@ -3,7 +3,6 @@ import { createOdooClient } from "../../client";
 import { setExternalIdExamplePayload } from "../../examplePayloads";
 import { setExternalIdInputs } from "../../inputs";
 import { createOdooAwaitClient, isLegacyConnection } from "../../legacy";
-
 export const setExternalId = action({
   display: {
     label: "Set External ID",

@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, dir, path, fileName } from "../inputs";
 import { handleErrors } from "../errors";
 import { moveFileExamplePayload } from "../examplePayloads";
-
 export const moveFile = action({
   display: {
     label: "Move File",
@@ -28,7 +27,6 @@ export const moveFile = action({
   },
   perform: async (context, { connection, dir, path, fileName }) => {
     const client = getOneDriveClient(connection, context.debug.enabled);
-
     return {
       data: await handleErrors(
         client.patch(`/me/drive/root:${dir}`, {

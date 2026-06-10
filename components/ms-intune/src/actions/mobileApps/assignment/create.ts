@@ -4,7 +4,6 @@ import { connection } from "../../../inputs/general";
 import { getMobileAppAssignmentExamplePayload as createMobileAppAssignmentExamplePayload } from "../../../examplePayloads";
 import { createMobileAppAssignmentInputs } from "../../../inputs/mobileApps/assignments/create";
 import { getMobileAppObject } from "../../../util";
-
 export const createMobileAppAssignment = action({
   display: {
     label: "Create Mobile App Assignment",
@@ -20,7 +19,6 @@ export const createMobileAppAssignment = action({
       `/deviceAppManagement/mobileApps/${mobileAppId}/assignments`,
       body,
     );
-
     return {
       data,
     };

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getAzureServiceBusClient } from "../client";
 import { connection, version } from "../inputs";
-
 export const listSubscriptions = action({
   display: {
     label: "List Subscriptions",

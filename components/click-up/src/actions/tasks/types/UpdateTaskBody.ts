@@ -1,5 +1,4 @@
 import type { Assignees } from "./Assignees";
-
 export interface UpdateTaskBody {
   name: string;
   description: string;

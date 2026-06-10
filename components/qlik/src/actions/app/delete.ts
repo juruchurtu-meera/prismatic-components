@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteAppExamplePayload } from "../../examplePayloads";
 import { appId, connectionInput } from "../../inputs";
-
 export const deleteApp = action({
   display: {
     label: "Delete App",
@@ -12,7 +11,6 @@ export const deleteApp = action({
   perform: async (context, { connection, appId }) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.delete(`/apps/${appId}`);
-
     return {
       data,
     };

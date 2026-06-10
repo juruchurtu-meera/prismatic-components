@@ -40,6 +40,5 @@ export const createEnvironmentTemplate = action({
     };
   },
   inputs: createEnvironmentTemplateInputs,
-
   examplePayload: { data: createEnvironmentTemplateExamplePayload },
 });

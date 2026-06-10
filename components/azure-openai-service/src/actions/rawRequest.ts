@@ -4,9 +4,7 @@ import {
   sendRawRequest,
 } from "@prismatic-io/spectral/dist/clients/http";
 import { connectionInput } from "../inputs";
-
 const { debugRequest: _, ...httpInputsWithoutDebug } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -29,7 +27,6 @@ const rawRequest = action({
     const {
       fields: { apiKey, organization },
     } = connection;
-
     if (!apiKey) throw new Error("API Key is required");
     if (!util.types.toBool(connection.fields.isOpenAIKey))
       baseUrl = `https://${organization}.openai.azure.com`;
@@ -51,5 +48,4 @@ const rawRequest = action({
     }
   },
 });
-
 export default { rawRequest };

@@ -1,9 +1,12 @@
 import { action, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
-import { requestBodyCode, connectionInput, purchaseRequisitionNumberInput } from "../inputs";
+import {
+  requestBodyCode,
+  connectionInput,
+  purchaseRequisitionNumberInput,
+} from "../inputs";
 import { UPDATE_PURCHASE_REQUISITION_DEFAULT_VALUE } from "../constants";
-
 export const updatePurchaseRequisition = action({
   display: {
     label: "Update Purchase Requisition",

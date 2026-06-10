@@ -2,7 +2,6 @@ import { action, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber } from "../../util";
-
 export const getMailMessage = action({
   display: {
     label: "Get Mail Message",

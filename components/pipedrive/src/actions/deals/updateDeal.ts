@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput, dealIdInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const updateDeal = action({
   display: {
     label: "Update Deal",
@@ -28,7 +27,11 @@ export const updateDeal = action({
       visibleTo,
     },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.patch(`/deals/${id}`, {
       title,
       value,
@@ -141,7 +144,8 @@ export const updateDeal = action({
       type: "string",
       required: false,
       clean: cleanString,
-      comments: "The optional message about why the deal was lost (to be used when status = lost)",
+      comments:
+        "The optional message about why the deal was lost (to be used when status = lost)",
       example: "Budget constraints",
       placeholder: "Enter reason for losing deal",
     }),

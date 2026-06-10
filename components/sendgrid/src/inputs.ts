@@ -4,7 +4,6 @@ import {
   cleanStringInput,
   cleanValueListInput,
 } from "./util";
-
 export const dynamicTemplateData = input({
   label: "Dynamic Template Data",
   type: "code",
@@ -33,7 +32,6 @@ export const dynamicTemplateData = input({
   ),
   clean: util.types.toObject,
 });
-
 export const templateId = input({
   label: "Template ID",
   type: "string",
@@ -43,7 +41,6 @@ export const templateId = input({
   example: "1234567890",
   clean: util.types.toString,
 });
-
 export const to = input({
   label: "To",
   placeholder: "Enter recipient email address(es)",
@@ -54,7 +51,6 @@ export const to = input({
   example: "john.doe@example.com,jane.smith@example.com",
   clean: util.types.toString,
 });
-
 export const cc = input({
   label: "CC",
   placeholder: "Enter CC email address(es)",
@@ -65,7 +61,6 @@ export const cc = input({
   example: "john.doe@example.com,jane.smith@example.com",
   clean: cleanStringInput,
 });
-
 export const bcc = input({
   label: "BCC",
   placeholder: "Enter BCC email address(es)",
@@ -76,7 +71,6 @@ export const bcc = input({
   example: "john.doe@example.com,jane.smith@example.com",
   clean: cleanStringInput,
 });
-
 export const fromEmail = input({
   label: "From Email",
   placeholder: "Enter sender email address",
@@ -86,7 +80,6 @@ export const fromEmail = input({
   example: "sender@example.com",
   clean: util.types.toString,
 });
-
 export const fromName = input({
   label: "From Name",
   placeholder: "Enter sender name",
@@ -96,7 +89,6 @@ export const fromName = input({
   example: "John Doe",
   clean: cleanStringInput,
 });
-
 export const replyToName = input({
   label: "Reply To Name",
   placeholder: "Enter reply-to name",
@@ -107,7 +99,6 @@ export const replyToName = input({
   example: "John Doe",
   clean: cleanStringInput,
 });
-
 export const replyToEmail = input({
   label: "Reply To Email",
   placeholder: "Enter reply-to email address",
@@ -117,7 +108,6 @@ export const replyToEmail = input({
   example: "support@example.com",
   clean: cleanStringInput,
 });
-
 export const subject = input({
   label: "Subject",
   placeholder: "Enter email subject",
@@ -127,7 +117,6 @@ export const subject = input({
   example: "Hello from Acme!",
   clean: util.types.toString,
 });
-
 export const text = input({
   label: "Text",
   placeholder: "Enter email text content",
@@ -137,7 +126,6 @@ export const text = input({
   example: "Here's the body of a notification.",
   clean: util.types.toString,
 });
-
 export const html = input({
   label: "HTML",
   placeholder: "Enter HTML email content",
@@ -147,7 +135,6 @@ export const html = input({
   example: "Hello from <b>Acme!</b>",
   clean: cleanStringInput,
 });
-
 export const personalizations = input({
   label: "Personalizations",
   type: "code",
@@ -176,14 +163,12 @@ export const personalizations = input({
   default: "[]",
   clean: (code: unknown) => cleanArrayCodeInput(code, "Personalizations"),
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The SendGrid connection to use.",
 });
-
 export const content = input({
   label: "Attachment Content",
   placeholder: "Select file data from previous step",
@@ -191,10 +176,8 @@ export const content = input({
   required: false,
   comments:
     "Provide attachment data to send with the email. The 'File Name' field is required when using this input and should reference the data output from a previous action.",
-
   clean: util.types.toData,
 });
-
 export const fileName = input({
   label: "File Name",
   placeholder: "Enter file name with extension",
@@ -205,7 +188,6 @@ export const fileName = input({
   example: "reports.csv",
   clean: cleanStringInput,
 });
-
 export const disposition = input({
   label: "Disposition",
   placeholder: "Select attachment display mode",
@@ -219,8 +201,6 @@ export const disposition = input({
   example: "inline",
   clean: cleanStringInput,
 });
-
-
 export const fileType = input({
   label: "File Type",
   placeholder: "Enter MIME type",
@@ -230,7 +210,6 @@ export const fileType = input({
   example: "text/plain",
   clean: cleanStringInput,
 });
-
 export const contentId = input({
   label: "Content Id",
   placeholder: "Enter content ID",
@@ -241,7 +220,6 @@ export const contentId = input({
   example: "12345",
   clean: cleanStringInput,
 });
-
 export const multipleAttachments = input({
   label: "Multiple Attachments",
   type: "code",
@@ -258,7 +236,6 @@ export const multipleAttachments = input({
     "Provide an array of attachments to send with the email. See [SendGrid API documentation](https://www.twilio.com/docs/sendgrid/api-reference/mail-send/mail-send#request-body) for more information.",
   clean: (code: unknown) => cleanArrayCodeInput(code, "Multiple Attachments"),
 });
-
 export const subscriptionTracking = input({
   label: "Subscription Tracking",
   comments:
@@ -268,7 +245,6 @@ export const subscriptionTracking = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -278,7 +254,6 @@ export const pageSize = input({
   comments: "Number of results to return per page (max 100).",
   clean: cleanStringInput,
 });
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
@@ -287,7 +262,6 @@ export const pageToken = input({
   comments: "Token for fetching the next or previous page of results.",
   clean: cleanStringInput,
 });
-
 export const listName = input({
   label: "List Name",
   type: "string",
@@ -296,7 +270,6 @@ export const listName = input({
   example: "My New Contact List",
   comments: "The name of the list to create.",
 });
-
 export const listId = input({
   label: "List ID",
   type: "string",
@@ -306,7 +279,6 @@ export const listId = input({
   comments: "The ID of the list to retrieve.",
   dataSource: "sendGridListsDataSource",
 });
-
 export const includeSampleContacts = input({
   label: "Include Sample Contacts",
   type: "boolean",
@@ -314,10 +286,9 @@ export const includeSampleContacts = input({
   default: "false",
   comments: "When true, includes a sample of contacts in the response.",
 });
-
 export const contactListIds = input({
   label: "List IDs",
-  type: "string", 
+  type: "string",
   required: false,
   placeholder: "Enter comma-separated list IDs",
   example:
@@ -326,7 +297,6 @@ export const contactListIds = input({
     "Comma-separated IDs of the lists to add the contact to. These lists must already exist.",
   dataSource: "sendGridListsDataSource",
 });
-
 export const contactsInput = input({
   label: "Contacts",
   type: "code",
@@ -351,16 +321,14 @@ export const contactsInput = input({
   comments:
     "An array of contact objects to add or update. See SendGrid docs for contact object structure.",
 });
-
 export const emailsInput = input({
   label: "Emails",
-  type: "string", 
+  type: "string",
   required: true,
   placeholder: "Enter comma-separated email addresses",
   example: "john.doe@example.com,jane.smith@example.com",
   comments: "Comma-separated email addresses to search for.",
 });
-
 export const fieldMappingsInput = input({
   label: "Field Mappings",
   type: "code",
@@ -370,7 +338,6 @@ export const fieldMappingsInput = input({
   comments:
     "An array of field definition IDs to map the uploaded CSV columns. Use null to skip a column. Get IDs from 'Get All Field Definitions' action.",
 });
-
 export const jobId = input({
   label: "Job ID",
   type: "string",
@@ -380,7 +347,6 @@ export const jobId = input({
   comments:
     "The job ID returned from Import Contacts, Add/Update Contact, or Delete Contacts operations.",
 });
-
 export const isCompressedInput = input({
   label: "Is Compressed",
   type: "boolean",
@@ -388,8 +354,6 @@ export const isCompressedInput = input({
   default: "false",
   comments: "When true, indicates that the CSV file will be gzip-compressed.",
 });
-
-
 export const webhookUrl = input({
   label: "Webhook URL",
   placeholder: "Enter a webhook URL",
@@ -399,7 +363,6 @@ export const webhookUrl = input({
   clean: util.types.toString,
   comments: "The URL where SendGrid will send event data.",
 });
-
 export const webhookFriendlyName = input({
   label: "Friendly Name",
   placeholder: "Enter a friendly name",
@@ -409,7 +372,6 @@ export const webhookFriendlyName = input({
   clean: cleanStringInput,
   comments: "A friendly name to help differentiate between multiple webhooks.",
 });
-
 export const webhookEnabled = input({
   label: "Enabled",
   type: "boolean",
@@ -418,7 +380,6 @@ export const webhookEnabled = input({
   comments: "When true, enables the Event Webhook.",
   clean: util.types.toBool,
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   placeholder: "Enter a webhook ID",
@@ -429,7 +390,6 @@ export const webhookId = input({
   comments: "The ID of the webhook.",
   dataSource: "selectWebhook",
 });
-
 export const signatureVerificationEnabled = input({
   label: "Enable Signature Verification",
   type: "boolean",
@@ -438,7 +398,6 @@ export const signatureVerificationEnabled = input({
   comments: "When true, enables signature verification for webhook requests.",
   clean: util.types.toBool,
 });
-
 export const testWebhookUrl = input({
   label: "Test URL",
   placeholder: "Enter a test URL",
@@ -448,7 +407,6 @@ export const testWebhookUrl = input({
   clean: util.types.toString,
   comments: "The URL where the test event will be sent.",
 });
-
 const events = input({
   label: "Events",
   collection: "valuelist",
@@ -472,8 +430,6 @@ const events = input({
   default: ["delivered"],
   clean: cleanValueListInput,
 });
-
-
 export const createWebhookInputs = {
   sendGridConnection: connectionInput,
   url: webhookUrl,
@@ -481,7 +437,6 @@ export const createWebhookInputs = {
   enabled: webhookEnabled,
   events,
 };
-
 export const updateWebhookInputs = {
   sendGridConnection: connectionInput,
   webhookId,
@@ -490,38 +445,31 @@ export const updateWebhookInputs = {
   enabled: webhookEnabled,
   events,
 };
-
 export const getWebhookInputs = {
   sendGridConnection: connectionInput,
   webhookId,
 };
-
 export const listWebhooksInputs = {
   sendGridConnection: connectionInput,
 };
-
 export const deleteWebhookInputs = {
   sendGridConnection: connectionInput,
   webhookId,
 };
-
 export const testWebhookInputs = {
   sendGridConnection: connectionInput,
   url: testWebhookUrl,
 };
-
 export const toggleSignatureVerificationInputs = {
   sendGridConnection: connectionInput,
   webhookId,
   enabled: signatureVerificationEnabled,
 };
-
 export const eventWebhookInputs = {
   sendGridConnection: connectionInput,
   friendlyName: webhookFriendlyName,
   events,
 };
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -530,3 +478,26 @@ export const fetchAll = input({
   comments: "When true, fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
+const showNewRecords = input({
+  label: "Show New Records",
+  type: "boolean",
+  required: false,
+  default: "true",
+  comments:
+    "When true, newly created records (a `processed` event observed within the polling window) are included on the `created` branch. SendGrid surfaces a single `last_event_time` per message, so the `created` vs `updated` split is best-effort based on the event timeline.",
+  clean: util.types.toBool,
+});
+const showUpdatedRecords = input({
+  label: "Show Updated Records",
+  type: "boolean",
+  required: false,
+  default: "true",
+  comments:
+    "When true, records whose `last_event_time` falls within the polling window are included on the `updated` branch.",
+  clean: util.types.toBool,
+});
+export const pollChangesInputs = {
+  sendGridConnection: connectionInput,
+  showNewRecords,
+  showUpdatedRecords,
+};

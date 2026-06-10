@@ -14,7 +14,6 @@ import { convertDataType, transformDynamoDBObject } from "../util";
 import type { DynamoDBValue } from "../interfaces/Types";
 import { QueryCommand, type QueryCommandInput } from "@aws-sdk/client-dynamodb";
 import { queryItemsExamplePayload } from "../examplePayloads";
-
 export const queryItems = action({
   display: {
     label: "Query Items",
@@ -60,7 +59,10 @@ export const queryItems = action({
       KeyConditionExpression: keyConditionExpression,
       ExpressionAttributeValues:
         expressionAttributeValues && expressionAttributeValueTypes
-          ? convertDataType(expressionAttributeValues, expressionAttributeValueTypes)
+          ? convertDataType(
+              expressionAttributeValues,
+              expressionAttributeValueTypes,
+            )
           : undefined,
       FilterExpression: filterExpression,
       ...queryParameters,
@@ -70,7 +72,6 @@ export const queryItems = action({
     const transformedData = result.Items?.map((item) =>
       transformDynamoDBObject(item as unknown as Record<string, DynamoDBValue>),
     );
-
     return {
       data: {
         ...result,

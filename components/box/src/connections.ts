@@ -3,7 +3,6 @@ import {
   oauth2Connection,
   OAuth2Type,
 } from "@prismatic-io/spectral";
-
 export const apiKey = connection({
   key: "apiKey",
   display: {
@@ -24,7 +23,6 @@ export const apiKey = connection({
     },
   },
 });
-
 export const oauth2 = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -82,5 +80,4 @@ export const oauth2 = oauth2Connection({
     },
   },
 });
-
 export default [oauth2, apiKey];

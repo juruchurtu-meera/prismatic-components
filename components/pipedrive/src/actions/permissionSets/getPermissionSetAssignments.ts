@@ -6,7 +6,6 @@ import {
   paginationStartInput,
   permissionSetIdInput,
 } from "../../inputs";
-
 export const getPermissionSetAssignments = action({
   display: {
     label: "Get Permission Set Assignments",

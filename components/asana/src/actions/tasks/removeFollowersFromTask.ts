@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, taskId, followersList } from "../../inputs";
-
 export const removeFollowersFromTask = action({
   display: {
     label: "Remove Followers from Task",

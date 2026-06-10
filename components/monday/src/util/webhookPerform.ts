@@ -4,15 +4,16 @@ import type {
   TriggerPayload,
 } from "@prismatic-io/spectral";
 import type { ChallengeRequest } from "../types";
-
 export const perform = async (
   context: ActionContext,
   payload: TriggerPayload,
-  { signingSecret }: { signingSecret?: string },
+  {
+    signingSecret,
+  }: {
+    signingSecret?: string;
+  },
 ) => {
   const body = payload.body.data as ChallengeRequest;
-
-  
   if (body?.challenge) {
     context.logger.info("Received challenge verification request.");
     const response: HttpResponse = {
@@ -26,8 +27,6 @@ export const perform = async (
       branch: "Challenge Verification",
     };
   }
-
-  
   if (signingSecret && !context.isSimulatedTestExecution) {
     const authorization =
       payload.headers?.Authorization || payload.headers?.authorization;
@@ -39,7 +38,6 @@ export const perform = async (
     }
     context.logger.info("Webhook signature verified successfully.");
   }
-
   return {
     payload,
     branch: "Notification",

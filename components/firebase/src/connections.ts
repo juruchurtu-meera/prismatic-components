@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const firebaseConnection = connection({
   key: "firebaseConnection",
   display: {
@@ -38,5 +37,4 @@ export const firebaseConnection = connection({
     },
   },
 });
-
 export default [firebaseConnection];

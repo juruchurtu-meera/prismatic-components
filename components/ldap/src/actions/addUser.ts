@@ -3,7 +3,6 @@ import { getLdapClient } from "../client";
 import { addUserExamplePayload as examplePayload } from "../examplePayloads";
 import { addUserInputs as inputs } from "../inputs";
 import { formatPassword } from "../util";
-
 export const addUser = action({
   display: {
     label: "Add User",
@@ -21,7 +20,6 @@ export const addUser = action({
     },
   ) => {
     const client = await getLdapClient(connection);
-
     if (context.debug.enabled) {
       context.logger.debug({
         userDn,
@@ -30,7 +28,6 @@ export const addUser = action({
         userPrincipalName,
       });
     }
-
     try {
       const attributes = {
         cn: userName,
@@ -40,9 +37,7 @@ export const addUser = action({
         unicodePwd: formatPassword(password).toString(),
         userAccountControl: "512",
       };
-
       await client.add(userDn, attributes);
-
       return {
         data: `User ${userName} has been created successfully.`,
       };

@@ -16,7 +16,6 @@ import {
   recipients,
 } from "../../inputs";
 import { addNotificationsToObject, addPropertyToPayload } from "../../util";
-
 export const createEmbeddedEnvelope = action({
   display: {
     label: `Create Embedded Envelope`,
@@ -60,7 +59,6 @@ export const createEmbeddedEnvelope = action({
         contentType,
       });
     });
-
     const options = addPropertyToPayload({
       branding,
       emails,
@@ -69,14 +67,12 @@ export const createEmbeddedEnvelope = action({
       recipients,
       autotagging,
     });
-
     addNotificationsToObject(
       options,
       notificationDestination,
       notificationsSubscriptions,
     );
     form.append("options", JSON.stringify(options));
-
     const { data } = await client.post(
       "/embedded-envelopes",
       form.getBuffer(),
@@ -84,7 +80,6 @@ export const createEmbeddedEnvelope = action({
         headers: form.getHeaders(),
       },
     );
-
     return { data };
   },
   examplePayload: {

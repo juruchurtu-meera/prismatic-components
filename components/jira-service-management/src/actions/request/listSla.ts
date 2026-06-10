@@ -4,7 +4,6 @@ import { listSlaExamplePayload } from "../../examplePayloads";
 import { listSlaInputs } from "../../inputs";
 import type { SlaInformation } from "../../types";
 import { getPaginatedData } from "../../util";
-
 export const listSla = action({
   display: {
     label: "List SLA Information",

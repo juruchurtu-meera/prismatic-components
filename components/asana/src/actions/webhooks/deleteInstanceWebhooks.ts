@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, workspaceId } from "../../inputs";
-
 interface AsanaWebhook {
   gid: string;
   active: boolean;
@@ -13,7 +12,6 @@ interface AsanaWebhook {
   resource_type: string;
   target: string;
 }
-
 interface WebhookResponse {
   data: {
     data: AsanaWebhook[];
@@ -24,7 +22,6 @@ interface WebhookResponse {
     };
   };
 }
-
 export const deleteInstanceWebhooks = action({
   display: {
     label: "Delete Instance Webhooks",
@@ -37,7 +34,6 @@ export const deleteInstanceWebhooks = action({
       params.asanaConnection,
       context.debug.enabled,
     );
-
     let webhooks: AsanaWebhook[] = [];
     let offset: string | undefined;
     let stop = false;
@@ -51,17 +47,14 @@ export const deleteInstanceWebhooks = action({
         stop = true;
       }
     }
-
     const instanceWebhookUrls = Object.values(context.webhookUrls);
     const instanceWebhooks = webhooks.filter((webhook) =>
       instanceWebhookUrls.includes(webhook.target),
     );
-
     for (const webhook of instanceWebhooks) {
       context.logger.info(`Deleting webhook ${webhook.gid}...`);
       await client.delete(`/webhooks/${webhook.gid}`);
     }
-
     return { data: {} };
   },
 });

@@ -4,7 +4,6 @@ import actions from "./actions";
 import dataSources from "./dataSources/index";
 import triggers from "./triggers";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 export default component({
   key: "gusto",
   public: true,

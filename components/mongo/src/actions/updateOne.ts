@@ -8,7 +8,6 @@ import {
 import { createClient } from "../client";
 import { updateOneExamplePayload } from "../examplePayloads";
 import type { ErrorWithMessage } from "../types";
-
 const updateOne = action({
   display: {
     label: "Update One",
@@ -23,7 +22,6 @@ const updateOne = action({
       debug: context.debug.enabled,
       logger: context.logger,
     });
-
     try {
       return {
         data: await client.updateOne(
@@ -43,12 +41,11 @@ const updateOne = action({
     }
   },
   inputs: {
-    document: queryFilter, 
+    document: queryFilter,
     documentUpdate,
     mongoConnection: connectionInput,
     upsert,
   },
   examplePayload: updateOneExamplePayload,
 });
-
 export default updateOne;

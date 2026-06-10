@@ -1,6 +1,5 @@
 import { getNumericId } from "../../../util";
 import type { DraftOrder } from "../../interfaces/DraftOrder";
-
 export const draftOrderMapper = (draftOrder: DraftOrder) => {
   return {
     id: draftOrder.id ? getNumericId(draftOrder.id) : null,
@@ -17,8 +16,12 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
     status: draftOrder.status,
     line_items: (draftOrder.lineItems.nodes || []).map((lineItem) => ({
       id: lineItem.id ? getNumericId(lineItem.id) : null,
-      variant_id: lineItem.variant?.id ? getNumericId(lineItem.variant?.id) : null,
-      product_id: lineItem.product?.id ? getNumericId(lineItem.product?.id) : null,
+      variant_id: lineItem.variant?.id
+        ? getNumericId(lineItem.variant?.id)
+        : null,
+      product_id: lineItem.product?.id
+        ? getNumericId(lineItem.product?.id)
+        : null,
       title: lineItem.title,
       variant_title: lineItem.variantTitle,
       sku: lineItem.sku,
@@ -54,8 +57,11 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
               ? {
                   shop_money: lineItem.appliedDiscount.amountSet.shopMoney
                     ? {
-                        amount: lineItem.appliedDiscount.amountSet.shopMoney.amount,
-                        currency_code: lineItem.appliedDiscount.amountSet.shopMoney.currencyCode,
+                        amount:
+                          lineItem.appliedDiscount.amountSet.shopMoney.amount,
+                        currency_code:
+                          lineItem.appliedDiscount.amountSet.shopMoney
+                            .currencyCode,
                       }
                     : null,
                 }
@@ -64,7 +70,8 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
         : null,
       name: lineItem.name,
       custom: lineItem.custom,
-      original_unit_price: lineItem.originalUnitPriceSet?.shopMoney?.amount ?? null,
+      original_unit_price:
+        lineItem.originalUnitPriceSet?.shopMoney?.amount ?? null,
       admin_graphql_api_id: lineItem.id,
     })),
     shipping_address: draftOrder.shippingAddress
@@ -86,7 +93,6 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
           province_code: draftOrder.shippingAddress.provinceCode,
         }
       : null,
-
     billing_address: draftOrder.billingAddress
       ? {
           first_name: draftOrder.billingAddress.firstName,
@@ -117,8 +123,11 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
             ? {
                 shop_money: draftOrder.appliedDiscount.amountSet.shopMoney
                   ? {
-                      amount: draftOrder.appliedDiscount.amountSet.shopMoney.amount,
-                      currency_code: draftOrder.appliedDiscount.amountSet.shopMoney.currencyCode,
+                      amount:
+                        draftOrder.appliedDiscount.amountSet.shopMoney.amount,
+                      currency_code:
+                        draftOrder.appliedDiscount.amountSet.shopMoney
+                          .currencyCode,
                     }
                   : null,
               }
@@ -135,9 +144,12 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
             ? {
                 shop_money: draftOrder.shippingLine.originalPriceSet.shopMoney
                   ? {
-                      amount: draftOrder.shippingLine.originalPriceSet.shopMoney.amount,
+                      amount:
+                        draftOrder.shippingLine.originalPriceSet.shopMoney
+                          .amount,
                       currency_code:
-                        draftOrder.shippingLine.originalPriceSet.shopMoney.currencyCode,
+                        draftOrder.shippingLine.originalPriceSet.shopMoney
+                          .currencyCode,
                     }
                   : null,
               }
@@ -146,16 +158,18 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
             ? {
                 shop_money: draftOrder.shippingLine.discountedPriceSet.shopMoney
                   ? {
-                      amount: draftOrder.shippingLine.discountedPriceSet.shopMoney.amount,
+                      amount:
+                        draftOrder.shippingLine.discountedPriceSet.shopMoney
+                          .amount,
                       currency_code:
-                        draftOrder.shippingLine.discountedPriceSet.shopMoney.currencyCode,
+                        draftOrder.shippingLine.discountedPriceSet.shopMoney
+                          .currencyCode,
                     }
                   : null,
               }
             : null,
         }
       : null,
-
     tax_lines: (draftOrder.taxLines || []).map((taxLine) => ({
       rate: taxLine.rate,
       rate_percentage: taxLine.ratePercentage,
@@ -188,7 +202,9 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
       : null,
     customer: draftOrder.customer
       ? {
-          id: draftOrder.customer.id ? getNumericId(draftOrder.customer.id) : null,
+          id: draftOrder.customer.id
+            ? getNumericId(draftOrder.customer.id)
+            : null,
           email: draftOrder.customer.email,
           created_at: draftOrder.customer.createdAt,
           updated_at: draftOrder.customer.updatedAt,
@@ -202,20 +218,24 @@ export const draftOrderMapper = (draftOrder: DraftOrder) => {
           verified_email: draftOrder.customer.verifiedEmail,
           multipass_identifier: draftOrder.customer.multipassIdentifier,
           tax_exempt: draftOrder.customer.taxExempt,
-          tags: draftOrder.customer.tags ? draftOrder.customer.tags.join(",") : [],
+          tags: draftOrder.customer.tags
+            ? draftOrder.customer.tags.join(",")
+            : [],
           last_order_name: draftOrder.customer.lastOrder?.name ?? null,
           phone: draftOrder.customer.phone,
           tax_exemptions: draftOrder.customer.taxExemptions,
           email_marketing_consent: draftOrder.customer.emailMarketingConsent
             ? {
                 state: draftOrder.customer.emailMarketingConsent.marketingState,
-                consent_updated_at: draftOrder.customer.emailMarketingConsent.consentUpdatedAt,
+                consent_updated_at:
+                  draftOrder.customer.emailMarketingConsent.consentUpdatedAt,
               }
             : null,
           sms_marketing_consent: draftOrder.customer.smsMarketingConsent
             ? {
                 state: draftOrder.customer.smsMarketingConsent.marketingState,
-                consent_updated_at: draftOrder.customer.smsMarketingConsent.consentUpdatedAt,
+                consent_updated_at:
+                  draftOrder.customer.smsMarketingConsent.consentUpdatedAt,
                 consent_collected_from:
                   draftOrder.customer.smsMarketingConsent.consentCollectedFrom,
               }

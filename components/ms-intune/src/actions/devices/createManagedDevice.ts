@@ -3,10 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import createManagedDeviceInputs from "../../inputs/devices/createManagedDeviceInputs";
 import { createManagedDeviceExamplePayload } from "../../examplePayloads";
-
-
-
-
 export const createManagedDevice = action({
   display: {
     label: "Create Managed Device",

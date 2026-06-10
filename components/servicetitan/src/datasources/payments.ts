@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection } from "../inputs";
 import type { Payment } from "../interfaces";
-
 export const selectPayment = dataSource({
   display: {
     label: "Select Payment",
@@ -17,7 +16,6 @@ export const selectPayment = dataSource({
     let payments: Payment[] = [];
     let cursor = false;
     let page = 1;
-
     do {
       const { data } = await client.get(`/payments`, {
         params: {
@@ -30,14 +28,12 @@ export const selectPayment = dataSource({
       cursor = data.hasMore;
       page++;
     } while (cursor && page < 10);
-
     const objects = payments
       .sort((a, b) => (a.id < b.id ? -1 : 1))
       .map<Element>((payment) => ({
         key: payment.id.toString(),
         label: `#${payment.id} - ${payment.type}`,
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

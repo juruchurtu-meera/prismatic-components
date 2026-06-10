@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection } from "../inputs";
 import { deleteAllInstancedWebhooks as deleteAllInstancedWebhooksFn } from "../utils";
-
 export const deleteAllInstancedWebhooks = action({
   display: {
     label: "Delete All Instanced Webhooks",

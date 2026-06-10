@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, uuid, orgUuid } from "../../inputs";
-
 export const revokeUserOrganizationInvitation = action({
   display: {
     label: "Revoke User's Organization Invitation",
@@ -10,7 +9,6 @@ export const revokeUserOrganizationInvitation = action({
   },
   perform: async (context, { connection, uuid, orgUuid }) => {
     const client = getCalendlyClient(connection, context.debug.enabled);
-
     const { data } = await client.delete(
       `/organizations/${orgUuid}/invitations/${uuid}`,
     );

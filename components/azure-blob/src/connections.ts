@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const StorageSharedKey = connection({
   key: "storageSharedKey",
   display: {
@@ -31,12 +30,12 @@ export const StorageSharedKey = connection({
     },
   },
 });
-
 export const connectionString = connection({
   key: "connectionString",
   display: {
     label: "Connection String",
-    description: "Authenticates requests to Azure Blob Storage with a connection string.",
+    description:
+      "Authenticates requests to Azure Blob Storage with a connection string.",
   },
   inputs: {
     connectionString: {
@@ -52,5 +51,4 @@ export const connectionString = connection({
     },
   },
 });
-
 export default [StorageSharedKey, connectionString];

@@ -1,7 +1,6 @@
 import { dataSource, type ObjectSelection } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { selectRecordTypesInputs } from "../../inputs";
-
 export const selectRecordTypes = dataSource({
   display: {
     label: "Select Record Type",
@@ -23,35 +22,23 @@ export const selectRecordTypes = dataSource({
     const defaultSelectedSet = new Set(defaultSelectedRecordTypes);
     const includedTypesSet = new Set(recordTypeFilter);
     const httpClient = await createSalesforceHttpClient(version, connection);
-
     const {
       data: { sobjects },
     } = await httpClient.get("/sobjects");
-
-    
-    
-    
-    
-    
-    
     const objects: ObjectSelection = sobjects
       .filter(({ name, label, custom, isSubtype }) => {
         if (includeOnlyTopLevelRecordTypes && isSubtype) {
-          
           return false;
         }
         if (includeAllCustomRecordTypes && custom) {
-          
           return true;
         }
         if (includedTypesSet.size > 0) {
-          
           return (
             includedTypesSet.has((name as string).trim().toLowerCase()) ||
             includedTypesSet.has((label as string).trim().toLowerCase())
           );
         }
-
         return true;
       })
       .filter(({ triggerable }) => {
@@ -65,7 +52,6 @@ export const selectRecordTypes = dataSource({
         defaultSelected: defaultSelectedSet.has(name),
         fields: [],
       }));
-
     return {
       result: objects,
     };

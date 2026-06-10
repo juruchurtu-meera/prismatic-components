@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const appsGetAuthenticated = action({
   display: {
     label: "Apps Get Authenticated",
@@ -19,7 +18,6 @@ const appsGetAuthenticated = action({
     },
   },
 });
-
 const appsGetWebhookConfigForApp = action({
   display: {
     label: "Apps Get Webhook Config For App",
@@ -38,7 +36,6 @@ const appsGetWebhookConfigForApp = action({
     },
   },
 });
-
 const appsUpdateWebhookConfigForApp = action({
   display: {
     label: "Apps Update Webhook Config For App",
@@ -48,7 +45,10 @@ const appsUpdateWebhookConfigForApp = action({
     context,
     { connection, url, contentType, secret, insecureSsl },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/app/hook/config`, {
       url,
       content_type: contentType,
@@ -96,14 +96,16 @@ const appsUpdateWebhookConfigForApp = action({
     },
   },
 });
-
 const appsListWebhookDeliveries = action({
   display: {
     label: "Apps List Webhook Deliveries",
     description: "List deliveries for an app webhook",
   },
   perform: async (context, { connection, perPage, cursor }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/app/hook/deliveries`, {
       params: { per_page: perPage, cursor },
     });
@@ -132,14 +134,16 @@ const appsListWebhookDeliveries = action({
     },
   },
 });
-
 const appsGetWebhookDelivery = action({
   display: {
     label: "Apps Get Webhook Delivery",
     description: "Get a delivery for an app webhook",
   },
   perform: async (context, { connection, deliveryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/app/hook/deliveries/${deliveryId}`);
     return { data };
   },
@@ -157,14 +161,16 @@ const appsGetWebhookDelivery = action({
     },
   },
 });
-
 const appsRedeliverWebhookDelivery = action({
   display: {
     label: "Apps Redeliver Webhook Delivery",
     description: "Redeliver a delivery for an app webhook",
   },
   perform: async (context, { connection, deliveryId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/app/hook/deliveries/${deliveryId}/attempts`,
       {},
@@ -185,14 +191,16 @@ const appsRedeliverWebhookDelivery = action({
     },
   },
 });
-
 const appsListInstallations = action({
   display: {
     label: "Apps List Installations",
     description: "List installations for the authenticated app",
   },
   perform: async (context, { connection, perPage, page, since, outdated }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/app/installations`, {
       params: { per_page: perPage, page, since, outdated },
     });
@@ -233,14 +241,16 @@ const appsListInstallations = action({
     },
   },
 });
-
 const appsGetInstallation = action({
   display: {
     label: "Apps Get Installation",
     description: "Get an installation for the authenticated app",
   },
   perform: async (context, { connection, installationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/app/installations/${installationId}`);
     return { data };
   },
@@ -259,14 +269,16 @@ const appsGetInstallation = action({
     },
   },
 });
-
 const appsDeleteInstallation = action({
   display: {
     label: "Apps Delete Installation",
     description: "Delete an installation for the authenticated app",
   },
   perform: async (context, { connection, installationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/app/installations/${installationId}`,
     );
@@ -287,7 +299,6 @@ const appsDeleteInstallation = action({
     },
   },
 });
-
 const appsCreateInstallationAccessToken = action({
   display: {
     label: "Apps Create Installation Access Token",
@@ -297,7 +308,10 @@ const appsCreateInstallationAccessToken = action({
     context,
     { connection, installationId, repositories, repositoryIds, permissions },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/app/installations/${installationId}/access_tokens`,
       { repositories, repository_ids: repositoryIds, permissions },
@@ -342,14 +356,16 @@ const appsCreateInstallationAccessToken = action({
     },
   },
 });
-
 const appsSuspendInstallation = action({
   display: {
     label: "Apps Suspend Installation",
     description: "Suspend an app installation",
   },
   perform: async (context, { connection, installationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/app/installations/${installationId}/suspended`,
       {},
@@ -371,14 +387,16 @@ const appsSuspendInstallation = action({
     },
   },
 });
-
 const appsUnsuspendInstallation = action({
   display: {
     label: "Apps Unsuspend Installation",
     description: "Unsuspend an app installation",
   },
   perform: async (context, { connection, installationId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/app/installations/${installationId}/suspended`,
     );
@@ -399,7 +417,6 @@ const appsUnsuspendInstallation = action({
     },
   },
 });
-
 export default {
   appsGetAuthenticated,
   appsGetWebhookConfigForApp,

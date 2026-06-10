@@ -8,7 +8,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const exportFile = action({
   display: {
     label: "Export File",
@@ -21,12 +20,10 @@ export const exportFile = action({
       params.userType,
       params.teamMemberId,
     );
-
     try {
       const data = await dbx.filesExport({
         path: params.path,
       });
-
       return {
         data,
       };

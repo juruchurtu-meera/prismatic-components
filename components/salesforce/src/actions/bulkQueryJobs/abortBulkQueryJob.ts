@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { abortBulkQueryJobInputs } from "../../inputs";
 import { abortBulkQueryJobExamplePayload } from "../../examplePayloads";
-
 export const abortBulkQueryJob = action({
   display: {
     label: "Abort Bulk Query Job",

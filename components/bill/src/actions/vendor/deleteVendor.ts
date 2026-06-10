@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { deleteVendorInputs } from "../../inputs/vendor";
 import { deleteVendorExamplePayload } from "../../examplePayloads";
-
 export const deleteVendor = action({
   display: {
     label: "Delete Vendor",
@@ -15,7 +14,6 @@ export const deleteVendor = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       id: vendorId,
     };
@@ -24,12 +22,10 @@ export const deleteVendor = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Crud/Delete/Vendor.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

@@ -6,7 +6,6 @@ import { registerPhoneNumber } from "./registerPhoneNumber";
 import { requestVerificationCode } from "./requestVerificationCode";
 import { sendMessage } from "./sendMessage";
 import { uploadMedia } from "./uploadMedia";
-
 export default {
   sendMessage,
   requestVerificationCode,

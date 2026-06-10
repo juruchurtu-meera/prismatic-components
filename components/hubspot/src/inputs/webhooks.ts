@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { EVENT_TYPES, EVENT_TYPES_PROPERTY_CHANGE } from "../constants";
 import { valueListInputClean } from "../util";
-
 export const eventType = input({
   type: "string",
   label: "Event Type",
@@ -12,7 +11,6 @@ export const eventType = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const propertyWebhookName = input({
   type: "string",
   label: "Property Name",
@@ -23,16 +21,15 @@ export const propertyWebhookName = input({
   example: "email",
   clean: util.types.toString,
 });
-
 export const active = input({
   type: "boolean",
   label: "Active",
-  comments: "When true, the subscription is active. When false, the subscription is paused.",
+  comments:
+    "When true, the subscription is active. When false, the subscription is paused.",
   required: true,
   default: "false",
   clean: util.types.toBool,
 });
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -42,7 +39,6 @@ export const subscriptionId = input({
   dataSource: "selectWebhook",
   required: true,
 });
-
 export const overwriteWebhookSettings = input({
   label: "Overwrite Webhook Settings",
   type: "boolean",
@@ -52,7 +48,6 @@ export const overwriteWebhookSettings = input({
     "When true, overwrites existing webhook settings. HubSpot only permits one Target URL per App ID.",
   clean: util.types.toBool,
 });
-
 export const eventTypes = input({
   type: "string",
   collection: "valuelist",

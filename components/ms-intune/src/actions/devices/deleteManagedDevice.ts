@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import deleteManagedDeviceInputs from "../../inputs/devices/deleteManagedDeviceInputs";
-
 export const deleteManagedDevice = action({
   display: {
     label: "Delete Managed Device",

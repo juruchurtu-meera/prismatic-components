@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { cancelOrderExampleResponse } from "../examplePayloads";
 import { connectionInput, orderId } from "../inputs";
-
 export const cancelOrder = action({
   display: {
     label: "Cancel Order",
@@ -26,5 +25,4 @@ export const cancelOrder = action({
   },
   examplePayload: cancelOrderExampleResponse,
 });
-
 export default { cancelOrder };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { deleteBulkQueryJobInputs } from "../../inputs";
 import { deleteBulkQueryJobExamplePayload } from "../../examplePayloads";
-
 export const deleteBulkQueryJob = action({
   display: {
     label: "Delete Bulk Query Job",

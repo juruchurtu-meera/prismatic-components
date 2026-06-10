@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { connection, outputPathAppend, dataAppend } from "../../inputs";
 import { getSftpClient } from "../../client";
 import { appendFileExamplePayload } from "../../examplePayloads";
-
 const appendFile = action({
   display: {
     label: "Append File",
@@ -24,5 +23,4 @@ const appendFile = action({
   },
   examplePayload: appendFileExamplePayload,
 });
-
 export default appendFile;

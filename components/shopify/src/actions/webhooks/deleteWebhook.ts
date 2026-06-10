@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { deleteWebhookInputs } from "../../inputs";
 import { deleteWebhookGql } from "../graphql/webhooks/deleteWebhook";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",
@@ -13,7 +12,6 @@ export const deleteWebhook = action({
       shopifyConnection: params.shopifyConnection,
       webhookId: `gid://shopify/WebhookSubscription/${params.webhookId}`,
     });
-
     return { data };
   },
   examplePayload: { data: {} },

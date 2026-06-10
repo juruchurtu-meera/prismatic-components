@@ -20,7 +20,6 @@ import {
   summary,
   uploadedImages,
 } from "../../inputs";
-
 export const createBookingByProvider = action({
   display: {
     label: "Create Booking by Provider",

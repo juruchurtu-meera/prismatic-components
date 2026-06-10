@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
-
 export const addLead = action({
   display: {
     label: "Add Lead",
@@ -51,14 +50,16 @@ export const addLead = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The ID of the user which will be the owner of the created lead",
+      comments:
+        "The ID of the user which will be the owner of the created lead",
     }),
     labelIds: input({
       label: "Label Ids",
       type: "string",
       required: false,
       clean: cleanString,
-      comments: "The IDs of the lead labels which will be associated with the lead",
+      comments:
+        "The IDs of the lead labels which will be associated with the lead",
     }),
     personId: input({
       label: "Person ID",
@@ -107,7 +108,8 @@ export const addLead = action({
       type: "boolean",
       required: false,
       clean: util.types.toBool,
-      comments: "A flag indicating whether the lead was seen by someone in the Pipedrive UI",
+      comments:
+        "A flag indicating whether the lead was seen by someone in the Pipedrive UI",
     }),
   },
 });

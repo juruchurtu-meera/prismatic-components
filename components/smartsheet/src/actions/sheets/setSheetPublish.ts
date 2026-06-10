@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { setSheetPublishExamplePayload } from "../../examplePayloads";
 import { setSheetPublishInputs } from "../../inputs";
-
 export const setSheetPublish = action({
   display: {
     label: "Set Sheet Publish Status",

@@ -1,18 +1,4 @@
-
-
-
-
-
-
-
 const staticDate = new Date("2024-01-01");
-
-
-
-
-
-
-
 export const listSharesExamplePayload = {
   data: [
     {
@@ -24,14 +10,8 @@ export const listSharesExamplePayload = {
         quota: 1,
       },
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ] as any,
 };
-
-
-
-
-
 export const createShareExamplePayload = {
   data: {
     etag: '"0x8DCBC8DAE40E4E3"',
@@ -42,11 +22,6 @@ export const createShareExamplePayload = {
     errorCode: undefined,
   },
 };
-
-
-
-
-
 export const deleteShareExamplePayload = {
   data: {
     requestId: "59c230c3-201a-003c-0a78-eee158000000",
@@ -55,13 +30,6 @@ export const deleteShareExamplePayload = {
     errorCode: undefined,
   },
 };
-
-
-
-
-
-
-
 export const listFolderExamplePayload = {
   data: [
     {
@@ -80,14 +48,8 @@ export const listFolderExamplePayload = {
       attributes: undefined,
       permissionKey: undefined,
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ] as any,
 };
-
-
-
-
-
 export const createFolderExamplePayload = {
   data: {
     etag: '"0x8DCBC8DAE40E4E3"',
@@ -106,11 +68,6 @@ export const createFolderExamplePayload = {
     errorCode: "",
   },
 };
-
-
-
-
-
 export const deleteFolderExamplePayload = {
   data: {
     requestId: "60ef1f68-001a-0059-277e-ee4f1c000000",
@@ -119,13 +76,6 @@ export const deleteFolderExamplePayload = {
     errorCode: "",
   },
 };
-
-
-
-
-
-
-
 export const uploadFileExamplePayload = {
   data: {
     etag: '"0x8DCBC8DAE40E4E3"',
@@ -144,11 +94,6 @@ export const uploadFileExamplePayload = {
     errorCode: "",
   },
 };
-
-
-
-
-
 export const saveFromUrlExamplePayload = {
   data: {
     etag: '"0x8DCBC8DAE40E4E3"',
@@ -167,20 +112,10 @@ export const saveFromUrlExamplePayload = {
     errorCode: "",
   },
 };
-
-
-
-
-
 export const downloadFileExamplePayload = {
   data: Buffer.from("example"),
   contentType: "application/octet",
 };
-
-
-
-
-
 export const deleteFileExamplePayload = {
   data: {
     requestId: "5301e6a9-601a-0012-3591-eeb34f000000",
@@ -189,11 +124,6 @@ export const deleteFileExamplePayload = {
     errorCode: "",
   },
 };
-
-
-
-
-
 export const copyFileExamplePayload = {
   data: {
     etag: '"0x8DCBCA822E54285"',
@@ -204,6 +134,5 @@ export const copyFileExamplePayload = {
     copyId: "e6c57686-c2c8-4340-9d3b-420300d8f4f3",
     copyStatus: "success",
     errorCode: "",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any,
 };

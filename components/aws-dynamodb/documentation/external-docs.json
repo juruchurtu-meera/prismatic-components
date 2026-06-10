@@ -4,7 +4,7 @@
     "href": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://github.com/aws/aws-sdk-js-v3/releases"
   }
 ]

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection, odataParams, fetchAll } from "../../inputs/general";
 import { listManagedDevicesExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listManagedDevices = action({
   display: {
     label: "List Managed Devices",

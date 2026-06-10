@@ -3,7 +3,6 @@ import { getClient } from "../client";
 import { SERVICES } from "../constants";
 import { connection } from "../inputs/shared";
 import { toSortedPicklist } from "./helpers";
-
 export const selectMessageTemplate = dataSource({
   display: {
     label: "Select Message Template",
@@ -15,7 +14,6 @@ export const selectMessageTemplate = dataSource({
   perform: async (_context, { connection }) => {
     const client = getClient(connection, false);
     const { data } = await client.get(`${SERVICES.connect}/messageTemplates`);
-
     return {
       result: toSortedPicklist(
         data.data,

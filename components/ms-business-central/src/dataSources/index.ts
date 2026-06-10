@@ -15,7 +15,6 @@ import { selectPurchaseReceiptLine } from "./selectPurchaseReceiptLine";
 import { selectSalesShipmentLine } from "./selectSalesShipmentLine";
 import { selectSubscription } from "./selectSubscription";
 import { selectVendor } from "./selectVendor";
-
 export default {
   listCompanies,
   listCustomers,

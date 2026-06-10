@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const postmarkConnection = connection({
   key: "postmark",
   display: {
@@ -30,5 +29,4 @@ export const postmarkConnection = connection({
     },
   },
 });
-
 export default [postmarkConnection];

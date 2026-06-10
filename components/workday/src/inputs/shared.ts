@@ -5,13 +5,11 @@ import {
   cleanNumberInput,
   cleanStringInput,
 } from "../util";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -22,7 +20,6 @@ export const additionalFields = input({
   example: "",
   clean: (value: unknown) => cleanCodeInput(value, "Additional Fields"),
 });
-
 export const workerId = input({
   label: "Worker ID",
   comments: "Unique identifier for the Workday worker record.",
@@ -33,7 +30,6 @@ export const workerId = input({
   dataSource: "selectWorker",
   clean: util.types.toString,
 });
-
 export const instanceDescriptor = input({
   label: "Instance Descriptor",
   comments: "Human-readable preview label for the referenced instance.",
@@ -43,7 +39,6 @@ export const instanceDescriptor = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const instanceId = input({
   label: "Instance ID",
   comments: "Identifies the Workday instance being referenced.",
@@ -53,7 +48,6 @@ export const instanceId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const instanceHref = input({
   label: "Instance Href",
   comments: "Direct API link pointing to the referenced instance.",
@@ -63,7 +57,6 @@ export const instanceHref = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const referenceId = input({
   label: "Reference ID",
   comments: "Reference ID used for lookups within Workday Web Services.",
@@ -73,7 +66,6 @@ export const referenceId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const companyId = input({
   label: "Company ID",
   comments: "Identifies the Workday company.",
@@ -83,7 +75,6 @@ export const companyId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const memo = input({
   label: "Memo",
   comments: "Free-text memo attached to the transaction.",
@@ -93,7 +84,6 @@ export const memo = input({
   placeholder: "Enter memo",
   clean: cleanStringInput,
 });
-
 export const params = input({
   label: "Query Params",
   type: "string",
@@ -104,7 +94,6 @@ export const params = input({
     "Query parameters to be used in the request. This should be a list of key-value pairs. Ex. Key: worker, Value: 123",
   clean: (value) => util.types.keyValPairListToObject(value as KeyValuePair[]),
 });
-
 export const paginationQueryStringInputs = {
   limit: input({
     label: "Limit",
@@ -126,7 +115,6 @@ export const paginationQueryStringInputs = {
     clean: cleanNumberInput,
   }),
 };
-
 export const modelBooleanUpdateInput = input({
   label: "",
   type: "string",
@@ -138,7 +126,6 @@ export const modelBooleanUpdateInput = input({
   })),
   clean: cleanBooleanInput,
 });
-
 export const tenant = input({
   label: "Tenant",
   comments: "The Workday tenant name used in API paths.",

@@ -5,7 +5,6 @@ import { fireEntryEvent } from "./fireEntryEvent";
 import { getJourney } from "./getJourney";
 import { listJourneys } from "./listJourneys";
 import { updateJourney } from "./updateJourney";
-
 export default {
   createJourney,
   deleteJourney,

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { valueListInputClean } from "../util";
-
 export const singularLabel = input({
   label: "Singular Label",
   type: "string",
@@ -9,16 +8,15 @@ export const singularLabel = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const pluralLabel = input({
   label: "Plural Label",
   type: "string",
   example: "My object",
-  comments: "The word for multiple objects. (There's no way to change this later.)",
+  comments:
+    "The word for multiple objects. (There's no way to change this later.)",
   required: true,
   clean: util.types.toString,
 });
-
 export const primaryDisplayProperty = input({
   label: "Primary Display Property",
   type: "string",
@@ -28,18 +26,17 @@ export const primaryDisplayProperty = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const requiredProperties = input({
   label: "Required Properties",
   type: "string",
   collection: "valuelist",
   required: false,
-  comments: "The names of properties that should be required when creating an object of this type.",
+  comments:
+    "The names of properties that should be required when creating an object of this type.",
   default: ["000xxx"],
   clean: valueListInputClean,
   example: "my_object_property",
 });
-
 export const searchableProperties = input({
   label: "Searchable Properties",
   type: "string",
@@ -51,7 +48,6 @@ export const searchableProperties = input({
   clean: valueListInputClean,
   example: "my_object_property",
 });
-
 export const secondaryDisplayProperties = input({
   label: "Secondary Display Properties",
   type: "string",
@@ -63,7 +59,6 @@ export const secondaryDisplayProperties = input({
   clean: valueListInputClean,
   example: "my_object_property",
 });
-
 export const associatedObjects = input({
   label: "Associated Objects",
   type: "string",

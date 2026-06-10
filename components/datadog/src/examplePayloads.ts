@@ -1,17 +1,9 @@
-
-
-
-
-
-
 import type { WebhooksIntegration } from "./types";
-
 export const submitMetricsExample = {
   data: {
     errors: [],
   },
 };
-
 export const listMetricsExample = {
   data: {
     metrics: [
@@ -24,7 +16,6 @@ export const listMetricsExample = {
     from: "1636629071",
   },
 };
-
 export const searchMetricsExample = {
   data: {
     results: {
@@ -37,8 +28,9 @@ export const searchMetricsExample = {
     },
   },
 };
-
-export const webhookExample: { data: WebhooksIntegration } = {
+export const webhookExample: {
+  data: WebhooksIntegration;
+} = {
   data: {
     name: "WEBHOOK_NAME",
     url: "https://example.com/webhook",
@@ -47,11 +39,9 @@ export const webhookExample: { data: WebhooksIntegration } = {
     payload: null,
   },
 };
-
 export const deleteWebhookExample = {
   data: null,
 };
-
 export const webhookTriggerPayloadExample = {
   payload: {
     body: {

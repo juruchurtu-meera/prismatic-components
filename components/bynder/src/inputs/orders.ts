@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { ORDER_STATUSES } from "../constants";
 import type { OrderStatus } from "../types";
 import { cleanString } from "../util";
-
 export const orderStatus = input({
   label: "Order Status",
   type: "string",
@@ -14,7 +13,6 @@ export const orderStatus = input({
   })),
   clean: (value: unknown) => cleanString(value) as OrderStatus,
 });
-
 export const messsage = input({
   label: "Message",
   type: "string",
@@ -24,7 +22,6 @@ export const messsage = input({
   placeholder: "Enter message",
   clean: cleanString,
 });
-
 export const trackingnumber = input({
   label: "Tracking Number",
   type: "string",

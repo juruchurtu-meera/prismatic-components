@@ -18,7 +18,6 @@ import {
 } from "../../inputs";
 import { isPriority, isStatus, isType, validateComment } from "../../helper";
 import { createTicketPayload } from "../../examplePayloads";
-
 export const createTicket = action({
   display: {
     label: "Create Ticket",
@@ -29,11 +28,9 @@ export const createTicket = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const ticketPriority = util.types.toString(params.ticketPriority);
     const ticketStatusString = util.types.toString(params.ticketStatus);
     const ticketTypeString = util.types.toString(params.ticketType);
-
     const { result } = await client.tickets.create({
       ticket: {
         requester: {
@@ -44,7 +41,6 @@ export const createTicket = action({
         assignee_id: util.types.isInt(params.assigneeId)
           ? util.types.toInt(params.assigneeId)
           : undefined,
-
         priority: (isPriority(ticketPriority)
           ? ticketPriority
           : undefined) as undefined,
@@ -53,12 +49,10 @@ export const createTicket = action({
         follower_ids:
           params.followers?.map((follower) => util.types.toInt(follower)) ||
           undefined,
-
         comment: validateComment({
           bodyValue: params.ticketComment,
           htmlValue: params.ticketCommentHTML,
         }),
-
         status: (isStatus(ticketStatusString)
           ? ticketStatusString
           : undefined) as undefined,
@@ -70,7 +64,6 @@ export const createTicket = action({
         external_id: util.types.toString(params.externalId) || undefined,
       },
     });
-
     return {
       data: result,
     };

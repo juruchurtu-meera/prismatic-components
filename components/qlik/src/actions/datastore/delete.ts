@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteDataStoresExamplePayload } from "../../examplePayloads";
 import { connectionInput, dataSetIds } from "../../inputs";
-
 export const deleteDataStores = action({
   display: {
     label: "Delete Data Stores",
@@ -16,7 +15,6 @@ export const deleteDataStores = action({
         ids: dataStoreIds || undefined,
       },
     });
-
     return {
       data,
     };

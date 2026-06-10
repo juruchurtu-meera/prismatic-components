@@ -5,7 +5,6 @@ import { listWorkspaceProjectAssetsExamplePayload as examplePayload } from "../.
 import { listWorkspaceProjectAssetsInputs as inputs } from "../../inputs/workspaceProjects";
 import { graphqlFetchAll } from "../../utils/graphqlFetchAll";
 import type ListWorkspaceProjectAssetsResponse from "../types/listWorkspaceProjectAssets";
-
 export const listWorkspaceProjectAssetsQuery = gql`
   query listWorkspaceProjectAssets(
     $projectId: ID!
@@ -137,7 +136,6 @@ export const listWorkspaceProjectAssetsQuery = gql`
     }
   }
 `;
-
 export const listWorkspaceProjectAssets = action({
   display: {
     label: "List Workspace Project Assets",
@@ -154,11 +152,11 @@ export const listWorkspaceProjectAssets = action({
       assetSearch,
       assetExternalId,
     },
-  ): Promise<{ data: ListWorkspaceProjectAssetsResponse }> => {
+  ): Promise<{
+    data: ListWorkspaceProjectAssetsResponse;
+  }> => {
     const query = { search: assetSearch, externalId: assetExternalId };
-
     const client = createClient({ connection, debug: context.debug.enabled });
-
     if (fetchAll) {
       const hasNextPath = ["workspaceProject", "assets", "hasNextPage"];
       const responses: ListWorkspaceProjectAssetsResponse[] =
@@ -168,17 +166,16 @@ export const listWorkspaceProjectAssets = action({
           params: { projectId, query },
           hasNextPath,
         });
-
       if (responses.length === 1) {
         return { data: responses[0] };
       }
-
       const baseResponse = responses.slice(-1)[0];
       const combinedAssets = responses.reduce((combined, response) => {
         return combined.concat(response.workspaceProject.assets.items);
       }, []);
-
-      const formattedResponse: { data: ListWorkspaceProjectAssetsResponse } = {
+      const formattedResponse: {
+        data: ListWorkspaceProjectAssetsResponse;
+      } = {
         data: {
           workspaceProject: {
             ...baseResponse.workspaceProject,
@@ -189,15 +186,12 @@ export const listWorkspaceProjectAssets = action({
           },
         },
       };
-
       return formattedResponse;
     }
-
     const response: ListWorkspaceProjectAssetsResponse = await client.request(
       listWorkspaceProjectAssetsQuery,
       { projectId, page, limit, query },
     );
-
     return {
       data: response,
     };

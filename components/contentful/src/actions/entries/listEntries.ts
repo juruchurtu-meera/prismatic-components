@@ -9,7 +9,6 @@ import { createClient } from "../../client";
 import { listEntriesExamplePayload } from "../../examplePayloads";
 import { listEntriesInputs } from "../../inputs";
 import { getAllPaginatedItems, getEnvironment } from "../../util";
-
 export const listEntries = action({
   display: {
     label: "List Entries",
@@ -22,14 +21,12 @@ export const listEntries = action({
       spaceId,
       environmentId,
     );
-
     const allItems: EntryProps<KeyValueMap>[] = await getAllPaginatedItems<
       Entry,
       EntryProps<KeyValueMap>
     >(environment.getEntries.bind(environment));
-
     return {
-      data: allItems as unknown, 
+      data: allItems as unknown,
     };
   },
   inputs: listEntriesInputs,

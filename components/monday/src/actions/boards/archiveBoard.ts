@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { getMondayClient } from "../../client";
 import { archiveBoardExamplePayload } from "../../examplePayloads";
 import { archiveBoardInputs } from "../../inputs";
-
 export const archiveBoard = action({
   display: {
     label: "Archive Board",

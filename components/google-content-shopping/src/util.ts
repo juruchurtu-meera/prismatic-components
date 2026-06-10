@@ -4,7 +4,6 @@ export const jsonInputClean = (value: unknown) => {
   }
   return undefined;
 };
-
 export const valueListInputClean = (value: unknown) => {
   if (Array.isArray(value) && value.length >= 1 && value[0] !== "000xxx") {
     return value as string[];

@@ -1,11 +1,9 @@
 const s3Mock = jest.fn();
-
 jest.mock("@aws-sdk/client-s3", () => {
   return {
     S3Client: s3Mock,
   };
 });
-
 jest.mock("aws-utils", () => {
   return {
     assumeRoleConnection: {
@@ -13,12 +11,10 @@ jest.mock("aws-utils", () => {
     },
   };
 });
-
 import { ConnectionError } from "@prismatic-io/spectral";
 import { createConnection } from "@prismatic-io/spectral/dist/testing";
 import { createS3Client } from "./auth";
 import { accessKeySecretPair } from "./connections";
-
 describe("createS3Client", () => {
   describe("invalid credentials", () => {
     beforeAll(() => {
@@ -26,7 +22,6 @@ describe("createS3Client", () => {
         throw new Error("!Invalid");
       });
     });
-
     test("throws error if invalid credentials provided", async () => {
       const connection = createConnection(accessKeySecretPair, {
         accessKeyId: "fakeKey",
@@ -45,12 +40,10 @@ describe("createS3Client", () => {
       }
     });
   });
-
   describe("valid credentials", () => {
     beforeAll(() => {
       s3Mock.mockResolvedValue("foo");
     });
-
     test("returns S3 client with api key secret credentials", async () => {
       await createS3Client({
         awsConnection: createConnection(accessKeySecretPair, {

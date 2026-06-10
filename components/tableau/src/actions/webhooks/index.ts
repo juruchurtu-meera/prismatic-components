@@ -1,10 +1,9 @@
-import { createWebhook } from "./create";
-import { deleteWebhookAction } from "./delete";
-import { getWebhook } from "./get";
-import { listWebhooks } from "./list";
-import { updateWebhook } from "./update";
-import { testWebhook } from "./test";
-
+import { createWebhook } from "./createWebhook";
+import { deleteWebhookAction } from "./deleteWebhookAction";
+import { getWebhook } from "./getWebhook";
+import { listWebhooks } from "./listWebhooks";
+import { updateWebhook } from "./updateWebhook";
+import { testWebhook } from "./testWebhook";
 export default {
   createWebhook,
   deleteWebhook: deleteWebhookAction,

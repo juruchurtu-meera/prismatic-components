@@ -22,7 +22,6 @@ import {
   conversionSettings,
 } from "../../inputs";
 import { updateAccountExamplePayload } from "../../examplePayloads";
-
 export const updateAccount = action({
   display: {
     description:

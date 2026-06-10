@@ -2,7 +2,6 @@ import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
 import { connectionInput } from "../inputs";
-
 export const selectProject = dataSource({
   display: {
     label: "Select Project",
@@ -16,14 +15,14 @@ export const selectProject = dataSource({
       Accept: "application/json",
     };
     const client = getSapClient(connection, headers);
-
     try {
       const { data } = await client.get(
         "/sap/opu/odata/CPD/SC_PROJ_ENGMT_CREATE_UPD_SRV/ProjectSet?$select=ProjectID,ProjectName",
       );
-
-      const results = (data?.d?.results ?? data?.value ?? []) as Record<string, string>[];
-
+      const results = (data?.d?.results ?? data?.value ?? []) as Record<
+        string,
+        string
+      >[];
       const result: Element[] = results
         .map((project) => ({
           label: project.ProjectName
@@ -33,7 +32,6 @@ export const selectProject = dataSource({
         }))
         .filter((item) => item.key)
         .sort((a, b) => (a.label ?? "").localeCompare(b.label ?? ""));
-
       return { result };
     } catch (error) {
       const handled = handleErrors(error);

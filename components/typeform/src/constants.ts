@@ -11,7 +11,6 @@ export const FORM_TYPES = {
   "Classification Branching": "classification_branching",
   "Score Branching": "score_branching",
 };
-
 export const BOOLEAN_VALUES = {
   True: "true",
   False: "false",

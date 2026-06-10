@@ -4,7 +4,6 @@ import { selectCompanyExamplePayload } from "../examplePayloads";
 import { selectCompanyInputs } from "../inputs";
 import type { Company } from "../types";
 import { paginateCursor, toSortedPicklist } from "../util";
-
 export const selectCompany = dataSource({
   display: {
     label: "Select Company",

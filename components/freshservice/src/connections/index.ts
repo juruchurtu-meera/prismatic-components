@@ -1,53 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const freshserviceApiKeyConnection = connection({
   key: "freshservice-api-key-connection",
   display: {
@@ -70,5 +21,4 @@ export const freshserviceApiKeyConnection = connection({
     },
   },
 });
-
 export default [freshserviceApiKeyConnection];

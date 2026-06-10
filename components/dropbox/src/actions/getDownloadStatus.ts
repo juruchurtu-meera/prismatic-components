@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { getDownloadStatusExamplePayload } from "../example-payloads";
 import { asyncJobId, connectionInput } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const getDownloadStatus = action({
   display: {
     label: "Get Download Status",
@@ -12,7 +11,6 @@ export const getDownloadStatus = action({
   perform: async (context, { dropboxConnection, asyncJobId }) => {
     checkDebug({ dropboxConnection, asyncJobId }, context);
     const dbx = createAuthorizedClient(dropboxConnection);
-
     try {
       const filesSaveUrlCheckJobStatus = await dbx.filesSaveUrlCheckJobStatus({
         async_job_id: asyncJobId,

@@ -5,7 +5,6 @@ import {
   minorVersion,
   nonInventoryItemData,
 } from "../../../inputs";
-
 export const createNonInventoryItem = action({
   display: {
     label: "Create Item",
@@ -28,7 +27,6 @@ export const createNonInventoryItem = action({
         },
       },
     );
-
     return {
       data,
     };

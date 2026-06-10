@@ -5,15 +5,12 @@ import {
   cleanStringInput,
 } from "../../util";
 import { additionalFields } from "../common";
-
 const requestersDocumentationComments =
   "See [Freshservice API documentation](https://api.freshservice.com/#requester_attributes) for more information.";
-
 export const requestersAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${requestersDocumentationComments}`,
 });
-
 export const firstName = input({
   label: "First Name",
   type: "string",
@@ -23,7 +20,6 @@ export const firstName = input({
   placeholder: "Enter first name",
   clean: util.types.toString,
 });
-
 export const primaryEmail = input({
   label: "Primary Email",
   type: "string",
@@ -33,7 +29,6 @@ export const primaryEmail = input({
   placeholder: "Enter primary email",
   clean: util.types.toString,
 });
-
 export const lastName = input({
   label: "Last Name",
   type: "string",
@@ -43,7 +38,6 @@ export const lastName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const jobTitle = input({
   label: "Job Title",
   type: "string",
@@ -53,7 +47,6 @@ export const jobTitle = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const workPhoneNumber = input({
   label: "Work Phone Number",
   type: "string",
@@ -63,7 +56,6 @@ export const workPhoneNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const mobilePhoneNumber = input({
   label: "Mobile Phone Number",
   type: "string",
@@ -73,7 +65,6 @@ export const mobilePhoneNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const reportingManagerId = input({
   label: "Reporting Manager ID",
   type: "string",
@@ -83,7 +74,6 @@ export const reportingManagerId = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 export const secondaryEmails = input({
   label: "Secondary Emails",
   type: "code",
@@ -97,7 +87,6 @@ export const secondaryEmails = input({
   ),
   clean: (value) => cleanArrayCodeInput(value, "Secondary Emails"),
 });
-
 export const departmentIds = input({
   label: "Department IDs",
   type: "code",
@@ -107,7 +96,6 @@ export const departmentIds = input({
   example: JSON.stringify([554], null, 2),
   clean: (value) => cleanArrayCodeInput(value, "Department IDs"),
 });
-
 export const address = input({
   label: "Address",
   type: "string",
@@ -117,7 +105,6 @@ export const address = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const requesterId = input({
   label: "Requester ID",
   type: "string",

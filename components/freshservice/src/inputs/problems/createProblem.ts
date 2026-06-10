@@ -12,7 +12,6 @@ import {
   subCategory,
   subject,
 } from "./common";
-
 export const createProblemInputs = {
   connection,
   subject,

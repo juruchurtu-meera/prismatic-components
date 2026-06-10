@@ -4,7 +4,6 @@ export const getColumnExamplePayload = {
   index: 0,
   name: "Column1",
 };
-
 export const listColumnsExamplePayload = {
   value: [getColumnExamplePayload],
 };

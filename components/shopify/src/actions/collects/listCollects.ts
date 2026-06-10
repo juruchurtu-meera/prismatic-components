@@ -3,14 +3,17 @@ import { getShopifyClient } from "../../client";
 import { listCollectsInputs } from "../../inputs";
 import { listCollectsExamplePayload } from "../../payloadExamples";
 import { computePageInformation } from "../../util";
-
 export const listCollects = action({
   display: {
     label: "List Collects (Deprecated)",
     description: "List all collects enabled on your platform.",
   },
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const result = await computePageInformation(
       client,
       "/collects.json",

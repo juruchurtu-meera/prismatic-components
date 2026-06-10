@@ -8,7 +8,6 @@ import {
   employee_id,
   termination_reason_id,
 } from "../../inputs";
-
 export const terminateEmployee = action({
   display: {
     label: "Terminate Employee",

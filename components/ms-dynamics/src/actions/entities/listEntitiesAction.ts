@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createCrmClient } from "../../client";
 import { listEntitiesActionExamplePayload } from "../../examplePayloads";
 import { listEntitiesActionInputs } from "../../inputs";
-
 export const listEntitiesAction = action({
   display: {
     label: "List Entities",
@@ -11,11 +10,12 @@ export const listEntitiesAction = action({
   },
   inputs: listEntitiesActionInputs,
   examplePayload: listEntitiesActionExamplePayload,
-  perform: async (context, { connection, includeCustom, includeOnlyTopLevel, includeDetails }) => {
+  perform: async (
+    context,
+    { connection, includeCustom, includeOnlyTopLevel, includeDetails },
+  ) => {
     const client = await createCrmClient(connection, context.debug.enabled);
-
     const { value } = await client.retrieveEntities();
-
     const filteredEntities = value.filter((entity) => {
       if (!includeCustom && entity.IsCustomEntity) {
         return false;
@@ -25,7 +25,6 @@ export const listEntitiesAction = action({
       }
       return true;
     });
-
     const entities = filteredEntities
       .sort((a, b) => (a.SchemaName || "").localeCompare(b.SchemaName || ""))
       .map((entity) => {
@@ -33,12 +32,13 @@ export const listEntitiesAction = action({
           entityId: entity.MetadataId,
           logicalName: entity.LogicalName,
           schemaName: entity.SchemaName,
-          displayName: entity.DisplayName?.UserLocalizedLabel?.Label || entity.SchemaName,
-          pluralDisplayName: entity.DisplayCollectionName?.UserLocalizedLabel?.Label,
+          displayName:
+            entity.DisplayName?.UserLocalizedLabel?.Label || entity.SchemaName,
+          pluralDisplayName:
+            entity.DisplayCollectionName?.UserLocalizedLabel?.Label,
           isCustomEntity: entity.IsCustomEntity,
           isChildEntity: entity.IsChildEntity,
         };
-
         if (includeDetails) {
           return {
             ...baseEntity,
@@ -54,10 +54,8 @@ export const listEntitiesAction = action({
             iconSmallName: entity.IconSmallName,
           };
         }
-
         return baseEntity;
       });
-
     return {
       data: {
         entities,

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, portfolioId } from "../../inputs";
 import { portfolioExamplePayload } from "./portfolioPayload";
-
 export const getPortfolio = action({
   display: {
     label: "Get Portfolio",

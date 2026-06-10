@@ -9,7 +9,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { importEventsExamplePayload } from "../../examplePayloads";
-
 export const importEvents = action({
   display: {
     label: "Import Events",

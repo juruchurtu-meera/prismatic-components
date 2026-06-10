@@ -4,7 +4,6 @@ import { deleteWorkspace } from "./delets";
 import { getWorkspace } from "./get";
 import { listWorkspaces } from "./list";
 import { updateWorkspace } from "./update";
-
 export default {
   createWorkspace,
   updateWorkspace,

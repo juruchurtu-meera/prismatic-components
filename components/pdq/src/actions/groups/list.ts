@@ -3,7 +3,6 @@ import { createHttpClient } from "../../client";
 import { listGroupsExamplePayload } from "../../examplePayloads/groups";
 import { connection, listDefaultInputs } from "../../inputs/general";
 import { fetchAllData } from "../../util";
-
 export const listGroups = action({
   display: {
     label: "List Groups",
@@ -18,7 +17,6 @@ export const listGroups = action({
     { connection, customQueryParams, fetchAll, filter, page, pageSize, sort },
   ) => {
     const client = createHttpClient(connection, context.debug.enabled);
-
     const data = await fetchAllData(
       client,
       "/groups",

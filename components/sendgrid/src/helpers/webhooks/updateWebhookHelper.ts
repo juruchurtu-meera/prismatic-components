@@ -4,7 +4,6 @@ import type {
   WebhookRequestBody,
   WebhookResponse,
 } from "../../types";
-
 export const updateWebhookHelper = async (
   client: Client,
   params: UpdateWebhookParams,
@@ -24,16 +23,13 @@ export const updateWebhookHelper = async (
     group_unsubscribe: params.groupUnsubscribe,
     group_resubscribe: params.groupResubscribe,
   };
-
   if (params.friendlyName) {
     requestBody.friendly_name = params.friendlyName;
   }
-
   const [_response, body] = await client.request({
     url: `/v3/user/webhooks/event/settings/${params.webhookId}`,
     method: "PATCH",
     body: requestBody,
   });
-
   return body as WebhookResponse;
 };

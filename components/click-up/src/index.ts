@@ -4,7 +4,6 @@ import actions from "./actions";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "click-up",
   public: true,
@@ -12,7 +11,8 @@ export default component({
   display: {
     category: "Application Connectors",
     label: "ClickUp",
-    description: "Manage tasks, lists, spaces, time tracking, and team members in ClickUp.",
+    description:
+      "Manage tasks, lists, spaces, time tracking, and team members in ClickUp.",
     iconPath: "icon.png",
   },
   actions,

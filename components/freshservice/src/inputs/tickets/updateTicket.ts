@@ -9,7 +9,6 @@ import {
   ticketId,
   ticketsAdditionalFields,
 } from "./common";
-
 export const updateTicketInputs = {
   connection,
   ticketId: input({ ...ticketId, comments: "ID of the ticket to update." }),

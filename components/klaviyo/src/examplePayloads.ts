@@ -31,8 +31,9 @@ import {
   type PostSegmentCreateResponse,
   type PostTemplateResponse,
 } from "klaviyo-api";
-
-export const getAccountExamplePayload: { data: GetAccountResponse } = {
+export const getAccountExamplePayload: {
+  data: GetAccountResponse;
+} = {
   data: {
     data: {
       type: "account",
@@ -65,7 +66,6 @@ export const getAccountExamplePayload: { data: GetAccountResponse } = {
     },
   },
 };
-
 export const listAccountsExamplePayload: {
   data: GetAccountResponseCollection;
 } = {
@@ -110,8 +110,9 @@ export const listAccountsExamplePayload: {
     },
   },
 };
-
-export const createCampaignExamplePayload: { data: PostCampaignResponse } = {
+export const createCampaignExamplePayload: {
+  data: PostCampaignResponse;
+} = {
   data: {
     data: {
       type: "campaign",
@@ -190,11 +191,11 @@ export const createCampaignExamplePayload: { data: PostCampaignResponse } = {
     },
   },
 };
-
-export const deleteCampaignExamplePayload: { data: string } = {
+export const deleteCampaignExamplePayload: {
+  data: string;
+} = {
   data: "Campaign deleted successfully.",
 };
-
 export const getCampaignExamplePayload: {
   data: GetCampaignResponseCompoundDocument;
 } = {
@@ -322,7 +323,6 @@ export const getCampaignExamplePayload: {
     ],
   },
 };
-
 export const listCampaignsExamplePayload: {
   data: GetCampaignResponseCollectionCompoundDocument;
 } = {
@@ -459,8 +459,9 @@ export const listCampaignsExamplePayload: {
     ],
   },
 };
-
-export const updateCampaignExamplePayload: { data: PatchCampaignResponse } = {
+export const updateCampaignExamplePayload: {
+  data: PatchCampaignResponse;
+} = {
   data: {
     data: {
       type: "campaign",
@@ -539,15 +540,16 @@ export const updateCampaignExamplePayload: { data: PatchCampaignResponse } = {
     },
   },
 };
-
-export const bulkCreateEventsExamplePayload: { data: string } = {
+export const bulkCreateEventsExamplePayload: {
+  data: string;
+} = {
   data: "Events created successfully.",
 };
-
-export const createEventExamplePayload: { data: string } = {
+export const createEventExamplePayload: {
+  data: string;
+} = {
   data: "Event created successfully.",
 };
-
 export const getEventExamplePayload: {
   data: GetEventResponseCompoundDocument;
 } = {
@@ -704,7 +706,6 @@ export const getEventExamplePayload: {
     ],
   },
 };
-
 export const listEventsExamplePayload: {
   data: GetEventResponseCollectionCompoundDocument;
 } = {
@@ -870,8 +871,9 @@ export const listEventsExamplePayload: {
     ],
   },
 };
-
-export const getImageExamplePayload: { data: GetImageResponse } = {
+export const getImageExamplePayload: {
+  data: GetImageResponse;
+} = {
   data: {
     data: {
       type: "image",
@@ -890,8 +892,9 @@ export const getImageExamplePayload: { data: GetImageResponse } = {
     },
   },
 };
-
-export const listImagesExamplePayload: { data: GetImageResponseCollection } = {
+export const listImagesExamplePayload: {
+  data: GetImageResponseCollection;
+} = {
   data: {
     data: [
       {
@@ -919,8 +922,9 @@ export const listImagesExamplePayload: { data: GetImageResponseCollection } = {
     },
   },
 };
-
-export const updateImageExamplePayload: { data: PatchImageResponse } = {
+export const updateImageExamplePayload: {
+  data: PatchImageResponse;
+} = {
   data: {
     data: {
       type: "image",
@@ -939,8 +943,9 @@ export const updateImageExamplePayload: { data: PatchImageResponse } = {
     },
   },
 };
-
-export const uploadImageExamplePayload: { data: PostImageResponse } = {
+export const uploadImageExamplePayload: {
+  data: PostImageResponse;
+} = {
   data: {
     data: {
       type: "image",
@@ -959,8 +964,9 @@ export const uploadImageExamplePayload: { data: PostImageResponse } = {
     },
   },
 };
-
-export const createListExamplePayload: { data: PostListCreateResponse } = {
+export const createListExamplePayload: {
+  data: PostListCreateResponse;
+} = {
   data: {
     data: {
       type: "list",
@@ -1003,11 +1009,11 @@ export const createListExamplePayload: { data: PostListCreateResponse } = {
     },
   },
 };
-
-export const deleteListExamplePayload: { data: string } = {
+export const deleteListExamplePayload: {
+  data: string;
+} = {
   data: "List deleted successfully.",
 };
-
 export const getListExamplePayload: {
   data: GetListRetrieveResponseCompoundDocument;
 } = {
@@ -1060,7 +1066,6 @@ export const getListExamplePayload: {
     ],
   },
 };
-
 export const listListProfilesExamplePayload: {
   data: GetListMemberResponseCollection;
 } = {
@@ -1176,7 +1181,6 @@ export const listListProfilesExamplePayload: {
     },
   },
 };
-
 export const listListsExamplePayload: {
   data: GetListListResponseCollectionCompoundDocument;
 } = {
@@ -1237,7 +1241,6 @@ export const listListsExamplePayload: {
     ],
   },
 };
-
 export const updateListExamplePayload: {
   data: PatchListPartialUpdateResponse;
 } = {
@@ -1283,8 +1286,9 @@ export const updateListExamplePayload: {
     },
   },
 };
-
-export const createProfileExamplePayload: { data: PostProfileResponse } = {
+export const createProfileExamplePayload: {
+  data: PostProfileResponse;
+} = {
   data: {
     data: {
       type: "profile",
@@ -1399,7 +1403,6 @@ export const createProfileExamplePayload: { data: PostProfileResponse } = {
     },
   },
 };
-
 export const getProfileExamplePayload: {
   data: GetProfileResponseCompoundDocument;
 } = {
@@ -1548,7 +1551,6 @@ export const getProfileExamplePayload: {
                     },
                     isMember: true,
                   },
-
                   {
                     type: "profile-metric",
                     metricId: "string",
@@ -1644,7 +1646,6 @@ export const getProfileExamplePayload: {
     ],
   },
 };
-
 export const listProfileExamplePayload: {
   data: GetProfileResponseCollectionCompoundDocument;
 } = {
@@ -1759,15 +1760,16 @@ export const listProfileExamplePayload: {
     },
   },
 };
-
-export const subscribeProfilesExamplePayload: { data: string } = {
+export const subscribeProfilesExamplePayload: {
+  data: string;
+} = {
   data: "Profiles subscribed successfully.",
 };
-
-export const unsubscribeProfilesExamplePayload: { data: string } = {
+export const unsubscribeProfilesExamplePayload: {
+  data: string;
+} = {
   data: "Profiles unsubscribed successfully.",
 };
-
 export const updateProfileExamplePayload: {
   data: PatchProfileResponse;
 } = {
@@ -1885,154 +1887,154 @@ export const updateProfileExamplePayload: {
     },
   },
 };
-
-export const createSegmentExamplePayload: { data: PostSegmentCreateResponse } =
-  {
+export const createSegmentExamplePayload: {
+  data: PostSegmentCreateResponse;
+} = {
+  data: {
     data: {
-      data: {
-        type: "segment",
-        id: "string",
-        attributes: {
-          name: "Repeat Purchasers",
-          definition: {
-            conditionGroups: [
-              {
-                conditions: [
-                  {
-                    type: "profile-group-membership",
-                    groupIds: ["string"],
-                    timeframeFilter: {
-                      type: "date",
-                      operator: "after",
-                      date: new Date("2022-11-08T00:00:00+00:00"),
-                    },
-                    isMember: true,
+      type: "segment",
+      id: "string",
+      attributes: {
+        name: "Repeat Purchasers",
+        definition: {
+          conditionGroups: [
+            {
+              conditions: [
+                {
+                  type: "profile-group-membership",
+                  groupIds: ["string"],
+                  timeframeFilter: {
+                    type: "date",
+                    operator: "after",
+                    date: new Date("2022-11-08T00:00:00+00:00"),
                   },
-                  {
-                    type: "profile-metric",
-                    metricId: "string",
-                    measurement: "count",
-                    measurementFilter: {
-                      type: "numeric",
-                      operator: "equals",
-                      value: 0,
-                    },
-                    timeframeFilter: {
-                      type: "date",
-                      operator: "after",
-                      date: new Date("2022-11-08T00:00:00+00:00"),
-                    },
-                    metricFilters: [
-                      {
-                        property: "string",
-                        filter: {
-                          type: "string",
-                          operator: "equals",
-                          value: "string",
-                        },
+                  isMember: true,
+                },
+                {
+                  type: "profile-metric",
+                  metricId: "string",
+                  measurement: "count",
+                  measurementFilter: {
+                    type: "numeric",
+                    operator: "equals",
+                    value: 0,
+                  },
+                  timeframeFilter: {
+                    type: "date",
+                    operator: "after",
+                    date: new Date("2022-11-08T00:00:00+00:00"),
+                  },
+                  metricFilters: [
+                    {
+                      property: "string",
+                      filter: {
+                        type: "string",
+                        operator: "equals",
+                        value: "string",
                       },
-                    ],
-                  },
-                  {
-                    type: "profile-marketing-consent",
-                    consent: {
-                      channel: "email",
-                      consentStatus: {
-                        subscription: "any",
-                      },
-                      canReceiveMarketing: true,
                     },
-                  },
-                  {
-                    type: "profile-postal-code-distance",
-                    countryCode: "string",
-                    postalCode: "string",
-                    unit: "kilometers",
-                    filter: {
-                      type: "numeric",
-                      operator: GreaterThanEnum.GreaterThan,
-                      value: 0,
+                  ],
+                },
+                {
+                  type: "profile-marketing-consent",
+                  consent: {
+                    channel: "email",
+                    consentStatus: {
+                      subscription: "any",
                     },
+                    canReceiveMarketing: true,
                   },
-                  {
-                    type: "profile-property",
-                    property: "string",
-                    filter: {
-                      type: "string",
-                      operator: "contains",
-                      value: "string",
-                    },
+                },
+                {
+                  type: "profile-postal-code-distance",
+                  countryCode: "string",
+                  postalCode: "string",
+                  unit: "kilometers",
+                  filter: {
+                    type: "numeric",
+                    operator: GreaterThanEnum.GreaterThan,
+                    value: 0,
                   },
-                  {
-                    type: "profile-region",
-                    inRegion: true,
-                    region: "european_union",
+                },
+                {
+                  type: "profile-property",
+                  property: "string",
+                  filter: {
+                    type: "string",
+                    operator: "contains",
+                    value: "string",
                   },
-                  {
-                    type: "profile-predictive-analytics",
-                    dimension: "average_days_between_orders",
-                    filter: {
-                      type: "numeric",
-                      operator: "equals",
-                      value: 0,
-                    },
+                },
+                {
+                  type: "profile-region",
+                  inRegion: true,
+                  region: "european_union",
+                },
+                {
+                  type: "profile-predictive-analytics",
+                  dimension: "average_days_between_orders",
+                  filter: {
+                    type: "numeric",
+                    operator: "equals",
+                    value: 0,
                   },
-                  {
-                    type: "profile-predictive-analytics",
-                    dimension: "predicted_gender",
-                    filter: {
-                      type: "string",
-                      operator: EqualsEnum.Equals,
-                      value: "likely_female",
-                    },
+                },
+                {
+                  type: "profile-predictive-analytics",
+                  dimension: "predicted_gender",
+                  filter: {
+                    type: "string",
+                    operator: EqualsEnum.Equals,
+                    value: "likely_female",
                   },
-                ],
-              },
-            ],
-          },
-          created: new Date("2022-11-08T00:00:00+00:00"),
-          updated: new Date("2022-11-08T00:00:00+00:00"),
-          isActive: true,
-          isProcessing: true,
-          isStarred: true,
+                },
+              ],
+            },
+          ],
         },
-        relationships: {
-          profiles: {
-            data: [
-              {
-                type: "profile",
-                id: "string",
-              },
-            ],
-            links: {
-              self: "string",
-              related: "string",
+        created: new Date("2022-11-08T00:00:00+00:00"),
+        updated: new Date("2022-11-08T00:00:00+00:00"),
+        isActive: true,
+        isProcessing: true,
+        isStarred: true,
+      },
+      relationships: {
+        profiles: {
+          data: [
+            {
+              type: "profile",
+              id: "string",
             },
-          },
-          tags: {
-            data: [
-              {
-                type: "tag",
-                id: "string",
-              },
-            ],
-            links: {
-              self: "string",
-              related: "string",
-            },
+          ],
+          links: {
+            self: "string",
+            related: "string",
           },
         },
-        links: {
-          self: "string",
+        tags: {
+          data: [
+            {
+              type: "tag",
+              id: "string",
+            },
+          ],
+          links: {
+            self: "string",
+            related: "string",
+          },
         },
       },
+      links: {
+        self: "string",
+      },
     },
-  };
-
-export const deleteSegmentExamplePayload: { data: string } = {
+  },
+};
+export const deleteSegmentExamplePayload: {
+  data: string;
+} = {
   data: "Segment deleted successfully.",
 };
-
 export const getSegmentExamplePayload: {
   data: GetSegmentRetrieveResponseCompoundDocument;
 } = {
@@ -2183,7 +2185,6 @@ export const getSegmentExamplePayload: {
     ],
   },
 };
-
 export const listSegmentsExamplePayload: {
   data: GetSegmentListResponseCollectionCompoundDocument;
 } = {
@@ -2342,7 +2343,6 @@ export const listSegmentsExamplePayload: {
     ],
   },
 };
-
 export const updateSegmentExamplePayload: {
   data: PatchSegmentPartialUpdateResponse;
 } = {
@@ -2486,8 +2486,9 @@ export const updateSegmentExamplePayload: {
     },
   },
 };
-
-export const createTemplateExamplePayload: { data: PostTemplateResponse } = {
+export const createTemplateExamplePayload: {
+  data: PostTemplateResponse;
+} = {
   data: {
     data: {
       type: "template",
@@ -2506,12 +2507,14 @@ export const createTemplateExamplePayload: { data: PostTemplateResponse } = {
     },
   },
 };
-
-export const deleteTemplateExamplePayload: { data: string } = {
+export const deleteTemplateExamplePayload: {
+  data: string;
+} = {
   data: "Template deleted successfully.",
 };
-
-export const getTemplateExamplePayload: { data: GetTemplateResponse } = {
+export const getTemplateExamplePayload: {
+  data: GetTemplateResponse;
+} = {
   data: {
     data: {
       type: "template",
@@ -2530,7 +2533,6 @@ export const getTemplateExamplePayload: { data: GetTemplateResponse } = {
     },
   },
 };
-
 export const listTemplatesExamplePayload: {
   data: GetTemplateResponseCollection;
 } = {
@@ -2561,8 +2563,9 @@ export const listTemplatesExamplePayload: {
     },
   },
 };
-
-export const updateTemplateExamplePayload: { data: PatchTemplateResponse } = {
+export const updateTemplateExamplePayload: {
+  data: PatchTemplateResponse;
+} = {
   data: {
     data: {
       type: "template",

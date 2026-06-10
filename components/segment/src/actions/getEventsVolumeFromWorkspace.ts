@@ -15,7 +15,6 @@ import {
   startTime,
 } from "../inputs";
 import { getEventsVolumeFromWorkspaceExamplePayload } from "../examplePayloads";
-
 export const getEventsVolumeFromWorkspace = action({
   display: {
     label: "Get Events Volume From Workspace",

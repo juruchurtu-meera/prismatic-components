@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
-
 const address = input({
   label: "Address",
   comments:
@@ -11,7 +10,6 @@ const address = input({
   placeholder: "Enter cell range address",
   clean: util.types.toString,
 });
-
 const hasHeaders = input({
   label: "Has Headers",
   comments:
@@ -20,7 +18,6 @@ const hasHeaders = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const createWorksheetsTablesInputs = {
   driveOrSiteId,
   workbookId: {

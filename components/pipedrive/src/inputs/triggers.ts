@@ -10,7 +10,6 @@ import {
   webhookUserId,
   webhookVersion,
 } from "./common";
-
 export const pipedriveTriggerInputs = {
   connection: connectionInput,
   version: webhookVersion,
@@ -20,7 +19,6 @@ export const pipedriveTriggerInputs = {
   httpAuthUser,
   httpAuthPassword,
 };
-
 export const pollChangesTriggerInputs = {
   connection: connectionInput,
   resourceType: pollResourceType,

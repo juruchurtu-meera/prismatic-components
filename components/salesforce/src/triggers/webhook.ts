@@ -1,6 +1,10 @@
-import { type HttpResponse, type TriggerPayload, trigger, util } from "@prismatic-io/spectral";
+import {
+  type HttpResponse,
+  type TriggerPayload,
+  trigger,
+  util,
+} from "@prismatic-io/spectral";
 import { parse } from "fast-xml-parser";
-
 export const webhook = trigger({
   display: {
     label: "Webhook",
@@ -8,7 +12,6 @@ export const webhook = trigger({
       "Receive and validate webhook requests from Salesforce for manually configured webhook subscriptions.",
   },
   perform: async (_context, payload) => {
-    
     const response: HttpResponse = {
       statusCode: 200,
       contentType: "text/xml; charset=utf-8",
@@ -20,19 +23,15 @@ export const webhook = trigger({
       </soapenv:Body>
       </soapenv:Envelope>`,
     };
-
     const finalPayload: TriggerPayload = { ...payload };
-
     const parseOptions = {
       ignoreAttributes: false,
       ignoreNameSpace: false,
       textNodeName: "_text",
     };
-
-    
-    finalPayload.body.data = parse(util.types.toString(finalPayload.body.data), parseOptions) || {};
+    finalPayload.body.data =
+      parse(util.types.toString(finalPayload.body.data), parseOptions) || {};
     finalPayload.body.contentType = undefined;
-
     return Promise.resolve({
       payload: finalPayload,
       response,

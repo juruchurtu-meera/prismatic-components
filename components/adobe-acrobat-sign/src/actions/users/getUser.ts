@@ -3,7 +3,6 @@ import { getUserInputs } from "../../inputs";
 import { getAdobeSignClient } from "../../client";
 import type { DetailedUserInfoResponse } from "../../types";
 import { getUserExamplePayload } from "../../examplePayloads";
-
 export const getUser = action({
   display: {
     label: "Get User",
@@ -16,7 +15,6 @@ export const getUser = action({
     const { data } = await client.get<DetailedUserInfoResponse>(
       `/users/${userId}`,
     );
-
     return {
       data,
     };

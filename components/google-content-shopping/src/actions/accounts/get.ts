@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, accountId, view, merchantId } from "../../inputs";
 import { getAccountExamplePayload } from "../../examplePayloads";
-
 export const getAccount = action({
   display: {
     description: "Retrieves a Merchant Center account.",

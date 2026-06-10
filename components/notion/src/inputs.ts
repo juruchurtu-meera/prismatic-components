@@ -7,14 +7,12 @@ import {
   propertiesInputsExample,
   sortInputExample,
 } from "./examplePayloads";
-
 export const connectionInput = input({
   label: "Connection",
   required: true,
   type: "connection",
   comments: "The Notion connection to use.",
 });
-
 export const databaseIdInput = input({
   label: "Database ID",
   required: true,
@@ -26,7 +24,6 @@ export const databaseIdInput = input({
   dataSource: "selectDatabase",
   clean: util.types.toString,
 });
-
 export const dataSourceIdInput = input({
   label: "Data Source ID",
   required: true,
@@ -38,7 +35,6 @@ export const dataSourceIdInput = input({
   clean: util.types.toString,
   dataSource: "selectDataSource",
 });
-
 export const databaseIdOptionalInput = input({
   label: "Database ID",
   required: false,
@@ -50,7 +46,6 @@ export const databaseIdOptionalInput = input({
   dataSource: "selectDatabase",
   clean: toOptionalString,
 });
-
 export const resultTypeInput = input({
   label: "Result Type",
   type: "string",
@@ -64,7 +59,6 @@ export const resultTypeInput = input({
   ],
   clean: toOptionalString,
 });
-
 export const pageIdInput = input({
   label: "Page ID",
   required: true,
@@ -76,7 +70,6 @@ export const pageIdInput = input({
   clean: util.types.toString,
   dataSource: "selectPage",
 });
-
 export const databaseTitle = input({
   label: "Title",
   comments:
@@ -109,7 +102,6 @@ export const databaseTitle = input({
     2,
   ),
 });
-
 export const startCursorInput = input({
   label: "Start Cursor",
   required: false,
@@ -120,7 +112,6 @@ export const startCursorInput = input({
     "The start cursor returned from a previous list or query action when at least one more page of records is available. Used for pagination.",
   clean: toOptionalString,
 });
-
 export const fetchAllInput = input({
   label: "Fetch All",
   required: false,
@@ -130,7 +121,6 @@ export const fetchAllInput = input({
     "When true, fetches all pages using pagination. This ignores the start cursor input.",
   clean: util.types.toBool,
 });
-
 export const userIdInput = input({
   label: "User ID",
   required: true,
@@ -142,7 +132,6 @@ export const userIdInput = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const filterInput = input({
   type: "code",
   label: "Filter Object",
@@ -178,7 +167,6 @@ export const filterInput = input({
   comments:
     "Filter conditions to apply to the database query. Supports compound filters using 'and' and 'or' operators. See [Notion API Filter Documentation](https://developers.notion.com/reference/post-database-query-filter).",
 });
-
 export const filterPropertiesInput = input({
   type: "code",
   label: "Filter Properties",
@@ -196,7 +184,6 @@ export const filterPropertiesInput = input({
   comments:
     "Limit the properties included in the response. Provide an object where keys are property names and values are property values or arrays of values.",
 });
-
 export const filterPropertiesInputPage = input({
   type: "string",
   label: "Filter Properties",
@@ -207,7 +194,6 @@ export const filterPropertiesInputPage = input({
     "Comma-separated list of page property IDs to include in the response. Use this to limit the response to specific page properties.",
   clean: toOptionalString,
 });
-
 export const pageSizeInput = input({
   type: "string",
   label: "Page Size",
@@ -218,7 +204,6 @@ export const pageSizeInput = input({
   comments: "The number of items to return per page. Maximum: 100.",
   clean: toOptionalNumber,
 });
-
 export const properties = input({
   type: "code",
   label: "Properties",
@@ -257,7 +242,6 @@ export const properties = input({
   comments:
     "The values of the page's properties. <strong>Important:</strong> If the parent is a database, the schema must match the parent database's properties. If the parent is a page, only 'title' is valid. [Learn more](https://developers.notion.com/reference/page-property-values)",
 });
-
 export const children = input({
   type: "code",
   label: "Children",
@@ -303,7 +287,6 @@ export const children = input({
   comments:
     "The content to be rendered on the new page, represented as an array of block objects. [Block reference](https://developers.notion.com/reference/block)",
 });
-
 export const icon = input({
   type: "code",
   label: "Icon",
@@ -323,7 +306,6 @@ export const icon = input({
   comments:
     "The icon of the new page. Either an [emoji object](https://developers.notion.com/reference/emoji-object) or an [external file object](https://developers.notion.com/reference/file-object).",
 });
-
 export const coverImage = input({
   type: "code",
   label: "Cover Image",
@@ -344,7 +326,6 @@ export const coverImage = input({
   comments:
     "The cover image of the new page, represented as a [file object](https://developers.notion.com/reference/file-object).",
 });
-
 export const parent = input({
   type: "code",
   label: "Parent",
@@ -359,7 +340,6 @@ export const parent = input({
   comments:
     'The parent where the new page is inserted. <strong>For page parents:</strong> {"type": "page_id", "page_id": "..."}. <strong>For database parents (recommended):</strong> {"type": "data_source_id", "data_source_id": "..."}. Legacy format {"database_id": "..."} is supported for single-source databases.',
 });
-
 export const createDatabaseParentInput = input({
   type: "code",
   label: "Parent",
@@ -370,7 +350,6 @@ export const createDatabaseParentInput = input({
   comments:
     'The parent page where the database will be created. Format: {"type": "page_id", "page_id": "..."} or {"type": "workspace", "workspace": true} for workspace-level.',
 });
-
 export const initialDataSourcePropertiesInput = input({
   type: "code",
   label: "Initial Data Source Properties",
@@ -381,29 +360,23 @@ export const initialDataSourcePropertiesInput = input({
   comments:
     "Property schema for the initial data source. The keys are the names of properties as they appear in Notion.",
 });
-
 export const listOldDatabasesInputs = {
   connection: connectionInput,
   startCursor: startCursorInput,
   fetchAll: fetchAllInput,
 };
-
 export const selectDatabaseInputs = {
   connection: connectionInput,
 };
-
 export const selectDataSourceInputs = {
   connection: connectionInput,
 };
-
 export const selectPageInputs = {
   connection: connectionInput,
 };
-
 export const selectUserInputs = {
   connection: connectionInput,
 };
-
 export const isInlineInput = input({
   label: "Is Inline",
   type: "string",
@@ -416,7 +389,6 @@ export const isInlineInput = input({
   ],
   clean: toOptionalString,
 });
-
 export const archivedInput = input({
   label: "Archived",
   type: "boolean",
@@ -425,7 +397,6 @@ export const archivedInput = input({
     "When true, archives the database/data source. When false, unarchives it.",
   clean: util.types.toBool,
 });
-
 export const sortInput = input({
   type: "code",
   label: "Sort",
@@ -436,7 +407,6 @@ export const sortInput = input({
   comments:
     "Array of sort objects defining the order of query results. Earlier sorts take precedence. See [Notion API Sort Documentation](https://developers.notion.com/reference/post-database-query-sort).",
 });
-
 export const dataSourcePropertiesInput = input({
   type: "code",
   label: "Properties",
@@ -447,7 +417,6 @@ export const dataSourcePropertiesInput = input({
   comments:
     "Property schema of the data source. The keys are the names of properties as they appear in Notion.",
 });
-
 export const descriptionInput = input({
   label: "Description",
   type: "code",
@@ -458,13 +427,10 @@ export const descriptionInput = input({
   comments:
     "The description of the data source formatted as a rich text array. See [Notion Rich Text Reference](https://developers.notion.com/reference/rich-text).",
 });
-
-
 export const retrieveDatabaseInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
 };
-
 export const createDatabaseInputs = {
   connection: connectionInput,
   parent: createDatabaseParentInput,
@@ -474,7 +440,6 @@ export const createDatabaseInputs = {
   description: descriptionInput,
   cover: coverImage,
 };
-
 export const updateDatabaseInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -489,13 +454,10 @@ export const updateDatabaseInputs = {
   icon,
   cover: coverImage,
 };
-
-
 export const retrieveDataSourceInputs = {
   connection: connectionInput,
   dataSourceId: dataSourceIdInput,
 };
-
 export const queryDataSourceInputs = {
   connection: connectionInput,
   dataSourceId: dataSourceIdInput,
@@ -507,7 +469,6 @@ export const queryDataSourceInputs = {
   resultType: resultTypeInput,
   filterProperties: filterPropertiesInput,
 };
-
 export const updateDataSourceInputs = {
   connection: connectionInput,
   dataSourceId: dataSourceIdInput,
@@ -521,13 +482,11 @@ export const updateDataSourceInputs = {
       "If provided, the parent of the data source will be changed to the specified database ID.",
   },
 };
-
 export const listDataSourcesInputs = {
   connection: connectionInput,
   startCursor: startCursorInput,
   fetchAll: fetchAllInput,
 };
-
 export const createDataSourceInputs = {
   connection: connectionInput,
   databaseId: databaseIdInput,
@@ -535,16 +494,12 @@ export const createDataSourceInputs = {
   title: databaseTitle,
   icon,
 };
-
-
 export const pagesPollingTriggerInputs = {
   connection: connectionInput,
 };
-
 export const dataSourcesPollingTriggerInputs = {
   connection: connectionInput,
 };
-
 export const dataSourceItemsPollingTriggerInputs = {
   connection: connectionInput,
   dataSourceId: dataSourceIdInput,

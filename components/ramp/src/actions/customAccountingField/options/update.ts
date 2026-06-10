@@ -1,8 +1,12 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { getCustomAccountingFieldOptionResponse as updateCustomAccountingFieldOptionResponsev } from "../../../examplePayloads/customAccountingFieldOption";
-import { connection, customAccountingFieldOptionId, reactivate, value } from "../../../inputs";
-
+import {
+  connection,
+  customAccountingFieldOptionId,
+  reactivate,
+  value,
+} from "../../../inputs";
 export const updateCustomAccountingFieldOption = action({
   display: {
     label: "Update Custom Accounting Field Option",
@@ -20,9 +24,11 @@ export const updateCustomAccountingFieldOption = action({
     value,
     connection,
   },
-  perform: async (context, { connection, customAccountingFieldOptionId, reactivate, value }) => {
+  perform: async (
+    context,
+    { connection, customAccountingFieldOptionId, reactivate, value },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.patch(
       `/accounting/field-options/${customAccountingFieldOptionId}`,
       {

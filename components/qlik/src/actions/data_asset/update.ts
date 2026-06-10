@@ -9,7 +9,6 @@ import {
   dataAssetsId,
   technicalName,
 } from "../../inputs";
-
 export const updateDataAssets = action({
   display: {
     label: "Update Data Asset",
@@ -21,7 +20,6 @@ export const updateDataAssets = action({
     { connection, dataAssetsId, appId, appType, dataAssetInput, technicalName },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.put(`/data-assets/${dataAssetsId}`, {
       id: dataAssetsId,
       appId: appId || undefined,
@@ -29,7 +27,6 @@ export const updateDataAssets = action({
       technicalName: technicalName || undefined,
       ...dataAssetInput,
     });
-
     return {
       data,
     };

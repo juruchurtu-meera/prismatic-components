@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { selectCollectionInputs } from "../inputs";
-
 export const selectCollection = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -13,9 +12,7 @@ export const selectCollection = dataSource({
     const client = createClient({
       firebaseConnection: firebaseConnection,
     });
-
     const collections = await client.firestore().listCollections();
-
     return {
       result: collections.map(
         (item): Element => ({

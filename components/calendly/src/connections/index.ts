@@ -1,6 +1,5 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
 import { LIVE_AUTH_URL } from "../constants";
-
 export const calendlyOauth2Connection = oauth2Connection({
   key: "calendlyOauth2Connection",
   display: {
@@ -61,5 +60,4 @@ export const calendlyOauth2Connection = oauth2Connection({
     },
   },
 });
-
 export default [calendlyOauth2Connection];

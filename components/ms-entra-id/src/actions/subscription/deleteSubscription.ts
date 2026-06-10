@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { emptyExamplePayload as examplePayload } from "../../examplePayloads";
 import { deleteSubscriptionInputs as inputs } from "../../inputs/subscription";
-
 export const deleteSubscription = action({
   display: {
     label: "Delete Subscription",

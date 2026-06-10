@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 const customerContactId = input({
   label: "Customer Contact ID",
   comments: "The ID of the customer contact to delete",
@@ -11,7 +10,6 @@ const customerContactId = input({
   dataSource: "selectCustomerContact",
   clean: cleanStringInput,
 });
-
 export default {
   customerContactId,
 };

@@ -4,14 +4,12 @@ import {
   cleanStringInput,
   validateJSON,
 } from "../util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The ShipStation connection to use.",
 });
-
 export const sortBy = input({
   label: "Sort By",
   type: "string",
@@ -20,7 +18,6 @@ export const sortBy = input({
   placeholder: "Enter sort field",
   clean: cleanStringInput,
 });
-
 export const sortDir = input({
   label: "Sort Direction",
   type: "string",
@@ -29,7 +26,6 @@ export const sortDir = input({
   placeholder: "Enter sort direction",
   clean: cleanStringInput,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -38,7 +34,6 @@ export const page = input({
   placeholder: "Enter page number",
   clean: util.types.toNumber,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -47,7 +42,6 @@ export const pageSize = input({
   placeholder: "Enter page size",
   clean: util.types.toNumber,
 });
-
 export const startDate = input({
   label: "Start Date",
   type: "string",
@@ -58,7 +52,6 @@ export const startDate = input({
   placeholder: "Enter start date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const endDate = input({
   label: "End Date",
   type: "string",
@@ -69,9 +62,6 @@ export const endDate = input({
   placeholder: "Enter end date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
-
-
 export const customerName = input({
   label: "Customer Name",
   type: "string",
@@ -81,7 +71,6 @@ export const customerName = input({
   placeholder: "Enter customer name",
   clean: util.types.toString,
 });
-
 export const tagId = input({
   label: "Tag ID",
   type: "string",
@@ -90,7 +79,6 @@ export const tagId = input({
   placeholder: "Enter tag ID",
   clean: cleanStringInput,
 });
-
 export const marketplaceId = input({
   label: "Marketplace ID",
   type: "string",
@@ -99,7 +87,6 @@ export const marketplaceId = input({
   placeholder: "Enter marketplace ID",
   clean: cleanStringInput,
 });
-
 export const showInactive = input({
   label: "Show Inactive",
   type: "boolean",
@@ -107,7 +94,6 @@ export const showInactive = input({
   comments: "When true, includes inactive stores in the results.",
   clean: util.types.toBool,
 });
-
 export const shipTo = input({
   label: "Shipping Address",
   type: "code",
@@ -130,7 +116,6 @@ export const shipTo = input({
   comments: "Provide the shipping address in JSON format.",
   clean: validateJSON,
 });
-
 export const carrierCode = input({
   label: "Carrier Code",
   type: "string",
@@ -140,7 +125,6 @@ export const carrierCode = input({
   dataSource: "selectCarriers",
   clean: util.types.toString,
 });
-
 export const serviceCode = input({
   label: "Service Code",
   type: "string",
@@ -150,7 +134,6 @@ export const serviceCode = input({
   dataSource: "selectServices",
   clean: util.types.toString,
 });
-
 export const confirmation = input({
   label: "Confirmation",
   type: "string",
@@ -161,7 +144,6 @@ export const confirmation = input({
   placeholder: "Enter confirmation type",
   clean: util.types.toString,
 });
-
 export const shipDate = input({
   label: "Ship Date",
   type: "string",
@@ -171,7 +153,6 @@ export const shipDate = input({
   placeholder: "Enter ship date (YYYY-MM-DD)",
   clean: util.types.toString,
 });
-
 export const testLabel = input({
   label: "Test Label",
   type: "boolean",
@@ -179,7 +160,6 @@ export const testLabel = input({
   comments: "When true, creates a test label.",
   clean: util.types.toBool,
 });
-
 export const labelAdditionalFieldsInput = input({
   label: "Additional Fields",
   type: "string",

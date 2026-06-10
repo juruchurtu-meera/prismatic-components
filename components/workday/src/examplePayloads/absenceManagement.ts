@@ -41,7 +41,6 @@ export const getTimeOffDetailsExamplePayload = {
     total: 0,
   },
 };
-
 export const postTimeOffRequestExamplePayload = {
   data: {
     businessProcessParameters: {
@@ -139,7 +138,6 @@ export const postTimeOffRequestExamplePayload = {
     ],
   },
 };
-
 export const getTimeOffBalanceByIdExamplePayload = {
   data: {
     unit: {

@@ -1,7 +1,6 @@
 import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, datasetId, projectId, tableId } from "../../inputs";
-
 export const deleteTable = action({
   display: {
     description: "Deletes the table specified by table ID from the dataset.",

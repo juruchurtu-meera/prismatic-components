@@ -13,7 +13,6 @@ import {
   filterByUnixTimestamp,
   searchContactsSince,
 } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -35,12 +34,9 @@ export const pollChangesTrigger = pollingTrigger({
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
     const lastPolledUnix = Math.floor(new Date(lastPolledAt).getTime() / 1000);
-
     const client = createClient(connection, context.debug.enabled);
-
     let created: IntercomRecord[];
     let updated: IntercomRecord[];
-
     if (resourceType === PollResource.CONTACTS) {
       const records = await searchContactsSince(client, lastPolledUnix);
       const filtered = filterByUnixTimestamp(records, lastPolledUnix);
@@ -52,21 +48,17 @@ export const pollChangesTrigger = pollingTrigger({
       created = filtered.created;
       updated = filtered.updated;
     }
-
     const filteredCreated = showNewRecords ? created : [];
     const filteredUpdated = showUpdatedRecords ? updated : [];
     const totalChanges = filteredCreated.length + filteredUpdated.length;
-
     context.polling.setState({
       lastPolledAt: now,
     } as unknown as Record<string, unknown>);
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${resourceType}: ${filteredCreated.length} new, ${filteredUpdated.length} updated`,
       );
     }
-
     return {
       payload: {
         ...payload,

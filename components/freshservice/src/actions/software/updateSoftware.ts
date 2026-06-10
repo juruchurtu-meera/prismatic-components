@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { updateSoftwareExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateSoftwareInputs as inputs } from "../../inputs/software";
-
 export const updateSoftware = action({
   display: {
     label: "Update Software",
@@ -25,7 +24,6 @@ export const updateSoftware = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       application: {
         name,
@@ -39,12 +37,10 @@ export const updateSoftware = action({
         ...softwareAdditionalFields,
       },
     };
-
     const { data } = await client.put(
       `/applications/${applicationId}`,
       payload,
     );
-
     return {
       data,
     };

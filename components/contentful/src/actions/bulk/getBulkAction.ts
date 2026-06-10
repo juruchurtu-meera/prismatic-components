@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { getBulkActionExamplePayload } from "../../examplePayloads";
 import { getBulkActionInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const getBulkAction = action({
   display: {
     label: "Get Bulk Action",
@@ -24,7 +23,7 @@ export const getBulkAction = action({
       await environment.getBulkAction(bulkActionId)
     ).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: getBulkActionInputs,

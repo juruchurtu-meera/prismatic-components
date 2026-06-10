@@ -10,7 +10,6 @@ import {
   startIndex,
   timeoutMs,
 } from "../../inputs";
-
 export const getQueryJobResult = action({
   display: {
     description: "Receives the results of a query job.",

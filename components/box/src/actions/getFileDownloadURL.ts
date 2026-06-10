@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../client";
 import { path, connectionInput } from "../inputs";
 import { getPathEntries } from "../utils";
 import { getFileDownloadUrlExamplePayload } from "../examplePayloads";
-
 export const getFileDownloadUrl = action({
   display: {
     label: "Get File Download URL",
@@ -13,13 +12,10 @@ export const getFileDownloadUrl = action({
     const client = createAuthorizedClient({ boxConnection });
     const pathEntries = await getPathEntries(client, util.types.toString(path));
     const { id, type, name } = pathEntries.slice(-1)[0];
-
     if (type !== "file") {
       throw Error(`'${name}' is not a file`);
     }
-
     const url = await client.files.getDownloadURL(id);
-
     return {
       data: url,
     };

@@ -4,7 +4,6 @@ import { listAccountsDataSourceExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
 import type { Account } from "../types";
 import { paginateRecords } from "../util";
-
 const listAccounts = dataSource({
   display: {
     label: "List Accounts",
@@ -33,5 +32,4 @@ const listAccounts = dataSource({
   },
   examplePayload: listAccountsDataSourceExamplePayload,
 });
-
 export default { listAccounts };

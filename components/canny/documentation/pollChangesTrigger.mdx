@@ -1,0 +1,44 @@
+This trigger polls [Canny](https://canny.io/) on a configured schedule and emits posts that were created, or had a status change, since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+#### How It Works
+
+Canny's posts endpoint does not support filtering by date, so on each scheduled run the trigger fetches posts and classifies them against the previous poll time:
+
+- **Created**: posts whose `created` timestamp is after the previous poll.
+- **Updated**: posts whose `statusChangedAt` is after the previous poll (and that are not newly created).
+
+The current run time is stored as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical posts on deploy.
+- **Subsequent runs**: only posts created or status-changed since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the matching posts grouped under `created` and `updated`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "id": "553c3ef8b8cdcd1501ba1238",
+        "title": "An awesome feature request",
+        "status": "in progress",
+        "created": "2026-04-16T01:07:22.189Z",
+        "statusChangedAt": "2026-04-16T01:07:22.189Z"
+      }
+    ],
+    "updated": []
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- "Updated" detection is based on each post's `statusChangedAt`, which reflects status transitions. Other edits that do not change status are not detected.
+- Because Canny has no server-side date filter, each run lists posts and filters them in memory; for very large boards consider scoping with the underlying list filters.

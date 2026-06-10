@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Location } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listLocations = action({
   display: {
     label: "List Locations",

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalNumber, toOptionalString } from "../util";
 import { connection, fetchAll, page, pageSize } from "./common";
-
 const categoryId = input({
   label: "Category ID",
   type: "string",
@@ -12,7 +11,6 @@ const categoryId = input({
   dataSource: "selectCategory",
   clean: util.types.toNumber,
 });
-
 const categoryName = input({
   label: "Category Name",
   type: "string",
@@ -22,7 +20,6 @@ const categoryName = input({
   placeholder: "Enter category name",
   clean: util.types.toString,
 });
-
 const parentCategoryId = input({
   label: "Parent Category ID",
   type: "string",
@@ -34,19 +31,16 @@ const parentCategoryId = input({
   dataSource: "selectCategory",
   clean: util.types.toNumber,
 });
-
 export const listCategoriesInputs = {
   connection,
   fetchAll,
   pageSize,
   page,
 };
-
 export const getCategoryInputs = {
   connection,
   categoryId,
 };
-
 export const updateCategoryInputs = {
   connection,
   categoryId,
@@ -61,12 +55,10 @@ export const updateCategoryInputs = {
     clean: toOptionalNumber,
   },
 };
-
 export const deleteCategoryInputs = {
   connection,
   categoryId,
 };
-
 export const createCategoryInputs = {
   connection,
   categoryName,

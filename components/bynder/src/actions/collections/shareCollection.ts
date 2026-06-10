@@ -10,7 +10,6 @@ import {
   profiles,
   recipients,
 } from "../../inputs";
-
 export const shareCollection = action({
   display: {
     label: "Share Collection",

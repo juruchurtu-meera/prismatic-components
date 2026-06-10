@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, pageId, propertyId } from "../../inputs";
 import { getContentPropertyExamplePayload as getContentPropertyForPageExamplePayload } from "../../examplePayloads";
-
 export const getContentPropertiesForPage = action({
   display: {
     label: "Get Content Property for Page",

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const contactData = {
   id: 47912050,
   creator_id: 1290481,
@@ -57,8 +50,6 @@ const contactData = {
   created_at: "2024-08-15T09:32:17Z",
   updated_at: "2025-01-10T14:05:42Z",
 };
-
-
 export const createContactExamplePayload = {
   data: {
     data: contactData,
@@ -67,8 +58,6 @@ export const createContactExamplePayload = {
     },
   },
 };
-
-
 export const getContactExamplePayload = {
   data: {
     data: contactData,
@@ -77,8 +66,6 @@ export const getContactExamplePayload = {
     },
   },
 };
-
-
 export const updateContactExamplePayload = {
   data: {
     data: contactData,
@@ -87,8 +74,6 @@ export const updateContactExamplePayload = {
     },
   },
 };
-
-
 export const upsertContactExamplePayload = {
   data: {
     data: contactData,
@@ -97,8 +82,6 @@ export const upsertContactExamplePayload = {
     },
   },
 };
-
-
 export const listContactsExamplePayload = {
   data: {
     items: [
@@ -120,21 +103,9 @@ export const listContactsExamplePayload = {
     },
   },
 };
-
-
 export const deleteContactExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
-
-
 export const getContactsStreamExamplePayload = {
   data: {
     items: [

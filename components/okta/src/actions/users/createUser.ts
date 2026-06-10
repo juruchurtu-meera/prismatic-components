@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createUserExamplePayload } from "../../examplePayloads/users";
 import { createUserInputs } from "../../inputs/users";
 import type { User } from "../../interfaces/user";
-
 export const createUser = action({
   display: {
     label: "Create User",
@@ -51,10 +50,15 @@ export const createUser = action({
         ...(profileExtraInputs ? profileExtraInputs : {}),
       },
       credentials: {
-        password: password ? { value: password, hash: hashPassword } : undefined,
-        recovery_question: question && answer ? { question, answer } : undefined,
+        password: password
+          ? { value: password, hash: hashPassword }
+          : undefined,
+        recovery_question:
+          question && answer ? { question, answer } : undefined,
         provider:
-          providerName && providerType ? { name: providerName, type: providerType } : undefined,
+          providerName && providerType
+            ? { name: providerName, type: providerType }
+            : undefined,
       },
       realmId,
       groupIds,
@@ -63,7 +67,6 @@ export const createUser = action({
     const { data } = await client.post<User>(`/users`, body, {
       params: { nextLogin, provider, activate },
     });
-
     return { data };
   },
   examplePayload: createUserExamplePayload,

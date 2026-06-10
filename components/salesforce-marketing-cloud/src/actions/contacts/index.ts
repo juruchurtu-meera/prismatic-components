@@ -5,7 +5,6 @@ import { getContactSchema } from "./getContactSchema";
 import { searchContacts } from "./searchContacts";
 import { searchContactsByEmail } from "./searchContactsByEmail";
 import { updateContact } from "./updateContact";
-
 export default {
   createContact,
   deleteContact,

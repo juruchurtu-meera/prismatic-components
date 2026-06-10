@@ -6,7 +6,6 @@ import type {
   BaseChangesCreateParams,
   BaseChangesState,
 } from "../../interfaces";
-
 export const baseChangesCreate = async (
   { flow, webhookUrls, crossFlowState, logger, debug }: ActionContext,
   {
@@ -21,21 +20,15 @@ export const baseChangesCreate = async (
   const baseChangesState =
     (crossFlowState?.[encodedId] as unknown as BaseChangesState) ||
     ({} as BaseChangesState);
-
   let stateWebhookId = baseChangesState.webhookId || "";
   const stateBaseId = baseChangesState.baseId || "";
   const stateDataTypes = baseChangesState.dataTypes || [];
   const stateRecordChangeScope = baseChangesState.recordChangeScope || "";
-
   const stateConfig = `${stateBaseId}${stateDataTypes.join(",")}${stateRecordChangeScope}`;
   const currentConfig = `${baseId}${dataTypes.join(",")}${recordChangeScope || ""}`;
-
   const sameConfig = stateConfig === currentConfig;
   const client = createAirtableClient(airtableConnection, debug.enabled);
-
   if (stateWebhookId) {
-    
-
     const webhookExists = await webhookExistsHelper({
       client,
       baseId,
@@ -48,15 +41,12 @@ export const baseChangesCreate = async (
       stateWebhookId = "";
     }
   }
-
   if (stateWebhookId && sameConfig) {
     logger.info("Webhook already created with this configuration, skipping");
     return;
   }
-
   if (stateWebhookId && !sameConfig) {
     logger.info(`Config changed, deleting previous webhook ${stateWebhookId}`);
-
     try {
       await client.delete(
         `/v0/bases/${stateBaseId}/webhooks/${stateWebhookId}`,
@@ -70,14 +60,14 @@ export const baseChangesCreate = async (
       }
     }
   }
-
   const webhookUrl = webhookUrls[flow.name];
-
   logger.info(`Creating Airtable webhook for base ${baseId} at ${webhookUrl}`);
-
   const specification: {
     options: {
-      filters: { dataTypes: string[]; recordChangeScope?: string };
+      filters: {
+        dataTypes: string[];
+        recordChangeScope?: string;
+      };
     };
   } = {
     options: {
@@ -86,16 +76,13 @@ export const baseChangesCreate = async (
       },
     },
   };
-
   if (recordChangeScope) {
     specification.options.filters.recordChangeScope = recordChangeScope;
   }
-
   const { data: webhook } = await client.post(`/v0/bases/${baseId}/webhooks`, {
     notificationUrl: webhookUrl,
     specification,
   });
-
   crossFlowState[encodedId] = {
     webhookId: webhook.id,
     macSecret: webhook.macSecretBase64,
@@ -113,7 +100,6 @@ export const baseChangesCreate = async (
       JSON.stringify(crossFlowState[encodedId], null, 2),
     );
   }
-
   logger.info(
     `Airtable webhook created successfully (ID: ${webhook.id}, expires: ${webhook.expirationTime})`,
   );

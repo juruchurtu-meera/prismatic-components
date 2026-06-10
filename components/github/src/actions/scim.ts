@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const enterpriseAdminListProvisionedGroupsEnterprise = action({
   display: {
     label: "Enterprise Admin List Provisioned Groups Enterprise",
@@ -10,7 +9,10 @@ const enterpriseAdminListProvisionedGroupsEnterprise = action({
     context,
     { connection, enterprise, startIndex, count, filter, excludedAttributes },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/scim/v2/enterprises/${enterprise}/Groups`,
       {
@@ -62,7 +64,6 @@ const enterpriseAdminListProvisionedGroupsEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminProvisionAndInviteEnterpriseGroup = action({
   display: {
     label: "Enterprise Admin Provision And Invite Enterprise Group",
@@ -72,7 +73,10 @@ const enterpriseAdminProvisionAndInviteEnterpriseGroup = action({
     context,
     { connection, enterprise, schemas, displayName, members },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/scim/v2/enterprises/${enterprise}/Groups`,
       {
@@ -118,7 +122,6 @@ const enterpriseAdminProvisionAndInviteEnterpriseGroup = action({
     },
   },
 });
-
 const enterpriseAdminGetProvisioningInformationForEnterpriseGroup = action({
   display: {
     label: "Enterprise Admin Get Provisioning Information For Enterprise Group",
@@ -128,7 +131,10 @@ const enterpriseAdminGetProvisioningInformationForEnterpriseGroup = action({
     context,
     { connection, enterprise, scimGroupId, excludedAttributes },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/scim/v2/enterprises/${enterprise}/Groups/${scimGroupId}`,
       { params: { excludedAttributes } },
@@ -164,7 +170,6 @@ const enterpriseAdminGetProvisioningInformationForEnterpriseGroup = action({
     },
   },
 });
-
 const enterpriseAdminSetInformationForProvisionedEnterpriseGroup = action({
   display: {
     label: "Enterprise Admin Set Information For Provisioned Enterprise Group",
@@ -174,7 +179,10 @@ const enterpriseAdminSetInformationForProvisionedEnterpriseGroup = action({
     context,
     { connection, enterprise, scimGroupId, schemas, displayName, members },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/scim/v2/enterprises/${enterprise}/Groups/${scimGroupId}`,
       { schemas, displayName, members },
@@ -223,7 +231,6 @@ const enterpriseAdminSetInformationForProvisionedEnterpriseGroup = action({
     },
   },
 });
-
 const enterpriseAdminUpdateAttributeForEnterpriseGroup = action({
   display: {
     label: "Enterprise Admin Update Attribute For Enterprise Group",
@@ -233,7 +240,10 @@ const enterpriseAdminUpdateAttributeForEnterpriseGroup = action({
     context,
     { connection, enterprise, scimGroupId, schemas, operations },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/scim/v2/enterprises/${enterprise}/Groups/${scimGroupId}`,
       { schemas, Operations: operations },
@@ -276,14 +286,16 @@ const enterpriseAdminUpdateAttributeForEnterpriseGroup = action({
     },
   },
 });
-
 const enterpriseAdminDeleteScimGroupFromEnterprise = action({
   display: {
     label: "Enterprise Admin Delete Scim Group From Enterprise",
     description: "Delete a SCIM group from an enterprise",
   },
   perform: async (context, { connection, enterprise, scimGroupId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/scim/v2/enterprises/${enterprise}/Groups/${scimGroupId}`,
     );
@@ -311,7 +323,6 @@ const enterpriseAdminDeleteScimGroupFromEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListProvisionedIdentitiesEnterprise = action({
   display: {
     label: "Enterprise Admin List Provisioned Identities Enterprise",
@@ -321,7 +332,10 @@ const enterpriseAdminListProvisionedIdentitiesEnterprise = action({
     context,
     { connection, enterprise, startIndex, count, filter },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/scim/v2/enterprises/${enterprise}/Users`,
       {
@@ -366,7 +380,6 @@ const enterpriseAdminListProvisionedIdentitiesEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminProvisionAndInviteEnterpriseUser = action({
   display: {
     label: "Enterprise Admin Provision And Invite Enterprise User",
@@ -376,7 +389,10 @@ const enterpriseAdminProvisionAndInviteEnterpriseUser = action({
     context,
     { connection, enterprise, schemas, userName, name, emails, groups },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/scim/v2/enterprises/${enterprise}/Users`,
       {
@@ -438,14 +454,16 @@ const enterpriseAdminProvisionAndInviteEnterpriseUser = action({
     },
   },
 });
-
 const enterpriseAdminGetProvisioningInformationForEnterpriseUser = action({
   display: {
     label: "Enterprise Admin Get Provisioning Information For Enterprise User",
     description: "Get SCIM provisioning information for an enterprise user",
   },
   perform: async (context, { connection, enterprise, scimUserId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/scim/v2/enterprises/${enterprise}/Users/${scimUserId}`,
     );
@@ -473,7 +491,6 @@ const enterpriseAdminGetProvisioningInformationForEnterpriseUser = action({
     },
   },
 });
-
 const enterpriseAdminSetInformationForProvisionedEnterpriseUser = action({
   display: {
     label: "Enterprise Admin Set Information For Provisioned Enterprise User",
@@ -492,7 +509,10 @@ const enterpriseAdminSetInformationForProvisionedEnterpriseUser = action({
       groups,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/scim/v2/enterprises/${enterprise}/Users/${scimUserId}`,
       { schemas, userName, name, emails, groups },
@@ -555,7 +575,6 @@ const enterpriseAdminSetInformationForProvisionedEnterpriseUser = action({
     },
   },
 });
-
 const enterpriseAdminUpdateAttributeForEnterpriseUser = action({
   display: {
     label: "Enterprise Admin Update Attribute For Enterprise User",
@@ -565,7 +584,10 @@ const enterpriseAdminUpdateAttributeForEnterpriseUser = action({
     context,
     { connection, enterprise, scimUserId, schemas, operations },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/scim/v2/enterprises/${enterprise}/Users/${scimUserId}`,
       { schemas, Operations: operations },
@@ -608,14 +630,16 @@ const enterpriseAdminUpdateAttributeForEnterpriseUser = action({
     },
   },
 });
-
 const enterpriseAdminDeleteUserFromEnterprise = action({
   display: {
     label: "Enterprise Admin Delete User From Enterprise",
     description: "Delete a SCIM user from an enterprise",
   },
   perform: async (context, { connection, enterprise, scimUserId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/scim/v2/enterprises/${enterprise}/Users/${scimUserId}`,
     );
@@ -643,14 +667,16 @@ const enterpriseAdminDeleteUserFromEnterprise = action({
     },
   },
 });
-
 const scimListProvisionedIdentities = action({
   display: {
     label: "Scim List Provisioned Identities",
     description: "List SCIM provisioned identities",
   },
   perform: async (context, { connection, org, startIndex, count, filter }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/scim/v2/organizations/${org}/Users`, {
       params: { startIndex, count, filter },
     });
@@ -693,7 +719,6 @@ const scimListProvisionedIdentities = action({
     },
   },
 });
-
 const scimProvisionAndInviteUser = action({
   display: {
     label: "Scim Provision And Invite User",
@@ -714,7 +739,10 @@ const scimProvisionAndInviteUser = action({
       active,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/scim/v2/organizations/${org}/Users`, {
       userName,
       displayName,
@@ -797,14 +825,16 @@ const scimProvisionAndInviteUser = action({
     },
   },
 });
-
 const scimGetProvisioningInformationForUser = action({
   display: {
     label: "Scim Get Provisioning Information For User",
     description: "Get SCIM provisioning information for a user",
   },
   perform: async (context, { connection, org, scimUserId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(
       `/scim/v2/organizations/${org}/Users/${scimUserId}`,
     );
@@ -832,7 +862,6 @@ const scimGetProvisioningInformationForUser = action({
     },
   },
 });
-
 const scimSetInformationForProvisionedUser = action({
   display: {
     label: "Scim Set Information For Provisioned User",
@@ -854,7 +883,10 @@ const scimSetInformationForProvisionedUser = action({
       emails,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.put(
       `/scim/v2/organizations/${org}/Users/${scimUserId}`,
       {
@@ -947,7 +979,6 @@ const scimSetInformationForProvisionedUser = action({
     },
   },
 });
-
 const scimUpdateAttributeForUser = action({
   display: {
     label: "Scim Update Attribute For User",
@@ -957,7 +988,10 @@ const scimUpdateAttributeForUser = action({
     context,
     { connection, org, scimUserId, schemas, operations },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(
       `/scim/v2/organizations/${org}/Users/${scimUserId}`,
       { schemas, Operations: operations },
@@ -1000,14 +1034,16 @@ const scimUpdateAttributeForUser = action({
     },
   },
 });
-
 const scimDeleteUserFromOrg = action({
   display: {
     label: "Scim Delete User From Org",
     description: "Delete a SCIM user from an organization",
   },
   perform: async (context, { connection, org, scimUserId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(
       `/scim/v2/organizations/${org}/Users/${scimUserId}`,
     );
@@ -1035,7 +1071,6 @@ const scimDeleteUserFromOrg = action({
     },
   },
 });
-
 export default {
   enterpriseAdminListProvisionedGroupsEnterprise,
   enterpriseAdminProvisionAndInviteEnterpriseGroup,

@@ -34,7 +34,6 @@ export const webhookEvents = [
   "zen:event-type:user.tags_changed",
   "zen:event-type:user.time_zone_changed",
 ];
-
 export const zendeskLocales = [
   "de",
   "en-us",
@@ -46,7 +45,6 @@ export const zendeskLocales = [
   "pt-br",
   "zh-cn",
 ];
-
 export const articleSortByOptions = [
   { label: "Created At", value: "created_at" },
   { label: "Updated At", value: "updated_at" },
@@ -54,9 +52,7 @@ export const articleSortByOptions = [
   { label: "Edited At", value: "edited_at" },
   { label: "Position", value: "position" },
 ];
-
 export const exampleTimestamp = new Date().getTime().toString();
-
 export const postFilterByOptions = [
   {
     label: "Planned",
@@ -79,7 +75,6 @@ export const postFilterByOptions = [
     value: "none",
   },
 ];
-
 export const postSortByOptions = [
   {
     label: "Created At",
@@ -110,5 +105,4 @@ export const postSortByOptions = [
     value: "comments",
   },
 ];
-
 export const SUCCESS_MESSAGE = "Success executing action";

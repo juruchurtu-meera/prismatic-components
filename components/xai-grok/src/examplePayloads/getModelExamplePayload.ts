@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getModelExamplePayload = {
   data: {
     id: "grok-3-fast-beta",

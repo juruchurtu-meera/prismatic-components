@@ -7,7 +7,6 @@ export interface Pages {
   } | null;
   total_pages: number;
 }
-
 export interface Company {
   type: string;
   company_id: string;
@@ -25,21 +24,17 @@ export interface Company {
   plan: CustomAttributes;
   custom_attributes: CustomAttributes;
 }
-
 export interface CustomAttributes {
   [key: string]: unknown;
 }
-
 export interface Segments {
   type: string;
   segments: unknown[];
 }
-
 export interface Tags {
   type: string;
   tags: unknown[];
 }
-
 export interface Contact {
   type: string;
   id: string;
@@ -88,42 +83,35 @@ export interface Contact {
   location: Location;
   social_profiles: SocialProfiles;
 }
-
 export interface Avatar {
   type: string;
   image_url: string;
 }
-
 export interface Companies {
   url: string;
   total_count: number;
   has_more: boolean;
   data?: CompaniesDatum[];
 }
-
 export interface CompaniesDatum {
   type: string;
   id: string;
   url: string;
 }
-
 export interface Location {
   type: string;
   country: string;
   region: string;
   city: string;
 }
-
 export interface SocialProfiles {
   data: SocialProfilesDatum[];
 }
-
 export interface SocialProfilesDatum {
   type: string;
   name: string;
   url: string;
 }
-
 export interface Tag {
   id: string;
   name: string;
@@ -140,7 +128,6 @@ export interface Ticket {
   };
   open: boolean;
 }
-
 export interface TicketType {
   type: "ticket_type";
   id: string;

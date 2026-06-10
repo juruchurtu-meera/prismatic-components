@@ -9,7 +9,6 @@ import {
   secureQri,
   technicalName,
 } from "../../inputs";
-
 export const updateDataset = action({
   display: {
     label: "Update Data Set",
@@ -21,7 +20,6 @@ export const updateDataset = action({
     { connection, dataSetId, dataSetInput, technicalName, qri, secureQri },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.put(`/data-sets/${dataSetId}`, {
       id: dataSetId,
       qri: qri || undefined,
@@ -29,7 +27,6 @@ export const updateDataset = action({
       technicalName: technicalName || undefined,
       ...dataSetInput,
     });
-
     return {
       data,
     };

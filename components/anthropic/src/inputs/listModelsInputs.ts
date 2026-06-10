@@ -5,7 +5,6 @@ import {
   fetchAllInput,
   limitInput,
 } from "./general";
-
 export const listModelsInputs = {
   connection: connectionInput,
   fetchAll: fetchAllInput,

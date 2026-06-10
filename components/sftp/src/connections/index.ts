@@ -2,7 +2,6 @@ import {
   type OnPremConnectionDefinition,
   onPremConnection,
 } from "@prismatic-io/spectral";
-
 const commonInputs = {
   username: {
     label: "Username",
@@ -73,7 +72,6 @@ const commonInputs = {
     type: "string",
   },
 } as OnPremConnectionDefinition["inputs"];
-
 export const basic = onPremConnection({
   key: "basic",
   display: {
@@ -92,7 +90,6 @@ export const basic = onPremConnection({
     ...commonInputs,
   },
 });
-
 export const privateKey = onPremConnection({
   key: "privateKey",
   display: {
@@ -128,5 +125,4 @@ export const privateKey = onPremConnection({
     ...commonInputs,
   },
 });
-
 export default [basic, privateKey];

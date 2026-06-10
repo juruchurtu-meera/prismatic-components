@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { connectionInput, orderId } from "../inputs";
-
 export const getOrder = action({
   display: {
     label: "Get Order",
@@ -24,5 +23,4 @@ export const getOrder = action({
     orderId,
   },
 });
-
 export default { getOrder };

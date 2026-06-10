@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanString, jsonInputClean } from "../util";
 import { connectionInput } from "./common";
-
 export const resource = input({
   label: "Resource",
   type: "string",
@@ -12,7 +11,6 @@ export const resource = input({
   placeholder: "Enter resource name",
   required: true,
 });
-
 export const updateMask = input({
   label: "Update Mask",
   type: "string",
@@ -23,7 +21,6 @@ export const updateMask = input({
   placeholder: "Enter update mask",
   required: false,
 });
-
 export const options = input({
   label: "Options",
   type: "code",
@@ -36,7 +33,6 @@ export const options = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const policy = input({
   label: "Policy",
   type: "code",
@@ -48,14 +44,11 @@ export const policy = input({
   clean: jsonInputClean,
   required: false,
 });
-
-
 export const getPolicyInputs = {
   connectionInput,
   resource,
   options,
 };
-
 export const setPolicyInputs = {
   connectionInput,
   resource,

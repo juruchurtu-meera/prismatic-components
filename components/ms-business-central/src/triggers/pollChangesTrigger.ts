@@ -5,7 +5,6 @@ import { pollChangesExamplePayload } from "../examplePayloads";
 import { pollChangesInputs } from "../inputs/polling";
 import type { BusinessCentralRecord, PollingState } from "../interfaces";
 import { fetchAllPagedSince } from "../utils";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -18,40 +17,27 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     const config = POLL_RESOURCE_CONFIG[params.pollResourceType];
     if (!config) {
       throw new Error(`Unsupported resource type: ${params.pollResourceType}`);
     }
-
-    
-    
-    
-    
-    
     const modifiedFilter = `lastModifiedDateTime gt ${lastPolledAt}`;
     const $filter = params.additionalFilter
       ? `(${params.additionalFilter}) and (${modifiedFilter})`
       : modifiedFilter;
-
-    const client = getMsBusinessCentralClient(params.connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      params.connection,
+      context,
+      context.debug.enabled,
+    );
     const { records, truncated } = await fetchAllPagedSince(
       client,
       `/companies(${params.companyId})/${config.endpoint}`,
       { $filter },
     );
-
-    
-    
-    
-    
     const created: BusinessCentralRecord[] = [];
-    const updated: BusinessCentralRecord[] = params.showUpdatedRecords !== false ? records : [];
-
-    
-    
-    
-    
+    const updated: BusinessCentralRecord[] =
+      params.showUpdatedRecords !== false ? records : [];
     let nextCursor = now;
     if (truncated) {
       const latestFetched = records
@@ -65,13 +51,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${params.pollResourceType} on company ${params.companyId}: ${records.length} fetched, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },

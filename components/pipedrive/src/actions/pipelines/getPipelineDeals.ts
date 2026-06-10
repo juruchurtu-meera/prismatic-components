@@ -10,7 +10,6 @@ import {
 } from "../../inputs";
 import { cleanNumber } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getPipelineDeals = action({
   display: {
     label: "Get Pipeline Deals",
@@ -20,7 +19,11 @@ export const getPipelineDeals = action({
     context,
     { connection, id, filterId, stageId, limit, cursor, sortBy, sortDirection },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/deals", {
       params: {
         filter_id: filterId,
@@ -40,13 +43,15 @@ export const getPipelineDeals = action({
       label: "Filter ID",
       type: "string",
       clean: cleanNumber,
-      comments: "If supplied, only deals matching the given filter will be returned",
+      comments:
+        "If supplied, only deals matching the given filter will be returned",
     }),
     stageId: input({
       label: "Stage ID",
       type: "string",
       clean: cleanNumber,
-      comments: "If supplied, only deals within the given stage will be returned",
+      comments:
+        "If supplied, only deals within the given stage will be returned",
     }),
     limit: paginationLimitInput,
     cursor,

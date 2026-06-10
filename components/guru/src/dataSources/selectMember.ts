@@ -3,7 +3,6 @@ import { getGuruClient } from "../client";
 import { selectMemberInputs } from "../inputs";
 import { fetchGuruResults } from "../util";
 import type { GuruTeamMember } from "../types";
-
 export const selectMember = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -12,13 +11,11 @@ export const selectMember = dataSource({
   },
   perform: async (_context, { connection, search }) => {
     const client = getGuruClient(connection, false);
-
     const queryParams = {
       search,
       sortField: "email",
       sortDir: "ASC",
     };
-
     const url = "/members";
     const members = await fetchGuruResults<GuruTeamMember>(
       client,
@@ -26,7 +23,6 @@ export const selectMember = dataSource({
       true,
       queryParams,
     );
-
     return {
       result: members.map(
         (member): Element => ({

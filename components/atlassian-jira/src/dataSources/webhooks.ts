@@ -3,7 +3,6 @@ import { createV3Client } from "../connections/auth";
 import { connectionInput } from "../inputs";
 import type { WebhookData } from "../types";
 import { getPaginatedData, isBasicAuth } from "../util";
-
 const selectWebhook = dataSource({
   display: {
     label: "Select Webhook",
@@ -15,8 +14,15 @@ const selectWebhook = dataSource({
   perform: async (_context, { jiraConnection }) => {
     const useBasicAuth = isBasicAuth(jiraConnection);
     const client = await createV3Client(jiraConnection, false, useBasicAuth);
-    const { data } = await getPaginatedData<WebhookData>(client, "/webhook", true, useBasicAuth);
-    const webhooks = useBasicAuth ? (data as unknown as WebhookData[]) : data.values;
+    const { data } = await getPaginatedData<WebhookData>(
+      client,
+      "/webhook",
+      true,
+      useBasicAuth,
+    );
+    const webhooks = useBasicAuth
+      ? (data as unknown as WebhookData[])
+      : data.values;
     const result = webhooks.map<Element>(({ events, id }) => ({
       label: events.join(", "),
       key: util.types.toString(id),
@@ -25,7 +31,6 @@ const selectWebhook = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default {
   selectWebhook,
 };

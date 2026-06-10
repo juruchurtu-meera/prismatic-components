@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput } from "./common";
-
 export const pollEventTypes = input({
   label: "Event Types",
   type: "string",
@@ -15,7 +14,6 @@ export const pollEventTypes = input({
     return raw.map((item) => util.types.toString(item));
   },
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -25,7 +23,6 @@ export const showNewRecords = input({
     "When enabled, events with type ending in `.created` are emitted in the `created` bucket of the payload.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -35,7 +32,6 @@ export const showUpdatedRecords = input({
     "When enabled, all other change events (e.g., `.updated`, `.deleted`, `.succeeded`) are emitted in the `updated` bucket of the payload.",
   clean: util.types.toBool,
 });
-
 export const pollChangesInputs = {
   connection: connectionInput,
   pollEventTypes,

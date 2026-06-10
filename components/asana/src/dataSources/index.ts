@@ -8,7 +8,6 @@ import tasks from "./tasks";
 import teams from "./teams";
 import users from "./users";
 import workspaces from "./workspaces";
-
 export default {
   ...attachments,
   ...customFields,

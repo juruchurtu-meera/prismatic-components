@@ -7,7 +7,6 @@ import {
   tableNameInput,
 } from "../../../inputs";
 import { buildPayload, postTable } from "../../../util";
-
 export const createTableRecord = action({
   display: {
     label: "Create Table Record",

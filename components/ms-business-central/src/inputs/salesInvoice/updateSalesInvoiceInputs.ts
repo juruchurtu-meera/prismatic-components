@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const salesInvoiceId = input({
   label: "Sales Invoice ID",
   comments: "The unique identifier of the sales invoice object.",

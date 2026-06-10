@@ -29,7 +29,6 @@ import {
   parent_id_min,
   storeHash,
 } from "../../inputs";
-
 export const getAllCategories = action({
   display: {
     label: "List Categories",
@@ -70,9 +69,7 @@ export const getAllCategories = action({
       bigCommerceConnection,
       context.debug.enabled,
     );
-
     const endpoint = `/stores/${storeHash}/v3/catalog/categories`;
-
     const params = {
       id,
       "id:in": id_in,
@@ -98,10 +95,8 @@ export const getAllCategories = action({
       include_fields,
       exclude_fields,
     };
-
     try {
       const response = await client.get(endpoint, { params });
-
       return {
         data: response.data,
       };

@@ -4,7 +4,6 @@ import { connection, formId } from "../../inputs";
 import { fetchData } from "../../util";
 import { getFormResponse } from "../../examplePayloads/forms";
 import type { Form } from "../../interfaces/forms";
-
 export const getForm = action({
   display: {
     label: "Get Form",
@@ -16,7 +15,6 @@ export const getForm = action({
   },
   perform: async (context, { connection, id }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await fetchData<Form>(client, `/forms/${id}`);
     return {
       data,

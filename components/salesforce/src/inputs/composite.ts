@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { recordsInputClean } from "../util";
 import { connectionInput, version } from "./common";
 import { allOrNone, collateSubrequests } from "./bulkJobs";
-
 const compositeRequest = input({
   label: "Composite Request",
   type: "code",
@@ -50,7 +49,6 @@ const compositeRequest = input({
   ),
   clean: recordsInputClean,
 });
-
 export const compositeRequestInputs = {
   connection: connectionInput,
   version,
@@ -58,7 +56,6 @@ export const compositeRequestInputs = {
   collateSubrequests,
   compositeRequest,
 };
-
 export const listCompositeResourcesInputs = {
   connection: connectionInput,
   version,

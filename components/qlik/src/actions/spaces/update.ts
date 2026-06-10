@@ -8,7 +8,6 @@ import {
   ownerId,
   spaceId,
 } from "../../inputs";
-
 export const updateSpace = action({
   display: {
     label: "Updates Space",
@@ -20,13 +19,11 @@ export const updateSpace = action({
     { connection, spaceId, description, name, ownerId },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.put(`/spaces/${spaceId}`, {
       description: description || undefined,
       name: name || undefined,
       ownerId: ownerId || undefined,
     });
-
     return {
       data,
     };

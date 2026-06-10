@@ -12,7 +12,6 @@ import {
   userType,
 } from "../inputs";
 import { filterEntries, handleDropboxError } from "../util";
-
 export const listFolders = dataSource({
   display: {
     label: "List Folders",
@@ -50,12 +49,10 @@ export const listFolders = dataSource({
               limit: util.types.toInt(params.limit) || undefined,
               recursive: util.types.toBool(params.recursive),
             });
-
       const filteredEntries =
         params.entryFilter === BOTH_ENTRY_FILTER
           ? entries
           : filterEntries(entries, params.entryFilter);
-
       const result = filteredEntries.map<Element>((folder) => ({
         label: folder.name,
         key: (folder as any).id,

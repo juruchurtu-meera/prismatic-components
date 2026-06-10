@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "./general";
-
 const url = input({
   label: "URL",
   comments: "A URL returned by the Get Media action to download media from.",
@@ -11,5 +10,4 @@ const url = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const getMediafromURLInputs = { connection, url };

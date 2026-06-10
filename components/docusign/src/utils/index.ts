@@ -3,10 +3,8 @@ import crypto from "crypto";
 type AnyObject = Record<string, unknown>;
 export const cleanObject = (obj: AnyObject): AnyObject => {
   const cleanedObject: AnyObject = {};
-
   for (const [key, value] of Object.entries(obj)) {
     if (Array.isArray(value)) {
-      
       if (value.length > 0) {
         cleanedObject[key] = value.map((item) =>
           typeof item === "object" && !Array.isArray(item)
@@ -15,28 +13,23 @@ export const cleanObject = (obj: AnyObject): AnyObject => {
         );
       }
     } else if (value && typeof value === "object") {
-      
       const cleanedNestedObject = cleanObject(value as AnyObject);
       if (Object.keys(cleanedNestedObject).length > 0) {
         cleanedObject[key] = cleanedNestedObject;
       }
     } else {
-      
       if (value !== undefined && value !== null && value !== "") {
         cleanedObject[key] = value;
       }
     }
   }
-
   return cleanedObject;
 };
-
 export const jsonCheck = (json: unknown) => {
   if (typeof json === "string" && json.length) {
     return JSON.parse(json);
   } else return {};
 };
-
 export const getDocumentIds = (ids: unknown) => {
   return Array.isArray(ids)
     ? ids.map((id: string) => {
@@ -46,7 +39,6 @@ export const getDocumentIds = (ids: unknown) => {
       })
     : [];
 };
-
 export const getUserIds = (ids: unknown) => {
   return Array.isArray(ids)
     ? ids.map((id: unknown) => {
@@ -56,7 +48,6 @@ export const getUserIds = (ids: unknown) => {
       })
     : [];
 };
-
 export const getFolders = async (
   client: HttpClient,
   count: string,
@@ -78,22 +69,18 @@ export const getFolders = async (
   });
   return data;
 };
-
 export const getTemplates = async (client: HttpClient) => {
   const { data } = await client.get(`/templates`);
   return data;
 };
-
 export const getWebhooks = async (client: HttpClient) => {
   const { data } = await client.get(`/connect`);
   return data;
 };
-
 export const deleteWebhook = async (client: HttpClient, connectId: string) => {
   const { data } = await client.delete(`/connect/${connectId}`);
   return data;
 };
-
 export const createWebhook = async (
   client: HttpClient,
   urlToPublishTo: string,
@@ -118,10 +105,8 @@ export const createWebhook = async (
     allUsers: "true",
     includeHMAC: includeHMAC.toString(),
   });
-
   return data;
 };
-
 export const computeHash = (args: {
   secret: string;
   payload: string;
@@ -131,7 +116,6 @@ export const computeHash = (args: {
   hmac.end();
   return hmac.read().toString("base64");
 };
-
 export const isHashValid = (args: {
   verify: string;
   secret: string;
@@ -142,7 +126,6 @@ export const isHashValid = (args: {
     new Uint8Array(Buffer.from(computeHash(args), "base64")),
   );
 };
-
 export const deleteAllInstancedWebhooks = async (
   client: HttpClient,
   flowEndpoint: string,
@@ -159,7 +142,6 @@ export const deleteAllInstancedWebhooks = async (
   await Promise.all(webhooksToDelete);
   return { deletedWebhooks: webhooksToDelete.length };
 };
-
 export const webhookExists = async (
   client: HttpClient,
   flowEndpoint: string,

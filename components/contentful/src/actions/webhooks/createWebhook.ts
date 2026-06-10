@@ -3,7 +3,6 @@ import type { Space, WebhookProps } from "contentful-management";
 import { createClient } from "../../client";
 import { createWebhookExamplePayload } from "../../examplePayloads";
 import { createWebhookInputs } from "../../inputs";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",

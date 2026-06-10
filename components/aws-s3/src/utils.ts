@@ -20,7 +20,6 @@ import {
   QUEUE_CONFIGURATIONS_EXAMPLE,
   TOPIC_CONFIGURATIONS_EXAMPLE,
 } from "./constants";
-
 export const getBucketNotificationConfiguration = async (
   s3Client: S3Client,
   bucket: string,
@@ -32,21 +31,17 @@ export const getBucketNotificationConfiguration = async (
       Bucket: bucket,
       ExpectedBucketOwner: bucketOwnerAccountid,
     };
-
-  const getBucketNotificationConfigurationCommand = new GetBucketNotificationConfigurationCommand(
-    getBucketNotificationConfigurationCommandInput,
-  );
-  
+  const getBucketNotificationConfigurationCommand =
+    new GetBucketNotificationConfigurationCommand(
+      getBucketNotificationConfigurationCommandInput,
+    );
   const getBucketNotificationConfigurationCommandOutput = await s3Client.send(
     getBucketNotificationConfigurationCommand,
   );
-
-  
-  if (removeMetadata) getBucketNotificationConfigurationCommandOutput.$metadata = undefined;
-
+  if (removeMetadata)
+    getBucketNotificationConfigurationCommandOutput.$metadata = undefined;
   return getBucketNotificationConfigurationCommandOutput;
 };
-
 export const putBucketNotificationConfiguration = async (
   s3Client: S3Client,
   bucket: string,
@@ -58,15 +53,15 @@ export const putBucketNotificationConfiguration = async (
       NotificationConfiguration: notificationConfiguration,
       SkipDestinationValidation: true,
     };
-  const putBucketNotificationConfigurationCommand = new PutBucketNotificationConfigurationCommand(
-    putBucketNotificationConfigurationCommandInput,
-  );
+  const putBucketNotificationConfigurationCommand =
+    new PutBucketNotificationConfigurationCommand(
+      putBucketNotificationConfigurationCommandInput,
+    );
   const putBucketNotificationConfigurationCommandOutput = await s3Client.send(
     putBucketNotificationConfigurationCommand,
   );
   return putBucketNotificationConfigurationCommandOutput;
 };
-
 export const processTopicConfiguration = async (
   s3Client: S3Client,
   bucket: string,
@@ -79,98 +74,103 @@ export const processTopicConfiguration = async (
     bucket,
     bucketOwnerAccountid,
   );
-
   if (!("TopicConfigurations" in notificationConfiguration))
     notificationConfiguration.TopicConfigurations = [];
-
-  
   let existingTopicConfigurationIndex = -1;
-  notificationConfiguration.TopicConfigurations.find((topicConfiguration, index) => {
-    const topicConfigurationIdEqualsEventNotificationName =
-      topicConfiguration.Id === eventNotificationName;
-
-    if (topicConfigurationIdEqualsEventNotificationName) existingTopicConfigurationIndex = index;
-
-    return topicConfigurationIdEqualsEventNotificationName;
-  });
-
+  notificationConfiguration.TopicConfigurations.find(
+    (topicConfiguration, index) => {
+      const topicConfigurationIdEqualsEventNotificationName =
+        topicConfiguration.Id === eventNotificationName;
+      if (topicConfigurationIdEqualsEventNotificationName)
+        existingTopicConfigurationIndex = index;
+      return topicConfigurationIdEqualsEventNotificationName;
+    },
+  );
   if (existingTopicConfigurationIndex === -1) {
-    
     notificationConfiguration.TopicConfigurations.push(topicConfiguration);
   } else {
-    
-    notificationConfiguration.TopicConfigurations[existingTopicConfigurationIndex] =
-      topicConfiguration;
+    notificationConfiguration.TopicConfigurations[
+      existingTopicConfigurationIndex
+    ] = topicConfiguration;
   }
-
-  return await putBucketNotificationConfiguration(s3Client, bucket, notificationConfiguration);
+  return await putBucketNotificationConfiguration(
+    s3Client,
+    bucket,
+    notificationConfiguration,
+  );
 };
-
-export const getObjectIdentifiers = (objectKeys: unknown): ObjectIdentifier[] => {
+export const getObjectIdentifiers = (
+  objectKeys: unknown,
+): ObjectIdentifier[] => {
   if (Array.isArray(objectKeys)) {
     return objectKeys.map((key) => ({ Key: key }));
   }
   return [];
 };
-
-export const getTopicConfigurations = (topicConfigurations: unknown): TopicConfiguration[] => {
-  if (typeof topicConfigurations === "string" && topicConfigurations.length > 0) {
+export const getTopicConfigurations = (
+  topicConfigurations: unknown,
+): TopicConfiguration[] => {
+  if (
+    typeof topicConfigurations === "string" &&
+    topicConfigurations.length > 0
+  ) {
     const topicConfigurationsJson = JSON.parse(topicConfigurations);
     if (!Array.isArray(topicConfigurationsJson))
       throw new Error(
-        `Topic configurations must be an array with the following structure: ${JSON.stringify(
-          TOPIC_CONFIGURATIONS_EXAMPLE,
-        )}`,
+        `Topic configurations must be an array with the following structure: ${JSON.stringify(TOPIC_CONFIGURATIONS_EXAMPLE)}`,
       );
     return topicConfigurationsJson;
   }
-
   return undefined;
 };
-
-export const getQueueConfigurations = (queueConfigurations: unknown): QueueConfiguration[] => {
-  if (typeof queueConfigurations === "string" && queueConfigurations.length > 0) {
+export const getQueueConfigurations = (
+  queueConfigurations: unknown,
+): QueueConfiguration[] => {
+  if (
+    typeof queueConfigurations === "string" &&
+    queueConfigurations.length > 0
+  ) {
     const queueConfigurationsJson = JSON.parse(queueConfigurations);
     if (!Array.isArray(queueConfigurationsJson))
       throw new Error(
-        `Queue configurations must be an array with the following structure: ${JSON.stringify(
-          QUEUE_CONFIGURATIONS_EXAMPLE,
-        )}`,
+        `Queue configurations must be an array with the following structure: ${JSON.stringify(QUEUE_CONFIGURATIONS_EXAMPLE)}`,
       );
     return queueConfigurationsJson;
   }
-
   return undefined;
 };
-
 export const getLambdaFunctionConfigurations = (
   lambdaFunctionConfigurations: unknown,
 ): LambdaFunctionConfiguration[] => {
-  if (typeof lambdaFunctionConfigurations === "string" && lambdaFunctionConfigurations.length > 0) {
-    const lambdaFunctionConfigurationsJson = JSON.parse(lambdaFunctionConfigurations);
+  if (
+    typeof lambdaFunctionConfigurations === "string" &&
+    lambdaFunctionConfigurations.length > 0
+  ) {
+    const lambdaFunctionConfigurationsJson = JSON.parse(
+      lambdaFunctionConfigurations,
+    );
     if (!Array.isArray(lambdaFunctionConfigurationsJson))
       throw new Error(
-        `Lambda function configurations must be an array with the following structure: ${JSON.stringify(
-          LAMBDA_FUNCTION_CONFIGURATIONS_EXAMPLE,
-        )}`,
+        `Lambda function configurations must be an array with the following structure: ${JSON.stringify(LAMBDA_FUNCTION_CONFIGURATIONS_EXAMPLE)}`,
       );
     return lambdaFunctionConfigurationsJson;
   }
-
   return undefined;
 };
-
 export const getEventBridgeConfiguration = (
   eventBridgeConfiguration: unknown,
 ): EventBridgeConfiguration => {
-  if (typeof eventBridgeConfiguration === "string" && eventBridgeConfiguration.length > 0) {
+  if (
+    typeof eventBridgeConfiguration === "string" &&
+    eventBridgeConfiguration.length > 0
+  ) {
     return JSON.parse(eventBridgeConfiguration);
   }
-
   return undefined;
 };
-
-export const getObjectAttributes = (attributes: unknown): ObjectAttributes[] => {
+export const getObjectAttributes = (
+  attributes: unknown,
+): ObjectAttributes[] => {
   if (Array.isArray(attributes)) {
     if (attributes.length === 0) {
       throw new Error("Object Attributes must contain at least one attribute");
@@ -178,7 +178,6 @@ export const getObjectAttributes = (attributes: unknown): ObjectAttributes[] => 
     return attributes as ObjectAttributes[];
   }
 };
-
 export const encodeTags = (tags: KeyValuePair[]): string => {
   const tagsObj: Record<string, string> = {};
   for (const { key, value } of tags || []) {
@@ -186,11 +185,13 @@ export const encodeTags = (tags: KeyValuePair[]): string => {
   }
   return querystring.encode(tagsObj);
 };
-
 export const objectMapper = (
   object,
   key: string,
-): { lastModified: string; [key: string]: unknown } => {
+): {
+  lastModified: string;
+  [key: string]: unknown;
+} => {
   return {
     ...object,
     [key]: new Date(object[key]).toISOString(),

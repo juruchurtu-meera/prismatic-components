@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { categoryId, connectionInput, file, fileName, share } from "./common";
-
 const fileId = input({
   label: "File ID",
   type: "string",
@@ -11,7 +10,6 @@ const fileId = input({
   clean: util.types.toString,
   dataSource: "selectCompanyFile",
 });
-
 const categoryName = input({
   label: "Category Name",
   type: "string",
@@ -21,26 +19,21 @@ const categoryName = input({
   clean: util.types.toString,
   example: "A new category",
 });
-
 export const listCompanyFilesInputs = {
   connection: connectionInput,
 };
-
 export const addCompanyFileCategoryInputs = {
   connection: connectionInput,
   categoryName,
 };
-
 export const deleteCompanyFileInputs = {
   connection: connectionInput,
   fileId,
 };
-
 export const getCompanyFileInputs = {
   connection: connectionInput,
   fileId,
 };
-
 export const uploadCompanyFileInputs = {
   connection: connectionInput,
   categoryId,

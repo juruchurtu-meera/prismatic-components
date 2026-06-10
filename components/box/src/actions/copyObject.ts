@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../client";
 import { fromPath, toPath, connectionInput } from "../inputs";
 import { getPathEntries } from "../utils";
 import { copyObjectExamplePayload } from "../examplePayloads";
-
 export const copyObject = action({
   display: {
     label: "Copy Object",
@@ -20,7 +19,6 @@ export const copyObject = action({
       util.types.toString(toPath),
       false,
     );
-
     const {
       id: sourceId,
       type: sourceType,
@@ -32,11 +30,9 @@ export const copyObject = action({
       type: destType,
       name: destName,
     } = toPathEntries.slice(-2)[0];
-
     if (destType !== "folder") {
       throw Error(`'${destName} is not a folder`);
     }
-
     let result: unknown;
     if (sourceType === "folder") {
       result = await client.folders.copy(sourceId, destId, { name: newName });
@@ -45,7 +41,6 @@ export const copyObject = action({
     } else {
       throw Error(`'${sourceName}' is neither a file nor a folder`);
     }
-
     return {
       data: result,
     };

@@ -1,6 +1,5 @@
 import { connection } from "@prismatic-io/spectral";
 import { supportedMechanismTypes } from "../types/connection";
-
 export const basic = connection({
   key: "basic",
   display: {

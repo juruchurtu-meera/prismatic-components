@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../client";
 import { connection } from "../inputs/sharedInputs";
 import type { CollectionItem, LibraryCollectionsResponse } from "../types";
-
 const libraryId = input({
   label: "Library ID",
   type: "string",
@@ -13,7 +12,6 @@ const libraryId = input({
   placeholder: "eyJpZG...",
   clean: util.types.toString,
 });
-
 const query = gql`
   query listLibraryCollections($libraryId: ID!) {
     library(id: $libraryId) {
@@ -26,7 +24,6 @@ const query = gql`
     }
   }
 `;
-
 export const selectLibraryCollection = dataSource({
   display: {
     label: "Select Library Collection",

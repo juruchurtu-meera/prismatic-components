@@ -4,7 +4,6 @@ import { connectionInput, fetchAll } from "../inputs";
 import { pageSize, pageToken } from "../inputs";
 import { API_VERSION } from "../constants";
 import { fetchPaginatedData } from "../helpers";
-
 export const getAllFieldDefinitions = action({
   display: {
     label: "Get All Field Definitions",
@@ -22,7 +21,6 @@ export const getAllFieldDefinitions = action({
     { sendGridConnection, page_size, page_token, fetchAll },
   ) => {
     const client = createAuthorizedClient(sendGridConnection);
-
     const data = await fetchPaginatedData(
       client,
       `/${API_VERSION}/marketing/field_definitions`,

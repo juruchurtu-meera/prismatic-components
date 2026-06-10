@@ -9,7 +9,6 @@ import {
   isPublic,
 } from "../../inputs";
 import { portfolioExamplePayload } from "./portfolioPayload";
-
 export const createPortfolio = action({
   display: {
     label: "Create Portfolio",

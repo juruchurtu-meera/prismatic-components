@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { $select, additionalInputs, connection } from "./general";
-
 export const jobReqId = input({
   label: "Job Requisition ID",
   type: "string",
@@ -10,7 +9,6 @@ export const jobReqId = input({
   example: "1234-5678",
   clean: util.types.toString,
 });
-
 const templateId = input({
   label: "Template ID",
   type: "string",
@@ -20,13 +18,11 @@ const templateId = input({
   example: "1234-5678",
   clean: util.types.toString,
 });
-
 export const getJobRequisitionInputs = {
   jobReqId,
   $select,
   connection,
 };
-
 export const deleteJobRequisitionInputs = {
   jobReqId: {
     ...jobReqId,
@@ -34,7 +30,6 @@ export const deleteJobRequisitionInputs = {
   },
   connection,
 };
-
 export const createJobRequisitionInputs = {
   templateId,
   additionalInputs: {
@@ -54,7 +49,6 @@ export const createJobRequisitionInputs = {
   },
   connection,
 };
-
 export const updateJobRequisitionInputs = {
   jobReqId,
   additionalInputs: {

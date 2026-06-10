@@ -5,7 +5,6 @@ import { listAssetCommentsExamplePayload as examplePayload } from "../../example
 import { listAssetCommentsInputs as inputs } from "../../inputs/assets";
 import { graphqlFetchAll } from "../../utils/graphqlFetchAll";
 import type ListAssetCommentsResponse from "../types/listAssetComments";
-
 export const listAssetComments = action({
   display: {
     label: "List Asset Comments",
@@ -14,9 +13,10 @@ export const listAssetComments = action({
   perform: async (
     context,
     { connection, assetId, page, limit, fetchAll, replyLimit },
-  ): Promise<{ data: ListAssetCommentsResponse }> => {
+  ): Promise<{
+    data: ListAssetCommentsResponse;
+  }> => {
     const client = createClient({ connection, debug: context.debug.enabled });
-
     const query = gql`
       query listAssetComments(
         $assetId: ID!
@@ -105,7 +105,6 @@ export const listAssetComments = action({
         }
       }
     `;
-
     if (fetchAll) {
       const hasNextPath = ["asset", "comments", "hasNextPage"];
       const responses: ListAssetCommentsResponse[] = await graphqlFetchAll({
@@ -114,17 +113,16 @@ export const listAssetComments = action({
         params: { assetId, replyLimit },
         hasNextPath,
       });
-
       if (responses.length === 1) {
         return { data: responses[0] };
       }
-
       const baseResponse = responses.slice(-1)[0];
       const combinedAssetComments = responses.reduce((combined, response) => {
         return combined.concat(response.asset.comments.items);
       }, []);
-
-      const formattedResponse: { data: ListAssetCommentsResponse } = {
+      const formattedResponse: {
+        data: ListAssetCommentsResponse;
+      } = {
         data: {
           asset: {
             ...baseResponse.asset,
@@ -135,17 +133,14 @@ export const listAssetComments = action({
           },
         },
       };
-
       return formattedResponse;
     }
-
     const response: ListAssetCommentsResponse = await client.request(query, {
       assetId,
       page,
       limit,
       replyLimit,
     });
-
     return {
       data: response,
     };

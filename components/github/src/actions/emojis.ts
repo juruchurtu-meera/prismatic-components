@@ -1,6 +1,5 @@
 import { action, Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const emojisGet = action({
   display: {
     label: "Emojis Get",
@@ -19,7 +18,6 @@ const emojisGet = action({
     },
   },
 });
-
 export default {
   emojisGet,
 };

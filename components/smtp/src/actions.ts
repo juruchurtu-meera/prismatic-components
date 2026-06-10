@@ -2,10 +2,8 @@ import { createTransport } from "nodemailer";
 import { action, input, util } from "@prismatic-io/spectral";
 import { cleanAttachments, cleanEmailInput, cleanString } from "./util";
 import { multipleAttachments } from "./inputs";
-
 const joinEmailAddresses = (values: unknown[]) =>
   (values || []).map((value) => util.types.toString(value)).join(", ");
-
 const sendEmail = action({
   display: {
     label: "Send Email",
@@ -147,17 +145,12 @@ const sendEmail = action({
     const hasAuth =
       Boolean(params.connection.fields.username) ||
       Boolean(params.connection.fields.password);
-
     const allowUnauthorized = util.types.toBool(
       params.connection.fields.allowUnauthorized,
     );
-
     const port = util.types.toNumber(params.connection.fields.port);
     const useTls = util.types.toBool(params.connection.fields.secure);
-    
-    
     const isImplicitTls = port === 465;
-
     const client = createTransport({
       host: util.types.toString(params.connection.fields.host),
       port,
@@ -179,11 +172,9 @@ const sendEmail = action({
           }
         : {}),
     });
-
     const to = [...new Set([...params.to, ...params.toJson])];
     const cc = [...new Set([...params.cc, ...params.ccJson])];
     const bcc = [...new Set([...params.bcc, ...params.bccJson])];
-
     const result = await client.sendMail({
       to: joinEmailAddresses(to),
       from: params.from,
@@ -195,9 +186,7 @@ const sendEmail = action({
       html: params.html,
       attachments: [...params.attachments, ...params.multipleAttachments],
     });
-
     return Promise.resolve({ data: result });
   },
 });
-
 export default { sendEmail };

@@ -9,7 +9,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { listSavedFunnelsExamplePayload } from "../../examplePayloads";
-
 export const listSavedFunnels = action({
   display: {
     label: "List Saved Funnels",

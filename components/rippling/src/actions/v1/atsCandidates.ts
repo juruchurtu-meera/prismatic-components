@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { API_VERSION } from "../../constants";
 import { postAtsCandidatesPushCandidateExamplePayload } from "../../examplePayloads";
 import { postAtsCandidatesPushCandidateInputs } from "../../inputs";
-
 const postAtsCandidatesPushCandidate = action({
   display: {
     label: "Post Ats Candidates Push Candidate (V1)",
@@ -55,7 +54,6 @@ const postAtsCandidatesPushCandidate = action({
     return { data };
   },
 });
-
 export default {
   postAtsCandidatesPushCandidate,
 };

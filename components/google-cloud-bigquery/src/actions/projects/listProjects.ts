@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, fetchAll, maxResults, pageToken } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
-
 export const listProjects = action({
   display: {
     description:

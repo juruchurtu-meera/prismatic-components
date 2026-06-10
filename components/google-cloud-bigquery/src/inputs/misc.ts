@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput } from "./common";
-
 export const version = input({
   label: "API Version",
   type: "string",
@@ -12,7 +11,6 @@ export const version = input({
   placeholder: "Enter API version",
   required: false,
 });
-
 export const formatOptions = input({
   label: "Format Options",
   type: "boolean",
@@ -20,8 +18,6 @@ export const formatOptions = input({
   comments: "When true, applies output format adjustments.",
   required: false,
 });
-
-
 export const rawRequestInputs = {
   connection: connectionInput,
   version,

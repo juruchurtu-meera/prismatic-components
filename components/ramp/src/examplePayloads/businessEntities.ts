@@ -4,7 +4,6 @@ export const getBusinessEntitiesResponse = {
   is_primary: false,
   currency: "CAD",
 };
-
 export const listBusinessEntitiesResponse = {
   page: {
     next: "",

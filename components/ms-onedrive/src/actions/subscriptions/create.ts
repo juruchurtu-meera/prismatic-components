@@ -11,7 +11,6 @@ import {
 } from "../../inputs";
 import { createSubscriptionFN } from "ms-utils";
 import { createSubscriptionExamplePayload } from "../../examplePayloads";
-
 export const createSubscription = action({
   display: {
     label: "Create a Subscription",

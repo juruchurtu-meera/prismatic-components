@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 const warehouse = {
   id: "kjU72LCJexvrqL7G4TMHHN",
   workspaceId: "9aQ1Lj62S4bomZKLF4DPqW",
@@ -61,21 +51,11 @@ const warehouse = {
     name: "Redshift Dev",
   },
 };
-
-
-
-
-
 export const getWarehouseExamplePayload = {
   data: {
     warehouse,
   },
 };
-
-
-
-
-
 export const listWarehousesExamplePayload = {
   data: {
     warehouses: [warehouse, warehouse],
@@ -85,49 +65,26 @@ export const listWarehousesExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const addConnectionFromSourceExamplePayload = {
   data: {
     status: "CONNECTED",
   },
 };
-
-
-
-
-
 export const deleteExamplePayload = {
   data: {
     status: "SUCCESS",
   },
 };
-
-
-
-
-
 export const createWarehouseExamplePayload = {
   data: {
     warehouse,
   },
 };
-
-
-
-
-
 export const updateWarehouseExamplePayload = {
   data: {
     warehouse,
   },
 };
-
-
-
 const source = {
   id: "qQEHquLrjRDN9j1ByrChyn",
   slug: "ios",
@@ -151,21 +108,11 @@ const source = {
   settings: {},
   labels: [],
 };
-
-
-
-
-
 export const getSourceExamplePayload = {
   data: {
     source,
   },
 };
-
-
-
-
-
 export const listSourcesExamplePayload = {
   data: {
     sources: [
@@ -200,9 +147,6 @@ export const listSourcesExamplePayload = {
     },
   },
 };
-
-
-
 export const destination = {
   id: "5GFhvtz8fha42Cm4B9E6L8",
   enabled: true,
@@ -305,21 +249,11 @@ export const destination = {
   },
   sourceId: "rh5BDZp6QDHvXFCkibm1pR",
 };
-
-
-
-
-
 export const getDestinationExamplePayload = {
   data: {
     destination,
   },
 };
-
-
-
-
-
 export const listDestinationsExamplePayload = {
   data: {
     destinations: [destination, destination],
@@ -330,9 +264,6 @@ export const listDestinationsExamplePayload = {
     },
   },
 };
-
-
-
 const destinationSubscription = {
   id: "eoeXaMeAYcB2XvEApJDrQs",
   name: "Test Subscription",
@@ -344,21 +275,11 @@ const destinationSubscription = {
   trigger: 'type = "track"',
   settings: {},
 };
-
-
-
-
-
 export const getDestinationSubscriptionExamplePayload = {
   data: {
     subscription: destinationSubscription,
   },
 };
-
-
-
-
-
 export const listDestinationSubscriptionsExamplePayload = {
   data: {
     pagination: {
@@ -368,9 +289,6 @@ export const listDestinationSubscriptionsExamplePayload = {
     subscriptions: [destinationSubscription, destinationSubscription],
   },
 };
-
-
-
 const functionData = {
   id: "sfnc_wXzcDGFR3KmjLDrtSawNHf",
   workspaceId: "9aQ1Lj62S4bomZKLF4DPqW",
@@ -404,21 +322,11 @@ const functionData = {
   batchMaxCount: 0,
   resourceType: "SOURCE",
 };
-
-
-
-
-
 export const getFunctionExamplePayload = {
   data: {
     function: functionData,
   },
 };
-
-
-
-
-
 export const listFunctionsExamplePayload = {
   data: {
     functions: [
@@ -438,13 +346,6 @@ export const listFunctionsExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const listDestinationCatalogExamplePayload = {
   data: {
     destinationsCatalog: [
@@ -650,11 +551,6 @@ export const listDestinationCatalogExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getDestinationMetadataExamplePayload = {
   data: {
     destinationMetadata: {
@@ -783,11 +679,6 @@ export const getDestinationMetadataExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const listSourceCatalogExamplePayload = {
   data: {
     sourcesCatalog: [
@@ -826,11 +717,6 @@ export const listSourceCatalogExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getSourceMetadataExamplePayload = {
   data: {
     sourceMetadata: {
@@ -850,11 +736,6 @@ export const getSourceMetadataExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getWarehouseMetadataExamplePayload = {
   data: {
     warehouseMetadata: {
@@ -903,11 +784,6 @@ export const getWarehouseMetadataExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const listWarehouseCatalogExamplePayload = {
   data: {
     warehousesCatalog: [
@@ -949,19 +825,11 @@ export const listWarehouseCatalogExamplePayload = {
     },
   },
 };
-
-
-
 const userResponse = {
   id: "i2VTJURQprNfqdwjLFPWYx",
   name: "Sloth",
   email: "sloth@segment.com",
 };
-
-
-
-
-
 export const getUserExamplePayload = {
   data: {
     user: {
@@ -984,11 +852,6 @@ export const getUserExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const listUsersExamplePayload = {
   data: {
     users: [
@@ -1005,19 +868,11 @@ export const listUsersExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const createInviteExamplePayload = {
   data: {
     emails: ["foo@example.com"],
   },
 };
-
-
-
 const transformationResponse = {
   id: "pHrD51Ds35Zjfka84yXQE6",
   workspaceId: "9aQ1Lj62S4bomZKLF4DPqW",
@@ -1040,21 +895,11 @@ const transformationResponse = {
     },
   ],
 };
-
-
-
-
-
 export const getTransformationExamplePayload = {
   data: {
     transformation: transformationResponse,
   },
 };
-
-
-
-
-
 export const listTransformationExamplePayload = {
   data: {
     transformations: [
@@ -1159,13 +1004,6 @@ export const listTransformationExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
-
 export const getEventsVolumeFromWorkspaceExamplePayload = {
   data: {
     path: "/observability/event_volume/v2.json",

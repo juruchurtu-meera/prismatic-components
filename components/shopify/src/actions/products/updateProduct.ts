@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { updateProductInputs } from "../../inputs";
 import { updateProductExamplePayload } from "../../payloadExamples";
-
 export const updateProduct = action({
   display: {
     label: "Update Product (Deprecated)",
@@ -11,9 +10,21 @@ export const updateProduct = action({
   },
   perform: async (
     context,
-    { productId, title, productStatus, tags, imageUrl, fieldValues, shopifyConnection },
+    {
+      productId,
+      title,
+      productStatus,
+      tags,
+      imageUrl,
+      fieldValues,
+      shopifyConnection,
+    },
   ) => {
-    const client = getShopifyClient(shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     return {
       data: (
         await client.put(`/products/${productId}`, {

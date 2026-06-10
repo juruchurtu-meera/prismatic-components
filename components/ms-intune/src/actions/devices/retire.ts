@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { retireDeviceInputs } from "../../inputs/devices/retire";
 import { NO_RESPONSE_SUCCESSFULL_PAYLOAD } from "../../constants";
-
 export const retireDevice = action({
   display: {
     label: "Retire Managed Device",

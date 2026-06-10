@@ -1,8 +1,14 @@
 import { action, input, util } from "@prismatic-io/spectral";
-import { connectionInput, top, skip, search, filter, inlinecount } from "../inputs";
+import {
+  connectionInput,
+  top,
+  skip,
+  search,
+  filter,
+  inlinecount,
+} from "../inputs";
 import { getSapClient } from "../client";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
-
 const orderByOptions = [
   "FileSize",
   "FileSize desc",
@@ -19,7 +25,6 @@ const orderByOptions = [
   "ChangedDateTime",
   "ChangedDateTime desc",
 ].map((option) => ({ label: option, value: option }));
-
 const selectOptions = [
   "DocumentInfoRecordDocType",
   "DocumentInfoRecordDocNumber",
@@ -53,12 +58,10 @@ const selectOptions = [
   "Source",
   "AttachmentContentHash",
 ].map((option) => ({ label: option, value: option }));
-
 const expandOptions = ["ProjectRoleSet", "WorkPackageSet"].map((option) => ({
   label: option,
   value: option,
 }));
-
 export const rawRequestOdataOrderBy = input({
   label: "Order By",
   placeholder: "Order By",
@@ -69,7 +72,6 @@ export const rawRequestOdataOrderBy = input({
   model: orderByOptions,
   clean: util.types.toString,
 });
-
 export const rawRequestOdataSelect = input({
   label: "Select",
   placeholder: "Select",
@@ -80,7 +82,6 @@ export const rawRequestOdataSelect = input({
   model: selectOptions,
   clean: util.types.toString,
 });
-
 export const rawRequestOdataExpand = input({
   label: "Expand",
   placeholder: "Expand",
@@ -91,11 +92,11 @@ export const rawRequestOdataExpand = input({
   model: expandOptions,
   clean: util.types.toString,
 });
-
 const rawRequestOdata = action({
   display: {
     label: "Raw Request - OData",
-    description: "Send an OData GET request to SAP S/4HANA with query parameters",
+    description:
+      "Send an OData GET request to SAP S/4HANA with query parameters",
   },
   inputs: {
     connection: connectionInput,
@@ -105,7 +106,8 @@ const rawRequestOdata = action({
       required: true,
       comments:
         "Input the path only. The base URL from your connection is automatically prepended. Example: /sap/opu/odata/sap/API_PURCHASEREQ_PROCESS_SRV/A_PurchaseRequisitionHeader",
-      example: "/sap/opu/odata/sap/API_PURCHASEREQ_PROCESS_SRV/A_PurchaseRequisitionHeader",
+      example:
+        "/sap/opu/odata/sap/API_PURCHASEREQ_PROCESS_SRV/A_PurchaseRequisitionHeader",
       clean: util.types.toString,
     },
     top,
@@ -119,9 +121,19 @@ const rawRequestOdata = action({
   },
   perform: async (
     _context,
-    { connection, url, top, skip, search, filter, inlinecount, orderBy, select, expand },
+    {
+      connection,
+      url,
+      top,
+      skip,
+      search,
+      filter,
+      inlinecount,
+      orderBy,
+      select,
+      expand,
+    },
   ) => {
-    
     const queryParams: string[] = [];
     if (top) queryParams.push(`$top=${top}`);
     if (skip) queryParams.push(`$skip=${skip}`);
@@ -131,16 +143,13 @@ const rawRequestOdata = action({
     if (orderBy) queryParams.push(`$orderby=${orderBy}`);
     if (select) queryParams.push(`$select=${select}`);
     if (expand) queryParams.push(`$expand=${expand}`);
-
-    const queryString = queryParams.length > 0 ? `?${queryParams.join("&")}` : "";
+    const queryString =
+      queryParams.length > 0 ? `?${queryParams.join("&")}` : "";
     const finalUrl = `${url}${queryString}`;
-
     const headers: Record<string, string> = {
       Accept: "application/json",
     };
-
     const client = getSapClient(connection, headers);
-
     try {
       const { data } = await client.get(finalUrl);
       return { data };
@@ -151,5 +160,4 @@ const rawRequestOdata = action({
     }
   },
 });
-
 export default rawRequestOdata;

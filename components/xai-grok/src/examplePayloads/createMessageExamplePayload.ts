@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const createMessageExamplePayload = {
   data: {
     id: "4f224bfb-9d53-4c82-b40a-b7cd80831ec2",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createWorkflowClient } from "../../client";
 import { getJobPresetResponse } from "../../examplePayloads";
 import { connection, id } from "../../inputs";
-
 export const getJobPreset = action({
   display: {
     label: "Get Job Preset",

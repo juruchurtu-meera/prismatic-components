@@ -1,6 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
-import { connection, description, fetchAll, limit, name, offset } from "./common";
-
+import {
+  connection,
+  description,
+  fetchAll,
+  limit,
+  name,
+  offset,
+} from "./common";
 export const datasetId = input({
   label: "DataSet ID",
   type: "string",
@@ -11,7 +17,6 @@ export const datasetId = input({
   dataSource: "selectDataSet",
   clean: util.types.toString,
 });
-
 export const rows = input({
   label: "Rows",
   type: "string",
@@ -21,7 +26,6 @@ export const rows = input({
   example: "1000",
   clean: util.types.toString,
 });
-
 export const columns = input({
   label: "Columns",
   type: "code",
@@ -45,7 +49,6 @@ export const columns = input({
   ),
   clean: util.types.toString,
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -55,7 +58,6 @@ export const fileName = input({
   example: "export_data.csv",
   clean: util.types.toString,
 });
-
 export const includeHeader = input({
   label: "Include Header",
   comments: "When true, includes table header in export.",
@@ -79,7 +81,6 @@ export const includeHeader = input({
   ],
   clean: util.types.toString,
 });
-
 export const csvBody = input({
   label: "CSV Body",
   type: "text",
@@ -89,7 +90,6 @@ export const csvBody = input({
   example: "Name,Email\nJohn Doe,john@example.com\nJane Smith,jane@example.com",
   clean: util.types.toString,
 });
-
 export const nameLike = input({
   label: "Name Like",
   type: "string",
@@ -100,7 +100,6 @@ export const nameLike = input({
   example: "sales",
   clean: util.types.toString,
 });
-
 export const sort = input({
   label: "Sort",
   type: "string",
@@ -111,7 +110,6 @@ export const sort = input({
   example: "name",
   clean: util.types.toString,
 });
-
 export const sql = input({
   label: "SQL",
   type: "string",
@@ -121,7 +119,6 @@ export const sql = input({
   example: "SELECT * FROM dataset WHERE status = 'active'",
   clean: util.types.toString,
 });
-
 export const updateDataSetBody = input({
   label: "Update DataSet Body",
   type: "code",
@@ -139,7 +136,6 @@ export const updateDataSetBody = input({
   ),
   clean: util.types.toString,
 });
-
 export const createDataSetInputs = {
   connection,
   name: input({
@@ -151,30 +147,25 @@ export const createDataSetInputs = {
   rows,
   columns,
 };
-
 export const deleteDataSetInputs = {
   connection,
   datasetId,
 };
-
 export const exportDataFromDataSetInputs = {
   connection,
   datasetId,
   fileName,
   includeHeader,
 };
-
 export const getDataSetInputs = {
   connection,
   datasetId,
 };
-
 export const importDataIntoDataSetInputs = {
   connection,
   datasetId,
   csvBody,
 };
-
 export const listDataSetsInputs = {
   connection,
   fetchAll,
@@ -193,13 +184,11 @@ export const listDataSetsInputs = {
   }),
   sort,
 };
-
 export const queryDataSetInputs = {
   connection,
   datasetId,
   sql,
 };
-
 export const updateDataSetInputs = {
   connection,
   datasetId,

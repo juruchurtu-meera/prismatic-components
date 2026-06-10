@@ -3,7 +3,6 @@ import { POLL_RESOURCE_CONFIG } from "../constants";
 import { pollChangesInputs } from "../inputs";
 import type { PollingState, SageIntacctRecord } from "../types";
 import { filterByTimestamp, queryRecordsPaginated } from "../utils";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -16,13 +15,9 @@ export const pollChangesTrigger = pollingTrigger({
     if (!config) {
       throw new Error(`Unsupported resource type: ${params.pollResourceType}`);
     }
-
-    
-    
     const now = new Date().toISOString();
     const state = context.polling.getState() as PollingState;
     const lastPolledAt = state?.lastPolledAt ?? now;
-
     if (!params.showNewRecords && !params.showUpdatedRecords) {
       context.polling.setState({ lastPolledAt: now });
       return {
@@ -30,15 +25,6 @@ export const pollChangesTrigger = pollingTrigger({
         polledNoChanges: true,
       };
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
     const query = `${config.objectName}.${config.timestampField} > '${lastPolledAt}'`;
     const records = (await queryRecordsPaginated(
       params.connection,
@@ -46,7 +32,6 @@ export const pollChangesTrigger = pollingTrigger({
       [],
       query,
     )) as SageIntacctRecord[];
-
     const { created, updated } = filterByTimestamp(
       records,
       lastPolledAt,
@@ -54,17 +39,13 @@ export const pollChangesTrigger = pollingTrigger({
       params.showUpdatedRecords,
       config.createdField,
     );
-
     const totalMatched = created.length + updated.length;
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${records.length} ${params.pollResourceType} records, ${totalMatched} matched since last poll (${created.length} new, ${updated.length} updated).`,
       );
     }
-
     context.polling.setState({ lastPolledAt: now });
-
     return {
       payload: { ...payload, body: { data: { created, updated } } },
       polledNoChanges: totalMatched === 0,

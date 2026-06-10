@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getLocationResponse as updateLocationResponse } from "../../examplePayloads/locations";
 import { connection, entityId, locationId, name } from "../../inputs";
-
 export const updateLocation = action({
   display: {
     label: "Update Location",
@@ -26,7 +25,6 @@ export const updateLocation = action({
   },
   perform: async (context, { connection, locationId, name, entityId }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.patch(`/locations/${locationId}`, {
       name,
       entity_id: entityId,

@@ -4,7 +4,6 @@ import { getClientConfig } from "../../client";
 import { rawHttpRequestInputs } from "../../inputs";
 import { isLegacyConnection } from "../../legacy";
 import { validateConnection } from "../../util";
-
 export const rawHttpRequest = action({
   display: {
     label: "Raw Request (API Key)",

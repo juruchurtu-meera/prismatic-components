@@ -25,7 +25,6 @@ import {
   type,
   website,
 } from "./fields";
-
 export const createAccountInputs = {
   version,
   dynamicValues,
@@ -50,14 +49,12 @@ export const createAccountInputs = {
   postalCode,
   connection: connectionInput,
 };
-
 export const deleteAccountInputs = {
   version,
   fieldValues,
   recordId,
   connection: connectionInput,
 };
-
 export const updateAccountInputs = {
   recordId,
   version,

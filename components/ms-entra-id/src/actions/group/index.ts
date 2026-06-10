@@ -6,7 +6,6 @@ import { listGroup } from "./listGroup";
 import { listGroupMembers } from "./listGroupMembers";
 import { removeMemberOfGroup } from "./removeMemberOfGroup";
 import { upsertGroup } from "./upsertGroup";
-
 export default {
   createGroup,
   deleteGroup,

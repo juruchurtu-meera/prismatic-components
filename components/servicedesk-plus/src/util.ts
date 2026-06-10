@@ -11,7 +11,6 @@ import {
   UNSUPPORTED_CONNECTION_TYPE,
 } from "./constants";
 import type { MapModel, ObjectType, SearchCriteria } from "./interfaces";
-
 export const mapModel = (array: MapModel[], includeEmpty = false) => {
   if (!Array.isArray(array)) throw new Error("Expected an array");
   const modelArray = array.map(({ label, value }) => ({
@@ -21,12 +20,10 @@ export const mapModel = (array: MapModel[], includeEmpty = false) => {
   if (includeEmpty) return [{ label: "", value: "" }, ...modelArray];
   return modelArray;
 };
-
 export const validateConnection = (connection: Connection) => {
   if (connection.key !== oauth2.key) {
     throw new Error(UNSUPPORTED_CONNECTION_TYPE);
   }
-
   if (
     !connection.fields.clientId ||
     !connection.fields.clientSecret ||
@@ -34,18 +31,14 @@ export const validateConnection = (connection: Connection) => {
   ) {
     throw new Error(MISSING_CONNECTION_FIELD);
   }
-
   if (!connection.token?.access_token) {
     throw new Error(MISSING_AUTHENTICATION);
   }
 };
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanBool = (value: unknown) =>
   value ? util.types.toBool(value) : undefined;
-
 export const cleanKeyValueListInput = (value: unknown) =>
   value
     ? util.types.keyValPairListToObject(
@@ -53,24 +46,19 @@ export const cleanKeyValueListInput = (value: unknown) =>
         util.types.toObject,
       )
     : undefined;
-
 export const cleanObject = (value: unknown) =>
   value ? util.types.toObject(value) : undefined;
-
 export const cleanValueListInput = (value: unknown): string[] | undefined => {
   if (Array.isArray(value)) {
     return value.length > 0 ? value : undefined;
   }
   return undefined;
 };
-
 export const cleanNumber = (value: unknown) =>
   value ? util.types.toNumber(value, 1) : undefined;
-
 export const createPayload = (params: ObjectType) => ({
   input_data: JSON.stringify(params),
 });
-
 export const createConfigurationItemPayload = (
   ciTypeApiName: string,
   params: ObjectType,
@@ -81,27 +69,10 @@ export const createConfigurationItemPayload = (
   };
   return createPayload(ciConfigurationObject);
 };
-
 const compareArrayLengths = (arrays: KeyValuePair<unknown>[][]) => {
   const firstArrayLength = arrays[0].length;
   return arrays.every((array) => array.length === firstArrayLength);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const getSearchCriteria = (
   conditionsCriteriaValue: KeyValuePair<unknown>[],
   criteria: ObjectType,
@@ -136,10 +107,8 @@ const getSearchCriteria = (
   }
   return searchCriteriaParams;
 };
-
 const processSearchCriteria = (searchCriteria: SearchCriteria) => {
   const { conditionsCriteria, conditionsCriteriaValue } = searchCriteria;
-
   if (!compareArrayLengths([conditionsCriteria, conditionsCriteriaValue])) {
     throw new Error(
       "The number of Conditions and Values must be the same. Check your inputs.",
@@ -148,12 +117,9 @@ const processSearchCriteria = (searchCriteria: SearchCriteria) => {
   if (conditionsCriteriaValue.length === 0) {
     return undefined;
   }
-
   const criteria = cleanKeyValueListInput(conditionsCriteria) as ObjectType;
-
   return getSearchCriteria(conditionsCriteriaValue, criteria);
 };
-
 export const paginateData = async (
   client: HttpClient,
   listName: string,
@@ -195,10 +161,8 @@ export const paginateData = async (
       fetchedData = data;
       index++;
     } while (has_more);
-
     const returnedData = Object.create({});
     returnedData[listName] = items;
-
     return {
       ...fetchedData,
       ...returnedData,
@@ -219,7 +183,6 @@ export const paginateData = async (
   );
   return data;
 };
-
 const sendRequest = async (
   client: HttpClient,
   params: ObjectType,
@@ -230,7 +193,6 @@ const sendRequest = async (
   });
   return data;
 };
-
 export const buildCriteriaObject = (
   conditionsCriteria: KeyValuePair<unknown>[],
   conditionsCriteriaValue: KeyValuePair<unknown>[],

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getCustomAccountingFieldResponse } from "../../examplePayloads/customAccountingFields";
 import { connection, customAccountingFieldId } from "../../inputs";
-
 export const getCustomAccountingField = action({
   display: {
     label: "Get Custom Accounting Field",
@@ -14,8 +13,9 @@ export const getCustomAccountingField = action({
   },
   perform: async (context, { connection, customAccountingFieldId }) => {
     const client = createClient(connection, context.debug.enabled);
-
-    const { data } = await client.get(`/accounting/fields/${customAccountingFieldId}`);
+    const { data } = await client.get(
+      `/accounting/fields/${customAccountingFieldId}`,
+    );
     return {
       data,
     };

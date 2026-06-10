@@ -1,16 +1,21 @@
-This component uses token authentication to interact with the Tableau API.
-To generate a token:
+This component uses Personal Access Token authentication to interact with the Tableau REST API.
+Create a connection of type **Personal Access Token**.
 
-- Log in to **Tableau**
-- Click the user icon in the top right, and click **My Account Settings**
-- Under **Personal Access Tokens**, type in a **Token Name** and select **Create new token**.
-  Take note of the **Token Name** and **Token Secret** - you'll enter those in a moment
-- Look at your Tableau URL.
-  It'll look like `https://10ay.online.tableau.com/#/site/MarketingTeam/workbooks`.
-  You'll use the `10ay.online.tableau.com` portion as your **Host Name**, and `MarketingTeam` as your **Site ID**.
+#### Setup Steps
 
-Now, add a Tableau step to your flow.
-This will automatically create a Tableau connection config variable.
-Fill in the config variable with the **Token Name**, **Token Secret**, **Host Name** and **Site ID** that you noted above.
+1. Log in to **Tableau**.
+2. Click the user icon in the top right, and click **My Account Settings**.
+3. Under **Personal Access Tokens**, type in a **Token Name** and select **Create new token**.
+   Take note of the **Token Name** and **Token Secret**. These are entered into the connection in a moment.
+4. Locate the Tableau URL.
+   It looks like `https://10ay.online.tableau.com/#/site/MarketingTeam/workbooks`.
+   The `10ay.online.tableau.com` portion is the **Host Name**, and `MarketingTeam` is the **Site ID**.
 
-For additional information regarding authentication, please refer to the [Tableau docs](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_auth.htm).
+#### Configure the Connection
+
+- **Token Name**: The name of the Personal Access Token created above.
+- **Token Secret**: The secret value of the Personal Access Token created above.
+- **Host Name**: The Tableau server host, without the `https://` prefix (for example, `10ay.online.tableau.com`).
+- **Site ID**: The Tableau site identifier (for example, `MarketingTeam`).
+
+For additional information regarding authentication, refer to the [Tableau docs](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_auth.htm).

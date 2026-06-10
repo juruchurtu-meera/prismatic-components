@@ -32,7 +32,6 @@ import {
   loginType,
   removeTspCredentials,
 } from "../../inputs";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -74,7 +73,6 @@ export const updateUser = action({
     },
   ) => {
     const client = createZoomClient({ connection, debug });
-
     const { data } = await client.patch(
       `/users/${userId}`,
       {
@@ -114,7 +112,6 @@ export const updateUser = action({
         },
       },
     );
-
     return {
       data,
     };

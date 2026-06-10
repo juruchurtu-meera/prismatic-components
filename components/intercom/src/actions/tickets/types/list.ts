@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { listTicketTypesResponse } from "../../../examplePayloads";
 import { connectionInput } from "../../../inputs";
-
 export const listTicketTypes = action({
   display: {
     label: "List Ticket Types",

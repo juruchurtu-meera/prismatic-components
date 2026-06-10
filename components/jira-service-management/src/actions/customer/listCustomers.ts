@@ -4,7 +4,6 @@ import { listCustomersExamplePayload } from "../../examplePayloads";
 import { listCustomersInputs } from "../../inputs";
 import type { User } from "../../types";
 import { getPaginatedData } from "../../util";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",

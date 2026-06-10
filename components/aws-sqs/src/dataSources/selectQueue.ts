@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { createSQSClient } from "../client";
 import { connectionInputs } from "../inputs";
 import { listQueuesFn } from "../utils";
-
 export const selectQueue = dataSource({
   display: {
     label: "Select Queue",
@@ -23,7 +22,7 @@ export const selectQueue = dataSource({
     awsRegion: {
       ...connectionInputs.awsRegion,
       dataSource: undefined,
-      model: undefined, 
+      model: undefined,
     },
   },
 });

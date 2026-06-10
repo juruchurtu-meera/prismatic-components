@@ -24,7 +24,6 @@ import {
   tableView,
   timePartitioning,
 } from "../../inputs";
-
 export const patchTable = action({
   display: {
     description: "Patch information in an existing table.",

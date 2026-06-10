@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
 import { applicationId, workspaceId } from "./common";
-
 export const moveSoftwareInputs = {
   connection,
   applicationId: input({

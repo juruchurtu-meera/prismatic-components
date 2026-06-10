@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 const userId = input({
   label: "User Id",
   comments:
@@ -10,7 +9,6 @@ const userId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const reprocessLicenseAssignmentInputs = {
   userId,
 };

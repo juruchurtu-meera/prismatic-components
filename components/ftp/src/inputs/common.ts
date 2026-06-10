@@ -1,11 +1,9 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const verbose = input({
   label: "Verbose Logging",
   placeholder: "Enable Verbose Logging",
@@ -15,7 +13,6 @@ export const verbose = input({
   example: "false",
   clean: util.types.toBool,
 });
-
 export const path = input({
   label: "Path",
   placeholder: "Path of directory on FTP server to monitor",
@@ -26,7 +23,6 @@ export const path = input({
   example: "/path/to/directory",
   clean: util.types.toString,
 });
-
 export const pattern = input({
   label: "Pattern",
   default: "*",
@@ -37,7 +33,6 @@ export const pattern = input({
   example: "*.csv",
   clean: util.types.toString,
 });
-
 export const includeSubdirectories = input({
   label: "Include Subdirectories",
   default: "false",

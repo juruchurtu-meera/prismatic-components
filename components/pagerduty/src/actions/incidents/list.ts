@@ -22,7 +22,6 @@ import {
   userIds,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const listIncidents = action({
   display: {
     label: "List Incidents",
@@ -68,7 +67,6 @@ export const listIncidents = action({
       since,
       until,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({
@@ -79,7 +77,6 @@ export const listIncidents = action({
         }),
       };
     }
-
     const { data } = await client.get(ENDPOINTS.INCIDENTS, {
       params,
     });

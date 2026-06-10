@@ -3,7 +3,6 @@ import { getMsBusinessCentralClient } from "../../client";
 import { listCompaniesExamplePayload } from "../../examplePayloads";
 import { connectionInput, odataParams } from "../../inputs/general";
 import type { Company, MultipleItemsResponse } from "../../interfaces";
-
 export const listCompanies = action({
   display: {
     label: "List Companies",
@@ -14,7 +13,6 @@ export const listCompanies = action({
     context,
     {
       connection,
-
       $count,
       $expand,
       $format,
@@ -27,7 +25,11 @@ export const listCompanies = action({
       $filter,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const params = {
       $count,
       $expand,
@@ -40,11 +42,12 @@ export const listCompanies = action({
       $top,
       $filter,
     };
-
-    const { data } = await client.get<MultipleItemsResponse<Company[]>>("/companies", {
-      params,
-    });
-
+    const { data } = await client.get<MultipleItemsResponse<Company[]>>(
+      "/companies",
+      {
+        params,
+      },
+    );
     return { data };
   },
   inputs: {

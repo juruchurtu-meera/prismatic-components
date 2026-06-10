@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listCommentsExamplePayload } from "../../examplePayloads";
 import { listCommentsInputs } from "../../inputs";
 import { paginateCursor } from "../../util";
-
 export const listComments = action({
   display: {
     label: "List Comments",

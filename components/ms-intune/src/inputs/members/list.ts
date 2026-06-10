@@ -1,6 +1,5 @@
 import { connection, odataParams, fetchAll } from "../general";
 import { groupIdForMembers } from "./general";
-
 const usedODataParams = {
   $filter: odataParams.$filter,
   $count: odataParams.$count,
@@ -9,7 +8,6 @@ const usedODataParams = {
   $top: odataParams.$top,
   $expand: odataParams.$expand,
 };
-
 export const listMembersInputs = {
   connection,
   fetchAll,

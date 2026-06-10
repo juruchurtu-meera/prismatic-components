@@ -11,7 +11,6 @@ import {
   status,
   workspaceId,
 } from "./common";
-
 export const createSoftwareInputs = {
   connection,
   name,

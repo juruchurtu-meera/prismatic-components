@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { getMessageByIdExamplePayload } from "../../examplePayloads";
 import { getMessageByIdInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const getMessageById = action({
   display: {
     label: "Get Mail Message",
@@ -18,10 +17,7 @@ export const getMessageById = action({
       `/me/messages/${params.messageId}/$value`,
     );
     const { data } = await client.get(url);
-
-    
     const parsed = await simpleParser(data);
-
     const message = {
       headers: Object.fromEntries(parsed.headers),
       attachments: parsed.attachments.map(
@@ -33,7 +29,6 @@ export const getMessageById = action({
       text: parsed.text,
       html: parsed.html,
     };
-
     return { data: { message, rawMessage: data } };
   },
   examplePayload: getMessageByIdExamplePayload,

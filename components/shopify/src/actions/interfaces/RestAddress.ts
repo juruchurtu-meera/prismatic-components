@@ -1,6 +1,6 @@
 export interface RestAddress {
-  id?: number; 
-  customer_id?: number; 
+  id?: number;
+  customer_id?: number;
   first_name?: string;
   last_name?: string;
   company?: string;
@@ -11,9 +11,9 @@ export interface RestAddress {
   country?: string;
   zip?: string;
   phone?: string;
-  name?: string; 
+  name?: string;
   province_code?: string;
   country_code?: string;
-  country_name?: string; 
-  default?: boolean; 
+  country_name?: string;
+  default?: boolean;
 }

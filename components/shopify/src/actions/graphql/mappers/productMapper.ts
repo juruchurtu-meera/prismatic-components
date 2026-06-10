@@ -1,6 +1,5 @@
 import { getNumericId } from "../../../util";
 import type { Product } from "../../interfaces/Product";
-
 export const productMapper = (product: Product) => {
   const productId = product.id ? getNumericId(product.id) : null;
   const firstImage = product.media.nodes[0] || null;
@@ -14,7 +13,6 @@ export const productMapper = (product: Product) => {
       }
       variantsMapping[imageUrl].push(id);
     }
-
     return {
       id,
       product_id: productId,
@@ -31,7 +29,9 @@ export const productMapper = (product: Product) => {
       sku: variant.sku,
       weight: variant.inventoryItem?.measurement?.weight?.value ?? null,
       weight_unit: variant.inventoryItem?.measurement?.weight?.unit ?? null,
-      inventory_item_id: variant.inventoryItem?.id ? getNumericId(variant.inventoryItem.id) : null,
+      inventory_item_id: variant.inventoryItem?.id
+        ? getNumericId(variant.inventoryItem.id)
+        : null,
       inventory_quantity: variant.inventoryQuantity ?? null,
       image_url: imageUrl,
       admin_graphql_api_id: variant.id,
@@ -40,7 +40,6 @@ export const productMapper = (product: Product) => {
   const images = product.media.nodes.map((media, index) => {
     const imageId = media.id ? getNumericId(media.id) : null;
     const src = media.image?.url ?? null;
-
     return {
       id: imageId,
       alt: media.alt,
@@ -69,9 +68,7 @@ export const productMapper = (product: Product) => {
     tags: product.tags?.join(",") ?? null,
     status: product.status.toLowerCase(),
     admin_graphql_api_id: product.id,
-
     variants,
-
     options: (product.options ?? []).map((option) => {
       return {
         id: option.id ? getNumericId(option.id) : null,
@@ -81,7 +78,6 @@ export const productMapper = (product: Product) => {
         values: option.values,
       };
     }),
-
     images,
     image: firstImage
       ? {

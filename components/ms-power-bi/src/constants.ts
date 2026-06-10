@@ -1,5 +1,4 @@
 import type { PollResourceConfig } from "./types";
-
 export const POLL_RESOURCE_CONFIG: Record<string, PollResourceConfig> = {
   groups: {
     label: "Groups (Workspaces)",
@@ -17,7 +16,6 @@ export const POLL_RESOURCE_CONFIG: Record<string, PollResourceConfig> = {
     createdAtField: null,
   },
 };
-
 export const pollResourceModel = Object.entries(POLL_RESOURCE_CONFIG).map(
   ([value, { label }]) => ({ label, value }),
 );

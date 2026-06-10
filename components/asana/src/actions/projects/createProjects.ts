@@ -17,7 +17,6 @@ import {
   privacySetting,
 } from "../../inputs";
 import { PROJECT_OPT_FIELDS } from "../../util";
-
 export const createProjects = action({
   display: {
     label: "Create Project",
@@ -45,11 +44,9 @@ export const createProjects = action({
         privacy_setting: params.privacySetting,
       },
     };
-
     const endpoint = params.workspaceId
       ? `workspaces/${params.workspaceId}/projects`
       : "/projects";
-
     const { data } = await client.post(endpoint, projectData, {
       params: {
         opt_fields: PROJECT_OPT_FIELDS,

@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { sendMessageExamplePayload } from "../../examplePayloads";
 import { sendMessageInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const sendMessage = action({
   display: {
     label: "Send Message",
@@ -25,10 +24,15 @@ export const sendMessage = action({
       })),
       subject: params.subject,
       body: { contentType: params.bodyContentType, content: params.body },
-      attachments: [...params.attachments, ...params.dynamicAttachments] as Attachment[],
+      attachments: [
+        ...params.attachments,
+        ...params.dynamicAttachments,
+      ] as Attachment[],
     };
-
-    const url = computeEndpointBasedOnConnection(params.connection, "/me/sendMail");
+    const url = computeEndpointBasedOnConnection(
+      params.connection,
+      "/me/sendMail",
+    );
     await client.post(url, {
       message,
     });

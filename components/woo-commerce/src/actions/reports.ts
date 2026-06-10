@@ -16,7 +16,6 @@ import {
   search,
 } from "../inputs";
 import { paginateRecords } from "../util";
-
 export const listReports = action({
   display: {
     label: "List Reports",
@@ -67,7 +66,6 @@ export const listReports = action({
     };
   },
 });
-
 export const getSalesReport = action({
   display: {
     label: "Get Sales Report",
@@ -94,7 +92,6 @@ export const getSalesReport = action({
     };
   },
 });
-
 export const getTopSellersReport = action({
   display: {
     label: "Get Top Sellers Report",
@@ -121,7 +118,6 @@ export const getTopSellersReport = action({
     };
   },
 });
-
 export const getCouponTotalsReport = action({
   display: {
     label: "Get Coupon Totals Report",
@@ -141,7 +137,6 @@ export const getCouponTotalsReport = action({
     };
   },
 });
-
 export const getCustomerTotalsReport = action({
   display: {
     label: "Get Customer Totals Report",
@@ -161,7 +156,6 @@ export const getCustomerTotalsReport = action({
     };
   },
 });
-
 export const getOrderTotalsReport = action({
   display: {
     label: "Get Order Totals Report",
@@ -178,7 +172,6 @@ export const getOrderTotalsReport = action({
     };
   },
 });
-
 export const getProductTotalsReport = action({
   display: {
     label: "Get Product Totals Report",
@@ -195,7 +188,6 @@ export const getProductTotalsReport = action({
     };
   },
 });
-
 export const getReviewTotalsReport = action({
   display: {
     label: "Get Review Totals Report",

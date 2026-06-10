@@ -2,7 +2,6 @@ import { component } from "@prismatic-io/spectral";
 import actions from "./actions";
 import connections from "./connections";
 import triggers from "./triggers";
-
 export default component({
   key: "sftp",
   documentationUrl: "https://prismatic.io/docs/components/sftp/",

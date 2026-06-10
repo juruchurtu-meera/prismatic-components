@@ -4,7 +4,6 @@ export interface Issue {
   key: string;
   self: string;
 }
-
 export interface IssueFields {
   watcher: Watcher;
   attachment: Attachment[];
@@ -17,7 +16,6 @@ export interface IssueFields {
   updated: number;
   timetracking: Timetracking;
 }
-
 export interface Attachment {
   author: AttachmentAuthor;
   content: string;
@@ -29,7 +27,6 @@ export interface Attachment {
   size: number;
   thumbnail: string;
 }
-
 export interface AttachmentAuthor {
   accountId: string;
   accountType: string;
@@ -40,14 +37,12 @@ export interface AttachmentAuthor {
   name: string;
   self: string;
 }
-
 export interface AvatarUrls {
   "16x16": string;
   "24x24": string;
   "32x32": string;
   "48x48": string;
 }
-
 export interface Comment {
   author: UpdateAuthorClass;
   body: Description;
@@ -58,66 +53,55 @@ export interface Comment {
   updated: string;
   visibility: Visibility;
 }
-
 export interface UpdateAuthorClass {
   accountId: string;
   active: boolean;
   displayName: string;
   self: string;
 }
-
 export interface Description {
   type: string;
   version: number;
   content: DescriptionContent[];
 }
-
 export interface DescriptionContent {
   type: string;
   content: ContentContent[];
 }
-
 export interface ContentContent {
   type: string;
   text: string;
 }
-
 export interface Visibility {
   identifier: string;
   type: string;
   value: string;
 }
-
 export interface Issuelink {
   id: string;
   outwardIssue?: WardIssue;
   type: Type;
   inwardIssue?: WardIssue;
 }
-
 export interface WardIssue {
   fields: InwardIssueFields;
   id: string;
   key: string;
   self: string;
 }
-
 export interface InwardIssueFields {
   status: Status;
 }
-
 export interface Status {
   iconUrl: string;
   name: string;
 }
-
 export interface Type {
   id: string;
   inward: string;
   name: string;
   outward: string;
 }
-
 export interface Project {
   avatarUrls: AvatarUrls;
   id: string;
@@ -129,19 +113,16 @@ export interface Project {
   simplified: boolean;
   style: string;
 }
-
 export interface Insight {
   lastIssueUpdateTime: string;
   totalIssueCount: number;
 }
-
 export interface ProjectCategory {
   description: string;
   id: string;
   name: string;
   self: string;
 }
-
 export interface Timetracking {
   originalEstimate: string;
   originalEstimateSeconds: number;
@@ -150,13 +131,11 @@ export interface Timetracking {
   timeSpent: string;
   timeSpentSeconds: number;
 }
-
 export interface Watcher {
   isWatching: boolean;
   self: string;
   watchCount: number;
 }
-
 export interface Worklog {
   author: UpdateAuthorClass;
   comment: Description;

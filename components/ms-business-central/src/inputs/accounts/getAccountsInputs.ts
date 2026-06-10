@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const accountId = input({
   label: "Account ID",
   example: "5d115c9c-44e3-ea11-bb43-000d3a2feca1",
@@ -10,7 +9,6 @@ export const accountId = input({
   dataSource: "selectAccount",
   clean: util.types.toString,
 });
-
 export const companyId = input({
   label: "Company ID",
   type: "string",

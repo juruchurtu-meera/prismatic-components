@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { projectsDatasource } from "../examplePayloads";
 import { connection } from "../inputs";
 import type { Project } from "../interfaces";
-
 export const selectProject = dataSource({
   display: {
     label: "Select Project",
@@ -18,7 +17,6 @@ export const selectProject = dataSource({
     let projects: Project[] = [];
     let cursor = false;
     let page = 1;
-
     do {
       const { data } = await client.get(`/projects`, {
         params: {
@@ -31,15 +29,12 @@ export const selectProject = dataSource({
       cursor = data.hasMore;
       page++;
     } while (cursor && page < 10);
-
-    
     const objects = projects
       .sort((a, b) => (a.id < b.id ? -1 : 1))
       .map<Element>((project) => ({
         key: project.id.toString(),
         label: `${project.name} (ID: ${project.id})`,
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

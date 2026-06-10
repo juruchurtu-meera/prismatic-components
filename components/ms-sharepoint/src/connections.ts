@@ -1,13 +1,15 @@
-import { type ConnectionInput, oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
+import {
+  type ConnectionInput,
+  oauth2Connection,
+  OAuth2Type,
+} from "@prismatic-io/spectral";
 import {
   getMicrosoftCertificateCredentialsConnection,
   getMicrosoftOAuth2AuthorizationCodeConnection,
   getMicrosoftOAuth2ClientCredentialsConnection,
   ConnectionKeys,
 } from "ms-utils";
-
 import { DEFAULT_SCOPES } from "./constants";
-
 const source: ConnectionInput = {
   label: "Source",
   type: "string",
@@ -15,7 +17,6 @@ const source: ConnectionInput = {
   shown: false,
   default: "SharePoint",
 };
-
 export const templatedOauth = getMicrosoftOAuth2AuthorizationCodeConnection({
   key: ConnectionKeys.SharepointTemplatedOauth,
   defaultScopes: DEFAULT_SCOPES,
@@ -23,15 +24,14 @@ export const templatedOauth = getMicrosoftOAuth2AuthorizationCodeConnection({
     source,
   },
 });
-
-export const oauthClientCredentials = getMicrosoftOAuth2ClientCredentialsConnection({
-  key: ConnectionKeys.OauthClientCredentials,
-});
-
-export const certificateCredentials = getMicrosoftCertificateCredentialsConnection({
-  key: ConnectionKeys.CertificateCredentials,
-});
-
+export const oauthClientCredentials =
+  getMicrosoftOAuth2ClientCredentialsConnection({
+    key: ConnectionKeys.OauthClientCredentials,
+  });
+export const certificateCredentials =
+  getMicrosoftCertificateCredentialsConnection({
+    key: ConnectionKeys.CertificateCredentials,
+  });
 export const oauth = oauth2Connection({
   key: ConnectionKeys.SharedOauth,
   display: {
@@ -92,11 +92,15 @@ export const oauth = oauth2Connection({
       type: "password",
       required: true,
       shown: true,
-      comments: "Client Secret generated under 'Certificates & Secrets' in your Azure application.",
+      comments:
+        "Client Secret generated under 'Certificates & Secrets' in your Azure application.",
     },
-    
     source,
   },
 });
-
-export default [templatedOauth, oauthClientCredentials, certificateCredentials, oauth];
+export default [
+  templatedOauth,
+  oauthClientCredentials,
+  certificateCredentials,
+  oauth,
+];

@@ -61,15 +61,11 @@ export const createEntryExamplePayload = {
     },
   },
 };
-
 export const updateEntryExamplePayload = {
   data: createEntryExamplePayload,
 };
-
 export const listEntriesExamplePayload = [createEntryExamplePayload];
-
 export const getEntryExamplePayload = createEntryExamplePayload;
-
 export const publishEntryExamplePayload = {
   fields: {
     title: {
@@ -104,7 +100,6 @@ export const publishEntryExamplePayload = {
     publishedVersion: 9,
   },
 };
-
 export const unpublishEntryExamplePayload = {
   fields: {
     title: {

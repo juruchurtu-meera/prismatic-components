@@ -15,7 +15,6 @@ import {
   getAppId,
   validateFields,
 } from "../../util";
-
 export const createPageWebhook = action({
   display: {
     label: "Create Page Webhook",
@@ -45,7 +44,6 @@ export const createPageWebhook = action({
       verifyToken,
       fields,
     );
-
     return {
       data,
     };

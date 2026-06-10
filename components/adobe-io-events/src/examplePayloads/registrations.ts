@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const createWebhookExamplePayload = {
   data: {
     id: 12345,
@@ -49,11 +39,6 @@ export const createWebhookExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const listAllRegistrationsExamplePayload = {
   data: {
     _embedded: {
@@ -106,21 +91,9 @@ export const listAllRegistrationsExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const deleteRegistrationExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
 export const deleteInstancedWebhooksExamplePayload = {
   data: [
     {

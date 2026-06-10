@@ -20,9 +20,7 @@ export const listCompaniesExamplePayload = {
     ],
   },
 };
-
 export const updateCompanyExamplePayload = {
   data: { id: "553c3ef8b8cdcd1501ba1111" },
 };
-
 export const deleteCompanyExamplePayload = { data: "success" };

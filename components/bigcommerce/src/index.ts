@@ -76,7 +76,6 @@ import {
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "bigcommerce",
   documentationUrl: "https://prismatic.io/docs/components/bigcommerce/",

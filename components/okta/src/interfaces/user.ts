@@ -13,18 +13,14 @@ export interface User {
   credentials: Credentials;
   _links: Links;
 }
-
 export interface Links {
   self: Self;
 }
-
 export type Self = Record<string, unknown>;
-
 export interface Credentials {
   password: Self;
   provider: Self;
 }
-
 export interface Profile {
   firstName: string;
   lastName: string;
@@ -33,11 +29,9 @@ export interface Profile {
   login: string;
   email: string;
 }
-
 export interface Type {
   id: string;
 }
-
 export interface UserType {
   id: string;
   displayName: string;
@@ -49,7 +43,6 @@ export interface UserType {
   lastUpdated: string;
   default: boolean;
 }
-
 export interface Factor {
   id: string;
   factorType: string;
@@ -61,22 +54,18 @@ export interface Factor {
   profile: FactorProfile;
   _links: FactorLinks;
 }
-
 interface FactorLinks {
   questions: HintsLink;
   self: HintsLink;
   user: HintsLink;
 }
-
 interface HintsLink {
   href: string;
   hints: Hint;
 }
-
 interface Hint {
   allow: string[];
 }
-
 interface FactorProfile {
   question: string;
   questionText: string;

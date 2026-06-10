@@ -3,12 +3,6 @@ import { createClient } from "../../client";
 import { updateContactInputs } from "../../inputs";
 import { updateContactExamplePayload } from "../../examplePayloads";
 import type { Contact } from "../../types";
-
-
-
-
-
-
 export const updateContact = action({
   display: {
     label: "Update Contact",
@@ -28,8 +22,6 @@ export const updateContact = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
-    
     const body: Record<string, unknown> = {
       email,
       first_name: firstName,
@@ -37,12 +29,10 @@ export const updateContact = action({
       custom_fields: customFields || undefined,
       ...extraBody,
     };
-
     const { data } = await client.patch<Contact>(
       `/contacts/${contactId}`,
       body,
     );
-
     return { data };
   },
   examplePayload: updateContactExamplePayload,

@@ -30,7 +30,6 @@ import {
   timeout,
 } from "../inputs";
 import { getAllPaginatedData } from "../util";
-
 export const cancelImport = action({
   display: {
     label: "Cancel Import",
@@ -44,7 +43,6 @@ export const cancelImport = action({
       debugRequest,
       headers: { "Content-Type": "application/json" },
     });
-
     return {
       data: (await client.post(`/crm/v3/imports/${importId}/cancel`)).data,
     };
@@ -56,7 +54,6 @@ export const cancelImport = action({
   },
   examplePayload: cancelImportPayload,
 });
-
 export const listActiveImports = action({
   display: {
     label: "List Active Imports",
@@ -69,21 +66,23 @@ export const listActiveImports = action({
       timeout,
       debugRequest,
     });
-
-    const data = await getAllPaginatedData(client, "/crm/v3/imports", true, true, {});
-
+    const data = await getAllPaginatedData(
+      client,
+      "/crm/v3/imports",
+      true,
+      true,
+      {},
+    );
     return {
       data,
     };
   },
-
   inputs: {
     hubspotConnection: connectionInput,
     timeout,
   },
   examplePayload: listActiveImportsPayload,
 });
-
 export const importCRMData = action({
   display: {
     label: "Import CRM Data",
@@ -110,9 +109,7 @@ export const importCRMData = action({
       timeout,
       debugRequest,
     });
-
     const formData = new FormData();
-
     const importRequest = {
       name,
       ...(importOperations && {
@@ -123,17 +120,19 @@ export const importCRMData = action({
       createContactListFromImport,
       files,
     };
-
     formData.append("importRequest", JSON.stringify(importRequest));
-
     for (const fileName in dataFiles) {
-      const fileData = Buffer.from((dataFiles[fileName] as { data }).data);
-
+      const fileData = Buffer.from(
+        (
+          dataFiles[fileName] as {
+            data;
+          }
+        ).data,
+      );
       formData.append("files", fileData, {
         filename: fileName,
       });
     }
-
     return {
       data: (
         await client.post("/crm/v3/imports", formData, {
@@ -159,11 +158,11 @@ export const importCRMData = action({
   },
   examplePayload: importCRMDataPayload,
 });
-
 export const getAnImport = action({
   display: {
     label: "Get Import",
-    description: "Get a complete summary of an import record, including any updates.",
+    description:
+      "Get a complete summary of an import record, including any updates.",
   },
   perform: async (context, { timeout, hubspotConnection, importId }) => {
     const debugRequest = context.debug.enabled;
@@ -172,7 +171,6 @@ export const getAnImport = action({
       timeout,
       debugRequest,
     });
-
     return {
       data: (await client.get(`/crm/v3/imports/${importId}`)).data,
     };
@@ -184,11 +182,11 @@ export const getAnImport = action({
   },
   examplePayload: getAnImportPayload,
 });
-
 export const exportCRMData = action({
   display: {
     label: "Export CRM Data",
-    description: "Begins exporting CRM data for the portal as specified in the request body.",
+    description:
+      "Begins exporting CRM data for the portal as specified in the request body.",
   },
   perform: async (
     context,
@@ -213,11 +211,11 @@ export const exportCRMData = action({
       debugRequest,
       headers: { "Content-Type": "application/json" },
     });
-    
     if (schemaType === "PublicExportListRequest" && !listId) {
-      throw new Error("List Id is required for Schema Type PublicExportListRequest");
+      throw new Error(
+        "List Id is required for Schema Type PublicExportListRequest",
+      );
     }
-
     const payload = {
       exportType: schemaType,
       format,
@@ -229,9 +227,8 @@ export const exportCRMData = action({
       ...(publicCrmSearchRequest && { publicCrmSearchRequest }),
       ...(listId && { listId }),
     };
-
-    const data = (await client.post("/crm/v3/exports/export/async", payload)).data;
-
+    const data = (await client.post("/crm/v3/exports/export/async", payload))
+      .data;
     return {
       data,
     };

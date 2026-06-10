@@ -19,22 +19,17 @@ import {
   createWebhookExamplePayload,
   deleteWebhookExamplePayload,
 } from "../examplePayloads";
-
-
 const getInstanceWebhookIds = async (
   client,
   entries,
   webhookUrls: Record<string, string>,
 ): Promise<Set<string>> => {
-  
-  
-  
-  const webhookDetails: { id: string; address: string }[] = await Promise.all(
+  const webhookDetails: {
+    id: string;
+    address: string;
+  }[] = await Promise.all(
     (entries || []).map(({ id }) => client.webhooks.get(id)),
   );
-
-  
-  
   const instanceWebhookUrls = new Set(Object.values(webhookUrls));
   return new Set(
     webhookDetails
@@ -42,7 +37,6 @@ const getInstanceWebhookIds = async (
       .map(({ id }) => id),
   );
 };
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",
@@ -77,14 +71,12 @@ export const listWebhooks = action({
     const webhooks = fetchAll
       ? await getAllWebhookEntries(client)
       : await client.webhooks.getAll(options);
-
     if (showOnlyInstanceWebhooks) {
       const instanceWebhookIds = await getInstanceWebhookIds(
         client,
         webhooks?.entries,
         webhookUrls,
       );
-
       return {
         data: {
           ...webhooks,
@@ -94,12 +86,10 @@ export const listWebhooks = action({
         },
       };
     }
-
     return { data: webhooks };
   },
   examplePayload: listWebhooksExamplePayload,
 });
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
@@ -147,19 +137,16 @@ export const createWebhook = action({
         throw error;
       }
     }
-
     if (primarySignatureKey) {
       crossFlowState.primarySignatureKey = primarySignatureKey;
     }
     if (secondarySignatureKey) {
       crossFlowState.secondarySignatureKey = secondarySignatureKey;
     }
-
     return { data, crossFlowState };
   },
   examplePayload: createWebhookExamplePayload,
 });
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",
@@ -176,7 +163,6 @@ export const deleteWebhook = action({
   },
   examplePayload: deleteWebhookExamplePayload,
 });
-
 export const deleteInstanceWebhooks = action({
   display: {
     label: "Delete Instance Webhooks",
@@ -186,21 +172,16 @@ export const deleteInstanceWebhooks = action({
   inputs: { boxConnection: connectionInput },
   perform: async ({ logger, webhookUrls }, { boxConnection }) => {
     const client = createAuthorizedClient({ boxConnection });
-
-    
     const entries = [];
     let stop = false;
     let marker = null;
     while (!stop) {
       const options = marker ? { marker } : {};
       const webhooks = await client.webhooks.getAll(options);
-
       entries.push(...(webhooks?.entries || []));
       stop = !marker;
       marker = webhooks?.next_marker;
     }
-
-    
     const instanceWebhookIds = await getInstanceWebhookIds(
       client,
       entries,
@@ -210,11 +191,9 @@ export const deleteInstanceWebhooks = action({
       logger.info(`Deleting webhook ${webhookId}...`);
       await client.webhooks.delete(webhookId);
     }
-
     return { data: {} };
   },
 });
-
 export default {
   createWebhook,
   deleteWebhook,

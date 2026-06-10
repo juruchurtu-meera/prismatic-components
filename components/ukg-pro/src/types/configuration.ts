@@ -29,7 +29,6 @@ export interface Company {
   useMultipleJobGroups: boolean;
   integrationRecordId: string;
 }
-
 export interface Job {
   countryCode: string;
   jobCode: string;
@@ -44,7 +43,6 @@ export interface Job {
   workEnvirornmentCode: string;
   workEnvironmentDesc: string;
 }
-
 export interface Location {
   locationCode: string;
   description: string;
@@ -57,7 +55,6 @@ export interface Location {
   countryCode: string;
   locationGLSegment: string;
 }
-
 export interface EmployeePosition {
   alternateTitle: string;
   companyId: string;
@@ -91,7 +88,6 @@ export interface EmployeePosition {
   userDefinedField04: UserDefinedField04;
   integrationRecordId: string;
 }
-
 export interface UserDefinedField04 {
   isNull: boolean;
   Value: number;

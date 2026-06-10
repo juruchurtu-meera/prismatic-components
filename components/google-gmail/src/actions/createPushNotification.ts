@@ -1,12 +1,17 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-import { connectionInput, userIdInput, topicNameInput, labelIdsInput } from "../inputs";
+import {
+  connectionInput,
+  userIdInput,
+  topicNameInput,
+  labelIdsInput,
+} from "../inputs";
 import { createPushNotificationExamplePayload } from "../examplePayloads";
-
 const createPushNotification = action({
   display: {
     label: "Create Push Notification (Watch Request)",
-    description: "Enables the ability to send update notifications like new messages received.",
+    description:
+      "Enables the ability to send update notifications like new messages received.",
   },
   inputs: {
     connection: connectionInput,
@@ -14,7 +19,10 @@ const createPushNotification = action({
     topicNameInput,
     labelIdsInput,
   },
-  perform: async (context, { connection, userIdInput, topicNameInput, labelIdsInput }) => {
+  perform: async (
+    context,
+    { connection, userIdInput, topicNameInput, labelIdsInput },
+  ) => {
     const client = await createClient(connection);
     const { data } = await client.users.watch({
       userId: userIdInput,
@@ -27,5 +35,4 @@ const createPushNotification = action({
   },
   examplePayload: createPushNotificationExamplePayload,
 });
-
 export default createPushNotification;

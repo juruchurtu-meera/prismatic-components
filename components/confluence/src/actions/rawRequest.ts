@@ -5,9 +5,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { connectionInput } from "../inputs";
 import { buildAuthHeaders, getHostBasedOnConnection } from "../client";
-
 const { debugRequest, ...httpInputsWithoutDebug } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -35,9 +33,7 @@ const rawRequest = action({
         Accept: "application/json",
       },
     );
-    
     return { data: { data } };
   },
 });
-
 export default rawRequest;

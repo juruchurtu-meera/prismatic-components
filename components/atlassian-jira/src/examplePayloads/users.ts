@@ -16,7 +16,6 @@ export const listAssignableUsersExamplePayload = {
     },
   ],
 };
-
 export const getUserExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -48,7 +47,6 @@ export const getUserExamplePayload = {
     expand: "groups,applicationRoles",
   },
 };
-
 export const getCurrentUserExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/user?accountId=5b10a2844c20165700ede21g",
@@ -71,7 +69,6 @@ export const getCurrentUserExamplePayload = {
     locale: "en_US",
   },
 };
-
 export const createUserExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/2/user?username=newuser",
@@ -83,7 +80,6 @@ export const createUserExamplePayload = {
     timeZone: "America/Los_Angeles",
   },
 };
-
 export const findUserExamplePayload = {
   data: [
     {
@@ -105,7 +101,6 @@ export const findUserExamplePayload = {
     },
   ],
 };
-
 export const searchUsersExamplePayload = {
   data: [
     {

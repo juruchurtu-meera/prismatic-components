@@ -8,7 +8,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../util";
-
 export const getShipment = action({
   display: {
     label: "Get Shipment",

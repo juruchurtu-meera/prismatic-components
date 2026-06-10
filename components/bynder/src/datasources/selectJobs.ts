@@ -4,7 +4,6 @@ import { selectJobResponse } from "../examplePayloads";
 import { connection } from "../inputs";
 import type { Records } from "../types";
 import { sortArray } from "../util";
-
 export const selectJob = dataSource({
   display: {
     label: "Select Job",
@@ -21,7 +20,6 @@ export const selectJob = dataSource({
         key: job.id.toString(),
         label: `${job.name} (ID: ${job.id})`,
       }));
-
       return { result: objects };
     }
     return { result: [] };

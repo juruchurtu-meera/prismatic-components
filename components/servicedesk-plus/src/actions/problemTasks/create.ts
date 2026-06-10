@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createProblemTaskResponse as examplePayload } from "../../examplePayloads";
 import { createProblemTaskInputs as inputs } from "../../inputs";
 import { createPayload } from "../../util";
-
 export const createProblemTask = action({
   display: {
     label: "Create Problem Task",
@@ -28,7 +27,6 @@ export const createProblemTask = action({
     },
   ) => {
     const client = createClient(connectionInput, context.debug.enabled);
-
     const payload = createPayload({
       task: {
         owner: taskOwner,

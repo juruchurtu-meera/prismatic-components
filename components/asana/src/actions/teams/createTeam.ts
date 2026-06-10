@@ -6,7 +6,6 @@ import {
   organizationId,
   connectionInput,
 } from "../../inputs";
-
 export const createTeam = action({
   display: {
     label: "Create Team",

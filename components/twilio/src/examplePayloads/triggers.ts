@@ -1,23 +1,8 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
 import { messagePayload } from "./sms";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const pollChangesTriggerExamplePayload: { payload: TriggerPayload } = {
+export const pollChangesTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},
@@ -56,17 +41,9 @@ export const pollChangesTriggerExamplePayload: { payload: TriggerPayload } = {
     globalDebug: false,
   },
 };
-
-
-
-
-
-
-
-
-
-
-export const webhookExamplePayload: { payload: TriggerPayload } = {
+export const webhookExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {
       accept: "*/*",

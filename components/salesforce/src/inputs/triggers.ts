@@ -11,34 +11,33 @@ import {
 } from "./common";
 import { fieldsInput, nameInput, triggerTypeInput } from "./workflows";
 import { cleanValueList } from "../util";
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
   required: false,
   default: "true",
-  comments: "When true, newly created records are included in the polling results.",
+  comments:
+    "When true, newly created records are included in the polling results.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
   required: false,
   default: "true",
-  comments: "When true, recently modified records are included in the polling results.",
+  comments:
+    "When true, recently modified records are included in the polling results.",
   clean: util.types.toBool,
 });
-
 const showDeletedRecords = input({
   label: "Show Deleted Records",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "When true, recently deleted records are included in the polling results.",
+  comments:
+    "When true, recently deleted records are included in the polling results.",
   clean: util.types.toBool,
 });
-
 const selectedFields = input({
   label: "Selected Fields",
   placeholder: "Enter field API names",
@@ -50,7 +49,6 @@ const selectedFields = input({
   example: "Name",
   clean: cleanValueList,
 });
-
 const returnIdsOnly = input({
   label: "Return IDs Only",
   type: "boolean",
@@ -60,7 +58,6 @@ const returnIdsOnly = input({
     "When true, only record IDs and date fields are returned (Id, CreatedDate, LastModifiedDate). Overrides Selected Fields. Use this to minimize data returned by the trigger.",
   clean: util.types.toBool,
 });
-
 export const pollChangesTriggerInputs = {
   connection: connectionInput,
   recordType,
@@ -75,10 +72,10 @@ export const pollChangesTriggerInputs = {
   fieldValueTypes,
   maxRecordsToFetch: {
     ...maxRecordsToFetch,
-    comments: "The maximum number of records the trigger will fetch. Defaults to 20,000 records.",
+    comments:
+      "The maximum number of records the trigger will fetch. Defaults to 20,000 records.",
   },
 };
-
 export const workflowTriggerInputs = {
   connection: connectionInput,
   recordType,

@@ -19,7 +19,6 @@ import {
   connectionInput,
 } from "../../inputs";
 import { updateItemExamplePayload } from "../../examplePayloads";
-
 export const updateItem = action({
   display: {
     label: "Update Item",

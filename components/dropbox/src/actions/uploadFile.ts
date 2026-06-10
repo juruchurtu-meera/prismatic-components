@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { uploadFileExamplePayload } from "../example-payloads";
 import { connectionInput, fileContents, path } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",

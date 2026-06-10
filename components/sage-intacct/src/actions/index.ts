@@ -26,7 +26,6 @@ import { getARAdjustmentLine } from "./getARAdjustmentLine";
 import { getARAdvance } from "./getARAdvance";
 import { createARAdvance } from "./createARAdvance";
 import { updateARAdvance } from "./updateARAdvance";
-
 export default {
   createCustomer,
   updateCustomer,

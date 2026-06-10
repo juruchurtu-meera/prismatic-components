@@ -10,7 +10,6 @@ import type { GetAllTablesProps } from "./types/GetAllTablesProps";
 import type { GetTableProps } from "./types/GetTableProps";
 import type { PostTableProps } from "./types/PostTableProps";
 import type { PutTableProps } from "./types/PutTableProps";
-
 const buildTableUrl = (
   apiVersion: string,
   tableName: unknown,
@@ -22,7 +21,6 @@ const buildTableUrl = (
       ? "/api/now/table/"
       : `/api/now/${util.types.toString(apiVersion)}/table/`;
   tableUrl = urljoin(subpath, util.types.toString(tableName));
-
   if (queryParameters) {
     if (queryParameters?.sys_id) {
       tableUrl = urljoin(tableUrl, util.types.toString(queryParameters.sys_id));
@@ -36,19 +34,19 @@ const buildTableUrl = (
       tableUrl = urljoin(tableUrl, `?${stringify(filteredParams)}`);
     }
   }
-
   return tableUrl;
 };
-
 const buildPayload = (
-  fieldValuesInput: { key: string; value: unknown }[],
+  fieldValuesInput: {
+    key: string;
+    value: unknown;
+  }[],
 ): Record<string, unknown> => {
   return fieldValuesInput.reduce(
     (result, { key, value }) => ({ ...result, [key]: value }),
     {},
   );
 };
-
 const makeTableRequest = async (
   method: Method,
   {
@@ -97,13 +95,10 @@ const putTable = async (tableProps: PutTableProps) => {
 const deleteTable = async (tableProps: DeleteTableProps) => {
   return makeTableRequest("DELETE", tableProps);
 };
-
 const cleanStringInput = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 const cleanJsonInput = (value: unknown) =>
   Object.keys(value)?.length > 0 ? util.types.toObject(value) : undefined;
-
 const getAllTables = async ({
   connection,
   instanceUrl,
@@ -118,17 +113,14 @@ const getAllTables = async ({
     queryParameters,
     debug,
   });
-
 const buildKnowledgeManagementApiUrl = (
   apiVersion: string,
   instanceUrlInput: string,
 ): string => {
   const subpath =
     apiVersion === "latest" ? "/api/sn_km_api" : `/api/sn_km_api/${apiVersion}`;
-
   return urljoin(instanceUrlInput, subpath);
 };
-
 const getKnowledgeManagementApiClient = (
   connection: Connection,
   instanceUrlInput: string,
@@ -136,10 +128,8 @@ const getKnowledgeManagementApiClient = (
   debug: boolean,
 ): HttpClient => {
   const baseURL = buildKnowledgeManagementApiUrl(apiVersion, instanceUrlInput);
-
   return createClient(connection, baseURL, debug);
 };
-
 const createNowApiClient = (
   connection: Connection,
   instanceUrlInput: string,
@@ -151,17 +141,13 @@ const createNowApiClient = (
       ? `api/now`
       : `api/now/${util.types.toString(apiVersion)}`;
   const baseURL = urljoin(instanceUrlInput, subpath);
-
   return createClient(connection, baseURL, debug);
 };
-
 const DEFAULT_PAGE_SIZE = 100;
-
 const stripUndefined = (
   obj: Record<string, unknown>,
 ): Record<string, unknown> =>
   Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined));
-
 const fetchAllTableRecords = async (
   client: HttpClient,
   url: string,
@@ -172,7 +158,6 @@ const fetchAllTableRecords = async (
   const allRecords: unknown[] = [];
   let offset = 0;
   let hasMore = true;
-
   do {
     const params = {
       ...baseParams,
@@ -182,14 +167,11 @@ const fetchAllTableRecords = async (
     const { data } = await client.get(url, { params });
     const records: unknown[] = data?.result || [];
     allRecords.push(...records);
-
     hasMore = records.length >= pageSize;
     offset += pageSize;
   } while (hasMore);
-
   return allRecords;
 };
-
 const fetchAllKnowledgeRecords = async (
   client: HttpClient,
   url: string,
@@ -200,7 +182,6 @@ const fetchAllKnowledgeRecords = async (
   const allRecords: unknown[] = [];
   let offset = 0;
   let hasMore = true;
-
   do {
     const params = {
       ...baseParams,
@@ -210,14 +191,11 @@ const fetchAllKnowledgeRecords = async (
     const { data } = await client.get(url, { params });
     const articles: unknown[] = data?.result?.articles || [];
     allRecords.push(...articles);
-
     hasMore = articles.length >= pageSize;
     offset += pageSize;
   } while (hasMore);
-
   return allRecords;
 };
-
 export {
   buildPayload,
   buildTableUrl,

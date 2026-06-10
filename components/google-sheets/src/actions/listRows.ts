@@ -9,7 +9,6 @@ import {
 import { createClient } from "../client";
 import { worksheetWithTitle } from "../util";
 import { getRowResponse } from "../examplePayloads";
-
 export const getRows = action({
   display: {
     label: "List Rows",
@@ -20,16 +19,12 @@ export const getRows = action({
     { spreadsheetId, title, limit, offset, connection },
   ) => {
     const client = await createClient(spreadsheetId, connection);
-
     const sheet = worksheetWithTitle(client, title);
-
     const rows = await sheet.getRows({
       limit,
       offset,
     });
-
     const cellValues = rows.map((row) => row.toObject());
-
     return {
       data: cellValues,
     };
@@ -45,5 +40,4 @@ export const getRows = action({
     data: getRowResponse,
   },
 });
-
 export default getRows;

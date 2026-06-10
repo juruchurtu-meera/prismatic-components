@@ -1,13 +1,8 @@
-
-
-
-
-
-
 import type { Model } from "../interfaces/Model";
 import type { PaginatedResponse } from "../interfaces/PaginatedResponse";
-
-export const listModelsExamplePayload: { data: PaginatedResponse<Model> } = {
+export const listModelsExamplePayload: {
+  data: PaginatedResponse<Model>;
+} = {
   data: {
     data: [
       {

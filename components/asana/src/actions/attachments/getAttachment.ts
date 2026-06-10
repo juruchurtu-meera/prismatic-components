@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, attachmentId } from "../../inputs";
-
 export const getAttachment = action({
   display: {
     label: "Get Attachment",

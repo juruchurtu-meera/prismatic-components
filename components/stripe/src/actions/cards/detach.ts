@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { detachCardExamplePayload } from "../../examplePayloads/cards";
 import { connectionInput, customerId, paymentId, timeout } from "../../inputs";
-
 export const detachCard = action({
   display: {
     label: "Detach Card",

@@ -3,8 +3,6 @@ import { createBambooClient } from "../../client";
 import { getTimeOffRequestsExamplePayload } from "../../examplePayloads";
 import { getTimeOffRequestsInputs } from "../../inputs";
 import { filterFalseyValues } from "../../util";
-
-
 export const getTimeOffRequests = action({
   display: {
     label: "List Time Off Requests",

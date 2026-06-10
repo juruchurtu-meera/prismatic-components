@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, fileId, metadataFields } from "../inputs";
-
 export const getFileMetadata = action({
   display: {
     label: "Get File Metadata",
@@ -9,14 +8,11 @@ export const getFileMetadata = action({
   },
   perform: async (_context, { connection, fileId, metadataFields }) => {
     const drive = createClient(connection);
-
-    
     const { data } = await drive.files.get({
       fileId,
       fields: metadataFields,
       supportsAllDrives: true,
     });
-
     return {
       data,
     };
@@ -32,5 +28,4 @@ export const getFileMetadata = action({
     },
   },
 });
-
 export default getFileMetadata;

@@ -5,7 +5,6 @@ import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
 import { selectProductsInputs as inputs } from "../inputsGql";
 import { fetchData, getNumericId } from "../util";
-
 export const selectProducts = dataSource({
   display: {
     label: "Select Products",
@@ -23,7 +22,6 @@ export const selectProducts = dataSource({
         first: MAX_LIMIT,
       },
     );
-
     const result = products.map((product) => {
       const numericId = getNumericId(product.id);
       return {
@@ -31,7 +29,6 @@ export const selectProducts = dataSource({
         key: util.types.toString(numericId),
       };
     });
-
     return { result };
   },
   inputs,

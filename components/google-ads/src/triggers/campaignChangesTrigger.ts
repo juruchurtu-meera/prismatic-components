@@ -12,16 +12,13 @@ import {
   handlePollingError,
   searchGoogleAds,
 } from "../util";
-
 export const campaignChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Campaigns",
     description:
       "Checks for new and updated campaigns in a Google Ads account on a configured schedule.",
   },
-
   inputs: campaignChangesTriggerInputs,
-
   perform: async (context, payload, params) => {
     const client = createClient(
       params.connection,
@@ -39,18 +36,14 @@ export const campaignChangesTrigger = pollingTrigger({
             errorCount: 0,
             consecutiveErrors: 0,
           };
-
     const newSyncDate = getCurrentDate(timezone);
-
     try {
-      
       const query = buildCampaignQuery({
         customerId: params.customerId,
         changeTypes: params.changeTypes,
         sinceDate: pollState.lastSyncDate,
         toDate: newSyncDate,
       });
-
       const data = await searchGoogleAds<CampaignQueryRow>(client, {
         customerId: params.customerId,
         params: {
@@ -58,24 +51,18 @@ export const campaignChangesTrigger = pollingTrigger({
         },
         fetchAll: true,
       });
-
       const results = data.results ?? [];
-
-      
       const changes = detectCampaignChanges(
         results,
         pollState.campaigns,
         params.changeTypes,
       );
-
-      
       context.polling.setState({
         lastSyncDate: newSyncDate,
         campaigns: results,
         errorCount: pollState.errorCount,
-        consecutiveErrors: 0, 
+        consecutiveErrors: 0,
       });
-
       return Promise.resolve({
         payload: {
           ...payload,
@@ -94,8 +81,6 @@ export const campaignChangesTrigger = pollingTrigger({
       handlePollingError(e as Error, pollState, context, "Google Ads");
     }
   },
-
   examplePayload: campaignChangesTriggerExamplePayload,
 });
-
 export default campaignChangesTrigger;

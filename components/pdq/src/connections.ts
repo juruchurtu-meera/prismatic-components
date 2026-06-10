@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const pdqConnection = connection({
   key: "pdq-api-key",
   display: {
@@ -16,5 +15,4 @@ export const pdqConnection = connection({
     },
   },
 });
-
 export default [pdqConnection];

@@ -9,7 +9,6 @@ import {
 } from "../inputs";
 import { envelopeJson } from "../json/envelopeJson";
 import { updateEnvelopePayload } from "../examplePayloads";
-
 export const updateEnvelope = action({
   display: {
     label: "Update Envelope",

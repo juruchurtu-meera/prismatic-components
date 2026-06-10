@@ -4,7 +4,6 @@ import { listBasesExamplePayload } from "../../examplePayloads";
 import { listBasesInputs } from "../../inputs";
 import type { AirtableBase } from "../../types";
 import { paginateData } from "../../util";
-
 export const listBases = action({
   display: {
     label: "List Bases",

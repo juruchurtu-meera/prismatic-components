@@ -8,7 +8,6 @@ import {
   ticketAttributes,
   ticketTypeId,
 } from "../../inputs";
-
 export const createTicket = action({
   display: {
     label: "Create Ticket",

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const listPoliciesExamplePayload = {
   data: [
     {

@@ -3,7 +3,6 @@ import { articleId, connectionInput, locale, userId } from "../../../inputs";
 import { rawHttpClient } from "../../../auth";
 import type { SubscriptionResponse } from "../../../types";
 import { subscriptionPayload } from "../../../examplePayloads";
-
 export const createArticleSubscription = action({
   display: {
     label: "Create Article Subscription",
@@ -18,13 +17,10 @@ export const createArticleSubscription = action({
       user_id: userId || undefined,
       source_locale: locale || undefined,
     };
-
     const url = locale
       ? `/help_center/${locale}/articles/${articleId}/subscriptions`
       : `/help_center/articles/${articleId}/subscriptions`;
-
     const { data } = await client.post<SubscriptionResponse>(url, payload);
-
     return {
       data,
     };

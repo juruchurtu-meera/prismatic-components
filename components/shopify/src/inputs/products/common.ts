@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -9,17 +8,16 @@ export const title = input({
   comments: "The title of the product.",
   clean: util.types.toString,
 });
-
 export const body = input({
   label: "Body HTML",
   type: "string",
   required: false,
   example: "<strong>Try our classic fit!</strong>",
   placeholder: "Enter HTML description",
-  comments: "HTML-formatted description displayed with the product information.",
+  comments:
+    "HTML-formatted description displayed with the product information.",
   clean: util.types.toString,
 });
-
 export const vendor = input({
   label: "Vendor",
   type: "string",
@@ -29,7 +27,6 @@ export const vendor = input({
   comments: "The vendor of the product.",
   clean: util.types.toString,
 });
-
 export const productType = input({
   label: "Product Type",
   type: "string",
@@ -39,7 +36,6 @@ export const productType = input({
   comments: "The type of product.",
   clean: util.types.toString,
 });
-
 export const productStatus = input({
   label: "Product Status",
   type: "string",
@@ -52,7 +48,6 @@ export const productStatus = input({
   placeholder: "Select product status",
   clean: util.types.toString,
 });
-
 export const imageUrl = input({
   label: "Image URL",
   type: "string",

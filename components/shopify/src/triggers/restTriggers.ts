@@ -2,8 +2,11 @@ import * as crypto from "node:crypto";
 import { type TriggerPayload, trigger, util } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../client";
 import { eventTopicWebhookInputs, webhookInputs } from "../inputs";
-import { createWebhooks, deleteWebhooksInstance, performFunction } from "../util";
-
+import {
+  createWebhooks,
+  deleteWebhooksInstance,
+  performFunction,
+} from "../util";
 export const eventTopicWebhook = trigger({
   display: {
     label: "Event Topic Webhook (Deprecated)",
@@ -25,7 +28,6 @@ export const eventTopicWebhook = trigger({
     await deleteWebhooksInstance(client, endpoint);
   },
 });
-
 export const webhook = trigger({
   display: {
     label: "Webhook",
@@ -78,5 +80,4 @@ export const webhook = trigger({
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });
-
 export default { webhook, eventTopicWebhook };

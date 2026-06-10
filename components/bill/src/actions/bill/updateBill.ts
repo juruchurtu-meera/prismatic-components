@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { updateBillInputs } from "../../inputs/bill";
 import { updateBillExamplePayload } from "../../examplePayloads";
-
 export const updateBill = action({
   display: {
     label: "Update Bill",
@@ -28,7 +27,6 @@ export const updateBill = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       obj: {
         id: billId,
@@ -47,12 +45,10 @@ export const updateBill = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Crud/Update/Bill.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

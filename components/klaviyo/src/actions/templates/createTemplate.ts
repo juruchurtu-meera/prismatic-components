@@ -4,7 +4,6 @@ import { type TemplateCreateQuery, TemplateEnum } from "klaviyo-api";
 import { createTemplateInputs as inputs } from "../../inputs/templates";
 import { createTemplateExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const createTemplate = action({
   display: {
     label: "Create Template",
@@ -26,7 +25,6 @@ export const createTemplate = action({
         debug,
       });
     }
-
     const template: TemplateCreateQuery = {
       data: {
         type: TemplateEnum.Template,

@@ -1,7 +1,5 @@
 export const RECORDS_PAGE_SIZE = 1000;
-
 export const ACCOUNT_REGEX = /https:\/\/(.*)\.suitetalk\.api\.netsuite\.com\//;
-
 export const recordTypes = [
   "account",
   "accountingPeriod",

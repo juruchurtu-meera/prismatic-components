@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanIntegerInput } from "../../util";
-
 export const listName = input({
   label: "List Name",
   type: "string",
@@ -11,7 +10,6 @@ export const listName = input({
   placeholder: "Enter list name",
   clean: util.types.toString,
 });
-
 export const itemId = input({
   label: "Item ID",
   type: "string",
@@ -21,7 +19,6 @@ export const itemId = input({
   placeholder: "Enter item ID",
   clean: util.types.toString,
 });
-
 export const itemName = input({
   label: "Item Name",
   type: "string",
@@ -31,7 +28,6 @@ export const itemName = input({
   placeholder: "Enter item name",
   clean: util.types.toString,
 });
-
 export const parentId = input({
   label: "Parent ID",
   type: "string",
@@ -41,7 +37,6 @@ export const parentId = input({
   placeholder: "Enter parent ID",
   clean: cleanIntegerInput,
 });
-
 export const includeArchived = input({
   label: "Include Archived",
   type: "boolean",

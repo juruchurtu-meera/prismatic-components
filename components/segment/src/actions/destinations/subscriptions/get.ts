@@ -7,7 +7,6 @@ import {
   subscriptionId,
 } from "../../../inputs";
 import { getDestinationSubscriptionExamplePayload } from "../../../examplePayloads";
-
 export const getDestinationSubscription = action({
   display: {
     label: "Get Destination Subscription",

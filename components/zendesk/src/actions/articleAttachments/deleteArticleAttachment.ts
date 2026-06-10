@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { connectionInput, articleAttachmentId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import { deleteArticleAttachmentPayload } from "../../examplePayloads";
-
 export const deleteArticleAttachment = action({
   display: {
     label: "Delete Article Attachment",
@@ -13,7 +12,6 @@ export const deleteArticleAttachment = action({
     const { data } = await client.delete(
       `/help_center/articles/attachments/${articleAttachmentId}`,
     );
-
     return {
       data,
     };

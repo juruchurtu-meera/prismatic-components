@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getLdapClient } from "../client";
 import { moveUserToOrganizationalUnitExamplePayload as examplePayload } from "../examplePayloads";
 import { moveUserToOrganizationalUnitInputs as inputs } from "../inputs";
-
 export const moveUserToOrganizationalUnit = action({
   display: {
     label: "Move User to Organizational Unit",
@@ -10,14 +9,11 @@ export const moveUserToOrganizationalUnit = action({
   },
   perform: async (context, { connection, ouUserDn, newOuUserDn }) => {
     const client = await getLdapClient(connection);
-
     if (context.debug.enabled) {
       context.logger.debug({ ouUserDn, newOuUserDn });
     }
-
     try {
       await client.modifyDN(ouUserDn, newOuUserDn);
-
       return {
         data: `Successfully moved user to ${newOuUserDn}.`,
       };

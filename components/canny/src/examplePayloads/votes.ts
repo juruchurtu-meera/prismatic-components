@@ -58,7 +58,6 @@ export const retrieveVoteExamplePayload = {
     votePriority: "Important",
   },
 };
-
 export const listVotesExamplePayload = {
   data: {
     cursor: "eyJhZnRlciI6eyJfaWQiOiI1NTNjM2VmOGI4Y2RjZD...",
@@ -131,7 +130,5 @@ export const listVotesExamplePayload = {
     ],
   },
 };
-
 export const createVoteExamplePayload = { data: "success" };
-
 export const deleteVoteExamplePayload = { data: "success" };

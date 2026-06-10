@@ -4,7 +4,6 @@ import { listTicketsInputs as inputs } from "../../inputs/tickets";
 import type { ListTicketsResponse } from "../../interfaces/tickets";
 import { listTicketsExamplePayload as examplePayload } from "../../examplePayloads/tickets";
 import { fetchAllWithPagination } from "../../utils/fetchAllWithPagination";
-
 export const listTickets = action({
   display: {
     label: "List Tickets",
@@ -16,7 +15,6 @@ export const listTickets = action({
       connection,
       debug: context.debug.enabled,
     });
-
     const { data } = fetchAll
       ? await fetchAllWithPagination<ListTicketsResponse>({
           client,
@@ -27,7 +25,6 @@ export const listTickets = action({
           params: configVars,
           paramsSerializer: { indexes: null },
         });
-
     return {
       data,
     };

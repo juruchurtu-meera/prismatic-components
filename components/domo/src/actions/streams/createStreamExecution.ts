@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
 import { createStreamExecutionInputs } from "../../inputs";
 import { createStreamExecutionExamplePayload } from "../../examplePayloads";
-
 export const createStreamExecution = action({
   display: {
     label: "Create Stream Execution",
@@ -26,5 +25,4 @@ export const createStreamExecution = action({
   },
   inputs: createStreamExecutionInputs,
 });
-
 export default { createStreamExecution };

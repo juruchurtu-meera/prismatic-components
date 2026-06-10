@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const payout = input({
   label: "Payout",
   type: "string",
@@ -8,7 +7,6 @@ export const payout = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const type = input({
   label: "Type",
   type: "string",
@@ -60,7 +58,6 @@ export const type = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const fraudDetails = input({
   label: "Fraud Details",
   type: "code",

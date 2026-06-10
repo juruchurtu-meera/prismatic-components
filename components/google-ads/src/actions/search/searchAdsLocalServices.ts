@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { searchAdsExamplePayload } from "../../examplePayloads";
 import { searchAdsLocalServicesInputs } from "../../inputs";
 import { searchGoogleAds } from "../../util";
-
 export const searchAdsLocalServices = action({
   display: {
     label: "Search Ads",

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const createTaskInputs = {
   connection,
   content: input({
@@ -12,7 +11,6 @@ export const createTaskInputs = {
     required: true,
     clean: util.types.toString,
   }),
-
   dueDate: input({
     label: "Due Date",
     comments: "The date and time when the task is due. Format: ISO8601 UTC.",
@@ -22,7 +20,6 @@ export const createTaskInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -33,7 +30,6 @@ export const createTaskInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   resourceType: input({
     label: "Resource Type",
     comments:
@@ -44,7 +40,6 @@ export const createTaskInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   resourceId: input({
     label: "Resource ID",
     comments: "The unique identifier of the resource the task is related to.",
@@ -54,7 +49,6 @@ export const createTaskInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   completed: input({
     label: "Completed",
     comments: "When true, marks the task as completed.",
@@ -68,7 +62,6 @@ export const createTaskInputs = {
     ],
     clean: util.types.toString,
   }),
-
   remindAt: input({
     label: "Remind At",
     comments:

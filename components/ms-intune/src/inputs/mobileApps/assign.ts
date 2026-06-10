@@ -1,5 +1,4 @@
 import { groupId, intent, mobileAppId, settings, target } from "./general";
-
 export default {
   mobileAppId: {
     ...mobileAppId,

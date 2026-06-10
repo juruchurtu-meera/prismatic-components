@@ -28,7 +28,6 @@ import { getRecord } from "./getRecord";
 import { createRecord } from "./createRecord";
 import { updateRecord } from "./updateRecord";
 import { deleteRecord } from "./deleteRecord";
-
 export default {
   addAttachment,
   getAttachment,

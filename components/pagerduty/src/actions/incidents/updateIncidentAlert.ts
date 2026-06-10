@@ -7,7 +7,6 @@ import {
   incidentAlertId,
   incidentId,
 } from "../../inputs";
-
 export const updateIncidentAlert = action({
   display: {
     label: "Update Incident Alert",

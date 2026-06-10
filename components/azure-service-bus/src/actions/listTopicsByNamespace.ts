@@ -11,7 +11,6 @@ import {
   resourceGroupName,
   subscriptionId,
 } from "../inputs";
-
 export const listTopicsByNamespace = action({
   display: {
     label: "List Topics By Namespace",
@@ -32,9 +31,7 @@ export const listTopicsByNamespace = action({
     const client = getAzureServiceBusClient(connection, context.debug.enabled);
     try {
       const { data } = await client.get(
-        `/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/${namespaceName}/topics?api-version=2021-11-01${
-          $skip.length ? `&${$skip}` : ""
-        }${$top.length ? `&${$top}` : ""}`,
+        `/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/${namespaceName}/topics?api-version=2021-11-01${$skip.length ? `&${$skip}` : ""}${$top.length ? `&${$top}` : ""}`,
       );
       return { data };
     } catch (error) {
@@ -53,5 +50,4 @@ export const listTopicsByNamespace = action({
     $top,
   },
 });
-
 export default { listTopicsByNamespace };

@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { selectCompanyInputs } from "../inputs";
 import type { Company } from "../interfaces";
 import { paginateRecords } from "../util";
-
 export const selectCompany = dataSource({
   display: {
     label: "Select Company",
@@ -21,14 +20,12 @@ export const selectCompany = dataSource({
       true,
       "/companies",
     );
-
     const result = companies.map(({ id, name }): Element => {
       return {
         label: name,
         key: id,
       };
     });
-
     return {
       result,
     };

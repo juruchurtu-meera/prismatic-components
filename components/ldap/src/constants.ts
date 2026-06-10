@@ -12,7 +12,6 @@ export const CHANGES_EXAMPLE = [
     },
   },
 ] as const;
-
 export const ATTRIBUTES_TO_ADD_EXAMPLE = {
   cn: "New User",
   sn: "User",

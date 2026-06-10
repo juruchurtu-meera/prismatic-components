@@ -13,7 +13,6 @@ import {
   sort_order,
 } from "../inputs";
 import { fetchAllPages } from "../util/pagination";
-
 const crmGetRecords = action({
   display: {
     label: "CRM - Get Records",
@@ -32,10 +31,23 @@ const crmGetRecords = action({
   },
   perform: async (
     context,
-    { connection, recordType, fields, page, per_page, page_token, sort_order, sort_by, fetchAll },
+    {
+      connection,
+      recordType,
+      fields,
+      page,
+      per_page,
+      page_token,
+      sort_order,
+      sort_by,
+      fetchAll,
+    },
   ) => {
-    const crmClient = createClient(connection, ClientType.CRM, context.debug.enabled);
-
+    const crmClient = createClient(
+      connection,
+      ClientType.CRM,
+      context.debug.enabled,
+    );
     const url = `/${recordType}`;
     const params = Object.fromEntries(
       Object.entries({
@@ -47,14 +59,11 @@ const crmGetRecords = action({
         sort_by,
       }).filter(([_key, val]) => Boolean(val)),
     );
-
     const data = await fetchAllPages(crmClient, url, params, "data", fetchAll);
-
     return {
       data,
     };
   },
   examplePayload: crmGetRecordsExamplePayload,
 });
-
 export default crmGetRecords;

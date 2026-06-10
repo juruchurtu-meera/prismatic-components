@@ -14,7 +14,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../util";
-
 export const updateProduct = action({
   display: {
     label: "Update Product",

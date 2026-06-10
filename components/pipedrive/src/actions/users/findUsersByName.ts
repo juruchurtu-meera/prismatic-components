@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber } from "../../util";
-
 export const findUsersByName = action({
   display: {
     label: "Find Users By Name",
@@ -33,7 +32,8 @@ export const findUsersByName = action({
         { label: "1", value: "1" },
       ],
       clean: cleanNumber,
-      comments: "When enabled, the term will only be matched against email addresses of users",
+      comments:
+        "When enabled, the term will only be matched against email addresses of users",
     }),
   },
 });

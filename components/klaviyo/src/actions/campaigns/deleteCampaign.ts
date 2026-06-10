@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { deleteCampaignInputs as inputs } from "../../inputs/campaigns";
 import { getApi } from "../../api";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const deleteCampaign = action({
   display: {
     label: "Delete Campaign",

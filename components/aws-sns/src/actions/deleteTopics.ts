@@ -4,7 +4,6 @@ import { awsRegion } from "aws-utils";
 import { topicArn, connectionInput } from "../inputs";
 import { DeleteTopicCommand } from "@aws-sdk/client-sns";
 import { deleteTopicExamplePayload } from "../examplePayloads";
-
 export const deleteTopic = action({
   display: {
     label: "Delete Topic",
@@ -25,7 +24,6 @@ export const deleteTopic = action({
     };
     const command = new DeleteTopicCommand(deleteTopicParams);
     const response = await sns.send(command);
-
     return {
       data: response,
     };
@@ -33,5 +31,4 @@ export const deleteTopic = action({
   inputs: { awsRegion, topicArn, awsConnection: connectionInput },
   examplePayload: deleteTopicExamplePayload,
 });
-
 export default deleteTopic;

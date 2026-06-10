@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createOpsManagementClient } from "../../client";
 import { getOpsOnCallExamplePayload } from "../../examplePayloads";
 import { getOpsOnCallInputs } from "../../inputs";
-
 export const getOpsOnCall = action({
   display: {
     label: "Get Ops On-Call",

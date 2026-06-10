@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAirtableClient } from "../../client";
 import { getBaseSchemaExamplePayload } from "../../examplePayloads";
 import { getBaseSchemaInputs } from "../../inputs";
-
 export const getBaseSchema = action({
   display: {
     label: "Get Base Schema",

@@ -8,7 +8,6 @@ import {
   fetchAll,
   limit,
 } from "./common";
-
 const companyIdRequired = input({
   label: "Company ID",
   type: "string",
@@ -19,7 +18,6 @@ const companyIdRequired = input({
   placeholder: "Enter company ID",
   example: "553c3ef8b8cdcd1501ba1111",
 });
-
 const companyName = input({
   label: "Name",
   type: "string",
@@ -29,7 +27,6 @@ const companyName = input({
   placeholder: "Enter company name",
   example: "Acme Corp",
 });
-
 const monthlySpend = input({
   label: "Monthly Spend",
   type: "string",
@@ -39,7 +36,6 @@ const monthlySpend = input({
   placeholder: "Enter monthly spend",
   example: "5000",
 });
-
 const companySearch = input({
   label: "Search",
   type: "string",
@@ -49,7 +45,6 @@ const companySearch = input({
   placeholder: "Enter search term",
   example: "Acme",
 });
-
 const segment = input({
   label: "Segment",
   type: "string",
@@ -59,7 +54,6 @@ const segment = input({
   placeholder: "Enter segment",
   example: "enterprise",
 });
-
 export const listCompaniesInputs = {
   connection,
   companySearch,
@@ -68,7 +62,6 @@ export const listCompaniesInputs = {
   cursor,
   limit,
 };
-
 export const updateCompanyInputs = {
   connection,
   companyIdRequired,
@@ -77,7 +70,5 @@ export const updateCompanyInputs = {
   customFields,
   additionalFields,
 };
-
 export const deleteCompanyInputs = { connection, companyIdRequired };
-
 export const selectCompanyInputs = { connection };

@@ -6,9 +6,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { baseUrl, createClient } from "../client";
 import { connectionInput } from "../inputs";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const addUser = action({
   display: {
     label: "Link User to Account",
@@ -27,7 +25,6 @@ const addUser = action({
         },
       },
     });
-
     return {
       data: response?.data,
     };
@@ -49,7 +46,6 @@ const addUser = action({
     }),
   },
 });
-
 const listAccounts = action({
   display: {
     label: "List Accounts",
@@ -85,7 +81,6 @@ const listAccounts = action({
     }),
   },
 });
-
 const getCustomMetric = action({
   display: {
     label: "Get Custom Metric",
@@ -130,7 +125,6 @@ const getCustomMetric = action({
     return { data };
   },
 });
-
 export const listCustomMetrics = action({
   display: {
     label: "List Custom Metrics",
@@ -183,7 +177,6 @@ export const listCustomMetrics = action({
     return { data };
   },
 });
-
 const getCustomDimension = action({
   display: {
     label: "Get Custom Dimension",
@@ -280,7 +273,6 @@ export const listCustomDimensions = action({
     return { data };
   },
 });
-
 const getWebProperty = action({
   display: {
     label: "Get Web Property",
@@ -314,7 +306,6 @@ const getWebProperty = action({
     return { data };
   },
 });
-
 export const listWebProperties = action({
   display: {
     label: "List Web Properties",
@@ -358,7 +349,6 @@ export const listWebProperties = action({
     return { data };
   },
 });
-
 const getProfile = action({
   display: {
     label: "Get Profile",
@@ -402,7 +392,6 @@ const getProfile = action({
     return { data };
   },
 });
-
 export const listProfiles = action({
   display: {
     label: "List Profiles",
@@ -456,7 +445,6 @@ export const listProfiles = action({
     return { data };
   },
 });
-
 const getData = action({
   display: {
     label: "Get View Data",
@@ -478,7 +466,6 @@ const getData = action({
       clean: (value) => util.types.toDate(value).toISOString().split("T")[0],
       required: true,
     }),
-
     ids: input({
       label: "Profile ID",
       type: "string",
@@ -559,19 +546,16 @@ const getData = action({
     { connection, ids, startDate, endDate, includeEmpty, segment, ...params },
   ) => {
     const client = createClient({ connection: connection });
-
     let dimensions = params.dimensions
       .map((d) => util.types.toString(d))
       .join(",");
     if (params.customDimensions) {
       dimensions = dimensions.concat(`,${params.customDimensions}`);
     }
-
     let metrics = params.metrics.map((m) => util.types.toString(m)).join(",");
     if (params.customMetrics) {
       metrics = metrics.concat(`,${params.customMetrics}`);
     }
-
     const response = await client.data.ga.get({
       dimensions,
       metrics,
@@ -591,7 +575,6 @@ const getData = action({
     };
   },
 });
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -623,7 +606,6 @@ export const rawRequest = action({
     }
   },
 });
-
 export default {
   listAccounts,
   listProfiles,

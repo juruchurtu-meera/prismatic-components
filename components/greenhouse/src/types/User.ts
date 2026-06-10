@@ -1,6 +1,5 @@
 import type { DepartmentDataSources } from "./Departments";
 import type { OfficeDataSources } from "./Offices";
-
 export interface UserDataSources {
   id: number;
   name: string;

@@ -1,7 +1,3 @@
-
-
-
-
 export const DATADOG_SITES = [
   { label: "US1 (datadoghq.com)", value: "https://api.datadoghq.com" },
   { label: "US3 (us3.datadoghq.com)", value: "https://api.us3.datadoghq.com" },
@@ -14,25 +10,13 @@ export const DATADOG_SITES = [
     value: "https://api.ddog-gov.com",
   },
 ];
-
-
 export const DEFAULT_DATADOG_SITE = DATADOG_SITES[0].value;
-
-
-
-
-
 export const METRIC_TYPE_OPTIONS = [
   { label: "Unspecified", value: "0" },
   { label: "Count", value: "1" },
   { label: "Rate", value: "2" },
   { label: "Gauge", value: "3" },
 ];
-
-
-
-
-
 export const WEBHOOK_ENCODE_AS_OPTIONS = [
   { label: "JSON", value: "json" },
   { label: "Form", value: "form" },

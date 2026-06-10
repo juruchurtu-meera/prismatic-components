@@ -4,7 +4,7 @@
     "href": "https://learn.microsoft.com/en-us/rest/api/eventgrid/"
   },
   {
-    "label": "Changelog",
+    "label": "API Changelog",
     "href": "https://azure.microsoft.com/en-us/updates/?product=event-grid"
   }
 ]

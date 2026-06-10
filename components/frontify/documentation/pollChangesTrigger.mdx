@@ -1,0 +1,46 @@
+This trigger polls a [Frontify](https://www.frontify.com/) library on a configured schedule and emits assets that were created or modified since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+#### How It Works
+
+Frontify's GraphQL asset query does not support filtering by date, so on each scheduled run the trigger fetches the selected library's assets and classifies them against the previous poll time:
+
+- **Created**: assets whose `createdAt` is after the previous poll.
+- **Updated**: assets whose `modifiedAt` is after the previous poll (and that are not newly created).
+
+The current run time is stored as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical assets on deploy.
+- **Subsequent runs**: only assets created or modified since the last run are returned.
+
+The **Show New Records** and **Show Updated Records** inputs (both enabled by default) control whether created assets, updated assets, or both are emitted.
+
+#### Returned Data
+
+The trigger returns the matching assets grouped under `created` and `updated`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "id": "eyJpZGV...",
+        "title": "example_title_1",
+        "status": "FINISHED",
+        "createdAt": "2024-09-05T19:49:25.000+00:00",
+        "modifiedAt": "2024-09-05T19:49:27.000+00:00"
+      }
+    ],
+    "updated": []
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- The trigger watches a single library (set by **Library ID**). Add one flow per library to monitor.
+- Because the GraphQL API has no server-side date filter, each run fetches the library's assets and filters them in memory; for very large libraries this lists all assets each run.

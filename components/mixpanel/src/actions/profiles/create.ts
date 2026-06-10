@@ -9,7 +9,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { createProfileExamplePayload } from "../../examplePayloads";
-
 export const createProfile = action({
   display: {
     label: "Create Profile",

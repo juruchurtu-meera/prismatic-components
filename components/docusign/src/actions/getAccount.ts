@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, accountId } from "../inputs";
 import { getAccountPayload } from "../examplePayloads";
-
 export const getAccount = action({
   display: {
     label: "Get Account",

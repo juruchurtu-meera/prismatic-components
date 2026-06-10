@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import { listDeviceCompliancePoliciesExamplePayload } from "../../../examplePayloads";
-
 export const listDeviceCompliancePolicies = action({
   display: {
     label: "List Device Compliance Policies",
@@ -13,7 +12,6 @@ export const listDeviceCompliancePolicies = action({
     const { data } = await client.get(
       "/deviceManagement/deviceCompliancePolicies",
     );
-
     return {
       data,
     };

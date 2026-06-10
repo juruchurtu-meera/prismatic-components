@@ -26,7 +26,6 @@ import {
 } from "../../inputs/customers/createCustomerInputs";
 import { connectionInput } from "../../inputs/general";
 import type { Customer } from "../../interfaces";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -49,7 +48,6 @@ export const createCustomer = action({
       taxRegistrationNumber,
       type,
       blocked,
-
       shipmentMethodId,
       paymentMethodId,
       currencyCode,
@@ -60,7 +58,11 @@ export const createCustomer = action({
       companyId,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       addressLine1,
       addressLine2,
@@ -83,8 +85,10 @@ export const createCustomer = action({
       currencyId,
       displayName,
     };
-    const { data } = await client.post<Customer>(`/companies(${companyId})/customers`, payload);
-
+    const { data } = await client.post<Customer>(
+      `/companies(${companyId})/customers`,
+      payload,
+    );
     return {
       data,
     };

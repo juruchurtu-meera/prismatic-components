@@ -3,7 +3,6 @@ import { UPDATE_WEBINAR_EXAMPLE_PAYLOAD } from "../../examplePayloads";
 import { createGotoWebinarClient } from "../../client";
 import { updateWebinarInputs } from "../../inputs/webinars/updateWebinarInputs";
 import { GENERAL_DELETE_MESSAGE } from "../../constants";
-
 export const updateWebinar = action({
   display: {
     label: "Update Webinar",
@@ -41,11 +40,9 @@ export const updateWebinar = action({
         attendeeFollowUpEmail,
       },
     };
-
     const params = {
       notifyParticipants,
     };
-
     await client.put(url, payload, { params });
     return GENERAL_DELETE_MESSAGE;
   },

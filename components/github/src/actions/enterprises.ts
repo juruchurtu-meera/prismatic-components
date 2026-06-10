@@ -1,6 +1,5 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const actionsGetActionsCacheUsageForEnterprise = action({
   display: {
     label: "Actions Get Actions Cache Usage For Enterprise",
@@ -31,7 +30,6 @@ const actionsGetActionsCacheUsageForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminGetGithubActionsPermissionsEnterprise = action({
   display: {
     label: "Enterprise Admin Get Github Actions Permissions Enterprise",
@@ -62,7 +60,6 @@ const enterpriseAdminGetGithubActionsPermissionsEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminSetGithubActionsPermissionsEnterprise = action({
   display: {
     label: "Enterprise Admin Set Github Actions Permissions Enterprise",
@@ -126,7 +123,6 @@ const enterpriseAdminSetGithubActionsPermissionsEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise =
   action({
     display: {
@@ -175,7 +171,6 @@ const enterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise =
       },
     },
   });
-
 const enterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise =
   action({
     display: {
@@ -220,7 +215,6 @@ const enterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise =
       },
     },
   });
-
 const enterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise = action(
   {
     display: {
@@ -263,7 +257,6 @@ const enterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise = action(
     },
   },
 );
-
 const enterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise =
   action({
     display: {
@@ -304,7 +297,6 @@ const enterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise =
       },
     },
   });
-
 const enterpriseAdminGetAllowedActionsEnterprise = action({
   display: {
     label: "Enterprise Admin Get Allowed Actions Enterprise",
@@ -335,7 +327,6 @@ const enterpriseAdminGetAllowedActionsEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminSetAllowedActionsEnterprise = action({
   display: {
     label: "Enterprise Admin Set Allowed Actions Enterprise",
@@ -403,7 +394,6 @@ const enterpriseAdminSetAllowedActionsEnterprise = action({
     },
   },
 });
-
 const actionsGetGithubActionsDefaultWorkflowPermissionsEnterprise = action({
   display: {
     label: "Actions Get Github Actions Default Workflow Permissions Enterprise",
@@ -434,7 +424,6 @@ const actionsGetGithubActionsDefaultWorkflowPermissionsEnterprise = action({
     },
   },
 });
-
 const actionsSetGithubActionsDefaultWorkflowPermissionsEnterprise = action({
   display: {
     label: "Actions Set Github Actions Default Workflow Permissions Enterprise",
@@ -496,7 +485,6 @@ const actionsSetGithubActionsDefaultWorkflowPermissionsEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListSelfHostedRunnerGroupsForEnterprise = action({
   display: {
     label: "Enterprise Admin List Self Hosted Runner Groups For Enterprise",
@@ -559,7 +547,6 @@ const enterpriseAdminListSelfHostedRunnerGroupsForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminCreateSelfHostedRunnerGroupForEnterprise = action({
   display: {
     label: "Enterprise Admin Create Self Hosted Runner Group For Enterprise",
@@ -668,7 +655,6 @@ const enterpriseAdminCreateSelfHostedRunnerGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminGetSelfHostedRunnerGroupForEnterprise = action({
   display: {
     label: "Enterprise Admin Get Self Hosted Runner Group For Enterprise",
@@ -706,7 +692,6 @@ const enterpriseAdminGetSelfHostedRunnerGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise = action({
   display: {
     label: "Enterprise Admin Update Self Hosted Runner Group For Enterprise",
@@ -806,7 +791,6 @@ const enterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise = action({
   display: {
     label: "Enterprise Admin Delete Self Hosted Runner Group From Enterprise",
@@ -844,7 +828,6 @@ const enterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise = action({
   display: {
     label:
@@ -902,7 +885,6 @@ const enterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise = action({
   display: {
     label:
@@ -953,7 +935,6 @@ const enterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise = action({
   display: {
     label:
@@ -1004,7 +985,6 @@ const enterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise =
   action({
     display: {
@@ -1055,7 +1035,6 @@ const enterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise =
       },
     },
   });
-
 const enterpriseAdminListSelfHostedRunnersInGroupForEnterprise = action({
   display: {
     label: "Enterprise Admin List Self Hosted Runners In Group For Enterprise",
@@ -1111,7 +1090,6 @@ const enterpriseAdminListSelfHostedRunnersInGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminSetSelfHostedRunnersInGroupForEnterprise = action({
   display: {
     label: "Enterprise Admin Set Self Hosted Runners In Group For Enterprise",
@@ -1160,7 +1138,6 @@ const enterpriseAdminSetSelfHostedRunnersInGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminAddSelfHostedRunnerToGroupForEnterprise = action({
   display: {
     label: "Enterprise Admin Add Self Hosted Runner To Group For Enterprise",
@@ -1209,7 +1186,6 @@ const enterpriseAdminAddSelfHostedRunnerToGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise = action({
   display: {
     label:
@@ -1258,7 +1234,6 @@ const enterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListSelfHostedRunnersForEnterprise = action({
   display: {
     label: "Enterprise Admin List Self Hosted Runners For Enterprise",
@@ -1306,7 +1281,6 @@ const enterpriseAdminListSelfHostedRunnersForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListRunnerApplicationsForEnterprise = action({
   display: {
     label: "Enterprise Admin List Runner Applications For Enterprise",
@@ -1337,7 +1311,6 @@ const enterpriseAdminListRunnerApplicationsForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminCreateRegistrationTokenForEnterprise = action({
   display: {
     label: "Enterprise Admin Create Registration Token For Enterprise",
@@ -1369,7 +1342,6 @@ const enterpriseAdminCreateRegistrationTokenForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminCreateRemoveTokenForEnterprise = action({
   display: {
     label: "Enterprise Admin Create Remove Token For Enterprise",
@@ -1401,7 +1373,6 @@ const enterpriseAdminCreateRemoveTokenForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminGetSelfHostedRunnerForEnterprise = action({
   display: {
     label: "Enterprise Admin Get Self Hosted Runner For Enterprise",
@@ -1439,7 +1410,6 @@ const enterpriseAdminGetSelfHostedRunnerForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminDeleteSelfHostedRunnerFromEnterprise = action({
   display: {
     label: "Enterprise Admin Delete Self Hosted Runner From Enterprise",
@@ -1477,7 +1447,6 @@ const enterpriseAdminDeleteSelfHostedRunnerFromEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminListLabelsForSelfHostedRunnerForEnterprise = action({
   display: {
     label: "Enterprise Admin List Labels For Self Hosted Runner For Enterprise",
@@ -1515,7 +1484,6 @@ const enterpriseAdminListLabelsForSelfHostedRunnerForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise = action({
   display: {
     label:
@@ -1562,7 +1530,6 @@ const enterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise = action({
   display: {
     label:
@@ -1609,7 +1576,6 @@ const enterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise = action({
     },
   },
 });
-
 const enterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise =
   action({
     display: {
@@ -1650,7 +1616,6 @@ const enterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise =
       },
     },
   });
-
 const enterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise =
   action({
     display: {
@@ -1698,7 +1663,6 @@ const enterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise =
       },
     },
   });
-
 const enterpriseAdminGetAuditLog = action({
   display: {
     label: "Enterprise Admin Get Audit Log",
@@ -1808,7 +1772,6 @@ const enterpriseAdminGetAuditLog = action({
     },
   },
 });
-
 const secretScanningListAlertsForEnterprise = action({
   display: {
     label: "Secret Scanning List Alerts For Enterprise",
@@ -1908,7 +1871,6 @@ const secretScanningListAlertsForEnterprise = action({
     },
   },
 });
-
 const billingGetGithubActionsBillingGhe = action({
   display: {
     label: "Billing Get Github Actions Billing Ghe",
@@ -1939,7 +1901,6 @@ const billingGetGithubActionsBillingGhe = action({
     },
   },
 });
-
 const billingGetGithubAdvancedSecurityBillingGhe = action({
   display: {
     label: "Billing Get Github Advanced Security Billing Ghe",
@@ -1986,7 +1947,6 @@ const billingGetGithubAdvancedSecurityBillingGhe = action({
     },
   },
 });
-
 const billingGetGithubPackagesBillingGhe = action({
   display: {
     label: "Billing Get Github Packages Billing Ghe",
@@ -2017,7 +1977,6 @@ const billingGetGithubPackagesBillingGhe = action({
     },
   },
 });
-
 const billingGetSharedStorageBillingGhe = action({
   display: {
     label: "Billing Get Shared Storage Billing Ghe",
@@ -2048,7 +2007,6 @@ const billingGetSharedStorageBillingGhe = action({
     },
   },
 });
-
 export default {
   actionsGetActionsCacheUsageForEnterprise,
   enterpriseAdminGetGithubActionsPermissionsEnterprise,

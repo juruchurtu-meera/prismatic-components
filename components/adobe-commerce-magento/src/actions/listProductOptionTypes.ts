@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
 import { listProductOptionTypesExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
-
 export const listProductOptionTypes = action({
   display: {
     label: "List Product Option Types",
@@ -25,5 +24,4 @@ export const listProductOptionTypes = action({
   },
   examplePayload: listProductOptionTypesExamplePayload,
 });
-
 export default { listProductOptionTypes };

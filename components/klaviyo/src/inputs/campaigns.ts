@@ -7,7 +7,6 @@ import {
 } from "../utils";
 import { connection, fields } from "./shared";
 import { FIELDS_CAMPAIGN_MODEL } from "../constants";
-
 const filterCampaigns = input({
   label: "Filter Campaigns",
   comments: "A filter to apply to the campaigns.",
@@ -18,15 +17,12 @@ const filterCampaigns = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const fieldsCampaign = input({ ...fields, model: FIELDS_CAMPAIGN_MODEL });
-
 export const listCampaignsInputs = {
   connection,
   filterCampaigns,
   fieldsCampaign,
 };
-
 const campaignName = input({
   label: "Campaign Name",
   comments: "The name of the campaign.",
@@ -36,7 +32,6 @@ const campaignName = input({
   placeholder: "My new campaign",
   clean: cleanStringInput,
 });
-
 const campaignMessages = input({
   label: "Campaign Messages",
   comments: "The message(s) to send in the campaign.",
@@ -73,7 +68,6 @@ const campaignMessages = input({
   ),
   clean: (value) => cleanArrayCodeInput(value, "Campaign Messages"),
 });
-
 const includedAudiences = input({
   label: "Included Audiences",
   comments: "A list of included audiences.",
@@ -84,7 +78,6 @@ const includedAudiences = input({
   required: true,
   clean: cleanValueListInput,
 });
-
 const excludedAudiences = input({
   label: "Excluded Audiences",
   comments: "A list of excluded audiences.",
@@ -95,7 +88,6 @@ const excludedAudiences = input({
   required: true,
   clean: cleanValueListInput,
 });
-
 const trackingOptions = input({
   label: "Tracking Options",
   comments: "The tracking options for the campaign.",
@@ -119,7 +111,6 @@ const trackingOptions = input({
   required: false,
   clean: (value) => cleanCodeInput(value, "Tracking Options"),
 });
-
 const sendOptions = input({
   label: "Send Options",
   comments: "The send options for the campaign.",
@@ -135,7 +126,6 @@ const sendOptions = input({
   required: false,
   clean: (value) => cleanCodeInput(value, "Send Options"),
 });
-
 const sendStrategy = input({
   label: "Send Strategy",
   comments: "The send strategy for the campaign.",
@@ -163,7 +153,6 @@ const sendStrategy = input({
   required: false,
   clean: (value) => cleanCodeInput(value, "Send Strategy"),
 });
-
 export const createCampaignInputs = {
   connection,
   campaignName,
@@ -174,7 +163,6 @@ export const createCampaignInputs = {
   sendOptions,
   sendStrategy,
 };
-
 const campaignId = input({
   label: "Campaign ID",
   comments: "The ID of the campaign.",
@@ -185,18 +173,15 @@ const campaignId = input({
   dataSource: "selectCampaign",
   clean: cleanStringInput,
 });
-
 export const getCampaignInputs = {
   connection,
   campaignId,
   fieldsCampaign,
 };
-
 export const deleteCampaignInputs = {
   connection,
   campaignId,
 };
-
 export const updateCampaignInputs = {
   connection,
   campaignId,

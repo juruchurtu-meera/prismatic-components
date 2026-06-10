@@ -10,7 +10,6 @@ import {
 } from "contentful-management";
 import { API_BASE_URL } from "./constants";
 import { getAccessToken, getAuthHeaders } from "./util";
-
 export const createClient = (
   connection: Connection,
   context?: ActionContext,
@@ -24,7 +23,6 @@ export const createClient = (
     },
   });
 };
-
 export const createApiClient = (
   connection: Connection,
   debug = false,

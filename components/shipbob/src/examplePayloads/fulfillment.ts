@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export const listFulfillmentCentersExamplePayload = {
   data: [
     {
@@ -24,7 +15,6 @@ export const listFulfillmentCentersExamplePayload = {
     },
   ],
 };
-
 export const listLocationsExamplePayload = {
   data: [
     {

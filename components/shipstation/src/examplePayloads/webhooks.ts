@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const listWebhooksExamplePayload = {
   data: {
     webhooks: [
@@ -42,36 +36,14 @@ export const listWebhooksExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
 export const subscribeToWebhookExamplePayload = {
   data: {
     id: 123456,
   },
 };
-
-
-
-
-
-
-
-
-
 export const unsubscribeToWebhookExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
 export const deleteInstancedWebhooksExamplePayload = {
   data: "Webhooks deleted successfully.",
 };

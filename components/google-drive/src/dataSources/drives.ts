@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import type { drive_v3 } from "@googleapis/drive/build/v3";
 import { createClient } from "../client";
 import { connection } from "../inputs";
-
 const selectDrive = dataSource({
   display: {
     label: "Select Drive",
@@ -26,11 +25,10 @@ const selectDrive = dataSource({
     }
     return {
       result: [
-        { key: "my-drive", label: "My Drive" }, 
+        { key: "my-drive", label: "My Drive" },
         ...drives.map((drive) => ({ key: drive.id, label: drive.name })),
       ],
     };
   },
 });
-
 export default { selectDrive };

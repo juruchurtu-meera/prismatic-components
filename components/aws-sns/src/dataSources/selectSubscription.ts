@@ -3,7 +3,6 @@ import { awsRegion } from "aws-utils";
 import { connectionInput, topicArn } from "../inputs";
 import { createSNSClient } from "../client";
 import { fetchSubscriptions } from "../utils";
-
 export const selectSubscription = dataSource({
   display: {
     label: "Select Subscription",
@@ -11,7 +10,7 @@ export const selectSubscription = dataSource({
   },
   inputs: {
     awsConnection: connectionInput,
-    awsRegion: { ...awsRegion, dataSource: undefined, model: undefined }, 
+    awsRegion: { ...awsRegion, dataSource: undefined, model: undefined },
     topicArn: { ...topicArn, dataSource: undefined },
   },
   perform: async (_, { awsConnection, awsRegion, topicArn }) => {
@@ -19,14 +18,12 @@ export const selectSubscription = dataSource({
       awsConnection,
       awsRegion,
     });
-
     const { Subscriptions: subscriptions } = await fetchSubscriptions(
       sns,
       topicArn,
       true,
       undefined,
     );
-
     const result = subscriptions
       ? subscriptions.map<Element>((subscription) => ({
           label: `Endpoint: ${subscription.Endpoint}`,

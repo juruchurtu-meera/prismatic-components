@@ -4,7 +4,6 @@ import { listMessagesInputs as inputs } from "../../inputs/ticketMessages";
 import type { ListMessagesResponse } from "../../interfaces/ticketMessages";
 import { listMessagesExamplePayload as examplePayload } from "../../examplePayloads/ticketMessages";
 import { fetchAllWithPagination } from "../../utils/fetchAllWithPagination";
-
 export const listMessages = action({
   display: {
     label: "List Messages",
@@ -24,7 +23,6 @@ export const listMessages = action({
       : await client.get<ListMessagesResponse>("/messages", {
           params: configVars,
         });
-
     return {
       data,
     };

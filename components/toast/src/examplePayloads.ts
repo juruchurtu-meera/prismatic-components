@@ -1,5 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
 export const listDepositsExamplePayload = {
   data: [
     {
@@ -20,7 +19,6 @@ export const listDepositsExamplePayload = {
     },
   ],
 };
-
 export const createEmployeeExamplePayload = {
   data: {
     guid: "string",
@@ -58,17 +56,12 @@ export const createEmployeeExamplePayload = {
     v2EmployeeGuid: "string",
   },
 };
-
 export const deleteEmployeeExamplePayload = createEmployeeExamplePayload;
-
 export const getEmployeeExamplePayload = createEmployeeExamplePayload;
-
 export const listEmployeesExamplePayload = {
   data: [createEmployeeExamplePayload.data],
 };
-
 export const updateEmployeeExamplePayload = createEmployeeExamplePayload;
-
 export const getTimeEntryExamplePayload = {
   data: {
     guid: "string",
@@ -123,7 +116,6 @@ export const getTimeEntryExamplePayload = {
     cashSales: 0,
   },
 };
-
 export const listCashEntriesExamplePayload = {
   data: [
     {
@@ -167,11 +159,9 @@ export const listCashEntriesExamplePayload = {
     },
   ],
 };
-
 export const listTimeEntriesExamplePayload = {
   data: [getTimeEntryExamplePayload.data],
 };
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},
@@ -228,7 +218,6 @@ export const pollChangesTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   polledNoChanges: false,
 };
-
 export const getOneJobExamplePayload = {
   data: {
     guid: "string",
@@ -246,11 +235,9 @@ export const getOneJobExamplePayload = {
     excludeFromReporting: true,
   },
 };
-
 export const listJobsExamplePayload = {
   data: [getOneJobExamplePayload.data],
 };
-
 export const listAccessibleRestaurantsExamplePayload = {
   data: [
     {
@@ -269,7 +256,6 @@ export const listAccessibleRestaurantsExamplePayload = {
     },
   ],
 };
-
 export const listConnectedRestaurantsExamplePayload = {
   data: [
     {
@@ -300,7 +286,6 @@ export const listConnectedRestaurantsExamplePayload = {
     },
   ],
 };
-
 export const createShiftExamplePayload = {
   data: {
     guid: "string",
@@ -331,13 +316,9 @@ export const createShiftExamplePayload = {
     },
   },
 };
-
 export const deleteShiftExamplePayload = createShiftExamplePayload;
-
 export const getShiftExamplePayload = createShiftExamplePayload;
-
 export const listShiftsExamplePayload = {
   data: [createShiftExamplePayload.data],
 };
-
 export const updateShiftExamplePayload = createShiftExamplePayload;

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getUserExamplePayload } from "../../examplePayloads";
 import { connectionInput, on_behalf_of_user_id, version } from "../../inputs";
-
 export const getUser = action({
   display: {
     label: "Get User",

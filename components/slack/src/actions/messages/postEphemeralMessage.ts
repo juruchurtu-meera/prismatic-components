@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { postEphemeralMessageExamplePayload } from "../../examplePayloads";
 import { postEphemeralMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const postEphemeralMessage = action({
   display: {
     label: "Post Ephemeral Message",
@@ -11,7 +10,7 @@ export const postEphemeralMessage = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, channelName, userId, username, message }
+    { connection, channelName, userId, username, message },
   ) => {
     debugLogger({ channelName, userId, username, message, debug });
     const client = await createOauthClient({

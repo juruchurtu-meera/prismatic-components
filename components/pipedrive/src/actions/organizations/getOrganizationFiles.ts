@@ -8,13 +8,15 @@ import {
   sortInput,
 } from "../../inputs";
 import { cleanNumber } from "../../util";
-
 export const getOrganizationFiles = action({
   display: {
     label: "Get Organization Files",
     description: "Lists files attached to an organization.",
   },
-  perform: async (context, { connection, id, start, limit, includeDeletedFiles, sort }) => {
+  perform: async (
+    context,
+    { connection, id, start, limit, includeDeletedFiles, sort },
+  ) => {
     const client = createClient(connection, context.debug.enabled);
     const { data } = await client.get(`/organizations/${id}/files`, {
       params: {
@@ -39,7 +41,8 @@ export const getOrganizationFiles = action({
         { label: "1", value: "1" },
       ],
       clean: cleanNumber,
-      comments: "When enabled, the list of files will also include deleted files",
+      comments:
+        "When enabled, the list of files will also include deleted files",
     }),
     sort: sortInput,
   },

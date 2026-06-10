@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { updateCustomerInputs } from "../../inputs";
 import { customerExamplePayload } from "../../payloadExamples";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer (Deprecated)",
@@ -28,7 +27,11 @@ export const updateCustomer = action({
       verifiedEmail,
     },
   ) => {
-    const client = getShopifyClient(shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     return {
       data: (
         await client.put(`/customers/${customerId}`, {

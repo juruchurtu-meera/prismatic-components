@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanNumberInput, cleanStringInput } from "../../../util";
-
 const displayName = input({
   label: "Display Name",
   comments: "Name of the discovered application.",
@@ -10,7 +9,6 @@ const displayName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const version = input({
   label: "Version",
   comments: "Version of the discovered application.",
@@ -20,7 +18,6 @@ const version = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const sizeInByte = input({
   label: "Size In Byte",
   comments: "Discovered application size in bytes.",
@@ -30,7 +27,6 @@ const sizeInByte = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const deviceCount = input({
   label: "Device Count",
   comments: "The number of devices that have installed this application.",
@@ -40,7 +36,6 @@ const deviceCount = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 const publisher = input({
   label: "Publisher",
   comments:
@@ -52,7 +47,6 @@ const publisher = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const platform = input({
   label: "Platform",
   comments:
@@ -112,7 +106,6 @@ const platform = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export default {
   displayName,
   version,

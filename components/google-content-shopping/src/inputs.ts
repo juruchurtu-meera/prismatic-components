@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { jsonInputClean, valueListInputClean } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Google Content Shopping connection to use.",
 });
-
 export const version = input({
   label: "API Version",
   type: "string",
@@ -19,7 +17,6 @@ export const version = input({
   placeholder: "Enter API version",
   required: false,
 });
-
 export const cloudTopicName = input({
   label: "Cloud Topic Name",
   type: "string",
@@ -29,7 +26,6 @@ export const cloudTopicName = input({
   placeholder: "Enter Cloud Pub/Sub topic name",
   required: false,
 });
-
 export const maxResults = input({
   label: "Max Results",
   type: "string",
@@ -40,7 +36,6 @@ export const maxResults = input({
   placeholder: "Enter Max Results",
   required: false,
 });
-
 export const pageToken = input({
   label: "Page Token",
   type: "string",
@@ -51,7 +46,6 @@ export const pageToken = input({
   placeholder: "Enter Page Token",
   required: false,
 });
-
 export const merchantId = input({
   label: "Merchant ID",
   type: "string",
@@ -62,7 +56,6 @@ export const merchantId = input({
   placeholder: "Enter Merchant ID",
   required: true,
 });
-
 export const productId = input({
   label: "Product ID",
   type: "string",
@@ -74,7 +67,6 @@ export const productId = input({
   required: true,
   dataSource: "selectProduct",
 });
-
 export const orderId = input({
   label: "Order ID",
   type: "string",
@@ -85,7 +77,6 @@ export const orderId = input({
   placeholder: "Enter Order ID",
   required: true,
 });
-
 export const storeCode = input({
   label: "Store Code",
   type: "string",
@@ -96,7 +87,6 @@ export const storeCode = input({
   placeholder: "Enter Store Code",
   required: true,
 });
-
 export const regionId = input({
   label: "Region ID",
   type: "string",
@@ -107,7 +97,6 @@ export const regionId = input({
   placeholder: "Enter Region ID",
   required: true,
 });
-
 export const returnId = input({
   label: "Return ID",
   type: "string",
@@ -118,7 +107,6 @@ export const returnId = input({
   placeholder: "Enter Return ID",
   required: true,
 });
-
 export const operationId = input({
   label: "Operation ID",
   type: "string",
@@ -129,7 +117,6 @@ export const operationId = input({
   placeholder: "Enter Operation ID",
   required: false,
 });
-
 export const feedId = input({
   label: "Feed ID",
   type: "string",
@@ -140,7 +127,6 @@ export const feedId = input({
   placeholder: "Enter Feed ID",
   required: false,
 });
-
 export const offerId = input({
   label: "Offer ID",
   type: "string",
@@ -151,7 +137,6 @@ export const offerId = input({
   placeholder: "Enter Offer ID",
   required: true,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -162,7 +147,6 @@ export const title = input({
   placeholder: "Enter Product Title",
   required: false,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -174,7 +158,6 @@ export const description = input({
   placeholder: "Enter Product Description",
   required: false,
 });
-
 export const link = input({
   label: "Link",
   type: "string",
@@ -184,7 +167,6 @@ export const link = input({
   placeholder: "Enter Product URL",
   required: false,
 });
-
 export const imageLink = input({
   label: "Image Link",
   type: "string",
@@ -194,7 +176,6 @@ export const imageLink = input({
   placeholder: "Enter Image URL",
   required: false,
 });
-
 export const contentLanguage = input({
   label: "Content Language",
   type: "string",
@@ -204,7 +185,6 @@ export const contentLanguage = input({
   placeholder: "Enter Language Code",
   required: true,
 });
-
 export const targetCountry = input({
   label: "Target Country",
   type: "string",
@@ -214,7 +194,6 @@ export const targetCountry = input({
   placeholder: "Enter Country Code",
   required: true,
 });
-
 export const feedLabel = input({
   label: "Feed Label",
   type: "string",
@@ -225,7 +204,6 @@ export const feedLabel = input({
   placeholder: "Enter Feed Label",
   required: false,
 });
-
 export const expirationDate = input({
   label: "Expiration Date",
   type: "string",
@@ -236,7 +214,6 @@ export const expirationDate = input({
   placeholder: "Enter Expiration Date (YYYY-MM-DD)",
   required: false,
 });
-
 export const disclosureDate = input({
   label: "Disclosure Date",
   type: "string",
@@ -247,7 +224,6 @@ export const disclosureDate = input({
   placeholder: "Enter Disclosure Date (YYYY-MM-DD)",
   required: false,
 });
-
 export const adult = input({
   label: "Adult",
   type: "boolean",
@@ -255,7 +231,6 @@ export const adult = input({
   comments: "When true, indicates the item is targeted towards adults.",
   required: false,
 });
-
 export const fullChargeReturnShippingCost = input({
   label: "Full Charge Return Shipping Cost",
   type: "boolean",
@@ -264,7 +239,6 @@ export const fullChargeReturnShippingCost = input({
     "When true, the customer will be charged for return shipping costs.",
   required: false,
 });
-
 export const brand = input({
   label: "Brand",
   type: "string",
@@ -275,7 +249,6 @@ export const brand = input({
   placeholder: "Enter Brand Name",
   required: false,
 });
-
 export const color = input({
   label: "Color",
   type: "string",
@@ -286,7 +259,6 @@ export const color = input({
   placeholder: "Enter Color",
   required: false,
 });
-
 export const googleProductCategory = input({
   label: "Google Product Category",
   type: "string",
@@ -297,7 +269,6 @@ export const googleProductCategory = input({
   placeholder: "Enter Google Product Category",
   required: false,
 });
-
 export const gtin = input({
   label: "GTIN",
   type: "string",
@@ -307,7 +278,6 @@ export const gtin = input({
   placeholder: "Enter GTIN",
   required: false,
 });
-
 export const itemGroupId = input({
   label: "Item Group ID",
   type: "string",
@@ -317,7 +287,6 @@ export const itemGroupId = input({
   placeholder: "Enter Item Group ID",
   required: false,
 });
-
 export const material = input({
   label: "Material",
   type: "string",
@@ -328,7 +297,6 @@ export const material = input({
   placeholder: "Enter Material",
   required: false,
 });
-
 export const mpn = input({
   label: "MPN",
   type: "string",
@@ -338,7 +306,6 @@ export const mpn = input({
   placeholder: "Enter MPN",
   required: false,
 });
-
 export const pattern = input({
   label: "Pattern",
   type: "string",
@@ -349,7 +316,6 @@ export const pattern = input({
   placeholder: "Enter Pattern",
   required: false,
 });
-
 export const identifierExists = input({
   label: "Identifier Exists",
   type: "boolean",
@@ -358,7 +324,6 @@ export const identifierExists = input({
     "When true, indicates that an identifier (GTIN, MPN, or brand) exists for the product. Set to false for custom or handmade products.",
   required: true,
 });
-
 export const salePriceEffectiveDate = input({
   label: "Sale Price Effective Date",
   type: "string",
@@ -368,7 +333,6 @@ export const salePriceEffectiveDate = input({
   placeholder: "Enter Date Range (ISO 8601 Format)",
   required: false,
 });
-
 export const multipack = input({
   label: "Multipack",
   type: "string",
@@ -378,7 +342,6 @@ export const multipack = input({
   placeholder: "Enter Multipack Quantity",
   required: false,
 });
-
 export const customLabel0 = input({
   label: "Custom Label 0",
   type: "string",
@@ -389,7 +352,6 @@ export const customLabel0 = input({
   placeholder: "Enter Custom Label 0",
   required: false,
 });
-
 export const customLabel1 = input({
   label: "Custom Label 1",
   type: "string",
@@ -400,7 +362,6 @@ export const customLabel1 = input({
   placeholder: "Enter Custom Label 1",
   required: false,
 });
-
 export const customLabel2 = input({
   label: "Custom Label 2",
   type: "string",
@@ -411,7 +372,6 @@ export const customLabel2 = input({
   placeholder: "Enter Custom Label 2",
   required: false,
 });
-
 export const customLabel3 = input({
   label: "Custom Label 3",
   type: "string",
@@ -422,7 +382,6 @@ export const customLabel3 = input({
   placeholder: "Enter Custom Label 3",
   required: false,
 });
-
 export const customLabel4 = input({
   label: "Custom Label 4",
   type: "string",
@@ -433,7 +392,6 @@ export const customLabel4 = input({
   placeholder: "Enter Custom Label 4",
   required: false,
 });
-
 export const isBundle = input({
   label: "Is Bundle",
   type: "boolean",
@@ -442,7 +400,6 @@ export const isBundle = input({
     "When true, indicates the item is a merchant-defined bundle (a custom grouping of different products sold for a single price).",
   required: false,
 });
-
 export const mobileLink = input({
   label: "Mobile Link",
   type: "string",
@@ -452,7 +409,6 @@ export const mobileLink = input({
   placeholder: "Enter Mobile URL",
   required: false,
 });
-
 export const availabilityDate = input({
   label: "Availability Date",
   type: "string",
@@ -463,7 +419,6 @@ export const availabilityDate = input({
   placeholder: "Enter Availability Date (YYYY-MM-DD)",
   required: false,
 });
-
 export const shippingLabel = input({
   label: "Shipping Label",
   type: "string",
@@ -474,7 +429,6 @@ export const shippingLabel = input({
   placeholder: "Enter Shipping Label",
   required: false,
 });
-
 export const displayAdsId = input({
   label: "Display Ads ID",
   type: "string",
@@ -484,7 +438,6 @@ export const displayAdsId = input({
   placeholder: "Enter Display Ads ID",
   required: false,
 });
-
 export const displayAdsTitle = input({
   label: "Display Ads Title",
   type: "string",
@@ -494,7 +447,6 @@ export const displayAdsTitle = input({
   placeholder: "Enter Display Ads Title",
   required: false,
 });
-
 export const displayAdsLink = input({
   label: "Display Ads Link",
   type: "string",
@@ -505,7 +457,6 @@ export const displayAdsLink = input({
   placeholder: "Enter Display Ads URL",
   required: false,
 });
-
 export const displayAdsValue = input({
   label: "Display Ads Value",
   type: "string",
@@ -515,7 +466,6 @@ export const displayAdsValue = input({
   placeholder: "Enter Display Ads Value",
   required: false,
 });
-
 export const batchId = input({
   label: "Batch ID",
   type: "string",
@@ -525,7 +475,6 @@ export const batchId = input({
   placeholder: "Enter Batch ID",
   required: true,
 });
-
 export const sellOnGoogleQuantity = input({
   label: "Sell On Google Quantity",
   type: "string",
@@ -536,7 +485,6 @@ export const sellOnGoogleQuantity = input({
   placeholder: "Enter Quantity Available for Google",
   required: false,
 });
-
 export const quantity = input({
   label: "Quantity",
   type: "string",
@@ -546,7 +494,6 @@ export const quantity = input({
   placeholder: "Enter Quantity",
   required: false,
 });
-
 export const instoreProductLocation = input({
   label: "Instore Product Location",
   type: "string",
@@ -556,7 +503,6 @@ export const instoreProductLocation = input({
   placeholder: "Enter In-Store Location",
   required: false,
 });
-
 export const maxHandlingTime = input({
   label: "Max Handling Time",
   type: "string",
@@ -566,7 +512,6 @@ export const maxHandlingTime = input({
   placeholder: "Enter Maximum Handling Time",
   required: false,
 });
-
 export const minHandlingTime = input({
   label: "Min Handling Time",
   type: "string",
@@ -576,7 +521,6 @@ export const minHandlingTime = input({
   placeholder: "Enter Minimum Handling Time",
   required: false,
 });
-
 export const adsGrouping = input({
   label: "Ads Grouping",
   type: "string",
@@ -587,7 +531,6 @@ export const adsGrouping = input({
   placeholder: "Enter Ads Grouping",
   required: false,
 });
-
 export const adsRedirect = input({
   label: "Ads Redirect",
   type: "string",
@@ -598,7 +541,6 @@ export const adsRedirect = input({
   placeholder: "Enter Ads Redirect URL",
   required: false,
 });
-
 export const ageGroup = input({
   label: "Age Group",
   type: "string",
@@ -608,7 +550,6 @@ export const ageGroup = input({
   placeholder: "Enter Age Group",
   required: false,
 });
-
 export const availability = input({
   label: "Availability",
   type: "string",
@@ -619,7 +560,6 @@ export const availability = input({
   placeholder: "Enter Availability Status",
   required: false,
 });
-
 export const condition = input({
   label: "Condition",
   type: "string",
@@ -630,7 +570,6 @@ export const condition = input({
   placeholder: "Enter Condition",
   required: false,
 });
-
 export const gender = input({
   label: "Gender",
   type: "string",
@@ -640,7 +579,6 @@ export const gender = input({
   placeholder: "Enter Gender",
   required: false,
 });
-
 export const sizeSystem = input({
   label: "Size System",
   type: "string",
@@ -651,7 +589,6 @@ export const sizeSystem = input({
   placeholder: "Enter Size System",
   required: false,
 });
-
 export const sizeType = input({
   label: "Size Type",
   type: "string",
@@ -661,7 +598,6 @@ export const sizeType = input({
   placeholder: "Enter Size Type",
   required: false,
 });
-
 export const additionalSizeType = input({
   label: "Additional Size Type",
   type: "string",
@@ -672,7 +608,6 @@ export const additionalSizeType = input({
   placeholder: "Enter Additional Size Type",
   required: false,
 });
-
 export const energyEfficiencyClass = input({
   label: "Energy Efficiency Class",
   type: "string",
@@ -683,7 +618,6 @@ export const energyEfficiencyClass = input({
   placeholder: "Enter Energy Efficiency Class",
   required: false,
 });
-
 export const minEnergyEfficiencyClass = input({
   label: "Min Energy Efficiency Class",
   type: "string",
@@ -694,7 +628,6 @@ export const minEnergyEfficiencyClass = input({
   placeholder: "Enter Minimum Energy Efficiency Class",
   required: false,
 });
-
 export const maxEnergyEfficiencyClass = input({
   label: "Max Energy Efficiency Class",
   type: "string",
@@ -705,7 +638,6 @@ export const maxEnergyEfficiencyClass = input({
   placeholder: "Enter Maximum Energy Efficiency Class",
   required: false,
 });
-
 export const taxCategory = input({
   label: "Tax Category",
   type: "string",
@@ -715,7 +647,6 @@ export const taxCategory = input({
   placeholder: "Enter Tax Category",
   required: false,
 });
-
 export const transitTimeLabel = input({
   label: "Transit Time Label",
   type: "string",
@@ -726,7 +657,6 @@ export const transitTimeLabel = input({
   placeholder: "Enter Transit Time Label",
   required: false,
 });
-
 export const linkTemplate = input({
   label: "Link Template",
   type: "string",
@@ -736,7 +666,6 @@ export const linkTemplate = input({
   placeholder: "Enter Link Template",
   required: false,
 });
-
 export const mobileLinkTemplate = input({
   label: "Mobile Link Template",
   type: "string",
@@ -747,7 +676,6 @@ export const mobileLinkTemplate = input({
   placeholder: "Enter Mobile Link Template",
   required: false,
 });
-
 export const canonicalLink = input({
   label: "Canonical Link",
   type: "string",
@@ -757,7 +685,6 @@ export const canonicalLink = input({
   placeholder: "Enter Canonical URL",
   required: false,
 });
-
 export const updateMask = input({
   label: "Update Mask",
   type: "string",
@@ -768,7 +695,6 @@ export const updateMask = input({
   placeholder: "Enter Field Names (Comma-Separated)",
   required: false,
 });
-
 export const externalSellerId = input({
   label: "External Seller ID",
   type: "string",
@@ -779,7 +705,6 @@ export const externalSellerId = input({
   placeholder: "Enter External Seller ID",
   required: true,
 });
-
 export const placedDateStart = input({
   label: "Placed Date Start",
   type: "string",
@@ -790,7 +715,6 @@ export const placedDateStart = input({
   placeholder: "Enter Start Date (ISO 8601 Format)",
   required: false,
 });
-
 export const placedDateEnd = input({
   label: "Placed Date End",
   type: "string",
@@ -801,7 +725,6 @@ export const placedDateEnd = input({
   placeholder: "Enter End Date (ISO 8601 Format)",
   required: false,
 });
-
 export const reasonText = input({
   label: "Reason Text",
   type: "string",
@@ -811,7 +734,6 @@ export const reasonText = input({
   placeholder: "Enter Reason Text",
   required: false,
 });
-
 export const createdStartDate = input({
   label: "Created Start Date",
   type: "string",
@@ -822,7 +744,6 @@ export const createdStartDate = input({
   placeholder: "Enter Start Date (ISO 8601 Format)",
   required: false,
 });
-
 export const createdEndDate = input({
   label: "Created End Date",
   type: "string",
@@ -833,7 +754,6 @@ export const createdEndDate = input({
   placeholder: "Enter End Date (ISO 8601 Format)",
   required: false,
 });
-
 export const acknowledged = input({
   label: "Acknowledged",
   type: "boolean",
@@ -842,7 +762,6 @@ export const acknowledged = input({
     "When true, filters for orders that have been acknowledged. When false, filters for orders that have not been acknowledged.",
   required: false,
 });
-
 export const returnMethodType = input({
   label: "Return Method Type",
   type: "string",
@@ -852,7 +771,6 @@ export const returnMethodType = input({
   placeholder: "Enter Return Method Type",
   required: false,
 });
-
 export const orderBy = input({
   label: "Order By",
   type: "string",
@@ -871,7 +789,6 @@ export const orderBy = input({
   ],
   required: false,
 });
-
 export const pause = input({
   label: "Pause",
   type: "string",
@@ -886,7 +803,6 @@ export const pause = input({
   ],
   required: false,
 });
-
 export const pickupMethod = input({
   label: "Pickup Method",
   type: "string",
@@ -913,7 +829,6 @@ export const pickupMethod = input({
   ],
   required: false,
 });
-
 export const pickupSla = input({
   label: "Pickup Sla",
   type: "string",
@@ -960,7 +875,6 @@ export const pickupSla = input({
   ],
   required: false,
 });
-
 export const source = input({
   label: "Source",
   type: "string",
@@ -983,7 +897,6 @@ export const source = input({
   ],
   required: false,
 });
-
 export const method = input({
   label: "Batch Method",
   type: "string",
@@ -1010,7 +923,6 @@ export const method = input({
     },
   ],
 });
-
 export const price = input({
   label: "Price",
   type: "code",
@@ -1028,7 +940,6 @@ export const price = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const salePrice = input({
   label: "Sale Price",
   type: "code",
@@ -1046,7 +957,6 @@ export const salePrice = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const productHeight = input({
   label: "Product Height",
   type: "code",
@@ -1064,7 +974,6 @@ export const productHeight = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const productLength = input({
   label: "Product Length",
   type: "code",
@@ -1082,7 +991,6 @@ export const productLength = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const productWidth = input({
   label: "Product Width",
   type: "code",
@@ -1100,7 +1008,6 @@ export const productWidth = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const productWeight = input({
   label: "Product Weight",
   type: "code",
@@ -1118,7 +1025,6 @@ export const productWeight = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const installment = input({
   label: "Installment",
   type: "code",
@@ -1138,7 +1044,6 @@ export const installment = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const loyaltyPoints = input({
   label: "Loyalty Points",
   type: "code",
@@ -1157,7 +1062,6 @@ export const loyaltyPoints = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const shipping = input({
   label: "Shipping",
   type: "code",
@@ -1186,7 +1090,6 @@ export const shipping = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const unitPricingMeasure = input({
   label: "Unit Pricing Measure",
   type: "code",
@@ -1203,7 +1106,6 @@ export const unitPricingMeasure = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const unitPricingBaseMeasure = input({
   label: "Unit Pricing Base Measure",
   type: "code",
@@ -1220,7 +1122,6 @@ export const unitPricingBaseMeasure = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const shippingLength = input({
   label: "Shipping Length",
   type: "code",
@@ -1237,7 +1138,6 @@ export const shippingLength = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const shippingWidth = input({
   label: "Shipping Width",
   type: "code",
@@ -1254,7 +1154,6 @@ export const shippingWidth = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const shippingHeight = input({
   label: "Shipping Height",
   type: "code",
@@ -1271,7 +1170,6 @@ export const shippingHeight = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const registeredEvents = input({
   label: "Registered Events",
   type: "string",
@@ -1282,7 +1180,6 @@ export const registeredEvents = input({
   placeholder: "Enter Event Types",
   clean: valueListInputClean,
 });
-
 export const shipmentTypes = input({
   label: "Shipment Types",
   type: "string",
@@ -1294,7 +1191,6 @@ export const shipmentTypes = input({
   placeholder: "Enter Shipment Types",
   clean: valueListInputClean,
 });
-
 export const shipmentStatus = input({
   label: "Shipment Status",
   type: "string",
@@ -1306,7 +1202,6 @@ export const shipmentStatus = input({
   placeholder: "Enter Shipment Statuses",
   clean: valueListInputClean,
 });
-
 export const shipmentStates = input({
   label: "Shipment States",
   type: "string",
@@ -1318,7 +1213,6 @@ export const shipmentStates = input({
   placeholder: "Enter Shipment States",
   clean: valueListInputClean,
 });
-
 export const googleOrderIds = input({
   label: "Google Order IDs",
   type: "string",
@@ -1330,7 +1224,6 @@ export const googleOrderIds = input({
   placeholder: "Enter Google Order IDs",
   clean: valueListInputClean,
 });
-
 export const shipmentTrackingNumbers = input({
   label: "Shipping Tracking Numbers",
   type: "string",
@@ -1342,7 +1235,6 @@ export const shipmentTrackingNumbers = input({
   placeholder: "Enter Tracking Numbers",
   clean: valueListInputClean,
 });
-
 export const displayAdsSimilarIds = input({
   label: "Display Ads Similar IDs",
   type: "string",
@@ -1353,7 +1245,6 @@ export const displayAdsSimilarIds = input({
   placeholder: "Enter Similar Product IDs",
   clean: valueListInputClean,
 });
-
 export const promotionIds = input({
   label: "Promotion IDs",
   type: "string",
@@ -1364,7 +1255,6 @@ export const promotionIds = input({
   placeholder: "Enter Promotion IDs",
   clean: valueListInputClean,
 });
-
 export const includedDestinations = input({
   label: "Included Destinations",
   type: "string",
@@ -1376,7 +1266,6 @@ export const includedDestinations = input({
   placeholder: "Enter Included Destinations",
   clean: valueListInputClean,
 });
-
 export const excludedDestinations = input({
   label: "Excluded Destinations",
   type: "string",
@@ -1388,7 +1277,6 @@ export const excludedDestinations = input({
   placeholder: "Enter Excluded Destinations",
   clean: valueListInputClean,
 });
-
 export const adsLabels = input({
   label: "Ads Labels",
   type: "string",
@@ -1399,7 +1287,6 @@ export const adsLabels = input({
   placeholder: "Enter Ads Labels",
   clean: valueListInputClean,
 });
-
 export const productTypes = input({
   label: "Product Types",
   type: "string",
@@ -1411,7 +1298,6 @@ export const productTypes = input({
   placeholder: "Enter Product Type Categories",
   clean: valueListInputClean,
 });
-
 export const sizes = input({
   label: "Sizes",
   type: "string",
@@ -1423,7 +1309,6 @@ export const sizes = input({
   placeholder: "Enter Size",
   clean: valueListInputClean,
 });
-
 export const shoppingAdsExcludedCountries = input({
   label: "Shopping Ads Excluded Countries",
   type: "string",
@@ -1435,7 +1320,6 @@ export const shoppingAdsExcludedCountries = input({
   placeholder: "Enter Country Codes",
   clean: valueListInputClean,
 });
-
 export const statuses = input({
   label: "Statuses",
   type: "string",
@@ -1447,7 +1331,6 @@ export const statuses = input({
   placeholder: "Select order statuses",
   clean: valueListInputClean,
 });
-
 export const taxes = input({
   label: "Taxes",
   type: "code",
@@ -1466,7 +1349,6 @@ export const taxes = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const shippingWeight = input({
   label: "Shipping Weight",
   type: "code",
@@ -1478,7 +1360,6 @@ export const shippingWeight = input({
   }),
   clean: jsonInputClean,
 });
-
 export const customAttributes = input({
   label: "Custom Attributes",
   type: "code",
@@ -1499,7 +1380,6 @@ export const customAttributes = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const cloudExportAdditionalProperties = input({
   label: "Cloud Export Additional Properties",
   type: "code",
@@ -1519,7 +1399,6 @@ export const cloudExportAdditionalProperties = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const reason = input({
   label: "Reason",
   type: "string",
@@ -1574,7 +1453,6 @@ export const reason = input({
     },
   ],
 });
-
 export const channel = input({
   label: "Channel",
   type: "string",
@@ -1594,7 +1472,6 @@ export const channel = input({
     },
   ],
 });
-
 export const additionalImageLinks = input({
   label: "Additional Image Links",
   type: "string",
@@ -1605,7 +1482,6 @@ export const additionalImageLinks = input({
   placeholder: "Enter Image URLs",
   clean: valueListInputClean,
 });
-
 export const lifestyleImageLinks = input({
   label: "Lifestyle Image Links",
   type: "string",
@@ -1617,7 +1493,6 @@ export const lifestyleImageLinks = input({
   placeholder: "Enter Lifestyle Image URLs",
   clean: valueListInputClean,
 });
-
 export const costOfGoodsSold = input({
   label: "Cost Of Goods Sold",
   type: "code",
@@ -1629,7 +1504,6 @@ export const costOfGoodsSold = input({
   }),
   clean: jsonInputClean,
 });
-
 export const productDetails = input({
   label: "Product Details",
   type: "code",
@@ -1644,7 +1518,6 @@ export const productDetails = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const subscriptionCost = input({
   label: "Subscription Cost",
   type: "code",
@@ -1661,7 +1534,6 @@ export const subscriptionCost = input({
   }),
   clean: jsonInputClean,
 });
-
 export const view = input({
   label: "View",
   type: "string",
@@ -1681,7 +1553,6 @@ export const view = input({
   ],
   required: false,
 });
-
 export const label = input({
   label: "Label",
   type: "string",
@@ -1692,7 +1563,6 @@ export const label = input({
   placeholder: "Enter Label ID",
   required: false,
 });
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -1703,7 +1573,6 @@ export const name = input({
   placeholder: "Enter Account Name",
   required: false,
 });
-
 export const accountId = input({
   label: "Account ID",
   type: "string",
@@ -1715,7 +1584,6 @@ export const accountId = input({
   required: true,
   dataSource: "selectAccount",
 });
-
 export const kind = input({
   label: "Kind",
   type: "string",
@@ -1726,7 +1594,6 @@ export const kind = input({
   placeholder: "Enter Kind",
   required: true,
 });
-
 export const websiteUrl = input({
   label: "Website Url",
   type: "string",
@@ -1736,7 +1603,6 @@ export const websiteUrl = input({
   placeholder: "Enter Website URL",
   required: true,
 });
-
 export const adultContent = input({
   label: "Adult Content",
   type: "boolean",
@@ -1744,7 +1610,6 @@ export const adultContent = input({
   comments: "When true, indicates the merchant sells adult content.",
   required: true,
 });
-
 export const sellerId = input({
   label: "Seller ID",
   type: "string",
@@ -1755,7 +1620,6 @@ export const sellerId = input({
   placeholder: "Enter Seller ID",
   required: true,
 });
-
 export const cssId = input({
   label: "CSS ID",
   type: "string",
@@ -1766,7 +1630,6 @@ export const cssId = input({
   placeholder: "Enter CSS ID",
   required: true,
 });
-
 export const labelIds = input({
   label: "Label IDs",
   type: "string",
@@ -1778,7 +1641,6 @@ export const labelIds = input({
   placeholder: "Enter Label IDs",
   clean: valueListInputClean,
 });
-
 export const productHighlights = input({
   label: "Product Highlights",
   type: "string",
@@ -1790,7 +1652,6 @@ export const productHighlights = input({
   placeholder: "Enter Product Highlights",
   clean: valueListInputClean,
 });
-
 export const accountManagement = input({
   label: "Account Management",
   type: "string",
@@ -1809,7 +1670,6 @@ export const accountManagement = input({
   ],
   required: false,
 });
-
 export const automaticLabelIds = input({
   label: "Automatic Label IDs",
   type: "string",
@@ -1821,7 +1681,6 @@ export const automaticLabelIds = input({
   placeholder: "Enter Automatic Label IDs",
   clean: valueListInputClean,
 });
-
 export const users = input({
   label: "User",
   type: "code",
@@ -1840,7 +1699,6 @@ export const users = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const youtubeChannelLinks = input({
   label: "Youtube Channel Links",
   type: "code",
@@ -1855,7 +1713,6 @@ export const youtubeChannelLinks = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const googleMyBusinessLink = input({
   label: "Google My Business Link",
   type: "code",
@@ -1869,7 +1726,6 @@ export const googleMyBusinessLink = input({
   }),
   clean: jsonInputClean,
 });
-
 export const businessInformation = input({
   label: "Business Information",
   type: "code",
@@ -1894,7 +1750,6 @@ export const businessInformation = input({
   }),
   clean: jsonInputClean,
 });
-
 export const automaticImprovements = input({
   label: "Automatic Improvements",
   type: "code",
@@ -1926,7 +1781,6 @@ export const automaticImprovements = input({
   }),
   clean: jsonInputClean,
 });
-
 export const adsLinks = input({
   label: "Ads Links",
   type: "code",
@@ -1941,7 +1795,6 @@ export const adsLinks = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const conversionSettings = input({
   label: "Conversion Settings",
   type: "code",
@@ -1952,7 +1805,6 @@ export const conversionSettings = input({
   }),
   clean: jsonInputClean,
 });
-
 export const lineItems = input({
   label: "Line Items",
   type: "code",
@@ -1967,7 +1819,6 @@ export const lineItems = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const returnItems = input({
   label: "Return Items",
   type: "code",
@@ -2000,7 +1851,6 @@ export const returnItems = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const refundShippingFee = input({
   label: "Refund Shipping Fee",
   type: "code",
@@ -2026,7 +1876,6 @@ export const refundShippingFee = input({
   ]),
   clean: jsonInputClean,
 });
-
 export const entriesForBatchProduct = input({
   label: "Entries for Batch Request",
   type: "code",
@@ -2038,7 +1887,6 @@ export const entriesForBatchProduct = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const entriesForBatchLocalInventory = input({
   label: "Entries for Batch Request",
   type: "code",
@@ -2050,7 +1898,6 @@ export const entriesForBatchLocalInventory = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const entriesForBatchRegionalInventory = input({
   label: "Entries for Batch Request",
   type: "code",
@@ -2062,7 +1909,6 @@ export const entriesForBatchRegionalInventory = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",

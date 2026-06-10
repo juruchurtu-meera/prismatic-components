@@ -8,7 +8,6 @@ import {
   locale,
   MarketplaceIds,
 } from "../../inputs";
-
 export const getCatalogItem = action({
   display: {
     label: "Get Catalog Item",

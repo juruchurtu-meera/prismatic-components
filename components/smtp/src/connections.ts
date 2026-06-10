@@ -1,5 +1,4 @@
 import { onPremConnection } from "@prismatic-io/spectral";
-
 export const smtpConnection = onPremConnection({
   key: "smtpConnection",
   display: {

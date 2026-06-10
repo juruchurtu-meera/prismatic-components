@@ -2,7 +2,6 @@ import type { analytics_v3 } from "@googleapis/analytics";
 import { dataSource, type Element, input, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput } from "../inputs";
-
 const getCustomMetric = dataSource({
   display: {
     label: "Custom Metrics",
@@ -54,7 +53,6 @@ const getCustomMetric = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const getWebProperty = dataSource({
   display: {
     label: "Web Property",
@@ -89,7 +87,6 @@ const getWebProperty = dataSource({
       index++;
       nextLink = data.nextLink;
     } while (nextLink);
-
     const elements = webProperties.map<Element>((property) => {
       return {
         key: util.types.toString(property.id),
@@ -100,7 +97,6 @@ const getWebProperty = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 const accountNames = dataSource({
   display: {
     label: "Account Names",
@@ -120,12 +116,10 @@ const accountNames = dataSource({
       label: name || "",
       key: id || "",
     }));
-
     return { result: options ?? [] };
   },
   dataSourceType: "picklist",
 });
-
 const profiles = dataSource({
   display: {
     label: "Views (Profiles)",
@@ -165,12 +159,10 @@ const profiles = dataSource({
         key: id || "",
       }),
     );
-
     return { result: options ?? [] };
   },
   dataSourceType: "picklist",
 });
-
 const selectCustomDimension = dataSource({
   display: {
     label: "Select Custom Dimension",
@@ -226,7 +218,6 @@ const selectCustomDimension = dataSource({
     result: [{ label: "Example Custom Dimension", key: "ga:dimension1" }],
   },
 });
-
 export default {
   accountNames,
   getCustomMetric,

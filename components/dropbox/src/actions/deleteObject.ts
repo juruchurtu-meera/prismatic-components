@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { deleteObjectExamplePayload } from "../example-payloads";
 import { connectionInput, path } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const deleteObject = action({
   display: {
     label: "Delete Object",

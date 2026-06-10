@@ -1,6 +1,10 @@
 interface PageableResponse {
   pageable: {
-    sort: { sorted: boolean; unsorted: boolean; empty: boolean };
+    sort: {
+      sorted: boolean;
+      unsorted: boolean;
+      empty: boolean;
+    };
     pageSize: number;
     pageNumber: number;
     offset: number;
@@ -20,39 +24,32 @@ interface PageableResponse {
   size: number;
   empty: boolean;
 }
-
 export interface DiscoveryResponse {
   imsUserId: string;
   imsOrgs: Organization[];
 }
-
 export interface Organization {
   imsOrgId: string;
   companies: Company[];
 }
-
 export interface Company {
   globalCompanyId: string;
   companyName: string;
   apiRateLimitPolicy: string;
   dpc: string;
 }
-
 export interface ReportSuite {
   collectionItemType: string;
   id: string;
   rsid: string;
   name: string;
 }
-
 export interface ReportSuiteListResponse extends PageableResponse {
   content: ReportSuite[];
 }
-
 export interface ReportSuiteResponse {
   content: ReportSuite;
 }
-
 export interface ReportSuiteMetric {
   id: string;
   title: string;
@@ -68,7 +65,6 @@ export interface ReportSuiteMetric {
   polarity: string;
   standardComponent: boolean;
 }
-
 export interface ReportSuiteDimension {
   id: string;
   title: string;

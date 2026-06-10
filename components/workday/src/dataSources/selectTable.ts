@@ -3,7 +3,6 @@ import { getClient } from "../client";
 import { SERVICES } from "../constants";
 import { connection, tenant } from "../inputs/shared";
 import { toSortedPicklist } from "./helpers";
-
 export const selectTable = dataSource({
   display: {
     label: "Select Table",
@@ -18,7 +17,6 @@ export const selectTable = dataSource({
     const { data } = await client.get(
       `${SERVICES.prismAnalytics}/${tenant}/tables`,
     );
-
     return {
       result: toSortedPicklist(
         data.data,

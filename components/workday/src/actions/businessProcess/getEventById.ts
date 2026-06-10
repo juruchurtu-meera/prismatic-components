@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getEventByIdExamplePayload } from "../../examplePayloads";
 import { getEventByIdInputs } from "../../inputs";
-
 export const getEventById = action({
   display: {
     label: "Get Event by ID",

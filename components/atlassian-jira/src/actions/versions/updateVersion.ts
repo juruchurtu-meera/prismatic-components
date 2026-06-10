@@ -15,22 +15,28 @@ import {
   versionId,
   versionName,
 } from "../../inputs";
-
 export const updateVersion = action({
   display: {
     label: "Update Version",
     description: "Update an existing version by ID.",
   },
   perform: async (context, params) => {
-    const client = await createV3Client(params.jiraConnection, context.debug.enabled);
+    const client = await createV3Client(
+      params.jiraConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.put("/version", {
       id: params.versionId,
       description: util.types.toString(params.description) || undefined,
       name: util.types.toString(params.versionName) || undefined,
       archived: util.types.toBool(params.archived) || undefined,
       released: util.types.toBool(params.released) || undefined,
-      startDate: params.startDate ? util.types.toString(params.startDate) : undefined,
-      releaseDate: params.releaseDate ? util.types.toString(params.releaseDate) : undefined,
+      startDate: params.startDate
+        ? util.types.toString(params.startDate)
+        : undefined,
+      releaseDate: params.releaseDate
+        ? util.types.toString(params.releaseDate)
+        : undefined,
       project: util.types.toString(params.projectKey) || undefined,
       projectId: params.projectId || undefined,
       ...params.dynamicValues,

@@ -1,23 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
 import type { ServiceBusMessage } from "@azure/service-bus";
-
-
-
-
-
-
-
-
 export const getNamespacesExamplePayload = {
   data: {
     sku: {
@@ -43,12 +24,6 @@ export const getNamespacesExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createOrUpdateNamespacesExamplePayload = {
   data: {
     sku: {
@@ -74,12 +49,6 @@ export const createOrUpdateNamespacesExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const listNamespacesExamplePayload = {
   data: {
     value: [
@@ -109,12 +78,6 @@ export const listNamespacesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const listNamespacesByResourceGroupExamplePayload = {
   data: {
     value: [
@@ -144,23 +107,9 @@ export const listNamespacesByResourceGroupExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const deleteNamespaceExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
 export const getQueueExamplePayload = {
   data: {
     id: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-3174/queues/sdk-Queues-5647",
@@ -187,12 +136,6 @@ export const getQueueExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createOrUpdateQueueExamplePayload = {
   data: {
     id: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-3174/queues/sdk-Queues-5647",
@@ -219,12 +162,6 @@ export const createOrUpdateQueueExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const listQueuesExamplePayload = {
   data: {
     value: [
@@ -255,23 +192,9 @@ export const listQueuesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const deleteQueueExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
 export const getTopicExamplePayload = {
   data: {
     id: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1617/topics/sdk-Topics-5488",
@@ -297,12 +220,6 @@ export const getTopicExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createOrUpdateTopicExamplePayload = {
   data: {
     id: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1617/topics/sdk-Topics-5488",
@@ -328,12 +245,6 @@ export const createOrUpdateTopicExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const listTopicsByNamespaceExamplePayload = {
   data: {
     value: [
@@ -363,23 +274,9 @@ export const listTopicsByNamespaceExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const deleteTopicExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
 export const getSubscriptionsExamplePayload = {
   data: {
     id: "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1349/topics/sdk-Topics-8740/subscriptions/sdk-Subscriptions-2178",
@@ -411,12 +308,6 @@ export const getSubscriptionsExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createOrUpdateSubscriptionExamplePayload = {
   data: {
     id: "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1349/topics/sdk-Topics-8740/subscriptions/sdk-Subscriptions-2178",
@@ -446,12 +337,6 @@ export const createOrUpdateSubscriptionExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const listSubscriptionsByTopicExamplePayload = {
   data: {
     value: [
@@ -485,23 +370,9 @@ export const listSubscriptionsByTopicExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const deleteSubscriptionsExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
 export const getRuleExamplePayload = {
   data: {
     id: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1319/topics/sdk-Topics-2081/subscriptions/sdk-Subscriptions-8691/rules/sdk-Rules-6571",
@@ -517,12 +388,6 @@ export const getRuleExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const createOrUpdateRulesExamplePayload = {
   data: {
     id: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1319/topics/sdk-Topics-2081/subscriptions/sdk-Subscriptions-8691/rules/sdk-Rules-6571",
@@ -538,12 +403,6 @@ export const createOrUpdateRulesExamplePayload = {
     },
   },
 };
-
-
-
-
-
-
 export const listRulesExamplePayload = {
   data: {
     value: [
@@ -563,25 +422,12 @@ export const listRulesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const deleteRuleExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
-
-
-export const sendMessageToQueueExamplePayload: { data: ServiceBusMessage } = {
+export const sendMessageToQueueExamplePayload: {
+  data: ServiceBusMessage;
+} = {
   data: {
     body: "Hello, Service Bus!",
     contentType: "application/json",
@@ -590,23 +436,9 @@ export const sendMessageToQueueExamplePayload: { data: ServiceBusMessage } = {
     to: "order-processor",
   },
 };
-
-
-
-
-
-
-
 export const sendMessagesToQueueExamplePayload = {
   data: [{ body: "First message" }, { body: "Second message" }],
 };
-
-
-
-
-
-
-
 export const receiveMessagesFromQueueExamplePayload = {
   data: ["First message body", "Second message body"],
 };

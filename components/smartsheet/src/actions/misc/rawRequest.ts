@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { sendRawRequest } from "@prismatic-io/spectral/dist/clients/http";
 import { rawRequestInputs } from "../../inputs";
 import { getBaseUrl, getHeaders } from "../../util";
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -20,5 +19,4 @@ const rawRequest = action({
     return { data };
   },
 });
-
 export default rawRequest;

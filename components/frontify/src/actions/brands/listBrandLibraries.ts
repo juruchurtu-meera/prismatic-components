@@ -5,8 +5,6 @@ import { listBrandLibrariesExamplePayload as examplePayload } from "../../exampl
 import { listBrandLibrariesInputs as inputs } from "../../inputs/brands";
 import { graphqlFetchAll } from "../../utils/graphqlFetchAll";
 import type ListBrandLibrariesResponse from "../types/listBrandLibraries";
-
-
 export const listBrandLibraries = action({
   display: {
     label: "List Brand Libraries",
@@ -16,9 +14,10 @@ export const listBrandLibraries = action({
   perform: async (
     context,
     { connection, page, limit, brandId, fetchAll },
-  ): Promise<{ data: ListBrandLibrariesResponse }> => {
+  ): Promise<{
+    data: ListBrandLibrariesResponse;
+  }> => {
     const client = createClient({ connection, debug: context.debug.enabled });
-
     if (fetchAll) {
       const hasNextPath = ["brand", "libraries", "hasNextPage"];
       const responses: ListBrandLibrariesResponse[] = await graphqlFetchAll({
@@ -27,17 +26,16 @@ export const listBrandLibraries = action({
         params: { brandId },
         hasNextPath,
       });
-
       if (responses.length === 1) {
         return { data: responses[0] };
       }
-
       const baseResponse = responses.slice(-1)[0];
       const combinedLibraries = responses.reduce((combined, response) => {
         return combined.concat(response.brand.libraries.items);
       }, []);
-
-      const formattedResponse: { data: ListBrandLibrariesResponse } = {
+      const formattedResponse: {
+        data: ListBrandLibrariesResponse;
+      } = {
         data: {
           brand: {
             ...baseResponse.brand,
@@ -48,10 +46,8 @@ export const listBrandLibraries = action({
           },
         },
       };
-
       return formattedResponse;
     }
-
     const response: ListBrandLibrariesResponse = await client.request(
       LIST_BRAND_LIBRARIES_QUERY,
       {
@@ -60,7 +56,6 @@ export const listBrandLibraries = action({
         brandId,
       },
     );
-
     return {
       data: response,
     };

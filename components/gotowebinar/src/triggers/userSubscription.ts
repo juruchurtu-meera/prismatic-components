@@ -7,7 +7,6 @@ import {
 } from "../inputs/subscriptions/createUserSubscriptionInputs";
 import { GoToWebinarResponse, Webhook } from "../interfaces";
 import { deleteInstancedWebhooks } from "../utils";
-
 export const userSubscriptionTrigger = trigger({
   display: {
     label: "User Subscription",
@@ -19,7 +18,6 @@ export const userSubscriptionTrigger = trigger({
       const { client } = createGotoWebinarClient(connection, false);
       const flowName = context.flow.name;
       const callbackUrl = context.webhookUrls[flowName];
-
       const payload = [
         {
           eventVersion,
@@ -28,13 +26,11 @@ export const userSubscriptionTrigger = trigger({
           product: "g2w",
         },
       ];
-
       const {
         data: {
           _embedded: { webhooks },
         },
       } = await client.post<GoToWebinarResponse<Webhook>>("/webhooks", payload);
-
       const { webhookKey } = webhooks[0];
       await client.post("/userSubscriptions", [
         {

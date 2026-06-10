@@ -8,7 +8,6 @@ import {
   handleMultipleWorkspacesError,
 } from "../util";
 import type { DataSource } from "../types/Project";
-
 const selectUser = dataSource({
   display: {
     label: "Select User",
@@ -29,7 +28,6 @@ const selectUser = dataSource({
       const data = await fetchMoreData<DataSource>(client, "/users", [], true, {
         workspace: workspaceId,
       });
-
       const result = mapToLabelKey(data);
       return { result };
     } catch (err) {
@@ -39,7 +37,6 @@ const selectUser = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default {
   selectUser,
 };

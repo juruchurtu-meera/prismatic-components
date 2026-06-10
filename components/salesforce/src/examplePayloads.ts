@@ -1,5 +1,4 @@
 import type { FileProperties } from "jsforce/lib/api/metadata";
-
 export const genericCreateUpdateExamplePayload = {
   data: {
     id: "06Q606ExampleId",
@@ -7,7 +6,6 @@ export const genericCreateUpdateExamplePayload = {
     errors: [] as never[],
   },
 };
-
 export const genericCreateUpdateFullNameExamplePayload = {
   data: {
     success: true,
@@ -15,7 +13,6 @@ export const genericCreateUpdateFullNameExamplePayload = {
     fullName: "TestObject1__c",
   },
 };
-
 export const genericUpsertExamplePayload = {
   data: [
     {
@@ -26,7 +23,6 @@ export const genericUpsertExamplePayload = {
     },
   ],
 };
-
 const describeCustomerSObjectData = {
   actionOverrides: [],
   activateable: false,
@@ -233,7 +229,8 @@ const describeCustomerSObjectData = {
       name: "Master",
       recordTypeId: "012964000000000AAA",
       urls: {
-        layout: "/services/data/v53.0/sobjects/Customer/describe/layouts/012964000000000AAA",
+        layout:
+          "/services/data/v53.0/sobjects/Customer/describe/layouts/012964000000000AAA",
       },
     },
   ],
@@ -247,9 +244,11 @@ const describeCustomerSObjectData = {
   undeletable: true,
   updateable: true,
   urls: {
-    compactLayouts: "/services/data/v53.0/sobjects/Customer/describe/compactLayouts",
+    compactLayouts:
+      "/services/data/v53.0/sobjects/Customer/describe/compactLayouts",
     rowTemplate: "/services/data/v53.0/sobjects/Customer/{ID}",
-    approvalLayouts: "/services/data/v53.0/sobjects/Customer/describe/approvalLayouts",
+    approvalLayouts:
+      "/services/data/v53.0/sobjects/Customer/describe/approvalLayouts",
     uiDetailTemplate: "https://dummy-uri.my.salesforce.com/{ID}",
     uiEditTemplate: "https://dummy-uri.my.salesforce.com/{ID}/e",
     describe: "/services/data/v53.0/sobjects/Customer/describe",
@@ -258,11 +257,9 @@ const describeCustomerSObjectData = {
     sobject: "/services/data/v53.0/sobjects/Customer",
   },
 };
-
 export const describeCustomerSObjectExamplePayload = {
   data: describeCustomerSObjectData,
 };
-
 export const getCustomerExamplePayload = {
   data: {
     attributes: {
@@ -285,7 +282,6 @@ export const getCustomerExamplePayload = {
     CustomerStatusType: "Active",
   },
 };
-
 export const listCustomersExamplePayload = {
   data: {
     records: [
@@ -314,7 +310,6 @@ export const listCustomersExamplePayload = {
     totalSize: 2,
   },
 };
-
 export const getCurrentUserExamplePayload = {
   data: {
     id: "https://login.salesforce.com/id/00Z8d000694w9weEAQ/0064c00859AJGN6KPA",
@@ -346,21 +341,34 @@ export const getCurrentUserExamplePayload = {
       body: null,
     },
     urls: {
-      enterprise: "https://dummy-uri.my.salesforce.com/services/Soap/c/{version}/00Z8d000694w9we",
-      metadata: "https://dummy-uri.my.salesforce.com/services/Soap/m/{version}/00Z8d000694w9we",
-      partner: "https://dummy-uri.my.salesforce.com/services/Soap/u/{version}/00Z8d000694w9we",
+      enterprise:
+        "https://dummy-uri.my.salesforce.com/services/Soap/c/{version}/00Z8d000694w9we",
+      metadata:
+        "https://dummy-uri.my.salesforce.com/services/Soap/m/{version}/00Z8d000694w9we",
+      partner:
+        "https://dummy-uri.my.salesforce.com/services/Soap/u/{version}/00Z8d000694w9we",
       rest: "https://dummy-uri.my.salesforce.com/services/data/v{version}/",
-      sobjects: "https://dummy-uri.my.salesforce.com/services/data/v{version}/sobjects/",
-      search: "https://dummy-uri.my.salesforce.com/services/data/v{version}/search/",
-      query: "https://dummy-uri.my.salesforce.com/services/data/v{version}/query/",
-      recent: "https://dummy-uri.my.salesforce.com/services/data/v{version}/recent/",
-      tooling_soap: "https://dummy-uri.my.salesforce.com/services/Soap/T/{version}/00Z8d000694w9we",
-      tooling_rest: "https://dummy-uri.my.salesforce.com/services/data/v{version}/tooling/",
+      sobjects:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/sobjects/",
+      search:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/search/",
+      query:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/query/",
+      recent:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/recent/",
+      tooling_soap:
+        "https://dummy-uri.my.salesforce.com/services/Soap/T/{version}/00Z8d000694w9we",
+      tooling_rest:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/tooling/",
       profile: "https://dummy-uri.my.salesforce.com/0064c00859AJGN6KPA",
-      feeds: "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/feeds",
-      groups: "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/groups",
-      users: "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/users",
-      feed_items: "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/feed-items",
+      feeds:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/feeds",
+      groups:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/groups",
+      users:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/users",
+      feed_items:
+        "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/feed-items",
       feed_elements:
         "https://dummy-uri.my.salesforce.com/services/data/v{version}/chatter/feed-elements",
       custom_domain: "https://dummy-uri.my.salesforce.com",
@@ -374,7 +382,6 @@ export const getCurrentUserExamplePayload = {
     is_app_installed: true,
   },
 };
-
 const getObjectMetadataData = {
   createdById: "0064c00859AJGN6KPA",
   createdByName: "Dev Env",
@@ -388,11 +395,9 @@ const getObjectMetadataData = {
   namespacePrefix: "",
   type: "CustomObject",
 };
-
 export const getObjectMetadataExamplePayload = {
   data: getObjectMetadataData,
 };
-
 export const listObjectMetadataExamplePayload = {
   data: [
     getObjectMetadataData,
@@ -411,7 +416,6 @@ export const listObjectMetadataExamplePayload = {
     },
   ],
 };
-
 const getWorkflowRuleData = {
   createdById: "0064c00859AJGN6KPA",
   createdByName: "Dev Env",
@@ -426,11 +430,9 @@ const getWorkflowRuleData = {
   namespacePrefix: "",
   type: "WorkflowRule",
 };
-
 export const getWorkflowRuleExamplePayload = {
   data: getWorkflowRuleData,
 };
-
 export const listWorkflowRulesExamplePayload = {
   data: [
     getWorkflowRuleData,
@@ -450,7 +452,6 @@ export const listWorkflowRulesExamplePayload = {
     },
   ],
 };
-
 const getWorkflowOutboundMessageData = {
   createdById: "0064c00859AJGN6KPA",
   createdByName: "Dev Env",
@@ -464,11 +465,9 @@ const getWorkflowOutboundMessageData = {
   manageableState: "unmanaged",
   type: "WorkflowOutboundMessage",
 };
-
 export const getWorkflowOutboundMessageExamplePayload = {
   data: getWorkflowOutboundMessageData,
 };
-
 export const listWorkflowOutboundMessagesExamplePayload = {
   data: [
     getWorkflowOutboundMessageData,
@@ -487,7 +486,6 @@ export const listWorkflowOutboundMessagesExamplePayload = {
     },
   ],
 };
-
 export const subscribeRecordChangeExamplePayload = {
   data: {
     WorkflowRule: {
@@ -502,7 +500,6 @@ export const subscribeRecordChangeExamplePayload = {
     },
   },
 };
-
 export const createBulkQueryJobExamplePayload = {
   data: {
     id: "750R0000000zlh9IAA",
@@ -519,7 +516,6 @@ export const createBulkQueryJobExamplePayload = {
     columnDelimiter: "COMMA",
   },
 };
-
 export const getQueryJobInformationExamplePayload = {
   data: {
     id: "750R0000000zlh9IAA",
@@ -541,7 +537,6 @@ export const getQueryJobInformationExamplePayload = {
     isPkChunkingSupported: true,
   },
 };
-
 export const getAllQueryJobInformationExamplePayload = {
   data: {
     done: false,
@@ -577,10 +572,10 @@ export const getAllQueryJobInformationExamplePayload = {
         columnDelimiter: "COMMA",
       },
     ],
-    nextRecordsUrl: "/services/data/v60.0/jobs/ingest?queryLocator=01gR0000000opRTIAY-2000",
+    nextRecordsUrl:
+      "/services/data/v60.0/jobs/ingest?queryLocator=01gR0000000opRTIAY-2000",
   },
 };
-
 export const getQueryJobResultsExamplePayload = {
   data: `
   "Id","Name"
@@ -589,7 +584,6 @@ export const getQueryJobResultsExamplePayload = {
 "005R0000000GiwoIAC","Pat Wilson"
 `,
 };
-
 export const abortBulkQueryJobExamplePayload = {
   data: {
     id: "750R000000146UvIAI",
@@ -604,7 +598,6 @@ export const abortBulkQueryJobExamplePayload = {
     apiVersion: 46.0,
   },
 };
-
 const getBulkJobData = {
   id: "7506g00000DhRA2AAN",
   operation: "insert",
@@ -625,19 +618,17 @@ const getBulkJobData = {
   apiActiveProcessingTime: 0,
   apexProcessingTime: 0,
 };
-
 export const getBulkJobExamplePayload = {
   data: getBulkJobData,
 };
-
 export const listBulkQueryJobsExamplePayload = {
   data: {
     done: true,
-    nextRecordsUrl: "/services/data/v60.0/jobs/ingest?queryLocator=01gR0000000opRTIAY-2000",
+    nextRecordsUrl:
+      "/services/data/v60.0/jobs/ingest?queryLocator=01gR0000000opRTIAY-2000",
     records: [getBulkJobData, getBulkJobData],
   },
 };
-
 export const listContactsExamplePayload = {
   data: [
     {
@@ -660,7 +651,6 @@ export const listContactsExamplePayload = {
     },
   ],
 };
-
 export const listLeadsExamplePayload = {
   data: [
     {
@@ -701,7 +691,6 @@ export const listLeadsExamplePayload = {
     },
   ],
 };
-
 export const listOpportunitiesExamplePayload = {
   data: [
     {
@@ -731,7 +720,6 @@ export const listOpportunitiesExamplePayload = {
     },
   ],
 };
-
 export const listProfilesExamplePayload = {
   data: [
     {
@@ -754,7 +742,6 @@ export const listProfilesExamplePayload = {
     },
   ],
 };
-
 export const listUsersExamplePayload = {
   data: [
     {
@@ -774,11 +761,14 @@ export const listUsersExamplePayload = {
       LastModifiedDate: "2023-06-28T14:36:13.000+0000",
       LastModifiedById: "0054c00000MnPqRSAZ",
       SystemModstamp: "2024-08-14T06:00:01.000+0000",
-      FullPhotoUrl: "https://example-dev-ed.my.salesforce.com/profilephoto/005/F",
-      SmallPhotoUrl: "https://example-dev-ed.my.salesforce.com/profilephoto/005/T",
+      FullPhotoUrl:
+        "https://example-dev-ed.my.salesforce.com/profilephoto/005/F",
+      SmallPhotoUrl:
+        "https://example-dev-ed.my.salesforce.com/profilephoto/005/T",
       IsExtIndicatorVisible: false,
       OutOfOfficeMessage: "",
-      MediumPhotoUrl: "https://example-dev-ed.my.salesforce.com/profilephoto/005/M",
+      MediumPhotoUrl:
+        "https://example-dev-ed.my.salesforce.com/profilephoto/005/M",
       DigestFrequency: "D",
       DefaultGroupNotificationFrequency: "N",
       JigsawImportLimitOverride: 300,
@@ -792,7 +782,6 @@ export const listUsersExamplePayload = {
     },
   ],
 };
-
 export const activateFlowExamplePayload = {
   data: {
     fullName: "My_Flow",
@@ -800,7 +789,6 @@ export const activateFlowExamplePayload = {
     errors: [],
   },
 };
-
 export const deactivateFlowExamplePayload = {
   data: {
     fullName: "My_Flow",
@@ -808,7 +796,6 @@ export const deactivateFlowExamplePayload = {
     errors: [],
   },
 };
-
 export const deleteFlowExamplePayload = {
   data: {
     fullName: "My_Flow",
@@ -816,7 +803,6 @@ export const deleteFlowExamplePayload = {
     errors: [],
   },
 };
-
 export const createFlowExamplePayload = {
   data: {
     fullName: "My_Flow",
@@ -824,7 +810,6 @@ export const createFlowExamplePayload = {
     errors: [],
   },
 };
-
 export const subscribeToRecordChangesExamplePayload = {
   data: {
     outboundMessageFullName: "My_Flow",
@@ -833,7 +818,6 @@ export const subscribeToRecordChangesExamplePayload = {
     errors: [],
   },
 };
-
 export const updateFlowExamplePayload = {
   data: {
     fullName: "My_Flow",
@@ -841,7 +825,6 @@ export const updateFlowExamplePayload = {
     errors: [],
   },
 };
-
 export const getFlowExamplePayload = {
   data: {
     fullName: "Example_Flow_01",
@@ -920,8 +903,9 @@ export const getFlowExamplePayload = {
     waits: [],
   },
 };
-
-export const listFlowsExamplePayload: { data: FileProperties[] } = {
+export const listFlowsExamplePayload: {
+  data: FileProperties[];
+} = {
   data: [
     {
       fullName: "My_Flow",
@@ -939,11 +923,12 @@ export const listFlowsExamplePayload: { data: FileProperties[] } = {
     },
   ],
 };
-
 export const deleteInstancedFlowsAndOutboundMessagesExamplePayload = {
-  data: { deletedFlows: ["My_Flow"], deletedOutboundMessages: ["My_Outbound_Message"] },
+  data: {
+    deletedFlows: ["My_Flow"],
+    deletedOutboundMessages: ["My_Outbound_Message"],
+  },
 };
-
 export const getRecordExamplePayload = {
   data: {
     Id: "003RM000006pL5gQAE",
@@ -953,7 +938,6 @@ export const getRecordExamplePayload = {
     BillingState: "CA",
   },
 };
-
 export const findRecordsExamplePayload = {
   data: [
     {
@@ -965,7 +949,6 @@ export const findRecordsExamplePayload = {
     },
   ],
 };
-
 export const compositeRequestExamplePayload = {
   data: {
     hasErrors: false,
@@ -989,7 +972,6 @@ export const compositeRequestExamplePayload = {
     ],
   },
 };
-
 export const listCompositeResourcesExamplePayload = {
   data: {
     hasErrors: false,
@@ -1003,7 +985,6 @@ export const listCompositeResourcesExamplePayload = {
     ],
   },
 };
-
 export const addAttachmentExamplePayload = {
   data: {
     id: "015D0000000N3ZZIA0",
@@ -1011,17 +992,14 @@ export const addAttachmentExamplePayload = {
     success: true,
   },
 };
-
 export const getAttachmentExamplePayload = {
   data: Buffer.from("SGVsbG8gV29ybGQ="),
   contentType: "image/png",
 };
-
 export const getFileExamplePayload = {
   data: Buffer.from("SGVsbG8gV29ybGQ="),
   contentType: "image/png",
 };
-
 export const bulkInsertRecordsExamplePayload = {
   data: [
     {
@@ -1031,7 +1009,6 @@ export const bulkInsertRecordsExamplePayload = {
     },
   ] as unknown,
 };
-
 export const bulkUpsertRecordsExamplePayload = {
   data: [
     {
@@ -1041,19 +1018,15 @@ export const bulkUpsertRecordsExamplePayload = {
     },
   ] as unknown,
 };
-
 export const deleteBulkJobExamplePayload = {
   data: {},
 };
-
 export const deleteBulkQueryJobExamplePayload = {
   data: {},
 };
-
 export const updateMetadataExamplePayload = {
   data: null,
 };
-
 export const deleteMetadataExamplePayload = {
   data: null,
 };

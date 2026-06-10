@@ -3,7 +3,6 @@ import type { SearchOptions } from "ldapts";
 import { getLdapClient } from "../client";
 import { searchExamplePayload as examplePayload } from "../examplePayloads";
 import { searchInputs as inputs } from "../inputs";
-
 export const search = action({
   display: {
     label: "Search Entries",
@@ -14,7 +13,6 @@ export const search = action({
     { connection, searchBase, scope, filter, attributes, includeReferences },
   ) => {
     const client = await getLdapClient(connection);
-
     if (context.debug.enabled) {
       context.logger.debug({
         searchBase,
@@ -24,19 +22,16 @@ export const search = action({
         includeReferences,
       });
     }
-
     try {
       const options: SearchOptions = {
         scope: scope as SearchOptions["scope"],
         filter,
         attributes,
       };
-
       const { searchEntries, searchReferences } = await client.search(
         searchBase,
         options,
       );
-
       return {
         data: {
           entries: searchEntries,

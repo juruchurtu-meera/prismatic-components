@@ -13,7 +13,6 @@ import {
   tagTypeIds,
   taxZoneId,
 } from "../../inputs";
-
 export const updateLocation = action({
   display: {
     label: "Update Location",

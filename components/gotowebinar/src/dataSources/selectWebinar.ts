@@ -3,7 +3,6 @@ import { accountKey, connection, fromTime, toTime } from "../inputs/general";
 import { createGotoWebinarClient } from "../client";
 import { Webinar } from "../interfaces";
 import { getEndTime, getFromTime } from "../utils";
-
 export const selectWebinar = dataSource({
   display: {
     label: "Select Webinar",
@@ -31,7 +30,6 @@ export const selectWebinar = dataSource({
       fromTime,
       toTime,
     };
-
     const { data } = await client.get(url, { params });
     const webinars = data._embedded.webinars as Webinar[];
     if (!webinars) {
@@ -39,14 +37,12 @@ export const selectWebinar = dataSource({
         result: [],
       };
     }
-
     const result = webinars.map(({ subject, webinarKey }): Element => {
       return {
         key: webinarKey,
         label: subject,
       };
     });
-
     return {
       result,
     };

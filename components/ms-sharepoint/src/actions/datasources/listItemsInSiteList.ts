@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection, listId, siteId } from "../../inputs";
 import { sortArray } from "../../utils";
 import type { ListItem } from "../../interfaces";
-
 export const listItemsInSiteList = dataSource({
   display: {
     label: "List Items in Site List",
@@ -20,13 +19,11 @@ export const listItemsInSiteList = dataSource({
     const items: ListItem[] = [];
     let nextLink = `${client.defaults.baseURL}${path}`;
     client.defaults.baseURL = undefined;
-
     do {
       const { data } = await client.get(nextLink);
       items.push(...(data?.value || []));
       nextLink = data?.["@odata.nextLink"];
     } while (nextLink);
-
     return {
       result: sortArray(
         items.map((item) => {

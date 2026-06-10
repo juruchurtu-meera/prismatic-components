@@ -8,17 +8,16 @@ import {
   filterExpression,
 } from "./common";
 import { includeDetails } from "./entities";
-
 const attributeType = input({
   label: "Attribute Type",
   placeholder: "Enter attribute type",
   type: "string",
   required: true,
-  comments: "The CRM attribute type to filter by, e.g., 'Money', 'String', 'Picklist'.",
+  comments:
+    "The CRM attribute type to filter by, e.g., 'Money', 'String', 'Picklist'.",
   example: "String",
   clean: util.types.toString,
 });
-
 const attributeBodyInput = input({
   label: "Attribute Body",
   type: "code",
@@ -28,7 +27,6 @@ const attributeBodyInput = input({
   default: JSON.stringify(attributeBodyExample, undefined, 2),
   clean: util.types.toObject,
 });
-
 export const queryAttributesInputs = {
   connection: connectionInput,
   entityId,
@@ -37,7 +35,6 @@ export const queryAttributesInputs = {
   filterExpression,
   expandPropertyNames,
 };
-
 export const getAttributeInputs = {
   connection: connectionInput,
   entityId,
@@ -52,19 +49,16 @@ export const getAttributeInputs = {
   fieldNames,
   expandPropertyNames,
 };
-
 export const createAttributeInputs = {
   connection: connectionInput,
   entityId,
   attributeBody: attributeBodyInput,
 };
-
 export const updateAttributeInputs = {
   connection: connectionInput,
   entityId,
   attributeBody: attributeBodyInput,
 };
-
 export const listAttributesActionInputs = {
   connection: connectionInput,
   entityId,

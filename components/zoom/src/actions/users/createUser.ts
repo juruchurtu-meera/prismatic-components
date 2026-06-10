@@ -14,7 +14,6 @@ import {
   planUnitedType,
 } from "../../inputs";
 import { createUserExamplePayload } from "../../examplePayloads";
-
 export const createUser = action({
   display: {
     label: "Create User",
@@ -37,7 +36,6 @@ export const createUser = action({
     },
   ) => {
     const client = createZoomClient({ connection, debug });
-
     const { data } = await client.post(`/users`, {
       action,
       user_info: {
@@ -54,7 +52,6 @@ export const createUser = action({
         plan_united_type: planUnitedType,
       },
     });
-
     return {
       data,
     };

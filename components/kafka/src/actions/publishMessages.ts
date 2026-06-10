@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { brokers, clientId, connection, messages, topic } from "../inputs";
 import { publishMessagesExamplePayload } from "../examplePayloads";
-
 export const publishMessages = action({
   display: {
     label: "Publish Messages",
@@ -29,11 +28,9 @@ export const publishMessages = action({
       })),
     });
     await producer.disconnect();
-
     return { data: result };
   },
   inputs: { connection, clientId, brokers, topic, messages },
   examplePayload: publishMessagesExamplePayload,
 });
-
 export default publishMessages;

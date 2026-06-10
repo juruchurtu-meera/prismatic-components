@@ -21,7 +21,6 @@ import {
   welcomeScreensInput,
 } from "../../exampleInputs/forms";
 import { formatCode, setHrefObject } from "../../util";
-
 export const createForm = action({
   display: {
     label: "Create Form",
@@ -101,7 +100,6 @@ export const createForm = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post<Form>(`/forms`, {
       cui_settings: cuiSettings,
       fields,

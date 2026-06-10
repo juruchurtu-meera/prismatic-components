@@ -6,7 +6,6 @@ import { verifyCard } from "./verifyCard";
 import { unverifyCard } from "./unverifyCard";
 import { listCardVerifiers } from "./listCardVerifiers";
 import { getCardFolders } from "./getCardFolders";
-
 export default {
   getCard,
   createCard,

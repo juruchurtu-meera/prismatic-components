@@ -2,8 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { applicantOnboardingProcessPayload } from "../exampleInputs";
 import { cleanObject, cleanString } from "../util";
 import { connection } from "./common";
-
-
 export const contextTemplates = input({
   label: "Context Templates",
   type: "string",
@@ -27,7 +25,6 @@ export const contextTemplates = input({
   placeholder: "Select context template",
   clean: cleanString,
 });
-
 export const applicantOnboarding = input({
   label: "Applicant Onboarding",
   type: "code",
@@ -38,7 +35,6 @@ export const applicantOnboarding = input({
   example: JSON.stringify(applicantOnboardingProcessPayload, null, 2),
   clean: cleanObject,
 });
-
 export const $filterOnboard = input({
   label: "Filter",
   type: "string",
@@ -51,8 +47,6 @@ export const $filterOnboard = input({
     "meta/applicantOnboarding/onboardingTemplateCode/code eq '{{onboardingTemplateCode}}'",
   clean: cleanString,
 });
-
-
 export const createApplicantOnboardingInputs = {
   connection,
   contextTemplates,

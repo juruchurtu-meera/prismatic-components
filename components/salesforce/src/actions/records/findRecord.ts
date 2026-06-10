@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { findRecordInputs } from "../../inputs";
 import { getRecordExamplePayload } from "../../examplePayloads";
 import { coerceObjectValues, executeSFAction } from "../../util";
-
 export const findRecord = action({
   display: {
     label: "Find Record",
@@ -12,7 +11,14 @@ export const findRecord = action({
   inputs: findRecordInputs,
   perform: async (
     context,
-    { version, recordType, dynamicValues, fieldValues, fieldValueTypes, connection },
+    {
+      version,
+      recordType,
+      dynamicValues,
+      fieldValues,
+      fieldValueTypes,
+      connection,
+    },
   ) => {
     if (context.debug.enabled) {
       context.logger.debug("Payload", {
@@ -23,13 +29,14 @@ export const findRecord = action({
       });
     }
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const command = salesforceClient.sobject(recordType).findOne({
       ...dynamicValues,
-      ...coerceObjectValues(fieldValues, util.types.keyValPairListToObject(fieldValueTypes)),
+      ...coerceObjectValues(
+        fieldValues,
+        util.types.keyValPairListToObject(fieldValueTypes),
+      ),
     });
     const response = await executeSFAction(context, command);
-
     return {
       data: response,
     };

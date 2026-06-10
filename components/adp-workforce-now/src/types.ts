@@ -2,11 +2,9 @@ export interface PersistedToken {
   accessToken: string;
   expiresDate: number;
 }
-
 export interface ConsumerApplicationSubscription {
   events: Event[];
 }
-
 export interface Event {
   eventStatusCode: EventStatusCode;
   data: Data;
@@ -19,40 +17,32 @@ export interface Event {
   actor: Tor;
   originator: Tor;
 }
-
 export interface Tor {
   associateOID: string;
 }
-
 export interface Data {
   output: Output;
 }
-
 export interface Output {
   consumerApplicationSubscriptionCredentials: ConsumerApplicationSubscriptionCredential[];
 }
-
 export interface ConsumerApplicationSubscriptionCredential {
   subscriberOrganizationOID: string;
   clientID: string;
   clientSecret: string;
 }
-
 export interface Code {
   codeValue: string;
 }
-
 export interface EventStatusCode {
   codeValue: string;
   shortName: string;
 }
-
 export interface WorkersList {
   workers: Worker[];
   meta: null;
   confirmMessage: null;
 }
-
 export interface Worker {
   associateOID: string;
   workerID: WorkerID;
@@ -62,7 +52,6 @@ export interface Worker {
   businessCommunication: BusinessCommunication;
   workAssignments: WorkAssignment[];
 }
-
 export interface BusinessCommunication {
   landlines: Fax[];
   mobiles: Fax[];
@@ -70,18 +59,15 @@ export interface BusinessCommunication {
   pagers: Fax[];
   emails: BusinessCommunicationEmail[];
 }
-
 export interface BusinessCommunicationEmail {
   itemID: string;
   nameCode: MaritalStatusCodeClass;
   emailUri: string;
 }
-
 export interface MaritalStatusCodeClass {
   codeValue: string;
   shortName: string;
 }
-
 export interface Person {
   birthDate: string;
   genderCode: EthnicityCodeClass;
@@ -97,42 +83,35 @@ export interface Person {
   legalAddress: LegalAddress;
   communication: Communication;
 }
-
 export interface Communication {
   landlines: Fax[];
   mobiles: Fax[];
   faxes: Fax[];
   emails: CommunicationEmail[];
 }
-
 export interface CommunicationEmail {
   nameCode: MaritalStatusCodeClass;
   emailUri: string;
 }
-
 export interface CustomFieldGroup {
   amountFields: Field[];
   stringFields: Field[];
 }
-
 export interface EthnicityCodeClass {
   codeValue: string;
   shortName: string;
   longName: string;
 }
-
 export interface GovernmentID {
   itemID: string;
   idValue: string;
   nameCode: NameCode;
   countryCode: string;
 }
-
 export interface NameCode {
   codeValue: string;
   longName: string;
 }
-
 export interface LegalAddress {
   nameCode: MaritalStatusCodeClass;
   lineOne: string;
@@ -143,25 +122,21 @@ export interface LegalAddress {
   countryCode: string;
   postalCode: string;
 }
-
 export interface CountrySubdivisionLevel1 {
   subdivisionType: string;
   codeValue: string;
   shortName: string;
 }
-
 export interface LegalName {
   givenName: string;
   middleName: string;
   familyName1: string;
   formattedName: string;
 }
-
 export interface SocialInsuranceProgram {
   nameCode: MaritalStatusCodeClass;
   coveredIndicator: boolean;
 }
-
 export interface WorkAssignment {
   itemID: string;
   primaryIndicator: boolean;
@@ -181,45 +156,34 @@ export interface WorkAssignment {
   payrollFileNumber: string;
   managementPositionIndicator: boolean;
 }
-
 export interface OrganizationalUnit {
   nameCode: MaritalStatusCodeClass;
   typeCode: MaritalStatusCodeClass;
 }
-
 export interface AssignmentStatus {
   statusCode: MaritalStatusCodeClass;
 }
-
 export interface BaseRemuneration {
   payPeriodRateAmount: PayPeriodRateAmount;
   effectiveDate: string;
 }
-
 export interface PayPeriodRateAmount {
   nameCode: MaritalStatusCodeClass;
   amountValue: number;
   currencyCode: string;
 }
-
 export interface WorkerDates {
   originalHireDate: string;
 }
-
 export interface WorkerID {
   idValue: string;
 }
-
 export interface WorkerStatus {
   statusCode: StatusCode;
 }
-
 export interface StatusCode {
   codeValue: string;
 }
-
-
-
 export interface WorkerDemographics {
   associateOID: string;
   workerID: WorkerID;
@@ -229,7 +193,6 @@ export interface WorkerDemographics {
   businessCommunication: BusinessCommunication;
   workAssignments: WorkAssignmentsDemographics[];
 }
-
 export interface PersonDemographics {
   communication: CommunicationDemographics;
   customFieldGroup: CustomFieldGroupDemographics;
@@ -241,7 +204,6 @@ export interface PersonDemographics {
   preferredName: unknown;
   tobaccoUserIndicator: boolean;
 }
-
 export interface CommunicationDemographics {
   emails: EmailDemographics[];
   faxes: Fax[];
@@ -249,18 +211,15 @@ export interface CommunicationDemographics {
   mobiles: Fax[];
   pagers: Fax[];
 }
-
 export interface EmailDemographics {
   emailUri: string;
   nameCode: NameCodeDemographics;
   notificationIndicator: boolean;
 }
-
 export interface NameCodeDemographics {
   codeValue: string;
   shortName: string;
 }
-
 export interface Fax {
   access: string;
   areaDialing: string;
@@ -270,7 +229,6 @@ export interface Fax {
   itemID: string;
   nameCode: MaritalStatusCodeClass | NameCodeDemographics;
 }
-
 export interface CustomFieldGroupDemographics {
   codeFields: CodeFieldDemographics[];
   indicatorFields: IndicatorFieldDemographics[];
@@ -278,30 +236,25 @@ export interface CustomFieldGroupDemographics {
   percentFields: Field[];
   stringFields: Field[];
 }
-
 export interface CodeFieldDemographics {
   codeValue?: string;
   itemID: string;
   nameCode: NameCodeDemographics;
   shortName?: string;
 }
-
 export interface IndicatorFieldDemographics {
   itemID: string;
   nameCode: CodeDemographics;
 }
-
 export interface CodeDemographics {
   codeValue: string;
   shortName?: string;
   longName?: string;
 }
-
 export interface Field {
   itemID: string;
   nameCode: NameCodeDemographics | MaritalStatusCodeClass;
 }
-
 export interface LegalAddressDemographics {
   cityName: string;
   countryCode: string;
@@ -311,13 +264,11 @@ export interface LegalAddressDemographics {
   nameCode: CodeDemographics;
   postalCode: string;
 }
-
 export interface LegalNameDemographics {
   familyName1: string;
   formattedName: string;
   givenName: string;
 }
-
 export interface WorkAssignmentsDemographics {
   itemID: string;
   primaryIndicator: boolean;
@@ -335,11 +286,9 @@ export interface WorkAssignmentsDemographics {
   customFieldGroup: CustomFieldGroup;
   customCountryInputs: unknown[];
 }
-
 export interface AssignedWorkLocation {
   address: Address;
 }
-
 export interface Address {
   nameCode: StatusCodeClassDemographics;
   lineOne: string;
@@ -348,33 +297,29 @@ export interface Address {
   countryCode: string;
   postalCode: string;
 }
-
 export interface StatusCodeClassDemographics {
   codeValue: string;
   shortName: string;
   longName: string;
 }
-
 export interface AssignmentStatusDemographics {
   statusCode: StatusCodeClassDemographics;
   reasonCode: PayCycleCodeClass;
   effectiveDate: string;
 }
-
 export interface PayCycleCodeClass {
   codeValue: string;
   shortName: string;
 }
-
 export interface PayrollProcessingStatusCode {
   shortName: string;
 }
-
 export interface StandardPayPeriodHours {
   hoursQuantity: number;
 }
-
 export interface PersonalContact {
   itemID: string;
-  personName: { formattedName: string };
+  personName: {
+    formattedName: string;
+  };
 }

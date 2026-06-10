@@ -1,6 +1,5 @@
 import { getNumericId } from "../../../util";
 import type { Customer } from "../../interfaces/Customer";
-
 export const customerMapper = (customer: Customer) => {
   const customerId = customer.id ? getNumericId(customer.id) : null;
   return {
@@ -11,7 +10,9 @@ export const customerMapper = (customer: Customer) => {
     first_name: customer.firstName,
     last_name: customer.lastName,
     state: customer.state,
-    last_order_id: customer.lastOrder?.id ? getNumericId(customer.lastOrder.id) : null,
+    last_order_id: customer.lastOrder?.id
+      ? getNumericId(customer.lastOrder.id)
+      : null,
     note: customer.note,
     verified_email: customer.verifiedEmail,
     multipass_identifier: customer.multipassIdentifier,
@@ -39,7 +40,6 @@ export const customerMapper = (customer: Customer) => {
           country_name: address.country,
         }))
       : null,
-
     tax_exemptions: customer.taxExemptions,
     email_marketing_consent: customer.emailMarketingConsent
       ? {
@@ -53,12 +53,15 @@ export const customerMapper = (customer: Customer) => {
           state: customer.smsMarketingConsent.marketingState,
           opt_in_level: customer.smsMarketingConsent.marketingOptInLevel,
           consent_updated_at: customer.smsMarketingConsent.consentUpdatedAt,
-          consent_collected_from: customer.smsMarketingConsent.consentCollectedFrom,
+          consent_collected_from:
+            customer.smsMarketingConsent.consentCollectedFrom,
         }
       : null,
     admin_graphql_api_id: customer.id,
     default_address: {
-      id: customer.defaultAddress?.id ? getNumericId(customer.defaultAddress.id) : null,
+      id: customer.defaultAddress?.id
+        ? getNumericId(customer.defaultAddress.id)
+        : null,
       customer_id: customerId,
       first_name: customer.defaultAddress?.firstName ?? null,
       last_name: customer.defaultAddress?.lastName ?? null,

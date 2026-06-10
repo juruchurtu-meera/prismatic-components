@@ -10,7 +10,6 @@ import { pollChangesInputs } from "./inputs/polling";
 import type { PollingState, QuickBooksRecord } from "./types";
 import { parseQuickBooksWebhook, parseWebhookBody } from "./util";
 import { fetchQuickBooksRecordsSince } from "./util/polling";
-
 export const webhook = trigger({
   display: {
     label: "Entity Change Events",
@@ -26,7 +25,6 @@ export const webhook = trigger({
         `format: ${normalizedOutput.format}, ` +
         `first event: ${normalizedOutput.entity}.${normalizedOutput.operation}`,
     );
-
     const finalPayload: TriggerPayload = {
       ...payload,
       body: {
@@ -34,7 +32,6 @@ export const webhook = trigger({
         data: normalizedOutput,
       },
     };
-
     return Promise.resolve({
       payload: finalPayload,
     });
@@ -43,7 +40,6 @@ export const webhook = trigger({
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -56,23 +52,19 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     const config = POLL_RESOURCE_CONFIG[params.pollResourceType];
     if (!config) {
       throw new Error(`Unsupported resource type: ${params.pollResourceType}`);
     }
-
     const { records, truncated } = await fetchQuickBooksRecordsSince(
       params.connection,
       config.entity,
       lastPolledAt,
       context.debug.enabled,
     );
-
     const lastPolledAtDate = new Date(lastPolledAt);
     const created: QuickBooksRecord[] = [];
     const updated: QuickBooksRecord[] = [];
-
     for (const record of records) {
       const createTime = record.MetaData?.CreateTime;
       const createdAtDate =
@@ -82,10 +74,6 @@ export const pollChangesTrigger = pollingTrigger({
       else if (!isNew && params.showUpdatedRecords !== false)
         updated.push(record);
     }
-
-    
-    
-    
     let nextCursor = now;
     if (truncated) {
       const latestUpdated = records
@@ -99,13 +87,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled QuickBooks ${config.entity}: ${records.length} fetched, ${created.length} created, ${updated.length} updated, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },
@@ -113,5 +99,4 @@ export const pollChangesTrigger = pollingTrigger({
     };
   },
 });
-
 export default { webhook, pollChangesTrigger };

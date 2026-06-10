@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { changePostStatusExamplePayload } from "../../examplePayloads";
 import { changePostStatusInputs } from "../../inputs";
-
 export const changePostStatus = action({
   display: {
     label: "Change Post Status",

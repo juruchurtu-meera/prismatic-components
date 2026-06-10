@@ -4,7 +4,6 @@ import { pollChangesExamplePayload } from "../examplePayloads";
 import { pollChangesInputs } from "../inputs";
 import type { JiraIssue, PollingState } from "../types";
 import { fetchUpdatedIssuesSince, partitionIssuesByTimestamp } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Issues",
@@ -23,7 +22,6 @@ export const pollChangesTrigger = pollingTrigger({
     const pollState = context.polling.getState() as PollingState | undefined;
     const sinceISO = pollState?.lastPolledAt ?? now.toISOString();
     const sinceDate = new Date(sinceISO);
-
     const skipFetch = !showNewIssues && !showUpdatedIssues;
     const issues: JiraIssue[] = skipFetch
       ? []
@@ -32,27 +30,23 @@ export const pollChangesTrigger = pollingTrigger({
           sinceISO,
           pollJqlFilter,
         );
-
     const { created, updated } = partitionIssuesByTimestamp(issues, sinceDate);
-
     context.polling.setState({
       lastPolledAt: now.toISOString(),
     } as Record<string, unknown>);
-
     const result = {
       created: showNewIssues ? created : [],
       updated: showUpdatedIssues ? updated : [],
     };
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled Jira issues since ${sinceISO}: ${issues.length} total → ${created.length} new, ${updated.length} updated`,
       );
     }
-
     return {
       payload: { ...payload, body: { data: result } },
-      polledNoChanges: result.created.length === 0 && result.updated.length === 0,
+      polledNoChanges:
+        result.created.length === 0 && result.updated.length === 0,
     };
   },
 });

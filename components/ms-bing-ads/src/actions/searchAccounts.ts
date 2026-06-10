@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   accountIdInput,
   accountLifeCycleStatusInput,
@@ -14,10 +13,8 @@ import { Args, getClient, sendAsync } from "../client";
 import { BING_API, toArray } from "../util";
 import { CustomerInfo } from "./getCustomersInfo";
 import { searchAccountsExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "SearchAccounts";
 const MAX_SIZE = 1000;
-
 interface AdvertiserAccount {
   BillToCustomerId: number;
   CurrencyCode: string;
@@ -56,13 +53,11 @@ interface AdvertiserAccount {
   };
   AutoTagType: string;
 }
-
 export interface SearchAccountsResponse {
   Accounts: {
     AdvertiserAccount: AdvertiserAccount | AdvertiserAccount[];
   };
 }
-
 export const searchAccounts = action({
   display: {
     label: "Search Accounts",
@@ -85,7 +80,6 @@ export const searchAccounts = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<SearchAccountsResponse>({
       debug,
       args: {
@@ -132,7 +126,6 @@ export const searchAccounts = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data: response?.Accounts?.AdvertiserAccount
         ? {

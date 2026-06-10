@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { updateAgentExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateAgentInputs as inputs } from "../../inputs/agents";
-
 export const updateAgent = action({
   display: {
     label: "Update Agent",
@@ -25,7 +24,6 @@ export const updateAgent = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       email,
       roles,
@@ -38,9 +36,7 @@ export const updateAgent = action({
         canSeeAllTicketsFromAssociatedDepartments,
       ...agentsAdditionalFields,
     };
-
     const { data } = await client.put(`/agents/${agentId}`, payload);
-
     return {
       data,
     };

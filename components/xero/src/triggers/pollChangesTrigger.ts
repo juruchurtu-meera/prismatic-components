@@ -9,7 +9,6 @@ import {
 import { POLL_RESOURCE_CONFIG } from "../constants";
 import type { PollingState, XeroRecord } from "../types";
 import { fetchAllRecords } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -27,19 +26,15 @@ export const pollChangesTrigger = pollingTrigger({
     const pollState = context.polling.getState() as PollingState | null;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
     const isFirstPoll = pollState?.knownIds === undefined;
-
     const resource = params.resourceType;
     const config = POLL_RESOURCE_CONFIG[resource];
-
     if (!config) {
       throw new Error(`Unsupported resource type: ${resource}`);
     }
-
     const client = await getXeroClient(
       params.xeroConnection,
       context.debug.enabled,
     );
-
     const records = await fetchAllRecords(
       client,
       config.endpoint,
@@ -47,7 +42,6 @@ export const pollChangesTrigger = pollingTrigger({
       config.paginated,
       lastPolledAt,
     );
-
     if (isFirstPoll) {
       const initialIds = records.map((r) => r[config.idField] as string);
       context.polling.setState({
@@ -62,11 +56,9 @@ export const pollChangesTrigger = pollingTrigger({
         polledNoChanges: true,
       };
     }
-
     const knownIds = new Set(pollState.knownIds);
     const created: XeroRecord[] = [];
     const updated: XeroRecord[] = [];
-
     for (const record of records) {
       const id = record[config.idField] as string;
       if (knownIds.has(id)) {
@@ -76,22 +68,18 @@ export const pollChangesTrigger = pollingTrigger({
         knownIds.add(id);
       }
     }
-
     const filteredCreated = params.showNewRecords ? created : [];
     const filteredUpdated = params.showUpdatedRecords ? updated : [];
     const totalChanges = filteredCreated.length + filteredUpdated.length;
-
     context.polling.setState({
       lastPolledAt: now,
       knownIds: Array.from(knownIds),
     } as unknown as Record<string, unknown>);
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled ${resource}: ${records.length} total, ${created.length} new, ${updated.length} updated`,
       );
     }
-
     return {
       payload: {
         ...payload,

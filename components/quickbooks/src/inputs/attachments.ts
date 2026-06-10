@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { UPDATE_REQUEST_BODY_EXAMPLE } from "../constants";
 import { cleanCodeInput } from "../actionUtils";
-
 export const file = input({
   label: "File",
   comments: "File to attach. This should be a reference to a previous step.",
@@ -9,7 +8,6 @@ export const file = input({
   required: true,
   clean: util.types.toBufferDataPayload,
 });
-
 export const note = input({
   label: "Note",
   placeholder: "Enter note text",
@@ -19,7 +17,6 @@ export const note = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const fileName = input({
   label: "File Name",
   placeholder: "Enter file name",
@@ -29,7 +26,6 @@ export const fileName = input({
   example: "receipt_nov15.jpg",
   clean: util.types.toString,
 });
-
 export const entityRefValue = input({
   label: "Entity Reference Value",
   placeholder: "Enter entity reference value",
@@ -40,7 +36,6 @@ export const entityRefValue = input({
   example: "95",
   clean: util.types.toString,
 });
-
 export const entityRefType = input({
   label: "Entity Reference Type",
   placeholder: "Enter entity reference type",
@@ -51,7 +46,6 @@ export const entityRefType = input({
   example: "Invoice",
   clean: util.types.toString,
 });
-
 export const fileType = input({
   label: "File Type",
   comments: "The file type of the attachment.",
@@ -86,7 +80,6 @@ export const fileType = input({
   ],
   clean: util.types.toString,
 });
-
 export const includeOnSend = input({
   label: "Include on Send",
   comments:
@@ -96,7 +89,6 @@ export const includeOnSend = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const attachableId = input({
   label: "Attachable ID",
   placeholder: "Enter attachable ID",
@@ -106,7 +98,6 @@ export const attachableId = input({
   example: "5000000000001348400",
   clean: util.types.toString,
 });
-
 export const attachablePayload = input({
   label: "Attachable Payload",
   comments:
@@ -115,7 +106,6 @@ export const attachablePayload = input({
   required: true,
   clean: util.types.toData,
 });
-
 export const attachableEntityType = input({
   label: "Attachable Entity Type",
   placeholder: "Enter attachable entity type",
@@ -125,7 +115,6 @@ export const attachableEntityType = input({
   comments: "The type of the entity that the attachable is linked to.",
   clean: util.types.toString,
 });
-
 export const attachableEntityId = input({
   label: "Attachable Entity ID",
   placeholder: "Enter attachable entity ID",
@@ -135,7 +124,6 @@ export const attachableEntityId = input({
   comments: "The ID of the entity that the attachable is linked to.",
   clean: util.types.toString,
 });
-
 export const updateRequestBody = input({
   label: "Update Request Body",
   placeholder: "Enter update request body",

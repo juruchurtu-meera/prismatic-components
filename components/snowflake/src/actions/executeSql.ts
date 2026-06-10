@@ -24,7 +24,6 @@ import {
   warehouse,
 } from "../inputs";
 import { pollForResults } from "../util";
-
 export const executeSql = action({
   display: {
     label: "Execute SQL",
@@ -54,7 +53,6 @@ export const executeSql = action({
       accountLocator,
       context.debug.enabled,
     );
-
     sqlInput = cleanSqlString(sqlInput);
     const { data, status } = await snowflakeClient.post("/api/v2/statements", {
       statement: sqlInput,
@@ -69,23 +67,13 @@ export const executeSql = action({
         parameters: parameters || undefined,
       },
     });
-
     if (status === ACCEPTED) {
-      
-      
-
-      
-      
       if (!shouldPoll) {
         return {
           data,
           branch: ASYNCHRONOUS_BRANCH,
         };
       }
-
-      
-      
-      
       const { statementHandles, statementHandle } = data;
       const handlers = statementHandles || [statementHandle];
       const results = await pollForResults(
@@ -94,13 +82,11 @@ export const executeSql = action({
         handlers,
         SLEEP_TIME_BETWEEN_POLL_REQUESTS,
       );
-
       return {
         data: results,
         branch: ASYNCHRONOUS_BRANCH,
       };
     }
-
     return Promise.resolve({ data, branch: SYNCHRONOUS_BRANCH });
   },
   allowsBranching: true,

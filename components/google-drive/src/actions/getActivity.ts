@@ -11,7 +11,6 @@ import {
 } from "../inputs";
 import { getQueryDriveActivity } from "../util";
 import { getActivityExamplePayload } from "../examplePayloads";
-
 export const queryDriveActivity = action({
   display: {
     label: "Query Drive Activity",
@@ -19,7 +18,15 @@ export const queryDriveActivity = action({
   },
   perform: async (
     _context,
-    { connection, pageToken, ancestorName, consolidationStrategy, filter, itemName, fetchAll },
+    {
+      connection,
+      pageToken,
+      ancestorName,
+      consolidationStrategy,
+      filter,
+      itemName,
+      fetchAll,
+    },
   ) => {
     const drive = createActivityClient(connection);
     const data = await getQueryDriveActivity(
@@ -27,7 +34,6 @@ export const queryDriveActivity = action({
       { pageToken, ancestorName, filter, itemName, consolidationStrategy },
       fetchAll,
     );
-
     return {
       data,
     };

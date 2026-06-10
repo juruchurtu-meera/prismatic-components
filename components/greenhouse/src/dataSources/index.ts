@@ -5,7 +5,6 @@ import { departments } from "./departments";
 import { jobs } from "./jobs";
 import { offices } from "./offices";
 import { usersNames } from "./users";
-
 export default {
   applications,
   users: usersNames,

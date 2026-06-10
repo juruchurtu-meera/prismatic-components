@@ -5,7 +5,6 @@ import {
   toOptionalObject,
   toOptionalString,
 } from "../../utils";
-
 export const firstName = input({
   label: "First Name",
   comments: "The first name of the registrant.",
@@ -15,7 +14,6 @@ export const firstName = input({
   placeholder: "John",
   clean: util.types.toString,
 });
-
 export const lastName = input({
   label: "Last Name",
   comments: "The last name of the registrant.",
@@ -25,7 +23,6 @@ export const lastName = input({
   placeholder: "Doe",
   clean: util.types.toString,
 });
-
 export const email = input({
   label: "Email",
   comments: "The email address of the registrant.",
@@ -35,7 +32,6 @@ export const email = input({
   placeholder: "johndoe@testemail.com",
   clean: util.types.toString,
 });
-
 export const source = input({
   label: "Source",
   comments:
@@ -47,7 +43,6 @@ export const source = input({
   placeholder: "website",
   clean: toOptionalString,
 });
-
 export const address = input({
   label: "Address",
   comments: "The address of the registrant.",
@@ -57,7 +52,6 @@ export const address = input({
   placeholder: "123 Main St",
   clean: toOptionalString,
 });
-
 export const city = input({
   label: "City",
   comments: "The city of the registrant.",
@@ -67,7 +61,6 @@ export const city = input({
   placeholder: "Sioux Falls",
   clean: toOptionalString,
 });
-
 export const state = input({
   label: "State",
   comments: "The state of the registrant.",
@@ -77,7 +70,6 @@ export const state = input({
   placeholder: "South Dakota",
   clean: toOptionalString,
 });
-
 export const zipCode = input({
   label: "Zip Code",
   comments: "The zip code of the registrant.",
@@ -87,7 +79,6 @@ export const zipCode = input({
   placeholder: "57104",
   clean: toOptionalString,
 });
-
 export const country = input({
   label: "Country",
   comments: "The country of the registrant.",
@@ -97,7 +88,6 @@ export const country = input({
   placeholder: "United States",
   clean: toOptionalString,
 });
-
 export const phone = input({
   label: "Phone",
   comments: "The phone number of the registrant.",
@@ -107,7 +97,6 @@ export const phone = input({
   placeholder: "605-555-5555",
   clean: toOptionalString,
 });
-
 export const organization = input({
   label: "Organization",
   comments: "The organization of the registrant.",
@@ -117,7 +106,6 @@ export const organization = input({
   placeholder: "Acme Corp",
   clean: toOptionalString,
 });
-
 export const jobTitle = input({
   label: "Job Title",
   comments: "The job title of the registrant.",
@@ -127,7 +115,6 @@ export const jobTitle = input({
   placeholder: "Software Engineer",
   clean: toOptionalString,
 });
-
 export const questionAndComments = input({
   label: "Questions and Comments",
   comments: "Any questions or comments the registrant has.",
@@ -137,7 +124,6 @@ export const questionAndComments = input({
   placeholder: "I have a question about the webinar.",
   clean: toOptionalString,
 });
-
 export const industry = input({
   label: "Industry",
   comments: "The industry of the registrant.",
@@ -147,7 +133,6 @@ export const industry = input({
   placeholder: "IT",
   clean: toOptionalString,
 });
-
 export const numberOfEmployees = input({
   label: "Number of Employees",
   comments: "The number of employees in the organization.",
@@ -157,7 +142,6 @@ export const numberOfEmployees = input({
   placeholder: "100",
   clean: toOptionalNumber,
 });
-
 export const purchasingTimeFrame = input({
   label: "Purchasing Time Frame",
   comments: "The time frame within which the product will be purchased.",
@@ -167,7 +151,6 @@ export const purchasingTimeFrame = input({
   placeholder: "1-3 months",
   clean: toOptionalString,
 });
-
 export const purchasingRole = input({
   label: "Purchasing Role",
   comments: "The role of the registrant in the purchasing process.",
@@ -177,7 +160,6 @@ export const purchasingRole = input({
   placeholder: "Decision Maker",
   clean: toOptionalString,
 });
-
 export const responses = input({
   label: "Responses",
   comments: "The responses to the custom questions.",
@@ -191,7 +173,6 @@ export const responses = input({
   ),
   clean: toOptionalObject,
 });
-
 export const createRegistrantInputs = {
   connection,
   webinarKey,

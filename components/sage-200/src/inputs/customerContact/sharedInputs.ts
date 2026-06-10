@@ -1,9 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanNumberInput, cleanStringInput } from "../../util";
-
-
-
-
 const salutationId = input({
   label: "Salutation ID",
   comments: "Salutation record Id.",
@@ -13,7 +9,6 @@ const salutationId = input({
   example: "0",
   clean: cleanNumberInput,
 });
-
 const firstName = input({
   label: "First Name",
   comments: "Contact first name.",
@@ -23,7 +18,6 @@ const firstName = input({
   example: "John",
   clean: cleanStringInput,
 });
-
 const middleName = input({
   label: "Middle Name",
   comments: "Contact middle name.",
@@ -33,7 +27,6 @@ const middleName = input({
   example: "Doe",
   clean: cleanStringInput,
 });
-
 const lastName = input({
   label: "Last Name",
   comments: "Contact surname.",
@@ -43,7 +36,6 @@ const lastName = input({
   example: "Smith",
   clean: cleanStringInput,
 });
-
 const isToDelete = input({
   label: "Is To Delete",
   comments:
@@ -53,7 +45,6 @@ const isToDelete = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const emails = input({
   label: "Emails",
   comments:
@@ -63,7 +54,6 @@ const emails = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const telephones = input({
   label: "Telephones",
   comments:
@@ -73,7 +63,6 @@ const telephones = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const mobiles = input({
   label: "Mobiles",
   comments:
@@ -83,7 +72,6 @@ const mobiles = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const faxes = input({
   label: "Faxes",
   comments:
@@ -93,7 +81,6 @@ const faxes = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const websites = input({
   label: "Websites",
   comments:
@@ -103,7 +90,6 @@ const websites = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 const roles = input({
   label: "Roles",
   comments:
@@ -113,7 +99,6 @@ const roles = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 export default {
   salutationId,
   firstName,

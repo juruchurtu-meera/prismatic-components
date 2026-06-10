@@ -11,7 +11,6 @@ export const getDeviceExamplePayload = {
   serialNumber: "56701fc8-de8f-4ccb-9a4d-3b97676d04d2",
   servicePack: "wav",
 };
-
 export const listDevicesExamplePayload = {
   data: [getDeviceExamplePayload],
 };

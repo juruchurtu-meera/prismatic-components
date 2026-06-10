@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, emailAddress } from "../../inputs";
-
 export const listReferencesToAnEmailAddress = action({
   display: {
     label: "List References to an Email Address",

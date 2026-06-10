@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { ENDPOINTS } from "../constants";
 import { toOptionalString } from "../util";
 import { connection } from "./common";
-
 const endpoint = input({
   label: "Endpoint",
   type: "string",
@@ -13,7 +12,6 @@ const endpoint = input({
   placeholder: "Enter endpoint path",
   clean: util.types.toString,
 });
-
 const tableName = input({
   label: "Table Name",
   type: "string",
@@ -23,7 +21,6 @@ const tableName = input({
   placeholder: "Enter table name",
   clean: util.types.toString,
 });
-
 const fields = input({
   label: "Fields",
   type: "string",
@@ -34,7 +31,6 @@ const fields = input({
   placeholder: "Enter field names",
   clean: util.types.toString,
 });
-
 const rowCount = input({
   label: "Row Count",
   type: "string",
@@ -44,7 +40,6 @@ const rowCount = input({
   placeholder: "Enter row count",
   clean: toOptionalString,
 });
-
 const whereClause = input({
   label: "Where Clause",
   type: "string",
@@ -55,7 +50,6 @@ const whereClause = input({
   placeholder: "Enter WHERE clause",
   clean: toOptionalString,
 });
-
 const rowSkips = input({
   label: "Row Skips",
   type: "string",
@@ -66,7 +60,6 @@ const rowSkips = input({
   placeholder: "Enter number of rows to skip",
   clean: toOptionalString,
 });
-
 export const readTableInputs = {
   connection,
   endpoint,
@@ -76,7 +69,6 @@ export const readTableInputs = {
   rowSkips,
   whereClause,
 };
-
 const bapiName = input({
   label: "BAPI Name",
   type: "string",
@@ -87,7 +79,6 @@ const bapiName = input({
   dataSource: "selectBapi",
   clean: util.types.toString,
 });
-
 const bapiParameters = input({
   label: "BAPI Parameters",
   type: "code",
@@ -99,7 +90,6 @@ const bapiParameters = input({
   placeholder: "Enter XML parameters",
   clean: toOptionalString,
 });
-
 const commitTransaction = input({
   label: "Commit Transaction",
   type: "boolean",
@@ -109,7 +99,6 @@ const commitTransaction = input({
     "When true, automatically calls BAPI_TRANSACTION_COMMIT after the BAPI call succeeds, using the same HTTP session.",
   clean: util.types.toBool,
 });
-
 const waitOnCommit = input({
   label: "Wait on Commit",
   type: "boolean",
@@ -119,7 +108,6 @@ const waitOnCommit = input({
     "When true, passes WAIT='X' to BAPI_TRANSACTION_COMMIT, which waits for the update task to complete before returning.",
   clean: util.types.toBool,
 });
-
 export const callBapiInputs = {
   connection,
   endpoint,

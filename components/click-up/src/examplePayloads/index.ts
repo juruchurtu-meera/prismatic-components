@@ -39,7 +39,10 @@ export {
   removeTaskFromListExamplePayload,
   updateListExamplePayload,
 } from "./lists";
-export { getListMembersExamplePayload, getTaskMembersExamplePayload } from "./members";
+export {
+  getListMembersExamplePayload,
+  getTaskMembersExamplePayload,
+} from "./members";
 export {
   createSpaceExamplePayload,
   deleteSpaceExamplePayload,

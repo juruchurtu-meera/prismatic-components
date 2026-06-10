@@ -3,7 +3,6 @@ import { connection } from "../inputs/general";
 import { createClient } from "../client";
 import { selectMobileAppExamplePayload } from "../examplePayloads";
 import { paginateResults } from "../util";
-
 export const selectMobileApp = dataSource({
   display: {
     label: "Select Mobile App",
@@ -24,7 +23,6 @@ export const selectMobileApp = dataSource({
       true,
       params,
     );
-
     return data.value.map((mobileApp: { id: string; displayName: string }) => {
       return {
         label: mobileApp.displayName,

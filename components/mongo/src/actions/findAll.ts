@@ -13,9 +13,7 @@ import {
   getComparisonQueryFilter,
 } from "../util";
 import { findAllExamplePayload } from "../examplePayloads";
-
 import type { ErrorWithMessage } from "../types";
-
 const findAll = action({
   display: {
     label: "Find All",
@@ -37,7 +35,6 @@ const findAll = action({
       debug: context.debug.enabled,
       logger: context.logger,
     });
-
     try {
       if (convertValuesToNumbers) detectAndConvertValuesToNumbers(queryFilter);
       return {
@@ -52,7 +49,7 @@ const findAll = action({
             .toArray()
         ).map((document) => ({
           ...document,
-          id: document._id.toString(), 
+          id: document._id.toString(),
         })),
       };
     } catch (error) {
@@ -73,5 +70,4 @@ const findAll = action({
   },
   examplePayload: findAllExamplePayload,
 });
-
 export default findAll;

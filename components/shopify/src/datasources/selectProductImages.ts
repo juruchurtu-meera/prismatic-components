@@ -4,12 +4,10 @@ import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
 import { selectProductImagesInputs } from "../inputs";
 import { fetchData, getNumericId } from "../util";
-
 interface ProductImageNode {
   id: string;
   alt: string | null;
 }
-
 export const selectProductImages = dataSource({
   display: {
     label: "Select Product Image",
@@ -21,7 +19,6 @@ export const selectProductImages = dataSource({
     const cleanedProductId = productId.startsWith("gid://")
       ? productId
       : `gid://shopify/Product/${productId}`;
-
     const { images } = (await fetchData<ProductImageNode>(
       client,
       ["product", "media"],
@@ -33,7 +30,6 @@ export const selectProductImages = dataSource({
         first: MAX_LIMIT,
       },
     )) as unknown as Record<"images", ProductImageNode[]>;
-
     const result = images
       .map<Element>((image, index) => {
         const numericId = getNumericId(image.id);
@@ -43,7 +39,6 @@ export const selectProductImages = dataSource({
         };
       })
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

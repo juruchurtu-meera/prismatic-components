@@ -4,7 +4,6 @@ import {
   deviceCompliancePolicyId,
   target,
 } from "./general";
-
 export const assignDeviceCompliancePolicyInputs = {
   deviceCompliancePolicyId: {
     ...deviceCompliancePolicyId,

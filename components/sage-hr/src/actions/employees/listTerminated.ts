@@ -10,7 +10,6 @@ import {
   team_history,
 } from "../../inputs";
 import { fetchAllRecords } from "../../util";
-
 export const listTerminatedEmployees = action({
   display: {
     label: "List Terminated Employees",
@@ -41,7 +40,6 @@ export const listTerminatedEmployees = action({
       employment_status_history: employment_status_history || undefined,
       position_history: position_history || undefined,
     };
-
     if (fetchAll) {
       const data = await fetchAllRecords(
         client,
@@ -50,7 +48,6 @@ export const listTerminatedEmployees = action({
       );
       return { data };
     }
-
     const { data } = await client.get("/terminated-employees", {
       params: { ...params, page: page || undefined },
     });

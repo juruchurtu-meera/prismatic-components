@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listWebhooksResponse } from "../../examplePayloads";
 import { version, webhookConnection } from "../../inputs";
 import { clientCredentialsConnection, getAppId } from "../../util";
-
 export const listWebhooks = action({
   display: {
     label: "List Webhooks",
@@ -14,7 +13,6 @@ export const listWebhooks = action({
     const client = createClient(connection, context.debug.enabled, version);
     const appId = getAppId(connection);
     const { data } = await client.get(`/${appId}/subscriptions`);
-
     return {
       data,
     };

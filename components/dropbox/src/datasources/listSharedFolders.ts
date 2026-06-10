@@ -8,7 +8,6 @@ import {
   limit,
 } from "../inputs";
 import { handleDropboxError } from "../util";
-
 export const listSharedFolders = dataSource({
   display: {
     label: "List Shared Folders",
@@ -38,7 +37,6 @@ export const listSharedFolders = dataSource({
               limit: util.types.toInt(params.limit) || undefined,
               actions: params.folderActions,
             });
-
       const result = entries.map<Element>((folder) => ({
         label: folder.name,
         key: folder.shared_folder_id,

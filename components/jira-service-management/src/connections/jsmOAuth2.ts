@@ -1,6 +1,5 @@
 import { getAtlassianOAuth2AuthorizationCodeConnection } from "atlassian-utils";
 import { DEFAULT_OAUTH2_SCOPES } from "../constants";
-
 export const jsmOAuth2 = getAtlassianOAuth2AuthorizationCodeConnection({
   key: "jsmOAuth2",
   display: {

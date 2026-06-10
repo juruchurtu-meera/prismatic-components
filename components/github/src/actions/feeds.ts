@@ -1,6 +1,5 @@
 import { action, Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const activityGetFeeds = action({
   display: {
     label: "Activity Get Feeds",
@@ -19,7 +18,6 @@ const activityGetFeeds = action({
     },
   },
 });
-
 export default {
   activityGetFeeds,
 };

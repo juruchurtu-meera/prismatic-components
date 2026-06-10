@@ -1,17 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const webhookExamplePayload = {
   payload: {
     headers: {
@@ -82,15 +69,6 @@ export const webhookExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
 export const workspaceProjectsTriggerExamplePayload = {
   payload: {
     headers: {
@@ -153,15 +131,6 @@ export const workspaceProjectsTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
 export const projectTasksTriggerExamplePayload = {
   payload: {
     headers: {
@@ -262,15 +231,6 @@ export const projectTasksTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
-
 export const storiesTriggerExamplePayload = {
   payload: {
     headers: {
@@ -349,14 +309,6 @@ export const storiesTriggerExamplePayload = {
   } as unknown as TriggerPayload,
   branch: "Notification",
 };
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},

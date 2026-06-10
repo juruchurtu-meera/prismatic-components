@@ -5,7 +5,6 @@ import { listLibraryFoldersExamplePayload as examplePayload } from "../../exampl
 import { listLibraryFoldersInputs as inputs } from "../../inputs/libraries";
 import { graphqlFetchAll } from "../../utils/graphqlFetchAll";
 import type ListLibraryFoldersResponse from "../types/listLibraryFolders";
-
 export const listLibraryFolders = action({
   display: {
     label: "List Library Folders",
@@ -15,9 +14,10 @@ export const listLibraryFolders = action({
   perform: async (
     context,
     { connection, libraryId, page, limit, fetchAll },
-  ): Promise<{ data: ListLibraryFoldersResponse }> => {
+  ): Promise<{
+    data: ListLibraryFoldersResponse;
+  }> => {
     const client = createClient({ connection, debug: context.debug.enabled });
-
     const query = gql`
       query listLibraryFolders($libraryId: ID!) {
         library(id: $libraryId) {
@@ -57,7 +57,6 @@ export const listLibraryFolders = action({
         }
       }
     `;
-
     if (fetchAll) {
       const hasNextPath = ["library", "browse", "folders", "hasNextPage"];
       const responses: ListLibraryFoldersResponse[] = await graphqlFetchAll({
@@ -66,17 +65,16 @@ export const listLibraryFolders = action({
         params: { libraryId },
         hasNextPath,
       });
-
       if (responses.length === 1) {
         return { data: responses[0] };
       }
-
       const baseResponse = responses.slice(-1)[0];
       const combinedFolders = responses.reduce((combined, response) => {
         return combined.concat(response.library.browse.folders.items);
       }, []);
-
-      const formattedResponse: { data: ListLibraryFoldersResponse } = {
+      const formattedResponse: {
+        data: ListLibraryFoldersResponse;
+      } = {
         data: {
           library: {
             ...baseResponse.library,
@@ -90,16 +88,13 @@ export const listLibraryFolders = action({
           },
         },
       };
-
       return formattedResponse;
     }
-
     const response: ListLibraryFoldersResponse = await client.request(query, {
       libraryId,
       page,
       limit,
     });
-
     return {
       data: response,
     };

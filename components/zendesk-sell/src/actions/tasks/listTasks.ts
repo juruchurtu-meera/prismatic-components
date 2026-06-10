@@ -4,7 +4,6 @@ import { getZendeskClient } from "../../client";
 import { listTasksExamplePayload } from "../../examplePayloads";
 import { listTasksInputs } from "../../inputs";
 import { fetchAllPages } from "../../util";
-
 export const listTasks = action({
   display: {
     label: "List Tasks",
@@ -47,7 +46,6 @@ export const listTasks = action({
         ...(overdue && { overdue }),
         ...(remind && { remind }),
       };
-
       const data: unknown = await fetchAllPages(
         client,
         "/tasks",

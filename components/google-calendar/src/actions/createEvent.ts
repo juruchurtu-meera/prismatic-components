@@ -18,7 +18,6 @@ import {
   useDefaultReminder,
 } from "../inputs";
 import { parseReturn } from "../parseReturn";
-
 export const createEvent = action({
   display: {
     label: "Create Event",
@@ -28,7 +27,6 @@ export const createEvent = action({
     const useDefaultReminder = util.types.toBool(params.useDefaultReminder);
     const remindMethod = util.types.toString(params.remindMethod);
     const remindMinutes = util.types.toString(params.remindMinutes);
-
     const { config, ...base } = await createClient({
       connection: params.connection,
     }).events.insert({
@@ -68,7 +66,6 @@ export const createEvent = action({
                 },
               ],
             }),
-
           useDefault: useDefaultReminder,
         },
       },

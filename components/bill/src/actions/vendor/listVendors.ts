@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { listVendorsInputs } from "../../inputs/vendor";
 import { listVendorsExamplePayload } from "../../examplePayloads";
-
 export const listVendors = action({
   display: {
     label: "List Vendors",
@@ -18,7 +17,6 @@ export const listVendors = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       start,
       max,
@@ -31,9 +29,7 @@ export const listVendors = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post("/List/Vendor.json", stringifiedData);
-
     return {
       data: cleanReturnData(data),
     };

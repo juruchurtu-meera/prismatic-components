@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../auth";
 import { getByExternalIdPayload } from "../../examplePayloads";
 import { connectionInput, externalId } from "../../inputs";
-
 export const getByExternalId = action({
   display: {
     label: "Get Ticket By External ID",
@@ -13,7 +12,6 @@ export const getByExternalId = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const result = await client.tickets.listWithFilter(
       "external_id",
       params.externalId as string | number,

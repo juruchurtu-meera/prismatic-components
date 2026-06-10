@@ -2,7 +2,6 @@ import { type Element, dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { adAccountId, myConnectionField, version } from "../inputs";
 import { getPaginatedData } from "../util";
-
 export const selectAdSet = dataSource({
   display: {
     label: "Select Ad Set",
@@ -15,14 +14,12 @@ export const selectAdSet = dataSource({
     } = await getPaginatedData(client, `/${params.adAccountId}/adsets`, true, {
       fields: "name,id",
     });
-
     const result: Element[] = data
       .map((adSet: { name: string; id: string }) => ({
         label: `${adSet.name} - (${adSet.id})`,
         key: adSet.id.toString(),
       }))
       .sort((a: Element, b: Element) => (a.label < b.label ? -1 : 1));
-
     return {
       result,
     };

@@ -7,9 +7,7 @@ import { toAuthorizationHeaders } from "../../client";
 import { connectionInput, apiVersion } from "../../inputs";
 import { BASE_URL } from "../../constants";
 import { getBaseUrl } from "../../util";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

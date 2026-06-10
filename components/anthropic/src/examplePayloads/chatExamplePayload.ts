@@ -1,11 +1,7 @@
-
-
-
-
-
-
 import type { ChatResponse } from "../interfaces";
-export const chatExamplePayload: { data: ChatResponse } = {
+export const chatExamplePayload: {
+  data: ChatResponse;
+} = {
   data: {
     content: [
       {

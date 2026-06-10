@@ -6,7 +6,6 @@ import {
 import { connectionInput, dataAndDomain, name } from "../../inputs";
 import { getFallbackConnectionToken } from "../../util";
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const editGenericPipeline = action({
   display: {
     label: "Edit Generic Pipeline",

@@ -6,15 +6,16 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { getAccessToken } from "../utils";
 import { rawRequestExamplePayload } from "../examplePayloads/actions";
-
 const { debugRequest, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
     description: "Send raw HTTP request to Microsoft Sharepoint",
   },
-  perform: async ({ debug: { enabled: debug } }, { connection, ...httpClientInputs }) => {
+  perform: async (
+    { debug: { enabled: debug } },
+    { connection, ...httpClientInputs },
+  ) => {
     const baseUrl = "https://graph.microsoft.com/v1.0";
     const token = await getAccessToken(connection);
     const headers = {

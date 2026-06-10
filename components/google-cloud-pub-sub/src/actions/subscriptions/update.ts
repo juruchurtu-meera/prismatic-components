@@ -23,7 +23,6 @@ import {
   topicMessageRetentionDuration,
   updateMask,
 } from "../../inputs";
-
 export const updateSubscription = action({
   display: {
     description: "Updates an existing subscription.",
@@ -106,7 +105,8 @@ export const updateSubscription = action({
           retryPolicy: retryPolicy || undefined,
           detached: detached || undefined,
           enableExactlyOnceDelivery: enableExactlyOnceDelivery || undefined,
-          topicMessageRetentionDuration: topicMessageRetentionDuration || undefined,
+          topicMessageRetentionDuration:
+            topicMessageRetentionDuration || undefined,
           state: state || undefined,
         },
       },

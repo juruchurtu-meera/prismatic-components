@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../../client";
 import { createWebhookInputs } from "../../inputs";
 import { createWebhookExamplePayload } from "../../examplePayloads";
 import { createWebhookHelper, eventsBuilder } from "../../helpers";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",
@@ -16,16 +15,13 @@ export const createWebhook = action({
     { sendGridConnection, url, friendlyName, enabled, events },
   ) => {
     const client = createAuthorizedClient(sendGridConnection);
-
     const eventsPayload = eventsBuilder(events);
-
     const data = await createWebhookHelper(client, {
       enabled,
       url,
       ...eventsPayload,
       friendlyName,
     });
-
     return {
       data,
     };

@@ -3,7 +3,6 @@ import {
   oauth2Connection,
   OAuth2Type,
 } from "@prismatic-io/spectral";
-
 export const asanaApiKeyConnection = connection({
   key: "apiKey",
   display: {
@@ -23,7 +22,6 @@ export const asanaApiKeyConnection = connection({
     },
   },
 });
-
 export const asanaOAuthConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -81,5 +79,4 @@ export const asanaOAuthConnection = oauth2Connection({
     },
   },
 });
-
 export default [asanaOAuthConnection, asanaApiKeyConnection];

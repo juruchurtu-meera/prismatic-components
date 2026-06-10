@@ -8,7 +8,6 @@ import {
   tableId,
   view,
 } from "../../inputs";
-
 export const getTable = action({
   display: {
     description: "Gets the specified table resource by table ID.",

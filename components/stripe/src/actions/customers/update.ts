@@ -20,7 +20,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",
@@ -51,26 +50,26 @@ export const updateCustomer = action({
       stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
-    const data = await client.customers.update(util.types.toString(customerId), {
-      name: util.types.toString(customerName) || undefined,
-      phone: util.types.toString(customerPhone) || undefined,
-      address: {
-        line1: util.types.toString(customerAddress1) || undefined,
-        city: util.types.toString(customerCity) || undefined,
-        country: util.types.toString(customerCountry) || undefined,
-        line2: util.types.toString(customerAddress2) || undefined,
-        postal_code: util.types.toString(customerPostal) || undefined,
-        state: util.types.toString(customerState) || undefined,
+    const data = await client.customers.update(
+      util.types.toString(customerId),
+      {
+        name: util.types.toString(customerName) || undefined,
+        phone: util.types.toString(customerPhone) || undefined,
+        address: {
+          line1: util.types.toString(customerAddress1) || undefined,
+          city: util.types.toString(customerCity) || undefined,
+          country: util.types.toString(customerCountry) || undefined,
+          line2: util.types.toString(customerAddress2) || undefined,
+          postal_code: util.types.toString(customerPostal) || undefined,
+          state: util.types.toString(customerState) || undefined,
+        },
+        balance: util.types.toInt(customerBalance) * 100 || undefined,
+        description: util.types.toString(customerDescription) || undefined,
+        email: util.types.toString(customerEmail) || undefined,
+        metadata: keyValPairListToObject(customerMetadata) || undefined,
+        ...(util.types.keyValPairListToObject(fieldValues) || undefined),
       },
-      
-      balance: util.types.toInt(customerBalance) * 100 || undefined,
-      description: util.types.toString(customerDescription) || undefined,
-      email: util.types.toString(customerEmail) || undefined,
-      metadata: keyValPairListToObject(customerMetadata) || undefined,
-      ...(util.types.keyValPairListToObject(fieldValues) || undefined),
-    });
-
+    );
     return {
       data,
     };

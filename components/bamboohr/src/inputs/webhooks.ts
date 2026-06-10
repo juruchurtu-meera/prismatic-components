@@ -1,7 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput } from "./common";
-
-
 const webhookFields = [
   "firstName",
   "lastName",
@@ -50,7 +48,6 @@ const webhookFields = [
   "dietaryRestrictions",
   "hoursPerPayCycle",
 ];
-
 const showOnlyInstanceWebhooks = input({
   label: "Show Only Instance Webhooks",
   comments:
@@ -59,7 +56,6 @@ const showOnlyInstanceWebhooks = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 const name = input({
   label: "Webhook Name",
   required: true,
@@ -69,7 +65,6 @@ const name = input({
   example: "New Hire Notifications",
   clean: util.types.toString,
 });
-
 const url = input({
   label: "Callback URL",
   required: true,
@@ -79,29 +74,22 @@ const url = input({
   type: "string",
   clean: util.types.toString,
 });
-
 const monitorFields = input({
   label: "Fields to Monitor",
   required: true,
-  comments: `One or more fields to trigger this webhook on. This can be any of the following: ${webhookFields.join(
-    ", ",
-  )}.`,
+  comments: `One or more fields to trigger this webhook on. This can be any of the following: ${webhookFields.join(", ")}.`,
   type: "string",
   collection: "valuelist",
   model: webhookFields.map((field) => ({ label: field, value: field })),
 });
-
 const postFields = input({
   label: "Fields to Send to Webhook",
   required: true,
-  comments: `The list of fields to include in the payload posted to the callback URL. This can be any of the following: ${webhookFields.join(
-    ", ",
-  )}.`,
+  comments: `The list of fields to include in the payload posted to the callback URL. This can be any of the following: ${webhookFields.join(", ")}.`,
   type: "string",
   collection: "valuelist",
   model: webhookFields.map((field) => ({ label: field, value: field })),
 });
-
 const allowDuplicates = input({
   label: "Allow Duplicates",
   type: "boolean",
@@ -110,7 +98,6 @@ const allowDuplicates = input({
     "When true, allows the creation of duplicate webhooks. By default this action checks if a webhook with this callback and sheet ID already exists and, if so, skips configuration.",
   clean: util.types.toBool,
 });
-
 const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -120,12 +107,10 @@ const webhookId = input({
   example: "789",
   clean: util.types.toString,
 });
-
 export const listWebhooksInputs = {
   connection: connectionInput,
   showOnlyInstanceWebhooks,
 };
-
 export const createWebhookInputs = {
   connection: connectionInput,
   name,
@@ -134,12 +119,10 @@ export const createWebhookInputs = {
   postFields,
   allowDuplicates,
 };
-
 export const deleteWebhookByIdInputs = {
   connection: connectionInput,
   webhookId,
 };
-
 export const deleteInstanceWebhooksInputs = {
   connection: connectionInput,
 };

@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
 import sharedInputs from "./sharedInputs";
-
 const reference = input({
   label: "Reference",
   type: "string",
@@ -12,7 +11,6 @@ const reference = input({
   example: "ref-1234",
   clean: cleanStringInput,
 });
-
 const name = input({
   label: "Name",
   type: "string",
@@ -22,7 +20,6 @@ const name = input({
   example: "John Doe",
   clean: cleanStringInput,
 });
-
 export default {
   reference,
   name,

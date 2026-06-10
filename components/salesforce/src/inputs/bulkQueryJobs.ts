@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
 import { connectionInput, version } from "./common";
-
 const query = input({
   label: "Query",
   type: "string",
@@ -11,7 +10,6 @@ const query = input({
   example: "SELECT Id FROM Account",
   clean: util.types.toString,
 });
-
 const operation = input({
   label: "Operation",
   type: "string",
@@ -25,7 +23,6 @@ const operation = input({
   default: "query",
   clean: util.types.toString,
 });
-
 export const columnDelimiter = input({
   label: "Column Delimiter",
   type: "string",
@@ -44,12 +41,12 @@ export const columnDelimiter = input({
   default: "COMMA",
   clean: cleanStringInput,
 });
-
 export const lineEnding = input({
   label: "Line Ending",
   type: "string",
   required: true,
-  comments: "The line ending character sequence used in the bulk query results file.",
+  comments:
+    "The line ending character sequence used in the bulk query results file.",
   model: [
     { label: "LF", value: "LF" },
     { label: "CRLF", value: "CRLF" },
@@ -58,7 +55,6 @@ export const lineEnding = input({
   default: "LF",
   clean: util.types.toString,
 });
-
 const queryJobId = input({
   label: "Query Job ID",
   placeholder: "Enter query job ID",
@@ -69,7 +65,6 @@ const queryJobId = input({
   example: "750R0000000zlh9IAA",
   clean: util.types.toString,
 });
-
 export const locator = input({
   label: "Locator",
   type: "string",
@@ -80,7 +75,6 @@ export const locator = input({
   example: "MTAwMDA",
   clean: cleanStringInput,
 });
-
 const maxRecords = input({
   label: "Max Records",
   type: "string",
@@ -91,7 +85,6 @@ const maxRecords = input({
   example: "100",
   clean: (value: unknown) => util.types.toInt(value, 100),
 });
-
 export const isPkChunkingEnabled = input({
   label: "Is PK Chunking Enabled",
   type: "boolean",
@@ -101,7 +94,6 @@ export const isPkChunkingEnabled = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const jobType = input({
   label: "Job Type",
   type: "string",
@@ -116,7 +108,6 @@ export const jobType = input({
   default: "",
   clean: cleanStringInput,
 });
-
 const concurrencyMode = input({
   label: "Concurrency Mode",
   type: "string",
@@ -131,7 +122,6 @@ const concurrencyMode = input({
   default: "parallel",
   clean: cleanStringInput,
 });
-
 export const createBulkQueryJobInputs = {
   connection: connectionInput,
   version,
@@ -140,7 +130,6 @@ export const createBulkQueryJobInputs = {
   columnDelimiter,
   lineEnding,
 };
-
 export const abortBulkQueryJobInputs = {
   connection: connectionInput,
   version,
@@ -149,7 +138,6 @@ export const abortBulkQueryJobInputs = {
     comments: "The ID of the query job to abort",
   },
 };
-
 export const deleteBulkQueryJobInputs = {
   connection: connectionInput,
   version,
@@ -158,13 +146,11 @@ export const deleteBulkQueryJobInputs = {
     comments: "The ID of the query job to delete",
   },
 };
-
 export const getQueryJobInformationInputs = {
   connection: connectionInput,
   version,
   queryJobId,
 };
-
 export const getAllQueryJobInformationInputs = {
   connection: connectionInput,
   version,
@@ -173,7 +159,6 @@ export const getAllQueryJobInformationInputs = {
   concurrencyMode,
   queryLocator: { ...locator, label: "Query Locator" },
 };
-
 export const getQueryJobResultsInputs = {
   connection: connectionInput,
   version,

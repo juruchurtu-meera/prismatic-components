@@ -27,7 +27,6 @@ export const getWorkerBusinessTitleChangesExamplePayload = {
     total: 0,
   },
 };
-
 export const postWorkerBusinessTitleChangeExamplePayload = {
   data: {
     proposedBusinessTitle:
@@ -37,7 +36,6 @@ export const postWorkerBusinessTitleChangeExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const postJobChangesExamplePayload = {
   data: {
     supervisoryOrganization: {
@@ -64,7 +62,6 @@ export const postJobChangesExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const listOrganizationsExamplePayload = {
   data: {
     data: [
@@ -77,7 +74,6 @@ export const listOrganizationsExamplePayload = {
     total: 0,
   },
 };
-
 export const getOrganizationByIdExamplePayload = {
   data: {
     descriptor: "Lorem ipsum dolor sit ame",
@@ -85,7 +81,6 @@ export const getOrganizationByIdExamplePayload = {
     id: "string",
   },
 };
-
 export const getCustomerByIdExamplePayload = {
   data: {
     name: "Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.",

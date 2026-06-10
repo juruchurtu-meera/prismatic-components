@@ -5,7 +5,6 @@ import type { FieldsCampaign } from "../../types/FieldsCampaign";
 import { fetchCampaigns } from "../../utils";
 import { listCampaignsExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const listCampaigns = action({
   display: {
     label: "List Campaigns",
@@ -29,7 +28,6 @@ export const listCampaigns = action({
       [],
       undefined,
     );
-
     return {
       data,
     };

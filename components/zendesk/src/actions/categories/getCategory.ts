@@ -3,7 +3,6 @@ import { categoryId, connectionInput, locale } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { Category } from "../../types";
 import { getCategoryPayload } from "../../examplePayloads";
-
 export const getCategory = action({
   display: {
     label: "Get Category",
@@ -11,10 +10,9 @@ export const getCategory = action({
   },
   perform: async (context, { zendeskConnection, categoryId, locale }) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
-    const { data } = await client.get<{ category: Category }>(
-      `/help_center/${locale}/categories/${categoryId}`,
-    );
-
+    const { data } = await client.get<{
+      category: Category;
+    }>(`/help_center/${locale}/categories/${categoryId}`);
     return { data };
   },
   inputs: {

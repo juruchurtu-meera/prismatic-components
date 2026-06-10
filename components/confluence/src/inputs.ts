@@ -7,14 +7,12 @@ import {
   jsonInputClean,
   valueListInputClean,
 } from "./util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Confluence connection to use.",
 });
-
 export const attachmentId = input({
   label: "Attachment Id",
   type: "string",
@@ -25,7 +23,6 @@ export const attachmentId = input({
   placeholder: "Enter attachment ID",
   dataSource: "listAttachments",
 });
-
 export const webhookId = input({
   label: "Webhook Id",
   type: "string",
@@ -35,7 +32,6 @@ export const webhookId = input({
   example: "7",
   placeholder: "Enter webhook ID",
 });
-
 export const customContentId = input({
   label: "Custom Content Id",
   type: "string",
@@ -45,7 +41,6 @@ export const customContentId = input({
   example: "123456789",
   placeholder: "Enter custom content ID",
 });
-
 export const propertyId = input({
   label: "Property Id",
   type: "string",
@@ -55,7 +50,6 @@ export const propertyId = input({
   example: "content-prop-123",
   placeholder: "Enter property ID",
 });
-
 export const pageId = input({
   label: "Page Id",
   type: "string",
@@ -66,7 +60,6 @@ export const pageId = input({
   placeholder: "Enter page ID",
   dataSource: "listPages",
 });
-
 export const spaceId = input({
   label: "Space Id",
   type: "string",
@@ -77,7 +70,6 @@ export const spaceId = input({
   placeholder: "Enter space ID",
   dataSource: "listSpaces",
 });
-
 export const resourceType = input({
   label: "Resource Type",
   type: "string",
@@ -90,7 +82,6 @@ export const resourceType = input({
   ],
   clean: util.types.toString,
 });
-
 export const eventType = input({
   label: "Event Type",
   type: "string",
@@ -101,7 +92,6 @@ export const eventType = input({
   default: ["000xxx"],
   clean: valueListInputClean,
 });
-
 export const functionSettings = input({
   label: "Function Settings",
   type: "code",
@@ -132,7 +122,6 @@ export const functionSettings = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -143,7 +132,6 @@ export const limit = input({
   example: "25",
   default: "25",
 });
-
 export const cursor = input({
   label: "Cursor",
   type: "string",
@@ -154,7 +142,6 @@ export const cursor = input({
   example: "c25hcHNob3RzLzE1NjQ4NjQ3MjMvMjU=",
   placeholder: "Enter cursor value",
 });
-
 export const parentId = input({
   label: "Parent Id",
   type: "string",
@@ -164,7 +151,6 @@ export const parentId = input({
   example: "987654321",
   placeholder: "Enter parent page ID",
 });
-
 export const status = input({
   label: "Status",
   type: "string",
@@ -178,7 +164,6 @@ export const status = input({
   ],
   clean: util.types.toString,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -188,7 +173,6 @@ export const title = input({
   example: "Product Documentation",
   placeholder: "Enter page title",
 });
-
 export const body = input({
   label: "Body",
   type: "code",
@@ -205,7 +189,6 @@ export const body = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const version = input({
   label: "Version",
   type: "code",
@@ -222,7 +205,6 @@ export const version = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const embedded = input({
   label: "Embedded",
   type: "boolean",
@@ -231,7 +213,6 @@ export const embedded = input({
     "When true, tags the content as embedded and creates content in NCS.",
   clean: util.types.toBool,
 });
-
 export const privateInput = input({
   label: "Private",
   type: "boolean",
@@ -240,7 +221,6 @@ export const privateInput = input({
     "When true, the page will be private and only the user who creates the page will have permission to view and edit it.",
   clean: util.types.toBool,
 });
-
 export const sort = input({
   label: "Sort",
   type: "string",
@@ -258,7 +238,6 @@ export const sort = input({
   ],
   clean: cleanStringInput,
 });
-
 export const bodyData = input({
   label: "Body Data",
   type: "code",
@@ -275,7 +254,6 @@ export const bodyData = input({
   clean: jsonInputClean,
   required: true,
 });
-
 export const webhookUrl = input({
   label: "Webhook URL",
   type: "string",
@@ -285,7 +263,6 @@ export const webhookUrl = input({
   placeholder: "Enter webhook URL",
   clean: util.types.toString,
 });
-
 export const webhookDetails = input({
   label: "Webhook Details",
   type: "code",
@@ -318,7 +295,6 @@ export const webhookDetails = input({
     2,
   ),
 });
-
 export const queryInput = input({
   label: "Query or Mutation",
   type: "code",
@@ -340,7 +316,6 @@ export const queryInput = input({
   }`,
   clean: util.types.toString,
 });
-
 export const variablesInput = input({
   label: "Variables",
   type: "string",
@@ -349,7 +324,6 @@ export const variablesInput = input({
   comments: "Variables to pass in to your query or mutation",
   clean: cleanKeyValPairInput,
 });
-
 export const headersInput = input({
   label: "Headers",
   comments: "Custom headers to send along with your request",
@@ -358,7 +332,6 @@ export const headersInput = input({
   collection: "keyvaluelist",
   clean: cleanKeyValPairInput,
 });
-
 export const queryParameters = input({
   label: "Query Parameters",
   type: "string",
@@ -368,7 +341,6 @@ export const queryParameters = input({
     "Query parameters to pass in to your request. Ex. Key: include-versions Value: true",
   clean: cleanKeyValList,
 });
-
 export const bodyFormat = input({
   label: "Body Format",
   type: "string",
@@ -386,7 +358,6 @@ export const bodyFormat = input({
   ],
   clean: cleanStringInput,
 });
-
 export const getDraft = input({
   label: "Get Draft",
   type: "string",
@@ -394,7 +365,6 @@ export const getDraft = input({
   comments: "Retrieve the draft version of this page.",
   clean: util.types.toBool,
 });
-
 export const previousVersion = input({
   label: "Version",
   type: "string",
@@ -405,7 +375,6 @@ export const previousVersion = input({
     "Allows you to retrieve a previously published version. Specify the previous version's number to retrieve its details.",
   clean: cleanNumberInput,
 });
-
 export const includeLabels = input({
   label: "Include Labels",
   type: "boolean",
@@ -414,7 +383,6 @@ export const includeLabels = input({
     "When true, includes labels associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.",
   clean: util.types.toBool,
 });
-
 export const includeProperties = input({
   label: "Include Properties",
   type: "boolean",
@@ -423,7 +391,6 @@ export const includeProperties = input({
     "When true, includes content properties associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.",
   clean: util.types.toBool,
 });
-
 export const includeOperations = input({
   label: "Include Operations",
   type: "boolean",
@@ -432,7 +399,6 @@ export const includeOperations = input({
     "When true, includes operations associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.",
   clean: util.types.toBool,
 });
-
 export const includeLikes = input({
   label: "Include Likes",
   type: "boolean",
@@ -441,7 +407,6 @@ export const includeLikes = input({
     "When true, includes likes associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.",
   clean: util.types.toBool,
 });
-
 export const includeVersions = input({
   label: "Include Versions",
   type: "boolean",
@@ -450,7 +415,6 @@ export const includeVersions = input({
     "When true, includes versions associated with this page in the response. The number of results will be limited to 50 and sorted in the default sort order.",
   clean: util.types.toBool,
 });
-
 export const includeVersion = input({
   label: "Include Version",
   type: "boolean",
@@ -460,7 +424,6 @@ export const includeVersion = input({
   clean: util.types.toBool,
   default: "true",
 });
-
 export const includeFavoritedByCurrentUserStatus = input({
   label: "Include Favorited By Current User Status",
   type: "boolean",
@@ -469,7 +432,6 @@ export const includeFavoritedByCurrentUserStatus = input({
     "When true, includes whether this page has been favorited by the current user.",
   clean: util.types.toBool,
 });
-
 export const purge = input({
   label: "Purge",
   type: "boolean",
@@ -478,7 +440,6 @@ export const purge = input({
     "When true, permanently deletes the page instead of moving it to trash.",
   clean: util.types.toBool,
 });
-
 export const draft = input({
   label: "Draft",
   type: "boolean",
@@ -486,7 +447,6 @@ export const draft = input({
   comments: "When true, deletes a page that is in draft status.",
   clean: util.types.toBool,
 });
-
 export const id = input({
   label: "Id",
   type: "string",
@@ -497,7 +457,6 @@ export const id = input({
   placeholder: "Enter page IDs (comma-separated)",
   clean: cleanStringInput,
 });
-
 export const spaceIdFilter = input({
   label: "Space Id",
   type: "string",
@@ -508,7 +467,6 @@ export const spaceIdFilter = input({
   placeholder: "Enter space IDs (comma-separated)",
   clean: cleanStringInput,
 });
-
 export const statusPages = input({
   label: "Status",
   type: "string",
@@ -519,7 +477,6 @@ export const statusPages = input({
   placeholder: "Enter status values (comma-separated)",
   clean: cleanStringInput,
 });
-
 export const titlePages = input({
   label: "Title",
   type: "string",
@@ -529,7 +486,6 @@ export const titlePages = input({
   placeholder: "Enter page title",
   clean: cleanStringInput,
 });
-
 export const bodyFormatPages = input({
   label: "Body Format",
   type: "string",
@@ -542,7 +498,6 @@ export const bodyFormatPages = input({
   ],
   clean: cleanStringInput,
 });
-
 export const purgeAttachment = input({
   label: "Purge",
   type: "boolean",
@@ -551,7 +506,6 @@ export const purgeAttachment = input({
     "When true, permanently deletes the attachment instead of moving it to trash.",
   clean: util.types.toBool,
 });
-
 export const depth = input({
   label: "Depth",
   type: "string",
@@ -564,7 +518,6 @@ export const depth = input({
   ],
   clean: cleanStringInput,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",

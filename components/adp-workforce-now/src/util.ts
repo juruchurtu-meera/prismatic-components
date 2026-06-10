@@ -7,27 +7,21 @@ import type { AxiosInstance } from "axios";
 import FormData from "form-data";
 import { adpOauth2 } from "./connections/adpOauth2";
 import { API_ENDPOINT, TOKEN_ENDPOINT } from "./constants";
-
 export const validateConnection = (connection: Connection) => {
   if (connection.key !== adpOauth2.key) {
     throw new Error("Invalid connection key");
   }
 };
-
 export const cleanString = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanNumber = (value: unknown) =>
   value ? util.types.toNumber(value) : undefined;
-
 export const cleanObject = (value: unknown) =>
   value ? util.types.toObject(value) : undefined;
-
 export const cleanKeyValPair = (value: unknown) =>
   value
     ? util.types.keyValPairListToObject(value as KeyValuePair<unknown>[])
     : undefined;
-
 export async function fetchAllRecords<T>(
   client: AxiosInstance,
   url: string,
@@ -39,7 +33,6 @@ export async function fetchAllRecords<T>(
   meta: unknown;
   confirmMessage: unknown;
 }> {
-  
   if ("$count" in params) {
     params.$count = undefined;
   }
@@ -82,8 +75,6 @@ export async function fetchAllRecords<T>(
     confirmMessage: data.confirmMessage,
   };
 }
-
-
 export async function fetchAllRecordsNoCount<T>(
   client: AxiosInstance,
   url: string,
@@ -138,7 +129,6 @@ export async function fetchData(
   });
   return data;
 }
-
 export const toFormData = (
   formData: KeyValuePair<unknown>[],
   fileData: KeyValuePair<unknown>[],
@@ -156,16 +146,13 @@ export const toFormData = (
   );
   return form;
 };
-
 export const getBaseUrl = (connection: Connection) => {
   const { endpoint } = connection.fields;
   return endpoint ? util.types.toString(endpoint) : API_ENDPOINT;
 };
-
 export const getTokenEndpoint = (connection: Connection) => {
   const { tokenEndpoint } = connection.fields;
   return tokenEndpoint ? util.types.toString(tokenEndpoint) : TOKEN_ENDPOINT;
 };
-
 export const cleanCertificateValue = (value: unknown) =>
   util.types.toString(value).replace(/\\n/g, "\n");

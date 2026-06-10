@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { createAssetExamplePayload } from "../../examplePayloads";
 import { createAssetInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const createAsset = action({
   display: {
     label: "Create Asset",
@@ -20,7 +19,6 @@ export const createAsset = action({
       spaceId,
       environmentId,
     );
-
     const asset: Asset = await environment.createAsset({
       fields: {
         title: title as AssetProps["fields"]["title"],
@@ -28,13 +26,11 @@ export const createAsset = action({
         file: file as AssetProps["fields"]["file"],
       },
     });
-
     const data: AssetProps = (
       await asset.processForAllLocales()
     ).toPlainObject();
-
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: createAssetInputs,

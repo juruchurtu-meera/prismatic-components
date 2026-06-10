@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 const managedDeviceId = input({
   label: "Managed Device Id",
   comments:
@@ -12,7 +11,6 @@ const managedDeviceId = input({
   clean: cleanStringInput,
   dataSource: "selectManagedDevice",
 });
-
 const detectedAppId = input({
   label: "Detected App Id",
   comments: "Unique Identifier for the detected app to remove devices from.",
@@ -22,7 +20,6 @@ const detectedAppId = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const userId = input({
   label: "User Id",
   comments:
@@ -33,7 +30,6 @@ const userId = input({
   required: true,
   clean: cleanStringInput,
 });
-
 export default {
   managedDeviceId,
   detectedAppId,

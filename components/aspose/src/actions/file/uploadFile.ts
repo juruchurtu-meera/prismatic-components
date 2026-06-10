@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getAsposeClient } from "../../client";
 import { connection, fileContent, filePath, storageName } from "../../inputs";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",
@@ -21,7 +20,6 @@ export const uploadFile = action({
     { connection, filePath, fileContent, storageName },
   ) => {
     const client = await getAsposeClient(connection, context.debug.enabled);
-
     await client.put(`/words/storage/file/${filePath}`, fileContent, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -30,7 +28,6 @@ export const uploadFile = action({
         storageName: storageName || undefined,
       },
     });
-
     return { data: null };
   },
   examplePayload: { data: null },

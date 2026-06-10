@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   clientEntityIdInput,
   connectionInput,
@@ -17,15 +16,12 @@ import {
 import { getClient, sendAsync } from "../client";
 import { BING_API, toArray } from "../util";
 import { addClientLinksExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "AddClientLinks";
-
 export interface OperationError {
   Code: number;
   Details: string;
   Message: string;
 }
-
 export interface AddClientLinksResponse {
   OperationErrors: {
     OperationError: OperationError | OperationError[];
@@ -36,7 +32,6 @@ export interface AddClientLinksResponse {
     };
   };
 }
-
 export const addClientLinks = action({
   display: {
     label: "Add Client Link",
@@ -64,7 +59,6 @@ export const addClientLinks = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<AddClientLinksResponse>({
       debug,
       args: {
@@ -89,7 +83,6 @@ export const addClientLinks = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data:
         response?.OperationErrors?.OperationError ||

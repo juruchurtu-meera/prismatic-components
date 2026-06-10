@@ -1,1 +1,3 @@
-export type ErrorWithMessage = { message: string };
+export type ErrorWithMessage = {
+  message: string;
+};

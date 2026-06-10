@@ -1,5 +1,4 @@
 import { GENERAL_DELETE_MESSAGE } from "./constants";
-
 export const GET_WEBINARS_EXAMPLE_PAYLOAD = {
   data: {
     _embedded: {
@@ -36,25 +35,20 @@ export const GET_WEBINARS_EXAMPLE_PAYLOAD = {
     },
   },
 };
-
 export const DELETE_WEBINAR_EXAMPLE_PAYLOAD = GENERAL_DELETE_MESSAGE;
-
 export const CREATE_WEBINAR_EXAMPLE_PAYLOAD = {
   data: {
     webinarKey: "string",
     recurrenceKey: "string",
   },
 };
-
 export const UPDATE_WEBINAR_EXAMPLE_PAYLOAD = GENERAL_DELETE_MESSAGE;
-
 export const CREATE_REGISTRANT_EXAMPLE_PAYLOAD = {
   data: {
     registrantKey: "string",
     joinUrl: "string",
   },
 };
-
 export const GET_REGISTRANTS_EXAMPLE_PAYLOAD = {
   data: {
     lastName: "string",
@@ -91,7 +85,6 @@ export const GET_REGISTRANTS_EXAMPLE_PAYLOAD = {
     ],
   },
 };
-
 export const LIST_REGISTRANTS_EXAMPLE_PAYLOAD = {
   data: [
     {
@@ -106,7 +99,11 @@ export const LIST_REGISTRANTS_EXAMPLE_PAYLOAD = {
     },
   ],
 };
-
+export const POLL_REGISTRANTS_EXAMPLE_PAYLOAD = {
+  data: {
+    created: LIST_REGISTRANTS_EXAMPLE_PAYLOAD.data,
+  },
+};
 export const LIST_ALL_ATTEENDEES_FOR_ALL_WEBINAR_SESSIONS_EXAMPLE_PAYLOAD = {
   data: {
     property1: {
@@ -167,7 +164,6 @@ export const LIST_ALL_ATTEENDEES_FOR_ALL_WEBINAR_SESSIONS_EXAMPLE_PAYLOAD = {
     },
   },
 };
-
 export const LIST_SESSION_ATTENDEES_EXAMPLE_PAYLOAD = {
   data: [
     {
@@ -186,7 +182,6 @@ export const LIST_SESSION_ATTENDEES_EXAMPLE_PAYLOAD = {
     },
   ],
 };
-
 export const GET_ATTENDEE_EXAMPLE_PAYLOAD = {
   data: {
     lastName: "string",
@@ -199,7 +194,6 @@ export const GET_ATTENDEE_EXAMPLE_PAYLOAD = {
     timeZone: "string",
   },
 };
-
 export const GET_USER_SUBSCRIPTION_EXAMPLE_PAYLOAD = {
   data: {
     callbackUrl: "string",
@@ -213,7 +207,6 @@ export const GET_USER_SUBSCRIPTION_EXAMPLE_PAYLOAD = {
     createTime: "string",
   },
 };
-
 export const CREATE_USER_SUBSCRIPTION_EXAMPLE_PAYLOAD = {
   data: {
     _embedded: {
@@ -233,7 +226,6 @@ export const CREATE_USER_SUBSCRIPTION_EXAMPLE_PAYLOAD = {
     },
   },
 };
-
 export const LIST_USER_SUBSCRIPTIONS_EXAMPLE_PAYLOAD = {
   data: {
     _embedded: {

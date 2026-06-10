@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getMessageExamplePayload = {
   data: {
     fields: {
@@ -31,19 +24,17 @@ export const getMessageExamplePayload = {
       clusterId: "",
     },
     // biome-ignore lint/suspicious/noExplicitAny: amqplib returns Buffer<ArrayBufferLike> but example payload type constraint expects Buffer<ArrayBuffer>
-    content: Buffer.from('{"orderId":"ORD-2026-1234","status":"pending"}') as any,
+    content: Buffer.from(
+      '{"orderId":"ORD-2026-1234","status":"pending"}',
+    ) as any,
     message: '{"orderId":"ORD-2026-1234","status":"pending"}',
   },
 };
-
 export const publishMessageExamplePayload = { data: true };
-
 export const rejectMessageExamplePayload = {
   data: { consumerTag: "amq.ctag-9f8e7d6c5b4a3210" },
 };
-
 export const acknowledgeMessageExamplePayload = { data: undefined };
-
 export const checkConnectionExamplePayload = {
   data: {
     host: "rabbitmq.example.com",

@@ -1,25 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getAppExamplePayload = {
   data: {
     create: [
@@ -50,21 +28,9 @@ export const getAppExamplePayload = {
     privileges: ["read", "update", "delete", "reload", "export"],
   },
 };
-
-
-
-
-
 export const deleteAppExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const listSpacesExamplePayload = {
   data: {
     data: [
@@ -103,11 +69,6 @@ export const listSpacesExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getSpaceExamplePayload = {
   data: {
     id: "TiQ8GPVr8qI714Lp5ChAAFFaU24MJy69",
@@ -134,11 +95,6 @@ export const getSpaceExamplePayload = {
     description: "Centralized space for Finance team analytics and reporting",
   },
 };
-
-
-
-
-
 export const createSpaceExamplePayload = {
   data: {
     id: "TiQ8GPVr8qI714Lp5ChAAFFaU24MJy69",
@@ -172,11 +128,6 @@ export const createSpaceExamplePayload = {
     description: "Collaborative space for sales performance tracking",
   },
 };
-
-
-
-
-
 export const updateSpaceExamplePayload = {
   data: {
     id: "TiQ8GPVr8qI714Lp5ChAAFFaU24MJy69",
@@ -210,21 +161,9 @@ export const updateSpaceExamplePayload = {
     description: "Updated production environment for Finance applications",
   },
 };
-
-
-
-
-
 export const deleteSpaceExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const listUsersExamplePayload = {
   data: {
     data: [
@@ -275,11 +214,6 @@ export const listUsersExamplePayload = {
     totalResults: 150,
   },
 };
-
-
-
-
-
 export const getMyUserExamplePayload = {
   data: {
     id: "TiQ8GPVr8qI714Lp5ChAAFFaU24MJy69",
@@ -309,13 +243,6 @@ export const getMyUserExamplePayload = {
     assignedGroups: [],
   },
 };
-
-
-
-
-
-
-
 export const getDatasetExamplePayload = {
   data: {
     id: "ds-a1b2c3d4e5f6",
@@ -366,11 +293,6 @@ export const getDatasetExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const createDatasetExamplePayload = {
   data: {
     id: "ds-f6e5d4c3b2a1",
@@ -400,11 +322,6 @@ export const createDatasetExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const updateDatasetExamplePayload = {
   data: {
     id: "ds-a1b2c3d4e5f6",
@@ -446,21 +363,9 @@ export const updateDatasetExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const deleteDatasetExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const getDataAssetsExamplePayload = {
   data: {
     id: "asset-a1b2c3d4e5f6",
@@ -486,11 +391,6 @@ export const getDataAssetsExamplePayload = {
     technicalDescription: "Raw sales data",
   },
 };
-
-
-
-
-
 export const createDataAssetsExamplePayload = {
   data: {
     id: "asset-f6e5d4c3b2a1",
@@ -514,11 +414,6 @@ export const createDataAssetsExamplePayload = {
     technicalDescription: "Campaign data",
   },
 };
-
-
-
-
-
 export const updateDataAssetsExamplePayload = {
   data: {
     id: "asset-a1b2c3d4e5f6",
@@ -544,21 +439,9 @@ export const updateDataAssetsExamplePayload = {
     technicalDescription: "Improved schema",
   },
 };
-
-
-
-
-
 export const deleteDataAssetsExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const listDatafilesExamplePayload = {
   data: {
     data: [
@@ -587,11 +470,6 @@ export const listDatafilesExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getDataFileExamplePayload = {
   data: {
     id: "ee6a390c-5d33-11e8-9c2d-fa7ae01bbebc",
@@ -611,21 +489,9 @@ export const getDataFileExamplePayload = {
     contentUpdatedDate: "2020-07-07T20:52:40.853Z",
   },
 };
-
-
-
-
-
 export const deleteDataFileExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const listDataStoresExamplePayload = {
   data: {
     data: [
@@ -660,11 +526,6 @@ export const listDataStoresExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const getDataStoreExamplePayload = {
   data: {
     id: "ds-store-a1b2c3d4e5f6",
@@ -686,11 +547,6 @@ export const getDataStoreExamplePayload = {
     technicalDescription: "Snowflake-based repository",
   },
 };
-
-
-
-
-
 export const createDataStoreExamplePayload = {
   data: {
     id: "ds-store-f6e5d4c3b2a1",
@@ -712,11 +568,6 @@ export const createDataStoreExamplePayload = {
     technicalDescription: "PostgreSQL instance",
   },
 };
-
-
-
-
-
 export const updateDataStoreExamplePayload = {
   data: {
     id: "ds-store-a1b2c3d4e5f6",
@@ -738,29 +589,12 @@ export const updateDataStoreExamplePayload = {
     technicalDescription: "Snowflake repository - updated",
   },
 };
-
-
-
-
-
 export const deleteDataStoresExamplePayload = {
   data: null,
 };
-
-
-
-
-
 export const deleteDataStoresAssetsExamplePayload = {
   data: null,
 };
-
-
-
-
-
-
-
 export const createReportExamplePayload = {
   data: {
     message: "Report request has been accepted and is being processed.",
@@ -769,11 +603,6 @@ export const createReportExamplePayload = {
       "https://tenant.us.qlikcloud.com/api/v1/reports/c61841ac-7b35-4434-aa74-4421f10fc68e/outputs",
   },
 };
-
-
-
-
-
 export const getReportRequestStatusExamplePayload = {
   data: {
     status: "done",
@@ -781,12 +610,6 @@ export const getReportRequestStatusExamplePayload = {
     resolutionAttempts: 1,
   },
 };
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     data: {},

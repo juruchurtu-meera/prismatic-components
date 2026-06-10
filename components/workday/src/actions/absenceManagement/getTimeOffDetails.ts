@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getTimeOffDetailsExamplePayload } from "../../examplePayloads";
 import { getTimeOffDetailsInputs } from "../../inputs";
-
 export const getTimeOffDetails = action({
   display: {
     label: "Get Time Off Details",

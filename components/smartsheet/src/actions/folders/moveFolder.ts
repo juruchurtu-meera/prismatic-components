@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { moveFolderExamplePayload } from "../../examplePayloads";
 import { moveFolderInputs } from "../../inputs";
-
 export const moveFolder = action({
   display: {
     label: "Move Folder",

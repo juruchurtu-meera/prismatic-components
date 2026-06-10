@@ -12,7 +12,6 @@ import payments from "./payments";
 import projects from "./projects";
 import { rawRequest } from "./rawRequest";
 import technician from "./technician";
-
 export default {
   ...appointmentAssignments,
   ...appointments,

@@ -13,7 +13,6 @@ import {
   status,
   typeId,
 } from "../../inputs";
-
 export const updatePayment = action({
   display: {
     label: "Update Payment",

@@ -11,7 +11,6 @@ import {
   postIdOptional,
   userIdOptional,
 } from "./common";
-
 const voteId = input({
   label: "Vote ID",
   type: "string",
@@ -21,7 +20,6 @@ const voteId = input({
   placeholder: "Enter vote ID",
   example: "553c3ef8b8cdcd1501ba3333",
 });
-
 const voterId = input({
   label: "Voter ID",
   type: "string",
@@ -32,7 +30,6 @@ const voterId = input({
   placeholder: "Enter voter ID",
   example: "553c3ef8b8cdcd1501ba9999",
 });
-
 export const listVotesInputs = {
   connection,
   boardId,
@@ -43,14 +40,11 @@ export const listVotesInputs = {
   cursor,
   limit,
 };
-
 export const retrieveVoteInputs = { connection, voteId };
-
 export const createVoteInputs = {
   connection,
   postId,
   voterId,
   additionalFields,
 };
-
 export const deleteVoteInputs = { connection, voteId };

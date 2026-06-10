@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { validateJSON } from "../../util";
-
 export const productIdInput = input({
   label: "Product ID",
   type: "string",
@@ -10,7 +9,6 @@ export const productIdInput = input({
   dataSource: "selectProducts",
   clean: util.types.toString,
 });
-
 export const productDataInput = input({
   label: "Product Data",
   type: "code",
@@ -28,7 +26,6 @@ export const productDataInput = input({
     "The complete data for updating the product. This call does not support partial updates.",
   clean: validateJSON,
 });
-
 export const sku = input({
   label: "SKU",
   type: "string",
@@ -37,7 +34,6 @@ export const sku = input({
   placeholder: "Enter SKU",
   clean: util.types.toString,
 });
-
 export const productName = input({
   label: "Product Name",
   type: "string",
@@ -46,7 +42,6 @@ export const productName = input({
   placeholder: "Enter product name",
   clean: util.types.toString,
 });
-
 export const productCategoryId = input({
   label: "Product Category ID",
   type: "string",
@@ -55,7 +50,6 @@ export const productCategoryId = input({
   placeholder: "Enter product category ID",
   clean: util.types.toString,
 });
-
 export const productTypeId = input({
   label: "Product Type ID",
   type: "string",

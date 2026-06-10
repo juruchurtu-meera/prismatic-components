@@ -9,7 +9,6 @@ import type { OdooRecord, PollingState } from "../types";
 import { pollChangesExamplePayload } from "../examplePayloads";
 import { fetchOdooRecordsSince } from "../util";
 import { pollChangesInputs } from "../inputs";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
@@ -22,7 +21,6 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     let records: OdooRecord[];
     let truncated: boolean;
     if (isLegacyConnection(params.connection)) {
@@ -40,15 +38,9 @@ export const pollChangesTrigger = pollingTrigger({
         lastPolledAt,
       ));
     }
-
-    
-    
-    
-    
     const lastPolledAtDate = new Date(lastPolledAt);
     const created: OdooRecord[] = [];
     const updated: OdooRecord[] = [];
-
     for (const record of records) {
       const createValue = record.create_date;
       const createdAtDate =
@@ -59,10 +51,6 @@ export const pollChangesTrigger = pollingTrigger({
       if (isNew && params.showNewRecords) created.push(record);
       else if (!isNew && params.showUpdatedRecords) updated.push(record);
     }
-
-    
-    
-    
     let nextCursor = now;
     if (truncated) {
       const oldestWriteDate = records[records.length - 1]?.write_date;
@@ -75,13 +63,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled Odoo ${params.model}: ${records.length} fetched, ${created.length} created, ${updated.length} updated, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },

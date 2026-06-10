@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createDatabaseInputs } from "../../inputs";
 import { createClient } from "../../client";
 import { createDatabaseExampleResponse } from "../../examplePayloads";
-
 export const updatedCreateDatabase = action({
   display: {
     label: "Create Database",
@@ -23,7 +22,6 @@ export const updatedCreateDatabase = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const payload = {
       parent,
       title,
@@ -34,7 +32,6 @@ export const updatedCreateDatabase = action({
         : undefined,
       description,
     };
-
     const { data } = await client.post("/databases", payload);
     return { data };
   },

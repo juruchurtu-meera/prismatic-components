@@ -1,6 +1,5 @@
 import { type KeyValuePair, util } from "@prismatic-io/spectral";
 import { ENDPOINTS } from "../constants";
-
 export const employeeFields = [
   "address1",
   "address2",
@@ -57,7 +56,6 @@ export const employeeFields = [
   "workPhone",
   "zipcode",
 ];
-
 export const validateFields = (
   fieldValues: KeyValuePair<unknown>[],
   fieldList: string[],
@@ -69,13 +67,11 @@ export const validateFields = (
   }
   return values;
 };
-
 export const validateEmployeeFields = (
   fieldValues: KeyValuePair<unknown>[],
 ) => {
   return validateFields(fieldValues, employeeFields);
 };
-
 const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 export const validateDate = (val) => {
   const dateString = util.types.toString(val);
@@ -84,19 +80,8 @@ export const validateDate = (val) => {
   }
   throw new Error(`Date value "${dateString}" must follow YYYY-MM-DD format.`);
 };
-
 export const filterFalseyValues = (obj) =>
   Object.fromEntries(Object.entries(obj).filter(([, value]) => Boolean(value)));
-
-
-
-
-
-
-
-
-
-
 export const fetchChangedEmployeesSince = async (
   client: import("@prismatic-io/spectral/dist/clients/http").HttpClient,
   since: string,
@@ -120,13 +105,6 @@ export const fetchChangedEmployeesSince = async (
     },
   );
 };
-
-
-
-
-
-
-
 export const partitionChangedEmployees = (
   changes: import("../types").EmployeeChange[],
 ): {

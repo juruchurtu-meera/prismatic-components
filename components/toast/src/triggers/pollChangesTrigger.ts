@@ -5,7 +5,6 @@ import { pollChangesTriggerExamplePayload as examplePayload } from "../examplePa
 import { pollChangesInputs as inputs } from "../inputs/triggers";
 import type { PollingState, ToastTimeEntryRecord } from "../interfaces";
 import { fetchTimeEntriesModified } from "../utils";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Time Entries",
@@ -22,17 +21,11 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
-    
-    
-    
-    
     const minStartMs = Date.now() - TIME_ENTRY_MAX_POLL_WINDOW_MS;
     const modifiedStartDate = new Date(
       Math.max(new Date(lastPolledAt).getTime(), minStartMs),
     ).toISOString();
     const modifiedEndDate = now;
-
     const client = await createToastClient(
       connection,
       context.debug.enabled,
@@ -43,14 +36,9 @@ export const pollChangesTrigger = pollingTrigger({
       modifiedStartDate,
       modifiedEndDate,
     );
-
-    
-    
-    
     const lastPolledDate = new Date(lastPolledAt);
     const created: ToastTimeEntryRecord[] = [];
     const updated: ToastTimeEntryRecord[] = [];
-
     for (const record of records) {
       const createdDate =
         typeof record.createdDate === "string"
@@ -60,23 +48,18 @@ export const pollChangesTrigger = pollingTrigger({
         typeof record.modifiedDate === "string"
           ? new Date(record.modifiedDate)
           : null;
-
       const isNew = createdDate !== null && createdDate > lastPolledDate;
       const isUpdated =
         !isNew && modifiedDate !== null && modifiedDate > lastPolledDate;
-
       if (isNew && showNewRecords) created.push(record);
       else if (isUpdated && showUpdatedRecords) updated.push(record);
     }
-
     context.polling.setState({ lastPolledAt: now } as PollingState);
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled time entries: ${records.length} fetched, ${created.length} created, ${updated.length} updated`,
       );
     }
-
     return {
       payload: { ...payload, body: { data: { created, updated } } },
       polledNoChanges: created.length + updated.length === 0,

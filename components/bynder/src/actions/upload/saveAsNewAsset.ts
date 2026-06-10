@@ -9,7 +9,6 @@ import {
   id,
   name,
 } from "../../inputs";
-
 export const saveAsNewAsset = action({
   display: {
     label: "Save a New Asset",

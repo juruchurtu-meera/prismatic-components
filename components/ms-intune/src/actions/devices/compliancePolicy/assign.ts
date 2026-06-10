@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import { assignDeviceCompliancePolicyExamplePayload } from "../../../examplePayloads";
 import { assignDeviceCompliancePolicyInputs } from "../../../inputs/devices/policyCompliance/assign";
-
 export const assignDeviceCompliancePolicy = action({
   display: {
     label: "Assign Device Compliance Policy",
@@ -28,7 +27,6 @@ export const assignDeviceCompliancePolicy = action({
         assignments: [assignment],
       },
     );
-
     return {
       data,
     };

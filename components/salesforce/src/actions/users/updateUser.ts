@@ -3,17 +3,19 @@ import { createSalesforceClient } from "../../client";
 import { updateUserInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const updateUser = action({
   display: {
     label: "Update User",
     description: "Update a Salesforce user.",
   },
-  perform: async (context, { version, dynamicValues, fieldValues, userName, connection }) => {
+  perform: async (
+    context,
+    { version, dynamicValues, fieldValues, userName, connection },
+  ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
-    const userResponse = await salesforceClient.sobject("User").findOne({ UserName: userName });
-
+    const userResponse = await salesforceClient
+      .sobject("User")
+      .findOne({ UserName: userName });
     if (!userResponse?.Id) {
       throw new Error(`Unable to find User matching "${userName}"`);
     }

@@ -10,7 +10,6 @@ import {
   page,
   storeHash,
 } from "../../inputs";
-
 export const getAllCategoriesSimple = action({
   display: {
     label: "List Categories (Simplified)",
@@ -26,16 +25,13 @@ export const getAllCategoriesSimple = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/trees/categories`;
-
     const queryParams = querystring.stringify({
       "category_id:in": category_id_in as string,
       limit: limit as number,
       page: page as number,
     });
-
     try {
       const response = await client.get(`${endpoint}?${queryParams}`);
-
       return {
         data: response.data,
       };
@@ -45,7 +41,6 @@ export const getAllCategoriesSimple = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash,

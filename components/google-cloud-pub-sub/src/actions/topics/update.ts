@@ -14,7 +14,6 @@ import {
   topicNameOrFullFormat,
   updateMask,
 } from "../../inputs";
-
 export const updateTopic = action({
   display: {
     description: "Updates an existing topic.",
@@ -51,7 +50,9 @@ export const updateTopic = action({
     },
   ) => {
     const client = createClient(connectionInput);
-    const name = topicNameOrFullFormat ? topic : `projects/${projectId}/topics/${topic}`;
+    const name = topicNameOrFullFormat
+      ? topic
+      : `projects/${projectId}/topics/${topic}`;
     const { data } = await client.projects.topics.patch({
       name,
       requestBody: {

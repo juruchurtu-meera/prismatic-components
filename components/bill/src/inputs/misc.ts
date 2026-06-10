@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { connection } from "./shared";
 import { ApiUrls } from "../enums/ApiUrls";
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
-
 const useBackup = input({
   label: "Use backup",
   comments: "When true, uses the backup mobile device for MFA.",
@@ -10,14 +9,11 @@ const useBackup = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const generateMfaChallengeIdInputs = {
   connection,
   useBackup,
 };
-
 const { debugRequest, ...httpInputsWithoutDebug } = httpClientInputs;
-
 export const rawRequestInputs = {
   connection,
   ...httpInputsWithoutDebug,
@@ -27,7 +23,6 @@ export const rawRequestInputs = {
     example: "/Login.json",
   },
 };
-
 const challengeId = input({
   label: "Challenge ID",
   type: "string",
@@ -56,7 +51,6 @@ const sessionId = input({
     "The session ID received from the 'Generate an MFA challenge ID' action.",
   clean: util.types.toString,
 });
-
 export const mfaAuthenticateInputs = {
   connection,
   challengeId,

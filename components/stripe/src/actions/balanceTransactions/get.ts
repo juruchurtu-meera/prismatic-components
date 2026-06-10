@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { getBalanceTransactionExamplePayload } from "../../examplePayloads/balanceTransactions";
 import { balanceTransactionId, connectionInput, timeout } from "../../inputs";
-
 export const getBalanceTransaction = action({
   display: {
     label: "Get Balance Transaction",
@@ -14,7 +13,9 @@ export const getBalanceTransaction = action({
       timeout: util.types.toInt(params.timeout),
     });
     return {
-      data: await client.balanceTransactions.retrieve(params.balanceTransactionId),
+      data: await client.balanceTransactions.retrieve(
+        params.balanceTransactionId,
+      ),
     };
   },
   inputs: {

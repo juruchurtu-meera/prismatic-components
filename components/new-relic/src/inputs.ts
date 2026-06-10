@@ -1,5 +1,4 @@
 import { input } from "@prismatic-io/spectral";
-
 export const jsonMessage = input({
   label: "Message",
   type: "string",
@@ -9,7 +8,6 @@ export const jsonMessage = input({
   comments:
     "Provide a JSON string containing the message of logs you want to send.",
 });
-
 export const codeMessage = input({
   label: "Message",
   type: "code",
@@ -27,7 +25,6 @@ export const codeMessage = input({
   comments:
     "Provide a JSON object containing the message of logs you want to send.",
 });
-
 export const timestamp = input({
   label: "Timestamp",
   type: "string",
@@ -35,7 +32,6 @@ export const timestamp = input({
   required: true,
   comments: "Provide a valid UNIX timestamp to be passed alongside the logs.",
 });
-
 export const metricName = input({
   label: "Metric Name",
   type: "string",
@@ -43,7 +39,6 @@ export const metricName = input({
   required: true,
   comments: "Provide the name of the metric you would like to report.",
 });
-
 export const intervalMS = input({
   label: "Interval MS",
   type: "string",
@@ -52,7 +47,6 @@ export const intervalMS = input({
   comments:
     "Provide a number in miliseconds for the length of the time window. This field is required if you are using the 'count', or 'summary' metric types.",
 });
-
 export const metricType = input({
   label: "Metric Type",
   type: "string",
@@ -83,7 +77,6 @@ export const metricType = input({
   comments:
     "Provide a string value for the type of metric you would like to report. In order to correctly chose this value refer to the list of types here: https://docs.newrelic.com/docs/data-apis/understand-data/metric-data/metric-data-type/",
 });
-
 export const metricValue = input({
   label: "Metric Value",
   type: "string",
@@ -91,7 +84,6 @@ export const metricValue = input({
   required: false,
   comments: "Provide a value to report.",
 });
-
 export const attributes = input({
   label: "Attributes",
   type: "string",
@@ -101,7 +93,6 @@ export const attributes = input({
   comments:
     "A map of key value pairs associated with this specific metric. Values can be strings, JSON numbers, or booleans. Keys are case-sensitive and must be less than 255 characters.",
 });
-
 export const eventType = input({
   label: "Event Type",
   type: "string",
@@ -110,7 +101,6 @@ export const eventType = input({
   comments:
     "Can be a combination of alphanumeric characters, underscores, and colons",
 });
-
 export const additionalAttributes = input({
   label: "Additional Attributes",
   type: "string",
@@ -118,7 +108,6 @@ export const additionalAttributes = input({
   required: false,
   comments: "Provide any key value pairs to pass with your request body.",
 });
-
 export const accountId = input({
   label: "Account Id",
   type: "string",
@@ -126,7 +115,6 @@ export const accountId = input({
   required: true,
   comments: "Provide the unique identifier of your New Relic Insights account.",
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",

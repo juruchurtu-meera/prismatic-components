@@ -13,7 +13,6 @@ import {
 } from "../inputs";
 import type { Feed } from "../interfaces";
 import { paginateResults, toOptionalString } from "../util";
-
 export const selectFeed = dataSource({
   display: {
     label: "Select Feed",
@@ -53,12 +52,10 @@ export const selectFeed = dataSource({
       "feeds",
       true,
     );
-
     const result: Element[] = feeds.map((feed) => ({
       label: `${feed.feedId} - ${feed.feedType} (${feed.processingStatus})`,
       key: feed.feedId,
     }));
-
     return { result };
   },
   dataSourceType: "picklist",

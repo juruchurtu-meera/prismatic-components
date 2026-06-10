@@ -14,13 +14,10 @@ import {
   start,
   vendorId,
 } from "./shared";
-
 const listVendorComments =
   " See [Bill.com API documentation](https://developer.bill.com/reference/listvendors) for more information.";
-
 const listVendorBankAccountsComments =
   " See [Bill.com API documentation](https://developer.bill.com/v2/reference/ap-vendormgmt-listvendorbankaccount) for more information.";
-
 const vendorAdditionalFields = {
   isActive: "string",
   shortName: "string",
@@ -84,7 +81,6 @@ const vendorAdditionalFields = {
   stpProcessor: "string",
   eBillEnabledStatus: "string",
 };
-
 const vendorBankAccountAdditionalFields = {
   isActive: "string",
   nameOnAcct: "string",
@@ -104,7 +100,6 @@ const vendorBankAccountAdditionalFields = {
   regulatory6: "string",
   regulatory7: "string",
 };
-
 const name = input({
   label: "Vendor Name",
   type: "string",
@@ -114,7 +109,6 @@ const name = input({
   comments: "Unique vendor name.",
   clean: util.types.toString,
 });
-
 const companyName = input({
   label: "Company Name",
   type: "string",
@@ -124,7 +118,6 @@ const companyName = input({
   comments: "Vendor organization full name.",
   clean: util.types.toString,
 });
-
 const email = input({
   label: "Email",
   type: "string",
@@ -134,7 +127,6 @@ const email = input({
   comments: "Vendor email address.",
   clean: util.types.toString,
 });
-
 export const createVendorInputs = {
   connection,
   name,
@@ -146,7 +138,6 @@ export const createVendorInputs = {
     comments: `${additionalFields.comments} See https://developer.bill.com/reference/createvendor for more information.`,
   }),
 };
-
 const vendorCreateBulk = input({
   label: "Vendors to Create",
   type: "code",
@@ -231,17 +222,14 @@ const vendorCreateBulk = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Vendors to Create"),
 });
-
 export const bulkCreateVendorInputs = {
   connection,
   vendorCreateBulk,
 };
-
 export const getVendorInputs = {
   connection,
   vendorId,
 };
-
 export const listVendorsInputs = {
   connection,
   start,
@@ -253,7 +241,6 @@ export const listVendorsInputs = {
   }),
   nested,
 };
-
 export const updateVendorInputs = {
   connection,
   vendorId,
@@ -264,7 +251,6 @@ export const updateVendorInputs = {
     comments: `${additionalFields.comments} See https://developer.bill.com/reference/updatevendor for more information.`,
   }),
 };
-
 const vendorUpdateBulk = input({
   label: "Vendors to Update",
   type: "code",
@@ -350,17 +336,14 @@ const vendorUpdateBulk = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Vendors to Update"),
 });
-
 export const bulkUpdateVendorsInputs = {
   connection,
   vendorUpdateBulk,
 };
-
 export const deleteVendorInputs = {
   connection,
   vendorId,
 };
-
 export const createVendorBankAccountInputs = {
   connection,
   mfaId,
@@ -380,7 +363,6 @@ export const createVendorBankAccountInputs = {
     comments: `${additionalFields.comments} See https://developer.bill.com/reference/createvendorbankaccount for more information.`,
   }),
 };
-
 const vendorBankAccountCreateBulk = input({
   label: "Vendor Bank Accounts to Create",
   type: "code",
@@ -422,14 +404,12 @@ const vendorBankAccountCreateBulk = input({
   clean: (value: unknown) =>
     cleanArrayCodeInput(value, "Vendor Bank Accounts to Create"),
 });
-
 export const bulkCreateVendorBankAccountsInputs = {
   connection,
   mfaId,
   deviceId,
   vendorBankAccountCreateBulk,
 };
-
 const vendorBankAccountId = input({
   label: "Vendor Bank Account ID",
   type: "string",
@@ -439,12 +419,10 @@ const vendorBankAccountId = input({
   comments: "ID of the vendor bank account.",
   clean: util.types.toString,
 });
-
 export const getVendorBankAccountInputs = {
   connection,
   vendorBankAccountId,
 };
-
 export const listVendorBankAccountsInputs = {
   connection,
   start,
@@ -459,7 +437,6 @@ export const listVendorBankAccountsInputs = {
   }),
   nested,
 };
-
 export const deleteVendorBankAccountInputs = {
   connection,
   mfaId,

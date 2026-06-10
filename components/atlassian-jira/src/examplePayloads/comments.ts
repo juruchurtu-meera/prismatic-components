@@ -45,7 +45,6 @@ export const getCommentsExamplePayload = {
     ],
   },
 };
-
 export const addCommentExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10001",
@@ -81,7 +80,6 @@ export const addCommentExamplePayload = {
     updated: "2021-01-17T12:34:00.000+0000",
   },
 };
-
 export const updateCommentExamplePayload = {
   data: {
     self: "https://your-domain.atlassian.net/rest/api/3/issue/10010/comment/10001",
@@ -117,8 +115,6 @@ export const updateCommentExamplePayload = {
     updated: "2021-01-18T10:15:00.000+0000",
   },
 };
-
-
 export const deleteCommentExamplePayload = {
   data: {},
 };

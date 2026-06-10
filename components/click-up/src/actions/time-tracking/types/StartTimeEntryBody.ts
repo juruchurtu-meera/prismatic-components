@@ -4,7 +4,6 @@ export interface StartTimeEntryBody {
   tid: string;
   billable: boolean;
 }
-
 interface Tag {
   name: string;
 }

@@ -5,7 +5,6 @@ import {
   oauth2Connection,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
 const baseUrls = {
   commercial: {
     api: "https://api.smartsheet.com/2.0/",
@@ -18,29 +17,30 @@ const baseUrls = {
     token: "https://api.smartsheetgov.com/2.0/token",
   },
 };
-
-
-const baseUrl: ConnectionInput & { model: { label: string; value: string }[] } =
-  {
-    label: "Base URL",
-    type: "string",
-    default: baseUrls.commercial.api,
-    comments:
-      "Most applications use Smartsheet commercial. Government entities should select the government endpoint.",
-    model: [
-      {
-        label: `Commercial - ${baseUrls.commercial.api}`,
-        value: baseUrls.commercial.api,
-      },
-      {
-        label: `Government - ${baseUrls.government.api}`,
-        value: baseUrls.government.api,
-      },
-    ],
-    required: true,
-    shown: true,
-  };
-
+const baseUrl: ConnectionInput & {
+  model: {
+    label: string;
+    value: string;
+  }[];
+} = {
+  label: "Base URL",
+  type: "string",
+  default: baseUrls.commercial.api,
+  comments:
+    "Most applications use Smartsheet commercial. Government entities should select the government endpoint.",
+  model: [
+    {
+      label: `Commercial - ${baseUrls.commercial.api}`,
+      value: baseUrls.commercial.api,
+    },
+    {
+      label: `Government - ${baseUrls.government.api}`,
+      value: baseUrls.government.api,
+    },
+  ],
+  required: true,
+  shown: true,
+};
 export const smartsheetOAuth2 = oauth2Connection({
   key: "Smartsheet OAuth2",
   display: {
@@ -117,7 +117,6 @@ export const smartsheetOAuth2 = oauth2Connection({
     },
   },
 });
-
 export const smartsheetApiKey = connection({
   key: "apiKey",
   display: {
@@ -136,7 +135,6 @@ export const smartsheetApiKey = connection({
     },
   },
 });
-
 export const smartsheetTemplatedOAuth = oauth2Connection({
   key: "templatedOAuth",
   display: {
@@ -164,7 +162,12 @@ export const smartsheetTemplatedOAuth = oauth2Connection({
         default: "api.smartsheet.com",
         comments:
           "Select the Smartsheet API domain. Most applications use commercial, but government entities should use the government endpoint.",
-      } as ConnectionInput & { model: { label: string; value: string }[] },
+      } as ConnectionInput & {
+        model: {
+          label: string;
+          value: string;
+        }[];
+      },
       appDomain: {
         label: "App Domain",
         type: "string",
@@ -183,7 +186,12 @@ export const smartsheetTemplatedOAuth = oauth2Connection({
         ],
         comments:
           "Select the Smartsheet application domain. This should match the API domain selection.",
-      } as ConnectionInput & { model: { label: string; value: string }[] },
+      } as ConnectionInput & {
+        model: {
+          label: string;
+          value: string;
+        }[];
+      },
       scopes: {
         label: "Scopes",
         type: "string",
@@ -242,5 +250,4 @@ export const smartsheetTemplatedOAuth = oauth2Connection({
     OAuth2Type.AuthorizationCode,
   ),
 });
-
 export default [smartsheetOAuth2, smartsheetApiKey, smartsheetTemplatedOAuth];

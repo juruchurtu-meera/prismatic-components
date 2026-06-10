@@ -3,7 +3,6 @@ import { createOdooClient } from "../../client";
 import { getRecordByExternalIdExamplePayload } from "../../examplePayloads";
 import { getRecordByExternalIdInputs } from "../../inputs";
 import { createOdooAwaitClient, isLegacyConnection } from "../../legacy";
-
 export const getRecordByExternalId = action({
   display: {
     label: "Get Record by External ID",
@@ -30,7 +29,10 @@ export const getRecordByExternalId = action({
       );
     }
     const { data: lookups } = await odooClient.post<
-      Array<{ res_id: number; model: string }>
+      Array<{
+        res_id: number;
+        model: string;
+      }>
     >("/json/2/ir.model.data/search_read", {
       domain: [
         ["module", "=", trimmed.slice(0, separatorIndex)],

@@ -8,7 +8,6 @@ import {
   resourceGroupName,
   subscriptionId,
 } from "../inputs";
-
 export const getNamespaces = action({
   display: {
     label: "Get Namespaces",
@@ -38,5 +37,4 @@ export const getNamespaces = action({
     namespaceName,
   },
 });
-
 export default { getNamespaces };

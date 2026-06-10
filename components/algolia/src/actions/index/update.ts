@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { createAlgoliaClient } from "../../client";
 import { updateBatchIndicesExamplePayload } from "../../examplePayloads";
 import { connectionInput, requests } from "../../inputs";
-
 export const updateBatchIndices = action({
   display: {
     label: "Update Batch Indices",
@@ -16,7 +15,6 @@ export const updateBatchIndices = action({
       isGoingToRead: false,
       debug: context.debug.enabled,
     });
-
     try {
       const { data } = await client.post(`/1/indexes/*/batch`, {
         requests,

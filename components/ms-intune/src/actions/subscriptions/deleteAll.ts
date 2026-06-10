@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { deleteAllSubscriptionsInputs } from "../../inputs/subscriptions/delete";
 import { removeSubscriptions } from "../../util";
 import { deletedSubscriptionsExamplePayload } from "../../examplePayloads";
-
 export const deleteAllSubscription = action({
   display: {
     label: "Delete Subscriptions from an Endpoint",
@@ -16,7 +15,6 @@ export const deleteAllSubscription = action({
       client,
       new Set(notificationUrl),
     );
-
     return {
       data: subscriptionsRemoved,
     };

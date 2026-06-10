@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../client";
 import { selectBlobExamplePayload } from "../examplePayloads";
 import { connectionInput, containerName, prefix } from "../inputs";
-
 export const selectBlob = dataSource({
   display: {
     label: "Select Blob",
@@ -23,7 +22,6 @@ export const selectBlob = dataSource({
   perform: async (_context, { azureConnection, containerName, prefix }) => {
     const client = createAuthorizedClient(azureConnection);
     const containerClient = client.getContainerClient(containerName);
-
     const blobs: Element[] = [];
     for await (const blob of containerClient.listBlobsFlat({
       prefix: prefix,
@@ -33,7 +31,6 @@ export const selectBlob = dataSource({
         key: blob.name,
       });
     }
-
     return { result: blobs };
   },
   dataSourceType: "picklist",

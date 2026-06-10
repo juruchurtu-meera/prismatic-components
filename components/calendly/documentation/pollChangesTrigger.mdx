@@ -1,0 +1,44 @@
+This trigger polls [Calendly](https://calendly.com/) on a configured schedule and emits scheduled events that were created or updated since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+
+#### How It Works
+
+Calendly's list endpoint does not support filtering by creation or modification date (`min_start_time` filters by the event's start time, not when the record changed), so on each scheduled run the trigger fetches the organization's scheduled events and classifies them against the previous poll time:
+
+- **Created**: events whose `created_at` is after the previous poll.
+- **Updated**: events whose `updated_at` is after the previous poll (and that are not newly created).
+
+The current run time is stored as the cursor for the next run.
+
+- **First run**: the very first execution records the cursor and emits nothing, so an instance does not receive a backlog of historical events on deploy.
+- **Subsequent runs**: only events created or updated since the last run are returned.
+
+#### Returned Data
+
+The trigger returns the matching events grouped under `created` and `updated`. Fields shown are representative. The full response object includes additional properties.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "uri": "https://api.calendly.com/scheduled_events/GBGBDCAADAEDCRZ2",
+        "name": "15 Minute Meeting",
+        "status": "active",
+        "created_at": "2019-01-02T03:04:05.092125Z",
+        "updated_at": "2019-01-02T03:04:05.092125Z"
+      }
+    ],
+    "updated": []
+  }
+}
+```
+
+</details>
+
+#### Notes
+
+- Because Calendly has no server-side created/updated filter, each run lists the organization's events and filters them in memory; for organizations with very many events this can be heavy.
+- Cancellations and other status changes are detected via `updated_at`; the existing webhook trigger remains the lowest-latency option for real-time invitee events.

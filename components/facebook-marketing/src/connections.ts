@@ -3,7 +3,6 @@ import {
   connection,
   oauth2Connection,
 } from "@prismatic-io/spectral";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   display: {
@@ -11,7 +10,6 @@ export const oauth = oauth2Connection({
     description: "OAuth 2.0 connection for Meta Ads",
   },
   oauth2Type: OAuth2Type.AuthorizationCode,
-
   inputs: {
     authorizeUrl: {
       default: "https://www.facebook.com/v22.0/dialog/oauth",
@@ -58,7 +56,6 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export const clientCredentials = oauth2Connection({
   key: "meta-client-credentials",
   display: {
@@ -112,7 +109,6 @@ export const clientCredentials = oauth2Connection({
     },
   },
 });
-
 export const sandboxToken = connection({
   key: "sandboxToken",
   display: {
@@ -129,7 +125,6 @@ export const sandboxToken = connection({
     },
   },
 });
-
 export const conversionsToken = connection({
   key: "facebookMarketingConversionsToken",
   display: {
@@ -146,5 +141,4 @@ export const conversionsToken = connection({
     },
   },
 });
-
 export default [oauth, clientCredentials, conversionsToken, sandboxToken];

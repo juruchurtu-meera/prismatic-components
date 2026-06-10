@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { createAuthorizedClient } from "../../client";
 import { deleteBrandImageExamplePayload } from "../../examplePayloads";
 import { bigCommerceConnection, brandId, storeHash } from "../../inputs";
-
 export const deleteBrandImage = action({
   display: {
     label: "Delete Brand Image",
@@ -15,12 +14,9 @@ export const deleteBrandImage = action({
       bigCommerceConnection,
       context.debug.enabled,
     );
-
     const endpoint = `/stores/${storeHash}/v3/catalog/brands/${brandId}/image`;
-
     try {
       const response = await client.delete(endpoint);
-
       return {
         data: response.data,
       };

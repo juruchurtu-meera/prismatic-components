@@ -4,7 +4,6 @@ import { deleteInstancedWebhooksExamplePayload } from "../examplePayloads";
 import { requestErrorHandler } from "../helpers";
 import { connection, consumerOrgId, projectId, workspaceId } from "../inputs";
 import type { Registrations } from "../types/Registrations";
-
 export const deleteInstancedWebhooks = action({
   display: {
     label: "Delete Instanced Webhooks",
@@ -17,17 +16,14 @@ export const deleteInstancedWebhooks = action({
     { connection, consumerOrgId, projectId, workspaceId },
   ) => {
     const client = getClient(connection, context.debug.enabled);
-
     try {
       const { data: registrationsData } = await client.get<Registrations>(
         `/${consumerOrgId}/${projectId}/${workspaceId}/registrations`,
       );
-
       const webhookRegistrations =
         registrationsData._embedded.registrations.filter(
           (registration) => registration.delivery_type === "webhook",
         );
-
       const deletePromises: Promise<{
         message: string;
       }>[] = webhookRegistrations.map(async (registration) => {
@@ -40,15 +36,11 @@ export const deleteInstancedWebhooks = action({
           };
         } catch (error) {
           return {
-            message: `Failed to delete registration ${
-              registration.registration_id
-            }: ${JSON.stringify(error)}`,
+            message: `Failed to delete registration ${registration.registration_id}: ${JSON.stringify(error)}`,
           };
         }
       });
-
       const results = await Promise.all(deletePromises);
-
       return { data: results };
     } catch (error) {
       requestErrorHandler(error);

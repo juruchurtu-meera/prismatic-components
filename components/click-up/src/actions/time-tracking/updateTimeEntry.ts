@@ -19,7 +19,6 @@ import {
 } from "../../inputs";
 import type { CreateTimeEntryQueryParams } from "./types/CreateTimeEntryQueryParams";
 import type { UpdateTimeEntryBody } from "./types/UpdateTimeEntryBody";
-
 const teamId = getTeamId(true);
 const customTaskIds = getCustomTaskIds(true);
 const customTeamId = getCustomTeamId(true);
@@ -29,7 +28,6 @@ const end = getEnd(true, "End time");
 const billable = getBillable(true, "Billable", false);
 const duration = getDuration(true, "Duration");
 const taskId = getTaskId(true, "Associate a time entry with a task by ID");
-
 export const updateTimeEntry = action({
   display: {
     label: "Update Time Entry",
@@ -52,9 +50,12 @@ export const updateTimeEntry = action({
       tagAction,
       end,
       tagsCode,
-    }
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const queryParams: CreateTimeEntryQueryParams = {
       custom_task_ids: customTaskIds,
       team_id: customTeamId,
@@ -69,11 +70,13 @@ export const updateTimeEntry = action({
       tag_action: tagAction,
       end,
     };
-
-    const { data } = await client.put(`/team/${teamId}/time_entries/${timerId}`, body, {
-      params: queryParams,
-    });
-
+    const { data } = await client.put(
+      `/team/${teamId}/time_entries/${timerId}`,
+      body,
+      {
+        params: queryParams,
+      },
+    );
     return {
       data,
     };

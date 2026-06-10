@@ -6,9 +6,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { baseUrl, getToken } from "../client";
 import { connection } from "../inputs";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

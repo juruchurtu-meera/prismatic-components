@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, subscriptionIdInput } from "../../inputs";
-
 export const deleteSubscription = action({
   display: {
     label: "Delete Subscription (Deprecated)",

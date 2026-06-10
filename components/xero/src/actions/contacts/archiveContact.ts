@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { contactId, connectionInput } from "../../inputs";
 import { archiveContactExamplePayload } from "../../examplePayloads";
-
 export const archiveContact = action({
   display: {
     label: "Archive Contact",
@@ -20,6 +19,5 @@ export const archiveContact = action({
     return { data };
   },
   inputs: { contactId, xeroConnection: connectionInput },
-
   examplePayload: archiveContactExamplePayload,
 });

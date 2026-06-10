@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, region, warehouseId } from "../../inputs";
 import { listSourcesExamplePayload } from "../../examplePayloads";
-
 export const listConnectedSourcesFromWarehouse = action({
   display: {
     label: "List Connected Sources from Warehouse",

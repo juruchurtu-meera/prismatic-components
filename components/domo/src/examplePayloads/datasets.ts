@@ -1,20 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getDataSetExamplePayload = {
   data: {
     id: "4405ff58-1957-45f4-b159-8e7a88cc7dcc",
@@ -40,7 +23,6 @@ export const getDataSetExamplePayload = {
     updatedAt: "2024-03-10T14:22:00.000Z",
   },
 };
-
 export const listDataSetsExamplePayload = {
   data: [
     getDataSetExamplePayload.data,
@@ -72,9 +54,7 @@ export const listDataSetsExamplePayload = {
     },
   ],
 };
-
 export const createDataSetExamplePayload = getDataSetExamplePayload;
-
 export const updateDataSetExamplePayload = {
   data: {
     ...getDataSetExamplePayload.data,
@@ -82,15 +62,11 @@ export const updateDataSetExamplePayload = {
     updatedAt: "2024-04-01T11:00:00.000Z",
   },
 };
-
 export const deleteDataSetExamplePayload = { data: null };
-
 export const exportDataFromDataSetExamplePayload = {
   data: "region,product,units_sold,revenue,sale_date\nNorth,Widget A,150,7500.00,2024-01-01\nSouth,Widget B,200,9800.00,2024-01-01\n",
 };
-
 export const importDataIntoDataSetExamplePayload = { data: null };
-
 export const queryDataSetExamplePayload = {
   data: {
     datasource: "4405ff58-1957-45f4-b159-8e7a88cc7dcc",

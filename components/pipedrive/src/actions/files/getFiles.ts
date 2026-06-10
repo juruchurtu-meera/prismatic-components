@@ -1,7 +1,10 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
-import { connectionInput, paginationLimitInput, paginationStartInput } from "../../inputs";
-
+import {
+  connectionInput,
+  paginationLimitInput,
+  paginationStartInput,
+} from "../../inputs";
 export const getFiles = action({
   display: {
     label: "List Files",
@@ -35,7 +38,8 @@ export const getFiles = action({
           log_id: null,
           add_time: "2020-02-20 14:36:35",
           update_time: "2020-02-20 14:57:33",
-          file_name: "IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg",
+          file_name:
+            "IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg",
           file_type: "img",
           file_size: 7801780,
           active_flag: true,

@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const tableId = input({
   label: "Table ID",
   comments: "The unique identifier or name of the table within the worksheet.",

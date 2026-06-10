@@ -3,7 +3,6 @@ import { createClient as createHttpClient } from "@prismatic-io/spectral/dist/cl
 import * as jwt from "jsonwebtoken";
 import UID from "uid-safe";
 import { apiKey, oauth } from "./connections";
-
 const validateApiKeyConnection = (connection: Connection) => {
   if (!connection.fields.apiKey || !connection.fields.tenant) {
     throw new ConnectionError(
@@ -18,9 +17,7 @@ const validateApiKeyConnection = (connection: Connection) => {
     tenant: util.types.toString(connection.fields.tenant),
   };
 };
-
 const accountRegex = /https:\/\/(.*)\.us.qlikcloud.com\//;
-
 const validateOAuthConnection = (connection: Connection) => {
   if (
     !connection.fields.authorizeUrl ||
@@ -45,14 +42,11 @@ const validateOAuthConnection = (connection: Connection) => {
   const tenant = accountMatch[1];
   return {
     headers: {
-      Authorization: `Bearer ${util.types.toString(
-        connection.token?.access_token,
-      )}`,
+      Authorization: `Bearer ${util.types.toString(connection.token?.access_token)}`,
     },
     tenant,
   };
 };
-
 const _validateJsonWebTokenConnection = (connection: Connection) => {
   if (
     !connection.fields.clientEmail ||
@@ -74,7 +68,7 @@ const _validateJsonWebTokenConnection = (connection: Connection) => {
   const iss = util.types.toString(connection.fields.issuer);
   const email = util.types.toString(connection.fields.clientEmail);
   const payload = {
-    jti: UID.sync(32), 
+    jti: UID.sync(32),
     sub: "0h34s4yfnMBdtOzza2UZeoso4G24p-7R6eeGdZUQHF0-c",
     subType: "user",
     name: "Acme",
@@ -101,35 +95,24 @@ const _validateJsonWebTokenConnection = (connection: Connection) => {
     tenant,
   };
 };
-
 export const validateConnection = (connection: Connection) => {
-  if (
-    connection.key !== apiKey.key &&
-    connection.key !== oauth.key
-    
-  ) {
+  if (connection.key !== apiKey.key && connection.key !== oauth.key) {
     throw new ConnectionError(connection, "Unknown Connection type provided.");
   }
-
   switch (connection.key) {
     case apiKey.key:
       return validateApiKeyConnection(connection);
     case oauth.key:
       return validateOAuthConnection(connection);
-    
-    
   }
-
   throw new ConnectionError(
     connection,
     "Received valid Connection type but did not find valid api key or account name.",
   );
 };
-
 export const createClient = (connection: Connection, debug: boolean) => {
   const { headers, tenant } = validateConnection(connection);
   const baseUrl = `https://${tenant}.us.qlikcloud.com/api/v1`;
-
   const client = createHttpClient({
     baseUrl,
     headers: { ...headers, "Content-Type": "application/json" },

@@ -6,9 +6,7 @@ import {
 import { connectionInput } from "../inputs";
 import { baseUrl, getAuthorizationHeader, notionVersion } from "../client";
 import { rawRequestResponse } from "../examplePayloads";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -39,5 +37,4 @@ const rawRequest = action({
   },
   examplePayload: rawRequestResponse,
 });
-
 export default rawRequest;

@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { connectionInput, webhookUrl, webhookDetails } from "../../inputs";
 import { createClient } from "../../client";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",

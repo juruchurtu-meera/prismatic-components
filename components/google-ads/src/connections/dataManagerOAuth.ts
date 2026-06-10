@@ -1,6 +1,5 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
 import { GOOGLE_DATA_MANAGER_API_VERSION } from "../constants";
-
 export const dataManagerOAuth = oauth2Connection({
   key: "dataManagerOAuth",
   display: {

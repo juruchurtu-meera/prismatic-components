@@ -9,7 +9,6 @@ import {
   cleanStringWithTag,
   toOptionalString,
 } from "./util";
-
 export const userType = input({
   label: "Team User Type",
   comments: "The type of user to connect with. Admin or User",
@@ -37,7 +36,6 @@ export const path = input({
   clean: util.types.toString,
   dataSource: "listFolders",
 });
-
 export const directoryPath = input({
   label: "Directory Path",
   placeholder: "Directory Path Prefix",
@@ -49,7 +47,6 @@ export const directoryPath = input({
   clean: cleanString,
   dataSource: "listFolders",
 });
-
 export const fileName = input({
   label: "File Name",
   placeholder: "File Name",
@@ -59,7 +56,6 @@ export const fileName = input({
   example: "fileName.txt",
   clean: cleanString,
 });
-
 export const fromPath = input({
   label: "From Path",
   placeholder: "From Path",
@@ -71,7 +67,6 @@ export const fromPath = input({
   clean: util.types.toString,
   dataSource: "listFolders",
 });
-
 export const toPath = input({
   label: "To Path",
   placeholder: "To Path",
@@ -83,7 +78,6 @@ export const toPath = input({
   clean: util.types.toString,
   dataSource: "listFolders",
 });
-
 export const folderActions = input({
   label: "Folder Actions",
   placeholder: "Folder Action",
@@ -101,7 +95,6 @@ export const folderActions = input({
     return folderActions.map((value) => ({ ".tag": value }));
   },
 });
-
 export const fileContents = input({
   label: "File Contents",
   placeholder: "Output data from previous step",
@@ -112,7 +105,6 @@ export const fileContents = input({
   example: "My File Contents",
   clean: util.types.toData,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -125,7 +117,6 @@ export const limit = input({
     return num || undefined;
   },
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -135,7 +126,6 @@ export const fetchAll = input({
   required: false,
   default: "false",
 });
-
 export const cursor = input({
   label: "Cursor",
   type: "string",
@@ -145,13 +135,11 @@ export const cursor = input({
   example: "lslTXFcbLQKkb0vP9Kgh5hy0Y0OnC7Z9ZPHPwPmMnxSk3eiDRMkct7D8E",
   clean: toOptionalString,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const filePaths = input({
   label: "File Path",
   placeholder: "File Path",
@@ -164,7 +152,6 @@ export const filePaths = input({
   clean: (stringArray: any) =>
     stringArray.map((string: string) => util.types.toString(string)),
 });
-
 export const urlToSave = input({
   label: "URL to Save",
   placeholder: "URL to Save",
@@ -174,7 +161,6 @@ export const urlToSave = input({
   example: "https://example.com/file.txt",
   clean: util.types.toString,
 });
-
 export const waitUntilComplete = input({
   label: "Wait Until Complete",
   type: "boolean",
@@ -183,7 +169,6 @@ export const waitUntilComplete = input({
   comments: "Whether to wait for the operation to complete.",
   clean: util.types.toBool,
 });
-
 export const asyncJobId = input({
   label: "Async Job ID",
   placeholder: "Async Job ID",
@@ -194,7 +179,6 @@ export const asyncJobId = input({
   example: "nMvNReawvD4AAAAAAAAAAQ",
   clean: util.types.toString,
 });
-
 export const recursive = input({
   label: "Recursive",
   comments: "If true, the response will contain contents of all subfolders.",
@@ -203,7 +187,6 @@ export const recursive = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const includeDeleted = input({
   label: "Include Deleted?",
   comments:
@@ -213,7 +196,6 @@ export const includeDeleted = input({
   required: true,
   clean: util.types.toBool,
 });
-
 export const dynamicPaths = input({
   label: "Dynamic Paths",
   type: "data",
@@ -221,7 +203,6 @@ export const dynamicPaths = input({
   comments: "An optional list of paths (Use this, File Paths or both)",
   example: `["/path/to/file", "/path/to/another/file"]`,
 });
-
 export const lookupKey = input({
   label: "Lookup By",
   type: "string",
@@ -233,7 +214,6 @@ export const lookupKey = input({
   ],
   clean: util.types.toString,
 });
-
 export const audience = input({
   label: "Audience",
   type: "string",
@@ -247,14 +227,12 @@ export const audience = input({
   clean: cleanStringWithTag,
   default: "",
 });
-
 export const lookupValue = input({
   label: "Value",
   type: "string",
   required: true,
   clean: util.types.toString,
 });
-
 export const link_password = input({
   label: "Link Password",
   type: "string",
@@ -263,7 +241,6 @@ export const link_password = input({
   example: "anExamplePassword",
   clean: toOptionalString,
 });
-
 export const expires = input({
   label: "Expires",
   type: "string",
@@ -273,7 +250,6 @@ export const expires = input({
   example: "2021-01-01T00:00:00Z",
   clean: toOptionalString,
 });
-
 export const require_password = input({
   label: "Require Password",
   type: "boolean",
@@ -282,7 +258,6 @@ export const require_password = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const direct_only = input({
   label: "Direct Only",
   type: "boolean",
@@ -292,7 +267,6 @@ export const direct_only = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const force_async = input({
   label: "Force Async",
   type: "boolean",
@@ -301,7 +275,6 @@ export const force_async = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const acl_update_policy = input({
   label: "ACL Update Policy",
   type: "string",
@@ -315,7 +288,6 @@ export const acl_update_policy = input({
   ],
   default: "",
 });
-
 export const member_policy = input({
   label: "Member Policy",
   type: "string",
@@ -331,7 +303,6 @@ export const member_policy = input({
   ],
   default: "",
 });
-
 export const shared_link_policy = input({
   label: "Shared Link Policy",
   type: "string",
@@ -347,7 +318,6 @@ export const shared_link_policy = input({
   ],
   default: "",
 });
-
 export const viewer_info_policy = input({
   label: "Viewer Info Policy",
   type: "string",
@@ -361,7 +331,6 @@ export const viewer_info_policy = input({
   ],
   default: "",
 });
-
 export const access_inheritance = input({
   label: "Access Inheritance",
   type: "string",
@@ -375,7 +344,6 @@ export const access_inheritance = input({
   ],
   default: "",
 });
-
 export const actions = input({
   label: "Actions",
   type: "string",
@@ -444,7 +412,6 @@ export const actions = input({
   ],
   default: [],
 });
-
 export const link_settings = input({
   label: "Link Settings",
   type: "string",
@@ -458,7 +425,6 @@ export const link_settings = input({
   ],
   default: "",
 });
-
 export const access = input({
   label: "Access",
   type: "string",
@@ -475,7 +441,6 @@ export const access = input({
   ],
   default: "",
 });
-
 export const shared_folder_id = input({
   label: "Shared Folder ID",
   type: "string",
@@ -484,7 +449,6 @@ export const shared_folder_id = input({
   example: "84528192421",
   clean: util.types.toString,
 });
-
 export const leave_a_copy = input({
   label: "Leave a Copy",
   type: "boolean",
@@ -494,7 +458,6 @@ export const leave_a_copy = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const allow_download = input({
   label: "Allow Download",
   type: "boolean",
@@ -504,7 +467,6 @@ export const allow_download = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const fileId = input({
   label: "File Id",
   type: "string",
@@ -513,7 +475,6 @@ export const fileId = input({
   example: "id:3kmLmQFnf1AAAAAAAAAAAw",
   clean: util.types.toString,
 });
-
 export const include_media_info = input({
   label: "Include Media Info",
   type: "boolean",
@@ -522,7 +483,6 @@ export const include_media_info = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const include_deleted = input({
   label: "Include Deleted",
   type: "boolean",
@@ -532,7 +492,6 @@ export const include_deleted = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const include_has_explicit_shared_members = input({
   label: "Include Has Explicit Shared Members",
   type: "boolean",
@@ -542,7 +501,6 @@ export const include_has_explicit_shared_members = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const include_property_groups = input({
   label: "Include Property Groups",
   type: "string",
@@ -556,7 +514,6 @@ export const include_property_groups = input({
   ],
   default: "",
 });
-
 export const download_as_zip = input({
   label: "Download as Zip",
   type: "boolean",
@@ -566,7 +523,6 @@ export const download_as_zip = input({
   clean: util.types.toBool,
   default: "false",
 });
-
 export const entryFilter = input({
   label: "Entry Filter",
   type: "string",

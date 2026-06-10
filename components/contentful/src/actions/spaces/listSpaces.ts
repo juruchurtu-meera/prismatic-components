@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { listSpacesExamplePayload } from "../../examplePayloads";
 import { listSpacesInputs } from "../../inputs";
 import { getAllPaginatedItems } from "../../util";
-
 export const listSpaces = action({
   display: {
     label: "List Spaces",
@@ -12,12 +11,10 @@ export const listSpaces = action({
   },
   perform: async (context, { connection }) => {
     const client = createClient(connection, context);
-
     const allItems: SpaceProps[] = await getAllPaginatedItems<
       Space,
       SpaceProps
     >(client.getSpaces.bind(client));
-
     return {
       data: allItems,
     };

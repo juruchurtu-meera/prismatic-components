@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection } from "../inputs";
 import { fetchDrives } from "../helpers/pagination";
-
 export const listDrives = action({
   display: {
     label: "List Drives",

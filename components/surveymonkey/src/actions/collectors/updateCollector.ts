@@ -3,12 +3,6 @@ import { createClient } from "../../client";
 import { updateCollectorInputs } from "../../inputs";
 import { updateCollectorExamplePayload } from "../../examplePayloads";
 import type { Collector } from "../../types";
-
-
-
-
-
-
 export const updateCollector = action({
   display: {
     label: "Update Collector",
@@ -29,8 +23,6 @@ export const updateCollector = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
-    
     const body: Record<string, unknown> = {
       name,
       thank_you_message: thankYouMessage,
@@ -41,12 +33,10 @@ export const updateCollector = action({
         : undefined,
       ...extraBody,
     };
-
     const { data } = await client.patch<Collector>(
       `/collectors/${collectorId}`,
       body,
     );
-
     return { data };
   },
   examplePayload: updateCollectorExamplePayload,

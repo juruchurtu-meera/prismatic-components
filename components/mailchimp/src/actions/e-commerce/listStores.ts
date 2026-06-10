@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
-
 export const listStores = action({
   display: {
     label: "List Stores",
@@ -14,5 +13,4 @@ export const listStores = action({
   },
   inputs: { connection: connectionInput },
 });
-
 export default listStores;

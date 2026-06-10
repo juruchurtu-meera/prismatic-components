@@ -9,7 +9,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { updateMultipleProfilesExamplePayload } from "../../examplePayloads";
-
 export const updateMultipleProfiles = action({
   display: {
     label: "Update Multiple Profiles",

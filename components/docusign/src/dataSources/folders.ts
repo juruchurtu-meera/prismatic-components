@@ -8,10 +8,8 @@ import {
   subFolderDepth,
   userFilter,
 } from "../inputs";
-
 import { getFolders } from "../utils";
 import { getDocuSignClient } from "../client";
-
 export const folders = dataSource({
   display: {
     label: "Select Folder",
@@ -48,7 +46,6 @@ export const folders = dataSource({
       subFolderDepth,
       userFilter,
     );
-
     return {
       result: data.folders.map(
         (folder: { name: string; folderId: string }) => ({

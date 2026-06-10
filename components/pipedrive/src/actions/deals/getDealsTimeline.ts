@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const getDealsTimeline = action({
   display: {
     label: "Get Deals Timeline",
@@ -24,7 +23,11 @@ export const getDealsTimeline = action({
       totalsConvertCurrency,
     },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.get("/deals/timeline", {
       params: {
         start_date: startDate,
@@ -69,7 +72,8 @@ export const getDealsTimeline = action({
       type: "string",
       required: true,
       clean: util.types.toNumber,
-      comments: 'The number of given intervals, starting from "start_date", to fetch',
+      comments:
+        'The number of given intervals, starting from "start_date", to fetch',
       example: "12",
       placeholder: "Enter number of intervals",
     }),
@@ -86,19 +90,22 @@ export const getDealsTimeline = action({
       label: "User ID",
       type: "string",
       clean: cleanNumber,
-      comments: "If supplied, only deals matching the given user will be returned",
+      comments:
+        "If supplied, only deals matching the given user will be returned",
     }),
     pipelineId: input({
       label: "Pipeline ID",
       type: "string",
       clean: cleanNumber,
-      comments: "If supplied, only deals matching the given pipeline will be returned",
+      comments:
+        "If supplied, only deals matching the given pipeline will be returned",
     }),
     filterId: input({
       label: "Filter ID",
       type: "string",
       clean: cleanNumber,
-      comments: "If supplied, only deals matching the given filter will be returned",
+      comments:
+        "If supplied, only deals matching the given filter will be returned",
     }),
     excludeDeals: input({
       label: "Exclude Deals",

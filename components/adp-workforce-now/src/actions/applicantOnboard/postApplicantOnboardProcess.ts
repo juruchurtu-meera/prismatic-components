@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getApplicantOnboardMetadataResponse } from "../../examplePayloads";
 import { applicantOnboarding, connection } from "../../inputs";
-
 export const postApplicantOnboardProcess = action({
   display: {
     label: "Post Applicant Onboard Process",

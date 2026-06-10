@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createCustomerInputs as inputs } from "../../inputs/customers";
 import type { CreateCustomerResponse } from "../../interfaces/customers";
 import { createCustomerExamplePayload as examplePayload } from "../../examplePayloads/customers";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -14,7 +13,6 @@ export const createCustomer = action({
       connection,
       debug: context.debug.enabled,
     }).post<CreateCustomerResponse>("/customers", body);
-
     return {
       data,
     };

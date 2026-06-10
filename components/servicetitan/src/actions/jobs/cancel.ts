@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, jobId, jobMemo, reasonId } from "../../inputs";
-
 export const cancelJob = action({
   display: {
     label: "Cancel Job",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getApplicantOnboardMetadataResponse } from "../../examplePayloads";
 import { $filterOnboard, connection, contextTemplates } from "../../inputs";
-
 export const getApplicantOnboardMetadata = action({
   display: {
     label: "Get Applicant Onboard Metadata",

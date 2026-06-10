@@ -8,7 +8,6 @@ import {
   params,
   referenceId,
 } from "./shared";
-
 const createdById = input({
   label: "Created By ID",
   comments: "Identifies the user who created the record.",
@@ -18,7 +17,6 @@ const createdById = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const messageTemplateId = input({
   label: "Message Template ID",
   comments: "Identifies the Connect message template.",
@@ -29,7 +27,6 @@ const messageTemplateId = input({
   clean: util.types.toString,
   dataSource: "selectMessageTemplate",
 });
-
 const emailDetail = input({
   label: "Email Detail",
   type: "code",
@@ -50,7 +47,6 @@ const emailDetail = input({
   ),
   clean: (value: unknown) => cleanCodeInput(value, "Email Detail"),
 });
-
 const pushDetail = input({
   label: "Push Detail",
   type: "code",
@@ -70,7 +66,6 @@ const pushDetail = input({
   ),
   clean: (value: unknown) => cleanCodeInput(value, "Push Detail"),
 });
-
 const senderOverrideId = input({
   label: "Sender Override ID",
   comments: "Overrides the icon displayed for the sender.",
@@ -80,7 +75,6 @@ const senderOverrideId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const commId = input({
   label: "Communication ID",
   comments: "Identifier of the Workday communication group.",
@@ -90,7 +84,6 @@ const commId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const contacts = input({
   label: "Contacts",
   type: "code",
@@ -110,7 +103,6 @@ const contacts = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Contacts"),
 });
-
 const notificationTypeId = input({
   label: "Notification Type ID",
   comments: "Identifies the notification type used for delivery.",
@@ -120,8 +112,6 @@ const notificationTypeId = input({
   required: false,
   clean: cleanStringInput,
 });
-
-
 const postMessageTemplatesAdditionalFieldsExample = JSON.stringify(
   {
     lastUpdated: "2024-06-08T07:00:00.000Z",
@@ -138,7 +128,6 @@ const postMessageTemplatesAdditionalFieldsExample = JSON.stringify(
   2,
 );
 const postMessageTemplatesAdditionalFieldsComments = `${additionalFields.comments} See [Workday API documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#${SERVICES.connect.slice(1)}/post-/messageTemplates) for more information.`;
-
 const messageTemplateName = input({
   label: "Message Template Name",
   comments: "Display name given to the message template.",
@@ -148,7 +137,6 @@ const messageTemplateName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const templateInactive = input({
   label: "Template Inactive",
   comments: "When true, marks the template as inactive.",
@@ -157,7 +145,6 @@ const templateInactive = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 const temaplateDescriptor = input({
   label: "Template Descriptor",
   comments: "Human-readable descriptor for the template.",
@@ -167,7 +154,6 @@ const temaplateDescriptor = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const templateId = input({
   label: "Template ID",
   comments: "Identifies the message template record.",
@@ -177,17 +163,14 @@ const templateId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const getMessageTemplateByIdInputs = {
   connection,
   messageTemplateId,
 };
-
 export const listMessageTemplatesInputs = {
   connection,
   params,
 };
-
 export const postMessageTemplatesInputs = {
   connection,
   createdById,
@@ -204,7 +187,6 @@ export const postMessageTemplatesInputs = {
     comments: postMessageTemplatesAdditionalFieldsComments,
   },
 };
-
 export const sendMessageInputs = {
   connection,
   senderOverrideId,
@@ -218,7 +200,6 @@ export const sendMessageInputs = {
   notificationTypeId,
   pushDetail,
 };
-
 export const updateMessageTemplateByIdInputs = {
   messageTemplateId,
   ...postMessageTemplatesInputs,

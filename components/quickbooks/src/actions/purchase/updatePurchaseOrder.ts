@@ -13,7 +13,6 @@ import {
   vendorIdInput,
 } from "../../inputs";
 import { cleanStringInput } from "../../util";
-
 export const updatePurchaseOrder = action({
   display: {
     label: "Update Purchase Order",
@@ -39,13 +38,11 @@ export const updatePurchaseOrder = action({
   },
   perform: async (context, params) => {
     const client = createHttpClient(params.connection, context.debug.enabled);
-
     const base =
       typeof params.baseRecord === "object" &&
       Object.keys(params.baseRecord).length > 0
         ? params.baseRecord
         : {};
-
     const payload = {
       ...base,
       ...util.types.keyValPairListToObject(
@@ -62,13 +59,11 @@ export const updatePurchaseOrder = action({
         value: params.vendorId,
       },
     };
-
     const { data } = await client.post("/purchaseorder", payload, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-
     return { data: data.PurchaseOrder };
   },
   examplePayload,

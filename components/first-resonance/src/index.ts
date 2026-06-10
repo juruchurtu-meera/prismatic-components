@@ -2,7 +2,6 @@ import { component } from "@prismatic-io/spectral";
 import actions from "./actions";
 import triggers from "./triggers";
 import connections from "./connections";
-
 export default component({
   key: "first-resonance",
   public: true,

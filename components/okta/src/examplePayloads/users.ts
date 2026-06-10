@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const getUserExamplePayload = {
   data: {
     id: "00u118oQYT4TBGuay0g4",
@@ -36,29 +29,24 @@ export const getUserExamplePayload = {
     },
   },
 };
-
 export const listUsersExamplePayload = {
   data: [getUserExamplePayload.data],
 };
-
 export const createUserExamplePayload = getUserExamplePayload;
-
 export const updateUserExamplePayload = getUserExamplePayload;
-
 export const activateUserExamplePayload = {
   data: {
     activationToken: "XE6wE17zmphl3KqAPFxO",
     activationUrl: "https://{yourOktaDomain}/welcome/XE6wE17zmphl3KqAPFxO",
   },
 };
-
 export const resetUserPasswordExamplePayload = {
   data: {
     summary: "Reset password without sending email",
-    resetPasswordUrl: "https://{yourOktaDomain}/reset_password/XE6wE17zmphl3KqAPFxO",
+    resetPasswordUrl:
+      "https://{yourOktaDomain}/reset_password/XE6wE17zmphl3KqAPFxO",
   },
 };
-
 export const setUserPasswordExamplePayload = {
   data: {
     password: {},
@@ -71,7 +59,6 @@ export const setUserPasswordExamplePayload = {
     },
   },
 };
-
 export const listUserGroupsExamplePayload = {
   data: [
     {
@@ -90,37 +77,31 @@ export const listUserGroupsExamplePayload = {
     },
   ],
 };
-
 export const deactivateUserExamplePayload = {
   data: {
     id: "userId",
     status: "DEPROVISIONED",
   },
 };
-
 export const deleteUserExamplePayload = {
   data: {
     id: "userId",
     status: "DELETED",
   },
 };
-
 export const unlockUserExamplePayload = {
   data: {
     id: "userId",
     status: "ACTIVE",
   },
 };
-
 export const unsuspendUserExamplePayload = unlockUserExamplePayload;
-
 export const suspendUserExamplePayload = {
   data: {
     id: "userId",
     status: "SUSPENDED",
   },
 };
-
 export const listUserApplicationsExamplePayload = {
   data: [
     {
@@ -162,7 +143,8 @@ export const listUserApplicationsExamplePayload = {
     {
       id: "00ub0oNGTSWTBKOLGLNR",
       label: "Salesforce.com",
-      linkUrl: "https://{yourOktaDomain}/home/salesforce/0oa12ecnxtBQMKOXJSMF/46",
+      linkUrl:
+        "https://{yourOktaDomain}/home/salesforce/0oa12ecnxtBQMKOXJSMF/46",
       logoUrl: "https://{yourOktaDomain}/img/logos/salesforce_logo.png",
       appName: "salesforce",
       appInstanceId: "0oa12ecnxtBQMKOXJSMF",
@@ -173,14 +155,12 @@ export const listUserApplicationsExamplePayload = {
     },
   ],
 };
-
 export const clearUserSessionsExamplePayload = {
   data: {
     id: "userId",
     status: "SESSIONS_CLEARED",
   },
 };
-
 export const getUserFactorsExamplePayload = {
   data: [
     {
@@ -258,14 +238,12 @@ export const getUserFactorsExamplePayload = {
     },
   ],
 };
-
 export const unenrollUserFactorExamplePayload = {
   data: {
     id: "opf1abcd2EFGHijkL3m4",
     status: "UNENROLLED",
   },
 };
-
 export const listUserTypesExamplePayload = {
   data: [
     {
@@ -291,7 +269,8 @@ export const listUserTypesExamplePayload = {
       id: "otyz9fj2jMiRBC1ZT1d6",
       displayName: "User",
       name: "user",
-      description: "Okta user profile template with default permission settings",
+      description:
+        "Okta user profile template with default permission settings",
       createdBy: "sprz9fj1ycBcsgopy1d6",
       lastUpdatedBy: "sprz9fj1ycBcsgopy1d6",
       created: "2021-07-05T20:40:38.000Z",

@@ -1,6 +1,5 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
 import { DEFAULT_SCOPES } from "../constants";
-
 export const oauth = oauth2Connection({
   key: "bynder-oauth",
   oauth2Type: OAuth2Type.AuthorizationCode,
@@ -60,7 +59,6 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export const oauthCredentials = oauth2Connection({
   key: "bynder-client-credentials-oauth",
   oauth2Type: OAuth2Type.ClientCredentials,
@@ -111,5 +109,4 @@ export const oauthCredentials = oauth2Connection({
     },
   },
 });
-
 export default [oauth, oauthCredentials];

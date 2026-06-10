@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, destinationMetadataId, region } from "../../inputs";
 import { getDestinationMetadataExamplePayload } from "../../examplePayloads";
-
 export const getDestinationMetadata = action({
   display: {
     label: "Get Destination Metadata",

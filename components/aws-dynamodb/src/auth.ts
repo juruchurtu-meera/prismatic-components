@@ -9,13 +9,18 @@ import {
 } from "aws-utils";
 import { accessKeySecretPair } from "./connections";
 import type { CreateDynamoClientParams } from "./interfaces/CreateDynamoClientParams";
-
 const validateConnection = (connection: Connection): void => {
-  if (![accessKeySecretPair.key, assumeRoleConnection.key].includes(connection.key)) {
-    throw new ConnectionError(connection, `Unsupported connection method ${connection.key}.`);
+  if (
+    ![accessKeySecretPair.key, assumeRoleConnection.key].includes(
+      connection.key,
+    )
+  ) {
+    throw new ConnectionError(
+      connection,
+      `Unsupported connection method ${connection.key}.`,
+    );
   }
 };
-
 const getCredentials = (connection: Connection): Credentials => {
   validateConnection(connection);
   return {
@@ -23,7 +28,6 @@ const getCredentials = (connection: Connection): Credentials => {
     secretAccessKey: toTrimmedString(connection.fields.secretAccessKey),
   };
 };
-
 export const createDynamoClient = async ({
   awsConnection,
   region: awsRegion,
@@ -32,7 +36,6 @@ export const createDynamoClient = async ({
 }: CreateDynamoClientParams): Promise<DynamoDBClient> => {
   const { accessKeyId, secretAccessKey } = getCredentials(awsConnection);
   const shouldAssumeRole = awsConnection.key === assumeRoleConnection.key;
-
   const credentials = shouldAssumeRole
     ? await assumeRole(
         awsRegion,
@@ -45,9 +48,7 @@ export const createDynamoClient = async ({
         accessKeyId,
         secretAccessKey,
       };
-
   const region = awsRegion.length > 0 ? awsRegion : undefined;
-
   return new DynamoDBClient({
     region,
     credentials,

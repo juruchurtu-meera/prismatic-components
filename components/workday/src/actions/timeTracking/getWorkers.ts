@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getWorkersExamplePayload } from "../../examplePayloads";
 import { getWorkersInputs } from "../../inputs";
-
 export const getWorkers = action({
   display: {
     label: "List Workers",

@@ -5,7 +5,6 @@ import * as mime from "mime-types";
 import { connect } from "../../client";
 import { readFileExamplePayload } from "../../examplePayloads";
 import { connection, verbose } from "../../inputs";
-
 const inputPath = input({
   label: "Path",
   placeholder: "Enter file path",
@@ -15,7 +14,6 @@ const inputPath = input({
   example: "/path/to/file.txt",
   clean: util.types.toString,
 });
-
 const readFile = action({
   display: {
     label: "Read File",
@@ -32,7 +30,6 @@ const readFile = action({
         },
       });
       await client.downloadTo(writable, inputPath);
-
       return {
         data: Buffer.concat(chunks),
         contentType: mime.lookup(basename(inputPath)) || mime.types.bin,
@@ -44,5 +41,4 @@ const readFile = action({
   inputs: { connection, verbose, inputPath },
   examplePayload: readFileExamplePayload,
 });
-
 export default readFile;

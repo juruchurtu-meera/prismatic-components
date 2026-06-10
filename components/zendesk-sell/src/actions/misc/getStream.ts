@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { getStreamExamplePayload } from "../../examplePayloads";
 import { connection } from "../../inputs";
-
 export const getStream = action({
   display: {
     label: "Get Stream",
@@ -17,7 +16,6 @@ export const getStream = action({
         params,
         headers: { Accept: "application/json" },
       });
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

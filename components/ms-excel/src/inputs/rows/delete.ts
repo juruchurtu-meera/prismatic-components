@@ -1,7 +1,6 @@
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
 import { tableId } from "../tables/general";
 import { rowId } from "./general";
-
 export const deleteRowsInputs = {
   driveOrSiteId,
   workbookId: {

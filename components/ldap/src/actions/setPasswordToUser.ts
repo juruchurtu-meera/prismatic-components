@@ -4,7 +4,6 @@ import { getLdapClient } from "../client";
 import { setPasswordToUserExamplePayload as examplePayload } from "../examplePayloads";
 import { setPasswordToUserInputs as inputs } from "../inputs";
 import { formatPassword } from "../util";
-
 export const setPasswordToUser = action({
   display: {
     label: "Set Password to User",
@@ -12,11 +11,9 @@ export const setPasswordToUser = action({
   },
   perform: async (context, { connection, userDn, newPassword }) => {
     const client = await getLdapClient(connection);
-
     if (context.debug.enabled) {
       context.logger.debug({ userDn });
     }
-
     try {
       const change = new Change({
         operation: "replace",
@@ -25,9 +22,7 @@ export const setPasswordToUser = action({
           values: [formatPassword(newPassword)],
         }),
       });
-
       await client.modify(userDn, change);
-
       return {
         data: `Password set successfully for user ${userDn}.`,
       };

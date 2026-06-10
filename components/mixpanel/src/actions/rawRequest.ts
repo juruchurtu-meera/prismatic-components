@@ -6,7 +6,6 @@ import {
 import { connectionInput } from "../inputs";
 import { getFallbackConnectionToken, validateConnection } from "../util";
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -43,5 +42,4 @@ const rawRequest = action({
     return { data };
   },
 });
-
 export default rawRequest;

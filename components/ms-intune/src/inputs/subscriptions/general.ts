@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanArrayInput, cleanStringInput } from "../../util";
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -11,7 +10,6 @@ export const subscriptionId = input({
   clean: util.types.toString,
   dataSource: "selectSubscription",
 });
-
 export const notificationUrl = input({
   label: "Notification URL",
   type: "string",
@@ -22,7 +20,6 @@ export const notificationUrl = input({
   placeholder: "Enter notification URL",
   clean: util.types.toString,
 });
-
 export const lifecycleNotificationUrl = input({
   label: "Lifecycle Notification URL",
   type: "string",
@@ -33,7 +30,6 @@ export const lifecycleNotificationUrl = input({
   placeholder: "Enter lifecycle notification URL",
   clean: cleanStringInput,
 });
-
 export const expirationDateTime = input({
   label: "Expiration Date Time",
   type: "string",
@@ -44,7 +40,6 @@ export const expirationDateTime = input({
   placeholder: "Enter expiration date/time",
   clean: util.types.toString,
 });
-
 export const changeType = input({
   label: "Change Type",
   type: "string",
@@ -59,7 +54,6 @@ export const changeType = input({
   ],
   clean: cleanArrayInput,
 });
-
 export const resource = input({
   label: "Resource",
   type: "string",
@@ -70,7 +64,6 @@ export const resource = input({
   placeholder: "Enter resource path",
   clean: util.types.toString,
 });
-
 export const triggerSubscriptionInputs = {
   expirationDateTime,
   changeType,

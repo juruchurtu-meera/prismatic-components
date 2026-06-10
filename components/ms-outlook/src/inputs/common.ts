@@ -1,14 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
 import { RENEWAL_EXPIRATION_MINUTES } from "../constants";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Outlook connection to use.",
 });
-
 export const startInput = input({
   label: "Start At",
   type: "string",
@@ -19,7 +17,6 @@ export const startInput = input({
     "The start timestamp in ISO 8601 format without timezone information. Format: YYYY-MM-DDTHH:mm:ss.",
   clean: util.types.toString,
 });
-
 export const startTimezoneInput = input({
   label: "Start Timezone",
   type: "string",
@@ -32,7 +29,6 @@ export const startTimezoneInput = input({
     "The timezone applied to the start time of the event. Use the List Supported Timezones action for valid aliases or values for this user.",
   clean: util.types.toString,
 });
-
 export const endInput = input({
   label: "End At",
   type: "string",
@@ -43,7 +39,6 @@ export const endInput = input({
     "The end timestamp in ISO 8601 format without timezone information. Format: YYYY-MM-DDTHH:mm:ss.",
   clean: util.types.toString,
 });
-
 export const endTimezoneInput = input({
   label: "End Timezone",
   type: "string",
@@ -56,7 +51,6 @@ export const endTimezoneInput = input({
     "The timezone applied to the end time of the event. Use the List Supported Timezones action for valid aliases or values for this user.",
   clean: util.types.toString,
 });
-
 export const pageLimitInput = input({
   label: "Page Limit",
   type: "string",
@@ -66,7 +60,6 @@ export const pageLimitInput = input({
   comments: "The maximum number of results to return per page.",
   clean: (value) => util.types.toNumber(value) || undefined,
 });
-
 export const pageSkipInput = input({
   label: "Page Skip",
   type: "string",
@@ -76,17 +69,16 @@ export const pageSkipInput = input({
   comments: "The number of records to skip before returning results.",
   clean: cleanStringInput,
 });
-
 export const fetchAllInput = input({
   label: "Fetch All",
   type: "boolean",
   required: false,
   default: "false",
   example: "false",
-  comments: "When true, automatically fetches all pages of results using pagination.",
+  comments:
+    "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
-
 export const eventIdInput = input({
   label: "Event ID",
   type: "string",
@@ -97,18 +89,17 @@ export const eventIdInput = input({
   placeholder: "Enter Event ID",
   dataSource: "selectEvent",
 });
-
 export const folderIdInput = input({
   label: "Folder ID",
   type: "string",
   required: false,
   dataSource: "selectMailFolder",
-  comments: "The unique identifier of the mail folder. Omit to list all messages.",
+  comments:
+    "The unique identifier of the mail folder. Omit to list all messages.",
   example: "AAMkAGI2TGuLAAA=",
   placeholder: "Enter Folder ID",
   clean: cleanStringInput,
 });
-
 export const changeTypesInput = input({
   label: "Mail Change Types",
   type: "string",
@@ -126,17 +117,16 @@ export const changeTypesInput = input({
     return util.types.toString(value);
   },
 });
-
 export const allowDuplicatesInput = input({
   label: "Allow Duplicates",
   type: "boolean",
   required: false,
   default: "false",
   example: "false",
-  comments: "When true, allows more than one webhook subscription per endpoint.",
+  comments:
+    "When true, allows more than one webhook subscription per endpoint.",
   clean: util.types.toBool,
 });
-
 export const notificationUrlInput = input({
   label: "Notification URL",
   type: "string",
@@ -146,7 +136,6 @@ export const notificationUrlInput = input({
   placeholder: "Enter notification URL",
   clean: util.types.toString,
 });
-
 export const expirationDateTimeInput = input({
   label: "Expiration Date/Time",
   type: "string",
@@ -157,8 +146,9 @@ export const expirationDateTimeInput = input({
   placeholder: "Enter expiration date/time (ISO 8601 format)",
   clean: (rawValue: unknown) => {
     const defaultDate = new Date();
-    defaultDate.setTime(defaultDate.getTime() + RENEWAL_EXPIRATION_MINUTES * 60 * 1000);
-
+    defaultDate.setTime(
+      defaultDate.getTime() + RENEWAL_EXPIRATION_MINUTES * 60 * 1000,
+    );
     const value = rawValue || defaultDate;
     if (value instanceof Date) {
       return value.toISOString();
@@ -166,7 +156,6 @@ export const expirationDateTimeInput = input({
     return util.types.toString(value);
   },
 });
-
 export const subscriptionIdInput = input({
   label: "Subscription ID",
   type: "string",

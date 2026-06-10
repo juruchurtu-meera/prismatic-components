@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { moveAssetsExamplePayload as examplePayload } from "../../examplePayloads";
 import { moveAssetsInputs as inputs } from "../../inputs/assets";
-
 export const moveAssets = action({
   display: {
     label: "Move Assets",
@@ -24,7 +23,6 @@ export const moveAssets = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

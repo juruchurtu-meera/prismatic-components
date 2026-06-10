@@ -5,15 +5,12 @@ import {
   cleanStringInput,
 } from "../../util";
 import { additionalFields } from "../common";
-
 const agentsDocumentationComments =
   "See [Freshservice API documentation](https://api.freshservice.com/#agent_attributes) for more information.";
-
 export const agentsAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${agentsDocumentationComments}`,
 });
-
 const levelOptions = [
   { label: "Beginner", value: "1" },
   { label: "Intermediate", value: "2" },
@@ -22,7 +19,6 @@ const levelOptions = [
   { label: "Master", value: "5" },
   { label: "Guru", value: "6" },
 ];
-
 export const firstName = input({
   label: "First Name",
   comments: "The given name of the agent.",
@@ -32,7 +28,6 @@ export const firstName = input({
   example: "Rolanda",
   clean: util.types.toString,
 });
-
 export const email = input({
   label: "Email",
   comments: "The primary email address used to identify the agent.",
@@ -42,7 +37,6 @@ export const email = input({
   example: "rolanda.hooch@hogwarts.edu",
   clean: util.types.toString,
 });
-
 export const roles = input({
   label: "Roles",
   comments: `Roles of the agent. An array of hashes. ${agentsDocumentationComments}`,
@@ -60,7 +54,6 @@ export const roles = input({
   ),
   clean: (value) => cleanArrayCodeInput(value, "Roles"),
 });
-
 export const lastName = input({
   label: "Last Name",
   comments: "The family name of the agent.",
@@ -70,7 +63,6 @@ export const lastName = input({
   example: "Hooch",
   clean: cleanStringInput,
 });
-
 export const address = input({
   label: "Address",
   comments: "The physical or mailing address of the agent.",
@@ -80,7 +72,6 @@ export const address = input({
   example: "Gryffindor Tower",
   clean: cleanStringInput,
 });
-
 export const occasional = input({
   label: "Occasional",
   comments:
@@ -89,7 +80,6 @@ export const occasional = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const jobTitle = input({
   label: "Job Title",
   comments: "The role or position held by the agent.",
@@ -99,7 +89,6 @@ export const jobTitle = input({
   example: "Flying Instructor",
   clean: cleanStringInput,
 });
-
 export const workPhoneNumber = input({
   label: "Work Phone Number",
   comments: "The office or desk phone number for the agent.",
@@ -109,7 +98,6 @@ export const workPhoneNumber = input({
   example: "77762443",
   clean: cleanStringInput,
 });
-
 export const mobilePhoneNumber = input({
   label: "Mobile Phone Number",
   comments: "The cell phone number for the agent.",
@@ -119,7 +107,6 @@ export const mobilePhoneNumber = input({
   example: "77762443",
   clean: cleanStringInput,
 });
-
 export const departmentIds = input({
   label: "Department IDs",
   comments: "Unique IDs of the departments associated with the agent.",
@@ -129,7 +116,6 @@ export const departmentIds = input({
   example: JSON.stringify([554], null, 2),
   clean: (value) => cleanArrayCodeInput(value, "Department IDs"),
 });
-
 export const canSeeAllTicketsFromAssociatedDepartments = input({
   label: "Can See All Tickets From Associated Departments",
   comments:
@@ -138,7 +124,6 @@ export const canSeeAllTicketsFromAssociatedDepartments = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const agentId = input({
   label: "Agent ID",
   comments: "The unique identifier for the agent.",
@@ -149,7 +134,6 @@ export const agentId = input({
   dataSource: "selectAgent",
   clean: util.types.toString,
 });
-
 export const scoreboardLevelId = input({
   label: "Scoreboard Level ID",
   comments: "The Arcade gamification level assigned to the agent.",
@@ -160,7 +144,6 @@ export const scoreboardLevelId = input({
   model: levelOptions,
   clean: cleanNumberInput,
 });
-
 export const signature = input({
   label: "Signature",
   comments: "Signature of the agent in HTML format.",

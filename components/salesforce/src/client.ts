@@ -1,9 +1,15 @@
 import jsforce from "jsforce";
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
-import { salesforceBasic, salesforceClientCredentials, salesforceOAuth } from "./connections";
+import {
+  salesforceBasic,
+  salesforceClientCredentials,
+  salesforceOAuth,
+} from "./connections";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
-
-export const createSalesforceClient = async (connection: Connection, version: string) => {
+export const createSalesforceClient = async (
+  connection: Connection,
+  version: string,
+) => {
   switch (connection.key) {
     case salesforceBasic.key: {
       const loginUrl = util.types.toString(connection.fields?.loginUrl);
@@ -34,11 +40,13 @@ export const createSalesforceClient = async (connection: Connection, version: st
       return salesforceConnection;
     }
     default: {
-      throw new ConnectionError(connection, `Connection type ${connection.key} is not supported`);
+      throw new ConnectionError(
+        connection,
+        `Connection type ${connection.key} is not supported`,
+      );
     }
   }
 };
-
 export const createSalesforceHttpClient = async (
   version: string,
   connection: Connection,
@@ -54,6 +62,5 @@ export const createSalesforceHttpClient = async (
       Accept: "application/json",
     },
   });
-
   return httpClient;
 };

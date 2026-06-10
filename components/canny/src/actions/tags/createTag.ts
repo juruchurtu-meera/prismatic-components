@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createTagExamplePayload } from "../../examplePayloads";
 import { createTagInputs } from "../../inputs";
-
 export const createTag = action({
   display: {
     label: "Create Tag",

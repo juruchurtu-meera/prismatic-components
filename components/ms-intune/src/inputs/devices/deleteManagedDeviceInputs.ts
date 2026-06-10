@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 const managedDeviceId = input({
   label: "Managed Device Id",
   comments: "Unique Identifier for the device to delete.",
@@ -11,5 +10,4 @@ const managedDeviceId = input({
   clean: cleanStringInput,
   dataSource: "selectManagedDevice",
 });
-
 export default { managedDeviceId };

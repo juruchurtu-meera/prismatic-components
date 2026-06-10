@@ -9,7 +9,6 @@ import { createClient } from "../../client";
 import { createEntryExamplePayload } from "../../examplePayloads";
 import { unarchiveEntryInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const unarchiveEntry = action({
   display: {
     label: "Unarchive Entry",

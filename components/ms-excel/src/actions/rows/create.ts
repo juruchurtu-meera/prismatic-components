@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { getRowExamplePayload as createRowExamplePayload } from "../../examplePayloads/rows";
 import { createRowInputs } from "../../inputs/rows/create";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const createRow = action({
   display: {
     label: "Create Row",
@@ -24,7 +23,6 @@ export const createRow = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.post(
       `${baseUrl}/worksheets/${worksheetId}/tables/${tableId}/rows/add`,
       {
@@ -32,7 +30,6 @@ export const createRow = action({
         index: rowId,
       },
     );
-
     return {
       data,
     };

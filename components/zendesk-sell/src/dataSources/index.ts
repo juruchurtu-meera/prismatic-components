@@ -8,7 +8,6 @@ import { selectPipeline } from "./selectPipeline";
 import { selectProduct } from "./selectProduct";
 import { selectStage } from "./selectStage";
 import { selectTask } from "./selectTask";
-
 export default {
   selectAccount,
   selectContact,

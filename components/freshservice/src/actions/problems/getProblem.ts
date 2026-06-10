@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { getProblemExamplePayload as examplePayload } from "../../examplePayloads";
 import { getProblemInputs as inputs } from "../../inputs/problems";
-
 export const getProblem = action({
   display: {
     label: "Get Problem",
@@ -10,9 +9,7 @@ export const getProblem = action({
   },
   perform: async (context, { connection, problemId }) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const { data } = await client.get(`/problems/${problemId}`);
-
     return {
       data,
     };

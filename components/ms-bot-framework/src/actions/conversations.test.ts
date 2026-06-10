@@ -1,26 +1,23 @@
 import { testing } from "@prismatic-io/spectral";
 import { clientCredentials as oauth } from "../connections";
-
 import component from "..";
-
-
-const describeIntegrationTest = process.env.PRISMATIC_CONNECTION_VALUE ? describe : describe.skip;
-
+const describeIntegrationTest = process.env.PRISMATIC_CONNECTION_VALUE
+  ? describe
+  : describe.skip;
 describeIntegrationTest("conversations", () => {
   const harness = testing.createHarness(component);
   const connection = harness.connectionValue(oauth);
-
   it("should list conversation members", async () => {
     const result = await harness.action("getConversationMembers", {
       connection,
       serviceUrl: "https://smba.trafficmanager.net/teams/",
       apiVersion: "3",
-      conversationId: "19:Tc7ktfj4VF7CZ9grVlyNeUh-kt1GkTldtNQm_U_dgSE1@thread.tacv2",
+      conversationId:
+        "19:Tc7ktfj4VF7CZ9grVlyNeUh-kt1GkTldtNQm_U_dgSE1@thread.tacv2",
     });
     console.log(JSON.stringify(result));
     expect(result).toBeDefined();
   });
-
   it("should create a conversation with a user", async () => {
     const result = await harness.action("createConversation", {
       connection,
@@ -34,7 +31,6 @@ describeIntegrationTest("conversations", () => {
     console.log(JSON.stringify(result));
     expect(result).toBeDefined();
   });
-
   it("should create an activity on a conversation", async () => {
     const result = await harness.action("sendMessage", {
       connection,

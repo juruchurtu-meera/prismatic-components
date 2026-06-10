@@ -23,7 +23,6 @@ import {
   tableView,
   timePartitioning,
 } from "../../inputs";
-
 export const createTable = action({
   display: {
     description: "Creates a new, empty table in the dataset.",

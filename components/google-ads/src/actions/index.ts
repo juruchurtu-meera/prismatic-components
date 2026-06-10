@@ -5,7 +5,6 @@ import localServicesActions from "./localServices";
 import generalActions from "./misc";
 import searchActions from "./search";
 import userActions from "./user";
-
 export default {
   ...campaignActions,
   ...searchActions,

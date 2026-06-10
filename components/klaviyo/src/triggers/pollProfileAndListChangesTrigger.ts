@@ -1,9 +1,11 @@
 import { pollingTrigger } from "@prismatic-io/spectral";
-import { KLAVIYO_FILTER_OPS, PROFILE_OR_LIST_RESOURCE_CONFIG } from "../constants";
+import {
+  KLAVIYO_FILTER_OPS,
+  PROFILE_OR_LIST_RESOURCE_CONFIG,
+} from "../constants";
 import { pollProfileAndListChangesInputs } from "../inputs/polling";
 import type { KlaviyoPollableResource, PollingState } from "../types/polling";
 import { fetchProfileOrListRecords, filterByTimestamp } from "../utils";
-
 export const pollProfileAndListChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Profiles and Lists",
@@ -19,13 +21,9 @@ export const pollProfileAndListChangesTrigger = pollingTrigger({
         `Unsupported resource type: ${params.pollProfileOrListResourceType}`,
       );
     }
-
     const now = new Date().toISOString();
     const state = context.polling.getState() as PollingState;
     const lastPolledAt = state?.lastPolledAt ?? now;
-
-    
-    
     if (!params.showNewRecords && !params.showUpdatedRecords) {
       context.polling.setState({ lastPolledAt: now });
       return {
@@ -33,19 +31,12 @@ export const pollProfileAndListChangesTrigger = pollingTrigger({
         polledNoChanges: true,
       };
     }
-
-    
-    
-    
-    
     const filter = `${KLAVIYO_FILTER_OPS.GREATER_THAN}(${config.updatedAtField},${lastPolledAt})`;
-
     const allRecords = await fetchProfileOrListRecords(
       params.connection,
       params.pollProfileOrListResourceType as KlaviyoPollableResource,
       filter,
     );
-
     const { created, updated } = filterByTimestamp(
       allRecords,
       lastPolledAt,
@@ -54,15 +45,11 @@ export const pollProfileAndListChangesTrigger = pollingTrigger({
       params.showNewRecords,
       params.showUpdatedRecords,
     );
-
     const totalMatched = created.length + updated.length;
-
     context.logger.debug(
       `Polled ${allRecords.length} ${params.pollProfileOrListResourceType} records (server-side filtered), ${created.length} new and ${updated.length} updated since last poll.`,
     );
-
     context.polling.setState({ lastPolledAt: now });
-
     return {
       payload: {
         ...payload,

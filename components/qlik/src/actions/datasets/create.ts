@@ -8,7 +8,6 @@ import {
   secureQri,
   technicalName,
 } from "../../inputs";
-
 export const createDataset = action({
   display: {
     label: "Create New Data Set",
@@ -20,7 +19,6 @@ export const createDataset = action({
     { connection, dataSetInput, technicalName, qri, secureQri },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.post(`/data-sets`, {
       id: null,
       technicalName: technicalName || undefined,
@@ -28,7 +26,6 @@ export const createDataset = action({
       secureQri: secureQri || undefined,
       ...dataSetInput,
     });
-
     return {
       data,
     };

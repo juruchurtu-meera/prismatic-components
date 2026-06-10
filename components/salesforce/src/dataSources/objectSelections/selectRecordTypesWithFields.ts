@@ -1,11 +1,11 @@
 import { dataSource, type ObjectSelection, util } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { selectRecordTypesWithFieldsInputs } from "../../inputs";
-
 export const selectRecordTypesWithFields = dataSource({
   display: {
     label: "Select Record Type With Fields",
-    description: "A picklist of available Salesforce Record Types with their associated fields.",
+    description:
+      "A picklist of available Salesforce Record Types with their associated fields.",
   },
   inputs: selectRecordTypesWithFieldsInputs,
   perform: async (
@@ -23,15 +23,12 @@ export const selectRecordTypesWithFields = dataSource({
     const defaultSelectedSet = new Set(defaultSelectedRecordTypes);
     const includedTypesSet = new Set(recordTypeFilter);
     const httpClient = await createSalesforceHttpClient(version, connection);
-
     const {
       data: { sobjects },
     } = await httpClient.get("/sobjects");
-
     const objects: ObjectSelection = sobjects
       .filter(({ name, label, custom, isSubtype }) => {
         if (includeAllCustomRecordTypes && custom) {
-          
           return true;
         }
         if (
@@ -39,7 +36,6 @@ export const selectRecordTypesWithFields = dataSource({
           includedTypesSet.has((label as string).trim().toLowerCase())
         ) {
           if (includeOnlyTopLevelRecordTypes && isSubtype) {
-            
             return false;
           }
           return true;
@@ -55,8 +51,9 @@ export const selectRecordTypesWithFields = dataSource({
       .map(async ({ name, label }) => {
         const {
           data: { fields },
-        } = await httpClient.get(`/sobjects/${util.types.toString(name)}/describe/`);
-
+        } = await httpClient.get(
+          `/sobjects/${util.types.toString(name)}/describe/`,
+        );
         return {
           object: { key: name, label },
           defaultSelected: defaultSelectedSet.has(name),
@@ -66,7 +63,6 @@ export const selectRecordTypesWithFields = dataSource({
           })),
         };
       });
-
     return {
       result: await Promise.all(objects),
     };

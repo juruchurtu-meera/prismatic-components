@@ -3,7 +3,6 @@ import { getClient } from "../client";
 import { SERVICES } from "../constants";
 import { connection } from "../inputs/shared";
 import { toSortedPicklist } from "./helpers";
-
 export const selectSupplierInvoiceRequest = dataSource({
   display: {
     label: "Select Supplier Invoice Request",
@@ -18,7 +17,6 @@ export const selectSupplierInvoiceRequest = dataSource({
     const { data } = await client.get(
       `${SERVICES.accountsPayable}/supplierInvoiceRequests`,
     );
-
     return {
       result: toSortedPicklist(
         data.data,

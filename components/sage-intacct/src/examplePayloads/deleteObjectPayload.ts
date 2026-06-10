@@ -1,5 +1,3 @@
-
-
 export const deleteObjectPayload = {
   data: {
     response: {

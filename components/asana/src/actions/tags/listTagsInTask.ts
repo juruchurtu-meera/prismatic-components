@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { limit, offset, connectionInput, taskId } from "../../inputs";
 import { TAG_OPT_FIELDS } from "../../util";
-
 export const listTagsInTask = action({
   display: {
     label: "List Tags in Task",

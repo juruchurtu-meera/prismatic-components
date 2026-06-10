@@ -1,8 +1,6 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const twilioApiKeyConnection = connection({
   key: "apiKeySecret",
-
   display: {
     label: "API Key",
     description: "Authenticate requests to Twilio using an API key and secret.",
@@ -36,12 +34,12 @@ export const twilioApiKeyConnection = connection({
     },
   },
 });
-
 export const twilioBasicConnection = connection({
   key: "basic",
   display: {
     label: "Basic Authentication",
-    description: "Authenticate requests to Twilio using an Account SID and Auth Token.",
+    description:
+      "Authenticate requests to Twilio using an Account SID and Auth Token.",
   },
   inputs: {
     username: {
@@ -57,11 +55,11 @@ export const twilioBasicConnection = connection({
       label: "Auth Token",
       placeholder: "Enter Auth Token",
       type: "password",
-      comments: "The Auth Token from the [Twilio Console](https://console.twilio.com/).",
+      comments:
+        "The Auth Token from the [Twilio Console](https://console.twilio.com/).",
       required: true,
       shown: true,
     },
   },
 });
-
 export default [twilioApiKeyConnection, twilioBasicConnection];

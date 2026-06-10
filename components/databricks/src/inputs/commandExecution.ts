@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const contextIdInput = input({
   label: "Execution Context ID",
   type: "string",
@@ -9,7 +8,6 @@ export const contextIdInput = input({
   placeholder: "Enter execution context ID",
   clean: util.types.toString,
 });
-
 export const languageIdInput = input({
   label: "Language",
   type: "string",
@@ -19,7 +17,6 @@ export const languageIdInput = input({
   model: ["python", "scala", "sql"].map((v) => ({ label: v, value: v })),
   clean: util.types.toString,
 });
-
 export const commandInput = input({
   label: "Command",
   type: "string",
@@ -29,7 +26,6 @@ export const commandInput = input({
   placeholder: "Enter command to execute",
   clean: util.types.toString,
 });
-
 export const commandIdInput = input({
   label: "Command ID",
   type: "string",

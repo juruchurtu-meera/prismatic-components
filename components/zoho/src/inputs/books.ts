@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanKeyValList } from "../util/general";
 import { connectionInput, fetchAll, page, per_page, recordId } from "./common";
-
 export const booksRecordType = input({
   label: "Record Type",
   placeholder: "Select record type",
@@ -47,7 +46,6 @@ export const booksRecordType = input({
     "The type of Books record to operate on. See [Zoho Books API](https://www.zoho.com/books/api/v3/) for details.",
   clean: util.types.toString,
 });
-
 export const searchFields = input({
   label: "Search Fields",
   placeholder: "Enter search field key-value pairs",
@@ -56,21 +54,23 @@ export const searchFields = input({
   required: false,
   comments:
     "Key-value pairs for filtering search results. Keys are field names, values are search criteria.",
-  example: JSON.stringify({ contact_name: "John", email: "john@example.com" }, null, 2),
+  example: JSON.stringify(
+    { contact_name: "John", email: "john@example.com" },
+    null,
+    2,
+  ),
   clean: cleanKeyValList,
 });
-
 export const parentRecordId = input({
   label: "Parent Record ID",
   placeholder: "Enter parent record ID",
   type: "string",
   required: false,
-  comments: "The unique identifier of the parent record under which other records are grouped.",
+  comments:
+    "The unique identifier of the parent record under which other records are grouped.",
   clean: util.types.toString,
   example: "5394166000000379001",
 });
-
-
 export const booksGetRecordInputs = {
   connection: connectionInput,
   recordType: booksRecordType,
@@ -83,7 +83,6 @@ export const booksGetRecordInputs = {
   },
   parentRecordId: { ...parentRecordId, dataSource: "selectBooksRecord" },
 };
-
 export const booksGetRecordsInputs = {
   connection: connectionInput,
   recordType: booksRecordType,
@@ -99,24 +98,20 @@ export const booksGetRecordsInputs = {
   per_page,
   fetchAll,
 };
-
 export const booksCreateRecordInputs = {
   connection: connectionInput,
   recordType: booksRecordType,
 };
-
 export const booksUpdateRecordInputs = {
   connection: connectionInput,
   recordType: booksRecordType,
   recordId: { ...recordId, dataSource: "selectBooksRecord" },
 };
-
 export const booksRemoveRecordInputs = {
   connection: connectionInput,
   recordType: booksRecordType,
   recordId: { ...recordId, dataSource: "selectBooksRecord" },
 };
-
 export const selectBooksRecordInputs = {
   connection: connectionInput,
   recordType: booksRecordType,

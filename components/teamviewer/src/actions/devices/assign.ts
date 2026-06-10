@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { assignDeviceInputs } from "../../inputs/devices";
 import { createDeviceExamplePayload } from "../../examplePayloads/devices";
-
 export const assignDevice = action({
   display: {
     label: "Assign Device",
@@ -19,16 +18,13 @@ export const assignDevice = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       assign_mode,
       current_device_password,
       device_id,
       enable_easy_access,
     };
-
     const { data } = await client.post(`/devices/assign`, body);
-
     return {
       data,
     };

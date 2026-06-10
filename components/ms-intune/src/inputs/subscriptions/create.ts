@@ -6,7 +6,6 @@ import {
   notificationUrl,
   resource,
 } from "./general";
-
 export const createSubscriptionInputs = {
   changeType,
   notificationUrl,

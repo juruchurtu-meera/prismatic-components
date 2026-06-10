@@ -11,7 +11,6 @@ import {
   storeHash,
   tree_id,
 } from "../../inputs";
-
 export const deleteCategoriesTree = action({
   display: {
     label: "Delete Categories from Tree",
@@ -35,14 +34,12 @@ export const deleteCategoriesTree = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/trees/categories`;
-
     const queryParams = querystring.stringify({
       "category_uuid:in": category_uuid as string,
       "category_id:in": category_id as string,
       "tree_id:in": tree_id as string,
       "parent_id:in": parent_id as string,
     });
-
     try {
       const response = await client.delete(`${endpoint}?${queryParams}`);
       return {
@@ -54,7 +51,6 @@ export const deleteCategoriesTree = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash,

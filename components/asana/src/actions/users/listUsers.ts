@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { workspaceId, offset, limit, connectionInput } from "../../inputs";
-
 export const listUsers = action({
   display: {
     label: "List Users",

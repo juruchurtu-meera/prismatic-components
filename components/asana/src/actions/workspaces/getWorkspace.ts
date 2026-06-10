@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { workspaceId, connectionInput } from "../../inputs";
-
 export const getWorkspace = action({
   display: {
     label: "Get Workspace",

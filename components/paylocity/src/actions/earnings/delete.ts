@@ -7,7 +7,6 @@ import {
   employeeId,
   startDate,
 } from "../../inputs";
-
 export const deleteEarningsByEarningCodeAndStartDate = action({
   display: {
     label: "Delete Earnings by Earning Code and Start Date",
@@ -26,7 +25,6 @@ export const deleteEarningsByEarningCodeAndStartDate = action({
   ) => {
     validateV2Connection(connectionInput);
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const { data } = await client.delete(
       `/companies/${companyId}/employees/${employeeId}/earnings/${earningCode}/${startDate}`,
     );

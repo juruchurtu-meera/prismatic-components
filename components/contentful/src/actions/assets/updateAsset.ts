@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { updateAssetExamplePayload } from "../../examplePayloads";
 import { updateAssetInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const updateAsset = action({
   display: {
     label: "Update Asset",
@@ -20,16 +19,13 @@ export const updateAsset = action({
       spaceId,
       environmentId,
     );
-
     const asset: Asset = await environment.getAsset(assetId);
-
     if (title) {
       const locale = Object.keys(title)[0];
       asset.fields.title[locale] = (title as AssetProps["fields"]["title"])[
         locale
       ];
     }
-
     if (description && asset.fields.description) {
       const locale = Object.keys(description)[0];
       asset.fields.description[locale] = (
@@ -38,7 +34,7 @@ export const updateAsset = action({
     }
     const data = (await asset.update()).toPlainObject();
     return {
-      data: data as unknown, 
+      data: data as unknown,
     };
   },
   inputs: updateAssetInputs,

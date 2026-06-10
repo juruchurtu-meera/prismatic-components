@@ -7,7 +7,6 @@ import { KlaviyoApi } from "../../enums/KlaviyoApi";
 import type { FieldsMetric } from "../../types/FieldsMetric";
 import type { FieldsProfileEvent } from "../../types/FieldsProfileEvent";
 import { getIncludeParams } from "../../utils";
-
 export const getEvent = action({
   display: {
     label: "Get Event",
@@ -29,13 +28,11 @@ export const getEvent = action({
         debug,
       });
     }
-
     const params = {
       fieldsEvent: fieldsEvent as FieldsEvent[],
       fieldsMetric: fieldsMetric as FieldsMetric[],
       fieldsProfile: fieldsProfile as FieldsProfileEvent[],
     };
-
     const { body } = await eventsApi.getEvent(eventId!, {
       ...params,
       include: getIncludeParams(params.fieldsProfile, params.fieldsMetric),

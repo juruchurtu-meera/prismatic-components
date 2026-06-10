@@ -8,9 +8,7 @@ export const getOrganizationExamplePayload = {
   },
   name: "My organization",
 };
-
 export const listOrganizationsExamplePayload = [getOrganizationExamplePayload];
-
 export const updateOrganizationExamplePayload = {
   email: "example@gmail.com",
   sys: {

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../../client";
 import { deleteWarehouseExamplePayload } from "../../examplePayloads";
 import { deleteWarehouseInputs } from "../../inputs";
-
 export const deleteWarehouse = action({
   display: {
     label: "Delete Warehouse",
@@ -14,7 +13,6 @@ export const deleteWarehouse = action({
       connectionInput,
       context.debug.enabled,
     );
-
     const { data } = await client.delete(`/warehouses/${warehouseId}`);
     return { data };
   },

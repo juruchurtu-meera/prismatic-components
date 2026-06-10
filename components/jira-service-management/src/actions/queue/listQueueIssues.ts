@@ -4,7 +4,6 @@ import { listQueueIssuesExamplePayload } from "../../examplePayloads";
 import { listQueueIssuesInputs } from "../../inputs";
 import type { Issue } from "../../types";
 import { getPaginatedData } from "../../util";
-
 export const listQueueIssues = action({
   display: {
     label: "List Queue Issues",

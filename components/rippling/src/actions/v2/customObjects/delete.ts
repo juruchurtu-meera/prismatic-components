@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { deleteCustomObjectExamplePayload } from "../../../examplePayloads";
 import { deleteCustomObjectInputs } from "../../../inputs";
-
 export const deleteCustomObject = action({
   display: {
     label: "Delete Custom Object (V2)",

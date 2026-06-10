@@ -14,17 +14,16 @@ import {
   shipToName,
 } from "../../inputs/salesInvoice/createSalesInvoicesInputs";
 import type { SalesInvoice } from "../../interfaces";
-
 export const createSalesInvoice = action({
   display: {
     label: "Create Sales Invoice",
-    description: "Creates a sales invoice object in your Business Central organization.",
+    description:
+      "Creates a sales invoice object in your Business Central organization.",
   },
   perform: async (
     context,
     {
       additionalProperties,
-
       email,
       sellToAddressLine1,
       shipToAddressLine1,
@@ -37,7 +36,11 @@ export const createSalesInvoice = action({
       connection,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       ...additionalProperties,
       email,
@@ -49,12 +52,10 @@ export const createSalesInvoice = action({
       currencyCode,
       customerId,
     };
-
     const { data } = await client.post<SalesInvoice>(
       `/companies(${companyId})/salesInvoices`,
       payload,
     );
-
     return { data };
   },
   inputs: {

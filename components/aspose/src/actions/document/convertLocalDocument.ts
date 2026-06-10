@@ -11,7 +11,6 @@ import {
   loadEncoding,
   storageName,
 } from "../../inputs";
-
 export const convertLocalDocument = action({
   display: {
     label: "Convert Local Document",
@@ -65,7 +64,6 @@ export const convertLocalDocument = action({
         OutPath: outPath || undefined,
       },
     });
-
     return { data };
   },
   examplePayload: convertLocalDocumentExamplePayload,

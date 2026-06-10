@@ -3,13 +3,11 @@ import { connectionInput } from "../inputs";
 import { createClient } from "../client";
 import { paginateRecordsWithCursor, sortRecords } from "../util";
 import { WebhookVersion } from "../constants";
-
 interface Activity {
   id: number;
   subject: string;
   type: string;
 }
-
 export const selectActivity = dataSource({
   display: {
     label: "Select Activity",
@@ -20,13 +18,18 @@ export const selectActivity = dataSource({
   },
   perform: async (_context, { connectionInput }) => {
     const client = createClient(connectionInput, false, WebhookVersion.V2);
-    const { data } = await paginateRecordsWithCursor<Activity>(client, "activities", {}, true);
-
+    const { data } = await paginateRecordsWithCursor<Activity>(
+      client,
+      "activities",
+      {},
+      true,
+    );
     const objects = sortRecords(data, "subject").map<Element>((activity) => ({
       key: activity.id.toString(),
-      label: activity.type ? `${activity.subject} (${activity.type})` : activity.subject,
+      label: activity.type
+        ? `${activity.subject} (${activity.type})`
+        : activity.subject,
     }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

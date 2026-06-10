@@ -4,14 +4,12 @@ import type { ReceiveMessageOutput } from "./interfaces/ReceiveMessageOutput";
 import type { CreateQueueOutput } from "./interfaces/CreateQueueOutput";
 import type { DeleteMessageOutput } from "./interfaces/DeleteMessageOutput";
 import type { GetQueueUrlOutput } from "./interfaces/GetQueueUrlOutput";
-
 const commonMetadata = {
   httpStatusCode: 200,
   requestId: "00000000-0000-0000-0000-000000000000",
   attempts: 1,
   totalRetryDelay: 0,
 };
-
 export const listQueuesExample: ListQueuesOutput = {
   data: {
     $metadata: commonMetadata,
@@ -21,7 +19,6 @@ export const listQueuesExample: ListQueuesOutput = {
     ],
   },
 };
-
 export const sendMessageExample: SendMessageOutput = {
   data: {
     $metadata: commonMetadata,
@@ -30,7 +27,6 @@ export const sendMessageExample: SendMessageOutput = {
     MessageId: "00000000-00000000-00000000-00000000",
   },
 };
-
 export const receiveMessagesExample: ReceiveMessageOutput = {
   data: {
     $metadata: commonMetadata,
@@ -60,7 +56,6 @@ export const receiveMessagesExample: ReceiveMessageOutput = {
     ],
   },
 };
-
 export const createQueueExample: CreateQueueOutput = {
   data: {
     $metadata: commonMetadata,
@@ -68,19 +63,16 @@ export const createQueueExample: CreateQueueOutput = {
       "https://sqs.us-east-1.amazonaws.com/012345678900/my-example-queue",
   },
 };
-
 export const deleteMessageExample: DeleteMessageOutput = {
   data: {
     $metadata: commonMetadata,
   },
 };
-
 export const deleteQueueExample: DeleteMessageOutput = {
   data: {
     $metadata: commonMetadata,
   },
 };
-
 export const getQueueUrlExample: GetQueueUrlOutput = {
   data: {
     $metadata: commonMetadata,
@@ -88,7 +80,6 @@ export const getQueueUrlExample: GetQueueUrlOutput = {
       "https://sqs.us-east-1.amazonaws.com/012345678900/my-example-queue",
   },
 };
-
 export const createDeadLetterQueueExample: {
   data: {
     mainQueue: CreateQueueOutput["data"];

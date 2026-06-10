@@ -5,7 +5,6 @@ import {
   selectVirtualReportSuiteInputs,
 } from "../inputs";
 import type { ReportSuite, ReportSuiteListResponse } from "../types";
-
 const selectReportSuite = dataSource({
   display: {
     label: "Select Report Suite",
@@ -35,7 +34,6 @@ const selectReportSuite = dataSource({
     };
   },
 });
-
 const selectVirtualReportSuite = dataSource({
   display: {
     label: "Select Virtual Report Suite",
@@ -65,5 +63,4 @@ const selectVirtualReportSuite = dataSource({
     };
   },
 });
-
 export default { selectReportSuite, selectVirtualReportSuite };

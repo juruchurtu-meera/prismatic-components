@@ -10,7 +10,6 @@ export const destinationsDataSourceExamplePayload = {
     },
   ],
 };
-
 export const selectOrderDataSourceExamplePayload = {
   result: [
     {
@@ -23,7 +22,6 @@ export const selectOrderDataSourceExamplePayload = {
     },
   ],
 };
-
 export const selectFeedDataSourceExamplePayload = {
   result: [
     {

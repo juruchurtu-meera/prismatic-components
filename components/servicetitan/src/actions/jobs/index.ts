@@ -4,7 +4,6 @@ import { createJob } from "./create";
 import { getJob } from "./get";
 import { listJobs } from "./list";
 import { updateJob } from "./update";
-
 export default {
   createJob,
   listJobCancelReasons,

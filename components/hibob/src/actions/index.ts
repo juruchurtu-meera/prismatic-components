@@ -32,7 +32,6 @@ import {
 } from "./list";
 import { rawRequest } from "./misc";
 import { completeTask, listOpenTasks } from "./task";
-
 export default {
   searchEmployee,
   readEmployeeFields,

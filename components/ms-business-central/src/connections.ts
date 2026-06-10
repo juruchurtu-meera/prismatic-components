@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const businessCentralConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "businessCentralOauth2",
@@ -14,8 +13,10 @@ export const businessCentralConnection = oauth2Connection({
       required: true,
       shown: true,
       comments: "Your organization's Microsoft Business Central Web API URL.",
-      example: "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
-      placeholder: "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
+      example:
+        "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
+      placeholder:
+        "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
     },
     authorizeUrl: {
       label: "Authorize URL",
@@ -23,8 +24,10 @@ export const businessCentralConnection = oauth2Connection({
       type: "string",
       required: true,
       shown: false,
-      comments: "The OAuth 2.0 Authorization URL for Microsoft Business Central.",
-      default: "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
+      comments:
+        "The OAuth 2.0 Authorization URL for Microsoft Business Central.",
+      default:
+        "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
     },
     tokenUrl: {
       label: "Token URL",
@@ -33,7 +36,8 @@ export const businessCentralConnection = oauth2Connection({
       required: true,
       shown: false,
       comments: "The OAuth 2.0 Token URL for Microsoft Business Central.",
-      default: "https://login.microsoftonline.com/organizations/oauth2/v2.0/token",
+      default:
+        "https://login.microsoftonline.com/organizations/oauth2/v2.0/token",
     },
     scopes: {
       label: "Scopes",
@@ -41,8 +45,10 @@ export const businessCentralConnection = oauth2Connection({
       type: "string",
       required: false,
       shown: true,
-      example: "https://api.businesscentral.dynamics.com/.default offline_access",
-      default: "https://api.businesscentral.dynamics.com/.default offline_access",
+      example:
+        "https://api.businesscentral.dynamics.com/.default offline_access",
+      default:
+        "https://api.businesscentral.dynamics.com/.default offline_access",
       comments:
         "A space-delimited set of one or more scopes to get the user's permission to access.",
     },
@@ -67,7 +73,6 @@ export const businessCentralConnection = oauth2Connection({
     },
   },
 });
-
 export const businessClientCredentials = oauth2Connection({
   key: "businessCentralClientCredentials",
   display: {
@@ -82,8 +87,10 @@ export const businessClientCredentials = oauth2Connection({
       required: true,
       shown: true,
       comments: "Your organization's Microsoft Business Central Web API URL.",
-      example: "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
-      placeholder: "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
+      example:
+        "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
+      placeholder:
+        "https://api.businesscentral.dynamics.com/v2.0/<TENANT_DOMAIN>/<ENVIRONMENT>",
     },
     tokenUrl: {
       label: "Token URL",
@@ -91,7 +98,8 @@ export const businessClientCredentials = oauth2Connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "The OAuth 2.0 Token URL. Found in Azure Portal > App registrations > Endpoints.",
+      comments:
+        "The OAuth 2.0 Token URL. Found in Azure Portal > App registrations > Endpoints.",
       example:
         "https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/oauth2/v2.0/token",
     },
@@ -101,7 +109,8 @@ export const businessClientCredentials = oauth2Connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "This should be your Business Central URL with '/.default' appended to it.",
+      comments:
+        "This should be your Business Central URL with '/.default' appended to it.",
       example: "https://api.businesscentral.dynamics.com/.default",
       default: "https://api.businesscentral.dynamics.com/.default",
     },
@@ -126,5 +135,4 @@ export const businessClientCredentials = oauth2Connection({
     },
   },
 });
-
 export default [businessCentralConnection, businessClientCredentials];

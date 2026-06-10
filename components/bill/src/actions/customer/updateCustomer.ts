@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { updateCustomerInputs } from "../../inputs/customer";
 import { updateCustomerExamplePayload } from "../../examplePayloads";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",
@@ -18,7 +17,6 @@ export const updateCustomer = action({
       connection,
       context.debug.enabled,
     );
-
     const sendData = {
       obj: {
         entity: "Customer",
@@ -32,12 +30,10 @@ export const updateCustomer = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Crud/Update/Customer.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

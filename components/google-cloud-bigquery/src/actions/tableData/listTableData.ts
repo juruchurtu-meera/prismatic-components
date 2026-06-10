@@ -10,7 +10,6 @@ import {
   startIndex,
   tableId,
 } from "../../inputs";
-
 export const listTableData = action({
   display: {
     description:
@@ -40,20 +39,14 @@ export const listTableData = action({
       tableId,
       startIndex,
       maxResults,
-      
       selectedFields,
     },
   ) => {
     const client = createClient(connectionInput);
-
-    
     const fields = selectedFields ? selectedFields : "*";
     const limitClause = maxResults ? ` LIMIT ${maxResults}` : "";
     const offsetClause = startIndex ? ` OFFSET ${startIndex}` : "";
     const query = `SELECT ${fields} FROM \`${projectId}.${datasetId}.${tableId}\`${limitClause}${offsetClause}`;
-
-    
-    
     const { data } = await client.jobs.query({
       projectId: projectId || undefined,
       requestBody: {
@@ -62,7 +55,6 @@ export const listTableData = action({
         maxResults: maxResults || undefined,
       },
     });
-
     return {
       data,
     };

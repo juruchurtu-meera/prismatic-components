@@ -4,7 +4,6 @@ import { API_VERSION } from "../../../constants";
 import { listWorkersExamplePayload } from "../../../examplePayloads";
 import { listWorkersInputs } from "../../../inputs";
 import { paginateV2Results } from "../../../utils/pagination";
-
 export const listWorkers = action({
   display: {
     label: "List Workers (V2)",

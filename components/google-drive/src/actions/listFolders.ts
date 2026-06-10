@@ -1,9 +1,16 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-import { driveId, pageToken, pageSize, connection, fields, folderId, fetchAll } from "../inputs";
+import {
+  driveId,
+  pageToken,
+  pageSize,
+  connection,
+  fields,
+  folderId,
+  fetchAll,
+} from "../inputs";
 import { getDriveQueryParams } from "../util";
 import { fetchFiles } from "../helpers/pagination";
-
 export const listFolders = action({
   display: {
     label: "List Folders",
@@ -11,7 +18,6 @@ export const listFolders = action({
   },
   perform: async (_context, params) => {
     const drive = createClient(params.connection);
-
     const data = await fetchFiles({
       drive,
       initialParams: {
@@ -25,7 +31,6 @@ export const listFolders = action({
       },
       fetchAll: params.fetchAll,
     });
-
     return {
       data,
     };
@@ -43,5 +48,4 @@ export const listFolders = action({
     data: { files: [{ name: "example", description: "example" }] },
   },
 });
-
 export default listFolders;

@@ -10,7 +10,6 @@ import {
   refundShippingFee,
 } from "../../../inputs";
 import { processOrderReturnExamplePayload } from "../../../examplePayloads";
-
 export const processOrderReturn = action({
   display: {
     label: "Process Order Return (Deprecated)",
@@ -42,7 +41,6 @@ export const processOrderReturn = action({
     context.logger.warn(
       "'Process Order Return' is deprecated. Google is retiring the Orders endpoints in the Content API.",
     );
-
     const client = createClient(connectionInput);
     const { data } = await client.orderreturns.process({
       merchantId,

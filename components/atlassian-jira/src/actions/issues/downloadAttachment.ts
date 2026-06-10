@@ -3,8 +3,11 @@ import { createV3Client } from "../../connections/auth";
 import { downloadAttachmentExamplePayload } from "../../examplePayloads";
 import { attachmentIds, connectionInput, issueId } from "../../inputs";
 import type { AttachmentResponse } from "../../types";
-import { downloadArrayOfAttachments, downloadAttachmentsFromIssue, getIssueById } from "../../util";
-
+import {
+  downloadArrayOfAttachments,
+  downloadAttachmentsFromIssue,
+  getIssueById,
+} from "../../util";
 export const downloadAttachment = action({
   display: {
     label: "Download Issue Attachments",
@@ -15,12 +18,18 @@ export const downloadAttachment = action({
     const baseUrl = client.defaults.baseURL;
     let data: AttachmentResponse[];
     if (attachmentIds?.length > 0) {
-      data = await downloadArrayOfAttachments(jiraConnection, baseUrl, attachmentIds);
+      data = await downloadArrayOfAttachments(
+        jiraConnection,
+        baseUrl,
+        attachmentIds,
+      );
     } else if (issueId) {
       const issue = await getIssueById(client, issueId);
       data = await downloadAttachmentsFromIssue(issue, jiraConnection, baseUrl);
     } else {
-      throw new Error("You must provide either an Issue ID or a list of Attachment IDs.");
+      throw new Error(
+        "You must provide either an Issue ID or a list of Attachment IDs.",
+      );
     }
     return { data };
   },
@@ -28,7 +37,8 @@ export const downloadAttachment = action({
     jiraConnection: connectionInput,
     issueId: {
       ...issueId,
-      comments: "Providing an Issue ID will return all attachments of an Issue.",
+      comments:
+        "Providing an Issue ID will return all attachments of an Issue.",
       required: false,
     },
     attachmentIds,

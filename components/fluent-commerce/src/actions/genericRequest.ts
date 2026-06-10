@@ -3,7 +3,6 @@ import { action, input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { createFluentClient } from "../client";
 import { genericRequestExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
-
 const genericRequest = action({
   display: {
     label: "Generic GraphQL Request",
@@ -54,5 +53,4 @@ const genericRequest = action({
   },
   examplePayload: genericRequestExamplePayload,
 });
-
 export default { genericRequest };

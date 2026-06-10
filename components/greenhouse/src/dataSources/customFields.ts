@@ -2,7 +2,6 @@ import { dataSource, type Element, input } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, version } from "../inputs";
 import type { CustomFieldDataSources } from "../types";
-
 export const customFields = dataSource({
   display: {
     label: "Fetch Custom Fields",

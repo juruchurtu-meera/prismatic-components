@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { getConversationHistoryExamplePayload } from "../../examplePayloads";
 import { getConversationsHistoryInputs } from "../../inputs";
 import { debugLogger, paginateResults } from "../../util";
-
 export const getConversationsHistory = action({
   display: {
     label: "Get Conversation History",
@@ -21,7 +20,7 @@ export const getConversationsHistory = action({
       inclusive,
       latest,
       fetchAll,
-    }
+    },
   ) => {
     debugLogger({
       debug,
@@ -45,17 +44,15 @@ export const getConversationsHistory = action({
       ...(oldest ? { oldest } : {}),
       ...(latest ? { latest } : {}),
     };
-
     if (fetchAll) {
       return paginateResults(
         client,
         "conversations",
         "messages",
         "history",
-        params
+        params,
       );
     }
-
     const data = await client.conversations.history(params);
     return { data };
   },

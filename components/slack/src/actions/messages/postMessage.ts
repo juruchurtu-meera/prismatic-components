@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { sendMessageExamplePayload } from "../../examplePayloads";
 import { postMessageInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const postMessage = action({
   display: {
     label: "Post Message",
@@ -11,7 +10,7 @@ export const postMessage = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, message, channelName, username, messageId }
+    { connection, message, channelName, username, messageId },
   ) => {
     debugLogger({
       connection,

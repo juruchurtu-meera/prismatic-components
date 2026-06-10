@@ -1,24 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const listModelsExamplePayload = {
   data: [
     {
@@ -39,7 +18,6 @@ export const listModelsExamplePayload = {
     },
   ],
 };
-
 export const listModelFieldsExamplePayload = {
   data: {
     is_seo_optimized: {

@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { listDataChangesExamplePayload } from "../../examplePayloads";
 import { listDataChangesInputs } from "../../inputs";
-
 export const listDataChanges = action({
   display: {
     label: "List Data Changes",

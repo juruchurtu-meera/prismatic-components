@@ -67,11 +67,15 @@ import { search } from "./actions/search";
 import { updateBatchEngagement } from "./actions/updateBatchEngagement";
 import { updateEngagement } from "./actions/updateEngagement";
 import { validateConnection } from "./actions/validateConnection";
-import { createWebhook, deleteAllWebhooks, deleteWebhook, listWebhooks } from "./actions/webhook";
+import {
+  createWebhook,
+  deleteAllWebhooks,
+  deleteWebhook,
+  listWebhooks,
+} from "./actions/webhook";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "hubspot",
   public: true,

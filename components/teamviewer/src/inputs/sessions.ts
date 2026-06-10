@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { customBody, defaultInputs } from "./general";
 import { cleanString } from "../util";
-
 export const sessionId = input({
   label: "Session ID",
   type: "string",
@@ -12,12 +11,10 @@ export const sessionId = input({
   clean: util.types.toString,
   dataSource: "selectSession",
 });
-
 export const getSessionsInputs = {
   sessionId,
   ...defaultInputs,
 };
-
 export const groupId = input({
   label: "Group ID",
   type: "string",
@@ -29,7 +26,6 @@ export const groupId = input({
   clean: cleanString,
   dataSource: "selectGroup",
 });
-
 export const groupName = input({
   label: "Group Name",
   type: "string",
@@ -40,7 +36,6 @@ export const groupName = input({
   placeholder: "My Group",
   clean: cleanString,
 });
-
 export const customId = input({
   label: "Custom ID",
   type: "string",
@@ -50,7 +45,6 @@ export const customId = input({
   placeholder: "123456",
   clean: cleanString,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
@@ -60,7 +54,6 @@ export const description = input({
   placeholder: "This is my session.",
   clean: cleanString,
 });
-
 export const createSessionInputs = {
   groupid: groupId,
   groupname: groupName,
@@ -69,7 +62,6 @@ export const createSessionInputs = {
   customBody,
   ...defaultInputs,
 };
-
 export const updateSessionInputs = {
   sessionId,
   ...createSessionInputs,

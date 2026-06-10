@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { Job } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listJobs = action({
   display: {
     label: "List Jobs",
@@ -40,7 +39,6 @@ export const listJobs = action({
     },
   ) => {
     const client = createClient(connection, "jpm", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<Job>(client, "/jobs", {
         includeTotal,

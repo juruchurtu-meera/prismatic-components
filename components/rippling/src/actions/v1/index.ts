@@ -13,7 +13,6 @@ import rawRequest from "./rawRequest";
 import saml from "./saml";
 import teams from "./teams";
 import workLocations from "./workLocations";
-
 export default {
   ...companies,
   ...departments,

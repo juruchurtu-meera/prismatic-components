@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, spaceId, queryParameters } from "../../inputs";
 import { getSpaceExamplePayload } from "../../examplePayloads";
-
 export const getSpace = action({
   display: {
     label: "Get Space",

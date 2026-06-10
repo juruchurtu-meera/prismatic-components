@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { driveOrSiteId, workbookId, worksheetId } from "../general";
 import { address } from "./general";
 import { mapModelArray } from "../../helpers";
-
 const shift = input({
   label: "Shift",
   comments: "Specifies which way to shift the cells.",
@@ -11,7 +10,6 @@ const shift = input({
   model: mapModelArray(["Up", "Left"]),
   clean: util.types.toString,
 });
-
 export const deleteCellRangeInputs = {
   driveOrSiteId,
   workbookId: {

@@ -19,7 +19,6 @@ import {
   timeout,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -62,7 +61,6 @@ export const createCustomer = action({
             postal_code: util.types.toString(customerPostal) || undefined,
             state: util.types.toString(customerState) || undefined,
           },
-          
           balance: util.types.toInt(customerBalance) * 100,
           payment_method: util.types.toString(customerPaymentId) || undefined,
           description: util.types.toString(customerDescription) || undefined,

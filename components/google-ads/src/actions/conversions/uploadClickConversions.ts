@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { uploadConversionGenericResponseExamplePayload } from "../../examplePayloads";
 import { uploadClickConversionsInputs } from "../../inputs";
-
 export const uploadClickConversions = action({
   display: {
     label: "Upload Click Conversions",

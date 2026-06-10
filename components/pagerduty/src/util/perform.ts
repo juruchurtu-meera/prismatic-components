@@ -1,5 +1,4 @@
 import type { ActionContext, TriggerPayload } from "@prismatic-io/spectral";
-
 export const perform = async (
   context: ActionContext,
   payload: TriggerPayload,

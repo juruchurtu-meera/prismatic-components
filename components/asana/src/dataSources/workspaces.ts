@@ -3,7 +3,6 @@ import { createAsanaClient } from "../client";
 import { connectionInput } from "../inputs";
 import { fetchMoreData, mapToLabelKey } from "../util";
 import type { DataSource } from "../types/Project";
-
 const selectWorkspace = dataSource({
   display: {
     label: "Select Workspace",
@@ -23,13 +22,11 @@ const selectWorkspace = dataSource({
         limit: 100,
       },
     );
-
     const result = mapToLabelKey(data);
     return { result };
   },
   dataSourceType: "picklist",
 });
-
 export default {
   selectWorkspace,
 };

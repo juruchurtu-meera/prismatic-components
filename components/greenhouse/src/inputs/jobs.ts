@@ -1,10 +1,8 @@
 import { input, util } from "@prismatic-io/spectral";
-
 const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const opening_id = input({
   label: "Opening ID",
   type: "string",
@@ -15,7 +13,6 @@ export const opening_id = input({
   example: "123",
   clean: cleanString,
 });
-
 export const opening_ids = input({
   label: "Opening IDs",
   type: "string",
@@ -27,7 +24,6 @@ export const opening_ids = input({
   example: '["123", "124", "125"]',
   default: ["000000"],
 });
-
 export const office_id = input({
   label: "Office ID",
   type: "string",
@@ -39,7 +35,6 @@ export const office_id = input({
   clean: cleanString,
   dataSource: "offices",
 });
-
 export const external_office_id = input({
   label: "External Office ID",
   type: "string",
@@ -50,7 +45,6 @@ export const external_office_id = input({
   example: "abc13425",
   clean: cleanString,
 });
-
 export const template_job_id = input({
   label: "Template Job ID",
   type: "string",
@@ -62,7 +56,6 @@ export const template_job_id = input({
   clean: util.types.toString,
   dataSource: "jobs",
 });
-
 export const number_of_openings = input({
   label: "Number of Openings",
   type: "string",
@@ -72,7 +65,6 @@ export const number_of_openings = input({
   example: "3",
   clean: util.types.toString,
 });
-
 export const job_post_name = input({
   label: "Job Post Name",
   type: "string",
@@ -83,7 +75,6 @@ export const job_post_name = input({
   example: "Senior Software Engineer - Remote",
   clean: cleanString,
 });
-
 export const job_name = input({
   label: "Job Name",
   type: "string",
@@ -94,7 +85,6 @@ export const job_name = input({
   example: "Software Engineer - Backend",
   clean: cleanString,
 });
-
 export const notes = input({
   label: "Notes",
   type: "string",
@@ -104,7 +94,6 @@ export const notes = input({
   example: "Looking for candidates with 5+ years experience",
   clean: cleanString,
 });
-
 export const anywhere = input({
   label: "Anywhere",
   type: "boolean",
@@ -113,7 +102,6 @@ export const anywhere = input({
     "When true, indicates the job can be done from anywhere (remote position).",
   clean: util.types.toBool,
 });
-
 export const team_and_responsibilities = input({
   label: "Team and Responsibilities",
   type: "string",
@@ -124,7 +112,6 @@ export const team_and_responsibilities = input({
   example: "Join our engineering team to build scalable web applications",
   clean: cleanString,
 });
-
 export const how_to_sell_this_job = input({
   label: "How to Sell This Job",
   type: "string",

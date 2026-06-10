@@ -21,7 +21,6 @@ import {
   conversionSettings,
 } from "../../inputs";
 import { createAccountExamplePayload } from "../../examplePayloads";
-
 export const createAccount = action({
   display: {
     description: "Creates a Merchant Center sub-account.",

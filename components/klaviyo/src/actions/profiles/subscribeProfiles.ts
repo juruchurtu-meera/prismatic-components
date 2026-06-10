@@ -8,7 +8,6 @@ import {
 } from "klaviyo-api";
 import { subscribeProfilesExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const subscribeProfiles = action({
   display: {
     label: "Subscribe Profiles",
@@ -25,7 +24,6 @@ export const subscribeProfiles = action({
         debug,
       });
     }
-
     const subscription: SubscriptionCreateJobCreateQuery = {
       data: {
         type: ProfileSubscriptionBulkCreateJobEnum.ProfileSubscriptionBulkCreateJob,

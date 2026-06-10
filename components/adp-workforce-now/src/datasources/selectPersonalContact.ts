@@ -5,7 +5,6 @@ import { selectPersonalContactExamplePayload } from "../examplePayloads";
 import { $select, aoid, connection } from "../inputs";
 import type { PersonalContact } from "../types";
 import { fetchAllRecords } from "../util";
-
 export const selectPersonalContact = dataSource({
   display: {
     label: "Select Personal Contact",
@@ -30,12 +29,10 @@ export const selectPersonalContact = dataSource({
         $select,
       },
     );
-
     const result: Element[] = data.map((contact) => ({
       label: contact.personName.formattedName,
       key: util.types.toString(contact.itemID),
     }));
-
     return { result };
   },
   dataSourceType: "picklist",

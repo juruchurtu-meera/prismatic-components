@@ -11,7 +11,6 @@ import {
   getLastPolled,
   getVersionCreatedAt,
 } from "./utils";
-
 export const pagesPollingTrigger = pollingTrigger({
   display: {
     label: "New and Updated Pages",
@@ -24,21 +23,17 @@ export const pagesPollingTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const lastState = context.polling.getState() as PollingState;
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const allPages = await paginateResults<Page>(
       client,
       UPDATED_PAGES_URL,
       PAGES_URL_REGEX,
     );
-
     const pages = filterByDate<Page>(
       allPages,
       getLastPolled(lastState, now),
       getVersionCreatedAt,
     );
-
     const data = categorizeByChangeType(pages, lastState?.lastPolled);
-
     context.polling.setState({ lastPolled: now });
     return {
       payload: { ...payload, body: { data } },

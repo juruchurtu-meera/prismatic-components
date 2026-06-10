@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
 import { addAttachmentInputs } from "../../inputs";
 import { addAttachmentExamplePayload } from "../../examplePayloads";
-
 export const addAttachment = action({
   display: {
     label: "Add Attachment",
@@ -25,5 +24,4 @@ export const addAttachment = action({
   },
   inputs: addAttachmentInputs,
 });
-
 export default { addAttachment };

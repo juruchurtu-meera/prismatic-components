@@ -7,7 +7,6 @@ import {
   connectionInput,
   teamId,
 } from "../../inputs";
-
 export const listUsersInTeam = action({
   display: {
     label: "List Users in Team",

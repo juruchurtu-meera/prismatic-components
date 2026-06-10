@@ -12,7 +12,6 @@ import {
   signedUpAtInput,
   unsubscribedFromEmailsInput,
 } from "../../inputs/contacts";
-
 export const createContact = action({
   display: {
     label: "Create Contact",

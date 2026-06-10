@@ -12,7 +12,6 @@ import {
   status,
   typeId,
 } from "../../inputs";
-
 export const createPayment = action({
   display: {
     label: "Create Payment",

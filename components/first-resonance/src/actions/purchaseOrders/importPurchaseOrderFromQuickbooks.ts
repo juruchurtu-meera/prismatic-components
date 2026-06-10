@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createGraphQLClient } from "../../client";
 import { importPurchaseOrderFromQuickbooksExamplePayload } from "../../examplePayloads";
 import { createPurchaseOrderFromQuickbooksInputs } from "../../inputs/purchaseOrders";
-
 export const importPurchaseOrderFromQuickbooks = action({
   display: {
     label: "Import Purchase Order from Quickbooks",
@@ -16,7 +15,6 @@ export const importPurchaseOrderFromQuickbooks = action({
       queryInput,
       (variables ?? {}) as Record<string, unknown>,
     );
-
     return { data };
   },
 });

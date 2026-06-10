@@ -8,7 +8,6 @@ import {
   toFullNameIdentifier,
 } from "../../util";
 import { genericCreateUpdateFullNameExamplePayload } from "../../examplePayloads";
-
 export const createWorkflowOutboundMessage = action({
   display: {
     label: "Create Outbound Message",
@@ -40,13 +39,14 @@ export const createWorkflowOutboundMessage = action({
         dynamicFields,
       });
     }
-
     const client = await createSalesforceClient(connection, version);
-
-    const integrationUser = await getIntegrationUser(client, integrationUserEmail);
-
+    const integrationUser = await getIntegrationUser(
+      client,
+      integrationUserEmail,
+    );
     const result = await createWorkflowOutboundMessageFunction(client, {
-      apiVersion: util.types.toNumber(version) || util.types.toNumber(client.version),
+      apiVersion:
+        util.types.toNumber(version) || util.types.toNumber(client.version),
       fullName: toFullNameIdentifier(recordType, name),
       name,
       description,

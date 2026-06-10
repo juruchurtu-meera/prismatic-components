@@ -8,7 +8,6 @@ import {
   toTime,
 } from "../general";
 import { toOptionalString } from "../../utils";
-
 export const getWebinarInputs = {
   connection,
   fetchAll,

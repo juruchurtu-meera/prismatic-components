@@ -1,5 +1,8 @@
-import { connection, OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
+import {
+  connection,
+  OAuth2Type,
+  oauth2Connection,
+} from "@prismatic-io/spectral";
 export const clickUpOauth2Connection = oauth2Connection({
   key: "clickUpOauth2Connection",
   display: {
@@ -67,7 +70,6 @@ export const clickUpOauth2Connection = oauth2Connection({
     },
   },
 });
-
 export const clickUpApiKeyConnection = connection({
   key: "apiKey",
   display: {
@@ -87,5 +89,4 @@ export const clickUpApiKeyConnection = connection({
     },
   },
 });
-
 export default [clickUpOauth2Connection, clickUpApiKeyConnection];

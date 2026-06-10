@@ -1,6 +1,7 @@
 import type { DescribeStatementCommandOutput } from "@aws-sdk/client-redshift-data";
-
-export const describeStatementExamplePayload: { data: DescribeStatementCommandOutput } = {
+export const describeStatementExamplePayload: {
+  data: DescribeStatementCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,
@@ -22,7 +23,8 @@ export const describeStatementExamplePayload: { data: DescribeStatementCommandOu
     ResultFormat: "JSON",
     ResultRows: 1,
     ResultSize: 0,
-    SecretArn: "arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift/example-secret-name",
+    SecretArn:
+      "arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift/example-secret-name",
     Status: "FINISHED",
     UpdatedAt: new Date("2025-01-15T10:31:00.000Z"),
     WorkgroupName: "example-workgroup",

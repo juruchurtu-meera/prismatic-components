@@ -2,7 +2,6 @@ import { dataSource, util } from "@prismatic-io/spectral";
 import { createShipStationClient } from "../client";
 import { selectWebhooksInputs } from "../inputs";
 import type { Webhook } from "../types";
-
 export const selectWebhooks = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -13,10 +12,8 @@ export const selectWebhooks = dataSource({
   inputs: selectWebhooksInputs,
   perform: async (_context, { connectionInput }) => {
     const client = createShipStationClient(connectionInput);
-
     const { data } = await client.get("/webhooks");
     const webhooks = data.webhooks || data;
-
     return {
       result: (webhooks as Webhook[])
         .map((webhook) => ({

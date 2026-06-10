@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCustomerInputs } from "../../inputs";
 import { customerExamplePayload } from "../../payloadExamples";
 import { getCustomerGql } from "../graphql/customers/getCustomer";
-
 export const getCustomer = action({
   display: {
     label: "Get Customer",

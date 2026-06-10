@@ -2,14 +2,17 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { WebhookVersion } from "../../constants";
-
 export const addPipeline = action({
   display: {
     label: "Add Pipeline",
     description: "Adds a new pipeline.",
   },
   perform: async (context, { connection, name, isDealProbabilityEnabled }) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post("/pipelines", {
       name,
       is_deal_probability_enabled: isDealProbabilityEnabled,
@@ -30,7 +33,8 @@ export const addPipeline = action({
       type: "boolean",
       required: false,
       clean: util.types.toBool,
-      comments: "Whether deal probability is disabled or enabled for this pipeline",
+      comments:
+        "Whether deal probability is disabled or enabled for this pipeline",
     }),
   },
 });

@@ -2,7 +2,14 @@ import { action, util } from "@prismatic-io/spectral";
 import type Stripe from "stripe";
 import { createStripeClient } from "../../auth";
 import { updateDisputeExamplePayload } from "../../examplePayloads/disputes";
-import { connectionInput, disputeId, evidence, metadata, submit, timeout } from "../../inputs";
+import {
+  connectionInput,
+  disputeId,
+  evidence,
+  metadata,
+  submit,
+  timeout,
+} from "../../inputs";
 import { keyValPairListToObject } from "../../util";
 export const updateDispute = action({
   display: {

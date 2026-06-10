@@ -7,9 +7,7 @@ import { greenhouseUrl } from "../../client";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { connectionInput, version } from "../../inputs";
 import { generateBasicAuth } from "../../util";
-
 const { debugRequest, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

@@ -15,7 +15,6 @@ import {
   getAppId,
   validateFields,
 } from "../../util";
-
 export const createAdAccountWebhook = action({
   display: {
     label: "Create Ad Account Webhook",
@@ -46,7 +45,6 @@ export const createAdAccountWebhook = action({
       verifyToken,
       fields,
     );
-
     return {
       data,
     };

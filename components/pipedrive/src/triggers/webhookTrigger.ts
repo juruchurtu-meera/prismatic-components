@@ -9,8 +9,11 @@ import {
   webhookVersion,
   webhookUserId,
 } from "../inputs";
-import { onInstanceDelete, onInstanceDeploy, validateConnection } from "../util";
-
+import {
+  onInstanceDelete,
+  onInstanceDeploy,
+  validateConnection,
+} from "../util";
 export const pipedriveTrigger = trigger({
   display: {
     label: "Webhook",
@@ -41,7 +44,15 @@ export const pipedriveTrigger = trigger({
   webhookLifecycleHandlers: {
     create: async (
       context,
-      { connection, version, eventAction, eventObject, userId, httpAuthUser, httpAuthPassword },
+      {
+        connection,
+        version,
+        eventAction,
+        eventObject,
+        userId,
+        httpAuthUser,
+        httpAuthPassword,
+      },
     ) => {
       validateConnection(connection);
       await onInstanceDeploy(context, {
@@ -56,7 +67,15 @@ export const pipedriveTrigger = trigger({
     },
     delete: async (
       context,
-      { connection, version, eventAction, eventObject, userId, httpAuthUser, httpAuthPassword },
+      {
+        connection,
+        version,
+        eventAction,
+        eventObject,
+        userId,
+        httpAuthUser,
+        httpAuthPassword,
+      },
     ) => {
       validateConnection(connection);
       await onInstanceDelete(context, {

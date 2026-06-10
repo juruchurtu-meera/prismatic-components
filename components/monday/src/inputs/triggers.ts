@@ -2,7 +2,6 @@ import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import { boardId, connectionInput } from "./common";
 import { webhookConfig, webhookEvent } from "./webhooks";
-
 const signingSecret = input({
   label: "Signing Secret",
   type: "password",
@@ -12,7 +11,6 @@ const signingSecret = input({
   placeholder: "Enter signing secret",
   clean: toOptionalString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -22,7 +20,6 @@ export const showNewRecords = input({
     "When true, newly created items are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 export const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -32,7 +29,6 @@ export const showUpdatedRecords = input({
     "When true, items updated since the last poll are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 export const webhookTriggerInputs = {
   connection: connectionInput,
   boardId,
@@ -40,7 +36,6 @@ export const webhookTriggerInputs = {
   webhookConfig,
   signingSecret,
 };
-
 export const pollChangesInputs = {
   connection: connectionInput,
   boardId,

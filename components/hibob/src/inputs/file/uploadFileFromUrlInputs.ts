@@ -6,7 +6,6 @@ import {
   folderType,
   tags,
 } from "./common";
-
 export const uploadFileFromUrlInputs = {
   connection,
   employeeId: {

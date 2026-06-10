@@ -1,11 +1,9 @@
 import { input, util } from "@prismatic-io/spectral";
 import { asKeyValueList, asStringArray } from "./utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
 });
-
 export const brokers = input({
   label: "Brokers",
   type: "string",
@@ -17,7 +15,6 @@ export const brokers = input({
   required: true,
   clean: asStringArray,
 });
-
 export const broker = input({
   label: "Broker",
   type: "string",
@@ -28,7 +25,6 @@ export const broker = input({
   placeholder: "Enter broker address",
   clean: util.types.toString,
 });
-
 export const clientId = input({
   label: "Client ID",
   type: "string",
@@ -39,7 +35,6 @@ export const clientId = input({
   placeholder: "Enter client ID",
   clean: util.types.toString,
 });
-
 export const messages = input({
   label: "Messages",
   type: "string",
@@ -50,7 +45,6 @@ export const messages = input({
   placeholder: "Enter message content",
   clean: asKeyValueList,
 });
-
 export const topic = input({
   label: "Topic",
   type: "string",
@@ -62,8 +56,6 @@ export const topic = input({
   placeholder: "Enter topic name",
   clean: util.types.toString,
 });
-
-
 const consumerGroupId = input({
   label: "Consumer Group ID",
   type: "string",
@@ -73,7 +65,6 @@ const consumerGroupId = input({
   placeholder: "Enter consumer group ID",
   clean: util.types.toString,
 });
-
 const topics = input({
   label: "Topics",
   type: "string",
@@ -85,7 +76,6 @@ const topics = input({
   placeholder: "Enter topic name",
   clean: asStringArray,
 });
-
 const fromBeginning = input({
   label: "From Beginning",
   type: "boolean",
@@ -93,7 +83,6 @@ const fromBeginning = input({
   comments: "Whether to start consuming from the beginning of the topic.",
   clean: util.types.toBool,
 });
-
 const maxMessages = input({
   label: "Max Messages",
   type: "string",
@@ -104,7 +93,6 @@ const maxMessages = input({
   placeholder: "Enter maximum number of messages",
   clean: util.types.toInt,
 });
-
 const autoCommit = input({
   label: "Auto Commit",
   type: "boolean",
@@ -113,7 +101,6 @@ const autoCommit = input({
     "Whether to automatically commit offsets after processing messages.",
   clean: util.types.toBool,
 });
-
 const sessionTimeout = input({
   label: "Session Timeout (ms)",
   type: "string",
@@ -124,7 +111,6 @@ const sessionTimeout = input({
   placeholder: "Enter session timeout in milliseconds",
   clean: util.types.toInt,
 });
-
 const heartbeatInterval = input({
   label: "Heartbeat Interval (ms)",
   type: "string",
@@ -136,8 +122,6 @@ const heartbeatInterval = input({
   placeholder: "Enter heartbeat interval in milliseconds",
   clean: util.types.toInt,
 });
-
-
 export const kafkaConsumerInputs = {
   connection,
   clientId,
@@ -150,15 +134,11 @@ export const kafkaConsumerInputs = {
   fromBeginning,
   autoCommit,
 };
-
-
 export const selectTopicInputs = {
   connection,
   clientId,
   broker,
 };
-
-
 const topicsToCheck = input({
   label: "Topics to Check",
   type: "string",
@@ -170,8 +150,6 @@ const topicsToCheck = input({
   dataSource: "selectTopic",
   clean: asStringArray,
 });
-
-
 export const getConsumerGroupStatusInputs = {
   connection,
   clientId,

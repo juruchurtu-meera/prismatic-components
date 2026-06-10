@@ -16,17 +16,16 @@ import {
 import { salesOrderId } from "../../inputs/salesOrders/updateSalesOrderInputs";
 import type { SalesOrder } from "../../interfaces";
 import { cleanStringInput } from "../../utils";
-
 export const updateSalesOrder = action({
   display: {
     label: "Update Sales Order",
-    description: "Updates a sales order object in your Business Central organization.",
+    description:
+      "Updates a sales order object in your Business Central organization.",
   },
   perform: async (
     context,
     {
       additionalProperties,
-
       email,
       sellToAddressLine1,
       shipToAddressLine1,
@@ -40,7 +39,11 @@ export const updateSalesOrder = action({
       salesOrderId,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       ...additionalProperties,
       email,
@@ -52,7 +55,6 @@ export const updateSalesOrder = action({
       currencyCode,
       customerId,
     };
-
     const { data } = await client.patch<SalesOrder>(
       `/companies(${companyId})/salesOrders(${salesOrderId})`,
       payload,
@@ -62,7 +64,6 @@ export const updateSalesOrder = action({
         },
       },
     );
-
     return { data };
   },
   inputs: {

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { createTicketMessageInputs as inputs } from "../../inputs/ticketMessages";
 import type { CreateTicketMessageResponse } from "../../interfaces/ticketMessages";
 import { createTicketMessageExamplePayload as examplePayload } from "../../examplePayloads/ticketMessages";
-
 export const createTicketMessage = action({
   display: {
     label: "Create Ticket Message",
@@ -18,7 +17,6 @@ export const createTicketMessage = action({
       body,
       { params: action },
     );
-
     return {
       data,
     };

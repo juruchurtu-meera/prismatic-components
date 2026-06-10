@@ -18,7 +18,6 @@ import {
 } from "../examplePayloads";
 import { HttpMethod, MAX_PAGE_SIZE } from "../constants";
 import { getPaginatedData } from "../util";
-
 const getDatabase = action({
   display: {
     label: "Get Database (Deprecated)",
@@ -32,7 +31,6 @@ const getDatabase = action({
   },
   examplePayload: getDatabaseResponse,
 });
-
 const listDatabases = action({
   display: {
     label: "List Databases (Deprecated)",
@@ -41,7 +39,6 @@ const listDatabases = action({
   inputs: listOldDatabasesInputs,
   perform: async (context, { connection, fetchAll, startCursor }) => {
     const client = createOldClient(connection, context.debug.enabled);
-
     const { data } = await getPaginatedData(
       client,
       HttpMethod.POST,
@@ -60,7 +57,6 @@ const listDatabases = action({
   },
   examplePayload: listDatabasesResponse,
 });
-
 const queryDatabase = action({
   display: {
     label: "Query Database (Deprecated)",
@@ -73,7 +69,6 @@ const queryDatabase = action({
   },
   perform: async (context, params) => {
     const client = createOldClient(params.connection, context.debug.enabled);
-
     const { data } = await client.post(
       `/databases/${params.databaseId}/query`,
       {
@@ -84,7 +79,6 @@ const queryDatabase = action({
   },
   examplePayload: queryDatabaseResponse,
 });
-
 const createDatabaseItem = action({
   display: {
     label: "Create Database Item",
@@ -126,7 +120,6 @@ const createDatabaseItem = action({
   },
   examplePayload: createDatabaseItemResponse,
 });
-
 const createDatabase = action({
   display: {
     label: "Create Database (Deprecated)",
@@ -167,7 +160,6 @@ const createDatabase = action({
   },
   examplePayload: createDatabaseResponse,
 });
-
 export default {
   createDatabase,
   createDatabaseItem,

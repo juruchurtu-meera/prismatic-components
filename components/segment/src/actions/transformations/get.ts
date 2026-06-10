@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, region, transformationId } from "../../inputs";
 import { getTransformationExamplePayload } from "../../examplePayloads";
-
 export const getTransformation = action({
   display: {
     label: "Get Transformation",

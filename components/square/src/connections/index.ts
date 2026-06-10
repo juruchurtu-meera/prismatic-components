@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const squareConnection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -93,5 +92,4 @@ export const squareConnection = oauth2Connection({
     },
   },
 });
-
 export default [squareConnection];

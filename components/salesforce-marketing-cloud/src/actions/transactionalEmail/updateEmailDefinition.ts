@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { EMAIL_DEFINITIONS_PATH } from "../../constants";
 import { updateEmailDefinitionExamplePayload } from "../../examplePayloads";
 import { updateEmailDefinitionInputs } from "../../inputs";
-
 export const updateEmailDefinition = action({
   examplePayload: updateEmailDefinitionExamplePayload,
   display: {
@@ -23,19 +22,16 @@ export const updateEmailDefinition = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body: Record<string, unknown> = {
       ...(emailDefinitionExtraBody as Record<string, unknown>),
     };
     if (emailDefinitionName) body.name = emailDefinitionName;
     if (emailDefinitionDescription)
       body.description = emailDefinitionDescription;
-
     const { data } = await client.patch(
       `${EMAIL_DEFINITIONS_PATH}/${emailDefinitionKey}`,
       body,
     );
-
     return { data };
   },
 });

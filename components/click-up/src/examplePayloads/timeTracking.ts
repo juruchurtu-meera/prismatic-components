@@ -1,23 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const timeEntryObject = {
   id: "2004673344540003622",
   wid: "9012345",
@@ -65,43 +45,36 @@ const timeEntryObject = {
   ],
   task_url: "https://app.clickup.com/t/9hx",
 };
-
 export const getSingularTimeEntryExamplePayload = {
   data: {
     data: timeEntryObject,
   },
 };
-
 export const getTimeEntriesWithinDateRangeExamplePayload = {
   data: {
     data: [timeEntryObject],
   },
 };
-
 export const createTimeEntryExamplePayload = {
   data: {
     data: timeEntryObject,
   },
 };
-
 export const updateTimeEntryExamplePayload = {
   data: {
     data: timeEntryObject,
   },
 };
-
 export const startTimeEntryExamplePayload = {
   data: {
     data: timeEntryObject,
   },
 };
-
 export const stopTimeEntryExamplePayload = {
   data: {
     data: timeEntryObject,
   },
 };
-
 export const deleteTimeEntryExamplePayload = {
   data: null,
 };

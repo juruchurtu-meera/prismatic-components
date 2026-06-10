@@ -9,7 +9,6 @@ import {
   params,
   workerId,
 } from "./shared";
-
 const organizationId = input({
   label: "Organization ID",
   comments: "Identifies the Workday organization.",
@@ -20,7 +19,6 @@ const organizationId = input({
   clean: util.types.toString,
   dataSource: "selectOrganization",
 });
-
 const customerId = input({
   label: "Customer ID",
   comments: "Identifies the customer account.",
@@ -30,8 +28,6 @@ const customerId = input({
   placeholder: "Enter customer ID",
   clean: util.types.toString,
 });
-
-
 const supervisoryOrganizationId = input({
   label: "Supervisory Organization ID",
   comments:
@@ -42,7 +38,6 @@ const supervisoryOrganizationId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const jobChangeReasonId = input({
   label: "Job Change Reason ID",
   comments: "Identifies the reason used in a Change Job business process.",
@@ -52,7 +47,6 @@ const jobChangeReasonId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const moveManagersTeam = input({
   label: "Move Managers Team",
   comments: "When true, also moves subordinate teams to the new manager.",
@@ -61,7 +55,6 @@ const moveManagersTeam = input({
   required: true,
   clean: util.types.toBool,
 });
-
 const effective = input({
   label: "Effective Date",
   comments: "The date this business process takes effect.",
@@ -71,7 +64,6 @@ const effective = input({
   required: true,
   clean: (value: unknown) => cleanDate(value, "Effective Date"),
 });
-
 const proposedOrganizations = input({
   label: "Proposed Organizations",
   comments:
@@ -92,41 +84,33 @@ const proposedOrganizations = input({
   ),
   clean: (value: unknown) => cleanCodeInput(value, "Proposed Organizations"),
 });
-
-
 const proposedBusinessTitle = input({
   label: "Proposed Business Title",
   comments:
     "New business title for the worker as of the effective date. If there is no business title override, this field defaults to the job title or job profile name.",
-
   type: "string",
   example: "",
   placeholder: "Enter proposed business title",
   required: true,
   clean: util.types.toString,
 });
-
 export const getCustomerByIdInputs = {
   connection,
   customerId,
 };
-
 export const getOrganizationByIdInputs = {
   connection,
   organizationId,
 };
-
 export const getWorkerBusinessTitleChangesInputs = {
   connection,
   workerId,
   ...paginationQueryStringInputs,
 };
-
 export const listOrganizationsInputs = {
   connection,
   params,
 };
-
 export const postJobChangesInputs = {
   connection,
   workerId,
@@ -139,7 +123,6 @@ export const postJobChangesInputs = {
   instanceHref,
   instanceDescriptor,
 };
-
 export const postWorkerBusinessTitleChangeInputs = {
   connection,
   workerId,

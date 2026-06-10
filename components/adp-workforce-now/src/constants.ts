@@ -21,7 +21,6 @@ export const TOKEN_ENDPOINTS = [
     value: "https://uat-accounts.adp.com/auth/oauth/v2/token",
   },
 ];
-
 export const customTypesModel = [
   {
     label: "Amount",

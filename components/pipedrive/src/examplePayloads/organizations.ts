@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 export const getOrganizationExamplePayload = {
   data: [
     {

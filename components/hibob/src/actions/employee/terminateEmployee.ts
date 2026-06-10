@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
 import { terminateEmployeeExamplePayload } from "../../examplePayloads";
 import { terminateEmployeeInputs } from "../../inputs";
-
 export const terminateEmployee = action({
   display: {
     label: "Terminate Employee",
@@ -22,7 +21,6 @@ export const terminateEmployee = action({
     },
   ) => {
     const client = getClient(connection, context.debug.enabled);
-
     await client.post(`/employees/${identifier}/terminate`, {
       noticePeriod,
       lastDayOfWork,

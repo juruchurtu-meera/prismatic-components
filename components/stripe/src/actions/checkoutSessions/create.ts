@@ -14,7 +14,6 @@ import {
   timeout,
 } from "../../inputs";
 import { createCheckoutSessionExamplePayload } from "../../examplePayloads/checkoutSessions";
-
 export const createCheckoutSession = action({
   display: {
     label: "Create Checkout Session",
@@ -22,13 +21,20 @@ export const createCheckoutSession = action({
   },
   perform: async (
     context,
-    { cancelUrl, lineItems, mode, successUrl, stripeConnection, timeout, bodyParams },
+    {
+      cancelUrl,
+      lineItems,
+      mode,
+      successUrl,
+      stripeConnection,
+      timeout,
+      bodyParams,
+    },
   ) => {
     const client = createStripeClient({
       stripeConnection,
       timeout,
     });
-
     const session = await client.checkout.sessions.create({
       success_url: successUrl,
       cancel_url: cancelUrl,
@@ -36,7 +42,6 @@ export const createCheckoutSession = action({
       line_items: lineItems as Stripe.Checkout.SessionCreateParams.LineItem[],
       ...bodyParams,
     });
-
     return {
       data: session,
     };

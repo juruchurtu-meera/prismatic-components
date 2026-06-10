@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const ouUserDn = input({
   label: "OU User DN",
   type: "string",
@@ -10,7 +9,6 @@ export const ouUserDn = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const newOuUserDn = input({
   label: "New OU User DN",
   type: "string",
@@ -20,7 +18,6 @@ export const newOuUserDn = input({
   placeholder: "Enter new user DN",
   clean: util.types.toString,
 });
-
 export const userToUpdate = input({
   label: "User to Update",
   type: "string",
@@ -31,7 +28,6 @@ export const userToUpdate = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const userDn = input({
   label: "User DN",
   type: "string",
@@ -42,7 +38,6 @@ export const userDn = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const newPassword = input({
   label: "New Password",
   type: "password",
@@ -52,7 +47,6 @@ export const newPassword = input({
   placeholder: "Enter new password",
   clean: util.types.toString,
 });
-
 export const userDnToAdd = input({
   label: "User DN to Add",
   type: "string",
@@ -63,7 +57,6 @@ export const userDnToAdd = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const userDnToRemove = input({
   label: "User DN to Remove",
   type: "string",
@@ -74,7 +67,6 @@ export const userDnToRemove = input({
   clean: util.types.toString,
   dataSource: "selectUser",
 });
-
 export const userName = input({
   label: "User Name",
   type: "string",
@@ -84,7 +76,6 @@ export const userName = input({
   placeholder: "Enter user name",
   clean: util.types.toString,
 });
-
 export const userPrincipalName = input({
   label: "User Principal Name",
   type: "string",
@@ -94,7 +85,6 @@ export const userPrincipalName = input({
   placeholder: "Enter user principal name",
   clean: util.types.toString,
 });
-
 export const password = input({
   label: "Password",
   type: "password",
@@ -104,7 +94,6 @@ export const password = input({
   placeholder: "Enter password",
   clean: util.types.toString,
 });
-
 export const sAMAccountName = input({
   label: "sAMAccountName",
   type: "string",

@@ -4,7 +4,6 @@ import { CATEGORIES_PATH } from "../../constants";
 import { listCategoriesExamplePayload } from "../../examplePayloads/categories";
 import { listCategoriesInputs } from "../../inputs/categories";
 import { paginateResults } from "../../util/pagination";
-
 export const listCategories = action({
   examplePayload: listCategoriesExamplePayload,
   display: {
@@ -14,19 +13,16 @@ export const listCategories = action({
   inputs: listCategoriesInputs,
   perform: async (context, { connection, fetchAll, pageSize, page }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const params = {
       $pageSize: pageSize,
       $page: page,
     };
-
     const data = await paginateResults(
       client,
       CATEGORIES_PATH,
       fetchAll,
       params,
     );
-
     return { data };
   },
 });

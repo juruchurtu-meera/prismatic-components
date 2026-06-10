@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const listModelsExamplePayload = {
   data: [
     {

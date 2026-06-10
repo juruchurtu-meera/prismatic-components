@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll } from "../common";
-
 export const listTasksInputs = {
   connection,
   fetchAll,
@@ -13,7 +12,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ids: input({
     label: "IDs",
     comments: "Comma-separated list of task IDs to be returned in a request.",
@@ -23,7 +21,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   creatorId: input({
     label: "Creator ID",
     comments:
@@ -32,7 +29,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   ownerId: input({
     label: "Owner ID",
     placeholder: "Enter Owner ID",
@@ -43,7 +39,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   q: input({
     label: "Q",
     comments:
@@ -52,7 +47,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   type: input({
     label: "Type",
     comments: "Type of tasks to search for. Possible values: floating, related",
@@ -60,7 +54,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   resourceType: input({
     label: "Resource Type",
     comments:
@@ -69,7 +62,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   resourceId: input({
     label: "Resource ID",
     comments: "Unique identifier of the resource that you're searching for.",
@@ -77,7 +69,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   completed: input({
     label: "Completed",
     comments:
@@ -92,7 +83,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   overdue: input({
     label: "Overdue",
     comments:
@@ -107,7 +97,6 @@ export const listTasksInputs = {
     ],
     clean: util.types.toString,
   }),
-
   remind: input({
     label: "Remind",
     comments:
@@ -130,7 +119,6 @@ export const listTasksInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   perPage: input({
     label: "Per Page",
     comments:

@@ -15,7 +15,6 @@ import {
   findFileForSharedLinkExamplePayload,
   getSharedLinkForFileExamplePayload,
 } from "../examplePayloads";
-
 export const findFileForSharedLink = action({
   display: {
     label: "Find File For Shared Link",
@@ -29,7 +28,6 @@ export const findFileForSharedLink = action({
       params.boxConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.get("/shared_items", {
       headers: {
         boxapi: `shared_link=${sharedLink}&shared_link_password=${sharedLinkPassword}`,
@@ -50,7 +48,6 @@ export const findFileForSharedLink = action({
   },
   examplePayload: findFileForSharedLinkExamplePayload,
 });
-
 export const getSharedLinkForFile = action({
   display: {
     label: "Get Shared Link For File",
@@ -58,7 +55,6 @@ export const getSharedLinkForFile = action({
   },
   perform: async (context, { fileId, boxConnection }) => {
     const client = createBoxHttpClient(boxConnection, context.debug.enabled);
-
     const { data } = await client.get(`/files/${fileId}`, {
       params: {
         fields: "shared_link",
@@ -88,12 +84,10 @@ export const addSharedLinkToFile = action({
     const sharedLinkPassword = params.sharedLinkPassword || null;
     const sharedLinkVanityName = params.sharedLinkVanityName || null;
     const sharedLinkPermissions = params.sharedLinkPermissions || {};
-
     const client = createBoxHttpClient(
       params.boxConnection,
       context.debug.enabled,
     );
-
     const body = {
       shared_link: {
         access: sharedLinkAccess,
@@ -102,7 +96,6 @@ export const addSharedLinkToFile = action({
         vanity_name: sharedLinkVanityName,
       },
     };
-
     const { data } = await client.put(`/files/${fileId}`, body, {
       params: {
         sharedLink,
@@ -123,7 +116,6 @@ export const addSharedLinkToFile = action({
     boxConnection: connectionInput,
   },
 });
-
 export const updateSharedLinkToFile = action({
   display: {
     label: "Update Shared Link on File",
@@ -136,12 +128,10 @@ export const updateSharedLinkToFile = action({
     const sharedLinkPassword = params.sharedLinkPassword || null;
     const sharedLinkVanityName = params.sharedLinkVanityName || null;
     const sharedLinkPermissions = params.sharedLinkPermissions || {};
-
     const client = createBoxHttpClient(
       params.boxConnection,
       context.debug.enabled,
     );
-
     const { data } = await client.put(
       `/2.0/files/${fileId}`,
       {
@@ -173,7 +163,6 @@ export const updateSharedLinkToFile = action({
     boxConnection: connectionInput,
   },
 });
-
 export const removeSharedLinkFromFile = action({
   display: {
     label: "Remove Shared Link from File",
@@ -181,12 +170,10 @@ export const removeSharedLinkFromFile = action({
   },
   perform: async (context, params) => {
     const fileId = params.fileId;
-
     const client = createBoxHttpClient(
       params.boxConnection,
       context.debug.enabled,
     );
-
     try {
       const { data } = await client.put(
         `/files/${fileId}`,

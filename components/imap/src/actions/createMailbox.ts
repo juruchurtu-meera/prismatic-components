@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { createMailboxExamplePayload } from "../examplePayloads";
 import { createMailboxInputs } from "../inputs/actions";
-
 export const createMailbox = action({
   display: {
     label: "Create Mailbox",

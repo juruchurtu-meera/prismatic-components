@@ -1,11 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalNumber, toOptionalString } from "../util";
 import { connection, fetchAll, page, pageSize } from "./common";
-
-
-
-
-
 const assetId = input({
   label: "Asset ID",
   type: "string",
@@ -17,7 +12,6 @@ const assetId = input({
   dataSource: "selectAsset",
   clean: util.types.toString,
 });
-
 const assetName = input({
   label: "Asset Name",
   type: "string",
@@ -27,7 +21,6 @@ const assetName = input({
   placeholder: "Enter asset name",
   clean: util.types.toString,
 });
-
 const assetDescription = input({
   label: "Asset Description",
   type: "string",
@@ -38,7 +31,6 @@ const assetDescription = input({
   placeholder: "Enter asset description",
   clean: toOptionalString,
 });
-
 const assetTypeId = input({
   label: "Asset Type ID",
   type: "string",
@@ -49,7 +41,6 @@ const assetTypeId = input({
   placeholder: "Enter asset type ID",
   clean: util.types.toNumber,
 });
-
 const categoryId = input({
   label: "Category ID",
   type: "string",
@@ -60,7 +51,6 @@ const categoryId = input({
   dataSource: "selectCategory",
   clean: toOptionalNumber,
 });
-
 const assetContent = input({
   label: "Content",
   type: "text",
@@ -69,7 +59,6 @@ const assetContent = input({
   placeholder: "Enter asset content",
   clean: toOptionalString,
 });
-
 const assetQuery = input({
   label: "Query",
   type: "code",
@@ -88,7 +77,6 @@ const assetQuery = input({
   ),
   clean: util.types.toObject,
 });
-
 const assetFields = input({
   label: "Fields",
   type: "string",
@@ -99,7 +87,6 @@ const assetFields = input({
   placeholder: "Enter field names",
   clean: toOptionalString,
 });
-
 const assetExtraBody = input({
   label: "Extra Body",
   type: "code",
@@ -116,18 +103,12 @@ const assetExtraBody = input({
   ),
   clean: util.types.toObject,
 });
-
-
-
-
-
 export const listAssetsInputs = {
   connection,
   fetchAll,
   pageSize,
   page,
 };
-
 export const queryAssetsInputs = {
   connection,
   assetQuery,
@@ -135,12 +116,10 @@ export const queryAssetsInputs = {
   pageSize,
   page,
 };
-
 export const getAssetInputs = {
   connection,
   assetId,
 };
-
 export const createAssetInputs = {
   connection,
   assetName,
@@ -150,7 +129,6 @@ export const createAssetInputs = {
   assetContent,
   assetExtraBody,
 };
-
 export const updateAssetInputs = {
   connection,
   assetId,
@@ -164,7 +142,6 @@ export const updateAssetInputs = {
   assetContent,
   assetExtraBody,
 };
-
 export const deleteAssetInputs = {
   connection,
   assetId,

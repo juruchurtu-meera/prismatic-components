@@ -10,17 +10,14 @@ import {
   start,
 } from "./shared";
 import { cleanArrayCodeInput } from "../util";
-
 const listInvoiceComments =
   " See [Bill.com API documentation](https://developer.bill.com/reference/listinvoices) for more information.";
-
 const invoiceAdditionalFields = {
   isActive: "1",
   glPostingDate: "2024-04-10",
   description: "Description",
   isToBePrinted: true,
 };
-
 const invoiceNumber = input({
   label: "Invoice Number",
   type: "string",
@@ -31,7 +28,6 @@ const invoiceNumber = input({
     "User-generated invoice number. This value can be your chosen number scheme or invoice due date.",
   clean: util.types.toString,
 });
-
 const invoiceDate = input({
   label: "Invoice Date",
   type: "string",
@@ -42,7 +38,6 @@ const invoiceDate = input({
     "Date when the invoice is issued to the customer. This value is in the YYYY-MM-DD format.",
   clean: util.types.toString,
 });
-
 const dueDate = input({
   label: "Due Date",
   type: "string",
@@ -53,7 +48,6 @@ const dueDate = input({
     "Date when the invoice is due. The value is in the YYYY-MM-DD format.",
   clean: util.types.toString,
 });
-
 const invoiceLineItems = input({
   label: "Invoice Line Items",
   type: "code",
@@ -74,7 +68,6 @@ const invoiceLineItems = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Invoice Line Items"),
 });
-
 export const createInvoiceInputs = {
   connection,
   customerId,
@@ -88,7 +81,6 @@ export const createInvoiceInputs = {
     comments: `${additionalFields.comments} See https://developer.bill.com/reference/createinvoice for more information.`,
   }),
 };
-
 const invoiceCreateBulk = input({
   label: "Invoices to Create",
   type: "code",
@@ -123,12 +115,10 @@ const invoiceCreateBulk = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Invoices to Create"),
 });
-
 export const bulkCreateInvoicesInputs = {
   connection,
   invoiceCreateBulk,
 };
-
 const invoiceId = input({
   label: "Invoice ID",
   type: "string",
@@ -138,12 +128,10 @@ const invoiceId = input({
   comments: "The ID of the invoice.",
   clean: util.types.toString,
 });
-
 export const getInvoiceInputs = {
   connection,
   invoiceId,
 };
-
 export const listInvoiceInputs = {
   connection,
   start,
@@ -155,7 +143,6 @@ export const listInvoiceInputs = {
   }),
   nested,
 };
-
 export const updateInvoiceInputs = {
   connection,
   invoiceId,
@@ -166,7 +153,6 @@ export const updateInvoiceInputs = {
   invoiceLineItems,
   additionalFields,
 };
-
 const invoiceUpdateBulk = input({
   label: "Invoices to Update",
   type: "code",
@@ -202,12 +188,10 @@ const invoiceUpdateBulk = input({
   ),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Invoices to Update"),
 });
-
 export const bulkUpdateInvoicesInputs = {
   connection,
   invoiceUpdateBulk,
 };
-
 export const deleteInvoiceInputs = {
   connection,
   invoiceId,

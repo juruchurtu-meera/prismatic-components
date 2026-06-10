@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { listConversationsExamplePayload } from "../../examplePayloads";
 import { listConversationsInputs } from "../../inputs";
 import { debugLogger, getChannels } from "../../util";
-
 export const listConversations = action({
   display: {
     label: "List Conversations",
@@ -14,7 +13,6 @@ export const listConversations = action({
     const client = await createOauthClient({
       slackConnection: params.connection,
     });
-
     const parameters = {
       cursor: params.cursor || undefined,
       exclude_archived: params.excludeArchived || undefined,
@@ -26,7 +24,6 @@ export const listConversations = action({
         params.includeMultiPartyImchannels || undefined,
       includeImChannels: params.includeImChannels || undefined,
     };
-
     const data = await getChannels(client, parameters, params.fetchAll);
     return { data };
   },

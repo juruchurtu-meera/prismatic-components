@@ -1,7 +1,6 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { selectGroupInputs } from "../inputs";
-
 export const selectGroup = dataSource({
   display: {
     label: "Select Group",
@@ -16,16 +15,13 @@ export const selectGroup = dataSource({
     } = await client.get("/groups", {
       params: { includeAll: true },
     });
-
     if (!groups || !Array.isArray(groups)) {
       return { result: [] };
     }
-
     const result: Element[] = groups.map(({ name: label, id: key }) => ({
       label,
       key: util.types.toString(key),
     }));
-
     return { result };
   },
 });

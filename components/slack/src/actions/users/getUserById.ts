@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { getUserExamplePayload } from "../../examplePayloads";
 import { getUserByIdInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const getUserById = action({
   display: {
     label: "Get User By ID",

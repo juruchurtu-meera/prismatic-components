@@ -10,7 +10,6 @@ import {
   resourceGroupName,
   subscriptionId,
 } from "../inputs";
-
 export const listQueues = action({
   display: {
     label: "List Queues",
@@ -31,9 +30,7 @@ export const listQueues = action({
     const client = getAzureServiceBusClient(connection, context.debug.enabled);
     try {
       const { data } = await client.get(
-        `/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/${namespaceName}/queues?api-version=2021-11-01${
-          $skip.length ? `&${$skip}` : ""
-        }${$top.length ? `&${$top}` : ""}`,
+        `/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/${namespaceName}/queues?api-version=2021-11-01${$skip.length ? `&${$skip}` : ""}${$top.length ? `&${$top}` : ""}`,
       );
       return { data };
     } catch (error) {
@@ -51,5 +48,4 @@ export const listQueues = action({
     $top,
   },
 });
-
 export default { listQueues };

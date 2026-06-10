@@ -5,7 +5,6 @@ import {
   deleteEventHookTrigger,
   eventHookPerformFN,
 } from "../util/eventHooks";
-
 export const eventHook = trigger({
   display: {
     label: "Event Hook",

@@ -7,7 +7,6 @@ import type {
   PollingState,
   PollSiteChangesSeparatedChanges,
 } from "../interfaces";
-
 export const drivePollingTrigger = pollingTrigger({
   display: {
     label: "New and Updated Drive Items",
@@ -18,30 +17,28 @@ export const drivePollingTrigger = pollingTrigger({
     connection,
     driveId,
   },
-  perform: async ({ logger, polling, debug }, payload, { connection, driveId }) => {
+  perform: async (
+    { logger, polling, debug },
+    payload,
+    { connection, driveId },
+  ) => {
     const client = await createClient(connection, debug.enabled);
-
     let allChanges: PollSiteChangesSeparatedChanges = {};
-
     const deltaLink = polling.getState()[driveId];
     const endpoint = deltaLink ? deltaLink : `/drives/${driveId}/root/delta`;
     const data = (await paginateResults<DriveDeltaResponse>(
       client,
       endpoint as string,
       true,
-      
       false,
       true,
     )) as DriveDeltaResponse;
-
     const newPollingState: PollingState = {};
-
     if (data.value.length > 0) {
       const separatedChanges: PollSiteChangesSeparatedChanges = {};
       for (const change of data.value) {
         const isDeleted = Object.keys(change).includes("deleted");
         const isRoot = Object.keys(change).includes("root");
-
         if (isRoot) {
           continue;
         }
@@ -51,16 +48,11 @@ export const drivePollingTrigger = pollingTrigger({
       }
       allChanges = separatedChanges;
     }
-
     newPollingState[driveId] = data["@odata.deltaLink"];
-
-    
     polling.setState(newPollingState);
-
     if (debug.enabled) {
       logger.debug("Polling state:", newPollingState);
     }
-
     return Promise.resolve({
       payload: { ...payload, body: { data: allChanges } },
     });

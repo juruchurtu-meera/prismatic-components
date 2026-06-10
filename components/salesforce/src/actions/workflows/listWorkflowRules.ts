@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { listWorkflowRulesInputs } from "../../inputs";
 import { listWorkflowRulesFunction } from "../../util";
 import { listWorkflowRulesExamplePayload } from "../../examplePayloads";
-
 export const listWorkflowRules = action({
   display: {
     label: "List Workflow Rules",

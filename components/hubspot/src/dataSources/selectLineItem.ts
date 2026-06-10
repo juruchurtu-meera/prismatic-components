@@ -3,7 +3,6 @@ import { getHubspotClient } from "../client";
 import { selectLineItemInputs } from "../inputs";
 import type { LineItem } from "../types/LineItem";
 import { getAllPaginatedData } from "../util";
-
 export const selectLineItem = dataSource({
   display: {
     label: "Select Line Item",
@@ -15,7 +14,6 @@ export const selectLineItem = dataSource({
       hubspotConnection: connection,
       debugRequest: false,
     });
-
     const lineItems = (await getAllPaginatedData<LineItem>(
       client,
       "/crm/v3/objects/line_items",
@@ -28,7 +26,6 @@ export const selectLineItem = dataSource({
         },
       },
     )) as LineItem[];
-
     const result = lineItems.map<Element>((lineItem) => ({
       label: `${lineItem.properties.name} (SKU: ${lineItem.properties.hs_sku})`,
       key: util.types.toString(lineItem.id),

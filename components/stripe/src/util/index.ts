@@ -16,26 +16,23 @@ import type {
   StripeEvent,
   StripeResource,
 } from "../types";
-
 const MAX_POLL_PAGES = 100;
 const POLL_PAGE_SIZE = 100;
-
 export const getStripeKey = (stripeConnection: Connection) => {
   if (stripeConnection.key !== "apiKey") {
-    throw new ConnectionError(stripeConnection, "Unsupported authorization method");
+    throw new ConnectionError(
+      stripeConnection,
+      "Unsupported authorization method",
+    );
   }
   return util.types.toString(stripeConnection.fields.apiKey);
 };
-
 export const cleanNumberInput = (number: unknown) =>
   number ? util.types.toNumber(number) : undefined;
-
 export const cleanStringInput = (string: unknown) =>
   string ? util.types.toString(string) : undefined;
-
 export const cleanObjectInput = (object: unknown) =>
   object ? util.types.toObject(object) : undefined;
-
 export const keyValPairListToObject = (
   kvpList: KeyValuePair<unknown>[] = [],
 ): Record<string, string | number> => {
@@ -47,7 +44,6 @@ export const keyValPairListToObject = (
     {} as Record<string, string | number>,
   );
 };
-
 export const paginateStripeRecords = async (
   client: ClassResource,
   fetchAll: boolean,
@@ -76,7 +72,6 @@ export const paginateStripeRecords = async (
   const response = await client.list(params);
   return response;
 };
-
 export const createWebhookFn = async (
   client: Stripe,
   webhookUrl: string,
@@ -85,23 +80,28 @@ export const createWebhookFn = async (
   const data = await client.webhookEndpoints.create({
     url: webhookUrl,
     enabled_events: webhookEvents.map(
-      (event) => util.types.toString(event) as Stripe.WebhookEndpointUpdateParams.EnabledEvent,
+      (event) =>
+        util.types.toString(
+          event,
+        ) as Stripe.WebhookEndpointUpdateParams.EnabledEvent,
     ),
     metadata: {},
   });
   return data;
 };
-
 export const deleteWebhookFn = async (client: Stripe, webhookId: string) => {
   const data = await client.webhookEndpoints.del(webhookId);
   return data;
 };
-
-export const deleteWebhookEventsFn = async (client: Stripe, webhookIds: string[]) => {
-  const data = await Promise.all(webhookIds.map((id) => deleteWebhookFn(client, id)));
+export const deleteWebhookEventsFn = async (
+  client: Stripe,
+  webhookIds: string[],
+) => {
+  const data = await Promise.all(
+    webhookIds.map((id) => deleteWebhookFn(client, id)),
+  );
   return data;
 };
-
 export const listWebhookEventsFn = async (
   client: Stripe.WebhookEndpointsResource,
   fetchAll: boolean,
@@ -114,40 +114,45 @@ export const listWebhookEventsFn = async (
   )) as Stripe.ApiList<Stripe.WebhookEndpoint>;
   return data;
 };
-
 export const equalArrays = (a: unknown[], b: unknown[]) => {
   return a.length === b.length && a.every((value, index) => value === b[index]);
 };
-
-export const onInstanceDeploy = async (context: ActionContext, { connection, webhookEvents }) => {
+export const onInstanceDeploy = async (
+  context: ActionContext,
+  { connection, webhookEvents },
+) => {
   const client = createStripeClient({
     stripeConnection: connection,
     timeout: 5000,
   });
   const flowName = context.flow.name;
   const webhookUrl = context.webhookUrls[flowName];
-  const previousCrossFlowState = context.crossFlowState[flowName] as Record<string, unknown>;
-
-  
+  const previousCrossFlowState = context.crossFlowState[flowName] as Record<
+    string,
+    unknown
+  >;
   const existingWebhook = await checkExistingWebhook(
     client.webhookEndpoints,
     webhookUrl,
     webhookEvents,
   );
-
   if (!existingWebhook) {
-    
-    const createdWebhook = await createWebhookFn(client, webhookUrl, webhookEvents as string[]);
+    const createdWebhook = await createWebhookFn(
+      client,
+      webhookUrl,
+      webhookEvents as string[],
+    );
     context.crossFlowState[flowName] = {
       ...previousCrossFlowState,
       webhook: createdWebhook,
     };
   }
-
   return;
 };
-
-export const onInstanceDelete = async (context: ActionContext, { connection, webhookEvents }) => {
+export const onInstanceDelete = async (
+  context: ActionContext,
+  { connection, webhookEvents },
+) => {
   const client = createStripeClient({
     stripeConnection: connection,
     timeout: 5000,
@@ -162,17 +167,15 @@ export const onInstanceDelete = async (context: ActionContext, { connection, web
     })
     .filter(Boolean);
   await Promise.all(webhookToDelete);
-
-  const previousStore = context.crossFlowState[context.flow.name] as CreatedWebhook;
-
+  const previousStore = context.crossFlowState[
+    context.flow.name
+  ] as CreatedWebhook;
   context.crossFlowState[context.flow.name] = {
     ...previousStore,
     webhook: undefined,
   };
-
   return;
 };
-
 export const validateTrigger = (
   client: Stripe,
   body: string,
@@ -186,8 +189,9 @@ export const validateTrigger = (
     throw new Error(`Webhook Error ${(err as Error).message}`);
   }
 };
-
-export const getStripeHeaderSignature = (headers: Record<string, string>): string => {
+export const getStripeHeaderSignature = (
+  headers: Record<string, string>,
+): string => {
   if (headers) {
     const stripeSignature = headers["stripe-signature"];
     if (!stripeSignature) {
@@ -195,42 +199,30 @@ export const getStripeHeaderSignature = (headers: Record<string, string>): strin
     }
     return stripeSignature;
   }
-
   throw new Error("Missing headers");
 };
-
 export const checkExistingWebhook = async (
   client: Stripe.WebhookEndpointsResource,
   webhookUrl: string,
   webhookEvents,
 ) => {
   const { data } = await listWebhookEventsFn(client, true, {});
-
   return data.find((webhook) => {
     const sameUrl = webhook.url === webhookUrl;
     const sameEvents =
       webhook.enabled_events.length === webhookEvents.length &&
       equalArrays(webhook.enabled_events.sort(), [...webhookEvents].sort());
-
     return sameUrl && sameEvents;
   });
 };
-
-
-
-
-
-
-
-
-
-
-
 export const fetchEventsSince = async (
   connection: Connection,
   createdGte: number,
   types: string[] | undefined,
-): Promise<{ events: StripeEvent[]; truncated: boolean }> => {
+): Promise<{
+  events: StripeEvent[];
+  truncated: boolean;
+}> => {
   const client = createStripeClient({ stripeConnection: connection });
   const events: StripeEvent[] = [];
   let startingAfter: string | undefined;

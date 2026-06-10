@@ -7,7 +7,6 @@ export interface CreateTimeEntryBody {
   assignee: number | undefined;
   tid: string;
 }
-
 interface Tag {
   name: string;
   tag_bg: string;

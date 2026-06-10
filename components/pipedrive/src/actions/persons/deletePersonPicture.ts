@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, personIdInput } from "../../inputs";
-
 export const deletePersonPicture = action({
   display: {
     label: "Delete Person Picture",

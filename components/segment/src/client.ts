@@ -1,12 +1,10 @@
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { createClient as createHttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { apiKey, segmentOAuth } from "./connections";
-
 export const validateConnection = (connection: Connection) => {
   if (connection.key !== apiKey.key && connection.key !== segmentOAuth.key) {
     throw new ConnectionError(connection, "Unknown Connection type provided.");
   }
-
   if (
     !connection.fields.apiKey &&
     !connection.fields.subdomain &&
@@ -19,7 +17,6 @@ export const validateConnection = (connection: Connection) => {
     );
   }
 };
-
 export const getHeaders = (connection: Connection) => {
   if (connection.key === apiKey.key) {
     const { subdomain, apiKey } = connection.fields;
@@ -33,7 +30,6 @@ export const getHeaders = (connection: Connection) => {
       Authorization: `Bearer ${util.types.toString(apiKey)}`,
     };
   }
-
   if (connection.key === segmentOAuth.key) {
     const { accessToken } = connection.fields;
     if (!accessToken) {
@@ -46,10 +42,8 @@ export const getHeaders = (connection: Connection) => {
       Authorization: `Bearer ${util.types.toString(accessToken)}`,
     };
   }
-
   throw new ConnectionError(connection, "Unknown Connection type provided.");
 };
-
 export const createClient = (
   connection: Connection,
   region: string,
@@ -58,7 +52,6 @@ export const createClient = (
   validateConnection(connection);
   const headers = getHeaders(connection);
   const baseUrl = `https://${region}.segmentapis.com/`;
-
   const client = createHttpClient({
     baseUrl,
     headers,

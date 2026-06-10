@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createV3Client } from "../../connections/auth";
 import { refreshWebhookExamplePayload } from "../../examplePayloads";
 import { connectionInput, webhookIdInput } from "../../inputs";
-
 export const refreshWebhook = action({
   display: {
     label: "Refresh Webhook",
@@ -13,7 +12,10 @@ export const refreshWebhook = action({
     webhookId: { ...webhookIdInput, comments: "ID of the webhook to refresh" },
   },
   perform: async (context, params) => {
-    const client = await createV3Client(params.jiraConnection, context.debug.enabled);
+    const client = await createV3Client(
+      params.jiraConnection,
+      context.debug.enabled,
+    );
     const { data } = await client.put("/webhook/refresh", {
       webhookIds: [params.webhookId],
     });

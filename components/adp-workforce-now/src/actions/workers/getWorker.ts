@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getWorkerResponse } from "../../examplePayloads";
 import { $select, aoid, connection } from "../../inputs";
-
 export const getWorker = action({
   display: {
     label: "Get Worker",

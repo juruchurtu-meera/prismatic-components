@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { suspendUserExamplePayload } from "../../examplePayloads/users";
 import { suspendUserInputs } from "../../inputs/users";
-
 export const suspendUser = action({
   display: {
     label: "Suspend User",
@@ -12,7 +11,6 @@ export const suspendUser = action({
   perform: async (context, { connection, id }) => {
     const client = await createClient(connection, context.debug.enabled);
     await client.post(`/users/${encodeURIComponent(id)}/lifecycle/suspend`);
-
     return {
       data: {
         id,

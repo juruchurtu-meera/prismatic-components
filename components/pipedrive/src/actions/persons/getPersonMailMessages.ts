@@ -6,7 +6,6 @@ import {
   paginationStartInput,
   personIdInput,
 } from "../../inputs";
-
 export const getPersonMailMessages = action({
   display: {
     label: "Get Person Mail Messages",

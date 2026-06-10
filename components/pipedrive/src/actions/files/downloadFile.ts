@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, fileIdInput } from "../../inputs";
-
 export const downloadFile = action({
   display: {
     label: "Download File",

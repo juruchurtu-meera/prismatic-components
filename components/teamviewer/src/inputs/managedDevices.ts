@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanString } from "../util";
 import { defaultInputs, defaultListActionsInputs, fetchAll } from "./general";
-
 const paginationToken = input({
   label: "Pagination Token",
   type: "string",
@@ -12,13 +11,11 @@ const paginationToken = input({
   placeholder: "paginationToken123",
   clean: cleanString,
 });
-
 export const listManagedDevicesInputs = {
   paginationToken,
   fetchAll,
   ...defaultListActionsInputs,
 };
-
 const managedDeviceId = input({
   label: "Managed Device ID",
   type: "string",
@@ -29,12 +26,10 @@ const managedDeviceId = input({
   dataSource: "selectManagedDevice",
   clean: util.types.toString,
 });
-
 export const getManagedDeviceInputs = {
   managedDeviceId,
   ...defaultInputs,
 };
-
 export const deleteManagedDeviceInputs = {
   managedDeviceId: {
     ...managedDeviceId,
@@ -42,7 +37,6 @@ export const deleteManagedDeviceInputs = {
   },
   ...defaultInputs,
 };
-
 const name = input({
   label: "Name",
   type: "string",
@@ -52,7 +46,6 @@ const name = input({
   placeholder: "My Device",
   clean: cleanString,
 });
-
 const teamviewerPolicyId = input({
   label: "TeamViewer Policy ID",
   type: "string",
@@ -63,7 +56,6 @@ const teamviewerPolicyId = input({
   dataSource: "selectPolicy",
   clean: cleanString,
 });
-
 const managedGroupId = input({
   label: "Managed Group ID",
   type: "string",
@@ -73,7 +65,6 @@ const managedGroupId = input({
   placeholder: "123456",
   clean: cleanString,
 });
-
 export const updateManagedDeviceInputs = {
   managedDeviceId,
   name,

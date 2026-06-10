@@ -75,7 +75,6 @@ import {
 import { Functions } from "@intacct/intacct-sdk";
 import type { AbstractVendor } from "@intacct/intacct-sdk/dist/Functions/AccountsPayable";
 import { createVendorPayload } from "../examplePayloads/createVendorPayload";
-
 export const createVendor = action({
   display: {
     label: "Create Vendor",
@@ -153,7 +152,6 @@ export const createVendor = action({
     },
   ) => {
     const createVendor = new Functions.AccountsPayable.VendorCreate();
-
     assignParametersToObject(createVendor, {
       vendorId: vendorIdInput,
       vendorName: vendorNameInput,
@@ -242,7 +240,6 @@ export const createVendor = action({
       restrictedDepartments: restrictedDepartmentsInput,
       customFields: customFieldsInput,
     } as unknown as AbstractVendor);
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(createVendor, null, 2));
     }

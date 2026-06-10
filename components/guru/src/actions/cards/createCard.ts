@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getGuruClient } from "../../client";
 import { createCardInputs } from "../../inputs";
 import { createCardPayload } from "../../examplePayloads";
-
 export const createCard = action({
   display: {
     label: "Create Card",
@@ -20,7 +19,6 @@ export const createCard = action({
     },
   ) => {
     const client = getGuruClient(connection, context.debug.enabled);
-
     const requestBody = {
       preferredPhrase: cardTitle,
       content: cardContent,
@@ -31,9 +29,7 @@ export const createCard = action({
       },
       ...additionalProperties,
     };
-
     const { data } = await client.post("/cards", requestBody);
-
     return { data };
   },
   inputs: createCardInputs,

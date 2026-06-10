@@ -3,7 +3,6 @@ import { connectionInput, topicDescription, topicName } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { Topic } from "../../types";
 import { createTopicPayload } from "../../examplePayloads";
-
 export const createTopic = action({
   display: {
     label: "Create Topic",
@@ -20,12 +19,9 @@ export const createTopic = action({
         description: topicDescription,
       },
     };
-
-    const { data } = await client.post<{ topic: Topic }>(
-      "/community/topics",
-      payload,
-    );
-
+    const { data } = await client.post<{
+      topic: Topic;
+    }>("/community/topics", payload);
     return {
       data,
     };

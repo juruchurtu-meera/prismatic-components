@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { updateUserInputs } from "../../inputs/users";
 import { createClient } from "../../client";
 import { NO_CONTENT_RESPONSE } from "../../constants";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -44,7 +43,6 @@ export const updateUser = action({
       sso_customer_id,
       tfa_enforced,
     });
-
     return {
       data: NO_CONTENT_RESPONSE,
     };

@@ -1,7 +1,6 @@
 import { action, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connection, fileId, fileName, folderId } from "../inputs";
-
 export const copyFile = action({
   display: {
     label: "Copy File",
@@ -17,7 +16,6 @@ export const copyFile = action({
       },
       supportsAllDrives: true,
     });
-
     return {
       data,
     };
@@ -25,5 +23,4 @@ export const copyFile = action({
   inputs: { connection, fileId, fileName, folderId },
   examplePayload: { data: { name: "example", description: "example" } },
 });
-
 export default copyFile;

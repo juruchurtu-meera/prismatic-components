@@ -4,7 +4,6 @@ import { selectAssetObjectTypeExamplePayload } from "../examplePayloads";
 import { selectAssetObjectTypeInputs } from "../inputs";
 import type { AssetObjectType } from "../types";
 import { toSortedPicklist } from "../util";
-
 export const selectAssetObjectType = dataSource({
   display: {
     label: "Select Asset Object Type",

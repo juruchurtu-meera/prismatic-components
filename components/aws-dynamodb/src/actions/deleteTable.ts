@@ -3,7 +3,6 @@ import { awsRegion, connectionInput, tableName } from "../inputs";
 import { createDynamoClient } from "../auth";
 import { DeleteTableCommand } from "@aws-sdk/client-dynamodb";
 import { deleteTableExamplePayload } from "../examplePayloads";
-
 export const deleteTable = action({
   display: {
     label: "Delete Table",

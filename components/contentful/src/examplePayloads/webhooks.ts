@@ -44,9 +44,6 @@ export const updateWebhookExamplePayload = {
   filters: [],
   active: true,
 };
-
 export const createWebhookExamplePayload = updateWebhookExamplePayload;
-
 export const getWebhookExamplePayload = updateWebhookExamplePayload;
-
 export const listWebhooksExamplePayload = [updateWebhookExamplePayload];

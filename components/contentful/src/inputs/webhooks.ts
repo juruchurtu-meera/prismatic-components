@@ -1,8 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, spaceId, webhookTopics } from "./common";
-
-
-
 const webhookUrl = input({
   label: "URL",
   type: "string",
@@ -12,7 +9,6 @@ const webhookUrl = input({
   required: true,
   clean: util.types.toString,
 });
-
 const webhookName = input({
   label: "Name",
   type: "string",
@@ -23,7 +19,6 @@ const webhookName = input({
   required: true,
   clean: util.types.toString,
 });
-
 const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -34,9 +29,6 @@ const webhookId = input({
   clean: util.types.toString,
   dataSource: "selectWebhook",
 });
-
-
-
 export const createWebhookInputs = {
   connection,
   spaceId,
@@ -44,39 +36,24 @@ export const createWebhookInputs = {
   url: webhookUrl,
   topics: webhookTopics,
 };
-
-
-
 export const deleteInstancedWebhooksInputs = {
   connection,
   spaceId,
 };
-
-
-
 export const deleteWebhookInputs = {
   connection,
   spaceId,
   webhookId,
 };
-
-
-
 export const getWebhookInputs = {
   connection,
   spaceId,
   webhookId,
 };
-
-
-
 export const listWebhooksInputs = {
   connection,
   spaceId,
 };
-
-
-
 export const updateWebhookInputs = {
   connection,
   spaceId,

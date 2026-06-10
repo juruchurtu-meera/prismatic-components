@@ -9,7 +9,6 @@ import opportunities from "./actions/opportunities";
 import salesPersons from "./actions/salesPersons";
 import connections from "./connections";
 import dataSources from "./dataSources";
-
 export default component({
   documentationUrl: "https://prismatic.io/docs/components/marketo/",
   key: "marketo",

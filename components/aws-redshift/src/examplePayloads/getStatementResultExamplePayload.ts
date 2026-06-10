@@ -1,6 +1,7 @@
 import type { GetStatementResultCommandOutput } from "@aws-sdk/client-redshift-data";
-
-export const getStatementResultExamplePayload: { data: GetStatementResultCommandOutput } = {
+export const getStatementResultExamplePayload: {
+  data: GetStatementResultCommandOutput;
+} = {
   data: {
     $metadata: {
       httpStatusCode: 200,

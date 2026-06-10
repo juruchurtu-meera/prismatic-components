@@ -4,7 +4,6 @@ import { deleteBulkQueryJob } from "./deleteBulkQueryJob";
 import { getAllQueryJobInformation } from "./getAllQueryJobInformation";
 import { getQueryJobInformation } from "./getQueryJobInformation";
 import { getQueryJobResults } from "./getQueryJobResults";
-
 export default {
   abortBulkQueryJob,
   createBulkQueryJob,

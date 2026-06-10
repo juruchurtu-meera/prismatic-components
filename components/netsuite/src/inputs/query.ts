@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connectionInput, limitInput, offsetInput } from "./common";
-
 const suiteQLInput = input({
   label: "SuiteQL Payload",
   type: "code",
@@ -12,7 +11,6 @@ const suiteQLInput = input({
   clean: util.types.toString,
   default: "SELECT email, COUNT(*) as count FROM transaction GROUP BY email",
 });
-
 const keyInput = input({
   label: "Key Field",
   type: "string",
@@ -23,7 +21,6 @@ const keyInput = input({
     "The field name from returned items to use as the key for the picklist.",
   clean: util.types.toString,
 });
-
 const labelInput = input({
   label: "Label Field",
   type: "string",
@@ -34,18 +31,12 @@ const labelInput = input({
     "The field name from returned items to use as the label for the picklist.",
   clean: util.types.toString,
 });
-
-
-
-
-
 export const suiteQLQueryInputs = {
   connection: connectionInput,
   limitInput,
   offsetInput,
   suiteQLInput,
 };
-
 export const selectSuiteQlInputs = {
   connection: connectionInput,
   query: suiteQLInput,

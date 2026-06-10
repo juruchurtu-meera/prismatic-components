@@ -5,7 +5,6 @@ import type {
   WatchConfig,
 } from "../types";
 import { fillNotificationsBody } from "./general";
-
 export const enableNotificationChannel = async (
   client: HttpClient,
   params: EnableNotificationParams,
@@ -13,7 +12,6 @@ export const enableNotificationChannel = async (
   const watchConfig: WatchConfig = {
     channel_id: params.channelId,
   };
-
   fillNotificationsBody(
     {
       token: params.token,
@@ -26,14 +24,11 @@ export const enableNotificationChannel = async (
     },
     watchConfig,
   );
-
   const { data } = await client.post("/actions/watch", {
     watch: [watchConfig],
   });
-
   return data;
 };
-
 export const disableSpecificNotificationEvents = async (
   client: HttpClient,
   params: DisableSpecificNotificationParams,
@@ -43,14 +38,11 @@ export const disableSpecificNotificationEvents = async (
     channel_id: params.channelId,
     events: params.events,
   };
-
   if (params.notifyOnRelatedAction !== undefined) {
     watchConfig.notify_on_related_action = params.notifyOnRelatedAction;
   }
-
   const { data } = await client.patch("/actions/watch", {
     watch: [watchConfig],
   });
-
   return data;
 };

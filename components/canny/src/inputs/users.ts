@@ -8,7 +8,6 @@ import {
   fetchAll,
   limit,
 } from "./common";
-
 const userId = input({
   label: "User ID",
   type: "string",
@@ -19,7 +18,6 @@ const userId = input({
   placeholder: "Enter user ID",
   example: "553c3ef8b8cdcd1501ba9999",
 });
-
 const userEmail = input({
   label: "Email",
   type: "string",
@@ -29,7 +27,6 @@ const userEmail = input({
   placeholder: "Enter email",
   example: "jane@example.com",
 });
-
 const userName = input({
   label: "Name",
   type: "string",
@@ -39,11 +36,8 @@ const userName = input({
   placeholder: "Enter name",
   example: "Jane Smith",
 });
-
 export const listUsersInputs = { connection, fetchAll, cursor, limit };
-
 export const retrieveUserInputs = { connection, userId };
-
 const companies = input({
   label: "Companies",
   type: "code",
@@ -66,7 +60,6 @@ const companies = input({
     2,
   ),
 });
-
 export const createOrUpdateUserInputs = {
   connection,
   userEmail,
@@ -76,7 +69,5 @@ export const createOrUpdateUserInputs = {
   customFields,
   additionalFields,
 };
-
 export const deleteUserInputs = { connection, userId };
-
 export const selectUserInputs = { connection };

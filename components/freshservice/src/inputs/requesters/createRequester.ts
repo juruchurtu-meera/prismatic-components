@@ -12,7 +12,6 @@ import {
   secondaryEmails,
   workPhoneNumber,
 } from "./common";
-
 export const createRequesterInputs = {
   connection,
   firstName,

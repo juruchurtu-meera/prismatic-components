@@ -6,10 +6,8 @@ import type { PaginatedResponse } from "./interfaces/PaginatedResponse";
 import type { PaginationParams } from "./interfaces/PaginationParams";
 export const cleanStringInput = (value: unknown): string | undefined =>
   value ? util.types.toString(value) : undefined;
-
 export const cleanNumberInput = (value: unknown): number | undefined =>
   value ? util.types.toNumber(value) : undefined;
-
 export const validateConnection = (connection: Connection): void => {
   const connectionKeys = connections.map((c) => c.key);
   if (!connectionKeys.includes(connection.key)) {
@@ -19,31 +17,28 @@ export const validateConnection = (connection: Connection): void => {
     );
   }
 };
-
 export const getPaginatedResponse = async <T>(
   client: HttpClient,
   path: string,
   fetchAll: boolean,
   params: Record<string, unknown>,
-): Promise<{ data: PaginatedResponse<T> }> => {
+): Promise<{
+  data: PaginatedResponse<T>;
+}> => {
   const finalParams: PaginationParams = fetchAll
     ? { limit: MAX_LIMIT }
     : { ...params };
   const response = await client.get<PaginatedResponse<T>>(path, {
     params: finalParams,
   });
-
   if (!fetchAll) {
     return response;
   }
-
   const firstId = response.data.first_id;
-
   const data: T[] = response.data.data;
   let hasMore = response.data.has_more;
   let lastId = response.data.last_id;
   finalParams.after_id = lastId ?? undefined;
-
   while (hasMore) {
     const newResponse = await client.get<PaginatedResponse<T>>(path, {
       params: finalParams,
@@ -53,7 +48,6 @@ export const getPaginatedResponse = async <T>(
     lastId = newResponse.data.last_id;
     finalParams.after_id = lastId ?? undefined;
   }
-
   return {
     data: {
       data,

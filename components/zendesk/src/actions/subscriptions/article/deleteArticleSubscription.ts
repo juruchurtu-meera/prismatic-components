@@ -6,7 +6,6 @@ import {
   subscriptionId,
 } from "../../../inputs";
 import { rawHttpClient } from "../../../auth";
-
 export const deleteArticleSubscription = action({
   display: {
     label: "Delete Article Subscription",
@@ -20,9 +19,7 @@ export const deleteArticleSubscription = action({
     const url = locale
       ? `/help_center/${locale}/articles/${articleId}/subscriptions/${subscriptionId}`
       : `/help_center/articles/${articleId}/subscriptions/${subscriptionId}`;
-
     const { data } = await client.delete(url);
-
     return {
       data,
     };

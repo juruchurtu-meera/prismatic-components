@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { setOrganizationPropertyExamplePayload } from "../../examplePayloads";
 import { setOrganizationPropertyInputs } from "../../inputs";
-
 export const setOrganizationProperty = action({
   display: {
     label: "Set Organization Property",

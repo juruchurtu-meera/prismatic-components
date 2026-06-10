@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { assignTechniciansResponse as unassignTechniciansResponse } from "../../examplePayloads";
 import { connection, jobAppointmentId, technicianIds } from "../../inputs";
-
 export const unassignTechnicians = action({
   display: {
     label: "Unassign Technician to Appointment",

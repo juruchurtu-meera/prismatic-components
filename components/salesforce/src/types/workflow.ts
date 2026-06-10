@@ -1,4 +1,3 @@
-
 export const filterOperationDescriptions = {
   equals: "Equals",
   notEqual: "Not Equal",
@@ -13,26 +12,16 @@ export const filterOperationDescriptions = {
   excludes: "Excludes",
 };
 export type FilterOperation = keyof typeof filterOperationDescriptions;
-
-
-
 export interface FilterItem {
-  
   field: string;
-  
   operation: FilterOperation;
-  
   value?: string;
-  
   valueField?: string;
 }
-
 export interface WorkflowAction {
   type: "OutboundMessage";
-  
   name: string;
 }
-
 export interface CreateWorkflowOutboundMessage {
   fullName: string;
   name: string;
@@ -42,7 +31,6 @@ export interface CreateWorkflowOutboundMessage {
   fields: string[];
   apiVersion: number;
 }
-
 export interface CreateWorkflowRule {
   fullName: string;
   active: boolean;

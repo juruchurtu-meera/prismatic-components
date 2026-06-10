@@ -6,9 +6,7 @@ import {
 import { getHeaders, validateConnection } from "../client";
 import { connectionInput, region } from "../inputs";
 import { handleErrors } from "../util";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -42,5 +40,4 @@ const rawRequest = action({
     return { data };
   },
 });
-
 export default rawRequest;

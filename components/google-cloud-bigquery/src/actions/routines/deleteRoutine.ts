@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, datasetId, projectId, routineId } from "../../inputs";
-
 export const deleteRoutine = action({
   display: {
     description:

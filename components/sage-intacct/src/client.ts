@@ -6,13 +6,11 @@ import {
   createClient,
 } from "@prismatic-io/spectral/dist/clients/http";
 import { API_URL } from "./constants";
-
 export const validateConnection = (connection: Connection) => {
   if (connection.key !== sageIntacctConnection.key) {
     throw new ConnectionError(connection, "Invalid connection");
   }
 };
-
 export const createSdkClient = (connection: Connection): OnlineClient => {
   validateConnection(connection);
   const clientConfig = new ClientConfig();
@@ -23,10 +21,8 @@ export const createSdkClient = (connection: Connection): OnlineClient => {
   clientConfig.userPassword = connection.fields.userPassword as string;
   if (connection.fields.entityId)
     clientConfig.entityId = connection.fields.entityId as string;
-
   return new OnlineClient(clientConfig);
 };
-
 export const createHttpClient = (
   connection: Connection,
   clientProps: ClientProps,

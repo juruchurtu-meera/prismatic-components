@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-05
+
+Added the **New and Updated Orders** polling trigger that checks for orders created or updated since the last run using ShipBob's order update date filter
+
 ### 2026-05-28
 
 Updated **List Orders**, **List Products**, **List Product Inventory**, **List Warehouses**, and **List Webhooks** to use a unified pagination helper that correctly traverses all pages when fetching results

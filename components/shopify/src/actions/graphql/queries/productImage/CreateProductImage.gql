@@ -1,7 +1,9 @@
 mutation ProductImageCreate($id: ID!, $originalSource: String!, $alt: String!) {
   productCreateMedia(
     productId: $id
-    media: [{ mediaContentType: IMAGE, originalSource: $originalSource, alt: $alt }]
+    media: [
+      { mediaContentType: IMAGE, originalSource: $originalSource, alt: $alt }
+    ]
   ) {
     media {
       ... on MediaImage {

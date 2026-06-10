@@ -4,7 +4,6 @@ import { gql } from "graphql-request";
 import { listChangeOrdersInputs } from "../../inputs/orders";
 import { N_FIRST_RESULTS_FALLBACK } from "../../constants";
 import { listChangeOrdersExamplePayload } from "../../examplePayloads";
-
 export const listChangeOrders = action({
   display: {
     label: "List Change Orders",
@@ -68,9 +67,7 @@ export const listChangeOrders = action({
       first: first ?? N_FIRST_RESULTS_FALLBACK,
       orderBy,
     };
-
     const data = await client.request(query, variables);
-
     return { data };
   },
   examplePayload: listChangeOrdersExamplePayload,

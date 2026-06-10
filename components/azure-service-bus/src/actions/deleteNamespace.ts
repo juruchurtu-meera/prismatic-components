@@ -8,7 +8,6 @@ import {
   resourceGroupName,
   subscriptionId,
 } from "../inputs";
-
 export const deleteNamespace = action({
   display: {
     label: "Delete Namespace",
@@ -39,5 +38,4 @@ export const deleteNamespace = action({
     subscriptionId,
   },
 });
-
 export default { deleteNamespace };

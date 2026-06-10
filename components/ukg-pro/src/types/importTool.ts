@@ -1,18 +1,9 @@
-
-
-
-
-
-
-
 export interface ImportXmlDataResponse {
   stagingId: string;
   dateTimeCreated: string;
   fileName: string;
   message?: string;
 }
-
-
 export interface ImportStatusResponse {
   stagingId: string;
   status: "Pending" | "Processing" | "Completed" | "Failed";
@@ -27,8 +18,6 @@ export interface ImportStatusResponse {
   failedRecords?: number;
   percentComplete?: number;
 }
-
-
 export interface TransactionStatusResponse {
   stagingId: string;
   transactionName: string;
@@ -39,8 +28,6 @@ export interface TransactionStatusResponse {
   dateTimeCompleted?: string;
   fileName: string;
 }
-
-
 export interface FileStatusResponse {
   stagingId: string;
   fileName: string;
@@ -54,16 +41,12 @@ export interface FileStatusResponse {
   validationStatusCode?: string;
   validationErrors?: ValidationError[];
 }
-
-
 export interface ValidationError {
   recordNumber?: number;
   fieldName?: string;
   errorCode: string;
   errorMessage: string;
 }
-
-
 export interface ImportResultItem {
   recordNumber: number;
   employeeNumber?: string;
@@ -73,16 +56,12 @@ export interface ImportResultItem {
   message?: string;
   errorCode?: string;
 }
-
-
 export interface ImportSummary {
   totalRecords: number;
   successfulRecords: number;
   failedRecords: number;
   warningRecords: number;
 }
-
-
 export interface FileSummaryResponse {
   stagingId: string;
   fileName: string;

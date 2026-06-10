@@ -4,11 +4,11 @@ import { companyId } from "../inputs/accounts/getAccountsInputs";
 import { connectionInput } from "../inputs/general";
 import type { ItemLedgerEntry, MultipleItemsResponse } from "../interfaces";
 import { toSortedPicklist } from "./helpers";
-
 export const selectItemLedgerEntry = dataSource({
   display: {
     label: "Select Item Ledger Entry",
-    description: "A picklist of item ledger entries in your Business Central organization.",
+    description:
+      "A picklist of item ledger entries in your Business Central organization.",
   },
   inputs: {
     connection: connectionInput,
@@ -19,7 +19,6 @@ export const selectItemLedgerEntry = dataSource({
     const { data } = await client.get<MultipleItemsResponse<ItemLedgerEntry[]>>(
       `/companies(${companyId})/itemLedgerEntries`,
     );
-
     return {
       result: toSortedPicklist(data.value, (entry) => ({
         key: entry.id,
@@ -29,6 +28,11 @@ export const selectItemLedgerEntry = dataSource({
   },
   dataSourceType: "picklist",
   examplePayload: {
-    result: [{ label: "DOC-001 - Sale of Item", key: "5d115c9c-44e3-ea11-bb43-000d3a2feca1" }],
+    result: [
+      {
+        label: "DOC-001 - Sale of Item",
+        key: "5d115c9c-44e3-ea11-bb43-000d3a2feca1",
+      },
+    ],
   },
 });

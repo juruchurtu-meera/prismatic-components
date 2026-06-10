@@ -4,7 +4,6 @@ import { rawRequest } from "./rawRequest";
 import attendees from "./attendees";
 import userSubscriptions from "./userSubscriptions";
 import webhooks from "./webhooks";
-
 export default {
   ...webinars,
   ...registrants,

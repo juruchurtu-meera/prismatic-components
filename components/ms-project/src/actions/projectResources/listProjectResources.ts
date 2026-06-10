@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createProjectsClient } from "../../client";
 import { connection, guId } from "../../inputs";
-
 export const listProjectResources = action({
   display: {
     label: "list Project Resources",
@@ -14,13 +13,13 @@ export const listProjectResources = action({
       },
       context.debug.enabled,
     );
-    const { data } = await client.get(`/Projects('${params.guId}')/ProjectResources`);
-
+    const { data } = await client.get(
+      `/Projects('${params.guId}')/ProjectResources`,
+    );
     return {
       data,
     };
   },
   inputs: { connection, guId },
 });
-
 export default listProjectResources;

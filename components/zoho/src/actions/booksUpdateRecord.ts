@@ -9,7 +9,6 @@ import {
   parentRecordId,
   recordId,
 } from "../inputs";
-
 const booksUpdateRecord = action({
   display: {
     label: "Books - Update Record",
@@ -41,27 +40,28 @@ const booksUpdateRecord = action({
       fieldValues,
     },
   ) => {
-    const booksClient = createClient(connection, ClientType.BOOKS, context.debug.enabled);
-
+    const booksClient = createClient(
+      connection,
+      ClientType.BOOKS,
+      context.debug.enabled,
+    );
     const payload = {
-      ...util.types.keyValPairListToObject((dynamicValues as KeyValuePair[]) || []),
+      ...util.types.keyValPairListToObject(
+        (dynamicValues as KeyValuePair[]) || [],
+      ),
       ...fieldValues,
     };
-
     const url =
       parentRecordType && parentRecordId
         ? `/${parentRecordType}/${parentRecordId}/${recordType}/${recordId}`
         : `/${recordType}/${recordId}`;
-
     const { data } = await booksClient.request({
       method: "PUT",
       url,
       data: payload,
     });
-
     return data;
   },
   examplePayload: booksUpdateRecordExamplePayload,
 });
-
 export default booksUpdateRecord;

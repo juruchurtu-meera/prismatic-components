@@ -15,7 +15,6 @@ import {
   until,
 } from "../../inputs";
 import { fetchAllWithPagination } from "../../util/fetchAllWithPagination";
-
 export const listNotifications = action({
   display: {
     label: "List Notifications",
@@ -47,7 +46,6 @@ export const listNotifications = action({
       filter,
       "include[]": include,
     };
-
     if (fetchAll) {
       return {
         data: await fetchAllWithPagination({
@@ -58,7 +56,6 @@ export const listNotifications = action({
         }),
       };
     }
-
     const { data } = await client.get(ENDPOINTS.NOTIFICATIONS, {
       params,
     });

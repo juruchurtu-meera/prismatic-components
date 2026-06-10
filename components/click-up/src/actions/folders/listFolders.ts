@@ -2,11 +2,8 @@ import { action } from "@prismatic-io/spectral";
 import { createClickUpClient } from "../../client";
 import { listFoldersExamplePayload } from "../../examplePayloads";
 import { connectionInput, getArchived, getSpaceId } from "../../inputs";
-
 const archived = getArchived(false, "Archived?");
-
 const spaceId = getSpaceId(true);
-
 export const listFolders = action({
   display: {
     label: "List Folders",
@@ -15,16 +12,15 @@ export const listFolders = action({
   examplePayload: listFoldersExamplePayload,
   perform: async (context, { connection, spaceId, archived }) => {
     const client = createClickUpClient(connection, context.debug.enabled);
-    const params: { archived?: unknown } = {};
-
+    const params: {
+      archived?: unknown;
+    } = {};
     if (archived !== undefined) {
       params.archived = archived;
     }
-
     const { data } = await client.get(`/space/${spaceId}/folder`, {
       params,
     });
-
     return {
       data,
     };

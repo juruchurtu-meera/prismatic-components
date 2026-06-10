@@ -3,11 +3,11 @@ import { getMsBusinessCentralClient } from "../../client";
 import { createPurchaseOrderLineExamplePayload as examplePayload } from "../../examplePayloads";
 import { createPurchaseOrderLineInputs as inputs } from "../../inputs/purchaseOrderLines/createPurchaseOrderLineInputs";
 import type { PurchaseOrderLine } from "../../interfaces";
-
 export const createPurchaseOrderLine = action({
   display: {
     label: "Create Purchase Order Line",
-    description: "Creates a purchase order line object in your Business Central organization.",
+    description:
+      "Creates a purchase order line object in your Business Central organization.",
   },
   perform: async (
     context,
@@ -25,7 +25,11 @@ export const createPurchaseOrderLine = action({
       additionalProperties,
     },
   ) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const payload = {
       ...additionalProperties,
       documentId,
@@ -37,12 +41,10 @@ export const createPurchaseOrderLine = action({
       quantity,
       directUnitCost,
     };
-
     const { data } = await client.post<PurchaseOrderLine>(
       `/companies(${companyId})/purchaseOrderLines`,
       payload,
     );
-
     return { data };
   },
   inputs,

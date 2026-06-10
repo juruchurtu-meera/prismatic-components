@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const getTopicExamplePayload = {
   data: {
     name: "projects/my-gcp-project-123456/topics/order-events",
@@ -32,11 +22,8 @@ export const getTopicExamplePayload = {
     alreadyExisted: false,
   },
 };
-
 export const createTopicExamplePayload = getTopicExamplePayload;
-
 export const updateTopicExamplePayload = getTopicExamplePayload;
-
 export const listTopicsExamplePayload = {
   data: {
     topics: [
@@ -66,15 +53,9 @@ export const listTopicsExamplePayload = {
     nextPageToken: "CAESGwoKcHJvamVjdHMvMRIMc3Vic2NyaXB0aW9ucw",
   },
 };
-
 export const deleteTopicExamplePayload = {
   data: {},
 };
-
-
-
-
-
 export const getSubscriptionExamplePayload = {
   data: {
     name: "projects/my-gcp-project-123456/subscriptions/order-processor",
@@ -85,7 +66,8 @@ export const getSubscriptionExamplePayload = {
         "x-goog-version": "v1",
       },
       oidcToken: {
-        serviceAccountEmail: "my-service-account@my-project.iam.gserviceaccount.com",
+        serviceAccountEmail:
+          "my-service-account@my-project.iam.gserviceaccount.com",
         audience: "https://example.com",
       },
     },
@@ -104,7 +86,8 @@ export const getSubscriptionExamplePayload = {
     },
     filter: 'attributes.environment = "production"',
     deadLetterPolicy: {
-      deadLetterTopic: "projects/my-gcp-project-123456/topics/dead-letter-topic",
+      deadLetterTopic:
+        "projects/my-gcp-project-123456/topics/dead-letter-topic",
       maxDeliveryAttempts: 5,
     },
     retryPolicy: {
@@ -117,11 +100,8 @@ export const getSubscriptionExamplePayload = {
     state: "ACTIVE",
   },
 };
-
 export const createSubscriptionExamplePayload = getSubscriptionExamplePayload;
-
 export const updateSubscriptionExamplePayload = getSubscriptionExamplePayload;
-
 export const listSubscriptionsExamplePayload = {
   data: {
     subscriptions: [
@@ -155,20 +135,15 @@ export const listSubscriptionsExamplePayload = {
     nextPageToken: "CAESGwoKcHJvamVjdHMvMRIMc3Vic2NyaXB0aW9ucw",
   },
 };
-
 export const deleteSubscriptionExamplePayload = {
   data: {},
 };
-
-
-
-
-
 export const pullMessagesExamplePayload = {
   data: {
     receivedMessages: [
       {
-        ackId: "RUFeQBJMNxkESVMrQwsqWBFOBCEhPjA-RVNEUAYWLF1GSFE3BjYXfHhRDk9eIz81IChFEhQKFF",
+        ackId:
+          "RUFeQBJMNxkESVMrQwsqWBFOBCEhPjA-RVNEUAYWLF1GSFE3BjYXfHhRDk9eIz81IChFEhQKFF",
         message: {
           data: "eyJvcmRlcklkIjogIjEyMzQ1IiwgImN1c3RvbWVySWQiOiAiNjc4OTAiLCAidG90YWwiOiAxMjMuNDV9",
           attributes: {
@@ -182,7 +157,8 @@ export const pullMessagesExamplePayload = {
         },
       },
       {
-        ackId: "RUFeQBJMNxkESVMrQwsqWBFOBCEhPjA-RVNEUAYWLF1GSFE3BjYXfHhRDk9eIz81IChFEhQKFF",
+        ackId:
+          "RUFeQBJMNxkESVMrQwsqWBFOBCEhPjA-RVNEUAYWLF1GSFE3BjYXfHhRDk9eIz81IChFEhQKFF",
         message: {
           data: "eyJvcmRlcklkIjogIjEyMzQ2IiwgImN1c3RvbWVySWQiOiAiNjc4OTEiLCAidG90YWwiOiA0NTYuNzh9",
           attributes: {
@@ -198,11 +174,6 @@ export const pullMessagesExamplePayload = {
     ],
   },
 };
-
-
-
-
-
 export const getPolicyExamplePayload = {
   data: {
     version: 3,
@@ -216,7 +187,9 @@ export const getPolicyExamplePayload = {
       },
       {
         role: "roles/pubsub.subscriber",
-        members: ["serviceAccount:subscriber@my-project.iam.gserviceaccount.com"],
+        members: [
+          "serviceAccount:subscriber@my-project.iam.gserviceaccount.com",
+        ],
       },
       {
         role: "roles/pubsub.viewer",
@@ -224,28 +197,18 @@ export const getPolicyExamplePayload = {
         condition: {
           title: "Production environment only",
           description: "Allow access only in production",
-          expression: 'resource.name.startsWith("projects/my-gcp-project-123456/")',
+          expression:
+            'resource.name.startsWith("projects/my-gcp-project-123456/")',
         },
       },
     ],
     etag: "BwYFgrUAAAA=",
   },
 };
-
 export const setPolicyExamplePayload = getPolicyExamplePayload;
-
-
-
-
-
 export const updatePushConfigExamplePayload = {
   data: {},
 };
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     name: "projects/my-gcp-project-123456/topics/order-events",
@@ -254,11 +217,6 @@ export const rawRequestExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const createWebhookSubscriptionExamplePayload = {
   data: {
     name: "projects/my-gcp-project-123456/subscriptions/webhook-subscriber",

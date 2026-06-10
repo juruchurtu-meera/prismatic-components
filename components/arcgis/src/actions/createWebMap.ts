@@ -35,7 +35,6 @@ import {
   widgets,
 } from "../inputs";
 import { cleanUndefinedAttributes, getIdentityManager } from "../utils";
-
 export const createWebMap = action({
   display: {
     label: "Create Web Map",
@@ -78,7 +77,6 @@ export const createWebMap = action({
     },
   ) => {
     const authentication = await getIdentityManager(connection);
-
     const mapProperties = cleanUndefinedAttributes({
       applicationProperties: {
         viewing: {
@@ -126,11 +124,9 @@ export const createWebMap = action({
       version,
       widgets,
     });
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify({ mapProperties }));
     }
-
     const data = await createItem({
       item: {
         title: webMapName,
@@ -139,7 +135,6 @@ export const createWebMap = action({
       authentication,
       text: JSON.stringify(mapProperties),
     });
-
     return {
       data,
     };

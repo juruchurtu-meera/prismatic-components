@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 export const getAccessibleCustomFieldsExamplePayload = {
   data: {
     fields: [
@@ -51,11 +39,9 @@ export const getAccessibleCustomFieldsExamplePayload = {
     ],
   },
 };
-
 export const setCustomFieldValueExamplePayload = {
   data: null,
 };
-
 export const removeCustomFieldValueExamplePayload = {
   data: null,
 };

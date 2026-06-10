@@ -10,7 +10,6 @@ import {
   limit,
 } from "../inputs";
 import { checkDebug, fetchAllSharedFolders, handleDropboxError } from "../util";
-
 export const listSharingFolder = action({
   display: {
     label: "List Shared Folders",
@@ -19,7 +18,6 @@ export const listSharingFolder = action({
   perform: async (context, params) => {
     checkDebug(params, context);
     const dbx = createAuthorizedClient(params.dropboxConnection);
-
     try {
       const data = await fetchAllSharedFolders(dbx, {
         limit: params.limit,

@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../../util";
-
 export const levelId = input({
   label: "Inventory Level ID",
   type: "string",
@@ -10,7 +9,6 @@ export const levelId = input({
   placeholder: "Enter inventory level ID",
   clean: util.types.toString,
 });
-
 export const inventoryItemIds = input({
   label: "Inventory Item IDs",
   type: "string",
@@ -21,7 +19,6 @@ export const inventoryItemIds = input({
   placeholder: "Enter inventory item IDs",
   clean: cleanStringInput,
 });
-
 export const locationIds = input({
   label: "Location IDs",
   type: "string",

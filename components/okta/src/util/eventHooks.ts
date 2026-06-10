@@ -12,17 +12,21 @@ import type {
   EventHookDeletion,
   Webhook,
 } from "../interfaces/webhook";
-import { EVENT_WEBHOOK_CHANNEL_TYPE, EVENT_WEBHOOK_TYPE, EVENT_WEBHOOK_VERSION } from "./constants";
-
+import {
+  EVENT_WEBHOOK_CHANNEL_TYPE,
+  EVENT_WEBHOOK_TYPE,
+  EVENT_WEBHOOK_VERSION,
+} from "./constants";
 export const listAllEventHooksFN = async (client: HttpClient) => {
   const { data } = await client.get<Webhook[]>("/eventHooks");
   return data;
 };
-
-export const deactivateEventHookFN = async (client: HttpClient, eventHookId: string) => {
+export const deactivateEventHookFN = async (
+  client: HttpClient,
+  eventHookId: string,
+) => {
   return await client.post(`/eventHooks/${eventHookId}/lifecycle/deactivate`);
 };
-
 export const deleteEventHookById = async (
   client: HttpClient,
   eventHookId: string,
@@ -31,11 +35,12 @@ export const deleteEventHookById = async (
   await client.delete(`/eventHooks/${eventHookId}`);
   return { id: eventHookId, deleted: true };
 };
-
-export const deleteAllEventHooksFN = async (client: HttpClient, eventHookUrl?: string) => {
+export const deleteAllEventHooksFN = async (
+  client: HttpClient,
+  eventHookUrl?: string,
+) => {
   const eventHooks = await listAllEventHooksFN(client);
   const deletedHooks: EventHookDeletion[] = [];
-
   await Promise.all(
     eventHooks.map(async (hook) => {
       if (!eventHookUrl || hook.channel.config.uri === eventHookUrl) {
@@ -44,18 +49,17 @@ export const deleteAllEventHooksFN = async (client: HttpClient, eventHookUrl?: s
       }
     }),
   );
-
   return deletedHooks;
 };
-
 export const verifyEventHookFN = async (
   client: HttpClient,
   eventHookId: string,
 ): Promise<Webhook> => {
-  const { data } = await client.post<Webhook>(`/eventHooks/${eventHookId}/lifecycle/verify`);
+  const { data } = await client.post<Webhook>(
+    `/eventHooks/${eventHookId}/lifecycle/verify`,
+  );
   return data;
 };
-
 export const createEventHookFN = async (
   client: HttpClient,
   {
@@ -69,11 +73,11 @@ export const createEventHookFN = async (
   }: CreateEventHookData,
 ) => {
   if (!eventHookItemsCode && eventHookItems.length === 0) {
-    throw new Error("You must provide either Event Hook Items or Dynamic Event Hook Items.");
+    throw new Error(
+      "You must provide either Event Hook Items or Dynamic Event Hook Items.",
+    );
   }
-
   const items = eventHookItemsCode ? eventHookItemsCode : eventHookItems;
-
   const body = {
     name: eventHookName,
     events: {
@@ -94,7 +98,6 @@ export const createEventHookFN = async (
   const { data } = await client.post<Webhook>(`/eventHooks`, body);
   return data;
 };
-
 export const createEventHookTrigger = async (
   context: ActionContext,
   {
@@ -120,11 +123,11 @@ export const createEventHookTrigger = async (
     eventHookUrlHeaders,
     eventHookFilter,
   });
-
   await verifyEventHookFN(client, id);
-  context.logger.info(`Created event hook ${id} for flow ${context.flow.name} (${flowId})`);
+  context.logger.info(
+    `Created event hook ${id} for flow ${context.flow.name} (${flowId})`,
+  );
 };
-
 export const deleteEventHookTrigger = async (
   context: ActionContext,
   { connection }: CreateEventHookTriggerData,
@@ -138,14 +141,14 @@ export const deleteEventHookTrigger = async (
     `Deleted ${deletedEventHooks.length} event hooks associated with flow ${context.flow.name} (${flowId})`,
   );
 };
-
 export const eventHookPerformFN = async (
   _context: ActionContext,
   payload: TriggerPayload,
   _params: Record<string, unknown>,
 ) => {
   const headers = payload.headers || {};
-  const verification = util.types.lowerCaseHeaders(headers)["x-okta-verification-challenge"];
+  const verification =
+    util.types.lowerCaseHeaders(headers)["x-okta-verification-challenge"];
   const response: HttpResponse = {
     statusCode: 200,
     contentType: "application/json",
@@ -155,7 +158,6 @@ export const eventHookPerformFN = async (
         })
       : "",
   };
-
   return Promise.resolve({
     payload,
     response,

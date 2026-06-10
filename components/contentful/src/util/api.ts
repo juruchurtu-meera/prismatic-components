@@ -14,7 +14,6 @@ import type {
   SpaceProps,
 } from "contentful-management";
 import { MAX_POLL_PAGES, PAGINATION_LIMIT } from "../constants";
-
 export const getEnvironment = async (
   client: ClientAPI,
   spaceId: string,
@@ -23,7 +22,6 @@ export const getEnvironment = async (
   const space: Space = await client.getSpace(spaceId);
   return await space.getEnvironment(environmentId);
 };
-
 export const getAllPaginatedItems = async <T, TPlain>(
   getCollection: (options: QueryOptions) => Promise<Collection<T, TPlain>>,
 ) => {
@@ -40,32 +38,16 @@ export const getAllPaginatedItems = async <T, TPlain>(
     skip += data.items.length;
     allItems.push(...data.items);
   } while (allItems.length < total);
-
   return allItems;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const fetchEntriesSince = async (
   environment: Environment,
   lastPolledAt: string,
   contentType: string | undefined,
-): Promise<{ records: EntryProps<KeyValueMap>[]; truncated: boolean }> => {
+): Promise<{
+  records: EntryProps<KeyValueMap>[];
+  truncated: boolean;
+}> => {
   const records: EntryProps<KeyValueMap>[] = [];
   for (let page = 0; page < MAX_POLL_PAGES; page++) {
     const query: QueryOptions = {
@@ -87,7 +69,6 @@ export const fetchEntriesSince = async (
   }
   return { records, truncated: true };
 };
-
 export const mapItemsForPicklist = (
   allItems:
     | SpaceProps[]

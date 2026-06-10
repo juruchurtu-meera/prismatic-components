@@ -7,7 +7,6 @@ import {
   employeeId,
   year,
 } from "../../inputs";
-
 export const getPayStatementDetailsByYearAndCheckDate = action({
   display: {
     label: "Get Pay Statement Details by Year and Check Date",
@@ -27,7 +26,6 @@ export const getPayStatementDetailsByYearAndCheckDate = action({
   ) => {
     validateV2Connection(connectionInput);
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const { data } = await client.get(
       `/companies/${companyId}/employees/${employeeId}/paystatement/details/${year}/${checkDate}`,
     );

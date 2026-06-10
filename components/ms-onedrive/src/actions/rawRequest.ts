@@ -7,9 +7,7 @@ import {
 import { getAuthHeaders, validateConnection } from "../util";
 import { BASE_URL } from "../constants";
 import { rawRequestExamplePayload } from "../examplePayloads";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",

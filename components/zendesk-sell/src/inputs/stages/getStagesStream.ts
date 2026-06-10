@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection } from "../common";
-
 export const getStagesStreamInputs = {
   connection,
   position: input({

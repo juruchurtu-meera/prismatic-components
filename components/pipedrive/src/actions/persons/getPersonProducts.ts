@@ -6,7 +6,6 @@ import {
   paginationStartInput,
   personIdInput,
 } from "../../inputs";
-
 export const getPersonProducts = action({
   display: {
     label: "Get Person Products",

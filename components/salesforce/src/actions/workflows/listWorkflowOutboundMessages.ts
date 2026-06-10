@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceClient } from "../../client";
 import { listWorkflowOutboundMessagesInputs } from "../../inputs";
 import { listWorkflowOutboundMessagesFunction } from "../../util";
-
 export const listWorkflowOutboundMessages = action({
   display: {
     label: "List Outbound Messages",

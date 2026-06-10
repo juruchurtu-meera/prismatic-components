@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { cloudProvider, connection, contactId } from "../inputs";
 import { getContactPayload } from "../examplePayloads";
-
 export const getContact = action({
   display: {
     label: "Get Contact",

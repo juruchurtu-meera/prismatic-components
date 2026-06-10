@@ -1,6 +1,5 @@
 import { connection } from "../common";
 import { fieldsRead, humanReadable, identifier } from "./common";
-
 export const readEmployeeFieldsInputs = {
   connection,
   identifier: {

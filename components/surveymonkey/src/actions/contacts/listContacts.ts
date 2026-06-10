@@ -4,12 +4,6 @@ import { paginateResults } from "../../util";
 import { listContactsInputs } from "../../inputs";
 import { listContactsExamplePayload } from "../../examplePayloads";
 import type { Contact } from "../../types";
-
-
-
-
-
-
 export const listContacts = action({
   display: {
     label: "List Contacts",
@@ -18,12 +12,10 @@ export const listContacts = action({
   inputs: listContactsInputs,
   perform: async (context, { connection, fetchAll, page, perPage }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await paginateResults<Contact>(client, "/contacts", fetchAll, {
       page,
       per_page: perPage,
     });
-
     return { data };
   },
   examplePayload: listContactsExamplePayload,

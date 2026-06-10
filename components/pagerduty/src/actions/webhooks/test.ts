@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { NO_RESPONSE_SUCCESSFULL_PAYLOAD } from "../../examplePayloads";
 import { connectionInput, webhookId } from "../../inputs";
-
 export const testWebhookSubscription = action({
   display: {
     label: "Test Webhook Subscription",

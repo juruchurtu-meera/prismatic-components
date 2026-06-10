@@ -3,7 +3,6 @@ import { deleteSalesOrder } from "./delete";
 import { getSalesOrder } from "./get";
 import { listSalesOrders } from "./list";
 import { updateSalesOrder } from "./update";
-
 export default {
   listSalesOrders,
   getSalesOrder,

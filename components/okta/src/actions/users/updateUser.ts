@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { updateUserExamplePayload } from "../../examplePayloads/users";
 import { updateUserInputs } from "../../inputs/users";
 import type { User } from "../../interfaces/user";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -35,8 +34,11 @@ export const updateUser = action({
     const credentials =
       password || (question && answer)
         ? {
-            password: password ? { value: password, hash: hashPassword } : undefined,
-            recovery_question: question && answer ? { question, answer } : undefined,
+            password: password
+              ? { value: password, hash: hashPassword }
+              : undefined,
+            recovery_question:
+              question && answer ? { question, answer } : undefined,
           }
         : undefined;
     const updatedBody: Record<string, unknown> = {
@@ -54,8 +56,10 @@ export const updateUser = action({
       credentials,
       realmId,
     };
-    const { data } = await client.post<User>(`/users/${encodeURIComponent(id)}`, updatedBody);
-
+    const { data } = await client.post<User>(
+      `/users/${encodeURIComponent(id)}`,
+      updatedBody,
+    );
     return { data };
   },
   examplePayload: updateUserExamplePayload,

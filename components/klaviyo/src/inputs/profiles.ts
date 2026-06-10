@@ -9,7 +9,6 @@ import {
   cleanCodeInput,
   cleanStringInput,
 } from "../utils";
-
 export const fieldsProfile = input({ ...fields, model: FIELDS_PROFILE_MODEL });
 export const additionalFieldsProfile = input({
   ...fields,
@@ -18,7 +17,6 @@ export const additionalFieldsProfile = input({
     "Request additional fields not included by default in the response.",
   model: ADDITIONAL_FIELDS_PROFILE_MODEL,
 });
-
 const profileId = input({
   label: "Profile ID",
   comments: "Unique identifier for the profile.",
@@ -29,13 +27,11 @@ const profileId = input({
   dataSource: "selectProfile",
   clean: cleanStringInput,
 });
-
 export const listProfileInputs = {
   connection,
   fieldsProfile,
   additionalFieldsProfile,
 };
-
 const email = input({
   label: "Email",
   comments: "Individual's email address",
@@ -45,7 +41,6 @@ const email = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const phoneNumber = input({
   label: "Phone Number",
   comments: "Individual's phone number in E.164 format",
@@ -55,7 +50,6 @@ const phoneNumber = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const externalId = input({
   label: "External ID",
   comments:
@@ -66,7 +60,6 @@ const externalId = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const firstName = input({
   label: "First Name",
   comments: "Individual's first name",
@@ -76,7 +69,6 @@ const firstName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const lastName = input({
   label: "Last Name",
   comments: "Individual's last name",
@@ -86,7 +78,6 @@ const lastName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const organization = input({
   label: "Organization",
   comments:
@@ -97,7 +88,6 @@ const organization = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const title = input({
   label: "Title",
   comments: "Individual's job title",
@@ -107,7 +97,6 @@ const title = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const image = input({
   label: "Image",
   comments: "URL pointing to the location of a profile image",
@@ -118,7 +107,6 @@ const image = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const location = input({
   label: "Location",
   comments: "Location information for the profile.",
@@ -143,7 +131,6 @@ const location = input({
   required: false,
   clean: (value) => cleanCodeInput(value, "Location"),
 });
-
 const properties = input({
   label: "Properties",
   comments:
@@ -160,7 +147,6 @@ const properties = input({
   ),
   clean: (value) => cleanCodeInput(value, "Event Properties"),
 });
-
 export const createProfileInputs = {
   connection,
   email,
@@ -174,14 +160,12 @@ export const createProfileInputs = {
   location,
   properties,
 };
-
 export const getProfileInputs = {
   connection,
   profileId,
   fieldsProfile,
   additionalFieldsProfile,
 };
-
 export const updateProfileInputs = {
   connection,
   profileId,
@@ -196,7 +180,6 @@ export const updateProfileInputs = {
   location,
   properties,
 };
-
 const subscribeProfiles = input({
   label: "Profiles",
   comments: "Array of profiles to subscribe.",
@@ -223,12 +206,10 @@ const subscribeProfiles = input({
   required: true,
   clean: (value) => cleanArrayCodeInput(value, "Profiles"),
 });
-
 export const subscribeProfilesInputs = {
   connection,
   subscribeProfiles,
 };
-
 const unsubscribeProfiles = input({
   label: "Profiles",
   comments: "Array of profiles to unsubscribe.",
@@ -250,7 +231,6 @@ const unsubscribeProfiles = input({
   required: true,
   clean: (value) => cleanArrayCodeInput(value, "Profiles"),
 });
-
 export const unsubscribeProfilesInputs = {
   connection,
   unsubscribeProfiles,

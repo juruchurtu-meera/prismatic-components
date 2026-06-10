@@ -10,5 +10,4 @@ export const SERVICES = {
   prismAnalytics: "/api/prismAnalytics/v3",
   staffing: "/staffing/v7",
 } as const;
-
 export type ServiceKey = keyof typeof SERVICES;

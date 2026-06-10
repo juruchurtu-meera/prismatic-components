@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceClient } from "../../client";
 import { queryInputs } from "../../inputs";
 import { executeSFAction } from "../../util";
-
 export const query = action({
   display: {
     label: "Query",

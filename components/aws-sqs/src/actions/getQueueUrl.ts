@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSQSClient } from "../client";
 import { name, connectionInputs } from "../inputs";
 import { getQueueUrlExample } from "../examplePayloads";
-
 const getQueueUrl = action({
   display: {
     label: "Get a Queue's URL",
@@ -10,9 +9,7 @@ const getQueueUrl = action({
   },
   perform: async (context, params) => {
     const client = await createSQSClient(params);
-
     const result = await client.getQueueUrl({ QueueName: params.name });
-
     return {
       data: result,
     };
@@ -20,5 +17,4 @@ const getQueueUrl = action({
   inputs: { name, ...connectionInputs },
   examplePayload: getQueueUrlExample,
 });
-
 export default getQueueUrl;

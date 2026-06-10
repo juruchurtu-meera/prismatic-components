@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { connectionInput, postId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
-
 export const deletePost = action({
   display: {
     label: "Delete Post",
@@ -10,7 +9,6 @@ export const deletePost = action({
   perform: async (context, { postId, zendeskConnection }) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
     const { data } = await client.delete(`/community/posts/${postId}`);
-
     return {
       data,
     };

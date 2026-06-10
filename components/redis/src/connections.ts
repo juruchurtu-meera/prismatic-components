@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const redisConnection = connection({
   key: "redis",
   display: {
@@ -78,5 +77,4 @@ export const redisConnection = connection({
     },
   },
 });
-
 export default [redisConnection];

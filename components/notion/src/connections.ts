@@ -3,7 +3,6 @@ import {
   oauth2Connection,
   OAuth2Type,
 } from "@prismatic-io/spectral";
-
 export const notionOauth = oauth2Connection({
   key: "notionOauth",
   display: {
@@ -61,7 +60,6 @@ export const notionOauth = oauth2Connection({
     },
   },
 });
-
 export const notionInternalIntegration = connection({
   key: "notionInternalIntegration",
   display: {
@@ -81,5 +79,4 @@ export const notionInternalIntegration = connection({
     },
   },
 });
-
 export default [notionOauth, notionInternalIntegration];

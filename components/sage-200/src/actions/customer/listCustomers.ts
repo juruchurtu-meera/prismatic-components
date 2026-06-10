@@ -8,7 +8,6 @@ import {
 } from "../../inputs/general";
 import { listCustomersPayload } from "../../examplePayloads";
 import { filterDataChangedAfter } from "../../util";
-
 export const listCustomers = action({
   display: {
     label: "List Customers",
@@ -20,7 +19,6 @@ export const listCustomers = action({
   ) => {
     const client = getClient(connection, context.debug.enabled, site, company);
     const { data } = await client.get("/customers");
-
     return {
       data: filterDataAfterDate
         ? filterDataChangedAfter(data, filterDataAfterDate)

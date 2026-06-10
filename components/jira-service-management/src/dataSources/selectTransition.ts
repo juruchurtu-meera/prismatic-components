@@ -4,9 +4,6 @@ import { selectTransitionExamplePayload } from "../examplePayloads";
 import { selectTransitionInputs } from "../inputs";
 import type { PagedResponse, Transition } from "../types";
 import { getPaginatedData, toSortedPicklist } from "../util";
-
-
-
 export const selectTransition = dataSource({
   display: {
     label: "Select Transition",
@@ -17,12 +14,15 @@ export const selectTransition = dataSource({
   inputs: selectTransitionInputs,
   perform: async (_context, { connection, issueIdOrKey }) => {
     const { client } = await createClient(connection, false);
-    const { data }: { data: PagedResponse<Transition> } =
-      await getPaginatedData<Transition>(
-        client,
-        `/request/${issueIdOrKey}/transition`,
-        true,
-      );
+    const {
+      data,
+    }: {
+      data: PagedResponse<Transition>;
+    } = await getPaginatedData<Transition>(
+      client,
+      `/request/${issueIdOrKey}/transition`,
+      true,
+    );
     const result = toSortedPicklist(
       data.values,
       (t) => t.name,

@@ -3,7 +3,6 @@ import {
   OAuth2Type,
   oauth2Connection,
 } from "@prismatic-io/spectral";
-
 export const hiBobOAuthConnection = oauth2Connection({
   key: "hibob-oauth2",
   display: {
@@ -69,7 +68,6 @@ export const hiBobOAuthConnection = oauth2Connection({
     },
   },
 });
-
 export const hiBobConnection = connection({
   key: "hibob-connection",
   display: {
@@ -103,5 +101,4 @@ export const hiBobConnection = connection({
     },
   },
 });
-
 export default [hiBobOAuthConnection, hiBobConnection];

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { batchMessageEntriesExample } from "./constants/batchMessageEntriesExample";
 import { cleanStringInput } from "./utils";
-
 export const name = input({
   label: "Name",
   type: "string",
@@ -10,7 +9,6 @@ export const name = input({
   example: "MyExampleTopic",
   comments: "The name of the SNS topic to create.",
 });
-
 export const topicArn = input({
   label: "Topic ARN",
   type: "string",
@@ -22,7 +20,6 @@ export const topicArn = input({
   dataSource: "selectTopic",
   clean: util.types.toString,
 });
-
 export const message = input({
   label: "Message",
   type: "string",
@@ -32,7 +29,6 @@ export const message = input({
   comments:
     "The message content to send to the topic or endpoint. [Learn more](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html)",
 });
-
 export const protocol = input({
   label: "Protocol",
   type: "string",
@@ -52,7 +48,6 @@ export const protocol = input({
   comments:
     "The protocol to use for delivering messages to the endpoint (application, email, email-json, firehose, http, https, lambda, sms, or sqs). [Learn more](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)",
 });
-
 export const endpoint = input({
   label: "Endpoint",
   type: "string",
@@ -62,7 +57,6 @@ export const endpoint = input({
   comments:
     "The endpoint to receive notifications. Format depends on protocol: email address (email@example.com), URL (https://example.com), phone number (+12065551234), or ARN (arn:aws:sqs:us-east-1:123456789012:MyQueue). [Learn more](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)",
 });
-
 export const subscriptionArn = input({
   label: "Subscription ARN",
   type: "string",
@@ -75,7 +69,6 @@ export const subscriptionArn = input({
   clean: util.types.toString,
   dataSource: "selectSubscription",
 });
-
 export const phoneNumber = input({
   label: "Phone Number",
   type: "string",
@@ -85,7 +78,6 @@ export const phoneNumber = input({
   comments:
     "The phone number in E.164 format (e.g., +12065551234) to receive SMS messages. [Learn more](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)",
 });
-
 export const messageAttributes = input({
   label: "Message Attributes",
   type: "string",
@@ -96,7 +88,6 @@ export const messageAttributes = input({
   comments:
     "Optional message attributes as key-value pairs. The value will be automatically typed (String, Number, String.Array, or Binary for Buffer). For binary data, provide a Buffer from a previous step. [Learn more](https://docs.aws.amazon.com/sns/latest/api/API_MessageAttributeValue.html)",
 });
-
 export const parseMessage = input({
   label: "Parse Message",
   type: "boolean",
@@ -105,7 +96,6 @@ export const parseMessage = input({
   comments:
     "When enabled, the message from SNS will be parsed as JSON and returned. When disabled, it will be passed as received.",
 });
-
 export const maxItems = input({
   label: "Max Items",
   type: "string",
@@ -115,7 +105,6 @@ export const maxItems = input({
   comments:
     "The maximum number of items to return per request. Valid values: 1-50.",
 });
-
 export const nextToken = input({
   label: "Next Token",
   type: "string",
@@ -126,14 +115,12 @@ export const nextToken = input({
     "The pagination token returned by a previous request to retrieve the next page of results.",
   clean: cleanStringInput,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Amazon SNS connection to use.",
 });
-
 export const publishBatchEntries = input({
   label: "Message Entries",
   type: "code",
@@ -143,7 +130,6 @@ export const publishBatchEntries = input({
   comments:
     "An array of message entries to publish in batch. Each entry must include an Id and Message. For binary messages, add a Template Field containing a Buffer to the BinaryValue attribute. [Learn more](https://docs.aws.amazon.com/sns/latest/dg/sns-message-attributes.html)",
 });
-
 const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -151,13 +137,11 @@ const fetchAll = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const fetchAllTopics = {
   ...fetchAll,
   comments:
     "When set to true, fetches all paginated topics. When false, only 100 topics will be returned.",
 };
-
 export const fetchAllSubscriptions = {
   ...fetchAll,
   comments:

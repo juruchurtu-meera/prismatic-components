@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 export const batchChangeInventoryExamplePayload = {
   data: {
     counts: [
@@ -40,12 +29,6 @@ export const batchChangeInventoryExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
 export const batchRetrieveInventoryCountsExamplePayload = {
   data: {
     counts: [

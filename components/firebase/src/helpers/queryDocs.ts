@@ -6,7 +6,6 @@ import type {
 } from "@google-cloud/firestore";
 import type { QueryCondition } from "../actions/types/QueryCondition";
 import type { app } from "firebase-admin";
-
 export const queryDocs = async ({
   client,
   collection,
@@ -19,7 +18,6 @@ export const queryDocs = async ({
   orderBy: string;
 }) => {
   let query: Query = client.firestore().collection(collection);
-
   if (queryOperatorCode) {
     try {
       const jsonArrayQuery = JSON.parse(queryOperatorCode);
@@ -37,11 +35,9 @@ export const queryDocs = async ({
       throw error;
     }
   }
-
   if (orderBy) {
     query = query.orderBy(orderBy.trim());
   }
-
   let result: Array<QueryDocumentSnapshot<DocumentData>>;
   try {
     const queryResult = await query.get();
@@ -52,6 +48,5 @@ export const queryDocs = async ({
     }
     throw error;
   }
-
   return result;
 };

@@ -4,7 +4,6 @@ import {
   pageFullorders,
   pageSizeFulfillorders,
 } from "../../orders/common";
-
 export const selectOrdersInputs = {
   customerName: { ...customerName, required: false },
   orderStatusList: { ...orderStatusList, required: false },

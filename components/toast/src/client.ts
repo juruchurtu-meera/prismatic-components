@@ -1,7 +1,6 @@
 import { type Connection, util } from "@prismatic-io/spectral";
 import { createClient as createHttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { getToastToken, validateConnection } from "./utils";
-
 export const createToastClient = async (
   connection: Connection,
   debug: boolean,

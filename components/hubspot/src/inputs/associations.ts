@@ -1,5 +1,4 @@
 import { input } from "@prismatic-io/spectral";
-
 export const fromObjectType = input({
   label: "From Object Type",
   type: "string",
@@ -8,7 +7,6 @@ export const fromObjectType = input({
     'The type of the "from" object. Choose from "Contacts", "Companies", "Deals", "Tickets", "Calls", "Quotes", "Line_items", "Meetings", "Products", "Feedback_submissions", or a custom object you have defined.',
   example: "contact",
 });
-
 export const toObjectType = input({
   label: "To Object Type",
   type: "string",
@@ -17,7 +15,6 @@ export const toObjectType = input({
     'The type of the "to" object. Choose from "Contacts", "Companies", "Deals", "Tickets", "Calls", "Quotes", "Line_items", "Meetings", "Products", "Feedback_submissions", or a custom object you have defined.',
   example: "deal",
 });
-
 export const fromId = input({
   label: "From ID",
   type: "string",
@@ -26,7 +23,6 @@ export const fromId = input({
   comments: "The unique identifier of the first object",
   example: "890435",
 });
-
 export const toId = input({
   label: "To ID",
   type: "string",
@@ -35,7 +31,6 @@ export const toId = input({
   comments: "The unique identifier of the second object",
   example: "890435",
 });
-
 export const associateType = input({
   label: "Type Of Association",
   type: "string",

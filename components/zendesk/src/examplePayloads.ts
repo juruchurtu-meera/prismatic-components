@@ -1,10 +1,4 @@
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
-
 export const paginationAttributes = {
   meta: {
     has_more: true,
@@ -18,16 +12,6 @@ export const paginationAttributes = {
     prev: "https://example.zendesk.com/api/v2/tickets.json?page[size]=100&page[before]=eyJvIjoibmljZV9pZCIsInYiOiJiUUFBQUFBQWJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiIn0=",
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const listUsersPayload = [
   {
     id: 223443,
@@ -38,12 +22,6 @@ export const listUsersPayload = [
     name: "James A. Rosen",
   },
 ];
-
-
-
-
-
-
 export const searchUsersPayload = [
   {
     id: 35436,
@@ -55,12 +33,6 @@ export const searchUsersPayload = [
     name: "Terry Gilliam",
   },
 ];
-
-
-
-
-
-
 export const createUserPayload = {
   user: {
     id: 35436,
@@ -77,30 +49,8 @@ export const createUserPayload = {
     url: "https://company.zendesk.com/api/v2/users/35436.json",
   },
 };
-
-
-
-
-
-
 export const showUserPayload = createUserPayload;
-
-
-
-
-
-
 export const updateUserPayload = createUserPayload;
-
-
-
-
-
-
-
-
-
-
 export const listTicketsPayload = [
   {
     assignee_id: 235323,
@@ -149,35 +99,13 @@ export const listTicketsPayload = [
     },
   },
 ];
-
-
-
-
-
-
 export const createTicketPayload = {
   ticket: listTicketsPayload[0],
 };
-
-
-
-
-
-
 export const getByExternalIdPayload = {
   tickets: listTicketsPayload,
   count: 1,
 };
-
-
-
-
-
-
-
-
-
-
 export const listArticlesPayload = {
   ...paginationAttributes,
   articles: [
@@ -211,19 +139,7 @@ export const listArticlesPayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const getArticlePayload = { article: listArticlesPayload.articles[0] };
-
-
-
-
-
-
 export const createArticlePayload = {
   article: {
     author_id: 3465,
@@ -238,12 +154,6 @@ export const createArticlePayload = {
     user_segment_id: 12,
   },
 };
-
-
-
-
-
-
 export const updateArticlePayload = {
   article: {
     author_id: 3465,
@@ -258,23 +168,7 @@ export const updateArticlePayload = {
     user_segment_id: 12,
   },
 };
-
-
-
-
-
-
 export const associateAttachmentsInBulkToArticlePayload = null;
-
-
-
-
-
-
-
-
-
-
 export const getArticleAttachmentPayload = {
   article_attachment: {
     article_id: 23,
@@ -287,12 +181,6 @@ export const getArticleAttachmentPayload = {
     size: 1428,
   },
 };
-
-
-
-
-
-
 export const listArticleAttachmentsExamplePayload = {
   ...paginationAttributes,
   article_attachments: [
@@ -308,33 +196,11 @@ export const listArticleAttachmentsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const createArticleAttachmentPayload = {
   article_attachment:
     listArticleAttachmentsExamplePayload.article_attachments[0],
 };
-
-
-
-
-
-
 export const deleteArticleAttachmentPayload = null;
-
-
-
-
-
-
-
-
-
-
 export const createSectionPayload = {
   section: {
     description: "This section contains articles on flight instruments",
@@ -344,19 +210,7 @@ export const createSectionPayload = {
     position: 2,
   },
 };
-
-
-
-
-
-
 export const getSectionPayload = createSectionPayload;
-
-
-
-
-
-
 export const updateSectionPayload = {
   section: {
     description: "This section contains articles on flight instruments",
@@ -366,12 +220,6 @@ export const updateSectionPayload = {
     position: 2,
   },
 };
-
-
-
-
-
-
 export const listSectionsExamplePayload = {
   ...paginationAttributes,
   sections: [
@@ -391,16 +239,6 @@ export const listSectionsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
-
 export const unifiedSearchPayload = {
   links: {
     first: "https://example.zendesk.com/api/v2/guide/search?page[size]=100",
@@ -428,12 +266,6 @@ export const unifiedSearchPayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const searchArticlesPayload = {
   ...paginationAttributes,
   results: [listArticlesPayload.articles[0]],
@@ -442,12 +274,6 @@ export const searchArticlesPayload = {
   page_count: 1,
   per_page: 25,
 };
-
-
-
-
-
-
 export const searchPostsPayload = {
   ...paginationAttributes,
   results: [
@@ -473,16 +299,6 @@ export const searchPostsPayload = {
   ],
   count: 1,
 };
-
-
-
-
-
-
-
-
-
-
 export const createCategoryPayload = {
   category: {
     description: "This category contains a collection of Super Hero tricks",
@@ -491,26 +307,8 @@ export const createCategoryPayload = {
     name: "Super Hero Tricks",
   },
 };
-
-
-
-
-
-
 export const getCategoryPayload = createCategoryPayload;
-
-
-
-
-
-
 export const updateCategoryPayload = createCategoryPayload;
-
-
-
-
-
-
 export const listCategoriesPayload = {
   ...paginationAttributes,
   categories: [
@@ -528,16 +326,6 @@ export const listCategoriesPayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
-
 export const createTopicPayload = {
   topic: {
     name: "How to make fish stew",
@@ -545,19 +333,7 @@ export const createTopicPayload = {
     description: "A guide to making the perfect fish stew",
   },
 };
-
-
-
-
-
-
 export const getTopicPayload = createTopicPayload;
-
-
-
-
-
-
 export const listTopicsPayload = {
   ...paginationAttributes,
   topics: [
@@ -577,23 +353,7 @@ export const listTopicsPayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const updateTopicPayload = createTopicPayload;
-
-
-
-
-
-
-
-
-
-
 export const createPostPayload = {
   post: {
     author_id: 888887,
@@ -603,12 +363,6 @@ export const createPostPayload = {
     title: "Post title",
   },
 };
-
-
-
-
-
-
 export const listPostsPayload = {
   ...paginationAttributes,
   posts: [
@@ -618,17 +372,6 @@ export const listPostsPayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
-
-
 export const subscriptionPayload = {
   subscription: {
     content_id: 8748733,
@@ -637,27 +380,10 @@ export const subscriptionPayload = {
     user_id: 888887,
   },
 };
-
-
-
-
-
-
-
 export const paginatedSubscriptionPayload = {
   ...paginationAttributes,
   subscriptions: [subscriptionPayload.subscription],
 };
-
-
-
-
-
-
-
-
-
-
 export const createWebhookPayload = {
   webhook: {
     id: "01GK8E6BKWMJZD2T8Y5AXJQMG5",
@@ -671,30 +397,8 @@ export const createWebhookPayload = {
     request_format: "json",
   },
 };
-
-
-
-
-
-
 export const listWebhooksPayload = [createWebhookPayload.webhook];
-
-
-
-
-
-
 export const deleteWebhookPayload = null;
-
-
-
-
-
-
-
-
-
-
 export const createWebhookTriggerPayload = {
   trigger: {
     url: "https://example.zendesk.com/api/v2/triggers/10849292971419.json",
@@ -726,32 +430,8 @@ export const createWebhookTriggerPayload = {
     category_id: "4558610559259",
   },
 };
-
-
-
-
-
-
 export const listTriggersPayload = [createWebhookTriggerPayload.trigger];
-
-
-
-
-
-
-
-
-
-
 export const successMessagePayload = "Success executing action";
-
-
-
-
-
-
-
-
 export const rawRequestPayload = {
   data: {
     users: listUsersPayload,
@@ -765,19 +445,6 @@ export const rawRequestPayload = {
     "content-type": "application/json",
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const webhookExamplePayload = {
   payload: {
     headers: {
@@ -857,16 +524,6 @@ export const webhookExamplePayload = {
     },
   } as unknown as TriggerPayload,
 };
-
-
-
-
-
-
-
-
-
-
 export const pollChangesTriggerExamplePayload = {
   payload: {
     headers: {},

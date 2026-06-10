@@ -8,7 +8,6 @@ import {
 } from "../inputs";
 import { createClient } from "../client";
 import { worksheetWithTitle, ensureList, worksheetProperties } from "../util";
-
 export const appendRows = action({
   display: {
     label: "Append Rows",
@@ -19,14 +18,11 @@ export const appendRows = action({
     { spreadsheetId, title, rows, storeRawValues, connection },
   ) => {
     const client = await createClient(spreadsheetId, connection);
-
     const sheet = worksheetWithTitle(client, title);
-
     // @ts-expect-error google-spreadsheet types are too restrictive; accepts array of objects or arrays
     await sheet.addRows(ensureList(rows), {
       raw: storeRawValues,
     });
-
     return {
       data: worksheetProperties(client, sheet),
     };
@@ -39,5 +35,4 @@ export const appendRows = action({
     connection: connectionInput,
   },
 });
-
 export default appendRows;

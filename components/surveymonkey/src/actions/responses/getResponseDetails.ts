@@ -3,14 +3,6 @@ import { createClient } from "../../client";
 import { getResponseInputs } from "../../inputs";
 import { getResponseDetailsExamplePayload } from "../../examplePayloads";
 import type { SurveyResponseDetails } from "../../types";
-
-
-
-
-
-
-
-
 export const getResponseDetails = action({
   display: {
     label: "Get Response Details",
@@ -20,11 +12,9 @@ export const getResponseDetails = action({
   inputs: getResponseInputs,
   perform: async (context, { connection, surveyId, responseId }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.get<SurveyResponseDetails>(
       `/surveys/${surveyId}/responses/${responseId}/details`,
     );
-
     return { data };
   },
   examplePayload: getResponseDetailsExamplePayload,

@@ -3,7 +3,6 @@ import { getGuruClient } from "../client";
 import { selectFolderInputs } from "../inputs";
 import { fetchGuruResults } from "../util";
 import type { GuruFolder } from "../types";
-
 export const selectFolder = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -24,7 +23,6 @@ export const selectFolder = dataSource({
       true,
       queryParams,
     );
-
     return {
       result: folders.map(
         (folder): Element => ({

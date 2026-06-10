@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanNumber, cleanString } from "../../helpers";
-
 export const name = input({
   label: "Worksheet Name",
   type: "string",
@@ -11,7 +10,6 @@ export const name = input({
   placeholder: "Enter worksheet name",
   clean: util.types.toString,
 });
-
 export const position = input({
   label: "Position",
   type: "string",
@@ -21,7 +19,6 @@ export const position = input({
   placeholder: "Enter position",
   clean: cleanNumber,
 });
-
 export const visibility = input({
   label: "Worksheet Visibility",
   type: "string",

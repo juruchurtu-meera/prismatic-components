@@ -7,7 +7,6 @@ import {
   deleteWebhookFn,
   getAppId,
 } from "../../util";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",
@@ -18,7 +17,6 @@ export const deleteWebhook = action({
     const client = createClient(connection, context.debug.enabled, version);
     const appId = getAppId(connection);
     await deleteWebhookFn(client, appId, object, []);
-
     return {
       data: DELETE_RESPONSE,
     };

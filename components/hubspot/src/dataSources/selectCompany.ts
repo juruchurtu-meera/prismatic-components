@@ -3,7 +3,6 @@ import { getHubspotClient } from "../client";
 import { selectCompanyInputs } from "../inputs";
 import type { Company } from "../types/Company";
 import { getAllPaginatedData } from "../util";
-
 export const selectCompany = dataSource({
   display: {
     label: "Select Company",
@@ -15,14 +14,12 @@ export const selectCompany = dataSource({
       hubspotConnection: connection,
       debugRequest: false,
     });
-
     const companies = (await getAllPaginatedData<Company>(
       client,
       "/crm/v3/objects/companies",
       true,
       true,
     )) as Company[];
-
     const result = companies.map<Element>((company) => ({
       label: company.properties.name,
       key: util.types.toString(company.id),

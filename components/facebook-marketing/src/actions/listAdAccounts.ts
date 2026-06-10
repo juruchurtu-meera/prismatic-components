@@ -11,7 +11,6 @@ import {
   version,
 } from "../inputs";
 import { adAccountDefaults, getPaginatedData } from "../util";
-
 export const listAddAccounts = action({
   display: {
     label: "List Ad Accounts",
@@ -33,7 +32,6 @@ export const listAddAccounts = action({
         fields,
       },
     );
-
     return {
       data,
     };

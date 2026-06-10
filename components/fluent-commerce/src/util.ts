@@ -3,22 +3,17 @@ import type { Variables } from "graphql-request";
 import { createFluentClient } from "./client";
 import { MAX_POLL_PAGES, POLL_ORDERS_QUERY, POLL_PAGE_SIZE } from "./constants";
 import type { FluentOrder, RelayOrdersResponse } from "./types";
-
 export const toOptionalString = (value: unknown): string | undefined =>
   util.types.toString(value) || undefined;
-
-
-
-
-
-
-
 export const fetchFluentOrdersSince = async (
   connection: Connection,
   lastPolledAt: string,
   retailerId: string | undefined,
   debug: boolean,
-): Promise<{ records: FluentOrder[]; truncated: boolean }> => {
+): Promise<{
+  records: FluentOrder[];
+  truncated: boolean;
+}> => {
   const client = await createFluentClient(connection, debug);
   const records: FluentOrder[] = [];
   let after: string | null = null;

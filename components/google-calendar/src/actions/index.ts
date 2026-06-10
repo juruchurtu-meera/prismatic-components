@@ -8,7 +8,6 @@ import { listCalendar } from "./listCalendar";
 import { listEvents } from "./listEvents";
 import { rawRequest } from "./rawRequest";
 import { updateEvent } from "./updateEvent";
-
 export default {
   listCalendar,
   createCalendar,

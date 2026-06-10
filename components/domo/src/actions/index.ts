@@ -77,7 +77,6 @@ import {
   listUsers,
   updateUser,
 } from "./users";
-
 export default {
   listAccounts,
   getAccounts,

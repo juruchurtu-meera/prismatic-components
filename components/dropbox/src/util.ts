@@ -6,40 +6,29 @@ import type {
   DropboxPaginatedResult,
   StringTag,
 } from "./interfaces";
-
 export const handleDropboxError = (err, paths = []) => {
-  
   if (err instanceof DropboxResponseError) {
     switch (err.status) {
       case 401:
         throw new Error(
-          `An error occurred with authorization. You may not have permissions to perform this task. Error: ${JSON.stringify(
-            err,
-          )}`,
+          `An error occurred with authorization. You may not have permissions to perform this task. Error: ${JSON.stringify(err)}`,
         );
       case 409:
         throw new Error(
-          `An error related to file paths occurred. You may be trying to create a directory that already exists, or you may be referencing a file or directory that does not exist. File paths: "${paths}". Error: ${JSON.stringify(
-            err,
-          )}`,
+          `An error related to file paths occurred. You may be trying to create a directory that already exists, or you may be referencing a file or directory that does not exist. File paths: "${paths}". Error: ${JSON.stringify(err)}`,
         );
       case 429:
         throw new Error(
-          `Dropbox reports that your app has been rate-limited. Please slow the number of requests you are making. Error: ${JSON.stringify(
-            err,
-          )}`,
+          `Dropbox reports that your app has been rate-limited. Please slow the number of requests you are making. Error: ${JSON.stringify(err)}`,
         );
       case 500:
         throw new Error(
-          `An error occurred on Dropbox's side. Is the Dropbox API down? https://status.dropbox.com/ Error: ${JSON.stringify(
-            err,
-          )}`,
+          `An error occurred on Dropbox's side. Is the Dropbox API down? https://status.dropbox.com/ Error: ${JSON.stringify(err)}`,
         );
     }
   }
   throw new Error(`An unknown error occurred. Error: ${JSON.stringify(err)}`);
 };
-
 export const validatePath = (path) => {
   if (!util.types.toString(path).startsWith("/")) {
     throw new Error(
@@ -47,9 +36,7 @@ export const validatePath = (path) => {
     );
   }
 };
-
 export default { validatePath };
-
 export const getHeadersRawRequest = (dropboxToken, httpClientInputs) => {
   const headers = {
     Authorization: `Bearer ${dropboxToken}`,
@@ -69,7 +56,6 @@ export const getHeadersRawRequest = (dropboxToken, httpClientInputs) => {
   }
   return headers;
 };
-
 export const getUserTypeHeader = (userType, teamMemberId) => {
   const headers = {};
   if (userType === "user") {
@@ -81,39 +67,35 @@ export const getUserTypeHeader = (userType, teamMemberId) => {
   }
   return headers;
 };
-
 export const cleanString = (value: unknown) =>
   util.types.toString(value).replace(/\/$/, "");
-
 export const cleanActionArray = (value: unknown): StringTag[] => {
   if (Array.isArray(value) && value.length > 0) {
     return value.map((item) => ({ ".tag": util.types.toString(item) }));
   }
   return undefined;
 };
-
 export const cleanStringWithTag = (value: unknown): StringTag => {
   if (value) {
     return { ".tag": util.types.toString(value) };
   }
   return undefined;
 };
-
 export const checkDebug = (params: any, context: ActionContext) => {
   if (context.debug.enabled) {
     context.logger.debug("Params", params);
   }
 };
-
 export const getEntries = (
   filePaths,
   dynamicPaths,
-): Array<{ path: string }> => {
+): Array<{
+  path: string;
+}> => {
   let entries = filePaths.map((path) => {
     validatePath(path);
     return { path };
   });
-
   if (dynamicPaths && Array.isArray(dynamicPaths)) {
     entries = entries.concat(
       dynamicPaths.map((path) => {
@@ -124,26 +106,22 @@ export const getEntries = (
   }
   return entries;
 };
-
 export const toOptionalString = (value: unknown) => {
   if (value) {
     return util.types.toString(value);
   }
   return undefined;
 };
-
 export const filterEntries = (
   entries: DropboxEntry[],
   filter: string,
 ): DropboxEntry[] => {
   return entries.filter(({ ".tag": tag }) => tag === filter);
 };
-
 export function getBase64FromUrl(url: string): string {
   const lastPathSegmentMatch = url.match(/\/([^/]+)$/);
   return lastPathSegmentMatch ? lastPathSegmentMatch[1] : "";
 }
-
 export const fetchAllDropboxPages = async <T extends DropboxPaginatedResult>(
   fetchFirst: () => Promise<T>,
   fetchContinue: (cursor: string) => Promise<T>,
@@ -154,23 +132,19 @@ export const fetchAllDropboxPages = async <T extends DropboxPaginatedResult>(
   if (!fetchAll) {
     return cursor ? fetchContinue(cursor) : fetchFirst();
   }
-
   const allItems: unknown[] = [];
   let hasMore = true;
   let cursorToken: string | undefined;
   let lastResponse: T;
-
   do {
     lastResponse = cursorToken
       ? await fetchContinue(cursorToken)
       : await fetchFirst();
-
     const result = lastResponse.result as Record<string, unknown>;
     allItems.push(...((result[itemsKey] as unknown[]) || []));
     hasMore = !!result.has_more;
     cursorToken = result.cursor as string | undefined;
   } while (hasMore && cursorToken);
-
   return {
     ...lastResponse,
     result: {
@@ -180,11 +154,9 @@ export const fetchAllDropboxPages = async <T extends DropboxPaginatedResult>(
     },
   };
 };
-
 const MAX_LIST_FOLDER_LIMIT = 2000;
 const MAX_SHARING_LIMIT = 1000;
 const MAX_SEARCH_LIMIT = 1000;
-
 export const fetchAllFolderEntries = async (
   dbx: Dropbox,
   params: {
@@ -208,7 +180,6 @@ export const fetchAllFolderEntries = async (
     params.cursor,
   );
 };
-
 export const fetchAllSharedFolders = async (
   dbx: Dropbox,
   params: {
@@ -230,7 +201,6 @@ export const fetchAllSharedFolders = async (
     params.cursor,
   );
 };
-
 export const fetchAllSharedLinks = async (
   dbx: Dropbox,
   params: {
@@ -251,10 +221,13 @@ export const fetchAllSharedLinks = async (
     params.cursor,
     "links",
   );
-
 export const fetchAllTeamFolders = async (
   dbx: Dropbox,
-  params: { limit?: number; fetchAll: boolean; cursor?: string },
+  params: {
+    limit?: number;
+    fetchAll: boolean;
+    cursor?: string;
+  },
 ) => {
   const limit = params.fetchAll ? MAX_SHARING_LIMIT : params.limit;
   return fetchAllDropboxPages(
@@ -264,7 +237,6 @@ export const fetchAllTeamFolders = async (
     params.cursor,
   );
 };
-
 export const fetchAllSearchFiles = async (
   dbx: Dropbox,
   params: {
@@ -292,7 +264,6 @@ export const fetchAllSearchFiles = async (
     "matches",
   );
 };
-
 export const fetchAllSearchFolders = async (
   dbx: Dropbox,
   params: {

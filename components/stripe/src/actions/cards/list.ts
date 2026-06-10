@@ -9,7 +9,6 @@ import {
   startingAfter,
   timeout,
 } from "../../inputs";
-
 export const listCards = action({
   display: {
     label: "List Cards",
@@ -17,7 +16,14 @@ export const listCards = action({
   },
   perform: async (
     context,
-    { customerId, timeout, startingAfter, limit, endingBefore, stripeConnection },
+    {
+      customerId,
+      timeout,
+      startingAfter,
+      limit,
+      endingBefore,
+      stripeConnection,
+    },
   ) => {
     const client = createStripeClient({
       stripeConnection,

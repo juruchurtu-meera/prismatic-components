@@ -1,5 +1,4 @@
 import { trigger } from "@prismatic-io/spectral";
-
 export const postmarkWebhook = trigger({
   display: {
     label: "Webhook",
@@ -7,10 +6,6 @@ export const postmarkWebhook = trigger({
       "Receive and validate webhook requests from Postmark for webhooks you configure.",
   },
   perform: async (context, payload) => {
-    
-    
-    
-
     return Promise.resolve({
       payload,
       response: { statusCode: 200, contentType: "application/json" },
@@ -21,5 +16,4 @@ export const postmarkWebhook = trigger({
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });
-
 export default { postmarkWebhook };

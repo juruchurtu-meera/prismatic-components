@@ -2,7 +2,6 @@ const pageInfo = {
   hasNextPage: false,
   endCursor: "YXJyYXljb25uZWN0aW9uOjA=",
 };
-
 const examplePaginationMapRest = {
   pagination: {
     next: {
@@ -25,20 +24,17 @@ export const listCurrenciesExamplePayload = {
     pageInfo,
   },
 };
-
 export const countCustomersExamplePayload = {
   data: {
     count: 20,
   },
 };
-
 export const createAccountActivationURLExamplePayload = {
   data: {
     accountActivationUrl: "https://activation.example.com",
     userErrors: [],
   },
 };
-
 const exampleCustomer = {
   id: "gid://shopify/Customer/8000000000000",
   email: "example@example.com",
@@ -101,7 +97,6 @@ const exampleCustomer = {
     countryCodeV2: "US",
   },
 };
-
 const exampleCustomerMapRest = {
   id: 8000000000000,
   email: "example@example.com",
@@ -170,7 +165,6 @@ const exampleCustomerMapRest = {
     country_name: "United States",
   },
 };
-
 export const createCustomerExamplePayload = {
   graphql: {
     data: {
@@ -184,7 +178,6 @@ export const createCustomerExamplePayload = {
     },
   },
 };
-
 export const getCustomerExamplePayload = {
   graphql: {
     data: {
@@ -197,7 +190,6 @@ export const getCustomerExamplePayload = {
     },
   },
 };
-
 export const deleteCustomerExamplePayload = {
   graphql: {
     data: {
@@ -209,7 +201,6 @@ export const deleteCustomerExamplePayload = {
     data: {},
   },
 };
-
 export const listCustomersExamplePayload = {
   graphql: {
     data: {
@@ -224,14 +215,12 @@ export const listCustomersExamplePayload = {
     },
   },
 };
-
 export const updateCustomerExamplePayload = {
   data: {
     userErrors: [],
     customer: exampleCustomer,
   },
 };
-
 const exampleDraftOrder = {
   id: "gid://shopify/DraftOrder/1234567890123",
   note2: "Sample Note",
@@ -338,7 +327,8 @@ const exampleDraftOrder = {
     countryCodeV2: "US",
     provinceCode: "CA",
   },
-  invoiceUrl: "https://example-store.myshopify.com/123456/invoices/abcdef123456",
+  invoiceUrl:
+    "https://example-store.myshopify.com/123456/invoices/abcdef123456",
   appliedDiscount: null,
   order: {
     id: "gid://shopify/Order/8765432109876",
@@ -412,7 +402,6 @@ const exampleDraftOrder = {
     },
   },
 };
-
 const exampleDraftOrderMapRest = {
   id: 1234567890,
   note: null,
@@ -517,34 +506,29 @@ const exampleDraftOrderMapRest = {
   },
   admin_graphql_api_id: "gid://shopify/DraftOrder/1234567890",
 };
-
 export const completeDraftOrderExamplePayload = {
   data: {
     draftOrder: exampleDraftOrder,
     userErrors: [],
   },
 };
-
 export const createDraftOrderExamplePayload = {
   data: {
     userErrors: [],
     draftOrder: exampleDraftOrder,
   },
 };
-
 export const deleteDraftOrderExamplePayload = {
   data: {
     deletedId: "gid://shopify/DraftOrder/276395349",
     userErrors: [],
   },
 };
-
 export const getDraftOrderExamplePayload = {
   data: {
     draftOrder: exampleDraftOrder,
   },
 };
-
 export const listDraftOrdersExamplePayload = {
   graphql: {
     data: {
@@ -559,7 +543,6 @@ export const listDraftOrdersExamplePayload = {
     },
   },
 };
-
 const exampleFulfillment = {
   id: "gid://shopify/Fulfillment/1234567890",
   order: {
@@ -715,13 +698,11 @@ const exampleFulfillment = {
   },
   name: "F-1001",
 };
-
 export const getFulfillmentExamplePayload = {
   data: {
     fulfillment: exampleFulfillment,
   },
 };
-
 const exampleFulfillmentMapRest = {
   id: 1234567890123,
   order_id: 9876543210987,
@@ -802,7 +783,6 @@ const exampleFulfillmentMapRest = {
   name: "#9999-F1",
   admin_graphql_api_id: "gid://shopify/Fulfillment/1234567890123",
 };
-
 export const listFulfillmentsExamplePayload = {
   graphql: {
     data: {
@@ -817,7 +797,6 @@ export const listFulfillmentsExamplePayload = {
     },
   },
 };
-
 const exampleFulfillmentOrder = {
   id: "gid://shopify/FulfillmentOrder/1234567890123",
   orderId: "gid://shopify/Order/1234567890123",
@@ -886,7 +865,6 @@ const exampleFulfillmentOrder = {
     nodes: [],
   },
 };
-
 const exampleFulfillmentOrderMapRest = {
   id: 1234567890123,
   order_id: 1234567890123,
@@ -949,7 +927,6 @@ const exampleFulfillmentOrderMapRest = {
   },
   merchant_requests: [],
 };
-
 export const getFulfillmentOrderExamplePayload = {
   graphql: {
     data: {
@@ -964,7 +941,6 @@ export const getFulfillmentOrderExamplePayload = {
     },
   },
 };
-
 export const listFulfillmentOrdersExamplePayload = {
   graphql: {
     data: {
@@ -981,7 +957,6 @@ export const listFulfillmentOrdersExamplePayload = {
     },
   },
 };
-
 const exampleFulfillmentService = {
   id: "gid://shopify/FulfillmentService/1234567890?id=true",
   serviceName: "ExampleFulfillmentService",
@@ -994,40 +969,34 @@ const exampleFulfillmentService = {
   inventoryManagement: false,
   permitsSkuSharing: false,
 };
-
 export const createFulfillmentServiceExamplePayload = {
   data: {
     fulfillmentService: exampleFulfillmentService,
     userErrors: [],
   },
 };
-
 export const deleteFulfillmentServiceExamplePayload = {
   data: {
     deletedId: "gid://shopify/FulfillmentService/198258461",
     userErrors: [],
   },
 };
-
 export const getFulfillmentServiceExamplePayload = {
   data: {
     fulfillmentService: exampleFulfillmentService,
   },
 };
-
 export const listFulfillmentServicesExamplePayload = {
   data: {
     fulfillmentServices: [exampleFulfillmentService],
   },
 };
-
 export const updateFulfillmentServiceExamplePayload = {
   data: {
     fulfillmentService: exampleFulfillmentService,
     userErrors: [],
   },
 };
-
 const exampleInventoryItem = {
   id: "gid://shopify/InventoryItem/12345678901234",
   sku: "EXAMPLE-SKU",
@@ -1046,30 +1015,25 @@ const exampleInventoryItem = {
     nodes: [],
   },
 };
-
 export const getInventoryItemsExamplePayload = {
   data: {
     inventoryItem: exampleInventoryItem,
   },
 };
-
 export const listInventoryItemsExamplePayload = {
   data: {
     inventoryItems: [exampleInventoryItem],
     pageInfo,
   },
 };
-
 export const updateInventoryItemsExamplePayload = {
   data: {
     inventoryItem: exampleInventoryItem,
     userErrors: [],
   },
 };
-
 const exampleInventoryLevel = {
   id: "gid://shopify/InventoryLevel/523463154?inventory_item_id=43729076",
-
   item: {
     id: "gid://shopify/InventoryItem/43729076",
   },
@@ -1084,39 +1048,33 @@ const exampleInventoryLevel = {
   ],
   updatedAt: "2024-11-07T20:59:45Z",
 };
-
 export const connectInventoryLevelExamplePayload = {
   data: {
     inventoryLevel: exampleInventoryLevel,
     userErrors: [],
   },
 };
-
 export const deleteInventoryLevelsExamplePayload = {
   data: {
     userErrors: [],
   },
 };
-
 export const getInventoryLevelsExamplePayload = {
   data: {
     inventoryLevel: exampleInventoryLevel,
   },
 };
-
 export const listInventoryLevelsExamplePayload = {
   data: {
     inventoryLevels: [exampleInventoryLevel],
     pageInfo,
   },
 };
-
 export const countLocationsExamplePayload = {
   data: {
     count: 10,
   },
 };
-
 const exampleLocation = {
   id: "gid://shopify/Location/12345678901",
   name: "123 Example St Suite 100",
@@ -1135,20 +1093,17 @@ const exampleLocation = {
   updatedAt: "2022-01-01T10:00:00Z",
   isActive: true,
 };
-
 export const getLocationsExamplePayload = {
   data: {
     location: exampleLocation,
   },
 };
-
 export const listLocationsExamplePayload = {
   data: {
     locations: [exampleLocation],
     pageInfo,
   },
 };
-
 export const cancelOrderExamplePayload = {
   data: {
     job: {
@@ -1159,7 +1114,6 @@ export const cancelOrderExamplePayload = {
     userErrors: [],
   },
 };
-
 const exampleOrder = {
   id: "gid://shopify/Order/1234567890123",
   name: "#1234",
@@ -1445,53 +1399,45 @@ const exampleOrder = {
     provinceCode: "CA",
   },
 };
-
 export const closeOrderExamplePayload = {
   data: {
     order: exampleOrder,
     userErrors: [],
   },
 };
-
 export const countOrdersExamplePayload = {
   data: {
     count: 58,
   },
 };
-
 export const createOrderExamplePayload = {
   data: {
     order: exampleOrder,
     userErrors: [],
   },
 };
-
 export const deleteOrderExamplePayload = {
   data: {
     deletedId: "gid://shopify/Order/776341364",
     userErrors: [],
   },
 };
-
 export const getOrderExamplePayload = {
   data: {
     order: exampleOrder,
   },
 };
-
 export const listOrdersExamplePayload = {
   data: {
     orders: [exampleOrder],
     pageInfo,
   },
 };
-
 export const countProductImagesExamplePayload = {
   data: {
     count: 5,
   },
 };
-
 const exampleProductGql = {
   id: "gid://shopify/Product/1234567890123",
   title: "Example Product",
@@ -1556,7 +1502,6 @@ const exampleProductGql = {
     ],
   },
 };
-
 const exampleProductMapRest = {
   id: 1234567890123,
   title: "Example Product",
@@ -1628,7 +1573,6 @@ const exampleProductMapRest = {
     src: null,
   },
 };
-
 export const createProductExamplePayload = {
   graphql: {
     data: {
@@ -1642,13 +1586,11 @@ export const createProductExamplePayload = {
     },
   },
 };
-
 export const countProductsExamplePayload = {
   data: {
     data: { count: 58 },
   },
 };
-
 export const deleteProductExamplePayload = {
   data: {
     productDelete: {
@@ -1657,7 +1599,6 @@ export const deleteProductExamplePayload = {
     },
   },
 };
-
 export const getProductExamplePayload = {
   graphql: {
     data: {
@@ -1670,7 +1611,6 @@ export const getProductExamplePayload = {
     },
   },
 };
-
 export const listProductsExamplePayload = {
   graphql: {
     data: {
@@ -1685,14 +1625,14 @@ export const listProductsExamplePayload = {
     },
   },
 };
-
 export const deleteInstanceWebhooksExamplePayload = {
   graphql: {
     data: [
       {
         webhookSubscriptionDelete: {
           userErrors: [],
-          deletedWebhookSubscriptionId: "gid://shopify/WebhookSubscription/1320479850649",
+          deletedWebhookSubscriptionId:
+            "gid://shopify/WebhookSubscription/1320479850649",
         },
       },
     ],
@@ -1701,11 +1641,11 @@ export const deleteInstanceWebhooksExamplePayload = {
     data: {},
   },
 };
-
 const exampleWebhookSubscription = {
   id: "gid://shopify/WebhookSubscription/1234567890123",
   endpoint: {
-    callbackUrl: "https://example.com/trigger/SW5zdGFuY2VGbG93Q29uZmlnOmV4YW1wbGVfaWQ=",
+    callbackUrl:
+      "https://example.com/trigger/SW5zdGFuY2VGbG93Q29uZmlnOmV4YW1wbGVfaWQ=",
   },
   topic: "CARTS_CREATE",
   createdAt: "2025-01-12T22:00:35Z",
@@ -1717,10 +1657,10 @@ const exampleWebhookSubscription = {
     displayName: "2023-04 (Unsupported)",
   },
 };
-
 const exampleWebhookSubscriptionMapRest = {
   id: 1234567890123,
-  address: "https://example.com/trigger/SW5zdGFuY2VGbG93Q29uZmlnOmV4YW1wbGVfaWQ=",
+  address:
+    "https://example.com/trigger/SW5zdGFuY2VGbG93Q29uZmlnOmV4YW1wbGVfaWQ=",
   topic: "carts/create",
   created_at: "2025-01-12T22:00:35Z",
   updated_at: "2025-01-12T22:00:35Z",
@@ -1730,7 +1670,6 @@ const exampleWebhookSubscriptionMapRest = {
   api_version: "2023-04",
   private_metafield_namespaces: [],
 };
-
 export const createWebhookSubscriptionExamplePayload = {
   graphql: {
     data: {
@@ -1744,7 +1683,6 @@ export const createWebhookSubscriptionExamplePayload = {
     },
   },
 };
-
 export const listWebhooksExamplePayload = {
   graphql: {
     data: {
@@ -1756,19 +1694,18 @@ export const listWebhooksExamplePayload = {
     data: [exampleWebhookSubscriptionMapRest],
   },
 };
-
 export const deleteWebhookExamplePayload = {
   graphql: {
     data: {
       userErrors: [],
-      deletedWebhookSubscriptionId: "gid://shopify/WebhookSubscription/525699895",
+      deletedWebhookSubscriptionId:
+        "gid://shopify/WebhookSubscription/525699895",
     },
   },
   restMap: {
     data: {},
   },
 };
-
 export const getShopConfigExamplePayload = {
   graphql: {
     data: {
@@ -1861,7 +1798,6 @@ export const getShopConfigExamplePayload = {
     },
   },
 };
-
 const exampleProductImage = {
   id: "gid://shopify/MediaImage/12345678901234",
   alt: "sample alt text",
@@ -1873,7 +1809,6 @@ const exampleProductImage = {
     url: "https://example.com/images/sample.jpg",
   },
 };
-
 const exampleProductImageMapRest = {
   id: 12345678901234,
   alt: "sample alt text",
@@ -1886,7 +1821,6 @@ const exampleProductImageMapRest = {
   height: 150,
   src: "https://example.com/images/sample.jpg",
 };
-
 export const listProductImagesExamplePayload = {
   graphql: {
     data: {
@@ -1902,7 +1836,6 @@ export const listProductImagesExamplePayload = {
     },
   },
 };
-
 export const createProductImageExamplePayload = {
   data: {
     media: [
@@ -1916,7 +1849,6 @@ export const createProductImageExamplePayload = {
     mediaUserErrors: [],
   },
 };
-
 export const deleteProductImageExamplePayload = {
   data: {
     deletedMediaIds: ["gid://shopify/MediaImage/730211239"],
@@ -1924,7 +1856,6 @@ export const deleteProductImageExamplePayload = {
     mediaUserErrors: [],
   },
 };
-
 export const getProductImageExamplePayload = {
   data: {
     image: {
@@ -1937,7 +1868,8 @@ export const getProductImageExamplePayload = {
           altText: "image",
           height: 300,
           id: "gid://shopify/ImageSource/32307802603673",
-          originalSrc: "https://cdn.shopify.com/s/files/1/0606/2820/5721/files/300.jpg?v=123456",
+          originalSrc:
+            "https://cdn.shopify.com/s/files/1/0606/2820/5721/files/300.jpg?v=123456",
           url: "https://cdn.shopify.com/s/files/1/0606/2820/5721/files/300.jpg?v=123456",
           width: 200,
           src: "https://cdn.shopify.com/s/files/1/0606/2820/5721/files/300.jpg?v=123456",
@@ -1947,7 +1879,6 @@ export const getProductImageExamplePayload = {
     },
   },
 };
-
 export const updateProductExamplePayload = {
   data: {
     product: {
@@ -1968,13 +1899,11 @@ export const updateProductExamplePayload = {
     userErrors: [],
   },
 };
-
 export const countVariantsExamplePayload = {
   data: {
     count: 12,
   },
 };
-
 export const createVariantExamplePayload = {
   data: {
     productVariants: [
@@ -1992,7 +1921,6 @@ export const createVariantExamplePayload = {
     userErrors: [],
   },
 };
-
 export const deleteVariantExamplePayload = {
   data: {
     product: {
@@ -2002,7 +1930,6 @@ export const deleteVariantExamplePayload = {
     userErrors: [],
   },
 };
-
 export const getVariantExamplePayload = {
   data: {
     productVariant: {
@@ -2015,7 +1942,6 @@ export const getVariantExamplePayload = {
     },
   },
 };
-
 export const listVariantsExamplePayload = {
   data: {
     productVariants: [
@@ -2030,7 +1956,6 @@ export const listVariantsExamplePayload = {
     },
   },
 };
-
 export const updateVariantExamplePayload = {
   data: {
     product: {
@@ -2045,7 +1970,6 @@ export const updateVariantExamplePayload = {
     ],
   },
 };
-
 const exampleCollection = {
   id: "gid://shopify/Collection/123456789012",
   description: "Example description",
@@ -2099,33 +2023,28 @@ const exampleCollection = {
   sortOrder: "MANUAL",
   title: "Example Collection Title",
 };
-
 export const listCollectionsExamplePayload = {
   data: {
     collections: [exampleCollection],
     pageInfo,
   },
 };
-
 export const getCollectionExamplePayload = {
   data: {
     collection: exampleCollection,
   },
 };
-
 export const countCollectionsExamplePayload = {
   data: {
     count: 5,
   },
 };
-
 export const deleteCollectionExamplePayload = {
   data: {
     deletedCollectionId: "gid://shopify/Collection/123456789012",
     userErrors: [],
   },
 };
-
 const exampleMetafield = {
   key: "myKey",
   value: "myValue",
@@ -2137,21 +2056,18 @@ const exampleMetafield = {
   createdAt: "2025-01-28T20:52:51Z",
   updatedAt: "2025-01-28T20:52:51Z",
 };
-
 export const listMetafieldsExamplePayload = {
   data: {
     metafields: [exampleMetafield],
     pageInfo,
   },
 };
-
 export const setMetafieldExamplePayload = {
   data: {
     metafields: [exampleMetafield],
     userErrors: [],
   },
 };
-
 export const deleteMetafieldExamplePayload = {
   data: {
     deletedMetafields: [
@@ -2164,7 +2080,6 @@ export const deleteMetafieldExamplePayload = {
     userErrors: [],
   },
 };
-
 export const countDraftOrdersExamplePayload = {
   data: {
     count: 5,

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const queryExamplePayload = {
   data: [
     {

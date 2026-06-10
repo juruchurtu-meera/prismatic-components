@@ -8,7 +8,6 @@ import {
 } from "klaviyo-api";
 import { createSegmentExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const createSegment = action({
   display: {
     label: "Create Segment",

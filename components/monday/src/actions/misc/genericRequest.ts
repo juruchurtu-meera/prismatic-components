@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import merge from "lodash.merge";
 import { getMondayClient } from "../../client";
 import { genericRequestInputs } from "../../inputs";
-
 export const genericRequest = action({
   display: {
     label: "Generic GraphQL Request",

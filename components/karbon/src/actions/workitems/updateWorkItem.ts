@@ -3,7 +3,6 @@ import updateWorkItemInputs from "../../inputs/workitems/updateWorkItem";
 import { createKarbonClient } from "../../client";
 import { updateWorkItemExamplePayload } from "../../examplePayloads";
 import { SUCCESS_MESSAGE } from "../../constants";
-
 export const updateWorkItem = action({
   display: {
     label: "Update Work Item",
@@ -21,7 +20,6 @@ export const updateWorkItem = action({
       Description: description,
       DeadlineDate: deadlineDate,
     });
-
     return { data: SUCCESS_MESSAGE };
   },
   examplePayload: updateWorkItemExamplePayload,

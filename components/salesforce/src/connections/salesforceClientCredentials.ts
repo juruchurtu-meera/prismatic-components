@@ -1,5 +1,8 @@
-import { oauth2Connection, OAuth2Type, templateConnectionInputs } from "@prismatic-io/spectral";
-
+import {
+  oauth2Connection,
+  OAuth2Type,
+  templateConnectionInputs,
+} from "@prismatic-io/spectral";
 export const salesforceClientCredentials = oauth2Connection({
   key: "salesforceClientCredentials",
   label: "OAuth 2.0 Client Credentials",
@@ -44,7 +47,8 @@ export const salesforceClientCredentials = oauth2Connection({
         type: "string",
         required: false,
         shown: true,
-        comments: "Scopes are configured in the Salesforce Connected App settings.",
+        comments:
+          "Scopes are configured in the Salesforce Connected App settings.",
       },
     },
     {

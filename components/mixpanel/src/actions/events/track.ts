@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { trackEventsExamplePayload } from "../../examplePayloads";
-
 export const trackEvents = action({
   display: {
     label: "Track Events",

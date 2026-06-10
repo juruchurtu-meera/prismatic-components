@@ -6,7 +6,6 @@ import {
 } from "../examplePayloads";
 import { connectionInput } from "../inputs";
 import { gql, type Variables } from "graphql-request";
-
 const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -99,7 +98,6 @@ const createCustomer = action({
       params.connection,
       context.debug.enabled,
     );
-
     const query = gql`
       mutation createCustomer(
         $retailerId: ID!
@@ -146,7 +144,6 @@ const createCustomer = action({
         }
       }
     `;
-
     const variables: Variables = {
       retailerId: params.retailerId,
       customerEmail: params.customerEmail,
@@ -158,13 +155,11 @@ const createCustomer = action({
       timezone: params.timezone,
       attributes: params.attributes,
     };
-
     const data = await client.request(query, variables);
     return { data };
   },
   examplePayload: createCustomerExamplePayload,
 });
-
 const getCustomerByEmailAddress = action({
   display: {
     label: "Get Customer by Email",
@@ -185,7 +180,6 @@ const getCustomerByEmailAddress = action({
       params.connection,
       context.debug.enabled,
     );
-
     const query = gql`
       query GetCustomerByEmailAddress($emailAddress: String) {
         customers(primaryEmail: [$emailAddress]) {
@@ -208,14 +202,10 @@ const getCustomerByEmailAddress = action({
         }
       }
     `;
-
     const variables = { emailAddress: params.emailAddress };
-
     const data = await client.request(query, variables);
-
     return { data };
   },
   examplePayload: getCustomerByEmailAddressExamplePayload,
 });
-
 export default { createCustomer, getCustomerByEmailAddress };

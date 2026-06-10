@@ -7,7 +7,6 @@ import {
   tableNameInput,
 } from "../../../inputs";
 import { deleteTable } from "../../../util";
-
 export const deleteTableRecord = action({
   display: {
     label: "Delete Table Record",

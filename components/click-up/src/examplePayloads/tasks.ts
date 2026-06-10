@@ -1,20 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const taskObject = {
   id: "9hx",
   custom_id: null,
@@ -38,7 +21,8 @@ const taskObject = {
     username: "John Doe",
     color: "#7b68ee",
     email: "john.doe@example.com",
-    profilePicture: "https://attachments.clickup.com/profilePictures/81942673_abc.jpg",
+    profilePicture:
+      "https://attachments.clickup.com/profilePictures/81942673_abc.jpg",
   },
   assignees: [
     {
@@ -135,25 +119,20 @@ const taskObject = {
     id: "789",
   },
 };
-
 export const getTaskExamplePayload = {
   data: taskObject,
 };
-
 export const listTasksExamplePayload = {
   data: {
     tasks: [taskObject],
   },
 };
-
 export const createTaskExamplePayload = {
   data: taskObject,
 };
-
 export const updateTaskExamplePayload = {
   data: taskObject,
 };
-
 export const deleteTaskExamplePayload = {
   data: null,
 };

@@ -8,7 +8,6 @@ import { describeTable } from "./describeTable";
 import { listTables } from "./listTables";
 import { rawRequest } from "./rawRequest";
 import { queryItems } from "./queryItems";
-
 export default {
   createItem,
   createTable,

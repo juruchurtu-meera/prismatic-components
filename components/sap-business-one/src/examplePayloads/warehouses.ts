@@ -88,7 +88,6 @@ export const getWarehousesExamplePayload = {
     LegalText: null,
   },
 };
-
 export const listWarehousesExamplePayload = {
   data: [
     {

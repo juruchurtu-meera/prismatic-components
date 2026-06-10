@@ -18,7 +18,6 @@ import { toStr } from "../utils/toStr";
 import { validateId } from "../utils/validateId";
 import { validateLimit } from "../utils/validateLimit";
 import { sharedInputs } from "./shared";
-
 const id = input({
   label: "Ticket ID",
   comments: "The ID of the ticket.",
@@ -26,7 +25,6 @@ const id = input({
   required: true,
   clean: toInt,
 });
-
 const assignee_team = input({
   label: "Assignee Team",
   comments: "The team assigned to the ticket.",
@@ -42,7 +40,6 @@ const assignee_team = input({
   ),
   clean: (value: unknown) => cleanCodeInput(value, "Assignee Team"),
 });
-
 const assignee_user = input({
   label: "Assignee User",
   comments: "The user assigned to the ticket.",
@@ -58,7 +55,6 @@ const assignee_user = input({
   ),
   clean: (value: unknown) => cleanCodeInput(value, "Assignee User"),
 });
-
 const channel = input({
   label: "Assignee User ID",
   comments: "The team assigned to the ticket.",
@@ -69,7 +65,6 @@ const channel = input({
   placeholder: "email",
   example: "email",
 });
-
 const closed_datetime = input({
   label: "Closed Datetime",
   comments: "When the ticket was closed.",
@@ -79,7 +74,6 @@ const closed_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const created_datetime = input({
   label: "Created Datetime",
   comments: "When the ticket was created.",
@@ -89,7 +83,6 @@ const created_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const customer = input({
   label: "Customer",
   comments: "The customer linked to the ticket.",
@@ -106,7 +99,6 @@ const customer = input({
   ),
   clean: (value: unknown) => cleanCodeInput(value, "Customer"),
 });
-
 const external_id = input({
   label: "External ID",
   comments:
@@ -117,7 +109,6 @@ const external_id = input({
   placeholder: "RETURN#4213",
   example: "RETURN#4213",
 });
-
 const from_agent = input({
   label: "From Agent",
   comments:
@@ -129,7 +120,6 @@ const from_agent = input({
   placeholder: "true",
   clean: util.types.toBool,
 });
-
 const language = input({
   label: "Language",
   comments:
@@ -140,7 +130,6 @@ const language = input({
   placeholder: "en",
   example: "en",
 });
-
 const last_message_datetime = input({
   label: "Last Message Datetime",
   comments: "When the last message was sent.",
@@ -150,7 +139,6 @@ const last_message_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const last_received_message_datetime = input({
   label: "Last Received Message Datetime",
   comments: "When the last customer's message was sent.",
@@ -160,8 +148,6 @@ const last_received_message_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
-
 const messages = input({
   label: "Messages",
   comments: "Messages of the ticket.",
@@ -188,7 +174,6 @@ const messages = input({
   ]),
   clean: (value: unknown) => cleanArrayCodeInput(value, "Messages"),
 });
-
 const meta = input({
   label: "Meta",
   comments:
@@ -200,7 +185,6 @@ const meta = input({
   required: false,
   clean: cleanKeyValueListInput,
 });
-
 const opened_datetime = input({
   label: "Opened Datetime",
   comments: "When the ticket was opened for the first time by a user.",
@@ -210,7 +194,6 @@ const opened_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const snooze_datetime = input({
   label: "Snooze Datetime",
   comments: "When the ticket will be re-opened.",
@@ -220,7 +203,6 @@ const snooze_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const spam = input({
   label: "Spam",
   comments: "Whether the ticket is considered as spam or not.",
@@ -231,7 +213,6 @@ const spam = input({
   model: BOOLEAN_MODEL,
   clean: util.types.toBool,
 });
-
 const status = input({
   label: "Status",
   comments: "The status of the ticket.",
@@ -246,7 +227,6 @@ const status = input({
   placeholder: "open",
   clean: toStr,
 });
-
 const subject = input({
   label: "Subject",
   comments: "The subject of the ticket.",
@@ -256,7 +236,6 @@ const subject = input({
   placeholder: "Can I get a refund?",
   example: "Can I get a refund?",
 });
-
 const tags = input({
   label: "Tags",
   comments: "Tags linked to the ticket.",
@@ -267,7 +246,6 @@ const tags = input({
   placeholder: "tag1",
   clean: (value: unknown) => arrayObjectsStringMap(value, "name"),
 });
-
 const trashed_datetime = input({
   label: "Trashed Datetime",
   comments: "When the ticket was moved to the trash.",
@@ -277,7 +255,6 @@ const trashed_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const updated_datetime = input({
   label: "Updated Datetime",
   comments: "When the ticket was lastly updated.",
@@ -287,7 +264,6 @@ const updated_datetime = input({
   placeholder: "2020-01-27T10:42:21.468912",
   example: "2020-01-27T10:42:21.468912",
 });
-
 const via = input({
   label: "Via",
   comments:
@@ -299,7 +275,6 @@ const via = input({
   placeholder: "email",
   example: "email",
 });
-
 const ticket_id = input({
   label: "Ticket ID",
   comments: "The ID of the ticket.",
@@ -309,7 +284,6 @@ const ticket_id = input({
   example: "1234567890",
   placeholder: "1234567890",
 });
-
 export const createTicketInputs = {
   messages,
   assignee_team,
@@ -335,12 +309,10 @@ export const createTicketInputs = {
   via,
   ...sharedInputs,
 };
-
 export const deleteTicketInputs = {
   id: input({ ...id, comments: "The ID of the ticket to delete." }),
   ...sharedInputs,
 };
-
 export const getTicketInputs = {
   id,
   relationships: input({
@@ -355,7 +327,6 @@ export const getTicketInputs = {
   }),
   ...sharedInputs,
 };
-
 export const listTicketsInputs = {
   customer_id: input({
     label: "Customer ID",
@@ -465,14 +436,12 @@ export const listTicketsInputs = {
   }),
   ...sharedInputs,
 };
-
 export const selectTicketInputs = {
   customer_id: listTicketsInputs.customer_id,
   view_id: listTicketsInputs.view_id,
   rule_id: listTicketsInputs.rule_id,
   connection: sharedInputs.connection,
 };
-
 export const updateTicketInputs = {
   id,
   assignee_team,
@@ -506,12 +475,10 @@ export const updateTicketInputs = {
   via,
   ...sharedInputs,
 };
-
 export const listTicketCustomFieldsInputs = {
   ticket_id,
   ...sharedInputs,
 };
-
 export const updateTicketCustomFieldsInputs = {
   ticket_id,
   custom_fields: input({
@@ -538,7 +505,6 @@ export const updateTicketCustomFieldsInputs = {
   }),
   ...sharedInputs,
 };
-
 export const deleteTicketCustomFieldInputs = {
   ticket_id,
   id: input({

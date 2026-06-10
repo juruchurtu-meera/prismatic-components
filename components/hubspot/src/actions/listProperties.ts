@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getHubspotClient } from "../client";
 import { listPropertiesPayload } from "../examplePayloads";
 import { connectionInput, objectType, timeout } from "../inputs";
-
 export const listProperties = action({
   display: {
     label: "List Properties",
@@ -15,7 +14,6 @@ export const listProperties = action({
       timeout,
       debugRequest,
     });
-    
     return {
       data: (await client.get(`/crm/v3/properties/${objectType}`)).data,
     };
@@ -27,5 +25,4 @@ export const listProperties = action({
   },
   examplePayload: listPropertiesPayload,
 });
-
 export default listProperties;

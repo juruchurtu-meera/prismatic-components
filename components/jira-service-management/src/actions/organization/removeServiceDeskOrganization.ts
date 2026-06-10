@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { SUCCESS_RESPONSE } from "../../constants";
 import { removeServiceDeskOrganizationExamplePayload } from "../../examplePayloads";
 import { removeServiceDeskOrganizationInputs } from "../../inputs";
-
 export const removeServiceDeskOrganization = action({
   display: {
     label: "Remove Organization from Service Desk",

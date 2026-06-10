@@ -38,7 +38,6 @@ import triggers from "./triggers";
 import rawRequest from "./actions/rawRequest";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import dataSources from "./dataSources";
-
 export default component({
   key: "xero",
   public: true,

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getDisputeExamplePayload = {
   data: {
     id: "dp_1MtJUT2eZvKYlo2CNaw2HvEv",
@@ -56,31 +50,13 @@ export const getDisputeExamplePayload = {
     status: "warning_needs_response",
   } as unknown,
 };
-
-
-
-
 export const updateDisputeExamplePayload = getDisputeExamplePayload;
-
-
-
-
-
-
-
-
 export const closeDisputeExamplePayload = {
   data: {
     ...(getDisputeExamplePayload.data as Record<string, unknown>),
     status: "lost",
   } as unknown,
 };
-
-
-
-
-
-
 export const listDisputesExamplePayload = {
   data: {
     object: "list",

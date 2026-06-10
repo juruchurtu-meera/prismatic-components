@@ -4,7 +4,6 @@ import { getClient } from "../client";
 import { createCustomerExampleResponse } from "../examplePayloads";
 import { validateJSON } from "../helpers";
 import { connectionInput, customer, password, redirectUrl } from "../inputs";
-
 export const createCustomer = action({
   display: {
     label: "Create Customer",
@@ -12,12 +11,10 @@ export const createCustomer = action({
   },
   perform: async (context, { connection, customer, password, redirectUrl }) => {
     const client = await getClient(connection, context.debug.enabled);
-
     const body = validateJSON(customer);
     if (!body) {
       throw new Error("Customer must be valid JSON.");
     }
-
     if (password) {
       body.password = password;
     }
@@ -41,5 +38,4 @@ export const createCustomer = action({
   },
   examplePayload: createCustomerExampleResponse,
 });
-
 export default { createCustomer };

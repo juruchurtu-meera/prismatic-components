@@ -35,7 +35,10 @@ export interface Product {
       } | null;
       inventoryQuantity: number | null;
       sku: string | null;
-      image: { id: string | null; url: string | null } | null;
+      image: {
+        id: string | null;
+        url: string | null;
+      } | null;
     }[];
   };
   options:
@@ -46,7 +49,6 @@ export interface Product {
         values: string[] | null;
       }[]
     | null;
-
   media: {
     nodes: {
       id: string | null;

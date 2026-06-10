@@ -1,5 +1,4 @@
 import type { DeletedRecord, PollingTriggerObject } from "../types";
-
 export const getPollingChanges = (
   showNewRecords: boolean,
   showUpdatedRecords: boolean,
@@ -12,9 +11,9 @@ export const getPollingChanges = (
     (acc, record) => {
       const recordUpdatedAt = new Date(record.LastModifiedDate);
       const recordCreatedAt = new Date(record.CreatedDate);
-
-      const changeExists = recordUpdatedAt > lastPolledAtDate || recordCreatedAt > lastPolledAtDate;
-
+      const changeExists =
+        recordUpdatedAt > lastPolledAtDate ||
+        recordCreatedAt > lastPolledAtDate;
       if (changeExists) {
         const isCreated = recordCreatedAt > lastPolledAtDate;
         const isUpdated = recordUpdatedAt > recordCreatedAt;
@@ -35,9 +34,7 @@ export const getPollingChanges = (
       deletedRecords,
     },
   );
-
   changes += deletedRecords.length;
-
   return {
     changesObject,
     changes,

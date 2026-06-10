@@ -3,7 +3,6 @@ import { createAsanaClient } from "../client";
 import { connectionInput, workspaceId } from "../inputs";
 import { fetchMoreData, mapToLabelKey } from "../util";
 import type { DataSource } from "../types/Project";
-
 const selectCustomField = dataSource({
   display: {
     label: "Select Custom Field",
@@ -21,7 +20,6 @@ const selectCustomField = dataSource({
       [],
       true,
     );
-
     const result = mapToLabelKey(data);
     return { result };
   },
@@ -30,7 +28,6 @@ const selectCustomField = dataSource({
     result: [{ label: "Priority", key: "1202467472002610" }],
   },
 });
-
 export default {
   selectCustomField,
 };

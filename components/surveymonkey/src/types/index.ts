@@ -1,24 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
 import type { Connection } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
 export interface PaginationLinks {
   self: string;
   first?: string;
@@ -26,14 +6,6 @@ export interface PaginationLinks {
   next?: string;
   prev?: string;
 }
-
-
-
-
-
-
-
-
 export interface PaginatedResponse<T> {
   data: T[];
   per_page?: number;
@@ -41,11 +13,6 @@ export interface PaginatedResponse<T> {
   total: number;
   links?: PaginationLinks;
 }
-
-
-
-
-
 export interface User {
   id: string;
   username: string;
@@ -58,11 +25,6 @@ export interface User {
   date_last_login?: string;
   href: string;
 }
-
-
-
-
-
 export interface Survey {
   id: string;
   title: string;
@@ -75,10 +37,6 @@ export interface Survey {
   date_modified?: string;
   href: string;
 }
-
-
-
-
 export interface SurveyDetails extends Survey {
   pages: SurveyPage[];
   preview?: string;
@@ -87,7 +45,6 @@ export interface SurveyDetails extends Survey {
   analyze_url?: string;
   summary_url?: string;
 }
-
 export interface SurveyPage {
   id: string;
   title: string;
@@ -97,7 +54,6 @@ export interface SurveyPage {
   questions?: SurveyQuestion[];
   href: string;
 }
-
 export interface SurveyQuestion {
   id: string;
   family: string;
@@ -109,13 +65,11 @@ export interface SurveyQuestion {
   answers?: QuestionAnswer;
   href: string;
 }
-
 export interface QuestionAnswer {
   choices?: AnswerChoice[];
   rows?: AnswerRow[];
   other?: AnswerOther;
 }
-
 export interface AnswerChoice {
   id: string;
   text: string;
@@ -124,14 +78,12 @@ export interface AnswerChoice {
   is_na?: boolean;
   weight?: number;
 }
-
 export interface AnswerRow {
   id: string;
   text: string;
   position: number;
   visible?: boolean;
 }
-
 export interface AnswerOther {
   id: string;
   text: string;
@@ -139,25 +91,13 @@ export interface AnswerOther {
   visible?: boolean;
   is_answer_choice?: boolean;
 }
-
-
-
-
-
-
-
-
-
-
 export type CollectorType =
   | "weblink"
   | "email"
   | "social"
   | "embedded"
   | "popup";
-
 export type CollectorStatus = "open" | "closed" | "new";
-
 export interface Collector {
   id: string;
   name: string;
@@ -177,7 +117,6 @@ export interface Collector {
   anonymous_type?: string;
   href: string;
 }
-
 export interface CollectorStats {
   id: string;
   completed: number;
@@ -187,21 +126,14 @@ export interface CollectorStats {
   started: number;
   unique_clicks: number;
 }
-
-
-
-
-
 export type ResponseStatus =
   | "completed"
   | "partial"
   | "disqualified"
   | "overquota";
-
 export interface PollingState extends Record<string, unknown> {
   lastPolledAt?: string;
 }
-
 export interface SurveyResponse {
   id: string;
   survey_id: string;
@@ -219,25 +151,18 @@ export interface SurveyResponse {
   date_modified?: string;
   href: string;
 }
-
-
-
-
 export interface SurveyResponseDetails extends SurveyResponse {
   pages: ResponsePage[];
   metadata?: ResponseMetadata;
 }
-
 export interface ResponsePage {
   id: string;
   questions: ResponseQuestion[];
 }
-
 export interface ResponseQuestion {
   id: string;
   answers: ResponseAnswer[];
 }
-
 export interface ResponseAnswer {
   choice_id?: string;
   row_id?: string;
@@ -246,21 +171,14 @@ export interface ResponseAnswer {
   text?: string;
   tag_data?: string[];
 }
-
 export interface ResponseMetadata {
   contact?: ResponseContact;
 }
-
 export interface ResponseContact {
   email?: string;
   first_name?: string;
   last_name?: string;
 }
-
-
-
-
-
 export interface Contact {
   id: string;
   email: string;
@@ -269,27 +187,17 @@ export interface Contact {
   custom_fields?: Record<string, string>;
   href: string;
 }
-
 export interface ContactList {
   id: string;
   name: string;
   href: string;
 }
-
 export interface ContactField {
   id: string;
   label: string;
   field_type: string;
   href: string;
 }
-
-
-
-
-
-
-
-
 export type WebhookEventType =
   | "response_completed"
   | "response_created"
@@ -303,9 +211,7 @@ export type WebhookEventType =
   | "collector_created"
   | "collector_updated"
   | "collector_deleted";
-
 export type WebhookObjectType = "survey" | "collector";
-
 export interface Webhook {
   id: string;
   name: string;
@@ -316,17 +222,12 @@ export interface Webhook {
   authorization?: string;
   href: string;
 }
-
 export type EventsWebhookInputs = {
   connection: Connection;
   eventType: string;
   objectType: string | undefined;
   objectIds: string[] | undefined;
 };
-
-
-
-
 export interface WebhookPayload {
   name: string;
   filter_type: WebhookObjectType;
@@ -338,7 +239,6 @@ export interface WebhookPayload {
   event_datetime: string;
   resources: WebhookResources;
 }
-
 export interface WebhookResources {
   survey_id?: string;
   collector_id?: string;
@@ -346,11 +246,6 @@ export interface WebhookResources {
   recipient_id?: string;
   user_id?: string;
 }
-
-
-
-
-
 export interface SurveyMonkeyError {
   error: {
     id: string;
@@ -360,14 +255,6 @@ export interface SurveyMonkeyError {
     docs?: string;
   };
 }
-
-
-
-
-
-
-
-
 export interface CreateSurveyInput {
   title: string;
   nickname?: string;
@@ -375,10 +262,6 @@ export interface CreateSurveyInput {
   from_survey_id?: string;
   language?: string;
 }
-
-
-
-
 export interface CreateCollectorInput {
   type: CollectorType;
   name?: string;
@@ -389,27 +272,15 @@ export interface CreateCollectorInput {
   redirect_url?: string;
   allow_multiple_responses?: boolean;
 }
-
-
-
-
 export interface CreateContactInput {
   email: string;
   first_name?: string;
   last_name?: string;
   custom_fields?: Record<string, string>;
 }
-
-
-
-
 export interface CreateContactListInput {
   name: string;
 }
-
-
-
-
 export interface CreateWebhookInput {
   name: string;
   event_type: WebhookEventType;
@@ -418,5 +289,4 @@ export interface CreateWebhookInput {
   subscription_url: string;
   authorization?: string;
 }
-
 export type RegionKey = "us" | "eu" | "ca";

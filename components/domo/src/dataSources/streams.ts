@@ -3,7 +3,6 @@ import type { ListStreamExecutionQueryParams } from "../actions/types/ListStream
 import type { ListStreamsQueryParams } from "../actions/types/ListStreamsQueryParams";
 import { getDomoClient } from "../client";
 import { connection, limit, offset, streamId } from "../inputs";
-
 const streams = dataSource({
   display: {
     label: "Select Stream",
@@ -42,7 +41,6 @@ const streams = dataSource({
     }),
   },
 });
-
 const selectStreamExecution = dataSource({
   display: {
     label: "Select Stream Execution",
@@ -85,5 +83,4 @@ const selectStreamExecution = dataSource({
     }),
   },
 });
-
 export default { streams, selectStreamExecution };

@@ -5,7 +5,6 @@ export interface PaginatedResponse<T> {
   isLast: boolean;
   values: T[];
 }
-
 export interface WebhookData {
   events: string[];
   id: number;

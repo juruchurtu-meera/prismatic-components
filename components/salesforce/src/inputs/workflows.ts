@@ -1,8 +1,12 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput, fieldsInputClean } from "../util";
-import { connectionInput, description, version, workflowRecordType } from "./common";
+import {
+  connectionInput,
+  description,
+  version,
+  workflowRecordType,
+} from "./common";
 import { fullNameInput } from "./metadata";
-
 const ruleNameInput = input({
   label: "Rule Name",
   placeholder: "Enter rule name",
@@ -11,7 +15,6 @@ const ruleNameInput = input({
   comments: "The name of the Salesforce Workflow Rule to create or reference.",
   clean: util.types.toString,
 });
-
 export const triggerTypeInput = input({
   label: "Trigger Type",
   type: "string",
@@ -29,16 +32,15 @@ export const triggerTypeInput = input({
     "Conditions in which the trigger fires. On All Changes: The workflow rule is considered on all changes. On Create Only: Considered on creation. On Create or Meets Rule Criteria: Considered on create and when it is updated to meet any Rule Criteria configured to the workflow rule.",
   clean: util.types.toString,
 });
-
 const activeInput = input({
   label: "Active",
   type: "boolean",
   required: false,
   default: "true",
-  comments: "When true, the workflow rule is active and will fire when its criteria are met.",
+  comments:
+    "When true, the workflow rule is active and will fire when its criteria are met.",
   clean: util.types.toBool,
 });
-
 const outboundMessageActionsInput = input({
   label: "Outbound Message Actions",
   type: "string",
@@ -46,7 +48,6 @@ const outboundMessageActionsInput = input({
   collection: "valuelist",
   comments: "Full Names of the Outbound Message Actions for this Rule to fire.",
 });
-
 const filterCriteriaInput = input({
   label: "Rule Criteria Filter",
   type: "code",
@@ -62,7 +63,6 @@ const filterCriteriaInput = input({
     },
   ]),
 });
-
 export const endpointUrlInput = input({
   label: "Endpoint URL",
   type: "string",
@@ -71,7 +71,6 @@ export const endpointUrlInput = input({
   example: "https://example.com/webhook",
   clean: util.types.toString,
 });
-
 const integrationUserEmailInput = input({
   label: "Integration User Email",
   type: "string",
@@ -81,27 +80,26 @@ const integrationUserEmailInput = input({
   example: "john@doe.com",
   clean: cleanStringInput,
 });
-
 export const nameInput = input({
   label: "Name",
   type: "string",
   required: true,
-  comments: "The name of the Salesforce component such as an outbound message or workflow rule.",
+  comments:
+    "The name of the Salesforce component such as an outbound message or workflow rule.",
   example: "MyComponent",
   placeholder: "Enter name",
   clean: util.types.toString,
 });
-
 const outboundMessageNameInput = input({
   label: "Outbound Message Name",
   type: "string",
   required: true,
   placeholder: "Enter outbound message name",
-  comments: "The name of the Salesforce Outbound Message to create or reference.",
+  comments:
+    "The name of the Salesforce Outbound Message to create or reference.",
   example: "MyOutboundMessage",
   clean: util.types.toString,
 });
-
 export const fieldsInput = input({
   label: "Fields",
   type: "string",
@@ -112,7 +110,6 @@ export const fieldsInput = input({
   placeholder: "Enter field names",
   clean: fieldsInputClean,
 });
-
 export const dynamicFieldsInput = input({
   label: "Dynamic Fields",
   type: "data",
@@ -120,7 +117,6 @@ export const dynamicFieldsInput = input({
   comments:
     "Dynamic Fields, provided by value collection config variable, to include in the Outbound Message",
 });
-
 const formulaInput = input({
   label: "Formula",
   type: "string",
@@ -130,7 +126,6 @@ const formulaInput = input({
   placeholder: "Enter formula expression",
   clean: cleanStringInput,
 });
-
 const triggerEvent = input({
   label: "Trigger Event",
   type: "string",
@@ -143,7 +138,6 @@ const triggerEvent = input({
   comments: "The event condition that causes this workflow rule to fire.",
   clean: util.types.toString,
 });
-
 export const showTriggerableOnly = input({
   label: "Show Triggerable Only",
   type: "boolean",
@@ -152,7 +146,6 @@ export const showTriggerableOnly = input({
     "When true, only triggerable objects are returned. When false, all objects are returned.",
   clean: util.types.toBool,
 });
-
 export const createWorkflowRuleInputs = {
   version,
   recordType: workflowRecordType,
@@ -165,18 +158,15 @@ export const createWorkflowRuleInputs = {
   outboundMessageActions: outboundMessageActionsInput,
   connection: connectionInput,
 };
-
 export const listWorkflowRulesInputs = {
   version,
   connection: connectionInput,
 };
-
 export const deleteWorkflowRuleInputs = {
   version,
   fullName: fullNameInput,
   connection: connectionInput,
 };
-
 export const createWorkflowOutboundMessageInputs = {
   version,
   recordType: workflowRecordType,
@@ -188,18 +178,15 @@ export const createWorkflowOutboundMessageInputs = {
   dynamicFields: dynamicFieldsInput,
   connection: connectionInput,
 };
-
 export const listWorkflowOutboundMessagesInputs = {
   version,
   connection: connectionInput,
 };
-
 export const deleteWorkflowOutboundMessageInputs = {
   version,
   fullName: fullNameInput,
   connection: connectionInput,
 };
-
 export const subscribeToRecordChangeInputs = {
   version,
   name: outboundMessageNameInput,

@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { selectDriveInputs } from "../inputs/drives/list";
 import { paginateResults } from "../helpers";
 import type { Drive, Site } from "../interfaces";
-
 export const selectDriveOrSite = dataSource({
   display: {
     label: "Select Drive or Site",
@@ -18,7 +17,6 @@ export const selectDriveOrSite = dataSource({
       label: `Drive: ${drive.name}`,
       key: drive.id,
     }));
-
     const sitesUrl = "/sites";
     const sites = await paginateResults<Site>(client, sitesUrl, true, {});
     const sitesResult = sites.value.map<Element>((site) => ({

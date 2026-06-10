@@ -2,7 +2,6 @@ import { dataSource, util, type Element } from "@prismatic-io/spectral";
 import { queryDocs } from "../helpers";
 import { createClient } from "../client";
 import { selectDocumentInputs } from "../inputs";
-
 export const selectDocument = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -17,14 +16,12 @@ export const selectDocument = dataSource({
     const client = createClient({
       firebaseConnection: firebaseConnection,
     });
-
     const docs = await queryDocs({
       client,
       collection: util.types.toString(collection),
       queryOperatorCode: util.types.toString(queryOperatorCode),
       orderBy: util.types.toString(orderBy),
     });
-
     return {
       result: docs.map(
         (item): Element => ({

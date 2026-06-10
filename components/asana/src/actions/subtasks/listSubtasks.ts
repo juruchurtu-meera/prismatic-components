@@ -10,7 +10,6 @@ import {
 import { optionalFields } from "../../constants";
 import { getSubtasks } from "../../helpers";
 import type { Task } from "../../types/Task";
-
 export const listSubtasks = action({
   display: {
     label: "List Subtasks",
@@ -21,26 +20,17 @@ export const listSubtasks = action({
       params.asanaConnection,
       context.debug.enabled,
     );
-
-    
     let subtasks = await getSubtasks(client, params.taskId, {
       limit: params.limit,
       offset: params.offset,
       opt_fields: optionalFields,
     });
-
-    
     if (params.listAllNestedSubtasks) {
-      
       const allSubtasks = [...subtasks];
-
-      
       let shouldGetMoreSubtasks = subtasks.length;
-
       while (shouldGetMoreSubtasks) {
         const toGetSubtasks = subtasks.reduce(
           (getSubtasksAccumulator: Promise<Task[]>[], subtask) => {
-            
             if (subtask.num_subtasks > 0) {
               getSubtasksAccumulator.push(
                 getSubtasks(client, subtask.gid, {
@@ -52,23 +42,14 @@ export const listSubtasks = action({
           },
           [],
         );
-
-        
         const results: Task[][] = await Promise.all(toGetSubtasks);
-
-        
         subtasks = [];
-
         results.forEach((result) => {
           result.forEach((subtask: Task) => {
-            
             subtasks.push(subtask);
-            
             allSubtasks.push(subtask);
           });
         });
-
-        
         shouldGetMoreSubtasks = subtasks.length;
       }
       return { data: { data: allSubtasks } };

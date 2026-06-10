@@ -14,7 +14,6 @@ import {
   scoreboardLevelId,
   signature,
 } from "./common";
-
 export const updateAgentInputs = {
   connection,
   agentId: input({

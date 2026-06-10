@@ -1,16 +1,12 @@
 import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import connections from "../connections";
-
 export const cleanNumberInput = (value: unknown) =>
   value ? util.types.toNumber(value) : undefined;
-
 export const cleanStringInput = (value: unknown) =>
   value ? util.types.toString(value) : undefined;
-
 const throwCodeInputError = (inputLabel: string) => {
   throw new Error(`Invalid code for ${inputLabel} input.`);
 };
-
 export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     try {
@@ -21,7 +17,6 @@ export const cleanCodeInput = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
   if (value) {
     let object: unknown;
@@ -37,7 +32,6 @@ export const cleanArrayCodeInput = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const validateConnection = (connection: Connection): void => {
   const connectionKeys = connections.map((c) => c.key);
   if (!connectionKeys.includes(connection.key)) {
@@ -47,7 +41,6 @@ export const validateConnection = (connection: Connection): void => {
     );
   }
 };
-
 export const cleanDate = (value: unknown, inputLabel: string) => {
   if (value) {
     const date = new Date(util.types.toString(value));
@@ -58,13 +51,11 @@ export const cleanDate = (value: unknown, inputLabel: string) => {
   }
   return undefined;
 };
-
 export const getIdObject = (value: string | undefined) =>
   value
     ? {
         id: value,
       }
     : undefined;
-
 export const cleanBooleanInput = (value: unknown) =>
   value ? util.types.toBool(value) : undefined;

@@ -4,7 +4,6 @@ import { deleteFlowInputs } from "../../inputs";
 import { deleteFlowFunction, processMetadataResult } from "../../util";
 import { generateApiName } from "../../util";
 import { deleteFlowExamplePayload } from "../../examplePayloads";
-
 export const deleteFlow = action({
   display: {
     label: "Delete Flow",

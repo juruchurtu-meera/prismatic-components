@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { DELETE_CONTENT_RESPONSE } from "../../examplePayloads/general";
 import { deleteCellRangeInputs } from "../../inputs/cells/delete";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const deleteCellRange = action({
   display: {
     label: "Delete Cell Range",
@@ -16,14 +15,12 @@ export const deleteCellRange = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     await client.post(
       `${baseUrl}/worksheets/${worksheetId}/range(address='${address}')/delete`,
       {
         shift,
       },
     );
-
     return {
       data: DELETE_CONTENT_RESPONSE,
     };

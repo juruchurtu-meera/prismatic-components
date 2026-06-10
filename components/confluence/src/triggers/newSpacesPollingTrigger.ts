@@ -11,7 +11,6 @@ import {
   getCreatedAt,
   getLastPolled,
 } from "./utils";
-
 export const newSpacesPollingTrigger = pollingTrigger({
   display: {
     label: "New Spaces",
@@ -24,19 +23,16 @@ export const newSpacesPollingTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const lastState = context.polling.getState() as PollingState;
     const client = await createClient(connectionInput, context.debug.enabled);
-
     const allSpaces = await paginateResults<Space>(
       client,
       SPACES_URL,
       SPACES_URL_REGEX,
     );
-
     const spaces = filterByDate<Space>(
       allSpaces,
       getLastPolled(lastState, now),
       getCreatedAt,
     );
-
     context.polling.setState({ lastPolled: now });
     return Promise.resolve(buildPollingResult(payload, spaces));
   },

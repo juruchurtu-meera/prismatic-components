@@ -1,31 +1,12 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const createPushNotificationExamplePayload = {
   data: {
     historyId: "9876543210",
     expiration: "1731513045000",
   },
 };
-
 export const deletePushNotificationExamplePayload = {
   data: undefined,
 };
-
-
-
-
-
 export const renewPushNotificationExamplePayload = {
   data: {
     historyId: "9876543210",
@@ -35,11 +16,6 @@ export const renewPushNotificationExamplePayload = {
     hoursExtended: 168,
   },
 };
-
-
-
-
-
 export const getWatchStatusExamplePayload = {
   data: {
     status: "HEALTHY",
@@ -51,13 +27,6 @@ export const getWatchStatusExamplePayload = {
     isExpired: false,
   },
 };
-
-
-
-
-
-
-
 export const listLabelsExamplePayload = {
   data: {
     labels: [
@@ -93,13 +62,6 @@ export const listLabelsExamplePayload = {
     ],
   },
 };
-
-
-
-
-
-
-
 export const getLabelByNameExamplePayload = {
   data: {
     id: "Label_1234567890",
@@ -117,13 +79,6 @@ export const getLabelByNameExamplePayload = {
     threadsUnread: 4,
   },
 };
-
-
-
-
-
-
-
 export const getEventHistoryExamplePayload = {
   data: {
     history: [
@@ -167,31 +122,15 @@ export const getEventHistoryExamplePayload = {
     ],
     historyId: "9876543211",
     nextPageToken: "12345678901234567890",
-    // biome-ignore lint/suspicious/noExplicitAny: Example payload requires flexible typing
   } as any,
 };
-
-
-
-
-
-
-
 export const sendMessageExamplePayload = {
   data: {
     id: "18c2f4b3e8a9d7f6",
     threadId: "18c2f4b3e8a9d7f6",
     labelIds: ["SENT"],
-    // biome-ignore lint/suspicious/noExplicitAny: Example payload requires flexible typing
   } as any,
 };
-
-
-
-
-
-
-
 export const trashMessageByIdExamplePayload = {
   data: {
     id: "18c2f4b3e8a9d7f6",
@@ -201,16 +140,8 @@ export const trashMessageByIdExamplePayload = {
     internalDate: "1730913045000",
     sizeEstimate: 2543,
     snippet: "This is the beginning of the email message...",
-    // biome-ignore lint/suspicious/noExplicitAny: Example payload requires flexible typing
   } as any,
 };
-
-
-
-
-
-
-
 export const unTrashMessageByIdExamplePayload = {
   data: {
     id: "18c2f4b3e8a9d7f6",
@@ -220,29 +151,15 @@ export const unTrashMessageByIdExamplePayload = {
     internalDate: "1730913045000",
     sizeEstimate: 2543,
     snippet: "This is the beginning of the email message...",
-    // biome-ignore lint/suspicious/noExplicitAny: Example payload requires flexible typing
   } as any,
 };
-
-
-
-
-
-
-
 export const updateLabelsExamplePayload = {
   data: {
     id: "18c2f4b3e8a9d7f6",
     threadId: "18c2f4b3e8a9d7f6",
     labelIds: ["INBOX", "IMPORTANT", "STARRED"],
-    // biome-ignore lint/suspicious/noExplicitAny: Example payload requires flexible typing
   } as any,
 };
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     messages: [

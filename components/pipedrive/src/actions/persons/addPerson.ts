@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { cleanNumber, cleanString } from "../../util";
 import { WebhookVersion } from "../../constants";
-
 export const addPerson = action({
   display: {
     label: "Add Person",
@@ -11,9 +10,23 @@ export const addPerson = action({
   },
   perform: async (
     context,
-    { connection, name, ownerId, orgId, emails, phones, visibleTo, marketingStatus, addTime },
+    {
+      connection,
+      name,
+      ownerId,
+      orgId,
+      emails,
+      phones,
+      visibleTo,
+      marketingStatus,
+      addTime,
+    },
   ) => {
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const { data } = await client.post("/persons", {
       name,
       owner_id: ownerId,
@@ -48,7 +61,8 @@ export const addPerson = action({
       type: "string",
       required: false,
       clean: cleanNumber,
-      comments: "The ID of the user who will be marked as the owner of this person",
+      comments:
+        "The ID of the user who will be marked as the owner of this person",
       example: "123",
       placeholder: "Enter User ID",
     }),

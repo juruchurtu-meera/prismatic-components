@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     data: {
@@ -36,6 +23,6 @@ export const rawRequestExamplePayload = {
         },
       ],
     },
-    headers: {} as Record<string, unknown>, 
+    headers: {} as Record<string, unknown>,
   },
 };

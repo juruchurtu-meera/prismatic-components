@@ -1,22 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 import type { TriggerPayload } from "@prismatic-io/spectral";
-
-
-
-
-
 const exampleUser = {
   login: "octocat",
   id: 1,
@@ -37,7 +19,6 @@ const exampleUser = {
   type: "User",
   site_admin: false,
 };
-
 const exampleRepository = {
   id: 1296269,
   node_id: "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
@@ -49,39 +30,60 @@ const exampleRepository = {
   description: "My first repository on GitHub!",
   fork: false,
   url: "https://api.github.com/repos/octocat/Hello-World",
-  archive_url: "https://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}",
-  assignees_url: "https://api.github.com/repos/octocat/Hello-World/assignees{/user}",
+  archive_url:
+    "https://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}",
+  assignees_url:
+    "https://api.github.com/repos/octocat/Hello-World/assignees{/user}",
   blobs_url: "https://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}",
-  branches_url: "https://api.github.com/repos/octocat/Hello-World/branches{/branch}",
-  collaborators_url: "https://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}",
-  comments_url: "https://api.github.com/repos/octocat/Hello-World/comments{/number}",
+  branches_url:
+    "https://api.github.com/repos/octocat/Hello-World/branches{/branch}",
+  collaborators_url:
+    "https://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}",
+  comments_url:
+    "https://api.github.com/repos/octocat/Hello-World/comments{/number}",
   commits_url: "https://api.github.com/repos/octocat/Hello-World/commits{/sha}",
-  compare_url: "https://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}",
-  contents_url: "https://api.github.com/repos/octocat/Hello-World/contents/{+path}",
-  contributors_url: "https://api.github.com/repos/octocat/Hello-World/contributors",
-  deployments_url: "https://api.github.com/repos/octocat/Hello-World/deployments",
+  compare_url:
+    "https://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}",
+  contents_url:
+    "https://api.github.com/repos/octocat/Hello-World/contents/{+path}",
+  contributors_url:
+    "https://api.github.com/repos/octocat/Hello-World/contributors",
+  deployments_url:
+    "https://api.github.com/repos/octocat/Hello-World/deployments",
   downloads_url: "https://api.github.com/repos/octocat/Hello-World/downloads",
   events_url: "https://api.github.com/repos/octocat/Hello-World/events",
   forks_url: "https://api.github.com/repos/octocat/Hello-World/forks",
-  git_commits_url: "https://api.github.com/repos/octocat/Hello-World/git/commits{/sha}",
-  git_refs_url: "https://api.github.com/repos/octocat/Hello-World/git/refs{/sha}",
-  git_tags_url: "https://api.github.com/repos/octocat/Hello-World/git/tags{/sha}",
+  git_commits_url:
+    "https://api.github.com/repos/octocat/Hello-World/git/commits{/sha}",
+  git_refs_url:
+    "https://api.github.com/repos/octocat/Hello-World/git/refs{/sha}",
+  git_tags_url:
+    "https://api.github.com/repos/octocat/Hello-World/git/tags{/sha}",
   hooks_url: "https://api.github.com/repos/octocat/Hello-World/hooks",
-  issue_comment_url: "https://api.github.com/repos/octocat/Hello-World/issues/comments{/number}",
-  issue_events_url: "https://api.github.com/repos/octocat/Hello-World/issues/events{/number}",
-  issues_url: "https://api.github.com/repos/octocat/Hello-World/issues{/number}",
+  issue_comment_url:
+    "https://api.github.com/repos/octocat/Hello-World/issues/comments{/number}",
+  issue_events_url:
+    "https://api.github.com/repos/octocat/Hello-World/issues/events{/number}",
+  issues_url:
+    "https://api.github.com/repos/octocat/Hello-World/issues{/number}",
   keys_url: "https://api.github.com/repos/octocat/Hello-World/keys{/key_id}",
   labels_url: "https://api.github.com/repos/octocat/Hello-World/labels{/name}",
   languages_url: "https://api.github.com/repos/octocat/Hello-World/languages",
   merges_url: "https://api.github.com/repos/octocat/Hello-World/merges",
-  milestones_url: "https://api.github.com/repos/octocat/Hello-World/milestones{/number}",
-  notifications_url: "https://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}",
+  milestones_url:
+    "https://api.github.com/repos/octocat/Hello-World/milestones{/number}",
+  notifications_url:
+    "https://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}",
   pulls_url: "https://api.github.com/repos/octocat/Hello-World/pulls{/number}",
-  releases_url: "https://api.github.com/repos/octocat/Hello-World/releases{/id}",
+  releases_url:
+    "https://api.github.com/repos/octocat/Hello-World/releases{/id}",
   stargazers_url: "https://api.github.com/repos/octocat/Hello-World/stargazers",
-  statuses_url: "https://api.github.com/repos/octocat/Hello-World/statuses/{sha}",
-  subscribers_url: "https://api.github.com/repos/octocat/Hello-World/subscribers",
-  subscription_url: "https://api.github.com/repos/octocat/Hello-World/subscription",
+  statuses_url:
+    "https://api.github.com/repos/octocat/Hello-World/statuses/{sha}",
+  subscribers_url:
+    "https://api.github.com/repos/octocat/Hello-World/subscribers",
+  subscription_url:
+    "https://api.github.com/repos/octocat/Hello-World/subscription",
   tags_url: "https://api.github.com/repos/octocat/Hello-World/tags",
   teams_url: "https://api.github.com/repos/octocat/Hello-World/teams",
   trees_url: "https://api.github.com/repos/octocat/Hello-World/git/trees{/sha}",
@@ -125,15 +127,6 @@ const exampleRepository = {
   watchers: 80,
   default_branch: "main",
 };
-
-
-
-
-
-
-
-
-
 export const reposListForOrgExamplePayload = {
   data: [
     exampleRepository,
@@ -172,15 +165,6 @@ export const reposListForOrgExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
 export const reposCreateWebhookExamplePayload = {
   data: {
     type: "Repository",
@@ -196,9 +180,12 @@ export const reposCreateWebhookExamplePayload = {
     updated_at: "2024-01-15T10:30:00Z",
     created_at: "2024-01-15T10:30:00Z",
     url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345678",
-    test_url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345678/test",
-    ping_url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345678/pings",
-    deliveries_url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345678/deliveries",
+    test_url:
+      "https://api.github.com/repos/octocat/Hello-World/hooks/12345678/test",
+    ping_url:
+      "https://api.github.com/repos/octocat/Hello-World/hooks/12345678/pings",
+    deliveries_url:
+      "https://api.github.com/repos/octocat/Hello-World/hooks/12345678/deliveries",
     last_response: {
       code: null,
       status: "unused",
@@ -206,11 +193,6 @@ export const reposCreateWebhookExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const reposListWebhooksExamplePayload = {
   data: [
     reposCreateWebhookExamplePayload.data,
@@ -228,9 +210,12 @@ export const reposListWebhooksExamplePayload = {
       updated_at: "2024-01-14T09:00:00Z",
       created_at: "2024-01-14T09:00:00Z",
       url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345679",
-      test_url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345679/test",
-      ping_url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345679/pings",
-      deliveries_url: "https://api.github.com/repos/octocat/Hello-World/hooks/12345679/deliveries",
+      test_url:
+        "https://api.github.com/repos/octocat/Hello-World/hooks/12345679/test",
+      ping_url:
+        "https://api.github.com/repos/octocat/Hello-World/hooks/12345679/pings",
+      deliveries_url:
+        "https://api.github.com/repos/octocat/Hello-World/hooks/12345679/deliveries",
       last_response: {
         code: 200,
         status: "active",
@@ -239,20 +224,9 @@ export const reposListWebhooksExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const reposDeleteWebhookExamplePayload = {
   data: {},
 };
-
-
-
-
-
 export const reposDeleteInstanceWebhooksExamplePayload = {
   data: {
     message: "Successfully deleted 2 webhook(s)",
@@ -260,15 +234,6 @@ export const reposDeleteInstanceWebhooksExamplePayload = {
     deletedHookIds: [12345678, 12345679],
   },
 };
-
-
-
-
-
-
-
-
-
 export const issuesListForRepoExamplePayload = {
   data: [
     {
@@ -276,9 +241,12 @@ export const issuesListForRepoExamplePayload = {
       node_id: "MDU6SXNzdWUx",
       url: "https://api.github.com/repos/octocat/Hello-World/issues/1347",
       repository_url: "https://api.github.com/repos/octocat/Hello-World",
-      labels_url: "https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}",
-      comments_url: "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments",
-      events_url: "https://api.github.com/repos/octocat/Hello-World/issues/1347/events",
+      labels_url:
+        "https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}",
+      comments_url:
+        "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments",
+      events_url:
+        "https://api.github.com/repos/octocat/Hello-World/issues/1347/events",
       html_url: "https://github.com/octocat/Hello-World/issues/1347",
       number: 1347,
       state: "open",
@@ -312,9 +280,12 @@ export const issuesListForRepoExamplePayload = {
       node_id: "MDU6SXNzdWUy",
       url: "https://api.github.com/repos/octocat/Hello-World/issues/1348",
       repository_url: "https://api.github.com/repos/octocat/Hello-World",
-      labels_url: "https://api.github.com/repos/octocat/Hello-World/issues/1348/labels{/name}",
-      comments_url: "https://api.github.com/repos/octocat/Hello-World/issues/1348/comments",
-      events_url: "https://api.github.com/repos/octocat/Hello-World/issues/1348/events",
+      labels_url:
+        "https://api.github.com/repos/octocat/Hello-World/issues/1348/labels{/name}",
+      comments_url:
+        "https://api.github.com/repos/octocat/Hello-World/issues/1348/comments",
+      events_url:
+        "https://api.github.com/repos/octocat/Hello-World/issues/1348/events",
       html_url: "https://github.com/octocat/Hello-World/issues/1348",
       number: 1348,
       state: "closed",
@@ -345,17 +316,13 @@ export const issuesListForRepoExamplePayload = {
     },
   ],
 };
-
-
-
-
-
 export const issuesCreateCommentExamplePayload = {
   data: {
     id: 1,
     node_id: "MDEyOklzc3VlQ29tbWVudDE=",
     url: "https://api.github.com/repos/octocat/Hello-World/issues/comments/1",
-    html_url: "https://github.com/octocat/Hello-World/issues/1347#issuecomment-1",
+    html_url:
+      "https://github.com/octocat/Hello-World/issues/1347#issuecomment-1",
     body: "This is a comment",
     user: exampleUser,
     created_at: "2024-01-15T11:00:00Z",
@@ -363,11 +330,6 @@ export const issuesCreateCommentExamplePayload = {
     author_association: "COLLABORATOR",
   },
 };
-
-
-
-
-
 export const issuesListCommentsExamplePayload = {
   data: [
     issuesCreateCommentExamplePayload.data,
@@ -375,7 +337,8 @@ export const issuesListCommentsExamplePayload = {
       id: 2,
       node_id: "MDEyOklzc3VlQ29tbWVudDI=",
       url: "https://api.github.com/repos/octocat/Hello-World/issues/comments/2",
-      html_url: "https://github.com/octocat/Hello-World/issues/1347#issuecomment-2",
+      html_url:
+        "https://github.com/octocat/Hello-World/issues/1347#issuecomment-2",
       body: "Thanks for reporting this issue!",
       user: exampleUser,
       created_at: "2024-01-15T12:30:00Z",
@@ -384,15 +347,6 @@ export const issuesListCommentsExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
 export const pullsCreateExamplePayload = {
   data: {
     id: 1,
@@ -402,11 +356,16 @@ export const pullsCreateExamplePayload = {
     diff_url: "https://github.com/octocat/Hello-World/pull/1347.diff",
     patch_url: "https://github.com/octocat/Hello-World/pull/1347.patch",
     issue_url: "https://api.github.com/repos/octocat/Hello-World/issues/1347",
-    commits_url: "https://api.github.com/repos/octocat/Hello-World/pulls/1347/commits",
-    review_comments_url: "https://api.github.com/repos/octocat/Hello-World/pulls/1347/comments",
-    review_comment_url: "https://api.github.com/repos/octocat/Hello-World/pulls/comments{/number}",
-    comments_url: "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments",
-    statuses_url: "https://api.github.com/repos/octocat/Hello-World/statuses/6dcb09b5b57875f334f61aebed695e2e4193db5e",
+    commits_url:
+      "https://api.github.com/repos/octocat/Hello-World/pulls/1347/commits",
+    review_comments_url:
+      "https://api.github.com/repos/octocat/Hello-World/pulls/1347/comments",
+    review_comment_url:
+      "https://api.github.com/repos/octocat/Hello-World/pulls/comments{/number}",
+    comments_url:
+      "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments",
+    statuses_url:
+      "https://api.github.com/repos/octocat/Hello-World/statuses/6dcb09b5b57875f334f61aebed695e2e4193db5e",
     number: 1347,
     state: "open",
     locked: false,
@@ -482,11 +441,6 @@ export const pullsCreateExamplePayload = {
     changed_files: 5,
   },
 };
-
-
-
-
-
 export const pullsListExamplePayload = {
   data: [
     pullsCreateExamplePayload.data,
@@ -527,15 +481,6 @@ export const pullsListExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
-
-
-
 export const usersGetByUsernameExamplePayload = {
   data: {
     login: "octocat",
@@ -546,7 +491,8 @@ export const usersGetByUsernameExamplePayload = {
     url: "https://api.github.com/users/octocat",
     html_url: "https://github.com/octocat",
     followers_url: "https://api.github.com/users/octocat/followers",
-    following_url: "https://api.github.com/users/octocat/following{/other_user}",
+    following_url:
+      "https://api.github.com/users/octocat/following{/other_user}",
     gists_url: "https://api.github.com/users/octocat/gists{/gist_id}",
     starred_url: "https://api.github.com/users/octocat/starred{/owner}{/repo}",
     subscriptions_url: "https://api.github.com/users/octocat/subscriptions",
@@ -572,11 +518,6 @@ export const usersGetByUsernameExamplePayload = {
     updated_at: "2024-01-15T10:00:00Z",
   },
 };
-
-
-
-
-
 export const orgsListForAuthenticatedUserExamplePayload = {
   data: [
     {
@@ -589,7 +530,8 @@ export const orgsListForAuthenticatedUserExamplePayload = {
       hooks_url: "https://api.github.com/orgs/github/hooks",
       issues_url: "https://api.github.com/orgs/github/issues",
       members_url: "https://api.github.com/orgs/github/members{/member}",
-      public_members_url: "https://api.github.com/orgs/github/public_members{/member}",
+      public_members_url:
+        "https://api.github.com/orgs/github/public_members{/member}",
       avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
       description: "How people build software",
     },
@@ -603,32 +545,19 @@ export const orgsListForAuthenticatedUserExamplePayload = {
       hooks_url: "https://api.github.com/orgs/octocat-org/hooks",
       issues_url: "https://api.github.com/orgs/octocat-org/issues",
       members_url: "https://api.github.com/orgs/octocat-org/members{/member}",
-      public_members_url: "https://api.github.com/orgs/octocat-org/public_members{/member}",
+      public_members_url:
+        "https://api.github.com/orgs/octocat-org/public_members{/member}",
       avatar_url: "https://avatars.githubusercontent.com/u/2?v=4",
       description: "Octocat's projects",
     },
   ],
 };
-
-
-
-
-
-
-
-
-
 export const gitCreateBlobExamplePayload = {
   data: {
     sha: "3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15",
     url: "https://api.github.com/repos/octocat/Hello-World/git/blobs/3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15",
   },
 };
-
-
-
-
-
 export const gitCreateRefExamplePayload = {
   data: {
     ref: "refs/heads/feature-branch",
@@ -641,11 +570,6 @@ export const gitCreateRefExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const gitGetRefExamplePayload = {
   data: {
     ref: "refs/heads/main",
@@ -658,11 +582,6 @@ export const gitGetRefExamplePayload = {
     },
   },
 };
-
-
-
-
-
 export const gitCreateTreeExamplePayload = {
   data: {
     sha: "cd8274d15fa3ae2ab983129fb037999f264ba9a7",
@@ -680,50 +599,17 @@ export const gitCreateTreeExamplePayload = {
     truncated: false,
   },
 };
-
-
-
-
-
-
-
-
-
-
 export const actionsCreateWorkflowDispatchExamplePayload = {
   data: {},
 };
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     message: "Example response from custom API endpoint",
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const pollChangesTriggerExamplePayload: { payload: TriggerPayload } = {
+export const pollChangesTriggerExamplePayload: {
+  payload: TriggerPayload;
+} = {
   payload: {
     headers: {},
     queryParameters: {},

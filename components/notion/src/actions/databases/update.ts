@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { updateDatabaseInputs } from "../../inputs";
 import { createClient } from "../../client";
 import { updateDatabaseResponse } from "../../examplePayloads";
-
 export const updatedUpdateDatabase = action({
   display: {
     label: "Update Database",
@@ -15,7 +14,6 @@ export const updatedUpdateDatabase = action({
     { connection, databaseId, title, icon, cover, isInline, parent },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const payload = {
       title,
       icon,
@@ -23,7 +21,6 @@ export const updatedUpdateDatabase = action({
       is_inline: isInline ? util.types.toBool(isInline) : undefined,
       parent,
     };
-
     const { data } = await client.patch(`/databases/${databaseId}`, payload);
     return { data };
   },

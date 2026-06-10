@@ -23,7 +23,6 @@ import {
   topicNameOrFullFormat,
   webhookUrl,
 } from "../../inputs";
-
 export const createSubscription = action({
   display: {
     description: "Creates a subscription to a given topic.",
@@ -84,7 +83,9 @@ export const createSubscription = action({
     },
   ) => {
     const client = createClient(connectionInput);
-    const topicName = topicNameOrFullFormat ? topic : `projects/${projectId}/topics/${topic}`;
+    const topicName = topicNameOrFullFormat
+      ? topic
+      : `projects/${projectId}/topics/${topic}`;
     const { data } = await client.projects.subscriptions.create({
       name: `projects/${projectId}/subscriptions/${subscription}`,
       requestBody: {
@@ -102,7 +103,8 @@ export const createSubscription = action({
         retryPolicy: retryPolicy || undefined,
         detached: detached || undefined,
         enableExactlyOnceDelivery: enableExactlyOnceDelivery || undefined,
-        topicMessageRetentionDuration: topicMessageRetentionDuration || undefined,
+        topicMessageRetentionDuration:
+          topicMessageRetentionDuration || undefined,
         state: state || undefined,
       },
     });
@@ -111,7 +113,6 @@ export const createSubscription = action({
     };
   },
 });
-
 export const createWebhookSubscription = action({
   display: {
     label: "Create Webhook Subscription",
@@ -148,8 +149,15 @@ export const createWebhookSubscription = action({
       });
       return { data: { ...data, alreadyExisted: false } };
     } catch (error: unknown) {
-      if (typeof error === "object" && error !== null && "code" in error && error.code === 409) {
-        logger.warn("Skipping creation of subscription because it already exists.");
+      if (
+        typeof error === "object" &&
+        error !== null &&
+        "code" in error &&
+        error.code === 409
+      ) {
+        logger.warn(
+          "Skipping creation of subscription because it already exists.",
+        );
         const { data } = await client.projects.subscriptions.get({
           subscription: subscriptionName,
         });

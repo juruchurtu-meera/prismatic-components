@@ -29,7 +29,6 @@ import {
   street,
   title,
 } from "./fields";
-
 const assistant = input({
   label: "Assistant",
   type: "string",
@@ -39,7 +38,6 @@ const assistant = input({
   clean: cleanStringInput,
   example: "Jane Doe",
 });
-
 const assistantPhone = input({
   label: "Assistant's Phone",
   type: "string",
@@ -49,7 +47,6 @@ const assistantPhone = input({
   clean: cleanStringInput,
   example: "18005555555",
 });
-
 const department = input({
   label: "Department",
   type: "string",
@@ -59,7 +56,6 @@ const department = input({
   clean: cleanStringInput,
   example: "Sales",
 });
-
 export const createContactInputs = {
   email,
   version,
@@ -88,7 +84,6 @@ export const createContactInputs = {
   postalCode,
   connection: connectionInput,
 };
-
 export const updateContactInputs = {
   recordId: {
     ...recordId,
@@ -121,7 +116,6 @@ export const updateContactInputs = {
   postalCode,
   connection: connectionInput,
 };
-
 export const deleteContactInputs = {
   version,
   recordId: {
@@ -130,5 +124,4 @@ export const deleteContactInputs = {
   },
   connection: connectionInput,
 };
-
 export const listContactsInputs = { ...listInputs };

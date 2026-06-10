@@ -14,7 +14,6 @@ import teams from "./teams";
 import users from "./users";
 import workers from "./workers";
 import workLocations from "./workLocations";
-
 export default {
   ...businessPartnerGroups,
   ...businessPartners,

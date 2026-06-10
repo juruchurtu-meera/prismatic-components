@@ -3,14 +3,6 @@ import { createClient } from "../../client";
 import { submitMetricsExample } from "../../examplePayloads";
 import { submitMetricsInputs } from "../../inputs";
 import type { SubmitMetricsResponse } from "../../types";
-
-
-
-
-
-
-
-
 export const submitMetrics = action({
   display: {
     label: "Submit Metrics",
@@ -24,7 +16,6 @@ export const submitMetrics = action({
       "/api/v2/series",
       { series: metricSeries },
     );
-
     return { data: response.data };
   },
   examplePayload: submitMetricsExample,

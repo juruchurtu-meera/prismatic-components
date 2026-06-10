@@ -1,6 +1,5 @@
 import { connection, employeeId } from "../common";
 import { fileData, fileName, folderId, folderType } from "./common";
-
 export const uploadFileToFolderInputs = {
   connection,
   employeeId: {

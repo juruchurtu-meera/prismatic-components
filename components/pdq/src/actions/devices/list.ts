@@ -4,7 +4,6 @@ import { listDevicesExamplePayload } from "../../examplePayloads/devices";
 import { listDevicesInputs } from "../../inputs/devices/list";
 import { connection } from "../../inputs/general";
 import { fetchAllData } from "../../util";
-
 export const listDevices = action({
   display: {
     label: "List Devices",
@@ -29,7 +28,6 @@ export const listDevices = action({
     },
   ) => {
     const client = createHttpClient(connection, context.debug.enabled);
-
     const data = await fetchAllData(
       client,
       "/devices",

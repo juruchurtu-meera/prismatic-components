@@ -3,7 +3,6 @@ import { createAuthorizedClient } from "../auth";
 import { moveObjectExamplePayload } from "../example-payloads";
 import { connectionInput, fromPath, toPath } from "../inputs";
 import { checkDebug, handleDropboxError, validatePath } from "../util";
-
 export const moveObject = action({
   display: {
     label: "Move Object",

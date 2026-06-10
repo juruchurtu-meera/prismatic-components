@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { getMobileAppExamplePayload } from "../../examplePayloads";
 import { mobileAppId } from "../../inputs/mobileApps/general";
-
 export const getMobileApp = action({
   display: {
     label: "Get Mobile App",

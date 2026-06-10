@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { confirmClientLinkExamplePayload } from "../../examplePayloads";
 import { confirmClientLinkInputs } from "../../inputs";
-
 export const confirmClientLink = action({
   display: {
     label: "Confirm Client Link",
@@ -18,7 +17,6 @@ export const confirmClientLink = action({
       context.debug.enabled,
       context.logger,
     );
-
     const linkResourceName = `customers/${customerId}/customerManagerLinks/${managerCustomerId}~${managerLinkId}`;
     const { data } = await client.post(
       `customers/${customerId}/customerManagerLinks:mutate`,

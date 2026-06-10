@@ -1,7 +1,6 @@
 export interface CustomerClientResult {
   customerClient: CustomerClientQuery;
 }
-
 export interface CustomerClientQuery {
   clientCustomer: string;
   level: string;

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createSalesforceHttpClient } from "../../client";
 import { getQueryJobInformationInputs } from "../../inputs";
 import { getQueryJobInformationExamplePayload } from "../../examplePayloads";
-
 export const getQueryJobInformation = action({
   display: {
     label: "Get Bulk Query Job Information",

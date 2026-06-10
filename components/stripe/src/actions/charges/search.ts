@@ -3,13 +3,16 @@ import type Stripe from "stripe";
 import { createStripeClient } from "../../auth";
 import { searchChargesExamplePayload } from "../../examplePayloads/charges";
 import { connectionInput, limit, page, query, timeout } from "../../inputs";
-
 export const searchCharges = action({
   display: {
     label: "Search Charges",
-    description: "Search for charges previously created using Stripe's Search Query Language.",
+    description:
+      "Search for charges previously created using Stripe's Search Query Language.",
   },
-  perform: async (context, { stripeConnection, timeout, query, limit, page }) => {
+  perform: async (
+    context,
+    { stripeConnection, timeout, query, limit, page },
+  ) => {
     const client = createStripeClient({
       stripeConnection: stripeConnection,
       timeout: util.types.toInt(timeout),

@@ -7,7 +7,6 @@ import {
   validateHmac,
   webhookSecretsStateKey,
 } from "./utils";
-
 export const webhook = trigger({
   display: {
     label: "Webhook",
@@ -21,16 +20,10 @@ export const webhook = trigger({
     const headers = util.types.lowerCaseHeaders(payload.headers);
     const webhookSecret = headers["x-hook-secret"];
     const { value: secrets, isLegacy } = resolveWebhookSecrets(context);
-
     if (webhookSecret) {
-      
-      
-
-      
       const webhookSecrets = secrets
         ? [...new Set([...secrets, webhookSecret])]
         : [webhookSecret];
-
       return Promise.resolve({
         payload,
         response: {
@@ -47,16 +40,12 @@ export const webhook = trigger({
       });
     } else {
       const stateSecrets = secrets || [];
-      
       validateHmac(payload, headers["x-hook-signature"], stateSecrets);
-
       if (isLegacy) {
         context.crossFlowState[webhookSecretsStateKey(context)] = secrets;
         context.instanceState[WEBHOOK_SECRETS_LEGACY_KEY] = null;
       }
-
       if (isHeartbeatData(payload.body.data)) {
-        
         context.logger.debug("Asana Heartbeat received");
         return Promise.resolve({
           payload,

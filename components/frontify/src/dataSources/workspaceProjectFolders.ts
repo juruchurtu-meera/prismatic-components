@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../client";
 import { connection } from "../inputs/sharedInputs";
 import type { FolderItem, WorkspaceProjectFoldersResponse } from "../types";
-
 const projectId = input({
   label: "Workspace Project ID",
   type: "string",
@@ -13,7 +12,6 @@ const projectId = input({
   placeholder: "eyJpZG...",
   clean: util.types.toString,
 });
-
 const query = gql`
   query listWorkspaceProjectFolders($projectId: ID!) {
     workspaceProject(id: $projectId) {
@@ -28,7 +26,6 @@ const query = gql`
     }
   }
 `;
-
 export const selectWorkspaceProjectFolder = dataSource({
   display: {
     label: "Select Workspace Project Folder",

@@ -6,7 +6,6 @@ import {
   offset,
   statusParentIdInput,
 } from "../../inputs";
-
 export const getStatusesForObject = action({
   display: {
     label: "Get Status Updates from Object",

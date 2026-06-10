@@ -22,7 +22,6 @@ import {
   technicianId,
   unitPrice,
 } from "../../inputs";
-
 export const updateInvoiceItems = action({
   display: {
     label: "Update Invoice Items",

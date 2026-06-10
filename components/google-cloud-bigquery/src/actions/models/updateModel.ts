@@ -24,7 +24,6 @@ import {
   projectId,
   trainingRuns,
 } from "../../inputs";
-
 export const updateModel = action({
   display: {
     description: "Patch specific fields in the specified model.",

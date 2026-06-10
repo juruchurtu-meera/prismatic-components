@@ -1,5 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
 export const sendGridConnection = connection({
   key: "apiKey",
   display: {
@@ -19,5 +18,4 @@ export const sendGridConnection = connection({
     },
   },
 });
-
 export default [sendGridConnection];

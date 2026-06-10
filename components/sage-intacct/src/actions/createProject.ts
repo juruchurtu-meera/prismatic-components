@@ -26,7 +26,6 @@ import {
   CREATE_PROJECT_ADDITIONAL_FIELDS,
   TO_BE_CREATED_TEXT,
 } from "../constants";
-
 export const createProject = action({
   display: {
     label: "Create Project",
@@ -60,18 +59,14 @@ export const createProject = action({
       projectStatus: projectStatusInput,
       active: statusInput,
     } as unknown as AbstractProject);
-
     Object.assign(createProject, additionalFields);
-
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(createProject, null, 2));
     }
     const result = await executeAction(connection, createProject);
     const { _data: projectsArray, _status } =
       convertResultToGenericObject(result);
-
     checkSuccess(_status, "Failed to create project");
-
     return {
       data: getObjectFromArray(projectsArray),
     };
@@ -95,7 +90,6 @@ export const createProject = action({
       ...parentProjectIdInput,
       comments: `${parentProjectIdInput.comments} ${TO_BE_CREATED_TEXT}`,
     },
-
     invoiceWithParentInput,
     projectTypeInput: {
       ...projectTypeInput,

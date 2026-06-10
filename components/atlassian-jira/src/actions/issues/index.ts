@@ -11,7 +11,6 @@ import { listIssueWorklogs } from "./listIssueWorklogs";
 import { searchIssues } from "./searchIssues";
 import { transitionIssue } from "./transitionIssue";
 import { updateIssue } from "./updateIssue";
-
 export default {
   searchIssues,
   getIssue,

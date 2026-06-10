@@ -19,7 +19,6 @@ import {
 import { isRole } from "../../helper";
 import { convertBooleanInputIntoUpdateInput } from "../../util";
 import { updateUserPayload } from "../../examplePayloads";
-
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -31,7 +30,6 @@ export const updateUser = action({
       debug: context.debug.enabled,
     });
     const userRoleString = util.types.toString(params.userRole);
-
     const { result } = await client.users.update(
       util.types.toInt(params.userId),
       {
@@ -51,7 +49,6 @@ export const updateUser = action({
         },
       },
     );
-
     return {
       data: result,
     };

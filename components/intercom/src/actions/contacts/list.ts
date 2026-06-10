@@ -11,7 +11,6 @@ import {
 } from "../../inputs";
 import type { Contact } from "../../interfaces";
 import { paginateRecords } from "../../util";
-
 export const listContacts = action({
   display: {
     label: "List Contacts",
@@ -30,7 +29,6 @@ export const listContacts = action({
     { connection, order, page, perPage, startingAfter, fetchAll },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const data = await paginateRecords<Contact>(
       client,
       { order, page, per_page: perPage, starting_after: startingAfter },

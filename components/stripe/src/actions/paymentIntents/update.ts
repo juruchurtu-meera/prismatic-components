@@ -26,7 +26,6 @@ import {
   transferGroup,
 } from "../../inputs";
 import { keyValPairListToObject } from "../../util";
-
 export const updatePaymentIntent = action({
   display: {
     label: "Update Payment Intent",
@@ -71,7 +70,8 @@ export const updatePaymentIntent = action({
       ...(paymentMethod && { payment_method: paymentMethod }),
       ...(receiptEmail && { receipt_email: receiptEmail }),
       ...(setupFutureUsage && {
-        setup_future_usage: setupFutureUsage as Stripe.PaymentIntentCreateParams.SetupFutureUsage,
+        setup_future_usage:
+          setupFutureUsage as Stripe.PaymentIntentCreateParams.SetupFutureUsage,
       }),
       ...(shipping && { shipping: JSON.parse(shipping) }),
       ...(statementDescriptor && { statement_descriptor: statementDescriptor }),
@@ -82,7 +82,8 @@ export const updatePaymentIntent = action({
         application_fee_amount: util.types.toInt(applicationFeeAmount),
       }),
       ...(captureMethod && {
-        capture_method: captureMethod as Stripe.PaymentIntentCreateParams.CaptureMethod,
+        capture_method:
+          captureMethod as Stripe.PaymentIntentCreateParams.CaptureMethod,
       }),
       ...(paymentMethodData && {
         payment_method_data: JSON.parse(paymentMethodData),
@@ -109,19 +110,22 @@ export const updatePaymentIntent = action({
     customerId: {
       ...customerId,
       label: "Customer",
-      comments: "ID of the Customer this PaymentIntent belongs to, if one exists.",
+      comments:
+        "ID of the Customer this PaymentIntent belongs to, if one exists.",
       clean: util.types.toString,
     },
     description: {
       ...description,
-      comments: "An arbitrary string attached to the object. Often useful for displaying to users.",
+      comments:
+        "An arbitrary string attached to the object. Often useful for displaying to users.",
       clean: util.types.toString,
     },
     metadata,
     paymentMethod,
     receiptEmail: {
       ...receiptEmail,
-      comments: "Email address that the receipt for the resulting payment will be sent to. ",
+      comments:
+        "Email address that the receipt for the resulting payment will be sent to. ",
     },
     setupFutureUsage,
     shipping: {
@@ -143,7 +147,8 @@ export const updatePaymentIntent = action({
     transferData,
     transferGroup: {
       ...transferGroup,
-      comments: "A string that identifies the resulting payment as part of a group.",
+      comments:
+        "A string that identifies the resulting payment as part of a group.",
     },
   },
   examplePayload: updatePaymentIntentExamplePayload,

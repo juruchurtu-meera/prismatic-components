@@ -50,7 +50,6 @@ export interface Cluster {
     spark_version: string;
   };
 }
-
 export interface NodeType {
   node_type_id: string;
   memory_mb: number;
@@ -75,7 +74,6 @@ export interface NodeType {
   display_order: number;
   is_io_cache_enabled: boolean;
 }
-
 export interface Warehouse {
   id: string;
   name: string;

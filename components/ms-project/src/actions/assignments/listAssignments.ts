@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createProjectsClient } from "../../client";
 import { toPaginationParams } from "../../helper";
 import { connection, guId, pageNumber, pageSize } from "../../inputs";
-
 export const listAssignments = action({
   display: {
     label: "List Assignments",
@@ -15,16 +14,16 @@ export const listAssignments = action({
       },
       context.debug.enabled,
     );
-
-    const { data } = await client.get(`/Projects('${params.guId}')/Assignments`, {
-      params: toPaginationParams(params.pageSize, params.pageNumber),
-    });
-
+    const { data } = await client.get(
+      `/Projects('${params.guId}')/Assignments`,
+      {
+        params: toPaginationParams(params.pageSize, params.pageNumber),
+      },
+    );
     return {
       data,
     };
   },
   inputs: { connection, guId, pageSize, pageNumber },
 });
-
 export default listAssignments;

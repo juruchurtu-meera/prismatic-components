@@ -14,7 +14,6 @@ import type {
   GetQueueAttributesCommandInput,
 } from "@aws-sdk/client-sqs";
 import { createDeadLetterQueueExample } from "../examplePayloads";
-
 const createDeadLetterQueue = action({
   display: {
     label: "Create Dead Letter Queue",
@@ -22,7 +21,6 @@ const createDeadLetterQueue = action({
   },
   perform: async (context, params) => {
     const client = await createSQSClient(params);
-
     if (params.isFifo) {
       if (!params.name.endsWith(".fifo")) {
         throw new Error(
@@ -35,14 +33,8 @@ const createDeadLetterQueue = action({
         );
       }
     }
-
     const tags = params.tags;
     const attributes = {
-      
-      
-      
-      
-      
       FifoQueue: params.isFifo ? "true" : undefined,
       ContentBasedDeduplication:
         params.isFifo && params.contentBasedDeduplication ? "true" : undefined,
@@ -52,14 +44,11 @@ const createDeadLetterQueue = action({
       tags,
       Attributes: attributes,
     };
-
     const dlqResult = await client.createQueue(dlqCreateCommandInput);
-
     const dldGetQueueCommandInput: GetQueueAttributesCommandInput = {
       QueueUrl: dlqResult.QueueUrl,
       AttributeNames: ["QueueArn"],
     };
-
     const dlqAttributes = await client.getQueueAttributes(
       dldGetQueueCommandInput,
     );
@@ -70,7 +59,6 @@ const createDeadLetterQueue = action({
       deadLetterTargetArn: dlqAttributes.Attributes.QueueArn,
       maxReceiveCount: params.maxReceiveCount,
     });
-
     const mainCreateCommandInput: CreateQueueCommandInput = {
       QueueName: params.name,
       tags,
@@ -79,9 +67,7 @@ const createDeadLetterQueue = action({
         RedrivePolicy: redrivePolicy,
       },
     };
-
     const mainQueueResult = await client.createQueue(mainCreateCommandInput);
-
     return { data: { mainQueue: mainQueueResult, deadLetterQueue: dlqResult } };
   },
   inputs: {
@@ -104,5 +90,4 @@ const createDeadLetterQueue = action({
   },
   examplePayload: createDeadLetterQueueExample,
 });
-
 export default createDeadLetterQueue;

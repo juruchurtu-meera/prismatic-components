@@ -3,7 +3,6 @@ import { connectionInput, type, adminOnly, userEmail } from "../../inputs";
 import { createClient } from "../../client";
 import { generatePayload } from "../../util";
 import { listPolicyExamplePayload } from "../../examplePayloads";
-
 export const listPolicies = action({
   display: {
     description:
@@ -26,7 +25,6 @@ export const listPolicies = action({
       },
     };
     const generatedJson = generatePayload(json, connectionInput);
-
     const { data } = await client.post("", generatedJson);
     return {
       data,

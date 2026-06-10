@@ -7,7 +7,6 @@ import {
   toDateTime,
   workspaceId,
 } from "../../inputs";
-
 export const listCallsUsingGet = action({
   display: {
     label: "List Calls",

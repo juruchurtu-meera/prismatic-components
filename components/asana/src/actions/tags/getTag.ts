@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, tagId } from "../../inputs";
 import { TAG_OPT_FIELDS } from "../../util";
-
 export const getTag = action({
   display: {
     label: "Get Tag",

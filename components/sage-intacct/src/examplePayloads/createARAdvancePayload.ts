@@ -1,5 +1,3 @@
-
-
 export const createARAdvancePayload = {
   data: {
     response: {

@@ -10,7 +10,6 @@ export const createJobApplicationExamplePayload = {
     status: "Open",
   },
 };
-
 export const listJobApplicationsExamplePayload = {
   data: [createJobApplicationExamplePayload.data],
 };

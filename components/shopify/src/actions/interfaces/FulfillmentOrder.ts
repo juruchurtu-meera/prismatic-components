@@ -16,11 +16,9 @@ export interface FulfillmentOrder {
   assignedLocation: AssignedLocation | null;
   merchantRequests: MerchantRequests | null;
 }
-
 interface SupportedAction {
   action: string | null;
 }
-
 interface Destination {
   id: string | null;
   address1: string | null;
@@ -35,11 +33,9 @@ interface Destination {
   province: string | null;
   zip: string | null;
 }
-
 interface LineItems {
   nodes: LineItemNode[] | null;
 }
-
 interface LineItemNode {
   id: string | null;
   totalQuantity: number | null;
@@ -47,19 +43,15 @@ interface LineItemNode {
   inventoryItemId: string | null;
   variant: Variant | null;
 }
-
 interface LineItem {
   id: string | null;
 }
-
 interface Variant {
   id: string | null;
 }
-
 interface InternationalDuties {
   incoterm: string | null;
 }
-
 interface FulfillmentHold {
   id: string | null;
   reason: string | null;
@@ -67,7 +59,6 @@ interface FulfillmentHold {
   displayReason: string | null;
   heldByRequestingApp: boolean | null;
 }
-
 interface DeliveryMethod {
   id: string | null;
   methodType: string | null;
@@ -79,17 +70,14 @@ interface DeliveryMethod {
   minDeliveryDateTime: string | null;
   additionalInformation: AdditionalInformation | null;
 }
-
 interface BrandedPromise {
   name: string | null;
   handle: string | null;
 }
-
 interface AdditionalInformation {
   instructions: string | null;
   phone: string | null;
 }
-
 interface AssignedLocation {
   address1: string | null;
   address2: string | null;
@@ -101,15 +89,12 @@ interface AssignedLocation {
   province: string | null;
   zip: string | null;
 }
-
 interface Location {
   id: string | null;
 }
-
 interface MerchantRequests {
   nodes: MerchantRequestNode[] | null;
 }
-
 interface MerchantRequestNode {
   message: string | null;
   requestOptions: string | null;

@@ -1,28 +1,30 @@
-import { type DataSourceContext, type Element, util } from "@prismatic-io/spectral";
+import {
+  type DataSourceContext,
+  type Element,
+  util,
+} from "@prismatic-io/spectral";
 import type { ActionContext } from "@prismatic-io/spectral/dist/serverTypes";
 import type { Connection } from "jsforce";
 import type { FindOptions, Schema, SObjectNames } from "jsforce";
-import type { Pagination, SFError, SFQueryParams, SOQLQueryParams } from "../types";
+import type {
+  Pagination,
+  SFError,
+  SFQueryParams,
+  SOQLQueryParams,
+} from "../types";
 import { coerceObjectValues } from "./cleanFunctions";
-
-
-
-
 export const toFindOptions = <S extends Schema, N extends SObjectNames<S>>(
   pageSizeValue: unknown,
   pageNumberValue: unknown,
 ): FindOptions<S, N> => {
   const pageSize = util.types.toInt(pageSizeValue) || undefined;
   const pageNumber = util.types.toInt(pageNumberValue) || undefined;
-
   if (!pageSize || !pageNumber) {
     return undefined;
   }
-
   const offset = pageNumber === 1 ? 0 : pageSize * (pageNumber - 1);
   return { limit: pageSize, offset };
 };
-
 export const getFindQuery = ({
   dynamicValues,
   fetchAll,
@@ -37,7 +39,10 @@ export const getFindQuery = ({
 }: SFQueryParams) => {
   let query = salesforceClient.sobject(recordType).find({
     ...dynamicValues,
-    ...coerceObjectValues(fieldValues, util.types.keyValPairListToObject(fieldValueTypes)),
+    ...coerceObjectValues(
+      fieldValues,
+      util.types.keyValPairListToObject(fieldValueTypes),
+    ),
   });
   query = addPaginationToQuery({
     fetchAll,
@@ -49,7 +54,6 @@ export const getFindQuery = ({
   query = query.sort(sortValue);
   return query;
 };
-
 export const addPaginationToQuery = ({
   fetchAll,
   maxRecordsToFetch,
@@ -74,20 +78,24 @@ export const addPaginationToQuery = ({
   }
   return query;
 };
-
-export const executeSFAction = async (context: ActionContext | DataSourceContext, command) => {
+export const executeSFAction = async (
+  context: ActionContext | DataSourceContext,
+  command,
+) => {
   try {
     return await command;
   } catch (error: unknown) {
     if ((error as SFError)?.errorCode === "MULTIPLE_API_ERRORS") {
-      context.logger.error("Error executing Salesforce action", (error as SFError).data);
+      context.logger.error(
+        "Error executing Salesforce action",
+        (error as SFError).data,
+      );
       throw error;
     }
     context.logger.error("Error executing Salesforce action", error);
     throw error;
   }
 };
-
 export const mapToElement = (
   objects: Record<string, unknown>[],
   labelKey: string,
@@ -98,20 +106,17 @@ export const mapToElement = (
     key: util.types.toString(object[valueKey]),
   }));
 };
-
 const escapeSOQLValue = (value: unknown): string => {
   if (typeof value === "boolean") return util.types.toString(value);
   if (typeof value === "number") return util.types.toString(value);
   return `'${util.types.toString(value).replace(/'/g, "\\'")}'`;
 };
-
 const buildSOQLWhereClause = (filters: Record<string, unknown>): string => {
   const conditions = Object.entries(filters).map(
     ([key, value]) => `${key} = ${escapeSOQLValue(value)}`,
   );
   return conditions.length > 0 ? ` WHERE ${conditions.join(" AND ")}` : "";
 };
-
 const buildSOQLOrderBy = (sortValue: string): string => {
   if (!sortValue?.trim()) return "";
   const parts = sortValue.trim().split(/\s+/);
@@ -121,7 +126,6 @@ const buildSOQLOrderBy = (sortValue: string): string => {
   });
   return ` ORDER BY ${orderClauses.join(", ")}`;
 };
-
 export const buildSOQLQuery = ({
   recordType,
   fields,
@@ -131,18 +135,19 @@ export const buildSOQLQuery = ({
 }: SOQLQueryParams): string => {
   const requiredFields = ["Id", "CreatedDate", "LastModifiedDate"];
   const allFields = [...new Set([...requiredFields, ...fields])];
-
   let soql = `SELECT ${allFields.join(", ")} FROM ${recordType}`;
   soql += buildSOQLWhereClause(filters);
   soql += buildSOQLOrderBy(sortValue);
   if (maxRecords) soql += ` LIMIT ${maxRecords}`;
   return soql;
 };
-
 export const executeSOQLQuery = async (
   client: Connection,
   soql: string,
 ): Promise<Record<string, unknown>[]> => {
-  const result = await client.query(soql, { autoFetch: true, maxFetch: 100000 });
+  const result = await client.query(soql, {
+    autoFetch: true,
+    maxFetch: 100000,
+  });
   return result.records as Record<string, unknown>[];
 };

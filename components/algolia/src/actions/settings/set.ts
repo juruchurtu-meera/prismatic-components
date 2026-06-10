@@ -8,7 +8,6 @@ import {
   indexName,
   settings,
 } from "../../inputs";
-
 export const setSettings = action({
   display: {
     label: "Set Settings",
@@ -23,7 +22,6 @@ export const setSettings = action({
       isGoingToRead: true,
       debug: context.debug.enabled,
     });
-
     try {
       const { data } = await client.put(
         `/1/indexes/${indexName}/settings`,

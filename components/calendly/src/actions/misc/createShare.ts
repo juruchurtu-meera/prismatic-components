@@ -15,7 +15,6 @@ import {
   availabilityRule,
 } from "../../inputs";
 import { createShareExamplePayload } from "../../examplePayloads";
-
 export const createShare = action({
   display: {
     label: "Create Share",

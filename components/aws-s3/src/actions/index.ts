@@ -27,7 +27,6 @@ import { putObjectLockConfiguration } from "./putObjectLockConfiguration";
 import { putObjectRetention } from "./putObjectRetention";
 import streamUploadActions from "./streamUpload";
 import { uploadPart } from "./uploadPart";
-
 export const actions = {
   copyObject,
   deleteObject,

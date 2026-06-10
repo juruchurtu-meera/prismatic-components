@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput } from "../../util";
-
 export const customerIdGql = input({
   label: "Customer",
   type: "string",
@@ -10,7 +9,6 @@ export const customerIdGql = input({
   placeholder: "Enter customer ID",
   clean: util.types.toString,
 });
-
 export const firstName = input({
   label: "First Name",
   type: "string",
@@ -20,7 +18,6 @@ export const firstName = input({
   comments: "The first name of the customer.",
   clean: util.types.toString,
 });
-
 export const updateFirstName = input({
   label: "First Name",
   type: "string",
@@ -30,7 +27,6 @@ export const updateFirstName = input({
   comments: "The first name of the customer.",
   clean: cleanStringInput,
 });
-
 export const lastName = input({
   label: "Last Name",
   type: "string",
@@ -40,7 +36,6 @@ export const lastName = input({
   comments: "The last name of the customer.",
   clean: util.types.toString,
 });
-
 export const updateLastName = input({
   label: "Last Name",
   type: "string",
@@ -50,7 +45,6 @@ export const updateLastName = input({
   comments: "The last name of the customer.",
   clean: cleanStringInput,
 });
-
 export const email = input({
   label: "Email",
   type: "string",
@@ -60,7 +54,6 @@ export const email = input({
   comments: "The email address of the customer.",
   clean: util.types.toString,
 });
-
 export const updateEmail = input({
   label: "Email",
   type: "string",
@@ -70,7 +63,6 @@ export const updateEmail = input({
   comments: "The email address of the customer.",
   clean: cleanStringInput,
 });
-
 export const phone = input({
   label: "Phone",
   type: "string",
@@ -80,7 +72,6 @@ export const phone = input({
   comments: "The phone number of the customer in E.164 format.",
   clean: cleanStringInput,
 });
-
 export const verifiedEmail = input({
   label: "Verified Email",
   type: "boolean",
@@ -89,7 +80,6 @@ export const verifiedEmail = input({
   comments: "When true, emails will be sent to the customer.",
   clean: util.types.toBool,
 });
-
 export const address = input({
   label: "Address 1",
   type: "string",
@@ -99,7 +89,6 @@ export const address = input({
   comments: "The street address.",
   clean: cleanStringInput,
 });
-
 export const city = input({
   label: "City",
   type: "string",
@@ -109,7 +98,6 @@ export const city = input({
   comments: "The city name.",
   clean: cleanStringInput,
 });
-
 export const province = input({
   label: "Province",
   type: "string",
@@ -119,7 +107,6 @@ export const province = input({
   comments: "The province or state name.",
   clean: cleanStringInput,
 });
-
 export const zip = input({
   label: "Zipcode",
   type: "string",
@@ -129,7 +116,6 @@ export const zip = input({
   comments: "The postal or zip code.",
   clean: cleanStringInput,
 });
-
 export const country = input({
   label: "Country",
   type: "string",
@@ -139,7 +125,6 @@ export const country = input({
   comments: "The country name.",
   clean: cleanStringInput,
 });
-
 export const notes = input({
   label: "Notes",
   type: "string",
@@ -149,7 +134,6 @@ export const notes = input({
   comments: "Additional notes about the customer.",
   clean: cleanStringInput,
 });
-
 export const taxExempt = input({
   label: "Tax Exempt",
   type: "boolean",
@@ -157,7 +141,6 @@ export const taxExempt = input({
   comments: "When true, the customer is tax exempt.",
   clean: util.types.toBool,
 });
-
 export const currency = input({
   label: "Currency Format",
   type: "string",
@@ -167,7 +150,6 @@ export const currency = input({
   example: "USD",
   clean: util.types.toString,
 });
-
 export const addressList = input({
   label: "Address List",
   type: "code",
@@ -199,7 +181,6 @@ export const addressList = input({
   ),
   clean: cleanCodeInput,
 });
-
 export const metafields = input({
   label: "Metafields",
   type: "code",

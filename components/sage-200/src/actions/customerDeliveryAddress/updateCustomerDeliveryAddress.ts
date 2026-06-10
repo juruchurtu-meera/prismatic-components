@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { connection, site, company } from "../../inputs/general";
 import updateCustomerDeliveryAddressInputs from "../../inputs/customerDeliveryAddress/updateCustomerDeliveryAddressInputs";
 import { updateCustomerDeliveryAddressPayload } from "../../examplePayloads";
-
 export const updateCustomerDeliveryAddress = action({
   display: {
     label: "Update Customer Delivery Address",

@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { mapModel } from "../../util";
 import { ITEM_TYPES } from "../../constants";
-
 export const itemCode = input({
   label: "Item Code",
   type: "string",
@@ -11,7 +10,6 @@ export const itemCode = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const itemName = input({
   label: "Item Name",
   type: "string",
@@ -21,7 +19,6 @@ export const itemName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const itemType = input({
   label: "Item Type",
   type: "string",

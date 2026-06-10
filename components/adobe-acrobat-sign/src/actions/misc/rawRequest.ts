@@ -5,7 +5,6 @@ import {
   sendRawRequest,
 } from "@prismatic-io/spectral/dist/clients/http";
 import { getClientProps } from "../../client";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -23,7 +22,6 @@ export const rawRequest = action({
           "Content-Type": "Application/JSON",
         },
       );
-
       return {
         data: { data, headers },
       };

@@ -1,25 +1,18 @@
 export const sandboxUrl = "https://commercedeveloper-sandbox-api.adobe.com";
-
 export const productionUrl = "https://commercedeveloper-api.adobe.com";
-
-
-
-
-
 export const POLL_PAGE_SIZE = 100;
 export const MAX_POLL_PAGES = 50;
-
-
-
-
-
-
-export const POLL_RESOURCE_CONFIG: Record<string, { endpoint: string; idField: string }> = {
+export const POLL_RESOURCE_CONFIG: Record<
+  string,
+  {
+    endpoint: string;
+    idField: string;
+  }
+> = {
   orders: { endpoint: "/orders", idField: "entity_id" },
   customers: { endpoint: "/customers/search", idField: "id" },
   products: { endpoint: "/products", idField: "id" },
 };
-
 export const productJson = {
   product: {
     id: 0,
@@ -265,7 +258,6 @@ export const productJson = {
   },
   saveOptions: true,
 };
-
 export const attributeJson = {
   attribute: {
     extension_attributes: {
@@ -337,7 +329,6 @@ export const attributeJson = {
     ],
   },
 };
-
 export const optionJson = {
   option: {
     product_sku: "string",
@@ -366,7 +357,6 @@ export const optionJson = {
     extension_attributes: {},
   },
 };
-
 export const entityJson = {
   entity: {
     adjustment_negative: 0,
@@ -1101,7 +1091,6 @@ export const entityJson = {
     },
   },
 };
-
 export const customerJson = {
   customer: {
     id: 0,

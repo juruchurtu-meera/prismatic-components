@@ -4,7 +4,6 @@ import { API_VERSION } from "../../../constants";
 import { listObjectCategoriesExamplePayload } from "../../../examplePayloads";
 import { listObjectCategoriesInputs } from "../../../inputs";
 import { paginateV2Results } from "../../../utils/pagination";
-
 export const listObjectCategories = action({
   display: {
     label: "List Object Categories (V2)",

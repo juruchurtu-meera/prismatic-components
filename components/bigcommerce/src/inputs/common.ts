@@ -1,10 +1,8 @@
 import { input, util } from "@prismatic-io/spectral";
-
 const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -14,7 +12,6 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
-
 export const storeHash = input({
   label: "Store Hash",
   placeholder: "Enter Store Hash",
@@ -25,7 +22,6 @@ export const storeHash = input({
   example: "abc12defg3",
   clean: util.types.toString,
 });
-
 export const brandName = input({
   label: "Brand Name",
   placeholder: "Enter brand name",
@@ -35,7 +31,6 @@ export const brandName = input({
   example: "Apple",
   clean: cleanString,
 });
-
 export const brandId = input({
   label: "Brand ID",
   placeholder: "Enter Brand ID",
@@ -45,7 +40,6 @@ export const brandId = input({
   example: "123",
   clean: cleanString,
 });
-
 export const pageLimit = input({
   label: "Limit",
   placeholder: "Enter limit",
@@ -55,14 +49,12 @@ export const pageLimit = input({
   example: "50",
   clean: cleanString,
 });
-
 export const bigCommerceConnection = input({
   label: "BigCommerce Connection",
   type: "connection",
   required: true,
   comments: "The BigCommerce connection to use.",
 });
-
 export const brandNameToCreate = input({
   label: "Brand Name",
   placeholder: "Enter brand name",
@@ -72,7 +64,6 @@ export const brandNameToCreate = input({
   example: "Nike",
   clean: util.types.toString,
 });
-
 export const pageTitle = input({
   label: "Page Title",
   placeholder: "Enter page title",
@@ -83,7 +74,6 @@ export const pageTitle = input({
   example: "Shop Nike Products",
   clean: cleanString,
 });
-
 export const metaKeywords = input({
   label: "Meta Keywords",
   placeholder: "keyword1, keyword2, keyword3...",
@@ -96,7 +86,6 @@ export const metaKeywords = input({
     return keywordsInput.split(",").map((keyword) => keyword.trim());
   },
 });
-
 export const metaDescription = input({
   label: "Meta Description",
   placeholder: "Enter meta description",
@@ -108,7 +97,6 @@ export const metaDescription = input({
     "Shop the latest Nike products including shoes, apparel, and accessories.",
   clean: cleanString,
 });
-
 export const searchKeywords = input({
   label: "Search Keywords",
   placeholder: "Enter comma-separated keywords",
@@ -119,7 +107,6 @@ export const searchKeywords = input({
   example: "athletic, sportswear, running",
   clean: cleanString,
 });
-
 export const imageUrl = input({
   label: "Image URL",
   placeholder: "Enter image URL",
@@ -130,7 +117,6 @@ export const imageUrl = input({
   example: "https://cdn.example.com/images/brand-logo.png",
   clean: cleanString,
 });
-
 export const brandIdToUpdate = input({
   label: "Brand ID to Update",
   placeholder: "Enter Brand ID",
@@ -140,17 +126,15 @@ export const brandIdToUpdate = input({
   example: "456",
   clean: util.types.toString,
 });
-
 export const newBrandName = input({
   label: "New Brand Name",
   placeholder: "Enter brand name",
   type: "string",
-  required: true, 
+  required: true,
   comments: "The replacement display name to assign to the brand.",
   example: "Nike Sportswear",
   clean: util.types.toString,
 });
-
 export const newPageTitle = input({
   label: "New Page Title",
   placeholder: "Enter page title",
@@ -161,7 +145,6 @@ export const newPageTitle = input({
   example: "Nike Sportswear Collection",
   clean: cleanString,
 });
-
 export const newImageUrl = input({
   label: "New Image URL",
   placeholder: "Enter image URL",
@@ -172,7 +155,6 @@ export const newImageUrl = input({
   example: "https://cdn.example.com/images/new-brand-logo.png",
   clean: cleanString,
 });
-
 export const brandIdToDelete = input({
   label: "Brand ID to Delete",
   placeholder: "Enter Brand ID",
@@ -182,7 +164,6 @@ export const brandIdToDelete = input({
   example: "789",
   clean: util.types.toString,
 });
-
 export const imageFile = input({
   label: "Image File",
   type: "data",
@@ -191,7 +172,6 @@ export const imageFile = input({
     "The image file to be uploaded. Must be a valid image format (GIF, JPEG, or PNG).",
   placeholder: "Select image file",
 });
-
 export const id = input({
   label: "ID",
   placeholder: "Enter ID",
@@ -201,7 +181,6 @@ export const id = input({
   example: "39",
   clean: cleanString,
 });
-
 export const id_in = input({
   label: "ID In",
   placeholder: "Enter ID values separated by comma",
@@ -211,7 +190,6 @@ export const id_in = input({
     "Restrict results to items whose ID appears in this comma-separated list.",
   clean: cleanString,
 });
-
 export const name = input({
   label: "Name",
   placeholder: "Enter category name",
@@ -220,7 +198,6 @@ export const name = input({
   comments: "Restrict results to items whose name matches this value exactly.",
   clean: cleanString,
 });
-
 export const parent_id = input({
   label: "Parent ID",
   placeholder: "Enter parent ID",
@@ -231,7 +208,6 @@ export const parent_id = input({
   example: "19",
   clean: cleanString,
 });
-
 export const page = input({
   label: "Page",
   placeholder: "Enter page number",
@@ -240,7 +216,6 @@ export const page = input({
   comments:
     "The 1-based index of the page to retrieve from the paginated result set.",
 });
-
 export const limit = input({
   label: "Limit",
   placeholder: "Enter limit",
@@ -248,7 +223,6 @@ export const limit = input({
   required: false,
   comments: "The maximum number of results to return per page.",
 });
-
 export const include_fields = input({
   label: "Include Fields",
   placeholder: "Enter fields separated by comma",
@@ -258,7 +232,6 @@ export const include_fields = input({
     "A comma-separated list of response fields to keep. The ID is always returned.",
   clean: cleanString,
 });
-
 export const exclude_fields = input({
   label: "Exclude Fields",
   placeholder: "Enter fields separated by comma",
@@ -268,7 +241,6 @@ export const exclude_fields = input({
     "A comma-separated list of response fields to omit. The ID cannot be excluded.",
   clean: cleanString,
 });
-
 export const id_not_in = input({
   label: "ID Not In",
   placeholder: "Enter ID values not to include, separated by comma",
@@ -278,7 +250,6 @@ export const id_not_in = input({
     "Exclude any item whose ID appears in this comma-separated list of values.",
   clean: cleanString,
 });
-
 export const id_min = input({
   label: "ID Min",
   placeholder: "Enter minimum ID",
@@ -289,7 +260,6 @@ export const id_min = input({
   example: "10",
   clean: cleanString,
 });
-
 export const id_max = input({
   label: "ID Max",
   placeholder: "Enter maximum ID",
@@ -300,7 +270,6 @@ export const id_max = input({
   example: "100",
   clean: cleanString,
 });
-
 export const id_greater = input({
   label: "ID Greater Than",
   placeholder: "Enter ID",
@@ -311,7 +280,6 @@ export const id_greater = input({
   example: "50",
   clean: cleanString,
 });
-
 export const id_less = input({
   label: "ID Less Than",
   placeholder: "Enter ID",
@@ -322,7 +290,6 @@ export const id_less = input({
   example: "75",
   clean: cleanString,
 });
-
 export const name_like = input({
   label: "Name Contains",
   placeholder: "Enter part of the category name",
@@ -332,7 +299,6 @@ export const name_like = input({
     "Substring used to perform a partial, case-insensitive match against item names.",
   clean: cleanString,
 });
-
 export const parent_id_in = input({
   label: "Parent ID In",
   placeholder: "Enter Parent ID values separated by comma",
@@ -342,7 +308,6 @@ export const parent_id_in = input({
     "Restrict results to items whose parent ID appears in this comma-separated list.",
   clean: cleanString,
 });
-
 export const parent_id_min = input({
   label: "Parent ID Min",
   placeholder: "Enter minimum parent ID",
@@ -353,7 +318,6 @@ export const parent_id_min = input({
   example: "5",
   clean: cleanString,
 });
-
 export const parent_id_max = input({
   label: "Parent ID Max",
   placeholder: "Enter maximum parent ID",
@@ -364,7 +328,6 @@ export const parent_id_max = input({
   example: "50",
   clean: cleanString,
 });
-
 export const parent_id_greater = input({
   label: "Parent ID Greater Than",
   placeholder: "Enter parent ID",
@@ -375,7 +338,6 @@ export const parent_id_greater = input({
   example: "20",
   clean: cleanString,
 });
-
 export const parent_id_less = input({
   label: "Parent ID Less Than",
   placeholder: "Enter parent ID",
@@ -386,7 +348,6 @@ export const parent_id_less = input({
   example: "30",
   clean: cleanString,
 });
-
 export const page_title = input({
   label: "Page Title",
   placeholder: "Enter page title",
@@ -396,7 +357,6 @@ export const page_title = input({
     "Restrict results to items whose storefront page title matches this value exactly.",
   clean: cleanString,
 });
-
 export const page_title_like = input({
   label: "Page Title Contains",
   placeholder: "Enter part of the page title",
@@ -406,7 +366,6 @@ export const page_title_like = input({
     "Substring used to perform a partial match against storefront page titles.",
   clean: cleanString,
 });
-
 export const keyword = input({
   label: "Keyword",
   placeholder: "Enter keyword",
@@ -415,7 +374,6 @@ export const keyword = input({
   comments:
     "Free-text search term matched against item names, descriptions, and search keywords.",
 });
-
 export const is_visible = input({
   label: "Is Visible",
   type: "boolean",
@@ -423,7 +381,6 @@ export const is_visible = input({
   comments:
     "When true, returns only items visible on the storefront. When false, returns only hidden items.",
 });
-
 export const categoryId = input({
   label: "Category ID",
   placeholder: "Enter Category ID",
@@ -433,7 +390,6 @@ export const categoryId = input({
   example: "39",
   clean: util.types.toString,
 });
-
 export const includeFields = input({
   label: "Include Fields",
   placeholder: "id,name,description,etc.",
@@ -443,7 +399,6 @@ export const includeFields = input({
     "A comma-separated list of response fields to keep. The ID is always returned.",
   clean: cleanString,
 });
-
 export const excludeFields = input({
   label: "Exclude Fields",
   placeholder: "name,description,etc.",
@@ -453,7 +408,6 @@ export const excludeFields = input({
     "A comma-separated list of response fields to omit. The ID cannot be excluded.",
   clean: cleanString,
 });
-
 export const parentId = input({
   label: "Parent ID",
   placeholder: "Enter parent ID (0 for top-level)",
@@ -464,7 +418,6 @@ export const parentId = input({
   example: "0",
   clean: util.types.toString,
 });
-
 export const categoryName = input({
   label: "Category Name",
   placeholder: "Enter category name",
@@ -475,7 +428,6 @@ export const categoryName = input({
   example: "Bath",
   clean: util.types.toString,
 });
-
 export const categoryDescription = input({
   label: "Category Description",
   placeholder: "Enter category description",
@@ -486,7 +438,6 @@ export const categoryDescription = input({
   example: "<p>We offer a wide variety of products perfect for relaxing</p>",
   clean: cleanString,
 });
-
 export const views = input({
   label: "Views",
   placeholder: "Enter view count",
@@ -496,7 +447,6 @@ export const views = input({
   example: "1050",
   clean: cleanString,
 });
-
 export const sortOrder = input({
   label: "Sort Order",
   placeholder: "Enter sort order",
@@ -507,7 +457,6 @@ export const sortOrder = input({
   example: "3",
   clean: cleanString,
 });
-
 export const layoutFile = input({
   label: "Layout File",
   placeholder: "Enter layout filename",
@@ -518,7 +467,6 @@ export const layoutFile = input({
   example: "category.html",
   clean: cleanString,
 });
-
 export const isVisible = input({
   label: "Is Visible",
   type: "boolean",
@@ -526,7 +474,6 @@ export const isVisible = input({
   comments:
     "When true, the category is visible on the storefront. When false, the category is hidden from customers.",
 });
-
 export const defaultProductSort = input({
   label: "Default Product Sort",
   placeholder: "Enter sort method",
@@ -537,7 +484,6 @@ export const defaultProductSort = input({
   example: "use_store_settings",
   clean: cleanString,
 });
-
 export const customUrl = input({
   label: "Custom URL",
   type: "text",
@@ -548,7 +494,6 @@ export const customUrl = input({
   example: "/bath-products",
   clean: cleanString,
 });
-
 export const pageTitle_like = input({
   type: "string",
   label: "Page Title Like",
@@ -559,7 +504,6 @@ export const pageTitle_like = input({
   example: "Bath",
   clean: cleanString,
 });
-
 export const channelId_in = input({
   type: "string",
   label: "Channel ID In",
@@ -570,7 +514,6 @@ export const channelId_in = input({
   example: "1,2,3",
   clean: cleanString,
 });
-
 export const category_id_in = input({
   label: "ID In",
   type: "string",
@@ -581,7 +524,6 @@ export const category_id_in = input({
   example: "39,40,41",
   clean: cleanString,
 });
-
 export const tree_id = input({
   label: "Tree ID",
   type: "string",
@@ -591,7 +533,6 @@ export const tree_id = input({
   example: "1",
   clean: util.types.toString,
 });
-
 export const depth = input({
   label: "Depth",
   type: "string",
@@ -601,7 +542,6 @@ export const depth = input({
   placeholder: "Enter maximum depth",
   example: "3",
 });
-
 export const categoryTreeData = input({
   label: "Category Tree Data",
   type: "code",
@@ -625,7 +565,6 @@ export const categoryTreeData = input({
     return JSON.parse(util.types.toString(treeDataInput));
   },
 });
-
 export const parent_id_Tree = input({
   label: "Parent ID",
   type: "string",
@@ -636,7 +575,6 @@ export const parent_id_Tree = input({
   example: "0",
   clean: util.types.toString,
 });
-
 export const categoryNameTree = input({
   label: "Category Name",
   type: "string",
@@ -647,7 +585,6 @@ export const categoryNameTree = input({
   example: "Garden",
   clean: util.types.toString,
 });
-
 export const tree_id_update = input({
   label: "Tree ID",
   type: "string",
@@ -657,7 +594,6 @@ export const tree_id_update = input({
   example: "2",
   clean: util.types.toString,
 });
-
 export const category_id_update = input({
   label: "Category ID",
   type: "string",
@@ -667,7 +603,6 @@ export const category_id_update = input({
   example: "42",
   clean: util.types.toString,
 });
-
 export const category_uuid = input({
   label: "Category UUID",
   type: "string",
@@ -678,7 +613,6 @@ export const category_uuid = input({
   example: "550e8400-e29b-41d4-a716-446655440000",
   clean: cleanString,
 });
-
 export const category_id = input({
   label: "Category ID",
   type: "string",
@@ -688,7 +622,6 @@ export const category_id = input({
   example: "45",
   clean: util.types.toString,
 });
-
 export const productId = input({
   label: "Product ID",
   type: "string",
@@ -699,7 +632,6 @@ export const productId = input({
   example: "102",
   clean: cleanString,
 });
-
 export const productName = input({
   label: "Product Name",
   type: "string",
@@ -709,7 +641,6 @@ export const productName = input({
   example: "Blue T-Shirt",
   clean: cleanString,
 });
-
 export const productPrice = input({
   label: "Product Price",
   type: "string",
@@ -720,7 +651,6 @@ export const productPrice = input({
   example: "29.99",
   clean: cleanString,
 });
-
 export const productBrandId = input({
   label: "Brand ID",
   type: "string",
@@ -730,7 +660,6 @@ export const productBrandId = input({
   example: "456",
   clean: cleanString,
 });
-
 export const productType = input({
   label: "Product Type",
   type: "string",
@@ -741,7 +670,6 @@ export const productType = input({
   example: "physical",
   clean: cleanString,
 });
-
 export const productPage = input({
   label: "Page",
   type: "string",
@@ -752,7 +680,6 @@ export const productPage = input({
   example: "1",
   clean: cleanString,
 });
-
 export const productLimit = input({
   label: "Limit",
   type: "string",
@@ -762,7 +689,6 @@ export const productLimit = input({
   example: "50",
   clean: cleanString,
 });
-
 export const uniqueProductName = input({
   label: "Product Name",
   type: "text",
@@ -773,7 +699,6 @@ export const uniqueProductName = input({
   example: "Premium Cotton T-Shirt",
   clean: util.types.toString,
 });
-
 export const uniqueProductType = input({
   label: "Product Type",
   type: "text",
@@ -784,7 +709,6 @@ export const uniqueProductType = input({
   example: "physical",
   clean: util.types.toString,
 });
-
 export const uniqueProductSku = input({
   label: "Product SKU",
   type: "text",
@@ -795,7 +719,6 @@ export const uniqueProductSku = input({
   example: "TSHIRT-BLUE-M",
   clean: cleanString,
 });
-
 export const uniqueProductDescription = input({
   label: "Product Description",
   type: "text",
@@ -806,7 +729,6 @@ export const uniqueProductDescription = input({
   example: "<p>100% cotton t-shirt with comfortable fit</p>",
   clean: cleanString,
 });
-
 export const uniqueProductWeight = input({
   label: "Product Weight",
   type: "text",
@@ -817,7 +739,6 @@ export const uniqueProductWeight = input({
   example: "0.5",
   clean: util.types.toString,
 });
-
 export const uniqueProductWidth = input({
   label: "Product Width",
   type: "text",
@@ -828,7 +749,6 @@ export const uniqueProductWidth = input({
   example: "10",
   clean: cleanString,
 });
-
 export const uniqueProductDepth = input({
   label: "Product Depth",
   type: "text",
@@ -839,7 +759,6 @@ export const uniqueProductDepth = input({
   example: "2",
   clean: cleanString,
 });
-
 export const uniqueProductHeight = input({
   label: "Product Height",
   type: "text",
@@ -850,7 +769,6 @@ export const uniqueProductHeight = input({
   example: "12",
   clean: cleanString,
 });
-
 export const uniqueProductPrice = input({
   label: "Product Price",
   type: "text",
@@ -861,7 +779,6 @@ export const uniqueProductPrice = input({
   example: "29.99",
   clean: util.types.toString,
 });
-
 export const uniqueCostPrice = input({
   label: "Cost Price",
   type: "text",
@@ -872,7 +789,6 @@ export const uniqueCostPrice = input({
   example: "15.00",
   clean: cleanString,
 });
-
 export const uniqueRetailPrice = input({
   label: "Retail Price",
   type: "text",
@@ -883,7 +799,6 @@ export const uniqueRetailPrice = input({
   example: "39.99",
   clean: cleanString,
 });
-
 export const uniqueSalePrice = input({
   label: "Sale Price",
   type: "text",
@@ -894,7 +809,6 @@ export const uniqueSalePrice = input({
   example: "24.99",
   clean: cleanString,
 });
-
 export const uniqueProductBatch = input({
   label: "Products (Batch)",
   type: "code",
@@ -938,7 +852,6 @@ export const uniqueProductBatch = input({
     return JSON.parse(util.types.toString(productBatchInput));
   },
 });
-
 export const productIdToDelete = input({
   label: "Product ID to Delete",
   type: "text",
@@ -948,7 +861,6 @@ export const productIdToDelete = input({
   example: "103",
   clean: util.types.toString,
 });
-
 export const productCustomFieldsProductId = input({
   label: "Product ID",
   type: "string",
@@ -959,7 +871,6 @@ export const productCustomFieldsProductId = input({
   example: "105",
   clean: util.types.toString,
 });
-
 export const customFieldName = input({
   label: "Custom Field Name",
   type: "string",
@@ -970,7 +881,6 @@ export const customFieldName = input({
   example: "warranty_months",
   clean: util.types.toString,
 });
-
 export const customFieldValue = input({
   label: "Custom Field Value",
   type: "string",
@@ -980,7 +890,6 @@ export const customFieldValue = input({
   example: "12",
   clean: util.types.toString,
 });
-
 export const customFieldIdToUpdate = input({
   label: "Custom Field ID to Update",
   type: "string",
@@ -990,7 +899,6 @@ export const customFieldIdToUpdate = input({
   example: "7",
   clean: util.types.toString,
 });
-
 export const customFieldIdToDelete = input({
   label: "Custom Field ID to Delete",
   type: "string",
@@ -1001,7 +909,6 @@ export const customFieldIdToDelete = input({
   example: "8",
   clean: util.types.toString,
 });
-
 export const productImagesProductId = input({
   label: "Product ID for Images",
   type: "string",
@@ -1012,7 +919,6 @@ export const productImagesProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const productImageProductId = input({
   label: "Product ID for Image",
   type: "string",
@@ -1023,7 +929,6 @@ export const productImageProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const productImageImageId = input({
   label: "Image ID",
   type: "string",
@@ -1033,7 +938,6 @@ export const productImageImageId = input({
   example: "55",
   clean: util.types.toString,
 });
-
 export const createProductImageProductId = input({
   label: "Product ID",
   type: "string",
@@ -1044,7 +948,6 @@ export const createProductImageProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const createProductImageImageFile = input({
   label: "Image File",
   type: "string",
@@ -1055,7 +958,6 @@ export const createProductImageImageFile = input({
   example: "/tmp/product-photo.jpg",
   clean: util.types.toString,
 });
-
 export const createProductImageImageUrl = input({
   label: "Image URL",
   type: "string",
@@ -1066,7 +968,6 @@ export const createProductImageImageUrl = input({
   example: "https://cdn.example.com/images/product.png",
   clean: cleanString,
 });
-
 export const updateProductImageImageFile = input({
   label: "Image File",
   type: "string",
@@ -1077,7 +978,6 @@ export const updateProductImageImageFile = input({
   example: "/tmp/replacement-photo.jpg",
   clean: cleanString,
 });
-
 export const updateProductImageUrl = input({
   label: "Image URL",
   type: "string",
@@ -1088,7 +988,6 @@ export const updateProductImageUrl = input({
   example: "https://cdn.example.com/images/product-v2.png",
   clean: cleanString,
 });
-
 export const updateProductImageUrlZoom = input({
   label: "Zoom Image URL",
   type: "string",
@@ -1099,7 +998,6 @@ export const updateProductImageUrlZoom = input({
   example: "https://cdn.example.com/images/product-zoom.png",
   clean: cleanString,
 });
-
 export const updateProductImageUrlStandard = input({
   label: "Standard Image URL",
   type: "string",
@@ -1110,7 +1008,6 @@ export const updateProductImageUrlStandard = input({
   example: "https://cdn.example.com/images/product-standard.png",
   clean: cleanString,
 });
-
 export const updateProductImageUrlThumbnail = input({
   label: "Thumbnail Image URL",
   type: "string",
@@ -1121,7 +1018,6 @@ export const updateProductImageUrlThumbnail = input({
   example: "https://cdn.example.com/images/product-thumb.png",
   clean: cleanString,
 });
-
 export const updateProductImageUrlTiny = input({
   label: "Tiny Image URL",
   type: "string",
@@ -1132,7 +1028,6 @@ export const updateProductImageUrlTiny = input({
   example: "https://cdn.example.com/images/product-tiny.png",
   clean: cleanString,
 });
-
 export const updateProductImageIsThumbnail = input({
   label: "Is Thumbnail",
   type: "boolean",
@@ -1140,7 +1035,6 @@ export const updateProductImageIsThumbnail = input({
   comments:
     "When true, marks this image as the product's primary thumbnail shown in listings.",
 });
-
 export const updateProductImageSortOrder = input({
   label: "Sort Order",
   type: "string",
@@ -1151,7 +1045,6 @@ export const updateProductImageSortOrder = input({
   example: "1",
   clean: cleanString,
 });
-
 export const updateProductImageDescription = input({
   label: "Image Description",
   type: "string",
@@ -1162,7 +1055,6 @@ export const updateProductImageDescription = input({
   example: "Front view of the blue cotton t-shirt",
   clean: cleanString,
 });
-
 export const updateProductImageProductId = input({
   label: "Product ID for Image",
   type: "string",
@@ -1173,7 +1065,6 @@ export const updateProductImageProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const updateProductImageImageId = input({
   label: "Image ID to Update",
   type: "string",
@@ -1183,7 +1074,6 @@ export const updateProductImageImageId = input({
   example: "55",
   clean: util.types.toString,
 });
-
 export const deleteProductImageProductId = input({
   label: "Product ID",
   type: "string",
@@ -1194,7 +1084,6 @@ export const deleteProductImageProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const deleteProductImageImageId = input({
   label: "Image ID to Delete",
   type: "string",
@@ -1204,7 +1093,6 @@ export const deleteProductImageImageId = input({
   example: "55",
   clean: util.types.toString,
 });
-
 export const getAllProductModifiersProductId = input({
   label: "Product ID",
   type: "string",
@@ -1215,7 +1103,6 @@ export const getAllProductModifiersProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const getAllProductModifiersPage = input({
   label: "Page",
   type: "string",
@@ -1226,7 +1113,6 @@ export const getAllProductModifiersPage = input({
   example: "1",
   clean: cleanString,
 });
-
 export const getAllProductModifiersLimit = input({
   label: "Limit",
   type: "string",
@@ -1236,7 +1122,6 @@ export const getAllProductModifiersLimit = input({
   example: "50",
   clean: cleanString,
 });
-
 export const getAllProductModifiersIncludeFields = input({
   label: "Include Fields",
   type: "string",
@@ -1246,7 +1131,6 @@ export const getAllProductModifiersIncludeFields = input({
   placeholder: "Enter fields separated by comma",
   clean: cleanString,
 });
-
 export const getAllProductModifiersExcludeFields = input({
   label: "Exclude Fields",
   type: "string",
@@ -1256,7 +1140,6 @@ export const getAllProductModifiersExcludeFields = input({
   placeholder: "Enter fields separated by comma",
   clean: cleanString,
 });
-
 export const getModifierStoreHash = input({
   label: "Store Hash",
   type: "string",
@@ -1267,7 +1150,6 @@ export const getModifierStoreHash = input({
   example: "abc12defg3",
   clean: util.types.toString,
 });
-
 export const getModifierProductId = input({
   label: "Product ID",
   type: "string",
@@ -1278,7 +1160,6 @@ export const getModifierProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const getModifierId = input({
   label: "Modifier ID",
   type: "string",
@@ -1288,7 +1169,6 @@ export const getModifierId = input({
   example: "12",
   clean: util.types.toString,
 });
-
 export const getModifierIncludeFields = input({
   label: "Include Fields",
   type: "string",
@@ -1298,7 +1178,6 @@ export const getModifierIncludeFields = input({
   placeholder: "Enter fields separated by comma",
   clean: cleanString,
 });
-
 export const getModifierExcludeFields = input({
   label: "Exclude Fields",
   type: "string",
@@ -1308,7 +1187,6 @@ export const getModifierExcludeFields = input({
   placeholder: "Enter fields separated by comma",
   clean: cleanString,
 });
-
 export const createModifierProductId = input({
   label: "Product ID",
   type: "text",
@@ -1319,7 +1197,6 @@ export const createModifierProductId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const createModifierType = input({
   label: "Modifier Type",
   type: "text",
@@ -1330,7 +1207,6 @@ export const createModifierType = input({
   example: "dropdown",
   clean: util.types.toString,
 });
-
 export const createModifierRequired = input({
   label: "Required",
   type: "boolean",
@@ -1338,7 +1214,6 @@ export const createModifierRequired = input({
   comments:
     "When true, the shopper must select or fill in this modifier before checkout is allowed.",
 });
-
 export const createModifierSortOrder = input({
   label: "Sort Order",
   type: "text",
@@ -1349,7 +1224,6 @@ export const createModifierSortOrder = input({
   example: "1",
   clean: cleanString,
 });
-
 export const createModifierConfig = input({
   label: "Configuration",
   type: "code",
@@ -1366,7 +1240,6 @@ export const createModifierConfig = input({
     2,
   ),
 });
-
 export const createModifierOptionValues = input({
   label: "Option Values",
   type: "code",
@@ -1380,7 +1253,6 @@ export const createModifierOptionValues = input({
     2,
   ),
 });
-
 export const createModifierDisplayName = input({
   label: "Display Name",
   type: "text",
@@ -1391,7 +1263,6 @@ export const createModifierDisplayName = input({
   example: "Choose Size",
   clean: util.types.toString,
 });
-
 export const createModifierImageValueId = input({
   label: "Modifier Value ID",
   type: "text",
@@ -1402,7 +1273,6 @@ export const createModifierImageValueId = input({
   example: "21",
   clean: util.types.toString,
 });
-
 export const createModifierImageFile = input({
   label: "Modifier Image File",
   type: "data",
@@ -1411,7 +1281,6 @@ export const createModifierImageFile = input({
     "The image file (GIF, JPEG, or PNG) to upload and associate with the modifier option value.",
   placeholder: "Select image file",
 });
-
 export const getProductVariantsPage = input({
   label: "Page Number",
   type: "text",
@@ -1422,7 +1291,6 @@ export const getProductVariantsPage = input({
   example: "1",
   clean: cleanString,
 });
-
 export const getProductVariantsLimit = input({
   label: "Limit",
   type: "text",
@@ -1432,7 +1300,6 @@ export const getProductVariantsLimit = input({
   example: "50",
   clean: cleanString,
 });
-
 export const getProductVariantsIncludeFields = input({
   label: "Include Fields",
   type: "text",
@@ -1442,7 +1309,6 @@ export const getProductVariantsIncludeFields = input({
   placeholder: "Enter fields separated by comma",
   clean: cleanString,
 });
-
 export const getProductVariantsExcludeFields = input({
   label: "Exclude Fields",
   type: "text",
@@ -1452,7 +1318,6 @@ export const getProductVariantsExcludeFields = input({
   placeholder: "Enter fields separated by comma",
   clean: cleanString,
 });
-
 export const getProductVariantId = input({
   label: "Variant ID",
   type: "text",
@@ -1463,7 +1328,6 @@ export const getProductVariantId = input({
   example: "201",
   clean: util.types.toString,
 });
-
 export const variantSKU = input({
   label: "Variant SKU",
   type: "text",
@@ -1474,7 +1338,6 @@ export const variantSKU = input({
   example: "TSHIRT-BLUE-M",
   clean: util.types.toString,
 });
-
 export const variantOptionValues = input({
   label: "Option Values",
   type: "code",
@@ -1494,7 +1357,6 @@ export const variantOptionValues = input({
     return JSON.parse(util.types.toString(optionValuesInput));
   },
 });
-
 export const variantPrice = input({
   label: "Variant Price",
   type: "text",
@@ -1505,7 +1367,6 @@ export const variantPrice = input({
   example: "29.99",
   clean: util.types.toString,
 });
-
 export const variantWeight = input({
   label: "Variant Weight",
   type: "text",
@@ -1516,7 +1377,6 @@ export const variantWeight = input({
   example: "0.5",
   clean: util.types.toString,
 });
-
 export const variantWidth = input({
   label: "Variant Width",
   type: "text",
@@ -1527,7 +1387,6 @@ export const variantWidth = input({
   example: "10",
   clean: util.types.toString,
 });
-
 export const variantHeight = input({
   label: "Variant Height",
   type: "text",
@@ -1538,7 +1397,6 @@ export const variantHeight = input({
   example: "12",
   clean: util.types.toString,
 });
-
 export const variantDepth = input({
   label: "Variant Depth",
   type: "text",
@@ -1549,7 +1407,6 @@ export const variantDepth = input({
   example: "2",
   clean: util.types.toString,
 });
-
 export const productInputId = input({
   label: "Product ID",
   type: "string",
@@ -1560,7 +1417,6 @@ export const productInputId = input({
   example: "102",
   clean: util.types.toString,
 });
-
 export const variantImageURL = input({
   label: "Image URL",
   type: "string",
@@ -1571,7 +1427,6 @@ export const variantImageURL = input({
   example: "https://cdn.example.com/images/variant.png",
   clean: cleanString,
 });
-
 export const webhookPageInput = input({
   label: "Page Number",
   type: "string",
@@ -1582,7 +1437,6 @@ export const webhookPageInput = input({
   example: "1",
   clean: cleanString,
 });
-
 export const webhookLimitInput = input({
   label: "Items Per Page",
   type: "string",
@@ -1592,7 +1446,6 @@ export const webhookLimitInput = input({
   example: "50",
   clean: cleanString,
 });
-
 export const webhookIsActiveInput = input({
   label: "Is Active",
   type: "boolean",
@@ -1600,7 +1453,6 @@ export const webhookIsActiveInput = input({
   comments:
     "When true, restricts the result to webhooks that are currently enabled. When false, restricts to disabled webhooks.",
 });
-
 export const webhookScopeInput = input({
   label: "Scope",
   type: "string",
@@ -1611,7 +1463,6 @@ export const webhookScopeInput = input({
   example: "store/order/created",
   clean: cleanString,
 });
-
 export const webhookDestinationInput = input({
   label: "Destination",
   type: "string",
@@ -1622,7 +1473,6 @@ export const webhookDestinationInput = input({
   example: "https://example.com/webhooks/bigcommerce",
   clean: cleanString,
 });
-
 export const webhookEventsHistoryEnabledInput = input({
   label: "Events History Enabled (Deprecated)",
   type: "boolean",
@@ -1630,7 +1480,6 @@ export const webhookEventsHistoryEnabledInput = input({
   comments:
     "Deprecated: when true, events that fail to deliver are retained for later replay.",
 });
-
 export const webhookHeadersInput = input({
   label: "Headers",
   type: "code",
@@ -1648,7 +1497,6 @@ export const webhookHeadersInput = input({
     "A JSON object of custom HTTP headers that BigCommerce will include on every webhook delivery request.",
   clean: util.types.toObject,
 });
-
 export const webhookIdInput = input({
   label: "Webhook ID",
   type: "string",
@@ -1658,7 +1506,6 @@ export const webhookIdInput = input({
   example: "12345",
   clean: util.types.toString,
 });
-
 export const instanceURLPatternInput = input({
   label: "Instance URL Pattern",
   type: "string",
@@ -1669,9 +1516,6 @@ export const instanceURLPatternInput = input({
   example: "example.com/webhooks",
   clean: util.types.toString,
 });
-
-
-
 const showNewOrders = input({
   label: "Show New Orders",
   type: "boolean",
@@ -1682,7 +1526,6 @@ const showNewOrders = input({
     "When enabled, orders created since the last poll will be included in the trigger output.",
   clean: util.types.toBool,
 });
-
 const showUpdatedOrders = input({
   label: "Show Updated Orders",
   type: "boolean",
@@ -1693,8 +1536,6 @@ const showUpdatedOrders = input({
     "When enabled, orders updated since the last poll will be included in the trigger output.",
   clean: util.types.toBool,
 });
-
-
 export const pollChangesInputs = {
   bigCommerceConnection,
   storeHash,

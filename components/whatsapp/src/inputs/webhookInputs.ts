@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 const verifyToken = input({
   label: "Verify Token",
   comments: "The token that WhatsApp will use to verify your webhook.",
@@ -9,7 +8,6 @@ const verifyToken = input({
   placeholder: "Enter your verify token",
   clean: util.types.toString,
 });
-
 const appSecret = input({
   label: "App Secret",
   comments: "The secret that WhatsApp will use to sign your webhook payloads.",
@@ -19,5 +17,4 @@ const appSecret = input({
   placeholder: "Enter your app secret",
   clean: util.types.toString,
 });
-
 export const webhookInputs = { verifyToken, appSecret };

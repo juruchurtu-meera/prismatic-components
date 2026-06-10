@@ -1,7 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../client";
 import { oneDriveConnection } from "../inputs";
-
 export const selectSubscription = dataSource({
   display: {
     label: "Select Subscription",
@@ -15,9 +14,12 @@ export const selectSubscription = dataSource({
     const {
       data: { value },
     } = await client.get<{
-      value: { id: string; resource: string; changeType: string }[];
+      value: {
+        id: string;
+        resource: string;
+        changeType: string;
+      }[];
     }>("/subscriptions");
-
     return {
       result: value
         .map<Element>((item) => ({

@@ -1,16 +1,9 @@
 import type { Connection } from "@prismatic-io/spectral";
 import { authorizationHeaders } from "./client";
-
-
 const CLIENT_ID = "your-client-id";
 const CLIENT_SECRET = "your-client-secret";
 const TOKEN_URL =
   "https://6340330-sb1.suitetalk.api.netsuite.com/services/rest/auth/oauth2/v1/token";
-
-
-
-
-
 const rsaConnection: Connection = {
   key: "oauthClientCredentials",
   configVarKey: "My Config Var",
@@ -24,10 +17,6 @@ REPLACE ME WITH YOUR PRIVATE KEY
     tokenUrl: TOKEN_URL,
   },
 };
-
-
-
-
 const ecConnection: Connection = {
   key: "oauthClientCredentials",
   configVarKey: "My Config Var",
@@ -41,7 +30,6 @@ REPLACE ME WITH YOUR PRIVATE KEY
     tokenUrl: TOKEN_URL,
   },
 };
-
 describe("Test authorizationHeaders", () => {
   test("Test RSA key", async () => {
     const result = await authorizationHeaders(rsaConnection);

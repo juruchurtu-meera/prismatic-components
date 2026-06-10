@@ -1,1 +1,3 @@
-export type CachedStories = { [key: string]: object };
+export type CachedStories = {
+  [key: string]: object;
+};

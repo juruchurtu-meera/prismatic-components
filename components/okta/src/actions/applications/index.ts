@@ -4,7 +4,6 @@ import { getApplicationUserAssignment } from "./getApplicationUserAssignment";
 import { listApplications } from "./listApplications";
 import { removeApplicationUserAssignment } from "./removeApplicationUserAssignment";
 import { updateApplicationUserAssignment } from "./updateApplicationUserAssignment";
-
 export default {
   assignApplicationToUser,
   getApplication,

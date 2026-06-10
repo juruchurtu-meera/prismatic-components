@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createAsanaClient } from "../../client";
 import { connectionInput, validateId } from "../../inputs";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",

@@ -1,5 +1,4 @@
 import { expirationDateTime, notificationUrl, subscriptionId } from "./general";
-
 export const updateSubscriptionInputs = {
   subscriptionId: {
     ...subscriptionId,

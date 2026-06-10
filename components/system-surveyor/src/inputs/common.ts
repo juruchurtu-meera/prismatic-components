@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The System Surveyor connection to use.",
 });
-
 export const siteId = input({
   label: "Site ID",
   type: "string",
@@ -18,7 +16,6 @@ export const siteId = input({
   clean: util.types.toString,
   dataSource: "selectSite",
 });
-
 export const teamIdInput = input({
   label: "Team ID",
   type: "string",
@@ -29,7 +26,6 @@ export const teamIdInput = input({
   clean: util.types.toString,
   dataSource: "selectTeam",
 });
-
 export const modifiedAfter = input({
   label: "Modified After",
   placeholder: "Enter Unix UTC epoch timestamp (e.g. 1672531199)",
@@ -40,7 +36,6 @@ export const modifiedAfter = input({
   example: "1672531199",
   clean: toOptionalString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -50,7 +45,6 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results using pagination. When false, returns a single page based on the Page Number and Page Size inputs.",
   clean: util.types.toBool,
 });
-
 export const pageNumber = input({
   label: "Page Number",
   type: "string",
@@ -61,7 +55,6 @@ export const pageNumber = input({
   placeholder: "Enter page number",
   clean: toOptionalString,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -71,7 +64,6 @@ export const pageSize = input({
   placeholder: "Enter page size",
   clean: toOptionalString,
 });
-
 export const surveyIds = input({
   label: "Survey IDs",
   type: "string",

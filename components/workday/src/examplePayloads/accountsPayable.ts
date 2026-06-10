@@ -77,7 +77,6 @@ export const listSupplierInvoiceRequestsExamplePayload = {
     total: 0,
   },
 };
-
 export const postSupplierInvoiceRequestsExamplePayload = {
   data: {
     currency: {
@@ -205,7 +204,6 @@ export const postSupplierInvoiceRequestsExamplePayload = {
     descriptor: "Lorem ipsum dolor sit ame",
   },
 };
-
 export const getSupplierInvoiceRequestsByIdExamplePayload = {
   data: {
     invoiceDate: "2024-06-08T07:00:00.000Z",
@@ -280,7 +278,6 @@ export const getSupplierInvoiceRequestsByIdExamplePayload = {
     id: "string",
   },
 };
-
 export const getSupplierInvoiceRequestAttachmentsExamplePayload = {
   data: {
     data: [
@@ -297,7 +294,6 @@ export const getSupplierInvoiceRequestAttachmentsExamplePayload = {
     total: 0,
   },
 };
-
 export const postSupplierInvoiceRequestsAttachmentsExamplePayload = {
   data: {
     fileLength: "1307948067",
@@ -312,7 +308,6 @@ export const postSupplierInvoiceRequestsAttachmentsExamplePayload = {
     id: "string",
   },
 };
-
 export const submitSupplierInvoiceRequestExamplePayload = {
   data: {
     id: "string",

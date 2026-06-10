@@ -20,7 +20,6 @@ import {
   routineType,
   sparkOptions,
 } from "../../inputs";
-
 export const updateRoutine = action({
   display: {
     description: "Updates information in an existing routine.",

@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { connection } from "../../../inputs/general";
 import updateManagedAppInputs from "../../../inputs/apps/managed/updateManagedAppInputs";
 import { updateManagedAppExamplePayload } from "../../../examplePayloads";
-
 export const updateManagedApp = action({
   display: {
     label: "Update Managed App",
@@ -56,7 +55,6 @@ export const updateManagedApp = action({
       `/deviceAppManagement/mobileApps/${mobileAppId}`,
       payload,
     );
-
     return {
       data,
     };

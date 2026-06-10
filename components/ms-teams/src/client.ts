@@ -4,9 +4,7 @@ import { ConnectionError, util } from "@prismatic-io/spectral";
 import { createClient as createHttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import { getAdminConsentToken } from "./utils";
-
 export const baseUrl = "https://graph.microsoft.com/v1.0";
-
 export const createClient = async (
   connection: Connection,
   timeout?: number,
@@ -21,7 +19,6 @@ export const createClient = async (
   }
   if (adminConsent.key === connection.key)
     await getAdminConsentToken(connection);
-
   const token = util.types.toString(connection.token.access_token);
   const teamsClient = createHttpClient({
     baseUrl,
@@ -33,10 +30,8 @@ export const createClient = async (
     timeout,
     debug,
   });
-
   return teamsClient;
 };
-
 export const createIncomingWebhookClient = (
   connection: Connection,
   debug?: boolean,
@@ -47,7 +42,6 @@ export const createIncomingWebhookClient = (
       "This action requires an Incoming Webhook connection.",
     );
   }
-
   return createHttpClient({
     baseUrl: util.types.toString(connection.fields.webhookUrl),
     debug,

@@ -4,7 +4,6 @@ export const getPackageExamplePayload = {
   publisher: "Mozilla",
   source: "pdq",
 };
-
 export const listPackagesExamplePayload = {
   data: [getPackageExamplePayload],
 };

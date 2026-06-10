@@ -1,7 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import { baseIdInput, connectionInput } from "./common";
-
 const notificationUrlInput = input({
   label: "Notification URL",
   type: "string",
@@ -11,7 +10,6 @@ const notificationUrlInput = input({
   comments: "The URL that receives notification pings when the webhook fires.",
   clean: toOptionalString,
 });
-
 const specificationInput = input({
   label: "Specification",
   type: "code",
@@ -34,7 +32,6 @@ const specificationInput = input({
   ),
   clean: util.types.toObject,
 });
-
 const webhookIdInput = input({
   label: "Webhook ID",
   type: "string",
@@ -45,25 +42,21 @@ const webhookIdInput = input({
   dataSource: "selectWebhook",
   clean: util.types.toString,
 });
-
 export const listWebhooksInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
 };
-
 export const createWebhookInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
   notificationUrl: notificationUrlInput,
   specification: specificationInput,
 };
-
 export const deleteWebhookInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,
   webhookId: webhookIdInput,
 };
-
 export const refreshWebhookInputs = {
   airtableConnection: connectionInput,
   baseId: baseIdInput,

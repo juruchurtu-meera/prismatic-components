@@ -79,7 +79,6 @@ export const listTablesExamplePayload = {
     ],
   },
 };
-
 export const postTableExamplePayload = {
   data: {
     displayName: "string",
@@ -156,7 +155,6 @@ export const postTableExamplePayload = {
     },
   },
 };
-
 export const getTableByIdExamplePayload = {
   data: {
     displayName: "string",
@@ -233,9 +231,7 @@ export const getTableByIdExamplePayload = {
     },
   },
 };
-
 export const updateTableByIdExamplePayload = postTableExamplePayload;
-
 export const listDataChangesExamplePayload = {
   data: {
     total: 0,
@@ -273,7 +269,6 @@ export const listDataChangesExamplePayload = {
     ],
   },
 };
-
 export const getDataChangesByIdExamplePayload = {
   data: {
     id: "string",
@@ -414,13 +409,11 @@ export const getDataChangesByIdExamplePayload = {
     updatedMoment: "string",
   },
 };
-
 export const postFileContainersExamplePayload = {
   data: {
     id: "string",
   },
 };
-
 export const getFilesByContainerIdExamplePayload = {
   data: {
     total: 0,
@@ -439,7 +432,6 @@ export const getFilesByContainerIdExamplePayload = {
     ],
   },
 };
-
 export const postFilesByContainerIdExamplePayload = {
   data: {
     id: "string",

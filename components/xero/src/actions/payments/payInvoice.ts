@@ -8,7 +8,6 @@ import {
   connectionInput,
 } from "../../inputs";
 import { payInvoiceExamplePayload } from "../../examplePayloads";
-
 export const payInvoice = action({
   display: {
     label: "Pay Invoice",

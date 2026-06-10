@@ -1,7 +1,3 @@
-
-
-
-
 export const getUserExamplePayload = {
   data: {
     id: "string",
@@ -22,7 +18,6 @@ export const getUserExamplePayload = {
     userRoleId: "00000000-0000-0000-0000-000000000000",
   },
 };
-
 export const listUsersExamplePayload = {
   data: {
     users: [
@@ -47,7 +42,6 @@ export const listUsersExamplePayload = {
     ],
   },
 };
-
 export const createUserExamplePayload = {
   data: {
     id: "string",

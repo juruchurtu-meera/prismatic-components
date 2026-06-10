@@ -3,7 +3,6 @@ import { createArticle } from "./createArticle";
 import { listArticles } from "./listArticles";
 import { showArticle } from "./showArticle";
 import { updateArticle } from "./updateArticle";
-
 export default {
   listArticles,
   showArticle,

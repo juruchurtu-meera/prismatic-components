@@ -4,18 +4,17 @@ import { companyId } from "../inputs/accounts/getAccountsInputs";
 import { connectionInput } from "../inputs/general";
 import type { MultipleItemsResponse, SalesInvoice } from "../interfaces";
 import { toSortedPicklist } from "./helpers";
-
 export const listSalesInvoices = dataSource({
   display: {
     label: "Select Sales Invoices",
-    description: "A picklist of sales invoices objects in your Business Central organization.",
+    description:
+      "A picklist of sales invoices objects in your Business Central organization.",
   },
   perform: async (context, { connection, companyId }) => {
     const client = getMsBusinessCentralClient(connection, context, false);
     const { data } = await client.get<MultipleItemsResponse<SalesInvoice[]>>(
       `/companies(${companyId})/salesInvoices`,
     );
-
     return {
       result: toSortedPicklist(data.value, (si) => ({
         key: si.id,

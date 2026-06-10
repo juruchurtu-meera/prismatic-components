@@ -4,7 +4,6 @@ import { createOauthClient } from "../../client";
 import { uploadFileExamplePayload } from "../../examplePayloads";
 import { uploadFileInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",

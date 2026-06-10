@@ -10,7 +10,6 @@ import {
 } from "../../inputs";
 import { listEventInviteesExamplePayload } from "../../examplePayloads";
 import { paginator } from "../../util";
-
 export const listEventInvitees = action({
   display: {
     label: "List Event Invitees",
@@ -23,7 +22,6 @@ export const listEventInvitees = action({
       sort: sort || undefined,
       status: status || undefined,
     });
-
     return { data };
   },
   inputs: {

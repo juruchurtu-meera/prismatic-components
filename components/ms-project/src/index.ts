@@ -29,7 +29,6 @@ import listTasks from "./actions/tasks/listTasks";
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "ms-project",
   public: true,

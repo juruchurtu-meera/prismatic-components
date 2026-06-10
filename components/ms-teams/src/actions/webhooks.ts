@@ -1,7 +1,6 @@
 import { action, input, util } from "@prismatic-io/spectral";
 import { connection, cardPayload } from "../inputs";
 import { createIncomingWebhookClient } from "../client";
-
 const sendIncomingWebhookMessage = action({
   display: {
     label: "Send Incoming Webhook Message",
@@ -27,7 +26,6 @@ const sendIncomingWebhookMessage = action({
     return { data };
   },
 });
-
 const sendIncomingWebhookAdaptiveCard = action({
   display: {
     label: "Send Incoming Webhook Adaptive Card",
@@ -48,7 +46,6 @@ const sendIncomingWebhookAdaptiveCard = action({
         {
           contentType: "application/vnd.microsoft.card.adaptive",
           contentUrl: null,
-          
           content: util.types.isJSON(cardPayload as string)
             ? JSON.parse(cardPayload as string)
             : cardPayload,
@@ -58,7 +55,6 @@ const sendIncomingWebhookAdaptiveCard = action({
     return { data };
   },
 });
-
 export default {
   sendIncomingWebhookMessage,
   sendIncomingWebhookAdaptiveCard,

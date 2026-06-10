@@ -1,4 +1,3 @@
-
 export const createCollectionExamplePayload = {
   data: {
     id: "customers",
@@ -39,14 +38,12 @@ export const createCollectionExamplePayload = {
     _conflicts: "conflicts/",
   },
 };
-
 export const deleteCollectionExamplePayload = {
   data: {
     success: true,
     message: "Collection myCollection deleted successfully",
   },
 };
-
 export const getCollectionExamplePayload = {
   data: {
     id: "products",
@@ -92,7 +89,6 @@ export const getCollectionExamplePayload = {
     computedProperties: [],
   },
 };
-
 export const listCollectionsExamplePayload = {
   data: {
     _rid: "kVEpAA==",
@@ -100,15 +96,12 @@ export const listCollectionsExamplePayload = {
     _count: 1,
   },
 };
-
-
 export const deleteDatabaseExamplePayload = {
   data: {
     success: true,
     message: "Database myDatabase deleted successfully",
   },
 };
-
 export const getDatabaseExamplePayload = {
   data: {
     id: "cosmicworks",
@@ -120,7 +113,6 @@ export const getDatabaseExamplePayload = {
     _ts: 1753733866,
   },
 };
-
 export const listDatabasesExamplePayload = {
   data: {
     _rid: "",
@@ -128,12 +120,9 @@ export const listDatabasesExamplePayload = {
     _count: 1,
   },
 };
-
 export const createDatabaseExamplePayload = {
   data: getDatabaseExamplePayload.data,
 };
-
-
 export const createDocumentExamplePayload = {
   data: {
     id: "1",
@@ -145,18 +134,15 @@ export const createDocumentExamplePayload = {
     _ts: 1753860972,
   },
 };
-
 export const deleteDocumentExamplePayload = {
   data: {
     success: true,
     message: "Document doc1 deleted successfully",
   },
 };
-
 export const getDocumentExamplePayload = {
   data: createDocumentExamplePayload.data,
 };
-
 export const listDocumentsExamplePayload = {
   data: {
     _rid: "kVEpAK0lM0g=",
@@ -165,7 +151,6 @@ export const listDocumentsExamplePayload = {
     continuationToken: `{"token":"kVEpAK0lM0gBAAAAAAAAAA==","range":{"min":"","max":"FF"}}`,
   },
 };
-
 export const updateDocumentExamplePayload = {
   data: {
     id: "1",

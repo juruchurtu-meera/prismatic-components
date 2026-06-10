@@ -4,7 +4,6 @@ import { updateImageInputs as inputs } from "../../inputs/images";
 import { type ImagePartialUpdateQuery, ImageEnum } from "klaviyo-api";
 import { updateImageExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const updateImage = action({
   display: {
     label: "Update Image",

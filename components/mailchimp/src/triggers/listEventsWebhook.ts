@@ -6,7 +6,6 @@ import {
   deleteWebhookByUrl,
   findWebhookByUrl,
 } from "../utils/webhooks";
-
 export const listEventsWebhook = trigger({
   display: {
     label: "List Events Webhook",
@@ -27,23 +26,18 @@ export const listEventsWebhook = trigger({
       { connection, listId, webhookEvents, webhookSources },
     ) => {
       const webhookUrl = context.webhookUrls[context.flow.name];
-
-      
       const existingWebhook = await findWebhookByUrl(
         connection,
         listId,
         webhookUrl,
       );
-
       if (existingWebhook) {
         context.logger.info(
           `Webhook already exists for list ${listId}, skipping creation.`,
         );
         return;
       }
-
       context.logger.info(`Creating webhook subscription for list ${listId}.`);
-
       await createWebhook(
         connection,
         listId,
@@ -54,21 +48,17 @@ export const listEventsWebhook = trigger({
     },
     delete: async (context, { connection, listId }) => {
       const webhookUrl = context.webhookUrls[context.flow.name];
-
-      
       const existingWebhook = await findWebhookByUrl(
         connection,
         listId,
         webhookUrl,
       );
-
       if (!existingWebhook) {
         context.logger.info(
           `No webhook found for list ${listId} with matching URL, skipping deletion.`,
         );
         return;
       }
-
       context.logger.info(`Deleting webhook subscription for list ${listId}.`);
       await deleteWebhookByUrl(connection, listId, webhookUrl);
     },

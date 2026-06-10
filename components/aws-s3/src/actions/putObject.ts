@@ -5,8 +5,14 @@ import { action } from "@prismatic-io/spectral";
 import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { putObjectPayload } from "../examplePayloads";
-import { accessKeyInput, acl, bucket, fileContents, objectKey, tagging } from "../inputs";
-
+import {
+  accessKeyInput,
+  acl,
+  bucket,
+  fileContents,
+  objectKey,
+  tagging,
+} from "../inputs";
 export const putObject = action({
   display: {
     label: "Put Object",

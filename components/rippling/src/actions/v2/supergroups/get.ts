@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { getSupergroupExamplePayload } from "../../../examplePayloads";
 import { getSupergroupInputs } from "../../../inputs";
-
 export const getSupergroup = action({
   display: {
     label: "Get Supergroup (V2)",

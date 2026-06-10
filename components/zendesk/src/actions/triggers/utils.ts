@@ -1,5 +1,4 @@
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
-
 export const defaultWebhookTriggerMessageBody = {
   current_user: {
     details: "{{current_user.details}}",
@@ -70,7 +69,6 @@ export const defaultWebhookTriggerMessageBody = {
     via: "{{ticket.via}}",
   },
 };
-
 export const defaultWebhookTriggerConditions = {
   all: [],
   any: [
@@ -78,12 +76,10 @@ export const defaultWebhookTriggerConditions = {
     { field: "status", operator: "not_changed" },
   ],
 };
-
 export interface ZendeskTrigger {
   id: string;
   title: string;
 }
-
 export const fetchTriggers = async (client: HttpClient) => {
   let triggers: ZendeskTrigger[] = [];
   let after = null;

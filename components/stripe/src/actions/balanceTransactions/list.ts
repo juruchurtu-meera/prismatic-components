@@ -12,7 +12,6 @@ import {
   timeout,
 } from "../../inputs";
 import type Stripe from "stripe";
-
 export const listBalanceTransactions = action({
   display: {
     label: "List Balance Transactions",
@@ -21,13 +20,21 @@ export const listBalanceTransactions = action({
   },
   perform: async (
     context,
-    { timeout, created, currency, endingBefore, limit, source, startingAfter, stripeConnection },
+    {
+      timeout,
+      created,
+      currency,
+      endingBefore,
+      limit,
+      source,
+      startingAfter,
+      stripeConnection,
+    },
   ) => {
     const client = createStripeClient({
       stripeConnection: stripeConnection,
       timeout: util.types.toInt(timeout),
     });
-
     const options: Stripe.BalanceTransactionListParams = {
       ...(created && { created: JSON.parse(created) }),
       ...(currency && { currency }),

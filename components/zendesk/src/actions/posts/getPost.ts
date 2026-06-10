@@ -3,7 +3,6 @@ import { connectionInput, postId } from "../../inputs";
 import { rawHttpClient } from "../../auth";
 import type { Post } from "../../types";
 import { createPostPayload } from "../../examplePayloads";
-
 export const getPost = action({
   display: {
     label: "Get Post",
@@ -11,10 +10,9 @@ export const getPost = action({
   },
   perform: async (context, { postId, zendeskConnection }) => {
     const client = rawHttpClient(zendeskConnection, context.debug.enabled);
-    const { data } = await client.get<{ post: Post }>(
-      `/community/posts/${postId}`,
-    );
-
+    const { data } = await client.get<{
+      post: Post;
+    }>(`/community/posts/${postId}`);
     return {
       data,
     };

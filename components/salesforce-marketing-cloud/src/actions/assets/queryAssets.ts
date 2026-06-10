@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { ASSET_QUERY_PATH } from "../../constants";
 import { queryAssetsExamplePayload } from "../../examplePayloads";
 import { queryAssetsInputs } from "../../inputs";
-
 export const queryAssets = action({
   examplePayload: queryAssetsExamplePayload,
   display: {
@@ -17,7 +16,6 @@ export const queryAssets = action({
     { connection, assetQuery, assetFields, pageSize, page },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const body = {
       page: { page, pageSize },
       ...(assetQuery && { query: assetQuery }),
@@ -25,9 +23,7 @@ export const queryAssets = action({
         fields: assetFields.split(",").map((f: string) => f.trim()),
       }),
     };
-
     const { data } = await client.post(ASSET_QUERY_PATH, body);
-
     return { data };
   },
 });

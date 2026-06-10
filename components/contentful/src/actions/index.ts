@@ -6,7 +6,6 @@ import environments from "./environments";
 import { rawRequest } from "./misc/rawRequest";
 import organizations from "./organizations";
 import spaces from "./spaces";
-
 import upload from "./upload";
 import webhooks from "./webhooks";
 export default {
@@ -15,7 +14,6 @@ export default {
   ...organizations,
   ...contentTypes,
   ...entries,
-  
   ...upload,
   ...assets,
   ...webhooks,

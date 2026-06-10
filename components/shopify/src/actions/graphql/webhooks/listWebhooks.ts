@@ -4,7 +4,6 @@ import { listWebhooksExamplePayload } from "../../../examplePayloads";
 import { listWebhooksInputs as inputs } from "../../../inputsGql";
 import { listWebhooks } from "../../../util";
 import { webhookMapper } from "../mappers/webhookMapper";
-
 export const listWebhooksGql = action({
   display: {
     label: "List Webhooks",
@@ -13,10 +12,20 @@ export const listWebhooksGql = action({
   inputs,
   perform: async (
     context,
-    { shopifyConnection, showOnlyInstanceWebhooks, getAlldata, limit, endCursor, callbackUrl },
+    {
+      shopifyConnection,
+      showOnlyInstanceWebhooks,
+      getAlldata,
+      limit,
+      endCursor,
+      callbackUrl,
+    },
   ) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const { webhookSubscriptions } = await listWebhooks(
       client,
       getAlldata,
@@ -26,7 +35,6 @@ export const listWebhooksGql = action({
       endCursor,
       callbackUrl,
     );
-
     return {
       data: webhookSubscriptions.map(webhookMapper),
     };

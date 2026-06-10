@@ -1,5 +1,4 @@
 import type Stripe from "stripe";
-
 export const createCheckoutSessionExamplePayload = {
   data: {
     id: "cs_test_123",
@@ -14,14 +13,12 @@ export const createCheckoutSessionExamplePayload = {
     url: "https://checkout.stripe.com/c/pay/cs_test_123",
   },
 };
-
 export const listCheckoutSessionsExamplePayload = {
   data: {
     object: "list",
     data: [createCheckoutSessionExamplePayload.data],
   },
 };
-
 export const listCheckoutSessionLineItemsExamplePayload = {
   data: {
     object: "list",

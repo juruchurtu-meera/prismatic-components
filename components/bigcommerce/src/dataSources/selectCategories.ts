@@ -1,7 +1,6 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../client";
 import { bigCommerceConnection, storeHash } from "../inputs";
-
 export const selectCategories = dataSource({
   dataSourceType: "picklist",
   display: {
@@ -14,11 +13,8 @@ export const selectCategories = dataSource({
       params.bigCommerceConnection,
       false,
     );
-
     const endpoint = `/stores/${params.storeHash}/v3/catalog/categories`;
-
     const { data } = await client.get(endpoint);
-
     return {
       result: data.map((category: { id: string; name: string }) => ({
         key: category.id,

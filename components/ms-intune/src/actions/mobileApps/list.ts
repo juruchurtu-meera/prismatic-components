@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection, odataParams, fetchAll } from "../../inputs/general";
 import { listMobileAppsExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listMobileApps = action({
   display: {
     label: "List Mobile Apps",

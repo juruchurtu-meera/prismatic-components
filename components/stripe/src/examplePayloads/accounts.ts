@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 export const getAccountExamplePayload = {
   data: {
     id: "acct_1MtFQ12eZvKYlo2C",
@@ -46,13 +36,6 @@ export const getAccountExamplePayload = {
     type: "standard",
   } as unknown,
 };
-
-
-
-
-
-
-
 export const listAccountsExamplePayload = {
   data: {
     object: "list",

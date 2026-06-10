@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../client";
 import { oneDriveConnection, dir, timeout } from "../inputs";
 import { handleErrors } from "../errors";
-
 export const downloadFile = action({
   display: {
     label: "Download File",
@@ -25,28 +24,24 @@ export const downloadFile = action({
       context.debug.enabled,
       timeout,
     );
-
     const fileItem = await handleErrors(
       client.get<{
         "@microsoft.graph.downloadUrl": string;
-        file: { mimeType: string };
+        file: {
+          mimeType: string;
+        };
       }>(`/me/drive/root:${fileLocation}`),
     );
-
     const {
       "@microsoft.graph.downloadUrl": downloadUrl,
       file: { mimeType: contentType },
     } = fileItem;
-
     const data = await handleErrors(
       client.get<Buffer>(downloadUrl, { responseType: "arraybuffer" }),
     );
-
     return {
       data,
       contentType,
     };
   },
-  
-  
 });

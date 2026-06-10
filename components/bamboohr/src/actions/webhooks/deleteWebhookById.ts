@@ -2,8 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createBambooClient } from "../../client";
 import { deleteWebhookByIdExamplePayload } from "../../examplePayloads";
 import { deleteWebhookByIdInputs } from "../../inputs";
-
-
 export const deleteWebhookById = action({
   display: {
     label: "Delete Webhook",

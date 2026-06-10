@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { addAttachmentExamplePayload } from "../../examplePayloads";
 import { addAttachmentInputs } from "../../inputs";
-
 export const addAttachment = action({
   display: {
     label: "Add Attachment",

@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { updateEventExamplePayload } from "../../examplePayloads";
 import { updateEventInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const updateEvent = action({
   display: {
     label: "Update Event",
@@ -13,13 +12,16 @@ export const updateEvent = action({
   inputs: updateEventInputs,
   perform: async (context, params) => {
     const client = createClient(params.connection, context.debug.enabled);
-    const url = computeEndpointBasedOnConnection(params.connection, `/me/events/${params.eventId}`);
-
+    const url = computeEndpointBasedOnConnection(
+      params.connection,
+      `/me/events/${params.eventId}`,
+    );
     const attendees: Attendee[] = [
       ...params.attendees,
-      ...(params.attendeesData && Array.isArray(params.attendeesData) ? params.attendeesData : []),
+      ...(params.attendeesData && Array.isArray(params.attendeesData)
+        ? params.attendeesData
+        : []),
     ];
-
     const payload: Event = {};
     if (params.locationName) {
       payload.location = { displayName: params.locationName };
@@ -48,7 +50,6 @@ export const updateEvent = action({
         timeZone: params.endTimezone,
       };
     }
-
     const { data } = await client.patch<Event>(url, payload);
     return { data };
   },

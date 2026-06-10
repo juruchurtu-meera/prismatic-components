@@ -1,5 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
 export const MarketoConnection = oauth2Connection({
   key: "oauth2",
   display: {
@@ -45,5 +44,4 @@ export const MarketoConnection = oauth2Connection({
     },
   },
 });
-
 export default [MarketoConnection];

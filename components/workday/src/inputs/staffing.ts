@@ -8,7 +8,6 @@ import {
   params,
   workerId,
 } from "./shared";
-
 const effectiveDateJobChange = input({
   label: "Effective Date",
   comments: "The effective date of the job change.",
@@ -18,7 +17,6 @@ const effectiveDateJobChange = input({
   required: true,
   clean: (value: unknown) => cleanDate(value, "Effective Date"),
 });
-
 const effectiveDateOrgAssignment = input({
   label: "Effective Date",
   comments: "The effective date of the organization assignment change.",
@@ -28,7 +26,6 @@ const effectiveDateOrgAssignment = input({
   required: true,
   clean: (value: unknown) => cleanDate(value, "Effective Date"),
 });
-
 const changeJobWorkerId = input({
   label: "Change Job Worker ID",
   comments:
@@ -39,7 +36,6 @@ const changeJobWorkerId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const changeOrgWorkerId = input({
   label: "Change Org Worker ID",
   comments:
@@ -50,7 +46,6 @@ const changeOrgWorkerId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const jobChangeJobId = input({
   label: "Job ID",
   comments:
@@ -61,7 +56,6 @@ const jobChangeJobId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const orgAssignmentJobId = input({
   label: "Job ID",
   comments:
@@ -72,7 +66,6 @@ const orgAssignmentJobId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const reasonId = input({
   label: "Reason ID",
   comments:
@@ -83,13 +76,9 @@ const reasonId = input({
   required: true,
   clean: util.types.toString,
 });
-
 const getStaffingWorkersParamsComments = `${params.comments} See optional (QUERY-STRING PARAMETERS) at https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#${SERVICES.staffing.slice(1)}/get-/workers`;
-
 const getWorkerExplicitSkillsParamsComments = `${params.comments} See optional (QUERY-STRING PARAMETERS) at https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#${SERVICES.staffing.slice(1)}/get-/workers/-ID-/explicitSkills`;
-
 const initiateJobChangeAdditionalFieldsComments = `${additionalFields.comments} See [Workday API documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#${SERVICES.staffing.slice(1)}/post-/workers/-ID-/jobChanges) for more information.`;
-
 const initiateJobChangeAdditionalFieldsExample = JSON.stringify(
   {
     supervisoryOrganization: {
@@ -102,9 +91,7 @@ const initiateJobChangeAdditionalFieldsExample = JSON.stringify(
   null,
   2,
 );
-
 const initiateOrganizationAssignmentChangeAdditionalFieldsComments = `${additionalFields.comments} See [Workday API documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#${SERVICES.staffing.slice(1)}/post-/workers/-ID-/organizationAssignmentChanges) for more information.`;
-
 const initiateOrganizationAssignmentChangeAdditionalFieldsExample =
   JSON.stringify(
     {
@@ -121,28 +108,23 @@ const initiateOrganizationAssignmentChangeAdditionalFieldsExample =
     null,
     2,
   );
-
 export const getStaffingWorkerByIdInputs = { connection, workerId };
-
 export const getStaffingWorkersInputs = {
   connection,
   ...paginationQueryStringInputs,
   params: { ...params, comments: getStaffingWorkersParamsComments },
 };
-
 export const getWorkerExplicitSkillsInputs = {
   connection,
   workerId,
   ...paginationQueryStringInputs,
   params: { ...params, comments: getWorkerExplicitSkillsParamsComments },
 };
-
 export const getWorkerServiceDatesInputs = {
   connection,
   workerId,
   ...paginationQueryStringInputs,
 };
-
 export const initiateJobChangeInputs = {
   connection,
   workerId,
@@ -156,7 +138,6 @@ export const initiateJobChangeInputs = {
     example: initiateJobChangeAdditionalFieldsExample,
   },
 };
-
 export const initiateOrganizationAssignmentChangeInputs = {
   connection,
   workerId,

@@ -4,11 +4,9 @@ import {
   PROFILE_OR_LIST_RESOURCE_CONFIG,
 } from "../constants";
 import { connection } from "./shared";
-
 const profileOrListResourceModel = Object.entries(
   PROFILE_OR_LIST_RESOURCE_CONFIG,
 ).map(([value, { label }]) => ({ label, value }));
-
 const pollProfileOrListResourceType = input({
   label: "Resource Type",
   type: "string",
@@ -17,7 +15,6 @@ const pollProfileOrListResourceType = input({
   model: profileOrListResourceModel,
   clean: util.types.toString,
 });
-
 const pollMessageChannel = input({
   label: "Message Channel",
   type: "string",
@@ -27,7 +24,6 @@ const pollMessageChannel = input({
   model: MESSAGE_CHANNEL_MODEL,
   clean: util.types.toString,
 });
-
 const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",
@@ -37,7 +33,6 @@ const showNewRecords = input({
     "When true, newly created records are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 const showUpdatedRecords = input({
   label: "Show Updated Records",
   type: "boolean",
@@ -47,14 +42,12 @@ const showUpdatedRecords = input({
     "When true, records updated since the last poll are included in the trigger output.",
   clean: util.types.toBool,
 });
-
 export const pollCampaignChangesInputs = {
   connection,
   pollMessageChannel,
   showNewRecords,
   showUpdatedRecords,
 };
-
 export const pollProfileAndListChangesInputs = {
   connection,
   pollProfileOrListResourceType,

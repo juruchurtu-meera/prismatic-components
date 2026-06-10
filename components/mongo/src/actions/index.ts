@@ -8,7 +8,6 @@ import { rawRequest } from "./rawRequest";
 import updateOne from "./updateOne";
 import { updateMany } from "./updateMany";
 import { aggregate } from "./aggregate";
-
 export default {
   convertObjectId,
   deleteMany,

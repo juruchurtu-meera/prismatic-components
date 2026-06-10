@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { createServiceExamplePayload } from "../../examplePayloads";
 import { connectionInput, serviceObject } from "../../inputs";
-
 export const createService = action({
   display: {
     label: "Create Service",

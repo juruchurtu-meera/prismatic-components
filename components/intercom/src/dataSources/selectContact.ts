@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { selectContactInputs } from "../inputs";
 import type { Contact } from "../interfaces";
 import { paginateRecords } from "../util";
-
 export const selectContact = dataSource({
   display: {
     label: "Select Contact",
@@ -21,14 +20,12 @@ export const selectContact = dataSource({
       true,
       "/contacts",
     );
-
     const result = contacts.map(({ id, name, email }): Element => {
       return {
         label: name || email,
         key: id,
       };
     });
-
     return {
       result,
     };

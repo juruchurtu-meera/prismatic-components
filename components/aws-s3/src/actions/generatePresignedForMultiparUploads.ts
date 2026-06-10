@@ -12,11 +12,11 @@ import {
   uploadId,
   urlsToGenerate,
 } from "../inputs";
-
 export const generatePresignedForMultiparUploads = action({
   display: {
     label: "Generate Presigned URL for Multipart Uploads",
-    description: "Generate presigned URL's that can be used to upload or download an object in S3",
+    description:
+      "Generate presigned URL's that can be used to upload or download an object in S3",
   },
   inputs: {
     awsRegion,
@@ -52,9 +52,7 @@ export const generatePresignedForMultiparUploads = action({
         }),
       );
     }
-
     const urls = await Promise.all(urlArray);
-
     return {
       data: urls.map((value, index) => ({
         url: value,

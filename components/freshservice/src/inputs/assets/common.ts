@@ -1,26 +1,21 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanNumberInput, cleanStringInput } from "../../util";
 import { additionalFields } from "../common";
-
 const assetsDocumentationComments =
   "See [Freshservice API documentation](https://api.freshservice.com/#asset_attributes) for more information.";
-
 export const assetsAdditionalFields = input({
   ...additionalFields,
   comments: `${additionalFields.comments} ${assetsDocumentationComments}`,
 });
-
 const usageTypeOptions = [
   { label: "Loaner", value: "loaner" },
   { label: "Permanent", value: "permanent" },
 ];
-
 const impactOptions = [
   { label: "Low", value: "low" },
   { label: "Medium", value: "medium" },
   { label: "High", value: "high" },
 ];
-
 export const name = input({
   label: "Name",
   comments: "The display name used to identify the asset.",
@@ -30,7 +25,6 @@ export const name = input({
   placeholder: "Enter asset name",
   clean: util.types.toString,
 });
-
 export const assetTypeId = input({
   label: "Asset Type ID",
   comments: "The unique identifier for the asset type classification.",
@@ -40,7 +34,6 @@ export const assetTypeId = input({
   placeholder: "Enter asset type ID",
   clean: util.types.toNumber,
 });
-
 export const assetTag = input({
   label: "Asset Tag",
   comments: "The tracking label assigned to the asset for inventory purposes.",
@@ -50,7 +43,6 @@ export const assetTag = input({
   placeholder: "Enter asset tag",
   clean: cleanStringInput,
 });
-
 export const impact = input({
   label: "Impact",
   comments: "The business impact level if the asset becomes unavailable.",
@@ -61,7 +53,6 @@ export const impact = input({
   model: impactOptions,
   clean: cleanStringInput,
 });
-
 export const usageType = input({
   label: "Usage Type",
   comments: "Whether the asset is permanently assigned or a loaner.",
@@ -72,7 +63,6 @@ export const usageType = input({
   placeholder: "Enter usage type",
   clean: cleanStringInput,
 });
-
 export const description = input({
   label: "Description",
   comments: "A detailed summary of the asset specifications or purpose.",
@@ -83,7 +73,6 @@ export const description = input({
   placeholder: "Enter asset description",
   clean: cleanStringInput,
 });
-
 export const locationId = input({
   label: "Location ID",
   comments:
@@ -94,7 +83,6 @@ export const locationId = input({
   placeholder: "Enter location ID",
   clean: cleanNumberInput,
 });
-
 export const agentId = input({
   label: "Agent ID",
   comments: "The unique identifier for the agent managing the asset.",
@@ -105,7 +93,6 @@ export const agentId = input({
   dataSource: "selectAgent",
   clean: cleanNumberInput,
 });
-
 export const departmentId = input({
   label: "Department ID",
   comments: "The unique identifier for the department assigned to the asset.",
@@ -115,7 +102,6 @@ export const departmentId = input({
   placeholder: "Enter department ID",
   clean: cleanNumberInput,
 });
-
 export const groupId = input({
   label: "Group ID",
   comments: "The unique identifier for the agent group managing the asset.",
@@ -125,7 +111,6 @@ export const groupId = input({
   placeholder: "Enter group ID",
   clean: cleanNumberInput,
 });
-
 export const workspaceId = input({
   label: "Workspace ID",
   comments:
@@ -137,7 +122,6 @@ export const workspaceId = input({
   dataSource: "selectWorkspace",
   clean: cleanNumberInput,
 });
-
 export const searchQuery = input({
   label: "Search Query",
   comments:
@@ -148,7 +132,6 @@ export const searchQuery = input({
   placeholder: "Enter search query",
   clean: util.types.toString,
 });
-
 export const assetDisplayId = input({
   label: "Asset Display ID",
   comments: "The unique display identifier for the asset.",

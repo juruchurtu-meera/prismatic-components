@@ -4,7 +4,6 @@ import { createS3Client } from "../auth";
 import { getBucketNotificationConfigurationPayload } from "../examplePayloads";
 import { accessKeyInput, bucket } from "../inputs";
 import { getBucketNotificationConfiguration as getBucketNotificationConfigurationFn } from "../utils";
-
 export const getBucketNotificationConfiguration = action({
   display: {
     label: "Get Bucket Notification Configuration",
@@ -30,7 +29,12 @@ export const getBucketNotificationConfiguration = action({
       logger: context.logger,
       debug: context.debug.enabled,
     });
-    const data = await getBucketNotificationConfigurationFn(s3, bucket, undefined, false);
+    const data = await getBucketNotificationConfigurationFn(
+      s3,
+      bucket,
+      undefined,
+      false,
+    );
     return {
       data,
     };

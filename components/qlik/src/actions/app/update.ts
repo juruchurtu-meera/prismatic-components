@@ -6,7 +6,6 @@ import {
   attributeName,
   connectionInput,
 } from "../../inputs";
-
 export const updateApp = action({
   display: {
     label: "Update App",
@@ -17,14 +16,12 @@ export const updateApp = action({
     { connection, appId, attributeDescription, attributeName },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.put(`/apps/${appId}`, {
       attributes: {
         description: attributeDescription || undefined,
         name: attributeName || undefined,
       },
     });
-
     return {
       data,
     };

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 export const deleteKeyExamplePayload = 1;
 export const flushAllExamplePayload = "OK";
 export const getExamplePayload = "myValue";

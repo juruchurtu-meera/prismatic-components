@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
-
 export const cardNumber = input({
   label: "Card Number",
   type: "string",
@@ -10,7 +9,6 @@ export const cardNumber = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const expMonth = input({
   label: "Expiration Month",
   type: "string",
@@ -20,7 +18,6 @@ export const expMonth = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const expYear = input({
   label: "Expiration Year",
   type: "string",
@@ -30,7 +27,6 @@ export const expYear = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const cvc = input({
   label: "CVC",
   type: "string",
@@ -40,7 +36,6 @@ export const cvc = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const billingCity = input({
   label: "Billing City",
   type: "string",
@@ -50,7 +45,6 @@ export const billingCity = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const billingCountry = input({
   label: "Billing Country",
   type: "string",
@@ -60,7 +54,6 @@ export const billingCountry = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const billingAddress1 = input({
   label: "Billing Street Address",
   type: "string",
@@ -70,17 +63,16 @@ export const billingAddress1 = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const billingAddress2 = input({
   label: "Billing Address 2",
   type: "string",
-  comments: "Additional address information for the billing address (optional).",
+  comments:
+    "Additional address information for the billing address (optional).",
   example: "Suite 100",
   placeholder: "Enter apartment, suite, etc.",
   required: false,
   clean: cleanStringInput,
 });
-
 export const postalCode = input({
   label: "Billing Postal Code",
   type: "string",
@@ -90,7 +82,6 @@ export const postalCode = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const state = input({
   label: "Billing State",
   type: "string",
@@ -100,7 +91,6 @@ export const state = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const billingEmail = input({
   label: "Billing Email",
   type: "string",
@@ -110,7 +100,6 @@ export const billingEmail = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const billingName = input({
   label: "Full Name",
   type: "string",
@@ -120,7 +109,6 @@ export const billingName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const phone = input({
   label: "Billing Phone",
   type: "string",

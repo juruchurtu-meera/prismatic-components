@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { cancelEventExamplePayload } from "../../examplePayloads";
 import { cancelEventInputs } from "../../inputs";
 import { computeEndpointBasedOnConnection } from "../../util";
-
 export const cancelEvent = action({
   display: {
     label: "Cancel Event",

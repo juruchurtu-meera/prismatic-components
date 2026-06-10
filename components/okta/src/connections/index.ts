@@ -4,7 +4,6 @@ import {
   oauth2Connection,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
 export const oktaOAuth2AuthorizationCode = oauth2Connection({
   key: "oktaOAuth2AuthorizationCode",
   display: {
@@ -30,7 +29,8 @@ export const oktaOAuth2AuthorizationCode = oauth2Connection({
         type: "string",
         required: false,
         shown: true,
-        comments: "Okta API permission scopes are set on the OAuth application.",
+        comments:
+          "Okta API permission scopes are set on the OAuth application.",
       },
       clientId: {
         label: "Client ID",
@@ -78,12 +78,12 @@ export const oktaOAuth2AuthorizationCode = oauth2Connection({
     OAuth2Type.AuthorizationCode,
   ),
 });
-
 export const oktaClientCredentialsOrg = connection({
   key: "oktaClientCredentialsOrg",
   display: {
     label: "OAuth 2.0 Client Credentials",
-    description: "Authenticate using OAuth 2.0 Client Credentials with private_key_jwt method",
+    description:
+      "Authenticate using OAuth 2.0 Client Credentials with private_key_jwt method",
   },
   comments:
     "Authenticate using OAuth 2.0 Client Credentials with private_key_jwt method to access Okta's APIs. This is the ONLY supported authentication method for Okta service apps accessing Okta scopes.",
@@ -110,7 +110,8 @@ export const oktaClientCredentialsOrg = connection({
     },
     privateKey: {
       label: "Private Key (PEM format)",
-      placeholder: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----",
+      placeholder:
+        "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----",
       type: "text",
       required: true,
       shown: true,
@@ -128,7 +129,6 @@ export const oktaClientCredentialsOrg = connection({
     },
   },
 });
-
 export const oktaApiTokenConnection = connection({
   key: "oktaApiTokenConnection",
   display: {
@@ -157,5 +157,8 @@ export const oktaApiTokenConnection = connection({
     },
   },
 });
-
-export default [oktaOAuth2AuthorizationCode, oktaClientCredentialsOrg, oktaApiTokenConnection];
+export default [
+  oktaOAuth2AuthorizationCode,
+  oktaClientCredentialsOrg,
+  oktaApiTokenConnection,
+];

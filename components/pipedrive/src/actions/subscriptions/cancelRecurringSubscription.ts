@@ -2,7 +2,6 @@ import { action, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, subscriptionIdInput } from "../../inputs";
 import { cleanString } from "../../util";
-
 export const cancelRecurringSubscription = action({
   display: {
     label: "Cancel Recurring Subscription (Deprecated)",
@@ -10,9 +9,12 @@ export const cancelRecurringSubscription = action({
   },
   perform: async (context, { connection, id, endDate }) => {
     const client = createClient(connection, context.debug.enabled);
-    const { data } = await client.patch(`/subscriptions/recurring/${id}/cancel`, {
-      end_date: endDate,
-    });
+    const { data } = await client.patch(
+      `/subscriptions/recurring/${id}/cancel`,
+      {
+        end_date: endDate,
+      },
+    );
     return { data };
   },
   inputs: {

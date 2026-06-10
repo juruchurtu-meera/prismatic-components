@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { connection, first } from "./common";
 import { cleanStringInput, parseJsonArray } from "../util";
-
 const name = input({
   label: "Name",
   type: "string",
@@ -11,7 +10,6 @@ const name = input({
   required: true,
   clean: cleanStringInput,
 });
-
 const description = input({
   label: "Description",
   type: "text",
@@ -23,7 +21,6 @@ const description = input({
   placeholder: "Enter change order description",
   clean: cleanStringInput,
 });
-
 const type = input({
   label: "Type",
   type: "string",
@@ -49,7 +46,6 @@ const type = input({
   ],
   example: "ECO",
 });
-
 const orderBy = input({
   label: "Order By",
   comments:
@@ -86,14 +82,12 @@ const orderBy = input({
     },
   ],
 });
-
 export const createChangeOrderInputs = {
   connection,
   name,
   description,
   type,
 };
-
 export const listChangeOrdersInputs = {
   connection,
   orderBy,

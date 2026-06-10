@@ -4,7 +4,6 @@ import { oneDriveConnection, fileName, fileData, timeout } from "../inputs";
 import { handleErrors } from "../errors";
 import { Readable } from "node:stream";
 import { uploadFileExamplePayload } from "../examplePayloads";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",
@@ -29,7 +28,6 @@ export const uploadFile = action({
       timeout,
     );
     const { data } = util.types.toData(fileData);
-
     return {
       data: await handleErrors(
         client.put(`/me/drive/root:${fileName}:/content`, Readable.from(data)),

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { connection } from "../../inputs/general";
 import { createPriceListsInputs } from "../../inputs/priceLists/create";
 import { getPriceListExamplePayload as createPriceListExamplePayload } from "../../examplePayloads/priceLists";
-
 export const createPriceList = action({
   display: {
     label: "Create Price List",
@@ -14,8 +13,11 @@ export const createPriceList = action({
     connection,
   },
   perform: async (context, { connection, bodyFields, PriceListName }) => {
-    const client = await createClient(connection, context, context.debug.enabled);
-
+    const client = await createClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/PriceLists`, {
       PriceListName,
       ...bodyFields,

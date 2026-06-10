@@ -1,17 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toObjectOrEmpty, toOptionalNumber } from "../util";
-
-
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Jira Service Management connection to use.",
 });
-
-
-
 export const start = input({
   label: "Start",
   type: "string",
@@ -22,7 +16,6 @@ export const start = input({
   example: "50",
   clean: toOptionalNumber,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -32,7 +25,6 @@ export const limit = input({
   example: "50",
   clean: toOptionalNumber,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -42,9 +34,6 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results using pagination. Ignores start and limit when true.",
   clean: util.types.toBool,
 });
-
-
-
 export const serviceDeskId = input({
   label: "Service Desk ID",
   type: "string",
@@ -56,7 +45,6 @@ export const serviceDeskId = input({
   dataSource: "selectServiceDesk",
   clean: util.types.toString,
 });
-
 export const requestTypeId = input({
   label: "Request Type ID",
   type: "string",
@@ -68,7 +56,6 @@ export const requestTypeId = input({
   dataSource: "selectRequestType",
   clean: util.types.toString,
 });
-
 export const issueIdOrKey = input({
   label: "Issue ID or Key",
   type: "string",
@@ -80,7 +67,6 @@ export const issueIdOrKey = input({
   dataSource: "selectRequest",
   clean: util.types.toString,
 });
-
 export const accountIds = input({
   label: "Account IDs",
   type: "code",
@@ -96,7 +82,6 @@ export const accountIds = input({
   ),
   clean: util.types.toObject,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -108,7 +93,6 @@ export const additionalFields = input({
   example: JSON.stringify({ email: "sally@netflix.com" }, null, 2),
   clean: toObjectOrEmpty,
 });
-
 export const additionalQueryParams = input({
   label: "Additional Query Parameters",
   type: "code",

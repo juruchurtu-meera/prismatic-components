@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connection, $select } from "../../inputs/general";
 import { docEntry } from "../../inputs/orders/general";
-
 export const getOrder = action({
   display: {
     label: "Get Order",
@@ -15,8 +14,11 @@ export const getOrder = action({
     connection,
   },
   perform: async (context, { connection, $select, docEntry }) => {
-    const client = await createClient(connection, context, context.debug.enabled);
-
+    const client = await createClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/Orders(${docEntry})`, {
       params: {
         $select,

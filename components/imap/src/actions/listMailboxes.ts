@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { listMailboxesExamplePayload } from "../examplePayloads";
 import { listMailboxesInputs } from "../inputs/actions";
-
 export const listMailboxes = action({
   display: {
     label: "List Mailboxes",
@@ -13,7 +12,6 @@ export const listMailboxes = action({
     await client.connect();
     try {
       const data = await client.list();
-
       return { data };
     } finally {
       client.close();

@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import { createWebhookResponse } from "../../examplePayloads/webhooks";
 import { createWebhookFunction } from "../../util";
-
 export const createWebhook = action({
   display: {
     label: "Create or Update Webhook",
@@ -42,7 +41,6 @@ export const createWebhook = action({
     },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await createWebhookFunction({
       client,
       formId,

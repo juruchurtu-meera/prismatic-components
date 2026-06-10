@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
 import { accountId, connectionInput } from "../../inputs";
 import { archiveAccountExamplePayload } from "../../examplePayloads";
-
 export const archiveAccount = action({
   display: {
     label: "Archive Account",

@@ -1,5 +1,3 @@
-
-
 export const getARAdvancePayload = {
   data: {
     _status: "success",

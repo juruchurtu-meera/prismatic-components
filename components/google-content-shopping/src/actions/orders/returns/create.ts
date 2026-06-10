@@ -9,7 +9,6 @@ import {
   returnMethodType,
 } from "../../../inputs";
 import { createOrderReturnExamplePayload } from "../../../examplePayloads";
-
 export const createOrderReturn = action({
   display: {
     label: "Create Order Return (Deprecated)",
@@ -39,7 +38,6 @@ export const createOrderReturn = action({
     context.logger.warn(
       "'Create Order Return' is deprecated. Google is retiring the Orders endpoints in the Content API.",
     );
-
     const client = createClient(connectionInput);
     const { data } = await client.orderreturns.createorderreturn({
       merchantId,

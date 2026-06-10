@@ -10,7 +10,6 @@ import {
 import type { Customer } from "../interfaces/Customer";
 import type { WooCommerceResponse } from "../interfaces/WooComerResponse";
 import { paginateRecords } from "../util";
-
 export const selectCustomer = dataSource({
   display: {
     label: "Select Customer",
@@ -40,7 +39,6 @@ export const selectCustomer = dataSource({
       },
       true,
     );
-
     return {
       result: data.map(({ id, first_name, last_name, email }) => ({
         label: `${first_name} ${last_name} - ${email}`,

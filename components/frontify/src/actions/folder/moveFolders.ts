@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { moveFoldersExamplePayload as examplePayload } from "../../examplePayloads";
 import { moveFoldersInputs as inputs } from "../../inputs/folder";
-
 export const moveFolders = action({
   display: {
     label: "Move Folders",
@@ -22,7 +21,6 @@ export const moveFolders = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

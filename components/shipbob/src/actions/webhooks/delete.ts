@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deleteWebhookExamplePayload } from "../../examplePayloads";
 import { connectionInput, version, webhookId } from "../../inputs";
-
 export const deleteWebhook = action({
   display: {
     label: "Delete Webhook",

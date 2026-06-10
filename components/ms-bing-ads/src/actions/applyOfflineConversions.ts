@@ -9,15 +9,12 @@ import { getClient, sendAsync } from "../client";
 import { BING_API } from "../util";
 import { OfflineConversion } from "../types";
 import { applyOfflineConversionsExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "ApplyOfflineConversions";
-
 export interface OperationError {
   Code: number;
   Details: string;
   Message: string;
 }
-
 export interface AddClientLinksResponse {
   OperationErrors: {
     OperationError: OperationError | OperationError[];
@@ -28,7 +25,6 @@ export interface AddClientLinksResponse {
     };
   };
 }
-
 export const applyOfflineConversions = action({
   display: {
     label: "Apply Offline Conversions",
@@ -46,13 +42,11 @@ export const applyOfflineConversions = action({
         CustomerAccountId: accountIdInput,
       },
     });
-
     const conversionGoal = {
       OfflineConversions: {
         ConversionGoal: offlineConversionsBody as OfflineConversion[],
       },
     };
-
     const response = await sendAsync({
       debug,
       args: conversionGoal,
@@ -60,7 +54,6 @@ export const applyOfflineConversions = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CAMPAIGN_MANAGEMENT_API.TN,
     });
-
     return {
       data: response,
     };

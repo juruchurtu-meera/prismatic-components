@@ -3,7 +3,6 @@ import { connectionInput, spreadsheetId, worksheetReturnName } from "../inputs";
 import { worksheetProperties } from "../util";
 import { createClient } from "../client";
 import { selectWorksheetResponse } from "../examplePayloads";
-
 export const selectWorksheet = dataSource({
   display: {
     label: "Select Worksheet",
@@ -26,14 +25,12 @@ export const selectWorksheet = dataSource({
     const sheets = client.sheetsByIndex.map((sheet) => {
       return worksheetProperties(client, sheet);
     });
-
     const result = sheets.map<Element>((sheet) => ({
       key: worksheetReturnName
         ? sheet.title.toString()
         : sheet.worksheetId.toString(),
       label: sheet.title as string,
     }));
-
     return {
       result,
     };

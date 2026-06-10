@@ -3,7 +3,6 @@ import { createClient } from "../../../client";
 import { API_VERSION } from "../../../constants";
 import { getDepartmentExamplePayload } from "../../../examplePayloads";
 import { getDepartmentInputs } from "../../../inputs";
-
 export const getDepartment = action({
   display: {
     label: "Get Department (V2)",

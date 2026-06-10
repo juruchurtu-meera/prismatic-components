@@ -1,5 +1,4 @@
 import { oauth2Connection, OAuth2Type } from "@prismatic-io/spectral";
-
 export const gotoWebinarOAuth2Connection = oauth2Connection({
   key: "gotoWebinarOAuth2Connection",
   oauth2Type: OAuth2Type.AuthorizationCode,
@@ -55,5 +54,4 @@ export const gotoWebinarOAuth2Connection = oauth2Connection({
     },
   },
 });
-
 export default [gotoWebinarOAuth2Connection];

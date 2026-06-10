@@ -1,6 +1,5 @@
 import { connection, input } from "@prismatic-io/spectral";
 import { AVAILABLE_PROTOCOLS } from "./constants";
-
 export const apiServer = input({
   label: "API Server",
   placeholder: "testing.successfactors.com",
@@ -11,7 +10,6 @@ export const apiServer = input({
     "Your SAP SuccessFactors api server, if you are not sure, please contact your SAP SuccessFactors administrator. If empty the sandbox environment will be used (sandbox.api.sap.com)",
   example: "testing.successfactors.com",
 });
-
 export const protocol = input({
   label: "Protocol",
   placeholder: "Protocol",
@@ -21,7 +19,6 @@ export const protocol = input({
   comments: "The SAP SuccessFactors protocol to use",
   model: AVAILABLE_PROTOCOLS,
 });
-
 export const basicAuthentication = connection({
   key: "sap-successfactors-basic-authentication",
   display: {
@@ -57,7 +54,6 @@ export const basicAuthentication = connection({
     apiServer,
   },
 });
-
 export const apiKeyAuthentication = connection({
   key: "sap-successfactors-api-key-authentication",
   display: {
@@ -79,7 +75,8 @@ export const apiKeyAuthentication = connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "Enter the SAP SuccessFactors user ID that you use to access the APIs",
+      comments:
+        "Enter the SAP SuccessFactors user ID that you use to access the APIs",
       example: "sfadmin",
     },
     apiKey: {
@@ -129,5 +126,4 @@ export const apiKeyAuthentication = connection({
     protocol,
   },
 });
-
 export default [apiKeyAuthentication, basicAuthentication];

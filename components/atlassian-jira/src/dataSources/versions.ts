@@ -1,7 +1,6 @@
 import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { createV3Client } from "../connections/auth";
 import { connectionInput, projectId } from "../inputs";
-
 const selectVersion = dataSource({
   display: {
     label: "Select Version",
@@ -16,11 +15,12 @@ const selectVersion = dataSource({
   },
   perform: async (_context, { jiraConnection, projectId }) => {
     const client = await createV3Client(jiraConnection);
-
     let nextPage = 0;
-    let versions: { id: string; name: string }[] = [];
+    let versions: {
+      id: string;
+      name: string;
+    }[] = [];
     let shouldContinue = true;
-
     do {
       const {
         data,
@@ -39,19 +39,16 @@ const selectVersion = dataSource({
           startAt: nextPage,
         },
       });
-
       versions = [...versions, ...data.values];
       nextPage = data.maxResults + data.startAt;
       shouldContinue = !data.isLast;
     } while (shouldContinue);
-
     const result = versions
       .map<Element>(({ name, id }) => ({
         label: name,
         key: util.types.toString(id),
       }))
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",
@@ -62,7 +59,6 @@ const selectVersion = dataSource({
     ],
   },
 });
-
 export default {
   selectVersion,
 };

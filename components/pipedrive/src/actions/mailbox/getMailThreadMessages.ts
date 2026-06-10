@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput, mailThreadIdInput } from "../../inputs";
-
 export const getMailThreadMessages = action({
   display: {
     label: "Get Mail Thread Messages",
@@ -9,7 +8,9 @@ export const getMailThreadMessages = action({
   },
   perform: async (context, { connection, id }) => {
     const client = createClient(connection, context.debug.enabled);
-    const { data } = await client.get(`/mailbox/mailThreads/${id}/mailMessages`);
+    const { data } = await client.get(
+      `/mailbox/mailThreads/${id}/mailMessages`,
+    );
     return { data };
   },
   inputs: {

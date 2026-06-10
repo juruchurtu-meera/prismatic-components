@@ -1,5 +1,4 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const column = input({
   label: "Column Index",
   comments:
@@ -11,7 +10,6 @@ export const column = input({
   dataSource: "selectColumn",
   clean: util.types.toNumber,
 });
-
 export const row = input({
   label: "Row Index",
   comments: "The zero-based index of the row to access within the worksheet.",
@@ -21,7 +19,6 @@ export const row = input({
   placeholder: "Enter row index",
   clean: util.types.toNumber,
 });
-
 export const values = input({
   label: "Values",
   comments:
@@ -40,7 +37,6 @@ export const values = input({
   ),
   clean: util.types.toObject,
 });
-
 export const address = input({
   label: "Address",
   comments: "The address of the range to update.",

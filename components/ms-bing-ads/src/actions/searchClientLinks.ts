@@ -1,5 +1,4 @@
 import { action } from "@prismatic-io/spectral";
-
 import {
   connectionInput,
   orderingInput,
@@ -11,10 +10,8 @@ import {
 import { Args, getClient, sendAsync } from "../client";
 import { BING_API, toArray } from "../util";
 import { searchClientLinksExamplePayload } from "../examplePayloads";
-
 const SOAP_ACTION = "SearchClientLinks";
 const MAX_SIZE = 100;
-
 interface ClientLink {
   ClientEntityId: number;
   ClientEntityName: string;
@@ -36,13 +33,11 @@ interface ClientLink {
   Timestamp: string;
   Type: string;
 }
-
 export interface SearchClientLinksResponse {
   ClientLinks: {
     ClientLink: ClientLink | ClientLink[];
   };
 }
-
 export const searchClientLinks = action({
   display: {
     label: "Search Client Links",
@@ -64,7 +59,6 @@ export const searchClientLinks = action({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
     });
-
     const response = await sendAsync<SearchClientLinksResponse>({
       debug,
       args: {
@@ -109,7 +103,6 @@ export const searchClientLinks = action({
       soapAction: SOAP_ACTION,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
-
     return {
       data: response?.ClientLinks?.ClientLink
         ? {

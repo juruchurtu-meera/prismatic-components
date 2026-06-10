@@ -9,7 +9,6 @@ import { selectPipeline } from "./selectPipeline";
 import { selectProduct } from "./selectProduct";
 import { selectStage } from "./selectStage";
 import { selectUser } from "./selectUser";
-
 export default {
   selectActivity,
   selectDeal,

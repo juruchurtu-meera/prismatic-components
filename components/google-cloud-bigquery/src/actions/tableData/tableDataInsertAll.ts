@@ -11,7 +11,6 @@ import {
   tableId,
   templateSuffix,
 } from "../../inputs";
-
 export const tableDataInsertAll = action({
   display: {
     description:

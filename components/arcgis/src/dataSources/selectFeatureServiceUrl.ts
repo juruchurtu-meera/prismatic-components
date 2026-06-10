@@ -2,7 +2,6 @@ import { getSelf, SearchQueryBuilder } from "@esri/arcgis-rest-portal";
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { connection } from "../inputs";
 import { getApiKeyManager, paginateRecords } from "../utils";
-
 export const selectFeatureServiceUrl = dataSource({
   display: {
     label: "Select Feature Service URL",
@@ -23,12 +22,10 @@ export const selectFeatureServiceUrl = dataSource({
       .in("type")
       .from(0)
       .to(1000);
-
     const data = await paginateRecords(
       { authentication, q: featureServicesQuery },
       true,
     );
-
     return {
       result: (data.results ?? [])
         .filter((item) => item.url)

@@ -4,7 +4,6 @@ import { getTemplateInputs as inputs } from "../../inputs/templates";
 import type { FieldsTemplate } from "../../types/FieldsTemplate";
 import { getTemplateExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const getTemplate = action({
   display: {
     label: "Get Template",

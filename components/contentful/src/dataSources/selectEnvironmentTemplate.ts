@@ -1,8 +1,5 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { selectEnvironmentTemplateInputs } from "../inputs";
-
-
-
 export const selectEnvironmentTemplate = dataSource({
   display: {
     label: "Select Environment Template",

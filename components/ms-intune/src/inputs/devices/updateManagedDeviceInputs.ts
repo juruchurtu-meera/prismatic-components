@@ -1,6 +1,5 @@
 import { input } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanStringInput } from "../../util";
-
 const managedDeviceId = input({
   label: "Managed Device Id",
   comments: "Unique identifier for the managed device to update (UUID format).",
@@ -11,7 +10,6 @@ const managedDeviceId = input({
   clean: cleanStringInput,
   dataSource: "selectManagedDevice",
 });
-
 const managedDeviceName = input({
   label: "Managed Device Name",
   comments: "Update the device name to make it easier to identify.",
@@ -21,7 +19,6 @@ const managedDeviceName = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const notes = input({
   label: "Notes",
   comments: "Additional notes about the device for documentation purposes.",
@@ -31,7 +28,6 @@ const notes = input({
   required: false,
   clean: cleanStringInput,
 });
-
 const extraFields = input({
   label: "Extra Fields",
   comments:
@@ -41,7 +37,6 @@ const extraFields = input({
   required: false,
   clean: cleanCodeInput,
 });
-
 export default {
   managedDeviceId,
   managedDeviceName,

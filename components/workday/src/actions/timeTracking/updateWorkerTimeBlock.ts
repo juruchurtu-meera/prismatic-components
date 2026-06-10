@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { updateWorkerTimeBlockExamplePayload } from "../../examplePayloads";
 import { updateWorkerTimeBlockInputs } from "../../inputs";
-
 export const updateWorkerTimeBlock = action({
   display: {
     label: "Update Worker Time Block",

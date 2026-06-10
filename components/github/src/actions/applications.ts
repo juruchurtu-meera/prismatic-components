@@ -1,13 +1,15 @@
 import { action, type Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const oauthAuthorizationsListGrants = action({
   display: {
     label: "Oauth Authorizations List Grants",
     description: "List your grants",
   },
   perform: async (context, { connection, perPage, page, clientId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/applications/grants`, {
       params: { per_page: perPage, page, client_id: clientId },
     });
@@ -42,14 +44,16 @@ const oauthAuthorizationsListGrants = action({
     },
   },
 });
-
 const oauthAuthorizationsGetGrant = action({
   display: {
     label: "Oauth Authorizations Get Grant",
     description: "Get a single grant",
   },
   perform: async (context, { connection, grantId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.get(`/applications/grants/${grantId}`);
     return { data };
   },
@@ -68,14 +72,16 @@ const oauthAuthorizationsGetGrant = action({
     },
   },
 });
-
 const oauthAuthorizationsDeleteGrant = action({
   display: {
     label: "Oauth Authorizations Delete Grant",
     description: "Delete a grant",
   },
   perform: async (context, { connection, grantId }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/applications/grants/${grantId}`);
     return { data };
   },
@@ -94,14 +100,16 @@ const oauthAuthorizationsDeleteGrant = action({
     },
   },
 });
-
 const appsDeleteAuthorization = action({
   display: {
     label: "Apps Delete Authorization",
     description: "Delete an app authorization",
   },
   perform: async (context, { connection, clientId, accessToken }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/applications/${clientId}/grant`);
     return { data };
   },
@@ -127,14 +135,16 @@ const appsDeleteAuthorization = action({
     },
   },
 });
-
 const appsCheckToken = action({
   display: {
     label: "Apps Check Token",
     description: "Check a token",
   },
   perform: async (context, { connection, clientId, accessToken }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(`/applications/${clientId}/token`, {
       access_token: accessToken,
     });
@@ -162,14 +172,16 @@ const appsCheckToken = action({
     },
   },
 });
-
 const appsResetToken = action({
   display: {
     label: "Apps Reset Token",
     description: "Reset a token",
   },
   perform: async (context, { connection, clientId, accessToken }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.patch(`/applications/${clientId}/token`, {
       access_token: accessToken,
     });
@@ -197,14 +209,16 @@ const appsResetToken = action({
     },
   },
 });
-
 const appsDeleteToken = action({
   display: {
     label: "Apps Delete Token",
     description: "Delete an app token",
   },
   perform: async (context, { connection, clientId, accessToken }) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.delete(`/applications/${clientId}/token`);
     return { data };
   },
@@ -230,7 +244,6 @@ const appsDeleteToken = action({
     },
   },
 });
-
 const appsScopeToken = action({
   display: {
     label: "Apps Scope Token",
@@ -249,7 +262,10 @@ const appsScopeToken = action({
       permissions,
     },
   ) => {
-    const client = createClient(connection as Connection, context.debug.enabled);
+    const client = createClient(
+      connection as Connection,
+      context.debug.enabled,
+    );
     const { data } = await client.post(
       `/applications/${clientId}/token/scoped`,
       {
@@ -329,7 +345,6 @@ const appsScopeToken = action({
     },
   },
 });
-
 export default {
   oauthAuthorizationsListGrants,
   oauthAuthorizationsGetGrant,

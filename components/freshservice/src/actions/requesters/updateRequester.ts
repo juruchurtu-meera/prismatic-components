@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createFreshserviceClient } from "../../client";
 import { updateRequesterExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateRequesterInputs as inputs } from "../../inputs/requesters";
-
 export const updateRequester = action({
   display: {
     label: "Update Requester",
@@ -27,7 +26,6 @@ export const updateRequester = action({
     },
   ) => {
     const client = createFreshserviceClient(connection, context.debug.enabled);
-
     const payload = {
       first_name: firstName,
       primary_email: primaryEmail,
@@ -41,9 +39,7 @@ export const updateRequester = action({
       address,
       ...requestersAdditionalFields,
     };
-
     const { data } = await client.put(`/requesters/${requesterId}`, payload);
-
     return {
       data,
     };

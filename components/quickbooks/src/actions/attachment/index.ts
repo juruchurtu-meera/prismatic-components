@@ -5,7 +5,6 @@ import { listAttachments } from "./listAttachments";
 import { readAnAttachable } from "./readAnAttachable";
 import { updateAttachable } from "./updateAttachable";
 import { uploadAttachment } from "./uploadAttachment";
-
 export default {
   uploadAttachment,
   readAnAttachable,

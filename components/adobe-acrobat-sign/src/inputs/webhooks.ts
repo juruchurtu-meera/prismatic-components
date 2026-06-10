@@ -6,7 +6,6 @@ import {
 } from "../util";
 import { WEBHOOK_SUBSCRIPTION_EVENT_TYPES } from "../constants";
 import { connection, cursor, fetchAll, filterQuery, pageSize } from "./common";
-
 const scope = input({
   label: "Scope",
   type: "string",
@@ -21,7 +20,6 @@ const scope = input({
   comments: "Scope of the webhook.",
   clean: util.types.toString,
 });
-
 const showInactiveWebhooks = input({
   label: "Show Inactive Webhooks",
   type: "boolean",
@@ -30,7 +28,6 @@ const showInactiveWebhooks = input({
   clean: util.types.toBool,
   required: false,
 });
-
 const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -42,7 +39,6 @@ const webhookId = input({
   dataSource: "selectWebhooks",
   clean: util.types.toString,
 });
-
 const webhookSubscriptionEvents = input({
   label: "Webhook Subscription Events",
   type: "string",
@@ -59,7 +55,6 @@ const webhookSubscriptionEvents = input({
     "The list of events for which the webhook subscription is being made.",
   clean: cleanFunctionValueList,
 });
-
 const webhookName = input({
   label: "Webhook Name",
   type: "string",
@@ -69,7 +64,6 @@ const webhookName = input({
   comments: "The name of the webhook.",
   clean: util.types.toString,
 });
-
 const webhookUrlInfo = input({
   label: "Webhook URL",
   type: "string",
@@ -79,7 +73,6 @@ const webhookUrlInfo = input({
   comments: "The URL to which the webhook payload is to be delivered.",
   clean: util.types.toString,
 });
-
 const webhookApplicationDisplayName = input({
   label: "Application Display Name",
   type: "string",
@@ -89,7 +82,6 @@ const webhookApplicationDisplayName = input({
   comments: "The name of the application through which the webhook is created.",
   clean: cleanFunctionForString,
 });
-
 const webhookApplicationName = input({
   label: "Application Name",
   type: "string",
@@ -99,7 +91,6 @@ const webhookApplicationName = input({
   comments: "The name of the application through which the webhook is created.",
   clean: cleanFunctionForString,
 });
-
 const webhookProblemNotificationEmails = input({
   label: "Problem Notification Emails",
   type: "string",
@@ -111,7 +102,6 @@ const webhookProblemNotificationEmails = input({
     "The list of email addresses to which the webhook problem notifications are sent.",
   clean: cleanFunctionValueList,
 });
-
 const webhookResourceId = input({
   label: "Resource ID",
   type: "string",
@@ -122,7 +112,6 @@ const webhookResourceId = input({
     "ID of the resource type for which you want to create webhook. Provide agreementId if webhook needs to be created for an agreement. Similarly, widgetId if webhook needs to be created for a web form, megaSignId if webhook needs to be created for a bulk send and libraryDocumentId if webhook needs to be created for a library document. <strong>Note:</strong> Only specify if scope is 'RESOURCE'.",
   clean: cleanFunctionForString,
 });
-
 const webhookResourceType = input({
   label: "Webhook Resource Type",
   type: "string",
@@ -140,8 +129,6 @@ const webhookResourceType = input({
   comments:
     "The type of resource being accessed. <strong>Note:</strong> Only specify if scope is Resource.",
 });
-
-
 export const webhookStatus = input({
   label: "Webhook Status",
   type: "string",
@@ -156,7 +143,6 @@ export const webhookStatus = input({
   }),
   comments: "The status of the webhook.",
 });
-
 const webhookAgreementEvents = input({
   label: "Webhook Agreement Conditional Parameters",
   type: "string",
@@ -178,7 +164,6 @@ const webhookAgreementEvents = input({
     "Optional parameters to include additional information in the webhook payload for agreements.",
   clean: cleanFunctionForBooleanValueList,
 });
-
 const webhookLibraryDocumentEvents = input({
   label: "Webhook Library Documents Conditional Parameters",
   type: "string",
@@ -195,7 +180,6 @@ const webhookLibraryDocumentEvents = input({
     "Optional parameters to include additional information in the webhook payload for library documents.",
   clean: cleanFunctionForBooleanValueList,
 });
-
 const webhookMegaSignEvents = input({
   label: "Webhook MegaSign Conditional Parameters",
   type: "string",
@@ -212,7 +196,6 @@ const webhookMegaSignEvents = input({
     "Optional parameters to include additional information in the webhook payload for MegaSign.",
   clean: cleanFunctionForBooleanValueList,
 });
-
 const webhookWidgetEvents = input({
   label: "Webhook Widget Conditional Parameters",
   type: "string",
@@ -233,7 +216,6 @@ const webhookWidgetEvents = input({
     "Optional parameters to include additional information in the webhook payload for widgets.",
   clean: cleanFunctionForBooleanValueList,
 });
-
 export const createWebhookInputs = {
   connection,
   webhookSubscriptionEvents,
@@ -250,17 +232,14 @@ export const createWebhookInputs = {
   webhookMegaSignEvents,
   webhookWidgetEvents,
 };
-
 export const deleteWebhookInputs = {
   connection,
   webhookId,
 };
-
 export const getWebhookInputs = {
   connection,
   webhookId,
 };
-
 export const listWebhooksInputs = {
   connection,
   fetchAll,
@@ -274,7 +253,6 @@ export const listWebhooksInputs = {
   cursor,
   pageSize,
 };
-
 export const updateWebhookInputs = {
   connection,
   webhookSubscriptionEvents,
@@ -290,7 +268,6 @@ export const updateWebhookInputs = {
   webhookMegaSignEvents,
   webhookWidgetEvents,
 };
-
 export const selectWebhooksInputs = {
   connection,
   filterQuery,

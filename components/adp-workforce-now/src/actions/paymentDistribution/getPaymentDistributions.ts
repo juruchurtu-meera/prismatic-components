@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getPaymentDistributionMetaResponse } from "../../examplePayloads";
 import { $filter, $select, aoid, connection } from "../../inputs";
-
 export const getPaymentDistributions = action({
   display: {
     label: "Get Worker Payment Distributions",

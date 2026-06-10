@@ -4,7 +4,6 @@ import { connection } from "../inputs";
 import { TResponse } from "../interfaces/TResponse";
 import { Dataset } from "../interfaces/Dataset";
 import { paginateResults } from "../utils";
-
 export const selectDataset = dataSource({
   display: {
     label: "Select Dataset",
@@ -19,17 +18,20 @@ export const selectDataset = dataSource({
     const parameters = {
       $top: 100,
     };
-    const { value: datasets } = await paginateResults<Dataset>(client, "/datasets", true, parameters);
-
+    const { value: datasets } = await paginateResults<Dataset>(
+      client,
+      "/datasets",
+      true,
+      parameters,
+    );
     const result = datasets
       .sort((a, b) => (a.name < b.name ? -1 : 1))
       .map(
         ({ id: key, name: label }): Element => ({
           key,
           label,
-        })
+        }),
       );
-
     return {
       result,
     };

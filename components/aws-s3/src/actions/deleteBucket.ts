@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { deleteBucketPayload } from "../examplePayloads";
 import { accessKeyInput, bucket } from "../inputs";
-
 export const deleteBucket = action({
   display: {
     label: "Delete Bucket",
@@ -31,11 +30,9 @@ export const deleteBucket = action({
       logger: context.logger,
       debug: context.debug.enabled,
     });
-
     const command = new DeleteBucketCommand({
       Bucket: bucket,
     });
-
     const response = await s3.send(command);
     return {
       data: response,

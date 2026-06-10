@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listSheetsExamplePayload } from "../../examplePayloads";
 import { listSheetsInputs } from "../../inputs";
-
 export const listSheets = action({
   display: {
     label: "List Sheets",

@@ -8,11 +8,8 @@ import { getCurrentUser } from "./misc/getCurrentUser";
 import { validateConnection } from "./misc/validateConnection";
 import { coerceObjectValues } from "../util";
 import { salesforceBasic, salesforceOAuth } from "../connections/";
-
 dotenv.config();
-
 const version = "51.0";
-
 let connection = null;
 if (process.env.PRISMATIC_CONNECTION_VALUE) {
   connection = {
@@ -26,16 +23,11 @@ if (process.env.PRISMATIC_CONNECTION_VALUE) {
     loginUrl: process.env.SF_LOGIN_URL,
   });
 }
-
 const randString = (): string => `${Math.random() * 1000000000}`;
-
 describe("test raw request", () => {
   let testAccountId: string;
-
   test("verify can create an account with raw request ", async () => {
-    
     if (!connection) return;
-
     const { result: postResult } = await invoke(rawRequest, {
       connection,
       version: version,
@@ -55,18 +47,12 @@ describe("test raw request", () => {
       fileDataFileNames: { "": "" },
       retryAllErrors: undefined,
     });
-
     expect(postResult.data.data).not.toBeNull();
     testAccountId = postResult.data.data.id;
   });
-
   test("verify can get an account with raw request ", async () => {
-    
     if (!connection) return;
-
-    
     if (!testAccountId) return;
-
     const { result: getResult } = await invoke(rawRequest, {
       connection,
       version,
@@ -86,17 +72,11 @@ describe("test raw request", () => {
       timeout: undefined,
       useExponentialBackoff: undefined,
     });
-
     expect(getResult.data.data.Id).toStrictEqual(testAccountId);
   });
-
   test("verify can update an account with raw request ", async () => {
-    
     if (!connection) return;
-
-    
     if (!testAccountId) return;
-
     const { result: patchResult } = await invoke(rawRequest, {
       connection,
       version,
@@ -116,17 +96,11 @@ describe("test raw request", () => {
       timeout: undefined,
       useExponentialBackoff: undefined,
     });
-
     expect(patchResult.data.status).toStrictEqual(204);
   });
-
   test("verify can delete an account with raw request ", async () => {
-    
     if (!connection) return;
-
-    
     if (!testAccountId) return;
-
     const { result: deleteResult } = await invoke(rawRequest, {
       connection,
       version,
@@ -149,12 +123,9 @@ describe("test raw request", () => {
     expect(deleteResult.data.status).toStrictEqual(204);
   });
 });
-
 describe("test query action", () => {
   test("verify the query action works as expected", async () => {
-    
     if (!connection) return;
-
     const queryString = "SELECT Id, Name FROM Opportunity";
     const { result } = await invoke(query, {
       connection,
@@ -164,7 +135,6 @@ describe("test query action", () => {
     expect(result.data).toHaveProperty("records");
   });
 });
-
 describe("test coerceObjectValues", () => {
   test("verify coerceObjectValues correctly coerces a boolean", () => {
     const fieldValues = {
@@ -176,10 +146,8 @@ describe("test coerceObjectValues", () => {
       IsDeleted: "Boolean",
     };
     const result = coerceObjectValues(fieldValues, fieldValueTypes);
-
     expect(result.IsDeleted).toStrictEqual(false);
   });
-
   test("verify coerceObjectValues correctly coerces a number", () => {
     const fieldValues = {
       AnnualRevenue: "0",
@@ -190,10 +158,8 @@ describe("test coerceObjectValues", () => {
       NumberOfEmployees: "Number",
     };
     const result = coerceObjectValues(fieldValues, fieldValueTypes);
-
     expect(result.NumberOfEmployees).toStrictEqual(0);
   });
-
   test("verify coerceObjectValues correctly coerces a string", () => {
     const fieldValues = {
       firstName: "John",
@@ -204,16 +170,12 @@ describe("test coerceObjectValues", () => {
       lastName: "String",
     };
     const result = coerceObjectValues(fieldValues, fieldValueTypes);
-
     expect(result.firstName).toStrictEqual("John");
   });
 });
-
 describe("test createLead action", () => {
   test("verify the createLead action works as expected", async () => {
-    
     if (!connection) return;
-
     const company = `${Math.random() * 1000000000} Company`;
     const firstName = randString();
     const lastName = randString();
@@ -233,7 +195,6 @@ describe("test createLead action", () => {
     const description = randString();
     const revenue = "3000";
     const leadStatus = "Converted";
-
     const { result } = await invoke(createLead, {
       version,
       dynamicValues,
@@ -260,46 +221,35 @@ describe("test createLead action", () => {
     expect(result.data).toHaveProperty("success", true);
   });
 });
-
 describe("test getCurrentUser", () => {
   test("verify getCurrentUser works", async () => {
-    
     if (!connection) return;
-
     const { result } = await invoke(getCurrentUser, {
       version,
       connection,
     });
-
     expect(result.data).not.toBeNull();
   });
 });
-
 describe("test validateConnection", () => {
   test("verify validateConnection returns true for valid connection", async () => {
-    
     if (!connection) return;
-
     const { result } = await invoke(validateConnection, {
       version,
       connection,
     });
-
     expect(result.data).toStrictEqual(true);
   });
-
   test("verify validateConnection returns false for invalid connection", async () => {
     const invalidConnection = createConnection(salesforceBasic, {
       username: "foo",
       password: "bar",
       loginUrl: "https://blah.prismatic.io",
     });
-
     const { result } = await invoke(validateConnection, {
       version,
       connection: invalidConnection,
     });
-
     expect(result.data).toStrictEqual(false);
   });
 });

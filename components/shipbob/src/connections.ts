@@ -1,58 +1,4 @@
 import { connection } from "@prismatic-io/spectral";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const personalAccessToken = connection({
   key: "apiToken",
   display: {
@@ -71,5 +17,4 @@ export const personalAccessToken = connection({
     },
   },
 });
-
 export default [personalAccessToken];

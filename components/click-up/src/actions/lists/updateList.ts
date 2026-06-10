@@ -14,32 +14,52 @@ import {
   getUnsetStatus,
 } from "../../inputs";
 import type { UpdateListBody } from "./types/UpdateListBody";
-
 const listId = getlistId(true, "List ID");
 const listName = getListName(true, "Name of the list");
 const content = getContent(true, "Content");
 const dueDate = getDueDateInt(true, "Due date of the list");
-const dueDateTime = getDueDateTime(true, "Set to true if due date has a time", false);
+const dueDateTime = getDueDateTime(
+  true,
+  "Set to true if due date has a time",
+  false,
+);
 const priority = getPriority(true, "Priority of the list");
 const assignee = getAssignee(true, "User ID of the list assignee");
-const status = getStatus(true, "Status refers to the List color rather than the task Statuses available in the List.");
+const status = getStatus(
+  true,
+  "Status refers to the List color rather than the task Statuses available in the List.",
+);
 const unsetStatus = getUnsetStatus(
   true,
   "By default, this is false. To remove the List color use unset_status: true.",
-  false
+  false,
 );
-
 export const updateList = action({
   display: {
     label: "Update List",
-    description: "Update a list's name, info description, due date/time, priority, assignee, and color.",
+    description:
+      "Update a list's name, info description, due date/time, priority, assignee, and color.",
   },
   examplePayload: updateListExamplePayload,
   perform: async (
     context,
-    { clickUpConnection, listId, name, content, dueDate, dueDateTime, priority, assignee, status, unsetStatus }
+    {
+      clickUpConnection,
+      listId,
+      name,
+      content,
+      dueDate,
+      dueDateTime,
+      priority,
+      assignee,
+      status,
+      unsetStatus,
+    },
   ) => {
-    const client = createClickUpClient(clickUpConnection, context.debug.enabled);
+    const client = createClickUpClient(
+      clickUpConnection,
+      context.debug.enabled,
+    );
     const body: UpdateListBody = {
       name,
       content,
@@ -50,9 +70,7 @@ export const updateList = action({
       status,
       unset_status: unsetStatus,
     };
-
     const { data } = await client.put(`/list/${listId}`, body);
-
     return {
       data,
     };

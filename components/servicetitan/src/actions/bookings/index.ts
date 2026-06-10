@@ -4,7 +4,6 @@ import { getBookingByTenant } from "./getByTenant";
 import { listBookingByProvider } from "./listByProvider";
 import { listBookingByTenant } from "./listByTenant";
 import { updateBooking } from "./update";
-
 export default {
   createBookingByProvider,
   getBookingByProvider,

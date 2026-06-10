@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { installWebhookExamplePayload as examplePayload } from "../../examplePayloads";
 import { installWebhookInputs as inputs } from "../../inputs/webhooks";
-
 export const installWebhook = action({
   display: {
     label: "Install Webhook",
@@ -32,7 +31,6 @@ export const installWebhook = action({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

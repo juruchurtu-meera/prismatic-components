@@ -8,7 +8,6 @@ import {
   mapModel,
 } from "../helpers";
 import { API_VERSIONS } from "../constants";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
@@ -16,7 +15,6 @@ export const connection = input({
   comments:
     "The Microsoft Excel connection to use. OneDrive and SharePoint connections are supported.",
 });
-
 export const apiVersion = input({
   label: "API Version",
   type: "string",
@@ -27,7 +25,6 @@ export const apiVersion = input({
   example: "v1.0",
   clean: cleanString,
 });
-
 export const file = input({
   label: "File",
   comments: "A spreadsheet file or buffer to be parsed into array values.",
@@ -36,7 +33,6 @@ export const file = input({
   placeholder: "Enter file path or reference",
   clean: validateFileParsable,
 });
-
 export const sheetData = input({
   label: "Spreadsheet Data",
   type: "code",
@@ -56,7 +52,6 @@ export const sheetData = input({
   ),
   clean: is2dArray,
 });
-
 export const multiSheetData = input({
   label: "Spreadsheet Data",
   type: "code",
@@ -84,7 +79,6 @@ export const multiSheetData = input({
   ),
   clean: is3dArray,
 });
-
 export const fileName = input({
   label: "File Name",
   example: "mySheet",
@@ -94,7 +88,6 @@ export const fileName = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const sheetNames = input({
   label: "Sheet Names",
   example: "mySheet",
@@ -105,7 +98,6 @@ export const sheetNames = input({
   collection: "valuelist",
   clean: cleanStringValueListInput,
 });
-
 export const alternativeSheetNames = input({
   label: "Structured Sheet Names",
   example: JSON.stringify(["Sheet1", "Sheet2"]),
@@ -117,7 +109,6 @@ export const alternativeSheetNames = input({
   required: false,
   clean: (value: unknown) => util.types.toObject(value) as string[],
 });
-
 export const createOptions = input({
   label: "Create Options",
   type: "code",
@@ -133,7 +124,6 @@ export const createOptions = input({
   ),
   clean: util.types.toObject,
 });
-
 export const fileUrl = input({
   label: "File URL",
   type: "string",
@@ -143,7 +133,6 @@ export const fileUrl = input({
   placeholder: "Enter file URL",
   clean: util.types.toString,
 });
-
 export const $filter = input({
   label: "Filter",
   type: "string",
@@ -154,7 +143,6 @@ export const $filter = input({
   example: "startswith(givenName,'J')",
   clean: cleanString,
 });
-
 export const $select = input({
   label: "Select",
   type: "string",
@@ -165,7 +153,6 @@ export const $select = input({
   example: "givenName,surname",
   clean: cleanString,
 });
-
 export const $expand = input({
   label: "Expand",
   type: "string",
@@ -176,7 +163,6 @@ export const $expand = input({
   example: "members",
   clean: cleanString,
 });
-
 export const $orderBy = input({
   label: "Order By",
   type: "string",
@@ -187,7 +173,6 @@ export const $orderBy = input({
   example: "displayName desc",
   clean: cleanString,
 });
-
 export const $top = input({
   label: "Top",
   type: "string",
@@ -197,7 +182,6 @@ export const $top = input({
   example: "10",
   clean: util.types.toNumber,
 });
-
 export const $skip = input({
   label: "Skip",
   type: "string",
@@ -208,7 +192,6 @@ export const $skip = input({
   example: "10",
   clean: cleanString,
 });
-
 export const $search = input({
   label: "Search",
   type: "string",
@@ -219,7 +202,6 @@ export const $search = input({
   example: "pizza",
   clean: cleanString,
 });
-
 export const $format = input({
   label: "Format",
   type: "string",
@@ -229,7 +211,6 @@ export const $format = input({
   example: "json",
   clean: cleanString,
 });
-
 export const $skipToken = input({
   label: "Skip Token",
   type: "string",
@@ -240,7 +221,6 @@ export const $skipToken = input({
   example: "X%274453707402000100000017...",
   clean: cleanString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -250,7 +230,6 @@ export const fetchAll = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const oDataParams = {
   fetchAll,
   $expand,
@@ -263,7 +242,6 @@ export const oDataParams = {
   $skipToken,
   $top,
 };
-
 export const driveOrSiteId = input({
   label: "Drive or Site ID",
   type: "string",
@@ -274,7 +252,6 @@ export const driveOrSiteId = input({
   dataSource: "selectDriveOrSite",
   clean: util.types.toString,
 });
-
 export const workbookId = input({
   label: "Workbook ID",
   type: "string",
@@ -285,7 +262,6 @@ export const workbookId = input({
   dataSource: "selectWorkbook",
   clean: util.types.toString,
 });
-
 export const worksheetId = input({
   label: "Worksheet ID",
   type: "string",

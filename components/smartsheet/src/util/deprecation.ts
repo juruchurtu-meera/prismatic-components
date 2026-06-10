@@ -1,5 +1,4 @@
 import type { ActionContext } from "@prismatic-io/spectral";
-
 export const warnDeprecatedInputs = (
   context: ActionContext,
   actionName: string,

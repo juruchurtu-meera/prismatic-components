@@ -7,7 +7,6 @@ import {
   showPreviousOccurrencesWebinar,
 } from "../../inputs";
 import { getWebinarExamplePayload } from "../../examplePayloads";
-
 export const getWebinar = action({
   display: {
     label: "Get Webinar",
@@ -23,7 +22,6 @@ export const getWebinar = action({
     },
   ) => {
     const client = createZoomClient({ connection, debug });
-
     const { data } = await client.get(`/webinars/${webinarId}`, {
       params: {
         occurrence_id: occurrenceIdWebinar,

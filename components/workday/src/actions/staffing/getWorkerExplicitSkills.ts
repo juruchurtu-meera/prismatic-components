@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getWorkerExplicitSkillsExamplePayload } from "../../examplePayloads";
 import { getWorkerExplicitSkillsInputs } from "../../inputs";
-
 export const getWorkerExplicitSkills = action({
   display: {
     label: "Get Worker Explicit Skills",

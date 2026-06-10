@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, eventUuid, inviteeUuid, organization } from "../../inputs";
 import { getEventInviteeExamplePayload } from "../../examplePayloads";
-
 export const getEventInvitee = action({
   display: {
     label: "Get Event Invitee",

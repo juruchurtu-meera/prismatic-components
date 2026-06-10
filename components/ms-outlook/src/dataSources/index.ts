@@ -5,7 +5,6 @@ import { selectMessage } from "./selectMessage";
 import { selectSubscription } from "./selectSubscription";
 import { selectLanguage } from "./selectLanguage";
 import { selectTimezone } from "./selectTimezone";
-
 export default {
   selectCalendar,
   selectEvent,

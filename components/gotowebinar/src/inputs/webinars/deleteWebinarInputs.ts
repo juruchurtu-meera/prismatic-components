@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { connection, webinarKey } from "../general";
 import { toOptionalBoolean } from "../../utils";
 import { MODEL_FOR_OPTIONAL_BOOLEAN_INPUTS } from "../../constants";
-
 export const sendCancellationEmail = input({
   label: "Send Cancellation Email",
   comments:
@@ -13,7 +12,6 @@ export const sendCancellationEmail = input({
   required: false,
   clean: toOptionalBoolean,
 });
-
 export const deleteAll = input({
   label: "Delete All",
   comments:
@@ -25,10 +23,8 @@ export const deleteAll = input({
   default: "false",
   clean: toOptionalBoolean,
 });
-
 export const deleteWebinarInputs = {
   connection,
-
   webinarKey,
   sendCancellationEmail,
   deleteAll,

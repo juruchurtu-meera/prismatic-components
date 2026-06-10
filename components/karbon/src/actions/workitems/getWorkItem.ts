@@ -3,7 +3,6 @@ import getWorkItemInputs from "../../inputs/workitems/getWorkItem";
 import { createKarbonClient } from "../../client";
 import { cleanOdata } from "../../utils";
 import { getWorkItemExamplePayload } from "../../examplePayloads";
-
 export const getWorkItem = action({
   display: {
     label: "Get Work Item",

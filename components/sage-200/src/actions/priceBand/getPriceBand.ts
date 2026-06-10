@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { connection, site, company } from "../../inputs/general";
 import getPriceBandInputs from "../../inputs/priceBand/getPriceBandInputs";
 import { getPriceBandPayload } from "../../examplePayloads";
-
 export const getPriceBand = action({
   display: {
     label: "Get Price Band",

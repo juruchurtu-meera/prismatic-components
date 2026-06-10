@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { listId, connectionInput } from "../../inputs";
-
 export const getList = action({
   display: {
     label: "Get List",
@@ -15,5 +14,4 @@ export const getList = action({
   },
   inputs: { listId, connection: connectionInput },
 });
-
 export default getList;

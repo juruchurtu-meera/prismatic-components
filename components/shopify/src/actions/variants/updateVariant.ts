@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getShopifyClient } from "../../client";
 import { updateVariantInputs } from "../../inputs";
 import { updateVariantExamplePayload } from "../../payloadExamples";
-
 export const updateVariant = action({
   display: {
     label: "Update Variant (Deprecated)",
@@ -11,9 +10,21 @@ export const updateVariant = action({
   },
   perform: async (
     context,
-    { variantId, updatePrice, updateVariantTitle, sku, weight, fieldValues, shopifyConnection },
+    {
+      variantId,
+      updatePrice,
+      updateVariantTitle,
+      sku,
+      weight,
+      fieldValues,
+      shopifyConnection,
+    },
   ) => {
-    const client = getShopifyClient(shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const { data } = await client.put(`/variants/${variantId}`, {
       variant: {
         id: variantId,

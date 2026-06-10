@@ -4,7 +4,6 @@ import { createClient } from "../../client";
 import { listOrganizationsExamplePayload } from "../../examplePayloads";
 import { listOrganizationsInputs } from "../../inputs";
 import { getAllPaginatedItems } from "../../util";
-
 export const listOrganizations = action({
   display: {
     label: "List Organizations",
@@ -12,12 +11,10 @@ export const listOrganizations = action({
   },
   perform: async (context, { connection }) => {
     const client = createClient(connection, context);
-
     const allItems: OrganizationProp[] = await getAllPaginatedItems<
       Organization,
       OrganizationProp
     >(client.getOrganizations.bind(client));
-
     return {
       data: allItems,
     };

@@ -3,7 +3,6 @@ import { createOauthClient } from "../../client";
 import { closeConversationExamplePayload } from "../../examplePayloads";
 import { closeConversationInputs } from "../../inputs";
 import { debugLogger } from "../../util";
-
 export const closeConversation = action({
   display: {
     label: "Close Conversation",
@@ -11,7 +10,7 @@ export const closeConversation = action({
   },
   perform: async (
     { debug: { enabled: debug } },
-    { connection, conversationName }
+    { connection, conversationName },
   ) => {
     debugLogger({ debug, conversationName });
     const client = await createOauthClient({

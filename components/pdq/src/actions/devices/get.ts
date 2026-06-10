@@ -3,7 +3,6 @@ import { createHttpClient } from "../../client";
 import { getDeviceExamplePayload } from "../../examplePayloads/devices";
 import { getDeviceInputs } from "../../inputs/devices/get";
 import { connection } from "../../inputs/general";
-
 export const getDevice = action({
   display: {
     label: "Get Device",
@@ -15,7 +14,6 @@ export const getDevice = action({
   },
   perform: async (context, { connection, deviceId }) => {
     const client = createHttpClient(connection, context.debug.enabled);
-
     const { data } = await client.get(`/devices/${deviceId}`);
     return {
       data,

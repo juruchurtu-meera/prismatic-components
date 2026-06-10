@@ -23,7 +23,6 @@ import {
 import type { CreateOrUpdateNamespacesBody } from "../types/CreateOrUpdateNamespacesBody";
 import type { KeySource } from "../types/KeySource";
 import type { ManagedServiceIdentityType } from "../types/ManagedServiceIdentityType";
-
 export const createOrUpdateNamespaces = action({
   display: {
     label: "Create or Update Namespaces",
@@ -115,5 +114,4 @@ export const createOrUpdateNamespaces = action({
     tags,
   },
 });
-
 export default { createOrUpdateNamespaces };

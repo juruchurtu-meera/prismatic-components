@@ -10,7 +10,6 @@ import {
   sysparmQuery,
 } from "../../inputs";
 import { fetchAllTableRecords, getAllTables } from "../../util";
-
 export const listTables = action({
   display: {
     label: "List Tables",
@@ -41,7 +40,6 @@ export const listTables = action({
       );
       return { data };
     }
-
     return {
       data: await getAllTables({
         connection,

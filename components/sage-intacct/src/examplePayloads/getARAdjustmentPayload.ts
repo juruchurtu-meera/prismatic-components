@@ -1,5 +1,3 @@
-
-
 export const getARAdjustmentPayload = {
   data: {
     _status: "success",

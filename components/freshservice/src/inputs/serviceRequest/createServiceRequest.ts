@@ -6,7 +6,6 @@ import {
   requestedFor,
   serviceRequestAdditionalFields,
 } from "./common";
-
 export const createServiceRequestInputs = {
   connection,
   displayId,

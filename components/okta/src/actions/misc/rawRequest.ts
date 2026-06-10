@@ -5,15 +5,16 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { connection } from "../../inputs/general";
 import { getBaseUrl, getToken } from "../../util/util";
-
 const { debugRequest, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
     description: "Send raw HTTP request to Okta.",
   },
-  perform: async ({ debug: { enabled: debug } }, { connection, ...httpClientInputs }) => {
+  perform: async (
+    { debug: { enabled: debug } },
+    { connection, ...httpClientInputs },
+  ) => {
     const baseUrl = getBaseUrl(connection);
     const token = await getToken(connection);
     const headers = {

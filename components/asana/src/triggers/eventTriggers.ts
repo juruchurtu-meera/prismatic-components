@@ -30,23 +30,20 @@ import {
   triggerWhenUndeleted,
 } from "../inputs";
 import { WEBHOOK_SECRET_LEGACY_KEY } from "../constants";
-
 const performFunction = async (
   context: ActionContext,
   payload: TriggerPayload,
-  inputs: { asanaConnection: Connection },
+  inputs: {
+    asanaConnection: Connection;
+  },
 ): Promise<{
   payload: TriggerPayload;
   branch: string;
 }> => {
   const headers = util.types.lowerCaseHeaders(payload.headers);
   const webhookSecret = headers["x-hook-secret"];
-
   const { value: storedSecret, isLegacy } = resolveWebhookSecret(context);
-
   if (webhookSecret) {
-    
-    
     return Promise.resolve({
       payload,
       response: {
@@ -62,18 +59,14 @@ const performFunction = async (
       },
     });
   } else {
-    
     if (!context.isSimulatedTestExecution) {
       validateHmac(payload, headers["x-hook-signature"], [storedSecret]);
     }
-
     if (isLegacy) {
       context.crossFlowState[webhookSecretStateKey(context)] = storedSecret;
       context.instanceState[WEBHOOK_SECRET_LEGACY_KEY] = null;
     }
-
     if (isHeartbeatData(payload.body.data)) {
-      
       context.logger.debug("Asana Heartbeat received");
       return Promise.resolve({
         payload,
@@ -87,7 +80,6 @@ const performFunction = async (
     }
   }
 };
-
 const workspaceProjectsTrigger = trigger({
   display: {
     label: "Workspace Projects",
@@ -143,7 +135,6 @@ const workspaceProjectsTrigger = trigger({
       },
     ) => {
       const endpoint = context.webhookUrls[context.flow.name];
-
       await createWebhook({
         asanaConnection: asanaConnection,
         endpoint,
@@ -170,7 +161,6 @@ const workspaceProjectsTrigger = trigger({
     },
   },
 });
-
 const projectTasksTrigger = trigger({
   display: {
     label: "Project Tasks",
@@ -225,7 +215,6 @@ const projectTasksTrigger = trigger({
       },
     ) => {
       const endpoint = context.webhookUrls[context.flow.name];
-
       await createWebhook({
         asanaConnection: asanaConnection,
         endpoint,
@@ -252,7 +241,6 @@ const projectTasksTrigger = trigger({
     },
   },
 });
-
 const storiesTrigger = trigger({
   display: {
     label: "Comments and Activity",
@@ -308,7 +296,6 @@ const storiesTrigger = trigger({
       },
     ) => {
       const endpoint = context.webhookUrls[context.flow.name];
-
       await createWebhook({
         asanaConnection: asanaConnection,
         endpoint,
@@ -335,7 +322,6 @@ const storiesTrigger = trigger({
     },
   },
 });
-
 export default {
   projectTasksTrigger,
   workspaceProjectsTrigger,

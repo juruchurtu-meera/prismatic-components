@@ -11,7 +11,6 @@ import {
   start,
   technicianId,
 } from "../../inputs";
-
 export const createAppointment = action({
   display: {
     label: "Create Appointment",

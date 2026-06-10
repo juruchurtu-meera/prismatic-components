@@ -1,12 +1,11 @@
 import { ListTriggersCommand } from "@aws-sdk/client-glue";
 import { dataSource, type Element } from "@prismatic-io/spectral";
-import { createClient } from "../auth";
+import { createClient } from "../client";
 import { awsRegion, connectionInput } from "../inputs";
-
 export const selectTrigger = dataSource({
   display: {
     label: "Select Trigger",
-    description: "A picklist of triggers available in your AWS Glue account.",
+    description: "A picklist of triggers available in the AWS Glue account.",
   },
   inputs: {
     awsRegion: { ...awsRegion, dataSource: undefined },
@@ -14,10 +13,8 @@ export const selectTrigger = dataSource({
   },
   perform: async (_context, { awsRegion, awsConnection }) => {
     const glue = await createClient({ awsRegion, awsConnection });
-
     const allTriggerNames: string[] = [];
     let nextToken: string | undefined;
-
     do {
       const command = new ListTriggersCommand({
         MaxResults: 50,
@@ -29,7 +26,6 @@ export const selectTrigger = dataSource({
       }
       nextToken = response.NextToken || undefined;
     } while (nextToken);
-
     return {
       result: allTriggerNames
         .map<Element>((name) => ({

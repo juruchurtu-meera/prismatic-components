@@ -3,7 +3,6 @@ import type {
   GetStatementResultCommandOutput,
 } from "@aws-sdk/client-redshift-data";
 import { getStatementResultExamplePayload } from "./getStatementResultExamplePayload";
-
 export const executeStatementExamplePayload: {
   data: {
     executeStatement: ExecuteStatementCommandOutput;

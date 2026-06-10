@@ -1,7 +1,6 @@
 import { input } from "@prismatic-io/spectral";
 import { connection } from "../common";
 import { applicationId } from "./common";
-
 export const deleteSoftwareInputs = {
   connection,
   applicationId: input({

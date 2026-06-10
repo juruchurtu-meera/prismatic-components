@@ -12,7 +12,6 @@ import { selectPayment } from "./payments";
 import { selectProject } from "./project";
 import { selectTechnician } from "./technician";
 import { selectUserRole } from "./userRoles";
-
 export default {
   selectAppointment,
   selectBooking,

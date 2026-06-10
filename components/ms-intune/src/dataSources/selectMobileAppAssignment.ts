@@ -4,7 +4,6 @@ import { createClient } from "../client";
 import { selectMobileAppAssignmentExamplePayload } from "../examplePayloads";
 import { paginateResults } from "../util";
 import { mobileAppId } from "../inputs/mobileApps/general";
-
 export const selectMobileAppAssignment = dataSource({
   display: {
     label: "Select Mobile App Assignment",
@@ -30,7 +29,6 @@ export const selectMobileAppAssignment = dataSource({
       true,
       params,
     );
-
     return data.value.map(
       (mobileAppAssignment: { id: string; intent: string }) => {
         return {

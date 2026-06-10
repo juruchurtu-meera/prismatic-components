@@ -3,7 +3,6 @@ import { createSalesforceClient } from "../../client";
 import { updateLeadInputs } from "../../inputs";
 import { genericCreateUpdateExamplePayload } from "../../examplePayloads";
 import { executeSFAction } from "../../util";
-
 export const updateLead = action({
   display: {
     label: "Update Lead",
@@ -37,7 +36,6 @@ export const updateLead = action({
     },
   ) => {
     const salesforceClient = await createSalesforceClient(connection, version);
-
     const payload = {
       Id: recordId,
       Company: company,
@@ -60,11 +58,9 @@ export const updateLead = action({
       ...dynamicValues,
       ...fieldValues,
     };
-
     if (context.debug.enabled) {
       context.logger.debug("Payload", payload);
     }
-
     const command = salesforceClient.sobject("Lead").update(payload);
     const response = await executeSFAction(context, command);
     return {

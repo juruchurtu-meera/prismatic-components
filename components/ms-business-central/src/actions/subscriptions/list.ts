@@ -4,7 +4,6 @@ import { listSubscriptionsExamplePayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs/general";
 import { showInstanceWebhooks } from "../../inputs/subscriptions";
 import { listSubscriptionsFn } from "../../utils";
-
 export const listSubscriptions = action({
   display: {
     label: "List Subscriptions",
@@ -15,9 +14,17 @@ export const listSubscriptions = action({
     showInstanceWebhooks,
   },
   perform: async (context, { connection, showInstanceWebhooks }) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const instanceWebhooks = new Set(Object.values(context.webhookUrls));
-    const data = await listSubscriptionsFn(client, instanceWebhooks, showInstanceWebhooks);
+    const data = await listSubscriptionsFn(
+      client,
+      instanceWebhooks,
+      showInstanceWebhooks,
+    );
     return {
       data,
     };

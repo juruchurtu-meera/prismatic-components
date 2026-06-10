@@ -1,5 +1,3 @@
-
-
 export const updateInvoicePayload = {
   data: {
     response: {

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { fetchAllData } from "../../util";
 import { defaultPaginationInputs, connection } from "../../inputs/general";
-
 export const listInvoices = action({
   display: {
     label: "List Invoices",
@@ -15,10 +14,22 @@ export const listInvoices = action({
   },
   perform: async (
     context,
-    { connection, customQueryParams, $filter, $orderby, $select, $skip, $top, fetchAll },
+    {
+      connection,
+      customQueryParams,
+      $filter,
+      $orderby,
+      $select,
+      $skip,
+      $top,
+      fetchAll,
+    },
   ) => {
-    const client = await createClient(connection, context, context.debug.enabled);
-
+    const client = await createClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const data = await fetchAllData(
       client,
       "Invoices",

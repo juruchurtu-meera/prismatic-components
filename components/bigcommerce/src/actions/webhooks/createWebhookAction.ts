@@ -11,7 +11,6 @@ import {
   webhookIsActiveInput,
   webhookScopeInput,
 } from "../../inputs";
-
 export const createWebhookAction = action({
   display: {
     label: "Create Webhook",
@@ -35,7 +34,6 @@ export const createWebhookAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/hooks`;
-
     const data = {
       scope,
       destination,
@@ -43,7 +41,6 @@ export const createWebhookAction = action({
       events_history_enabled,
       headers,
     };
-
     try {
       const response = await client.post(endpoint, data);
       return {
@@ -55,7 +52,6 @@ export const createWebhookAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

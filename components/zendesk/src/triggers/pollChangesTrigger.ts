@@ -4,12 +4,7 @@ import { pollChangesTriggerExamplePayload } from "../examplePayloads";
 import { connectionInput, showNewRecords, showUpdatedRecords } from "../inputs";
 import type { PollingState } from "../types";
 import { drainTicketsStream, partitionTicketsByTimestamp } from "../util";
-
-
-
-
 const ONE_MINUTE_SECONDS = 60;
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Tickets",
@@ -33,35 +28,29 @@ export const pollChangesTrigger = pollingTrigger({
     const sinceDate = lastState?.lastPolledAt
       ? new Date(lastState.lastPolledAt)
       : now;
-
     const client = rawHttpClient(connection, context.debug.enabled);
     const { tickets, afterCursor } = await drainTicketsStream(
       client,
       lastState?.afterCursor,
       startTime,
     );
-
     const { created, updated } = partitionTicketsByTimestamp(
       tickets,
       sinceDate,
     );
-
     context.polling.setState({
       afterCursor,
       lastPolledAt: now.toISOString(),
     } as Record<string, unknown>);
-
     const result = {
       created: showNewRecords ? created : [],
       updated: showUpdatedRecords ? updated : [],
     };
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled tickets: ${tickets.length} drained → ${created.length} new, ${updated.length} updated`,
       );
     }
-
     return {
       payload: { ...payload, body: { data: result } },
       polledNoChanges:

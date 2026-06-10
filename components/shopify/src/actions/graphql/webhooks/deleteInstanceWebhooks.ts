@@ -4,7 +4,6 @@ import { MAX_LIMIT } from "../../../constants";
 import { deleteInstanceWebhooksExamplePayload } from "../../../examplePayloads";
 import { deleteInstanceWebhooksInputs as inputs } from "../../../inputsGql";
 import { deleteWebhookById, listWebhooks } from "../../../util";
-
 export const deleteInstanceWebhooksgql = action({
   display: {
     label: "Delete Instance Webhooks",
@@ -12,8 +11,11 @@ export const deleteInstanceWebhooksgql = action({
   },
   inputs,
   perform: async (context, { shopifyConnection }) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const { webhookSubscriptions } = await listWebhooks(
       client,
       true,
@@ -22,8 +24,9 @@ export const deleteInstanceWebhooksgql = action({
       Object.values(context.webhookUrls),
       undefined,
     );
-
-    const promises = webhookSubscriptions.map((webhook) => deleteWebhookById(client, webhook.id));
+    const promises = webhookSubscriptions.map((webhook) =>
+      deleteWebhookById(client, webhook.id),
+    );
     await Promise.all(promises);
     return {
       data: {},

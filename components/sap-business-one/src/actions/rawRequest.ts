@@ -7,9 +7,7 @@ import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/
 import { connection } from "../inputs/general";
 import { addInterceptorsToClient, getCookies } from "../client";
 import { getBaseUrlAndProxy, toFormData, validateConnection } from "../util";
-
 const { debugRequest, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -50,8 +48,11 @@ export const rawRequest = action({
       !_.isEmpty(formData) || !_.isEmpty(fileData)
         ? toFormData(formData, fileData, fileDataFileNames)
         : data;
-
-    const { cookie } = await getCookies(connection, context, context.debug.enabled);
+    const { cookie } = await getCookies(
+      connection,
+      context,
+      context.debug.enabled,
+    );
     const { baseUrl, proxy } = getBaseUrlAndProxy(connection);
     const client = axios.create({
       baseURL: baseUrl,

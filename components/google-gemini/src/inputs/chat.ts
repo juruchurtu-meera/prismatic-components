@@ -11,7 +11,6 @@ import {
   topK,
   topP,
 } from "./common";
-
 const history = input({
   label: "Chat History",
   type: "code",
@@ -30,7 +29,6 @@ const history = input({
   placeholder: "Enter chat history JSON",
   clean: cleanCode,
 });
-
 export const sendMessageInputs = {
   prompt: {
     ...prompt,

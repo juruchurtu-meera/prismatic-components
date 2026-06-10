@@ -13,6 +13,7 @@ export {
   createOrderExamplePayload,
   getOrderExamplePayload,
   listOrdersExamplePayload,
+  pollOrdersExamplePayload,
 } from "./orders";
 export {
   getProductExamplePayload,

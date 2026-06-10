@@ -1,5 +1,4 @@
 import { onPremConnection } from "@prismatic-io/spectral";
-
 export const ldapConnection = onPremConnection({
   key: "ldapConnection",
   display: {
@@ -67,5 +66,4 @@ export const ldapConnection = onPremConnection({
     },
   },
 });
-
 export default [ldapConnection];

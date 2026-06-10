@@ -9,7 +9,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../util";
-
 export const createWebhook = action({
   display: {
     label: "Create Webhook",

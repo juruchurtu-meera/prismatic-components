@@ -3,7 +3,6 @@ import { getShopifyGraphQlClient } from "../../../client";
 import { cancelOrderExamplePayload as examplePayload } from "../../../examplePayloads";
 import { cancelOrderInputs as inputs } from "../../../inputsGql";
 import cancelOrderQuery from "../queries/orders/CancelOrder.gql";
-
 export const cancelOrderGql = action({
   display: {
     label: "Cancel Order",
@@ -11,11 +10,24 @@ export const cancelOrderGql = action({
   },
   perform: async (
     context,
-    { shopifyConnection, orderId, reason, refund, restock, notifyCustomer, staffNote },
+    {
+      shopifyConnection,
+      orderId,
+      reason,
+      refund,
+      restock,
+      notifyCustomer,
+      staffNote,
+    },
   ) => {
-    const client = getShopifyGraphQlClient(shopifyConnection, undefined, context.debug.enabled);
-
-    const data: { orderCancel: Record<string, unknown> } = await client.request(cancelOrderQuery, {
+    const client = getShopifyGraphQlClient(
+      shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
+    const data: {
+      orderCancel: Record<string, unknown>;
+    } = await client.request(cancelOrderQuery, {
       notifyCustomer,
       orderId,
       reason,
@@ -23,7 +35,6 @@ export const cancelOrderGql = action({
       restock,
       staffNote,
     });
-
     return { data: data.orderCancel };
   },
   inputs,

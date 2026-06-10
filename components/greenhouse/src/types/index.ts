@@ -15,10 +15,7 @@ export type {
   Source,
   WorkRemotely,
 } from "./Candidates";
-export type {
-  CustomFieldDataSources,
-  CustomFieldOption,
-} from "./CustomFields";
+export type { CustomFieldDataSources, CustomFieldOption } from "./CustomFields";
 export type { DepartmentDataSources } from "./Departments";
 export type {
   Budget,

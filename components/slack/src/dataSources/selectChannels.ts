@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createOauthClient } from "../client";
 import { selectChannelsInputs } from "../inputs";
 import { getChannelDisplayName, getChannels } from "../util";
-
 export const selectChannels = dataSource({
   display: {
     label: "Select Channel",
@@ -18,15 +17,12 @@ export const selectChannels = dataSource({
     if (!channels) {
       return { result: [] };
     }
-
-    
     const objects = channels
       .sort((a, b) => (a.name < b.name ? -1 : 1))
       .map<Element>((channel) => ({
         key: channel.id,
         label: getChannelDisplayName(params.showIdInDropdown, channel),
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

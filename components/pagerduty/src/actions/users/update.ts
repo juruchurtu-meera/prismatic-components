@@ -7,7 +7,6 @@ import {
   userId,
   userObject,
 } from "../../inputs";
-
 export const updateUser = action({
   display: {
     label: "Update User",

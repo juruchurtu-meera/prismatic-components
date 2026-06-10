@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getSapClient } from "../client";
 import { connectionInput, recordId, recordType } from "../inputs";
-
 export const deleteRecord = action({
   display: {
     label: "Delete Record",
@@ -15,7 +14,9 @@ export const deleteRecord = action({
     };
     const client = getSapClient(connectionInput, headers);
     try {
-      const { data } = await client.delete(`/sap/opu/odata/sap/${recordType}('${recordId}')`);
+      const { data } = await client.delete(
+        `/sap/opu/odata/sap/${recordType}('${recordId}')`,
+      );
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

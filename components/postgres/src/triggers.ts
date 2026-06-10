@@ -1,13 +1,11 @@
 import { input, pollingTrigger, util } from "@prismatic-io/spectral";
 import { connectionInput } from "./inputs";
 import { createDB } from "./client";
-
 interface PollingState extends Record<string, unknown> {
   cursor: string;
   cursorField: string;
   tableName: string;
 }
-
 export const pollTable = pollingTrigger({
   display: {
     label: "New and Updated Records to Table",
@@ -46,7 +44,6 @@ export const pollTable = pollingTrigger({
       castTimestampsToString: params.castTimestampsToString,
     });
     const state = context.polling.getState() as unknown as PollingState;
-
     if (
       !state?.cursor ||
       state.cursorField !== params.cursorField ||
@@ -74,7 +71,6 @@ export const pollTable = pollingTrigger({
         await db.$pool.end();
       }
     }
-
     try {
       const {
         records,
@@ -95,7 +91,6 @@ export const pollTable = pollingTrigger({
           ),
         };
       });
-
       if (records.length > 0) {
         const newState: PollingState = {
           cursor,
@@ -115,5 +110,4 @@ export const pollTable = pollingTrigger({
     }
   },
 });
-
 export default { pollTable };

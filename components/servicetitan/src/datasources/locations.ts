@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { locationDatasource } from "../examplePayloads";
 import { connection } from "../inputs";
 import type { Location } from "../interfaces";
-
 export const selectLocation = dataSource({
   display: {
     label: "Select Location",
@@ -18,7 +17,6 @@ export const selectLocation = dataSource({
     let locations: Location[] = [];
     let cursor = false;
     let page = 1;
-
     do {
       const { data } = await client.get(`/locations`, {
         params: {
@@ -31,15 +29,12 @@ export const selectLocation = dataSource({
       cursor = data.hasMore;
       page++;
     } while (cursor && page < 10);
-
-    
     const objects = locations
       .sort((a, b) => (a.id < b.id ? -1 : 1))
       .map<Element>((location) => ({
         key: location.id.toString(),
         label: `${location.name} (ID: ${location.id})`,
       }));
-
     return { result: objects };
   },
   dataSourceType: "picklist",

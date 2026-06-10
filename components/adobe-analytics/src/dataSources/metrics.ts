@@ -2,7 +2,6 @@ import { dataSource } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { selectReportSuiteMetricInputs } from "../inputs";
 import type { ReportSuiteMetric } from "../types";
-
 const selectReportSuiteMetric = dataSource({
   display: {
     label: "Select Report Suite Metric",
@@ -23,5 +22,4 @@ const selectReportSuiteMetric = dataSource({
     };
   },
 });
-
 export default { selectReportSuiteMetric };

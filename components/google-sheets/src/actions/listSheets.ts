@@ -3,7 +3,6 @@ import { spreadsheetId, connectionInput } from "../inputs";
 import { createClient } from "../client";
 import { worksheetProperties } from "../util";
 import { listSheetsResponse } from "../examplePayloads";
-
 export const listSheets = action({
   display: {
     label: "List Worksheets",
@@ -12,7 +11,6 @@ export const listSheets = action({
   },
   perform: async (_context, { spreadsheetId, connection }) => {
     const client = await createClient(spreadsheetId, connection);
-
     return {
       data: client.sheetsByIndex.map((sheet) => {
         return worksheetProperties(client, sheet);
@@ -24,5 +22,4 @@ export const listSheets = action({
     data: listSheetsResponse,
   },
 });
-
 export default listSheets;

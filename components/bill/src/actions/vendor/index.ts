@@ -10,7 +10,6 @@ import { getVendorBankAccount } from "./getVendorBankAccount";
 import { listVendorBankAccounts } from "./listVendorBankAccounts";
 import { listVendors } from "./listVendors";
 import { updateVendor } from "./updateVendor";
-
 export default {
   bulkCreateVendor,
   bulkCreateVendorBankAccounts,

@@ -5,7 +5,6 @@ import { editGCSPipeline } from "./edit";
 import { editGenericPipeline } from "./editGeneric";
 import { getPipeline } from "./get";
 import { listPipelines } from "./list";
-
 export default {
   createGCSPipeline,
   createGenericPipeline,

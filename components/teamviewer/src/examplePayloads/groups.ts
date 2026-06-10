@@ -1,7 +1,3 @@
-
-
-
-
 export const getGroupExamplePayload = {
   data: {
     id: "string",
@@ -24,9 +20,7 @@ export const getGroupExamplePayload = {
     policy_id: "string",
   },
 };
-
 export const createGroupExamplePayload = getGroupExamplePayload;
-
 export const listGroupsExamplePayload = {
   data: {
     groups: [getGroupExamplePayload.data],

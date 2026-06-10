@@ -1,7 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { connectionInput, topicId, subscriptionId } from "../../../inputs";
 import { rawHttpClient } from "../../../auth";
-
 export const deleteTopicSubscription = action({
   display: {
     label: "Delete Topic Subscription",
@@ -12,7 +11,6 @@ export const deleteTopicSubscription = action({
     const { data } = await client.delete(
       `/community/topics/${topicId}/subscriptions/${subscriptionId}`,
     );
-
     return {
       data,
     };

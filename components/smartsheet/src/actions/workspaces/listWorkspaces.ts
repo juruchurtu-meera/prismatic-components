@@ -4,7 +4,6 @@ import { listWorkspacesExamplePayload } from "../../examplePayloads";
 import { listWorkspacesInputs } from "../../inputs";
 import { warnDeprecatedInputs } from "../../util/deprecation";
 import { paginateByToken } from "../../util/pagination";
-
 export const listWorkspaces = action({
   display: {
     label: "List Workspaces",

@@ -12,7 +12,6 @@ import {
 } from "../../inputs";
 import type { InstalledEquipment } from "../../interfaces";
 import { fetchAllRecords } from "../../util";
-
 export const listInstalledEquipment = action({
   display: {
     label: "List Installed Equipment",
@@ -44,7 +43,6 @@ export const listInstalledEquipment = action({
       "equipmentsystems",
       context.debug.enabled,
     );
-
     if (fetchAll) {
       const data = await fetchAllRecords<InstalledEquipment>(
         client,

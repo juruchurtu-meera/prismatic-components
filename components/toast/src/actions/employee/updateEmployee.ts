@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createToastClient } from "../../client";
 import { updateEmployeeExamplePayload as examplePayload } from "../../examplePayloads";
 import { updateEmployeeInputs as inputs } from "../../inputs/employee";
-
 export const updateEmployee = action({
   display: {
     label: "Update Employee",
@@ -41,7 +40,6 @@ export const updateEmployee = action({
       `/labor/v1/employees/${employeeId}`,
       payload,
     );
-
     return {
       data,
     };

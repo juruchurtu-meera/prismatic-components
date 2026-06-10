@@ -1,8 +1,11 @@
 import type { Connection } from "@prismatic-io/spectral";
 import { getClient } from "./client";
-import { MAX_POLL_PAGES, POLL_PAGE_SIZE, POLL_RESOURCE_CONFIG } from "./constants";
+import {
+  MAX_POLL_PAGES,
+  POLL_PAGE_SIZE,
+  POLL_RESOURCE_CONFIG,
+} from "./constants";
 import type { MagentoRecord } from "./types";
-
 export const removeUndefinedValuesFromObject = (
   obj: Record<string, unknown>,
 ): Record<string, unknown> => {
@@ -14,8 +17,9 @@ export const removeUndefinedValuesFromObject = (
   });
   return newObj;
 };
-
-export const validateJSON = (jsonString: string): Record<string, unknown> | false => {
+export const validateJSON = (
+  jsonString: string,
+): Record<string, unknown> | false => {
   try {
     const parsed = JSON.parse(jsonString);
     return parsed;
@@ -23,39 +27,20 @@ export const validateJSON = (jsonString: string): Record<string, unknown> | fals
     return false;
   }
 };
-
-
-
-
-
-
-
-
-
-
 export const toMagentoDateTime = (iso: string): string =>
   iso
     .replace("T", " ")
     .replace(/\.\d+Z$/, "")
     .replace(/Z$/, "");
-
-
-
-
-
-
-
-
-
-
-
-
 export const fetchMagentoRecordsSince = async (
   connection: Connection,
   resourceType: string,
   lastPolledAt: string,
   debug: boolean,
-): Promise<{ records: MagentoRecord[]; truncated: boolean }> => {
+): Promise<{
+  records: MagentoRecord[];
+  truncated: boolean;
+}> => {
   const config = POLL_RESOURCE_CONFIG[resourceType];
   if (!config) {
     throw new Error(`Unsupported resource type: ${resourceType}`);
@@ -63,7 +48,6 @@ export const fetchMagentoRecordsSince = async (
   const client = await getClient(connection, debug);
   const magentoDateTime = toMagentoDateTime(lastPolledAt);
   const records: MagentoRecord[] = [];
-
   for (let page = 1; page <= MAX_POLL_PAGES; page++) {
     const params = {
       "searchCriteria[filterGroups][0][filters][0][field]": "updated_at",

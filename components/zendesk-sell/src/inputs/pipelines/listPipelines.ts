@@ -1,6 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
 import { connection, fetchAll } from "../common";
-
 export const listPipelinesInputs = {
   connection,
   fetchAll,
@@ -13,7 +12,6 @@ export const listPipelinesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   sortBy: input({
     label: "Sort By",
     comments:
@@ -23,7 +21,6 @@ export const listPipelinesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   name: input({
     label: "Name",
     placeholder: "Enter name",
@@ -34,7 +31,6 @@ export const listPipelinesInputs = {
     required: false,
     clean: util.types.toString,
   }),
-
   disabled: input({
     label: "Disabled",
     comments:
@@ -53,7 +49,6 @@ export const listPipelinesInputs = {
     example: "2",
     clean: util.types.toString,
   }),
-
   perPage: input({
     label: "Per Page",
     comments:

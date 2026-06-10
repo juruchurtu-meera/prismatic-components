@@ -11,7 +11,6 @@ import {
   getAllProductModifiersProductId,
   storeHash,
 } from "../../inputs";
-
 export const getAllProductModifiersAction = action({
   display: {
     label: "List Product Modifiers",
@@ -35,7 +34,6 @@ export const getAllProductModifiersAction = action({
       context.debug.enabled,
     );
     const endpoint = `/stores/${storeHash}/v3/catalog/products/${product_id}/modifiers?page=${page}&limit=${limit}&include_fields=${include_fields}&exclude_fields=${exclude_fields}`;
-
     try {
       const response = await client.get(endpoint);
       return {
@@ -47,7 +45,6 @@ export const getAllProductModifiersAction = action({
       throw new Error(serialized);
     }
   },
-
   inputs: {
     bigCommerceConnection,
     storeHash: storeHash,

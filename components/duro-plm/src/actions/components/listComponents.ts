@@ -5,7 +5,6 @@ import { listComponentsInputs } from "../../inputs/components";
 import { listComponentsExamplePayload } from "../../examplePayloads";
 import { N_FIRST_RESULTS_FALLBACK } from "../../constants";
 import { getComponentsList } from "../../util";
-
 export const listComponents = action({
   display: {
     label: "List Components",
@@ -31,7 +30,6 @@ export const listComponents = action({
         }
       }
     `;
-
     return {
       data: await getComponentsList(
         client,

@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { getCustomerInputs as inputs } from "../../inputs/customers";
 import type { GetCustomerResponse } from "../../interfaces/customers";
 import { getCustomerExamplePayload as examplePayload } from "../../examplePayloads/customers";
-
 export const getCustomer = action({
   display: {
     label: "Get Customer",
@@ -14,7 +13,6 @@ export const getCustomer = action({
       connection,
       debug: context.debug.enabled,
     }).get<GetCustomerResponse>(`/customers/${id}`);
-
     return {
       data,
     };

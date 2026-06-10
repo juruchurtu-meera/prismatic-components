@@ -1,10 +1,8 @@
 import { input, util } from "@prismatic-io/spectral";
-
 const cleanString = (value: unknown): string | undefined => {
   const str = util.types.toString(value);
   return str ? str : undefined;
 };
-
 export const candidate_id = input({
   label: "Candidate ID",
   type: "string",
@@ -15,7 +13,6 @@ export const candidate_id = input({
   example: "53883394",
   dataSource: "candidates",
 });
-
 export const candidate_ids = input({
   label: "Candidate IDs",
   type: "string",
@@ -26,7 +23,6 @@ export const candidate_ids = input({
   clean: cleanString,
   example: "123,456,789",
 });
-
 export const company = input({
   label: "Company",
   type: "string",
@@ -36,7 +32,6 @@ export const company = input({
   example: "Acme Corporation",
   clean: cleanString,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -46,7 +41,6 @@ export const title = input({
   example: "Software Engineer",
   clean: cleanString,
 });
-
 export const phone_numbers = input({
   label: "Phone Numbers",
   type: "code",
@@ -71,7 +65,6 @@ export const phone_numbers = input({
     return undefined;
   },
 });
-
 export const addresses = input({
   label: "Addresses",
   type: "code",
@@ -96,7 +89,6 @@ export const addresses = input({
     return undefined;
   },
 });
-
 export const email_addresses = input({
   label: "Email Addresses",
   type: "code",
@@ -125,7 +117,6 @@ export const email_addresses = input({
     return undefined;
   },
 });
-
 export const website_addresses = input({
   label: "Website Addresses",
   type: "code",
@@ -150,7 +141,6 @@ export const website_addresses = input({
     return undefined;
   },
 });
-
 export const social_media_addresses = input({
   label: "Social Media Addresses",
   type: "code",
@@ -177,7 +167,6 @@ export const social_media_addresses = input({
     return undefined;
   },
 });
-
 export const educations = input({
   label: "Educations",
   type: "code",
@@ -205,7 +194,6 @@ export const educations = input({
     return undefined;
   },
 });
-
 export const employments = input({
   label: "Employments",
   type: "code",
@@ -232,7 +220,6 @@ export const employments = input({
     return undefined;
   },
 });
-
 export const tags = input({
   label: "Tags",
   type: "string",
@@ -250,7 +237,6 @@ export const tags = input({
     return undefined;
   },
 });
-
 export const recruiter = input({
   label: "Recruiter",
   type: "code",
@@ -276,7 +262,6 @@ export const recruiter = input({
     return undefined;
   },
 });
-
 export const coordinator = input({
   label: "Coordinator",
   type: "code",
@@ -302,8 +287,6 @@ export const coordinator = input({
     return undefined;
   },
 });
-
-
 export const attachments = input({
   label: "Attachments",
   type: "code",
@@ -330,8 +313,6 @@ export const attachments = input({
     return undefined;
   },
 });
-
-
 export const activity_feed_notes = input({
   label: "Activity Feed Notes",
   type: "code",
@@ -357,7 +338,6 @@ export const activity_feed_notes = input({
     return undefined;
   },
 });
-
 export const applications = input({
   label: "Applications",
   type: "code",
@@ -384,7 +364,6 @@ export const applications = input({
     return undefined;
   },
 });
-
 export const is_private = input({
   type: "boolean",
   label: "Is Private",

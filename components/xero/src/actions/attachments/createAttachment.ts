@@ -8,7 +8,6 @@ import {
   contentType,
   connectionInput,
 } from "../../inputs";
-
 export const createAttachment = action({
   display: {
     label: "Create Attachment",

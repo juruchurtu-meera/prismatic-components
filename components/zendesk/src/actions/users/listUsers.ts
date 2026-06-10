@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../auth";
 import { connectionInput } from "../../inputs";
 import { listUsersPayload } from "../../examplePayloads";
-
 export const listUsers = action({
   display: {
     label: "List Users",
@@ -13,9 +12,7 @@ export const listUsers = action({
       zendeskConnection: params.zendeskConnection,
       debug: context.debug.enabled,
     });
-
     const result = await client.users.list();
-
     return {
       data: result,
     };
@@ -23,7 +20,6 @@ export const listUsers = action({
   inputs: {
     zendeskConnection: connectionInput,
   },
-
   examplePayload: {
     data: listUsersPayload,
   },

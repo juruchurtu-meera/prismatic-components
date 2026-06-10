@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 import { createClient } from "../../client";
 import { createAssetExamplePayload as examplePayload } from "../../examplePayloads";
 import { createAssetInputs as inputs } from "../../inputs/assets";
-
 export const createAsset = action({
   display: {
     label: "Create Asset",
@@ -31,7 +30,6 @@ export const createAsset = action({
       notice: copyrightNotice,
       status: copyrightStatus,
     };
-
     const input = {
       author,
       description,
@@ -45,7 +43,6 @@ export const createAsset = action({
       copyright: createCopyrightInput,
       tags,
     };
-
     const mutation = gql`
       mutation createAsset($input: CreateAssetInput!) {
         createAsset(input: $input) {
@@ -55,12 +52,10 @@ export const createAsset = action({
         }
       }
     `;
-
     const response = await createClient({
       connection,
       debug: context.debug.enabled,
     }).request(mutation, { input });
-
     return {
       data: response,
     };

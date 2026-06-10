@@ -3,7 +3,6 @@ import { sendRawRequest } from "@prismatic-io/spectral/dist/clients/http";
 import { getWebApiUrl } from "../../client";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { rawRequestInputs } from "../../inputs";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request (Deprecated)",
@@ -19,7 +18,7 @@ export const rawRequest = action({
       { ...httpInputParams, debugRequest: context.debug.enabled },
       {
         Authorization: `Bearer ${token}`,
-      }
+      },
     );
     return { data };
   },

@@ -1,6 +1,5 @@
 import { action, Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const metaGet = action({
   display: {
     label: "Meta Get",
@@ -19,7 +18,6 @@ const metaGet = action({
     },
   },
 });
-
 export default {
   metaGet,
 };

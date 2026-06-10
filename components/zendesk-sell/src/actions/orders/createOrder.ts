@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { createOrderExamplePayload } from "../../examplePayloads";
 import { createOrderInputs } from "../../inputs";
-
 export const createOrder = action({
   display: {
     label: "Create Order",
@@ -26,7 +25,6 @@ export const createOrder = action({
           },
         },
       );
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

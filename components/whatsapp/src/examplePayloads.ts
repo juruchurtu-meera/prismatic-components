@@ -14,25 +14,21 @@ export const sendMessageExamplePayload = {
     ],
   },
 };
-
 export const requestVerificationCodeExamplePayload = {
   data: {
     success: true,
   },
 };
-
 export const registerPhoneNumberExamplePayload = {
   data: {
     success: true,
   },
 };
-
 export const uploadMediaExamplePayload = {
   data: {
     id: "<MEDIA_ID>",
   },
 };
-
 export const getMediaExamplePayload = {
   data: {
     messaging_product: "whatsapp",
@@ -43,13 +39,11 @@ export const getMediaExamplePayload = {
     id: "<MEDIA_ID>",
   },
 };
-
 export const deleteMediaExamplePayload = {
   data: {
     success: true,
   },
 };
-
 export const getMediafromURLExamplePayload = {
   data: "<BINARY_DATA>",
 };

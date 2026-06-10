@@ -1,9 +1,3 @@
-
-
-
-
-
-
 export const getBalanceTransactionExamplePayload = {
   data: {
     id: "txn_1MiN3gLkdIwHu7ixxapQrznl",
@@ -31,13 +25,6 @@ export const getBalanceTransactionExamplePayload = {
     type: "charge",
   } as unknown,
 };
-
-
-
-
-
-
-
 export const listBalanceTransactionsExamplePayload = {
   data: {
     object: "list",

@@ -7,7 +7,6 @@ export const getContactExamplePayload = {
     modifiedDate: "2024-02-08T06:35:03.6",
   },
 };
-
 export const createContactExamplePayload = {
   data: {
     contactID: 123456790,
@@ -17,9 +16,7 @@ export const createContactExamplePayload = {
     modifiedDate: "2024-02-01T10:30:00.000Z",
   },
 };
-
 export const updateContactExamplePayload = getContactExamplePayload;
-
 export const searchContactsExamplePayload = {
   data: {
     count: 1,
@@ -33,16 +30,13 @@ export const searchContactsExamplePayload = {
     ],
   },
 };
-
 export const searchContactsByEmailExamplePayload = searchContactsExamplePayload;
-
 export const deleteContactExamplePayload = {
   data: {
     operationID: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
     operationInitiated: true,
   },
 };
-
 export const getContactSchemaExamplePayload = {
   data: {
     item: {

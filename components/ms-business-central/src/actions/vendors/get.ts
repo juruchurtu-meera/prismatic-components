@@ -3,7 +3,6 @@ import { getMsBusinessCentralClient } from "../../client";
 import { getVendorExamplePayload } from "../../examplePayloads";
 import { getVendorInputs } from "../../inputs/vendors";
 import type { Vendor } from "../../interfaces";
-
 export const getVendor = action({
   display: {
     label: "Get Vendor",
@@ -12,9 +11,14 @@ export const getVendor = action({
   },
   inputs: getVendorInputs,
   perform: async (context, { connection, vendorId, companyId }) => {
-    const client = getMsBusinessCentralClient(connection, context, context.debug.enabled);
-    const { data } = await client.get<Vendor>(`/companies(${companyId})/vendors(${vendorId})`);
-
+    const client = getMsBusinessCentralClient(
+      connection,
+      context,
+      context.debug.enabled,
+    );
+    const { data } = await client.get<Vendor>(
+      `/companies(${companyId})/vendors(${vendorId})`,
+    );
     return { data };
   },
   examplePayload: getVendorExamplePayload,

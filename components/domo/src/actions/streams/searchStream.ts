@@ -3,7 +3,6 @@ import { getDomoClient } from "../../client";
 import { searchStreamInputs } from "../../inputs";
 import type { SearchStreamQueryParams } from "../types/SearchStreamQueryParams";
 import { searchStreamExamplePayload } from "../../examplePayloads";
-
 export const searchStream = action({
   display: {
     label: "Search Stream",
@@ -24,5 +23,4 @@ export const searchStream = action({
   },
   inputs: searchStreamInputs,
 });
-
 export default { searchStream };

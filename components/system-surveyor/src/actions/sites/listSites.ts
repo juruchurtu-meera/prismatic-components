@@ -3,12 +3,6 @@ import { createSsvClient } from "../../client";
 import { listSitesExamplePayload } from "../../examplePayloads/sites";
 import { getSitesInputs } from "../../inputs";
 import { fetchPaginatedResults } from "../../util";
-
-
-
-
-
-
 export const listSites = action({
   display: {
     label: "List Sites",
@@ -20,7 +14,6 @@ export const listSites = action({
     { ssvConnection, fetchAll, pageNumber, pageSize, modifiedAfter },
   ) => {
     const client = await createSsvClient(ssvConnection, context);
-
     const data = await fetchPaginatedResults(client, "/v3/sitelist", {
       fetchAll,
       pageNumber,
@@ -29,7 +22,6 @@ export const listSites = action({
         ...(modifiedAfter ? { "filter[modified_after]": modifiedAfter } : {}),
       },
     });
-
     return { data };
   },
   examplePayload: listSitesExamplePayload,

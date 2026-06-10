@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { updateProblemTaskResponse as examplePayload } from "../../examplePayloads";
 import { updateProblemTaskInputs as inputs } from "../../inputs";
 import { createPayload } from "../../util";
-
 export const updateProblemTask = action({
   display: {
     label: "Update Problem Task",
@@ -29,7 +28,6 @@ export const updateProblemTask = action({
     },
   ) => {
     const client = createClient(connectionInput, context.debug.enabled);
-
     const payload = createPayload({
       task: {
         owner: taskOwner,

@@ -1,7 +1,6 @@
 import { util, input } from "@prismatic-io/spectral";
 import { toOptionalString } from "aws-utils";
 import { cleanKeyValueListInput, cleanObject } from "./util";
-
 const valueTypes = {
   S: "String",
   N: "Number",
@@ -13,9 +12,7 @@ const valueTypes = {
   BS: "Buffer Set",
   BOOL: "Boolean",
 };
-
 export { awsRegion } from "aws-utils";
-
 export const item = input({
   label: "Value",
   type: "string",
@@ -26,7 +23,6 @@ export const item = input({
     "Key-value pairs representing the item to insert into the table. Each key corresponds to an attribute name.",
   example: "customerId",
 });
-
 export const itemTypes = input({
   label: "Value Types",
   type: "string",
@@ -38,7 +34,6 @@ export const itemTypes = input({
   comments:
     "The DynamoDB data type for each item attribute. Must specify a type for each key in the Value field. See [DynamoDB data types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes).",
 });
-
 export const dataType = input({
   label: "Value Type",
   type: "string",
@@ -49,7 +44,6 @@ export const dataType = input({
   comments:
     "The DynamoDB data type for the hash key attribute. See [DynamoDB data types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes).",
 });
-
 export const expressionAttributeValues = input({
   label: "Expression Attribute Values",
   type: "string",
@@ -60,7 +54,6 @@ export const expressionAttributeValues = input({
   comments:
     "Expression attribute values are substitutes for actual values in expressions. Each key must begin with a colon (:) followed by alphanumeric characters. Learn more about [expression attribute values](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ExpressionAttributeValues.html).",
 });
-
 export const expressionAttributeValueTypes = input({
   label: "Expression Attribute Value Types",
   type: "string",
@@ -71,7 +64,6 @@ export const expressionAttributeValueTypes = input({
   comments:
     "The DynamoDB data type for each expression attribute value. Must specify a type for each value provided in Expression Attribute Values.",
 });
-
 export const query = input({
   label: "Update Expression",
   type: "string",
@@ -82,7 +74,6 @@ export const query = input({
     "An update expression specifying how to modify item attributes. Learn more about [update expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.UpdateExpressions.html).",
   clean: util.types.toString,
 });
-
 export const value = input({
   label: "Hash / Primary Key Value",
   type: "string",
@@ -92,7 +83,6 @@ export const value = input({
   comments: "The value of the hash key (primary key) to match.",
   clean: util.types.toString,
 });
-
 export const rangeKeyValue = input({
   label: "Range / Sort Key Value",
   type: "string",
@@ -103,7 +93,6 @@ export const rangeKeyValue = input({
     "The value of the optional range key (sort key) to match. <strong>Required</strong> if your table has a range key.",
   clean: toOptionalString,
 });
-
 export const tableName = input({
   label: "Table Name",
   type: "string",
@@ -114,7 +103,6 @@ export const tableName = input({
   dataSource: "selectTable",
   clean: util.types.toString,
 });
-
 export const attributeDefinition = input({
   label: "Attribute Definition",
   type: "code",
@@ -138,7 +126,6 @@ export const attributeDefinition = input({
     "Array of attribute definitions. Each object must contain an AttributeName and AttributeType. See [DynamoDB data types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes).",
   clean: cleanObject,
 });
-
 export const keySchema = input({
   label: "Key Schema",
   type: "code",
@@ -162,7 +149,6 @@ export const keySchema = input({
     "Array of key schema elements. Each object must contain a KeyType (HASH or RANGE) and an AttributeName. Learn more about [key schemas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey).",
   clean: cleanObject,
 });
-
 export const billingMode = input({
   label: "Billing Mode",
   type: "string",
@@ -176,7 +162,6 @@ export const billingMode = input({
   comments:
     "The billing mode for the table. Learn more about [billing modes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html).",
 });
-
 export const readCapacityUnits = input({
   label: "Read Capacity Units",
   type: "string",
@@ -188,7 +173,6 @@ export const readCapacityUnits = input({
     "The number of read capacity units. One unit = one strongly consistent read/sec or two eventually consistent reads/sec for items up to 4 KB. Learn more about [read capacity](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughput.html).",
   clean: (val) => util.types.toInt(val, 5),
 });
-
 export const writeCapacityUnits = input({
   label: "Write Capacity Units",
   type: "string",
@@ -200,7 +184,6 @@ export const writeCapacityUnits = input({
     "The number of write capacity units. One unit = one write/sec for items up to 1 KB. Larger items consume additional units. Learn more about [write capacity](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughput.html).",
   clean: (val) => util.types.toInt(val, 5),
 });
-
 export const conditionExpression = input({
   label: "Condition Expression",
   type: "string",
@@ -211,14 +194,12 @@ export const conditionExpression = input({
     "A condition that must be satisfied for the operation to succeed. Learn more about [condition expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html).",
   clean: toOptionalString,
 });
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The AWS DynamoDB connection to use.",
 });
-
 export const parameters = input({
   label: "Parameters",
   type: "code",
@@ -229,7 +210,6 @@ export const parameters = input({
     "Array of parameter values for the PartiQL statement. Parameters are referenced using ? placeholders in the statement. Learn more about [PartiQL parameters](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html).",
   clean: cleanObject,
 });
-
 export const statement = input({
   label: "Statement",
   type: "string",
@@ -240,7 +220,6 @@ export const statement = input({
     "The PartiQL statement to execute. Use ? for parameters. Learn more about [PartiQL for DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html).",
   clean: toOptionalString,
 });
-
 export const queryParameters = input({
   label: "Query Parameters",
   type: "string",
@@ -251,7 +230,6 @@ export const queryParameters = input({
     "Additional parameters to pass to the query operation. These are merged with the command input.",
   clean: cleanKeyValueListInput,
 });
-
 export const keyConditionExpression = input({
   label: "Key Condition Expression",
   type: "string",
@@ -262,7 +240,6 @@ export const keyConditionExpression = input({
     "The condition specifying key values for the query. Must specify the partition key and optionally a sort key condition. Learn more about [key condition expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.KeyConditionExpressions).",
   clean: toOptionalString,
 });
-
 export const filterExpression = input({
   label: "Filter Expression",
   type: "string",
@@ -273,7 +250,6 @@ export const filterExpression = input({
     "A condition to filter query results after they're retrieved. Cannot filter on partition or sort keys. Learn more about [filter expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression).",
   clean: toOptionalString,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
 import { connection, jsonInput } from "../inputs";
 import { bulkSendListJson } from "../json/bulkSendListJson";
-
 export const createBulkSendList = action({
   display: {
     label: "Create Bulk Send List",
@@ -15,7 +14,6 @@ export const createBulkSendList = action({
       true,
       context.debug.enabled,
     );
-
     const { data } = await client.post(`/bulk_send_lists`, jsonInput);
     return { data };
   },

@@ -1,7 +1,6 @@
 import type { gmail_v1 } from "@googleapis/gmail";
 import type { ActionLogger } from "@prismatic-io/spectral";
 import { simpleParser } from "mailparser";
-
 export const getMessagesDetails = async (
   client: gmail_v1.Gmail,
   messages: gmail_v1.Schema$Message[],
@@ -20,8 +19,6 @@ export const getMessagesDetails = async (
             id: historyMessage.id,
             format: "raw",
           });
-
-          
           const parsed = await simpleParser(Buffer.from(raw, "base64"), {
             writableObjectMode: true,
             autoDestroy: true,
@@ -35,11 +32,12 @@ export const getMessagesDetails = async (
             text: parsed.text,
             html: parsed.html,
           };
-
           resolve(message);
         } catch (e) {
-          const error = e as { code: number; message: string };
-          
+          const error = e as {
+            code: number;
+            message: string;
+          };
           if (error.code === 404) {
             if (debug) {
               logger.error(error.message);
@@ -54,7 +52,6 @@ export const getMessagesDetails = async (
         }
       }),
   );
-
   const detailedMessages = await Promise.all(messagesPromises);
   return detailedMessages;
 };

@@ -2,7 +2,6 @@ import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { connectionInput, version } from "../inputs";
 import type { DepartmentDataSources } from "../types";
-
 export const departments = dataSource({
   display: {
     label: "Fetch Departments",

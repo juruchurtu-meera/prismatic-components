@@ -12,7 +12,6 @@ import {
 } from "../inputs";
 import type { UserRoles } from "../interfaces";
 import { fetchAllRecords } from "../util";
-
 export const listUserRoles = action({
   display: {
     label: "List User Roles",
@@ -40,7 +39,6 @@ export const listUserRoles = action({
     },
   ) => {
     const client = createClient(connection, "settings", context.debug.enabled);
-
     if (fetchAll) {
       const data = await fetchAllRecords<UserRoles>(client, "/user-roles", {
         includeTotal,

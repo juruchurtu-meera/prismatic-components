@@ -6,10 +6,8 @@ import {
 import { getHostAndApiKey } from "../client";
 import { rawRequestExamplePayload } from "../examplePayloads";
 import { connectionInput } from "../inputs";
-
 const { debugRequest: _debugRequest, ...httpInputsWithoutDebug } =
   httpClientInputs;
-
 const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -41,5 +39,4 @@ const rawRequest = action({
   },
   examplePayload: rawRequestExamplePayload,
 });
-
 export default rawRequest;

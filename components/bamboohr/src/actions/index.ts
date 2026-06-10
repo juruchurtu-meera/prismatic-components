@@ -5,7 +5,6 @@ import miscActions from "./misc";
 import tabularDataActions from "./tabularData";
 import timeOffActions from "./timeOff";
 import webhookActions from "./webhooks";
-
 export default {
   ...companyFilesActions,
   ...employeeActions,

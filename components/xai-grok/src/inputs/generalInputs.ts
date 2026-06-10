@@ -1,11 +1,9 @@
 import { input, util } from "@prismatic-io/spectral";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",

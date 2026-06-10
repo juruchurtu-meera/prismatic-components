@@ -3,7 +3,6 @@ import { createClient } from "../client";
 import { adAccountId, myConnectionField, version } from "../inputs";
 import type { Campaign } from "../types/Campaign";
 import { getPaginatedData } from "../util";
-
 export const selectCampaignInAccount = dataSource({
   display: {
     label: "Select Campaign in Account",
@@ -21,12 +20,10 @@ export const selectCampaignInAccount = dataSource({
         fields: "name,id",
       },
     );
-
     const result: Element[] = data.map((campaign: Campaign) => ({
       label: `${campaign.name} - (${campaign.id})`,
       key: campaign.id,
     }));
-
     return {
       result,
     };

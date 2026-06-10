@@ -27,18 +27,15 @@ import {
   cleanValueListInput,
   generateModelFromSnakeCaseArray,
 } from "./util";
-
 const shopifyConnection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Shopify connection to use.",
 });
-
 export const countCollectsInputs = {
   shopifyConnection,
 };
-
 const collectIdGql = input({
   label: "Collect Id",
   type: "string",
@@ -48,17 +45,14 @@ const collectIdGql = input({
   placeholder: "Enter collect ID",
   clean: util.types.toString,
 });
-
 export const deleteCollectInputs = {
   shopifyConnection,
   collectIdGql,
 };
-
 export const getCollectInputs = {
   shopifyConnection,
   collectIdGql,
 };
-
 const getAlldata = input({
   label: "Fetch All",
   type: "boolean",
@@ -68,7 +62,6 @@ const getAlldata = input({
     "When true, automatically fetches all pages of results using pagination. The API is limited to 250 records per page max.",
   clean: util.types.toBool,
 });
-
 const productId = input({
   label: "Product ID",
   type: "string",
@@ -79,7 +72,6 @@ const productId = input({
   clean: cleanProductId,
   dataSource: LIST_PRODUCTS_DATASOURCE_REFERENCE,
 });
-
 const limit = input({
   label: "Limit",
   type: "string",
@@ -89,7 +81,6 @@ const limit = input({
   placeholder: "Enter limit",
   clean: util.types.toNumber,
 });
-
 const endCursor = input({
   label: "Page Offset Cursor",
   type: "string",
@@ -101,25 +92,21 @@ const endCursor = input({
   placeholder: "Enter page cursor",
   clean: cleanStringInput,
 });
-
 export const listCollectsInputs = {
   shopifyConnection,
   getAlldata,
   limit,
   endCursor,
 };
-
 export const listCurrenciesInputs = {
   shopifyConnection,
   limit,
   getAlldata,
   endCursor,
 };
-
 export const countCustomersInputs = {
   shopifyConnection,
 };
-
 const customerIdGql = input({
   label: "Customer",
   type: "string",
@@ -130,12 +117,10 @@ const customerIdGql = input({
   clean: cleanCustomerId,
   dataSource: LIST_CUSTOMERS_DATASOURCE_REFERENCE,
 });
-
 export const createAccountActivationURLInputs = {
   shopifyConnection,
   customerIdGql,
 };
-
 const firstName = input({
   label: "First Name",
   type: "string",
@@ -145,7 +130,6 @@ const firstName = input({
   comments: "The first name of the customer.",
   clean: util.types.toString,
 });
-
 const lastName = input({
   label: "Last Name",
   type: "string",
@@ -155,7 +139,6 @@ const lastName = input({
   comments: "The last name of the customer.",
   clean: util.types.toString,
 });
-
 const email = input({
   label: "Email",
   type: "string",
@@ -165,7 +148,6 @@ const email = input({
   comments: "The email address of the customer.",
   clean: util.types.toString,
 });
-
 const phone = input({
   label: "Phone",
   type: "string",
@@ -175,7 +157,6 @@ const phone = input({
   comments: "The phone number of the customer.",
   clean: cleanStringInput,
 });
-
 const addressListGql = input({
   label: "Address List",
   type: "code",
@@ -198,7 +179,6 @@ const addressListGql = input({
   ]),
   clean: (value) => cleanArrayCodeInput(value, "Address List"),
 });
-
 const notes = input({
   label: "Notes",
   type: "string",
@@ -208,7 +188,6 @@ const notes = input({
   comments: "A note about the customer.",
   clean: cleanStringInput,
 });
-
 const tags = input({
   label: "Tags",
   type: "string",
@@ -216,10 +195,10 @@ const tags = input({
   collection: "valuelist",
   example: "Style",
   placeholder: "Enter tag",
-  comments: "For each list item, provide a string you would like to tag the product with.",
+  comments:
+    "For each list item, provide a string you would like to tag the product with.",
   clean: cleanValueListInput,
 });
-
 const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -233,7 +212,6 @@ const additionalFields = input({
   }),
   clean: (value) => cleanCodeInputEmptyObject(value, "Additional Fields"),
 });
-
 const taxExempt = input({
   label: "Tax Exempt",
   type: "boolean",
@@ -242,7 +220,6 @@ const taxExempt = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 const metafields = input({
   label: "Metafields",
   type: "code",
@@ -259,7 +236,6 @@ const metafields = input({
   ]),
   clean: (value) => cleanArrayCodeInput(value, "Metafields"),
 });
-
 export const createCustomerInputs = {
   shopifyConnection,
   firstName,
@@ -273,7 +249,6 @@ export const createCustomerInputs = {
   metafields,
   additionalFields,
 };
-
 const optionalBoolean = input({
   label: "Optional Boolean",
   type: "string",
@@ -291,7 +266,6 @@ const optionalBoolean = input({
   default: undefined,
   clean: cleanOptionalBooleanInput,
 });
-
 export const updateCustomerInputs = {
   shopifyConnection,
   customerIdGql,
@@ -325,38 +299,32 @@ export const updateCustomerInputs = {
   metafields,
   additionalFields,
 };
-
 export const deleteCustomerInputs = {
   shopifyConnection,
   customerIdGql,
 };
-
 export const getCustomerInputs = {
   shopifyConnection,
   customerIdGql,
 };
-
 export const listCustomersInputs = {
   shopifyConnection,
   getAlldata,
   limit,
   endCursor,
 };
-
 export const listCollectionsInputs = {
   shopifyConnection,
   limit,
   getAlldata,
   endCursor,
 };
-
 export const listDraftOrdersInputs = {
   shopifyConnection,
   limit,
   getAlldata,
   endCursor,
 };
-
 const draftOrderId = input({
   label: "Draft Order Id",
   type: "string",
@@ -367,17 +335,14 @@ const draftOrderId = input({
   clean: cleanDraftOrderId,
   dataSource: LIST_DRAFT_ORDERS_DATASOURCE_REFERENCE,
 });
-
 export const getDraftOrderInputs = {
   shopifyConnection,
   draftOrderId,
 };
-
 export const deleteDraftOrderInputs = {
   shopifyConnection,
   draftOrderId,
 };
-
 const lineItems = input({
   label: "Line items",
   type: "code",
@@ -415,20 +380,18 @@ const lineItems = input({
     null,
     2,
   ),
-
   comments: "Provide a JSON array containing line item objects.",
   clean: (value) => cleanArrayCodeInput(value, "Line items"),
 });
-
 const useCustomerAddress = input({
   label: "Use Customer Address",
   type: "boolean",
   required: true,
   default: "true",
-  comments: "This flag determines if the order will use the customers default address.",
+  comments:
+    "This flag determines if the order will use the customers default address.",
   clean: util.types.toBool,
 });
-
 const note = input({
   label: "Note",
   type: "string",
@@ -438,7 +401,6 @@ const note = input({
   comments: "A note on the draft order.",
   clean: cleanStringInput,
 });
-
 export const createDraftOrderInputs = {
   shopifyConnection,
   customerIdGql,
@@ -457,7 +419,6 @@ export const createDraftOrderInputs = {
   }),
   additionalFields,
 };
-
 export const completeDraftOrderInputs = {
   shopifyConnection,
   draftOrderId,
@@ -472,7 +433,6 @@ const orderId = input({
   clean: cleanOrderId,
   dataSource: LIST_ORDERS_DATASOURCE_REFERENCE,
 });
-
 export const listFulfillmentOrdersInputs = {
   shopifyConnection,
   orderId,
@@ -480,7 +440,6 @@ export const listFulfillmentOrdersInputs = {
   getAlldata,
   endCursor,
 };
-
 const fulfillmentId = input({
   label: "Fulfillment Id",
   type: "string",
@@ -491,12 +450,10 @@ const fulfillmentId = input({
   clean: cleanFulfillmentId,
   dataSource: LIST_FULFILLMENTS_DATASOURCE_REFERENCE,
 });
-
 export const getFulfillmentInputs = {
   shopifyConnection,
   fulfillmentId,
 };
-
 const fulfillmentOrderId = input({
   label: "Fulfillment Order ID",
   type: "string",
@@ -507,16 +464,13 @@ const fulfillmentOrderId = input({
   clean: cleanFulfillmentOrderId,
   dataSource: LIST_FULFILLMENT_ORDERS_DATASOURCE_REFERENCE,
 });
-
 export const getFulfillmentOrderInputs = {
   shopifyConnection,
   fulfillmentOrderId,
 };
-
 export const listFulfillmentServicesInputs = {
   shopifyConnection,
 };
-
 const fulfillmentServiceId = input({
   label: "Fulfillment Service ID",
   type: "string",
@@ -527,19 +481,18 @@ const fulfillmentServiceId = input({
   clean: util.types.toString,
   dataSource: LIST_FULFILLMENT_SERVICES_DATASOURCE_REFERENCE,
 });
-
 export const getFulfillmentServiceInputs = {
   shopifyConnection,
   fulfillmentServiceId,
 };
-
 const callbackUrl = input({
   label: "Callback URL",
   type: "string",
   required: true,
   example: "https://example.com",
   placeholder: "Enter callback URL",
-  comments: "The callback URL that the fulfillment service has registered for request.",
+  comments:
+    "The callback URL that the fulfillment service has registered for request.",
   clean: util.types.toString,
 });
 const inventoryManagement = input({
@@ -551,7 +504,6 @@ const inventoryManagement = input({
     "Whether the fulfillment services tracks product inventory and provides updates to Shopify.",
   clean: util.types.toBool,
 });
-
 const fulfillmentServiceName = input({
   label: "Fulfillment Service Name",
   type: "string",
@@ -561,16 +513,15 @@ const fulfillmentServiceName = input({
   placeholder: "Enter fulfillment service name",
   clean: util.types.toString,
 });
-
 const trackingSupport = input({
   label: "Tracking Support",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "Whether the fulfillment service supports tracking numbers for packages.",
+  comments:
+    "Whether the fulfillment service supports tracking numbers for packages.",
   clean: util.types.toBool,
 });
-
 export const createFulfillmentServiceInputs = {
   shopifyConnection,
   fulfillmentServiceName,
@@ -578,7 +529,6 @@ export const createFulfillmentServiceInputs = {
   inventoryManagement,
   trackingSupport,
 };
-
 export const updateFulfillmentServiceInputs = {
   shopifyConnection,
   fulfillmentServiceId,
@@ -597,19 +547,16 @@ export const updateFulfillmentServiceInputs = {
     ...optionalBoolean,
     label: "Inventory Management",
   }),
-
   trackingSupport: input({
     ...trackingSupport,
     ...optionalBoolean,
     label: "Tracking Support",
   }),
 };
-
 export const deleteFulfillmentServiceInputs = {
   shopifyConnection,
   fulfillmentServiceId,
 };
-
 const query = input({
   label: "Query",
   type: "string",
@@ -619,7 +566,6 @@ const query = input({
   placeholder: "Enter query filter",
   clean: cleanStringInput,
 });
-
 export const listInventoryItemsInputs = {
   shopifyConnection,
   query,
@@ -627,7 +573,6 @@ export const listInventoryItemsInputs = {
   limit,
   endCursor,
 };
-
 const itemId = input({
   label: "Inventory Item Id",
   type: "string",
@@ -637,12 +582,10 @@ const itemId = input({
   placeholder: "Enter inventory item ID",
   clean: util.types.toString,
 });
-
 export const getInventoryItemsInputs = {
   itemId,
   shopifyConnection,
 };
-
 const cost = input({
   label: "Cost",
   type: "string",
@@ -653,7 +596,6 @@ const cost = input({
     "Unit cost associated with the inventory item, the currency is the shop's default currency.",
   clean: cleanStringInput,
 });
-
 const sku = input({
   label: "SKU",
   type: "string",
@@ -662,13 +604,11 @@ const sku = input({
   placeholder: "Enter SKU",
   comments: "The SKU (stock keeping unit) of the inventory item.",
 });
-
 const tracked = input({
   ...optionalBoolean,
   label: "Tracked",
   comments: "Whether the inventory item is tracked.",
 });
-
 export const updateInventoryItemsInputs = {
   shopifyConnection,
   itemId,
@@ -676,7 +616,6 @@ export const updateInventoryItemsInputs = {
   cost,
   tracked,
 };
-
 const locationId = input({
   label: "Location ID",
   type: "string",
@@ -687,7 +626,6 @@ const locationId = input({
   clean: cleanLocationId,
   dataSource: LIST_LOCATIONS_DATASOURCE_REFERENCE,
 });
-
 export const listInventoryLevelsInputs = {
   shopifyConnection,
   locationId,
@@ -695,53 +633,48 @@ export const listInventoryLevelsInputs = {
   limit,
   endCursor,
 };
-
 export const listLocationsInputs = {
   shopifyConnection,
   limit,
   getAlldata,
   endCursor,
 };
-
 const levelId = input({
   label: "Inventory Level Id",
   type: "string",
   required: true,
   comments: "The unique identifier for the inventory level.",
-  example: "gid://shopify/InventoryLevel/100340760123?inventory_item_id=43933612245123",
+  example:
+    "gid://shopify/InventoryLevel/100340760123?inventory_item_id=43933612245123",
   placeholder: "Enter inventory level ID",
   clean: util.types.toString,
 });
-
 export const getInventoryLevelsInputs = {
   shopifyConnection,
   levelId,
 };
-
 export const deleteInventoryLevelsInputs = {
   shopifyConnection,
   levelId: input({
     ...levelId,
-    example: "gid://shopify/InventoryLevel/820859520?inventory_item_id=826867926",
-    placeholder: "gid://shopify/InventoryLevel/820859520?inventory_item_id=826867926",
+    example:
+      "gid://shopify/InventoryLevel/820859520?inventory_item_id=826867926",
+    placeholder:
+      "gid://shopify/InventoryLevel/820859520?inventory_item_id=826867926",
   }),
 };
-
 export const connectInventoryLevelInputs = {
   shopifyConnection,
   locationId,
   itemId,
 };
-
 export const countLocationsInputs = {
   shopifyConnection,
 };
-
 export const getLocationInputs = {
   shopifyConnection,
   locationId,
 };
-
 const notifyCustomer = input({
   label: "Notify Customer",
   type: "boolean",
@@ -750,7 +683,6 @@ const notifyCustomer = input({
   comments: "Whether the customer should be notified of the cancellation.",
   clean: util.types.toBool,
 });
-
 const reason = input({
   label: "Reason",
   type: "string",
@@ -786,7 +718,6 @@ const reason = input({
   ],
   clean: util.types.toString,
 });
-
 const refund = input({
   label: "Refund",
   type: "boolean",
@@ -794,7 +725,6 @@ const refund = input({
   comments: "Whether to refund the amount paid by the customer.",
   clean: util.types.toBool,
 });
-
 const restock = input({
   label: "Restock",
   type: "boolean",
@@ -802,7 +732,6 @@ const restock = input({
   comments: "Whether to restock the inventory committed to the order.",
   clean: util.types.toBool,
 });
-
 const staffNote = input({
   label: "Staff Note",
   type: "string",
@@ -813,7 +742,6 @@ const staffNote = input({
   placeholder: "Enter staff note",
   clean: cleanStringInput,
 });
-
 export const cancelOrderInputs = {
   shopifyConnection,
   orderId,
@@ -823,7 +751,6 @@ export const cancelOrderInputs = {
   notifyCustomer,
   staffNote,
 };
-
 export const listOrdersInputs = {
   shopifyConnection,
   query: input({
@@ -836,16 +763,13 @@ export const listOrdersInputs = {
   limit,
   endCursor,
 };
-
 export const closeOrderInputs = {
   shopifyConnection,
   orderId,
 };
-
 export const countOrdersInputs = {
   shopifyConnection,
 };
-
 const orderData = input({
   label: "Order Data",
   type: "code",
@@ -897,27 +821,22 @@ const orderData = input({
   ),
   clean: (value) => cleanCodeInputEmptyObject(value, "Order Data"),
 });
-
 export const createOrderInputs = {
   shopifyConnection,
   orderData,
 };
-
 export const getOrderInputs = {
   shopifyConnection,
   orderId,
 };
-
 export const deleteOrderInputs = {
   shopifyConnection,
   orderId,
 };
-
 export const countProductImagesInputs = {
   shopifyConnection,
   productId,
 };
-
 const imageURL = input({
   label: "Image URL",
   type: "string",
@@ -927,7 +846,6 @@ const imageURL = input({
   comments: "Provide the URL of the image.",
   clean: util.types.toString,
 });
-
 const imageAlt = input({
   label: "Image Alt Text",
   type: "string",
@@ -937,14 +855,12 @@ const imageAlt = input({
   comments: "Provide the alt text for the image.",
   clean: util.types.toString,
 });
-
 export const createProductImageInputs = {
   shopifyConnection,
   productId,
   imageURL,
   imageAlt,
 };
-
 const imageId = input({
   label: "Image ID",
   type: "string",
@@ -954,13 +870,11 @@ const imageId = input({
   placeholder: "Enter image ID",
   clean: util.types.toString,
 });
-
 export const deleteProductImageInputs = {
   shopifyConnection,
   productId,
   imageId,
 };
-
 export const listProductImagesInputs = {
   shopifyConnection,
   productId,
@@ -968,11 +882,9 @@ export const listProductImagesInputs = {
   limit,
   endCursor,
 };
-
 export const getShopConfigInputs = {
   shopifyConnection,
 };
-
 export const listVariantsInputs = {
   shopifyConnection,
   productId: input({
@@ -985,12 +897,9 @@ export const listVariantsInputs = {
   limit,
   endCursor,
 };
-
 export const countVariantsInputs = {
   shopifyConnection,
-  
 };
-
 const variant = input({
   label: "Variant",
   type: "code",
@@ -1013,13 +922,11 @@ const variant = input({
   ),
   clean: (value) => cleanCodeInputEmptyObject(value, "Variant"),
 });
-
 export const createVariantInputs = {
   shopifyConnection,
   productId,
   variant,
 };
-
 const variantId = input({
   label: "Variant ID",
   type: "string",
@@ -1029,18 +936,15 @@ const variantId = input({
   placeholder: "Enter variant ID",
   clean: util.types.toString,
 });
-
 export const deleteVariantInputs = {
   shopifyConnection,
   productId,
   variantId,
 };
-
 export const getVariantInputs = {
   shopifyConnection,
   variantId,
 };
-
 const updateVariant = input({
   label: "Update Variant",
   type: "code",
@@ -1058,13 +962,11 @@ const updateVariant = input({
   ),
   clean: (value) => cleanCodeInputEmptyObject(value, "Update Variant"),
 });
-
 export const updateVariantInputs = {
   shopifyConnection,
   productId,
   updateVariant,
 };
-
 const webhookTopic = input({
   label: "Webhook Topic",
   type: "string",
@@ -1072,20 +974,20 @@ const webhookTopic = input({
   example: "APP_PURCHASES_ONE_TIME_UPDATE",
   placeholder: "Select webhook topic",
   model: generateModelFromSnakeCaseArray(WEBHOOK_TOPICS),
-  comments: "The topic for the webhook. This is the event that will trigger the webhook.",
+  comments:
+    "The topic for the webhook. This is the event that will trigger the webhook.",
   clean: util.types.toString,
 });
-
 const callbackWebhookUrl = input({
   label: "Callback URL",
   type: "string",
   required: true,
   example: "https://example.com/webhook",
   placeholder: "Enter callback URL",
-  comments: "Provide a string value for the URL the newly created webhook will post to.",
+  comments:
+    "Provide a string value for the URL the newly created webhook will post to.",
   clean: util.types.toString,
 });
-
 const webhookFormat = input({
   label: "Webhook Format",
   type: "string",
@@ -1095,16 +997,15 @@ const webhookFormat = input({
     { label: "XML", value: "XML" },
   ],
   default: "JSON",
-  comments: "Provide a string value for the format you would like your webhook to return.",
+  comments:
+    "Provide a string value for the format you would like your webhook to return.",
 });
-
 export const createWebhookInputs = {
   shopifyConnection,
   webhookTopic,
   callbackWebhookUrl,
   webhookFormat,
 };
-
 const showOnlyInstanceWebhooks = input({
   label: "Show Only Instance Webhooks",
   comments: "Show only webhooks that point to this instance.",
@@ -1112,7 +1013,6 @@ const showOnlyInstanceWebhooks = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const listWebhooksInputs = {
   shopifyConnection,
   showOnlyInstanceWebhooks,
@@ -1126,7 +1026,6 @@ export const listWebhooksInputs = {
     clean: cleanStringInput,
   }),
 };
-
 const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -1136,38 +1035,32 @@ const webhookId = input({
   placeholder: "Enter webhook ID",
   clean: util.types.toString,
 });
-
 export const deleteWebhookInputs = {
   shopifyConnection,
   webhookId,
 };
-
 export const deleteInstanceWebhooksInputs = { shopifyConnection };
-
 const webhookTopics = input({
   ...webhookTopic,
   collection: "valuelist",
   clean: cleanValueListInput,
 });
-
 const secretKey = input({
   label: "Secret Key",
   type: "string",
   required: true,
-  comments: "The Shopify app's client secret, viewable from the Partner Dashboard.",
+  comments:
+    "The Shopify app's client secret, viewable from the Partner Dashboard.",
   clean: util.types.toString,
 });
-
 export const eventTopicWebhookInputs = {
   shopifyConnection,
   secret_key: secretKey,
   webhookTopics,
 };
-
 export const selectOrdersInputs = {
   shopifyConnection,
 };
-
 export const selectFulfillmentOrdersInputs = {
   shopifyConnection,
   orderId: {
@@ -1175,44 +1068,35 @@ export const selectFulfillmentOrdersInputs = {
     dataSource: undefined,
   },
 };
-
 export const selectLocationsInputs = {
   shopifyConnection,
 };
-
 export const selectCustomersInputs = {
   shopifyConnection,
 };
-
 export const selectDraftOrdersInputs = {
   shopifyConnection,
 };
-
 export const selectCollectionsInputs = {
   shopifyConnection,
 };
-
 export const selectFulfillmentServicesInputs = {
   shopifyConnection,
 };
-
 export const listProducstInputs = {
   shopifyConnection,
   limit,
   getAlldata,
   endCursor,
 };
-
 export const getProductInputs = {
   shopifyConnection,
   productId,
 };
-
 export const deleteProductInputs = {
   shopifyConnection,
   productId,
 };
-
 const title = input({
   label: "Title",
   type: "string",
@@ -1222,7 +1106,6 @@ const title = input({
   comments: "Provide a string value for the title of the product.",
   clean: util.types.toString,
 });
-
 const vendor = input({
   label: "Vendor",
   type: "string",
@@ -1232,7 +1115,6 @@ const vendor = input({
   comments: "Provide a value for the vendor of the product.",
   clean: util.types.toString,
 });
-
 const productType = input({
   label: "Product Type",
   type: "string",
@@ -1242,7 +1124,6 @@ const productType = input({
   comments: "Provide a value for the type of product.",
   clean: util.types.toString,
 });
-
 const productStatus = input({
   label: "Product Status",
   type: "string",
@@ -1255,7 +1136,6 @@ const productStatus = input({
   comments: "Specify the status of the product.",
   clean: util.types.toString,
 });
-
 const descriptionHtml = input({
   label: "Description HTML",
   type: "string",
@@ -1265,7 +1145,6 @@ const descriptionHtml = input({
   comments: "Provide an HTML string for the description of the product.",
   clean: util.types.toString,
 });
-
 export const createProductInputs = {
   shopifyConnection,
   title,
@@ -1294,7 +1173,6 @@ export const createProductInputs = {
   }),
   additionalFields,
 };
-
 export const updateProductInputs = {
   shopifyConnection,
   productId,
@@ -1336,22 +1214,17 @@ export const updateProductInputs = {
   tags,
   additionalFields,
 };
-
 export const countProductsInputs = {
   shopifyConnection,
 };
-
 export const selectProductsInputs = {
   shopifyConnection,
 };
-
 export const listFulfillmentsInputs = {
   shopifyConnection,
   orderId,
 };
-
 export const selectFulfillmentsInputs = { shopifyConnection, orderId };
-
 export const getProductImageInputs = {
   shopifyConnection,
   productId,
@@ -1362,7 +1235,6 @@ export const getProductImageInputs = {
     comments: "Provide a unique ID of a product image. Use only the ID number.",
   }),
 };
-
 const collectionId = input({
   label: "Collection ID",
   type: "string",
@@ -1373,21 +1245,17 @@ const collectionId = input({
   clean: util.types.toString,
   dataSource: LIST_COLLECTIONS_DATASOURCE_REFERENCE,
 });
-
 export const getCollectionInputs = {
   shopifyConnection,
   collectionId,
 };
-
 export const countCollectionsInputs = {
   shopifyConnection,
 };
-
 export const deleteCollectionInputs = {
   shopifyConnection,
   collectionId,
 };
-
 const resource = input({
   label: "Resource",
   type: "string",
@@ -1397,7 +1265,6 @@ const resource = input({
   comments: "The unique identifier for the resource.",
   clean: util.types.toString,
 });
-
 export const listMetafieldsInputs = {
   shopifyConnection,
   resource,
@@ -1405,7 +1272,6 @@ export const listMetafieldsInputs = {
   getAlldata,
   endCursor,
 };
-
 const key = input({
   label: "Key",
   type: "string",
@@ -1415,7 +1281,6 @@ const key = input({
   comments: "The key for the metafield.",
   clean: util.types.toString,
 });
-
 const value = input({
   label: "Value",
   type: "string",
@@ -1425,7 +1290,6 @@ const value = input({
   comments: "The value for the metafield.",
   clean: util.types.toString,
 });
-
 const ownerId = input({
   label: "Owner ID",
   type: "string",
@@ -1435,7 +1299,6 @@ const ownerId = input({
   comments: "The unique ID of the owner of the metafield.",
   clean: util.types.toString,
 });
-
 const type = input({
   label: "Type",
   type: "string",
@@ -1466,7 +1329,6 @@ const type = input({
     "Provide a type for the metafield. Required when there is no corresponding definition for the given namespace, key, and owner resource type.",
   clean: cleanStringInput,
 });
-
 const namespace = input({
   label: "Namespace",
   type: "string",
@@ -1476,7 +1338,6 @@ const namespace = input({
   comments: "The namespace for the metafield.",
   clean: cleanStringInput,
 });
-
 export const setMetafieldInputs = {
   shopifyConnection,
   key,
@@ -1485,7 +1346,6 @@ export const setMetafieldInputs = {
   type,
   namespace,
 };
-
 export const deleteMetafieldInputs = {
   shopifyConnection,
   key: input({
@@ -1503,11 +1363,9 @@ export const deleteMetafieldInputs = {
     clean: util.types.toString,
   }),
 };
-
 export const countDraftOrdersInputs = {
   shopifyConnection,
 };
-
 export const pollingTriggerInputs = {
   shopifyConnection,
 };

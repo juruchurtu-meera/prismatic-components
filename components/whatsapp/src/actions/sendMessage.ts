@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../client";
 import { sendMessageInputs } from "../inputs/sendMessageInputs";
 import { sendMessageExamplePayload } from "../examplePayloads";
-
 export const sendMessage = action({
   display: {
     label: "Send Message",
@@ -20,13 +19,11 @@ export const sendMessage = action({
       contacts,
       contextInput,
       document,
-
       image,
       reaction,
       interactive,
       location,
       previewUrl,
-
       status,
       sticker,
       template,

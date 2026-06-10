@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { updateTableByIdExamplePayload } from "../../examplePayloads";
 import { updateTableByIdInputs } from "../../inputs";
-
 export const updateTableById = action({
   display: {
     label: "Update Table by ID",

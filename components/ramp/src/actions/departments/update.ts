@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { getDepartmentResponse as updateDepartmentResponse } from "../../examplePayloads/departments";
 import { connection, departmentId, name } from "../../inputs";
-
 export const updateDepartment = action({
   display: {
     label: "Update Department",
@@ -22,7 +21,6 @@ export const updateDepartment = action({
   },
   perform: async (context, { connection, departmentId, name }) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.patch(`/departments/${departmentId}`, {
       name,
     });

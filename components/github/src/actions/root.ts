@@ -1,6 +1,5 @@
 import { action, Connection, util } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-
 const metaRoot = action({
   display: {
     label: "Meta Root",
@@ -19,7 +18,6 @@ const metaRoot = action({
     },
   },
 });
-
 export default {
   metaRoot,
 };

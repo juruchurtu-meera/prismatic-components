@@ -4,7 +4,6 @@ import actions from "./actions";
 import dataSources from "./dataSources";
 import connections from "./connections";
 import triggers from "./triggers";
-
 export default component({
   key: "klaviyo",
   public: true,

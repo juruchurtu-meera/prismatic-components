@@ -9,7 +9,6 @@ import {
   teamMemberId,
 } from "../inputs";
 import { checkDebug, getEntries, handleDropboxError } from "../util";
-
 export const lockFile = action({
   display: {
     label: "Lock File",
@@ -36,9 +35,7 @@ export const lockFile = action({
       teamMemberId ? "user" : undefined,
       teamMemberId,
     );
-
     const entries = getEntries(filePaths, dynamicPaths);
-
     try {
       const args = {
         entries,

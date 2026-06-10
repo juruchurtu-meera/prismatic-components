@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { getCalendlyClient } from "../../client";
 import { connection, organization, scope, user } from "../../inputs";
 import { deleteWebhookInstance } from "../../util";
-
 export const deleteInstancedWebhooks = action({
   display: {
     label: "Delete Instanced Webhooks",
@@ -12,7 +11,6 @@ export const deleteInstancedWebhooks = action({
     const client = getCalendlyClient(connection, context.debug.enabled);
     const endpoint = context.webhookUrls[context.flow.name];
     return {
-      
       data: await deleteWebhookInstance(
         client,
         endpoint,

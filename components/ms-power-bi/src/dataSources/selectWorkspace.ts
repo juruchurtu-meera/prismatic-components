@@ -4,7 +4,6 @@ import { createClient } from "../client";
 import { TResponse } from "../interfaces/TResponse";
 import { Group } from "../interfaces/Group";
 import { paginateResults } from "../utils";
-
 export const selectWorkspace = dataSource({
   display: {
     label: "Select Workspace",
@@ -18,8 +17,12 @@ export const selectWorkspace = dataSource({
     const parameters = {
       $top: 100,
     };
-    const { value: groups } = await paginateResults<Group>(client, "/groups", true, parameters);
-
+    const { value: groups } = await paginateResults<Group>(
+      client,
+      "/groups",
+      true,
+      parameters,
+    );
     return {
       result: groups
         .sort((a, b) => (a.name < b.name ? -1 : 1))
@@ -28,5 +31,4 @@ export const selectWorkspace = dataSource({
   },
   dataSourceType: "picklist",
 });
-
 export default selectWorkspace;

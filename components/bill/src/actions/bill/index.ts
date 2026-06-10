@@ -5,7 +5,6 @@ import { deleteBill } from "./deleteBill";
 import { getBill } from "./getBill";
 import { listBills } from "./listBills";
 import { updateBill } from "./updateBill";
-
 export default {
   bulkCreateBills,
   bulkUpdateBills,

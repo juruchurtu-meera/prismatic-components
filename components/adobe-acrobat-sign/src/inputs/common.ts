@@ -1,13 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanFunctionForString, cleanNumber } from "../util";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Adobe Acrobat Sign connection to use.",
 });
-
 export const cursor = input({
   label: "Cursor",
   type: "string",
@@ -17,7 +15,6 @@ export const cursor = input({
     "Used to navigate through pagination. If not provided, it will default to the first page. Only applied when Fetch All is false.",
   clean: util.types.toString,
 });
-
 export const pageSize = input({
   label: "Page Size",
   type: "string",
@@ -28,7 +25,6 @@ export const pageSize = input({
     "The number of results to return per page. If not provided, it is decided by your application settings. Only applied when Fetch All is false.",
   clean: cleanNumber,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
@@ -38,7 +34,6 @@ export const fetchAll = input({
     "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
-
 export const filterQuery = input({
   label: "Filter Query",
   type: "string",
@@ -48,7 +43,6 @@ export const filterQuery = input({
   comments: "Filter results by matching this text.",
   clean: cleanFunctionForString,
 });
-
 export const externalId = input({
   label: "External ID",
   type: "string",
@@ -59,7 +53,6 @@ export const externalId = input({
     "Case-sensitive External ID for which you would like to retrieve agreement information. ExternalId is passed in the call to the agreement creation API. <strong>Note:</strong> The externalId value is visible to all participants through the API, so should not be used to contain a sensitive token.",
   clean: util.types.toString,
 });
-
 export const groupId = input({
   label: "Group ID",
   type: "string",
@@ -71,7 +64,6 @@ export const groupId = input({
   dataSource: "selectGroup",
   clean: util.types.toString,
 });
-
 export const email = input({
   label: "Email",
   type: "string",
@@ -81,7 +73,6 @@ export const email = input({
   comments: "The email address of the user to be created.",
   clean: util.types.toString,
 });
-
 export const company = input({
   label: "Company",
   type: "string",
@@ -91,7 +82,6 @@ export const company = input({
   comments: "The company of the user.",
   clean: util.types.toString,
 });
-
 export const firstName = input({
   label: "First Name",
   type: "string",
@@ -101,7 +91,6 @@ export const firstName = input({
   comments: "The first name of the user.",
   clean: util.types.toString,
 });
-
 export const lastName = input({
   label: "Last Name",
   type: "string",
@@ -111,7 +100,6 @@ export const lastName = input({
   comments: "The last name of the user.",
   clean: util.types.toString,
 });
-
 export const locale = input({
   label: "Locale",
   type: "string",
@@ -121,7 +109,6 @@ export const locale = input({
   comments: "The locale of the user.",
   clean: util.types.toString,
 });
-
 export const phone = input({
   label: "Phone",
   type: "string",
@@ -131,7 +118,6 @@ export const phone = input({
   comments: "The phone number of the user.",
   clean: util.types.toString,
 });
-
 export const title = input({
   label: "Title",
   type: "string",
@@ -141,7 +127,6 @@ export const title = input({
   comments: "The job title of the user.",
   clean: util.types.toString,
 });
-
 export const accountId = input({
   label: "Account ID",
   type: "string",

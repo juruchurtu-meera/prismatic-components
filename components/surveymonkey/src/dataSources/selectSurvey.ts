@@ -4,18 +4,6 @@ import { paginateResults } from "../util";
 import { selectSurveyInputs } from "../inputs";
 import { selectSurveyExamplePayload } from "../examplePayloads";
 import type { Survey } from "../types";
-
-
-
-
-
-
-
-
-
-
-
-
 export const selectSurvey = dataSource({
   display: {
     label: "Select Survey",
@@ -24,20 +12,11 @@ export const selectSurvey = dataSource({
   inputs: selectSurveyInputs,
   perform: async (_context, { connection }) => {
     const client = createClient(connection, false);
-
-    
-    const response = await paginateResults<Survey>(
-      client,
-      "/surveys",
-      true, 
-    );
-
-    
+    const response = await paginateResults<Survey>(client, "/surveys", true);
     const result = response.data.map<Element>((survey) => ({
       label: survey.title,
       key: survey.id,
     }));
-
     return { result };
   },
   examplePayload: selectSurveyExamplePayload,

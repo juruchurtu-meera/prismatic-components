@@ -3,7 +3,6 @@ import { connection, webinarKey } from "../inputs/general";
 import { createGotoWebinarClient } from "../client";
 import { Registrant } from "../interfaces";
 import { bigIntTransformerConfig, parseRegistrantKey } from "../utils";
-
 export const selectRegistrant = dataSource({
   display: {
     label: "Select Registrant",
@@ -20,17 +19,14 @@ export const selectRegistrant = dataSource({
   perform: async (context, { connection, webinarKey }) => {
     const { client, organizerKey } = createGotoWebinarClient(connection, false);
     const url = `/organizers/${organizerKey}/webinars/${webinarKey}/registrants`;
-
     const { data } = await client.get<Registrant[]>(url, {
       transformResponse: bigIntTransformerConfig.transformResponse,
     });
-
     if (!data || data.length === 0) {
       return {
         result: [],
       };
     }
-
     const result = data
       .map(
         (registrant): Element => ({
@@ -39,7 +35,6 @@ export const selectRegistrant = dataSource({
         }),
       )
       .sort((a, b) => (a.label ?? "").localeCompare(b.label ?? ""));
-
     return {
       result,
     };

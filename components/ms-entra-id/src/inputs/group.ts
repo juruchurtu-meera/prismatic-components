@@ -12,7 +12,6 @@ import {
   uniqueName,
   useAsUpsert,
 } from "./common";
-
 const displayName = input({
   label: "Display Name",
   type: "string",
@@ -22,7 +21,6 @@ const displayName = input({
   example: "Marketing Team",
   clean: util.types.toString,
 });
-
 const mailEnabled = input({
   label: "Mail Enabled",
   type: "boolean",
@@ -31,7 +29,6 @@ const mailEnabled = input({
   comments: "When true, the group is mail-enabled.",
   clean: util.types.toBool,
 });
-
 const mailNickname = input({
   label: "Mail Nickname",
   type: "string",
@@ -42,7 +39,6 @@ const mailNickname = input({
   example: "MarketingTeam",
   clean: util.types.toString,
 });
-
 const securityEnabled = input({
   label: "Security Enabled",
   type: "boolean",
@@ -52,7 +48,6 @@ const securityEnabled = input({
     "When true, the group is security-enabled, including Microsoft 365 groups. Groups created using the Microsoft Entra admin center or the Azure portal always have securityEnabled initially set to true.",
   clean: util.types.toBool,
 });
-
 export const createGroupInputs = {
   connection,
   displayName,
@@ -65,7 +60,6 @@ export const createGroupInputs = {
     comments: `${additionalProperties.comments} See [Create Group API](https://learn.microsoft.com/en-us/graph/api/group-post-groups).`,
   }),
 };
-
 export const deleteGroupInputs = {
   connection,
   groupId: input({
@@ -73,13 +67,11 @@ export const deleteGroupInputs = {
     comments: "The ID of the group to delete.",
   }),
 };
-
 export const getGroupInputs = {
   connection,
   groupId,
   $select: odataParams.$select,
 };
-
 export const listGroupInputs = {
   connection,
   $count: odataParams.$count,
@@ -92,7 +84,6 @@ export const listGroupInputs = {
   getAllPaginatedResults,
   eventualConsistencyLevelHeader,
 };
-
 export const listGroupMembersInputs = {
   connection,
   groupId,
@@ -105,7 +96,6 @@ export const listGroupMembersInputs = {
   $expand: odataParams.$expand,
   eventualConsistencyLevelHeader,
 };
-
 export const removeMemberOfGroupInputs = {
   connection,
   groupId: input({
@@ -117,7 +107,6 @@ export const removeMemberOfGroupInputs = {
     comments: "The ID of the member to remove from the group.",
   }),
 };
-
 const mailEnabledOptional = input({
   label: mailEnabled.label,
   comments: mailEnabled.comments,
@@ -126,7 +115,6 @@ const mailEnabledOptional = input({
   model: getOptionalBooleanModel(),
   clean: cleanBooleanInput,
 });
-
 const securityEnabledOptional = input({
   label: securityEnabled.label,
   comments: securityEnabled.comments,
@@ -135,7 +123,6 @@ const securityEnabledOptional = input({
   model: getOptionalBooleanModel(),
   clean: cleanBooleanInput,
 });
-
 export const upsertGroupInputs = {
   connection,
   uniqueName: input({
@@ -159,7 +146,6 @@ export const upsertGroupInputs = {
     comments: `${additionalProperties.comments} See [Upsert Group API](https://learn.microsoft.com/en-us/graph/api/group-upsert).`,
   }),
 };
-
 const groupMemberOdataId = input({
   label: "Group Member OData ID",
   type: "string",

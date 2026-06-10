@@ -6,9 +6,7 @@ import {
 } from "@prismatic-io/spectral/dist/clients/http";
 import { getAccessToken } from "../client";
 import { connectionInput } from "../inputs";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -30,7 +28,7 @@ export const rawRequest = action({
       const { data } = await sendRawRequest(
         "https://www.googleapis.com/calendar/v3",
         { ...rawRequestInputs, debugRequest: context.debug.enabled },
-        { Authorization: `Bearer ${accessToken}` }
+        { Authorization: `Bearer ${accessToken}` },
       );
       return { data };
     } catch (error) {

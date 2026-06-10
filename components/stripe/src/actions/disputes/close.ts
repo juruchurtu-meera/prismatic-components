@@ -2,7 +2,6 @@ import { action, util } from "@prismatic-io/spectral";
 import { createStripeClient } from "../../auth";
 import { closeDisputeExamplePayload } from "../../examplePayloads/disputes";
 import { connectionInput, disputeId, timeout } from "../../inputs";
-
 export const closeDispute = action({
   display: {
     label: "Close Dispute",

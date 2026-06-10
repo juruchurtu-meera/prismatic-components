@@ -8,7 +8,6 @@ import {
   version,
 } from "../../inputs";
 import { generatePayload } from "../util";
-
 export const cancelShipment = action({
   display: {
     label: "Cancel Shipments",

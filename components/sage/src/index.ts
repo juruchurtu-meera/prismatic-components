@@ -18,7 +18,11 @@ import {
   listContactTypes,
   updateContact,
 } from "./actions/contacts";
-import { listAddressTypes, listCountries, listCurrencies } from "./actions/generic";
+import {
+  listAddressTypes,
+  listCountries,
+  listCurrencies,
+} from "./actions/generic";
 import {
   createPurchaseInvoice,
   deletePurchaseInvoice,
@@ -37,7 +41,6 @@ import {
 import connections from "./connections";
 import dataSources from "./dataSources";
 import triggers from "./triggers";
-
 export default component({
   key: "sage",
   public: true,

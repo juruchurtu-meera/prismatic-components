@@ -3,7 +3,6 @@ import { awsRegion } from "aws-utils";
 import { connectionInput } from "../inputs";
 import { createSNSClient } from "../client";
 import { fetchTopics } from "../utils";
-
 export const selectTopic = dataSource({
   display: {
     label: "Select Topic",
@@ -11,16 +10,14 @@ export const selectTopic = dataSource({
   },
   inputs: {
     awsConnection: connectionInput,
-    awsRegion: { ...awsRegion, dataSource: undefined, model: undefined }, 
+    awsRegion: { ...awsRegion, dataSource: undefined, model: undefined },
   },
   perform: async ({ logger }, { awsConnection, awsRegion }) => {
     const sns = await createSNSClient({
       awsConnection,
       awsRegion,
     });
-
     const { Topics: topics } = await fetchTopics(sns, true, undefined);
-
     const result = topics
       ? topics.map<Element>((topic) => ({
           label: `Topic: ${topic.TopicArn.split(":").pop()}`,

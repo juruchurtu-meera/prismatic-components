@@ -4,7 +4,6 @@ import { updateTaskInputs } from "../../inputs";
 import type { UpdateTaskBody } from "../types/UpdateTaskBody";
 import type { UpdateTaskQueryParams } from "../types/UpdateTaskQueryParams";
 import { updateTaskExamplePayload } from "../../examplePayloads";
-
 export const updateTask = action({
   display: {
     label: "Update Task",
@@ -55,5 +54,4 @@ export const updateTask = action({
   },
   inputs: updateTaskInputs,
 });
-
 export default { updateTask };

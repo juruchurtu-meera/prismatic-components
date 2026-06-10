@@ -3,7 +3,6 @@ import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getZendeskClient } from "../../client";
 import { upsertContactExamplePayload } from "../../examplePayloads";
 import { upsertContactInputs } from "../../inputs";
-
 export const upsertContact = action({
   display: {
     label: "Upsert Contact",
@@ -48,12 +47,10 @@ export const upsertContact = action({
       customFields.forEach((customField) => {
         customFieldsObject[customField.key] = customField.value;
       });
-
       const filterableCustomFieldsObject: any = {};
       filterableCustomFields.forEach((customField) => {
         filterableCustomFieldsObject[customField.key] = customField.value;
       });
-
       const body = {
         ...(creatorId.length && { creator_id: util.types.toNumber(creatorId) }),
         ...(ownerId.length && { owner_id: util.types.toNumber(ownerId) }),
@@ -95,7 +92,6 @@ export const upsertContact = action({
           },
         },
       );
-
       return { data };
     } catch (error) {
       const handled = handleErrors(error);

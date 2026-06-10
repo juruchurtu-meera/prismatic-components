@@ -5,7 +5,6 @@ import { pollChangesTriggerExamplePayload } from "../examplePayloads";
 import { pollChangesInputs } from "../inputs";
 import type { PollingState } from "../types";
 import { fetchEntriesSince, getEnvironment } from "../util";
-
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Entries",
@@ -18,7 +17,6 @@ export const pollChangesTrigger = pollingTrigger({
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState;
     const lastPolledAt = pollState?.lastPolledAt ?? now;
-
     const client = createClient(params.connection, context);
     const environment = await getEnvironment(
       client,
@@ -30,15 +28,9 @@ export const pollChangesTrigger = pollingTrigger({
       lastPolledAt,
       params.contentTypeId,
     );
-
-    
-    
-    
-    
     const lastPolledAtDate = new Date(lastPolledAt);
     const created: EntryProps<KeyValueMap>[] = [];
     const updated: EntryProps<KeyValueMap>[] = [];
-
     for (const record of records) {
       const createdValue = record.sys?.createdAt;
       const createdAtDate =
@@ -48,10 +40,6 @@ export const pollChangesTrigger = pollingTrigger({
       else if (!isNew && params.showUpdatedRecords !== false)
         updated.push(record);
     }
-
-    
-    
-    
     let nextCursor = now;
     if (truncated) {
       const oldestUpdatedAt = records[records.length - 1]?.sys?.updatedAt;
@@ -62,13 +50,11 @@ export const pollChangesTrigger = pollingTrigger({
       );
     }
     context.polling.setState({ lastPolledAt: nextCursor });
-
     if (context.debug.enabled) {
       context.logger.debug(
         `Polled Contentful entries: ${records.length} fetched, ${created.length} created, ${updated.length} updated, truncated=${truncated}`,
       );
     }
-
     const totalMatched = created.length + updated.length;
     return {
       payload: { ...payload, body: { data: { created, updated } } },

@@ -4,7 +4,6 @@ import {
   OAuth2Type,
   templateConnectionInputs,
 } from "@prismatic-io/spectral";
-
 export const oauth = oauth2Connection({
   key: "oauth",
   label: "OAuth 2.0",
@@ -61,7 +60,6 @@ export const oauth = oauth2Connection({
     },
   },
 });
-
 export const serverToServerConnection = oauth2Connection({
   key: "serverToServer",
   label: "Server to Server",
@@ -120,5 +118,4 @@ export const serverToServerConnection = oauth2Connection({
     OAuth2Type.ClientCredentials,
   ),
 });
-
 export default [oauth, serverToServerConnection];

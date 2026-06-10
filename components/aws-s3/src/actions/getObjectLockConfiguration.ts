@@ -4,7 +4,6 @@ import { awsRegion, dynamicAccessAllInputs } from "aws-utils";
 import { createS3Client } from "../auth";
 import { getObjectLockConfigurationPayload } from "../examplePayloads";
 import { accessKeyInput, bucket } from "../inputs";
-
 export const getObjectLockConfiguration = action({
   display: {
     label: "Get Object Lock Configuration",
@@ -34,7 +33,6 @@ export const getObjectLockConfiguration = action({
       Bucket: bucket,
     });
     const data = await s3.send(command);
-
     return {
       data,
     };

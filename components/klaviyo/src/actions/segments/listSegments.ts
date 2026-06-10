@@ -5,7 +5,6 @@ import type { FieldsSegment } from "../../types/FieldsSegment";
 import { fetchSegments } from "../../utils";
 import { listSegmentsExamplePayload } from "../../examplePayloads";
 import { KlaviyoApi } from "../../enums/KlaviyoApi";
-
 export const listSegments = action({
   display: {
     label: "List Segments",
@@ -23,7 +22,6 @@ export const listSegments = action({
       [],
       undefined,
     );
-
     return {
       data,
     };

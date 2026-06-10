@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-04
+
+Added the **New and Updated Messages** polling trigger that retrieves email activity events from the SendGrid Email Activity Feed
+
 ### 2026-04-30
 
 Updated spectral version

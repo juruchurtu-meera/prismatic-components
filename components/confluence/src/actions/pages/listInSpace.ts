@@ -16,7 +16,6 @@ import {
 import type { Page } from "../../interfaces";
 import { listPagesExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../util";
-
 export const listPagesInSpace = action({
   display: {
     label: "List Pages in Space",
@@ -51,7 +50,6 @@ export const listPagesInSpace = action({
   ) => {
     const client = await createClient(connectionInput, context.debug.enabled);
     const url = `/spaces/${spaceId}/pages`;
-
     if (fetchAll) {
       const results = await paginateResults<Page>(
         client,
@@ -60,7 +58,6 @@ export const listPagesInSpace = action({
       );
       return { data: { results } };
     }
-
     const params = {
       depth,
       sort,

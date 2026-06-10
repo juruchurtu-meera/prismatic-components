@@ -6,12 +6,10 @@ export interface Workspace {
   forms: WorkspaceForm[];
   self: WorkspaceSelf[];
 }
-
 export interface WorkspaceForm {
   count: number;
   href: string;
 }
-
 export interface WorkspaceSelf {
   href: string;
 }

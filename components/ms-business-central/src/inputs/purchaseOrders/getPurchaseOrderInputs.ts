@@ -2,7 +2,6 @@ import { input } from "@prismatic-io/spectral";
 import { companyId } from "../accounts/getAccountsInputs";
 import { connectionInput } from "../general";
 import { purchaseOrderId } from "./shared";
-
 export const getPurchaseOrderInputs = {
   connection: connectionInput,
   companyId,

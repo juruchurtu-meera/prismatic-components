@@ -1,6 +1,5 @@
 import type { createShipStationClient } from "../client";
 import type { TimestampedRecord } from "../types";
-
 export const getModifiedOrCreatedRecords = <T extends TimestampedRecord>(
   records: T[],
   lastPolledAt: string,
@@ -19,12 +18,10 @@ export const getModifiedOrCreatedRecords = <T extends TimestampedRecord>(
     { created: [] as T[], updated: [] as T[] },
   );
 };
-
 export const hasChanges = (result: {
   created: unknown[];
   updated: unknown[];
 }) => result.created.length > 0 || result.updated.length > 0;
-
 export const fetchAllPages = async <T = unknown>(
   client: ReturnType<typeof createShipStationClient>,
   endpoint: string,
@@ -34,7 +31,6 @@ export const fetchAllPages = async <T = unknown>(
   let page = 1;
   const allRecords: T[] = [];
   let hasMore = true;
-
   while (hasMore) {
     const { data } = await client.get(endpoint, {
       params: { ...params, page, pageSize: 500 },
@@ -44,6 +40,5 @@ export const fetchAllPages = async <T = unknown>(
     hasMore = Array.isArray(records) && records.length === 500;
     page++;
   }
-
   return allRecords;
 };

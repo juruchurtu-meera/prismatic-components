@@ -6,7 +6,6 @@ import {
   sensitiveDataPayload,
 } from "./examplePayloads";
 import { jsonInputClean } from "./util";
-
 const environments = [
   {
     label: "Production",
@@ -17,13 +16,11 @@ const environments = [
     value: "Testing",
   },
 ];
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const employeeId = input({
   label: "Employee ID",
   type: "string",
@@ -33,7 +30,6 @@ export const employeeId = input({
   clean: util.types.toString,
   dataSource: "selectEmployee",
 });
-
 export const pagesize = input({
   label: "Page Size",
   type: "string",
@@ -46,7 +42,6 @@ export const pagesize = input({
     return util.types.toInt(value, 0);
   },
 });
-
 export const includetotalcount = input({
   label: "Include Total Count",
   type: "boolean",
@@ -56,7 +51,6 @@ export const includetotalcount = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const pagenumber = input({
   label: "Page Number",
   type: "string",
@@ -67,7 +61,6 @@ export const pagenumber = input({
   default: "0",
   clean: util.types.toInt,
 });
-
 export const companyId = input({
   label: "Company ID",
   type: "string",
@@ -76,7 +69,6 @@ export const companyId = input({
   example: "kjU72LCJexvrqL7G4TMHHN",
   clean: util.types.toString,
 });
-
 export const documentId = input({
   label: "Document ID",
   type: "string",
@@ -85,7 +77,6 @@ export const documentId = input({
   example: "kjU72LCJexvrqL7G4TMHHN",
   clean: util.types.toString,
 });
-
 export const firstName = input({
   label: "First Name",
   type: "string",
@@ -94,7 +85,6 @@ export const firstName = input({
   example: "John",
   clean: util.types.toString,
 });
-
 export const lastName = input({
   label: "Last Name",
   type: "string",
@@ -103,7 +93,6 @@ export const lastName = input({
   example: "Doe",
   clean: util.types.toString,
 });
-
 export const employeeInput = input({
   label: "Employee",
   type: "code",
@@ -113,7 +102,6 @@ export const employeeInput = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const code = input({
   label: "Code",
   type: "string",
@@ -123,7 +111,6 @@ export const code = input({
   example: "123456",
   clean: util.types.toString,
 });
-
 export const codeResource = input({
   label: "Code Resource",
   type: "string",
@@ -142,7 +129,6 @@ export const codeResource = input({
     { label: "positions", value: "positions" },
   ],
 });
-
 export const category = input({
   label: "Category",
   type: "string",
@@ -151,7 +137,6 @@ export const category = input({
   example: "example_field",
   clean: util.types.toString,
 });
-
 export const earningCode = input({
   label: "Earning Code",
   type: "string",
@@ -160,7 +145,6 @@ export const earningCode = input({
   example: "12345",
   clean: util.types.toString,
 });
-
 export const startDate = input({
   label: "Start Date",
   type: "string",
@@ -169,7 +153,6 @@ export const startDate = input({
   example: "2021-01-01",
   clean: util.types.toString,
 });
-
 export const earningsInput = input({
   label: "Earnings Input",
   type: "code",
@@ -179,7 +162,6 @@ export const earningsInput = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const year = input({
   label: "Year",
   type: "string",
@@ -189,7 +171,6 @@ export const year = input({
   default: "2023",
   clean: util.types.toString,
 });
-
 export const checkDate = input({
   label: "Check Date",
   type: "string",
@@ -198,7 +179,6 @@ export const checkDate = input({
   example: "2023-01-01",
   clean: util.types.toString,
 });
-
 export const sensitiveDataInput = input({
   label: "Sensitive Data Input",
   type: "code",
@@ -208,7 +188,6 @@ export const sensitiveDataInput = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -218,7 +197,6 @@ export const limit = input({
   example: "10",
   clean: util.types.toString,
 });
-
 export const offset = input({
   label: "Offset",
   type: "string",
@@ -228,7 +206,6 @@ export const offset = input({
   example: "10",
   clean: util.types.toString,
 });
-
 export const includeTotalCount = input({
   label: "Include Total Count",
   type: "boolean",
@@ -238,7 +215,6 @@ export const includeTotalCount = input({
   example: "false",
   clean: util.types.toBool,
 });
-
 export const timeImportFileTrackingId = input({
   label: "Time Import File Tracking ID",
   type: "string",
@@ -247,7 +223,6 @@ export const timeImportFileTrackingId = input({
   example: "12345",
   clean: util.types.toString,
 });
-
 export const file = input({
   label: "File",
   placeholder: "File",
@@ -257,7 +232,6 @@ export const file = input({
   example: "My File Contents",
   clean: util.types.toData,
 });
-
 export const fileName = input({
   label: "File Name",
   type: "string",
@@ -266,7 +240,6 @@ export const fileName = input({
   example: "an_example_name",
   clean: util.types.toString,
 });
-
 export const environment = input({
   label: "Environment",
   placeholder: "Environment",
@@ -276,7 +249,6 @@ export const environment = input({
   comments: "The environment to use for the Paylocity apis",
   model: environments,
 });
-
 export const payEntryInput = input({
   label: "Pay Entry Input",
   type: "code",
@@ -286,7 +258,6 @@ export const payEntryInput = input({
   clean: jsonInputClean,
   required: false,
 });
-
 export const triggerCompanyId = input({
   label: "Company ID",
   type: "string",
@@ -295,7 +266,6 @@ export const triggerCompanyId = input({
   example: "kjU72LCJexvrqL7G4TMHHN",
   clean: util.types.toString,
 });
-
 export const showNewRecords = input({
   label: "Show New Records",
   type: "boolean",

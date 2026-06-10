@@ -3,8 +3,6 @@ import { METRIC_TYPE_OPTIONS } from "../constants";
 import type { MetricIntakeType } from "../types";
 import { toOptionalNumber, toOptionalString } from "../utils";
 import { connection } from "./common";
-
-
 export const metricName = input({
   label: "Metric Name",
   type: "string",
@@ -16,11 +14,6 @@ export const metricName = input({
   dataSource: "selectMetric",
   clean: util.types.toString,
 });
-
-
-
-
-
 export const metricSeries = input({
   label: "Metric Series",
   type: "code",
@@ -43,8 +36,6 @@ export const metricSeries = input({
   ),
   clean: util.types.toObject,
 });
-
-
 export const metricType = input({
   label: "Metric Type",
   type: "string",
@@ -55,8 +46,6 @@ export const metricType = input({
   clean: (value: unknown): MetricIntakeType | undefined =>
     value ? (util.types.toNumber(value) as MetricIntakeType) : undefined,
 });
-
-
 export const metricValue = input({
   label: "Value",
   type: "string",
@@ -66,8 +55,6 @@ export const metricValue = input({
   example: "0.7",
   clean: util.types.toNumber,
 });
-
-
 export const metricTimestamp = input({
   label: "Timestamp",
   type: "string",
@@ -78,8 +65,6 @@ export const metricTimestamp = input({
   example: "1636629071",
   clean: toOptionalNumber,
 });
-
-
 export const metricTags = input({
   label: "Tags",
   type: "string",
@@ -90,8 +75,6 @@ export const metricTags = input({
   example: "environment:production",
   clean: (value: unknown) => value as string[],
 });
-
-
 export const metricUnit = input({
   label: "Unit",
   type: "string",
@@ -101,8 +84,6 @@ export const metricUnit = input({
   example: "byte",
   clean: toOptionalString,
 });
-
-
 export const metricInterval = input({
   label: "Interval",
   type: "string",
@@ -113,8 +94,6 @@ export const metricInterval = input({
   example: "60",
   clean: toOptionalNumber,
 });
-
-
 export const resourceName = input({
   label: "Resource Name",
   type: "string",
@@ -125,8 +104,6 @@ export const resourceName = input({
   example: "my-host",
   clean: toOptionalString,
 });
-
-
 export const resourceType = input({
   label: "Resource Type",
   type: "string",
@@ -136,8 +113,6 @@ export const resourceType = input({
   example: "host",
   clean: toOptionalString,
 });
-
-
 export const metricsFrom = input({
   label: "From",
   type: "string",
@@ -148,8 +123,6 @@ export const metricsFrom = input({
   example: "1636629071",
   clean: util.types.toNumber,
 });
-
-
 export const metricsHost = input({
   label: "Host",
   type: "string",
@@ -160,8 +133,6 @@ export const metricsHost = input({
   example: "my-host",
   clean: toOptionalString,
 });
-
-
 export const metricsTagFilter = input({
   label: "Tag Filter",
   type: "string",
@@ -172,8 +143,6 @@ export const metricsTagFilter = input({
   example: "env:production",
   clean: toOptionalString,
 });
-
-
 export const metricsQuery = input({
   label: "Query",
   type: "string",
@@ -184,16 +153,10 @@ export const metricsQuery = input({
   example: "system.cpu",
   clean: util.types.toString,
 });
-
-
-
-
-
 export const submitMetricsInputs = {
   connection,
   metricSeries,
 };
-
 export const submitSingleMetricInputs = {
   connection,
   metricName,
@@ -206,14 +169,12 @@ export const submitSingleMetricInputs = {
   resourceName,
   resourceType,
 };
-
 export const listMetricsInputs = {
   connection,
   metricsFrom,
   metricsHost,
   metricsTagFilter,
 };
-
 export const searchMetricsInputs = {
   connection,
   metricsQuery,

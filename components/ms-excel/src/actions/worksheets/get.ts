@@ -4,7 +4,6 @@ import { connection } from "../../inputs/general";
 import { getWorksheetsInputs } from "../../inputs/worksheets/get";
 import { getWorksheetExamplePayload } from "../../examplePayloads/worksheets";
 import { getDriveOrSiteBaseUrl } from "../../helpers";
-
 export const getWorksheet = action({
   display: {
     label: "Get Worksheet",
@@ -16,9 +15,7 @@ export const getWorksheet = action({
   ) => {
     const { client, source } = createClient(connection, context.debug.enabled);
     const baseUrl = getDriveOrSiteBaseUrl(source, driveOrSiteId, workbookId);
-
     const { data } = await client.get(`${baseUrl}/worksheets/${worksheetId}`);
-
     return {
       data,
     };

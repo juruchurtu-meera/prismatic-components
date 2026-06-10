@@ -13,7 +13,6 @@ import {
   workspaceId,
 } from "../inputs";
 import type { EventsProvider } from "../types/EventsProvider";
-
 export const updateEventsProvider = action({
   display: {
     label: "Update Events Provider",
@@ -39,7 +38,6 @@ export const updateEventsProvider = action({
     };
     if (description) body.description = description;
     if (docsUrl) body.docs_url = docsUrl;
-
     try {
       const { data } = await client.put(
         `/${consumerOrgId}/${projectId}/${workspaceId}/providers/${providerId}`,

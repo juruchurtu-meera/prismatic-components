@@ -1,12 +1,10 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanCodeInput, cleanNumberInput, cleanStringInput } from "../utils";
-
 export const connection = input({
   label: "Connection",
   type: "connection",
   required: true,
 });
-
 export const additionalFields = input({
   label: "Additional Fields",
   type: "code",
@@ -16,7 +14,6 @@ export const additionalFields = input({
   example: JSON.stringify({}, null, 2),
   clean: cleanCodeInput,
 });
-
 export const $top = input({
   label: "Top",
   type: "string",
@@ -26,7 +23,6 @@ export const $top = input({
   placeholder: "50",
   clean: cleanNumberInput,
 });
-
 export const $filter = input({
   label: "Filter",
   type: "string",
@@ -36,7 +32,6 @@ export const $filter = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const $orderby = input({
   label: "Order By",
   type: "string",
@@ -46,7 +41,6 @@ export const $orderby = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const $skip = input({
   label: "Skip",
   type: "string",
@@ -57,7 +51,6 @@ export const $skip = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 export const getAllData = input({
   label: "Get All Data",
   type: "boolean",
@@ -67,7 +60,6 @@ export const getAllData = input({
   default: "false",
   clean: util.types.toBool,
 });
-
 export const webhookType = input({
   label: "Webhook Type",
   type: "string",

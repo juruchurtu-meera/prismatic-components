@@ -4,7 +4,6 @@ import { listProjectListTasksInputs } from "../../inputs";
 import type { ListProjectListTasksQueryParams } from "../types/ListProjectListTasksQueryParams";
 import { listProjectListTasksExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listProjectListTasks = action({
   display: {
     label: "List Project List Tasks",
@@ -28,5 +27,4 @@ export const listProjectListTasks = action({
   },
   inputs: listProjectListTasksInputs,
 });
-
 export default { listProjectListTasks };

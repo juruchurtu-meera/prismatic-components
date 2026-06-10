@@ -4,7 +4,6 @@ import { SERVICES } from "../../constants";
 import { postSupplierInvoiceRequestsAttachmentsExamplePayload } from "../../examplePayloads";
 import { postSupplierInvoiceRequestsAttachmentsInputs } from "../../inputs";
 import { getIdObject } from "../../util";
-
 export const postSupplierInvoiceRequestsAttachments = action({
   display: {
     label: "Create Supplier Invoice Request Attachment",

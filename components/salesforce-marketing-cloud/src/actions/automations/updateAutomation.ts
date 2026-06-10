@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { AUTOMATIONS_PATH } from "../../constants";
 import { updateAutomationExamplePayload } from "../../examplePayloads";
 import { updateAutomationInputs } from "../../inputs";
-
 export const updateAutomation = action({
   examplePayload: updateAutomationExamplePayload,
   display: {
@@ -17,12 +16,10 @@ export const updateAutomation = action({
     { connection, automationId, automationExtraBody },
   ) => {
     const client = createClient(connection, context.debug.enabled);
-
     const { data } = await client.patch(
       `${AUTOMATIONS_PATH}/${automationId}`,
       automationExtraBody,
     );
-
     return { data };
   },
 });

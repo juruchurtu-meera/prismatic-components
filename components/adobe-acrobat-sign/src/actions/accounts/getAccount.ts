@@ -3,7 +3,6 @@ import { getAccountInputs } from "../../inputs";
 import { getAdobeSignClient } from "../../client";
 import type { AccountInfoResponse } from "../../types";
 import { getAccountExamplePayload } from "../../examplePayloads";
-
 export const getAccount = action({
   display: {
     label: "Get Account",
@@ -15,7 +14,6 @@ export const getAccount = action({
     const { data } = await client.get<AccountInfoResponse>(
       `/accounts/${accountId}`,
     );
-
     return { data };
   },
   examplePayload: getAccountExamplePayload,

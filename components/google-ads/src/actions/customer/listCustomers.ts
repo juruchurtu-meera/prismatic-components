@@ -3,7 +3,6 @@ import { createClient } from "../../client";
 import { listCustomersExamplePayload } from "../../examplePayloads";
 import { listCustomersInputs } from "../../inputs";
 import { searchGoogleAds } from "../../util";
-
 export const listCustomers = action({
   display: {
     label: "List Customers by Manager",
@@ -19,7 +18,6 @@ export const listCustomers = action({
       context.debug.enabled,
       context.logger,
     );
-
     const data = await searchGoogleAds(client, {
       customerId: managerCustomerId,
       params: {

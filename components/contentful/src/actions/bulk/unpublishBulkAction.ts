@@ -8,7 +8,6 @@ import { createClient } from "../../client";
 import { unpublishBulkActionExamplePayload } from "../../examplePayloads";
 import { unpublishBulkActionInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const unpublishBulkAction = action({
   display: {
     label: "Unpublish Bulk Action",
@@ -28,11 +27,9 @@ export const unpublishBulkAction = action({
           items: items as BulkActionUnpublishPayload["entities"]["items"],
         },
       });
-
     const bulkActionCompleted = await bulkActionInProgress.waitProcessing();
-
     return {
-      data: bulkActionCompleted.toPlainObject() as unknown, 
+      data: bulkActionCompleted.toPlainObject() as unknown,
     };
   },
   inputs: unpublishBulkActionInputs,

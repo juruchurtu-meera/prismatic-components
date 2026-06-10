@@ -1,6 +1,9 @@
-import { connection, OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
+import {
+  connection,
+  OAuth2Type,
+  oauth2Connection,
+} from "@prismatic-io/spectral";
 import { CONNECTION_KEY } from "../constants";
-
 export const snowflakeOauthConnection = oauth2Connection({
   key: CONNECTION_KEY,
   display: {
@@ -17,7 +20,8 @@ export const snowflakeOauthConnection = oauth2Connection({
       shown: true,
       comments:
         "The OAuth 2.0 Authorization URL for the Snowflake account. Format: https://[account-identifier].snowflakecomputing.com/oauth/authorize. [Learn more](https://docs.snowflake.com/en/user-guide/oauth-snowflake-overview)",
-      example: "https://myorg-account123.snowflakecomputing.com/oauth/authorize",
+      example:
+        "https://myorg-account123.snowflakecomputing.com/oauth/authorize",
     },
     tokenUrl: {
       label: "Token URL",
@@ -27,7 +31,8 @@ export const snowflakeOauthConnection = oauth2Connection({
       shown: true,
       comments:
         "The OAuth 2.0 Token URL for the Snowflake account. Format: https://[account-identifier].snowflakecomputing.com/oauth/token-request. [Learn more](https://docs.snowflake.com/en/user-guide/oauth-snowflake-overview)",
-      example: "https://myorg-account123.snowflakecomputing.com/oauth/token-request",
+      example:
+        "https://myorg-account123.snowflakecomputing.com/oauth/token-request",
     },
     scopes: {
       label: "Scopes",
@@ -69,7 +74,6 @@ export const snowflakeOauthConnection = oauth2Connection({
     },
   },
 });
-
 export const snowflakeKeyPairConnection = connection({
   key: "snowflakeKeyPairConnection",
   display: {
@@ -79,7 +83,8 @@ export const snowflakeKeyPairConnection = connection({
   inputs: {
     privateKey: {
       label: "Private Key",
-      placeholder: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----",
+      placeholder:
+        "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----",
       type: "text",
       required: true,
       shown: true,
@@ -117,5 +122,4 @@ export const snowflakeKeyPairConnection = connection({
     },
   },
 });
-
 export default [snowflakeOauthConnection, snowflakeKeyPairConnection];

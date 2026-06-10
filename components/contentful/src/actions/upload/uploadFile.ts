@@ -3,7 +3,6 @@ import { createApiClient } from "../../client";
 import { API_UPLOAD_URL } from "../../constants";
 import { uploadFileExamplePayload } from "../../examplePayloads";
 import { uploadFileInputs } from "../../inputs";
-
 export const uploadFile = action({
   display: {
     label: "Upload File",
@@ -24,7 +23,6 @@ export const uploadFile = action({
         },
       },
     );
-
     return {
       data,
     };

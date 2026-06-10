@@ -1,6 +1,11 @@
 import type { DomoRecord } from "../types";
-
-export const buildPollingResult = <T extends { body: { data: unknown } }>(
+export const buildPollingResult = <
+  T extends {
+    body: {
+      data: unknown;
+    };
+  },
+>(
   payload: T,
   data: {
     created: DomoRecord[];

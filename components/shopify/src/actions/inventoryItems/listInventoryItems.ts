@@ -3,7 +3,6 @@ import { getShopifyClient } from "../../client";
 import { listInventoryItemsInputs } from "../../inputs";
 import { listInventoryItemsExamplePayload } from "../../payloadExamples";
 import { computePageInformation } from "../../util";
-
 export const listInventoryItems = action({
   display: {
     label: "List Inventory Items (Deprecated)",
@@ -11,7 +10,11 @@ export const listInventoryItems = action({
       "List all Inventory Items enabled on your platform. This version of the action is being deprecated. Please replace action with List Inventory Items.",
   },
   perform: async (context, params) => {
-    const client = getShopifyClient(params.shopifyConnection, undefined, context.debug.enabled);
+    const client = getShopifyClient(
+      params.shopifyConnection,
+      undefined,
+      context.debug.enabled,
+    );
     const result = await computePageInformation(
       client,
       "/inventory_items",

@@ -9,7 +9,6 @@ import {
 } from "../inputs";
 import { Authorization } from "../enums/Authorization";
 import { queryInsightsSavedReportsExamplePayload } from "../examplePayloads";
-
 export const queryInsightsSavedReports = action({
   display: {
     label: "Query Insights Saved Reports",

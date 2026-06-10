@@ -4,7 +4,6 @@ import { SERVICES } from "../../constants";
 import { updateMessageTemplateByIdExamplePayload } from "../../examplePayloads";
 import { updateMessageTemplateByIdInputs } from "../../inputs";
 import { getIdObject } from "../../util";
-
 export const updateMessageTemplateById = action({
   display: {
     label: "Update Message Template by ID",

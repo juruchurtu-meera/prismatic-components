@@ -3,7 +3,6 @@ import { selectChatMessageInputs } from "../inputs";
 import { createZoomClient } from "../client";
 import { getAllPaginationResults } from "../util";
 import type { ChatMessage } from "../interfaces/ChatMessage";
-
 export const selectChatMessage = dataSource({
   display: {
     label: "Select Chat Message",
@@ -16,20 +15,20 @@ export const selectChatMessage = dataSource({
     { connection, userId, toContact, toChannel, date, from, to },
   ) => {
     const client = createZoomClient({ connection });
-    const data: { messages: ChatMessage[] } =
-      await getAllPaginationResults<ChatMessage>(
-        client,
-        `/chat/users/${userId}/messages`,
-        "messages",
-        {
-          to_contact: toContact,
-          to_channel: toChannel,
-          date,
-          from,
-          to,
-        },
-      );
-
+    const data: {
+      messages: ChatMessage[];
+    } = await getAllPaginationResults<ChatMessage>(
+      client,
+      `/chat/users/${userId}/messages`,
+      "messages",
+      {
+        to_contact: toContact,
+        to_channel: toChannel,
+        date,
+        from,
+        to,
+      },
+    );
     const result = data.messages.map(
       ({ id, message, sender_display_name }): Element => {
         const messagePreview =
@@ -41,7 +40,6 @@ export const selectChatMessage = dataSource({
         };
       },
     );
-
     return {
       result,
     };

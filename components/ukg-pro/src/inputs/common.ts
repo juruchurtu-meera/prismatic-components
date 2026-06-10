@@ -1,24 +1,13 @@
 import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { inputs as httpClientInputs } from "@prismatic-io/spectral/dist/clients/http";
 import { cleanNumber, cleanString } from "../util";
-
 const { debugRequest: _, ...rawRequestInputs } = httpClientInputs;
-
-
-
-
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "Select your UKG Pro connection.",
 });
-
-
-
-
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -28,30 +17,25 @@ export const page = input({
   example: "1",
   clean: cleanNumber,
 });
-
 export const perPage = input({
   label: "Per Page",
   type: "string",
   required: false,
-  comments: "Number of records to return per page. Defaults to API default (usually 100).",
+  comments:
+    "Number of records to return per page. Defaults to API default (usually 100).",
   placeholder: "Enter number of records per page",
   example: "100",
   clean: cleanNumber,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
   required: false,
   default: "false",
-  comments: "When true, automatically fetches all pages of results using pagination.",
+  comments:
+    "When true, automatically fetches all pages of results using pagination.",
   clean: util.types.toBool,
 });
-
-
-
-
-
 export const startDate = input({
   label: "Start Date",
   type: "string",
@@ -61,7 +45,6 @@ export const startDate = input({
   example: "2024-01-01",
   clean: cleanString,
 });
-
 export const endDate = input({
   label: "End Date",
   type: "string",
@@ -71,7 +54,6 @@ export const endDate = input({
   example: "2024-12-31",
   clean: cleanString,
 });
-
 export const lastCheckDate = input({
   label: "Last Check Date",
   type: "string",
@@ -82,7 +64,6 @@ export const lastCheckDate = input({
   example: "2024-01-15T10:00:00Z",
   clean: util.types.toString,
 });
-
 export const filterParameters = input({
   label: "Filter Parameters",
   type: "string",
@@ -95,22 +76,15 @@ export const filterParameters = input({
     return util.types.keyValPairListToObject(value as KeyValuePair[]);
   },
 });
-
-
-
-
-
 export const paginationInputs = {
   page,
   perPage,
   fetchAll,
 };
-
 export const dateRangeInputs = {
   startDate,
   endDate,
 };
-
 export const rawRequestActionInputs = {
   connection: connectionInput,
   ...rawRequestInputs,

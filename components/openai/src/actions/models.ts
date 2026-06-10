@@ -5,7 +5,6 @@ import {
   listModelsExamplePayload,
 } from "../examplePayloads";
 import { connectionInput, modelInput, timeout } from "../inputs";
-
 const listModels = action({
   display: {
     label: "List Models",
@@ -23,7 +22,6 @@ const listModels = action({
   },
   examplePayload: listModelsExamplePayload,
 });
-
 const getModelById = action({
   display: {
     label: "Get Model by ID",
@@ -41,5 +39,4 @@ const getModelById = action({
   },
   examplePayload: getModelByIdExamplePayload,
 });
-
 export default { listModels, getModelById };

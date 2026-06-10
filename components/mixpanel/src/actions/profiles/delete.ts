@@ -9,7 +9,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { deleteProfileExamplePayload } from "../../examplePayloads";
-
 export const deleteProfile = action({
   display: {
     label: "Delete Profile",

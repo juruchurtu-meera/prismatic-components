@@ -1,9 +1,13 @@
 import { action } from "@prismatic-io/spectral";
 import { ClientType, createClient } from "../client";
 import { booksGetRecordExamplePayload } from "../examplePayloads/books";
-import { booksRecordType, connectionInput, parentRecordId, recordId } from "../inputs";
+import {
+  booksRecordType,
+  connectionInput,
+  parentRecordId,
+  recordId,
+} from "../inputs";
 import { getBooksUrl } from "../util/general";
-
 const booksGetRecord = action({
   display: {
     label: "Books - Get Record",
@@ -25,18 +29,23 @@ const booksGetRecord = action({
     context,
     { connection, recordType, recordId, parentRecordType, parentRecordId },
   ) => {
-    const booksClient = createClient(connection, ClientType.BOOKS, context.debug.enabled);
-
-    const url = getBooksUrl(parentRecordType, parentRecordId, recordType, recordId);
-
+    const booksClient = createClient(
+      connection,
+      ClientType.BOOKS,
+      context.debug.enabled,
+    );
+    const url = getBooksUrl(
+      parentRecordType,
+      parentRecordId,
+      recordType,
+      recordId,
+    );
     const { data } = await booksClient.request({
       method: "GET",
       url,
     });
-
     return data;
   },
   examplePayload: booksGetRecordExamplePayload,
 });
-
 export default booksGetRecord;

@@ -1,10 +1,6 @@
 import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
 import type { OpsAlertSummary, ServiceRequest } from "../types";
 import { getOpsPaginatedData, getPaginatedData } from "./pagination";
-
-
-
-
 export const fetchNewRequestsSince = async (
   client: HttpClient,
   lastPolledAtMs: number,
@@ -25,11 +21,6 @@ export const fetchNewRequestsSince = async (
     },
   );
 };
-
-
-
-
-
 export const fetchNewOpsAlertsSince = async (
   client: HttpClient,
   lastPolledAtMs: number,

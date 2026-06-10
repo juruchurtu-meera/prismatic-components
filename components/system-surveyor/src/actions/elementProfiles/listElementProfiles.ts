@@ -3,12 +3,6 @@ import { createSsvClient } from "../../client";
 import { listElementProfilesExamplePayload } from "../../examplePayloads/elementProfiles";
 import { listElementProfilesInputs } from "../../inputs";
 import { fetchPaginatedResults } from "../../util";
-
-
-
-
-
-
 export const listElementProfiles = action({
   display: {
     label: "List Element Profiles",
@@ -20,7 +14,6 @@ export const listElementProfiles = action({
     { ssvConnection, teamId, fetchAll, pageNumber, pageSize },
   ) => {
     const client = await createSsvClient(ssvConnection, context);
-
     const data = await fetchPaginatedResults(
       client,
       `/v3/team/${teamId}/element_profiles`,
@@ -30,7 +23,6 @@ export const listElementProfiles = action({
         pageSize,
       },
     );
-
     return { data };
   },
   examplePayload: listElementProfilesExamplePayload,

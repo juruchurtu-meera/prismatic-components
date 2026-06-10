@@ -3,7 +3,6 @@ import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { getSupplierInvoiceRequestAttachmentsExamplePayload } from "../../examplePayloads";
 import { getSupplierInvoiceRequestAttachmentsInputs } from "../../inputs";
-
 export const getSupplierInvoiceRequestAttachments = action({
   display: {
     label: "Get Supplier Invoice Request Attachments",

@@ -12,7 +12,6 @@ import {
   serviceDescription,
 } from "../inputs";
 import { getIdentityManager } from "../utils";
-
 export const createFeatureService = action({
   display: {
     label: "Create Feature Service",
@@ -29,7 +28,9 @@ export const createFeatureService = action({
     },
   ) => {
     const authentication = await getIdentityManager(connection);
-    const item: { item: ICreateServiceParams } = {
+    const item: {
+      item: ICreateServiceParams;
+    } = {
       item: {
         name: featureServiceName,
         capabilities: featureServiceCapabilities,
@@ -40,7 +41,6 @@ export const createFeatureService = action({
     if (context.debug.enabled) {
       context.logger.debug(JSON.stringify(item));
     }
-
     const data = await createFeatureServiceArgis({
       authentication,
       ...item,

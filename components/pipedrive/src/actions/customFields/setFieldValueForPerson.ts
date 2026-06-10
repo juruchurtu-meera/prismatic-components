@@ -2,7 +2,6 @@ import { action, util, input } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { connectionInput } from "../../inputs";
 import { WebhookVersion } from "../../constants";
-
 export const setFieldValueForPerson = action({
   display: {
     label: "Set Person Field Value",
@@ -12,7 +11,11 @@ export const setFieldValueForPerson = action({
     if (!customFieldKey) {
       throw new Error("Invalid or missing customFieldKey");
     }
-    const client = createClient(connection, context.debug.enabled, WebhookVersion.V2);
+    const client = createClient(
+      connection,
+      context.debug.enabled,
+      WebhookVersion.V2,
+    );
     const payload = {
       [customFieldKey]: value,
     };

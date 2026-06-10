@@ -18,7 +18,6 @@ import salesShipments from "./salesShipments";
 import shipmentMethods from "./shipmentMethods";
 import subscriptions from "./subscriptions";
 import vendors from "./vendors";
-
 export default {
   ...companies,
   ...accounts,

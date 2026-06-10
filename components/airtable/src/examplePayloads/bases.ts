@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export const listBasesExamplePayload = {
   data: [
     {
@@ -26,12 +17,6 @@ export const listBasesExamplePayload = {
     },
   ],
 };
-
-
-
-
-
-
 export const getBaseSchemaExamplePayload = {
   data: {
     tables: [

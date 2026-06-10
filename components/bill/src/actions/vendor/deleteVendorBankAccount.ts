@@ -4,7 +4,6 @@ import { stringify } from "qs";
 import { getClient } from "../../client";
 import { deleteVendorBankAccountInputs } from "../../inputs/vendor";
 import { deleteVendorBankAccountExamplePayload } from "../../examplePayloads";
-
 export const deleteVendorBankAccount = action({
   display: {
     label: "Delete Vendor Bank Account",
@@ -22,7 +21,6 @@ export const deleteVendorBankAccount = action({
         deviceId,
       },
     );
-
     const sendData = {
       id: vendorBankAccountId,
     };
@@ -31,12 +29,10 @@ export const deleteVendorBankAccount = action({
       devKey: loginData.devKey,
       sessionId: loginData.sessionId,
     });
-
     const { data } = await client.post(
       "/Crud/Delete/VendorBankAccount.json",
       stringifiedData,
     );
-
     return {
       data: cleanReturnData(data),
     };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
 import { connectionInput, merchantId, returnId } from "../../../inputs";
 import { getOrderReturnExamplePayload } from "../../../examplePayloads";
-
 export const getOrderReturn = action({
   display: {
     label: "Get Order Return (Deprecated)",
@@ -19,7 +18,6 @@ export const getOrderReturn = action({
     context.logger.warn(
       "'Get Order Return' is deprecated. Google is retiring the Orders endpoints in the Content API.",
     );
-
     const client = createClient(connectionInput);
     const { data } = await client.orderreturns.get({
       merchantId,

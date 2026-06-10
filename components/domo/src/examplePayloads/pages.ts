@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getPageExamplePayload = {
   data: {
     id: 1102458,
@@ -29,7 +15,6 @@ export const getPageExamplePayload = {
     groupIds: [400112],
   },
 };
-
 export const listPagesExamplePayload = {
   data: [
     getPageExamplePayload.data,
@@ -50,9 +35,7 @@ export const listPagesExamplePayload = {
     },
   ],
 };
-
 export const createPageExamplePayload = getPageExamplePayload;
-
 export const updatePageExamplePayload = {
   data: {
     ...getPageExamplePayload.data,
@@ -60,5 +43,4 @@ export const updatePageExamplePayload = {
     locked: true,
   },
 };
-
 export const deletePageExamplePayload = { data: null };

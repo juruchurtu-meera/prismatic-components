@@ -12,7 +12,6 @@ import {
   userType,
 } from "../inputs";
 import { checkDebug, handleDropboxError } from "../util";
-
 export const getMetadata = action({
   display: {
     label: "Get Metadata for File or Folder",

@@ -10,7 +10,6 @@ import {
   userFilter,
 } from "../inputs";
 import { getFolders } from "../utils";
-
 export const listFolders = action({
   display: {
     label: "List Folders",

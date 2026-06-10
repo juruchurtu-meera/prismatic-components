@@ -6,7 +6,6 @@ import {
 import { API_URLS } from "../../constants";
 import { connection } from "../../inputs/general";
 import { validateConnection } from "../../util";
-
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -31,7 +30,9 @@ export const rawRequest = action({
     const ocpApimSubscriptionKey = util.types.toString(
       connection.fields["ocp-apim-subscription-key"],
     );
-    const sage200edition = util.types.toString(connection.fields.sage200edition);
+    const sage200edition = util.types.toString(
+      connection.fields.sage200edition,
+    );
     const baseUrl = API_URLS[sage200edition];
     const { data } = await sendRawRequest(baseUrl, httpClientInputs, {
       Authorization: `Bearer ${connection.token?.access_token}`,

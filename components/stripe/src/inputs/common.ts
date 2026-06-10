@@ -1,23 +1,21 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanNumberInput, cleanObjectInput, cleanStringInput } from "../util";
-
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
   required: true,
   comments: "The Stripe connection to use.",
 });
-
 export const timeout = input({
   label: "Timeout",
   type: "string",
-  comments: "The maximum time a client will await a response (in milliseconds).",
+  comments:
+    "The maximum time a client will await a response (in milliseconds).",
   example: "60000",
   placeholder: "Enter timeout in ms",
   required: false,
   clean: util.types.toNumber,
 });
-
 export const startingAfter = input({
   label: "Starting After",
   type: "string",
@@ -28,7 +26,6 @@ export const startingAfter = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const limit = input({
   label: "Limit",
   type: "string",
@@ -38,7 +35,6 @@ export const limit = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 export const endingBefore = input({
   label: "Ending Before",
   type: "string",
@@ -49,16 +45,15 @@ export const endingBefore = input({
   required: false,
   clean: cleanStringInput,
 });
-
 export const fetchAll = input({
   label: "Fetch All",
   type: "boolean",
-  comments: "When true, automatically fetches all pages of results using pagination.",
+  comments:
+    "When true, automatically fetches all pages of results using pagination.",
   required: false,
   default: "false",
   clean: util.types.toBool,
 });
-
 export const page = input({
   label: "Page",
   type: "string",
@@ -68,7 +63,6 @@ export const page = input({
   placeholder: "Enter next_page cursor",
   clean: cleanStringInput,
 });
-
 export const query = input({
   label: "Query",
   type: "string",
@@ -79,7 +73,6 @@ export const query = input({
   placeholder: "Enter search query",
   clean: util.types.toString,
 });
-
 export const created = input({
   label: "Created",
   type: "code",
@@ -89,15 +82,14 @@ export const created = input({
   example: JSON.stringify({ gt: 1620000000 }),
   clean: util.types.toString,
 });
-
 export const overwriteOnUpdate = input({
   label: "Protect Blank Values",
   type: "boolean",
-  comments: "When true, blank values will not overwrite existing values in Stripe.",
+  comments:
+    "When true, blank values will not overwrite existing values in Stripe.",
   required: true,
   clean: util.types.toBool,
 });
-
 export const metadata = input({
   label: "Metadata",
   type: "string",
@@ -107,7 +99,6 @@ export const metadata = input({
   placeholder: "Enter metadata key-value pairs",
   required: false,
 });
-
 export const fieldValues = input({
   label: "Values",
   type: "string",
@@ -117,27 +108,26 @@ export const fieldValues = input({
   placeholder: "Enter key-value pairs",
   required: false,
 });
-
 export const description = input({
   label: "Description",
   type: "string",
-  comments: "An arbitrary description for the object, displayed in the Stripe Dashboard.",
+  comments:
+    "An arbitrary description for the object, displayed in the Stripe Dashboard.",
   example: "Monthly subscription invoice",
   placeholder: "Enter description",
   required: false,
   clean: cleanStringInput,
 });
-
 export const currency = input({
   label: "Currency",
   type: "string",
-  comments: "The three-letter ISO currency code in lowercase (e.g., usd, eur, gbp).",
+  comments:
+    "The three-letter ISO currency code in lowercase (e.g., usd, eur, gbp).",
   example: "usd",
   placeholder: "Enter currency code",
   required: false,
   clean: cleanStringInput,
 });
-
 export const source = input({
   label: "Source",
   type: "string",
@@ -147,7 +137,6 @@ export const source = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const bodyParams = input({
   label: "Body Params",
   type: "code",
@@ -157,8 +146,6 @@ export const bodyParams = input({
   example: JSON.stringify({ customer: "cus_123456" }, null, 2),
   clean: cleanObjectInput,
 });
-
-
 export const customerId = input({
   label: "Customer ID",
   type: "string",
@@ -169,7 +156,6 @@ export const customerId = input({
   dataSource: "selectCustomer",
   clean: cleanStringInput,
 });
-
 export const subscriptionId = input({
   label: "Subscription ID",
   type: "string",
@@ -180,7 +166,6 @@ export const subscriptionId = input({
   dataSource: "selectSubscription",
   clean: cleanStringInput,
 });
-
 export const priceId = input({
   label: "Price ID",
   type: "string",
@@ -191,7 +176,6 @@ export const priceId = input({
   dataSource: "selectPrice",
   clean: util.types.toString,
 });
-
 export const productId = input({
   label: "Product ID",
   type: "string",
@@ -202,7 +186,6 @@ export const productId = input({
   dataSource: "selectProduct",
   clean: util.types.toString,
 });
-
 export const invoiceId = input({
   label: "Invoice ID",
   type: "string",
@@ -213,7 +196,6 @@ export const invoiceId = input({
   dataSource: "selectInvoice",
   clean: util.types.toString,
 });
-
 export const chargeId = input({
   label: "Charge ID",
   type: "string",
@@ -223,7 +205,6 @@ export const chargeId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const paymentIntentId = input({
   label: "Payment Intent ID",
   type: "string",
@@ -234,7 +215,6 @@ export const paymentIntentId = input({
   clean: util.types.toString,
   dataSource: "selectPaymentIntent",
 });
-
 export const disputeId = input({
   label: "Dispute ID",
   type: "string",
@@ -244,7 +224,6 @@ export const disputeId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const balanceTransactionId = input({
   label: "Balance Transaction ID",
   type: "string",
@@ -254,7 +233,6 @@ export const balanceTransactionId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const sessionId = input({
   label: "Session ID",
   type: "string",
@@ -264,7 +242,6 @@ export const sessionId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const webhookId = input({
   label: "Webhook ID",
   type: "string",
@@ -274,7 +251,6 @@ export const webhookId = input({
   required: true,
   clean: util.types.toString,
 });
-
 export const paymentIntent = input({
   label: "Payment Intent",
   type: "string",
@@ -285,7 +261,6 @@ export const paymentIntent = input({
   placeholder: "Enter Payment Intent ID",
   clean: util.types.toString,
 });
-
 export const paymentId = input({
   label: "Payment Method ID",
   type: "string",
@@ -295,8 +270,6 @@ export const paymentId = input({
   required: false,
   clean: cleanStringInput,
 });
-
-
 export const receiptEmail = input({
   label: "Receipt Email",
   type: "string",
@@ -307,7 +280,6 @@ export const receiptEmail = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const shipping = input({
   label: "Shipping",
   type: "code",
@@ -328,7 +300,6 @@ export const shipping = input({
   }),
   clean: util.types.toString,
 });
-
 export const transferGroup = input({
   label: "Transfer Group",
   type: "string",
@@ -339,7 +310,6 @@ export const transferGroup = input({
   placeholder: "Enter transfer group",
   clean: util.types.toString,
 });
-
 export const applicationFeeAmount = input({
   label: "Application Fee Amount",
   type: "string",
@@ -350,7 +320,6 @@ export const applicationFeeAmount = input({
   required: false,
   clean: cleanNumberInput,
 });
-
 export const statementDescriptor = input({
   label: "Statement Descriptor",
   type: "string",
@@ -361,7 +330,6 @@ export const statementDescriptor = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const statementDescriptorSuffix = input({
   label: "Statement Descriptor Suffix",
   type: "string",
@@ -372,13 +340,13 @@ export const statementDescriptorSuffix = input({
   required: false,
   clean: util.types.toString,
 });
-
 export const transferData = input({
   label: "Transfer Data",
   type: "code",
   language: "json",
   example: JSON.stringify({ destination: "acct_1F5yQhFjP0puYwXh" }),
-  comments: "The parameters used to automatically create a Transfer when the payment succeeds.",
+  comments:
+    "The parameters used to automatically create a Transfer when the payment succeeds.",
   required: false,
   clean: util.types.toString,
 });

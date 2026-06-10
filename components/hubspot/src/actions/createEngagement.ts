@@ -8,7 +8,6 @@ import {
   properties,
   timeout,
 } from "../inputs";
-
 export const createEngagement = action({
   display: {
     label: "Create Engagement",
@@ -17,7 +16,13 @@ export const createEngagement = action({
   },
   perform: async (
     context,
-    { timeout, hubspotConnection, engagementObject, associationsJson, properties },
+    {
+      timeout,
+      hubspotConnection,
+      engagementObject,
+      associationsJson,
+      properties,
+    },
   ) => {
     const debugRequest = context.debug.enabled;
     const client = getHubspotClient({
@@ -26,11 +31,11 @@ export const createEngagement = action({
       debugRequest,
       headers: { "Content-Type": "application/json" },
     });
-
     const payload = { associations: associationsJson, properties };
-
-    const { data } = await client.post(`/crm/v3/objects/${engagementObject}`, payload);
-
+    const { data } = await client.post(
+      `/crm/v3/objects/${engagementObject}`,
+      payload,
+    );
     return {
       data,
     };

@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { deletePostExamplePayload } from "../../examplePayloads";
 import { deletePostInputs } from "../../inputs";
-
 export const deletePost = action({
   display: {
     label: "Delete Post",

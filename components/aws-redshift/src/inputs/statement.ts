@@ -17,7 +17,6 @@ import {
   statementName,
   workgroupName,
 } from "./common";
-
 const databaseUser = input({
   label: "Database User",
   type: "string",
@@ -28,18 +27,17 @@ const databaseUser = input({
   placeholder: "Enter the database user",
   clean: toOptionalString,
 });
-
 const secretArn = input({
   label: "Secret ARN",
   type: "string",
   required: false,
   comments:
     "The ARN of the AWS Secrets Manager secret containing database credentials. Required when authenticating using Secrets Manager.",
-  example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift-credentials",
+  example:
+    "arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift-credentials",
   placeholder: "Enter the secret ARN",
   clean: toOptionalString,
 });
-
 const sqlStatement = input({
   label: "SQL Statement",
   type: "code",
@@ -51,7 +49,6 @@ const sqlStatement = input({
   placeholder: "SELECT * FROM users WHERE status = :status",
   clean: util.types.toString,
 });
-
 const sqlParameters = input({
   label: "SQL Parameters",
   type: "string",
@@ -62,7 +59,6 @@ const sqlParameters = input({
   example: "status: active, limit: 100",
   clean: cleanSqlParameters,
 });
-
 const resultFormat = input({
   label: "Result Format",
   type: "string",
@@ -74,7 +70,6 @@ const resultFormat = input({
   model: RESULT_FORMAT_OPTIONS,
   clean: toOptionalResultFormatString,
 });
-
 const sessionId = input({
   label: "Session ID",
   type: "string",
@@ -85,17 +80,16 @@ const sessionId = input({
   placeholder: "Enter the session ID",
   clean: toOptionalString,
 });
-
 const sessionKeepAliveSeconds = input({
   label: "Session Keep Alive (seconds)",
   type: "string",
   required: false,
-  comments: "Number of seconds to keep the session alive after query completion (max 24 hours).",
+  comments:
+    "Number of seconds to keep the session alive after query completion (max 24 hours).",
   example: "3600",
   placeholder: "Enter the keep alive duration in seconds",
   clean: toOptionalNumber,
 });
-
 const clientToken = input({
   label: "Client Token",
   type: "string",
@@ -105,7 +99,6 @@ const clientToken = input({
   placeholder: "Enter the client token",
   clean: toOptionalString,
 });
-
 export const getStatementResult = input({
   label: "Get Statement Result",
   type: "boolean",
@@ -116,7 +109,6 @@ export const getStatementResult = input({
   default: "true",
   clean: util.types.toBool,
 });
-
 const nextToken = input({
   label: "Next Token",
   type: "string",
@@ -127,7 +119,6 @@ const nextToken = input({
   placeholder: "Enter the next token",
   clean: toOptionalString,
 });
-
 const status = input({
   label: "Status",
   type: "string",
@@ -139,7 +130,6 @@ const status = input({
   default: "ALL",
   clean: (value: unknown) => util.types.toString(value) as StatusString,
 });
-
 export const executeStatementInputs = {
   awsConnection,
   sqlStatement,
@@ -157,7 +147,6 @@ export const executeStatementInputs = {
   sessionKeepAliveSeconds,
   clientToken,
 };
-
 export const getStatementResultInputs = {
   awsConnection,
   statementId: {
@@ -167,17 +156,16 @@ export const getStatementResultInputs = {
   awsRegion,
   nextToken,
 };
-
 const maxResults = input({
   label: "Max Results",
   type: "string",
   required: false,
-  comments: "The maximum number of SQL statements to return per page. Valid range: 0-100.",
+  comments:
+    "The maximum number of SQL statements to return per page. Valid range: 0-100.",
   example: "100",
   placeholder: "100",
   clean: toOptionalNumber,
 });
-
 export const listStatementsInputs = {
   awsConnection,
   awsRegion,
@@ -209,7 +197,6 @@ export const listStatementsInputs = {
   nextToken,
   maxResults,
 };
-
 export const describeStatementInputs = {
   awsConnection,
   statementId,

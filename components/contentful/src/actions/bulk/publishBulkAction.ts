@@ -8,7 +8,6 @@ import { createClient } from "../../client";
 import { publishBulkActionExamplePayload } from "../../examplePayloads";
 import { publishBulkActionInputs } from "../../inputs";
 import { getEnvironment } from "../../util";
-
 export const publishBulkAction = action({
   display: {
     label: "Publish Bulk Action",
@@ -28,11 +27,9 @@ export const publishBulkAction = action({
           items: items as BulkActionPublishPayload["entities"]["items"],
         },
       });
-
     const bulkActionCompleted = await bulkActionInProgress.waitProcessing();
-
     return {
-      data: bulkActionCompleted.toPlainObject() as unknown, 
+      data: bulkActionCompleted.toPlainObject() as unknown,
     };
   },
   inputs: publishBulkActionInputs,

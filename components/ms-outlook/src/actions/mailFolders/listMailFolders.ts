@@ -5,7 +5,6 @@ import { listMailFoldersExamplePayload } from "../../examplePayloads";
 import { listMailFoldersInputs } from "../../inputs";
 import type { ODataAttrs, ODataQueryParams } from "../../types";
 import { computeEndpointBasedOnConnection, fetchAllData } from "../../util";
-
 export const listMailFolders = action({
   display: {
     label: "List Mail Folders",
@@ -21,7 +20,6 @@ export const listMailFolders = action({
         ? `/me/mailFolders/${params.parentFolderId}/childFolders`
         : "/me/mailFolders",
     );
-
     const queryParams: ODataQueryParams = {};
     if (params.pageLimit) {
       queryParams.$top = params.pageLimit;
@@ -29,7 +27,6 @@ export const listMailFolders = action({
     if (params.pageSkip) {
       queryParams.$skip = params.pageSkip;
     }
-
     const data = await fetchAllData<MailSearchFolder & ODataAttrs>(
       client,
       url,

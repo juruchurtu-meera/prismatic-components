@@ -2,11 +2,11 @@ import { action } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../../client";
 import { listPaymentRefundsExamplePayload } from "../../examplePayloads";
 import { listPaymentRefundsInputs } from "../../inputs";
-
 export const listPaymentRefunds = action({
   display: {
     label: "List Payment Refunds",
-    description: "Retrieves a list of refunds for the account making the request.",
+    description:
+      "Retrieves a list of refunds for the account making the request.",
   },
   perform: async (
     context,
@@ -22,8 +22,10 @@ export const listPaymentRefunds = action({
       limit,
     },
   ) => {
-    const client = await createAuthorizedClient(squareConnection, context.debug.enabled);
-
+    const client = await createAuthorizedClient(
+      squareConnection,
+      context.debug.enabled,
+    );
     const response = await client.get("/v2/refunds", {
       params: {
         begin_time: beginTime,
@@ -36,7 +38,6 @@ export const listPaymentRefunds = action({
         limit: limit,
       },
     });
-
     return {
       data: response.data,
     };

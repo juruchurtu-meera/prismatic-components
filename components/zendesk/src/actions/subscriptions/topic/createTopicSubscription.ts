@@ -8,7 +8,6 @@ import {
 import { rawHttpClient } from "../../../auth";
 import type { SubscriptionResponse } from "../../../types";
 import { subscriptionPayload } from "../../../examplePayloads";
-
 export const createTopicSubscription = action({
   display: {
     label: "Create Topic Subscription",
@@ -23,12 +22,10 @@ export const createTopicSubscription = action({
       include_comments: includeComments,
       user_id: userId || undefined,
     };
-
     const { data } = await client.post<SubscriptionResponse>(
       `/community/topics/${topicId}/subscriptions`,
       payload,
     );
-
     return {
       data,
     };

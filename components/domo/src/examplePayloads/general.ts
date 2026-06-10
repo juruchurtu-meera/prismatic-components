@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export const rawRequestExamplePayload = {
   data: {
     statusCode: 200,

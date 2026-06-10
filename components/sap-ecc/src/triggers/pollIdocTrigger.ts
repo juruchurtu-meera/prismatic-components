@@ -17,17 +17,14 @@ import {
   handlePollingError,
   parseAndCheckFault,
 } from "../util";
-
 export const pollIdocTrigger = pollingTrigger({
   display: {
     label: "New IDocs",
     description:
       "Checks for new IDocs in the SAP EDIDC table on a configured schedule, using the DOCNUM field as a cursor.",
   },
-
   inputs: pollIdocInputs,
   examplePayload: pollIdocExamplePayload,
-
   perform: async (
     context,
     payload,
@@ -41,33 +38,25 @@ export const pollIdocTrigger = pollingTrigger({
             errorCount: 0,
             consecutiveErrors: 0,
           };
-
     const { lastDocnum } = pollState;
-
     try {
       const client = createClient(connection, context, context.debug.enabled);
-
       const fieldItems = EDIDC_FIELDS.map(
         (f) => `<item><FIELDNAME>${f}</FIELDNAME></item>`,
       ).join("");
-
       let params = "<QUERY_TABLE>EDIDC</QUERY_TABLE>";
       params += `<DELIMITER>${DEFAULT_DELIMITER}</DELIMITER>`;
       params += `<ROWCOUNT>${rowCount || 50}</ROWCOUNT>`;
       params += `<FIELDS>${fieldItems}</FIELDS>`;
-
       const options: string[] = [`DOCNUM GT '${lastDocnum}'`];
       if (messageType) options.push(`AND MESTYP EQ '${messageType}'`);
       if (direction) options.push(`AND DIRECT EQ '${direction}'`);
-
       const optionItems = options
         .map((t) => `<item><TEXT>${t}</TEXT></item>`)
         .join("");
       params += `<OPTIONS>${optionItems}</OPTIONS>`;
       params += "<DATA/>";
-
       const soapBody = buildSoapEnvelope(RFC_FUNCTIONS.READ_TABLE, params);
-
       const { data } = await client.post(
         endpoint || ENDPOINTS.SOAP_RFC,
         soapBody,
@@ -75,11 +64,8 @@ export const pollIdocTrigger = pollingTrigger({
           headers: { SOAPAction: buildSoapAction(RFC_FUNCTIONS.READ_TABLE) },
         },
       );
-
       const parsed = await parseAndCheckFault(data);
-
       const tableData = formatTableData(parsed, DEFAULT_DELIMITER);
-
       const records = tableData.rows.map((row) => ({
         idocNumber: row.DOCNUM,
         status: row.STATUS,
@@ -89,7 +75,6 @@ export const pollIdocTrigger = pollingTrigger({
         createdTime: row.CRETIM,
         direction: row.DIRECT,
       }));
-
       const newLastDocnum =
         records.length > 0
           ? records.reduce(
@@ -97,13 +82,11 @@ export const pollIdocTrigger = pollingTrigger({
               lastDocnum,
             )
           : lastDocnum;
-
       context.polling.setState({
         lastDocnum: newLastDocnum,
         errorCount: 0,
         consecutiveErrors: 0,
       });
-
       return {
         payload: {
           ...payload,

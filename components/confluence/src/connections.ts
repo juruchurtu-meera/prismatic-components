@@ -3,7 +3,6 @@ import {
   oauth2Connection,
   OAuth2Type,
 } from "@prismatic-io/spectral";
-
 export const confluenceOauth = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "oauth2",
@@ -75,7 +74,6 @@ export const confluenceOauth = oauth2Connection({
     },
   },
 });
-
 export const basicConnection = connection({
   key: "basic",
   display: {
@@ -115,5 +113,4 @@ export const basicConnection = connection({
     },
   },
 });
-
 export default [confluenceOauth, basicConnection];

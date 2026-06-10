@@ -1,5 +1,4 @@
 import { OAuth2Type, oauth2Connection } from "@prismatic-io/spectral";
-
 export const sage200Oauth2Connection = oauth2Connection({
   oauth2Type: OAuth2Type.AuthorizationCode,
   key: "sage200Oauth2Connection",
@@ -75,5 +74,4 @@ export const sage200Oauth2Connection = oauth2Connection({
     },
   },
 });
-
 export default [sage200Oauth2Connection];

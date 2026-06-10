@@ -4,12 +4,10 @@ import { getShopifyGraphQlClient } from "../client";
 import { MAX_LIMIT } from "../constants";
 import { selectInventoryItemsInputs } from "../inputs";
 import { fetchData, getNumericId } from "../util";
-
 interface InventoryItemNode {
   id: string;
   sku: string | null;
 }
-
 export const selectInventoryItems = dataSource({
   display: {
     label: "Select Inventory Item",
@@ -18,7 +16,6 @@ export const selectInventoryItems = dataSource({
   inputs: selectInventoryItemsInputs,
   perform: async (_context, { shopifyConnection }) => {
     const client = getShopifyGraphQlClient(shopifyConnection, undefined, false);
-
     const { inventoryItems } = (await fetchData<InventoryItemNode>(
       client,
       ["inventoryItems"],
@@ -29,7 +26,6 @@ export const selectInventoryItems = dataSource({
         first: MAX_LIMIT,
       },
     )) as unknown as Record<"inventoryItems", InventoryItemNode[]>;
-
     const result = inventoryItems
       .map<Element>((item) => {
         const numericId = getNumericId(item.id);
@@ -39,7 +35,6 @@ export const selectInventoryItems = dataSource({
         };
       })
       .sort((a, b) => (a.label < b.label ? -1 : 1));
-
     return { result };
   },
   dataSourceType: "picklist",

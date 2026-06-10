@@ -3,7 +3,6 @@ import { createOdooClient } from "../../client";
 import { updateRecordExamplePayload } from "../../examplePayloads";
 import { updateRecordInputs } from "../../inputs";
 import { createOdooAwaitClient, isLegacyConnection } from "../../legacy";
-
 export const updateRecord = action({
   display: {
     label: "Update Record",

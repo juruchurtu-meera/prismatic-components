@@ -40,7 +40,6 @@ export const EVENT_TYPES = [
     value: "line_item.associationChange",
   },
 ];
-
 export const EVENT_TYPES_PROPERTY_CHANGE = [
   { label: "Contact Property Change", value: "contact.propertyChange" },
   { label: "Company Property Change", value: "company.propertyChange" },
@@ -53,7 +52,5 @@ export const EVENT_TYPES_PROPERTY_CHANGE = [
     value: "conversation.propertyChange",
   },
 ];
-
 export const SUCCESS_MESSAGE = "All webhooks deleted successfully";
-
 export const MAX_SEARCH_LIMIT = 200;

@@ -3,7 +3,6 @@ import { getOneDriveClient } from "../client";
 import { oneDriveConnection, driveId, itemId } from "../inputs";
 import { handleErrors } from "../errors";
 import { deleteFileExamplePayload } from "../examplePayloads";
-
 export const deleteFile = action({
   display: {
     label: "Delete File",

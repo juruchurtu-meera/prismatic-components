@@ -17,7 +17,6 @@ import {
 } from "../../inputs";
 import { Authorization } from "../../enums/Authorization";
 import { queryProfilesExamplePayload } from "../../examplePayloads";
-
 export const queryProfiles = action({
   display: {
     label: "Query Profile",

@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export const searchAllExamplePayload = {
   files: {
     matches: [
@@ -147,7 +138,6 @@ export const searchAllExamplePayload = {
   },
   query: "diagram",
 };
-
 export const searchFilesExamplePayload = {
   files: {
     matches: [
@@ -236,7 +226,6 @@ export const searchFilesExamplePayload = {
   ok: true,
   query: "computer.gif",
 };
-
 export const searchMessagesExamplePayload = {
   messages: {
     matches: [

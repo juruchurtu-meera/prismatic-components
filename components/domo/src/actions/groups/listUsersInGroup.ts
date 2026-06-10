@@ -4,7 +4,6 @@ import { listUsersInGroupInputs } from "../../inputs";
 import type { ListUsersInGroupQueryParams } from "../types/ListUsersInGroupQueryParams";
 import { listUsersInGroupExamplePayload } from "../../examplePayloads";
 import { paginateResults } from "../../utils/pagination";
-
 export const listUsersInGroup = action({
   display: {
     label: "List Users In Group",
@@ -28,5 +27,4 @@ export const listUsersInGroup = action({
   },
   inputs: listUsersInGroupInputs,
 });
-
 export default { listUsersInGroup };

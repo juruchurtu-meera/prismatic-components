@@ -9,7 +9,6 @@ import {
   imageFile,
   storeHash,
 } from "../../inputs";
-
 export const createBrandImage = action({
   display: {
     label: "Create Brand Image",
@@ -24,19 +23,14 @@ export const createBrandImage = action({
       bigCommerceConnection,
       context.debug.enabled,
     );
-
     const endpoint = `/stores/${storeHash}/v3/catalog/brands/${brandId}/image`;
-
     const formData = new FormData();
     formData.append("image_file", imageFile);
-
     const headers = {
       ...formData.getHeaders(),
     };
-
     try {
       const response = await client.post(endpoint, formData, { headers });
-
       return {
         data: response.data,
       };

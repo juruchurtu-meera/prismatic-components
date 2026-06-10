@@ -1,8 +1,3 @@
-
-
-
-
-
 export const listBusinessPartnersExamplePayload = {
   data: {
     results: [
@@ -19,7 +14,6 @@ export const listBusinessPartnersExamplePayload = {
     next_link: "https://rest.ripplingapis.com/business-partners?cursor=abc123",
   },
 };
-
 export const getBusinessPartnerExamplePayload = {
   data: {
     id: "bp_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -31,7 +25,6 @@ export const getBusinessPartnerExamplePayload = {
     client_group_member_count: 25,
   },
 };
-
 export const createBusinessPartnerExamplePayload = {
   data: {
     id: "bp_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -43,7 +36,6 @@ export const createBusinessPartnerExamplePayload = {
     client_group_member_count: 0,
   },
 };
-
 export const deleteBusinessPartnerExamplePayload = {
   data: {
     success: true,
@@ -51,8 +43,6 @@ export const deleteBusinessPartnerExamplePayload = {
       "Business partner bp_01H5K8N2X3Y4Z5A6B7C8D9E0F1 deleted successfully.",
   },
 };
-
-
 export const listBusinessPartnerGroupsExamplePayload = {
   data: {
     results: [
@@ -68,7 +58,6 @@ export const listBusinessPartnerGroupsExamplePayload = {
     next_link: null,
   },
 };
-
 export const getBusinessPartnerGroupExamplePayload = {
   data: {
     id: "bpg_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -79,7 +68,6 @@ export const getBusinessPartnerGroupExamplePayload = {
     default_business_partner_id: "bp_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
   },
 };
-
 export const createBusinessPartnerGroupExamplePayload = {
   data: {
     id: "bpg_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -90,7 +78,6 @@ export const createBusinessPartnerGroupExamplePayload = {
     default_business_partner_id: null,
   },
 };
-
 export const deleteBusinessPartnerGroupExamplePayload = {
   data: {
     success: true,
@@ -98,8 +85,6 @@ export const deleteBusinessPartnerGroupExamplePayload = {
       "Business partner group bpg_01H5K8N2X3Y4Z5A6B7C8D9E0F1 deleted successfully.",
   },
 };
-
-
 export const listCompaniesV2ExamplePayload = {
   data: {
     results: [
@@ -131,8 +116,6 @@ export const listCompaniesV2ExamplePayload = {
     next_link: null,
   },
 };
-
-
 export const listWorkersExamplePayload = {
   data: {
     results: [
@@ -163,7 +146,6 @@ export const listWorkersExamplePayload = {
     next_link: "https://rest.ripplingapis.com/workers?cursor=xyz789",
   },
 };
-
 export const getWorkerExamplePayload = {
   data: {
     id: "wkr_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -189,8 +171,6 @@ export const getWorkerExamplePayload = {
     },
   },
 };
-
-
 export const listUsersExamplePayload = {
   data: {
     results: [
@@ -242,7 +222,6 @@ export const listUsersExamplePayload = {
     next_link: null,
   },
 };
-
 export const getUserExamplePayload = {
   data: {
     id: "usr_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -266,8 +245,6 @@ export const getUserExamplePayload = {
     timezone: "America/Los_Angeles",
   },
 };
-
-
 export const listDepartmentsV2ExamplePayload = {
   data: {
     results: [
@@ -296,7 +273,6 @@ export const listDepartmentsV2ExamplePayload = {
     next_link: null,
   },
 };
-
 export const getDepartmentExamplePayload = {
   data: {
     id: "dept_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -308,8 +284,6 @@ export const getDepartmentExamplePayload = {
     department_hierarchy_id: ["dept_01H5K8N2X3Y4Z5A6B7C8D9E0F1"],
   },
 };
-
-
 export const listTeamsV2ExamplePayload = {
   data: {
     results: [
@@ -331,7 +305,6 @@ export const listTeamsV2ExamplePayload = {
     next_link: null,
   },
 };
-
 export const getTeamExamplePayload = {
   data: {
     id: "team_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -341,8 +314,6 @@ export const getTeamExamplePayload = {
     parent_id: null,
   },
 };
-
-
 export const listWorkLocationsV2ExamplePayload = {
   data: {
     results: [
@@ -365,7 +336,6 @@ export const listWorkLocationsV2ExamplePayload = {
     next_link: null,
   },
 };
-
 export const getWorkLocationExamplePayload = {
   data: {
     id: "wl_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -383,8 +353,6 @@ export const getWorkLocationExamplePayload = {
     },
   },
 };
-
-
 export const listEmploymentTypesExamplePayload = {
   data: {
     results: [
@@ -422,7 +390,6 @@ export const listEmploymentTypesExamplePayload = {
     next_link: null,
   },
 };
-
 export const getEmploymentTypeExamplePayload = {
   data: {
     id: "et_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -435,8 +402,6 @@ export const getEmploymentTypeExamplePayload = {
     amount_worked: "FULL-TIME",
   },
 };
-
-
 export const listCustomFieldsV2ExamplePayload = {
   data: {
     results: [
@@ -462,8 +427,6 @@ export const listCustomFieldsV2ExamplePayload = {
     next_link: null,
   },
 };
-
-
 export const listCustomObjectsExamplePayload = {
   data: {
     results: [
@@ -481,7 +444,6 @@ export const listCustomObjectsExamplePayload = {
     next_link: null,
   },
 };
-
 export const getCustomObjectExamplePayload = {
   data: {
     id: "co_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -494,7 +456,6 @@ export const getCustomObjectExamplePayload = {
     plural_label: "Equipment Assignments",
   },
 };
-
 export const createCustomObjectExamplePayload = {
   data: {
     id: "co_02H5K8N2X3Y4Z5A6B7C8D9E0F2",
@@ -507,7 +468,6 @@ export const createCustomObjectExamplePayload = {
     plural_label: "Training Records",
   },
 };
-
 export const updateCustomObjectExamplePayload = {
   data: {
     id: "co_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -520,15 +480,12 @@ export const updateCustomObjectExamplePayload = {
     plural_label: "Equipment Assignments",
   },
 };
-
 export const deleteCustomObjectExamplePayload = {
   data: {
     success: true,
     message: "Custom object equipment_assignment deleted successfully.",
   },
 };
-
-
 export const listObjectCategoriesExamplePayload = {
   data: {
     results: [
@@ -546,7 +503,6 @@ export const listObjectCategoriesExamplePayload = {
     next_link: null,
   },
 };
-
 export const getObjectCategoryExamplePayload = {
   data: {
     id: "oc_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -554,7 +510,6 @@ export const getObjectCategoryExamplePayload = {
     description: "Human Resources related objects",
   },
 };
-
 export const createObjectCategoryExamplePayload = {
   data: {
     id: "oc_03H5K8N2X3Y4Z5A6B7C8D9E0F3",
@@ -562,7 +517,6 @@ export const createObjectCategoryExamplePayload = {
     description: "Finance department objects",
   },
 };
-
 export const updateObjectCategoryExamplePayload = {
   data: {
     id: "oc_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -570,7 +524,6 @@ export const updateObjectCategoryExamplePayload = {
     description: "Human Resources related objects - updated",
   },
 };
-
 export const deleteObjectCategoryExamplePayload = {
   data: {
     success: true,
@@ -578,8 +531,6 @@ export const deleteObjectCategoryExamplePayload = {
       "Object category oc_01H5K8N2X3Y4Z5A6B7C8D9E0F1 deleted successfully.",
   },
 };
-
-
 export const listEntitlementsExamplePayload = {
   data: {
     results: [
@@ -597,8 +548,6 @@ export const listEntitlementsExamplePayload = {
     next_link: null,
   },
 };
-
-
 export const listJobFunctionsExamplePayload = {
   data: {
     results: [
@@ -618,7 +567,6 @@ export const listJobFunctionsExamplePayload = {
     next_link: null,
   },
 };
-
 export const getJobFunctionExamplePayload = {
   data: {
     id: "jf_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -627,8 +575,6 @@ export const getJobFunctionExamplePayload = {
     name: "Software Engineering",
   },
 };
-
-
 export const listSupergroupsExamplePayload = {
   data: {
     results: [
@@ -643,7 +589,6 @@ export const listSupergroupsExamplePayload = {
     next_link: null,
   },
 };
-
 export const getSupergroupExamplePayload = {
   data: {
     id: "sg_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -653,8 +598,6 @@ export const getSupergroupExamplePayload = {
     type: "DYNAMIC",
   },
 };
-
-
 export const getSsoMeExamplePayload = {
   data: {
     id: "usr_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
@@ -664,12 +607,6 @@ export const getSsoMeExamplePayload = {
     worker_id: "wkr_01H5K8N2X3Y4Z5A6B7C8D9E0F1",
   },
 };
-
-
-
-
-
-
 export const getCompaniesExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -685,8 +622,6 @@ export const getCompaniesExamplePayload = {
     phone: "+1-555-123-4567",
   },
 };
-
-
 export const getEmployeesExamplePayload = {
   data: [
     {
@@ -707,7 +642,6 @@ export const getEmployeesExamplePayload = {
     },
   ],
 };
-
 export const getEmployeesEmployeeIdExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -735,7 +669,6 @@ export const getEmployeesEmployeeIdExamplePayload = {
     },
   },
 };
-
 export const getEmployeesIncludeTerminatedExamplePayload = {
   data: [
     {
@@ -755,8 +688,6 @@ export const getEmployeesIncludeTerminatedExamplePayload = {
     },
   ],
 };
-
-
 export const getDepartmentsExamplePayload = {
   data: [
     {
@@ -771,8 +702,6 @@ export const getDepartmentsExamplePayload = {
     },
   ],
 };
-
-
 export const getTeamsExamplePayload = {
   data: [
     {
@@ -787,8 +716,6 @@ export const getTeamsExamplePayload = {
     },
   ],
 };
-
-
 export const getWorkLocationsExamplePayload = {
   data: [
     {
@@ -804,8 +731,6 @@ export const getWorkLocationsExamplePayload = {
     },
   ],
 };
-
-
 export const getCustomFieldsExamplePayload = {
   data: [
     {
@@ -822,8 +747,6 @@ export const getCustomFieldsExamplePayload = {
     },
   ],
 };
-
-
 export const getLevelsExamplePayload = {
   data: [
     {
@@ -848,8 +771,6 @@ export const getLevelsExamplePayload = {
     },
   ],
 };
-
-
 export const getMeExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -860,8 +781,6 @@ export const getMeExamplePayload = {
     companyId: "5f8a7b6c5d4e3f2a1b0c9d8f",
   },
 };
-
-
 export const getGroupsExamplePayload = {
   data: [
     {
@@ -873,7 +792,6 @@ export const getGroupsExamplePayload = {
     },
   ],
 };
-
 export const postGroupsExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8f",
@@ -883,7 +801,6 @@ export const postGroupsExamplePayload = {
     version: 1,
   },
 };
-
 export const putGroupsGroupIdExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -893,7 +810,6 @@ export const putGroupsGroupIdExamplePayload = {
     version: 2,
   },
 };
-
 export const patchGroupsGroupIdExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -903,12 +819,9 @@ export const patchGroupsGroupIdExamplePayload = {
     version: 3,
   },
 };
-
 export const deleteGroupsGroupIdExamplePayload = {
   data: null,
 };
-
-
 export const getLeaveRequestsExamplePayload = {
   data: [
     {
@@ -923,7 +836,6 @@ export const getLeaveRequestsExamplePayload = {
     },
   ],
 };
-
 export const processLeaveRequestsExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -936,8 +848,6 @@ export const processLeaveRequestsExamplePayload = {
     processedBy: "5f8a7b6c5d4e3f2a1b0c9d90",
   },
 };
-
-
 export const getSamlIdpMetadataExamplePayload = {
   data: {
     entityId: "https://app.rippling.com/saml/metadata",
@@ -946,8 +856,6 @@ export const getSamlIdpMetadataExamplePayload = {
       "-----BEGIN CERTIFICATE-----\nMIIC...\n-----END CERTIFICATE-----",
   },
 };
-
-
 export const postAtsCandidatesPushCandidateExamplePayload = {
   data: {
     id: "5f8a7b6c5d4e3f2a1b0c9d8e",
@@ -965,8 +873,6 @@ export const postAtsCandidatesPushCandidateExamplePayload = {
     status: "CREATED",
   },
 };
-
-
 export const getCompanyActivityExamplePayload = {
   data: {
     data: {
@@ -1012,21 +918,16 @@ export const getCompanyActivityExamplePayload = {
     error: null,
   },
 };
-
-
 export const postMarkAppInstalledExamplePayload = {
   data: {
     ok: true,
   },
 };
-
-
 export const rawRequestExamplePayload = {
   data: {
     message: "Raw request completed successfully",
   },
 };
-
 export const rawRequestV2ExamplePayload = {
   data: {
     message: "Raw request to V2 API completed successfully",

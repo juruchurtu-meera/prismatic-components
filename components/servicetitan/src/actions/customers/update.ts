@@ -14,7 +14,6 @@ import {
   name,
   tagTypeIds,
 } from "../../inputs";
-
 export const updateCustomer = action({
   display: {
     label: "Update Customer",

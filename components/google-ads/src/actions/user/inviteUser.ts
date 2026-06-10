@@ -2,7 +2,6 @@ import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
 import { inviteUserExamplePayload } from "../../examplePayloads";
 import { inviteUserInputs } from "../../inputs";
-
 export const inviteUser = action({
   display: {
     label: "Invite User",
@@ -18,8 +17,6 @@ export const inviteUser = action({
       context.debug.enabled,
       context.logger,
     );
-
-    
     const { data } = await client.post(
       `customers/${customerId}/customerUserAccessInvitations:mutate`,
       {
@@ -31,7 +28,6 @@ export const inviteUser = action({
         },
       },
     );
-
     return { data };
   },
   examplePayload: inviteUserExamplePayload,

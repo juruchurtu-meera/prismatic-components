@@ -1,10 +1,12 @@
 import { action } from "@prismatic-io/spectral";
-import { inputs as httpClientInputs, sendRawRequest } from "@prismatic-io/spectral/dist/clients/http";
+import {
+  inputs as httpClientInputs,
+  sendRawRequest,
+} from "@prismatic-io/spectral/dist/clients/http";
 import { rawRequestExamplePayload } from "../../examplePayloads";
 import { connectionInput } from "../../inputs";
-
-const { debugRequest: _debugRequest, ...httpInputsWithoutDebug } = httpClientInputs;
-
+const { debugRequest: _debugRequest, ...httpInputsWithoutDebug } =
+  httpClientInputs;
 export const rawRequest = action({
   display: {
     label: "Raw Request",
@@ -27,7 +29,7 @@ export const rawRequest = action({
       { ...httpClientInputs, debugRequest: context.debug.enabled },
       {
         Authorization: `Bearer ${connection?.token?.access_token}`,
-      }
+      },
     );
     return { data };
   },
