@@ -1,4 +1,4 @@
-This trigger polls the [Gong API](https://us-66208.api.gong.io/v2/) for new calls or users on a scheduled basis.
+This trigger polls the [Gong API](https://gong.app.gong.io/settings/api/documentation) for new calls or users on a scheduled basis.
 
 #### How It Works
 
@@ -16,10 +16,10 @@ Configure the following inputs:
 - **Connection**: The Gong connection used to authenticate API requests
 - **Resource Type**: The Gong resource to monitor. Available options:
 
-  | Resource | Change Detection | Tracks New | Tracks Updated |
-  |----------|-----------------|------------|---------------|
-  | Calls | Timestamp (`fromDateTime`/`toDateTime`) | Yes | No |
-  | Users | ID-based | Yes | No |
+  | Resource | Change Detection                        | Tracks New | Tracks Updated |
+  | -------- | --------------------------------------- | ---------- | -------------- |
+  | Calls    | Timestamp (`fromDateTime`/`toDateTime`) | Yes        | No             |
+  | Users    | ID-based                                | Yes        | No             |
 
 - **Show New Records**: When enabled, includes newly created records in the results. Defaults to `true`
 
@@ -53,4 +53,4 @@ The trigger returns an object with two arrays — `created` for new records and 
 
 - For Calls: the time window is bounded by the last poll time and the current execution time. Calls outside this window are not returned
 - For Users: on the first poll, the trigger captures a baseline snapshot of all known user IDs. No records are returned on the first execution — subsequent polls detect additions against that baseline
-- Refer to the [Gong API documentation](https://us-66208.api.gong.io/v2/) for rate limit details and available fields
+- Refer to the [Gong API documentation](https://gong.app.gong.io/settings/api/documentation) for rate limit details and available fields

@@ -2,9 +2,5 @@
   {
     "label": "API Docs",
     "href": "https://frontify.github.io/graphql-reference/"
-  },
-  {
-    "label": "API Changelog",
-    "href": "https://changelog.frontify.com/"
   }
 ]
