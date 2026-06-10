@@ -1,0 +1,32 @@
+To authenticate with Jamf Pro using basic authentication, a local Jamf Pro user account with appropriate privileges is required.
+
+#### Prerequisites
+
+- A Jamf Pro instance
+- A local (standard) Jamf Pro user account — SSO/federated accounts cannot be used for API authentication
+
+#### Setup Steps
+
+1. Log in to the Jamf Pro dashboard
+2. Navigate to **Settings > System > User Accounts and Groups**
+3. Click **New** and select **Create Standard Account**
+4. Set the **Access Level** to Full Access and the **Privilege Set** to Administrator (or a custom set with the minimum required privileges)
+5. Note the **username** and **password** for the account
+
+:::warning[SSO and Federated Accounts Cannot Be Used]
+Jamf Pro does not support API authentication for SSO or federated accounts (for example, accounts backed by Okta, Azure AD, or another identity provider). This applies even when the account has Full Access and Administrator privileges.
+
+If your Jamf Pro instance uses an identity provider for web UI login, you must still create a **Standard Account** (step 3 above) specifically for API use. Standard accounts coexist with federated accounts in the same Jamf Pro instance. You can identify account type in **Settings > System > User Accounts and Groups** — the **Type** column shows **Local** for standard accounts and **Federated User** for IdP-backed accounts.
+:::
+
+#### Configure the Connection
+
+Create a connection of type **Basic Authentication** and provide the following values:
+
+- **Jamf Pro URL**: The base URL of the Jamf Pro instance (e.g., `https://acme.jamfcloud.com`)
+- **Username**: The username of the local Jamf Pro account
+- **Password**: The password of the local Jamf Pro account
+
+:::note[Recommended Authentication Method]
+OAuth 2.0 client credentials is the recommended authentication method for production integrations. Basic authentication (username and password) exchanges credentials for a bearer token, which expires after 20 minutes.
+:::

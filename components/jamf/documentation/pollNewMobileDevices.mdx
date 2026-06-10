@@ -1,0 +1,76 @@
+This trigger checks for newly enrolled mobile devices in [Jamf Pro](https://developer.jamf.com/jamf-pro/reference/get_v2-mobile-devices) on a configured schedule.
+
+#### How It Works
+
+1. The trigger runs on the configured schedule (e.g., every 5 minutes).
+2. It queries the Jamf Pro `GET /v2/mobile-devices` endpoint to retrieve the current set of enrolled mobile devices.
+3. Each device's numeric `id` is compared against the highest device ID seen on the previous poll. Devices with an ID greater than the stored maximum are treated as newly enrolled.
+4. The trigger updates its internal state with the new maximum ID so subsequent runs only emit devices added after this point.
+
+**Why Max-ID Tracking**
+
+Unlike the Jamf Pro Computer Inventory API, the v2 mobile devices endpoint does not expose a reliable "enrolled since" filter. Jamf assigns sequential IDs to mobile devices as they are enrolled, so tracking the highest known ID provides a stable way to detect new enrollments between polls.
+
+**State Management**
+
+The trigger persists a single value between executions:
+
+<details>
+<summary>State Shape</summary>
+
+```typescript
+{
+  // The highest mobile device ID observed in the previous poll.
+  // Devices with an ID greater than this value are treated as newly enrolled.
+  lastMaxId: 42
+}
+```
+
+</details>
+
+On the first execution, `lastMaxId` is undefined and the trigger establishes a baseline by recording the current maximum ID without emitting any devices. From that point forward, only devices with an ID greater than `lastMaxId` are emitted.
+
+#### Configuration
+
+The trigger accepts the following inputs:
+
+- **Connection**: The Jamf Pro connection to use.
+- **Page Size**: The maximum number of mobile devices to fetch per poll (defaults to 100, maximum 1000).
+
+#### Returned Data
+
+The trigger returns the list of newly enrolled mobile devices in the `data` array. When no new devices are found, the trigger emits an empty array and marks the poll as having no changes.
+
+<details>
+<summary>Example Payload</summary>
+
+```json
+{
+  "data": [
+    {
+      "id": "5",
+      "managementId": "mgmt-abc-123",
+      "name": "iPad-001",
+      "udid": "B3D6E19F-4321-8765-DCBA-EF0A1B2C3D4E",
+      "serialNumber": "DMPC123456789",
+      "wifiMacAddress": "a4:5e:60:ab:cd:ef",
+      "phoneNumber": null,
+      "username": "jdoe",
+      "type": "ios",
+      "model": "iPad Pro (11-inch) (4th generation)",
+      "modelIdentifier": "iPad14,3",
+      "softwareUpdateDeviceId": null
+    }
+  ]
+}
+```
+
+</details>
+
+Refer to the [Jamf Pro Mobile Devices API reference](https://developer.jamf.com/jamf-pro/reference/get_v2-mobile-devices) for the complete list of fields returned for each mobile device.
+
+#### Notes
+
+- The first execution after deployment establishes the baseline maximum ID and does not emit any devices. New devices enrolled after that baseline will appear in subsequent polls.
+- Because detection relies on a monotonically increasing ID, devices that are unenrolled and later re-enrolled may receive a new ID and be emitted again.
+- The maximum `Page Size` accepted by the Jamf Pro API is 1000. For tenants with high mobile device enrollment volume, pair this trigger with frequent polling to ensure new devices are captured within a single page.
