@@ -1,4 +1,4 @@
-This trigger polls [Yoti Sign](https://www.yoti.com/business/sign/) on a configured schedule and emits envelopes that were created since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
+This trigger polls [Yoti Sign](https://developers.yoti.com/eSignatures) on a configured schedule and emits envelopes that were created since the previous run. It is a convenient alternative to webhooks when a scheduled pull is preferred over an event push.
 
 It filters server-side using the envelope search endpoint's `from_date` parameter, which filters and sorts by each envelope's `created_at` timestamp.
 
