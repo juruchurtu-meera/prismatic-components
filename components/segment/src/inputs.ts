@@ -1,5 +1,14 @@
 import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
 import { jsonInputClean, valueListInputClean } from "./util";
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results by following cursor-based pagination. Count and Cursor inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const connectionInput = input({
   label: "Connection",
   type: "connection",

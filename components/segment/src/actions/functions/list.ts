@@ -1,13 +1,15 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
+import { listFunctionsExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "../../helpers/pagination";
 import {
   connectionInput,
   count,
   cursor,
+  fetchAll,
   region,
   resourceType,
 } from "../../inputs";
-import { listFunctionsExamplePayload } from "../../examplePayloads";
 export const listFunctions = action({
   display: {
     label: "List Functions",
@@ -17,26 +19,23 @@ export const listFunctions = action({
     connectionInput,
     region,
     resourceType,
+    fetchAll,
     count,
     cursor,
   },
   perform: async (
     context,
-    { connectionInput, region, count, cursor, resourceType },
+    { connectionInput, region, count, cursor, fetchAll, resourceType },
   ) => {
     const client = createClient(connectionInput, region, context.debug.enabled);
-    const { data } = await client.get(`/functions`, {
-      params: {
-        pagination: {
-          count: count || undefined,
-          cursor: cursor || undefined,
-        },
-        resourceType: resourceType || undefined,
-      },
+    return await paginateResults({
+      client,
+      endpoint: "/functions",
+      params: { resourceType: resourceType || undefined },
+      fetchAll,
+      count,
+      cursor,
     });
-    return {
-      data,
-    };
   },
   examplePayload: {
     data: listFunctionsExamplePayload,

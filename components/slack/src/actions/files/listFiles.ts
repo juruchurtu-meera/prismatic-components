@@ -14,7 +14,7 @@ export const listFiles = action({
       slackConnection: params.connection,
     });
     if (params.fetchAll) {
-      return paginateResults(client, "files", "files", "list", {});
+      return await paginateResults(client, "files", "files", "list", {});
     }
     const data = await client.files.list({
       page: util.types.toInt(params.cursor),

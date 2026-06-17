@@ -1,31 +1,26 @@
-import { action, util } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
+import { paginateResults } from "ms-utils";
 import { getOneDriveClient } from "../client";
-import { oneDriveConnection, pageLimit, pageToken } from "../inputs";
-import { handleErrors } from "../errors";
 import { listSharedFilesExamplePayload } from "../examplePayloads";
+import { oneDriveConnection, fetchAll, pageLimit, pageToken } from "../inputs";
 export const listSharedFiles = action({
   display: {
     label: "List Files Shared With Me",
     description: "Returns all files shared with your account",
   },
-  perform: async (context, { connection, pageLimit, pageToken }) => {
+  perform: async (context, { connection, fetchAll, pageLimit, pageToken }) => {
     const client = getOneDriveClient(connection, context.debug.enabled);
-    return {
-      data: await handleErrors(
-        client.get("/me/drive/sharedWithMe", {
-          params:
-            pageLimit || pageToken
-              ? {
-                  $top: util.types.toInt(pageLimit) || undefined,
-                  $skipToken: util.types.toString(pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+    return await paginateResults({
+      client,
+      endpoint: "/me/drive/sharedWithMe",
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   inputs: {
     connection: oneDriveConnection,
+    fetchAll,
     pageLimit,
     pageToken,
   },

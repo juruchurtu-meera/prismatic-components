@@ -18,7 +18,7 @@ export const listUsersInGroup = action({
     const queryParams: ListUsersInGroupQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(
+    return await paginateResults(
       client,
       `/groups/${groupId}/users`,
       fetchAll,

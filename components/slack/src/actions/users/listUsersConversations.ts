@@ -23,7 +23,7 @@ export const listUsersConversations = action({
       team_id: teamId || undefined,
     };
     if (fetchAll) {
-      return paginateResults(
+      return await paginateResults(
         client,
         "users",
         "channels",

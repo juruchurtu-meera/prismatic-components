@@ -11,6 +11,15 @@ export const connectionInput = input({
   type: "connection",
   required: true,
 });
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results using searchCriteria pagination. Current Page and Page Size inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const searchCriteriaCurrentPage = input({
   label: "Current Page",
   type: "string",

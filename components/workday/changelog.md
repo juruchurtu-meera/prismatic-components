@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-11
+
+Added **Fetch All** toggle to all paginated list actions (List People, List Supplier Invoice Requests, Get Supplier Invoice Request Attachments, List Events, Get Event Attachments, Get Worker Business Title Changes, List Data Changes, List Tables, Get Workers, Get Staffing Workers, Get Worker Explicit Skills, Get Worker Service Dates, Get Time Off Details) that automatically paginates through all results using limit/offset; when disabled, existing single-page behavior is preserved
+
 ### 2026-04-30
 
 Updated spectral version

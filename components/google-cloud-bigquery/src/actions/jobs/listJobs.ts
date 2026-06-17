@@ -49,7 +49,7 @@ export const listJobs = action({
     },
   ) => {
     const client = createClient(connectionInput);
-    return paginateResults(
+    return await paginateResults(
       (params) => client.jobs.list(params),
       {
         projectId: projectId || undefined,

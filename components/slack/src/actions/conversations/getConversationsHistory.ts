@@ -45,7 +45,7 @@ export const getConversationsHistory = action({
       ...(latest ? { latest } : {}),
     };
     if (fetchAll) {
-      return paginateResults(
+      return await paginateResults(
         client,
         "conversations",
         "messages",

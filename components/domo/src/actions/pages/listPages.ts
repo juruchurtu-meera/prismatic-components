@@ -15,7 +15,7 @@ export const listPages = action({
     const queryParams: ListPagesQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(
+    return await paginateResults(
       client,
       "/pages",
       fetchAll,

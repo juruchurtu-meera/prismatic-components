@@ -1,12 +1,14 @@
 import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
+import { listSalesOrderPayload } from "../../examplePayloads";
+import { paginateResults } from "../../helpers/pagination";
 import {
   connection,
   site,
   company,
+  fetchAll,
   filterDataAfterDate,
 } from "../../inputs/general";
-import { listSalesOrderPayload } from "../../examplePayloads";
 import { filterDataChangedAfter } from "../../util";
 export const listSalesOrder = action({
   display: {
@@ -15,10 +17,14 @@ export const listSalesOrder = action({
   },
   perform: async (
     context,
-    { connection, site, company, filterDataAfterDate },
+    { connection, site, company, fetchAll, filterDataAfterDate },
   ) => {
     const client = getClient(connection, context.debug.enabled, site, company);
-    const { data } = await client.get("/sop_orders");
+    const { data } = await paginateResults({
+      client,
+      endpoint: "/sop_orders",
+      fetchAll,
+    });
     return {
       data: filterDataAfterDate
         ? filterDataChangedAfter(data, filterDataAfterDate)
@@ -29,6 +35,7 @@ export const listSalesOrder = action({
     connection,
     site,
     company,
+    fetchAll,
     filterDataAfterDate,
   },
   examplePayload: listSalesOrderPayload,

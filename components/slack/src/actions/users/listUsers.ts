@@ -22,7 +22,7 @@ export const listUsers = action({
       team_id: teamId || undefined,
     };
     if (fetchAll) {
-      return paginateResults(client, "users", "members", "list", params);
+      return await paginateResults(client, "users", "members", "list", params);
     }
     const data = await client.users.list(params);
     return { data };

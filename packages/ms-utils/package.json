@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run format && npm run lint && tsc",
-    "test": "echo 'No tests'",
+    "test": "jest",
     "lint": "biome check --write .",
     "format": "biome format --write ."
   },

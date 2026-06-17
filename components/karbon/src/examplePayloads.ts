@@ -126,6 +126,11 @@ export const listContactsExamplePayload: {
     ],
   },
 };
+export const pollChangesExamplePayload = {
+  data: {
+    updated: listContactsExamplePayload.data.value,
+  },
+};
 export const getInvoiceExamplePayload: {
   data: OdataObject<unknown>;
 } = {

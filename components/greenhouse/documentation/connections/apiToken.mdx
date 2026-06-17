@@ -1,3 +1,5 @@
+**Deprecation Notice**: this connection authenticates against the Harvest v1/v2 API, which sunsets on August 31, 2026. Use the **OAuth 2.0 Client Credentials (Harvest V3)** connection for the Harvest v3 API instead.
+
 The Greenhouse Harvest API uses Basic Auth over HTTPS for authentication. The username is the Greenhouse API token and the password should be blank. Unauthenticated requests will return an HTTP 401 response.
 
 #### Prerequisites
@@ -24,5 +26,5 @@ The Greenhouse Harvest API uses Basic Auth over HTTPS for authentication. The us
 
 #### Configure the Connection
 
-1. Create a connection of type **API Key**.
+1. Create a connection of type **API Key (Harvest v1/v2)**.
 2. Enter the generated API token in the **API Key** field.

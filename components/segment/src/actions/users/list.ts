@@ -1,7 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../client";
-import { connectionInput, count, cursor, region } from "../../inputs";
 import { listUsersExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "../../helpers/pagination";
+import { connectionInput, count, cursor, fetchAll, region } from "../../inputs";
 export const listUsers = action({
   display: {
     label: "List Users",
@@ -10,22 +11,22 @@ export const listUsers = action({
   inputs: {
     connectionInput,
     region,
+    fetchAll,
     count,
     cursor,
   },
-  perform: async (context, { connectionInput, region, count, cursor }) => {
+  perform: async (
+    context,
+    { connectionInput, region, fetchAll, count, cursor },
+  ) => {
     const client = createClient(connectionInput, region, context.debug.enabled);
-    const { data } = await client.get(`/users`, {
-      params: {
-        pagination: {
-          count: count || undefined,
-          cursor: cursor || undefined,
-        },
-      },
+    return await paginateResults({
+      client,
+      endpoint: "/users",
+      fetchAll,
+      count,
+      cursor,
     });
-    return {
-      data,
-    };
   },
   examplePayload: {
     data: listUsersExamplePayload,

@@ -22,7 +22,7 @@ export const getActivityLogEntries = action({
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
     if (user.length) queryParams.user = user;
-    return paginateResults(
+    return await paginateResults(
       client,
       `/audit`,
       fetchAll,

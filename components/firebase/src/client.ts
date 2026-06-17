@@ -1,9 +1,6 @@
-import { type Connection, ConnectionError } from "@prismatic-io/spectral";
-import { util } from "@prismatic-io/spectral";
+import { ConnectionError, util } from "@prismatic-io/spectral";
 import admin from "firebase-admin";
-interface FirebaseAdmin {
-  firebaseConnection: Connection;
-}
+import type { FirebaseAdmin } from "./types";
 export const createClient = ({ firebaseConnection }: FirebaseAdmin) => {
   if (firebaseConnection.key !== "firebaseConnection")
     throw new ConnectionError(

@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-11
+
+Added **Fetch All** toggle to all list actions (List Customers, List Customer Contacts, List Customer Delivery Addresses, List Customer Price Bands, List Price Bands, List Products, List Product Groups, List Sales Order, List Tax Codes, List Pricing Source Types, List Pricing Types) that automatically paginates through all results using `$top`/`$skip` OData parameters; when disabled, existing single-call behavior is preserved
+
 ### 2026-05-05
 
 Updated **New and Updated Records** trigger to use Sage 200's server-side OData `$filter=date_time_updated gt <iso>` query, replacing the previous full-fetch with client-side filtering

@@ -38,7 +38,7 @@ export const listDatasets = action({
     },
   ) => {
     const client = createClient(connectionInput);
-    return paginateResults(
+    return await paginateResults(
       (params) => client.datasets.list(params),
       {
         projectId: projectId || undefined,

@@ -1,2 +1,3 @@
 import { entityTrigger } from "./entityTrigger";
-export default { entityTrigger };
+import { pollChangesTrigger } from "./pollChangesTrigger";
+export default { entityTrigger, pollChangesTrigger };

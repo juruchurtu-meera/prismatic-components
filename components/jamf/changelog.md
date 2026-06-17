@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-16
+
+Enhanced **List Mobile Devices** with full inventory detail
+
 ### 2026-06-10
 
 Initial release of the Jamf Pro component, providing:

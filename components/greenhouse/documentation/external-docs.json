@@ -4,6 +4,10 @@
     "href": "https://developers.greenhouse.io/harvest.html"
   },
   {
+    "label": "API Docs (Harvest v3)",
+    "href": "https://harvestdocs.greenhouse.io/"
+  },
+  {
     "label": "API Changelog",
     "href": "https://support.greenhouse.io/hc/en-us/sections/360000710732-Release-notes"
   }

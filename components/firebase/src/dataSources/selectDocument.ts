@@ -1,5 +1,5 @@
-import { dataSource, util, type Element } from "@prismatic-io/spectral";
-import { queryDocs } from "../helpers";
+import { dataSource, type Element } from "@prismatic-io/spectral";
+import { queryDocs } from "../util";
 import { createClient } from "../client";
 import { selectDocumentInputs } from "../inputs";
 export const selectDocument = dataSource({
@@ -18,14 +18,14 @@ export const selectDocument = dataSource({
     });
     const docs = await queryDocs({
       client,
-      collection: util.types.toString(collection),
-      queryOperatorCode: util.types.toString(queryOperatorCode),
-      orderBy: util.types.toString(orderBy),
+      collection: collection,
+      queryOperatorCode: queryOperatorCode,
+      orderBy: orderBy,
     });
     return {
       result: docs.map(
         (item): Element => ({
-          key: util.types.toString(item.id),
+          key: item.id,
           label: item.ref.path,
         }),
       ),

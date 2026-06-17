@@ -2,7 +2,7 @@ import { input, util } from "@prismatic-io/spectral";
 import { BOOLEAN_INPUT_MODEL } from "../../constants";
 import { cleanBooleanInput, cleanStringInput } from "../../utils";
 import { companyId } from "../accounts/getAccountsInputs";
-import { connectionInput, odataParams } from "../general";
+import { connectionInput, fetchAll, odataParams } from "../general";
 export const vendorId = input({
   label: "Vendor ID",
   type: "string",
@@ -177,6 +177,7 @@ export const blocked = input({
 export const listVendorsInputs = {
   connection: connectionInput,
   companyId,
+  fetchAll,
   ...odataParams,
 };
 export const getVendorInputs = {

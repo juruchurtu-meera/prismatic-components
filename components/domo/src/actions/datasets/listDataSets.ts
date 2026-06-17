@@ -20,7 +20,7 @@ export const listDataSets = action({
     if (nameLike.length) queryParams.nameLike = nameLike;
     if (offset.length) queryParams.offset = offset;
     if (sort.length) queryParams.sort = sort;
-    return paginateResults(
+    return await paginateResults(
       client,
       "/datasets",
       fetchAll,

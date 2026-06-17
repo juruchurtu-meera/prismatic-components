@@ -1,12 +1,6 @@
 import { component } from "@prismatic-io/spectral";
-import createDocument from "./actions/createDocument";
-import listCollections from "./actions/listCollections";
-import listDocuments from "./actions/listDocuments";
-import bulkCreateDocuments from "./actions/bulkDocuments";
-import deleteDocument from "./actions/deleteDocument";
-import getDocument from "./actions/getDocument";
-import updateDocument from "./actions/updateDocument";
-import removeField from "./actions/removeField";
+import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
+import actions from "./actions";
 import connections from "./connections";
 import dataSources from "./dataSources";
 export default component({
@@ -20,16 +14,8 @@ export default component({
       "Create, read, update, and delete documents in a Firebase Cloud Firestore database collection.",
     iconPath: "icon.png",
   },
-  actions: {
-    createDocument,
-    bulkCreateDocuments,
-    listCollections,
-    listDocuments,
-    getDocument,
-    deleteDocument,
-    updateDocument,
-    removeField,
-  },
+  hooks: { error: handleErrors },
+  actions,
   dataSources,
   connections,
 });

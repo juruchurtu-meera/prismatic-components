@@ -22,7 +22,7 @@ export const listConversationMembers = action({
       channel: channelName,
     };
     if (fetchAll) {
-      return paginateResults(
+      return await paginateResults(
         client,
         "conversations",
         "members",

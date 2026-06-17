@@ -2,6 +2,7 @@ import { action } from "@prismatic-io/spectral";
 import { getClient } from "../../client";
 import { SERVICES } from "../../constants";
 import { listEventsExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "../../helpers/pagination";
 import { listEventsInputs } from "../../inputs";
 export const listEvents = action({
   display: {
@@ -9,14 +10,16 @@ export const listEvents = action({
     description:
       "Retrieves a collection of business process events based on the specified parameters. Exactly one worker parameter must be specified; otherwise, a blank response is returned.",
   },
-  perform: async (context, { connection, params, limit, offset }) => {
+  perform: async (context, { connection, params, fetchAll, limit, offset }) => {
     const client = getClient(connection, context.debug.enabled);
-    const { data } = await client.get(`${SERVICES.businessProcess}/events`, {
-      params: { limit, offset, ...params },
+    return await paginateResults({
+      client,
+      endpoint: `${SERVICES.businessProcess}/events`,
+      params,
+      fetchAll,
+      limit,
+      offset,
     });
-    return {
-      data,
-    };
   },
   inputs: listEventsInputs,
   examplePayload: listEventsExamplePayload,

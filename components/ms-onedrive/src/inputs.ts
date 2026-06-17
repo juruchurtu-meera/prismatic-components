@@ -1,5 +1,14 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanExpirationDateTime } from "ms-utils";
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results by following @odata.nextLink. Page Limit and Page Token inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const oneDriveConnection = input({
   label: "Connection",
   type: "connection",

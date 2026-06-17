@@ -74,6 +74,93 @@ export interface MobileDeviceDetail extends MobileDevice {
   email: string | null;
   department: string | null;
 }
+export interface MobileDeviceInventory {
+  mobileDeviceId: string;
+  deviceType: string | null;
+  general?: {
+    udid: string | null;
+    displayName: string | null;
+    assetTag: string | null;
+    siteId: string | null;
+    lastInventoryUpdateDate: string | null;
+    osVersion: string | null;
+    osRapidSecurityResponse: string | null;
+    osBuild: string | null;
+    osSupplementalBuildVersion: string | null;
+    softwareUpdateDeviceId: string | null;
+    ipAddress: string | null;
+    managed: boolean;
+    supervised: boolean;
+    deviceOwnershipType: string | null;
+    enrollmentMethodPrestage: string | null;
+    enrollmentSessionTokenValid: boolean;
+    lastEnrolledDate: string | null;
+    mdmProfileExpirationDate: string | null;
+    timeZone: string | null;
+    declarativeDeviceManagementEnabled: boolean;
+    managementId: string | null;
+    extensionAttributes: unknown[] | null;
+    lastLoggedInUsernameSelfService: string | null;
+    lastLoggedInUsernameSelfServiceTimestamp: string | null;
+    sharedIpad: boolean;
+    diagnosticAndUsageReportingEnabled: boolean;
+    appAnalyticsEnabled: boolean;
+    residentUsers: number | null;
+    quotaSize: number | null;
+    temporarySessionOnly: boolean | null;
+    temporarySessionTimeout: number | null;
+    userSessionTimeout: number | null;
+    syncedToComputer: number | null;
+    maximumSharediPadUsersStored: number | null;
+    lastBackupDate: string | null;
+    deviceLocatorServiceEnabled: boolean;
+    doNotDisturbEnabled: boolean;
+    cloudBackupEnabled: boolean;
+    lastCloudBackupDate: string | null;
+    locationServicesForSelfServiceMobileEnabled: boolean;
+    itunesStoreAccountActive: boolean;
+    exchangeDeviceId: string | null;
+    tethered: boolean;
+  } | null;
+  hardware?: {
+    capacityMb: number | null;
+    availableSpaceMb: number | null;
+    usedSpacePercentage: number | null;
+    batteryLevel: number | null;
+    serialNumber: string | null;
+    wifiMacAddress: string | null;
+    bluetoothMacAddress: string | null;
+    modelIdentifier: string | null;
+    model: string | null;
+    modelNumber: string | null;
+    bluetoothLowEnergyCapable: boolean | null;
+    deviceId: string | null;
+  } | null;
+  userAndLocation?: {
+    username: string | null;
+    realName: string | null;
+    emailAddress: string | null;
+    position: string | null;
+    phoneNumber: string | null;
+    departmentId: string | null;
+    buildingId: string | null;
+    room: string | null;
+    building: string | null;
+    department: string | null;
+  } | null;
+  security?: {
+    dataProtected: boolean | null;
+    blockLevelEncryptionCapable: boolean | null;
+    fileLevelEncryptionCapable: boolean | null;
+    passcodePresent: boolean | null;
+    passcodeCompliant: boolean | null;
+    passcodeCompliantWithProfile: boolean | null;
+    hardwareEncryption: number | null;
+    activationLockEnabled: boolean | null;
+    jailBreakDetected: boolean | null;
+    lostModeEnabled: boolean | null;
+  } | null;
+}
 export interface JamfUser {
   id: string;
   username: string;

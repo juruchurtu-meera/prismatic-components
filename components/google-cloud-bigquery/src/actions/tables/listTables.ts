@@ -39,7 +39,7 @@ export const listTables = action({
     { connectionInput, datasetId, projectId, maxResults, pageToken, fetchAll },
   ) => {
     const client = createClient(connectionInput);
-    return paginateResults(
+    return await paginateResults(
       (params) => client.tables.list(params),
       {
         datasetId,

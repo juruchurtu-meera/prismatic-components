@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-11
+
+Added **Fetch All** toggle to all list actions (List Companies, List Customers, List Vendors, List Items, List Sales Orders, List Sales Invoices, List Sales Shipments, List Sales Shipment Line Items, List Purchase Orders, List Purchase Order Lines, List Purchase Invoices, List Purchase Receipts, List Purchase Receipt Lines, List General Ledger Entries, List Item Ledger Entries) that automatically follows `@odata.nextLink` pagination to retrieve all pages of results in a single call; when disabled, existing single-page behavior with Top, Skip, and Skip Token inputs is preserved
+
 ### 2026-05-28
 
 Added **New and Updated Records** polling trigger that checks for changes to a curated set of Business Central entities (Items, Customers, Vendors, Sales Orders, Sales Invoices, Sales Shipments, Purchase Orders, Purchase Invoices, Purchase Receipts, Accounts) via the `lastModifiedDateTime` OData filter; because Business Central does not expose a creation timestamp on list responses, all changed records are emitted in the `updated` bucket while the `created` bucket is preserved in the payload shape but always empty

@@ -1,9 +1,10 @@
 import { action, util } from "@prismatic-io/spectral";
 import { handleErrors } from "@prismatic-io/spectral/dist/clients/http";
 import { getClient } from "../client";
-import { removeUndefinedValuesFromObject } from "../helpers";
+import { paginateResults, removeUndefinedValuesFromObject } from "../helpers";
 import {
   connectionInput,
+  fetchAll,
   searchCriteriaConditionType,
   searchCriteriaCurrentPage,
   searchCriteriaField,
@@ -21,6 +22,7 @@ export const listOrderItems = action({
     context,
     {
       connection,
+      fetchAll,
       searchCriteriaConditionType,
       searchCriteriaCurrentPage,
       searchCriteriaField,
@@ -32,24 +34,26 @@ export const listOrderItems = action({
   ) => {
     const client = await getClient(connection, context.debug.enabled);
     const queryParams = removeUndefinedValuesFromObject({
-      "searchCriteria[currentPage]": searchCriteriaCurrentPage || undefined,
       "searchCriteria[filterGroups][0][filters][0][conditionType]":
         searchCriteriaConditionType || undefined,
       "searchCriteria[filterGroups][0][filters][0][field]":
         searchCriteriaField || undefined,
       "searchCriteria[filterGroups][0][filters][0][value]":
         searchCriteriaValue || undefined,
-      "searchCriteria[pageSize]": searchCriteriaPageSize || undefined,
       "searchCriteria[sortOrders][0][direction]":
         searchCriteriaSortDirection || undefined,
       "searchCriteria[sortOrders][0][field]":
         searchCriteriaSortField || undefined,
+      "searchCriteria[currentPage]": searchCriteriaCurrentPage || undefined,
+      "searchCriteria[pageSize]": searchCriteriaPageSize || undefined,
     });
     try {
-      const { data } = await client.get("/orders/items", {
-        params: queryParams,
+      return await paginateResults({
+        client,
+        endpoint: "/orders/items",
+        queryParams,
+        fetchAll,
       });
-      return { data };
     } catch (error) {
       const handled = handleErrors(error);
       const serialized = util.types.toJSON(handled);
@@ -58,6 +62,7 @@ export const listOrderItems = action({
   },
   inputs: {
     connection: connectionInput,
+    fetchAll,
     searchCriteriaConditionType,
     searchCriteriaCurrentPage,
     searchCriteriaField,

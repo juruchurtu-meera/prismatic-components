@@ -1,11 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
 import { listGeneralLedgerEntriesExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "ms-utils";
 import { listGeneralLedgerEntriesInputs } from "../../inputs/generalLedgerEntries";
-import type {
-  GeneralLedgerEntry,
-  MultipleItemsResponse,
-} from "../../interfaces";
 export const listGeneralLedgerEntries = action({
   display: {
     label: "List General Ledger Entries",
@@ -19,6 +16,7 @@ export const listGeneralLedgerEntries = action({
       $search,
       companyId,
       connection,
+      fetchAll,
       $skip,
       $skipToken,
       $top,
@@ -39,7 +37,6 @@ export const listGeneralLedgerEntries = action({
       $search,
       $skip,
       $skipToken,
-      $top,
       $filter,
       $count,
       $expand,
@@ -47,12 +44,13 @@ export const listGeneralLedgerEntries = action({
       $orderBy,
       $select,
     };
-    const { data } = await client.get<
-      MultipleItemsResponse<GeneralLedgerEntry[]>
-    >(`/companies(${companyId})/generalLedgerEntries`, {
+    return await paginateResults({
+      client,
+      endpoint: `/companies(${companyId})/generalLedgerEntries`,
       params,
+      fetchAll,
+      pageSize: $top,
     });
-    return { data };
   },
   examplePayload: listGeneralLedgerEntriesExamplePayload,
 });

@@ -1,31 +1,26 @@
-import { action, util } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
+import { paginateResults } from "ms-utils";
 import { getOneDriveClient } from "../client";
-import { oneDriveConnection, pageLimit, pageToken } from "../inputs";
-import { handleErrors } from "../errors";
 import { listGroupsExamplePayload } from "../examplePayloads";
+import { oneDriveConnection, fetchAll, pageLimit, pageToken } from "../inputs";
 export const listGroups = action({
   display: {
     label: "List Groups",
     description: "Returns a list of all groups the user has access to",
   },
-  perform: async (context, { connection, pageLimit, pageToken }) => {
+  perform: async (context, { connection, fetchAll, pageLimit, pageToken }) => {
     const client = getOneDriveClient(connection, context.debug.enabled);
-    return {
-      data: await handleErrors(
-        client.get("/groups", {
-          params:
-            pageLimit || pageToken
-              ? {
-                  $top: util.types.toInt(pageLimit) || undefined,
-                  $skipToken: util.types.toString(pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+    return await paginateResults({
+      client,
+      endpoint: "/groups",
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   inputs: {
     connection: oneDriveConnection,
+    fetchAll,
     pageToken,
     pageLimit,
   },

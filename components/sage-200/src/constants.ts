@@ -1,3 +1,5 @@
+export const MAX_PAGES = 100;
+export const DEFAULT_PAGE_SIZE = 200;
 export const API_URLS: Record<string, string> = {
   professional: "https://api.columbus.sage.com/uk/sage200extra/accounts/v1",
   standard: "https://api.columbus.sage.com/uk/sage200/accounts/v1",

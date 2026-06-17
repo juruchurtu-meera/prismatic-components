@@ -1,13 +1,15 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../../../client";
+import { listDestinationSubscriptionsExamplePayload } from "../../../examplePayloads";
+import { paginateResults } from "../../../helpers/pagination";
 import {
   connectionInput,
   count,
   cursor,
   destinationId,
+  fetchAll,
   region,
 } from "../../../inputs";
-import { listDestinationSubscriptionsExamplePayload } from "../../../examplePayloads";
 export const listDestinationSubscriptions = action({
   display: {
     label: "List Destination Subscriptions",
@@ -17,28 +19,22 @@ export const listDestinationSubscriptions = action({
     connectionInput,
     region,
     destinationId,
+    fetchAll,
     count,
     cursor,
   },
   perform: async (
     context,
-    { connectionInput, destinationId, region, count, cursor },
+    { connectionInput, destinationId, region, fetchAll, count, cursor },
   ) => {
     const client = createClient(connectionInput, region, context.debug.enabled);
-    const { data } = await client.get(
-      `/destinations/${destinationId}/subscriptions`,
-      {
-        params: {
-          pagination: {
-            count: count || undefined,
-            cursor: cursor || undefined,
-          },
-        },
-      },
-    );
-    return {
-      data,
-    };
+    return await paginateResults({
+      client,
+      endpoint: `/destinations/${destinationId}/subscriptions`,
+      fetchAll,
+      count,
+      cursor,
+    });
   },
   examplePayload: {
     data: listDestinationSubscriptionsExamplePayload,

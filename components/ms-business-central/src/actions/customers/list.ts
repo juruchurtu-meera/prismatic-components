@@ -1,9 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
 import { listCustomersExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "ms-utils";
 import { companyId } from "../../inputs/accounts/getAccountsInputs";
-import { connectionInput, odataParams } from "../../inputs/general";
-import type { Customer, MultipleItemsResponse } from "../../interfaces";
+import { connectionInput, fetchAll, odataParams } from "../../inputs/general";
 export const listCustomers = action({
   display: {
     label: "List Customers",
@@ -16,6 +16,7 @@ export const listCustomers = action({
       $search,
       companyId,
       connection,
+      fetchAll,
       $skip,
       $skipToken,
       $top,
@@ -36,7 +37,6 @@ export const listCustomers = action({
       $search,
       $skip,
       $skipToken,
-      $top,
       $filter,
       $count,
       $expand,
@@ -44,17 +44,18 @@ export const listCustomers = action({
       $orderBy,
       $select,
     };
-    const { data } = await client.get<MultipleItemsResponse<Customer[]>>(
-      `/companies(${companyId})/customers`,
-      {
-        params,
-      },
-    );
-    return { data };
+    return await paginateResults({
+      client,
+      endpoint: `/companies(${companyId})/customers`,
+      params,
+      fetchAll,
+      pageSize: $top,
+    });
   },
   inputs: {
     connection: connectionInput,
     companyId,
+    fetchAll,
     ...odataParams,
   },
   examplePayload: listCustomersExamplePayload,

@@ -1,4 +1,4 @@
-export type { Application, PollingState } from "./Applications";
+export type { Application, PollingState } from "./v1/Applications";
 export type {
   Address,
   Application as CandidateApplication,
@@ -14,9 +14,12 @@ export type {
   Recruiter,
   Source,
   WorkRemotely,
-} from "./Candidates";
-export type { CustomFieldDataSources, CustomFieldOption } from "./CustomFields";
-export type { DepartmentDataSources } from "./Departments";
+} from "./v1/Candidates";
+export type {
+  CustomFieldDataSources,
+  CustomFieldOption,
+} from "./v1/CustomFields";
+export type { DepartmentDataSources } from "./v1/Departments";
 export type {
   Budget,
   CloseReason,
@@ -25,6 +28,20 @@ export type {
   JobDataSources,
   Opening,
   ValueClass,
-} from "./Jobs";
-export type { Location as OfficeLocation, OfficeDataSources } from "./Offices";
-export type { UserDataSources } from "./User";
+} from "./v1/Jobs";
+export type {
+  Location as OfficeLocation,
+  OfficeDataSources,
+} from "./v1/Offices";
+export type { UserDataSources } from "./v1/User";
+export type {
+  V3Application,
+  V3Attachment,
+  V3Candidate,
+  V3CustomField,
+  V3Department,
+  V3Job,
+  V3Office,
+  V3RejectionReason,
+  V3User,
+} from "./v3";

@@ -1,38 +1,34 @@
-import { action, util } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
+import { paginateResults } from "ms-utils";
 import { getOneDriveClient } from "../client";
+import { listDrivesExamplePayload } from "../examplePayloads";
 import {
   oneDriveConnection,
   groupId,
   siteId,
   userId,
+  fetchAll,
   pageLimit,
   pageToken,
 } from "../inputs";
-import { handleErrors } from "../errors";
-import { listDrivesExamplePayload } from "../examplePayloads";
 export const listDrives = action({
   display: {
     label: "List My Drives",
     description: "Returns a list of all drives available to the current user",
   },
-  perform: async (context, { connection, pageLimit, pageToken }) => {
+  perform: async (context, { connection, fetchAll, pageLimit, pageToken }) => {
     const client = getOneDriveClient(connection, context.debug.enabled);
-    return {
-      data: await handleErrors(
-        client.get("/me/drives", {
-          params:
-            pageLimit || pageToken
-              ? {
-                  $top: util.types.toInt(pageLimit) || undefined,
-                  $skipToken: util.types.toString(pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+    return await paginateResults({
+      client,
+      endpoint: "/me/drives",
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   inputs: {
     connection: oneDriveConnection,
+    fetchAll,
     pageLimit,
     pageToken,
   },
@@ -43,26 +39,23 @@ export const listDrivesByUser = action({
     label: "List Drives By User",
     description: "Returns a list of all drives available to the given user",
   },
-  perform: async (context, params) => {
-    const client = getOneDriveClient(params.connection, context.debug.enabled);
-    return {
-      data: await handleErrors(
-        client.get(`/users/${params.userId}/drives`, {
-          params:
-            params.pageLimit || params.pageToken
-              ? {
-                  $top: util.types.toInt(params.pageLimit) || undefined,
-                  $skipToken:
-                    util.types.toString(params.pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+  perform: async (
+    context,
+    { connection, userId, fetchAll, pageLimit, pageToken },
+  ) => {
+    const client = getOneDriveClient(connection, context.debug.enabled);
+    return await paginateResults({
+      client,
+      endpoint: `/users/${userId}/drives`,
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   inputs: {
     connection: oneDriveConnection,
     userId,
+    fetchAll,
     pageLimit,
     pageToken,
   },
@@ -73,26 +66,23 @@ export const listDrivesByGroup = action({
     label: "List Drives By Group",
     description: "Returns a list of all drives available to the given group",
   },
-  perform: async (context, params) => {
-    const client = getOneDriveClient(params.connection, context.debug.enabled);
-    return {
-      data: await handleErrors(
-        client.get(`/groups/${params.groupId}/drives`, {
-          params:
-            params.pageLimit || params.pageToken
-              ? {
-                  $top: util.types.toInt(params.pageLimit) || undefined,
-                  $skipToken:
-                    util.types.toString(params.pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+  perform: async (
+    context,
+    { connection, groupId, fetchAll, pageLimit, pageToken },
+  ) => {
+    const client = getOneDriveClient(connection, context.debug.enabled);
+    return await paginateResults({
+      client,
+      endpoint: `/groups/${groupId}/drives`,
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   inputs: {
     connection: oneDriveConnection,
     groupId,
+    fetchAll,
     pageLimit,
     pageToken,
   },
@@ -103,26 +93,23 @@ export const listDrivesBySite = action({
     label: "List Drives By Site",
     description: "Returns a list of all drives available to the given site",
   },
-  perform: async (context, params) => {
-    const client = getOneDriveClient(params.connection, context.debug.enabled);
-    return {
-      data: await handleErrors(
-        client.get(`/sites/${params.siteId}/drives`, {
-          params:
-            params.pageLimit || params.pageToken
-              ? {
-                  $top: util.types.toInt(params.pageLimit) || undefined,
-                  $skipToken:
-                    util.types.toString(params.pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+  perform: async (
+    context,
+    { connection, siteId, fetchAll, pageLimit, pageToken },
+  ) => {
+    const client = getOneDriveClient(connection, context.debug.enabled);
+    return await paginateResults({
+      client,
+      endpoint: `/sites/${siteId}/drives`,
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   inputs: {
     connection: oneDriveConnection,
     siteId,
+    fetchAll,
     pageLimit,
     pageToken,
   },

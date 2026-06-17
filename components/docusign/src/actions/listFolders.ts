@@ -1,15 +1,16 @@
 import { action } from "@prismatic-io/spectral";
 import { getDocuSignClient } from "../client";
+import { paginateResults } from "../helpers/pagination";
 import {
   connection,
   count,
+  fetchAll,
   include,
   includeItems,
   startPosition,
   subFolderDepth,
   userFilter,
 } from "../inputs";
-import { getFolders } from "../utils";
 export const listFolders = action({
   display: {
     label: "List Folders",
@@ -19,6 +20,7 @@ export const listFolders = action({
     context,
     {
       connection,
+      fetchAll,
       count,
       include,
       includeItems,
@@ -32,19 +34,24 @@ export const listFolders = action({
       true,
       context.debug.enabled,
     );
-    const data = await getFolders(
+    return await paginateResults({
       client,
+      endpoint: "/folders",
+      params: {
+        include: include || undefined,
+        include_items: includeItems,
+        sub_folder_depth: subFolderDepth || undefined,
+        user_filter: userFilter || undefined,
+      },
+      fetchAll,
       count,
-      include,
-      includeItems,
       startPosition,
-      subFolderDepth,
-      userFilter,
-    );
-    return { data };
+      itemsKey: "folders",
+    });
   },
   inputs: {
     connection,
+    fetchAll,
     count,
     include,
     includeItems,

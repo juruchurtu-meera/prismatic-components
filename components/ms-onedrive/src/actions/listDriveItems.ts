@@ -1,8 +1,14 @@
-import { action, util } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
+import { paginateResults } from "ms-utils";
 import { getOneDriveClient } from "../client";
-import { oneDriveConnection, dir, pageLimit, pageToken } from "../inputs";
-import { handleErrors } from "../errors";
 import { listDriveItemsExamplePayload } from "../examplePayloads";
+import {
+  oneDriveConnection,
+  dir,
+  fetchAll,
+  pageLimit,
+  pageToken,
+} from "../inputs";
 export const listDriveItems = action({
   display: {
     label: "List Items In Directory",
@@ -11,28 +17,26 @@ export const listDriveItems = action({
   inputs: {
     connection: oneDriveConnection,
     dir,
+    fetchAll,
     pageLimit,
     pageToken,
   },
-  perform: async (context, { connection, dir, pageLimit, pageToken }) => {
+  perform: async (
+    context,
+    { connection, dir, fetchAll, pageLimit, pageToken },
+  ) => {
     const client = getOneDriveClient(connection, context.debug.enabled);
     const path =
       dir === "/"
         ? "/me/drive/root/children"
         : `/me/drive/root:${dir}:/children`;
-    return {
-      data: await handleErrors(
-        client.get(path, {
-          params:
-            pageLimit || pageToken
-              ? {
-                  $top: util.types.toInt(pageLimit) || undefined,
-                  $skipToken: util.types.toString(pageToken) || undefined,
-                }
-              : undefined,
-        }),
-      ),
-    };
+    return await paginateResults({
+      client,
+      endpoint: path,
+      fetchAll,
+      pageSize: pageLimit,
+      pageToken,
+    });
   },
   examplePayload: listDriveItemsExamplePayload,
 });

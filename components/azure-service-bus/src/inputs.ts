@@ -1,4 +1,13 @@
 import { input, util } from "@prismatic-io/spectral";
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results by following nextLink pagination. Skip and Top inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const subscriptionId = input({
   label: "Subscription ID",
   comments:

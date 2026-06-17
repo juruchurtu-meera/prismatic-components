@@ -1,12 +1,6 @@
-import { rawRequest } from "./misc";
-import applications from "./applications";
-import candidates from "./candidates";
-import jobs from "./jobs";
-import users from "./users";
+import v1Actions from "./v1";
+import v3Actions from "./v3";
 export default {
-  ...users,
-  ...candidates,
-  ...applications,
-  ...jobs,
-  rawRequest,
+  ...v1Actions,
+  ...v3Actions,
 };

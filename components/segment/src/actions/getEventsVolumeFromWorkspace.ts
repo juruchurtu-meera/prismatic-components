@@ -1,5 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { createClient } from "../client";
+import { getEventsVolumeFromWorkspaceExamplePayload } from "../examplePayloads";
+import { paginateResults } from "../helpers/pagination";
 import {
   appVersion,
   connectionInput,
@@ -8,13 +10,13 @@ import {
   endTime,
   eventName,
   eventType,
+  fetchAll,
   granularity,
   groupBy,
   region,
   sourceIds,
   startTime,
 } from "../inputs";
-import { getEventsVolumeFromWorkspaceExamplePayload } from "../examplePayloads";
 export const getEventsVolumeFromWorkspace = action({
   display: {
     label: "Get Events Volume From Workspace",
@@ -32,6 +34,7 @@ export const getEventsVolumeFromWorkspace = action({
     eventName,
     eventType,
     appVersion,
+    fetchAll,
     count,
     cursor,
   },
@@ -42,6 +45,7 @@ export const getEventsVolumeFromWorkspace = action({
       region,
       count,
       cursor,
+      fetchAll,
       appVersion,
       endTime,
       eventName,
@@ -53,7 +57,9 @@ export const getEventsVolumeFromWorkspace = action({
     },
   ) => {
     const client = createClient(connectionInput, region, context.debug.enabled);
-    const { data } = await client.get("/transformations", {
+    return await paginateResults({
+      client,
+      endpoint: "/transformations",
       params: {
         granularity: granularity || undefined,
         startTime: startTime || undefined,
@@ -63,15 +69,11 @@ export const getEventsVolumeFromWorkspace = action({
         eventName: eventName || undefined,
         eventType: eventType || undefined,
         appVersion: appVersion || undefined,
-        pagination: {
-          count: count || undefined,
-          cursor: cursor || undefined,
-        },
       },
+      fetchAll,
+      count,
+      cursor,
     });
-    return {
-      data,
-    };
   },
   examplePayload: {
     data: getEventsVolumeFromWorkspaceExamplePayload,

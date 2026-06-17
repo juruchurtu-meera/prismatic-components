@@ -19,7 +19,7 @@ export const listStreamExecution = action({
     const queryParams: ListStreamExecutionQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(
+    return await paginateResults(
       client,
       `/streams/${streamId}/executions`,
       fetchAll,

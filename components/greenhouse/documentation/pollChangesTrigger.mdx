@@ -11,7 +11,7 @@ This trigger polls the [Greenhouse Harvest API](https://developers.greenhouse.io
 
 #### Returned Data
 
-The trigger returns an object containing two arrays — `created` for newly submitted applications and `updated` for applications with new activity since the last poll. Each array contains full Greenhouse application objects.
+The trigger returns an object containing two arrays: `created` for newly submitted applications and `updated` for applications with new activity since the last poll. Each array contains full Greenhouse application objects.
 
 <details>
 <summary>Example Response</summary>
@@ -69,6 +69,6 @@ Fields shown are representative. The full response object includes additional pr
 
 #### Notes
 
-- This trigger uses the Greenhouse Harvest v1 API. The Harvest v1/v2 APIs are deprecated and will be removed on August 31, 2026 — migration to Harvest v3 will be required before that date
-- On the very first execution, the trigger has no prior poll timestamp and uses the current time as its baseline, so no historical applications are emitted on the initial run — only changes that occur after the trigger is enabled will be surfaced
+- This trigger uses the Greenhouse Harvest v1 API. The Harvest v1/v2 APIs are deprecated and will be removed on August 31, 2026. Migration to Harvest v3 will be required before that date
+- On the very first execution, the trigger has no prior poll timestamp and uses the current time as its baseline, so no historical applications are emitted on the initial run. Only changes that occur after the trigger is enabled will be surfaced
 - Refer to the [List Applications endpoint documentation](https://developers.greenhouse.io/harvest.html#get-list-applications) for the full set of fields returned on each application and to the [Harvest API documentation](https://developers.greenhouse.io/harvest.html) for rate limit details

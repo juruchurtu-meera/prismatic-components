@@ -1,6 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
 import { companyId } from "../accounts/getAccountsInputs";
-import { connectionInput, odataParams } from "../general";
+import { connectionInput, fetchAll, odataParams } from "../general";
 export const itemLedgerEntryId = input({
   label: "Item Ledger Entry ID",
   type: "string",
@@ -14,6 +14,7 @@ export const itemLedgerEntryId = input({
 export const listItemLedgerEntriesInputs = {
   connection: connectionInput,
   companyId,
+  fetchAll,
   ...odataParams,
 };
 export const getItemLedgerEntryInputs = {

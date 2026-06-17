@@ -6,6 +6,15 @@ export const connection = input({
   type: "connection",
   required: true,
 });
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results using startPosition/count pagination. Start Position and Count inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const accountId = input({
   label: "Account ID",
   type: "string",

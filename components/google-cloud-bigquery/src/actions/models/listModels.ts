@@ -28,7 +28,7 @@ export const listModels = action({
     { connectionInput, projectId, datasetId, pageToken, maxResults, fetchAll },
   ) => {
     const client = createClient(connectionInput);
-    return paginateResults(
+    return await paginateResults(
       (params) => client.models.list(params),
       {
         projectId: projectId || undefined,

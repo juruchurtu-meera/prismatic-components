@@ -1,5 +1,7 @@
 export const sandboxUrl = "https://commercedeveloper-sandbox-api.adobe.com";
 export const productionUrl = "https://commercedeveloper-api.adobe.com";
+export const MAX_PAGES = 100;
+export const DEFAULT_PAGE_SIZE = "100";
 export const POLL_PAGE_SIZE = 100;
 export const MAX_POLL_PAGES = 50;
 export const POLL_RESOURCE_CONFIG: Record<

@@ -1,5 +1,14 @@
-import { input } from "@prismatic-io/spectral";
+import { input, util } from "@prismatic-io/spectral";
 import { cleanDate, cleanOptionalBoolean, cleanStringInput } from "../util";
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results using $top/$skip pagination. Filter Data After Date is still applied to the final result set.",
+  required: false,
+  default: "false",
+});
 export const connection = input({
   label: "Connection",
   type: "connection",

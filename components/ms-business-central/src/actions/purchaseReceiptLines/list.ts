@@ -1,11 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
 import { listPurchaseReceiptLinesExamplePayload as examplePayload } from "../../examplePayloads";
+import { paginateResults } from "ms-utils";
 import { listPurchaseReceiptLinesInputs as inputs } from "../../inputs/purchaseReceiptLines/listPurchaseReceiptLinesInputs";
-import type {
-  MultipleItemsResponse,
-  PurchaseReceiptLine,
-} from "../../interfaces";
 export const listPurchaseReceiptLines = action({
   display: {
     label: "List Purchase Receipt Lines",
@@ -16,8 +13,9 @@ export const listPurchaseReceiptLines = action({
     context,
     {
       companyId,
-      $orderBy,
       connection,
+      fetchAll,
+      $orderBy,
       $format,
       $expand,
       $count,
@@ -40,18 +38,18 @@ export const listPurchaseReceiptLines = action({
       $expand,
       $count,
       $filter,
-      $top,
       $skipToken,
       $skip,
       $search,
       $select,
     };
-    const { data } = await client.get<
-      MultipleItemsResponse<PurchaseReceiptLine[]>
-    >(`/companies(${companyId})/purchaseReceiptLines`, {
+    return await paginateResults({
+      client,
+      endpoint: `/companies(${companyId})/purchaseReceiptLines`,
       params,
+      fetchAll,
+      pageSize: $top,
     });
-    return { data };
   },
   inputs,
   examplePayload,

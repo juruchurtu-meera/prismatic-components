@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
+import { paginateResults } from "ms-utils";
 import { listItemsInputs as inputs } from "../../inputs/items/listItemsInputs";
-import type { Item, MultipleItemsResponse } from "../../interfaces";
 export const listItems = action({
   display: {
     label: "List Items",
@@ -12,8 +12,9 @@ export const listItems = action({
     context,
     {
       companyId,
-      $orderBy,
       connection,
+      fetchAll,
+      $orderBy,
       $format,
       $expand,
       $count,
@@ -36,19 +37,18 @@ export const listItems = action({
       $expand,
       $count,
       $filter,
-      $top,
       $skipToken,
       $skip,
       $search,
       $select,
     };
-    const { data } = await client.get<MultipleItemsResponse<Item[]>>(
-      `/companies(${companyId})/items`,
-      {
-        params,
-      },
-    );
-    return { data };
+    return await paginateResults({
+      client,
+      endpoint: `/companies(${companyId})/items`,
+      params,
+      fetchAll,
+      pageSize: $top,
+    });
   },
   inputs,
 });

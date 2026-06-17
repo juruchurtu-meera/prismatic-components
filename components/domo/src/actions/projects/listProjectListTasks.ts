@@ -18,7 +18,7 @@ export const listProjectListTasks = action({
     const queryParams: ListProjectListTasksQueryParams = {};
     if (limit.length) queryParams.limit = limit;
     if (offset.length) queryParams.offset = offset;
-    return paginateResults(
+    return await paginateResults(
       client,
       `/projects/${projectId}/lists/${listId}/tasks`,
       fetchAll,

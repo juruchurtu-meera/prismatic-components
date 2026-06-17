@@ -94,7 +94,17 @@ export const params = input({
     "Query parameters to be used in the request. This should be a list of key-value pairs. Ex. Key: worker, Value: 123",
   clean: (value) => util.types.keyValPairListToObject(value as KeyValuePair[]),
 });
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results using limit/offset pagination. Limit and Offset inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const paginationQueryStringInputs = {
+  fetchAll,
   limit: input({
     label: "Limit",
     comments:

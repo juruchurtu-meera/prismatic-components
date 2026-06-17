@@ -1,0 +1,70 @@
+This trigger polls the [Greenhouse Harvest v3 API](https://harvestdocs.greenhouse.io/) for new and updated applications on a configured schedule.
+
+#### How It Works
+
+1. The trigger runs on the configured schedule (e.g., every 5 minutes)
+2. On each execution, applications with activity since the last poll are fetched from the `GET /v3/applications` endpoint using the `last_activity_at[gte]` query parameter, following the cursor-based pagination until all pages are read
+3. Records are partitioned client-side into **created** or **updated** by comparing each application's `created_at` and `last_activity_at` timestamps against the timestamp of the last successful poll
+4. Applications whose `created_at` is newer than the last poll time are classified as created; applications with later activity that were created before the last poll are classified as updated
+5. The trigger updates its internal state with the current timestamp after each poll so subsequent executions only surface records changed since the previous run
+6. When no records match on a given run, the trigger reports `polledNoChanges` so downstream flows are not invoked unnecessarily
+
+#### Returned Data
+
+The trigger returns an object containing two arrays: `created` for newly created applications and `updated` for applications with new activity since the last poll. Each array contains full Harvest v3 application objects.
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "data": {
+    "created": [
+      {
+        "id": 69306314,
+        "candidate_id": 57683957,
+        "job_id": 107761,
+        "job_post_id": 123,
+        "referrer_id": 4080,
+        "source_id": 2,
+        "recruiter_id": 92120,
+        "coordinator_id": null,
+        "stage_id": 2708728,
+        "stage_name": "Application Review",
+        "status": "in_process",
+        "prospect": false,
+        "needs_decision": false,
+        "rejection_reason_id": null,
+        "created_at": "2026-05-20T14:00:00Z",
+        "updated_at": "2026-05-20T14:00:00Z",
+        "last_activity_at": "2026-05-20T14:00:00Z"
+      }
+    ],
+    "updated": [
+      {
+        "id": 65153308,
+        "candidate_id": 53883394,
+        "job_id": 299100,
+        "stage_id": 2966800,
+        "stage_name": "Face to Face",
+        "status": "in_process",
+        "prospect": false,
+        "created_at": "2026-05-10T09:00:00Z",
+        "updated_at": "2026-05-21T14:22:00Z",
+        "last_activity_at": "2026-05-21T14:22:00Z"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+Fields shown are representative. The full response object includes additional properties.
+
+#### Notes
+
+- This trigger requires the **OAuth 2.0 Client Credentials (Harvest V3)** connection. The deprecated API Key connection only reaches the sunsetting v1/v2 API
+- Compared to the v1 application shape, v3 returns flat ID references (`referrer_id`, `source_id`, `job_id`) instead of embedded objects, and uses `created_at` instead of `applied_at`
+- On the very first execution, the trigger has no prior poll timestamp and uses the current time as its baseline, so no historical applications are emitted on the initial run. Only changes that occur after the trigger is enabled will be surfaced
+- Refer to the [List Applications endpoint documentation](https://harvestdocs.greenhouse.io/reference/get_v3-applications) for the full set of fields returned on each application and to the [API rate limiting documentation](https://harvestdocs.greenhouse.io/docs/api-rate-limiting) for rate limit details

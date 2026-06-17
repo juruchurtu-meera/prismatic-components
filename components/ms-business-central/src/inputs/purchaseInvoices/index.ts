@@ -6,7 +6,7 @@ import {
   cleanStringInput,
 } from "../../utils";
 import { companyId } from "../accounts/getAccountsInputs";
-import { connectionInput, odataParams } from "../general";
+import { connectionInput, fetchAll, odataParams } from "../general";
 export const purchaseInvoiceId = input({
   label: "Purchase Invoice ID",
   type: "string",
@@ -200,6 +200,7 @@ export const discountAmount = input({
 export const listPurchaseInvoicesInputs = {
   connection: connectionInput,
   companyId,
+  fetchAll,
   ...odataParams,
 };
 export const getPurchaseInvoiceInputs = {

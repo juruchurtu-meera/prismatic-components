@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-11
+
+Added the **Updated Records** polling trigger for Contacts and Invoices, which checks for contacts or invoices modified since the last run
+
 ### 2026-04-30
 
 Updated spectral version

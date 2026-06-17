@@ -1,12 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
 import { listSalesShipmentLinesExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "ms-utils";
 import { companyId } from "../../inputs/accounts/getAccountsInputs";
-import { connectionInput, odataParams } from "../../inputs/general";
-import type {
-  MultipleItemsResponse,
-  SalesShipmentLine,
-} from "../../interfaces";
+import { connectionInput, fetchAll, odataParams } from "../../inputs/general";
 export const listSalesShipmentLines = action({
   display: {
     label: "List Sales Shipment Line Items",
@@ -18,6 +15,7 @@ export const listSalesShipmentLines = action({
     {
       companyId,
       connection,
+      fetchAll,
       $search,
       $skip,
       $skipToken,
@@ -39,7 +37,6 @@ export const listSalesShipmentLines = action({
       $search,
       $skip,
       $skipToken,
-      $top,
       $filter,
       $count,
       $expand,
@@ -47,17 +44,19 @@ export const listSalesShipmentLines = action({
       $orderBy,
       $select,
     };
-    const { data } = await client.get<
-      MultipleItemsResponse<SalesShipmentLine[]>
-    >(`/companies(${companyId})/salesShipmentLines`, {
+    return await paginateResults({
+      client,
+      endpoint: `/companies(${companyId})/salesShipmentLines`,
       params,
+      fetchAll,
+      pageSize: $top,
     });
-    return { data };
   },
   inputs: {
     connection: connectionInput,
-    ...odataParams,
     companyId,
+    fetchAll,
+    ...odataParams,
   },
   examplePayload: listSalesShipmentLinesExamplePayload,
 });

@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2026-06-11
+
+- Masked the **Private Key** connection field so the value is hidden in the UI
+- Renamed the connection label to **Private Key**
+
 ### 2026-04-30
 
 Updated spectral version

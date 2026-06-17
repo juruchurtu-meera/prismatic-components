@@ -19,7 +19,7 @@ export const listProjects = action({
     { connectionInput, pageToken, maxResults, fetchAll },
   ) => {
     const client = createClient(connectionInput);
-    return paginateResults(
+    return await paginateResults(
       (params) => client.projects.list(params),
       {
         maxResults: maxResults || undefined,

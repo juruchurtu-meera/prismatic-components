@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": ["src"]
 }

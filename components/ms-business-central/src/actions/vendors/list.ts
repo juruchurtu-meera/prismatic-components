@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getMsBusinessCentralClient } from "../../client";
 import { listVendorsExamplePayload } from "../../examplePayloads";
+import { paginateResults } from "ms-utils";
 import { listVendorsInputs } from "../../inputs/vendors";
-import type { MultipleItemsResponse, Vendor } from "../../interfaces";
 export const listVendors = action({
   display: {
     label: "List Vendors",
@@ -15,6 +15,7 @@ export const listVendors = action({
       $search,
       companyId,
       connection,
+      fetchAll,
       $skip,
       $skipToken,
       $top,
@@ -35,7 +36,6 @@ export const listVendors = action({
       $search,
       $skip,
       $skipToken,
-      $top,
       $filter,
       $count,
       $expand,
@@ -43,13 +43,13 @@ export const listVendors = action({
       $orderBy,
       $select,
     };
-    const { data } = await client.get<MultipleItemsResponse<Vendor[]>>(
-      `/companies(${companyId})/vendors`,
-      {
-        params,
-      },
-    );
-    return { data };
+    return await paginateResults({
+      client,
+      endpoint: `/companies(${companyId})/vendors`,
+      params,
+      fetchAll,
+      pageSize: $top,
+    });
   },
   examplePayload: listVendorsExamplePayload,
 });

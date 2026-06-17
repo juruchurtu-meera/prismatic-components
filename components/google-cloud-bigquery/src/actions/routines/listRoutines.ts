@@ -40,7 +40,7 @@ export const listRoutines = action({
     },
   ) => {
     const client = createClient(connectionInput);
-    return paginateResults(
+    return await paginateResults(
       (params) => client.routines.list(params),
       {
         datasetId: datasetId || undefined,

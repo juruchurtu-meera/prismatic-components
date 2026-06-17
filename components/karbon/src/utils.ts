@@ -2,7 +2,7 @@ import { type Connection, ConnectionError } from "@prismatic-io/spectral";
 import { util } from "@prismatic-io/spectral";
 import connections from "./connections";
 import type { OdataObject } from "./interfaces/OdataObject";
-import { MAX_PAGE_SIZE } from "./constants";
+import { MAX_PAGE_SIZE, POLL_RESOURCE_CONFIG } from "./constants";
 import { createKarbonClient } from "./client";
 import type { GetPaginatedDataParams } from "./interfaces/GetPaginatedDataParams";
 export const cleanOdata = <T>(obj: Record<string, unknown>) =>
@@ -116,4 +116,20 @@ export const deleteWebhook = async (
     `/v3/WebhookSubscriptions/${webhookType}`,
   );
   return { data };
+};
+export const pollResourceModel = Object.keys(POLL_RESOURCE_CONFIG).map(
+  (value) => ({ label: value, value }),
+);
+export const filterRecordsModifiedAfter = (
+  records: Record<string, unknown>[],
+  timestampField: string,
+  lastPolledAt: string,
+): Record<string, unknown>[] => {
+  const lastPolledAtMs = new Date(lastPolledAt).getTime();
+  return records.filter((record) => {
+    const value = record[timestampField];
+    const recordMs =
+      typeof value === "string" ? new Date(value).getTime() : Number.NaN;
+    return !Number.isNaN(recordMs) && recordMs > lastPolledAtMs;
+  });
 };

@@ -1,5 +1,14 @@
 import { input, util } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../utils";
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  clean: util.types.toBool,
+  comments:
+    "When enabled, automatically fetches all pages of results by following @odata.nextLink. Page Size, Skip, and Skip Token inputs are ignored when this is enabled.",
+  required: false,
+  default: "false",
+});
 export const connectionInput = input({
   label: "Connection",
   type: "connection",
