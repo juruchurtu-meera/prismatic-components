@@ -1,8 +1,8 @@
-import { createJobRequisition } from "./create";
-import { deleteJobRequisition } from "./delete";
-import { getJobRequisition } from "./get";
-import { listJobRequisitions } from "./list";
-import { updateJobRequisition } from "./update";
+import { createJobRequisition } from "./createJobRequisition";
+import { deleteJobRequisition } from "./deleteJobRequisition";
+import { getJobRequisition } from "./getJobRequisition";
+import { listJobRequisitions } from "./listJobRequisitions";
+import { updateJobRequisition } from "./updateJobRequisition";
 export default {
   createJobRequisition,
   deleteJobRequisition,

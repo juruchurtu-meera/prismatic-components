@@ -1,11 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
-import { $select, additionalInputs, connection } from "./general";
+import { $select, additionalInputs, connection } from "./common";
 export const jobReqId = input({
   label: "Job Requisition ID",
   type: "string",
   required: true,
-  comments: "The ID of the job requisition to retrieve",
-  placeholder: "1234-5678",
+  comments: "The unique identifier for the job requisition.",
+  placeholder: "Enter a job requisition ID",
   example: "1234-5678",
   clean: util.types.toString,
 });
@@ -13,29 +13,32 @@ const templateId = input({
   label: "Template ID",
   type: "string",
   required: true,
-  comments: "The ID of the job requisition template to use",
-  placeholder: "1234-5678",
+  comments:
+    "The unique identifier for the job requisition template to base the requisition on.",
+  placeholder: "Enter a template ID",
   example: "1234-5678",
   clean: util.types.toString,
 });
 export const getJobRequisitionInputs = {
+  connection,
   jobReqId,
   $select,
-  connection,
 };
 export const deleteJobRequisitionInputs = {
+  connection,
   jobReqId: {
     ...jobReqId,
-    comments: "The ID of the job requisition to delete",
+    comments: "The unique identifier for the job requisition to delete.",
   },
-  connection,
 };
 export const createJobRequisitionInputs = {
+  connection,
   templateId,
   additionalInputs: {
     ...additionalInputs,
     required: false,
-    comments: "The required fields for the selected template",
+    comments:
+      "The required fields for the selected template, as a JSON object.",
     example: JSON.stringify(
       {
         country: "US",
@@ -47,14 +50,14 @@ export const createJobRequisitionInputs = {
       2,
     ),
   },
-  connection,
 };
 export const updateJobRequisitionInputs = {
+  connection,
   jobReqId,
   additionalInputs: {
     ...additionalInputs,
     required: false,
-    comments: "The template fields to update",
+    comments: "The template fields to update, as a JSON object.",
     example: JSON.stringify(
       {
         country: "US",
@@ -66,5 +69,4 @@ export const updateJobRequisitionInputs = {
       2,
     ),
   },
-  connection,
 };

@@ -1,16 +1,14 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { createClient } from "../client";
-import { selectCandidateExamplePayload } from "../examplePayloads/dataSources";
-import { connection } from "../inputs/general";
+import { selectCandidateExamplePayload } from "../examplePayloads";
+import { selectCandidateInputs } from "../inputs";
 import { paginateData } from "../util";
 export const selectCandidate = dataSource({
   display: {
     label: "Select Candidate",
-    description: "Select a Candidate from the dropdown list",
+    description: "A picklist of candidates in SAP SuccessFactors.",
   },
-  inputs: {
-    connection,
-  },
+  inputs: selectCandidateInputs,
   perform: async (_context, { connection }) => {
     const client = await createClient(connection, false);
     const data = await paginateData(client, "/Candidate", true, {});

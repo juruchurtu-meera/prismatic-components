@@ -1,8 +1,7 @@
 import { pollingTrigger } from "@prismatic-io/spectral";
 import { createClient } from "../client";
 import { POLL_RESOURCE_CONFIG } from "../constants";
-import { connection } from "../inputs/general";
-import { pollChangesInputs } from "../inputs/polling";
+import { pollChangesTriggerInputs } from "../inputs";
 import type { PollingState, SAPSuccessFactorsRecord } from "../types";
 import { filterByTimestamp, paginateData, toSapFilterDatetime } from "../util";
 export const pollChangesTrigger = pollingTrigger({
@@ -11,10 +10,7 @@ export const pollChangesTrigger = pollingTrigger({
     description:
       "Checks for new and updated records in a selected SAP SuccessFactors resource type on a configured schedule.",
   },
-  inputs: {
-    connection,
-    ...pollChangesInputs,
-  },
+  inputs: pollChangesTriggerInputs,
   async perform(context, payload, params) {
     const config = POLL_RESOURCE_CONFIG[params.pollResourceType];
     if (!config) {

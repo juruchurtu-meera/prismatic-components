@@ -1,24 +1,36 @@
 export const selectJobRequisitionExamplePayload = {
   result: [
     {
-      label: "1234 - 50070999",
-      key: "1234",
+      label: "Senior Software Engineer - 3040",
+      key: "3040",
+    },
+    {
+      label: "Product Designer - 3041",
+      key: "3041",
     },
   ],
 };
 export const selectCandidateExamplePayload = {
   result: [
     {
-      label: "John Doe",
-      key: "1234",
+      label: "Nancy Langworthy",
+      key: "4181",
+    },
+    {
+      label: "Marcelo Reis",
+      key: "4182",
     },
   ],
 };
 export const selectJobApplicationExamplePayload = {
   result: [
     {
-      label: "John Doe - Job Requisition #1234",
-      key: "1234",
+      label: "Marcelo Reis - Job Requisition #3040",
+      key: "388",
+    },
+    {
+      label: "Nancy Langworthy - Job Requisition #3041",
+      key: "389",
     },
   ],
 };

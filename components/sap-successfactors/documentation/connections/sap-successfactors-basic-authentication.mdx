@@ -1,10 +1,34 @@
 #### Configuring Basic Authentication
 
-1. Log into your SAP SuccessFactors instance as an administrator
-2. Ensure you have valid user credentials with appropriate API access permissions
+1. Log into the SAP SuccessFactors instance as an administrator
+2. Ensure valid user credentials with appropriate API access permissions are available
 3. From the integration connection fill in the required fields:
-   - **Company ID**: Your SAP SuccessFactors company identifier
-   - **Username**: Your SAP SuccessFactors username
-   - **Password**: Your SAP SuccessFactors password
-   - **API Server** (optional): Your SAP SuccessFactors API server (defaults to sandbox environment if not specified)
+   - **Company ID**: The SAP SuccessFactors company identifier
+   - **Username**: The SAP SuccessFactors username
+   - **Password**: The SAP SuccessFactors password
+   - **API Server** (optional): The SAP SuccessFactors API server (defaults to sandbox environment if not specified)
    - **Protocol**: The protocol to use for API connections
+
+### Notice of Deprecation
+
+SAP SuccessFactors is removing HTTP Basic Authentication on **November 20, 2026**. After that date, connections using this method will stop working. Use **API Key Authentication** instead.
+
+#### Migrating to API Key Authentication
+
+Existing integrations using Basic Authentication must move to **API Key Authentication** before **November 20, 2026** to avoid disruption. Because API Key Authentication is a separate connection type, migration replaces the Basic Authentication connection rather than editing its fields. Plan to complete these steps for every deployed instance.
+
+1. Complete the **API Key Authentication** prerequisites: generate an X.509 certificate and private key pair, then register an OAuth2 client application in SAP SuccessFactors to obtain an **API Key**. Refer to the API Key Authentication setup instructions for the full procedure.
+2. Add the **API Key Authentication** connection to the integration in place of the Basic Authentication connection.
+3. Re-publish the integration so the updated connection is available to deployed instances.
+4. For each existing instance, reconfigure the connection with the API Key Authentication values:
+   - **Company ID**: The SAP SuccessFactors company identifier (carried over from the Basic Authentication connection)
+   - **User**: The SAP SuccessFactors user ID (e.g., `sfadmin`)
+   - **API Key**: The OAuth2 API Key from the registered client application
+   - **Issuer** and **Audiences**: The SAML assertion values (e.g., `www.successfactors.com`)
+   - **Certificate Private Key** and **Certificate**: The PEM-formatted key pair generated during setup
+5. Test each instance against SAP SuccessFactors to confirm the new connection authenticates successfully.
+6. Remove the Basic Authentication connection once every instance is verified on API Key Authentication.
+
+:::warning[Migration Deadline]
+SAP SuccessFactors removes HTTP Basic Authentication on November 20, 2026. Instances still using Basic Authentication after that date will fail to connect.
+:::

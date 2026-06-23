@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import type { Connection } from "@prismatic-io/spectral";
 import { invoke } from "@prismatic-io/spectral/dist/testing";
-import { listRecords } from "./actions/records/list";
+import { listRecords } from "./actions/records/listRecords";
 import { createClient } from "./client";
 import { apiKeyAuthentication } from "./connections";
 jest.setTimeout(30000);

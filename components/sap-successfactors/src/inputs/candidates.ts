@@ -1,13 +1,13 @@
 import { input, util } from "@prismatic-io/spectral";
 import { createCandidateInfoExample } from "../exampleInputs";
 import { toOptionalString } from "../util";
-import { $select, additionalInputs, connection } from "./general";
+import { $select, additionalInputs, connection } from "./common";
 export const candidateId = input({
   label: "Candidate ID",
   type: "string",
   required: true,
-  comments: "The ID of the candidate to retrieve",
-  placeholder: "1234-5678",
+  comments: "The unique identifier for the candidate.",
+  placeholder: "Enter a candidate ID",
   example: "1234-5678",
   clean: util.types.toString,
   dataSource: "selectCandidate",
@@ -16,8 +16,8 @@ const firstName = input({
   label: "First Name",
   type: "string",
   required: true,
-  comments: "The first name of the candidate",
-  placeholder: "John",
+  comments: "The given name of the candidate.",
+  placeholder: "Enter a first name",
   example: "John",
   clean: util.types.toString,
 });
@@ -25,8 +25,8 @@ const lastName = input({
   label: "Last Name",
   type: "string",
   required: true,
-  comments: "The last name of the candidate",
-  placeholder: "Doe",
+  comments: "The family name of the candidate.",
+  placeholder: "Enter a last name",
   example: "Doe",
   clean: util.types.toString,
 });
@@ -34,26 +34,27 @@ const primaryEmail = input({
   label: "Primary Email",
   type: "string",
   required: true,
-  comments: "The primary email address of the candidate",
-  placeholder: "test@test.com",
-  example: "test@test.com",
+  comments: "The primary email address used to contact the candidate.",
+  placeholder: "Enter an email address",
+  example: "john.doe@example.com",
   clean: util.types.toString,
 });
 const country = input({
   label: "Country",
   type: "string",
   required: true,
-  comments: "The country where the candidate is located",
-  placeholder: "United States",
+  comments: "The country where the candidate resides.",
+  placeholder: "Enter a country",
   example: "United States",
   clean: util.types.toString,
 });
 export const getCandidateInputs = {
+  connection,
   candidateId,
   $select,
-  connection,
 };
 export const createCandidateInputs = {
+  connection,
   firstName,
   lastName,
   primaryEmail,
@@ -62,9 +63,9 @@ export const createCandidateInputs = {
     ...additionalInputs,
     example: JSON.stringify(createCandidateInfoExample, null, 2),
   },
-  connection,
 };
 export const updateCandidateInputs = {
+  connection,
   candidateId,
   firstName: {
     ...firstName,
@@ -90,5 +91,4 @@ export const updateCandidateInputs = {
     ...additionalInputs,
     example: JSON.stringify(createCandidateInfoExample, null, 2),
   },
-  connection,
 };

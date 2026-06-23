@@ -1,8 +1,8 @@
-import { createOnboardingCandidateInfo } from "./create";
-import { deleteOnboardingCandidateInfo } from "./delete";
-import { getOnboardingCandidateInfo } from "./get";
-import { listOnboardingCandidateInfo } from "./list";
-import { updateOnboardingCandidateInfo } from "./update";
+import { createOnboardingCandidateInfo } from "./createOnboardingCandidateInfo";
+import { deleteOnboardingCandidateInfo } from "./deleteOnboardingCandidateInfo";
+import { getOnboardingCandidateInfo } from "./getOnboardingCandidateInfo";
+import { listOnboardingCandidateInfo } from "./listOnboardingCandidateInfo";
+import { updateOnboardingCandidateInfo } from "./updateOnboardingCandidateInfo";
 export default {
   createOnboardingCandidateInfo,
   deleteOnboardingCandidateInfo,

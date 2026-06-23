@@ -5,9 +5,14 @@ export const createJobApplicationExamplePayload = {
       type: "SFOData.JobApplication",
     },
     applicationId: "388",
-    lastName: "Test",
-    firstName: "Test",
+    lastName: "Reis",
+    firstName: "Marcelo",
     status: "Open",
+    appStatus: "11811",
+    jobReqId: "3040",
+    posTitle: "Senior Software Engineer",
+    jobCode: null,
+    appLastModifiedDateTime: "/Date(1673884433000+0000)/",
   },
 };
 export const listJobApplicationsExamplePayload = {

@@ -1,5 +1,12 @@
 ## Changelog
 
+### 2026-06-23
+
+Notice of Deprecation for the **Basic Authentication** connection. SAP SuccessFactors will be deactivating HTTP Basic Authentication on November 20, 2026:
+
+- Added a deprecation notice to the **Basic Authentication** connection and its documentation
+- Promoted **API Key Authentication** as the recommended connection method going forward.
+
 ### 2026-05-05
 
 Added **New and Updated Records** polling trigger for detecting new and modified records across multiple resource types, with the following capabilities:

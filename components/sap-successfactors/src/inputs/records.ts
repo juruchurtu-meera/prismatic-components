@@ -1,16 +1,24 @@
 import { input, util } from "@prismatic-io/spectral";
 import {
+  $count,
+  $expand,
+  $filter,
+  $orderby,
+  $search,
   $select,
+  $skip,
+  $top,
   additionalInputs,
   connection,
-  defaultListInputs,
-} from "./general";
+  customQueryParams,
+  fetchAll,
+} from "./common";
 const recordTypeId = input({
   label: "Record Type ID",
   type: "string",
   required: true,
-  comments: "The ID of the record type to retrieve",
-  placeholder: "1234-5678",
+  comments: "The unique identifier for the record within its record type.",
+  placeholder: "Enter a record ID",
   example: "1234-5678",
   clean: util.types.toString,
 });
@@ -18,40 +26,51 @@ const recordType = input({
   label: "Record Type",
   type: "string",
   required: true,
-  comments: "The type of record to create",
-  placeholder: "Candidate",
+  comments:
+    "The OData entity name identifying the kind of record to operate on.",
+  placeholder: "Enter a record type",
   example: "Candidate",
   clean: util.types.toString,
 });
 export const getRecordInputs = {
+  connection,
   recordType,
   recordTypeId,
   $select,
-  connection,
 };
 export const deleteRecordInputs = {
+  connection,
   recordType: {
     ...recordType,
-    comments: "The type of record to delete",
+    comments: "The OData entity name identifying the kind of record to delete.",
   },
   recordTypeId: {
     ...recordTypeId,
-    comments: "The ID of the record to delete",
+    comments: "The unique identifier for the record to delete.",
   },
-  connection,
 };
 export const createRecordInputs = {
+  connection,
   recordType,
   additionalInputs,
-  connection,
 };
 export const updateRecordInputs = {
+  connection,
   recordType,
   recordTypeId,
   additionalInputs,
-  connection,
 };
 export const listRecordsInputs = {
+  connection,
   recordType,
-  ...defaultListInputs,
+  fetchAll,
+  $top,
+  $skip,
+  $search,
+  $select,
+  $filter,
+  $count,
+  $orderby,
+  $expand,
+  customQueryParams,
 };
