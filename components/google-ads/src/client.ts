@@ -9,6 +9,7 @@ import {
   type HttpClient,
 } from "@prismatic-io/spectral/dist/clients/http";
 import { oauth as adsConnection, dataManagerOAuth } from "./connections";
+import { GOOGLE_DATA_MANAGER_API_VERSION } from "./constants";
 import {
   cleanCustomerId,
   validateApiVersion,
@@ -69,10 +70,13 @@ export const validateDataManagerConnection = (
 ): {
   accessToken: string;
 } => {
-  if (connection.key !== dataManagerOAuth.key) {
+  if (
+    connection.key !== dataManagerOAuth.key &&
+    connection.key !== adsConnection.key
+  ) {
     throw new ConnectionError(
       connection,
-      `Unexpected connection type received: ${connection.key}. The Ingest Offline Conversions action requires the "${dataManagerOAuth.key}" connection.`,
+      `Unexpected connection type received: ${connection.key}.`,
     );
   }
   return { accessToken: extractAccessToken(connection) };
@@ -83,8 +87,13 @@ export const createDataManagerClient = (
   logger: ActionLogger,
 ): HttpClient => {
   const { accessToken } = validateDataManagerConnection(connection);
-  const parsedVersion = util.types.toString(connection.fields?.apiVersion);
-  const apiVersion = validateDataManagerApiVersion(parsedVersion, logger);
+  const apiVersion =
+    connection.key === adsConnection.key
+      ? GOOGLE_DATA_MANAGER_API_VERSION
+      : validateDataManagerApiVersion(
+          util.types.toString(connection.fields?.apiVersion),
+          logger,
+        );
   return createHttpClient({
     baseUrl: `https://datamanager.googleapis.com/${apiVersion}`,
     headers: { Authorization: `Bearer ${accessToken}` },

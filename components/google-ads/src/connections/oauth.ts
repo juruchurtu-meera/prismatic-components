@@ -35,10 +35,12 @@ export const oauth = oauth2Connection({
       placeholder: "https://www.googleapis.com/auth/adwords",
       type: "string",
       required: true,
-      shown: false,
+      shown: true,
       comments:
-        "Space-separated OAuth 2.0 permission scopes for the Google Ads API. See [OAuth scopes documentation](https://developers.google.com/identity/protocols/oauth2/scopes).",
+        "Space-separated OAuth 2.0 permission scopes for the Google Ads and Data Manager APIs. See [OAuth scopes documentation](https://developers.google.com/identity/protocols/oauth2/scopes).",
       default: "https://www.googleapis.com/auth/adwords",
+      example:
+        "https://www.googleapis.com/auth/adwords https://www.googleapis.com/auth/datamanager",
     },
     clientId: {
       label: "Client ID",

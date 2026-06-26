@@ -1,5 +1,14 @@
 ## Changelog
 
+### 2026-06-26
+
+Enabled the **OAuth 2.0** connection to drive both the Google Ads and Data Manager APIs from a single connection.
+
+- Exposed the **Scopes** field so integration builders can append the Data Manager scope (`https://www.googleapis.com/auth/datamanager`) to the existing Ads scope. The default remains the Ads scope only, so Ads-only integrations are unaffected.
+- Extended **createDataManagerClient** to accept the unified **OAuth 2.0** connection in addition to the dedicated **Data Manager OAuth 2.0** connection. When the **OAuth 2.0** connection is used, the Data Manager API version is pinned to `v1`.
+
+Builders who opt in by adding the Data Manager scope will trigger a one-time re-consent for affected end-users, as the granted scope set changes.
+
 ### 2026-05-22
 
 Added **Ingest Offline Conversions** action using the Google Ads Data Manager API to replace the deprecated **Upload Click Conversions** action, which will stop accepting requests after June 15, 2026.
