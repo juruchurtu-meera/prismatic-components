@@ -1,16 +1,5 @@
 import type { AxiosResponse } from "axios";
-interface OneDriveError {
-  response: {
-    data: {
-      error: {
-        code: string;
-        message: string;
-      };
-    };
-    status: string;
-  };
-  code: string;
-}
+import type { OneDriveError } from "./types";
 export const handleErrors = async <T extends AxiosResponse>(
   response: Promise<T>,
 ): Promise<T["data"]> => {

@@ -1,14 +1,12 @@
 import { dataSource } from "@prismatic-io/spectral";
 import { getOneDriveClient } from "../client";
-import { oneDriveConnection } from "../inputs";
+import { listDrivesDataSourceInputs } from "../inputs";
 export const listDrives = dataSource({
   display: {
     label: "List Drives from Source",
     description: "A picklist of drives for an account",
   },
-  inputs: {
-    oneDriveConnection,
-  },
+  inputs: listDrivesDataSourceInputs,
   perform: async (_context, { oneDriveConnection }) => {
     const client = getOneDriveClient(oneDriveConnection, false);
     const {

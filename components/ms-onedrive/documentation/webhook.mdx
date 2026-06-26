@@ -20,7 +20,7 @@ The trigger operates in two distinct modes based on the type of request received
 
 This trigger requires webhook subscriptions to be created manually using the [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/api/subscription-post-subscriptions) or Azure portal. Configure the subscription with:
 
-- **notificationUrl**: The webhook URL provided by the Prismatic instance
+- **notificationUrl**: The webhook URL provided by the instance
 - **resource**: The OneDrive resource path to monitor (e.g., `/me/drive/root`)
 - **changeType**: The type of changes to monitor (`updated` for OneDrive)
 - **expirationDateTime**: When the subscription expires (maximum 30 days for OneDrive)

@@ -1,8 +1,8 @@
-import { createSubscription } from "./create";
-import { deleteSubscription } from "./delete";
-import { deleteSubscriptions } from "./deleteAll";
-import { listSubscriptions } from "./list";
-import { renewSubscription } from "./renew";
+import { createSubscription } from "./createSubscription";
+import { deleteSubscription } from "./deleteSubscription";
+import { deleteSubscriptions } from "./deleteSubscriptions";
+import { listSubscriptions } from "./listSubscriptions";
+import { renewSubscription } from "./renewSubscription";
 export default {
   createSubscription,
   deleteSubscription,

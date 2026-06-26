@@ -1,8 +1,8 @@
+import { type Connection, util } from "@prismatic-io/spectral/dist/";
 import {
   createClient,
   type HttpClient,
 } from "@prismatic-io/spectral/dist/clients/http";
-import { type Connection, util } from "@prismatic-io/spectral/dist/";
 import { BASE_URL } from "./constants";
 import { getAuthHeaders, validateConnection } from "./util";
 export const getOneDriveClient = (
