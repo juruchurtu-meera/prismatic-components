@@ -16,7 +16,7 @@ export const searchProjects = action({
       timeout: util.types.toInt(params.timeout),
       debug: context.debug.enabled,
     });
-    const response = await client.get(`/projects`, {
+    const response = await client.get("/projects", {
       params: {
         pageSize: util.types.toNumber(params.pageSize) || undefined,
         pageNumber: util.types.toNumber(params.pageNumber) || undefined,

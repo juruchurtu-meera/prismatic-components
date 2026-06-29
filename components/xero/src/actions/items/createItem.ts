@@ -1,33 +1,18 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  itemCode,
-  description,
-  purchaseDescription,
-  purchaseUnitPrice,
-  purchaseAccountCode,
-  purchaseTaxType,
-  salesUnitPrice,
-  salesAccountCode,
-  itemName,
-  salesTaxType,
-  inventoryAssetAccountCode,
-  isSold,
-  isPurchased,
-  connectionInput,
-} from "../../inputs";
+import { createItemInputs } from "../../inputs";
 import { createItemExamplePayload } from "../../examplePayloads";
 export const createItem = action({
   display: {
     label: "Create Item",
-    description: "Create a new Item",
+    description: "Create a new item.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
       params.xeroConnection,
       context.debug.enabled,
     );
-    const { data } = await client.post(`/items`, {
+    const { data } = await client.post("/items", {
       Code: util.types.toString(params.itemCode),
       Description: util.types.toString(params.description) || undefined,
       PurchaseDescription:
@@ -57,21 +42,6 @@ export const createItem = action({
     });
     return { data };
   },
-  inputs: {
-    itemCode,
-    description,
-    purchaseDescription,
-    purchaseUnitPrice,
-    purchaseAccountCode,
-    purchaseTaxType,
-    salesUnitPrice,
-    salesAccountCode,
-    itemName,
-    salesTaxType,
-    inventoryAssetAccountCode,
-    isSold,
-    isPurchased,
-    xeroConnection: connectionInput,
-  },
+  inputs: createItemInputs,
   examplePayload: createItemExamplePayload,
 });

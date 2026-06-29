@@ -1,11 +1,11 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { contactId, connectionInput } from "../../inputs";
+import { archiveContactInputs } from "../../inputs";
 import { archiveContactExamplePayload } from "../../examplePayloads";
 export const archiveContact = action({
   display: {
     label: "Archive Contact",
-    description: "Archive the information and metadata of a contact by Id",
+    description: "Archive a contact by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -18,6 +18,6 @@ export const archiveContact = action({
     });
     return { data };
   },
-  inputs: { contactId, xeroConnection: connectionInput },
+  inputs: archiveContactInputs,
   examplePayload: archiveContactExamplePayload,
 });

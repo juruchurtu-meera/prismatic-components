@@ -1,19 +1,32 @@
 All requests to the Google Docs API must be authorized by an authenticated user.
 
-The details of the authorization process, or "flow," for OAuth 2.0 vary somewhat depending on what kind of application you're writing. The following general process applies to all application types:
+The details of the authorization process, or "flow," for OAuth 2.0 vary somewhat depending on the kind of application being built. The following general process applies to all application types.
 
-1. When you create your application, you register it using the [Google API Console](https://console.cloud.google.com/). Google then provides information you'll need later, such as a client ID and a client secret.
-2. From APIs & Services > Library, enable the Google Docs API
-3. To create API Credentials navigate to Enabled APIs & Services > Credentials
-   1. Select Create Credentials > OAuth Client ID
-   2. Set the application type to ‘Web Application’
-   3. Fill out the OAuth consent screen with an app name (your company or product's name), support email, app logo, domain, etc.
-   4. Select Add Or Remove scopes, search Content API for Shopping, and check the boxes for the following scopes
-      1. /auth/documents
-      2. /auth/drive
-      3. /auth/drive.file
-4. Under **Authorized redirect URIs** enter the OAuth 2.0 callback URL: <OauthCallbackUrl />
-   1. Take note of the **Client ID** and **Client Secret** that are generated, as you will enter them for authentication.
+#### Prerequisites
+
+- A [Google Cloud](https://console.cloud.google.com/) account with access to create projects and credentials
+- Permission to enable APIs and configure the OAuth consent screen
+
+#### Setup Steps
+
+1. Register the application in the [Google API Console](https://console.cloud.google.com/). Google then provides values needed later, such as a client ID and a client secret.
+2. From **APIs & Services > Library**, enable the **Google Docs API**.
+3. To create API credentials, navigate to **Enabled APIs & Services > Credentials**:
+   1. Select **Create Credentials > OAuth Client ID**.
+   2. Set the application type to **Web Application**.
+   3. Fill out the OAuth consent screen with an app name (a company or product name), support email, app logo, domain, etc.
+   4. Select **Add Or Remove Scopes** and check the boxes for the scopes the integration requires (see the [Google Docs API authorization documentation](https://developers.google.com/workspace/docs/api/auth) for available scopes).
+4. Under **Authorized redirect URIs**, enter the OAuth 2.0 callback URL: <OauthCallbackUrl />
+5. Take note of the **Client ID** and **Client Secret** that are generated, as they are entered during authentication.
+
+#### Configure the Connection
+
+- Enter the **Client ID** and **Client Secret** from the generated OAuth credentials.
+- For **Scopes**, enter a space-delimited list of the required scopes. The default value is:
+  ```
+  https://www.googleapis.com/auth/documents
+  ```
+- Refer to the [Google Docs API authorization documentation](https://developers.google.com/workspace/docs/api/auth) for additional scope information.
 
 #### App Verification
 
@@ -21,9 +34,9 @@ Google requires OAuth apps that request access to user data to pass a verificati
 
 Google OAuth apps pass through three stages before they are ready for production use.
 
-**Testing (unpublished):** The app is only accessible to users manually added as test users in the OAuth consent screen. Up to 100 test users are allowed — all other users receive an error. This is the expected state during initial development.
+**Testing (unpublished):** The app is only accessible to users manually added as test users in the OAuth consent screen. Up to 100 test users are allowed. All other users receive an error. This is the expected state during initial development.
 
-**Published, unverified:** After publishing the app, all Google users can authenticate. However, for restricted scopes, users see a **"This app isn't verified"** warning. Users can proceed by clicking **Advanced** → **Go to [app name] (unsafe)**, but this warning reduces trust and may be blocked by organizations with strict Google Workspace policies.
+**Published, unverified:** After publishing the app, all Google users can authenticate. However, for sensitive or restricted scopes, users see a **"This app isn't verified"** warning. Users can proceed by clicking **Advanced** → **Go to [app name] (unsafe)**, but this warning reduces trust and may be blocked by organizations with strict Google Workspace policies.
 
 **Verified:** Google has reviewed and approved the app. No warning is shown. Verification is required before deploying to production users.
 
@@ -31,16 +44,16 @@ Google OAuth apps pass through three stages before they are ready for production
 
 Publishing is required before any users outside the test list can authenticate:
 
-1. In the [Google Cloud Console](https://console.cloud.google.com/), navigate to **APIs & Services** → **OAuth consent screen**
-2. Click **PUBLISH APP** and confirm
+1. In the [Google Cloud Console](https://console.cloud.google.com/), navigate to **APIs & Services** → **OAuth consent screen**.
+2. Click **PUBLISH APP** and confirm.
 
 #### Requesting Verification
 
-This component uses **restricted scopes** (`https://www.googleapis.com/auth/drive`). Restricted scopes require a security assessment in addition to standard sensitive scope verification:
+The `https://www.googleapis.com/auth/documents` scope is a **sensitive scope** and requires verification. If the integration also requests **restricted scopes** (such as `https://www.googleapis.com/auth/drive`), a security assessment is required in addition to standard sensitive scope verification:
 
-1. On the **OAuth consent screen**, click **Prepare for verification**
-2. Provide a privacy policy URL, authorized domain, and app logo
-3. Arrange a **security assessment** with a [Google-approved assessor](https://support.google.com/cloud/answer/10311615) — this is required for restricted scopes
-4. Submit for review — restricted scope reviews can take longer than sensitive scope reviews
+1. On the **OAuth consent screen**, click **Prepare for verification**.
+2. Provide a privacy policy URL, authorized domain, and app logo.
+3. For restricted scopes, arrange a **security assessment** with a [Google-approved assessor](https://support.google.com/cloud/answer/10311615).
+4. Submit for review. Restricted scope reviews can take longer than sensitive scope reviews.
 
 Refer to [Google's OAuth consent screen documentation](https://support.google.com/cloud/answer/10311615) for the full verification requirements.

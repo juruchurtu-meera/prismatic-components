@@ -1,4 +1,4 @@
-import { TriggerPayload } from "@prismatic-io/spectral";
+import type { TriggerPayload } from "@prismatic-io/spectral";
 import { webhook } from "./triggers/webhook";
 import { invokeTrigger } from "@prismatic-io/spectral/dist/testing";
 describe("test Xero webhook trigger", () => {
@@ -44,6 +44,7 @@ describe("test Xero webhook trigger", () => {
       flow: {
         id: "",
         name: "",
+        stableId: "",
       },
       startedAt: "",
       globalDebug: false,

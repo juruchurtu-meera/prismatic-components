@@ -8,8 +8,7 @@ export default component({
   display: {
     label: "Google Docs",
     category: "Application Connectors",
-    description: `Google Docs is an online word processor included as part of the free, web-based Google Docs Editors suite.
-    Use the Google Docs component to create, and collaborate on online documents.`,
+    description: "Create, retrieve, and update Google Docs documents.",
     iconPath: "icon.png",
   },
   actions,

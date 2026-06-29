@@ -1,4 +1,4 @@
-import { docs_v1 } from "@googleapis/docs";
+import type { docs_v1 } from "@googleapis/docs";
 export const createDocumentExamplePayload: {
   data: docs_v1.Schema$Document;
 } = {

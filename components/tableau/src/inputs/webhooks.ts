@@ -12,8 +12,9 @@ const webhookName = input({
   label: "Webhook Name",
   type: "string",
   required: true,
-  comments: "A name for the webhook.",
+  comments: "A descriptive label to identify the webhook in Tableau.",
   example: "My Webhook",
+  placeholder: "Enter webhook name",
   clean: util.types.toString,
 });
 export const events = input({
@@ -31,8 +32,9 @@ const webhookUrl = input({
   type: "string",
   required: true,
   comments:
-    "The destination URL for the webhook. The webhook destination URL must be https and have a valid certificate.",
+    "The destination URL for the webhook. The destination URL must use HTTPS and have a valid certificate.",
   example: "https://example.com/webhook",
+  placeholder: "Enter webhook URL",
   clean: util.types.toString,
 });
 const webhookEnabled = input({
@@ -41,7 +43,7 @@ const webhookEnabled = input({
   required: false,
   default: "true",
   comments:
-    "If true (default), the newly created webhook is enabled. If false then the webhook will be disabled.",
+    "When true, the newly created webhook is enabled. When false, the webhook is disabled.",
   clean: util.types.toBool,
 });
 const webhookDisableReason = input({
@@ -49,7 +51,8 @@ const webhookDisableReason = input({
   type: "string",
   required: false,
   comments: "The reason a webhook is disabled.",
-  example: "This webhook is disabled because of a reason.",
+  example: "Endpoint no longer reachable",
+  placeholder: "Enter disable reason",
   clean: util.types.toString,
 });
 export const listWebhooksInputs = {

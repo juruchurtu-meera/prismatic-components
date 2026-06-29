@@ -1,29 +1,11 @@
-import { action, input, util } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  invoiceType,
-  contactId,
-  date,
-  dueDate,
-  dateString,
-  dueDateString,
-  lineAmountTypes,
-  lineItems,
-  invoiceStatus,
-  connectionInput,
-  invoiceNumber,
-  additionalFields,
-  currencyCode,
-  reference,
-  sentToContact,
-  url,
-} from "../../inputs";
-import { createInvoiceAdditionalFields } from "../../constants";
+import { createInvoiceInputs } from "../../inputs";
 import { createInvoiceExamplePayload } from "../../examplePayloads";
 export const createInvoice = action({
   display: {
     label: "Create Invoice",
-    description: "Create a new invoice",
+    description: "Create a new invoice.",
   },
   perform: async (
     context,
@@ -66,32 +48,9 @@ export const createInvoice = action({
       SentToContact: sentToContact,
       ...(additionalFields || {}),
     };
-    const { data } = await client.post(`/invoices`, invoiceValues);
+    const { data } = await client.post("/invoices", invoiceValues);
     return { data };
   },
-  inputs: {
-    invoiceType,
-    contactId,
-    invoiceStatus,
-    lineItems,
-    lineAmountTypes,
-    date,
-    dueDate,
-    dateString,
-    dueDateString,
-    invoiceNumber,
-    reference,
-    url,
-    currencyCode,
-    sentToContact,
-    additionalFields: input({
-      ...additionalFields,
-      example: JSON.stringify(createInvoiceAdditionalFields, null, 2),
-      comments:
-        additionalFields.comments +
-        " See [Xero API documentation](https://developer.xero.com/documentation/api/accounting/invoices#post-invoices) for additional fields.",
-    }),
-    xeroConnection: connectionInput,
-  },
+  inputs: createInvoiceInputs,
   examplePayload: createInvoiceExamplePayload,
 });

@@ -1,11 +1,7 @@
-import { deleteMedia } from "./deleteMedia";
-import { getMedia } from "./getMedia";
-import { getMediafromURL } from "./getMediafromURL";
-import { rawRequest } from "./rawRequest";
-import { registerPhoneNumber } from "./registerPhoneNumber";
-import { requestVerificationCode } from "./requestVerificationCode";
-import { sendMessage } from "./sendMessage";
-import { uploadMedia } from "./uploadMedia";
+import { sendMessage } from "./messages";
+import { deleteMedia, getMedia, getMediafromURL, uploadMedia } from "./media";
+import { registerPhoneNumber, requestVerificationCode } from "./phoneNumbers";
+import { rawRequest } from "./misc";
 export default {
   sendMessage,
   requestVerificationCode,

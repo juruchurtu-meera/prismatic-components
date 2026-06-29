@@ -1,23 +1,31 @@
 **Xero** uses OAuth 2.0 to authorize requests made to the API.
-In order for your integration to authenticate with your customers' Xero accounts, you will need to create a Xero OAuth 2.0 app:
+This connection uses the OAuth 2.0 Authorization Code grant type so that the integration can authenticate with a customer's Xero account.
 
-- Log on to Xero's [developer portal](https://developer.xero.com/app/manage/)
-- Click **New app**
-  - Give your app a name
-  - Select **Web app** for **Integration type**
-  - Enter _your company's_ URL for **Company or application URL**
-  - Enter <OauthCallbackUrl /> for the **Redirect URI**
-- Next, open the **Configuration** page
-  - Click **Generate Secret** and take note of the **Client id** and **Client secret** - you'll enter those in a moment
+#### Prerequisites
 
-When you add a Xero step to an integration, a Xero OAuth 2.0 connection config variable will be created automatically for you:
+- A Xero account with access to the [developer portal](https://developer.xero.com/app/manage/)
 
-- For **Scopes**, enter the scopes from [this list](https://developer.xero.com/documentation/guides/oauth2/scopes/) that are relevant to your integration.
-  Always include the `offline_access` scope in order for authentication tokens to refresh automatically.
-- For **Client ID** and **Client Secret**, enter the values you noted above.
+#### Setup Steps
+
+1. Log on to Xero's [developer portal](https://developer.xero.com/app/manage/).
+2. Click **New app**.
+   - Give the app a name.
+   - Select **Web app** for **Integration type**.
+   - Enter the company's URL for **Company or application URL**.
+   - Enter <OauthCallbackUrl /> for the **Redirect URI**.
+3. Open the **Configuration** page.
+   - Click **Generate Secret** and take note of the **Client id** and **Client secret**.
+
+#### Configure the Connection
+
+When a Xero step is added to an integration, a Xero OAuth 2.0 connection config variable is created automatically.
+
+- For **Scopes**, enter the scopes from [this list](https://developer.xero.com/documentation/guides/oauth2/scopes/) that are relevant to the integration.
+  Always include the `offline_access` scope so that authentication tokens refresh automatically.
+- For **Client ID** and **Client Secret**, enter the values noted above.
 - A single customer might be logged in to multiple tenants, and **Tenant Name** is unique for each customer.
   Leave that input blank, and click the gear icon next to **Tenant Name**.
-  Adjust **Input Visibility** and select **Customer** to make that input visible to your customers.
-  That way, your customers will be prompted for their tenant name when they enable this integration.
+  Adjust **Input Visibility** and select **Customer** to make that input visible to customers.
+  That way, customers are prompted for their tenant name when they enable this integration.
 
-For additional information regarding authentication, please refer to the [Xero docs](https://developer.xero.com/documentation/guides/oauth2/auth-flow/#2-users-are-redirected-back-to-you-with-a-code).
+For additional information regarding authentication, refer to the [Xero docs](https://developer.xero.com/documentation/guides/oauth2/auth-flow/#2-users-are-redirected-back-to-you-with-a-code).

@@ -14,7 +14,7 @@ export const createUser = action({
       timeout: util.types.toInt(params.timeout),
       debug: context.debug.enabled,
     });
-    const response = await client.post(`/users`, {
+    const response = await client.post("/users", {
       user: {
         name: params.username,
         siteRole: params.siteRole,

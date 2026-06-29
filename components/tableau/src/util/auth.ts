@@ -1,4 +1,4 @@
-import { Connection, ConnectionError, util } from "@prismatic-io/spectral";
+import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { signIn } from "./signIn";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
 interface GetTableauClientProps {
@@ -38,17 +38,7 @@ export const getTableauClient = async ({
     baseUrl: `https://${tableauConnection.fields.hostName}/api/${apiVersion}/sites/${credentials.site.id}`,
     headers,
     timeout: util.types.toInt(timeout, 2000),
+    debug: util.types.toBool(debug),
   });
-  if (util.types.toBool(debug) === true) {
-    tableauClient.interceptors.request.use((request) => {
-      console.log(JSON.stringify(request));
-      return request;
-    });
-    tableauClient.interceptors.response.use((response) => {
-      console.log(response.status);
-      console.log(JSON.stringify(response.data));
-      return response;
-    });
-  }
   return tableauClient;
 };

@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { createGotoWebinarClient } from "../../client";
 import { LIST_SESSION_ATTENDEES_EXAMPLE_PAYLOAD } from "../../examplePayloads";
-import { listSessionAttendeesInputs } from "../../inputs/attendees/listSessionAttendeesInputs";
+import { listSessionAttendeesInputs } from "../../inputs";
 export const listSessionAttendees = action({
   display: {
     label: "List Session Attendees",

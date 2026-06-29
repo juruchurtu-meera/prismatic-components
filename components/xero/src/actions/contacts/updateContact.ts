@@ -1,33 +1,11 @@
-import { action, input } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  contactId,
-  contactName,
-  contactNumber,
-  firstName,
-  lastName,
-  email,
-  accountsPayableTaxType,
-  accountsReceivableTaxType,
-  bankAccountDetails,
-  defaultCurrency,
-  taxNumber,
-  contactStatus,
-  city,
-  addressType,
-  address,
-  postalCode,
-  connectionInput,
-  country,
-  region,
-  additionalFields,
-} from "../../inputs";
-import { createContactAdditionalFields } from "../../constants";
+import { updateContactInputs } from "../../inputs";
 import { updateContactExamplePayload } from "../../examplePayloads";
 export const updateContact = action({
   display: {
     label: "Update Contact",
-    description: "Update the information and metadata of a contact by Id",
+    description: "Update the information and metadata of a contact by ID.",
   },
   perform: async (
     context,
@@ -55,7 +33,7 @@ export const updateContact = action({
     },
   ) => {
     const client = await getXeroClient(xeroConnection, context.debug.enabled);
-    const { data } = await client.post(`/contacts`, {
+    const { data } = await client.post("/contacts", {
       ContactID: contactId,
       ContactNumber: contactNumber,
       Name: contactName,
@@ -82,33 +60,6 @@ export const updateContact = action({
     });
     return { data };
   },
-  inputs: {
-    contactId,
-    contactNumber,
-    contactName: { ...contactName, required: false },
-    firstName,
-    lastName,
-    email,
-    accountsPayableTaxType,
-    accountsReceivableTaxType,
-    bankAccountDetails,
-    defaultCurrency,
-    taxNumber,
-    contactStatus,
-    city,
-    addressType,
-    address,
-    postalCode,
-    country,
-    region,
-    additionalFields: input({
-      ...additionalFields,
-      example: JSON.stringify(createContactAdditionalFields, null, 2),
-      comments:
-        additionalFields.comments +
-        " See [Xero API documentation](https://developer.xero.com/documentation/api/accounting/contacts#post-contacts) for additional fields.",
-    }),
-    xeroConnection: connectionInput,
-  },
+  inputs: updateContactInputs,
   examplePayload: updateContactExamplePayload,
 });

@@ -1,7 +1,7 @@
-import { dataSource, Element } from "@prismatic-io/spectral";
-import { connection } from "../inputs/general";
+import { dataSource, type Element } from "@prismatic-io/spectral";
+import { connection } from "../inputs";
 import { createGotoWebinarClient } from "../client";
-import { UserSubscription } from "../interfaces";
+import type { UserSubscription } from "../types";
 export const selectWebhook = dataSource({
   display: {
     label: "Select Webhook",
@@ -12,7 +12,7 @@ export const selectWebhook = dataSource({
   },
   perform: async (context, { connection }) => {
     const { client } = createGotoWebinarClient(connection, false);
-    const url = `/userSubscriptions`;
+    const url = "/userSubscriptions";
     const { data } = await client.get(url, {
       params: {
         product: "g2w",

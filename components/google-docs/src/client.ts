@@ -1,4 +1,4 @@
-import { Connection, ConnectionError } from "@prismatic-io/spectral";
+import { type Connection, ConnectionError } from "@prismatic-io/spectral";
 import { docs, auth } from "@googleapis/docs";
 import { googleDocsOauth2 } from "./connections";
 const validateConnection = (connection: Connection) => {

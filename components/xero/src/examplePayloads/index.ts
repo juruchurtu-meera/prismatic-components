@@ -41,3 +41,7 @@ export {
   getPaymentHistoryExamplePayload,
 } from "./payments";
 export { listConnectionsExamplePayload } from "./connections";
+export {
+  pollChangesTriggerExamplePayload,
+  webhookExamplePayload,
+} from "./triggers";

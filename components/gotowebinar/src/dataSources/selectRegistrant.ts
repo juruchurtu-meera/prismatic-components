@@ -1,8 +1,8 @@
-import { dataSource, Element } from "@prismatic-io/spectral";
-import { connection, webinarKey } from "../inputs/general";
+import { dataSource, type Element } from "@prismatic-io/spectral";
+import { connection, webinarKey } from "../inputs";
 import { createGotoWebinarClient } from "../client";
-import { Registrant } from "../interfaces";
-import { bigIntTransformerConfig, parseRegistrantKey } from "../utils";
+import type { Registrant } from "../types";
+import { bigIntTransformerConfig, parseRegistrantKey } from "../util";
 export const selectRegistrant = dataSource({
   display: {
     label: "Select Registrant",

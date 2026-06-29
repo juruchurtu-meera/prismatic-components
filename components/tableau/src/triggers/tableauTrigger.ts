@@ -1,4 +1,8 @@
-import { ActionContext, TriggerPayload, trigger } from "@prismatic-io/spectral";
+import {
+  type ActionContext,
+  type TriggerPayload,
+  trigger,
+} from "@prismatic-io/spectral";
 import { getTableauClient } from "../util";
 import {
   deleteWebhooksInstance,
@@ -6,7 +10,7 @@ import {
   getEventInfo,
 } from "../util";
 import tableauEvents from "../tableauEvents.json";
-import { TableauTriggerPayload } from "../types";
+import type { TableauTriggerPayload } from "../types";
 import { tableauTriggerInputs } from "../inputs";
 import { tableauWebhookExamplePayload } from "../examplePayloads";
 const performFunction = async (

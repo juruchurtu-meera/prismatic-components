@@ -1,11 +1,12 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { itemId, connectionInput } from "../../inputs";
+import { getItemHistoryInputs } from "../../inputs";
 import { getItemHistoryExamplePayload } from "../../examplePayloads";
 export const getItemHistory = action({
   display: {
     label: "Get Item History",
-    description: "Get the information and metadata of an items's history by Id",
+    description:
+      "Retrieve the information and metadata of an item's history by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -15,6 +16,6 @@ export const getItemHistory = action({
     const { data } = await client.get(`/items/${params.itemId}/history`);
     return { data };
   },
-  inputs: { itemId, xeroConnection: connectionInput },
+  inputs: getItemHistoryInputs,
   examplePayload: getItemHistoryExamplePayload,
 });

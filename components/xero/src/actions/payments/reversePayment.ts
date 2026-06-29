@@ -1,11 +1,11 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { paymentId, connectionInput } from "../../inputs";
+import { reversePaymentInputs } from "../../inputs";
 import { reversePaymentExamplePayload } from "../../examplePayloads";
 export const reversePayment = action({
   display: {
     label: "Reverse Payment",
-    description: "Reverse a payment by Id",
+    description: "Reverse a payment by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -17,6 +17,6 @@ export const reversePayment = action({
     });
     return { data };
   },
-  inputs: { paymentId, xeroConnection: connectionInput },
+  inputs: reversePaymentInputs,
   examplePayload: reversePaymentExamplePayload,
 });

@@ -1,18 +1,17 @@
 import { trigger } from "@prismatic-io/spectral";
-import { connection } from "../inputs/general";
 import { createGotoWebinarClient } from "../client";
-import {
-  eventName,
-  eventVersion,
-} from "../inputs/subscriptions/createUserSubscriptionInputs";
-import { GoToWebinarResponse, Webhook } from "../interfaces";
-import { deleteInstancedWebhooks } from "../utils";
+import { userSubscriptionTriggerExamplePayload } from "../examplePayloads";
+import { connection, eventName, eventVersion } from "../inputs";
+import type { GoToWebinarResponse, Webhook } from "../types";
+import { deleteInstancedWebhooks } from "../util";
 export const userSubscriptionTrigger = trigger({
   display: {
     label: "User Subscription",
-    description: "Triggers when a user subscribes to a plan",
+    description:
+      "Receive event notifications from GoTo Webinar. Automatically creates and manages a webhook subscription for the selected event when the instance is deployed, and removes the subscription when the instance is deleted.",
   },
   inputs: { connection, eventName, eventVersion },
+  examplePayload: userSubscriptionTriggerExamplePayload,
   webhookLifecycleHandlers: {
     create: async (context, { connection, eventName, eventVersion }) => {
       const { client } = createGotoWebinarClient(connection, false);

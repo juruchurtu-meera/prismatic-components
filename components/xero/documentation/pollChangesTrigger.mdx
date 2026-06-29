@@ -4,15 +4,13 @@ This trigger polls the [Xero Accounting API](https://developer.xero.com/document
 
 1. The trigger runs on the configured schedule
 2. It fetches records modified since the last poll using Xero's `If-Modified-Since` header, limiting results to records that have changed
-3. Each returned record is compared against the set of previously known IDs — records with unknown IDs are classified as new; records with known IDs are classified as updated
+3. Each returned record is compared against the set of previously known IDs. Records with unknown IDs are classified as new, and records with known IDs are classified as updated
 4. The trigger updates its internal state after each poll, storing the last poll timestamp and the full set of known record IDs
 
-#### Configuration
+The following resource types are supported:
 
-Configure the following inputs:
-
-- **Connection**: The Xero connection to authenticate API requests
-- **Resource Type**: The type of Xero record to monitor
+<details>
+<summary>Supported Resource Types (9)</summary>
 
 | Resource          | Paginated | Tracks New | Tracks Updated |
 | ----------------- | --------- | ---------- | -------------- |
@@ -26,12 +24,14 @@ Configure the following inputs:
 | Payments          | Yes       | Yes        | Yes            |
 | Purchase Orders   | Yes       | Yes        | Yes            |
 
-- **Show New Records**: When enabled, records not previously seen are included in the trigger output
-- **Show Updated Records**: When enabled, records previously seen that have been modified are included in the trigger output
+</details>
 
 #### Returned Data
 
-Returns an object with two arrays — `created` for new records and `updated` for modified records.
+Returns an object with two arrays: `created` for new records and `updated` for modified records.
+
+<details>
+<summary>Example Response</summary>
 
 ```json
 {
@@ -54,8 +54,12 @@ Returns an object with two arrays — `created` for new records and `updated` fo
 }
 ```
 
+</details>
+
+Fields shown are representative. The full response object includes additional properties.
+
 #### Notes
 
-- Classification as new or updated is based on ID history, not Xero metadata. A record whose ID has not been seen in a prior poll is classified as created; a record whose ID is already known is classified as updated.
+- Classification as new or updated is based on ID history, not Xero metadata. A record whose ID has not been seen in a prior poll is classified as created, while a record whose ID is already known is classified as updated.
 - The known ID set and the last poll timestamp both persist across executions via polling state.
 - Paginated resource types fetch all pages before classifying records.

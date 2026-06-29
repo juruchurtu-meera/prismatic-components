@@ -1,10 +1,10 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { objectType, objectId, fileName, connectionInput } from "../../inputs";
+import { getAttachmentInputs } from "../../inputs";
 export const getAttachment = action({
   display: {
     label: "Get Attachment",
-    description: "Get an attachment by ID",
+    description: "Retrieve an attachment by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -15,12 +15,7 @@ export const getAttachment = action({
       `/${params.objectType}/${params.objectId}/Attachments/${params.fileName}`,
       { responseType: "arraybuffer" },
     );
-    return { data, contentType: headers["content-type"] };
+    return { data, contentType: headers["content-type"]?.toString() };
   },
-  inputs: {
-    objectType,
-    objectId,
-    fileName,
-    xeroConnection: connectionInput,
-  },
+  inputs: getAttachmentInputs,
 });

@@ -1,11 +1,11 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { invoiceId, connectionInput } from "../../inputs";
+import { getInvoiceInputs } from "../../inputs";
 import { getInvoiceExamplePayload } from "../../examplePayloads";
 export const getInvoice = action({
   display: {
     label: "Get Invoice",
-    description: "Get the information and metadata of an invoice by Id",
+    description: "Retrieve the information and metadata of an invoice by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -15,6 +15,6 @@ export const getInvoice = action({
     const { data } = await client.get(`/invoices/${params.invoiceId}`);
     return { data };
   },
-  inputs: { invoiceId, xeroConnection: connectionInput },
+  inputs: getInvoiceInputs,
   examplePayload: getInvoiceExamplePayload,
 });

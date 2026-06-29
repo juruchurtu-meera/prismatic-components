@@ -1,3 +1,22 @@
-You can also grant limited access to your Azure Storage Resources using [Shared Access Signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) authentication, which involves an access token.
-You can obtain a connection string containing an SAS token from the [Azure Portal](https://portal.azure.com/).
-Keep in mind this token will eventually expire. Make sure to configure an expiration date you will remember, so you can manually refresh the token at a later date.
+Limited access to Azure Storage resources can also be granted using [Shared Access Signatures (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) authentication, which involves an access token. A connection string containing an SAS token can be obtained from the [Azure Portal](https://portal.azure.com/).
+
+#### Prerequisites
+
+- An Azure Storage account
+- Access to the [Azure Portal](https://portal.azure.com/) to generate a connection string with an SAS token
+
+#### Setup Steps
+
+1. Sign in to the [Azure Portal](https://portal.azure.com/)
+2. Navigate to the Storage account
+3. Under **Security + networking**, select **Shared access signature**
+4. Configure the allowed services, permissions, and an expiration date, then select **Generate SAS and connection string**
+5. Copy the generated **Connection string**
+
+#### Configure the Connection
+
+- Enter the **Connection String**: the connection string for the active directory account
+
+:::note[Token Expiration]
+The SAS token within the connection string will eventually expire. Configure a memorable expiration date so the token can be manually refreshed at a later date.
+:::

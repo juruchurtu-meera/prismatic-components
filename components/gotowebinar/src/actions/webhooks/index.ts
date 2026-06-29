@@ -1,4 +1,4 @@
-import { deleteInstancedWebhooksAction } from "./deleteInstancedWebhooks";
+import { deleteInstancedWebhooksAction } from "./deleteInstancedWebhooksAction";
 export default {
   deleteInstancedWebhooksAction,
 };

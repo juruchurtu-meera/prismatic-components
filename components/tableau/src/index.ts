@@ -40,7 +40,7 @@ export default component({
   documentationUrl: "https://prismatic.io/docs/components/tableau/",
   display: {
     label: "Tableau",
-    description: "Manage projects and workbooks in your Tableau site",
+    description: "Manage projects and workbooks in your Tableau site.",
     iconPath: "icon.png",
     category: "Application Connectors",
   },

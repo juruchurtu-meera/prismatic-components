@@ -1,23 +1,12 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  accountId,
-  accountCode,
-  accountName,
-  accountType,
-  purchaseTaxType,
-  description,
-  enablePaymentsToAccount,
-  fieldValues,
-  showInExpenseClaims,
-  connectionInput,
-} from "../../inputs";
+import { updateAccountInputs } from "../../inputs";
 import { updateAccountExamplePayload } from "../../examplePayloads";
 export const updateAccount = action({
   display: {
     label: "Update Account",
     description:
-      "Update the information and metadata of an existing account by Id",
+      "Update the information and metadata of an existing account by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -41,17 +30,6 @@ export const updateAccount = action({
     );
     return { data };
   },
-  inputs: {
-    accountId,
-    accountCode: { ...accountCode, required: false },
-    accountName: { ...accountName, required: false },
-    accountType: { ...accountType, required: false },
-    purchaseTaxType,
-    description,
-    enablePaymentsToAccount,
-    fieldValues,
-    showInExpenseClaims,
-    xeroConnection: connectionInput,
-  },
+  inputs: updateAccountInputs,
   examplePayload: updateAccountExamplePayload,
 });

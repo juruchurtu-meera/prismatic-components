@@ -1,4 +1,4 @@
-import { Connection, ConnectionError, util } from "@prismatic-io/spectral";
+import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import pgPromise from "pg-promise";
 import { postgresConnection } from "./connections";
 const pgp = pgPromise();

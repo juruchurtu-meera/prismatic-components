@@ -14,7 +14,7 @@ export const getProject = action({
       timeout: util.types.toInt(params.timeout),
       debug: context.debug.enabled,
     });
-    const response = await client.get(`/projects`, {
+    const response = await client.get("/projects", {
       params: {
         filter: `name:eq:${params.projectName}`,
       },

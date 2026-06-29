@@ -14,7 +14,7 @@ export const createProject = action({
       timeout: util.types.toInt(params.timeout),
       debug: context.debug.enabled,
     });
-    const response = await client.post(`/projects`, {
+    const response = await client.post("/projects", {
       project: {
         parentProjectId: params.parentProjectId || undefined,
         name: params.projectName,

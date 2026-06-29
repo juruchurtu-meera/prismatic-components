@@ -1,6 +1,6 @@
 import { listSessionAttendees } from "./listSessionAttendees";
-import { listAttendees } from "./list";
-import { getAttendee } from "./get";
+import { listAttendees } from "./listAttendees";
+import { getAttendee } from "./getAttendee";
 export default {
   listSessionAttendees,
   listAttendees,

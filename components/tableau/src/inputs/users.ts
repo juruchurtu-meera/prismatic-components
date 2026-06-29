@@ -58,7 +58,7 @@ const userSearchField = input({
   required: true,
   comments:
     "The field to search. Dates should follow the ISO format: 2016-05-04T21:24:49Z",
-  example: `Name`,
+  example: "Name",
   clean: util.types.toString,
   model: [
     { label: "Username", value: "name" },

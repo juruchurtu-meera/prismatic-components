@@ -1,13 +1,6 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  objectType,
-  objectId,
-  fileName,
-  file,
-  contentType,
-  connectionInput,
-} from "../../inputs";
+import { createAttachmentInputs } from "../../inputs";
 export const createAttachment = action({
   display: {
     label: "Create Attachment",
@@ -26,12 +19,5 @@ export const createAttachment = action({
     );
     return { data };
   },
-  inputs: {
-    objectType,
-    objectId,
-    fileName,
-    file,
-    contentType,
-    xeroConnection: connectionInput,
-  },
+  inputs: createAttachmentInputs,
 });

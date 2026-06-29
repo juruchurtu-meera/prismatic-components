@@ -1,6 +1,6 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { invoiceId, connectionInput } from "../../inputs";
+import { voidInvoiceInputs } from "../../inputs";
 import { voidInvoiceExamplePayload } from "../../examplePayloads";
 export const voidInvoice = action({
   display: {
@@ -19,6 +19,6 @@ export const voidInvoice = action({
     });
     return { data };
   },
-  inputs: { invoiceId, xeroConnection: connectionInput },
+  inputs: voidInvoiceInputs,
   examplePayload: voidInvoiceExamplePayload,
 });

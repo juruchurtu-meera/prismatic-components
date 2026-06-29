@@ -1,31 +1,11 @@
-import { action, input } from "@prismatic-io/spectral";
+import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  contactName,
-  firstName,
-  lastName,
-  email,
-  bankAccountDetails,
-  taxNumber,
-  contactStatus,
-  accountsReceivableTaxType,
-  accountsPayableTaxType,
-  defaultCurrency,
-  addressType,
-  address,
-  city,
-  postalCode,
-  connectionInput,
-  additionalFields,
-  country,
-  region,
-} from "../../inputs";
-import { createContactAdditionalFields } from "../../constants";
+import { createContactInputs } from "../../inputs";
 import { createContactExamplePayload } from "../../examplePayloads";
 export const createContact = action({
   display: {
     label: "Create Contact",
-    description: "Create a new contact",
+    description: "Create a new contact.",
   },
   perform: async (
     context,
@@ -51,7 +31,7 @@ export const createContact = action({
     },
   ) => {
     const client = await getXeroClient(xeroConnection, context.debug.enabled);
-    const { data } = await client.post(`/contacts`, {
+    const { data } = await client.post("/contacts", {
       Contacts: [
         {
           Name: contactName,
@@ -80,31 +60,6 @@ export const createContact = action({
     });
     return { data };
   },
-  inputs: {
-    xeroConnection: connectionInput,
-    contactName,
-    firstName,
-    lastName,
-    email,
-    addressType,
-    address,
-    city,
-    postalCode,
-    country,
-    region,
-    bankAccountDetails,
-    contactStatus,
-    taxNumber,
-    accountsReceivableTaxType,
-    accountsPayableTaxType,
-    defaultCurrency,
-    additionalFields: input({
-      ...additionalFields,
-      example: JSON.stringify(createContactAdditionalFields, null, 2),
-      comments:
-        additionalFields.comments +
-        " See [Xero API documentation](https://developer.xero.com/documentation/api/accounting/contacts#post-contacts) for additional fields.",
-    }),
-  },
+  inputs: createContactInputs,
   examplePayload: createContactExamplePayload,
 });

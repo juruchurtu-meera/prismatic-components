@@ -21,7 +21,7 @@ const projectName = input({
   label: "Project Name",
   type: "string",
   required: true,
-  comments: "The name of the project.",
+  comments: "The display name shown for the project in Tableau.",
   example: "MyProject",
   placeholder: "Enter project name",
   clean: util.types.toString,
@@ -58,7 +58,7 @@ const projectSearchField = input({
   required: true,
   comments:
     "The field to search. Dates should follow the ISO format: 2016-05-04T21:24:49Z",
-  example: `Name`,
+  example: "Name",
   clean: util.types.toString,
   model: [
     { label: "Name", value: "name" },

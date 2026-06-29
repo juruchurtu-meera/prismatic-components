@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-29
+
+Various modernizations and documentation updates
+
 ### 2026-06-04
 
 Added the **New and Updated Records** polling trigger that monitors workbooks, views, and data sources for records created or updated since the last poll, routing newly created records to the created branch and modified records to the updated branch

@@ -1,8 +1,8 @@
-import { dataSource, Element } from "@prismatic-io/spectral";
-import { accountKey, connection, fromTime, toTime } from "../inputs/general";
+import { dataSource, type Element } from "@prismatic-io/spectral";
+import { accountKey, connection, fromTime, toTime } from "../inputs";
 import { createGotoWebinarClient } from "../client";
-import { Webinar } from "../interfaces";
-import { getEndTime, getFromTime } from "../utils";
+import type { Webinar } from "../types";
+import { getEndTime, getFromTime } from "../util";
 export const selectWebinar = dataSource({
   display: {
     label: "Select Webinar",

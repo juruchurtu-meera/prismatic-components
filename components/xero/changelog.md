@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-29
+
+Various modernizations and documentation updates
+
 ### 2026-05-20
 
 Applied automated security patches and code formatting updates

@@ -1,12 +1,13 @@
-import { dataSource, Element } from "@prismatic-io/spectral";
-import { accountKey, connection, fromTime, toTime } from "../inputs/general";
+import { dataSource, type Element } from "@prismatic-io/spectral";
+import { accountKey, connection, fromTime, toTime } from "../inputs";
 import { createGotoWebinarClient } from "../client";
-import { Webinar } from "../interfaces";
-import { getEndTime, getFromTime } from "../utils";
+import type { Webinar } from "../types";
+import { getEndTime, getFromTime } from "../util";
 export const selectOrganizer = dataSource({
   display: {
     label: "Select Organizer",
-    description: "Select a Organizer from the list of available Organizer Keys",
+    description:
+      "Select an organizer from the list of available organizer keys.",
   },
   inputs: {
     connection,

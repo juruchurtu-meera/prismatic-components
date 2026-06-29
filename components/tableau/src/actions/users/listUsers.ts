@@ -14,7 +14,7 @@ export const listUsers = action({
       timeout: util.types.toInt(params.timeout),
       debug: context.debug.enabled,
     });
-    const response = await client.get(`/users`, {
+    const response = await client.get("/users", {
       params: {
         pageSize: util.types.toNumber(params.pageSize) || undefined,
         pageNumber: util.types.toNumber(params.pageNumber) || undefined,

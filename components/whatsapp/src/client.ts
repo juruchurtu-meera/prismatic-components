@@ -1,10 +1,10 @@
 import type { Connection } from "@prismatic-io/spectral";
 import {
   createClient as createHttpClient,
-  HttpClient,
+  type HttpClient,
 } from "@prismatic-io/spectral/dist/clients/http";
 import { GRAPH_API_URL } from "./constants";
-import { validateConnection } from "./utils";
+import { validateConnection } from "./util";
 export const getClient = (
   connection: Connection,
   debug: boolean,

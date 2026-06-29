@@ -1,9 +1,10 @@
-import { Connection, ConnectionError, util } from "@prismatic-io/spectral";
+import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { TrackClient, RegionUS, RegionEU } from "customerio-node";
 const getRegion = (region) => {
   if (region === "US") {
     return RegionUS;
-  } else if (region === "EU") {
+  }
+  if (region === "EU") {
     return RegionEU;
   }
   throw new Error(`Unsupported region: ${region}`);

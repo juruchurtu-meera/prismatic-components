@@ -1,7 +1,7 @@
-import { type Address } from "./Address";
-import { type ContactGroup } from "./ContactGroup";
-import { type ContactPerson } from "./ContactPerson";
-import { type Phone } from "./Phone";
+import type { Address } from "./Address";
+import type { ContactGroup } from "./ContactGroup";
+import type { ContactPerson } from "./ContactPerson";
+import type { Phone } from "./Phone";
 export interface Contact {
   ContactID: string;
   ContactStatus: string;

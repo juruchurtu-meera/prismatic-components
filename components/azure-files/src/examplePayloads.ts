@@ -1,4 +1,17 @@
+import type {
+  DirectoryItem,
+  FileItem,
+  FileStartCopyHeaders,
+  ShareItem,
+} from "@azure/storage-file-share";
 const staticDate = new Date("2024-01-01");
+type ListedEntry =
+  | ({
+      kind: "file";
+    } & FileItem)
+  | ({
+      kind: "directory";
+    } & DirectoryItem);
 export const listSharesExamplePayload = {
   data: [
     {
@@ -10,7 +23,7 @@ export const listSharesExamplePayload = {
         quota: 1,
       },
     },
-  ] as any,
+  ] as ShareItem[],
 };
 export const createShareExamplePayload = {
   data: {
@@ -48,7 +61,7 @@ export const listFolderExamplePayload = {
       attributes: undefined,
       permissionKey: undefined,
     },
-  ] as any,
+  ] as ListedEntry[],
 };
 export const createFolderExamplePayload = {
   data: {
@@ -134,5 +147,5 @@ export const copyFileExamplePayload = {
     copyId: "e6c57686-c2c8-4340-9d3b-420300d8f4f3",
     copyStatus: "success",
     errorCode: "",
-  } as any,
+  } as FileStartCopyHeaders,
 };

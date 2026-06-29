@@ -1,6 +1,7 @@
 import { trigger, util } from "@prismatic-io/spectral";
-import { webhookInputs } from "../inputs/webhookInputs";
 import crypto from "crypto";
+import { webhookExamplePayload } from "../examplePayloads";
+import { webhookInputs } from "../inputs";
 enum WebhookBranch {
   VerificationRequest = "Verification Request",
   EventNotification = "Event Notification",
@@ -9,7 +10,7 @@ export const webhook = trigger({
   display: {
     label: "Webhook",
     description:
-      "Receive and validate webhook requests from WhatsApp Business for webhooks you configure.",
+      "Receive and validate webhook requests from WhatsApp Business for manually configured webhook subscriptions.",
   },
   allowsBranching: true,
   staticBranchNames: [
@@ -51,6 +52,7 @@ export const webhook = trigger({
     throw new Error("Invalid signature");
   },
   inputs: webhookInputs,
+  examplePayload: webhookExamplePayload,
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
 });

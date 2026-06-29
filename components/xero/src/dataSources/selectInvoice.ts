@@ -1,14 +1,14 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getXeroClient } from "../client";
-import { connectionInput } from "../inputs";
+import { selectInvoiceInputs } from "../inputs";
 import { fetchAllData } from "../util";
-import { type Invoice } from "../interfaces/Invoice";
+import type { Invoice } from "../interfaces/Invoice";
 export const selectInvoice = dataSource({
   display: {
     label: "Select Invoice",
-    description: "Select an invoice from the list",
+    description: "Select an invoice from the list.",
   },
-  inputs: { xeroConnection: connectionInput },
+  inputs: selectInvoiceInputs,
   dataSourceType: "picklist",
   perform: async (context, { xeroConnection }) => {
     const client = await getXeroClient(xeroConnection, false);

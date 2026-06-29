@@ -1,7 +1,7 @@
-import { Connection, ConnectionError, util } from "@prismatic-io/spectral";
+import { type Connection, ConnectionError, util } from "@prismatic-io/spectral";
 import { gotoWebinarOAuth2Connection } from "./connections";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
-import { ClientProps } from "./interfaces";
+import type { ClientProps } from "./types";
 interface AuthorizationHeaders {
   Authorization: string;
 }

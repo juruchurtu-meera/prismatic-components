@@ -1,18 +1,17 @@
 import { pollingTrigger } from "@prismatic-io/spectral";
 import { createGotoWebinarClient } from "../client";
-import { connection, webinarKey } from "../inputs/general";
-import type { PollingState } from "../interfaces";
-import {
-  fetchAllRegistrants,
-  filterRegistrantsRegisteredAfter,
-} from "../utils";
+import { pollChangesTriggerExamplePayload } from "../examplePayloads";
+import { connection, webinarKey } from "../inputs";
+import type { PollingState } from "../types";
+import { fetchAllRegistrants, filterRegistrantsRegisteredAfter } from "../util";
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New Registrants",
     description:
-      "Fetches new registrants added to a GoToWebinar webinar on a configured schedule.",
+      "Fetches new registrants added to a GoTo Webinar webinar on a configured schedule.",
   },
   inputs: { connection, webinarKey },
+  examplePayload: pollChangesTriggerExamplePayload,
   perform: async (context, payload, params) => {
     const pollState = context.polling.getState() as PollingState;
     const now = new Date().toISOString();

@@ -1,5 +1,7 @@
-import { HttpResponse, trigger, util } from "@prismatic-io/spectral";
-import crypto, { BinaryLike } from "crypto";
+import { type HttpResponse, trigger, util } from "@prismatic-io/spectral";
+import crypto, { type BinaryLike } from "crypto";
+import { webhookInputs } from "../inputs";
+import { webhookExamplePayload } from "../examplePayloads";
 const validateSignature = (
   signature: string,
   payload: BinaryLike,
@@ -15,7 +17,7 @@ export const webhook = trigger({
   display: {
     label: "Webhook",
     description:
-      "Receive and validate webhook requests from Xero for webhooks you configure.",
+      "Receive and validate webhook requests from Xero for manually configured webhook subscriptions.",
   },
   perform: async (context, payload, params) => {
     if (context.isSimulatedTestExecution) {
@@ -47,82 +49,14 @@ export const webhook = trigger({
         payload,
         response,
       });
-    } else {
-      return Promise.resolve({
-        payload,
-        response: error,
-      });
     }
+    return Promise.resolve({
+      payload,
+      response: error,
+    });
   },
-  inputs: {
-    webhookKey: {
-      label: "Webhook Key",
-      type: "string",
-      comments: "Provide the webhook key that was created upon subscription.",
-      example: "up/tz7l0Q9FM6Wyq3Rli0bqJrfqmtl4idswda/LQ==",
-    },
-  },
+  inputs: webhookInputs,
   synchronousResponseSupport: "invalid",
   scheduleSupport: "invalid",
-  examplePayload: {
-    response: {
-      contentType: "application/json; charset=UTF-8",
-      statusCode: 200,
-    },
-    payload: {
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-        Host: "hooks.example.com",
-        "x-xero-signature": "ubUJMsDNGuunnCBc/n1g0wc2SpjplAb",
-      },
-      body: {
-        data: {
-          events: null,
-          firstEventSequence: 0,
-          lastEventSequence: 0,
-          entropy: "FMLHZNKCVK",
-        },
-        contentType: "application/json; charset=UTF-8",
-      },
-      rawBody: { data: Buffer.from("Example") },
-      queryParameters: {},
-      webhookUrls: {
-        "Flow 1":
-          "https://hooks.example.com/trigger/EXAMPLEGbG93Q29uZmlnOmRlNmNmNDMyLTliNWMtN0005NDMxLTRmYzA4ZjViODgxOA==",
-      },
-      webhookApiKeys: {
-        "Flow 1": ["abc-123"],
-      },
-      customer: {
-        externalId: "customer-example-external-id",
-        name: "John Doe",
-        id: "",
-      },
-      pathFragment: "",
-      invokeUrl: "",
-      executionId: "",
-      instance: {
-        id: "",
-        name: "",
-      },
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        externalId: "",
-      },
-      integration: {
-        id: "",
-        name: "",
-        versionSequenceId: "",
-        externalVersion: "",
-      },
-      flow: {
-        id: "",
-        name: "",
-      },
-      startedAt: "",
-      globalDebug: false,
-    },
-  },
+  examplePayload: webhookExamplePayload,
 });

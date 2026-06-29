@@ -1,26 +1,18 @@
 import { pollingTrigger } from "@prismatic-io/spectral";
 import { getXeroClient } from "../client";
-import {
-  connectionInput,
-  pollResourceType,
-  showNewRecords,
-  showUpdatedRecords,
-} from "../inputs";
+import { pollChangesTriggerInputs } from "../inputs";
 import { POLL_RESOURCE_CONFIG } from "../constants";
 import type { PollingState, XeroRecord } from "../types";
 import { fetchAllRecords } from "../util";
+import { pollChangesTriggerExamplePayload } from "../examplePayloads";
 export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Records",
     description:
       "Checks for new and updated records in Xero on a configured schedule.",
   },
-  inputs: {
-    xeroConnection: connectionInput,
-    resourceType: pollResourceType,
-    showNewRecords,
-    showUpdatedRecords,
-  },
+  inputs: pollChangesTriggerInputs,
+  examplePayload: pollChangesTriggerExamplePayload,
   perform: async (context, payload, params) => {
     const now = new Date().toISOString();
     const pollState = context.polling.getState() as PollingState | null;

@@ -8,7 +8,7 @@ export default component({
   public: true,
   display: {
     label: "Azure Files",
-    description: "Manage files and folders within Azure Files",
+    description: "Manage files and folders within Azure Files.",
     iconPath: "icon.png",
     category: "Data Platforms",
   },

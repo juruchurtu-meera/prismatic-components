@@ -1,14 +1,14 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getXeroClient } from "../client";
-import { connectionInput } from "../inputs";
-import { type Contact } from "../interfaces/Contact";
+import { selectContactInputs } from "../inputs";
+import type { Contact } from "../interfaces/Contact";
 import { fetchAllData } from "../util";
 export const selectContact = dataSource({
   display: {
     label: "Select Contact",
-    description: "Select a contact from the list",
+    description: "Select a contact from the list.",
   },
-  inputs: { xeroConnection: connectionInput },
+  inputs: selectContactInputs,
   dataSourceType: "picklist",
   perform: async (context, { xeroConnection }) => {
     const client = await getXeroClient(xeroConnection, false);

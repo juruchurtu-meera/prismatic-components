@@ -19,7 +19,7 @@ export const pageSize = input({
   type: "string",
   required: false,
   comments: "The maximum number of results to return.",
-  example: `20`,
+  example: "20",
   placeholder: "Enter page size",
   clean: util.types.toNumber,
 });
@@ -28,7 +28,7 @@ export const pageNumber = input({
   type: "string",
   required: false,
   comments: "The page offset for the given object's results.",
-  example: `3`,
+  example: "3",
   placeholder: "Enter page number",
   clean: util.types.toNumber,
 });
@@ -47,7 +47,7 @@ export const searchString = input({
   type: "string",
   required: true,
   comments: "The text value to search on.",
-  example: `My Project`,
+  example: "My Project",
   placeholder: "Enter search text",
   clean: util.types.toString,
 });

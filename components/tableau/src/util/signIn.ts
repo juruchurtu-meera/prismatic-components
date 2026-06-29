@@ -1,6 +1,6 @@
-import { Connection, ConnectionError } from "@prismatic-io/spectral";
+import { type Connection, ConnectionError } from "@prismatic-io/spectral";
 import { createClient } from "@prismatic-io/spectral/dist/clients/http";
-import { AxiosError } from "axios";
+import type { AxiosError } from "axios";
 interface SignInResponse {
   credentials: {
     site: {

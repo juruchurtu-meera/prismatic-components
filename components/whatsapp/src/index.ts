@@ -11,7 +11,7 @@ export default component({
   display: {
     label: "WhatsApp",
     description:
-      "WhatsApp is a messaging app that allows users to send texts, make voice and video calls, and share media.",
+      "Send messages, manage media, and register phone numbers with the WhatsApp Business API",
     iconPath: "icon.png",
     category: "Application Connectors",
   },

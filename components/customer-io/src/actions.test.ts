@@ -8,6 +8,6 @@ describe("createCustomerIOClient", () => {
       apiSecret: "",
     });
     const client = createCustomerClient(cred, "US");
-    expect(client.siteid == "siteID");
+    expect(client.siteid === "siteID");
   });
 });

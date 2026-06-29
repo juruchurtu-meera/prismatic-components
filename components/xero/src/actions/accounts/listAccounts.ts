@@ -1,11 +1,11 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { connectionInput, modifiedAfter, where } from "../../inputs";
+import { listAccountsInputs } from "../../inputs";
 import { listAccountsExamplePayload } from "../../examplePayloads";
 export const listAccounts = action({
   display: {
     label: "List Accounts",
-    description: "List all accounts",
+    description: "List all accounts.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -22,6 +22,6 @@ export const listAccounts = action({
     });
     return { data };
   },
-  inputs: { xeroConnection: connectionInput, modifiedAfter, where },
+  inputs: listAccountsInputs,
   examplePayload: listAccountsExamplePayload,
 });

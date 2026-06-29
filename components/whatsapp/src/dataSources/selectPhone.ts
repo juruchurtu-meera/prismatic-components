@@ -1,5 +1,5 @@
-import { dataSource, Element } from "@prismatic-io/spectral";
-import { selectPhoneInputs } from "../inputs/selectPhoneInputs";
+import { dataSource, type Element } from "@prismatic-io/spectral";
+import { selectPhoneInputs } from "../inputs";
 import { getClient } from "../client";
 export const selectPhone = dataSource({
   display: {

@@ -1,28 +1,11 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import {
-  itemId,
-  itemCode,
-  description,
-  purchaseDescription,
-  purchaseUnitPrice,
-  purchaseTaxType,
-  purchaseAccountCode,
-  salesAccountCode,
-  salesUnitPrice,
-  salesTaxType,
-  itemName,
-  inventoryAssetAccountCode,
-  isSold,
-  isPurchased,
-  fieldValues,
-  connectionInput,
-} from "../../inputs";
+import { updateItemInputs } from "../../inputs";
 import { updateItemExamplePayload } from "../../examplePayloads";
 export const updateItem = action({
   display: {
     label: "Update Item",
-    description: "Update the information and metadata of an item by Id",
+    description: "Update the information and metadata of an item by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -55,23 +38,6 @@ export const updateItem = action({
     });
     return { data };
   },
-  inputs: {
-    itemId,
-    itemCode: { ...itemCode, required: true },
-    itemName,
-    description,
-    isSold,
-    isPurchased,
-    purchaseDescription,
-    purchaseUnitPrice,
-    purchaseTaxType,
-    purchaseAccountCode,
-    salesAccountCode,
-    salesUnitPrice,
-    salesTaxType,
-    inventoryAssetAccountCode,
-    fieldValues,
-    xeroConnection: connectionInput,
-  },
+  inputs: updateItemInputs,
   examplePayload: updateItemExamplePayload,
 });

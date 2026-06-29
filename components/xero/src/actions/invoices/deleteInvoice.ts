@@ -1,11 +1,11 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { invoiceId, connectionInput } from "../../inputs";
+import { deleteInvoiceInputs } from "../../inputs";
 import { deleteInvoiceExamplePayload } from "../../examplePayloads";
 export const deleteInvoice = action({
   display: {
     label: "Delete Invoice",
-    description: "Delete the information and metadata of an invoice by Id",
+    description: "Delete an invoice by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -18,6 +18,6 @@ export const deleteInvoice = action({
     });
     return { data };
   },
-  inputs: { invoiceId, xeroConnection: connectionInput },
+  inputs: deleteInvoiceInputs,
   examplePayload: deleteInvoiceExamplePayload,
 });

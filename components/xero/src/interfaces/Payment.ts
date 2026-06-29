@@ -1,5 +1,5 @@
-import { type PaymentAccount } from "./PaymentAccount";
-import { type PaymentInvoice } from "./PaymentInvoice";
+import type { PaymentAccount } from "./PaymentAccount";
+import type { PaymentInvoice } from "./PaymentInvoice";
 export interface Payment {
   PaymentID: string;
   Date: string;

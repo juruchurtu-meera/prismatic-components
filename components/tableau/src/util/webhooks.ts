@@ -1,5 +1,5 @@
-import { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
-import { ListWebhooks, TableauTriggerPayload, Webhook } from "../types";
+import type { HttpClient } from "@prismatic-io/spectral/dist/clients/http";
+import type { ListWebhooks, TableauTriggerPayload, Webhook } from "../types";
 export const deleteWebhooksInstance = async (
   client: HttpClient,
   endpoint: string,
@@ -32,7 +32,7 @@ export const createWebhookSubscription = async (
   const webhookName = name
     ? name
     : `Prism - ${new Date().toLocaleDateString("en-US")} - ${event}`;
-  return await client.post(`/webhooks`, {
+  return await client.post("/webhooks", {
     webhook: {
       name: webhookName,
       "webhook-destination": {

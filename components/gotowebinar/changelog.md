@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2026-06-29
+
+Various modernizations and documentation updates
+
 ### 2026-06-08
 
 Added the **New Registrants** polling trigger, which checks a webinar for registrants added since the last run

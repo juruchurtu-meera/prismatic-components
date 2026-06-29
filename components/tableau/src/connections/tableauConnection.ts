@@ -10,11 +10,11 @@ export const tableauConnection = connection({
     token: {
       label: "Token Secret",
       placeholder: "Token Secret",
-      type: "string",
+      type: "password",
       required: true,
       shown: true,
       comments:
-        "Provide a string value for the Tableau Token. This value can be created from your Tableau account.",
+        "The Tableau Personal Access Token secret. This value can be created from the Tableau account.",
       example: "xxxxxxxxxxxxxxxxxxxxxx==:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     },
     tokenName: {
@@ -23,7 +23,7 @@ export const tableauConnection = connection({
       type: "string",
       required: true,
       shown: true,
-      comments: "Provide a string value for the name of the Tableau Token.",
+      comments: "The name of the Tableau Personal Access Token.",
       example: "My Token",
     },
     hostName: {
@@ -32,7 +32,7 @@ export const tableauConnection = connection({
       required: true,
       shown: true,
       comments:
-        "Provide a string value for the host name of the Tableau server, without the https://",
+        "The host name of the Tableau server, without the https:// prefix.",
       example: "10ay.online.tableau.com",
     },
     siteId: {
@@ -41,7 +41,7 @@ export const tableauConnection = connection({
       shown: true,
       required: true,
       comments:
-        "The ID of your Tableau site (MarketingTeam part of https://10ay.online.tableau.com/#/site/MarketingTeam/workbooks)",
+        "The ID of the Tableau site (the MarketingTeam part of https://10ay.online.tableau.com/#/site/MarketingTeam/workbooks).",
       example: "MarketingTeam",
     },
   },

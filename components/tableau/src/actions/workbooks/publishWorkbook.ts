@@ -32,12 +32,12 @@ export const publishWorkbook = action({
     form.append("tableau_workbook", params.workbookFileContents.data, {
       filename: "workbook.twbx",
     });
-    const response = await client.post(`/workbooks`, form.getBuffer(), {
+    const response = await client.post("/workbooks", form.getBuffer(), {
       params: queryParams,
       headers: {
         "content-type": "multipart/mixed; boundary=" + form.getBoundary(),
       },
-      maxBodyLength: Infinity,
+      maxBodyLength: Number.POSITIVE_INFINITY,
     });
     return {
       data: response.data,

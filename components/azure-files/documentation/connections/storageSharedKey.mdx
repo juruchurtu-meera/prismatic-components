@@ -1,2 +1,18 @@
-Azure Files can use [storageSharedKeyCredential](https://docs.microsoft.com/en-us/rest/api/storageservices/authorize-with-shared-key) authentication, which involves an account / key pair.
-You can obtain an account name / account key pair through the [Azure Portal](https://portal.azure.com/).
+Azure Files can use [storageSharedKeyCredential](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-shared-key) authentication, which involves an account and key pair.
+
+#### Prerequisites
+
+- An Azure Storage account
+- Access to the [Azure Portal](https://portal.azure.com/) to obtain the account name and account key
+
+#### Setup Steps
+
+1. Sign in to the [Azure Portal](https://portal.azure.com/)
+2. Navigate to the Storage account
+3. Under **Security + networking**, select **Access keys**
+4. Copy the **Storage account name** and one of the **Key** values
+
+#### Configure the Connection
+
+- Enter the **Account Name**: the name of the active directory account
+- Enter the **Account Key**: the access key for the active directory account

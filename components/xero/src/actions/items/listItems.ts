@@ -1,13 +1,13 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { connectionInput, modifiedAfter, where } from "../../inputs";
-import { type XeroResponse } from "../../interfaces/XeroResponse";
-import { type Item } from "../../interfaces/Item";
+import { listItemsInputs } from "../../inputs";
+import type { XeroResponse } from "../../interfaces/XeroResponse";
+import type { Item } from "../../interfaces/Item";
 import { listItemsExamplePayload } from "../../examplePayloads";
 export const listItems = action({
   display: {
     label: "List Items",
-    description: "List all items",
+    description: "List all items.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -24,7 +24,7 @@ export const listItems = action({
     });
     return { data };
   },
-  inputs: { xeroConnection: connectionInput, modifiedAfter, where },
+  inputs: listItemsInputs,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   examplePayload: listItemsExamplePayload as any,
 });

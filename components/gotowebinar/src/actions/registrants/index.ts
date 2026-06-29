@@ -1,7 +1,7 @@
-import { createRegistrant } from "./create";
-import { getRegistrant } from "./get";
-import { deleteRegistrant } from "./delete";
-import { listRegistrants } from "./list";
+import { createRegistrant } from "./createRegistrant";
+import { getRegistrant } from "./getRegistrant";
+import { deleteRegistrant } from "./deleteRegistrant";
+import { listRegistrants } from "./listRegistrants";
 export default {
   getRegistrant,
   createRegistrant,

@@ -1,9 +1,9 @@
-import { Connection, util } from "@prismatic-io/spectral/dist/";
+import { type Connection, util } from "@prismatic-io/spectral/dist/";
 import {
   createClient as createHttpClient,
-  HttpClient,
+  type HttpClient,
 } from "@prismatic-io/spectral/dist/clients/http";
-import { getTenant } from "./getTenant";
+import { getTenant } from "./util/getTenant";
 import { validateConnection } from "./util";
 export const getXeroClient = async (
   xeroConnection: Connection,

@@ -7,7 +7,7 @@ export default component({
   documentationUrl: "https://prismatic.io/docs/components/oracledb/",
   display: {
     label: "Oracle Database",
-    description: "Query and manage data in an OracleDB database",
+    description: "Query and manage data in an OracleDB database.",
     iconPath: "icon.png",
     category: "Data Platforms",
   },

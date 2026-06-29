@@ -1,11 +1,11 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { invoiceId, notes, connectionInput } from "../../inputs";
+import { addNoteToInvoiceInputs } from "../../inputs";
 import { addNoteToInvoiceExamplePayload } from "../../examplePayloads";
 export const addNoteToInvoice = action({
   display: {
-    label: "Add Notes To Invoice",
-    description: "Add additional notes to an invoice by Id",
+    label: "Add Note to Invoice",
+    description: "Add additional notes to an invoice by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -21,6 +21,6 @@ export const addNoteToInvoice = action({
     });
     return { data };
   },
-  inputs: { invoiceId, notes, xeroConnection: connectionInput },
+  inputs: addNoteToInvoiceInputs,
   examplePayload: addNoteToInvoiceExamplePayload,
 });

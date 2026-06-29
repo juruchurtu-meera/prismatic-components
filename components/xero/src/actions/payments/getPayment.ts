@@ -1,11 +1,11 @@
 import { action } from "@prismatic-io/spectral";
 import { getXeroClient } from "../../client";
-import { paymentId, connectionInput } from "../../inputs";
+import { getPaymentInputs } from "../../inputs";
 import { getPaymentExamplePayload } from "../../examplePayloads";
 export const getPayment = action({
   display: {
     label: "Get Payment",
-    description: "Get the information and metadata of a payment by id",
+    description: "Retrieve the information and metadata of a payment by ID.",
   },
   perform: async (context, params) => {
     const client = await getXeroClient(
@@ -15,6 +15,6 @@ export const getPayment = action({
     const { data } = await client.get(`/payments/${params.paymentId}`);
     return { data };
   },
-  inputs: { paymentId, xeroConnection: connectionInput },
+  inputs: getPaymentInputs,
   examplePayload: getPaymentExamplePayload,
 });

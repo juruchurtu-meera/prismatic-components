@@ -8,7 +8,7 @@ export default component({
   public: true,
   display: {
     label: "PostgreSQL",
-    description: "Query and manage data in a PostgreSQL database",
+    description: "Query and manage data in a PostgreSQL database.",
     iconPath: "icon.png",
     category: "Data Platforms",
   },

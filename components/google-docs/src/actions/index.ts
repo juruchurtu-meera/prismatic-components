@@ -1,7 +1,5 @@
-import { batchUpdateDocuments } from "./batchUpdateDocuments";
-import { createDocument } from "./createDocument";
-import { getDocument } from "./getDocument";
-import rawRequest from "./rawRequest";
+import { batchUpdateDocuments, createDocument, getDocument } from "./documents";
+import { rawRequest } from "./misc";
 export default {
   getDocument,
   createDocument,
