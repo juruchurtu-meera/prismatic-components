@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { getDataSetInputs } from "../../inputs";
 import { getDataSetExamplePayload } from "../../examplePayloads";
+import { getDataSetInputs } from "../../inputs";
 export const getDataSet = action({
   display: {
     label: "Get Data Set",

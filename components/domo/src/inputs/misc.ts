@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, limit, offset } from "./common";
 export const start = input({
   label: "Start",
@@ -33,7 +33,14 @@ export const getActivityLogEntriesInputs = {
   start,
   end,
   fetchAll,
-  limit,
-  offset,
   user,
+  pagination: structuredObjectInput({
+    label: "Pagination",
+    required: false,
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit,
+      offset,
+    },
+  }),
 };

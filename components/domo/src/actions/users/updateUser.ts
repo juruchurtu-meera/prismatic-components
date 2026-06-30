@@ -1,9 +1,9 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { updateUserExamplePayload } from "../../examplePayloads";
 import { updateUserInputs } from "../../inputs";
 import type { UpdateUserBody } from "../types/UpdateUserBody";
 import type { UpdateUserQueryParams } from "../types/UpdateUserQueryParams";
-import { updateUserExamplePayload } from "../../examplePayloads";
 export const updateUser = action({
   display: {
     label: "Update User",
@@ -12,36 +12,23 @@ export const updateUser = action({
   examplePayload: updateUserExamplePayload,
   perform: async (
     context,
-    {
-      connection,
-      userId,
-      alternateEmail,
-      email,
-      employeeNumber,
-      locale,
-      location,
-      name,
-      phone,
-      role,
-      roled,
-      timezone,
-      title,
-      updateUserBody,
-    },
+    { connection, userId, email, name, role, roled, profile, updateUserBody },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: UpdateUserQueryParams = {};
-    if (alternateEmail.length) queryParams.alternateEmail = alternateEmail;
+    if (profile.alternateEmail.length)
+      queryParams.alternateEmail = profile.alternateEmail;
     if (email.length) queryParams.email = email;
-    if (employeeNumber.length) queryParams.employeeNumber = employeeNumber;
-    if (locale.length) queryParams.locale = locale;
-    if (location.length) queryParams.location = location;
+    if (profile.employeeNumber.length)
+      queryParams.employeeNumber = profile.employeeNumber;
+    if (profile.locale.length) queryParams.locale = profile.locale;
+    if (profile.location.length) queryParams.location = profile.location;
     if (name.length) queryParams.name = name;
-    if (phone.length) queryParams.phone = phone;
+    if (profile.phone.length) queryParams.phone = profile.phone;
     if (role.length) queryParams.role = role;
     if (roled.length) queryParams.roled = util.types.toNumber(roled);
-    if (timezone.length) queryParams.timezone = timezone;
-    if (title.length) queryParams.title = title;
+    if (profile.timezone.length) queryParams.timezone = profile.timezone;
+    if (profile.title.length) queryParams.title = profile.title;
     let body = {};
     if (updateUserBody.length)
       body = JSON.parse(updateUserBody) as UpdateUserBody;

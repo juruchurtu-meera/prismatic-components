@@ -1,9 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { getActivityLogEntriesInputs } from "../../inputs";
-import type { GetActivityLogEntriesQueryParams } from "../types/GetActivityLogEntriesQueryParams";
 import { getActivityLogEntriesExamplePayload } from "../../examplePayloads";
+import { getActivityLogEntriesInputs } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
+import type { GetActivityLogEntriesQueryParams } from "../types/GetActivityLogEntriesQueryParams";
 export const getActivityLogEntries = action({
   display: {
     label: "Get Activity Log Entries",
@@ -12,15 +12,15 @@ export const getActivityLogEntries = action({
   examplePayload: getActivityLogEntriesExamplePayload,
   perform: async (
     context,
-    { connection, start, end, limit, offset, user, fetchAll },
+    { connection, start, end, user, fetchAll, pagination },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: GetActivityLogEntriesQueryParams = {
       start,
     };
     if (end.length) queryParams.end = end;
-    if (limit.length) queryParams.limit = limit;
-    if (offset.length) queryParams.offset = offset;
+    if (pagination.limit.length) queryParams.limit = pagination.limit;
+    if (pagination.offset.length) queryParams.offset = pagination.offset;
     if (user.length) queryParams.user = user;
     return await paginateResults(
       client,

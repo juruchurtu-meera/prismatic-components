@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   connection,
   description,
@@ -197,33 +197,47 @@ export const listStreamExecutionInputs = {
     required: true,
     comments: "The ID of the Stream",
   }),
-  limit: input({
-    ...limit,
+  pagination: structuredObjectInput({
+    label: "Pagination",
     required: false,
-    comments:
-      "The amount of Stream to return in the list. The default is 50 and the maximum is 500.",
-  }),
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The offset of the Stream ID to begin list of users within the response.",
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The amount of Stream to return in the list. The default is 50 and the maximum is 500.",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The offset of the Stream ID to begin list of users within the response.",
+      }),
+    },
   }),
 };
 export const listStreamsInputs = {
   connection,
   fetchAll,
-  limit: input({
-    ...limit,
+  pagination: structuredObjectInput({
+    label: "Pagination",
     required: false,
-    comments:
-      "The amount of Stream to return in the list. The default is 50 and the maximum is 500.",
-  }),
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The offset of the Stream ID to begin list of users within the response.",
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The amount of Stream to return in the list. The default is 50 and the maximum is 500.",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The offset of the Stream ID to begin list of users within the response.",
+      }),
+    },
   }),
 };
 export const searchStreamInputs = {

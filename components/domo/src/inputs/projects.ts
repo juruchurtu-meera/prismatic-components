@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   connection,
   description,
@@ -314,21 +314,28 @@ export const createTaskInputs = {
     comments: "The ID of the list within a project that the task belongs to.",
   }),
   taskName,
-  contributors,
-  description: input({
-    ...description,
+  taskDetails: structuredObjectInput({
+    label: "Task Details",
     required: false,
-    comments: "An optional description of the task.",
+    comments: "Additional task attributes.",
+    inputs: {
+      contributors,
+      description: input({
+        ...description,
+        required: false,
+        comments: "An optional description of the task.",
+      }),
+      dueDate: input({
+        ...dueDate,
+        required: false,
+        comments: "The date the task is expected to be completed.",
+      }),
+      ownedBy,
+      priority,
+      tags,
+      taskObjectBody,
+    },
   }),
-  dueDate: input({
-    ...dueDate,
-    required: false,
-    comments: "The date the task is expected to be completed.",
-  }),
-  ownedBy,
-  priority,
-  tags,
-  taskObjectBody,
 };
 export const deleteListInputs = {
   connection,
@@ -373,17 +380,24 @@ export const listProjectListTasksInputs = {
   projectId,
   listId,
   fetchAll,
-  limit: input({
-    ...limit,
+  pagination: structuredObjectInput({
+    label: "Pagination",
     required: false,
-    comments:
-      "The maximum number of results to return (defaults to 10 with a maximum of 50).",
-  }),
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The number of records to skip from the beginning of the result list (defaults to 0).",
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The maximum number of results to return (defaults to 10 with a maximum of 50).",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The number of records to skip from the beginning of the result list (defaults to 0).",
+      }),
+    },
   }),
 };
 export const listProjectsInputs = {
@@ -410,42 +424,49 @@ export const updateListInputs = {
 export const updateProjectInputs = {
   connection,
   projectId,
-  updateProjectBody,
-  description: input({
-    ...description,
+  projectDetails: structuredObjectInput({
+    label: "Project Details",
     required: false,
-    comments: "Updates the description of the project.",
-  }),
-  dueDate: input({
-    ...dueDate,
-    required: false,
-    comments: "Updates the due date of the project.",
-  }),
-  name: input({
-    ...name,
-    required: false,
-    comments: "Updates the name of the project.",
-  }),
-  publicUpdate: input({
-    ...publicInput,
-    required: false,
-    comments:
-      "Updates whether or not the project is publicly available to Domo users.",
-    default: "",
-    model: [
-      {
-        label: "",
-        value: "",
-      },
-      {
-        label: "TRUE",
-        value: "true",
-      },
-      {
-        label: "FALSE",
-        value: "false",
-      },
-    ],
+    comments: "Project attributes to update.",
+    inputs: {
+      description: input({
+        ...description,
+        required: false,
+        comments: "Updates the description of the project.",
+      }),
+      dueDate: input({
+        ...dueDate,
+        required: false,
+        comments: "Updates the due date of the project.",
+      }),
+      name: input({
+        ...name,
+        required: false,
+        comments: "Updates the name of the project.",
+      }),
+      publicUpdate: input({
+        ...publicInput,
+        required: false,
+        comments:
+          "Updates whether or not the project is publicly available to Domo users.",
+        default: "",
+        model: [
+          {
+            label: "",
+            value: "",
+          },
+          {
+            label: "TRUE",
+            value: "true",
+          },
+          {
+            label: "FALSE",
+            value: "false",
+          },
+        ],
+      }),
+      updateProjectBody,
+    },
   }),
 };
 export const updateProjectMembersInputs = {
@@ -458,14 +479,21 @@ export const updateTaskInputs = {
   taskId,
   listId,
   projectId,
-  contributors,
-  description,
-  dueDate,
-  ownedBy,
-  priority,
-  tags,
   taskName,
-  updateTaskBody,
+  taskDetails: structuredObjectInput({
+    label: "Task Details",
+    required: false,
+    comments: "Additional task attributes.",
+    inputs: {
+      description,
+      contributors,
+      dueDate,
+      ownedBy,
+      priority,
+      tags,
+      updateTaskBody,
+    },
+  }),
 };
 export const addAttachmentInputs = {
   connection,

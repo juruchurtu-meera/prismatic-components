@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, limit, name, offset } from "./common";
 export const userId = input({
   label: "User ID",
@@ -44,7 +44,7 @@ export const role = input({
   clean: util.types.toString,
 });
 export const roled = input({
-  label: "Roled",
+  label: "Role Id",
   type: "string",
   required: false,
   comments:
@@ -172,16 +172,23 @@ export const updateUserBody = input({
 export const createUserInputs = {
   connection,
   email,
-  name,
   role,
-  alternateEmail,
-  employeeNumber,
-  locale,
-  location,
-  phone,
+  name,
   sendInvite,
-  timezone,
-  title,
+  profile: structuredObjectInput({
+    label: "Contact Information",
+    required: false,
+    comments: "Additional user profile details.",
+    inputs: {
+      alternateEmail,
+      employeeNumber,
+      locale,
+      location,
+      phone,
+      timezone,
+      title,
+    },
+  }),
   userBody,
 };
 export const deleteUserInputs = {
@@ -195,17 +202,24 @@ export const getUserInputs = {
 export const listUsersInputs = {
   connection,
   fetchAll,
-  limit: input({
-    ...limit,
+  pagination: structuredObjectInput({
+    label: "Pagination",
     required: false,
-    comments:
-      "The amount of users to return in the list. The default is 50 and the maximum is 500.",
-  }),
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The offset of the user ID to begin list of users within the response.",
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The amount of users to return in the list. The default is 50 and the maximum is 500.",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The offset of the user ID to begin list of users within the response.",
+      }),
+    },
   }),
 };
 export const updateUserInputs = {
@@ -218,13 +232,20 @@ export const updateUserInputs = {
     required: false,
     comments: "The system role of the user",
   }),
-  alternateEmail,
-  employeeNumber,
-  locale,
-  location,
-  phone,
   roled,
-  timezone,
-  title,
+  profile: structuredObjectInput({
+    label: "Contact Information",
+    required: false,
+    comments: "Additional user profile details.",
+    inputs: {
+      alternateEmail,
+      employeeNumber,
+      locale,
+      location,
+      phone,
+      timezone,
+      title,
+    },
+  }),
   updateUserBody,
 };

@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { getGroupInputs } from "../../inputs";
 import { getGroupExamplePayload } from "../../examplePayloads";
+import { getGroupInputs } from "../../inputs";
 export const getGroup = action({
   display: {
     label: "Get Group",

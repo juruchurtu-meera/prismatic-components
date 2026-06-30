@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { updateStreamInputs } from "../../inputs";
 import { updateStreamExamplePayload } from "../../examplePayloads";
+import { updateStreamInputs } from "../../inputs";
 export const updateStream = action({
   display: {
     label: "Update Stream",

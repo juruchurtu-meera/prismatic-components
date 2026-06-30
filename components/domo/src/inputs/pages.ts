@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, limit, name, offset } from "./common";
 export const pageId = input({
   label: "Page ID",
@@ -124,17 +124,24 @@ export const getPageInputs = {
 export const listPagesInputs = {
   connection,
   fetchAll,
-  limit: input({
-    ...limit,
+  pagination: structuredObjectInput({
+    label: "Pagination",
     required: false,
-    comments:
-      "The amount of pages to return in the list. The default is 50 and the maximum is 500.",
-  }),
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The offset of the page ID to begin list of pages within the response.",
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The amount of pages to return in the list. The default is 50 and the maximum is 500.",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The offset of the page ID to begin list of pages within the response.",
+      }),
+    },
   }),
 };
 export const updatePageInputs = {

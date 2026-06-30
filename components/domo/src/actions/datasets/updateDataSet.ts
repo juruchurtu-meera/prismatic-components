@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { updateDataSetExamplePayload } from "../../examplePayloads";
 import { updateDataSetInputs } from "../../inputs";
 import type { UpdateDataSetBody } from "../types/UpdateDataSetBody";
-import { updateDataSetExamplePayload } from "../../examplePayloads";
 export const updateDataSet = action({
   display: {
     label: "Update Data Set",

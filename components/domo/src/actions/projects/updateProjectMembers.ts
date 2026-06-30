@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { updateProjectMembersInputs } from "../../inputs";
 import { updateProjectMembersExamplePayload } from "../../examplePayloads";
+import { updateProjectMembersInputs } from "../../inputs";
 export const updateProjectMembers = action({
   display: {
     label: "Update Project Members",

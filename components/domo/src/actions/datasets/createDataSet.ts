@@ -1,8 +1,8 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createDataSetExamplePayload } from "../../examplePayloads";
 import { createDataSetInputs } from "../../inputs";
 import type { CreateDataSetBody } from "../types/CreateDataSetBody";
-import { createDataSetExamplePayload } from "../../examplePayloads";
 export const createDataSet = action({
   display: {
     label: "Create Data Set",

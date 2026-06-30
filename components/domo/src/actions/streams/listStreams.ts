@@ -1,9 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { listStreamsInputs } from "../../inputs";
-import type { ListStreamsQueryParams } from "../types/ListStreamsQueryParams";
 import { listStreamsExamplePayload } from "../../examplePayloads";
+import { listStreamsInputs } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
+import type { ListStreamsQueryParams } from "../types/ListStreamsQueryParams";
 export const listStreams = action({
   display: {
     label: "List Streams",
@@ -11,11 +11,11 @@ export const listStreams = action({
       "Lists all streams the authenticated user has view permissions for.",
   },
   examplePayload: listStreamsExamplePayload,
-  perform: async (context, { connection, fetchAll, limit, offset }) => {
+  perform: async (context, { connection, fetchAll, pagination }) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: ListStreamsQueryParams = {};
-    if (limit.length) queryParams.limit = limit;
-    if (offset.length) queryParams.offset = offset;
+    if (pagination.limit.length) queryParams.limit = pagination.limit;
+    if (pagination.offset.length) queryParams.offset = pagination.offset;
     return await paginateResults(
       client,
       "/streams",

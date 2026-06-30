@@ -1,9 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { listProjectListTasksInputs } from "../../inputs";
-import type { ListProjectListTasksQueryParams } from "../types/ListProjectListTasksQueryParams";
 import { listProjectListTasksExamplePayload } from "../../examplePayloads";
+import { listProjectListTasksInputs } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
+import type { ListProjectListTasksQueryParams } from "../types/ListProjectListTasksQueryParams";
 export const listProjectListTasks = action({
   display: {
     label: "List Project List Tasks",
@@ -12,12 +12,12 @@ export const listProjectListTasks = action({
   examplePayload: listProjectListTasksExamplePayload,
   perform: async (
     context,
-    { connection, projectId, listId, limit, offset, fetchAll },
+    { connection, projectId, listId, pagination, fetchAll },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: ListProjectListTasksQueryParams = {};
-    if (limit.length) queryParams.limit = limit;
-    if (offset.length) queryParams.offset = offset;
+    if (pagination.limit.length) queryParams.limit = pagination.limit;
+    if (pagination.offset.length) queryParams.offset = pagination.offset;
     return await paginateResults(
       client,
       `/projects/${projectId}/lists/${listId}/tasks`,

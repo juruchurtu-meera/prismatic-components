@@ -1,9 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { listDataSetsInputs } from "../../inputs";
-import type { ListDataSetsQueryParams } from "../types/ListDataSetsQueryParams";
 import { listDataSetsExamplePayload } from "../../examplePayloads";
+import { listDataSetsInputs } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
+import type { ListDataSetsQueryParams } from "../types/ListDataSetsQueryParams";
 export const listDataSets = action({
   display: {
     label: "List DataSets",
@@ -12,13 +12,13 @@ export const listDataSets = action({
   examplePayload: listDataSetsExamplePayload,
   perform: async (
     context,
-    { connection, fetchAll, limit, nameLike, offset, sort },
+    { connection, fetchAll, nameLike, sort, pagination },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: ListDataSetsQueryParams = {};
-    if (limit.length) queryParams.limit = limit;
+    if (pagination.limit.length) queryParams.limit = pagination.limit;
     if (nameLike.length) queryParams.nameLike = nameLike;
-    if (offset.length) queryParams.offset = offset;
+    if (pagination.offset.length) queryParams.offset = pagination.offset;
     if (sort.length) queryParams.sort = sort;
     return await paginateResults(
       client,

@@ -1,9 +1,9 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { updateTaskExamplePayload } from "../../examplePayloads";
 import { updateTaskInputs } from "../../inputs";
 import type { UpdateTaskBody } from "../types/UpdateTaskBody";
 import type { UpdateTaskQueryParams } from "../types/UpdateTaskQueryParams";
-import { updateTaskExamplePayload } from "../../examplePayloads";
 export const updateTask = action({
   display: {
     label: "Update Task",
@@ -12,33 +12,23 @@ export const updateTask = action({
   examplePayload: updateTaskExamplePayload,
   perform: async (
     context,
-    {
-      connection,
-      taskId,
-      listId,
-      projectId,
-      contributors,
-      description,
-      dueDate,
-      ownedBy,
-      priority,
-      tags,
-      taskName,
-      updateTaskBody,
-    },
+    { connection, taskId, listId, projectId, taskName, taskDetails },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: UpdateTaskQueryParams = {};
-    if (contributors.length) queryParams.contributors = contributors;
-    if (description.length) queryParams.description = description;
-    if (dueDate.length) queryParams.dueDate = dueDate;
-    if (ownedBy.length) queryParams.ownedBy = ownedBy;
-    if (priority.length) queryParams.priority = priority;
-    if (tags.length) queryParams.tags = tags;
+    if (taskDetails.contributors.length)
+      queryParams.contributors = taskDetails.contributors;
+    if (taskDetails.description.length)
+      queryParams.description = taskDetails.description;
+    if (taskDetails.dueDate.length) queryParams.dueDate = taskDetails.dueDate;
+    if (taskDetails.ownedBy.length) queryParams.ownedBy = taskDetails.ownedBy;
+    if (taskDetails.priority.length)
+      queryParams.priority = taskDetails.priority;
+    if (taskDetails.tags.length) queryParams.tags = taskDetails.tags;
     if (taskName.length) queryParams.taskName = taskName;
     let body = {};
-    if (updateTaskBody.length)
-      body = JSON.parse(updateTaskBody) as UpdateTaskBody;
+    if (taskDetails.updateTaskBody.length)
+      body = JSON.parse(taskDetails.updateTaskBody) as UpdateTaskBody;
     const { data } = await client.put(
       `/projects/${projectId}/lists/${listId}/tasks/${taskId}`,
       body,

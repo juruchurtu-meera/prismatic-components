@@ -1,9 +1,9 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { updateListExamplePayload } from "../../examplePayloads";
 import { updateListInputs } from "../../inputs";
 import type { UpdateListBody } from "../types/UpdateListBody";
 import type { UpdateListQueryParams } from "../types/UpdateListQueryParams";
-import { updateListExamplePayload } from "../../examplePayloads";
 export const updateList = action({
   display: {
     label: "Update List",

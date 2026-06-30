@@ -1,6 +1,6 @@
 import { input, util } from "@prismatic-io/spectral";
-import { connection } from "./common";
 import { resourceModel } from "../constants";
+import { connection } from "./common";
 export const resourceType = input({
   label: "Resource Type",
   type: "string",

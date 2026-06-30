@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { exportDataFromDataSetExamplePayload } from "../../examplePayloads";
 import { datasetId, exportDataFromDataSetInputs } from "../../inputs";
 import type { ExportDataFromDataSetQueryParams } from "../types/ExportDataFromDataSetQueryParams";
-import { exportDataFromDataSetExamplePayload } from "../../examplePayloads";
 export const exportDataFromDataSet = action({
   display: {
     label: "Export Data From DataSet",

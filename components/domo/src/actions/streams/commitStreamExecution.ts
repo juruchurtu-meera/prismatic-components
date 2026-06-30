@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { commitStreamExecutionInputs } from "../../inputs";
 import { commitStreamExecutionExamplePayload } from "../../examplePayloads";
+import { commitStreamExecutionInputs } from "../../inputs";
 export const commitStreamExecution = action({
   display: {
     label: "Commit Stream Execution",

@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { abortStreamExecutionInputs } from "../../inputs";
 import { abortStreamExecutionExamplePayload } from "../../examplePayloads";
+import { abortStreamExecutionInputs } from "../../inputs";
 export const abortStreamExecution = action({
   display: {
     label: "Abort Stream Execution",

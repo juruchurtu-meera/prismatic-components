@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { getUserInputs } from "../../inputs";
 import { getUserExamplePayload } from "../../examplePayloads";
+import { getUserInputs } from "../../inputs";
 export const getUser = action({
   display: {
     label: "Get User",

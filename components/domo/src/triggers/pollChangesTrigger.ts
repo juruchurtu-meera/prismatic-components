@@ -1,7 +1,7 @@
 import { pollingTrigger } from "@prismatic-io/spectral";
 import { getDomoClient } from "../client";
-import { pollChangesTriggerInputs } from "../inputs";
 import { RESOURCE_CONFIG } from "../constants";
+import { pollChangesTriggerInputs } from "../inputs";
 import type { PollingState } from "../types";
 import {
   buildPollingResult,

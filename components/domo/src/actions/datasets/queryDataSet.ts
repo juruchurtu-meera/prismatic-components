@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { queryDataSetInputs } from "../../inputs";
 import { queryDataSetExamplePayload } from "../../examplePayloads";
+import { queryDataSetInputs } from "../../inputs";
 export const queryDataSet = action({
   display: {
     label: "Query Data Set",

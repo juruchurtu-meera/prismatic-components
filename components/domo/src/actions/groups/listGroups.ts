@@ -1,20 +1,20 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { listGroupsInputs } from "../../inputs";
-import type { ListGroupsQueryParams } from "../types/ListGroupsQueryParams";
 import { listGroupsExamplePayload } from "../../examplePayloads";
+import { listGroupsInputs } from "../../inputs";
 import { paginateResults } from "../../utils/pagination";
+import type { ListGroupsQueryParams } from "../types/ListGroupsQueryParams";
 export const listGroups = action({
   display: {
     label: "List Groups",
     description: "Lists all groups in a Domo instance.",
   },
   examplePayload: listGroupsExamplePayload,
-  perform: async (context, { connection, fetchAll, limit, offset }) => {
+  perform: async (context, { connection, fetchAll, pagination }) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: ListGroupsQueryParams = {};
-    if (limit.length) queryParams.limit = limit;
-    if (offset.length) queryParams.offset = offset;
+    if (pagination.limit.length) queryParams.limit = pagination.limit;
+    if (pagination.offset.length) queryParams.offset = pagination.offset;
     return await paginateResults(
       client,
       "/groups",

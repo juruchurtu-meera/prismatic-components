@@ -1,8 +1,8 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createPageExamplePayload } from "../../examplePayloads";
 import { createPageInputs } from "../../inputs";
 import type { CreatePageBody } from "../types/CreatePageBody";
-import { createPageExamplePayload } from "../../examplePayloads";
 export const createPage = action({
   display: {
     label: "Create Page",

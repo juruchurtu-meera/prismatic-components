@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createStreamExamplePayload } from "../../examplePayloads";
 import { createStreamInputs } from "../../inputs";
 import type { CreateStreamBody } from "../types/CreateStreamBody";
-import { createStreamExamplePayload } from "../../examplePayloads";
 export const createStream = action({
   display: {
     label: "Create Stream",

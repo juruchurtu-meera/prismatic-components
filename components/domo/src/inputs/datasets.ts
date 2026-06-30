@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   connection,
   description,
@@ -169,20 +169,27 @@ export const importDataIntoDataSetInputs = {
 export const listDataSetsInputs = {
   connection,
   fetchAll,
-  limit: input({
-    ...limit,
-    required: false,
-    comments:
-      "The amount of DataSets to return in the list. The default is 50 and the maximum is 50.",
-  }),
   nameLike,
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The offset of the DataSet ID to begin list of users within the response.",
-  }),
   sort,
+  pagination: structuredObjectInput({
+    label: "Pagination",
+    required: false,
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The amount of DataSets to return in the list. The default is 50 and the maximum is 50.",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The offset of the DataSet ID to begin list of users within the response.",
+      }),
+    },
+  }),
 };
 export const queryDataSetInputs = {
   connection,

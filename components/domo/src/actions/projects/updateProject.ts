@@ -9,27 +9,19 @@ export const updateProject = action({
     description:
       "Updates attributes of an existing project in a Domo instance.",
   },
-  perform: async (
-    context,
-    {
-      connection,
-      projectId,
-      description,
-      dueDate,
-      name,
-      publicUpdate,
-      updateProjectBody,
-    },
-  ) => {
+  perform: async (context, { connection, projectId, projectDetails }) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     const queryParams: UpdateProjectQueryParams = {};
-    if (description.length) queryParams.description = description;
-    if (dueDate.length) queryParams.dueDate = dueDate;
-    if (name.length) queryParams.name = name;
-    if (publicUpdate.length) queryParams.public = publicUpdate;
+    if (projectDetails.description.length)
+      queryParams.description = projectDetails.description;
+    if (projectDetails.dueDate.length)
+      queryParams.dueDate = projectDetails.dueDate;
+    if (projectDetails.name.length) queryParams.name = projectDetails.name;
+    if (projectDetails.publicUpdate.length)
+      queryParams.public = projectDetails.publicUpdate;
     let body = {};
-    if (updateProjectBody.length)
-      body = JSON.parse(updateProjectBody) as UpdateProjectBody;
+    if (projectDetails.updateProjectBody.length)
+      body = JSON.parse(projectDetails.updateProjectBody) as UpdateProjectBody;
     const { data } = await client.put(`/projects/${projectId}`, body, {
       params: queryParams,
       headers: {

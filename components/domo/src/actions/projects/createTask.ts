@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createTaskExamplePayload } from "../../examplePayloads";
 import { createTaskInputs } from "../../inputs";
 import type { TaskObject } from "../types/TaskObject";
-import { createTaskExamplePayload } from "../../examplePayloads";
 export const createTask = action({
   display: {
     label: "Create Task",
@@ -11,33 +11,21 @@ export const createTask = action({
   examplePayload: createTaskExamplePayload,
   perform: async (
     context,
-    {
-      connection,
-      projectId,
-      listId,
-      taskName,
-      contributors,
-      description,
-      dueDate,
-      ownedBy,
-      priority,
-      tags,
-      taskObjectBody,
-    },
+    { connection, projectId, listId, taskName, taskDetails },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     let body = {};
-    if (taskObjectBody.length) {
-      body = JSON.parse(taskObjectBody) as TaskObject;
+    if (taskDetails.taskObjectBody.length) {
+      body = JSON.parse(taskDetails.taskObjectBody) as TaskObject;
     }
     const { data } = await client.put(
       `/projects/${projectId}/lists/${listId}/tasks?taskName=${taskName}
-    ${contributors.length ? `&contributors=${contributors}` : ""}
-    ${description.length ? `&description=${description}` : ""}
-    ${dueDate.length ? `&dueDate=${dueDate}` : ""}
-    ${ownedBy.length ? `&ownedBy=${ownedBy}` : ""}
-    ${priority.length ? `&priority=${priority}` : ""}
-    ${tags.length ? `&tags=${tags}` : ""}`,
+    ${taskDetails.contributors.length ? `&contributors=${taskDetails.contributors}` : ""}
+    ${taskDetails.description.length ? `&description=${taskDetails.description}` : ""}
+    ${taskDetails.dueDate.length ? `&dueDate=${taskDetails.dueDate}` : ""}
+    ${taskDetails.ownedBy.length ? `&ownedBy=${taskDetails.ownedBy}` : ""}
+    ${taskDetails.priority.length ? `&priority=${taskDetails.priority}` : ""}
+    ${taskDetails.tags.length ? `&tags=${taskDetails.tags}` : ""}`,
       body,
       {
         headers: {

@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { deleteProjectInputs } from "../../inputs";
 import { deleteProjectExamplePayload } from "../../examplePayloads";
+import { deleteProjectInputs } from "../../inputs";
 export const deleteProject = action({
   display: {
     label: "Delete Project",

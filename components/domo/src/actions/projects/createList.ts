@@ -1,8 +1,8 @@
 import { action, util } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createListExamplePayload } from "../../examplePayloads";
 import { createListInputs } from "../../inputs";
 import type { CreateListBody } from "../types/CreateListBody";
-import { createListExamplePayload } from "../../examplePayloads";
 export const createList = action({
   display: {
     label: "Create List",

@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createAccountExamplePayload } from "../../examplePayloads";
 import { createAccountInputs } from "../../inputs";
 import type { CreateAccountBody } from "../types/CreateAccountBody";
-import { createAccountExamplePayload } from "../../examplePayloads";
 export const createAccount = action({
   display: {
     label: "Create Account",

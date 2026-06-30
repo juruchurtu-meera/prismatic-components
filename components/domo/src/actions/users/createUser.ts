@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createUserExamplePayload } from "../../examplePayloads";
 import { createUserInputs } from "../../inputs";
 import type { User } from "../types/User";
-import { createUserExamplePayload } from "../../examplePayloads";
 export const createUser = action({
   display: {
     label: "Create User",
@@ -11,35 +11,21 @@ export const createUser = action({
   examplePayload: createUserExamplePayload,
   perform: async (
     context,
-    {
-      connection,
-      email,
-      name,
-      role,
-      alternateEmail,
-      employeeNumber,
-      locale,
-      location,
-      phone,
-      sendInvite,
-      timezone,
-      title,
-      userBody,
-    },
+    { connection, email, name, role, sendInvite, profile, userBody },
   ) => {
     const client = await getDomoClient(connection, context.debug.enabled);
     let body = {};
     if (userBody.length) body = JSON.parse(userBody) as User;
     const { data } = await client.post(
       `/users?email=${email}&name=${name}&role=${role}
-    ${alternateEmail.length ? `&alternateEmail=${alternateEmail}` : ""}
-    ${employeeNumber.length ? `&employeeNumber=${employeeNumber}` : ""}
-    ${locale.length ? `&locale=${locale}` : ""}
-    ${location.length ? `&location=${location}` : ""}
-    ${phone.length ? `&phone=${phone}` : ""}
+    ${profile.alternateEmail.length ? `&alternateEmail=${profile.alternateEmail}` : ""}
+    ${profile.employeeNumber.length ? `&employeeNumber=${profile.employeeNumber}` : ""}
+    ${profile.locale.length ? `&locale=${profile.locale}` : ""}
+    ${profile.location.length ? `&location=${profile.location}` : ""}
+    ${profile.phone.length ? `&phone=${profile.phone}` : ""}
     ${sendInvite.length ? `&sendInvite=${sendInvite}` : ""}
-    ${timezone.length ? `&timezone=${timezone}` : ""}
-    ${title.length ? `&title=${title}` : ""}`,
+    ${profile.timezone.length ? `&timezone=${profile.timezone}` : ""}
+    ${profile.title.length ? `&title=${profile.title}` : ""}`,
       body,
       {
         headers: {

@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { updateGroupExamplePayload } from "../../examplePayloads";
 import { updateGroupInputs } from "../../inputs";
 import type { UpdateGroupBody } from "../types/UpdateGroupBody";
-import { updateGroupExamplePayload } from "../../examplePayloads";
 export const updateGroup = action({
   display: {
     label: "Update Group",

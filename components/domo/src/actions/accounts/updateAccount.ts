@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { updateAccountExamplePayload } from "../../examplePayloads";
 import { updateAccountInputs } from "../../inputs";
 import type { UpdateAccountBody } from "../types/UpdateAccountBody";
-import { updateAccountExamplePayload } from "../../examplePayloads";
 export const updateAccount = action({
   display: {
     label: "Update Account",

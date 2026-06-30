@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createGroupExamplePayload } from "../../examplePayloads";
 import { createGroupInputs } from "../../inputs";
 import type { CreateGroupBody } from "../types/CreateGroupBody";
-import { createGroupExamplePayload } from "../../examplePayloads";
 export const createGroup = action({
   display: {
     label: "Create Group",

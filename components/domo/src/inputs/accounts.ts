@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { connection, fetchAll, id, limit, name, offset } from "./common";
 export const accountId = input({
   label: "Account ID",
@@ -113,17 +113,24 @@ export const getAccountsInputs = {
 export const listAccountsInputs = {
   connection,
   fetchAll,
-  limit: input({
-    ...limit,
+  pagination: structuredObjectInput({
+    label: "Pagination",
     required: false,
-    comments:
-      "The number of Accounts to return in the list. The default is 50 and the maximum is 500.",
-  }),
-  offset: input({
-    ...offset,
-    required: false,
-    comments:
-      "The offset of Accounts to begin the list of Accounts within the response.",
+    comments: "Page and page-size controls.",
+    inputs: {
+      limit: input({
+        ...limit,
+        required: false,
+        comments:
+          "The number of Accounts to return in the list. The default is 50 and the maximum is 500.",
+      }),
+      offset: input({
+        ...offset,
+        required: false,
+        comments:
+          "The offset of Accounts to begin the list of Accounts within the response.",
+      }),
+    },
   }),
 };
 export const shareAccountInputs = {

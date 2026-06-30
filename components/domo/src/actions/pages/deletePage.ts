@@ -1,7 +1,7 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
-import { deletePageInputs } from "../../inputs";
 import { deletePageExamplePayload } from "../../examplePayloads";
+import { deletePageInputs } from "../../inputs";
 export const deletePage = action({
   display: {
     label: "Delete Page",

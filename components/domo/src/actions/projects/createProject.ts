@@ -1,8 +1,8 @@
 import { action } from "@prismatic-io/spectral";
 import { getDomoClient } from "../../client";
+import { createProjectExamplePayload } from "../../examplePayloads";
 import { createProjectInputs } from "../../inputs";
 import type { CreateProjectBody } from "../types/CreateProjectBody";
-import { createProjectExamplePayload } from "../../examplePayloads";
 export const createProject = action({
   display: {
     label: "Create Project",
