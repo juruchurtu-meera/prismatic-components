@@ -14,67 +14,82 @@ export const listContacts = action({
     context,
     {
       connection,
-      page,
-      perPage,
-      sortBy,
-      ids,
-      creatorId,
-      ownerId,
+      fetchAll,
       isOrganization,
-      contactId,
       name,
       firstName,
       lastName,
-      email,
-      phone,
-      mobile,
-      customerStatus,
-      prospectStatus,
-      addressCity,
-      addressPostalCode,
-      addressCountry,
-      addressState,
-      billingAddress,
-      shippingAddress,
+      contactInfo,
+      address,
+      otherAddresses,
       customFields,
-      inclusive,
-      fetchAll,
+      pagination,
+      additionalFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
-      const customFieldsObject: any = {};
-      customFields.forEach((customField) => {
-        customFieldsObject[`custom_fields[${customField.key}]`] =
-          customField.value;
+      const customFieldsObject: Record<string, unknown> = {};
+      customFields.forEach((pair) => {
+        customFieldsObject[`custom_fields[${pair.key}]`] = pair.value;
       });
       const params = {
-        ...(page.length && { page }),
-        ...(perPage.length && { per_page: perPage }),
-        ...(sortBy.length && { sort_by: sortBy }),
-        ...(ids.length && { ids }),
-        ...(creatorId.length && { creator_id: creatorId }),
-        ...(ownerId.length && { owner_id: ownerId }),
-        ...(isOrganization.length && { is_organization: isOrganization }),
-        ...(contactId.length && { contact_id: contactId }),
-        ...(name.length && { name }),
-        ...(firstName.length && { first_name: firstName }),
-        ...(lastName.length && { last_name: lastName }),
-        ...(email.length && { email }),
-        ...(phone.length && { phone }),
-        ...(mobile.length && { mobile }),
-        ...(customerStatus.length && { customer_status: customerStatus }),
-        ...(prospectStatus.length && { prospect_status: prospectStatus }),
-        ...(addressCity.length && { "address[city]": addressCity }),
-        ...(addressPostalCode.length && {
-          "address[postal_code]": addressPostalCode,
+        ...(pagination.page.length && { page: pagination.page }),
+        ...(pagination.perPage.length && { per_page: pagination.perPage }),
+        ...(additionalFields.sortBy.length && {
+          sort_by: additionalFields.sortBy,
         }),
-        ...(addressCountry.length && { "address[country]": addressCountry }),
-        ...(addressState.length && { "address[state]": addressState }),
-        ...(billingAddress.length && { billing_address: billingAddress }),
-        ...(shippingAddress.length && { shipping_address: shippingAddress }),
+        ...(additionalFields.ids.length && { ids: additionalFields.ids }),
+        ...(additionalFields.creatorId.length && {
+          creator_id: additionalFields.creatorId,
+        }),
+        ...(additionalFields.ownerId.length && {
+          owner_id: additionalFields.ownerId,
+        }),
+        ...(isOrganization.length && {
+          is_organization: isOrganization,
+        }),
+        ...(additionalFields.contactId.length && {
+          contact_id: additionalFields.contactId,
+        }),
+        ...(name.length && { name: name }),
+        ...(firstName.length && {
+          first_name: firstName,
+        }),
+        ...(lastName.length && {
+          last_name: lastName,
+        }),
+        ...(contactInfo.email.length && { email: contactInfo.email }),
+        ...(contactInfo.phone.length && { phone: contactInfo.phone }),
+        ...(contactInfo.mobile.length && { mobile: contactInfo.mobile }),
+        ...(additionalFields.customerStatus.length && {
+          customer_status: additionalFields.customerStatus,
+        }),
+        ...(additionalFields.prospectStatus.length && {
+          prospect_status: additionalFields.prospectStatus,
+        }),
+        ...(address.addressCity.length && {
+          "address[city]": address.addressCity,
+        }),
+        ...(address.addressPostalCode.length && {
+          "address[postal_code]": address.addressPostalCode,
+        }),
+        ...(address.addressCountry.length && {
+          "address[country]": address.addressCountry,
+        }),
+        ...(address.addressState.length && {
+          "address[state]": address.addressState,
+        }),
+        ...(otherAddresses.billingAddress.length && {
+          billing_address: otherAddresses.billingAddress,
+        }),
+        ...(otherAddresses.shippingAddress.length && {
+          shipping_address: otherAddresses.shippingAddress,
+        }),
         ...customFieldsObject,
-        ...(inclusive.length && { inclusive }),
+        ...(additionalFields.inclusive.length && {
+          inclusive: additionalFields.inclusive,
+        }),
       };
       const data: unknown = await fetchAllPages(
         client,

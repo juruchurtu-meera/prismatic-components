@@ -14,12 +14,12 @@ export const updateTask = action({
       connection,
       id,
       content,
-      dueDate,
-      ownerId,
       resourceType,
       resourceId,
+      dueDate,
       completed,
       remindAt,
+      ownerId,
     },
   ) => {
     try {
@@ -27,11 +27,17 @@ export const updateTask = action({
       const body = {
         ...(content && { content }),
         ...(dueDate && { due_date: dueDate }),
-        ...(ownerId && { owner_id: util.types.toNumber(ownerId) }),
+        ...(ownerId && {
+          owner_id: util.types.toNumber(ownerId),
+        }),
         ...(resourceType && { resource_type: resourceType }),
         ...(resourceId && { resource_id: util.types.toNumber(resourceId) }),
-        ...(completed && { completed: completed === "true" }),
-        ...(remindAt && { remind_at: remindAt }),
+        ...(completed && {
+          completed: completed === "true",
+        }),
+        ...(remindAt && {
+          remind_at: remindAt,
+        }),
       };
       const { data } = await client.put(
         `/tasks/${id}`,

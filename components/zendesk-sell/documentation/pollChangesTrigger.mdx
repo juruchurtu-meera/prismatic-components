@@ -7,27 +7,12 @@ This trigger polls the [Zendesk Sell API](https://developer.zendesk.com/api-refe
 3. Records are filtered client-side: those with a `created_at` timestamp after the last poll are classified as new; those with an `updated_at` timestamp after the last poll but a `created_at` at or before it are classified as updated
 4. The trigger updates its internal state after each poll, recording the current timestamp for use in the next comparison
 
-#### Configuration
-
-Configure the following inputs:
-
-- **Connection**: The Zendesk Sell connection to authenticate API requests
-- **Resource Type**: The type of Zendesk Sell resource to monitor
-
-| Resource | Tracks New | Tracks Updated |
-|----------|------------|---------------|
-| Deals | Yes | Yes |
-| Leads | Yes | Yes |
-| Contacts | Yes | Yes |
-| Tasks | Yes | Yes |
-| Notes | Yes | Yes |
-
-- **Show New Records**: When enabled, records created since the last poll are included in the trigger output
-- **Show Updated Records**: When enabled, records modified since the last poll are included in the trigger output
-
 #### Returned Data
 
-Returns an object with two arrays — `created` for new records and `updated` for modified records.
+Returns an object with two arrays: `created` for new records and `updated` for modified records.
+
+<details>
+<summary>Example Response (Polling)</summary>
 
 ```json
 {
@@ -51,6 +36,10 @@ Returns an object with two arrays — `created` for new records and `updated` fo
   }
 }
 ```
+
+</details>
+
+Fields shown are representative. The full response object includes additional properties.
 
 #### Notes
 

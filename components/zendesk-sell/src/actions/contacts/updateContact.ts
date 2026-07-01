@@ -17,68 +17,75 @@ export const updateContact = action({
       name,
       firstName,
       lastName,
-      contactId,
-      parentOrganizationId,
-      ownerId,
-      customerStatus,
-      prospectStatus,
-      title,
-      description,
-      industry,
-      website,
-      email,
-      phone,
-      mobile,
-      fax,
-      twitter,
-      facebook,
-      linkedin,
-      skype,
-      address,
-      billingAddress,
-      shippingAddress,
-      tags,
+      contactInfo,
+      addresses,
       customFields,
+      tags,
+      additionalFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
-      const customFieldsObject: any = {};
-      customFields.forEach((customField) => {
-        customFieldsObject[customField.key] = customField.value;
+      const customFieldsObject: Record<string, unknown> = {};
+      customFields.forEach((pair) => {
+        customFieldsObject[pair.key] = pair.value;
       });
       const body = {
         ...(name.length && { name }),
         ...(firstName.length && { first_name: firstName }),
         ...(lastName.length && { last_name: lastName }),
-        ...(contactId.length && { contact_id: util.types.toNumber(contactId) }),
-        ...(parentOrganizationId.length && {
-          parent_organization_id: util.types.toNumber(parentOrganizationId),
+        ...(additionalFields.contactId.length && {
+          contact_id: util.types.toNumber(additionalFields.contactId),
         }),
-        ...(ownerId.length && { owner_id: util.types.toNumber(ownerId) }),
-        ...(customerStatus.length && { customer_status: customerStatus }),
-        ...(prospectStatus.length && { prospect_status: prospectStatus }),
-        ...(title.length && { title }),
-        ...(description.length && { description }),
-        ...(industry.length && { industry }),
-        ...(website.length && { website }),
-        ...(email.length && { email }),
-        ...(phone.length && { phone }),
-        ...(mobile.length && { mobile }),
-        ...(fax.length && { fax }),
-        ...(twitter.length && { twitter }),
-        ...(facebook.length && { facebook }),
-        ...(linkedin.length && { linkedin }),
-        ...(skype.length && { skype }),
-        ...(address.length && { address: JSON.parse(address) }),
-        ...(billingAddress.length && {
-          billing_address: JSON.parse(billingAddress),
+        ...(additionalFields.parentOrganizationId.length && {
+          parent_organization_id: util.types.toNumber(
+            additionalFields.parentOrganizationId,
+          ),
         }),
-        ...(shippingAddress.length && {
-          shipping_address: JSON.parse(shippingAddress),
+        ...(additionalFields.ownerId.length && {
+          owner_id: util.types.toNumber(additionalFields.ownerId),
         }),
-        ...(tags.length && { tags }),
-        ...(customFields.length && { custom_fields: customFieldsObject }),
+        ...(additionalFields.customerStatus.length && {
+          customer_status: additionalFields.customerStatus,
+        }),
+        ...(additionalFields.prospectStatus.length && {
+          prospect_status: additionalFields.prospectStatus,
+        }),
+        ...(additionalFields.title.length && { title: additionalFields.title }),
+        ...(additionalFields.description.length && {
+          description: additionalFields.description,
+        }),
+        ...(additionalFields.industry.length && {
+          industry: additionalFields.industry,
+        }),
+        ...(contactInfo.website.length && {
+          website: contactInfo.website,
+        }),
+        ...(contactInfo.email.length && { email: contactInfo.email }),
+        ...(contactInfo.phone.length && { phone: contactInfo.phone }),
+        ...(contactInfo.mobile.length && { mobile: contactInfo.mobile }),
+        ...(contactInfo.fax.length && { fax: contactInfo.fax }),
+        ...(contactInfo.twitter.length && { twitter: contactInfo.twitter }),
+        ...(contactInfo.facebook.length && {
+          facebook: contactInfo.facebook,
+        }),
+        ...(contactInfo.linkedin.length && {
+          linkedin: contactInfo.linkedin,
+        }),
+        ...(contactInfo.skype.length && { skype: contactInfo.skype }),
+        ...(addresses.address.length && {
+          address: JSON.parse(addresses.address),
+        }),
+        ...(addresses.billingAddress.length && {
+          billing_address: JSON.parse(addresses.billingAddress),
+        }),
+        ...(addresses.shippingAddress.length && {
+          shipping_address: JSON.parse(addresses.shippingAddress),
+        }),
+        ...(tags.length && { tags: tags }),
+        ...(customFields.length && {
+          custom_fields: customFieldsObject,
+        }),
       };
       const { data } = await client.put(
         `/contacts/${id}`,

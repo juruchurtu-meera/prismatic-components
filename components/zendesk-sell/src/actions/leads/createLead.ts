@@ -15,58 +15,68 @@ export const createLead = action({
       lastName,
       organizationName,
       firstName,
-      ownerId,
-      status,
-      sourceId,
-      unqualifiedReasonId,
-      title,
-      description,
-      industry,
-      website,
-      email,
-      phone,
-      mobile,
-      fax,
-      twitter,
-      facebook,
-      linkedin,
-      skype,
-      address,
-      tags,
+      contactInfo,
       customFields,
+      tags,
+      address,
+      additionalFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
-      const customFieldsObject: any = {};
-      customFields.forEach((customField) => {
-        customFieldsObject[customField.key] = customField.value;
+      const customFieldsObject: Record<string, unknown> = {};
+      customFields.forEach((pair) => {
+        customFieldsObject[pair.key] = pair.value;
       });
       const body = {
         ...(lastName.length && { last_name: lastName }),
         ...(organizationName.length && { organization_name: organizationName }),
         ...(firstName.length && { first_name: firstName }),
-        ...(ownerId.length && { owner_id: util.types.toNumber(ownerId) }),
-        ...(status.length && { status }),
-        ...(sourceId.length && { source_id: util.types.toNumber(sourceId) }),
-        ...(unqualifiedReasonId.length && {
-          unqualified_reason_id: util.types.toNumber(unqualifiedReasonId),
+        ...(additionalFields.ownerId.length && {
+          owner_id: util.types.toNumber(additionalFields.ownerId),
         }),
-        ...(title.length && { title }),
-        ...(description.length && { description }),
-        ...(industry.length && { industry }),
-        ...(website.length && { website }),
-        ...(email.length && { email }),
-        ...(phone.length && { phone }),
-        ...(mobile.length && { mobile }),
-        ...(fax.length && { fax }),
-        ...(twitter.length && { twitter }),
-        ...(facebook.length && { facebook }),
-        ...(linkedin.length && { linkedin }),
-        ...(skype.length && { skype }),
-        ...(address.length && { address: JSON.parse(address) }),
+        ...(additionalFields.status.length && {
+          status: additionalFields.status,
+        }),
+        ...(additionalFields.sourceId.length && {
+          source_id: util.types.toNumber(additionalFields.sourceId),
+        }),
+        ...(additionalFields.unqualifiedReasonId.length && {
+          unqualified_reason_id: util.types.toNumber(
+            additionalFields.unqualifiedReasonId,
+          ),
+        }),
+        ...(additionalFields.title.length && {
+          title: additionalFields.title,
+        }),
+        ...(additionalFields.description.length && {
+          description: additionalFields.description,
+        }),
+        ...(additionalFields.industry.length && {
+          industry: additionalFields.industry,
+        }),
+        ...(contactInfo.website.length && {
+          website: contactInfo.website,
+        }),
+        ...(contactInfo.email.length && { email: contactInfo.email }),
+        ...(contactInfo.phone.length && { phone: contactInfo.phone }),
+        ...(contactInfo.mobile.length && { mobile: contactInfo.mobile }),
+        ...(contactInfo.fax.length && { fax: contactInfo.fax }),
+        ...(contactInfo.twitter.length && { twitter: contactInfo.twitter }),
+        ...(contactInfo.facebook.length && {
+          facebook: contactInfo.facebook,
+        }),
+        ...(contactInfo.linkedin.length && {
+          linkedin: contactInfo.linkedin,
+        }),
+        ...(contactInfo.skype.length && { skype: contactInfo.skype }),
+        ...(address.length && {
+          address: JSON.parse(address),
+        }),
         ...(tags.length && { tags }),
-        ...(customFields.length && { custom_fields: customFieldsObject }),
+        ...(customFields.length && {
+          custom_fields: customFieldsObject,
+        }),
       };
       const { data } = await client.post(
         `/leads`,

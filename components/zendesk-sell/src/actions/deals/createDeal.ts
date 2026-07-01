@@ -13,54 +13,70 @@ export const createDeal = action({
     {
       connection,
       name,
-      contactId,
       value,
       currency,
-      ownerId,
+      customFields,
+      tags,
       hot,
-      stageId,
       lastStageChangeAt,
       addedAt,
+      estimatedCloseDate,
+      customizedWinLikelihood,
+      contactId,
+      ownerId,
+      stageId,
       sourceId,
       lossReasonId,
       unqualifiedReasonId,
-      estimatedCloseDate,
-      customizedWinLikelihood,
-      tags,
-      customFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
-      const customFieldsObject: any = {};
-      customFields.forEach((customField) => {
-        customFieldsObject[customField.key] = customField.value;
+      const customFieldsObject: Record<string, unknown> = {};
+      customFields.forEach((pair) => {
+        customFieldsObject[pair.key] = pair.value;
       });
       const body = {
         ...(name && { name }),
-        ...(contactId && { contact_id: util.types.toNumber(contactId) }),
+        ...(contactId && {
+          contact_id: util.types.toNumber(contactId),
+        }),
         ...(value && { value }),
         ...(currency && { currency }),
-        ...(ownerId && { owner_id: util.types.toNumber(ownerId) }),
+        ...(ownerId && {
+          owner_id: util.types.toNumber(ownerId),
+        }),
         ...(hot && { hot: hot === "true" }),
-        ...(stageId && { stage_id: util.types.toNumber(stageId) }),
-        ...(lastStageChangeAt && { last_stage_change_at: lastStageChangeAt }),
-        ...(addedAt && { added_at: addedAt }),
-        ...(sourceId && { source_id: util.types.toNumber(sourceId) }),
+        ...(stageId && {
+          stage_id: util.types.toNumber(stageId),
+        }),
+        ...(lastStageChangeAt && {
+          last_stage_change_at: lastStageChangeAt,
+        }),
+        ...(addedAt && {
+          added_at: addedAt,
+        }),
+        ...(sourceId && {
+          source_id: util.types.toNumber(sourceId),
+        }),
         ...(lossReasonId && {
           loss_reason_id: util.types.toNumber(lossReasonId),
         }),
         ...(unqualifiedReasonId && {
           unqualified_reason_id: util.types.toNumber(unqualifiedReasonId),
         }),
-        ...(estimatedCloseDate && { estimated_close_date: estimatedCloseDate }),
+        ...(estimatedCloseDate && {
+          estimated_close_date: estimatedCloseDate,
+        }),
         ...(customizedWinLikelihood && {
           customized_win_likelihood: util.types.toNumber(
             customizedWinLikelihood,
           ),
         }),
-        ...(tags && { tags }),
-        ...(customFields.length && { custom_fields: customFieldsObject }),
+        ...(tags && { tags: tags }),
+        ...(customFields.length && {
+          custom_fields: customFieldsObject,
+        }),
       };
       const { data } = await client.post(
         `/deals`,

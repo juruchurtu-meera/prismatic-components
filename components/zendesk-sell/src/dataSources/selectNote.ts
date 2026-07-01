@@ -1,6 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getZendeskClient } from "../client";
-import { selectNoteInputs } from "../inputs/dataSources/note";
+import { selectNoteInputs } from "../inputs/dataSources";
 export const selectNote = dataSource({
   display: {
     label: "Select Note",

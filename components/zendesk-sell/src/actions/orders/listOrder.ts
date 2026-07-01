@@ -11,14 +11,14 @@ export const listOrder = action({
   },
   perform: async (
     context,
-    { connection, page, perPage, ids, sortBy, dealId, fetchAll },
+    { connection, fetchAll, ids, dealId, sortBy, pagination },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const params = {
-        ...(page && { page }),
-        ...(perPage && { per_page: perPage }),
-        ...(ids && { ids }),
+        ...(pagination.page && { page: pagination.page }),
+        ...(pagination.perPage && { per_page: pagination.perPage }),
+        ...(ids && { ids: ids }),
         ...(sortBy && { sort_by: sortBy }),
         ...(dealId && { deal_id: dealId }),
       };

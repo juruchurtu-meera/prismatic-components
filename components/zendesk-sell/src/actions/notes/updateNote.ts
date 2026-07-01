@@ -10,14 +10,16 @@ export const updateNote = action({
   },
   perform: async (
     context,
-    { connection, resourceType, resourceId, content, isImportant, tags, type },
+    { connection, resourceType, resourceId, content, tags, isImportant, type },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const body = {
         ...(resourceType && { resource_type: resourceType }),
         ...(content && { content }),
-        ...(isImportant && { is_important: isImportant === "true" }),
+        ...(isImportant && {
+          is_important: isImportant === "true",
+        }),
         ...(tags.length && { tags }),
         ...(type && { type }),
       };

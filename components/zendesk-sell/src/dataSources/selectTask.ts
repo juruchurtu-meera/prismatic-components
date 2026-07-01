@@ -1,6 +1,6 @@
 import { dataSource, type Element } from "@prismatic-io/spectral";
 import { getZendeskClient } from "../client";
-import { selectTaskInputs } from "../inputs/dataSources/task";
+import { selectTaskInputs } from "../inputs/dataSources";
 export const selectTask = dataSource({
   display: {
     label: "Select Task",

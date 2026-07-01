@@ -1,5 +1,12 @@
 ## Changelog
 
+### 2026-07-01
+
+Restructured action inputs into structured objects for an improved user experience.
+
+- **Contact** and **Lead** create, update, and upsert actions group their contact-channel and address inputs into **Contact Information** and **Addresses**
+- List actions (**List Contacts**, **List Leads**, **List Deals**, **List Notes**, **List Tasks**, **List Orders**, **List Pipelines**, **List Stages**) group their inputs into **Pagination** and **Additional Fields**, where **Additional Fields** holds optional query controls such as sort and match-mode; **Fetch All** stays a top-level toggle
+
 ### 2026-05-28
 
 Added **Fetch All** input to list actions to automatically retrieve all pages of results in a single call:

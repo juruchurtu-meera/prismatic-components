@@ -12,17 +12,17 @@ export const listPipelines = action({
   },
   perform: async (
     context,
-    { connection, page, perPage, ids, sortBy, name, disabled, fetchAll },
+    { connection, fetchAll, ids, name, disabled, sortBy, pagination },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const params = {
-        ...(page && { page }),
-        ...(perPage && { per_page: perPage }),
-        ...(ids && { ids }),
+        ...(pagination.page && { page: pagination.page }),
+        ...(pagination.perPage && { per_page: pagination.perPage }),
+        ...(ids && { ids: ids }),
         ...(sortBy && { sort_by: sortBy }),
-        ...(name && { name }),
-        ...(disabled && { disabled }),
+        ...(name && { name: name }),
+        ...(disabled && { disabled: disabled }),
       };
       const data: unknown = await fetchAllPages(
         client,

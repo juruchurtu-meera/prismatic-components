@@ -13,55 +13,61 @@ export const upsertLead = action({
     context,
     {
       connection,
-      creatorId,
-      ownerId,
-      sourceId,
       firstName,
       lastName,
       organizationName,
-      status,
-      email,
-      phone,
-      mobile,
-      addressCity,
-      addressPostalCode,
-      addressCountry,
+      contactInfo,
+      addresses,
       customFields,
       filterableCustomFields,
-      inclusive,
+      additionalFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const addressObject = {
-        ...(addressCity.length && { city: addressCity }),
-        ...(addressPostalCode.length && { postal_code: addressPostalCode }),
-        ...(addressCountry.length && { country: addressCountry }),
+        ...(addresses.addressCity.length && { city: addresses.addressCity }),
+        ...(addresses.addressPostalCode.length && {
+          postal_code: addresses.addressPostalCode,
+        }),
+        ...(addresses.addressCountry.length && {
+          country: addresses.addressCountry,
+        }),
       };
-      const customFieldsObject: any = {};
-      customFields.forEach((customField) => {
-        customFieldsObject[customField.key] = customField.value;
+      const customFieldsObject: Record<string, unknown> = {};
+      customFields.forEach((pair) => {
+        customFieldsObject[pair.key] = pair.value;
       });
-      const filterableCustomFieldsObject: any = {};
-      filterableCustomFields.forEach((customField) => {
-        filterableCustomFieldsObject[customField.key] = customField.value;
+      const filterableCustomFieldsObject: Record<string, unknown> = {};
+      filterableCustomFields.forEach((pair) => {
+        filterableCustomFieldsObject[pair.key] = pair.value;
       });
       const body = {
-        ...(creatorId.length && { creator_id: util.types.toNumber(creatorId) }),
-        ...(ownerId.length && { owner_id: util.types.toNumber(ownerId) }),
-        ...(sourceId.length && { source_id: util.types.toNumber(sourceId) }),
+        ...(additionalFields.creatorId.length && {
+          creator_id: util.types.toNumber(additionalFields.creatorId),
+        }),
+        ...(additionalFields.ownerId.length && {
+          owner_id: util.types.toNumber(additionalFields.ownerId),
+        }),
+        ...(additionalFields.sourceId.length && {
+          source_id: util.types.toNumber(additionalFields.sourceId),
+        }),
         ...(firstName.length && { first_name: firstName }),
         ...(lastName.length && { last_name: lastName }),
         ...(organizationName.length && { organization_name: organizationName }),
-        ...(status.length && { status }),
-        ...(email.length && { email }),
-        ...(phone.length && { phone }),
-        ...(mobile.length && { mobile }),
+        ...(additionalFields.status.length && {
+          status: additionalFields.status,
+        }),
+        ...(contactInfo.email.length && { email: contactInfo.email }),
+        ...(contactInfo.phone.length && { phone: contactInfo.phone }),
+        ...(contactInfo.mobile.length && { mobile: contactInfo.mobile }),
         ...(Object.keys(addressObject).length && { address: addressObject }),
         ...(Object.keys(customFieldsObject).length && {
           custom_fields: customFieldsObject,
         }),
-        ...(inclusive.length && { inclusive: inclusive === "true" }),
+        ...(additionalFields.inclusive.length && {
+          inclusive: additionalFields.inclusive === "true",
+        }),
       };
       const { data } = await client.post(
         `/leads/upsert`,

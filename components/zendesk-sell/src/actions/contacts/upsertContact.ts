@@ -13,73 +13,79 @@ export const upsertContact = action({
     context,
     {
       connection,
-      creatorId,
-      ownerId,
       isOrganization,
-      contactId,
-      parentOrganizationId,
       name,
       firstName,
       lastName,
-      email,
-      phone,
-      mobile,
-      customerStatus,
-      prospectStatus,
-      addressCity,
-      addressPostalCode,
-      addressCountry,
-      billingAddress,
-      shippingAddress,
+      contactInfo,
+      addresses,
       customFields,
       filterableCustomFields,
-      inclusive,
+      additionalFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const addressObject = {
-        ...(addressCity.length && { city: addressCity }),
-        ...(addressPostalCode.length && { postal_code: addressPostalCode }),
-        ...(addressCountry.length && { country: addressCountry }),
+        ...(addresses.addressCity.length && { city: addresses.addressCity }),
+        ...(addresses.addressPostalCode.length && {
+          postal_code: addresses.addressPostalCode,
+        }),
+        ...(addresses.addressCountry.length && {
+          country: addresses.addressCountry,
+        }),
       };
-      const customFieldsObject: any = {};
-      customFields.forEach((customField) => {
-        customFieldsObject[customField.key] = customField.value;
+      const customFieldsObject: Record<string, unknown> = {};
+      customFields.forEach((pair) => {
+        customFieldsObject[pair.key] = pair.value;
       });
-      const filterableCustomFieldsObject: any = {};
-      filterableCustomFields.forEach((customField) => {
-        filterableCustomFieldsObject[customField.key] = customField.value;
+      const filterableCustomFieldsObject: Record<string, unknown> = {};
+      filterableCustomFields.forEach((pair) => {
+        filterableCustomFieldsObject[pair.key] = pair.value;
       });
       const body = {
-        ...(creatorId.length && { creator_id: util.types.toNumber(creatorId) }),
-        ...(ownerId.length && { owner_id: util.types.toNumber(ownerId) }),
+        ...(additionalFields.creatorId.length && {
+          creator_id: util.types.toNumber(additionalFields.creatorId),
+        }),
+        ...(additionalFields.ownerId.length && {
+          owner_id: util.types.toNumber(additionalFields.ownerId),
+        }),
         ...(isOrganization.length && {
           is_organization: isOrganization === "true",
         }),
-        ...(contactId.length && { contact_id: util.types.toNumber(contactId) }),
-        ...(parentOrganizationId.length && {
-          parent_organization_id: util.types.toNumber(parentOrganizationId),
+        ...(additionalFields.contactId.length && {
+          contact_id: util.types.toNumber(additionalFields.contactId),
+        }),
+        ...(additionalFields.parentOrganizationId.length && {
+          parent_organization_id: util.types.toNumber(
+            additionalFields.parentOrganizationId,
+          ),
         }),
         ...(name.length && { name }),
         ...(firstName.length && { first_name: firstName }),
         ...(lastName.length && { last_name: lastName }),
-        ...(email.length && { email }),
-        ...(phone.length && { phone }),
-        ...(mobile.length && { mobile }),
-        ...(customerStatus.length && { customer_status: customerStatus }),
-        ...(prospectStatus.length && { prospect_status: prospectStatus }),
-        ...(Object.keys(addressObject).length && { address: addressObject }),
-        ...(billingAddress.length && {
-          billing_address: JSON.parse(billingAddress),
+        ...(contactInfo.email.length && { email: contactInfo.email }),
+        ...(contactInfo.phone.length && { phone: contactInfo.phone }),
+        ...(contactInfo.mobile.length && { mobile: contactInfo.mobile }),
+        ...(additionalFields.customerStatus.length && {
+          customer_status: additionalFields.customerStatus,
         }),
-        ...(shippingAddress.length && {
-          shipping_address: JSON.parse(shippingAddress),
+        ...(additionalFields.prospectStatus.length && {
+          prospect_status: additionalFields.prospectStatus,
+        }),
+        ...(Object.keys(addressObject).length && { address: addressObject }),
+        ...(addresses.billingAddress.length && {
+          billing_address: JSON.parse(addresses.billingAddress),
+        }),
+        ...(addresses.shippingAddress.length && {
+          shipping_address: JSON.parse(addresses.shippingAddress),
         }),
         ...(Object.keys(customFieldsObject).length && {
           custom_fields: customFieldsObject,
         }),
-        ...(inclusive.length && { inclusive: inclusive === "true" }),
+        ...(additionalFields.inclusive.length && {
+          inclusive: additionalFields.inclusive === "true",
+        }),
       };
       const { data } = await client.post(
         `/contacts/upsert`,

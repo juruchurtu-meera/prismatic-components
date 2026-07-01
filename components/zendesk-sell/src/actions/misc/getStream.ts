@@ -27,7 +27,10 @@ export const getStream = action({
     connection,
     resource: input({
       label: "Resource",
-      comments: "The resource to get the stream for.",
+      comments:
+        "The resource to get the stream for. Possible values: contacts, deals, leads.",
+      placeholder: "Enter resource name",
+      example: "contacts",
       type: "string",
       required: true,
       clean: util.types.toString,
@@ -36,6 +39,8 @@ export const getStream = action({
       label: "Position",
       comments:
         "The client position in the Firehose stream. Possible values: top, tail, or a position string from a previous API response.",
+      placeholder: "Enter stream position",
+      example: "top",
       type: "string",
       required: true,
       clean: util.types.toString,
@@ -43,6 +48,8 @@ export const getStream = action({
     limit: input({
       label: "Limit",
       comments: "Limits maximum number of events in single response.",
+      placeholder: "Enter limit",
+      example: "100",
       type: "string",
       required: false,
       clean: util.types.toString,

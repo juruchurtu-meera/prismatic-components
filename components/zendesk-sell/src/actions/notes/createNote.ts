@@ -10,7 +10,7 @@ export const createNote = action({
   },
   perform: async (
     context,
-    { connection, resourceType, resourceId, content, isImportant, tags, type },
+    { connection, resourceType, resourceId, content, tags, isImportant, type },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
@@ -18,7 +18,9 @@ export const createNote = action({
         ...(resourceType && { resource_type: resourceType }),
         ...(resourceId && { resource_id: util.types.toNumber(resourceId) }),
         ...(content && { content }),
-        ...(isImportant && { is_important: isImportant === "true" }),
+        ...(isImportant && {
+          is_important: isImportant === "true",
+        }),
         ...(tags.length && { tags }),
         ...(type && { type }),
       };

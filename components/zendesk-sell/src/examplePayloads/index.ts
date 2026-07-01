@@ -61,3 +61,4 @@ export {
   listTasksExamplePayload,
   updateTaskExamplePayload,
 } from "./tasks";
+export { pollChangesTriggerExamplePayload } from "./triggers";

@@ -11,40 +11,32 @@ export const listTasks = action({
   },
   perform: async (
     context,
-    {
-      connection,
-      page,
-      perPage,
-      sortBy,
-      ids,
-      creatorId,
-      ownerId,
-      q,
-      type,
-      resourceType,
-      resourceId,
-      completed,
-      overdue,
-      remind,
-      fetchAll,
-    },
+    { connection, fetchAll, type, completed, pagination, additionalFields },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const params = {
-        ...(page && { page }),
-        ...(perPage && { per_page: perPage }),
-        ...(sortBy && { sort_by: sortBy }),
-        ...(ids && { ids }),
-        ...(creatorId && { creator_id: creatorId }),
-        ...(ownerId && { owner_id: ownerId }),
-        ...(q && { q }),
-        ...(type && { type }),
-        ...(resourceType && { resource_type: resourceType }),
-        ...(resourceId && { resource_id: resourceId }),
-        ...(completed && { completed }),
-        ...(overdue && { overdue }),
-        ...(remind && { remind }),
+        ...(pagination.page && { page: pagination.page }),
+        ...(pagination.perPage && { per_page: pagination.perPage }),
+        ...(additionalFields.sortBy && { sort_by: additionalFields.sortBy }),
+        ...(additionalFields.q && { q: additionalFields.q }),
+        ...(additionalFields.resourceType && {
+          resource_type: additionalFields.resourceType,
+        }),
+        ...(additionalFields.resourceId && {
+          resource_id: additionalFields.resourceId,
+        }),
+        ...(additionalFields.ids && { ids: additionalFields.ids }),
+        ...(additionalFields.creatorId && {
+          creator_id: additionalFields.creatorId,
+        }),
+        ...(additionalFields.ownerId && {
+          owner_id: additionalFields.ownerId,
+        }),
+        ...(additionalFields.overdue && { overdue: additionalFields.overdue }),
+        ...(additionalFields.remind && { remind: additionalFields.remind }),
+        ...(type && { type: type }),
+        ...(completed && { completed: completed }),
       };
       const data: unknown = await fetchAllPages(
         client,

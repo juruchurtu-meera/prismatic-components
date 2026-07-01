@@ -10,7 +10,7 @@ export const fetchAll = input({
   type: "boolean",
   clean: util.types.toBool,
   comments:
-    "When enabled, automatically fetches all pages of results. Page and Per Page inputs are ignored when this is enabled.",
+    "When true, automatically fetches all pages of results using pagination. Page and Per Page inputs are ignored when this is enabled.",
   required: false,
   default: "false",
 });

@@ -14,30 +14,37 @@ export const listNotes = action({
     context,
     {
       connection,
-      page,
-      perPage,
-      sortBy,
-      includes,
+      fetchAll,
       ids,
       creatorId,
-      q,
-      resourceType,
       resourceId,
-      fetchAll,
+      resourceType,
+      pagination,
+      additionalFields,
     },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const params = {
-        ...(page.length && { page }),
-        ...(perPage.length && { per_page: perPage }),
-        ...(sortBy.length && { sort_by: sortBy }),
-        ...(includes.length && { includes }),
-        ...(ids.length && { ids }),
-        ...(creatorId.length && { creator_id: creatorId }),
-        ...(q.length && { q }),
-        ...(resourceType.length && { resource_type: resourceType }),
-        ...(resourceId.length && { resource_id: resourceId }),
+        ...(pagination.page.length && { page: pagination.page }),
+        ...(pagination.perPage.length && { per_page: pagination.perPage }),
+        ...(additionalFields.sortBy.length && {
+          sort_by: additionalFields.sortBy,
+        }),
+        ...(additionalFields.includes.length && {
+          includes: additionalFields.includes,
+        }),
+        ...(ids.length && { ids: ids }),
+        ...(creatorId.length && {
+          creator_id: creatorId,
+        }),
+        ...(additionalFields.q.length && { q: additionalFields.q }),
+        ...(resourceType.length && {
+          resource_type: resourceType,
+        }),
+        ...(resourceId.length && {
+          resource_id: resourceId,
+        }),
       };
       const data: unknown = await fetchAllPages(
         client,

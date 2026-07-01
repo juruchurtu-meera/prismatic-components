@@ -1,6 +1,7 @@
 import { pollingTrigger, util } from "@prismatic-io/spectral";
 import { getZendeskClient } from "../client";
 import { POLL_RESOURCE_CONFIG } from "../constants";
+import { pollChangesTriggerExamplePayload } from "../examplePayloads";
 import { pollChangesTriggerInputs } from "../inputs/triggers";
 import type { PollingState, ZendeskSellRecord } from "../types";
 export const pollChangesTrigger = pollingTrigger({
@@ -65,4 +66,5 @@ export const pollChangesTrigger = pollingTrigger({
       polledNoChanges: totalChanges === 0,
     };
   },
+  examplePayload: pollChangesTriggerExamplePayload,
 });

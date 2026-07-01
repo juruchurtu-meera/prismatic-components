@@ -11,28 +11,18 @@ export const listStages = action({
   },
   perform: async (
     context,
-    {
-      connection,
-      pipelineId,
-      page,
-      perPage,
-      sortBy,
-      ids,
-      name,
-      active,
-      fetchAll,
-    },
+    { connection, pipelineId, ids, name, active, sortBy, pagination, fetchAll },
   ) => {
     try {
       const client = getZendeskClient(connection, context.debug.enabled);
       const params = {
         ...(pipelineId && { pipeline_id: pipelineId }),
-        ...(page && { page }),
-        ...(perPage && { per_page: perPage }),
+        ...(pagination.page && { page: pagination.page }),
+        ...(pagination.perPage && { per_page: pagination.perPage }),
         ...(sortBy && { sort_by: sortBy }),
-        ...(ids && { ids }),
-        ...(name && { name }),
-        ...(active && { active }),
+        ...(ids && { ids: ids }),
+        ...(name && { name: name }),
+        ...(active && { active: active }),
       };
       const data: unknown = await fetchAllPages(
         client,
