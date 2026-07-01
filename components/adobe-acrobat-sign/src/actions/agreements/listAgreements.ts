@@ -15,8 +15,7 @@ export const listAgreements = action({
     {
       connection,
       fetchAll,
-      cursor,
-      pageSize,
+      pagination,
       externalId,
       groupId,
       showHiddenAgreements,
@@ -32,8 +31,8 @@ export const listAgreements = action({
       "/agreements",
       fetchAll,
       {
-        pageSize: pageSize || undefined,
-        cursor: cursor || undefined,
+        pageSize: pagination.pageSize || undefined,
+        cursor: pagination.cursor || undefined,
         externalId: externalId || undefined,
         groupId: groupId || undefined,
         showHiddenAgreements: showHiddenAgreements || undefined,

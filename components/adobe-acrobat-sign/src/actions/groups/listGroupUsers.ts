@@ -10,10 +10,7 @@ export const listGroupUsers = action({
     description: "Retrieves all the users in a group.",
   },
   inputs: listGroupUsersInputs,
-  perform: async (
-    context,
-    { connection, fetchAll, cursor, pageSize, groupId },
-  ) => {
+  perform: async (context, { connection, fetchAll, pagination, groupId }) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
     const data = await fetchAdobeSignResults<
       ListGroupUsers,
@@ -24,8 +21,8 @@ export const listGroupUsers = action({
       `/groups/${groupId}/users`,
       fetchAll,
       {
-        pageSize: pageSize || undefined,
-        cursor: cursor || undefined,
+        pageSize: pagination.pageSize || undefined,
+        cursor: pagination.cursor || undefined,
       },
       "userInfoList",
     );

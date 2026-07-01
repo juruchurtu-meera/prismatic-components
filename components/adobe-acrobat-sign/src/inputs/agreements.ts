@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { cleanJsonArrayInput } from "../util";
 import {
   MAX_AGREEMENTS_PAGE_SIZE,
@@ -159,12 +159,19 @@ export const getAgreementInputs = {
 export const listAgreementsInputs = {
   connection,
   fetchAll,
-  cursor,
-  pageSize: {
-    ...pageSize,
-    example: util.types.toString(MAX_AGREEMENTS_PAGE_SIZE),
-    default: util.types.toString(MAX_AGREEMENTS_PAGE_SIZE),
-  },
+  pagination: structuredObjectInput({
+    label: "Pagination",
+    required: false,
+    comments: "Page and page-size controls.",
+    inputs: {
+      cursor,
+      pageSize: {
+        ...pageSize,
+        example: util.types.toString(MAX_AGREEMENTS_PAGE_SIZE),
+        default: util.types.toString(MAX_AGREEMENTS_PAGE_SIZE),
+      },
+    },
+  }),
   externalId,
   groupId,
   showHiddenAgreements,

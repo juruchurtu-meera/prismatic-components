@@ -11,7 +11,7 @@ export const listGroups = action({
       "Retrieves a list of groups in the Adobe Acrobat Sign account.",
   },
   inputs: listGroupsInputs,
-  perform: async (context, { connection, fetchAll, cursor, pageSize }) => {
+  perform: async (context, { connection, fetchAll, pagination }) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
     const data = await fetchAdobeSignResults<
       ListGroup,
@@ -22,8 +22,8 @@ export const listGroups = action({
       "/groups",
       fetchAll,
       {
-        pageSize: pageSize || undefined,
-        cursor: cursor || undefined,
+        pageSize: pagination.pageSize || undefined,
+        cursor: pagination.cursor || undefined,
       },
       "groupInfoList",
     );

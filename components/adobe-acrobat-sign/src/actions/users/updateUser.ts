@@ -12,29 +12,27 @@ export const updateUser = action({
   perform: async (
     context,
     {
-      company,
       firstName,
       lastName,
-      initials,
-      locale,
-      phone,
-      title,
       email,
+      phone,
+      initials,
       connection,
       userId,
       userStatus,
+      additionalFields,
     },
   ) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
     const userPayload: DetailedUserInfoPutPayload = {
       email,
-      company,
+      company: additionalFields.company,
       firstName,
       lastName,
       initials,
-      locale,
+      locale: additionalFields.locale,
       phone,
-      title,
+      title: additionalFields.title,
       status: userStatus,
     };
     const { data } = await client.put(`/users/${userId}`, userPayload);

@@ -17,9 +17,8 @@ export const listWebhooks = action({
       fetchAll,
       webhookResourceType,
       showInactiveWebhooks,
-      pageSize,
+      pagination,
       scope,
-      cursor,
     },
   ) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
@@ -32,8 +31,8 @@ export const listWebhooks = action({
       "/webhooks",
       fetchAll,
       {
-        pageSize: pageSize || undefined,
-        cursor: cursor || undefined,
+        pageSize: pagination.pageSize || undefined,
+        cursor: pagination.cursor || undefined,
         scope: scope || undefined,
         resourceType: webhookResourceType || undefined,
         showInactiveWebhooks: showInactiveWebhooks || false,

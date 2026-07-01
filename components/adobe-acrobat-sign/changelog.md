@@ -1,5 +1,13 @@
 ## Changelog
 
+### 2026-07-01
+
+Restructured action inputs into structured objects for an improved user experience.
+
+- List actions (**List Agreements**, **List Groups**, **List Group Events**, **List Group Users**, **List Users**, and **List Webhooks**) group their pagination inputs into a **Pagination** structured object; **Fetch All** stays a top-level toggle
+- **Create Webhook** and **Update Webhook** group their application inputs into a **Webhook Application** structured object
+- **Create User**, **Update User**, and **Create Account** group their optional inputs into an **Additional Fields** structured object
+
 ### 2026-06-03
 
 Added **New and Updated Agreements** polling trigger that fetches agreements created or modified since the last poll

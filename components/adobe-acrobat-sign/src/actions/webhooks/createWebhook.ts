@@ -13,8 +13,7 @@ export const createWebhook = action({
   perform: async (
     context,
     {
-      webhookApplicationDisplayName,
-      webhookApplicationName,
+      webhookApplication,
       webhookName,
       webhookUrlInfo,
       webhookResourceType,
@@ -38,8 +37,8 @@ export const createWebhook = action({
       webhookUrlInfo: {
         url: webhookUrlInfo,
       },
-      applicationDisplayName: webhookApplicationDisplayName,
-      applicationName: webhookApplicationName,
+      applicationDisplayName: webhookApplication.webhookApplicationDisplayName,
+      applicationName: webhookApplication.webhookApplicationName,
       resourceType: webhookResourceType,
       resourceId: webhookResourceId,
       problemNotificationEmails:

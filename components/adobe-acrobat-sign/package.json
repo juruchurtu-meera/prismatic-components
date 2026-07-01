@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@prismatic-io/spectral": "10.17.1",
+    "@prismatic-io/spectral": "10.19.0",
     "axios": "^1.6.5"
   },
   "devDependencies": {

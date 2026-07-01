@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   cleanFunctionForBooleanValueList,
   cleanFunctionForString,
@@ -91,6 +91,17 @@ const webhookApplicationName = input({
   comments: "The name of the application through which the webhook is created.",
   clean: cleanFunctionForString,
 });
+const webhookApplicationInput = () =>
+  structuredObjectInput({
+    label: "Webhook Application",
+    required: false,
+    comments:
+      "The application name and display name through which the webhook is created.",
+    inputs: {
+      webhookApplicationName,
+      webhookApplicationDisplayName,
+    },
+  });
 const webhookProblemNotificationEmails = input({
   label: "Problem Notification Emails",
   type: "string",
@@ -222,8 +233,7 @@ export const createWebhookInputs = {
   scope,
   webhookName,
   webhookUrlInfo,
-  webhookApplicationDisplayName,
-  webhookApplicationName,
+  webhookApplication: webhookApplicationInput(),
   webhookProblemNotificationEmails,
   webhookResourceId,
   webhookResourceType,
@@ -243,6 +253,15 @@ export const getWebhookInputs = {
 export const listWebhooksInputs = {
   connection,
   fetchAll,
+  pagination: structuredObjectInput({
+    label: "Pagination",
+    required: false,
+    comments: "Page and page-size controls.",
+    inputs: {
+      cursor,
+      pageSize,
+    },
+  }),
   showInactiveWebhooks,
   scope: {
     ...scope,
@@ -250,19 +269,16 @@ export const listWebhooksInputs = {
     comments: "Filter for webhooks with a specific scope.",
   },
   webhookResourceType,
-  cursor,
-  pageSize,
 };
 export const updateWebhookInputs = {
   connection,
+  webhookId,
   webhookSubscriptionEvents,
   scope,
   webhookName,
   webhookUrlInfo,
-  webhookApplicationDisplayName,
-  webhookApplicationName,
+  webhookApplication: webhookApplicationInput(),
   webhookProblemNotificationEmails,
-  webhookId,
   webhookAgreementEvents,
   webhookLibraryDocumentEvents,
   webhookMegaSignEvents,

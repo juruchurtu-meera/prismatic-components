@@ -10,10 +10,7 @@ export const listGroupEvents = action({
     description: "Retrieves all events for a group.",
   },
   inputs: listGroupEventsInputs,
-  perform: async (
-    context,
-    { connection, fetchAll, cursor, pageSize, groupId },
-  ) => {
+  perform: async (context, { connection, fetchAll, pagination, groupId }) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
     const data = await fetchAdobeSignResults<
       ListGroupEvents,
@@ -24,8 +21,8 @@ export const listGroupEvents = action({
       `/groups/${groupId}/events`,
       fetchAll,
       {
-        pageSize: pageSize || undefined,
-        cursor: cursor || undefined,
+        pageSize: pagination.pageSize || undefined,
+        cursor: pagination.cursor || undefined,
       },
       "groupEvents",
     );

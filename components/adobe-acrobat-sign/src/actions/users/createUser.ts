@@ -12,31 +12,28 @@ export const createUser = action({
   perform: async (
     context,
     {
-      company,
       firstName,
       lastName,
-      initials,
-      locale,
-      phone,
-      title,
       email,
+      phone,
+      initials,
       isAccountAdmin,
       connection,
-      accountId,
+      additionalFields,
     },
   ) => {
     const client = getAdobeSignClient(connection, context.debug.enabled);
     const userPayload: DetailedUserInfoPayload = {
       isAccountAdmin,
       email,
-      company,
+      company: additionalFields.company,
       firstName,
       lastName,
       initials,
-      locale,
+      locale: additionalFields.locale,
       phone,
-      title,
-      accountId,
+      title: additionalFields.title,
+      accountId: additionalFields.accountId,
     };
     const { data } = await client.post("/users", userPayload);
     return {

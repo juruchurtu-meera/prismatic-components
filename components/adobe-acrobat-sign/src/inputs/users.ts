@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   accountId,
   company,
@@ -57,16 +57,23 @@ const userStatus = input({
 });
 export const createUserInputs = {
   connection,
-  email,
   isAccountAdmin,
-  company,
+  email,
   firstName,
   lastName,
   initials,
-  locale,
   phone,
-  title,
-  accountId,
+  additionalFields: structuredObjectInput({
+    label: "Additional Fields",
+    required: false,
+    comments: "Additional optional fields.",
+    inputs: {
+      locale,
+      title,
+      accountId,
+      company,
+    },
+  }),
 };
 export const getUserInputs = {
   connection,
@@ -78,21 +85,35 @@ export const getUserInputs = {
 export const listUsersInputs = {
   connection,
   fetchAll,
-  cursor,
-  pageSize,
+  pagination: structuredObjectInput({
+    label: "Pagination",
+    required: false,
+    comments: "Page and page-size controls.",
+    inputs: {
+      cursor,
+      pageSize,
+    },
+  }),
 };
 export const updateUserInputs = {
   connection,
   email,
-  company,
   firstName,
   lastName,
   initials,
-  locale,
   phone,
-  title,
   userId,
   userStatus,
+  additionalFields: structuredObjectInput({
+    label: "Additional Fields",
+    required: false,
+    comments: "Additional optional fields.",
+    inputs: {
+      locale,
+      title,
+      company,
+    },
+  }),
 };
 export const selectUsersInputs = {
   connection,

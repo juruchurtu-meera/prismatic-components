@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   accountId,
   company,
@@ -64,11 +64,9 @@ const trialDuration = input({
 export const createAccountInputs = {
   connection,
   accountType,
-  countryCode,
-  externalId,
-  locale,
-  trialDuration,
   email,
+  countryCode,
+  numSeats,
   firstName: {
     ...firstName,
     required: true,
@@ -78,9 +76,18 @@ export const createAccountInputs = {
     required: true,
   },
   phone,
-  title,
-  numSeats,
-  company,
+  additionalFields: structuredObjectInput({
+    label: "Additional Fields",
+    required: false,
+    comments: "Additional optional fields.",
+    inputs: {
+      externalId,
+      locale,
+      trialDuration,
+      title,
+      company,
+    },
+  }),
 };
 export const getAccountInputs = {
   connection,

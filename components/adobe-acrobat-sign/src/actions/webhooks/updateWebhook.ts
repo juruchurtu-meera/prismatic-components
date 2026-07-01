@@ -13,8 +13,7 @@ export const updateWebhook = action({
   perform: async (
     context,
     {
-      webhookApplicationDisplayName,
-      webhookApplicationName,
+      webhookApplication,
       webhookName,
       webhookUrlInfo,
       webhookSubscriptionEvents,
@@ -36,8 +35,8 @@ export const updateWebhook = action({
       webhookUrlInfo: {
         url: webhookUrlInfo,
       },
-      applicationDisplayName: webhookApplicationDisplayName,
-      applicationName: webhookApplicationName,
+      applicationDisplayName: webhookApplication.webhookApplicationDisplayName,
+      applicationName: webhookApplication.webhookApplicationName,
       problemNotificationEmails:
         webhookProblemNotificationEmails as ProblemNotificationEmails[],
       webhookConditionalParams: {

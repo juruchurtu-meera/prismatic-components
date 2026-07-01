@@ -1,4 +1,4 @@
-import { input } from "@prismatic-io/spectral";
+import { input, structuredObjectInput } from "@prismatic-io/spectral";
 import { cleanFunctionForBoolean, cleanFunctionForString } from "../util";
 import {
   connection,
@@ -8,6 +8,16 @@ import {
   groupId,
   pageSize,
 } from "./common";
+const paginationInput = () =>
+  structuredObjectInput({
+    label: "Pagination",
+    required: false,
+    comments: "Page and page-size controls.",
+    inputs: {
+      cursor,
+      pageSize,
+    },
+  });
 const groupName = input({
   label: "Group Name",
   type: "string",
@@ -74,30 +84,27 @@ export const getGroupInputs = {
 export const listGroupsInputs = {
   connection,
   fetchAll,
-  cursor,
-  pageSize,
+  pagination: paginationInput(),
 };
 export const listGroupEventsInputs = {
   connection,
-  fetchAll,
   groupId: {
     ...groupId,
     comments: "The unique identifier of the group.",
     required: true,
   },
-  cursor,
-  pageSize,
+  fetchAll,
+  pagination: paginationInput(),
 };
 export const listGroupUsersInputs = {
   connection,
-  fetchAll,
   groupId: {
     ...groupId,
     comments: "The unique identifier of the group.",
     required: true,
   },
-  cursor,
-  pageSize,
+  fetchAll,
+  pagination: paginationInput(),
 };
 export const updateGroupInputs = {
   connection,
