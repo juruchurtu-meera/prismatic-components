@@ -1,5 +1,13 @@
 ## Changelog
 
+### 2026-07-02
+
+Rebranded the Bing Ads component to Microsoft Advertising to reflect current branding and added Campaign Management REST actions:
+
+- Added actions to create, update, delete, and retrieve **Campaigns**, **Ad Groups**, **Ads**, **Keywords**, **Budgets**, and **Audiences**
+- Added a **Raw Request (REST)** action for arbitrary Campaign Management REST calls
+- Added inline data sources to select campaigns and ad groups
+
 ### 2026-04-30
 
 Updated spectral version

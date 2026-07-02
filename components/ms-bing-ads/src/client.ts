@@ -1,15 +1,9 @@
-import { Client, createClientAsync } from "soap";
-import { ConnectionError, util, Connection } from "@prismatic-io/spectral";
-import { oauth } from "./connections";
-import { BingAdsBaseUrl } from "./constants";
+import { ConnectionError, util } from "@prismatic-io/spectral";
+import { type Client, createClientAsync } from "soap";
+import { oauth } from "./connections/oauth";
+import { BingAdsBaseUrl, SOAP_NAMESPACE } from "./constants";
+import type { GetClientProps, GetMethodProps } from "./types";
 import { objectToXML } from "./util";
-const namespace = "tns";
-interface GetClientProps {
-  connection: Connection;
-  soapHeaders?: Record<string, string | number | boolean>;
-  timeout?: number;
-  wsdl: string;
-}
 export const getClient = async ({
   connection,
   soapHeaders,
@@ -53,20 +47,10 @@ export const getClient = async ({
       ...soapHeaders,
     },
     undefined,
-    namespace,
+    SOAP_NAMESPACE,
   );
   return client;
 };
-export type Arg = unknown;
-export type Args = Record<string, Arg>;
-interface GetMethodProps {
-  args?: Args;
-  client: Client;
-  rawXml?: string;
-  soapAction: string;
-  targetNamespace?: string;
-  debug?: boolean;
-}
 export const sendAsync = async <T>({
   args,
   client,
@@ -88,9 +72,9 @@ export const sendAsync = async <T>({
       ? {
           _xml: args
             ? `
-              <${namespace}:${soapAction}Request ${targetNamespace ? `xmlns="${targetNamespace}"` : ``}>
+              <${SOAP_NAMESPACE}:${soapAction}Request ${targetNamespace ? `xmlns="${targetNamespace}"` : ``}>
                 ${objectToXML(args)}
-              </${namespace}:${soapAction}Request>`
+              </${SOAP_NAMESPACE}:${soapAction}Request>`
             : rawXml,
         }
       : undefined;
@@ -101,6 +85,6 @@ export const sendAsync = async <T>({
     console.debug("Client Options: ", client.wsdl.options);
     console.debug("Client Namespace: ", client.wsdl.definitions);
   }
-  const response = await client[soapAction + `Async`](requestBody);
+  const response = await client[`${soapAction}Async`](requestBody);
   return response[0] ?? undefined;
 };

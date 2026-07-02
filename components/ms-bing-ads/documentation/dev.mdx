@@ -1,1 +1,9 @@
 Microsoft documents many [frequently asked questions](https://learn.microsoft.com/en-us/advertising/guides/faq?view=bingads-13) that aid in troubleshooting.
+
+#### REST and SOAP APIs
+
+This component uses the Microsoft Advertising **REST API** for most operations. REST is the go-forward standard for Microsoft Advertising, so new features should be built on REST whenever the endpoint is available.
+
+A handful of operations are not yet offered in the REST API and continue to use Microsoft's legacy **SOAP** services (Campaign Management and Customer Management). These SOAP-based features are the exception. Each SOAP-based action ends its description with "Utilizes the SOAP API." so it is identifiable in the Prismatic UI. They currently cover most account, customer, client-link, user, and offline-conversion operations, plus the **Raw Request (SOAP)** action (use **Raw Request (REST)** for REST calls).
+
+As these operations become available over REST, they should be migrated and the "Utilizes the SOAP API." note removed from their descriptions.

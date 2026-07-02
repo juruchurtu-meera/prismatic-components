@@ -1,20 +1,17 @@
-import { dataSource, Element, util } from "@prismatic-io/spectral";
-import { BING_API, toArray } from "../util";
-import { connectionInput, customerIdInput } from "../inputs";
+import { dataSource, type Element, util } from "@prismatic-io/spectral";
 import { getClient, sendAsync } from "../client";
-import {
-  AccountInfo,
-  GetAccountsInfoResponse,
-} from "../actions/getAccountsInfo";
+import { BING_API, SOAP_ACTION } from "../constants";
 import { selectAccountIdExamplePayload } from "../examplePayloads";
-const SOAP_ACTION = "GetAccountsInfo";
+import { selectAccountIdInputs } from "../inputs/accounts";
+import type { AccountInfo, GetAccountsInfoResponse } from "../types";
+import { toArray } from "../util";
 export const selectAccountId = dataSource({
   display: {
     label: "Select Account ID",
     description:
       "Gets the account identifiers that are accessible from the specified customer.",
   },
-  perform: async (context, { connection, customerId }) => {
+  perform: async (_context, { connection, customerId }) => {
     const client = await getClient({
       connection,
       wsdl: BING_API.CUSTOMER_MANAGEMENT_API.WSDL,
@@ -24,7 +21,7 @@ export const selectAccountId = dataSource({
         ...(customerId ? { CustomerId: customerId } : {}),
       },
       client,
-      soapAction: SOAP_ACTION,
+      soapAction: SOAP_ACTION.GetAccountsInfo,
       targetNamespace: BING_API.CUSTOMER_MANAGEMENT_API.TN,
     });
     const standardizedResponse = response?.AccountsInfo?.AccountInfo
@@ -50,15 +47,7 @@ export const selectAccountId = dataSource({
       result: accountIds,
     };
   },
-  inputs: {
-    connection: connectionInput,
-    customerId: {
-      ...customerIdInput,
-      dataSource: undefined,
-    },
-  },
+  inputs: selectAccountIdInputs,
   dataSourceType: "picklist",
-  examplePayload: {
-    result: selectAccountIdExamplePayload,
-  },
+  examplePayload: selectAccountIdExamplePayload,
 });
