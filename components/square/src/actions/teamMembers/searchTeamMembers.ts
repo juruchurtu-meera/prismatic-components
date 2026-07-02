@@ -9,7 +9,7 @@ export const searchTeamMembers = action({
   },
   perform: async (
     context,
-    { searchQuery, squareConnection, limit, cursor },
+    { searchQuery, squareConnection, pagination = {} },
   ) => {
     const client = await createAuthorizedClient(
       squareConnection,
@@ -22,11 +22,11 @@ export const searchTeamMembers = action({
     } = {
       query: searchQuery,
     };
-    if (typeof limit === "number") {
-      requestBody.limit = limit;
+    if (typeof pagination.limit === "number") {
+      requestBody.limit = pagination.limit;
     }
-    if (typeof cursor === "string" && cursor !== "") {
-      requestBody.cursor = cursor;
+    if (typeof pagination.cursor === "string" && pagination.cursor !== "") {
+      requestBody.cursor = pagination.cursor;
     }
     const response = await client.request({
       url: "/v2/team-members/search",

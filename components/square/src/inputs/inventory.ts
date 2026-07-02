@@ -1,9 +1,8 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import {
-  cursor,
   idempotencyKey,
-  limit,
+  pagination,
   squareConnection,
   validateJSON,
 } from "./common";
@@ -112,8 +111,7 @@ export const batchRetrieveInventoryCountsInputs = {
   squareConnection,
   catalogObjectIds,
   locationIds,
-  cursor,
-  limit,
+  pagination,
   updatedAfter,
   states,
 };

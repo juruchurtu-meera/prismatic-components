@@ -6,7 +6,7 @@ export const deleteCatalogObject = action({
   display: {
     label: "Delete Catalog Object",
     description:
-      "Deletes a single CatalogObject based on the provided ID and returns the set of successfully deleted IDs in the response.",
+      "Deletes a single catalog object based on the provided ID and returns the set of successfully deleted IDs in the response.",
   },
   perform: async (context, { squareConnection, objectId }) => {
     const client = await createAuthorizedClient(

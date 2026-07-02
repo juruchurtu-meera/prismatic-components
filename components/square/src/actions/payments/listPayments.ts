@@ -2,6 +2,7 @@ import { action } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../../client";
 import { listPaymentsExamplePayload } from "../../examplePayloads";
 import { listPaymentsInputs } from "../../inputs";
+import { fetchAllPages } from "../../util";
 export const listPayments = action({
   display: {
     label: "List Payments",
@@ -12,38 +13,41 @@ export const listPayments = action({
     context,
     {
       squareConnection,
+      fetchAll,
       beginTime,
       endTime,
       sortOrder,
-      cursor,
+      pagination = {},
       locationId,
       total,
       last4,
       cardBrand,
-      limit,
     },
   ) => {
     const client = await createAuthorizedClient(
       squareConnection,
       context.debug.enabled,
     );
-    const queryParams = {
-      begin_time: beginTime,
-      end_time: endTime,
-      sort_order: sortOrder,
-      cursor: cursor,
-      location_id: locationId,
-      total: total,
-      last_4: last4,
-      card_brand: cardBrand,
-      limit: limit,
-    };
-    const response = await client.get("/v2/payments", {
-      params: queryParams,
-    });
-    return {
-      data: response.data,
-    };
+    const data = await fetchAllPages(
+      client,
+      "/v2/payments",
+      "payments",
+      {
+        initialCursor: pagination.cursor,
+        additionalParams: {
+          begin_time: beginTime,
+          end_time: endTime,
+          sort_order: sortOrder,
+          location_id: locationId,
+          total: total,
+          last_4: last4,
+          card_brand: cardBrand,
+          limit: pagination.limit,
+        },
+      },
+      fetchAll,
+    );
+    return { data };
   },
   inputs: listPaymentsInputs,
   examplePayload: listPaymentsExamplePayload,

@@ -6,19 +6,18 @@ export const searchCatalogObjects = action({
   display: {
     label: "Search Catalog Objects",
     description:
-      "Searches for CatalogObject of any type by matching supported search attribute values, excluding custom attribute values on items or item variations, against one or more of the specified query filters.",
+      "Searches for catalog objects of any type by matching supported search attribute values, excluding custom attribute values on items or item variations, against one or more of the specified query filters.",
   },
   perform: async (
     context,
     {
       squareConnection,
-      cursor,
+      pagination = {},
       objectTypes,
       includeDeletedObjects,
       includeRelatedObjects,
       beginTime,
       catalogQuery,
-      limit,
     },
   ) => {
     const client = await createAuthorizedClient(
@@ -26,13 +25,13 @@ export const searchCatalogObjects = action({
       context.debug.enabled,
     );
     const requestBody = {
-      cursor,
+      cursor: pagination.cursor,
       object_types: objectTypes,
       include_deleted_objects: includeDeletedObjects,
       include_related_objects: includeRelatedObjects,
       begin_time: beginTime,
       query: catalogQuery,
-      limit,
+      limit: pagination.limit,
     };
     const response = await client.post("/v2/catalog/search", requestBody);
     return {

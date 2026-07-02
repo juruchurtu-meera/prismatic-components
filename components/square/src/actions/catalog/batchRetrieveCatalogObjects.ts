@@ -5,7 +5,7 @@ import { batchRetrieveCatalogObjectsInputs } from "../../inputs";
 export const batchRetrieveCatalogObjects = action({
   display: {
     label: "Batch Retrieve Catalog Objects",
-    description: "Returns a set of objects based on the provided ID.",
+    description: "Returns a set of catalog objects based on the provided IDs.",
   },
   perform: async (
     context,

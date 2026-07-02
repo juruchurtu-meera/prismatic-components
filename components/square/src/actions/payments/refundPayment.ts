@@ -6,7 +6,7 @@ export const refundPayment = action({
   display: {
     label: "Refund Payment",
     description:
-      "Refunds a payment. You can refund the entire payment amount or a portion of it.",
+      "Refunds a payment, either the entire amount or a portion of it.",
   },
   perform: async (
     context,

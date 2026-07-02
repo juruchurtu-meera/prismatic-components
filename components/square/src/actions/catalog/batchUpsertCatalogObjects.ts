@@ -6,7 +6,7 @@ export const batchUpsertCatalogObjects = action({
   display: {
     label: "Batch Upsert Catalog Objects",
     description:
-      "Creates or updates up to 10,000 target objects based on the provided list of objects.",
+      "Creates or updates up to 10,000 catalog objects based on the provided list of objects.",
   },
   perform: async (context, { squareConnection, idempotencyKey, batches }) => {
     const client = await createAuthorizedClient(

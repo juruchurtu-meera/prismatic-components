@@ -9,7 +9,13 @@ export const searchOrders = action({
   },
   perform: async (
     context,
-    { squareConnection, locationIds, orderQuery, limit, returnEntries, cursor },
+    {
+      squareConnection,
+      locationIds,
+      orderQuery,
+      pagination = {},
+      returnEntries,
+    },
   ) => {
     const client = await createAuthorizedClient(
       squareConnection,
@@ -18,9 +24,9 @@ export const searchOrders = action({
     const requestBody = {
       location_ids: locationIds,
       query: orderQuery,
-      limit: limit || 500,
+      limit: pagination.limit || 500,
       return_entries: returnEntries || false,
-      cursor,
+      cursor: pagination.cursor,
     };
     const response = await client.post("/v2/orders/search", requestBody);
     return {

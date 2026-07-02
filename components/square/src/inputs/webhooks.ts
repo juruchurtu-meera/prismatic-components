@@ -1,6 +1,11 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { toOptionalNumber, toOptionalString } from "../util";
-import { idempotencyKey, squareConnection, validateJSON } from "./common";
+import {
+  fetchAll,
+  idempotencyKey,
+  squareConnection,
+  validateJSON,
+} from "./common";
 const cursorSubscriptions = input({
   type: "string",
   label: "Cursor",
@@ -36,6 +41,12 @@ const limitSubscriptions = input({
   example: "100",
   comments: "The maximum number of results to return in a single page.",
   clean: toOptionalNumber,
+});
+const pagination = structuredObjectInput({
+  label: "Pagination",
+  required: false,
+  comments: "Cursor and page-size controls for paging through results.",
+  inputs: { cursorSubscriptions, limitSubscriptions },
 });
 const subscriptionId = input({
   type: "string",
@@ -95,8 +106,8 @@ const deleteSubscriptionId = input({
 });
 export const listWebhookSubscriptionsInputs = {
   squareConnection,
-  cursorSubscriptions,
-  limitSubscriptions,
+  fetchAll,
+  pagination,
   includeDisabled,
   sortOrderSubscriptions,
 };

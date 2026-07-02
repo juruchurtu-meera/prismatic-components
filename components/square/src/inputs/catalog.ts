@@ -3,8 +3,9 @@ import { toOptionalNumber, toOptionalString } from "../util";
 import {
   beginTime,
   cursor,
+  fetchAll,
   idempotencyKey,
-  limit,
+  pagination,
   sortOrder,
   squareConnection,
   validateJSON,
@@ -28,6 +29,7 @@ const catalogVersion = input({
   example: "1234567890123",
   comments:
     "The specific version of the catalog objects to include in the response. Used to retrieve historical versions of objects. The value is matched against the CatalogObject version attribute.",
+  required: false,
   clean: toOptionalNumber,
 });
 const textFilter = input({
@@ -37,6 +39,7 @@ const textFilter = input({
   example: "coffee mug",
   comments:
     "The text filter expression used to return items or item variations containing the specified text.",
+  required: false,
   clean: toOptionalString,
 });
 const categoryIds = input({
@@ -50,6 +53,7 @@ const categoryIds = input({
   ),
   comments:
     "An array of category IDs in JSON format used to filter items by category.",
+  required: false,
   clean: (input) => validateJSON(input),
 });
 const stockLevels = input({
@@ -59,6 +63,7 @@ const stockLevels = input({
   default: JSON.stringify(["OUT", "LOW"], null, 2),
   comments:
     "An array of stock levels in JSON format used to filter items. Options: OUT, LOW.",
+  required: false,
   clean: (input) => validateJSON(input),
 });
 const enabledLocationIds = input({
@@ -68,6 +73,7 @@ const enabledLocationIds = input({
   default: JSON.stringify(["LH2G9VFHJRWKR", "LK3H8WGIKSMLA"], null, 2),
   comments:
     "An array of location IDs in JSON format used to filter items by enabled locations.",
+  required: false,
   clean: (input) => validateJSON(input),
 });
 const productTypes = input({
@@ -77,6 +83,7 @@ const productTypes = input({
   default: JSON.stringify(["REGULAR", "APPOINTMENTS_SERVICE"], null, 2),
   comments:
     "An array of product types in JSON format used to filter items. Options: REGULAR, APPOINTMENTS_SERVICE.",
+  required: false,
   clean: (input) => validateJSON(input),
 });
 const customAttributeFilters = input({
@@ -97,6 +104,7 @@ const customAttributeFilters = input({
   ),
   comments:
     "An array of custom attribute filters in JSON format used to match items with specific custom attributes.",
+  required: false,
   clean: (input) => validateJSON(input),
 });
 const objectTypes = input({
@@ -236,18 +244,19 @@ const objectId = input({
   placeholder: "Enter Catalog Object ID",
   example: "W62UWFY35CWMYGVWK6TWJDNI",
   comments: "The unique identifier for the catalog object.",
+  required: true,
   clean: util.types.toString,
 });
 export const listCatalogInputs = {
   squareConnection,
+  fetchAll,
   cursor,
   types,
   catalogVersion,
 };
 export const searchCatalogItemsInputs = {
   squareConnection,
-  cursor,
-  limit,
+  pagination,
   textFilter,
   categoryIds,
   stockLevels,
@@ -263,8 +272,7 @@ export const searchCatalogObjectsInputs = {
   includeRelatedObjects,
   beginTime,
   catalogQuery,
-  cursor,
-  limit,
+  pagination,
 };
 export const batchRetrieveCatalogObjectsInputs = {
   squareConnection,

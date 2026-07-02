@@ -1,9 +1,9 @@
 import { input, util } from "@prismatic-io/spectral";
 import {
-  cursor,
+  fetchAll,
   idempotencyKey,
-  limit,
   locationId,
+  pagination,
   squareConnection,
 } from "./common";
 const invoiceQuery = input({
@@ -80,14 +80,13 @@ const updateInvoiceInput = input({
 export const listInvoicesInputs = {
   squareConnection,
   locationId,
-  cursor,
-  limit,
+  fetchAll,
+  pagination,
 };
 export const searchInvoicesInputs = {
   squareConnection,
   invoiceQuery,
-  cursor,
-  limit,
+  pagination,
 };
 export const getInvoiceInputs = {
   squareConnection,

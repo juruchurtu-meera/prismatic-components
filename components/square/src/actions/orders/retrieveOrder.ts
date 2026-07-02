@@ -5,7 +5,7 @@ import { retrieveOrderInputs } from "../../inputs";
 export const retrieveOrder = action({
   display: {
     label: "Retrieve Order",
-    description: "Retrieves an Order by its ID.",
+    description: "Retrieves an order by its ID.",
   },
   perform: async (context, { squareConnection, orderId }) => {
     const client = await createAuthorizedClient(

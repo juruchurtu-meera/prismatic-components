@@ -1,9 +1,8 @@
 import { input, util } from "@prismatic-io/spectral";
 import {
-  cursor,
   idempotencyKey,
-  limit,
   locationId,
+  pagination,
   squareConnection,
   validateJSON,
 } from "./common";
@@ -146,8 +145,7 @@ export const searchOrdersInputs = {
   locationIds,
   orderQuery,
   returnEntries,
-  cursor,
-  limit,
+  pagination,
 };
 export const retrieveOrderInputs = {
   squareConnection,

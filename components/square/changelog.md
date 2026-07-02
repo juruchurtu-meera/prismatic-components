@@ -1,5 +1,13 @@
 ## Changelog
 
+### 2026-07-02
+
+Grouped pagination and sorting inputs into structured objects and added a Fetch All option to list actions
+
+- List and search actions (**List Customers**, **Search Customers**, **Search Team Members**, **List Payments**, **List Payment Refunds**, **Search Catalog Items**, **Search Catalog Objects**, **Search Orders**, **Batch Retrieve Inventory Counts**, **List Invoices**, **Search Invoices**, and **List Webhook Subscriptions**) group their cursor and page-size inputs into a **Pagination** structured object (breaking: input keys changed)
+- **List Customers** groups its sort inputs into a **Sorting** structured object (breaking: input keys changed)
+- Added a **Fetch All** input to **List Customers**, **List Catalog**, **List Invoices**, **List Payments**, **List Payment Refunds**, and **List Webhook Subscriptions** to automatically retrieve all pages in a single call; **Fetch All** stays a top-level toggle above **Pagination**
+
 ### 2026-05-26
 
 Added the **New and Updated Payments** polling trigger using the Payments API's `updated_at_begin_time` filter. The trigger walks the cursor stream sorted by `UPDATED_AT` and partitions records into created and updated buckets based on each payment's `created_at` and `updated_at` timestamps

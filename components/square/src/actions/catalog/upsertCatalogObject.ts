@@ -5,7 +5,7 @@ import { upsertCatalogObjectInputs } from "../../inputs";
 export const upsertCatalogObject = action({
   display: {
     label: "Upsert Catalog Object",
-    description: "Creates a new or updates the specified CatalogObject.",
+    description: "Creates or updates the specified catalog object.",
   },
   perform: async (
     context,

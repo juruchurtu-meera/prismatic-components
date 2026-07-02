@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import { toOptionalNumber, toOptionalString } from "../util";
 export function validateJSON(input: unknown): Record<string, unknown> {
   if (!util.types.isJSON(util.types.toString(input))) {
@@ -30,6 +30,12 @@ export const limit = input({
   example: "100",
   clean: toOptionalNumber,
 });
+export const pagination = structuredObjectInput({
+  label: "Pagination",
+  required: false,
+  comments: "Cursor and page-size controls for paging through results.",
+  inputs: { cursor, limit },
+});
 export const sortField = input({
   label: "Sort Field",
   placeholder: "Select sort field",
@@ -55,6 +61,12 @@ export const sortOrder = input({
     { label: "None", value: "" },
   ],
   clean: toOptionalString,
+});
+export const sorting = structuredObjectInput({
+  label: "Sorting",
+  required: false,
+  comments: "Field and order to sort results by.",
+  inputs: { sortField, sortOrder },
 });
 export const customerId = input({
   label: "Customer ID",

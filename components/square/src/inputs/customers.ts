@@ -1,12 +1,11 @@
 import { input, util } from "@prismatic-io/spectral";
 import { toOptionalString } from "../util";
 import {
-  cursor,
   customerId,
+  fetchAll,
   idempotencyKey,
-  limit,
-  sortField,
-  sortOrder,
+  pagination,
+  sorting,
   squareConnection,
 } from "./common";
 const address = input({
@@ -184,10 +183,9 @@ const query = input({
 });
 export const listCustomersInputs = {
   squareConnection,
-  cursor,
-  limit,
-  sortField,
-  sortOrder,
+  fetchAll,
+  pagination,
+  sorting,
 };
 export const retrieveCustomerInputs = {
   squareConnection,
@@ -226,8 +224,7 @@ export const createCustomerInputs = {
 export const searchCustomersInputs = {
   squareConnection,
   query,
-  cursor,
-  limit,
+  pagination,
 };
 export const deleteCustomerInputs = {
   squareConnection,

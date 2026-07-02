@@ -2,6 +2,7 @@ import { action } from "@prismatic-io/spectral";
 import { createAuthorizedClient } from "../../client";
 import { listWebhookSubscriptionsExamplePayload } from "../../examplePayloads";
 import { listWebhookSubscriptionsInputs } from "../../inputs";
+import { fetchAllPages } from "../../util";
 export const listWebhookSubscriptions = action({
   display: {
     label: "List Webhook Subscriptions",
@@ -11,27 +12,31 @@ export const listWebhookSubscriptions = action({
     context,
     {
       squareConnection,
-      cursorSubscriptions,
+      fetchAll,
+      pagination = {},
       includeDisabled,
       sortOrderSubscriptions,
-      limitSubscriptions,
     },
   ) => {
     const client = await createAuthorizedClient(
       squareConnection,
       context.debug.enabled,
     );
-    const response = await client.get("/v2/webhooks/subscriptions", {
-      params: {
-        cursor: cursorSubscriptions,
-        include_disabled: includeDisabled,
-        sort_order: sortOrderSubscriptions,
-        limit: limitSubscriptions,
+    const data = await fetchAllPages(
+      client,
+      "/v2/webhooks/subscriptions",
+      "subscriptions",
+      {
+        initialCursor: pagination.cursorSubscriptions,
+        additionalParams: {
+          include_disabled: includeDisabled,
+          sort_order: sortOrderSubscriptions,
+          limit: pagination.limitSubscriptions,
+        },
       },
-    });
-    return {
-      data: response.data,
-    };
+      fetchAll,
+    );
+    return { data };
   },
   inputs: listWebhookSubscriptionsInputs,
   examplePayload: listWebhookSubscriptionsExamplePayload,

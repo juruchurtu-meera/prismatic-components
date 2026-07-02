@@ -39,11 +39,15 @@ export const fetchAllPages = async (
   options?: {
     method?: "GET" | "POST";
     additionalParams?: Record<string, unknown>;
+    initialCursor?: unknown;
   },
   fetchAll = true,
 ) => {
   let allItems: Record<string, unknown>[] = [];
-  let cursor: string | undefined;
+  let cursor: string | undefined =
+    options?.initialCursor !== undefined && options.initialCursor !== ""
+      ? util.types.toString(options.initialCursor)
+      : undefined;
   let lastResponse: Record<string, unknown> = {};
   const method = options?.method || "GET";
   const additionalParams = options?.additionalParams || {};

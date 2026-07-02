@@ -8,7 +8,7 @@ export const pollChangesTrigger = pollingTrigger({
   display: {
     label: "New and Updated Payments",
     description:
-      "Fetches Square payments created or updated since the last execution, separated into new and updated buckets.",
+      "Fetches Square payments created or updated since the last poll on a recurring schedule, separated into new and updated buckets.",
   },
   inputs: pollChangesTriggerInputs,
   perform: async (

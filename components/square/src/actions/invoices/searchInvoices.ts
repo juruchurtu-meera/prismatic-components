@@ -10,15 +10,15 @@ export const searchInvoices = action({
   },
   perform: async (
     context,
-    { squareConnection, limit, invoiceQuery, cursor },
+    { squareConnection, pagination = {}, invoiceQuery },
   ) => {
     const client = await createAuthorizedClient(
       squareConnection,
       context.debug.enabled,
     );
     const requestBody = {
-      cursor,
-      limit: limit || 100,
+      cursor: pagination.cursor,
+      limit: pagination.limit || 100,
       query: invoiceQuery,
     };
     const response = await client.post("/v2/invoices/search", requestBody);

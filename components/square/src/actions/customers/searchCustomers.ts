@@ -7,14 +7,17 @@ export const searchCustomers = action({
     label: "Search Customers",
     description: "Searches for customer profiles.",
   },
-  perform: async (context, { squareConnection, limit, query, cursor }) => {
+  perform: async (context, { squareConnection, pagination = {}, query }) => {
     const client = await createAuthorizedClient(
       squareConnection,
       context.debug.enabled,
     );
-    if (limit !== undefined) limit = util.types.toInt(limit);
+    const limit =
+      pagination.limit !== undefined
+        ? util.types.toInt(pagination.limit)
+        : undefined;
     const requestBody = {
-      cursor,
+      cursor: pagination.cursor,
       limit,
       query,
     };

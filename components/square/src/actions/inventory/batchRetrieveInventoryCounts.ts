@@ -6,7 +6,7 @@ export const batchRetrieveInventoryCounts = action({
   display: {
     label: "Batch Retrieve Inventory Counts",
     description:
-      "Returns current counts for the provided CatalogObjects at the requested Locations.",
+      "Returns current inventory counts for the provided catalog objects at the requested locations.",
   },
   perform: async (
     context,
@@ -15,9 +15,8 @@ export const batchRetrieveInventoryCounts = action({
       catalogObjectIds,
       locationIds,
       updatedAfter,
-      cursor,
+      pagination = {},
       states,
-      limit,
     },
   ) => {
     const client = await createAuthorizedClient(
@@ -28,9 +27,9 @@ export const batchRetrieveInventoryCounts = action({
       catalog_object_ids: catalogObjectIds,
       location_ids: locationIds,
       updated_after: updatedAfter,
-      cursor: cursor,
+      cursor: pagination.cursor,
       states: states,
-      limit: limit,
+      limit: pagination.limit,
     };
     const response = await client.post(
       "/v2/inventory/counts/batch-retrieve",

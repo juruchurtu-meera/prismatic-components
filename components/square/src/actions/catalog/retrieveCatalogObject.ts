@@ -5,7 +5,7 @@ import { retrieveCatalogObjectInputs } from "../../inputs";
 export const retrieveCatalogObject = action({
   display: {
     label: "Retrieve Catalog Object",
-    description: "Returns a single CatalogObject based on the provided ID.",
+    description: "Returns a single catalog object based on the provided ID.",
   },
   perform: async (
     context,

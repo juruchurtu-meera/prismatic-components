@@ -1,5 +1,5 @@
 import { input, util } from "@prismatic-io/spectral";
-import { cursor, idempotencyKey, limit, squareConnection } from "./common";
+import { idempotencyKey, pagination, squareConnection } from "./common";
 const teamMember = input({
   label: "Team Member",
   type: "code",
@@ -73,8 +73,7 @@ export const createTeamMemberInputs = {
 export const searchTeamMembersInputs = {
   squareConnection,
   searchQuery,
-  cursor,
-  limit,
+  pagination,
 };
 export const retrieveTeamMemberInputs = {
   squareConnection,
