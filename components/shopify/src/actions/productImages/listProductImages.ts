@@ -13,8 +13,10 @@ export const listProductImages = action({
       shopifyConnection: params.shopifyConnection,
       productId: `gid://shopify/Product/${params.productId}`,
       getAlldata: true,
-      limit: MAX_LIMIT,
-      endCursor: undefined,
+      pagination: {
+        limit: MAX_LIMIT,
+        endCursor: undefined,
+      },
     });
     return { data };
   },

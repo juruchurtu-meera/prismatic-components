@@ -16,13 +16,10 @@ export const createCustomer = action({
       firstName,
       lastName,
       email,
-      phone,
-      notes,
       shopifyConnection,
-      metafields,
       tags,
-      taxExempt,
       addressList,
+      additionalFields = {},
     },
   ) => {
     const { data } = await createCustomerGql.perform(context, {
@@ -30,11 +27,14 @@ export const createCustomer = action({
       firstName: util.types.toString(firstName),
       lastName: util.types.toString(lastName),
       email: util.types.toString(email),
-      phone,
-      notes: util.types.toString(notes),
-      metafields: cleanArrayCodeInput(metafields, "Metafields"),
+      phone: additionalFields.phone,
+      notes: util.types.toString(additionalFields.notes),
+      metafields: cleanArrayCodeInput(
+        additionalFields.metafields,
+        "Metafields",
+      ),
       tags: cleanValueListInput(tags),
-      taxExempt: util.types.toBool(taxExempt),
+      taxExempt: util.types.toBool(additionalFields.taxExempt),
       addressListGql: (
         cleanArrayCodeInput(addressList, "AddressList") as RestAddress[]
       ).map(addressMapper),

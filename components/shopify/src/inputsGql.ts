@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   LIST_COLLECTIONS_DATASOURCE_REFERENCE,
   LIST_CUSTOMERS_DATASOURCE_REFERENCE,
@@ -92,6 +92,12 @@ const endCursor = input({
   placeholder: "Enter page cursor",
   clean: cleanStringInput,
 });
+const pagination = structuredObjectInput({
+  label: "Pagination",
+  required: false,
+  comments: "Page and page-size controls.",
+  inputs: { limit, endCursor },
+});
 export const listCollectsInputs = {
   shopifyConnection,
   getAlldata,
@@ -100,9 +106,8 @@ export const listCollectsInputs = {
 };
 export const listCurrenciesInputs = {
   shopifyConnection,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 export const countCustomersInputs = {
   shopifyConnection,
@@ -310,20 +315,17 @@ export const getCustomerInputs = {
 export const listCustomersInputs = {
   shopifyConnection,
   getAlldata,
-  limit,
-  endCursor,
+  pagination,
 };
 export const listCollectionsInputs = {
   shopifyConnection,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 export const listDraftOrdersInputs = {
   shopifyConnection,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 const draftOrderId = input({
   label: "Draft Order Id",
@@ -436,9 +438,8 @@ const orderId = input({
 export const listFulfillmentOrdersInputs = {
   shopifyConnection,
   orderId,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 const fulfillmentId = input({
   label: "Fulfillment Id",
@@ -568,10 +569,9 @@ const query = input({
 });
 export const listInventoryItemsInputs = {
   shopifyConnection,
-  query,
   getAlldata,
-  limit,
-  endCursor,
+  query,
+  pagination,
 };
 const itemId = input({
   label: "Inventory Item Id",
@@ -630,14 +630,12 @@ export const listInventoryLevelsInputs = {
   shopifyConnection,
   locationId,
   getAlldata,
-  limit,
-  endCursor,
+  pagination,
 };
 export const listLocationsInputs = {
   shopifyConnection,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 const levelId = input({
   label: "Inventory Level Id",
@@ -753,15 +751,14 @@ export const cancelOrderInputs = {
 };
 export const listOrdersInputs = {
   shopifyConnection,
+  getAlldata,
   query: input({
     ...query,
     comments: "The query to filter the orders.",
     placeholder: "updated_at:>2019-12-01",
     example: "updated_at:>2019-12-01",
   }),
-  getAlldata,
-  limit,
-  endCursor,
+  pagination,
 };
 export const closeOrderInputs = {
   shopifyConnection,
@@ -879,8 +876,7 @@ export const listProductImagesInputs = {
   shopifyConnection,
   productId,
   getAlldata,
-  limit,
-  endCursor,
+  pagination,
 };
 export const getShopConfigInputs = {
   shopifyConnection,
@@ -894,8 +890,7 @@ export const listVariantsInputs = {
     clean: cleanProductIdForVariant,
   }),
   getAlldata,
-  limit,
-  endCursor,
+  pagination,
 };
 export const countVariantsInputs = {
   shopifyConnection,
@@ -1015,16 +1010,15 @@ const showOnlyInstanceWebhooks = input({
 });
 export const listWebhooksInputs = {
   shopifyConnection,
-  showOnlyInstanceWebhooks,
   getAlldata,
-  limit,
-  endCursor,
+  showOnlyInstanceWebhooks,
   callbackUrl: input({
     ...callbackUrl,
     required: false,
     comments: "Filter webhooks by callback URL.",
     clean: cleanStringInput,
   }),
+  pagination,
 };
 const webhookId = input({
   label: "Webhook ID",
@@ -1085,9 +1079,8 @@ export const selectFulfillmentServicesInputs = {
 };
 export const listProducstInputs = {
   shopifyConnection,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 export const getProductInputs = {
   shopifyConnection,
@@ -1268,9 +1261,8 @@ const resource = input({
 export const listMetafieldsInputs = {
   shopifyConnection,
   resource,
-  limit,
   getAlldata,
-  endCursor,
+  pagination,
 };
 const key = input({
   label: "Key",

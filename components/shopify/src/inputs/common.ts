@@ -1,4 +1,4 @@
-import { input, util } from "@prismatic-io/spectral";
+import { input, structuredObjectInput, util } from "@prismatic-io/spectral";
 import {
   DEFAULT_SHOPIFY_VERSION,
   GRAPHQL_EXAMPLE,
@@ -38,11 +38,11 @@ export const apiVersion = input({
   clean: util.types.toString,
 });
 export const getAlldata = input({
-  label: "Get All Data",
+  label: "Fetch All",
   type: "boolean",
   required: false,
   comments:
-    "When true, fetches all data from all pages (API is limited to 250 records per page max). The limit input will be ignored when enabled.",
+    "When true, fetches all pages of results instead of a single page. The API returns up to 250 records per page, and the Limit input is ignored.",
   clean: util.types.toBool,
 });
 export const limit = input({
@@ -64,6 +64,12 @@ export const pageInfo = input({
     "eyJkaXJlY3Rpb24iOiJwcmV2IiwibGFzdF9pZCI6OTAyOTk2ODAwMzM1NCwibGFzdF92YWx1ZSI6IlRoZSBDb2xsZWN0aW9uIFNub3dib2FyZDogTGlxdWlkIn0",
   placeholder: "Enter page cursor",
   clean: cleanStringInput,
+});
+export const pagination = structuredObjectInput({
+  label: "Pagination",
+  required: false,
+  comments: "Page and page-size controls.",
+  inputs: { limit, pageInfo },
 });
 export const customerId = input({
   label: "Customer",

@@ -1,14 +1,7 @@
-import {
-  connectionInput,
-  getAlldata,
-  limit,
-  orderId,
-  pageInfo,
-} from "../common";
+import { connectionInput, getAlldata, orderId, pagination } from "../common";
 export const listFulfillmentsInputs = {
   orderId,
   getAlldata,
-  limit,
-  pageInfo,
+  pagination,
   shopifyConnection: connectionInput,
 };

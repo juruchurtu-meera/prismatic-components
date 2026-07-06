@@ -14,8 +14,10 @@ export const listWebhooks = action({
       shopifyConnection: params.shopifyConnection,
       showOnlyInstanceWebhooks: params.showOnlyInstanceWebhooks,
       getAlldata: true,
-      limit: MAX_LIMIT,
-      endCursor: undefined,
+      pagination: {
+        limit: MAX_LIMIT,
+        endCursor: undefined,
+      },
       callbackUrl: undefined,
     });
     return { data };

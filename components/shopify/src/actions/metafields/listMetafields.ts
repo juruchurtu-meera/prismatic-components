@@ -17,7 +17,10 @@ export const listMetafields = action({
     const result = await computePageInformation(
       client,
       "/metafields",
-      { limit: params.limit, page_info: params.pageInfo || undefined },
+      {
+        limit: params.pagination.limit,
+        page_info: params.pagination.pageInfo || undefined,
+      },
       params.getAlldata,
     );
     return { data: result as unknown };

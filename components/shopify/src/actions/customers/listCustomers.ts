@@ -10,9 +10,13 @@ export const listCustomers = action({
   perform: async (context, params) => {
     const { data } = await listCustomersGql.perform(context, {
       shopifyConnection: params.shopifyConnection,
-      limit: params.limit ? util.types.toInt(params.limit) : 50,
+      pagination: {
+        limit: params.pagination.limit
+          ? util.types.toInt(params.pagination.limit)
+          : 50,
+        endCursor: params.pagination.pageInfo || undefined,
+      },
       getAlldata: params.getAlldata,
-      endCursor: params.pageInfo || undefined,
     });
     return { data };
   },

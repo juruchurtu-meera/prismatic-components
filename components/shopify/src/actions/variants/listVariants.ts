@@ -18,8 +18,8 @@ export const listVariants = action({
       client,
       `/products/${params.productId}/variants`,
       {
-        limit: params.limit,
-        page_info: params.pageInfo || undefined,
+        limit: params.pagination.limit,
+        page_info: params.pagination.pageInfo || undefined,
       },
       params.getAlldata,
     );

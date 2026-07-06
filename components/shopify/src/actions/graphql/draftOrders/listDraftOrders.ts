@@ -15,7 +15,7 @@ export const listDraftOrdersGql = action({
   },
   perform: async (
     context,
-    { shopifyConnection, limit, getAlldata, endCursor },
+    { shopifyConnection, getAlldata, pagination = {} },
   ) => {
     const client = getShopifyGraphQlClient(
       shopifyConnection,
@@ -29,8 +29,8 @@ export const listDraftOrdersGql = action({
       getAlldata,
       listDraftOrdersQuery,
       {
-        first: getAlldata ? MAX_LIMIT : limit,
-        cursor: getAlldata ? undefined : endCursor,
+        first: getAlldata ? MAX_LIMIT : pagination.limit,
+        cursor: getAlldata ? undefined : pagination.endCursor,
       },
     );
     return {

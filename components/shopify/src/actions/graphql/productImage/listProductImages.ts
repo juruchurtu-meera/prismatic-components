@@ -15,7 +15,7 @@ export const listProductImagesGql = action({
   },
   perform: async (
     context,
-    { shopifyConnection, productId, getAlldata, limit, endCursor },
+    { shopifyConnection, productId, getAlldata, pagination = {} },
   ) => {
     const client = getShopifyGraphQlClient(
       shopifyConnection,
@@ -30,8 +30,8 @@ export const listProductImagesGql = action({
       listProductImagesQuery,
       {
         productId,
-        first: getAlldata ? MAX_LIMIT : limit,
-        cursor: getAlldata ? undefined : endCursor,
+        first: getAlldata ? MAX_LIMIT : pagination.limit,
+        cursor: getAlldata ? undefined : pagination.endCursor,
       },
     )) as Record<"images", ProductImage[]> & {
       pageInfo: PageInfo;

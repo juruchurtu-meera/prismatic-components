@@ -15,7 +15,7 @@ export const listMetafieldsGql = action({
   },
   perform: async (
     context,
-    { shopifyConnection, resource, getAlldata, endCursor, limit },
+    { shopifyConnection, resource, getAlldata, pagination = {} },
   ) => {
     const client = getShopifyGraphQlClient(
       shopifyConnection,
@@ -29,8 +29,8 @@ export const listMetafieldsGql = action({
       getAlldata,
       listMetafieldsQuery,
       {
-        first: getAlldata ? MAX_LIMIT : limit,
-        cursor: getAlldata ? undefined : endCursor,
+        first: getAlldata ? MAX_LIMIT : pagination.limit,
+        cursor: getAlldata ? undefined : pagination.endCursor,
         resource,
       },
     )) as Record<"metafields", Metafield[]> & {

@@ -13,9 +13,11 @@ export const listFulfillmentOrders = action({
     const { data } = await listFulfillmentOrdersGql.perform(context, {
       shopifyConnection: params.shopifyConnection,
       orderId: `gid://shopify/Order/${params.orderId}`,
-      limit: MAX_LIMIT,
+      pagination: {
+        limit: MAX_LIMIT,
+        endCursor: undefined,
+      },
       getAlldata: true,
-      endCursor: undefined,
     });
     return { data };
   },

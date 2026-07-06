@@ -13,7 +13,7 @@ export const listInventoryLevelsGql = action({
   },
   perform: async (
     context,
-    { shopifyConnection, locationId, getAlldata, limit, endCursor },
+    { shopifyConnection, locationId, getAlldata, pagination = {} },
   ) => {
     const client = getShopifyGraphQlClient(
       shopifyConnection,
@@ -28,8 +28,8 @@ export const listInventoryLevelsGql = action({
       listInventoryLevelsQuery,
       {
         id: locationId,
-        first: getAlldata ? MAX_LIMIT : limit,
-        cursor: getAlldata ? undefined : endCursor,
+        first: getAlldata ? MAX_LIMIT : pagination.limit,
+        cursor: getAlldata ? undefined : pagination.endCursor,
       },
     )) as Record<"inventoryLevels", unknown[]> & {
       pageInfo: PageInfo;

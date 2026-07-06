@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2026-07-06
+
+Restructured action inputs into structured objects for an improved user experience.
+- The GraphQL list actions (**List Currencies**, **List Collections**, **List Customers**, **List Draft Orders**, **List Fulfillment Orders**, **List Inventory Items**, **List Inventory Levels At Location**, **List Locations**, **List Orders**, **List Product Images**, **List Products**, **List Variants**, **List Webhooks**, and **List Metafields**) group their **Limit** and **Page Offset Cursor** inputs into a **Pagination** structured object
+- **Create Customer** groups its **Phone**, **Notes**, **Currency Format**, **Tax Exempt**, and **Metafields** inputs into an **Additional Fields** structured object; the required **Address List** input moves up beside the other required inputs
+
 ### 2026-04-30
 
 Updated spectral version

@@ -17,7 +17,7 @@ export const listFulfillmentOrdersGql = action({
   inputs,
   perform: async (
     context,
-    { shopifyConnection, orderId, limit, getAlldata, endCursor },
+    { shopifyConnection, orderId, getAlldata, pagination = {} },
   ) => {
     const client = getShopifyGraphQlClient(
       shopifyConnection,
@@ -32,8 +32,8 @@ export const listFulfillmentOrdersGql = action({
       listFulfillmentOrdersQuery,
       {
         orderId,
-        first: getAlldata ? MAX_LIMIT : limit,
-        cursor: getAlldata ? undefined : endCursor,
+        first: getAlldata ? MAX_LIMIT : pagination.limit,
+        cursor: getAlldata ? undefined : pagination.endCursor,
       },
     )) as Record<"fulfillmentOrders", FulfillmentOrder[]> & {
       pageInfo: PageInfo;

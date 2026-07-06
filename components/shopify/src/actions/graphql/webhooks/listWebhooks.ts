@@ -16,9 +16,8 @@ export const listWebhooksGql = action({
       shopifyConnection,
       showOnlyInstanceWebhooks,
       getAlldata,
-      limit,
-      endCursor,
       callbackUrl,
+      pagination = {},
     },
   ) => {
     const client = getShopifyGraphQlClient(
@@ -29,10 +28,10 @@ export const listWebhooksGql = action({
     const { webhookSubscriptions } = await listWebhooks(
       client,
       getAlldata,
-      limit,
+      pagination.limit,
       showOnlyInstanceWebhooks,
       Object.values(context.webhookUrls),
-      endCursor,
+      pagination.endCursor,
       callbackUrl,
     );
     return {
