@@ -89,11 +89,11 @@ export const createCustomerInputs = {
   connection: connectionInput,
 };
 export const updateCustomerInputs = {
+  version,
   recordId: {
     ...recordId,
     dataSource: "selectCustomer",
   },
-  version,
   name: {
     ...name,
     comments: "Name of this customer.",

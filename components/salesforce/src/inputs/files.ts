@@ -76,7 +76,7 @@ export const uploadFileInputs = {
   pathOnClient,
 };
 export const getFileInputs = {
-  contentDocumentId,
   version,
+  contentDocumentId,
   connection: connectionInput,
 };

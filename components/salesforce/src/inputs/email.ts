@@ -48,11 +48,11 @@ const recipientAttributes = input({
   comments: "Key-value pairs to personalize the message.",
 });
 export const sendTransactionalEmailInputs = {
+  version,
   messageKey,
   definitionKey,
   recipientContactKey,
   recipientEmail,
-  recipientAttributes,
   connection: connectionInput,
-  version,
+  recipientAttributes,
 };

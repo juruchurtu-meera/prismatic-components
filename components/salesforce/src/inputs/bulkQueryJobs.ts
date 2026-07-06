@@ -127,8 +127,8 @@ export const createBulkQueryJobInputs = {
   version,
   operation,
   query,
-  columnDelimiter,
   lineEnding,
+  columnDelimiter,
 };
 export const abortBulkQueryJobInputs = {
   connection: connectionInput,

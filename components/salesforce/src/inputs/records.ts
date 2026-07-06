@@ -5,9 +5,7 @@ import {
   fetchAll,
   fieldValues,
   fieldValueTypes,
-  maxRecordsToFetch,
-  pageNumber,
-  pageSize,
+  pagination,
   queryString,
   recordId,
   recordType,
@@ -53,14 +51,12 @@ export const findRecordInputs = {
 export const findRecordsInputs = {
   version,
   recordType,
+  fetchAll,
+  pagination,
   dynamicValues,
   fieldValues,
   fieldValueTypes,
-  pageSize,
-  pageNumber,
   sort: sortInput,
-  fetchAll,
-  maxRecordsToFetch,
   connection: connectionInput,
 };
 export const upsertRecordInputs = {

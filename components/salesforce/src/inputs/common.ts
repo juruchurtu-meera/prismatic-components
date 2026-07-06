@@ -1,4 +1,9 @@
-import { input, type KeyValuePair, util } from "@prismatic-io/spectral";
+import {
+  input,
+  type KeyValuePair,
+  structuredObjectInput,
+  util,
+} from "@prismatic-io/spectral";
 import { DEFAULT_SF_VERSION } from "../constants";
 import {
   cleanNumberInput,
@@ -171,15 +176,6 @@ export const pageNumber = input({
   example: "3",
   clean: cleanNumberInput,
 });
-export const fetchAll = input({
-  label: "Fetch All",
-  type: "boolean",
-  required: false,
-  default: "false",
-  comments:
-    "When true, automatically fetches all pages of results instead of a single page.",
-  clean: util.types.toBool,
-});
 export const maxRecordsToFetch = input({
   label: "Max Records To Fetch",
   type: "string",
@@ -190,6 +186,21 @@ export const maxRecordsToFetch = input({
   placeholder: "Enter max records to fetch",
   default: "20000",
   clean: cleanNumberInput,
+});
+export const pagination = structuredObjectInput({
+  label: "Pagination",
+  required: false,
+  comments: "Page and page-size controls.",
+  inputs: { pageSize, pageNumber, maxRecordsToFetch },
+});
+export const fetchAll = input({
+  label: "Fetch All",
+  type: "boolean",
+  required: false,
+  default: "false",
+  comments:
+    "When true, automatically fetches all pages of results instead of a single page.",
+  clean: util.types.toBool,
 });
 export const queryString = input({
   label: "SOQL Query",
@@ -221,14 +232,12 @@ export const description = input({
 });
 export const listInputs = {
   version,
+  fetchAll,
+  pagination,
   dynamicValues,
   fieldValues,
   fieldValueTypes,
-  pageSize,
-  pageNumber,
   sort: sortInput,
-  fetchAll,
-  maxRecordsToFetch,
   connection: connectionInput,
 };
 export const getCurrentUserInputs = { version, connection: connectionInput };

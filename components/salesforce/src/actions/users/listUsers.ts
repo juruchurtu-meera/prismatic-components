@@ -14,22 +14,21 @@ export const listUsers = action({
       version,
       connection,
       fetchAll,
-      maxRecordsToFetch,
-      pageNumber,
-      pageSize,
+      pagination = {},
       sort,
       dynamicValues,
       fieldValueTypes,
       fieldValues,
     },
   ) => {
+    const maxRecordsToFetch = pagination.maxRecordsToFetch;
     if (context.debug.enabled) {
       context.logger.debug({
         version,
         fetchAll,
         maxRecordsToFetch,
-        pageNumber,
-        pageSize,
+        pageNumber: pagination.pageNumber,
+        pageSize: pagination.pageSize,
         sort,
       });
     }
@@ -41,8 +40,8 @@ export const listUsers = action({
       fieldValues,
       fieldValueTypes,
       maxRecordsToFetch,
-      pageNumber,
-      pageSize,
+      pageNumber: pagination.pageNumber,
+      pageSize: pagination.pageSize,
       recordType: "User",
       salesforceClient,
       sortValue,

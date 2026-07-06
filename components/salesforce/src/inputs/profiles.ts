@@ -55,8 +55,8 @@ export const createProfileInputs = {
   version,
   name: nameInput,
   description: descriptionInput,
-  permissions: permissionsInput,
   userLicense: userLicenseInput,
+  permissions: permissionsInput,
   connection: connectionInput,
 };
 export const updateProfileInputs = {

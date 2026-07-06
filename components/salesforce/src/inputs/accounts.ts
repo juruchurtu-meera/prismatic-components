@@ -1,3 +1,4 @@
+import { structuredObjectInput } from "@prismatic-io/spectral";
 import {
   connectionInput,
   description,
@@ -25,58 +26,67 @@ import {
   type,
   website,
 } from "./fields";
+const shippingAddress = structuredObjectInput({
+  label: "Shipping Address",
+  required: false,
+  comments:
+    "Street, city, state, postal code, and country for the shipping address.",
+  inputs: { street, state, city, postalCode, country },
+});
+const billingAddress = structuredObjectInput({
+  label: "Billing Address",
+  required: false,
+  comments:
+    "Street, city, state, postal code, and country for the billing address.",
+  inputs: {
+    billingStreet,
+    billingState,
+    billingCity,
+    billingPostalCode,
+    billingCountry,
+  },
+});
+const additionalFields = structuredObjectInput({
+  label: "Additional Fields",
+  required: false,
+  comments:
+    "Additional optional fields: includes Phone, Website, Description, Number of Employees, and Annual Revenue.",
+  inputs: {
+    phone,
+    website,
+    description,
+    employeeCount,
+    revenue,
+  },
+});
 export const createAccountInputs = {
   version,
-  dynamicValues,
-  fieldValues,
-  phone,
-  website,
+  name,
   type,
   industry,
-  description,
-  employeeCount,
-  revenue,
-  billingCity,
-  billingPostalCode,
-  billingState,
-  billingStreet,
-  billingCountry,
-  street,
-  state,
-  country,
-  name,
-  city,
-  postalCode,
+  dynamicValues,
+  fieldValues,
+  shippingAddress,
+  billingAddress,
+  additionalFields,
   connection: connectionInput,
 };
 export const deleteAccountInputs = {
   version,
-  fieldValues,
   recordId,
+  fieldValues,
   connection: connectionInput,
 };
 export const updateAccountInputs = {
-  recordId,
   version,
-  dynamicValues,
-  fieldValues,
-  phone,
-  website,
+  recordId,
+  name,
   type,
   industry,
-  description,
-  employeeCount,
-  revenue,
-  billingCity,
-  billingPostalCode,
-  billingState,
-  billingStreet,
-  billingCountry,
-  street,
-  state,
-  country,
-  name,
-  city,
-  postalCode,
+  dynamicValues,
+  fieldValues,
+  shippingAddress,
+  billingAddress,
+  additionalFields,
   connection: connectionInput,
 };

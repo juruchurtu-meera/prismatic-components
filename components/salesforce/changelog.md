@@ -1,5 +1,14 @@
 ## Changelog
 
+### 2026-07-02
+
+Restructured action inputs into structured objects for an improved user experience
+
+- **Create Lead** / **Update Lead** combine their name and contact-channel inputs into a **Name & Contact Information** group, group their address inputs into **Address**, and group their optional secondary inputs into **Additional Fields**
+- **Create Contact** / **Update Contact** combine their name and contact-channel inputs into a **Name & Contact Information** group, group their address inputs into **Mailing Address** and **Other Address**, and group their optional secondary inputs into **Additional Fields**
+- **Create Account** / **Update Account** group their address inputs into **Shipping Address** and **Billing Address**, and group their optional secondary inputs into **Additional Fields**
+- List actions (**List Contacts**, **List Leads**, **List Opportunities**, **List Customers**, **List Users**, **List Profiles**) and **Find Records** group their pagination controls into a **Pagination** structured object; **Fetch All** stays a flat top-level toggle
+
 ### 2026-05-11
 
 Resolved `DUPLICATE_DEVELOPER_NAME` failure on **Flow Outbound Message Webhook** redeploy in orgs with managed packages shipping `WorkflowOutboundMessage` records:

@@ -67,37 +67,33 @@ const metadataType = input({
 });
 export const listObjectMetadataInputs = {
   connection: connectionInput,
+  version,
   metadataType: {
     ...metadataType,
     default: "CustomObject",
   },
-  version,
 };
 export const getObjectMetadataByNameInputs = {
   connection: connectionInput,
+  version,
+  fullName: objectFullName,
   metadataType: {
     ...metadataType,
     default: "CustomObject",
   },
-  version,
-  fullName: objectFullName,
 };
 export const createObjectsFromMetadataInputs = {
   connection: connectionInput,
   version,
+  metadata: metadataInput,
   metadataType: {
     ...metadataType,
     default: "CustomObject",
   },
-  metadata: metadataInput,
 };
 export const createFieldsFromMetadataInputs = {
   connection: connectionInput,
   version,
-  metadataType: {
-    ...metadataType,
-    default: "CustomField",
-  },
   metadata: {
     ...metadataInput,
     default: JSON.stringify(
@@ -114,14 +110,14 @@ export const createFieldsFromMetadataInputs = {
       2,
     ),
   },
-};
-export const updateMetadataInputs = {
-  connection: connectionInput,
-  version,
   metadataType: {
     ...metadataType,
     default: "CustomField",
   },
+};
+export const updateMetadataInputs = {
+  connection: connectionInput,
+  version,
   metadata: {
     ...metadataInput,
     default: undefined,
@@ -139,13 +135,17 @@ export const updateMetadataInputs = {
       2,
     ),
   },
+  metadataType: {
+    ...metadataType,
+    default: "CustomField",
+  },
 };
 export const deleteMetadataInputs = {
   connection: connectionInput,
+  version,
+  fullNames: objectFullNames,
   metadataType: {
     ...metadataType,
     default: "CustomObject",
   },
-  version,
-  fullNames: objectFullNames,
 };

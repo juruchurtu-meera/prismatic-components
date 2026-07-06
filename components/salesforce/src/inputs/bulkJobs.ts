@@ -100,8 +100,9 @@ const assignmentRuleId = input({
 export const createBulkJobInputs = {
   connection: connectionInput,
   version,
-  object,
   operation: jobOperation,
+  lineEnding,
+  object,
   externalIdFieldName: {
     ...externalIdFieldName,
     required: false,
@@ -111,7 +112,6 @@ export const createBulkJobInputs = {
   },
   assignmentRuleId,
   columnDelimiter,
-  lineEnding,
 };
 export const bulkInsertRecordsInputs = {
   version,

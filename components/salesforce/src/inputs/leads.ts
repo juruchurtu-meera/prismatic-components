@@ -1,3 +1,4 @@
+import { structuredObjectInput } from "@prismatic-io/spectral";
 import {
   connectionInput,
   description,
@@ -10,6 +11,7 @@ import {
 import {
   city,
   company,
+  country,
   email,
   employeeCount,
   firstName,
@@ -25,54 +27,58 @@ import {
   title,
   website,
 } from "./fields";
+const address = structuredObjectInput({
+  label: "Address",
+  required: false,
+  comments: "Street, city, state, postal code, and country for the address.",
+  inputs: { street, state, city, postalCode, country },
+});
+const nameAndContact = structuredObjectInput({
+  label: "Name & Contact Information",
+  required: false,
+  comments: "First and last name, phone, and website.",
+  inputs: { firstName, lastName, phone, website },
+});
+const additionalFields = structuredObjectInput({
+  label: "Additional Fields",
+  required: false,
+  comments:
+    "Additional optional fields: includes Title, Lead Source, Rating, Number of Employees, Description, and Annual Revenue.",
+  inputs: {
+    title,
+    leadSource,
+    rating,
+    employeeCount,
+    description,
+    revenue,
+  },
+});
 export const createLeadInputs = {
   version,
+  company,
+  leadStatus,
+  email,
   dynamicValues,
   fieldValues,
-  firstName,
-  lastName,
-  company,
-  title,
-  phone,
-  email,
-  leadSource,
-  rating,
-  website,
-  street,
-  state,
-  city,
-  postalCode,
-  employeeCount,
-  description,
-  revenue,
-  leadStatus,
+  nameAndContact,
+  address,
+  additionalFields,
   connection: connectionInput,
 };
 export const updateLeadInputs = {
+  version,
   recordId: {
     ...recordId,
     dataSource: "selectLead",
   },
-  version,
   company,
-  email,
   leadStatus,
+  email,
   dynamicValues,
   fieldValues,
-  firstName,
-  lastName,
-  title,
-  phone,
-  leadSource,
-  rating,
-  website,
-  street,
-  state,
-  city,
-  postalCode,
-  employeeCount,
-  description,
-  revenue,
+  nameAndContact,
+  address,
+  additionalFields,
   connection: connectionInput,
 };
 export const deleteLeadInputs = {

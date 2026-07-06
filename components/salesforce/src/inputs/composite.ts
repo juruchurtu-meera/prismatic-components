@@ -52,9 +52,9 @@ const compositeRequest = input({
 export const compositeRequestInputs = {
   connection: connectionInput,
   version,
+  compositeRequest,
   allOrNone,
   collateSubrequests,
-  compositeRequest,
 };
 export const listCompositeResourcesInputs = {
   connection: connectionInput,

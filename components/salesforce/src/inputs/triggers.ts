@@ -60,13 +60,13 @@ const returnIdsOnly = input({
 });
 export const pollChangesTriggerInputs = {
   connection: connectionInput,
+  version,
   recordType,
   showNewRecords,
   showUpdatedRecords,
   showDeletedRecords,
   selectedFields,
   returnIdsOnly,
-  version,
   dynamicValues,
   fieldValues,
   fieldValueTypes,
@@ -78,6 +78,7 @@ export const pollChangesTriggerInputs = {
 };
 export const workflowTriggerInputs = {
   connection: connectionInput,
+  version,
   recordType,
   triggerType: triggerTypeInput,
   outboundMessageName: {
@@ -97,5 +98,4 @@ export const workflowTriggerInputs = {
   },
   description,
   fields: fieldsInput,
-  version,
 };

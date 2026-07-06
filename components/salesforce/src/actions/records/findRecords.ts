@@ -17,14 +17,13 @@ export const findRecords = action({
       dynamicValues,
       fieldValues,
       fieldValueTypes,
-      pageSize,
-      pageNumber,
+      pagination = {},
       connection,
       sort,
       fetchAll,
-      maxRecordsToFetch,
     },
   ) => {
+    const maxRecordsToFetch = pagination.maxRecordsToFetch;
     if (context.debug.enabled) {
       context.logger.debug("Payload", {
         version,
@@ -32,8 +31,8 @@ export const findRecords = action({
         dynamicValues,
         fieldValues,
         fieldValueTypes,
-        pageSize,
-        pageNumber,
+        pageSize: pagination.pageSize,
+        pageNumber: pagination.pageNumber,
         sort,
         fetchAll,
         maxRecordsToFetch,
@@ -47,8 +46,8 @@ export const findRecords = action({
       fieldValues,
       fieldValueTypes,
       maxRecordsToFetch,
-      pageNumber,
-      pageSize,
+      pageNumber: pagination.pageNumber,
+      pageSize: pagination.pageSize,
       recordType,
       salesforceClient,
       sortValue,

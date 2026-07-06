@@ -63,15 +63,15 @@ const timeZone = input({
 });
 export const createUserInputs = {
   version,
-  dynamicValues,
-  fieldValues,
   profile,
   userName: { ...userName, dataSource: undefined },
-  firstName,
-  lastName,
   timeZone,
   alias,
   email,
+  dynamicValues,
+  fieldValues,
+  firstName,
+  lastName,
   connection: connectionInput,
 };
 export const updateUserInputs = {

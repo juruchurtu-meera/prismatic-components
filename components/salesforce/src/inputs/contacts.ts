@@ -1,4 +1,4 @@
-import { input } from "@prismatic-io/spectral";
+import { input, structuredObjectInput } from "@prismatic-io/spectral";
 import { cleanStringInput } from "../util";
 import {
   connectionInput,
@@ -56,64 +56,70 @@ const department = input({
   clean: cleanStringInput,
   example: "Sales",
 });
+const mailingAddress = structuredObjectInput({
+  label: "Mailing Address",
+  required: false,
+  comments:
+    "Street, city, state, postal code, and country for the mailing address.",
+  inputs: { street, state, city, postalCode, country },
+});
+const billingAddress = structuredObjectInput({
+  label: "Other Address",
+  required: false,
+  comments:
+    "Street, city, state, postal code, and country for the secondary address.",
+  inputs: {
+    billingStreet,
+    billingState,
+    billingCity,
+    billingPostalCode,
+    billingCountry,
+  },
+});
+const nameAndContact = structuredObjectInput({
+  label: "Name & Contact Information",
+  required: false,
+  comments:
+    "First and last name, phone, fax, and mobile contact channels, and birthdate.",
+  inputs: { firstName, lastName, phone, fax, mobile, birthdate },
+});
+const additionalFields = structuredObjectInput({
+  label: "Additional Fields",
+  required: false,
+  comments:
+    "Additional optional fields: includes Department, Title, Assistant, Assistant's Phone, and Description.",
+  inputs: {
+    department,
+    title,
+    assistant,
+    assistantPhone,
+    description,
+  },
+});
 export const createContactInputs = {
-  email,
   version,
+  email,
   dynamicValues,
   fieldValues,
-  phone,
-  firstName,
-  lastName,
-  department,
-  birthdate,
-  fax,
-  title,
-  mobile,
-  assistant,
-  assistantPhone,
-  description,
-  billingCity,
-  billingPostalCode,
-  billingState,
-  billingStreet,
-  billingCountry,
-  street,
-  state,
-  country,
-  city,
-  postalCode,
+  nameAndContact,
+  mailingAddress,
+  billingAddress,
+  additionalFields,
   connection: connectionInput,
 };
 export const updateContactInputs = {
+  version,
   recordId: {
     ...recordId,
     dataSource: "selectContact",
   },
   email,
-  version,
   dynamicValues,
   fieldValues,
-  phone,
-  firstName,
-  lastName,
-  department,
-  birthdate,
-  fax,
-  title,
-  mobile,
-  assistant,
-  assistantPhone,
-  description,
-  billingCity,
-  billingPostalCode,
-  billingState,
-  billingStreet,
-  billingCountry,
-  street,
-  state,
-  country,
-  city,
-  postalCode,
+  nameAndContact,
+  mailingAddress,
+  billingAddress,
+  additionalFields,
   connection: connectionInput,
 };
 export const deleteContactInputs = {
