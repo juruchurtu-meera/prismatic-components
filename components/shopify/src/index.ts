@@ -26,7 +26,7 @@ import connections from "./connections";
 import * as dataSources from "./dataSources";
 import triggers from "./triggers";
 export default component({
-  key: "shopify",
+  key: "shopify-oauth-exp",
   public: true,
   documentationUrl: "https://prismatic.io/docs/components/shopify/",
   display: {
